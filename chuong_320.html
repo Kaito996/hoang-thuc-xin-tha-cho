@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#f4f1ea">
+    <title>Chương 320</title>
+    
+<style>
+    :root {
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
+        --btn-text: #ffffff;
+        --border-color: #e2dcd0;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+        --header-bg: #f4f1ea;
+    }
+
+    [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
+        --bg-color: #000000;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
+        --missing-bg: #3a1c1c;
+        --missing-text: #ff453a;
+        --header-bg: #111111;
+    }
+
+    body { 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+        transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    .container {
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .top-bar {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 55px;
+        background-color: var(--header-bg);
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0 20px;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    #theme-toggle {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+        font-size: 14px;
+        font-family: sans-serif;
+        cursor: pointer;
+        padding: 8px 12px;
+        border-radius: 20px;
+    }
+
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
+
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
+
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
+    
+    .btn { 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+    }
+    .btn:active { opacity: 0.7; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
+
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
+    
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
+</style>
+
+</head>
+<body>
+    <div class="top-bar">
+        <button id="theme-toggle">🌙 Nền Tối</button>
+    </div>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
+        
+        <h2>Chương 320</h2>
+        
+        <div class="nav-buttons" style="margin-top: 10px;">
+            <a href="chuong_319.html" class="btn">‹ Trước</a>
+            <a href="chuong_321.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 320: Sở Đệ Trì: “…”</p>
+<p>“Tha cho ngươi? Được thôi.”</p>
+<p>“Đa tạ Hoàng thượng… Á!”</p>
+<p>Viên Thị lang vừa mới thở phào nhẹ nhõm, đã bị một cước đá mạnh đến mức ngất lịm.</p>
+<p>“Trẫm hận không thể giết ngươi, còn muốn trẫm tha mạng? Tống vào Thiên lao! Trẫm sẽ khiến hắn sống không bằng chết!”</p>
+<p>Ám vệ xách Viên Thị lang lên, áp giải xuống.</p>
+<p>Sở Ly quay ra ngoài dặn dò:</p>
+<p>“Đưa Minh Hoa Quận chúa tới đây.”</p>
+<p>Sở Ngạo Thiên xoay người bước đến bên giường, khẽ vuốt bàn tay già nua đã lạnh ngắt của Khương Thái phó, lẩm bẩm:</p>
+<p>“Lão sư, trẫm nhất định sẽ không để người chết oan.”</p>
+<p>—</p>
+<p>Trong hoàng cung, khắp nơi đều bao trùm một bầu không khí bi thương.</p>
+<p>Thu liệm thi thể, ghi chép danh tính những binh sĩ đã hi sinh, kiểm kê số người thương vong, triệu tập Thái y viện cùng toàn bộ đại phu trong đế đô để cứu chữa thương binh.</p>
+<p>Bạch Cẩm Y từ Thần Y cốc vội vã chạy đến, chở theo bốn xe lớn đầy dược liệu, vô điều kiện quyên tặng.</p>
+<p>Trong nhất thời, khắp nơi đều bận rộn.</p>
+<p>Sở Đệ Trì đứng trên bậc thềm cao, đón cơn gió tanh nồng trước mặt, nhìn tòa hoàng cung tan hoang trăm lỗ nghìn vết, nhìn giang sơn khiến bao người tranh đoạt này.</p>
+<p>“Rốt cuộc cũng giữ được rồi.”</p>
+<p>Tiêu Dạ Hành bước tới, trên tay cầm một cuộn băng vải, cắn một đầu bằng miệng rồi tự quấn lên cánh tay bị thương.</p>
+<p>Sở Đệ Trì nghiêng mắt nhìn hắn.</p>
+<p>“Thương thế thế nào?”</p>
+<p>“Chỉ là vết thương nhỏ.”</p>
+<p>“Ngươi thụt lùi rồi.”</p>
+<p>Tiêu Dạ Hành bật cười.</p>
+<p>“Thân ở giang hồ, làm gì có ai không bị thương? Ngươi tưởng ai cũng giống ngươi sao?”</p>
+<p>Nếu ai cũng giống hắn, e rằng Đại Sở đã sớm quét ngang lục quốc, thống nhất thiên hạ rồi.</p>
+<p>Lúc ấy, Kinh Ảnh bước tới.</p>
+<p>“Chủ tử, thương binh đã chiếm gần nửa hoàng cung, không còn chỗ chứa nữa.”</p>
+<p>Sở Đệ Trì bình tĩnh nói:</p>
+<p>“Khoanh toàn bộ khu vực phía tây thành làm nơi chữa thương. Bách tính nguyên cư tại đó sẽ được triều đình bồi thường một khoản ngân lượng. Những tướng sĩ hi sinh trong trận chiến này đều phải được an táng tử tế, gia quyến phát tiền tuất. Nếu còn con cái chưa thành niên, toàn bộ do triều đình nuôi dưỡng.”</p>
+<p>Hắn liên tiếp đưa ra mấy điều lệnh, sắp xếp công việc hậu chiến.</p>
+<p>Tiêu Dạ Hành chợt nói:</p>
+<p>“Biện pháp thì rất hay, nhưng nếu ta nhớ không nhầm, quốc khố hiện giờ đã trống rỗng. Vậy số ngân lượng ấy lấy từ đâu ra?”</p>
+<p>Từ xưa đến nay…</p>
+<p>Đánh trận luôn là việc hao tiền tốn của nhất.</p>
+<p>Sở Đệ Trì: “…”</p>
+<p>—</p>
+<p>Hậu điện.</p>
+<p>Chỉ nửa khắc sau, Sở Minh Hoa đã bị hai tên thái giám áp giải tới.</p>
+<p>Vừa bước vào, trên mặt nàng vẫn là vẻ kiêu ngạo và mất kiên nhẫn.</p>
+<p>“Bao giờ ta mới được xuất cung?”</p>
+<p>“Đường đường là Quận chúa lại bị vô cớ giam giữ.”</p>
+<p>Theo nàng thấy…</p>
+<p>Khí tiết của Đại Sở cũng đã đến lúc tận rồi.</p>
+<p>Hừ!</p>
+<p>Sở Ly nhìn nàng.</p>
+<p>“Dựa vào đâu mà ngươi cho rằng mình có thể bình yên rời khỏi cung?”</p>
+<p>Sở Minh Hoa nheo mắt.</p>
+<p>“Ý ngươi là gì?”</p>
+<p>“Thân là nữ nhi của Tiêu Dao Vương, chắc hẳn ngươi rất rõ hành tung thường ngày của ông ta, những người qua lại, cùng các âm mưu bí mật, đúng không?”</p>
+<p>Sở Minh Hoa lập tức cảnh giác.</p>
+<p>“Ngươi muốn nói gì?”</p>
+<p>“Ông ta phản quốc rồi.”</p>
+<p>“Một phái hồ ngôn!”</p>
+<p>Sở Minh Hoa quát lớn.</p>
+<p>“Nhiều năm qua phụ vương ta luôn an phận thủ thường, không tranh không đoạt. Ngươi dựa vào đâu mà ngậm máu phun người?”</p>
+<p>Đây cũng chính là chỗ cao minh của Tiêu Dao Vương.</p>
+<p>Sống hơn nửa đời người…</p>
+<p>Không ai từng nắm được nhược điểm của ông ta.</p>
+<p>“Viên Thị lang đã khai nhận ông ta.”</p>
+<p>“Có chứng cứ không? Có nhân chứng không? Lời của Viên Thị lang chẳng lẽ nhất định là thật?”</p>
+<p>“Nếu hôm nay ta bỏ trọng kim thuê một người vu oan cho ngươi, Tạ Vãn Nguyệt, chẳng lẽ ngươi cũng cúi đầu nhận tội chịu chết hay sao?”</p>
+<p>Sở Minh Hoa ngẩng cao đầu, từng câu từng chữ đều sắc bén bức người.</p>
+<p>Sở Ly hiểu rất rõ.</p>
+<p>Giữa Tiêu Dao Vương và Viên Thị lang, tuyệt đối không thể lưu lại bất cứ nhược điểm nào để nàng dễ dàng bắt được.</p>
+<p>Dù nàng có cạy miệng Viên Thị lang, cũng vẫn không có bằng chứng xác thực.</p>
+<p>“Minh Hoa Quận chúa.”</p>
+<p>“Ta không đến đây để giảng đạo lý với ngươi.”</p>
+<p>“Ồ?”</p>
+<p>“Vậy là đến tiễn bản Quận chúa xuất cung?”</p>
+<p>Sở Ly nhìn gương mặt kiêu ngạo ấy, không nói thêm lời nào, chỉ quay sang hai tên ám vệ bên cạnh.</p>
+<p>“Giam nàng lại. Không có mệnh lệnh của Hoàng thượng, không được rời khỏi hoàng cung nửa bước.”</p>
+<p>“Tuân lệnh!”</p>
+<p>“Cái gì?!”</p>
+<p>Ngay sau đó, Sở Minh Hoa đã bị khống chế.</p>
+<p>“Ngươi dám bắt ta? Buông ra! Ta là Quận chúa! Ngươi lấy tư cách gì bắt ta?”</p>
+<p>“Đưa đi!”</p>
+<p>“Tạ Vãn Nguyệt! Ngươi thật to gan! Phụ vương ta sẽ không tha cho ngươi đâu! Ngươi cứ đợi đó!”</p>
+<p>“Tạ Vãn Nguyệt!”</p>
+<p>Sở Minh Hoa bị cưỡng ép đưa đi, nhưng tiếng quát đầy phẫn nộ vẫn vang vọng trong không trung, thật lâu không tan.</p>
+<p>Sở Ly khẽ vuốt những sợi tóc mai rối bên tai.</p>
+<p>Điều nàng muốn…</p>
+<p>Chính là chọc giận Tiêu Dao Vương.</p>
+<p>Mệt quá.</p>
+<p>Nàng day nhẹ giữa chân mày mỏi mệt.</p>
+<p>Hai ngày một đêm không chợp mắt, trong mắt phủ đầy tia máu.</p>
+<p>Sở Ngạo Thiên nhìn mà đau lòng.</p>
+<p>“Cửu muội, mau đi nghỉ một lát đi.”</p>
+<p>Sở Ly vẫn không thể yên tâm.</p>
+<p>“Muội…”</p>
+<p>“Khởi bẩm Hoàng thượng! Gia quyến của Khương Thái phó đã vào cung!”</p>
+<p>Người đến bẩm báo cắt ngang lời nàng.</p>
+<p>Sở Ly đành miễn cưỡng gắng gượng tinh thần, lùi sang một bên.</p>
+<p>Rất nhanh sau đó, tám chín người vội vã chạy vào.</p>
+<p>“Phụ thân!”</p>
+<p>“Công công!”</p>
+<p>Con trai, con dâu hai mắt đỏ hoe, bịch một tiếng quỳ xuống trước giường.</p>
+<p>Hai vị thúc bá cùng thẩm nương đồng lứa cũng vừa lau nước mắt vừa cúi đầu.</p>
+<p>“Gia gia!”</p>
+<p>Một thiếu nữ trẻ tuổi quỳ xuống dập đầu, khóc đến mức không thành tiếng.</p>
+<p>Trong lòng Sở Ly rất khó chịu.</p>
+<p>Nàng nhìn ra ngoài cửa sổ, đón làn gió sớm.</p>
+<p>Không biết vì quá mệt hay vì điều gì khác, chỉ cảm thấy mắt cay xè, mọi thứ trước mắt đều mờ đi.</p>
+<p>Nàng nhớ lại ngày xưa.</p>
+<p>Thuở nhỏ vô ưu vô lo, mỗi ngày đều chọc Khương Thái phó tức đến mức trợn mắt thổi râu.</p>
+<p>Đến khi lớn lên, hiểu chuyện rồi…</p>
+<p>Lại là cây muốn lặng mà gió chẳng ngừng.</p>
+<p>Ở độ tuổi ngây dại nhất…</p>
+<p>Lại là lúc có nhiều nhất.</p>
+<p>Đến khi hiểu chuyện…</p>
+<p>Thì đã mất đi.</p>
+<p>Thì ra…</p>
+<p>Cái giá của trưởng thành chính là từng chút từng chút một đánh mất.</p>
+<p>Trong lòng Sở Ngạo Thiên cũng đâu khá hơn.</p>
+<p>Hắn nghiêng đầu sang một bên, cố nén tiếng nghẹn ngào, rồi mới cất lời:</p>
+<p>“Lão sư đại nghĩa, cả đời dốc cạn tâm huyết, trung nghĩa vì nước. Trẫm đã quyết định truy phong lão sư làm Định An Hầu, lấy thân phận hầu tước an táng trọng thể. Con cháu đời sau được tập tước năm đời.”</p>
+<p>“Tạ Hoàng thượng long ân!”</p>
+<p>Cả gia quyến đồng loạt dập đầu tạ ân.</p>
+<p>Phía cuối hàng, một thiếu nữ mặc y phục đơn giản, gương mặt gầy gò, đôi mắt chỉ chăm chú nhìn Khương Thái phó trên giường.</p>
+<p>Nàng không gào khóc như những người khác.</p>
+<p>Chỉ lặng lẽ rơi nước mắt.</p>
+<p>Sở Ngạo Thiên để ý đến nàng.</p>
+<p>Rất nhanh, gia quyến Khương Thái phó rời đi.</p>
+<p>Thi thể được các cung nhân chuyên trách thu liệm, đưa về phủ Định An Hầu.</p>
+<p>Vừa bước ra khỏi điện.</p>
+<p>Khương phu nhân liền kích động nắm lấy tay con gái.</p>
+<p>“Hoàng thượng đã phong tước rồi! Từ nay về sau, con chính là quý nữ danh giá bậc nhất của phủ Hầu ở kinh thành!”</p>
+<p>“Tẩm Tuyết, ngày mai lập tức hủy hôn với con trai Trung Thư lệnh. Chỉ là con trai của một viên tam phẩm quan nhỏ bé, sao xứng với con được?”</p>
+<p>Khương Tẩm Tuyết kiêu ngạo ngẩng đầu.</p>
+<p>“Đó là đương nhiên!”</p>
+<p>“Với thân phận hiện giờ của con, gả vào hoàng thất cũng dư sức. Loại mèo chó tầm thường đó, cũng xứng trèo cao với con sao?”</p>
+<p>Phía sau, thiếu nữ gầy yếu vẫn luôn im lặng đi theo khẽ do dự lên tiếng:</p>
+<p>“Mẫu thân… khi gia gia còn sống, người coi trọng nhất chính là danh nghĩa và chính trực. Hơn nữa, tỷ tỷ từ nhỏ đã được chỉ phúc vi hôn với công tử nhà Trung Thư lệnh. Nếu đột nhiên hủy hôn, e rằng sẽ làm tổn hại thanh danh của gia gia…”</p>
+<p>Sắc mặt Khương phu nhân lập tức lạnh xuống.</p>
+<p>Bà đưa ngón tay chọc mạnh vào trán nàng.</p>
+<p>“Đồ nghiệt chủng!”</p>
+<p>“Nói dễ nghe thì gọi ta một tiếng mẫu thân.”</p>
+<p>“Nói khó nghe… ngươi chỉ là con tiện nhân do một kỹ nữ thanh lâu sinh ra, cũng dám xen vào chuyện của phủ Định An Hầu chúng ta?”</p>
+<p>“Khương Vãn không dám!”</p>
+<p>“Hừ!”</p>
+<p>“Đồ tiểu tiện nhân!”</p>
+<p>“Cút xa một chút!”</p>
+<p>“Đừng đứng đây chướng mắt!”</p>
+<p>Khương phu nhân lạnh lùng lườm nàng một cái, rồi lập tức nắm tay Khương Tẩm Tuyết, đổi sang gương mặt đầy ý cười.</p>
+<p>“Không ngờ lão già ấy chết rồi mà còn để lại cho chúng ta món quà lớn như vậy.”</p>
+<p>“Tẩm Tuyết, chúng ta nhất định phải nắm lấy cơ hội này, lợi dụng cái chết của gia gia con để giành lấy sự thương cảm của Hoàng thượng.”</p>
+<p>“Nếu con có thể nhập hậu cung, thì vinh hoa phú quý của phủ Định An Hầu chúng ta mấy đời sau sẽ đều được bảo đảm!”</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 20px;">
+            <a href="chuong_319.html" class="btn">‹ Trước</a>
+            <a href="chuong_321.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+    
+<script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateBtnUI(currentTheme);
+
+    toggleBtn.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        let newTheme = theme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateBtnUI(newTheme);
+    });
+
+    function updateBtnUI(theme) {
+        if(theme === 'dark') {
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
+        } else {
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
+        }
+    }
+</script>
+
+</body>
+</html>
