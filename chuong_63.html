@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 63</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 63</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_62.html" class="btn">‹ Trước</a>
+            <a href="chuong_64.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 63: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 63: Hoàng thúc tức giận rồi sao?
+Nhiếp Chính Vương phủ.
+Trên Dao Hoa Đài ngập ánh tà dương lười biếng, hoa hải đường nở rộ vô cùng tươi tốt.
+Bạch Cẩm Y nhàn nhã phân loại dược liệu:
+“Quyết minh tử… Bạch thược… Tang diệp… Kim ngân hoa…”
+Tiêu Dạ Hành ngồi một bên, đang cùng Sở Đệ Trì đánh cờ.
+Quân cờ đen trắng đan xen chém giết, mở ra một chiến trường vô hình. Quân đen sắc bén, từng bước đều xuất kỳ bất ý, ép quân trắng vào đường cùng.
+Không hề lưu tình.
+Tiêu Dạ Hành vê một quân cờ trắng, nhìn bàn cờ hồi lâu mấy nhịp thở, đã là thế cờ tất bại.
+Hắn lại thua.
+Thấy Sở Đệ Trì mặt mày lạnh lẽo, hắn lập tức quay đầu mắng Bạch Cẩm Y:
+“Nhỏ tiếng một chút! Làm ồn tai ta!”
+Bạch Cẩm Y: “?”
+Hắn chỉ đang phân loại dược liệu mà thôi.
+“Ngươi phát điên à? Ngươi đánh cờ không thắng, lại trách ta? Ta sắp xếp dược liệu thì cản trở gì ngươi?”
+Tiêu Dạ Hành lạnh lùng liếc hắn:
+“Nếu ngươi thật sự nghiêm túc phối dược, thì cớ sao đã bốn ngày rồi, mắt Cửu hoàng tử vẫn chưa khỏi?”
+Bạch Cẩm Y lập tức hiểu ra.
+Được.
+Được lắm.
+Hóa ra là quanh co lòng vòng mắng hắn ở đây.
+Mấy ngày nay, A Trì tuy không đến tìm tiểu điệt tử kia nữa, nhưng lại sai hắn mỗi ngày thay toàn bộ dược liệu đã phối bằng phương thuốc của ngự y, đưa cho tiểu điệt tử chữa mắt.
+“Đôi mắt là nơi yếu ớt đặc biệt, vô cùng nhạy cảm, đâu phải ba năm ngày là có thể khỏi, ngươi gấp cái gì?”
+Liếc nhìn Sở Đệ Trì đang lạnh mặt, hắn không nhịn được nhỏ giọng lẩm bẩm:
+“Chỉ biết sai khiến ta. Sau lưng lặng lẽ làm bao nhiêu chuyện như vậy, lại không cho Cửu hoàng tử biết, chẳng lẽ nàng còn tự tìm tới cửa để cảm tạ ngươi chắc?”
+Kinh Ảnh bước vào Dao Hoa Đài:
+“Chủ tử, Cửu hoàng tử cầu kiến.”
+Bạch Cẩm Y đột nhiên ngẩng đầu:
+“Hả?”
+Nhắc Tào Tháo, Tào Tháo liền tới?
+Sở Đệ Trì bỗng ngước mắt. Đáy mắt vốn bình lặng cả ngày nay rốt cuộc nổi lên một tia gợn sóng. Hắn khẽ nhấc đầu ngón tay.
+Kinh Ảnh hiểu ý, cúi người lui ra ngoài dẫn người.
+Rất nhanh.
+Sở Ly vòng qua hành lang cửu khúc, bước vào Dao Hoa Đài rộng lớn xa hoa.
+Đã bốn ngày không gặp.
+Khi nhìn thấy nam nhân kia mặc cẩm bào màu giáng tử, ngồi nơi đó, đầu ngón tay mạnh mẽ đang vê một quân cờ đen, hờ hững xoay chuyển trong tay. Dáng vẻ cao ngạo, lãnh đạm ấy tựa băng sương trên đỉnh núi cao, chỉ có thể đứng xa mà ngắm, không cho phép kẻ khác đến gần mạo phạm.
+Ấy vậy mà một nam nhân như thế, trước mặt người đời cao cao tại thượng, được người kính ngưỡng…
+Sau lưng lại…
+Sở Ly siết chặt đầu ngón tay, bất động thanh sắc nuốt xuống hận ý cùng lửa giận nghẹn nơi cổ họng.
+“Cửu hoàng tử sao lại tới đây?”
+Bạch Cẩm Y tiến lên, đỡ Sở Ly, hai mắt vẫn còn buộc dải lụa mỏng.
+“Nào, cẩn thận dưới chân.”
+Lúc đỡ nàng ngồi xuống, Tiêu Dạ Hành còn cố ý nhường chỗ, để nàng ngồi cạnh Sở Đệ Trì.
+Sở Ly nói:
+“Nghe nói hôm ấy Nhiếp Chính Vương xông vào Tướng quân phủ cứu ta, Hoàng hậu vô cùng vui mừng, đặc biệt ban thưởng một bầu rượu, mong Nhiếp Chính Vương có thể uống, chớ phụ một mảnh hảo ý của Hoàng hậu nương nương.”
+Cung nữ đi theo tiến lên, đặt khay lên bàn.
+Thần sắc Bạch Cẩm Y lập tức trở nên thâm trầm, cùng Tiêu Dạ Hành nhìn nhau một cái.
+Đang yên đang lành, Hoàng hậu lại ban rượu, còn để Cửu hoàng tử đích thân mang tới?
+Bầu rượu này có thể uống sao?
+Hai tay Sở Ly lần mò tìm được chén rượu, cầm lấy bầu rượu, rót đầy một chén, rồi lại đưa tay dò trên mặt bàn, đem chén rượu đưa tới trước mặt Sở Đệ Trì.
+“Hoàng thúc.”
+Sở Đệ Trì rũ mắt nhìn xuống.
+Trong chén đầy ắp rượu, màu sắc trong suốt như ngọc, mặt rượu khẽ gợn sóng, hương rượu nồng đậm lan tỏa, thơm ngát mê người.
+Quả thật là một bầu hảo tửu.
+“Bổn vương không khát.”
+Sở Ly nói:
+“Đây là rượu Hoàng hậu ban thưởng.”
+“Thì đã sao?”
+“Hoàng thúc định kháng chỉ phượng ý của Hoàng hậu nương nương?”
+Bạch Cẩm Y định lên tiếng, nhưng Tiêu Dạ Hành dùng ánh mắt ngăn lại.
+Thần sắc hắn đầy vẻ sốt ruột.
+Quan hệ giữa Nhiếp Chính Vương và hoàng thất, ai ai cũng biết.
+Hoàng hậu ban rượu, tất nhiên chẳng có ý tốt.
+Cửu hoàng tử hẳn cũng biết.
+Lẽ nào nàng muốn đích thân hạ độc chết Sở Đệ Trì?
+Sở Ly nâng chén rượu lên.
+“Hoàng thúc, mời.”
+Sở Đệ Trì khẽ nhếch môi mỏng, cười khẩy đầy hàm ý.
+“Sở Ly, hôm nay chúng ta đánh cược một ván nhỏ trước, thế nào?”
+“Hoàng thúc muốn cược gì?”
+“Cược xem trong rượu này có độc hay không.”
+Thân thể cung nữ run lên.
+Nàng là cung nữ Phượng Nghi cung, phụng mệnh Hoàng hậu theo Cửu hoàng tử xuất cung, đồng thời nhất định phải tận mắt nhìn thấy Nhiếp Chính Vương uống bầu rượu này.
+Không ngờ Nhiếp Chính Vương lại ngay trước mặt nàng, đường hoàng nói ra lời như vậy.
+Đây là điều nàng có thể nghe sao?
+Sở Ly trầm mặc một lát mới đáp:
+“Được.”
+“Kinh Ảnh.”
+Kinh Ảnh bước lên trước, cầm lấy chén rượu, tóm lấy cung nữ kia, bóp miệng nàng mở ra rồi trực tiếp đổ rượu vào.
+“Ưm… Nhiếp Chính Vương tha mạng… Ưm… tha mạng… Khụ… khụ…”
+Cung nữ ngã phịch xuống đất, sặc đến ho liên tiếp hơn mười tiếng, mặt đỏ bừng.
+Qua hồi lâu.
+Bạch Cẩm Y nắm cổ tay nàng, bắt mạch, kinh ngạc nói:
+“Nàng ta… vậy mà không sao?”
+Rượu này không có độc?
+Cơ hội tốt như vậy, người hoàng thất lại không hạ độc?
+Sở Ly khẽ vuốt nơi khóe mắt.
+Không ai nhìn thấy thần sắc trong mắt nàng.
+Rượu…
+Đương nhiên có độc.
+Chỉ là trên đường xuất cung, nàng đã nhân cơ hội đánh tráo.
+Hoàng hậu muốn mượn tay nàng đối phó Nhiếp Chính Vương. Một khi xảy ra chuyện, người đầu tiên gánh tội, chịu họa chính là nàng.
+Nhưng nếu không mang bầu rượu này tới, nàng cũng không thể ăn nói với Hoàng hậu.
+Nàng bị kẹp ở giữa.
+Tiến không được, lui cũng chẳng xong.
+Bao năm nay, nàng cố gắng đến vậy chỉ mong có thể toàn thân thoái lui.
+Cuối cùng vẫn bị mạnh mẽ kéo vào vòng xoáy này.
+Nếu đã không thể rút lui…
+Vậy nàng chỉ còn cách bất chấp thủ đoạn để bảo toàn chính mình.
+Nàng khẽ cười.
+“Hoàng thúc thua rồi.”
+Bạch Cẩm Y kinh ngạc vô cùng.
+Rượu… sao lại không có độc?
+Đến cả Tiêu Dạ Hành cũng hơi bất ngờ.
+Sở Đệ Trì nhìn nàng.
+Một dải lụa trắng mềm buộc ngang đôi mắt. Gương mặt nhỏ nhắn tinh xảo khẽ ngẩng lên mỉm cười. Đôi môi hồng nhạt cong nhẹ, tựa đóa hải đường nở đẹp nhất.
+“Ngươi muốn thế nào?”
+“Ta nào dám làm gì Hoàng thúc? Chỉ là…”
+“Người thua cược thì phải chịu thua!”
+Nụ cười trên mặt Sở Ly lập tức trở nên lạnh lẽo.
+Nàng chộp lấy bầu rượu trên bàn, hung hăng nện thẳng vào mặt Sở Đệ Trì.
+Rầm!
+Một tiếng nổ lớn vang lên.
+Bạch Cẩm Y kinh hãi bật nhảy dựng lên:
+“A Trì!”
+Chiếc bầu rượu bằng sứ cứng rắn vỡ tan ngay trên đầu Sở Đệ Trì.
+Mảnh sứ vỡ cứa mạnh qua thái dương hắn một đường.
+Máu cùng rượu hòa lẫn vào nhau, men theo đường nét gương mặt chảy xuống cằm, tí tách rơi trên cẩm bào.
+Cẩm bào màu giáng tử nhuộm cùng máu đỏ thẫm, sắc màu rực rỡ đến mức yêu dị.
+Đáy mắt Tiêu Dạ Hành đầy vẻ chấn kinh.
+Kinh Ảnh và Trọng Phong càng bị dọa đến tái mặt.
+Trong khoảnh khắc ấy…
+Nam nhân vẫn giữ nguyên tư thế cũ, ngồi yên nơi đó.
+Chỉ là hàn ý quanh thân đột ngột ngưng tụ, như rơi xuống vực sâu vạn trượng, khiến cả không khí đông cứng.
+Trong đôi mắt sâu thẳm dường như đang ấp ủ một cơn cuồng phong.
+Đen đến không thấy đáy.
+Khiến tất cả mọi người đều kinh hồn táng đảm.
+Hắn nhìn nàng.
+Ánh mắt sắc bén như ưng chuẩn.
+Không khí xung quanh dường như cũng trở nên nặng nề vì hắn.
+Tất cả mọi người đều không dám hít mạnh lấy một hơi.
+Sở Ly đứng đó, cất tiếng:
+“Hoàng thúc tức giận rồi sao?”
+“Ta chỉ muốn thử xem Hoàng thúc có thật sự nhất ngôn cửu đỉnh, nguyện cược phục thua hay không.”
+“Nếu Hoàng thúc ngay cả chút độ lượng ấy cũng không có, vậy sau này ta cũng không dám đánh cược với Hoàng thúc nữa.”
+Bạch Cẩm Y sắp phát điên.
+Tổ tông ơi!
+Đến lúc này mà nàng còn dám nói những lời ấy?
+Đúng là đổ thêm dầu vào lửa!
+Chẳng phải ai ai cũng biết Cửu hoàng tử có tính tình hiền hòa, ôn thuận hay sao?
+Hiền đến mức nào?
+Cho dù người khác nói mặt trời là hình vuông, nàng cũng sẽ không tranh cãi nửa lời.
+Hôm nay nàng rốt cuộc phát điên cái gì vậy!
+Sở Đệ Trì nhìn chằm chằm nàng.
+Mu bàn tay đang siết chặt tay vịn nổi đầy gân xanh, tựa những con giao long cuộn mình, phô bày sự âm lệ đang bị hắn gắng sức đè nén.
+Uy áp từ người hắn tỏa ra.
+Cả Dao Hoa Đài dường như cũng run rẩy theo cơn thịnh nộ ấy.
+Sở Ly thần sắc bình tĩnh.
+Thậm chí còn khinh thường sự nóng nảy cùng tính toán của hắn.
+Từng phút.
+Từng giây.
+Dường như đều đông cứng trong một mảnh tĩnh mịch chết chóc.
+Mọi người cảm thấy mình sắp nghẹt thở.
+Cuối cùng.
+Sở Đệ Trì buông lỏng bàn tay.
+Khóe môi nở một nụ cười dữ tợn.
+“Thời gian không còn sớm.”
+“Bổn vương không giữ Cửu hoàng tử ở lại dùng bữa tối nữa.”
+“Kinh Ảnh…”
+“Tiễn Cửu hoàng tử ra ngoài cho tử tế!”
+———-
+ Like xong chap sau đến nhanh hơn 0,0001 giây đấy! 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_62.html" class="btn">‹ Trước</a>
+            <a href="chuong_64.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

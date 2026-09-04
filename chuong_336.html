@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 336</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 336</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_335.html" class="btn">‹ Trước</a>
+            <a href="chuong_337.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 336: Sở Dạ Ly, ta hận ngươi
+‘Tiểu Cửu.’
+‘Ừm?’
+Sở Ly quay đầu, nhìn thấy người đàn ông đang bước về phía mình, đưa tay khẽ chạm lên chóp mũi nàng, rõ ràng muốn giận nhưng lại cố nhịn xuống:
+‘Trốn ở Giang Nam, làm ta tìm mãi.’
+‘Theo ta về Đế Đô thành đi, có ta ở đây, sẽ không ai dám nhằm vào ngươi.’
+Sở Ly mỉm cười.
+‘Tiểu Cửu, hồi nhỏ ngươi rất thích khóc. Có một lần ngươi bị Thất hoàng tử đánh, cứ quấn lấy ta mà khóc. Nhưng ta thật sự không có kiên nhẫn dỗ dành nhi tử của hoàng đế, liền đưa lệnh bài cho ngươi, lừa rằng đó là kẹo. Ngươi lại thật sự cắn mạnh một cái, kết quả làm rụng luôn cả chiếc răng sữa.’
+‘Tiểu Cửu, ở bên ta đi. Nếu không, ta sẽ đem chuyện ngươi từng dùng nước mũi thổi bong bóng kể cho người khác nghe.’
+‘Tiểu Cửu…’
+‘Tiểu Cửu!’
+Đột nhiên, cảnh tượng xoay chuyển.
+Trong màn đêm, người đàn ông không chút do dự, lao thẳng xuống vực sâu.
+“Đừng!”
+Sở Ly đột ngột mở choàng mắt, động tác quá mạnh, không biết va phải thứ gì, cả người ngã xuống. Đến lúc ấy mới phát hiện mình đang ở trong một cỗ xe ngựa.
+“Tỉnh rồi.”
+Thần sắc Sở Dạ Ly thoáng hiện vẻ vui mừng, nhưng rất nhanh lại cau mày:
+“Sao lại bất cẩn như vậy?”
+Hắn vừa đưa tay tới, đã bị nàng hung hăng hất văng.
+“Đừng chạm vào ta!”
+Sở Ly túm chặt vạt áo trước ngực, vừa đạp chân vừa lùi về góc xe, cố giữ khoảng cách xa nhất với hắn.
+Ánh mắt người đàn ông tối lại, nhìn mu bàn tay bị đánh đỏ. Chỉ trong chớp mắt, hắn đã tự nhiên thu tay về.
+“Trời lạnh, quấn chăn cho kỹ.”
+Phải.
+Trời lạnh.
+Gió rét mùa đông từ đáy vực thổi ngược lên, sắc bén như dao, tưởng như có thể cứa rách cả da mặt. Người rơi xuống đó… rốt cuộc sẽ lạnh lẽo và tuyệt vọng đến nhường nào…
+Chỉ vừa nghĩ đến, hốc mắt nàng đã nhanh chóng đỏ hoe.
+Sở Dạ Ly kéo tấm chăn lông phủ lên chân nàng.
+“Nén bi thương.”
+Sở Ly chỉ thấy vô cùng nực cười.
+Hai chữ ấy, vậy mà lại từ miệng hắn nói ra.
+“Sở Dạ Ly, thứ ngươi muốn đã có cả rồi. Phục quốc, hoàng quyền, đều ở trong tầm tay. Thả ta đi.”
+Sở Dạ Ly lặng lẽ nhìn nàng:
+“Thứ ta thật sự muốn là gì, lẽ nào nàng không biết?”
+Hắn từng nói.
+Thiên hạ và nàng, hắn đều không thể buông.
+“Nàng từng nói, trên đời không có cách nào vẹn toàn đôi đường. Nhưng ta đã làm được rồi, Tiểu Cửu.”
+Hắn đều có được cả.
+“Thật sao?”
+Nhìn gương mặt vẫn ôn hòa như trước của hắn, nhưng trong đáy mắt nàng đã không còn nửa phần tình nghĩa huynh muội năm xưa. Trong đầu hiện lên tất cả đều là cảnh Sở Đệ Trì bị hắn lừa, nhảy xuống vực.
+Đột nhiên, nàng rút cây trâm trên tóc, lao thẳng tới đâm hắn.
+“Ngươi đi chết đi!”
+Động tác của người đàn ông còn nhanh hơn một bước. Hắn chụp lấy cổ tay nàng, nghiêng đầu tránh đi. Mũi trâm sắc nhọn chỉ sượt qua cổ hắn, để lại một vết rách mỏng trên da.
+Đau rất khẽ.
+Nhưng còn đau hơn là vẻ tổn thương trong đáy mắt hắn.
+Nàng muốn giết hắn…
+Nhưng vậy thì sao?
+Hắn giấu đi đau đớn, chỉ còn lại sự cố chấp đến cực hạn:
+“Tiểu Cửu, nàng thật quá thiên vị. Hồi nhỏ, rõ ràng nàng từng nói sẽ mãi mãi ở bên ta!”
+Sở Ly căm hận nhìn hắn:
+“Những lời nói khi còn bé, sao có thể tính là thật? Nếu có thể làm lại, ta thà rằng chưa từng có ngươi, vị Ngũ hoàng huynh này. Vĩnh viễn không đến Thanh Phong Cư, cũng không quen biết ngươi!”
+Sở Dạ Ly rút cây trâm khỏi tay nàng.
+“Đáng tiếc, trên đời này không có thuốc hối hận!”
+Hối hận?
+Muộn rồi!
+“Ta cũng yêu nàng, nhưng trong mắt nàng chỉ có Sở Đệ Trì. Nàng chưa từng quay đầu nhìn ta, cho dù ta vì nàng làm nhiều đến đâu, tốt với nàng thế nào, cũng không bằng hắn.”
+“Đừng đem dục vọng chiếm hữu ích kỷ của ngươi, gọi là yêu.”
+Đừng đem cái tội lớn như vậy đổ lên đầu nàng.
+“Theo ta biết, trước kia Sở Đệ Trì đối xử với nàng cũng chẳng tốt đẹp gì!”
+Sở Ly cười lạnh:
+“Đúng vậy. Nhưng hắn bằng lòng vì ta mà nhảy xuống vực, không màng tính mạng. Còn ngươi thì sao? Sở Dạ Ly, ngươi có thể vì ta mà chết không?”
+“Có thể.”
+Câu trả lời của hắn không hề do dự. Hắn lại đặt cây trâm vào tay nàng.
+“Chỉ cần nàng muốn, ta sẽ cho nàng cơ hội ấy. Nhưng Tiểu Cửu, nàng phải suy nghĩ cho kỹ. Nhiếp Chính Vương đã chết, Tiêu Dao Vương cũng chết rồi. Nếu không có ta tọa trấn Đại Sở, nàng cho rằng Sở Ngạo Thiên có thể gánh nổi trọng trách nặng nề ấy sao?”
+“Huống hồ, chỉ có ta mới có thể mang đến hòa bình cho Đại Sở, hàn gắn quan hệ giữa Đại Sở và Nam Man. Nếu ta chết, Nam Man nhất định sẽ xuất binh đánh Đại Sở.”
+Đến lúc đó…
+Đại Sở tất sẽ diệt vong.
+Sở Ly nghe từng lời ấy, siết chặt cây trâm trong tay, hận không thể lập tức giết chết hắn. Nhưng nàng lại không sao xuống tay được.
+Đại Sở đã loạn.
+Quốc diệt, ngàn vạn gia đình cũng sẽ diệt.
+Bát hoàng huynh, mẫu phi, nghĩa phụ…
+Tất cả đều sẽ không có kết cục tốt.
+Ngày trước, khi Sở Đệ Trì còn ở đó, chính hắn một mình chống đỡ nội ưu ngoại hoạn của Đại Sở, từng bước thu phục, từng bước gánh lấy trọng trách.
+Giờ hắn không còn.
+Đại Sở rắn mất đầu.
+Trong mắt Sở Ly đọng đầy nước mắt, có sát ý, có hận ý, cũng tràn ngập đau khổ.
+“Sở Dạ Ly… ta hận ngươi…”
+Ánh mắt Sở Dạ Ly tối đi, coi như không nghe thấy.
+“Ừm, ta cũng yêu nàng.”
+“Cả đời này ta vĩnh viễn sẽ không yêu ngươi!”
+Vĩnh viễn không!
+“Đừng nói tuyệt đối như vậy, Tiểu Cửu. Quãng đời còn lại còn rất dài, chúng ta có rất nhiều thời gian để từ từ bồi đắp.”
+Trong dòng thời gian dài đằng đẵng, ký ức của con người rồi sẽ nhạt dần.
+Ở mỗi độ tuổi khác nhau, nhận thức và cách nhìn cũng sẽ khác.
+Sớm muộn cũng sẽ có một ngày…
+Nàng sẽ nhìn thấy điểm tốt của hắn.
+“Ta sẽ không quên.”
+Sở Ly căm hận nhìn hắn.
+“Cho dù đã qua bao nhiêu năm, ta cũng sẽ không quên. Sở Dạ Ly, đời này ta với ngươi không đội trời chung.”
+Sở Dạ Ly chỉ khẽ cười, ngón tay thon dài vén một góc rèm xe.
+“Có tuyết rồi.”
+Giữa mùa đông.
+Chỉ cần có lòng, việc gì cũng thành.
+Hắn đã có được người của nàng, không sợ sẽ không có được trái tim nàng.
+A Ngọc cưỡi ngựa tiến tới.
+“Chủ tử, còn nửa canh giờ nữa sẽ đến tòa thành phía trước. Có vào thành nghỉ ngơi nửa ngày không?”
+“Ừm, ngươi đi sắp xếp.”
+“Vâng.”
+Sở Dạ Ly buông rèm xe xuống.
+“Tiểu Cửu, hiện giờ chúng ta đang trên đường hồi kinh. Xe ngựa đi chậm, đại khái phải mười ngày nữa mới về tới Đế Đô.”
+Sở Ly quay mặt sang một bên, lặng lẽ ngồi đó, từ đầu đến cuối không nói một lời.
+“Quân y nói ngươi vì quá đau lòng mà khí huyết nghịch hành, uất kết trong tim. Hộc được ngụm máu ấy ra thì sẽ khá hơn, nhưng thân thể vẫn phải điều dưỡng cẩn thận.”
+Hắn cầm miếng bánh ngọt trên chiếc bàn thấp, đưa tới trước mặt nàng.
+Chát!
+Nàng phất tay hất rơi.
+Mày hắn hơi nhíu lại, nhưng cũng không nổi giận.
+“Không ăn bánh ngọt thì chúng ta vào thành ăn cá. Nàng thích ăn cá.”
+Còn thích ăn cay.
+Hoặc là không cay không vui, hoặc là chỉ thích đồ ngọt.
+Những vị trung hòa như chua và đắng, nàng đều không đụng đến.
+Sở thích của nàng…
+Hắn đều nhớ rất rõ.
+“Ta đã sai người hồi kinh báo tang trước rồi. Nói rằng trong lúc thanh trừng Tiêu Dao Vương, hai bên đều tổn thất nặng nề, Nhiếp Chính Vương tử trận. Vương phủ của hắn, cùng mọi vinh hiển sau khi chết, ta đều sẽ giữ lại cho hắn.”
+Vậy nàng nên cảm tạ hắn sao?
+Sở Ly lặng lẽ nghiêng đầu, mím chặt môi, nửa chữ cũng không muốn nói.
+“Tiểu Cửu…”
+Hắn cứ như vậy lải nhải những lời vụn vặt hằng ngày.
+Cho đến nửa canh giờ sau, đoàn người tiến vào thành, dừng trước một tửu lâu sang trọng.
+Sở Dạ Ly xuống xe ngựa, nhưng Sở Ly không hề có ý định nhúc nhích.
+“Tiểu Cửu?”
+“Xuống đi. Từ tối qua đến giờ nàng chưa uống một giọt nước, chưa ăn một miếng cơm. Chúng ta vào dùng bữa.”
+Sở Ly lạnh nhạt nhìn hắn:
+“Sở Dạ Ly, ta không giết được ngươi, chẳng lẽ ngay cả quyền quyết định thân thể mình cũng không có sao? Ta không đói. Ta sẽ không ăn dù chỉ một miếng.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_335.html" class="btn">‹ Trước</a>
+            <a href="chuong_337.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

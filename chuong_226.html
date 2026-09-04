@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 226</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 226</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_225.html" class="btn">‹ Trước</a>
+            <a href="chuong_227.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 226: Thanh toán sổ sách
+Bánh ngọt táo đỏ đã bị hắn bóp thành bánh dẹt táo đỏ.
+“Thế này còn ăn kiểu gì được nữa!”
+“Vì sao lại không ăn được?”
+Lúc ấy trên phố, nàng cùng vị Lam Uyên công tử kia chuyện trò cười nói vô cùng vui vẻ. Nếu trong tay hắn không cầm thứ gì để bóp, để nhẫn, thì nắm đấm của hắn đã sớm nện lên mặt nam nhân kia rồi.
+Sở Ly cao giọng:
+“Đều bị bóp bẹp cả rồi!”
+Sở Đệ Trì nói: “Bất luận nó tròn hay dẹt, phân lượng vẫn không thay đổi, vì sao lại không ăn được?”
+Giọng Sở Ly bỗng khựng lại.
+Nghe... hình như cũng có chút đạo lý?
+“Nhưng hạt táo đỏ cũng bị bóp nát rồi!”
+“Chỉ nàng là nhiều chuyện.”
+Sở Đệ Trì cầm chiếc bánh dẹt táo đỏ qua, từng chút từng chút gắp hết những mảnh hạt táo vỡ ra, gắp xong, lại “bốp” một tiếng, đặt trở lại vào tay nàng.
+“Ăn được rồi.”
+“…”
+Thế này đúng là thảm không nỡ nhìn.
+Sở Ly nuốt khan, bụng quả thực đã có chút đói, không thể không cắn một miếng.
+Bánh ngọt táo đỏ vốn mềm xốp, cắn một miếng vừa mềm vừa dẻo, tựa như vào miệng liền tan, mềm mại vô cùng.
+Còn bánh dẹt táo đỏ thì bị bóp chặt cứng, cắn vào lại có chút dai…
+“Tính tình người đúng là quá tệ!”
+Nàng quấn chiếc chăn mỏng quanh người, co chân ngồi trên giường, vừa cắn bánh vừa trừng hắn:
+“Chuyện người lừa ta, ta sẽ nhớ kỹ. Ta sẽ không tha thứ cho người! Sau này tốt nhất đừng để rơi vào tay ta, bằng không thì người cứ chờ đó!”
+Sở Đệ Trì nghiêng người ngồi bên mép giường, lặng lẽ nhìn nàng.
+“Đừng tưởng người chăm nom Ôn gia với Bát hoàng huynh thì có thể lấy đó đánh bài tình thân với ta. Chiêu này vô dụng rồi, ta đã nhìn rõ bộ mặt thật của người.”
+Ha!
+Hắn đúng là một lão hồ ly.
+“Trước đây người khoan hòa như thế, tất cả đều là giả vờ.”
+“Sở Đệ Trì, ta không muốn ở bên người nữa. Nếu trước đây người chỉ diễn kịch, vậy những lời ta nói cũng không tính, coi như triệt tiêu!”
+Sở Đệ Trì vẫn lặng lẽ nhìn nàng.
+“Ta đang nói chuyện với người đấy, tai người điếc rồi sao? Sở Đệ Trì!”
+Sở Ly đá một cước tới, lại bị hắn một tay nắm lấy.
+“Nàng nói xong chưa?”
+“Không xong, căn bản nói không hết!”
+Sở Ly trừng hắn.
+“Người biết mình có bao nhiêu khuyết điểm không? Nhiều đến đếm không xuể. Chỉ có kẻ mù mới thấy ngươi tốt!”
+“Người mang theo mục đích tiếp cận ta. Từ ngày đầu tiên người đến Giang Nam, ta đã bị người lừa rồi!”
+“Tránh xa ta ra!”
+Nàng nổi giận, miệng lải nhải không ngừng, chỉ riêng tật xấu của hắn thôi cũng có thể kể ra cả đống.
+Lớn có, nhỏ có, nhiều có, ít có, vừa mắng vừa càu nhàu.
+Đợi nàng nói gần xong, Sở Đệ Trì mới dùng đôi mắt u ám nhìn chằm chằm nàng:
+“Sở Ly, có phải nàng vẫn chưa hiểu rõ tình hình hiện tại?”
+“Cái gì?”
+“Nàng cho rằng người nên xin lỗi là ta sao?”
+Ý gì?
+Lẽ nào không phải hắn?
+Nam nhân đứng dậy.
+“Ta thấy chiếc bánh nàng cũng ăn gần hết rồi. Chi bằng để ta từ từ tính toán với nàng.”
+“Vì sao huynh muội Tần gia lại biết tin nàng còn sống trước ta? Vì sao người đầu tiên biết không phải là ta?”
+“Nàng còn dám giấu ta, cùng Tần Mục Vũ thành thân!”
+Giọng nói âm lệ như mưa dữ tràn tới, lạnh lẽo ập vào mặt, dường như có thể khiến không khí đông cứng, hoàn toàn khác với dáng vẻ khoan hậu của đêm ấy.
+Đêm đó, rõ ràng hắn nói:
+“Thì ra là diễn kịch để bắt kẻ trộm.”
+“Không sao, chỉ là hai đứa nhỏ đùa giỡn thôi.”
+Vậy mà bây giờ lại…
+Động tác ngậm bánh của Sở Ly cứng đờ, không dám tin nhìn hắn đổi sắc mặt, nhanh chẳng khác gì diễn hí.
+“Rõ ràng người đã nói…”
+“Ngay cả một con vẹt cũng biết hai người tình cảm tốt đẹp. Con vẹt nàng nuôi ngoan thật đấy, Sở Ly, nàng thật biết nuôi.”
+Miếng bánh trong miệng Sở Ly suýt rơi xuống.
+Ngày đó, rõ ràng hắn nói:
+“Tiểu Cửu, nàng thích nuôi vẹt, ta sẽ xây cho nàng một đình đài hiên tạ, chuyên để nàng nuôi vẹt, nuôi rùa.”
+“Tiểu Cửu, ta còn xây cho nàng một tàng thư các, chất đầy những thoại bản nàng thích đọc.”
+Vì sao bây giờ người không có lý lại biến thành nàng?
+Chẳng phải nàng mới là người chiếm lý sao?
+“người … người …”
+Nam nhân trực tiếp áp sát xuống.
+“Hôm nay, chúng ta sẽ thanh toán sổ sách cho đàng hoàng.”
+Sở Ly bật dậy như bị giẫm phải lửa.
+“Ta muốn trở về!”
+“Ta ở đây, nàng còn muốn về đâu?”
+Nam nhân gác ngang chân dài, giữ chặt nàng dưới thân.
+“Còn muốn trở về thành Giang Nam sao? Hử? Trở về?”
+“Ta cho nàng trở về!”
+Chân mềm rồi, để xem nàng đi kiểu gì.
+Thuyền cũng không còn, ta để nàng tự bơi về!
+“Nàng còn dám trở về!”
+Trước mắt Sở Ly hoa lên, như lơ lửng giữa tầng mây, cả người hoàn toàn mất khống chế.
+“Hoàng thúc…”
+“Bây giờ mới biết gọi Hoàng thúc? Sao không gọi Hoàng gia gia luôn đi? Hử? Chẳng phải rất biết dạy sao? Gọi Hoàng gia gia đi?”
+Giọng nam nhân đầy hung hãn vang lên bên tai:
+“Thích thành thân lắm sao?”
+Lần đầu tiên nhìn thấy nàng mặc nữ trang, vậy mà lại là gả cho nam nhân khác. Hắn không phát điên ngay tại chỗ đã là vô cùng khách khí rồi.
+“Thành thân!”
+“Ta cho nàng thành thân!”
+Trong khi hắn còn chìm trong nỗi đau nàng đã chết, ngày ngày say đến chẳng phân biệt ngày đêm, từng ngụm từng ngụm thổ huyết, thay nàng thu dọn hậu sự, thay nàng cai quản giang sơn, phò trợ Nhàn Vương, chăm nom Ôn phi.
+Vậy mà nàng lại trốn ở Giang Nam, cùng Tần Mục Vũ đưa mắt liếc mày.
+Thật tức chết hắn!
+Hắn hận không thể bóp chết nàng!
+“Chẳng phải còn thích nghe hí sao? Ta cho nàng đi nghe hí!”
+“Vị Lam Uyên công tử kia đẹp lắm sao? Hắn đẹp hay ta đẹp? Mở mắt ra!”
+Sở Ly thở dốc, thân thể run rẩy, ngay cả một câu hoàn chỉnh cũng không nói nổi, đầu óc trống rỗng, tựa như cả người sắp bị bóp nát.
+Hắn không giả vờ nữa.
+Hắn hoàn toàn để lộ bộ mặt chân thật.
+“Thích nghe Lam Uyên công tử hát hí, còn mạnh tay thưởng cả ngàn lượng?”
+“Ta cho nàng đi nghe hí!” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_225.html" class="btn">‹ Trước</a>
+            <a href="chuong_227.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

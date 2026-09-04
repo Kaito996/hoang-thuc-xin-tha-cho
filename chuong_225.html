@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 225</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 225</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_224.html" class="btn">‹ Trước</a>
+            <a href="chuong_226.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 225: Ngươi chỉ biết ức hiếp ta
+
+Nàng đã minh bạch.
+
+Nàng xem như đã minh bạch hết thảy.
+
+Nhưng đứng trên thị giác của Sở Đệ Trì, hắn đã nhẫn đến mức gần như phát điên.
+
+Trải qua sinh tử của nàng, hắn cũng tựa như đã đi một chuyến qua Quỷ Môn Quan; vỏn vẹn hơn mười ngày ngắn ngủi, lại như dài đằng đẵng hơn mười năm.
+
+Khi biết được tin nàng vẫn còn sống, cả người hắn như được rót vào sinh cơ; vậy mà kết quả lại nhìn thấy nàng khoác một thân giá y, cùng nam nhân khác thành thân!
+
+Hắn sắp phát điên rồi!
+
+Hắn muốn giết sạch tất cả mọi người!
+
+Thế nhưng, hắn lại không thể không nhẫn.
+
+Lần thứ nhất, Chiêu Lan điện bốc hỏa, nàng chạy mất.
+
+Lần thứ hai, giả chết, lại chạy mất.
+
+Hắn không thể tiếp tục xung động nữa.
+
+Lần này, hắn phải tuần tự tiệm tiến; cho dù cả người sắp bị tức đến nổ tung, cũng cố sức cưỡng ép nhẫn nhịn, liều mạng khống chế, từng chút từng chút thả lỏng sự cảnh giác của nàng, chậm rãi tới gần, cùng nàng giao tâm, cho đến khi nàng gật đầu, đáp ứng ở bên hắn.
+
+Hiện tại, hắn không cần phải nhẫn nữa.
+
+Tương tư như hỏa thiêu đồng cỏ, rực rực thiêu đốt, mặc sức cuồng trưởng, vô biên vô tận.
+
+“Tiểu Cửu, ta rất nhớ nàng.”
+
+“Nàng vĩnh viễn không thể thấu hiểu cảm thụ của ta. Độ sâu mà ngôn ngữ không thể đạt tới, ta sẽ dùng hành động để nói cho nàng biết.” Hắn mạnh mẽ hôn chặt đôi môi phấn của nàng, dùng sức đoạt lấy.
+
+Sở Ly bị ép cong eo, gần như sắp gãy trên mặt bàn.
+
+Hơi thở nặng nề ấy đè xuống, gần như muốn nuốt chửng nàng vào bụng.
+
+“Ta không muốn…”
+
+“Muộn rồi!”
+
+Không cho phép nàng muốn hay không muốn.
+
+“Sở Đệ Trì, người buông ta ra! Rõ ràng người đã nói sẽ không cưỡng ép ta…”
+
+“Khi nào ta cưỡng ép nàng?”
+
+Sở Đệ Trì bóp lấy cằm nàng: “Đừng quên, nàng đã chính miệng đáp ứng ở bên ta. Hiện tại mỗi một việc ta làm, đều nằm trong phạm vi hợp lý.”
+
+Sở Ly vừa kinh vừa giận trừng hắn.
+
+Thì ra hắn chờ nàng ở chỗ này!
+
+Thì ra là thế!
+
+“Người hèn hạ!”
+
+“Vật dĩ loại tụ, Tiểu Cửu.”
+
+“Ta không phải loại người như vậy! Là người lừa ta. Sự khoan hòa và khai minh trước đây của ngươi, hóa ra đều là giả vờ!”
+
+“Bất luận là sự ngụy trang của ta, hay bộ mặt chân thật của ta, nàng đều đã động tâm. Nàng là mềm lòng với chính con người ta, chứ không phải với bất kỳ nam nhân khai minh khoan hòa nào. 
+
+Tiểu Cửu, nàng vẫn chưa nhận rõ lòng mình sao?”
+Sở Ly chấn động.
+
+Lòng nàng?
+
+Không.
+
+Không thể nào.
+
+Nàng chỉ là bị mắc lừa thôi!
+
+“Sở Đệ Trì, ngươi chỉ biết ức hiếp ta!”
+
+“Vì nàng, ta đã cố ép mình nhìn Tần Mục Vũ thuận mắt; vì nàng, ta đã đích thân đề bạt Sở Ngạo Thiên; vì nàng, ta đã chăm nom rất tốt cho Ôn phi và Ôn gia. Tất cả những điều đó đều là nể mặt nàng. Chỉ có nàng ở chỗ ta, mới có thể diện lớn đến như vậy. Tiểu Cửu, nàng vẫn chưa hiểu sao?”
+
+Những lời hắn nói đều là thật.
+
+Thật sự.
+
+Đêm đại chiến Nam Cương ấy, giữa khắp nơi xác chết và bóng người chồng chất, hắn chỉ liếc mắt một cái đã phát hiện Sở Ly bị một mũi tên xuyên thấu.
+
+Lúc đó, nàng vẫn còn mặc y phục binh sĩ Nam Man.
+
+Nhưng hắn chỉ liếc mắt một cái đã nhìn thấy nàng.
+
+Nàng ở trong lòng hắn.
+
+Dù nàng đứng giữa biển người mênh mang, hắn cũng có thể liếc mắt nhận ra nàng.
+
+Đó chính là tâm ý của hắn đối với nàng.
+
+Sở Ly dùng hai tay chống lên ngực hắn, cơn tức nghẹn nơi cổ họng, lại phát hiện không tìm được lời nào để phản bác, chỉ đành nổi giận nói:
+
+“Tần Mục Vũ không phải tiểu bạch kiểm!”
+
+Đồng tử nam nhân co rút:
+
+“Ta thấy nàng là hết lời để nói rồi!”
+
+Ở trước mặt hắn mà còn dám nhắc tới Tần Mục Vũ.
+
+Bàn tay to siết lấy vòng eo nhỏ của nàng, lật người nàng úp trên bàn.
+…
+Ngoài cửa sổ.
+
+Mưa gấp cuốn tàn thử, gió mát thổi ve chiều.
+Gió phiêu phiêu, mưa tiêu tiêu, từng hạt mưa lất phất rơi trên lá chuối.
+
+…
+Cành liễu bị gió thổi phần phật loạn vũ, lúc thì vút lên, lúc thì rơi xuống, thưa thớt phiêu đãng, như một chiếc bèo không nơi nương tựa, chỉ có thể theo gió chìm nổi, sa vào trầm luân.
+
+Khắp tường tường vi bị mưa đánh rơi, cánh hoa đỏ thẫm phủ đầy mặt đất.
+
+Nước mưa thấm ướt đóa hoa phấn nộn, từ nhụy hoa chảy ra những giọt nước trong suốt long lanh; nụ hoa còn ngậm càng thêm kiều diễm.
+
+Gió nổi lên.
+
+Trong lòng Sở Ly nghẹn một bụng lửa, thân thể bận rộn không thôi, miệng cũng chẳng ngừng:
+
+“Ta không muốn nữa!”
+
+“Bụng ta đau, không thoải mái… chân ta đau… ta đói rồi! Ta sắp đói ngất rồi… a, tay ta đau quá!”
+
+Mặt bàn cứng ngắc.
+
+Sở Ly đá hắn, cào hắn, tức đến phồng má.
+
+Nam nhân như ngựa hoang tuột cương, không thu lại được, cũng chẳng muốn thu; đã nhẫn lâu như vậy, hắn không muốn nhẫn nữa. Huống hồ nàng la lớn như thế, vang dội như thế, chỗ nào giống bộ dạng không thoải mái? Toàn là cớ.
+
+Sở Ly tức giận vô cùng:
+
+“Đồ lừa đảo!”
+
+“Đại lừa đảo!”
+
+“Sau này ta sẽ không bao giờ tin ngươi nữa! A!”
+Gió cuốn rèm sa phần phật tung bay. Nam nhân chộp lấy một tấm chăn mỏng, đắp lên người nàng. Mấy giọt mồ hôi từ cằm rơi xuống; một đợt đã kết thúc, nhưng dục niệm trong mắt hắn vẫn chưa hề tiêu tán.
+
+Sở Ly quấn chặt chiếc chăn nhỏ, đôi mắt đỏ hoe phẫn nộ trừng hắn.
+
+Nàng còn dám tức giận?
+
+Ha.
+
+Nam nhân khẽ cười mỏng, vẻ âm lệ trong mắt khiến da đầu Sở Ly tê dại, vô cớ sinh ra vài phần hoảng hốt không rõ.
+
+“Ta… ta muốn trở về, bây giờ phải trở về!”
+
+“Mưa vẫn chưa tạnh.”
+
+“Nhưng ta đói rồi.”
+
+Nam nhân trở tay nhặt trường bào mực trên đất, từ ống tay áo rộng lớn mò ra một túi gì đó: “Ăn đi.”
+Sở Ly dùng hai tay đón lấy.
+
+Là thứ gì?
+
+Xé túi giấy dầu ra.
+
+A a!
+
+Bánh ngọt táo đỏ mềm xốp thơm ngọt, không biết từ lúc nào đã bị hắn bóp thành cái bánh dẹt!
+Ngay cả hạt táo đỏ bên trong cũng bị hắn bóp nát rồi!
+—————————
+ Người lớn rồi mà mất nết ghê!
+
+     Hai anh chị bận yêu, người đọc bận cười.
+—————————
+“Vật dĩ loại tụ, nhân dĩ quần phân”
+
+* Vật dĩ loại tụ: Vật thì tụ họp theo cùng một loại.
+* Nhân dĩ quần phân: Người thì được phân thành từng nhóm theo những người giống mình. Những người có tính cách, sở thích, giá trị, trình độ hoặc mục tiêu tương đồng thường sẽ kết giao và ở cùng một nhóm.</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_224.html" class="btn">‹ Trước</a>
+            <a href="chuong_226.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

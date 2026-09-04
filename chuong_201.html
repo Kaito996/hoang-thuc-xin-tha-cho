@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 201</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 201</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_200.html" class="btn">‹ Trước</a>
+            <a href="chuong_202.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 201: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 201: Tiểu biệt thắng tân hôn
+Chào hỏi xong, hắn liền chọc mạnh vào trán Tần Mục Vũ:
+“Thằng nhóc này! Chuyện lớn như vậy mà cũng không báo cho ta, lại còn để mặc ngươi cùng Cửu hoàng tử hồ nháo. Nhỡ đâu hai đứa không đấu nổi Đại hoàng tử, gặp phải hiểm nguy đến tính mạng, cả gia tộc chúng ta chẳng phải sẽ mang tội mưu hại hoàng tử, bảo hộ bất chu sao?”
+Khi ấy, Tần Mục Vũ quả thực không nghĩ nhiều như vậy, huống hồ hắn cũng chỉ mới đến Giang Nam được hai ngày.
+Nhưng nhìn thấy Nhiếp Chính Vương đứng cùng A Ly, tim hắn bỗng thắt lại. Nhiếp Chính Vương thích A Ly, vậy A Ly có thích Nhiếp Chính Vương không?
+Chắc là không.
+Hắn hiểu A Ly.
+Nếu A Ly thích Nhiếp Chính Vương, nhất định sẽ nói với hắn.
+Hắn siết chặt hai nắm tay, ngẩng cổ nói:
+“Cữu cữu, người chẳng hiểu gì cả! Cháu muốn bảo vệ A Ly! Cháu... ưm!”
+Bốp!
+Một cú cốc đầu giáng xuống.
+“Tiểu tử!”
+Tiêu Dạ Hành túm lấy cổ áo hắn:
+“Theo ta!”
+Lời như thế mà cũng dám nói ngay trước mặt Nhiếp Chính Vương.
+“Cháu không đi! Cháu muốn ở cùng A Ly! Cháu... ưm ưm! Cữu cữu... a!”
+“Không trị được ngươi chắc!”
+Tiêu Dạ Hành chụp gáy, kéo cổ áo, khóa cổ, động tác liền mạch lưu loát.
+Mà trong sân, Lý tri phủ, Thôi Tiền Tiến cùng đám quan binh đều trợn mắt nhìn cảnh tượng ấy.
+Tiêu đô đốc thật sự có một đứa cháu lớn đến vậy?
+Không đúng.
+Tiêu đô đốc năm nay mới hai mươi bốn, hai mươi lăm tuổi, cháu ngoại đã lớn thế này rồi?
+Chẳng lẽ là nhặt về?
+“Nhìn cái gì mà nhìn!”
+Tiêu Dạ Hành quát lạnh:
+“Cút hết ra ngoài quỳ cho ta!”
+“Vâng... vâng vâng!”
+Lý tri phủ sợ đến co rúm cổ, thân hình béo phệ run bần bật, được Thôi Tiền Tiến đỡ lấy, lăn lê bò toài chạy ra ngoài. Đám quan binh càng tan tác như chim vỡ tổ, đến nửa tiếng rắm cũng không dám thả.
+Tiêu Dạ Hành kéo Tần Mục Vũ vào một góc, nhìn bộ dạng giãy giụa om sòm của hắn, cười lạnh:
+“Cha mẹ ngươi sao lại dạy ra một tên đầu óc chẳng có mắt mũi như ngươi.”
+Lại còn mặc hỉ phục.
+Chướng mắt.
+“Cởi ngay cho ta!”
+Tần Mục Vũ giữ chặt cổ áo, tức giận nói:
+“Cữu cữu, người chẳng hiểu gì hết! Cháu với A Ly lớn lên cùng nhau, cháu là người hiểu nàng nhất, cũng là người không muốn nàng bị tổn thương nhất. Cháu đã thề sẽ bảo vệ nàng, bất kể xảy ra chuyện gì, cháu cũng sẽ cùng nàng đối mặt, dù phải trả giá bằng tính mạng!”
+Tiêu Dạ Hành nhìn hắn, hỏi:
+“Nhiếp Chính Vương muốn giết nàng?”
+Tần Mục Vũ khựng lại.
+Hình như... không có.
+“Nhiếp Chính Vương muốn hại chết nàng?”
+Hình như... cũng không.
+Không những không có, khi A Ly “chết”, hắn đau đớn đến mức không kiềm chế nổi, thậm chí còn nguyện dùng cả giang sơn để đổi lấy thi thể của nàng.
+“Vậy ngươi bảo vệ nàng cái gì?”
+“Cháu...”
+Bị hỏi như vậy, Tần Mục Vũ nhất thời ngây người.
+“Năm ngoái Trung thu, Cửu hoàng tử bị thổ phỉ bắt đi,là hắn cứu. Sau đó nàng rơi vào tay Nam Man, cũng là Nhiếp Chính Vương một mình đến đàm phán cứu người.
+So với ngươi, hắn thích hợp bảo hộ Cửu hoàng tử hơn nhiều. Ban nãy trong tân phòng, hắn còn chẳng động đến Cửu hoàng tử một sợi tóc, vậy mà ngươi vừa nóng đầu đã xông vào. Đó gọi là gì? Ra thể thống gì?”
+“Cháu...”
+Tần Mục Vũ chậm rãi buông tay.
+Hắn không biết.
+Trong nhận thức của hắn, Nhiếp Chính Vương vẫn luôn là một nhân vật cực kỳ nguy hiểm. Người như vậy quanh năm du tẩu trên lưỡi đao quyền mưu, hoàn toàn là hai thế giới khác biệt với hắn và A Ly.
+Theo bản năng, hắn luôn cảm thấy Nhiếp Chính Vương sẽ bắt nạt A Ly.
+“Nhiếp Chính Vương thích nàng, ngươi không nhìn ra sao?” Tiêu Dạ Hành nói.
+“Nhưng A Ly không thích hắn!”
+“Phàm mọi chuyện đều phải có quá trình, rồi mới có kết quả. Đây chính là quá trình giữa Nhiếp Chính Vương và Cửu hoàng tử. Khi kết quả còn chưa xuất hiện, đừng vội kết luận.”
+“Ngươi xem, vừa rồi trong phòng, Nhiếp Chính Vương có giống như muốn làm hại Cửu hoàng tử không?”
+Không giống.
+Tần Mục Vũ lo lắng nói:
+“Nhưng A Ly trông rất căng thẳng.”
+“Không phải căng thẳng. Đó gọi là tiểu biệt thắng tân hôn, là tình thú khuê phòng giữa hai người. 
+Trong lòng nàng thực ra rất vui, nếu không, lúc ta kéo ngươi đi, sao Cửu hoàng tử không gọi ngươi lại? Chính vì ngươi đứng đó cản trở hai người họ, nên nàng mới mong ngươi mau chóng đi cho khuất mắt.”
+“Hả?”
+Là vậy sao?
+Tiểu biệt thắng tân hôn?
+Tiêu Dạ Hành nói:
+“Nói với ngươi ngươi cũng chẳng hiểu. Đợi sau này cưới thê tử rồi, ngươi sẽ hiểu lời ta hôm nay. 
+Giờ thì cởi bộ y phục này ra, ngày mai ngoan ngoãn giải thích với Nhiếp Chính Vương một chút, chuyện này coi như bỏ qua.”
+Nghe đến câu cuối cùng, Tần Mục Vũ bừng tỉnh đại ngộ:
+“Cháu giải thích cái gì?!”
+“Cháu với A Ly quang minh chính đại, không thẹn với lòng. Cháu...”
+“Chẳng lẽ ngươi muốn vì mình mà giữa họ nảy sinh ngăn cách? Chẳng lẽ hạnh phúc của Cửu hoàng tử đối với ngươi không hề quan trọng?”
+Tần Mục Vũ gãi đầu, ngẫm lại thì thấy cữu cữu nói cũng có lý.
+Chuyện thành thân... hình như đúng là nên giải thích một chút.
+Nhưng vẫn luôn cảm thấy có chỗ nào đó không đúng?
+“Cởi y phục.”
+“Ồ.”
+Tần Mục Vũ cởi đai lưng, lần lượt tháo từng chiếc cúc, chuẩn bị cởi hỉ phục.
+Cởi được một nửa, đầu óc bỗng trở nên tỉnh táo.
+Khoan đã!
+“Cữu cữu, những điều người vừa nói chỉ là suy nghĩ một phía của người và Nhiếp Chính Vương, hoàn toàn không đại diện cho ý của A Ly. Chỉ cần A Ly chưa đích thân thừa nhận nàng thích Nhiếp Chính Vương, cháu nhất định sẽ bảo vệ nàng, không để Nhiếp Chính Vương bắt nạt nàng!”
+Tiêu Dạ Hành trợn tròn mắt:
+“Ngươi!”
+Tên tiểu tử này... đầu óc có vấn đề sao? Nói thế nào cũng không lọt tai! Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_200.html" class="btn">‹ Trước</a>
+            <a href="chuong_202.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

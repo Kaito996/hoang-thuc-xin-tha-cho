@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 146</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 146</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_145.html" class="btn">‹ Trước</a>
+            <a href="chuong_147.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 146: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 146: Tiểu bằng hữu, lạc đường rồi sao?
+Khó khăn lắm mới cắt đuôi được đám truy binh, lại bị chó đuổi suốt một quãng đường, đến khi hai người chạy tới nơi an toàn thì đã mồ hôi đầm đìa, thở hồng hộc.
+Vừa ngẩng đầu lên, trước mặt đã xuất hiện một bàn tay đen đúa đầy bụi bẩn, bưng một chiếc bát sứt mẻ, run rẩy đưa về phía họ:
+“Xin giúp lão… xin giúp lão…”
+Là một lão ăn mày.
+Con phố này hẻo lánh, hôi hám, là nơi tụ tập của đám khất cái, người ta gọi là Ổ Chấy Rận.
+Lão ăn mày tóc tai rối bù, mặt vàng da bọc xương, đôi tay run rẩy nâng chiếc bát:
+“Công tử, xin giúp lão với…”
+Hiển nhiên, nhìn cách ăn mặc của hai người, xuất hiện ở Ổ Chấy Rận thế này, ai cũng tưởng là công tử thiếu gia nhà giàu.
+Thực tế, trên người Sở Ly chỉ còn mười lăm đồng tiền đồng.
+Là vừa rồi cướp được.
+“A Ly, lão ăn mày này đáng thương quá.” Tần Mục Vũ không khỏi nhớ đến tổ phụ mình, cũng ở độ tuổi này, tóc đã bạc trắng.
+Trong lòng Sở Ly dâng lên một tia trắc ẩn.
+Dân sinh khốn khổ.
+Nàng đọc được sách thánh hiền, nhưng chẳng thể độ hết chúng sinh. Muốn ngoảnh mặt làm ngơ, nhưng lại cố tình mang một trái tim mềm yếu.
+Nhìn chiếc bát rách run rẩy trước mặt, Sở Ly từ bi nhận lấy, giúp lão bưng một lúc.
+Chỉ… một lúc thôi.
+Nàng đang vội.
+“Trả lại cho lão, không cần cảm ơn đâu.”
+Sở Ly trả chiếc bát lại, rồi vội vàng kéo Tần Mục Vũ bỏ chạy.
+Để lại lão ăn mày ngơ ngác đứng tại chỗ, mặc gió lạnh thổi qua.
+Thật ra không phải Sở Ly nhẫn tâm.
+Nàng và Tần Mục Vũ còn chưa dùng bữa tối, lại đang chạy trốn, bụng đã đói đến mức réo vang. Đao còn kề ngay sau gáy, thực sự không còn hơi sức để thương xót thiên hạ.
+Nàng mua ba cái bánh bao thịt.
+Đáng chết cái xứ Nam Man này!
+Một cái bánh bao thịt mà tận năm đồng tiền.
+Vật giá đắt đỏ đến vậy!
+Hai người ngồi xổm bên góc tường, gặm bánh bao.
+Sở Ly ăn một cái.
+Tần Mục Vũ ăn hai cái.
+Ăn xong một cái, Tần Mục Vũ lại đưa cái còn lại cho nàng.
+“A Ly, muội ăn đi, ta no rồi.”
+“Huynh ăn đi, ta không đói.”
+“A Ly, muội ăn.”
+Đẩy qua đẩy lại mấy lượt, Tần Mục Vũ bẻ chiếc bánh bao làm đôi, đưa nửa nhiều nhân thịt hơn cho nàng.
+“Chúng ta cùng ăn.”
+Trong lòng Sở Ly không dễ chịu.
+Cuộc sống này hoàn toàn khác với những gì nàng từng tưởng tượng.
+Biết trước sẽ như thế này, chi bằng cứ ở trong hoàng cung còn hơn.
+Nàng nhớ chiếc đại sàng gỗ lê chạm trổ, nhớ món giò heo hầm đậu nành của Ngự Thiện Phòng, nhớ…
+“A Ly, là ta liên lụy đến muội.”
+Tần Mục Vũ lại nói câu ấy lần nữa.
+Trong lòng hắn đầy áy náy.
+Là hắn vô dụng, không bảo vệ được nàng. Đến bây giờ, muốn ăn một bữa no cũng khó.
+Hắn khẽ vuốt chuỗi vòng trên cổ tay, đáy mắt đầy giằng xé.
+Sở Ly cười nói:
+“Hồi nhỏ chúng ta có khổ nào chưa từng chịu? Huynh còn nhớ lần trốn học không? Khương Thái phó định phạt ta, đánh vào lòng bàn tay, huynh lén bẻ gãy thước giới.”
+“Thành ra Khương Thái phó mới đánh ta được ba thước thì cây thước đã gãy.”
+“Haha!”
+Khi ấy Khương Thái phó còn ngẩn người nghĩ:
+‘Cây thước này lão phu dùng hơn hai mươi năm rồi, sao hôm nay lại gãy?’
+Rồi lại nghĩ:
+‘Trời đất ơi! Nếu Hoàng thượng biết lão phu đánh Cửu Hoàng tử đến mức gãy cả thước, chẳng phải sẽ cho rằng lão phu cố ý ngược đãi Hoàng tử sao?’
+Thế là sợ đến mức vội vàng cho Sở Ly nghỉ học năm ngày.
+“Còn có một lần nữa…”
+Sở Ly vừa kể vừa cười.
+Tần Mục Vũ mím chặt môi, đột nhiên nói:
+“Đem chuỗi vòng này của ta đi cầm, đổi lấy ít bạc. Mấy ngày tới không thể để bụng đói mãi được. Chờ qua hai ngày sóng gió này, lấy số bạc còn lại mua chuộc một đoàn thương nhân, bảo họ lén đưa chúng ta ra khỏi thành.”
+Nụ cười trên mặt Sở Ly khựng lại.
+“Chuỗi vòng lưu ly ngọc châu này… huynh đeo từ nhỏ đến lớn…”
+“Thật ra nó cũng chẳng phải vật gì quan trọng.”
+Tần Mục Vũ ngắt lời nàng.
+“Hình như hồi nhỏ sinh thần, có một vị trưởng bối tặng ta. Khi ấy chỉ thấy chất lưu ly trong suốt đẹp mắt, nên mới đeo mãi thôi.”
+“A Ly, chúng ta đem cầm nó đi.”
+Ý hắn đã quyết.
+Nói xong liền định đi.
+Sở Ly giữ hắn lại.
+“Để ta đi.”
+“A Ly?”
+“Huynh ở đây đợi ta, để ta đi cầm.”
+Sở Ly giật lấy chuỗi vòng lưu ly ngọc châu, chạy ra ngoài phố.
+Đây đâu phải vật tùy tiện gì?
+Rõ ràng là tín vật gia tộc mẫu thân hắn truyền lại!
+Vật hắn mang bên mình hơn mười năm, sao có thể tùy tiện đem cầm?
+Sở Ly ôm chặt chuỗi vòng vào lòng, cẩn thận cất kỹ, rồi từ lớp áo trong sát người nhất lấy ra một tờ chứng từ của Ngân hiệu, được nàng giấu cực kỳ cẩn mật.
+Vệ gia Ngân hiệu.
+Đây là một trong những ngân hiệu lớn nhất Đại Sở, cửa hiệu trải khắp Đại Sở, ngay cả các quốc gia khác cũng có phân hiệu. Chỉ cần cầm chứng từ là có thể rút tiền ở bất cứ chi nhánh nào.
+Trước đây, nàng đã gửi toàn bộ hai mươi tám thỏi vàng nhỏ vào Vệ gia Ngân hiệu.
+Hiện giờ tình thế nguy cấp, thật sự không nên tùy tiện đi rút tiền. Một khi bị người tra ra, hành tung sẽ lập tức bại lộ.
+Nhưng nàng cũng không thể trơ mắt nhìn Tần Mục Vũ đem chuỗi vòng lưu ly ngọc châu ấy đi cầm.
+Thời buổi này…
+Không có tiền thì một bước cũng khó đi.
+Khó thật!
+Sở Ly khẽ thở dài, sải bước tiến vào Vệ gia Ngân hiệu.
+…
+Cuối phố.
+Tần Mục Vũ đứng canh ở đó, dõi mắt quan sát tung tích của Sở Ly.
+Nhưng chỉ trong chớp mắt, hắn đã nhìn thấy một đội binh lính lục soát tới.
+Tốc độ cực nhanh, khí thế hung hăng.
+Bọn chúng xông vào từng cửa hàng, lần lượt khám xét.
+Sắc mặt hắn lập tức biến đổi.
+A Ly!
+A Ly còn chưa ra!
+Tần Mục Vũ trơ mắt nhìn cảnh ấy.
+Trong lúc cấp bách, hắn nhặt một hòn đá dưới chân tường, ném mạnh sang bên kia.
+Rầm!
+Tiếng động lập tức thu hút sự chú ý.
+Mấy tên lính quay đầu nhìn sang.
+Ban đầu thần sắc vẫn bình thường.
+Nhưng đến khi nhìn rõ dung mạo đối phương, rồi đối chiếu với bức họa truy nã trong tay, lập tức quát lớn:
+“Bọn chúng ở kia!”
+“Mau đuổi theo!”
+Mười hai tên lính lập tức lao vút tới.
+Tần Mục Vũ quay người bỏ chạy.
+Thế nhưng hắn trúng Nhuyễn Cốt Tán, thể lực có hạn. Nếu cứ chạy mãi thế này, chẳng bao lâu sẽ bị đuổi kịp.
+Hắn lập tức chui vào một con ngõ đầy tửu lâu kỹ quán, nơi người qua kẻ lại đông đúc, rồi lao về phía dòng người.
+Xông vào một tòa lầu.
+Trốn vào một gian nhã phòng.
+Rầm!
+Cửa vừa khép lại, một mùi hương u ám mang theo dục niệm lập tức xộc vào mũi.
+Trong lòng Tần Mục Vũ giật thót.
+Ngẩng đầu nhìn lên.
+Ánh sáng trong nhã phòng khá tối, ánh nến lay động mờ ảo.
+Trên chiếc nhuyễn tháp sau rèm châu, vậy mà lại có một thân ảnh cao lớn, phóng túng đang ngồi.
+Là một nam nhân.
+Người đó mặc trường bào màu đỏ sẫm ngả tím, vạt áo viền chỉ vàng, toát lên vẻ trầm ổn và tôn quý đến cực điểm, sâu không thấy đáy.
+Đôi mắt thâm trầm như tẩm độc, vừa sâu vừa lạnh, tràn ngập khí tức nguy hiểm khiến người khác không thể khống chế.
+Toàn thân hắn lười nhác, tùy ý.
+Nhưng trong cốt tử lại mang theo tính công kích cực mạnh, như sinh ra đã vậy.
+Hắn gác hai chân lên bàn.
+Dưới chân đặt đầy hai rương lớn chất kín nguyên bảo vàng.
+Ánh vàng lấp lánh đến chói mắt.
+Hắn…
+Đây là đang tiêu thụ tang vật?
+Hay buôn lậu? Nhận hối lộ?
+Tần Mục Vũ vốn không có ý mạo phạm, định lập tức rời đi.
+Nhưng bên ngoài đã vang lên tiếng bước chân hỗn loạn.
+Đám lính đã xông lên tầng hai, lần lượt khám xét từng gian phòng.
+Thần sắc hắn căng thẳng.
+Thắt lưng khẽ lộn một cái, cả người đã lăn vào sau rèm châu, một tay bóp chặt cổ nam nhân kia.
+“Xin thứ lỗi, vô ý mạo phạm!”
+“Nếu lát nữa có người xông vào, các hạ hẳn biết nên nói thế nào.”
+Hắn đứng phía sau chiếc nhuyễn tháp, từ phía sau khống chế lấy nam nhân.
+Nam nhân dang hai tay, lười biếng tựa vào nhuyễn tháp mềm mại, ngẩng đầu nhìn gương mặt thiếu niên đang cúi xuống.
+Làn da trắng trẻo thanh tú.
+Có vài phần chật vật vì chạy trốn.
+Lại có vài phần hung hãn như sói.
+“Tiểu bằng hữu… lạc đường rồi sao?”
+Giọng nam nhân trầm thấp, mang theo lực xuyên thấu cực mạnh, tựa như tiếng chuông vọng tới từ màn đêm xa xăm.
+Ngón tay Tần Mục Vũ siết chặt.
+“Đừng lên tiếng! Cẩn thận ta vặn gãy cổ ngươi!” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_145.html" class="btn">‹ Trước</a>
+            <a href="chuong_147.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

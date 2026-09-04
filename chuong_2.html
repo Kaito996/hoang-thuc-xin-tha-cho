@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 2</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 2</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_1.html" class="btn">‹ Trước</a>
+            <a href="chuong_3.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 2: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
+Chương 2: [Hoàng thúc lại lại lại lại bắt nạt ta]
+“Điện hạ, Cửu hoàng tử đau đến ngất đi rồi.”
+Sở Địch Trì lạnh lùng liếc qua: “Khiêng về.”
+Phất tay áo rời đi.
+Ngoài Thận Hình Ty, ám vệ Trọng Phong vội vàng tiến lên: “Chủ tử, ngài vẫn còn bị thương, hà tất phải tự mình đến Thận Hình Ty một chuyến, lỡ như bị thánh thượng nắm được nhược điểm…”
+Lần này khải hoàn hồi kinh, những lần mai phục và ám sát trên đường đi chính là lời cảnh cáo đầu tiên.
+Hoàng thượng không dung nổi nhiếp chính vương.
+Nhiếp chính vương càng lập công, hoàng thượng càng kiêng kỵ.
+Nếu nhiếp chính vương không lập công, chỉ có hư danh, cũng sẽ bị bá quan đàn hặc chèn ép, tước quyền đoạt thế.
+Sở Địch Trì lạnh giọng như băng:
+“Hoàng thượng không dung được bản vương, thủ đoạn trăm bề, vậy bản vương sẽ đem tất cả những thủ đoạn đó, trả lại lên đứa con trai nhỏ nhất mà ông ta yêu quý nhất!”
+Khi tỉnh lại, nàng đang ở điện Chiêu Lan.
+“Thuốc sắc xong chưa… lấy mứt quả… người đâu… mau đi…”
+Trong lúc ý thức mơ hồ, Sở Ly nghe thấy giọng nữ ôn hòa như ngọc, tựa dòng suối mát lành, lập tức mở to mắt:
+“Mẫu phi!”
+Bên giường.
+Vị Ôn phi vừa ngoài ba mươi, ăn mặc hoa lệ, cử chỉ đoan trang, mỗi động tác đều toát lên vẻ ôn nhu quý khí.
+Sở Ly mắt đỏ lên, hết sức lao vào lòng tố cáo:
+“Mẫu phi! Hoàng thúc lại lại lại lại bắt nạt con!”
+Ôn phi vội vàng đỡ nàng ổn định lại, quát:
+“Con bé này, trên người còn có thương! Nếu làm dính máu vào bộ y phục mới may của ta, ta sẽ không tha cho con đâu!”
+“……”
+Sở Ly im lặng một lúc, lý trí cũng trở lại được bảy tám phần.
+Nàng ôm nhẹ nơi mông đang đau rát, run rẩy bò lại lên giường, đôi mắt ngấn nước, cắn chặt môi, uất ức không thể tả.
+“Ta đã nói bao nhiêu lần rồi, không có việc gì thì đừng đi trêu chọc hoàng thúc của con, đến phụ hoàng của con cũng không dám dễ dàng chọc giận hắn.”
+Ôn phi nhận bát thuốc từ cung nữ.
+“Còn may hắn nhân từ, không đánh chết con.”
+“……”
+Nhiếp chính vương của Đại Sở là người không thể chọc vào.
+Điều này, Sở Ly từ nhỏ đã biết.
+Mười tám năm trước, tiên hoàng đột nhiên băng hà, không để lại di chiếu, ngày hôm sau vị hoàng đế hiện tại đăng cơ.
+Nhưng nhiều năm qua, trong triều tranh luận không dứt:
+Có đại thần cho rằng, theo chế độ trưởng tử kế vị, hoàng thượng đăng cơ là hợp lý.
+Có đại thần lại cho rằng, tiên hoàng vốn rất sủng ái hoàng tử út Sở Địch Trì, lại thông minh xuất chúng từ nhỏ, những năm gần đây càng nắm binh quyền, chiến thắng liên tiếp, rất được lòng dân, mới là người kế vị tốt nhất.
+Ngôi vị có tranh chấp.
+Nhiếp chính vương bị nghi có ý không thần phục.
+Sở Ly chỉ muốn làm một con sâu gạo, đặt tay lên ngực thề:
+Từ nhỏ đến lớn, nàng chưa từng chọc vào nhiếp chính vương.
+Là hắn!
+Lần nào cũng là hắn cố ý gây sự với nàng!
+“Mẫu phi, nếu hoàng thúc có ý không thần phục, cứ để hắn đi tranh hoàng vị đi. Chẳng lẽ chỉ vì phụ hoàng từ nhỏ thiên vị ta mà hắn muốn giết… ưm!”
+Chưa nói hết, Ôn phi đã bịt miệng nàng lại.
+Con bé này!
+Tai vách mạch rừng.
+Trong cung cấm, dám nói những lời đại nghịch bất đạo như vậy, không sợ bị nghe thấy, nắm thóp, mất đầu sao!
+“Sau này, không được nói những lời đại nghịch bất đạo như vậy nữa!”
+“Ưm ưm!”
+Biết rồi!
+Ôn phi buông tay, câu tiếp theo của Sở Ly: “Mẫu phi, con không muốn tiếp tục giả nam nữa.”
+Ôn phi hoảng đến suýt ngã xuống đất:
+“Ôi trời, con muốn hại chết ta sao!”
+“Một khi lộ ra, đây là tội khi quân, con, ta, thậm chí cả toàn bộ gia tộc họ Ôn đều sẽ bị liên lụy diệt môn.”
+“Ly nhi, tuy con không phải con ruột ta, nhưng tự hỏi lòng, ta đối xử với con không tệ, cầu con tha cho cả tộc ta đi!”
+“……”
+Sở Ly nghẹn lại.
+“Con biết mẫu phi năm đó khi sinh nở, vì bất đắc dĩ nên mới ra hạ sách này, nhưng con không thể sống cả đời như vậy…”
+Thứ nhất, nếu đến tuổi mà không lấy chồng sinh con, chắc chắn sẽ bại lộ.
+Thứ hai, nàng sợ nhiếp chính vương sớm muộn cũng giết nàng.
+Thứ ba, chủ động còn hơn bị động, ít nhất có thể chuẩn bị trước, giảm thiểu hậu quả.
+Ôn phi sao lại không hiểu nỗi khổ của nàng?
+Nàng thở dài:
+“Đều tại ta năm đó trẻ người non dạ, đánh cược nhất thời với Ảnh phi kia.”
+Nhưng bà cũng nhanh chóng nghĩ kế cho nữ nhi:
+“Công chúa giả nam, là đại tội khi quân, huống hồ con còn là người được ta nhận nuôi, có huyết thống ngoại tộc.”
+“Nhưng nếu con có thể lập một đại công, đủ để chuộc tội khi quân, có lẽ sẽ được hoàng thượng khoan thứ.”
+Sở Ly ngẩng đầu, tràn đầy hy vọng:
+“Mong mẫu phi chỉ giáo.”
+Ôn phi suy nghĩ một lát:
+“Hay là, con đi thu phục Nam Cương.”
+“?”
+Nam Cương rộng lớn, nhiều man di và cổ thuật, là nơi âm u thần bí. Những năm gần đây, nhiếp chính vương đã bốn lần xuất chinh nhưng vẫn không thu phục được.
+Bảo nàng – một tiểu cô nương tay không tấc sắt, cửa lớn không ra cửa nhỏ không tới – đi chinh phục đất đai?
+“Mẫu phi, người muốn con chết sớm sao?”
+Ôn phi lại nói: “Không thì, con đi thống nhất đại lục.”
+“??”
+Rốt cuộc bà là mẫu thân nàng, hay là cái giếng ước nguyện vậy?
+Chỉ biết nói bừa.
+Nàng mà có thể thống nhất đại lục thì đã chẳng nằm đây nghĩ cách.
+“Hay không nữa thì, con đi làm hoàng đế, tự ban thánh chỉ tha tội cho mình.”
+“???”
+Trời ơi!
+Ta yêu người, mẫu phi!
+Phía trên nàng có tám người huynh trưởng, còn có một nhiếp chính vương đang nhìn chằm chằm.
+“Bảo con tranh hoàng vị, đối đầu với hoàng thúc và các huynh trưởng, mẫu phi là muốn hoàng thúc giết con sao?”
+Ôn phi vỗ tay cái bốp, đầy hận sắt không thành thép:
+“Con xem, không phải ta không giúp, là ta đã nghĩ đủ cách rồi mà con không chịu làm.”
+“Con bé này, ta thật sự hết cách rồi.”
+Sở Ly: “……”
+Trước mắt sao tự nhiên tối sầm?
+Là gì che mất tầm nhìn của nàng?
+À.
+Hóa ra là tương lai đen kịt, tuyệt vọng.
+Cốc cốc——
+Ngoài cửa, cung nữ thân tín của Ôn phi khẽ nói: “Nương nương, người bên cạnh nhiếp chính vương là Trọng Phong đại nhân đến, nói là tìm Cửu hoàng tử.”
+Nghe thấy ba chữ “nhiếp chính vương”, Sở Ly chỉ thấy mông đau rát.
+“Con à, đừng đối đầu với hoàng thúc, gặp chuyện thì nhịn một chút, hoàng thúc vốn cao ngạo, cũng khinh thường bắt nạt kẻ yếu.”
+Ôn phi dặn dò vài câu rồi rời đi trước.
+“?”
+Ai là kẻ yếu?
+Rất nhanh, một thân ảnh mặc hắc y, thần sắc lạnh nhạt là Trọng Phong bước vào điện:
+“Bái kiến Cửu hoàng tử.”
+Sở Ly nhìn hắn, nghiến chặt răng.
+Bày ra cái vẻ lễ phép giả tạo gì chứ?
+Hắn thế nào, Sở Đệ Trì thế nào, nàng đều rõ như lòng bàn tay!
+“Có chuyện gì?”
+Trọng Phong chắp tay: “Thuộc hạ phụng mệnh nhiếp chính vương, đặc đến tiến dâng Cửu hoàng tử một mỹ nhân.”
+“!”
+Bốp bốp!
+Tiếng vỗ tay vang lên, ngoài điện, một nữ tử thân hình mảnh mai, eo thon như liễu từ từ bước vào. Lớp lụa mỏng khoác trên người nàng ta vừa kín vừa hở, đầy vẻ quyến rũ mê người.
+“Nhiếp chính vương nói, Cửu hoàng tử đã đến tuổi trưởng thành, nếu có nhu cầu phương diện đó, có thể xin thánh chỉ với hoàng thượng, hoặc nói với hắn, nhưng thực không cần làm ra chuyện nhìn trộm tắm, có tà tâm mà không có gan này.”
+“!!”
+Đôi mắt Sở Ly suýt nữa trợn tròn.
+Hắn nói cái gì?
+Nói cái gì?!
+Nàng nhìn trộm hắn tắm là vì thèm sắc đẹp của hắn sao?
+Nếu không phải mông còn đau, nàng đã bật dậy tại chỗ rồi.
+Tên Sở Đệ Trì chết tiệt kia, nàng nằm sấp không nhúc nhích được, hắn lại nhân cơ hội ở bên ngoài bôi nhọ danh tiếng nàng khắp nơi! Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_1.html" class="btn">‹ Trước</a>
+            <a href="chuong_3.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

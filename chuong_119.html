@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 119</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 119</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_118.html" class="btn">‹ Trước</a>
+            <a href="chuong_120.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 119: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 119: Ngươi không nói cho hắn biết quan hệ của chúng ta sao?
+“Bất quá, việc cấp bách trước mắt là ta rất lo cho long thể của phụ hoàng. Ta nghe nói khi phụ hoàng còn khỏe mạnh, Đại hoàng huynh là người thường xuyên hầu hạ bên cạnh, tận tâm nhất, hẳn là người hiểu rõ long thể của phụ hoàng nhất, trong phủ chắc cũng có phương thuốc hay dược liệu mà phụ hoàng từng dùng.”
+Sở Ly chậm rãi nói:
+“Hay là biểu tỷ mau trở về, hỏi Đại hoàng tử phi xem có thật sự có phương thuốc liên quan hay không, để sớm dâng lên cho ta.”
+Ánh mắt Ôn Nhã khẽ động.
+Đây là cơ hội lập công, sao có thể nói cho Đại hoàng tử phi biết được?
+Nếu long thể của Hoàng thượng chuyển biến tốt, công lao lớn như vậy, đương nhiên chỉ mình nàng được hưởng.
+Đôi mắt nàng xoay nhẹ, liền đáp:
+“Vâng, ta lập tức về phủ hỏi Đại hoàng tử phi.”
+Lúc lui ra, trong lòng lại thầm cười lạnh:
+Hừ!
+Chuyện thế này đương nhiên phải lén làm.
+Một mình ta đi là đủ rồi!
+Cẩu Bát tiễn Ôn Nhã ra khỏi Chiêu Lan điện, không bao lâu sau đã quay lại.
+“Điện hạ, để nô tài dìu người đến Dưỡng Tâm điện?”
+“Không cần.”
+Sở Ly đứng dậy.
+“Ngươi bây giờ đến chỗ mẫu phi ta, truyền giúp ta mấy lời, cứ nói…”
+Cẩu Bát ghé tai nghe, nghiêm túc ghi nhớ.
+“Nô tài lập tức đi làm.”
+Sở Ly một mình đến Dưỡng Tâm điện.
+Con đường này nàng đã đi không biết bao nhiêu lần.
+Mười mấy năm qua, từng viên gạch, từng mái ngói đều đã quá quen thuộc.
+Chỉ là hôm nay, tâm tình đã hoàn toàn khác.
+“Điện hạ!”
+Trong ngoài Dưỡng Tâm điện, tất cả mọi người đều cung kính hành lễ:
+“Điện hạ.”
+Sở Ly bước lên bậc thềm.
+“Bệnh tình của phụ hoàng có khá hơn chút nào không?”
+Ngụy Viện phán cúi đầu đầy hổ thẹn:
+“Thần vô năng, xin Điện hạ giáng tội.”
+“Ngụy Viện phán, ngài là đứng đầu Thái y viện, phụng sự triều đình hơn nửa đời người. Ta tin y thuật của ngài.”
+“Nếu vậy, tất cả lui xuống đi. Ta muốn ở riêng với phụ hoàng một lát.”
+“Tuân lệnh.”
+Mọi người đồng loạt lui ra.
+Sở Ly đẩy cửa bước vào.
+Một mùi thuốc đắng nồng nặc ập thẳng vào mặt.
+Trên chiếc giường La Hán phủ màn vàng sáng nằm Sở Hoàng.
+Toàn thân ông đã tê liệt, không thể cử động, cũng chẳng thể nói.
+Chỉ còn đôi mắt là vẫn còn có thể chuyển động.
+Vừa nhìn thấy nàng, cảm xúc của ông lập tức kích động.
+“Ng… ngư… ư…”
+Miệng méo sang một bên, nước dãi không ngừng chảy xuống, gương mặt hoàn toàn không còn cách nào khống chế.
+Sở Ly bước đến trước long sàng.
+Nàng cũng không biết trong lòng mình là cảm giác gì.
+Nhìn người trước mặt.
+Người đàn ông tôn quý nhất Đại Sở, kẻ nắm giữ quyền lực cao nhất thiên hạ.
+Giờ đây lại nằm liệt trên giường, sinh hoạt không thể tự lo, ngoài đôi mắt còn có thể động đậy ra thì chẳng khác gì người đã chết.
+“An hưởng tuổi già trong cảnh cơm áo không lo… đây là cuộc sống mà phụ hoàng mong muốn sao?”
+“Ng… ngươi… hừ… hừ…”
+Khóe miệng Sở Hoàng méo xệch, nước dãi chảy ròng ròng, lửa giận trong mắt đã hoàn toàn không thể che giấu.
+Nhưng giờ đây, ông chỉ như một con mãnh hổ đã bị nhổ sạch nanh vuốt, không còn bất kỳ uy hiếp nào.
+Sở Ly hơi bất ngờ.
+“Phụ hoàng không thích sao?”
+“Nhưng người lại ban cho Hoàng thúc cuộc sống tôn quý như vậy. Vì sao chính mình lại không thích?”
+“Ân điển của bậc quân vương, đến chính bản thân người còn không muốn nhận, vậy còn gọi là ân điển sao?”
+“A!”
+“Ngươi——”
+Toàn thân Sở Hoàng run lên.
+Là nàng làm!
+Quả nhiên là nàng!
+Hai cánh tay ông run rẩy vì phẫn nộ, mười đầu ngón tay co giật không ngừng, đến cả chăn cũng không nắm nổi.
+Sở Ly thong thả bước vài bước.
+“Phụ hoàng đừng trách nhi thần. Nhi thần làm như vậy cũng là vì đại cục, tuyệt không thiên vị bất kỳ ai.”
+“Người là quân chủ một nước, nhưng Nhiếp chính vương cũng đang trấn thủ Nam Cương, giữ vai trò không thể thay thế đối với chiến trường Nam Cương và bách tính nơi đó.”
+“Nếu Hoàng thúc chết hoặc bị phế, tổn hại sẽ là lợi ích của Đại Sở và lê dân.”
+“Nhi thần không thể trơ mắt nhìn chiến loạn Nam Cương bùng phát, càng không muốn nhìn thấy lúc quyền lực thay đổi sẽ dẫn đến thiên hạ rung chuyển.”
+Sơ tâm của nàng…
+Là vì Đại Sở.
+Vì bách tính Đại Sở.
+Sự tranh đấu của những kẻ đứng trên cao, cuối cùng chỉ khiến những người vô tội phía dưới chịu liên lụy.
+Mà vô tội nhất…
+Chính là lê dân.
+Xin người đừng trách nàng nhẫn tâm.
+Sở Ly vừa đi qua đi lại bên giường vừa nói:
+“Phụ hoàng, nhi thần biết người oán hận ta.”
+“Nhưng thuốc độc này vốn là do chính tay người đưa.”
+“Nếu lúc ấy, khi định ra tay với Hoàng thúc, người có dù chỉ một phần thương xót, cũng sẽ không khiến chính mình rơi vào kết cục hôm nay.”
+Ngay cả Thái y viện cũng không thể chữa được.
+Đủ thấy lúc ấy, quyết tâm muốn khiến Nhiếp chính vương tàn phế của ông mãnh liệt đến mức nào.
+Ông muốn hại Nhiếp chính vương.
+Đồng thời cũng tự đào mồ chôn chính mình.
+“Nhi thần sẽ tuân theo thánh chỉ của người, chăm sóc quãng đời còn lại của người thật tốt, phụng dưỡng đến lúc cuối đời.”
+“Ngoài việc thân thể không thể cử động, những gì đáng có, người vẫn sẽ có.”
+“Vẫn như trước kia.”
+“Ngươi! Ngươi!”
+Sở Hoàng trợn trừng hai mắt, tròng mắt gần như muốn lồi khỏi hốc.
+“Ngươi——”
+Sở Ly nhìn ông.
+Trong lòng lại chỉ còn sự bình lặng sau bao sóng gió.
+Nhìn ông giận đến không thể kiềm chế, lại chẳng thể làm gì.
+Nhìn ông lửa giận ngập trời, nhưng đại cục đã định.
+Đời người ngắn ngủi mấy chục năm, thăng trầm lên xuống, cuối cùng rồi cũng hóa thành cát bụi.
+Nhưng nàng đã học được một đạo lý.
+“Hoàng tổ mẫu đã dạy ta, vì Đại Sở, hy sinh một mình người… cũng không tính là hy sinh.”
+“Oan uổng một mình người… cũng không tính là oan.”
+Sở Hoàng tức đến toàn thân run bần bật, sống sờ sờ bị chính mình chọc tức đến ngất lịm.
+Thế nhưng thân thể đã tê liệt, ý thức lại vô cùng tỉnh táo.
+Chỉ có thể bị ép tiếp nhận tất cả.
+Không sống nổi…
+Cũng chẳng chết được.
+Cảm giác ấy…
+Còn đau khổ hơn cả cái chết!
+Két…
+Cánh cửa đột nhiên bị người từ bên ngoài đẩy mở.
+“Ta đã nói rồi, không có lệnh của ta, bất kỳ ai cũng không được vào!”
+“Tiểu Cửu.”
+Sở Ly quay đầu.
+“Hoàng thúc?”
+Giữa ban ngày ban mặt, hắn vậy mà nghênh ngang đi lại trong hoàng cung, tự do như vào chốn không người.
+Hắn không cần mạng nữa sao?
+“Người đến đây làm gì?”
+Sở Ly bước tới.
+“Đừng quên, người hiện đang phụng chỉ chinh chiến ở Nam Cương, vậy mà lại đột nhiên xuất hiện trong hoàng cung. Nếu bị người khác nắm được nhược điểm để chỉ trích, ta sẽ không bảo vệ người đâu.”
+Sở Đệ Trì khẽ cười.
+“Lo cho Hoàng thúc?”
+“Ai lo cho ngươi chứ… Ưm!”
+Nam nhân vung hai tay, ôm lấy vòng eo nhỏ của nàng, kéo thẳng vào lòng.
+“Bổn vương phụng mệnh Tân đế, cấp tốc phi ngựa trăm dặm trở về Đế đô. Lý do này đã đủ chưa?”
+Sở Ly nào có hạ loại thánh chỉ ấy.
+Nhưng hắn muốn nói sao thì nói vậy đi.
+Trong tay nàng chỉ có một đạo di chiếu kế vị.
+Người thật sự nắm giữ quyền lực của Đại Sở…
+Đâu phải nàng.
+Sở Đệ Trì liếc nhìn Sở Hoàng trên long sàng, khóe môi khẽ nhếch.
+“Tiểu Cửu vẫn là đau lòng cho ta.”
+Sở Hoàng trợn trừng hai mắt.
+A!
+Hai kẻ này cấu kết trong ngoài, đúng là đồng lõa!
+Ông muốn giết bọn chúng!
+Muốn ban chết bọn chúng!
+Chém đầu hai người, treo lên tường thành mười năm không được hạ xuống!
+Sở Ly mím môi.
+Nàng chỉ đưa ra lựa chọn sáng suốt hơn mà thôi.
+Nếu chọn Sở Hoàng, khiến Nhiếp chính vương tàn phế, sau đó cửu tử đoạt đích, tất sẽ kéo theo một trận tinh phong huyết vũ.
+Đến lúc ấy, bất kể ai đăng cơ, nàng và Ôn gia đều khó có kết cục tốt.
+Đã vậy…
+Chi bằng chọn Nhiếp chính vương.
+Suy cho cùng, bản tính con người vốn là ích kỷ.
+Nàng làm vậy…
+Cũng là vì chính mình.
+“Tiểu Cửu.”
+Hắn tựa trán vào trán nàng, khẽ dựa sát, mũi chân chạm mũi chân nàng, từng bước từng bước ép nàng lùi về phía sau.
+“Nhìn phụ hoàng của ngươi xem, tức đến sắp hỏng người rồi. Động nộ như vậy đâu có lợi cho việc dưỡng bệnh.”
+“Hay là…”
+“Ngươi vẫn chưa nói cho hắn biết… quan hệ giữa chúng ta sao?”
+Rầm!
+Lưng Sở Ly va mạnh vào án thư.
+Sở Hoàng trợn to hai mắt, toàn thân run bần bật. Càng kích động, nước dãi lại càng chảy ào ào như vòi nước bị mở tung.
+Quan hệ gì?
+Bọn chúng có quan hệ gì?
+Chẳng lẽ không chỉ đơn thuần là cấu kết với nhau thôi sao? Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_118.html" class="btn">‹ Trước</a>
+            <a href="chuong_120.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

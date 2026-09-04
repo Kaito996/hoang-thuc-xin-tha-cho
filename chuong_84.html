@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 84</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 84</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_83.html" class="btn">‹ Trước</a>
+            <a href="chuong_85.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 84: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 84: Các ngươi định bỏ trốn sao?
+— “Với thân phận của ngươi, ngươi định ở bên hắn thế nào?”
+Hắn liếc nhìn nàng.
+— “Các ngươi định bỏ trốn sao?”
+Ồ.
+Sở Ly trước giờ chưa từng nảy sinh ý nghĩ ấy.
+Nhưng lời hắn vừa nói…
+Lại khiến nàng bừng tỉnh.
+Cũng không phải là không thể.
+— “Không dám phiền Hoàng thúc nhọc lòng.”
+— “Nếu hắn biết ngươi đã ở bên bổn vương, hắn sẽ không cần ngươi nữa.”
+Sở Ly cười lạnh.
+Hừ!
+Lời này nghe sao…
+Giống như đang xúi dại trẻ con vậy.
+“Mẫu thân ngươi đi làm rồi, bà ấy không cần ngươi nữa.”
+“Mẫu thân ngươi sinh đệ đệ rồi, bà ấy không cần ngươi nữa.”
+“Mẫu thân ngươi theo người khác chạy mất rồi, bà ấy không cần ngươi nữa.”
+Sở Ly xoay người bỏ đi.
+Nếu Tần Mục Vũ không ở đây, nàng sẽ đến nơi khác tìm.
+— “Đứng lại.”
+Sở Ly coi như không nghe thấy.
+— “Lại đây, bổn vương sẽ nói cho ngươi biết hắn đang ở đâu.”
+Bước chân Sở Ly khựng lại.
+Nàng nghiêng đầu liếc hắn, vẻ mặt đầy hoài nghi.
+— “Chẳng lẽ bổn vương sẽ lừa ngươi? Bổn vương khinh thường nhất là loại chuyện chia rẽ uyên ương.”
+Bộ dáng chính nghĩa lẫm nhiên ấy…
+Sao lại vừa làm vừa dựng đền thờ thế?
+Sao mà đáng đòn đến vậy?
+Thật muốn đánh hắn.
+Sở Ly siết chặt nắm tay, cố nhịn ý nghĩ động thủ.
+— “Nếu ngươi muốn nói cho ta biết thì đã nói từ sớm rồi, chỉ cần mở miệng là được. Muốn lừa ta qua đó, chẳng lẽ ta là kẻ điếc sao?”
+Kinh Ảnh đứng ngoài viện khẽ nhướng mày, tặc lưỡi cảm thán.
+Dám dùng giọng điệu như vậy nói chuyện với chủ tử…
+Cửu hoàng tử chẳng lẽ chán sống rồi?
+Gan thật lớn.
+Chủ tử nhất định sẽ bóp chết nàng!
+— “Vết thương sau lưng bổn vương vẫn chưa lành hẳn, vậy mà ngươi chẳng hề lo lắng chút nào. Đúng là đồ vô lương tâm.”
+— “Ai mà biết ngươi có phải cố ý…”
+…bị thương hay không.
+Lời vừa tới bên môi, Sở Ly chợt ngừng lại.
+Sở Đệ Trì nheo mắt:
+— “Cố ý cái gì?”
+Nàng hé miệng, rồi lại nuốt lời xuống.
+Dù sao…
+Hắn quả thực đã cứu nàng.
+Những lời ấy không thích hợp để nói ra.
+— “Không có gì.”
+— “Thay thuốc cho bổn vương xong, bổn vương sẽ nói cho ngươi.”
+Sở Ly do dự chốc lát.
+Đây là ngoài trời.
+Lại còn có tỳ nữ, hạ nhân đứng quanh.
+Hắn cũng không thể động tay động chân được.
+— “Được thôi.”
+Nàng bước tới.
+Cầm lấy hòm thuốc.
+Mở y phục của hắn.
+Động tác thuần thục, nhanh nhẹn thay thuốc, rồi quấn thêm một lớp băng sạch.
+Suốt cả quá trình.
+Hắn chỉ yên lặng ngồi đó.
+Không hề có hành động quá đáng.
+Sở Ly cũng dần dần yên tâm.
+Thay thuốc xong.
+Nàng giúp hắn mặc lại y phục.
+Kéo vạt áo lên vai.
+Đi tới trước mặt hắn, nhấc trường bào lên chỉnh ngay ngắn.
+Sở Đệ Trì nhìn dáng vẻ hiếm khi kiên nhẫn của nàng, trầm ngâm một lát rồi hỏi:
+— “Thật sự thích Tần Thiếu tướng quân?”
+— “Đúng vậy.”
+— “Hắn không thích hợp với ngươi.”
+Sở Ly nghi hoặc nhìn hắn.
+— “Tính tình hắn quá mềm yếu.”
+— “Một ngày nào đó thân phận của ngươi bại lộ, hắn chẳng những không bảo vệ nổi ngươi, mà ngươi còn liên lụy cả nhà hắn.”
+Trong lòng Sở Ly vốn đã rõ.
+Nàng nói như vậy chẳng qua chỉ để vạch rõ ranh giới với hắn mà thôi.
+— “Ta và hắn chân tâm tương ái.”
+— “Sau này, cho dù có một ngày ta mất đi thân phận hoàng tử, hắn cũng mất chức quan, chúng ta làm một đôi phu thê áo vải, cũng cam tâm tình nguyện.”
+Sắc mắt Sở Đệ Trì khẽ ngưng lại.
+— “Sở Ly.”
+— “Ngươi quá tin tưởng nam nhân rồi.”
+Đúng là ngây thơ.
+Nam nhân là hạng người thế nào…
+Không ai hiểu rõ hơn hắn.
+— “Ta không phải tin nam nhân.”
+— “Ta chỉ tin một mình hắn.”
+Sở Ly lạnh nhạt đáp.
+Đồng thời chỉnh lại y phục cho hắn, buộc đai lưng ngay ngắn.
+— “Hừ…”
+Sở Đệ Trì nhíu mày.
+— “Buộc chặt như vậy, là muốn khiến vết thương nứt ra sao?”
+— “Bổn vương thì không sợ đau.”
+— “Chỉ e phải làm phiền Cửu hoàng tử ngày nào cũng đến Nhiếp Chính vương phủ một chuyến.”
+— “Dù sao bổn vương cũng bị thương vì ngươi.”
+Sở Ly hít sâu một hơi.
+Lại không thể phản bác.
+Nàng đành tháo đai lưng ra.
+— “Y phục cũng kéo chặt quá.”
+Sở Ly cúi người tới gần.
+Lại giúp hắn nới lỏng y phục hơn một chút.
+— “Lưng đau.”
+— “Có phải băng chưa quấn cẩn thận?”
+Sở Ly im lặng nửa khắc.
+Rồi kéo y phục của hắn xuống tới khuỷu tay.
+Cẩn thận kiểm tra lại.
+Dáng vẻ cúi đầu, chăm chú hầu hạ ấy…
+Lại khiến Sở Đệ Trì khẽ cười trầm thấp.
+— “Tiểu Cửu chủ động cởi y phục, tháo đai lưng cho bổn vương.”
+— “Đáng tiếc bổn vương đang mang thương tích, tạm thời không thể thỏa mãn ngươi.”
+Sở Ly nghiến chặt răng.
+Giơ tay định đánh hắn.
+Lại bị hắn giữ lấy cổ tay.
+Rồi cúi đầu…
+Khẽ hôn lên môi nàng một cái.
+Ngay lúc nàng sắp nổi giận.
+Hắn lại buông tay.
+Dáng vẻ chạm là dừng ấy…
+Khiến người ta chỉ muốn đánh.
+Nhưng lại vừa đủ thiếu một chút.
+Sở Ly trừng hắn mấy cái.
+Dứt khoát…
+Dưới gầm bàn hung hăng đạp hắn một cước.
+Đúng lúc ấy.
+Nàng nghe thấy phía sau truyền đến tiếng bước chân vội vã.
+Ngoài hành lang.
+Sở Ly quay đầu nhìn lại.
+Lại là…
+Tần Mục Vũ!
+Chỉ là…
+Hắn xoay người rời đi.
+Bóng lưng vội vàng ấy…
+Lại giống như đang chạy trốn.
+— “Tần Mục Vũ!”
+Sở Ly bật dậy.
+Sao hắn lại ở đó?
+Kinh Ảnh bước tới, nói:
+— “Chủ tử, người mời Tần Thiếu tướng quân đến nghị sự.”
+— “Sao Tần Thiếu tướng quân vừa tới, một câu cũng không nói, quay đầu đã đi rồi?”
+Thật kỳ quái.
+Sở Ly lập tức hiểu ra điều gì đó.
+Nàng giận dữ nhìn Sở Đệ Trì:
+— “Ngươi cố ý?”
+Sở Đệ Trì kéo lại y phục lên vai.
+Tư thái lười biếng ấy…
+Lại mang theo vài phần mê hoặc.
+— “Đa tạ Cửu hoàng tử đã thay thuốc cho bổn vương.”
+— “Cũng không uổng bổn vương liều mạng cứu ngươi một lần.”
+— “Sở Đệ Trì, ngươi thật hèn hạ!”
+Sở Ly phẫn nộ phất tay áo bỏ đi.
+Đồng thời…
+Một nỗi hoảng sợ không rõ nguyên do dâng lên trong lòng.
+Tần Mục Vũ…
+Nhất định đã phát hiện ra điều gì đó.
+Lỡ như hắn biết…
+Nàng giống như người sắp chìm xuống nước.
+Hô hấp dồn dập.
+Đầy sợ hãi.
+Cảm giác xấu hổ khi bí mật bị phơi bày.
+Cùng nỗi kinh hoàng.
+Khiến nàng như rơi xuống vực sâu.
+⸻
+Tần Mục Vũ bước nhanh ra khỏi Nhiếp Chính vương phủ.
+Sắc mặt hơi tái nhợt.
+Hắn vừa rồi…
+Lại nhìn thấy…
+Sở Ly ở trong lòng Nhiếp Chính vương.
+Đích thân cởi y phục cho hắn.
+Mà Nhiếp Chính vương thì nắm lấy tay nàng…
+Đưa lên môi hôn nhẹ.
+Dáng vẻ thân mật khăng khít giữa hai người…
+Khiến hắn chấn động như bị sét đánh.
+A Ly và Nhiếp Chính vương…
+Đêm qua.
+A Ly lừa Hoàng thượng, không hồi cung.
+Thì ra…
+Là ở cùng Nhiếp Chính vương…
+Bọn họ…
+Sao có thể?
+Cho dù A Ly là nữ tử…
+Thì cũng là thân điệt nữ của Nhiếp Chính vương.
+Bọn họ sao có thể…
+Trong đầu Tần Mục Vũ hoàn toàn hỗn loạn.
+Bước chân quá gấp.
+Lúc xuống bậc thềm còn vô ý vấp một cái.
+— “Mục Vũ!”
+Sở Ly đuổi theo ra ngoài.
+Hắn…
+Đã không biết phải đối diện với nàng thế nào.
+Khi những nhận thức trước đây hoàn toàn bị lật đổ.
+Thậm chí còn phải chấp nhận một sự thật chấn động đến mức không thể tưởng tượng nổi.
+Hắn không muốn nghĩ tiếp nữa.
+Trong lòng hắn.
+A Ly vẫn luôn là người tốt đẹp nhất.
+Thế nhưng…
+Hình ảnh vừa rồi cứ mãi không xua đi được.
+Không ngừng quanh quẩn trong đầu.
+Lòng hắn…
+Rối loạn vô cùng.
+— “A Ly, trong phủ Tướng quân còn có việc.”
+— “Ta… ta phải về trước.”
+Hắn không hề quay đầu.
+Bước chân vô cùng vội vã.
+— “Tần Mục Vũ!”
+Sở Ly đuổi theo.
+— “Mọi chuyện không phải như huynh nghĩ đâu.”
+— “Ta có nỗi khổ không thể nói.”
+Thế nhưng…
+Bước chân hắn vẫn không hề dừng lại.
+Rời đi vô cùng gấp gáp.
+Sở Ly đứng nguyên tại chỗ.
+Nhìn theo bóng lưng hắn ngày càng xa.
+Một nỗi bi ai cùng thê lương khó nói thành lời chợt dâng lên trong lòng.
+Không biết từ lúc nào.
+Sở Đệ Trì đã bước ra ngoài.
+Khóe môi mang theo ý cười ung dung nhàn nhã.
+— “Xem ra…”
+— “Tiểu thanh mai của ngươi cũng không thích ngươi nhiều đến thế.”
+—————————
+Đi ngang nhớ để lại một chiếc tim, comment đừng để admin tưởng Wi-Fi bị lỗi nên không ai tương tác. 
+ 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_83.html" class="btn">‹ Trước</a>
+            <a href="chuong_85.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

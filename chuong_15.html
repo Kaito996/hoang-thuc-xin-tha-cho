@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 15</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 15</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_14.html" class="btn">‹ Trước</a>
+            <a href="chuong_16.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 15: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
+Chương 15: [Phú dưỡng bản thân, bần dưỡng nhi tử]
+“Tiền niên, có một thuộc hạ cố ý man trá bổn vương. Hiện nay, cỏ trên phần mộ hắn e rằng đã cao đến hai thước.”
+Thanh âm lãnh bạc vang lên giữa đêm tĩnh mịch, tựa như một lưỡi đao sắc bén đang từng chút rạch nát da thịt, khiến máu tươi rỉ ra.
+“Ngươi có biết, lừa gạt bổn vương sẽ có kết cục gì không?”
+Song Nhi sợ đến mức quỳ sụp xuống đất:
+“ Nô tỳ chỉ nguyện hầu hạ điện hạ, trung tâm bất nhị, tuyệt vô lòng riêng, cầu điện hạ minh giám!”
+Sở Đệ Trì từ trên cao nhìn xuống nàng:
+“Vậy hãy để bổn vương xem thử, ngươi trung thành đến mức nào.”
+“Người đâu!”
+Ngoài cửa, bốn thị vệ bước nhanh vào:
+“Điện hạ.”
+Nam nhân lười biếng tựa người trên ghế Thái Sư:
+“Đêm đó ngươi hầu hạ bổn vương rất vừa ý. Chi bằng để bổn vương xem thử bản lĩnh hầu hạ nam nhân của ngươi.”
+Đồng tử Song Nhi co rút mãnh liệt.
+Ngay giây sau, nàng đã bị bốn thị vệ lôi ra giữa sân, cưỡng ép lột bỏ y phục.
+“Điện hạ tha mạng!”
+“Điện hạ! Nô tỳ sống là người của ngài, chết là quỷ của ngài! Cầu điện hạ khai ân... A! Điện hạ!”
+Hoàng cung
+Chiêu Lan điện
+Đêm ấy, Sở Ly ngủ không yên.
+Trong mộng luôn hiện lên cảnh tượng nàng bị hất khỏi lưng ngựa, rồi con chiến mã giương cao vó sắt, hung hăng đạp xuống.
+Nếu thật sự đạp trúng...
+Với sức nặng mấy trăm cân ấy, nàng nào còn mạng sống?
+Nhiếp Chính Vương cứu nàng sao?
+Nhưng nếu nàng bị ngựa giẫm chết, chẳng phải đúng ý hắn? Cớ gì hắn lại tha cho nàng?
+“Chủ tử, đến giờ uống thuốc rồi.”
+Cẩu Bát bưng chén thuốc đen đặc, đắng ngắt bước vào.
+Sở Ly day nhẹ mi tâm, thần sắc có phần hoảng hốt.
+“Giờ nào rồi?”
+“Đã cuối giờ Thìn. Chừng hai khắc nữa Hoàng thượng sẽ hạ triều.”
+“À đúng rồi, sáng nay Hân phi nương nương sai người mang tới không ít dược liệu thượng hạng để bồi bổ cho ngài.”
+Mấy ngày nay Sở Ly bị thương, Sở Hoàng lo Ôn phi ưu tư quá độ nên ngày nào cũng ở lại Chiêu Lan điện.
+Điều đó khiến tử địch của Ôn phi là Hân phi tức đến nghiến răng.
+“Con hồ ly tinh ấy!”
+“Lần trước Cửu hoàng tử bị đánh, Hoàng thượng đã ở cạnh nàng năm ngày liền. Nay Cửu hoàng tử ngã ngựa, Hoàng thượng lại tiếp tục bầu bạn với nàng.”
+“Theo bổn cung thấy, đây rõ ràng là thủ đoạn tranh sủng!”
+Bán nhi cầu vinh?
+Ai mà chẳng có hoàng tử?
+“Người đâu! Đè Bát hoàng tử xuống, đánh gãy chân nó cho bổn cung!”
+Sở Ngạo Thiên: “???”
+Không được!
+Chuyện này tuyệt đối không được!
+“Mẫu phi! Nhi thần là thân sinh cốt nhục của người mà!”
+“Bần dưỡng nhi tử, phú dưỡng bản thân. Bổn cung tuyệt không để Ôn phi kia đắc ý vênh váo!”
+Sở Ngạo Thiên lập tức nịnh nọt:
+“Mẫu phi anh minh thần võ, liếc mắt đã nhìn thấu thủ đoạn của Ôn phi. Chỉ cần Cửu đệ sớm bình phục, âm mưu của nàng ta tự khắc phá sản.”
+Hân phi cảm thấy rất có lý.
+Lập tức sai người chọn những dược liệu tốt nhất đưa tới cho Cửu hoàng tử dưỡng thương.
+Cẩu Bát thấp giọng hỏi:
+“Chủ tử, số dược liệu Hân phi nương nương đưa tới, có cần mang đến Thái Y viện kiểm tra kỹ một lượt không?”
+“Không cần.”
+Gan Hân phi có lớn đến đâu cũng không dám công khai hạ độc nàng.
+Huống hồ nhiều năm nay, Hân phi và mẫu phi minh tranh ám đấu, chiêu số tầng tầng lớp lớp.
+Bước tiếp theo bà ta định đi quân gì, Sở Ly chỉ cần bấm ngón tay cũng đoán ra được.
+Đúng lúc ấy, ngoài cửa vang lên tiếng bẩm báo của một tiểu thái giám:
+“Chủ tử, Trọng Phong đại nhân cầu kiến.”
+Ánh mắt Sở Ly trầm xuống.
+Lại đến làm gì?
+Phàm dính líu đến Nhiếp Chính Vương phủ thì tuyệt đối không có chuyện tốt.
+“Cho hắn vào.”
+“Vâng.”
+Rất nhanh, Trọng Phong bước vào:
+“Tham kiến Cửu hoàng tử.”
+Hắn đưa mắt nhìn quanh điện:
+“Không biết Song Nhi cô nương có trở về chưa?”
+Sở Ly lập tức nhận ra có điều bất thường:
+“Song Nhi theo hoàng thúc tới Nhiếp Chính Vương phủ, sao có thể hồi cung?”
+Trọng Phong làm ra vẻ khó xử:
+“Tối qua khi sắp xếp chỗ ở, có hạ nhân lắm miệng nói vài câu với Song Nhi. Nàng để lại chiếc khăn tay này rồi khóc chạy khỏi vương phủ. Đến nay vẫn chưa có tung tích.”
+Nói rồi, hắn lấy từ trong tay áo ra một chiếc khăn lụa dính máu.
+Vết máu đỏ sẫm đã khô, thấm đẫm cả đóa hải đường thêu tinh xảo phía trên.
+Đồng tử Sở Ly co lại.
+Nàng lao tới, chộp lấy chiếc khăn.
+Đúng là của Song Nhi!
+“Song Nhi cô nương hiện đã là người của Nhiếp Chính Vương phủ. Nếu Cửu hoàng tử gặp nàng, mong ngài khuyên nàng sớm quay về.”
+“Vương gia đang rất lo lắng cho nàng.”
+“Thuộc hạ cáo lui.”
+Trọng Phong chắp tay hành lễ rồi rời khỏi Chiêu Lan điện.
+Hai mắt Sở Ly đỏ ngầu.
+Song Nhi đã hầu hạ nàng suốt chín năm!
+Sở Đệ Trì mang nàng ấy đi, giờ lại còn giả nhân giả nghĩa đến báo tin.
+Cho dù biết rõ là hắn gây ra, nàng cũng chẳng làm gì được.
+Không thể lay động hắn dù chỉ một chút.
+Sở Đệ Trì!
+Vì sao?
+Rốt cuộc nàng đã làm gì khiến hắn hận hoàng thất đến vậy, hận nàng đến vậy?
+Hoàng gia Học uyển
+Khương Thái phó đang sắp xếp thư tịch.
+Ông đích thân phủi bụi từng quyển sách, thu dọn ngay ngắn.
+Thấy người tới, ông hỏi:
+“Cửu hoàng tử, hôm nay là ngày nghỉ học. Ngài tới Học uyển làm gì?”
+Sở Ly đã nghỉ học gần nửa tháng.
+Nàng vốn tưởng chỉ cần trốn trong Chiêu Lan điện là có thể tránh được mọi phiền toái.
+Nhưng Sở Đệ Trì căn bản không có ý định buông tha nàng.
+Đại hoàng tử, Đại hoàng tử phi, rồi Song Nhi...
+Không biết còn bao nhiêu người nữa sẽ chết dưới tay hắn.
+Hắn chính là một đao phủ tâm ngoan thủ lạt.
+“Thái phó cứ bận việc của mình. Ta chỉ đến ngồi một lát.”
+Khương Thái phó vuốt chòm râu bạc:
+“Vậy thì nhân tiện tiếp tục học thuộc 《Quần Thư Trị Yếu》 đi.”
+“Cửu hoàng tử, ngài không thể trì hoãn mãi được. Khi bằng tuổi ngài, bảy vị hoàng huynh của ngài đều đã hoàn thành chương trình học. Chỉ còn ngài và Bát hoàng tử...”
+“...”
+Sở Ly tới Học uyển là để ngửi mùi bút mực, mong tĩnh tâm đôi chút.
+“Nhưng ngài đang bị thương, ta sẽ thúc giục Bát hoàng tử trước, sau đó mới tới ngài.”
+“... Đa tạ Thái phó.”
+“Cửu hoàng tử hồ đồ rồi sao? Thần họ Khương.”
+Là Khương Thái phó.
+Sở Ly: “...”
+Bát hoàng huynh chỉ lớn hơn nàng có mười mấy ngày.
+Thúc hắn khác gì thúc nàng.
+Đọc sách cũng giống Nhiếp Chính Vương phủ — đều là những thứ khiến Sở Ly đau đầu và kháng cự vô cùng.
+Ngồi được khoảng hai khắc.
+Một thiếu niên áo lam, ôn nhuận như ngọc, vội vã chạy vào.
+“Cửu hoàng tử!”
+Sở Ly quay đầu.
+Thiếu niên chừng mười bảy mười tám tuổi, dung mạo thanh tú, khí chất ôn hòa, bên hông đeo ngọc bội và hương nang.
+Đó chính là người bạn thân nhất của nàng — Tần Mục Vũ, tiểu công tử của Tần gia.
+Tần gia xuất thân võ tướng.
+Từ năm mười bốn tuổi, Tần Mục Vũ đã theo phụ huynh lập công nơi chiến trường.
+Hiện nay đã mang chức quan Chính lục phẩm.
+Chạy tới gần, hắn mới hạ thấp giọng:
+“A Ly, nghe thái giám nói ngươi tìm ta. Ta vừa nhận được tin liền chạy tới ngay.”
+Sở Ly kéo hắn sang một bên:
+“Đại hoàng huynh và Đại hoàng tẩu đã bị sơn phỉ khống chế hai ngày. Ngươi có biết tình hình cụ thể không?”
+“Đương nhiên biết.”
+Chuyện này đã kinh động không ít võ tướng.
+Ai nấy đều tìm cách vừa cứu được người, vừa dẹp yên sơn phỉ.
+Nhưng trong tay đám phỉ có con tin, khiến mọi việc vô cùng khó khăn.
+“Sơn phỉ đang chiếm cứ ở Văn Xuyên sơn. Núi ấy địa thế hiểm trở, cực khó tiến vào.”
+“Hôm qua Lục hoàng tử đã thử dùng biện pháp chiêu an, nhưng đám thô phỉ ấy căn bản không chịu quy thuận.”
+Sở Ly khẽ siết đầu ngón tay:
+“Văn Xuyên sơn?”
+“Lần trước tiên sinh khảo nghiệm kỵ xạ, chẳng phải chúng ta từng đi ngang nơi đó sao?”
+“Ta biết trong khu rừng rậm có một con đường nhỏ dẫn thẳng lên núi.”
+Tần Mục Vũ mừng rỡ:
+“Thật sao?”
+Đương nhiên là thật.
+Từ nhỏ Sở Ly đã thích ăn chơi hưởng lạc.
+Nàng không tranh quyền đoạt vị, không can dự triều chính, nên chẳng ai rảnh hơi đi nhằm vào một “phế vật hoàng tử”.
+Suốt ngày rong chơi, đùa chim, săn bắn, trèo cây, lội nước.
+Khắp kinh thành và vùng phụ cận đều đã bị nàng khám phá gần hết.
+Sở Ly lập tức lấy giấy bút.
+“Mục Vũ, ngươi nhìn đây.”
+Nàng nhanh chóng hạ bút.
+Tần Mục Vũ nghiêm túc ghé sát tới xem.
+Hai người chăm chú bàn bạc, hoàn toàn không phát hiện bên ngoài hành lang, Nhiếp Chính Vương Sở Đệ Trì đang đứng lặng nhìn họ. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_14.html" class="btn">‹ Trước</a>
+            <a href="chuong_16.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

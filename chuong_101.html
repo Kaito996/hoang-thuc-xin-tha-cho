@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 101</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 101</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_100.html" class="btn">‹ Trước</a>
+            <a href="chuong_102.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 101: Ở bên bổn vương, rất an toàn
+“Thất vọng sao?”
+Sở Ly ngồi bên cửa sổ thất thần, chẳng biết đang nghĩ gì thì trong phòng bỗng vang lên giọng nói thứ hai, khiến nàng giật mình. Nhưng rất nhanh nàng đã bình tĩnh trở lại.
+Hắn vốn luôn thích chạy đến chỗ nàng, lần nào cũng xuất hiện thần không biết, quỷ không hay, nàng cũng nên quen với chuyện đó rồi.
+“Có gì mà phải thất vọng?”
+Sở Đệ Trì bước đến, thấp giọng nói:
+“Đại hoàng tử không ôn hòa lương thiện như ngươi vẫn tưởng.”
+Sở Ly mím môi.
+Mấy ngày nay, vì chuyện của Ôn Nhã mà quả thật nàng có đôi phần thất vọng về Đại hoàng tử.
+Chỉ là… cũng chỉ một chút mà thôi.
+Con người sống trên đời, ai mà chẳng mang một chiếc mặt nạ. Đã không giao tâm với người khác thì cũng chẳng có cái gọi là thất vọng hay không thất vọng.
+“Còn ngươi thì sao?”
+Nàng ngẩng đầu nhìn hắn.
+“Ngươi là hạng người thế nào?”
+Sở Đệ Trì khẽ nhướng mày, lười nhác cúi người, hai tay chống hai bên thân nàng.
+“Bổn vương đương nhiên là người của ngươi.”
+Sở Ly khựng lại, đến khi kịp phản ứng thì cắn chặt môi dưới, trừng hắn mấy cái.
+Nếu nàng thật sự tin lời hắn, thì đúng là kẻ ngốc nhất thiên hạ.
+Nàng quay đầu đi, nào ngờ ngay sau đó đã bị hai đầu ngón tay hơi lạnh nâng cằm, ép quay trở lại.
+“Sở Ly.”
+“Bổn vương từng nói với ngươi, đừng tin bất kỳ ai.”
+Bao gồm cả hắn sao?
+Hắn cũng là người không thể tin.
+Giữa thế đạo này, vì mẫu phi, còn có ai là người đáng để tin tưởng?
+“Biết rồi.”
+Giọng nàng buồn buồn.
+“Phải ghi nhớ.”
+“Đã ghi nhớ.”
+Hắn khẽ cười trầm thấp.
+Nhìn dáng vẻ lúc này của nàng, quả thật ngoan ngoãn hơn nhiều. Sau khi bị hiện thực dạy cho một bài học, cuối cùng cũng biết lời hắn nói là đúng, không còn giương nanh múa vuốt như trước nữa.
+Nhìn thuận mắt vô cùng.
+Mu bàn tay thon dài của hắn khẽ vuốt ve gò má nàng, chậm rãi lướt qua.
+“Tiểu Cửu.”
+“Bổn vương nhớ ngươi.”
+Sống lưng Sở Ly khẽ cứng lại, theo bản năng siết chặt vạt váy.
+“Ta… không tiện.”
+“Bổn vương biết.”
+Hắn chỉ đến nhìn nàng, cùng nàng trò chuyện đôi câu, cũng không làm chuyện gì quá phận, chỉ ôm nàng ngủ rồi trước khi trời sáng sẽ rời đi.
+Ngày hôm sau cũng vậy.
+Liên tiếp năm sáu ngày trôi qua.
+Cuối cùng cũng không thể tránh được nữa.
+Mọi lý do đều đã dùng hết. Hắn giống như mãnh thú bị nhốt lâu ngày vừa được thả khỏi lồng, một khi nếm được mùi vị tự do thì càng lúc càng mê luyến, như đã nghiện, yêu thích đến mức không nỡ buông tay.
+Chỉ là lần này hắn rất dịu dàng, từng bước từng bước tiến tới, triền miên như một giấc mộng.
+Một giấc mộng rất dài.
+Không biết đã qua bao lâu, nam nhân cuối cùng cũng dừng lại, thỏa mãn chìm vào giấc ngủ.
+Sở Ly thì mệt đến mức cả người mềm nhũn, ngay cả sức nhấc cánh tay cũng chẳng còn.
+Nàng nằm nghỉ hồi lâu, lúc này mới vén chăn, cẩn thận bò qua người hắn rồi xuống giường.
+Đi đến bên bàn, nàng rót một chén nước, lấy từ ngăn kéo ra chiếc bình thuốc màu nâu được giấu kỹ, đổ một viên thuốc ra.
+“Đang làm gì?”
+“Khụ… khụ…”
+Giọng nói bất ngờ vang lên khiến Sở Ly giật mình sặc nước liên tục, đồng thời vội vàng giấu bình thuốc đi.
+“Chẳng phải ngươi ngủ rồi sao?”
+Trên giường, nam nhân chẳng biết đã tỉnh từ lúc nào, nghiêng người nằm đó, đôi mắt sâu thẳm chăm chú nhìn từng cử động của nàng.
+“Lúc ngươi xuống giường, ánh nến lay động hơi chói mắt.”
+Hắn bình tĩnh nhìn nàng.
+“Ngươi đang uống gì?”
+Sở Ly siết chặt bình thuốc, giấu kỹ trong tay áo, cố giữ vẻ bình thản.
+“Ta chỉ… dậy uống chút nước thôi.”
+“Ừm.”
+Hắn lười biếng day day mi tâm.
+“Bổn vương cũng hơi khát.”
+“Ta rót cho ngươi.”
+Sở Ly đi đến bên bàn, quay lưng lại, nhân lúc rót nước liền cất bình thuốc đi, sau đó cầm chén nước bước đến bên giường.
+Hắn không đưa tay ra, chỉ lẳng lặng nhìn nàng.
+Chẳng lẽ…
+Hắn muốn nàng đút?
+“Ngươi không có tay sao?”
+“Quả thực không có.”
+“…”
+Hắn đáp đến mức vô cùng thản nhiên, khiến Sở Ly nghẹn lời.
+Bất đắc dĩ, nàng chỉ đành cầm chén nước, cam chịu đút cho hắn uống mấy ngụm. Động tác chẳng hề dịu dàng, rót đến mức nước chảy ướt cả cổ áo hắn.
+Vạt áo nam nhân mở rộng, thấm nước, dưới ánh nến phản chiếu thành từng vệt sáng long lanh. Gương mặt lười nhác ấy kết hợp với dáng vẻ lúc này lại mang theo vài phần mê hoặc khó cưỡng.
+Thần sắc Sở Ly khẽ đổi.
+Nàng… đang nghĩ gì vậy?
+Nàng đặt mạnh chén nước xuống, không nhìn hắn thêm nữa, xoay người trèo lên giường tiếp tục ngủ.
+…
+Rạng sáng.
+Sở Đệ Trì đúng giờ tỉnh dậy.
+Nhìn nữ tử trong lòng vẫn ngủ say, gương mặt yên tĩnh thanh tú tựa trên cánh tay hắn, hô hấp nhè nhẹ, ánh mắt hắn càng thêm sâu thẳm.
+Hắn không muốn tỉnh.
+Cũng không muốn rời đi.
+Hắn cúi đầu hít sâu mùi hương thoang thoảng trên mái tóc nàng, lúc này mới đứng dậy.
+Trước khi rời đi, hắn bước đến bên bàn, mở ngăn kéo, lấy ra chiếc bình thuốc màu nâu.
+Chính là chiếc bình tối qua Sở Ly lén lấy ra.
+Hắn đổ một viên thuốc màu nâu vào lòng bàn tay, đặt bình thuốc trở lại đúng vị trí cũ, sau đó rời khỏi Chiêu Lan điện, đưa viên thuốc cho Trọng Phong.
+“Mang đến cho Bạch Cẩm Y xem thử, đây là thuốc gì.”
+Khi Sở Ly tỉnh lại thì mặt trời đã lên cao.
+Nàng vẫn như thường lệ thay y phục chỉnh tề, dùng xong điểm tâm thì có tiểu thái giám tới bẩm báo, mời nàng đến Ngự Thư phòng.
+Lúc nàng tới nơi, Hoàng thượng, Đại hoàng tử cùng mấy vị lão thần đều đã có mặt.
+“Phụ hoàng.”
+“Tiểu Cửu đến rồi.” Sở Hoàng khẽ vẫy tay, ra hiệu miễn lễ. “Mấy ngày nay trẫm bận rộn chính vụ, có một việc phải dời đến hôm nay mới xử lý được. Trẫm đã quyết định gả biểu muội của con là Ôn Nhã vào phủ Đại hoàng tử với thân phận Trắc phi.”
+Hôm nay gọi “hắn” đến chính là để bàn bạc các nghi thức.
+Sở Ly nghe vậy cũng không thấy bất ngờ.
+“Ôn Nhã hữu tình, Đại hoàng huynh hữu ý, lại được phụ hoàng tác thành, quả là phúc khí lớn lao.”
+Sở Uyên Trì nhìn nàng, mỉm cười:
+“Đa tạ Cửu đệ tác thành.”
+Sở Ly chỉ thuận miệng đáp lại đôi câu.
+Lý Thượng thư chắp tay nói:
+“Hoàng thượng, chỉ là nạp Trắc phi mà thôi, Ôn tiểu thư lại là thứ nữ, theo quy củ chỉ cần tổ chức giản lược là được.”
+Sở Hoàng khẽ nhíu mày.
+“Nhưng ba vị võ tướng của Ôn gia đều là cánh tay đắc lực mà trẫm hết sức trọng dụng.”
+“Nếu chỉ vì trọng dụng mà phá lệ tổ tông, e sẽ khiến quần thần bất mãn. Lỡ như Ôn gia được sủng sinh kiêu…”
+Lúc nói lời này, Lý Thượng thư còn cẩn thận liếc nhìn Sở Ly một cái.
+Sở Ly chắp tay nói:
+“Nhi thần cho rằng lời Lý Thượng thư rất có đạo lý. Phụ hoàng, cứ làm mọi việc theo lễ giản lược là được. Nếu Ôn Nhã có phúc, sau này vì hoàng thất khai chi tán diệp, đến lúc ấy tổ chức long trọng cũng chưa muộn.”
+Sở Hoàng trầm ngâm giây lát rồi gật đầu đồng ý, giao mọi việc liên quan cho Lễ bộ xử lý.
+Sau khi cho mọi người lui xuống, ông giữ riêng Sở Ly lại.
+Đợi mọi người rời đi hết, Sở Ly mới nghi hoặc gọi:
+“Phụ hoàng?”
+“Tiểu Cửu, lại đây.”
+Sở Hoàng mở ngăn kéo, lấy ra một xấp gì đó.
+Chẳng lẽ… lễ Trùng Dương lần trước nàng làm tốt, phụ hoàng định thưởng nàng mấy thỏi vàng nhỏ?
+Hai mắt Sở Ly sáng lên, âm thầm xoa xoa hai tay, đầy mong đợi bước tới.
+Ai ngờ Sở Hoàng lại lấy ra một xấp thiệp mời đỏ ép kim còn để trống, đặt trước mặt nàng.
+“Con nhàn rỗi cũng là nhàn rỗi, tới viết thiệp mời đi.”
+Sở Ly lập tức lộ vẻ thụ sủng nhược kinh.
+“Phụ hoàng, chữ của nhi thần không đẹp, e khó gánh nổi trọng trách này.”
+“Đại hoàng tử nạp Trắc phi, chỉ mời hoàng thân quốc thích cùng một số đại thần đến dự, đều là người trong nhà, không đáng ngại. Con cứ viết, viết xong thì lần lượt mang đi phát.”
+Không thể từ chối.
+Sở Ly chỉ đành cầm bút, nghiêm túc viết từng tấm thiệp.
+Chữ của nàng không xấu, nét chữ ngay ngắn nhỏ nhắn, thanh tú như chữ của thiếu nữ khuê các, thiếu mất vài phần hào sảng của nam tử nhưng lại vô cùng nhã nhặn.
+Chỉ là mỗi một nét bút đều viết cực kỳ cẩn thận.
+Hơn bốn mươi tấm thiệp, nàng viết suốt hơn một canh giờ mới xong.
+Đợi mực khô, nàng liền cầm từng tấm thiệp mang đi phát.
+Các vị hoàng huynh phải đưa, Ôn gia phải đưa, phủ của Ninh Quý nhân, phủ các vị trọng thần, các phủ Thân vương…
+Sở Ly gần như chạy khắp cả Hoàng thành một vòng lớn, mãi đến trước lúc trời tối mới phát xong, chỉ còn lại tấm thiệp cuối cùng.
+—— Nhiếp Chính Vương phủ.
+Nàng khẽ cắn môi dưới, cân nhắc xem có nên đích thân mang đến hay không.
+Dù nàng không đi, tối nay Sở Đệ Trì cũng sẽ đến Chiêu Lan điện.
+“Chủ tử, nhìn sắc trời thế này, e là sắp mưa rồi!”
+Cẩu Bát đánh xe ngựa, theo Sở Ly chạy đông chạy tây cả ngày, cũng đã mệt không nhẹ.
+Sở Ly vén rèm xe nhìn bầu trời một lát rồi nói:
+“Đến Nhiếp Chính Vương phủ đi.”
+“Vâng.”
+“Giá!”
+Xe ngựa đi được nửa đường thì mưa đã lất phất rơi.
+Đêm đầu đông mang theo từng cơn lạnh se sắt.
+Cẩu Bát dừng xe, đội mưa chạy đến gõ cửa.
+Cốc! Cốc!
+Một lát sau, một thị vệ mở cửa.
+“Cửu hoàng tử phụng mệnh Hoàng thượng đến đưa thiệp mời cho Nhiếp Chính Vương điện hạ.”
+Thị vệ nhìn về phía xe ngựa, cung kính khom người hành lễ.
+“Cửu hoàng tử, điện hạ đang ở San Hô Thủy Tạ.”
+Sở Ly nói:
+“Đợi ngài ấy trở về, ngươi chuyển giúp thiệp mời là được.”
+Thị vệ lập tức cúi đầu.
+“Xin Cửu hoàng tử thứ tội, vật quan trọng như vậy, thuộc hạ không dám nhận.”
+“Ngươi chỉ cần chuyển giúp là được.”
+“Điện hạ đã có lệnh, thuộc hạ không dám tự ý nhận. Xin Cửu hoàng tử khai ân.”
+Sở Ly mím môi.
+Ngay cả nhận thay thiệp mời cũng không được?
+Đây là mệnh lệnh quái lạ gì vậy?
+Đúng là khó hầu hạ.
+Suốt một ngày phát thiệp, hầu như nhà nào cũng là gã sai vặt ở cổng nhận thay, vậy mà đến Nhiếp Chính Vương phủ thì lại không được.
+Đúng là chiều hắn thành quen rồi.
+Sở Ly buông rèm xe xuống.
+“Đến San Hô Thủy Tạ.”
+Đã ra ngoài một chuyến, nếu đã đến đây thì cứ phát nốt tấm thiệp rồi hẵng về.
+Hai khắc sau.
+Xe ngựa dừng trước San Hô Thủy Tạ.
+Sở Ly bước xuống xe, Trọng Phong đã đứng chờ sẵn trước cổng. Thấy nàng, hắn cung kính hành lễ:
+“Cửu hoàng tử, ngài đến rồi.”
+Hắn đưa tới một chiếc ô giấy dầu.
+“Chủ tử đang ở bên trong.”
+Sở Ly nhận lấy chiếc ô rồi bước vào. Nàng từng đến nơi này vài lần nên đường đi và các đình viện cũng không còn xa lạ. Xuyên qua dãy hành lang dài, chẳng mấy chốc đã tới Lan Đình Hiên. Đứng dưới cổng vòm bằng đá, mượn ánh nến mờ ảo trong màn mưa, nàng chỉ thấy một bóng người cao lớn, lạnh lùng đang múa kiếm giữa đêm, một kiếm xé gió mà ra.
+Lưỡi kiếm rung lên phát ra tiếng ngân, chém nát những hạt mưa, vô số giọt nước nhỏ bắn tung như mang theo sát khí sắc bén.
+Thanh nhuyễn kiếm được thu về, thân kiếm mềm dẻo như một con độc xà, mỗi lần cuộn động đều phản chiếu hàn quang lạnh lẽo.
+Thân ảnh nam nhân gần như hòa lẫn vào màn đêm, tựa hung thú đang ẩn mình trong bóng tối, tỏa ra khí tức áp bức đến nghẹt thở. Mưa quấn quanh thân hắn, theo từng động tác mạnh mẽ mà tung lên, dường như ngay cả không khí vô hình cũng có thể bị xé rách.
+Vút!
+Vù!
+Mỗi một kiếm, mỗi một chiêu, mỗi một thân pháp đều tràn ngập sát ý chí mạng.
+Giữa màn đêm âm u, hắn chỉ có một mình, cô lãnh mà cao ngạo, dường như giữa trời đất mênh mông cũng chỉ còn lại duy nhất một mình hắn.
+Sở Ly đứng lặng tại chỗ, nhất thời nhìn đến xuất thần.
+Dáng vẻ hắn múa kiếm sắc bén như một bức họa, giống một con dã thú cô độc luôn đè nén bản năng, bước đi trên lưỡi đao.
+Nàng chống ô giấy dầu, lặng lẽ đứng dưới cổng vòm giữa màn mưa.
+Hắn ở giữa sân, kiếm nổi mưa rơi, cả thân người hòa làm một với màn mưa đêm.
+Đột nhiên…
+Một luồng hàn quang lóe lên.
+Thanh nhuyễn kiếm đang cuộn động như độc xà phun lưỡi bỗng lao thẳng tới trước mặt nàng, khiến Sở Ly theo bản năng lùi nửa bước. Gót chân vừa vấp phải bậc thềm, cả người liền ngả về sau. Đúng lúc ấy, nam nhân đưa tay ôm lấy eo nàng, giữ chặt trong lòng.
+Sở Ly ngẩng đầu, đối diện với đôi mắt u lãnh của hắn.
+Đêm nay…
+Hắn đặc biệt bình tĩnh.
+Bình tĩnh đến mức khiến người ta bất an.
+“Ta… đến đưa thiệp mời.”
+Nàng lấy từ trong tay áo ra tấm thiệp cuối cùng, trên đó viết ngày lành Đại hoàng tử nạp Trắc phi cùng lời mời.
+Nàng vừa định đưa cho hắn thì cổ tay đã bị giữ chặt.
+“Ưm!”
+Nam nhân cúi đầu cắn lên môi nàng.
+Là cắn.
+Không phải hôn.
+Chỉ một cái cắn đã lập tức nếm thấy vị máu tanh, đau đến mức Sở Ly bật tiếng kêu, liều mạng giãy giụa, chiếc ô giấy dầu cũng rơi xuống đất.
+“Ngươi làm… Ưm!”
+Sở Đệ Trì trở tay ném thanh nhuyễn kiếm đi, lưỡi kiếm cắm phập xuống mặt đất, rồi ôm ngang người nàng, không nói một lời mà hung hăng chiếm hữu nàng.
+Đầu óc Sở Ly hoàn toàn trống rỗng.
+Trận mưa đêm hôm ấy rất lớn, gần như át đi mọi âm thanh. Cả San Hô Thủy Tạ rộng lớn không có lấy một hạ nhân hầu hạ, chỉ có hai người bọn họ, cho dù phát ra âm thanh lớn đến đâu cũng chẳng truyền ra ngoài.
+Đêm nay…
+Hắn đặc biệt dữ dội.
+Lực đạo ấy chẳng khác gì lúc múa kiếm.
+Sở Ly không biết rốt cuộc đã xảy ra chuyện gì, chỉ có thể bị ép tiếp nhận. Mấy lần nàng suýt ngất đi, nhưng vẫn cắn chặt môi dưới, cố hết sức nhẫn nhịn.
+Không biết đã qua bao lâu, dường như cuối cùng hắn cũng phát tiết xong, thần sắc dần khôi phục bình tĩnh.
+Đôi mắt Sở Ly đỏ hoe, nàng đẩy mạnh hắn ra, tức giận bước xuống giường định rời đi.
+“Đi đâu?”
+Sở Đệ Trì vừa đưa tay định giữ lại thì đã bị nàng giơ tay tát một cái thật mạnh.
+Chát!
+Tiếng bạt tai vang lên giòn giã.
+“Sở Đệ Trì! Ngươi là đồ súc sinh!”
+Muốn đối xử với nàng thế nào thì đối xử thế ấy.
+Trong mắt hắn…
+Nàng chẳng qua chỉ là một món đồ chơi.
+Sở Đệ Trì nghiêng đầu sang một bên, cảm nhận cơn đau trên má, chẳng những không giận mà còn bật cười.
+“Bổn vương là súc sinh?”
+Hắn khẽ liếm vết máu nơi khóe môi.
+“Bổn vương làm vậy đều là vì nghĩ cho ngươi. Cả một bình thuốc tránh thai lớn như thế, nếu không uống hết chẳng phải quá lãng phí sao?”
+Vừa nói, hắn vừa giơ bàn tay lên.
+Giữa hai ngón tay, một viên thuốc màu nâu hiện rõ.
+Sở Ly kinh ngạc.
+Hắn…
+Đó chính là thuốc tránh thai nàng mua.
+Sao lại ở trong tay hắn?
+Nhưng nàng cũng chẳng thấy có gì không ổn.
+“Không uống hết quả thật rất lãng phí. Huống hồ ta còn lo thuốc không đủ hiệu quả, đang định mua thêm một ít.”
+Nàng lạnh lùng nói xong liền giật lấy viên thuốc, ném vào miệng.
+Nhưng ngay sau đó, Sở Đệ Trì đã bóp lấy hai má nàng.
+“Khụ!”
+Viên thuốc bị ép phải nhổ ra.
+Đôi mắt Sở Đệ Trì đỏ ngầu lạnh lẽo, như thể có thể nuốt chửng người khác.
+“Ngươi không cần lo. Ở bên bổn vương rất an toàn. Đời này bổn vương sẽ không có con.”
+Sở Ly hoàn toàn không tin.
+“Sao có thể?”
+“Thân thể ngươi vẫn bình thường, chuyện đó… cũng mạnh mẽ như vậy, sao có thể không có con?”
+Sở Đệ Trì cười lạnh.
+“Không tin?”
+“Nói ra còn phải cảm tạ vị phụ hoàng tốt của ngươi. Nếu năm đó, lúc bổn vương còn nhỏ, ông ta không ép bổn vương uống độc dược, khiến bổn vương đoạn tử tuyệt tôn, thì ngươi cần gì phải uống thứ thuốc tránh thai này?”
+Bạch Cẩm Y đã kiểm tra qua. Bạch Cẩm Y đã điều tra qua.
+Thông thường, canh thuốc tránh thai đều do dược liệu sắc thành, dùng sau khi hành phòng.
+Nhưng loại thuốc tránh thai được chế thành viên hoàn này, là do đủ loại dược liệu tránh thai cô đặc mà thành.
+Mức độ tổn hại đối với thân thể…
+Gấp ba lần thuốc sắc.
+Nếu dùng trong thời gian dài.
+Rất có khả năng sẽ làm tổn hại cơ thể nữ tử.
+Thậm chí dẫn đến vô sinh.
+Sở Ly chấn kinh.
+Nàng hoàn toàn không biết chuyện này.
+Phụ hoàng cũng chưa từng nhắc tới.
+Phụ hoàng…
+Lại từng làm chuyện như vậy sao?
+Trước kia, nàng từng nguyền rủa Sở Đệ Trì lòng dạ độc ác, cho rằng trời có mắt nên mới khiến hắn cả đời không thê không thiếp, dưới gối không con.
+Không ngờ…
+Sự cô quạnh dưới gối của hắn, hóa ra lại là do chính tay phụ hoàng gây nên! Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_100.html" class="btn">‹ Trước</a>
+            <a href="chuong_102.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

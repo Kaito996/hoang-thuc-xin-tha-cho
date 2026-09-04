@@ -1,0 +1,414 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 334</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 334</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_333.html" class="btn">‹ Trước</a>
+            <a href="chuong_335.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 334: Cùng sinh cùng tử, đôi uyên ương lưu vong
+Tiêu Dao Vương trầm giọng cười:
+“Vậy thì làm phiền tiểu chất nữ chu toàn rồi.”
+Sở Ly nhìn Sơ Nhất thật sâu, xác nhận nàng vẫn bình an vô sự, lúc này mới quay đầu nói với Trọng Phong:
+“Đi báo cho Hoàng thúc.”
+“Vâng.”
+Chưa đầy nửa khắc sau, Sở Đệ Trì dẫn người chạy tới.
+Biết được yêu cầu của Tiêu Dao Vương, hắn tự nhiên nghe theo ý Sở Ly, lập tức sai người chuẩn bị hai mươi con tuấn mã thượng hạng, dắt đến giao cho Tiêu Dao Vương.
+Còn về ngân phiếu…
+Hiện đang giao chiến, đi lại vội vã, trong thời gian ngắn căn bản không thể gom đủ nhiều ngân lượng như vậy.
+Sở Ly lấy từ trong người ra một tờ chứng từ cất giữ bên mình, nói:
+“Ngân phiếu cần thời gian chuẩn bị, nhưng chỗ ta có kim điều, giá trị không hề kém mười vạn lượng ngân phiếu, ngươi có muốn không?”
+Tiêu Dao Vương nheo mắt:
+“Mang tới để bản vương xem.”
+Hai bên cách nhau chừng hai mươi trượng, một tên thân vệ đi tới nhận lấy.
+Bởi bọn chúng vẫn luôn khống chế Sơ Nhất, bên phía Sở Ly không dám tùy tiện phát động công kích, nhưng cung tiễn thủ đã mai phục sẵn trong bóng tối.
+“Vương gia, là chứng từ của Ngân trang Vệ gia.”
+Đây là một ngân trang rất đáng tin cậy.
+Tiêu Dao Vương liếc nhìn số tiền ghi trên đó, hài lòng cất vào ngực.
+“Tiên hoàng đối đãi với ngươi quả thật không tệ, những năm qua lại ban cho ngươi nhiều vàng như vậy.”
+Đó là toàn bộ gia sản của Sở Ly.
+Đưa chứng từ ra, hiện giờ nàng đã không còn một đồng dính túi.
+“Ta đã làm theo lời ngươi, giờ ngươi nên thả người.”
+“Đừng vội.”
+Tiêu Dao Vương cầm đoản đao, lười nhác đặt lên cổ Sơ Nhất.
+“Bản vương là người giữ lời hứa, huống hồ bản vương trước giờ không giết nữ nhân.”
+Ánh mắt sắc bén của ông ta đảo quanh một lượt.
+“Cho cung tiễn thủ lui xuống!”
+Đầu ngón tay Sở Ly siết chặt.
+Sở Đệ Trì trầm giọng:
+“Hoàng huynh, phàm sự lưu một đường, ngày sau còn dễ gặp lại.”
+Tiêu Dao Vương cười:
+“Hoàng đệ à, không phải hoàng huynh nói ngươi, nữ nhân đúng là nhược điểm lớn nhất. Nếu là trước kia, ngươi đã sớm động thủ rồi. Nhưng bây giờ Sở Ly đau lòng nha hoàn, ngươi lại đau lòng Sở Ly, dây dưa không dứt.”
+Có điều, cũng chính vì thế mà cho ông ta một con đường sống rất lớn.
+Cổ tay ông ta hạ xuống, siết chặt chuôi đoản đao.
+“Bản vương nói lại lần nữa, cho cung tiễn thủ lui xuống!”
+Sở Đệ Trì khi nào từng chịu sự uy hiếp như vậy?
+Hắn nhìn sang Sở Ly, rồi lại liếc Trọng Phong…
+Trọng Phong vẫn luôn siết chặt bàn tay, mày cau chặt, nhìn chằm chằm cảnh tượng trước mắt. Hắn không nói một lời, nhưng cũng như đã nói tất cả.
+Hắn lo cho Sơ Nhất.
+Sở Đệ Trì không đành lòng.
+Trọng Phong theo hắn hơn mười năm, cùng vào sinh ra tử. Hắn không muốn chuyện này trở thành khúc mắc cả đời của Trọng Phong.
+Một lát sau.
+Sở Đệ Trì giơ tay, hạ lệnh:
+“Lui.”
+Cung tiễn thủ lùi xuống.
+Tiêu Dao Vương quát:
+“Lùi tiếp!”
+Sở Đệ Trì lại giơ tay.
+“Tất cả cung tiễn thủ lui ra ngoài một trăm trượng, rời khỏi tầm bắn. Quân đội lui năm mươi trượng.”
+Một tiếng lệnh truyền xuống, tất cả đều rút lui.
+Một trăm trượng đã là giới hạn tầm bắn của cung tiễn thủ.
+“Lần này ngươi yên tâm rồi chứ?”
+Tiêu Dao Vương trầm giọng cười. Thấy mọi uy hiếp đều đã rời xa mình, có đủ thời gian rời khỏi Cam Châu, trong lòng vô cùng hài lòng.
+“Làm phiền tiểu chất nữ.”
+Không ngờ nha đầu này lại hữu dụng đến vậy.
+Ông ta chậm rãi bước đến phía sau Sơ Nhất.
+“Người của ngươi, trả lại cho ngươi!”
+Lời vừa dứt, tay liền hạ xuống.
+Phập!
+Từ phía sau, một đao hung hăng đâm xuống, gần như xé toạc nửa cổ, máu tươi lập tức phun trào. Đầu nàng lệch sang một bên, tắt thở ngay tức khắc.
+“Sơ Nhất!”
+Toàn thân Trọng Phong chấn động dữ dội.
+Tiêu Dao Vương ném đoản đao xuống đất, đá văng thi thể, nghiêng người lên ngựa.
+“Tiểu chất nữ, sau này nên thông minh hơn một chút. Không phải lời của ai cũng có thể tin.”
+“Rút! Ha ha ha!”
+Một đám người đồng loạt lên ngựa, lập tức rút lui.
+Quân đội ở cách năm mươi trượng, cung tiễn thủ ở ngoài một trăm trượng. Khoảng cách xa như vậy, đối mặt với Tiêu Dao Vương đang cưỡi tuấn mã, chỉ có thể trơ mắt nhìn.
+Khóe mắt Sở Ly đỏ hoe, bước nhanh đến bên yên ngựa, rút cung tên xuống.
+Quá xa!
+Trong màn đêm, mấy bóng người lao ra khỏi thành, nhấp nhô trên lưng ngựa đang phi nước đại.
+Càng lúc càng xa.
+Nàng kéo căng dây cung, ngắm về phía hơn một trăm trượng phía trước. Khoảng cách đã vượt cực hạn, bóng người nhỏ bé như đàn kiến, căn bản không thể nhìn rõ.
+Bên tai vẫn vang vọng tiếng cười ngông cuồng của Tiêu Dao Vương.
+Trong đầu không ngừng hiện lên hình ảnh Sơ Nhất ôm cổ ngã xuống.
+Vì sao lại nuốt lời?
+Đồ tiểu nhân đê tiện!
+Vút!
+Đột nhiên, năm ngón tay buông lỏng.
+Mũi tên dài xé tan màn đêm, phát ra tiếng rít sắc bén, lao vút về phía hơn một trăm trượng phía trước.
+Giữa đám người cưỡi hai mươi con tuấn mã phía xa, thân thể Tiêu Dao Vương bỗng chấn động dữ dội, ngã nhào khỏi lưng ngựa.
+“Vương gia!”
+“Vương gia!”
+Một mũi tên xuyên từ sau lưng ra trước ngực.
+“Ư… khụ…”
+Tiêu Dao Vương khó nhọc há miệng, nhưng không thể thốt nổi một câu hoàn chỉnh. Trong mắt chỉ còn lại sự kinh hãi.
+Đến lúc tắt thở, ông ta vẫn không dám tin mình đã chạy xa đến vậy mà vẫn bị bắn trúng.
+Một trăm trượng là giới hạn của cung tiễn thủ, nhưng không phải giới hạn của Sở Ly.
+Sở Ly buông cây cung, toàn thân như bị rút sạch sức lực.
+“Sơ Nhất…”
+Trọng Phong bước từng bước cứng nhắc tiến lên. Đôi mắt đỏ hoe không dám nhìn thân thể đẫm máu của Sơ Nhất.
+Hắn lặng lẽ cởi ngoại bào, phủ lên người nàng, lại nhìn thấy trong tay nàng vẫn nắm chặt cây trâm đào mộc hắn từng tặng.
+Trong khoảnh khắc ấy, nỗi bi thương nghẹn ngào tràn ngập cả đêm dài.
+Hắn chậm rãi quỳ một gối xuống, từng ngón tay nhẹ nhàng tách bàn tay nàng ra, cầm lấy cây trâm đào mộc đã nhuốm máu, lau sạch trên tay áo, rồi cài lại lên mái tóc nàng.
+Cúi người bế nàng lên.
+“Ta đưa nàng đi chôn.”
+Giọng nói bình tĩnh đến mức đè nén mọi cảm xúc, lặng im còn hơn ngàn lời.
+Cổ họng Sở Ly nghẹn lại.
+Cho dù đã giết Tiêu Dao Vương, cũng không thể xóa đi hận ý và tự trách trong giờ phút này.
+“Ta không nên để nàng đi theo. Lúc đầu đáng lẽ phải để nàng ở lại rừng trúc, chăm sóc mẫu phi…”
+“Tiểu Cửu, trên đời này không có hai chữ ‘giá như’.”
+Sở Đệ Trì nhẹ nhàng ôm vai nàng, kéo nàng vào lòng.
+“Chúng ta đã báo thù cho nàng.”
+Khóe mắt Sở Ly đỏ bừng, nghẹn ngào nói:
+“Trước khi xuất phát, ta từng đến mộ Khương Thái phó dâng hương. Hai nén hương đều bị gãy. Khi ấy lòng ta vẫn luôn bất an. Thì ra, ân sư đã sớm báo trước.”
+Nguồn cơn của sự bất an hóa ra là ở đây.
+“Trận chiến này không thể tránh khỏi. Mọi chuyện đều không do con người quyết định. Tiểu Cửu, chúng ta không sinh ra trong thời thái bình, vậy chỉ có thể dùng mạng mình để đổi lấy một thời thái bình cho con cháu đời sau.”
+Bọn họ đánh xong trận này, con cháu sau này sẽ không cần đánh nữa.
+Cuối cùng vẫn phải có người hy sinh.
+Sở Ly hiểu đạo lý ấy.
+Nàng che mặt, giấu nước mắt, nhanh chóng điều chỉnh cảm xúc.
+“Ta sang chỗ Trọng Phong xem sao. Hoàng thúc xử lý chuyện phía sau đi.”
+Sở Đệ Trì đầy vẻ lo lắng nhìn nàng.
+“Ta đi cùng nàng.”
+“Không cần.”
+“Bẩm Nhiếp Chính Vương! Chúng ta đã bắt được đám dư nghiệt dưới trướng Tiêu Dao Vương, còn tìm thấy trong thư phòng của hắn một rương sổ sách dày!”
+Sở Ly nhìn những binh sĩ đang bận rộn, nói:
+“Hoàng thúc đi đi, nơi này không thể thiếu người.”
+Nói xong, nàng xoay người, đuổi theo hướng Trọng Phong vừa rời đi.
+Ra khỏi thành.
+Một toán binh sĩ nhặt xác Tiêu Dao Vương, áp giải đám tâm phúc của hắn. Khi đi ngang qua Sở Ly, nàng dừng bước nhìn lại.
+“Vương phi.”
+Đám binh sĩ đã đổi cách xưng hô.
+Tiêu Dao Vương chết không nhắm mắt, nhìn dáng vẻ ấy dường như vô cùng không cam lòng.
+Sở Ly lạnh nhạt nói:
+“Nếu hắn coi trọng chuyện toàn thây như vậy, thì cũng không cần để hắn được toàn thây nữa. Một nửa chôn cùng Sở Minh Hoa, nửa còn lại ném xuống sông cho cá ăn.”
+“Tuân lệnh, Vương phi.”
+Bọn họ nhận lệnh, kéo thi thể trở về thành.
+Sở Ly nhìn màn đêm cuồn cuộn sóng ngầm trước mắt, lòng dậy sóng, mãi không thể bình yên.
+Rốt cuộc đến bao giờ mọi chuyện mới kết thúc?
+Nàng đã quá mệt mỏi với cảnh chiến loạn liên miên, phiêu bạt khắp nơi.
+Đang đi về phía Trọng Phong chôn cất Sơ Nhất, bỗng nghe trong rừng truyền đến tiếng động.
+Sột soạt…
+“Ai ở đó?”
+Lời vừa dứt, nhuyễn kiếm đã rút khỏi vỏ.
+“Đừng giết ta!”
+Trong rừng, một bóng người hoảng hốt như nai con bị kinh sợ, ôm một bó cành cây, đôi mắt hạnh đầy vẻ sợ hãi nhìn nàng.
+Bốn mắt nhìn nhau.
+Trong mắt Sở Ly lập tức dâng lên sóng lớn ngập trời.
+“Ngươi…”
+Người này lại có dung mạo giống hệt nàng!
+Ngay cả giọng nói cũng giống đến chín phần.
+“Ngươi là ai?”
+Trên đời này sao lại có hai người giống nhau đến vậy?
+Thiếu nữ co rúm người lại, chiếc chuông bạc bên hông phát ra tiếng leng keng.
+“Ta tên Sở Ly, là Cửu hoàng tử đương triều, mẫu phi là Ôn phi nương nương…”
+“Toàn lời hồ ngôn!”
+Nếu người này là Sở Ly, vậy nàng là ai?
+Sở Ly lạnh lùng nhìn đối phương, nhuyễn kiếm giơ lên.
+“Yêu ngôn hoặc chúng, đáng chết!”
+“Ta thật sự là ngươi!”
+Thiếu nữ sợ hãi lùi hai bước, ngã ngồi xuống đất.
+“Ta là ký ức đã mất của ngươi. Ta chính là ngươi, ngươi chính là ta, Sở Ly.”
+Động tác của Sở Ly khựng lại.
+Nàng ta lại biết chuyện nàng đã quên mất một đoạn ký ức!
+Rốt cuộc nàng ta là ai?
+“Có phải nàng ấy rất giống muội không?”
+Phía sau đột nhiên vang lên một giọng nói khiến Sở Ly lập tức cảnh giác quay đầu.
+Dưới màn đêm, một bóng người quen thuộc chậm rãi bước tới.
+Sở Dạ Ly!
+Nàng giơ kiếm chỉ thẳng vào hắn.
+“Ngươi còn dám xuất hiện ở đây?”
+Nam nhân cười khẽ.
+“Vì sao lại không dám?”
+Hắn từng bước tiến tới.
+“Ta giúp muội diệt trừ Tiêu Dao Vương, muội định báo đáp ta thế nào?”
+“Đứng lại!”
+Sở Ly giữ khoảng cách với hắn.
+“Sở Dạ Ly, ngươi làm tất cả những việc này, rốt cuộc là vì mục đích gì?”
+“Ta không thích Sở Minh Hoa bắt nạt muội, cũng không thích bất kỳ ai bắt nạt muội. Tiểu Cửu, ta làm vậy chỉ đơn giản là muốn khiến muội vui.”
+Hắn dang hai tay, mỉm cười bước đến.
+“Chẳng lẽ muội không vui sao?”
+“Đứng lại!”
+Bước chân hắn vẫn không dừng.
+Sở Ly giơ kiếm, đang định lùi lại thì trước mắt đột nhiên tối sầm.
+Leng keng…
+Thiếu nữ kia tiến lại gần, chuỗi chuông bạc bên hông phát ra tiếng ngân lanh lảnh.
+“Chủ tử.”
+“Ngươi…”
+Sở Ly chợt cảm thấy cánh tay mềm nhũn, chỉ lơi lỏng trong khoảnh khắc đã bị nam nhân nắm lấy cổ tay, kéo mạnh vào lòng.
+“Tiểu Cửu, muội nhìn nàng xem, chẳng phải là một bảo vật hiếm có sao? Giọng nói, dung mạo, vóc dáng… gần như giống muội như đúc.”
+Bàn tay to lớn nâng cằm nàng lên, chậm rãi ngẩng đầu, nhìn về phía thiếu nữ, ghé sát bên tai nàng thì thầm như mê hoặc:
+“Đến cả muội nhìn thấy nàng cũng bắt đầu nghi ngờ chính mình. Vậy muội nói xem… Nhiếp Chính Vương có bị lừa hay không?”
+Toàn thân Sở Ly như bị rút sạch sức lực.
+Chuỗi chuông trên người nàng ta có vấn đề!
+“Sở… Dạ Ly… ngươi… muốn làm gì…”
+Nam nhân vòng tay từ phía sau ôm lấy eo nàng, kéo bung đai lưng.
+“Đến lúc khảo nghiệm Sở Đệ Trì rồi.”
+“Dừng tay… đừng chạm vào ta…”
+Hắn cười đầy ác ý.
+“Ta cứ muốn.”
+Vung tay một cái, hắn lột ngoại bào của nàng, ném cho thiếu nữ, rồi lấy y phục ngoài của thiếu nữ mặc lên người Sở Ly.
+—
+Cam Châu.
+Sở Đệ Trì đang thanh trừng Vương phủ Tiêu Dao Vương, tìm được vô số chứng cứ không ai biết đến, đủ để nhổ tận gốc thế lực Tiêu Dao Vương âm thầm gây dựng hơn hai mươi năm, quét sạch toàn bộ gian thần trong triều.
+Đúng lúc ấy, một ám vệ hoảng hốt chạy tới.
+“Không xong rồi! Chủ tử, Vương phi bị Đông Lăng Thái tử bắt đi!”
+Sắc mặt Sở Đệ Trì lập tức trầm xuống.
+Ám vệ hoảng loạn nói:
+“Đông Lăng Thái tử vốn đã rút quân. Chúng ta đều dồn sự chú ý vào trong thành Cam Châu, không ngờ hắn lại âm thầm dẫn người quay trở lại. Đến khi chúng ta phát hiện Vương phi gặp chuyện thì đã quá muộn!”
+Sở Đệ Trì ném tất cả mọi việc trong tay, lập tức lao ra ngoài.
+“Tập hợp nhân mã, theo bản vương xuất thành ngay!”
+“Tuân lệnh!”
+Chưa đầy nửa khắc, một đội nhân mã cưỡi khoái mã lao khỏi thành. Dưới sự dẫn đường của ám vệ, rất nhanh đã phát hiện đám người đang rút lui trong khu rừng dưới màn đêm.
+“Thả ta ra!”
+Sở Ly bị ghì trên lưng ngựa, tức giận đá chân liên tục.
+“Sở Dạ Ly, ngươi dám bắt ta, Hoàng thúc nhất định sẽ không tha cho ngươi! Ngươi cứ chờ chết đi!”
+“Vậy sao?”
+Sở Dạ Ly giữ chặt nàng.
+“Nàng tin hắn đến thế à? Lúc này hắn đang thanh trừng dư nghiệt ở Cam Châu, củng cố quyền lực, e rằng chẳng còn tâm trí mà để ý đến nàng.”
+Sở Ly giãy giụa.
+“Hoàng thúc thương ta nhất, người không hèn hạ như ngươi!”
+“Còn động đậy nữa, ta sẽ ném nàng xuống.”
+Lời vừa dứt, tiếng xé gió đã vang lên.
+Vút! Vút! Vút!
+“Bảo vệ chủ tử!”
+“Chủ tử, Nhiếp Chính Vương đuổi tới rồi!”
+Mấy tên ám vệ lập tức thúc ngựa rút kiếm, gạt bay những mũi tên đang bắn tới.
+Sở Dạ Ly ngoái đầu nhìn một cái.
+“Đến cũng không chậm. Rút!”
+Đoàn người lập tức tăng tốc.
+Tiếng vó ngựa hỗn loạn xé tan màn đêm, vang vọng giữa khu rừng tĩnh mịch. Hai tốp người trước sau bám sát nhau, không ngừng truy đuổi. Mưa tên vẫn liên tiếp bắn tới, khiến bầu không khí càng thêm căng thẳng.
+Chiến mã phi như bay.
+Đuổi chừng ba khắc, cuối cùng lại chạy đến tận cùng khu rừng, trước một vách núi dựng đứng.
+“Không ổn! Phía trước hết đường rồi!”
+Đám ám vệ đang bảo vệ Sở Dạ Ly, chuẩn bị đổi hướng rút lui thì Sở Đệ Trì đã dẫn người đuổi tới, tạo thành một vòng cung, bao vây toàn bộ đám người Sở Dạ Ly bên mép vực.
+Tất cả cung tiễn thủ đều đã vào vị trí.
+Sở Đệ Trì ghìm cương ngựa.
+Điều đầu tiên hắn nhìn chính là Sở Ly.
+“Hoàng thúc, cứu… ưm!”
+Lời còn chưa dứt, hai tay nàng đã bị Sở Dạ Ly bẻ quặt ra sau, kéo mạnh vào lòng.
+“Tiểu Cửu, nàng thật thiên vị. Ở cạnh ta, ta đã từng làm hại nàng sao? Vậy mà nàng lại kêu cứu?”
+Sở Đệ Trì lạnh lùng nhìn hắn.
+“Sở Dạ Ly, ngươi còn dám quay lại?”
+“Nơi nào có Tiểu Cửu, cho dù vào sinh ra tử, ta cũng cam tâm tình nguyện.”
+Sở Dạ Ly mỉm cười, cưỡng ép ghì chặt Sở Ly đang không ngừng giãy giụa. Trong mắt Sở Đệ Trì, hành động ấy chẳng khác nào sự khiêu khích trắng trợn.
+“Đây là Đại Sở, không phải Nam Man. Thả nàng ra, bản vương sẽ để cho ngươi một con đường sống.”
+Sở Dạ Ly nhướng mày.
+“Đó là thái độ của Nhiếp Chính Vương khi cầu người sao?”
+“Tiểu Cửu, ngươi xem đi. Trong lòng hắn, ngươi cũng chỉ có chút trọng lượng ấy mà thôi. Nếu đêm nay ta không thể thoát khỏi kiếp nạn này…”
+Hắn hơi nghiêng đầu, nhìn xuống vực sâu không thấy đáy phía sau lưng.
+“Hay là… chúng ta cùng sinh cùng tử, làm một đôi uyên ương lưu vong?” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_333.html" class="btn">‹ Trước</a>
+            <a href="chuong_335.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

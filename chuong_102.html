@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 102</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 102</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_101.html" class="btn">‹ Trước</a>
+            <a href="chuong_103.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 102: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 102: Tin tưởng lẫn nhau là bước đầu tiên để hai người đến gần nhau
+Đối với một người đã chết, lời nguyền tàn nhẫn nhất chẳng gì hơn chết không toàn thây, bị nghiền xương thành tro. Còn đối với người còn sống, lời nguyền độc ác nhất, chẳng gì hơn đoạn tử tuyệt tôn, vô hậu mà chung.
+Từ xưa đã có câu: Bất hiếu có ba điều, vô hậu là tội lớn nhất.
+Hắn còn trẻ như vậy…
+“Ánh mắt đó của ngươi là sao?” Sở Đệ Trì đột nhiên nhìn chằm chằm nàng, “Thương hại?”
+Sở Ly hơi nghẹn lời, lập tức thu hồi ánh mắt: “Ta…”
+Hắn bóp lấy cằm nàng: “Ngươi cho rằng hắn không làm nổi loại chuyện đó?”
+Sở Ly hé môi, nhưng lại cứng họng.
+Chuyện triều chính, từ trước đến nay nàng chưa từng nhúng tay.
+Âm và dương trong thiên hạ vốn luôn đối lập. Sở Hoàng vì xã tắc mà có thể xử tử một đám tội phạm, nhưng đối với thân quyến của họ, Sở Hoàng chính là kẻ thù không đội trời chung.
+Thiện ác, trắng đen, xưa nay vốn khó lòng phân định.
+“Ta không biết.”
+“Hắn là phụ hoàng tốt của ngươi, lẽ nào ngươi chẳng hiểu hắn lấy một chút?”
+Hắn phất tay áo, viên tị tử dược rơi xuống đất, lăn mấy vòng. Đáy mắt nam nhân phủ đầy vẻ âm trầm.
+“Năm đó, hắn ở tiền triều từng bước leo lên ngôi vị Tể tướng, nhưng dã tâm ngập trời, mưu triều soán vị, sửa đổi sử sách. Ngươi nói xem, một ngày nào đó, vì để củng cố quyền lực, hắn có bán đứng ngươi hay không?”
+Sở Ly mím môi.
+“Không biết.”
+“Là không biết, hay là không muốn nói?”
+Sở Hoàng là người coi trọng lợi ích, điều này Sở Ly hiểu rất rõ.
+Có lẽ khi còn trẻ tạo quá nhiều sát nghiệt, hai tay nhuốm quá nhiều máu tanh, nên nay tuổi đã cao, tính tình của Sở Hoàng ôn hòa hơn, thích cười thích nói. Thế nhưng, chỉ nhìn cách ông xử lý mấy vị hoàng tử, thủ đoạn dứt khoát gọn gàng ấy cũng đủ thấy, cho dù là hoàng tử, cũng không thể lay chuyển hoàng quyền.
+Nếu một ngày nào đó, nàng thật sự có thể cống hiến to lớn cho hoàng quyền, Sở Hoàng nhất định sẽ để nàng hy sinh.
+Sự yêu thương, thiên vị đều ban cho các hoàng tử.
+Đến khi cần thiết, các hoàng tử cũng phải báo đáp lại.
+Trên đời này, nào có ai vô duyên vô cớ mà moi tim moi phổi đối tốt với một người khác?
+“Tiền triều diệt vong, hắn hạ chỉ giết hơn chín trăm người của hoàng thất tiền triều. Từ dòng dõi trực hệ của hoàng thất, đến các vị Thân vương, chi thứ, rồi cả những thân thích xa của hoàng gia, hễ ai có quan hệ huyết thống với hoàng thất tiền triều, đều bị giết sạch.”
+Bao gồm cả những hài nhi còn trong tã lót.
+“Cho dù bản vương là thân đệ đệ cùng một mẹ sinh ra với hắn, cũng khó mà may mắn thoát khỏi.”
+Giọng nói nhàn nhạt ấy lại khẽ gợn lên từng tầng sóng trong lòng Sở Ly.
+Những chuyện này, những lời này, trước đây nàng chưa từng nghe qua.
+Từ nhỏ đến lớn, phụ hoàng vẫn luôn ôn hòa khiêm nhường, đối đãi với nàng vô cùng tốt. Nhưng những lời của Sở Đệ Trì lại khiến nàng có vài phần mê mang.
+Thế nhưng, hắn cũng từng nói…
+Đừng tin bất kỳ ai.
+Sở Ly ổn định tâm thần, bình tĩnh hỏi:
+“Ngươi nói với ta những chuyện này để làm gì?”
+“Chẳng phải ngươi muốn tìm đường lui sao? Đây chính là đường lui.”
+Ý hắn là…
+“Một con chó ngồi lên long ỷ còn tốt hơn hắn.”
+Sở Đệ Trì nói xong, lại bồi thêm một câu:
+“Bản vương sẽ nâng đỡ ngươi lên ngôi.”
+Lời này…
+Ý là nàng là chó sao?
+Sở Ly trừng hắn một cái.
+“Đừng tưởng ta không biết ngươi đang tính toán điều gì. Ngươi muốn mượn tay ta, biến ta thành con rối của ngươi. Người có dã tâm rõ ràng là ngươi, vậy mà còn đứng sau lưng nói xấu Hoàng thượng. Người ta không tin nhất, chính là ngươi!”
+“Vậy ngươi có tin bản vương bây giờ có thể làm ngươi khóc không?”
+Sở Ly khựng lại.
+Đồ lưu manh!
+Nàng lập tức giơ tay định tát hắn một cái, nhưng cổ tay đã bị hắn giữ lấy.
+“Xem ra, ngươi vẫn có vài phần tin tưởng bản vương.”
+Nam nhân vô cùng hài lòng, khẽ nheo đôi mắt.
+Không tệ.
+“Tin tưởng lẫn nhau là bước đầu tiên để hai người đến gần nhau. Chỉ bằng phần tâm ý này của ngươi, bản vương cũng sẽ không lừa gạt ngươi. Mỗi một câu bản vương nói với ngươi, đều là thật.”
+“Ngươi nói là thật thì là thật sao? Ta cứ không tin ngươi đấy.”
+Nàng ngẩng cao cằm, khóe môi khẽ nhếch, ánh mắt đầy vẻ bướng bỉnh và ngang ngạnh. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_101.html" class="btn">‹ Trước</a>
+            <a href="chuong_103.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

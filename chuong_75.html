@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 75</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 75</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_74.html" class="btn">‹ Trước</a>
+            <a href="chuong_76.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 75: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 75: Ta đoạn tụ chỗ nào?
+Hôm sau.
+Dùng xong bữa sáng, Sở Ly lập tức xuất cung, đến biệt uyển ngoại ô, dặn Tần Mục Vũ tăng cường đề phòng. Phía Phương gia và Thất hoàng tử nhất định sẽ không chịu bỏ qua, cần phòng hoạn trước khi chưa xảy ra.
+Sau vụ hỏa hoạn ở Tướng quân phủ, Tần Mục Vũ từ lâu đã nâng cao cảnh giác.
+Chỉ là, mấy ngày tiếp theo đều bình yên vô sự.
+Thất hoàng tử không có động tĩnh.
+Phía Nhiếp Chính Vương cũng chẳng có động tĩnh.
+Trái tim luôn treo lơ lửng của Sở Ly vừa nghi hoặc, vừa âm thầm suy đoán. Nàng còn chưa lần ra đầu mối, thì gia đinh phủ họ Ôn đã đến bẩm báo:
+“Nô tài thỉnh an Cửu hoàng tử điện hạ.”
+“Cửu hoàng tử, đêm mai là Tết Trung thu. Tiểu thư mời ngài cùng dạo phố, ngắm trăng, thưởng hoa đăng.”
+Sở Ly nhận lời.
+Một năm chỉ có một đêm Trung thu.
+Trăng tròn.
+Người đoàn viên.
+Đêm ấy.
+Một vầng minh nguyệt tròn vành vạnh treo cao giữa trời, ánh trăng phủ khắp đại địa, soi tỏ cảnh ca múa thái bình, phồn hoa náo nhiệt của kinh thành.
+Khắp các ngõ lớn ngõ nhỏ, người người chen vai thích cánh, bá tánh tưng bừng đón lễ, tiếng cười nói vang dội:
+“Bán hoa đây!”
+“Bán đèn đây!”
+“Bán hoa đăng đây!”
+Trước mỗi gian hàng đều đông nghịt người.
+Tiếng rao hàng, tiếng chuyện trò, tiếng đoán đố đèn, tiếng vui đùa…
+Nhiều không kể xiết.
+Một tòa trà lâu có vị trí rất cao.
+Từ nhã gian trên tầng bốn phóng mắt nhìn xuống, có thể thu trọn cảnh phồn hoa của cả con phố vào trong tầm mắt.
+Tiêu Dạ Hành thong thả nhấp trà.
+“Vết thương của ngươi hồi phục không tệ, gần như chẳng còn nhìn thấy sẹo nữa.”
+Bạch Cẩm Y nằm nhoài bên cửa sổ cắn hạt dưa.
+“Ngươi tưởng danh tiếng đại đệ tử Thần Y cốc của ta là đồ giấy sao?”
+Sở Đệ Trì nhàn nhã uống trà.
+Lười đến mức chẳng buồn động đậy.
+Bạch Cẩm Y nhìn dòng người qua lại trên phố, bỗng trợn tròn mắt.
+“Kia chẳng phải Cửu hoàng tử sao?”
+Sở Đệ Trì ngẩng đầu.
+“Ồ, nhìn nhầm rồi, Tiêu Dạ Hành, là đại ngoại sinh của ngươi.”
+“Đại ngoại sinh của ta?”
+Tiêu Dạ Hành đứng dậy, bước tới nhìn thử.
+Bạch Cẩm Y chỉ xuống.
+“Ở kia.”
+Quả nhiên là Tần Mục Vũ.
+Bên cạnh còn có Tần Mục Tuyết.
+Hai huynh muội đứng giữa biển người chen chúc, khí chất thanh quý, dung mạo xuất chúng.
+Dù ở nơi đông đúc, vẫn có cảm giác hạc giữa bầy gà.
+“Đại ca, chúng ta mua một chiếc mặt nạ đi. Con thỏ nhỏ này đáng yêu quá, A Ly ca ca nhất định sẽ thích.”
+Tần Mục Vũ đáp:
+“Nàng chỉ thích thỏ vị bột thì là với vị cay tê thôi.”
+“?”
+Đúng là chẳng hiểu phong tình.
+Tần Mục Tuyết lấy túi tiền ra.
+“Muội cứ không nghe huynh đấy. Mặt nạ thỏ này đẹp lắm, muội mua một cái cho A Ly ca ca, tiện thể mua thêm ít bánh Nguyệt Hoa.”
+Lúc này.
+Trên một con phố khác cũng đông kín người.
+Sở Ly đang cùng Ôn Chỉ Tịch và Ôn Nhã dạo chơi.
+“Đông vui quá!”
+Ôn Nhã nhìn ngó khắp nơi, đến mức chẳng biết nên nhìn chỗ nào trước.
+Ôn Chỉ Tịch xách một chiếc đèn hoa sen trong tay.
+Đi ngang một sạp đoán đố đèn, lập tức hào hứng chạy đến góp vui.
+Hai cô nương xách váy.
+Vừa chạy vừa nhảy.
+Thật ra…
+Sở Ly cũng rất muốn chạy nhảy.
+Mỗi năm dự Trung thu yến, nàng mang thân phận hoàng tử, bắt buộc phải tham gia.
+Chưa từng được cảm nhận bầu không khí dân gian.
+Nhưng…
+Trước mặt hai vị cô nương, nàng là nam tử, lại còn là biểu huynh.
+Không thể không giữ vẻ trầm ổn.
+Chỉ có thể lặng lẽ đi phía sau.
+Xách hoa đăng.
+Mua đồ.
+Trả bạc.
+Nàng bỗng cảm thấy…
+Làm nam nhân cũng thật mệt.
+“Biểu huynh, huynh xem bánh Nguyệt Hoa kia kìa, làm bằng hoa tươi, đẹp quá!”
+“Biểu huynh, bên kia có trò ném vòng!”
+“Biểu huynh…”
+Hai tay Sở Ly đã kín đồ.
+“Đến đây, đến đây.”
+“Biểu huynh, huynh nhìn câu đố đèn ở gian hàng này đẹp quá. Chúng ta đi đoán thêm, lấy thêm một chiếc đèn nữa nhé!”
+“Nhưng hai muội đã đoán đúng mười bảy câu đố rồi mà…”
+“Biểu huynh~”
+“Được được, đi, đi.”
+Trong tay Sở Ly xách bốn chiếc hoa đăng.
+Thắt lưng cắm ba chiếc.
+Nách kẹp bốn chiếc.
+Cổ còn treo sáu chiếc.
+Cả người gần như biến thành một cây chổi lông gà.
+Hoa đăng ở gian hàng này làm cực kỳ tinh xảo.
+Có hình động vật.
+Có hình hoa cỏ.
+Còn có cả hình món ăn.
+Rất thú vị.
+Trò chơi cũng mới lạ.
+Là đối thơ.
+Ai thắng sẽ nhận được phần thưởng tương ứng.
+Ôn Chỉ Tịch và Ôn Nhã vui vẻ chen vào.
+Hớn hở tham gia đối thơ.
+Sở Ly đứng bên cạnh xem.
+Đêm Trung thu.
+Có không ít đôi tình nhân hẹn nhau du ngoạn.
+Bày tỏ tâm ý.
+Cũng có rất nhiều cô nương tặng lễ vật gửi gắm tương tư.
+Nàng nhìn một lúc.
+Bỗng phát hiện.
+Bao năm qua.
+Nàng chưa từng nhận được sự ái mộ hay thiện cảm của bất kỳ cô nương nào.
+Lẽ nào…
+Nàng không có chút sức hút nào sao?
+Lẽ nào trong Đế đô.
+Không có cô nương nào thích vị Cửu hoàng tử đương triều ôn nhu, chu đáo, anh tuấn, lại nhiều tiền?
+Nghĩ vậy.
+Miệng nàng cũng vô thức nói ra.
+Mấy vị cô nương đang cùng nhau du ngoạn bên cạnh liền đáp:
+“Cửu hoàng tử?”
+“‘Hắn’ còn nhỏ tuổi quá. Hơn nữa còn nghe nói ‘hắn’ có tật đoạn tụ. Ai mà thích ‘hắn’ chứ?”
+“Đúng vậy. Với tuổi của ‘hắn’, nếu là đoạn tụ, biết đâu còn là người nằm dưới ấy chứ.”
+“Ta nói cho các ngươi nghe nhé. Lần Thu săn trước, trong đội nghi trượng của hoàng gia, ta nhìn thấy Cửu hoàng tử từ rất xa. Dung mạo thanh tú như vậy. Nếu gả cho ‘hắn’, ta còn sợ ‘hắn’ phải ăn bám ấy.”
+“Chính thế.”
+“?”
+Sắc mặt Sở Ly lập tức đỏ bừng.
+Chẳng khác nào Tom mèo nổi giận.
+Có thể thấy bằng mắt thường.
+Danh tiếng của nàng ở bên ngoài…
+Lại thành thế này sao?
+Nàng đoạn tụ chỗ nào?
+Kẻ nào tung tin đồn thất thiệt vậy?
+“Biểu huynh~”
+“Đến đây.”
+Sở Ly lập tức thu lại vẻ mặt, nghiêng người bước tới.
+Ôn Nhã khoác lấy cánh tay nàng, nũng nịu nói:
+“Biểu huynh, muội thích chiếc mặt nạ sư tử kia quá. Nhưng muội thật sự nghĩ không ra câu thơ nào về Trung thu nữa.”
+Đối diện.
+Một vị công tử trẻ tuổi cất cao giọng:
+“Kiều Kiều biểu muội cứ yên tâm. Muội thích chiếc mặt nạ sư tử ấy, ta nhất định sẽ thắng về cho muội.”
+Mặt nạ bình thường đều là hình thỏ, hổ, hồ ly và những con vật đáng yêu.
+Chỉ riêng chiếc mặt nạ sư tử này.
+Màu sắc thiên trầm.
+Râu bờm phủ kín.
+Mày rậm uy nghi.
+Thoạt nhìn giống hệt một con hùng sư oai phong.
+Vô cùng nổi bật.
+Sở Ly cười nói:
+“Chẳng phải chỉ là thơ về Trung thu sao?”
+Nàng tiện tay liền ngâm một bài.
+Vị công tử trẻ kia không chịu thua, lập tức đối lại một bài.
+Sở Ly lại ngâm thêm một khúc.
+Hai người qua lại.
+Liên tiếp năm hiệp.
+Người vây xem dần dần nhiều hơn.
+Còn có người lớn tiếng vỗ tay khen hay.
+Hai người thật sự đấu thơ.
+Lại thêm ba hiệp nữa.
+Trán vị công tử trẻ đã lấm tấm mồ hôi.
+Tốc độ cũng dần chậm lại.
+Sở Ly cất cao giọng, lại ngâm một khúc:
+“Ức đối Trung thu đan quế tùng,
+Hoa tại bôi trung, nguyệt tại bôi trung;
+Mãn đường duy hữu chúc hoa hồng,
+Bôi thả tòng dung, ca thả tòng dung.”
+“Hay!”
+“Hay lắm!”
+“Bài thơ hay!”
+“Đến lượt công tử rồi.”
+Vị công tử trẻ mồ hôi đầy đầu.
+Vắt óc suy nghĩ rất lâu.
+Nhưng vẫn chẳng nghĩ ra được câu nào.
+Cuối cùng đành ủ rũ nhận thua.
+Ông chủ cười ha hả.
+Gỡ chiếc mặt nạ đầu sư tử xuống.
+Trao cho Ôn Nhã.
+“Biểu huynh giỏi quá!”
+“Vị công tử này quả thật tuấn tú phi phàm, xuất khẩu thành chương, thật lợi hại.”
+“Giỏi thật!”
+Xung quanh.
+Tiếng vỗ tay và lời khen ngợi nối tiếp không dứt.
+Khóe mày Sở Ly khẽ nhướng.
+Đột nhiên cảm thấy…
+Làm nam nhân cũng khá tốt.
+Cảm giác tỏa ra sức hút.
+Được một đám cô nương vây quanh ngưỡng mộ, sùng bái…
+Thật sự quá sảng khoái.
+Ha ha ha!
+“Danh tiếng Cửu hoàng tử đương triều của ta, há phải hư truyền!”
+“Vị công tử này thật lợi hại… tránh ra một chút, chúng ta đi thôi.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_74.html" class="btn">‹ Trước</a>
+            <a href="chuong_76.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,655 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 94</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 94</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_93.html" class="btn">‹ Trước</a>
+            <a href="chuong_95.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 94: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 94: Nếu có ngày ta ngồi lên hoàng vị, việc đầu tiên chính là ban chết cho ngươi
+Sở Hoàng ngồi ngay ngắn hơn đôi chút.
+“Truyền hắn vào.”
+“Vâng.”
+Rất nhanh, Vương Đức Phúc dẫn Sở Tây Lăng tiến vào.
+Vừa bước vào, hắn nhanh chóng liếc nhìn Lục Chiêu Dương một cái, rồi mới tiến lên hành lễ:
+“Nhi thần thỉnh an Phụ hoàng.”
+“Tam Hoàng tử.”
+Sở Hoàng đặt tay lên tay vịn ghế.
+“Tam Hoàng tử phi vẫn chưa an táng, ngươi vào cung là có chuyện gì?”
+Sở Tây Lăng cúi đầu đáp:
+“Tang nghi bận rộn, thân thể nhi thần có chút bất ổn, nên đến Thái Y viện lấy thuốc. Vốn định xuất cung, lại nghe chuyện của Tứ đệ…”
+“Tứ đệ hồ đồ… Hắn vậy mà lại đối với Cửu đệ…”
+Nói đến đây, hắn tiếc nuối lắc đầu.
+Sở Hoàng nhìn hắn.
+“Để hắn đến biên quan chịu chút khổ cực, cũng không phải chuyện xấu.”
+“Ngược lại là ngươi, phải chú ý thân thể.”
+“Đến Thái Y viện lấy những thuốc gì?”
+Sở Tây Lăng đáp:
+“Trương Ngự y kê cho nhi thần một phương thuốc an thần, bổ khí.”
+“Trẫm thấy sắc mặt ngươi không tốt.”
+“Chuyện Tam Hoàng tử phi, ngươi cũng đừng quá đau buồn.”
+Nghe vậy, ánh mắt Sở Tây Lăng hơi tối đi, khóe mắt dần đỏ lên.
+Tân hôn mất thê.
+Quả thực khiến người ta thương cảm.
+Vốn dĩ Sở Hoàng rất thương đứa con này.
+Để an ủi hắn, ngài còn giao cho hắn chủ trì lễ tế Trùng Dương, một đại sự vô cùng quan trọng.
+Nhưng…
+Sau khi nghe những lời Sở Ly nói…
+Chỉ e đám Hoàng tử này…
+Không có ai là đèn cạn dầu.
+Sở Hoàng lên tiếng:
+“Trẫm thấy ngươi quá mức tưởng nhớ Tam Hoàng tử phi, lại thêm thân thể không khỏe.”
+“Trẫm nghĩ đi nghĩ lại…”
+“Việc tế lễ Trùng Dương vẫn nên giao cho Lục Hoàng tử xử lý thì hơn.”
+Thân thể Sở Tây Lăng khẽ cứng lại, đáy mắt kín đáo lướt qua một tia dị sắc.
+“Phụ hoàng…”
+“Như vậy, ngươi cũng có thể an tâm lo liệu tang nghi.”
+Sở Tây Lăng mím môi.
+Hắn hiểu rõ tính tình Phụ hoàng.
+Một khi đã quyết định…
+Không ai có thể thay đổi.
+Chỉ e chuyện của Sở Hạo Nguyệt đã ảnh hưởng đến ngài.
+Ánh mắt khẽ lóe lên.
+Hắn đột nhiên nói:
+“Phụ hoàng, theo ý nhi thần…”
+“Chi bằng giao cho Tiểu Cửu.”
+Sở Hoàng hơi kinh ngạc.
+“Giao cho Tiểu Cửu?”
+Theo quy củ chín vị Hoàng tử luân phiên mỗi năm một lần.
+Năm nay vốn phải đến lượt Lục Hoàng tử.
+“Vâng.”
+Sở Tây Lăng chậm rãi giải thích:
+“Những năm trước, lễ tế Trùng Dương, nhi thần cùng các vị Hoàng huynh, Hoàng đệ đều đã từng chủ trì.”
+“Chỉ có Tiểu Cửu khi ấy còn quá nhỏ.”
+“Nay ‘đệ ấy’ vừa qua tuổi thúc phát, chính là lúc có thể gánh vác trọng trách này.”
+“Huống hồ…”
+“Lục đệ đã chủ trì lễ tế Trùng Dương hai lần.”
+“Còn Cửu đệ chưa từng một lần.”
+“Năm nay giao cho Cửu đệ, nghĩ rằng Lục đệ cũng sẽ không có ý kiến.”
+Sở Hoàng nghe xong, cẩn thận suy nghĩ.
+Quả thực có vài phần hợp lý.
+Đúng vậy.
+Tiểu Cửu nay cũng đã trưởng thành.
+Đã đến lúc nên rèn luyện thật tốt.
+“Vậy thì giao cho Tiểu Cửu.”
+Sở Tây Lăng chắp tay:
+“Phụ hoàng anh minh!”
+⸻
+“Cái gì?!”
+Thám tử vừa truyền tin đến.
+Lục Hoàng tử lập tức đập bàn đứng bật dậy.
+“Lễ tế Trùng Dương là đại sự trọng yếu như vậy.”
+“Phụ hoàng vì thương Tam Hoàng huynh vừa tân hôn đã mất thê, giao cho huynh ấy xử lý thì cũng thôi.”
+“Bây giờ…”
+“Ngay cả Sở Ly cũng dám cưỡi lên đầu ta mà tác oai tác quái!”
+Sĩ khả nhẫn.
+Thục bất khả nhẫn!
+Quá đáng!
+Quá đáng lắm!
+Nhị Hoàng tử nói:
+“Theo cách luân phiên, năm nay rõ ràng đến lượt Lục đệ chủ trì.”
+“Không ngờ Phụ hoàng lại thiên vị Cửu đệ như vậy.”
+“Hoàn toàn không để ý đến cảm nhận của Lục đệ.”
+Lời này chẳng khác nào đổ thêm dầu vào lửa.
+Lục Hoàng tử càng thêm tức giận.
+Sở Uyên Trì thần sắc trầm ổn, nhìn tiểu thái giám đang quỳ dưới đất.
+“Rốt cuộc là chuyện gì?”
+“Ngươi kể lại từng việc một.”
+Tiểu thái giám chậm rãi kể:
+“Ban đầu Hoàng thượng giao việc tế lễ cho Tam Hoàng tử.”
+“Nhưng Tam Hoàng tử còn phải lo tang sự của Tam Hoàng tử phi.”
+“Không đủ sức phân thân.”
+“Cho nên đã tiến cử Cửu Hoàng tử với Hoàng thượng.”
+Nhị Hoàng tử nói:
+“Cửu đệ từ trước đến nay chưa từng nhúng tay vào triều chính.”
+“Cũng chưa từng tham dự tranh đoạt quyền mưu.”
+“Bao năm nay ta vẫn chưa từng để ý đến ‘đệ ấy’.”
+“Không ngờ…”
+“‘Đệ ấy’ lại là người cùng phe với Tam Hoàng huynh.”
+Lục Hoàng tử đập mạnh xuống bàn.
+“Đúng là không nhìn ra!”
+“‘Đệ ấy’ còn có mưu tính như vậy!”
+Bọn họ đều đã xem thường Sở Ly.
+Chỉ một chút sơ suất.
+Đã để “đệ ấy” đắc ý.
+Nhị Hoàng tử thở dài, lại nói:
+“Nếu Cửu đệ hiểu chuyện…”
+“Tự nhiên nên trả lại việc này cho Lục đệ.”
+“Nhưng…”
+“Đủ rồi.”
+Sở Uyên Trì ngẩng mắt, cắt ngang lời hai người.
+“Là thật cũng được.”
+“Không phải cũng được.”
+“Nếu đã là ý của Phụ hoàng.”
+“Thì không cần nhắc lại.”
+“Có lẽ…”
+“Phụ hoàng chỉ muốn rèn luyện Tiểu Cửu một phen mà thôi.”
+“Đại Hoàng huynh cứ vậy bỏ qua sao?”
+Nhị Hoàng tử chất vấn.
+“Dựa vào đâu lấy công việc của Lục đệ…”
+“Để Cửu đệ luyện tập?”
+Sở Uyên Trì cất cao giọng, dập tắt câu chuyện.
+“Nếu bất mãn…”
+“Thì đến nói với Phụ hoàng.”
+“Bàn tán sau lưng không giải quyết được vấn đề.”
+Nhị Hoàng tử lập tức im bặt.
+“Tiểu Lục.”
+“Đệ cũng vậy.”
+“Hôm nay bước ra khỏi cánh cửa này.”
+“Không được nhắc lại chuyện này nữa.”
+Lục Hoàng tử mím môi.
+Qua hồi lâu.
+Mới miễn cưỡng lẩm bẩm:
+“Đệ biết rồi.”
+“Được rồi.”
+“Giải tán đi.”
+Sở Uyên Trì nâng chén trà, nhấp một ngụm.
+Bộ dáng trầm tĩnh, nội liễm ấy…
+Không ai biết hắn đang suy nghĩ điều gì.
+Hai người rời đi.
+Trên đường.
+Nhị Hoàng tử hỏi:
+“Lục đệ định cứ thế bỏ qua sao?”
+Lục Hoàng tử quay đầu nhìn hắn.
+“Đại Hoàng huynh chẳng phải bảo đừng nhắc nữa sao?”
+Nhị Hoàng tử mỉm cười.
+Trong đôi mắt ôn hòa ánh lên vẻ giả tạo.
+“Đại Hoàng tử là trưởng tử của Phụ hoàng.”
+“Các đại thần đều ký thác kỳ vọng vào huynh ấy.”
+“Đương nhiên phải trầm ổn, biết nhẫn nhịn.”
+“Nhưng…”
+“Lục đệ và Đại Hoàng huynh cùng một mẫu hậu.”
+“Hôm nay Sở Ly dám khiêu khích uy nghiêm của đệ.”
+“Ngày mai…”
+“Đệ ấy cũng dám khiêu khích Đại Hoàng huynh.”
+“Hôm nay ‘đệ ấy’ tranh quyền chủ trì lễ tế Trùng Dương.”
+“Ngày mai…”
+“Biết đâu sẽ tranh luôn hoàng vị với Đại Hoàng huynh.”
+Nghe vậy.
+Lửa giận vừa mới nguôi của Lục Hoàng tử lại bùng lên.
+Hắn vốn tính tình nóng nảy.
+Từ nhỏ được Đại Hoàng tử che chở.
+Bởi vậy càng thêm kiêu căng, lỗ mãng.
+Được lắm, Sở Ly!
+Trước kia ngươi im hơi lặng tiếng.
+Chưa từng khiến ai chú ý.
+Giờ lại to gan lớn mật.
+Dám tranh đồ với ta!
+Muốn chết!
+Gan chó thật lớn!
+“Đại Hoàng huynh nhân từ.”
+“Khắp nơi đều nhường nhịn.”
+“Còn ta…”
+“Tuyệt đối sẽ không dễ dàng tha cho ‘đệ ấy’!”
+Cứ chờ xem!
+⸻
+Chiêu Lan điện.
+Mặt trời lên rồi lại lặn.
+Lại sang một ngày mới.
+“Chủ tử, vết thương này phải dưỡng thật cẩn thận.”
+“Ngàn vạn lần đừng để dính nước.”
+“Coi chừng để lại sẹo.”
+Cẩu Bát khom người, cẩn thận thay thuốc cho Sở Ly.
+Trên cánh tay trái.
+Một vết cắt dài do chủy thủ để lại.
+Không sâu.
+Nhưng rất dài.
+Bởi vậy nhìn vô cùng ghê người.
+Đó là do chính nàng tự rạch.
+Nặng hay nhẹ.
+Trong lòng nàng tự biết.
+Sở Ly nhìn bức tường cao ngoài cửa sổ.
+Bầu trời vuông vức trên đỉnh cung thành.
+“Tứ Hoàng tử chắc đã lên đường rồi nhỉ?”
+Cẩu Bát đáp:
+“Giờ Thìn đã rời kinh.”
+Chuyến đi này ngàn dặm xa xôi.
+Không có chiếu triệu thì không được hồi kinh.
+Lần gặp lại…
+Còn chẳng biết là bao giờ.
+Nhớ lại hôm qua.
+Nàng cầm chủy thủ tự đâm vào cánh tay mình…
+Là chính tay nàng tiễn Sở Hạo Nguyệt rời khỏi kinh thành.
+Thuận tiện…
+Còn vạch trần Sở Tây Lăng.
+Kể từ khi lựa chọn con đường này…
+Nàng đã không còn đường lui.
+Huống hồ…
+Chỉ có con đường này.
+Mới giúp nàng hoàn thành điều mình muốn.
+Ngoài cửa.
+Noãn Ngọc bước tới.
+“Chủ tử.”
+“Tam Hoàng tử đến thăm người.”
+Tam Hoàng tử và Tứ Hoàng tử vốn luôn thân thiết.
+Hai người cùng một phe.
+Hiện giờ Tứ Hoàng tử bị đày khỏi kinh.
+Hắn sao có thể thật lòng đến thăm nàng?
+Ban đầu nàng không muốn gặp.
+Nhưng nghĩ ngợi một lát.
+Vẫn nói:
+“Mời huynh ấy vào.”
+Cẩu Bát nhanh chóng băng bó xong rồi lui sang một bên.
+Sở Ly khẽ vuốt lớp băng trên cánh tay.
+Ngước mắt nhìn người nam nhân đang bước vào.
+“Tam Hoàng huynh.”
+Sở Tây Lăng mặc triều phục màu tím nhạt.
+Trông như vừa hạ triều đã lập tức đến đây.
+Gương mặt vẫn ôn nhu vô song.
+Mỗi khi mỉm cười.
+Đôi mắt như chứa đầy ánh mặt trời.
+“Cửu đệ.”
+“Nghe nói đệ bị thương.”
+“Đã khá hơn chưa?”
+“Đa tạ Tam Hoàng huynh quan tâm.”
+“Chỉ là vết thương ngoài da.”
+“Không đáng ngại.”
+Sở Tây Lăng cầm theo một túi thuốc.
+Đưa cho Cẩu Bát.
+“Đây là phương thuốc Thái Y viện kê.”
+“Đợi vết thương đóng vảy.”
+“Nghiền nhỏ bôi mỗi ngày.”
+“Có công hiệu tiêu sẹo tốt nhất.”
+Cẩu Bát hai tay nhận lấy.
+“Đa tạ Tam Hoàng tử.”
+Sở Tây Lăng bước đến ngồi cạnh nàng.
+“Phụ hoàng giao đệ chủ trì lễ tế Trùng Dương.”
+“Còn nửa tháng nữa.”
+“Cửu đệ vẫn nên mau chóng dưỡng thương.”
+“Như vậy mới không phụ sự kỳ vọng của Phụ hoàng.”
+Việc này.
+Tối qua Sở Ly đã biết.
+Thánh chỉ của Sở Hoàng đã ban.
+Nàng không có quyền từ chối.
+“Phụ hoàng cũng là thương Tam Hoàng huynh.”
+“Sợ huynh bận không xuể.”
+“Mới ném việc này cho đệ.”
+“Nói cho cùng…”
+“Phụ hoàng vẫn thiên vị Tam Hoàng huynh hơn.”
+Hai huynh đệ trò chuyện.
+Đều mang theo nụ cười.
+Nhưng từng câu đều âm thầm giao phong.
+Sở Ly trước đây chưa từng phát hiện.
+Sở Tây Lăng lại là người giỏi nhẫn nhịn đến vậy.
+Mọi chuyện đã đến nước này.
+Trên mặt hắn vẫn không hề lộ chút tức giận.
+Thậm chí…
+Còn lấy từ trong tay áo ra một quyển trúc giản.
+“Đây là quy trình sắp xếp lễ tế Trùng Dương những năm trước.”
+“Cùng những điểm cần chú ý.”
+“Ta đều đã ghi chú cẩn thận.”
+“Nghĩ rằng sẽ giúp ích cho Cửu đệ.”
+Để lại trúc giản.
+Lại nói thêm vài câu quan tâm.
+Rồi hắn rời đi.
+Sở Ly nhìn quyển trúc giản trên bàn.
+Ánh mắt đầy phức tạp.
+Cẩu Bát cười nói:
+“Tam Hoàng tử đúng là người khoan hậu rộng lượng.”
+Thật sao?
+Mưu sĩ của hắn là Tứ Hoàng tử đã bị điều đi.
+Lễ tế Trùng Dương của hắn cũng bị tước.
+Chỉ e…
+Đến cả nguyên nhân thật sự cái chết của Tam Hoàng tử phi.
+Hoàng thượng cũng đã bắt đầu nghi ngờ.
+Trong hoàn cảnh như vậy.
+Hắn vẫn có thể ôn hòa như cũ.
+Không thể không nói.
+Sự trầm ổn trong lòng hắn…
+Người thường khó mà sánh được.
+“Ngươi lui xuống đi.”
+“Ta nghỉ ngơi một lát.”
+“Vâng.”
+Sở Ly cầm quyển trúc giản trên bàn.
+Tháo dây buộc.
+Vừa mở ra…
+Bỗng nghe thấy tiếng bước chân.
+“Lại có chuyện gì?”
+Nàng còn tưởng là Cẩu Bát.
+Theo bản năng ngẩng đầu nhìn.
+Không ngờ…
+Lại là một thân ảnh tôn quý.
+Nam nhân vừa bước tới.
+Khí thế trời sinh cũng theo đó tràn ngập.
+Chiêu Lan điện của nàng.
+Dường như đã hoàn toàn trở thành địa bàn của hắn.
+Nàng liếc nhìn ra ngoài.
+Vì sao…
+Không ai thông báo?
+“Đang nhìn gì?”
+Sở Đệ Trì ngồi xuống cạnh nàng.
+Tự nhiên như đang ở chính phủ mình.
+Sở Ly mím môi.
+“Quy trình lễ tế Trùng Dương.”
+Cuối cùng lại bổ sung một câu:
+“Tam Hoàng huynh đưa.”
+“Ồ?”
+Hắn lười biếng nghiêng người.
+Chống khuỷu tay lên thành ghế.
+Một tay đỡ cằm.
+“Đồ hắn đưa.”
+“Ngươi cũng dám tin?”
+Sở Ly đáp:
+“Đương nhiên không dám hoàn toàn tin.”
+“Nhưng ta còn sợ gì nữa?”
+“Dù có xảy ra chuyện.”
+“Chẳng phải còn có Hoàng thúc chống lưng cho ta sao?”
+Đáy mắt nam nhân trầm xuống vài phần.
+Ý cười nơi khóe môi cũng lạnh đi.
+“Ngươi đang oán trách bổn vương?”
+Nàng cúi đầu.
+“Không dám.”
+Đầu ngón tay hắn hơi lạnh.
+Nhưng mạnh mẽ siết lấy cằm nàng.
+Ép nàng quay mặt lại.
+Lại thấy nàng vẫn cúi mắt.
+Không nhìn hắn.
+Đã như vậy rồi.
+Còn dám nói không oán hắn?
+“Không phải bổn vương kéo ngươi vào.”
+“Sở Ly.”
+“Chuyện nào ra chuyện nấy.”
+“Dùng đầu óc của ngươi suy nghĩ cho kỹ.”
+Sở Ly biết.
+Nàng không ngốc.
+Cho dù không có hắn nhúng tay.
+Nàng cũng không thoát nổi những âm mưu trong sáng ngoài tối.
+Chỉ khác…
+Lập trường và thân phận đã thay đổi.
+Từ chỗ chỉ mong giữ mình.
+Nay trở thành quân cờ trong tay hắn.
+Những việc hắn muốn làm.
+Những việc không thể phơi bày dưới ánh sáng.
+Đều có thể mượn tay nàng hoàn thành.
+Thất Hoàng tử đã phế.
+Tứ Hoàng tử đã rời kinh.
+Tam Hoàng tử bị nghi kỵ.
+Ngũ Hoàng tử mắc tật ở chân, quanh năm sống ngoài cung.
+Bát Hoàng tử không tranh không đoạt.
+Hiện giờ…
+Chỉ còn Đại Hoàng tử, Nhị Hoàng tử và Lục Hoàng tử.
+“Hoàng thúc đến đây làm gì?”
+“Đến xem ngươi.”
+Nàng kinh ngạc nhìn hắn.
+“Không tin?”
+Sở Đệ Trì khẽ nhướng đuôi mắt.
+Đột nhiên nâng cằm nàng.
+Cúi người tới.
+Khẽ hôn lên môi nàng một cái.
+“Ngươi…”
+Nàng như chim sợ cành cong.
+Lập tức lùi lại.
+Theo bản năng nhìn ra ngoài cửa.
+Bộ dáng chột dạ như kẻ làm chuyện mờ ám ấy…
+Lại khiến hắn thấy có chút buồn cười.
+Khi hắn cười.
+Hàn ý nơi khóe mắt cũng tan đi vài phần.
+Vẻ lạnh lùng càng thêm tuấn mỹ.
+“Chúng ta…”
+“Hình như đang vụng trộm.”
+“Chỉ là…”
+“Không cần nhẫn nhịn quá lâu.”
+“Đợi ngươi ngồi lên hoàng vị.”
+“Chúng ta sẽ có thể đường đường chính chính.”
+Sở Ly mím môi.
+Sau khi đoạt được hoàng vị…
+Hắn vẫn không định buông tha nàng sao?
+Điều hắn muốn…
+Chẳng phải chỉ là hoàng vị?
+Nhìn dáng vẻ nắm chắc phần thắng của hắn.
+Nàng khẽ mở miệng:
+“Nếu có một ngày…”
+“Ta ngồi lên hoàng vị.”
+“Việc đầu tiên ta làm…”
+“Chính là ban chết cho ngươi.”
+Sở Đệ Trì bật cười.
+“Vậy sao?”
+“Tiểu gia hỏa.”
+“Người chẳng lớn bao nhiêu.”
+“Khẩu khí lại chẳng nhỏ.”
+“Nhưng…”
+“Ngươi phạm phải đại kỵ.”
+“Đại kỵ gì?”
+“Thứ nhất.”
+“Trước khi đại sự thành công.”
+“Không nên công khai mục đích thật sự của mình.”
+“Chỉ khiến đối phương sớm đề phòng.”
+“Lưu lại đường lui.”
+Hắn cúi người lại gần.
+Hương ô mộc trầm hương lạnh lẽo trên người hắn gần như bao phủ lấy nàng.
+“Thứ hai.”
+Nàng ngả người ra sau.
+Lưng dán chặt vào thành ghế.
+“C… cái gì?”
+Hắn nhìn chằm chằm nàng.
+“Thứ hai.”
+“Đã muốn ban chết bổn vương.”
+“Vậy trước lúc chết…”
+“Đương nhiên phải tận hoan.”
+“Ngươi…”
+“Ưm…”
+Gương mặt tuấn mỹ của nam nhân đột nhiên phóng đại ngay trước mắt.
+Đôi mắt đầy tính xâm lược kia.
+Tựa như muốn hút cả nàng vào trong.
+Bàn tay nhỏ định đẩy hắn ra.
+Lại bị bàn tay lớn của hắn nắm lấy.
+Mười ngón tay đan chặt.
+Nâng cao quá đỉnh đầu.
+Hắn ngang nhiên hôn lên đôi môi mềm mại của nàng.
+Xâm nhập.
+Cướp lấy.
+Chiếm hữu.
+“Chủ tử, Tần Thiếu tướng quân đến.”
+Giọng Noãn Ngọc vang lên không đúng lúc.
+Thân thể Sở Ly cứng đờ.
+Nàng giãy cổ tay, muốn đẩy hắn ra.
+Hắn lại bá đạo đoạt lấy hơi thở của nàng thêm vài nhịp.
+Đến khi nàng giãy giụa mạnh hơn.
+Hắn hung hăng cắn nhẹ khóe môi nàng một cái.
+Lúc ấy mới chịu buông tay.
+Sở Ly ôm lấy khóe môi.
+Trừng mắt nhìn hắn đầy tức giận.
+Hắn…
+Lại dám cắn nàng!
+Sở Đệ Trì nhướng mày.
+Dường như đang hỏi:
+Thì đã sao?
+Bản năng của giống đực.
+Đối với lãnh địa của mình luôn có ham muốn chiếm hữu cực mạnh.
+Sẽ lưu lại dấu ấn chỉ thuộc về mình.
+Bất kỳ giống đực nào dám xâm nhập.
+Đều là kẻ xâm lược.
+“Hoàng thúc nên đi rồi!”
+Sở Đệ Trì ung dung đứng dậy.
+“Quấy rầy hai người nói chuyện riêng rồi sao?”
+“Ta và Tần Thiếu tướng quân quang minh lỗi lạc.”
+“Chỉ có những kẻ lấy dạ tiểu nhân đo lòng quân tử.”
+“Mới sinh ra kiểu nghi kỵ ấy.”
+Sở Đệ Trì hiểu ý.
+Liền xoay người đi thẳng vào nội thất.
+Sở Ly ngẩn người.
+“Hoàng thúc vào nội thất làm gì?”
+“Trốn đi.”
+“Nghe xem hai người nói những gì.”
+“Ngươi!”
+“Hai người đã quang minh lỗi lạc.”
+“Vậy lời các ngươi nói.”
+“Người khác đương nhiên nghe được.”
+“Huống hồ…”
+“Bổn vương vốn là tiểu nhân.”
+“Làm loại chuyện nghe lén này…”
+“Hình như cũng chẳng có gì đáng ngạc nhiên.”
+Nói xong.
+Trong ánh mắt sững sờ của Sở Ly.
+Hắn ung dung tự tại bước vào nội thất.
+Ẩn sau bức bình phong.
+Không phải chứ…
+Nghe lén mà hắn còn có thể nói năng hùng hồn như vậy?
+Không.
+Lý chẳng thẳng.
+Nhưng khí thế thì vẫn rất thẳng. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_93.html" class="btn">‹ Trước</a>
+            <a href="chuong_95.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

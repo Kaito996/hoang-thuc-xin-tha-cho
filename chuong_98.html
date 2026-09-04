@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 98</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 98</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_97.html" class="btn">‹ Trước</a>
+            <a href="chuong_99.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 98: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 98: Kẻ tiểu nhân hai mặt
+Sở Ly bước đến bên bàn:
+“Cẩu Bát, số thuốc ta dùng hằng ngày, bao gồm băng gạc, kéo, cùng thuốc uống, tất cả đều do ai trông coi?”
+Cẩu Bát trong lòng chấn động.
+Chủ tử… chẳng lẽ đang nghi ngờ có người động tay động chân?
+Hắn nghiêm giọng đáp:
+“Thuốc uống đều do nô tài đích thân đi bốc, đích thân canh sắc, chưa từng để người khác chạm vào. Còn những vật dùng ngoài như băng gạc, đều do Tiểu An Tử cất giữ.”
+“Cho người theo dõi hắn, đừng đánh rắn động cỏ.”
+“Vâng!”
+Cẩu Bát lập tức đi làm.
+Sở Ly xoay người ngồi xuống, đầu ngón tay gõ nhịp lên mặt bàn, từng tiếng từng tiếng, chậm rãi.
+Bao năm nay, nàng đối đãi với người dưới chưa từng bạc đãi, cũng chưa từng hà khắc.
+Nếu thật sự có kẻ không biết điều, dám bán đứng nàng…
+Vậy thì đừng trách nàng không nể tình!
+Ban đầu, Sở Ly cũng chỉ là nghi ngờ.
+Không ngờ sáng hôm sau, Cẩu Bát đã vội vàng đến bẩm báo:
+“Chủ tử, Tiểu An Tử quả thật có vấn đề.”
+“Nô tài theo dõi hắn suốt một ngày một đêm. Hôm qua vẫn chưa phát hiện điều gì bất thường, nhưng sáng nay hắn lại lén lút ra ngoài, quỷ quỷ túy túy gặp một người. Chỉ là khoảng cách quá xa, nô tài không nhìn rõ đối phương là ai.”
+Nghe vậy, Sở Ly bật cười.
+Ha.
+Quả nhiên là người dưới trướng mình.
+Nàng nhấp hai ngụm trà, rồi đặt mạnh chén xuống bàn.
+“Đưa hắn tới.”
+“Vâng.”
+Chẳng bao lâu sau, Cẩu Bát dẫn Tiểu An Tử vào.
+Tiểu An Tử là một tiểu thái giám tuổi còn trẻ, nhưng đã hầu hạ ở Chiêu Lan điện chín năm. Bình thường thật thà, kín tiếng, chỉ phụ trách những việc dọn dẹp lặt vặt, chưa từng phạm sai lầm.
+“Nô tài thỉnh an chủ tử.”
+Hắn quỳ dưới đất, dáng vẻ thật thà chất phác, khiến người ta khó lòng nghi ngờ.
+Sở Ly nhìn hắn:
+“Vì sao ngươi phản bội ta?”
+Tiểu An Tử sợ đến mức giật bắn người.
+“Chủ… chủ tử đang nói gì vậy? Nô tài không hiểu! Cho dù có cho nô tài mười lá gan, nô tài cũng không dám phản bội chủ tử! Chủ tử đối với nô tài ân nặng như núi, có ơn tái sinh, nô tài sao có thể bán đứng chủ tử được?”
+Dáng vẻ cuống cuồng ấy, đúng là giống như bị oan uổng.
+Sở Ly cười nhạt:
+“Ta chỉ thuận miệng hỏi một câu thôi, nhìn ngươi sốt ruột kìa, giải thích dài như vậy, cứ như sợ ta không tin ngươi vậy.”
+Nàng chỉ nói một câu.
+Tiểu An Tử lại nói cả một tràng.
+Sắc mặt hắn trắng bệch.
+“Nô tài… nô tài… chỉ là sợ chủ tử hiểu lầm nên mới…”
+“Thật sao?”
+Lòng trung thành chân chính…
+Là chỉ dựa vào cái miệng để nói?
+Sở Ly phất tay áo ngồi xuống.
+“Nếu ngươi đã nói ta có đại ân với ngươi, vậy hôm nay ta cho ngươi một cơ hội biểu lộ lòng trung thành.”
+Cẩu Bát rút một thanh chủy thủ, ném xuống đất.
+Hắn nói:
+“Vết thương trên cánh tay chủ tử mãi chưa khỏi. Nghe nói phải dùng tâm đầu huyết làm thuốc mới mau lành. Tiểu An Tử, ngươi trung thành với chủ tử như vậy, chắc hẳn cũng nguyện ý dâng tâm đầu huyết cho chủ tử chứ?”
+Toàn thân Tiểu An Tử run lên.
+Tâm… tâm đầu huyết?
+Nếu móc tâm đầu huyết ra…
+Chẳng phải hắn sẽ chết sao?
+…
+Nhìn con dao sáng loáng dưới đất, hắn nào dám cầm?
+“Chủ tử, nô tài nguyện vì người xông pha khói lửa, chỉ là… vết thương trên tay người, nô tài sẽ đến Thái y viện mời ngự y…”
+Cẩu Bát lớn tiếng cắt lời:
+“Ngự y đã xem rồi. Chính vì không chữa được nên mới phải dùng đến phương thuốc dân gian như tâm đầu huyết.”
+“Còn không mau động thủ?”
+Tiểu An Tử sợ đến hai tay run rẩy, run run đưa tay về phía thanh chủy thủ.
+Đầu ngón tay vừa chạm vào cán dao, lại hoảng hốt rụt về.
+Cẩu Bát lạnh giọng:
+“Sao? Không dám à? Không làm vậy thì vết thương của chủ tử làm sao khỏi được?”
+“Nô tài… nô tài…”
+Tiểu An Tử sắp khóc đến nơi.
+Thấy Sở Ly nhất quyết ép hắn, cuối cùng hắn không chịu nổi nữa, vừa khóc vừa dập đầu:
+“Chủ tử! Nô tài biết sai rồi! Xin chủ tử tha mạng! Tha mạng!”
+Cẩu Bát sa sầm mặt.
+Quả nhiên có vấn đề!
+“Vết thương của chủ tử vì sao mãi không lành? Mau thành thật khai báo!”
+Tiểu An Tử không dám giấu giếm nữa, dập đầu nói:
+“Nô tài có tội! Năm ngày trước, có một thị vệ tìm đến nô tài, đưa cho nô tài năm mươi lượng bạc, bảo nô tài xịt một loại thuốc lên băng gạc.”
+“Hắn nói đó không phải độc dược, chỉ khiến vết thương của chủ tử lâu lành hơn một chút, sẽ không nguy hiểm đến tính mạng. Nô tài nhất thời bị ma xui quỷ khiến nên mới… Nô tài biết sai rồi! Xin chủ tử tha mạng!”
+Hắn khai sạch mọi chuyện.
+Thần sắc Sở Ly lạnh nhạt.
+“Tên thị vệ đó là ai?”
+“Nô tài không biết.”
+“Nếu không khai được người đó ra, ngươi sẽ chết. Hiểu chưa?”
+Tiểu An Tử sợ đến vội vàng đáp:
+“Nô tài nguyện thử!”
+Vì giữ mạng, hắn nào dám chậm trễ.
+Đến tối, hắn lén rời Chiêu Lan điện, đến nơi hai người hẹn gặp, để lại ám hiệu, nói rằng “thuốc” đã dùng hết, bảo đối phương mang thêm tới.
+Đêm hôm sau.
+Khi Tiểu An Tử đến chỗ hẹn, tên thị vệ kia quả nhiên xuất hiện.
+Hắn cúi đầu, đứng trong bóng tối, không nhìn rõ mặt.
+“Hết thuốc rồi?”
+Giọng nói trầm thấp lạnh lẽo.
+Tiểu An Tử đáp:
+“Làm theo lời ngài dặn, nô tài đã xịt thuốc lên băng gạc, tất cả đều dùng cho Cửu hoàng tử.”
+“Cửu hoàng tử có nghi ngờ không?”
+“‘Ngài ấy’ chỉ cho rằng do dính nước hoặc kiêng khem không kỹ nên vết thương lở loét, mãi không khỏi, không hề nghi ngờ điều gì khác.”
+“Ừ.”
+Tên thị vệ hỏi xong, lấy từ trong tay áo ra một bình sứ nhỏ màu nâu.
+“Tiếp tục dùng.”
+“Vâng.”
+Tiểu An Tử chậm rãi đưa tay nhận lấy.
+Ngay lúc chạm vào bình thuốc, ánh mắt hắn chợt lạnh đi, bất ngờ chộp lấy cổ tay đối phương.
+“Bắt được rồi!”
+“Ngươi—”
+Tên thị vệ vừa phản ứng, định vùng vẫy thì…
+Bốp!
+Sau gáy hắn bị một cây gậy giáng mạnh xuống.
+Cú đánh khiến hắn ngã nhào xuống đất, đầu óc choáng váng, hoàn toàn mất khả năng chống cự.
+Phía trước.
+Một bóng người mảnh mai chậm rãi bước tới.
+Cửu hoàng tử!
+Bọn họ…
+Đã giăng bẫy!
+“Chủ tử, chính là hắn.”
+Tiểu An Tử đã bỏ tối theo sáng.
+Sở Ly từ trên cao nhìn xuống, khẽ đá vào đầu hắn.
+“Cẩu Bát.”
+“Có.”
+Cẩu Bát tháo thẻ bài bên hông hắn xuống, nhìn rõ thân phận, rất nhanh đã tra ra chức vụ cùng tên họ.
+Lần theo đó…
+Lại dính dáng đến Lục hoàng tử.
+Tên thị vệ này tên là Vệ Võ, là người do Lục hoàng tử đề bạt vào cung.
+Xem ra…
+Kẻ chủ mưu phía sau chính là Lục hoàng tử.
+Cẩu Bát đem kết quả điều tra về Chiêu Lan điện.
+Nhưng Sở Ly lại không giữ Vệ Võ, mà giả như chưa từng có chuyện gì, thả hắn trở về.
+Nàng càng tỏ ra bình thản.
+Trong lòng Vệ Võ càng bất an.
+Hoàn toàn hoảng loạn.
+Vì sao Cửu hoàng tử không xử phạt hắn?
+Chẳng lẽ…
+Đang giăng bẫy gì khác?
+Lo đến mức cả đêm không ngủ.
+Hôm sau.
+Sở Ly hẹn gặp Lục hoàng tử.
+Sở Hoài Cẩn đến nơi, áo bào mở rộng trước ngực, sải bước ung dung, vẻ mặt bình thản, vừa vào đã cố ý liếc cánh tay Sở Ly.
+“Cửu đệ tìm ta có việc?”
+Sở Ly nhẹ vuốt lớp băng trên cánh tay.
+“Có một chuyện ta không biết nên xử lý thế nào, đặc biệt muốn thỉnh giáo Lục hoàng huynh.”
+Sở Hoài Cẩn tưởng là chuyện Trùng Dương tế lễ, đáy mắt thoáng hiện vẻ oán hận.
+Theo thứ tự, năm nay vốn phải đến lượt hắn.
+Lại bị Sở Ly cướp mất.
+Sao hắn không oán cho được?
+“Cửu đệ cứ hỏi, ta nhất định biết gì nói nấy, không giấu nửa lời.”
+Sở Ly không nhanh không chậm cầm một vật trên bàn đưa cho hắn.
+“Đêm qua trong cung có một con gián không có mắt chạy tới. Ta đang nghĩ… nên bẩm báo với phụ hoàng thế nào.”
+Vừa nhìn thấy vật trong tay nàng, sắc mặt Sở Hoài Cẩn lập tức biến đổi.
+Đó là thẻ bài của cấm vệ trong cung.
+Trên thẻ khắc hai chữ:
+Vệ Võ.
+Nàng đã bắt được người?
+“Lục hoàng huynh, huynh thấy… có nên nói với phụ hoàng không?”
+Sở Hoài Cẩn nhìn vào đôi mắt như cười như không của Sở Ly.
+Ánh mắt sâu thẳm ấy…
+Tựa như đã nhìn thấu tất cả.
+Dù hắn có giải thích thế nào cũng vô ích.
+Nàng biết rồi.
+Biết hết rồi.
+Cổ họng Sở Hoài Cẩn nghẹn cứng.
+“Ta…”
+Đúng.
+Là hắn làm.
+Hắn sai người điều chế một loại thuốc.
+Chỉ cần tiếp xúc với vết thương sẽ khiến da thịt lở loét, hóa mủ, từng chút từng chút ăn sâu vào da thịt, cho đến khi sinh dòi, mục nát hoàn toàn.
+Nhưng hắn làm vậy…
+Cũng có nguyên nhân.
+Nếu không phải Sở Ly cướp mất việc của hắn…
+Thì hắn cần gì phải ôm hận?
+Hắn không sai!
+Là Sở Ly ép hắn!
+“Thôi vậy.”
+Sở Ly bỗng lên tiếng.
+“?”
+Sở Hoài Cẩn sững sờ.
+Còn chưa kịp phản ứng.
+“Chuyện hôm nay, ta sẽ coi như chưa từng biết.”
+Sở Hoài Cẩn ngẩn người.
+Cứ…
+Bỏ qua như vậy?
+‘Y’ gọi hắn đến…
+Là vì coi trọng tình huynh đệ, nên mở cho hắn một con đường sống?
+‘Y’…
+Dễ nói chuyện như vậy sao?
+Cầm thẻ bài rời khỏi Chiêu Lan điện, Sở Hoài Cẩn vẫn còn ngơ ngác.
+Hắn nghĩ mãi không ra mục đích của Sở Ly.
+Nếu nói tình cảm thân thiết…
+Quan hệ giữa hắn và Sở Ly còn xa mới bằng Bát hoàng tử Sở Ngạo Thiên.
+Sở Ly sao có thể tha cho hắn?
+Hay là…
+‘Y’ đang âm mưu chuyện gì?
+Con người vốn là như vậy.
+Luôn dùng ác ý lớn nhất để suy đoán lòng tốt của người khác.
+Cuối cùng…
+Thường lại tự hại chính mình.
+“Chủ tử, người cứ thế thả Lục hoàng tử đi sao?”
+Cẩu Bát vô cùng kinh ngạc.
+Chủ tử làm vậy…
+Có phải quá nhân từ rồi không?
+Có một sẽ có hai.
+Không thể không phòng!
+Sở Ly nhấp một ngụm trà.
+Ý sâu trong đáy mắt, không ai đoán nổi.
+“Cơ hội ta đã cho rồi. Có nắm được hay không, có đáng dùng hay không… phải xem chính hắn.”
+Nếu nói nàng là người tốt…
+Có lẽ cũng chưa hẳn.
+Chỉ là…
+Người không phạm ta, ta không phạm người.
+…
+Bên kia.
+Trên đường xuất cung, Sở Hoài Cẩn vẫn đầy bụng bất an.
+Không cẩn thận va phải Nhị hoàng tử, vẫn còn thất thần.
+“Lục đệ.”
+Nhị hoàng tử đỡ lấy vai hắn, lo lắng hỏi:
+“Sao vậy? Xảy ra chuyện gì?”
+Sở Hoài Cẩn ngẩng đầu.
+“Nhị hoàng huynh.”
+Ngoài Đại hoàng tử cùng mẫu thân sinh ra với hắn.
+Chỉ có Nhị hoàng huynh đối xử với hắn thân thiết như tay chân.
+Từ nhỏ đến lớn, có chuyện gì hắn cũng thích tìm Nhị hoàng huynh thương lượng.
+Lần này…
+Cũng không ngoại lệ.
+“Ta vừa từ Chiêu Lan điện ra. Ta… hình như gây họa rồi. Nhưng Sở Ly lại nhẹ nhàng bỏ qua…”
+Hắn đem toàn bộ nỗi lo trong lòng kể ra.
+Nghe xong, Nhị hoàng tử trầm ngâm.
+“Ý đệ là… Sở Ly tha cho đệ, còn trả lại thẻ bài. Vậy thì ‘y’ hẳn là muốn dùng chuyện này để khống chế đệ. Dù sao nhược điểm của đệ đang nằm trong tay ‘y’. Sau này bất kể xảy ra chuyện gì, đệ đều sẽ bị ‘y’ áp chế một bậc.”
+Hai mắt Sở Hoài Cẩn lập tức đỏ ngầu.
+Không!
+Hắn không muốn như vậy!
+Sở Ly muốn khống chế hắn?
+Dựa vào ‘y’ cũng xứng?
+“Lục đệ đừng vội. Nếu Sở Ly đã bỏ qua chuyện này, vậy chúng ta cứ tạm thời án binh bất động. Chờ sau này có cơ hội thích hợp, rồi tìm cách phản kích.”
+Hiện giờ Sở Hoài Cẩn không chiếm lý.
+Chỉ còn cách đó.
+Đợi chuyện này qua đi rồi tính tiếp.
+“Vậy ta về phủ trước.”
+“Được.”
+Nhị hoàng tử nhìn theo bóng Sở Hoài Cẩn rời đi.
+Đợi người đi xa.
+Hắn nheo mắt, trầm ngâm suy nghĩ, rồi gọi tâm phúc đến, thấp giọng dặn dò:
+“Ngươi lập tức đi…”
+⸻
+Trên đường về phủ.
+Sở Hoài Cẩn mới đi được nửa đường thì bị một cấm vệ hoàng gia gọi lại.
+Nói rằng Hoàng thượng truyền triệu, bảo hắn lập tức vào cung.
+Hắn không khỏi nghi hoặc.
+Phụ hoàng tìm hắn có việc gì?
+Hắn quay trở lại hoàng cung.
+Tiến vào Ngự thư phòng.
+Quỳ xuống hành lễ.
+Thế nhưng…
+Mãi vẫn không nghe thấy hai chữ “bình thân.”
+Sở Hoàng ngồi trước long án, tay cầm tấu chương.
+Ánh mắt nhìn Sở Hoài Cẩn vừa phức tạp vừa thất vọng.
+“Tiểu Lục, con có biết tội không?”
+Tim Sở Hoài Cẩn thắt lại.
+“Phụ hoàng nói vậy là có ý gì?”
+“Con đã làm gì, trong lòng tự rõ. Chẳng lẽ còn cần trẫm nhắc?”
+Hắn làm gì?
+Sở Hoài Cẩn ngẩng đầu.
+“Nhi thần ngu dốt, xin phụ hoàng chỉ rõ.”
+Rầm!
+Sở Hoàng khép mạnh tấu chương, ném lên bàn.
+“Con mua chuộc thị vệ, động tay động chân vào thuốc của Tiểu Cửu, suýt nữa phế luôn cánh tay của ‘nó’. Chẳng lẽ còn không chịu nhận?”
+“Phụ hoàng!”
+Đồng tử Sở Hoài Cẩn co rụt dữ dội.
+Phụ hoàng…
+Sao lại biết?
+Sao có thể?
+Rõ ràng Sở Ly đã nói sẽ không bán đứng hắn.
+Sẽ bỏ qua chuyện này.
+Không ngờ…
+‘Y’ ngoài mặt bày ra bộ dạng nhân từ rộng lượng.
+Quay đầu liền đến trước mặt Sở Hoàng cáo trạng.
+Bộ mặt giả nhân giả nghĩa ấy…
+Lập tức chọc giận Sở Hoài Cẩn.
+Sở Ly!
+Đây là cố ý coi hắn như khỉ mà đùa giỡn sao?
+“Trẫm đã cho người điều tra kỹ chuyện này, chứng cứ xác thực. Con còn gì để chối cãi?”
+Sở Hoàng lạnh giọng.
+“Từ nhỏ trẫm đã dạy các con phải huynh hữu đệ cung, hòa thuận với nhau. Một gia đình hòa thuận còn đáng quý hơn tài năng xuất chúng. Không ngờ con lại làm ra chuyện tàn hại thủ túc như vậy!”
+Sở Hoài Cẩn ngẩng đầu, cười nhạo.
+“Huynh hữu đệ cung… phải dựa trên tiền đề đối xử công bằng. Phụ hoàng thiên vị Cửu đệ, chẳng lẽ còn không cho nhi thần oán hận?”
+“Trẫm thiên vị khi nào?”
+“Năm nay lễ tế Trùng Dương vốn nên do nhi thần chủ trì.”
+“Đó là ý của trẫm! Chính trẫm bảo Tiểu Cửu làm. Nó chỉ lâm nguy thụ mệnh. Sao con không oán trẫm?”
+Sở Hoàng tức giận đập bàn đứng dậy.
+“Có phải một ngày nào đó con oán hận cả trẫm, thì cũng dám bỏ độc vào đồ ăn thức uống của trẫm?”
+Đồng tử Sở Hoài Cẩn co lại.
+“Phụ hoàng! Nhi thần…”
+“Đồ nghịch tử!”
+Chuyện đại nghịch bất đạo như vậy…
+Hắn nào dám?
+Hạ độc Sở Ly…
+Chỉ là muốn dạy cho ‘y’ một bài học.
+Những tâm tư khác…
+Hắn tuyệt đối không dám có.
+“Cút về đi! Cút về phủ của con! Cấm túc ba tháng! Không có lệnh của trẫm, không được bước ra khỏi Lục hoàng tử phủ nửa bước!”
+Thân thể Sở Hoài Cẩn nghiêng đi.
+Ngã phịch xuống đất.
+Cấm túc…
+Ba tháng.
+Trước đây…
+Phụ hoàng chưa từng phạt hắn nặng như vậy.
+Sở Ly! Sở Ly!
+Đồ tiểu nhân hai mặt!
+Ngươi rõ ràng nói sẽ bỏ qua, sẽ không truy cứu.
+Vậy mà lại coi ta như con hề để đùa bỡn!
+Ta sẽ không tha cho ngươi!
+Tuyệt đối không tha cho ngươi!
+Sở Hoàng xử phạt Lục hoàng tử xong, lại sai vị ngự y đáng tin nhất tiếp tục chữa trị cho Sở Ly.
+Đồng thời ban xuống rất nhiều dược liệu quý, hạ lệnh cho người trong Chiêu Lan điện phải nâng cao cảnh giác, tận tâm làm việc, tuyệt đối không được để xảy ra sai sót như thế thêm lần nữa.
+Trước sau chưa đến nửa canh giờ.
+Đại hoàng tử Sở Uyên Trì đã vội vã bước vào Chiêu Lan điện.
+“Lục đệ nhất thời hồ đồ, xin Cửu đệ giơ cao đánh khẽ, tha cho đệ ấy một lần!”
+—————————
+Đôi lời nhắn gửi của Admin
+Các bạn đọc thân mến, mình biết có rất nhiều bạn đọc truyện mong chờ tuyến tình cảm của 2 nhân vật chính.
+Tuy nhiên giai đoạn này của truyện đang dần chuyển đấu đá trong hậu cung và giữa các hoàng tử” sang “tranh quyền triều đình”, bước ngoặt đầu tiên của cuộc tranh đấu giữa các hoàng tử, khi Sở Ly từ thế bị động chuyển sang chủ động ứng phó với những âm mưu trong cung, dù nguyên tắc của Sở Ly xuyên suốt truyện:
+“Người không phạm ta, ta không phạm người.”
+nhưng những cuộc đấu đá từng bước đẩy Sở Ly vào tình thế “cô lập trong hoàng thất”, để việc nàng phải dựa vào Nhiếp Chính Vương sau này trở nên hợp logic, chứ không phải vì tình cảm mà đột ngột thân thiết. 
+Điểm hay của tác giả là không để Sở Ly chủ động ôm đùi Nhiếp Chính Vương ngay từ đầu. Thay vào đó, từng biến cố đều chứng minh rằng:
+* Người trong cung không đáng tin.
+* Huynh đệ không còn là huynh đệ.
+* Thánh sủng không phải lá chắn tuyệt đối.
+* Muốn sống sót phải có thực lực và đồng minh.
+Như vậy, khi Sở Ly và Nhiếp Chính Vương dần đứng cùng chiến tuyến, độc giả sẽ thấy đó là kết quả tất yếu của hoàn cảnh, rồi mới phát triển thành tình cảm, chứ không phải một bước chuyển gượng ép. Muốn mọi chuyện logic thì các bạn đừng sốt ruột đẩy thuyền nha 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_97.html" class="btn">‹ Trước</a>
+            <a href="chuong_99.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

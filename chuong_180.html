@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 180</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 180</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_179.html" class="btn">‹ Trước</a>
+            <a href="chuong_181.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 180: Giữ nữ đức? Một ngày cũng không giữ nổi
+
+Buổi sáng luyện công, buổi chiều làm việc, mỗi ngày của Sở Ly đều vô cùng phong phú.
+
+Nhưng nàng vẫn luôn ghi nhớ lời sư phụ dạy: làm người không được phung phí thời gian.
+
+Cho nên, ngay cả buổi tối cũng phải biết tận dụng thật tốt.
+
+“Ta ra ngoài một chuyến, đêm sẽ trở về, chỉ cần chừa cửa cho ta là được.”
+
+Sở Ly thay một bộ y phục sạch sẽ, gọn gàng.
+
+Sơ Nhất vội nói:
+
+“Tiểu thư, trời đã tối rồi, người không ngủ sao?”
+
+Sở Ly khẽ thở dài:
+
+“Sư phụ từng dạy, sống thì hà tất ngủ nhiều, chết rồi ắt sẽ ngủ dài. Đời người ngắn ngủi, mỗi ngày đâu cần ngủ quá lâu.”
+
+Nàng vỗ nhẹ vai Sơ Nhất.
+
+“Ta đi đây.”
+
+Sơ Nhất nhìn theo bóng lưng tiểu thư khuất dần nơi cuối đường, không khỏi cảm thán:
+
+Quả không hổ là thiên kim nhà quyền quý, ngay cả tư tưởng cũng khác hẳn những kẻ phàm phu tục tử như bọn họ.
+
+⸻
+
+Vân Dao Hý Lâu.
+
+“Hay!”
+
+“Tuyệt vời!”
+
+Trên hí đài, tiếng hát vang lên không dứt. Dưới ánh nến lay động, bóng người chập chờn, khán giả vỗ tay reo hò, tiếng khen ngợi nối tiếp không ngừng.
+
+Vị trí đẹp nhất ở lầu hai nhìn thẳng xuống hí đài, mọi cảnh tượng đều thu trọn vào tầm mắt.
+
+Đã bao trọn căn nhã gian đắt đỏ bậc nhất dành cho khách quý, đương nhiên ông chủ cũng phải dâng lên dịch vụ tốt nhất.
+
+“Các ngươi nghe chưa? Vân Dao Hý Lâu vừa xuất hiện một vị đại kim chủ.”
+
+“Có nghe! Lam Uyên công tử chỉ hát một khúc ‘Cô Tô Thành’, đã khiến vị đại kim chủ kia vô cùng hài lòng, chỉ trong một đêm được thưởng cả ngàn lượng bạc!”
+
+“Trời đất! Ra tay hào phóng đến vậy?”
+
+Đối với dân thường, mười lượng bạc đã đủ chi tiêu cả một năm.
+
+Vậy mà chỉ vì một hí tử, một đêm ném ra ngàn lượng.
+
+Đây chẳng phải Thần Tài hạ phàm sao?
+
+Tin tức vừa lan truyền, vô số hí tử đỏ mắt.
+
+Ai nấy đều dốc hết tâm tư, lấy tuyệt kỹ giữ nhà ra, cố hết sức lấy lòng vị khách quý kia.
+
+⸻
+
+Trong nhã gian.
+
+Sở Ly vừa uống rượu, vừa hoa cả mắt nhìn một đám nam nhân đủ kiểu mập gầy, vì muốn làm nàng vui mà thi nhau trổ hết bản lĩnh.
+
+Người ca hát.
+
+Người đánh đàn.
+
+Người múa.
+
+Người biểu diễn tuyệt kỹ…
+
+Quả thực khiến người ta nhìn không xuể.
+
+Khó trách từ xưa đến nay nam nhân đều thích tam thê tứ thiếp, nay Tần mai Sở.
+
+Mà nói đi cũng phải nói lại…
+
+Nếu những cám dỗ thế này bày ngay trước mặt nàng…
+
+Thì cái gọi là nữ đức, nàng thật sự… một ngày cũng không giữ nổi.
+
+Nghi ngờ nam nhân.
+
+Thấu hiểu nam nhân.
+
+Trở thành nam nhân.
+
+Vượt qua nam nhân.
+
+Lam Uyên công tử khẽ cau mày.
+
+Hắn sao có thể trơ mắt nhìn vị khách quý của mình bị kẻ khác cướp mất?
+
+Trầm ngâm một lát.
+
+Đàn, ca, múa…
+
+Rốt cuộc cũng chỉ là bình mới rượu cũ, xem nhiều nghe nhiều rồi cũng chẳng còn mới mẻ.
+
+Đột nhiên linh quang lóe lên.
+
+Hắn bước tới một bước.
+
+Vén vạt áo.
+
+Để lộ tám múi cơ bụng trắng trẻo mà rắn chắc.
+
+“Hay!!!”
+
+Hai mắt Sở Ly sáng rực, bật phắt dậy vỗ tay.
+
+“Thưởng! Trọng thưởng!”
+
+⸻
+
+Cách đó mấy trăm dặm.
+
+Đế đô.
+
+Bảy ngày đã trôi qua.
+
+Sau một phen tranh cãi kịch liệt vì ngôi vị hoàng đế, các vị hoàng tử cuối cùng cũng bình tĩnh lại, đồng thời nhận ra một sự thật.
+
+Hoàng thúc cố ý!
+
+Ngài muốn bọn họ tự giết lẫn nhau, còn mình thì ngồi hưởng lợi.
+
+Thế là, bọn họ không tiếp tục nội đấu nữa.
+
+Nhị hoàng tử đề nghị:
+
+“Chi bằng chúng ta cùng nhau suy tôn Nhàn Vương lên ngôi. Nhàn Vương là người dễ khống chế. Nếu hoàng quyền cứ mãi nằm trong tay Nhiếp Chính Vương thì mới là điều bất lợi nhất với chúng ta. Lần này, Nhiếp Chính Vương chỉ đang cố tình kéo dài thời gian.”
+
+“Nhị hoàng huynh nói rất có lý.”
+
+Mọi người nhanh chóng đạt thành nhất trí.
+
+⸻
+
+Lục hoàng tử Sở Dực tìm đến Sở Ngạo Thiên.
+
+Lúc ấy, Sở Ngạo Thiên vừa từ Nhàn Vương phủ đi ra, trên tay xách một giỏ đầy vàng mã, tiền giấy cùng hương nến.
+
+Hôm nay là ngày thất đầu của Sở Ly.
+
+Hắn chuẩn bị lên núi Thanh Dương tế bái nàng.
+
+“Bát đệ.”
+
+Sở Ngạo Thiên vừa nhìn thấy Lục hoàng tử, trong lòng lập tức thầm than:
+
+Lại gây họa gì nữa đây?
+
+Tạo nghiệt!
+
+Hoàng thúc ngày ngày chìm trong men rượu, say sinh mộng tử, hoàn toàn mặc kệ triều chính.
+
+Lục hoàng huynh lúc này tìm hắn, chắc chắn chẳng có chuyện gì tốt.
+
+Sở Dực mỉm cười bước tới.
+
+“Bát đệ định đi đâu vậy?”
+
+Nụ cười chất đầy trên mặt.
+
+Rất không bình thường.
+
+Sở Ngạo Thiên âm thầm đề phòng.
+
+“Lục hoàng huynh có việc gì sao?”
+
+Sở Dực cười:
+
+“Xem đệ nói kìa. Không có việc thì ta không thể đến à? Hôm qua gia thần của ta từ Bắc Thành trở về, mang theo một vò rượu ngon chỉ nơi đó mới có. Ta đặc biệt đem tới, muốn cùng đệ thưởng thức.”
+
+“Nào, chúng ta ngồi xuống uống vài chén.”
+
+Sở Ngạo Thiên nhất thời không đoán ra dụng ý của hắn.
+
+Lấy lòng?
+
+Mua chuộc?
+
+Hay là… cạm bẫy?
+
+Tuy hắn mang tước vị Vương gia, nhưng vì tài cán bình thường, lại chẳng có chí lớn, xưa nay gần như không có quan viên nào chịu nịnh bợ hay lôi kéo.
+
+Lục hoàng huynh…
+
+Không phải bỏ độc vào rượu đấy chứ?
+
+Sở Dực rót hai chén rượu, cười nói:
+
+“Sao? Không dám uống? Sợ ta hạ độc à?”
+
+Nói xong liền ngửa đầu uống cạn.
+
+Thấy hắn đã uống, Sở Ngạo Thiên lập tức nói:
+
+“Lục hoàng huynh nói vậy thì xa lạ quá rồi. Huynh đệ chúng ta, đâu cần nói những lời khách sáo ấy.”
+
+Nói xong cũng uống hết chén rượu.
+
+Hai người nâng chén vài lượt, chuyện trò một hồi.
+
+Mãi đến lúc ấy, Sở Dực mới để hắn rời đi.
+
+Sở Ngạo Thiên mang theo hương nến tiền giấy, lên đường viếng mộ Sở Ly.
+
+⸻
+
+Sở Dực nhìn chiếc xe ngựa khuất dần nơi xa.
+
+Nụ cười trên mặt từ từ lạnh xuống.
+
+Hắn lấy từ trong ngực ra một viên thuốc, bỏ vào miệng.
+
+Trong rượu…
+
+Có độc.
+
+Chỉ là, nhất thời chưa phát tác.
+
+Đợi đến khi bọn họ liên thủ lật đổ Nhiếp Chính Vương, đưa Nhàn Vương lên ngôi.
+
+Đến lúc đó, tính mạng Nhàn Vương sẽ nằm trong tay hắn.
+
+Muốn sống…
+
+Thì lấy hoàng vị ra đổi.
+
+Hoàng vị…
+
+Chỉ có thể là của hắn!
+
+⸻
+
+Xe ngựa chầm chậm rời khỏi.
+
+Sở Ngạo Thiên xoa cổ họng, đoán mãi vẫn không hiểu hôm nay Lục hoàng tử rốt cuộc muốn làm gì.
+
+Xe đi qua những con phố náo nhiệt.
+
+Đúng lúc ấy, đôi tai thính của hắn bất ngờ nghe thấy vài câu đối thoại.
+
+“…Cửu hoàng tử có sở thích đoạn tụ… thật sao… từ bao giờ vậy… có ai từng thấy chưa?”
+
+Hắn lập tức vén rèm xe.
+
+“Dừng xe!”
+
+Thò đầu nhìn ra.
+
+Chỉ thấy hai người mặc trang phục hộ vệ.
+
+Nhìn cách ăn mặc và khẩu âm, rõ ràng không phải người bản địa Đế đô.
+
+Hai người ngoại thành…
+
+Vì sao lại đi dò hỏi chuyện của Cửu đệ?
+
+Huống hồ Cửu đệ đã mất, đây là quốc tang, khắp Đại Sở ai ai cũng biết.
+
+Bọn họ sao có thể không biết?
+
+Trong lòng Sở Ngạo Thiên dấy lên nghi hoặc.
+
+Trầm ngâm chốc lát, hắn nói:
+
+“Trương thúc, thúc chờ ta ở đây một lát, ta qua xem thử.”</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_179.html" class="btn">‹ Trước</a>
+            <a href="chuong_181.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

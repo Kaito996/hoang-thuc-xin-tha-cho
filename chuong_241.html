@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 241</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 241</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_240.html" class="btn">‹ Trước</a>
+            <a href="chuong_242.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 241: Tối nay bổn vương sẽ thu thập nàng
+Tưởng như vậy là có thể trị được hắn sao?
+Hôm nay, cho dù có mất mặt, hắn cũng nhất định phải hỏi cho ra tung tích của nàng đêm qua!
+“Đêm qua...”
+“Sơ Nhất, mau dâng trà cho Hoàng thúc của ta!”
+Sở Ly lớn tiếng gọi.
+“Sơ Nhị, mang ít thức ăn cho chim tới.”
+“Sơ Tam, múc bát canh hạt sen vừa mới nấu mang ra đây...”
+Lập tức, sáu thị nữ ai nấy đều bận rộn, đồng loạt kéo đến.
+Sau khi phân phó xong, Sở Ly mới như sực nhớ ra chính sự, vội vàng hỏi:
+“Hoàng thúc, vừa rồi người nói gì?”
+Sở Đệ Trì nhìn đầy sân người: “...”
+Tiểu Cửu đánh vào mặt hắn, đó là thú vui khuê phòng giữa hai người.
+Nhưng nhiều người như vậy...
+Bọn họ còn chưa đủ tư cách xem hắn cùng Tiểu Cửu liếc mắt đưa tình!
+“Không có gì.”
+“À? Thật sao?”
+Gương mặt trắng ngần như sứ của Sở Ly đầy vẻ ngây thơ và quan tâm.
+“Nếu Hoàng thúc có điều gì muốn nói thì nhất định đừng giữ trong lòng. Có lời gì mà không thể nói ra để mọi người cùng nghe chứ?”
+Sở Đệ Trì xoay người ngồi xuống, nhìn bộ dạng cười hớn hở của nàng.
+Nhưng hắn cũng nhớ rất rõ dáng vẻ mắt nàng đỏ hoe, mềm mại đáng thương.
+Hắn vội vàng hồi tưởng bộ dạng nàng lê hoa đái vũ, lúc này mới miễn cưỡng nuốt xuống cơn nghẹn trong cổ họng.
+Cứ đợi đó!
+“Thấy nàng ở đây đã quen thuộc, bổn vương cũng yên tâm rồi. Có điều... chắc hẳn nàng rất nhớ Nhàn Vương?”
+“Ta quả thực rất nhớ Bát hoàng huynh, còn có Mẫu phi.”
+“Chuyện này không tiện phô trương. Hay là tối nay, bổn vương sẽ đưa hắn đến San Hô Thủy Tạ?”
+Sở Ly vui mừng, lưng lập tức thẳng tắp.
+“Thật sao!”
+“Nhàn Vương là người mình, không sợ hắn lỡ miệng nói ra ngoài. Chỉ là phía Mẫu phi, e rằng còn phải chờ thêm một thời gian.”
+“Chỉ cần có thể gặp được huynh ấy, ta không ngại chờ!”
+Ánh mắt Sở Đệ Trì hơi trầm xuống, đưa tay xoa đầu nàng.
+“Vậy tối nay nàng ngoan ngoãn đợi bổn vương ở đây. Bổn vương sẽ đưa Nhàn Vương tới. Để tránh gây chú ý, có thể sẽ đến muộn một chút.”
+Sở Ly nghiêm túc gật đầu.
+“Hoàng thúc yên tâm, ta biết chừng mực.”
+“Đa tạ Hoàng thúc đã chu toàn.”
+Trên mặt Sở Đệ Trì vẫn mỉm cười, nhưng nắm đấm giấu trong tay áo gần như bóp nát.
+Đêm qua...
+Rốt cuộc nàng đã đi đâu?
+Chẳng lẽ lén sau lưng hắn đi xem hí? Đi uống rượu? Hay là đến nơi nào đó tiêu dao khoái hoạt?
+Tối nay bổn vương sẽ thu thập nàng!
+Lấy Nhàn Vương làm mồi nhử.
+Để xem nàng còn chạy đi đâu được!
+—
+Sở Đệ Trì rời San Hô Thủy Tạ, lên ngựa mà đi.
+Hắn hoàn toàn không phát hiện, ở nơi không xa có một bóng đen đang âm thầm ẩn nấp, lặng lẽ nhìn theo hướng hắn rời đi, rồi chậm rãi chuyển ánh mắt sang San Hô Thủy Tạ...
+Sau đó xoay người rời khỏi.
+Tiến vào một tòa phủ đệ khác.
+“Bẩm!”
+Ám vệ quỳ một gối xuống đất.
+“Nhiếp Chính Vương đã trở lại Đế đô, còn kim ốc tàng kiều trong tư uyển của mình. Người đó chính là Cửu hoàng tử Sở Ly đã chết đi sống lại, còn nữ phẫn nam trang!”
+“Thật sao!”
+Bên cạnh thư án, Lục hoàng tử Sở Dực lập tức quay người lại.
+“Ngươi nhìn rõ chứ?”
+Ám vệ đáp:
+“Năm ngoái trong buổi thu săn, thuộc hạ từng tận mắt gặp dung mạo của Cửu hoàng tử, tuyệt đối không nhận nhầm!”
+Bốp!
+Sở Dực khép mạnh tập tấu chương trong tay, đập xuống bàn.
+“Hay cho Sở Đệ Trì! Gan lớn thật! Cấu kết với Sở Ly mưu đoạt hoàng vị, còn dám đưa người về tận Đế đô. Hắn không sợ tội khi quân, đầu rơi xuống đất sao!”
+Sở Hoàng chỉ bị liệt.
+Chứ đâu phải đã chết.
+Giang sơn Đại Sở này...
+Vẫn chưa phải của Sở Đệ Trì!
+Ám vệ lo lắng hỏi:
+“Chủ tử, nếu Sở Ly không chịu thừa nhận mình là Cửu hoàng tử, thậm chí nói chỉ là người có dung mạo giống Cửu hoàng tử thì sao?”
+“Hắn không nhận, bổn hoàng tử tự có cách ép hắn phải nhận!”
+Sở Dực vỗ bàn.
+“Tội khi quân này, hắn gánh chắc rồi!”
+“Lần này, ta sẽ cùng lúc trừ khử cả hắn lẫn Nhiếp Chính Vương!”
+—
+Về phần tối qua Sở Ly đã đi đâu...
+Sở Đệ Trì chắc chắn đang nóng ruột cồn cào, lại không thể không cố giữ vẻ bình tĩnh, e rằng sắp nghẹn chết rồi.
+Sau khi bị hắn lừa biết bao lần, Sở Ly cũng xem như đã rút ra được kinh nghiệm.
+“Chíp chíp, Tiểu Bạch, kêu đi.”
+Con vẹt lông trắng xoay cái đầu tròn vo.
+“Đồ ngu—— cạc cạc!”
+“Tốt!”
+Thông minh.
+“Chúng ta học thêm một câu nữa... ‘Ngươi mù mắt rồi!’ Nào, học theo ta, ‘Ngươi mù mắt rồi!’”
+Sơ Nhất bưng trà chiều tới, nhìn thấy nữ tử đang đùa với con vẹt, khung cảnh ấy thật có cảm giác năm tháng bình yên, bất giác cười nói:
+“Nô tỳ từng nghe lời đồn rằng, quan hệ giữa tiểu thư và Bát hoàng tử Nhàn Vương là tốt nhất.”
+Sở Ly không ngẩng đầu.
+“Không phải lời đồn, là sự thật.”
+“Đêm nay ngài ấy sẽ đến sao?”
+“Ta sẽ đợi huynh ấy.”
+Sơ Nhất nói thêm vài câu rồi lui ra.
+Đúng lúc gặp Sơ Tam.
+“Sơ Nhất tỷ tỷ, Trọng Phong đại nhân đến rồi.”
+“Đến tìm tiểu thư sao? Ta vào bẩm báo.”
+“Ta đến tìm cô... à không, tìm các cô.”
+Trọng Phong sải bước tiến đến.
+Sơ Nhất quay đầu nhìn.
+Chỉ thấy phía sau hắn có hai thị tùng, trên tay mỗi người đều bưng một chiếc khay phủ gấm, bên trong đặt ngay ngắn thứ gì đó.
+“Đây là...”
+Trọng Phong ra hiệu cho một thị tùng.
+“Sáu bộ y phục mới này giống hệt y phục của thị nữ trong Nhiếp Chính Vương phủ. San Hô Thủy Tạ không phải nơi tầm thường, y phục của các cô cũng nên chỉnh tề quy củ hơn.”
+Sắc mặt Sơ Tam lập tức đỏ bừng.
+Các nàng vốn chỉ là nô tỳ hèn mọn nhất trong chợ đen Giang Nam.
+Chỉ cần vài lượng bạc là có thể mua mạng các nàng.
+Từ trước đến nay chưa từng tiếp xúc với giới quyền quý ở Thượng Kinh.
+Lần này đúng là để người ta chê cười rồi.
+Nàng xấu hổ nhận lấy khay từ tay thị tùng, rồi ôm chạy đi.
+Sơ Nhất nghiêm túc nói:
+“Chúng ta nhất định sẽ tuân thủ quy củ, làm việc cẩn trọng, tuyệt đối không làm mất mặt Nhiếp Chính Vương.”
+Nàng cất bước định rời đi.
+“Sơ Nhất!”
+Nàng dừng chân, quay đầu, khó hiểu nhìn Trọng Phong vừa tiến lên nửa bước.
+“Còn có chuyện gì sao?” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_240.html" class="btn">‹ Trước</a>
+            <a href="chuong_242.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

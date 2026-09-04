@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 181</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 181</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_180.html" class="btn">‹ Trước</a>
+            <a href="chuong_182.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 181: Đến cả di sản của Cửu đệ cũng bị lừa sạch rồi
+
+Sở Ngạo Thiên xuống xe ngựa.
+
+Bên kia, hai hộ vệ kia vẫn đang hỏi thăm tin tức.
+
+“Xin hỏi, hai vị đang dò hỏi chuyện của Cửu hoàng tử?”
+
+Hai người quay đầu nhìn hắn.
+
+“Đúng vậy, xin hỏi công tử là…”
+
+“Bản vương là đương kim Nhàn Vương, từ nhỏ lớn lên cùng Cửu hoàng tử. Các ngươi muốn biết điều gì, cứ hỏi ta.”
+
+Hai người kinh ngạc.
+
+Không ngờ giữa phố lớn lại có thể gặp được Nhàn Vương điện hạ!
+
+Bọn họ từng nghe nói, trong số các vị hoàng tử, người có tình cảm tốt nhất với Cửu hoàng tử chính là Nhàn Vương.
+
+Hai người chắp tay hành lễ rồi mới nói:
+
+“Nhàn Vương điện hạ, chúng tôi là người của Vệ gia Tiền Trang. Vài ngày trước, có một vị công tử cầm phiếu gửi tiền của Cửu hoàng tử đến phân trang ở Giang Nam rút tiền. Vì số tiền quá lớn, chưởng quỹ không yên tâm, nên mới sai chúng tôi đến dò hỏi một phen.”
+
+Sở Ngạo Thiên sửng sốt.
+
+“Mấy ngày trước?”
+
+Sao có thể?
+
+“Đúng vậy. Người đó tự xưng là nam sủng do Cửu hoàng tử nuôi ở bên ngoài.”
+
+“Ồ.”
+
+Ra là vậy.
+
+Khoan…
+
+Không đúng!
+
+Cửu đệ vậy mà lén hắn nuôi nam sủng ở bên ngoài!
+
+Còn lén đem toàn bộ gia sản của mình tặng cho nam sủng!
+
+Cho hết tiểu bạch kiểm, một đồng cũng không để lại cho hắn?!
+
+Mặt Sở Ngạo Thiên lập tức đỏ bừng vì tức giận, hùng hổ lao thẳng lên núi Thanh Dương.
+
+“Đồ vô lương tâm! Chúng ta cùng nhau lớn lên, vậy mà ngươi dám giấu ta đoạn tụ, nuôi nam sủng, còn giấu kín đến mức chẳng để lộ lấy nửa điểm phong thanh!”
+
+“Thôi thì chuyện đó cũng bỏ đi.”
+
+“Giờ chết rồi còn để hết gia sản cho người ngoài.”
+
+“Đồ bạch nhãn lang khuỷu tay hướng ra ngoài!”
+
+“Ngươi chết rồi, ai đến trước mộ ngươi? Ai thắp hương cho ngươi? Chẳng phải đều là ta sao? Ngươi để gia sản cho tiểu bạch kiểm, thế tiểu bạch kiểm đó có từng đến mộ ngươi lấy nửa bước chưa?”
+
+Sở Ngạo Thiên vừa đốt vàng mã, vừa đỏ mắt mắng không ngừng:
+
+“Đồ ngốc.”
+
+“Đồ ngớ ngẩn.”
+
+“Bao nhiêu năm nay ngươi tích góp được bao nhiêu thỏi vàng nhỏ hả? Một thỏi cũng chẳng để lại cho ta.”
+
+“Ngươi xem kìa, cỏ trên mộ cũng đổ rồi… Hả? Sao cỏ trên mộ ngươi lại đổ thế này?”
+
+Hắn cúi xuống bốc một nắm đất vẫn còn ẩm dính.
+
+Chẳng lẽ tối qua có mưa?
+
+“Để ta dựng lại cho ngươi.”
+
+Hắn cắm lại đám cỏ trên mộ ngay ngắn.
+
+“Cửu đệ, trên đời này cũng chỉ có ta là nhớ ngươi nhất thôi… Haizz… Lúc còn sống ngươi đã giúp ta thực hiện tâm nguyện, sau khi chết có thể tiếp tục phù hộ cho ta không?”
+
+Hắn chờ một lát.
+
+“Không nói gì, ta coi như ngươi đồng ý nhé?”
+
+Hắn quỳ xuống, hai tay chắp trước ngực, thành kính nhắm mắt.
+
+“Cửu đệ, ta muốn làm Vương gia, nhưng không phải xử lý triều chính nữa; ta muốn có một vùng đất phong của riêng mình, tốt nhất rộng bằng năm tòa thành; ta còn muốn cao thêm mười phân, đẹp trai như Hoàng thúc, mê hoặc muôn vàn thiếu nữ; ta còn muốn…”
+
+⸻
+
+Hoàng cung.
+
+Lâm Hoa điện.
+
+Mùi rượu nồng nặc đến nghẹt thở.
+
+Đại điện suốt bảy ngày không một ai quét dọn, bừa bộn chẳng khác gì ổ chó.
+
+Trong góc tối mờ mịt, một bóng người co quắp, tiều tụy như chó nhà có tang.
+
+Rượu…
+
+Hết vò này đến vò khác bị rót vào miệng.
+
+Máu…
+
+Hết ngụm này đến ngụm khác trào ra.
+
+“Khụ… khụ khụ!”
+
+Rốt cuộc là say…
+
+Hay đã chết?
+
+Nếu đã vậy…
+
+Vì sao tim vẫn đau đến thế?
+
+“Khụ… khụ khụ…”
+
+Bàn tay trắng bệch như xác chết của nam nhân mò mẫm khắp nơi, đá đổ một loạt vò rượu rỗng, cuối cùng chạm được một vò còn đầy, lập tức ngửa đầu uống cạn.
+
+“Đừng uống nữa!”
+
+Bạch Cẩm Y nắm lấy cổ tay hắn.
+
+“Ngươi không cần mạng nữa sao?”
+
+“Đưa đây!”
+
+Nam nhân giật lấy vò rượu, uống được vài ngụm lại ho ra vài ngụm máu.
+
+Mùi máu tanh hòa lẫn với rượu mạnh cùng trôi xuống cổ họng, đau đớn như bị xé toạc, khiến hắn như đang lơ lửng trên mây rồi lại bị kéo mạnh trở về hiện thực.
+
+Sống không bằng chết.
+
+Ngược lại, những hình ảnh trong đầu càng lúc càng rõ ràng.
+
+‘Hoàng thúc… Hoàng thúc…’
+
+Tiểu Cửu!
+
+Hắn co người trong góc, vùi đầu vào khuỷu tay, khóc đến chẳng còn ra hình người.
+
+“Tiểu Cửu!”
+
+Hô hấp của Bạch Cẩm Y khẽ nghẹn.
+
+Bao nhiêu năm quen biết…
+
+Đã từng thấy hắn như thế này bao giờ?
+
+“Ngươi không hận nàng sao? A Trì, chính nàng hại chết Trúc ma ma…”
+
+“Ta hận nàng… Ta hận nàng… Nhưng ta càng yêu nàng!”
+
+Không chỉ một lần hắn từng muốn giết nàng.
+
+Một đao giải quyết tất cả.
+
+Nhưng mỗi lần như vậy, nàng đều kiên cường, lạc quan đến lạ.
+
+Giữa hoàng thất mục nát và tăm tối ấy, nàng giống như một dây tơ hồng ngoan cường vẫn cố sinh trưởng.
+
+Nàng lúc nào cũng hoạt bát, vui vẻ.
+
+Cho dù Đại hoàng tử hãm hại nàng.
+
+Hoàng thượng lợi dụng nàng.
+
+Tam hoàng tử tính kế nàng.
+
+Hoàng hậu xúi giục nàng…
+
+Cho dù tất cả mọi người đều lợi dụng nàng, nàng vẫn luôn khéo léo thoát thân.
+
+Dần dần…
+
+Hắn dao động.
+
+Cho đến khi nàng ngã trong lòng hắn, từng chút từng chút mất đi sinh cơ.
+
+Lúc ấy hắn mới biết…
+
+Mình không thể rời xa nàng đến mức nào.
+
+“Nàng chết rồi… Chết ngay trong lòng ta… Chảy rất nhiều máu… Tay ta đều là máu của nàng… Máu nóng cứ không ngừng tuôn ra… Giống như sinh mệnh của nàng, như cát chảy qua kẽ tay… Dù ta cố giữ thế nào cũng không giữ nổi…”
+
+Nàng chết rồi!
+
+Bạch Cẩm Y ngồi xổm bên cạnh hắn.
+
+“Nhìn xem ngươi bây giờ còn ra thể thống gì! Sống không ra sống, chết không ra chết! Dù sao ngươi cũng không vợ không con, chi bằng chết luôn đi!”
+
+“Cứ để Sở Ly chết oan như vậy đi!”
+
+“Thù của nàng cũng đừng báo nữa!”
+
+“Giang sơn xã tắc cũng mặc kệ, cứ giao hết cho Nam Man! Đại Sở cũng dâng luôn cho Nam Man đi! Ngươi mau chết đi! Xuống dưới bầu bạn với nàng luôn đi!”
+
+Đúng lúc ấy.
+
+Ngoài cửa vang lên một giọng nói khác.
+
+“Cẩm Y, ngươi nói gì vậy?”
+
+Là Tiêu Dạ Hành.
+
+Hắn bước nhanh vào, nhìn dáng vẻ như vừa xảy ra chuyện khẩn cấp.
+
+Bạch Cẩm Y tức đến nghiến răng.
+
+“Hắn đã say suốt bảy tám ngày rồi! Cứ chết quách đi còn sướng hơn!”
+
+“Nếu hắn chết, Đại Sở thật sự sẽ trở thành vật trong túi của Nam Man.”
+
+Tiêu Dạ Hành lấy từ trong tay áo ra một phong mật thư.
+
+“Tin khẩn từ tiền tuyến. Trưởng công chúa Nam Man sau khi chiếm được ba châu Mạc Hoài, đang bí mật điều binh tập kết. Chậm nhất nửa tháng nữa sẽ có mười vạn đại quân đến Mạc Hoài.”
+
+Bạch Cẩm Y giật lấy mật thư.
+
+“Nàng ta muốn làm gì?”
+
+Hai nước đã ký hiệp ước hòa bình năm mươi năm.
+
+Vậy mà nàng ta vẫn âm thầm điều binh.
+
+Là muốn bội ước?
+
+Muốn khai chiến?
+
+“Đại Sở nội loạn, A Trì lại đang trong tình trạng thế này, còn tâm trí đâu mà quản quốc gia? Nam Man muốn nhân lúc nước ta suy yếu để phát binh xâm lược, đây chính là thời cơ tốt nhất. Bọn họ sao có thể bỏ lỡ?”
+
+“Đáng chết!”
+
+A Trì đã nhượng cả Nam Cương cùng ba châu Mạc Hoài cho Nam Man.
+
+Không ngờ dã tâm của Nam Man còn lớn hơn thế.
+
+Bọn chúng muốn nuốt trọn cả Đại Sở!
+
+“Bẩm!”
+
+Đúng lúc ấy, một tiểu thái giám chạy vào.
+
+“Khởi bẩm Nhiếp Chính Vương, Nhàn Vương cầu kiến, nói có việc cần bẩm báo.”
+
+Tiêu Dạ Hành quay đầu.
+
+“Chúng ta đang bàn chính sự quan trọng. Bảo Nhàn Vương tạm hoãn.”
+
+Tiểu thái giám hơi do dự.
+
+“Nhưng… Nhàn Vương nói việc của ngài ấy cũng rất quan trọng…”
+
+“Có việc gì lớn hơn chiến sự sao? Còn không lui xuống!”
+
+“Vâng.”
+
+Tiểu thái giám không dám nhiều lời nữa.
+
+⸻
+
+Ngoài Lâm Hoa điện.
+
+Sở Ngạo Thiên đứng chờ, đầu óc ong ong.
+
+Hoàng thúc…
+
+Lại không chịu gặp hắn?
+
+Thôi vậy.
+
+Vốn hắn còn định bẩm báo với Hoàng thúc chuyện Cửu đệ nuôi nam sủng, tiện thể xin Hoàng thúc thu hồi lại số vàng khổng lồ kia.
+
+Từ nhỏ đến lớn, mỗi lần phụ hoàng vui vẻ đều thích ban thưởng cho Cửu đệ từng thỏi vàng nhỏ.
+
+Mười mấy năm tích góp…
+
+Chắc hẳn phải đầy cả một rương.
+
+Vậy mà tất cả đều cho người ngoài.
+
+Nghĩ thôi đã thấy đau lòng.
+
+Là vàng đó!
+
+Vàng thật đó!
+
+Hắn không dám tưởng tượng nếu số vàng ấy thuộc về mình…
+
+Thì bản thân sẽ vui vẻ đến nhường nào.
+
+“Biệt Cửu.”
+
+“Nô tài có mặt.”
+
+“Ngươi phái người đến Giang Nam điều tra thử xem. Xem cái tên nam sủng mà Cửu đệ nuôi rốt cuộc là thần thánh phương nào, lại có bản lĩnh đến mức lừa sạch cả di sản của Cửu đệ ta.”</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_180.html" class="btn">‹ Trước</a>
+            <a href="chuong_182.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

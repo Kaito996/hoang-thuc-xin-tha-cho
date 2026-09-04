@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 67</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 67</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_66.html" class="btn">‹ Trước</a>
+            <a href="chuong_68.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 67: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 67: Sở Ly, bổn vương đây là đang sủng ái ngươi
+Lúc này, Ngọc Đường cung.
+Toàn bộ cung nhân đều đã bị lui ra ngoài, trong phòng chỉ còn lại hai mẹ con.
+Ôn phi thần sắc ngưng trọng:
+— Thành thật nói cho mẫu phi biết, chuyện của Thất hoàng tử… là con làm phải không?
+Sở Ly ngồi đó, lặng im không đáp.
+Đôi khi, im lặng chính là câu trả lời.
+Ôn phi khẽ thở dài:
+— Ly nhi, con không muốn xuất cung nữa sao?
+— Muốn.
+— Vậy vì sao…
+— Mẫu phi, xin người tha thứ.
+Sở Ly khẽ nói:
+— Ta không giết Bá Nhân, nhưng Bá Nhân lại vì ta mà chết. Mẫu phi… con trốn không thoát.
+Từ lúc Hoàng thượng bảo nàng đứng ra dàn xếp cái chết của Phương Hải Dương, cố ý dẫn sự căm hận của Quốc Công phủ về phía nàng, nàng đã hiểu rồi.
+Sinh ra trong hoàng thất, nàng không thể tránh.
+Năm xưa, Tiêu Dao Hoàng thúc vì muốn minh triết bảo thân, rời kinh đến đất phong để tránh sóng gió, cũng phải bị lột từng tầng từng lớp, trả giá vô cùng to lớn, mới đổi lấy được sự yên ổn như hôm nay.
+Nàng từng cho rằng chỉ cần xuất cung lập phủ là có thể tránh xa tất cả.
+Thật sự chỉ là một sự ngây thơ đến viển vông.
+Trong cuộc tranh đoạt hoàng quyền, bàn cờ đã bày sẵn.
+Mà nàng…
+Cũng chỉ là một quân cờ trên bàn cờ ấy.
+Ôn phi đau lòng:
+— Là mẫu phi có lỗi với con… không đủ năng lực bảo hộ con chu toàn.
+Sở Ly lắc đầu:
+— Mẫu phi đừng tự trách. Sống cũng được, chết cũng thôi, đều là mệnh số của mỗi người.
+⸻
+Khi bước ra khỏi Ngọc Đường cung, màn đêm đã buông xuống.
+— Cửu đệ!
+Sở Ngạo Thiên đã chờ sẵn bên ngoài từ lâu.
+Vừa nhìn thấy Sở Ly đi ra, hắn lập tức vui vẻ vẫy tay liên tục.
+Sở Ly bước tới.
+— Bát hoàng huynh sao lại ở đây?
+— Cửu đệ, chúng ta xuất cung chơi đi!
+Sở Ngạo Thiên nôn nóng kéo lấy tay nàng.
+— Ta biết một nơi rất thú vị, gọi là Tây Nhai, ở đó có rất nhiều thứ vui lắm!
+Hôm nay xảy ra quá nhiều chuyện, Sở Ly đã có chút mệt mỏi.
+— Trời đã tối rồi.
+— Không sao! Chúng ta cùng đi, cùng về, có bạn mà.
+— Nhưng mà…
+— Cửu đệ~~ Cửu đệ, đệ đi với ta đi mà! Tối lát nữa nếu ta phải về một mình… ta sợ ma.
+Sở Ngạo Thiên từ nhỏ đã gan lì, chỉ duy nhất…
+Sợ ma.
+“…”
+— Được rồi.
+Sở Ly theo Sở Ngạo Thiên xuất cung.
+Đến Tây Nhai, tiếng người huyên náo, đông nghịt như nước chảy không lọt.
+Sở Ngạo Thiên hưng phấn đến mức lè lưỡi, nhảy tưng tưng như một con khỉ.
+Hắn chạy hết chỗ này sang chỗ khác, suýt nữa quên luôn cả Sở Ly.
+Thế nhưng…
+Sở Ly lại chẳng hề hứng thú với những trò như chọi dế, chọi gà.
+— Cửu đệ, mắt đệ không tiện, ta đưa đệ sang trà lâu bên kia ngồi nghỉ nhé. Chờ ta chơi xong rồi chúng ta cùng hồi cung.
+— Được.
+Vốn dĩ nàng cũng chẳng có hứng.
+Chi bằng đi uống trà.
+Mở một gian nhã phòng.
+Sở Ngạo Thiên vừa buông tay đã chạy mất.
+Sở Ly ngồi bên cửa sổ, nhìn dòng người qua lại trên con phố phía dưới.
+Đột nhiên…
+Két—
+Tiếng mở cửa vang lên.
+— Cứ đặt trà lên bàn là được.
+Sở Ly tưởng là tiểu nhị mang trà tới nên không quay đầu lại.
+Nhưng vài giây sau…
+Sau lưng vẫn tĩnh lặng như chết.
+Một luồng hàn ý chậm rãi bò dọc sống lưng.
+Nàng quay đầu nhìn.
+Trong khoảnh khắc ấy…
+Thần sắc bỗng run lên dữ dội.
+Sao hắn lại ở đây…
+Sở Ngạo Thiên!
+Trong nháy mắt, Sở Ly đã hiểu tất cả.
+Nàng còn đang thắc mắc, sao tối thế này Sở Ngạo Thiên lại đột nhiên rủ nàng xuất cung đi chơi.
+Thì ra…
+Là để đưa nàng tới đây.
+Còn cái tên Ôn Tang kia…
+Lại dám bán đứng nàng!
+Qua lớp sa mỏng che phủ, trong tầm nhìn mờ ảo, chỉ thấy một thân ảnh huyền mặc chậm rãi bước vào.
+Hắn khép cửa lại.
+Rồi từng bước tiến về phía nàng.
+Vết sẹo dài như con rết trên thái dương sau khi khâu lại càng trở nên dữ tợn.
+Áp lực mạnh mẽ như mây đen ép thành.
+Từng bước.
+Từng bước áp sát.
+Thần sắc Sở Ly nhanh chóng khôi phục bình tĩnh.
+Hai tay giả vờ như người mù, lần mò về phía trước.
+— Là tiểu nhị mang trà tới sao?
+Nàng dò dẫm vài bước.
+— Cứ đặt trà xuống rồi lui ra ngoài đi. Nếu cần hầu hạ, ta sẽ gọi sau.
+Sở Đệ Trì nghiêng người, thong thả bước sang một bước.
+Ngay lập tức…
+Đầu ngón tay nàng chạm lên lồng ngực hắn.
+— Ngươi là…
+Đôi mắt Sở Đệ Trì sắc bén như chim ưng khóa chặt lấy nàng.
+— Ban ngày lúc đập đầu bổn vương, mắt ngươi sáng lắm.
+— Sao bây giờ… lại mù rồi?
+Đầu ngón tay Sở Ly khẽ run.
+Giật mình lùi liền mấy bước.
+— Hoàng thúc…
+— A!
+Khóe mắt chợt lạnh.
+Lớp sa che mắt bị bàn tay to giật xuống.
+Ngay cả dây buộc tóc cũng bị kéo bung.
+Ba ngàn tóc xanh như thác nước đổ xuống.
+Đôi mắt long lanh đầy vẻ kinh hoảng nhìn về phía hắn.
+Đôi mắt ấy vốn đã sinh rất đẹp.
+Tựa hồ nước sâu.
+Trong trẻo mà thần bí.
+Ánh lên quang mang như tinh thần.
+Dường như có thể xuyên qua bóng tối, soi sáng con đường phía trước.
+Sau khi bị thương, nàng đã lâu không nhìn thấy ánh sáng.
+Lúc bất ngờ ngẩng đầu, vẻ hoảng hốt ấy giống như chú nai nhỏ trong rừng bị kinh động.
+Hoảng loạn lao thẳng vào đôi mắt đen trầm của nam nhân.
+Như rơi xuống vực sâu không đáy.
+Ánh mắt Sở Đệ Trì hơi trầm xuống.
+— Xem ra…
+Cửu hoàng tử đã khỏi hẳn rồi.
+Sở Ly xoay người định bỏ chạy.
+Thế nhưng…
+Lại bị hắn ôm ngang eo nhấc bổng lên.
+— A!
+Chỉ bằng một cánh tay.
+Nam nhân đã kéo nàng trở lại.
+Bộ trà trên bàn bị hất rơi loảng xoảng.
+Nàng bị giam giữa hai cánh tay hắn.
+— Hoàng thúc!
+— Vui lắm sao?
+Hắn đưa tay chộp lấy.
+Lại dùng chính dải lụa che mắt lúc nãy trói hai cổ tay nàng.
+Trong lòng Sở Ly lập tức báo động.
+— Ban ngày chúng ta đánh cược, Hoàng thúc đã thua. Bây giờ lại đến gây phiền phức cho ta. Đường đường nam nhi bảy thước, chẳng lẽ thua không nổi?
+— Bổn vương khi nào gây phiền phức cho ngươi?
+Sở Đệ Trì nâng cằm nàng lên.
+Giọng nói trầm thấp.
+— Sở Ly, bổn vương đây là đang sủng ái ngươi.
+— Người nói mà không giữ lời!
+Sở Ly co chân.
+Dùng sức đá mạnh vào ngực hắn.
+Hắn bắt lấy một chân nàng.
+Ép xuống dưới thân.
+— Bổn vương đã để cho ngươi đập rồi.
+— Khi nào không giữ lời?
+— Buông ta ra!
+— Mấy ngày không gặp.
+— Lá gan lớn thêm rồi.
+— Nếu đã vậy…
+— Bổn vương sẽ để ngươi đập cho đủ.
+Đầu óc Sở Ly choáng váng.
+Suýt nữa ngã khỏi mặt bàn.
+Nàng cắn chặt môi dưới.
+Trừng mắt nhìn gương mặt âm lệ cuồng ngạo của nam nhân.
+Lớn tiếng:
+— Ta thắng rồi! Người thua thì phải chịu phạt! Ta chỉ đập người một cái đã là nhẹ lắm rồi…
+— Ưm!
+Hắn bóp mạnh vào phần eo mềm mại của nàng.
+Gần như muốn bóp nát.
+— Còn dám đập bổn vương!
+Hắn…
+Chưa từng bị ai đánh vào mặt.
+Nàng là người đầu tiên.
+Sở Ly tức giận quát:
+— Ta cứ đập đấy! Ta đập chết người…
+— A!
+— Ưm…
+— Lần sau còn dám đập nữa không?
+— Đập!
+— Còn đập không?
+— Đập…
+— Đây là do chính ngươi tự chuốc lấy.
+— Ư…
+Giọng nàng đã mềm nhũn, khí lực cũng dần cạn.
+Ban đầu còn cứng miệng vô cùng.
+Nhưng bị hắn giày vò đến về sau, nàng thật sự không chịu nổi nữa.
+Lửa giận xen lẫn ấm ức bùng lên, nàng lớn tiếng:
+— Hoàng thúc… ta không phải cố ý…
+— Hôm nay ta làm như vậy… đều là để xóa bỏ nghi ngờ của Hoàng hậu…
+— Ta không dám nữa.
+— Hoàng thúc…
+— Lần sau ta thật sự không dám nữa! Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_66.html" class="btn">‹ Trước</a>
+            <a href="chuong_68.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,604 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 331</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 331</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_330.html" class="btn">‹ Trước</a>
+            <a href="chuong_332.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 331: Tiểu Cửu thân khải, Dạ Ly tặng
+Sở Ly lùi nửa bước, phần eo lập tức va vào mép bàn.
+“A…”
+Nam nhân nhanh tay lẹ mắt ôm nàng vào lòng, thuận thế ép xuống.
+“Hoàng thúc!”
+Loảng xoảng! Loảng xoảng!
+Bút, mực, nghiên trên bàn rơi đầy đất.
+“Xem nàng kìa, sao lại nóng vội như vậy?” Hắn cười trách, “Tuy ban ngày tuyên dâm quả thật không ổn lắm, nhưng bổn vương là Nhiếp Chính Vương, thử hỏi còn ai dám quản?”
+Vừa dứt lời đã muốn rút đai lưng.
+Mí mắt Sở Ly giật mạnh, vội vàng giữ lấy tay hắn:
+“Đợi đã!”
+Đêm qua nàng vốn đã ngủ không ngon.
+Đến bây giờ hai chân vẫn còn mềm nhũn.
+Với tính tình của hắn, một khi bắt đầu thì nhất định sẽ không biết điểm dừng.
+Sở Đệ Trì nóng lòng rút đai lưng:
+“Thời gian quý giá, đừng chờ nữa.”
+“Đây là hoàng cung!”
+“Chẳng lẽ còn có ai đến quấy rầy chúng ta?”
+“Bẩm——”
+Lời còn chưa dứt, bên ngoài đã có một cấm quân vội vàng chạy tới. Vừa nhìn thấy cửa phòng mở rộng, hai người quấn quýt thân mật, hắn sợ đến mức suýt quỳ xuống.
+“Nhiếp… Nhiếp…”
+Sở Ly lập tức đẩy ngực hắn:
+“Còn đè lên ta làm gì? Mau tránh ra.”
+Sắc mặt Sở Đệ Trì hơi trầm xuống, quay đầu nhìn:
+“Ngươi tốt nhất nên có một lý do chính đáng.”
+Sau lưng cấm quân lạnh toát, vội vàng hai tay dâng lên một chiếc hộp gỗ:
+“Khởi bẩm Nhiếp Chính Vương, cách đây không lâu có một người không rõ thân phận đến trước cổng hoàng cung, nói rằng nhất định phải giao vật này tận tay Tạ tiểu thư.”
+Sở Ly thò đầu nhìn:
+“Cho ta?”
+Lại còn là người không rõ thân phận?
+“Đưa bổn vương xem.”
+“Vâng.”
+Sở Đệ Trì lười nhác mở hộp gỗ ra, chỉ nhìn lướt một cái, sắc mặt lập tức trầm hẳn xuống, “cạch” một tiếng đậy nắp lại.
+Sở Ly thấy vậy:
+“Sao thế?”
+“Không phải thứ gì tốt, đem ra ngoài vứt đi.”
+“Để ta xem.”
+“Vứt đi.”
+Cấm quân ôm hộp gỗ, hai tay run lẩy bẩy, tiến cũng không được, lùi cũng chẳng xong, đứng chết trân tại chỗ.
+Rốt cuộc là vứt hay không vứt?
+Sở Ly bước nhanh tới, giật lấy hộp gỗ. Vừa mở ra, đập vào mắt nàng là một hàng chữ:
+—— Tiểu Cửu thân khải, Dạ Ly tặng.
+Hôm ấy, Sở Dạ Ly từng nói sẽ tặng nàng một món quà lớn, chẳng lẽ chính là vật này?
+Nàng khẽ nhíu mày, xé niêm phong, lấy từ trong phong thư ra hai trang sổ sách.
+Ánh mắt lập tức trầm xuống:
+“Đây là ghi chép về tiền bạc qua lại giữa Tiêu Dao Vương và các quan viên trong triều, còn có cả những khoản giao dịch với thương nhân.”
+Nhưng chỉ là hai trang rời, không có đầu cũng chẳng có cuối, giống như bị xé ngẫu nhiên từ một quyển sổ.
+“Hoàng thúc, trong tay Tiêu Dao Vương nhất định có một quyển sổ sách!”
+Sở Ly chợt hiểu ra:
+“Nếu tìm được quyển sổ ấy, sẽ có thể nhổ tận gốc toàn bộ bè đảng mà Tiêu Dao Vương đã bồi dưỡng suốt mấy chục năm.”
+Chỉ cần có quyển sổ đó, liền có thể thanh trừng triều đình.
+Triệt để thanh quân trắc.
+Sở Đệ Trì nhàn nhạt nói:
+“Nàng tin Sở Dạ Ly như vậy?”
+Sở Ly ngẩn người:
+“Không phải vấn đề tin hay không. Chàng xem đi, trên hai trang sổ này có Trương đại nhân, Lý đại nhân, chẳng phải đều là những người hôm nay ta vừa phát hiện sao?”
+Như vậy đủ chứng minh, nó có độ tin cậy.
+“Hơn nữa, Tiêu Dao Vương âm thầm mưu tính mấy chục năm, không thể nào không lưu lại chút dấu vết nào. Quyển sổ ấy chính là chứng cứ tốt nhất.”
+Sở Đệ Trì liếc nàng, giọng đầy vị chua:
+“Hắn sẽ tốt bụng đưa chứng cứ cho chúng ta? Hắn cùng phe với Tiêu Dao Vương, việc này nhất định là đang giăng bẫy.”
+Sở Ly:
+“Biết đâu bọn họ chó cắn chó thì sao?”
+“Bọ ngựa bắt ve, chim sẻ đứng sau. Chúng ta mà tin hắn thì chính là trúng kế.”
+“Nhưng…”
+Giọng nam nhân đột nhiên lạnh lẽo:
+“Nàng chính là tin hắn!”
+“Chàng lớn tiếng như vậy làm gì? Ta là người điếc sao?”
+Sở Đệ Trì tối sầm mặt.
+Ai ngờ Sở Ly một tay chống hông, một tay đưa lên nhéo mặt hắn.
+Cấm quân suýt nhìn đến ngây người.
+Đầu hắn bị kéo lệch sang một bên:
+“?”
+Không phải chứ.
+Từ bao giờ nàng lại to gan đến vậy?
+Từ bao giờ hắn lại mất hết uy nghiêm thế này?
+Đúng lúc ấy, bên ngoài lại vang lên một giọng nói hớt hải:
+“Hoàng thúc, không hay rồi! Hoàng…”
+Sở Ngạo Thiên chạy tới cửa, vừa nhìn thấy tư thế của hai người thì lập tức câm bặt.
+Sở Đệ Trì nghiêng đầu nhìn hắn:
+“Lại có chuyện gì?”
+Lại?
+Lại?
+Chẳng lẽ hắn là người suốt ngày chỉ biết gây chuyện sao?
+Sở Ngạo Thiên không phục.
+Hắn siết chặt hai tay, nghiến răng nói:
+“Không có chuyện gì.”
+Sở Ly buông tay, giơ hai trang sổ lên:
+“Nếu hoàng thúc nghi ngờ tính xác thực của nó, chẳng bằng lập tức triệu Tiêu Dao Vương vào cung, thử dò xem thật giả.”
+Đại sự trước mắt, lý trí của Sở Đệ Trì vẫn chiếm ưu thế:
+“Tuyên hắn vào.”
+Sở Ngạo Thiên nhỏ giọng:
+“Hoàng thúc, Tiêu Dao Vương đã trở về đất phong rồi.”
+“Cái gì?”
+Sở Ly kinh ngạc quay đầu.
+“Lúc nào? Hắn chưa xin phép triều đình, huynh cũng chưa hạ chỉ, vậy mà dám tự tiện rời kinh?”
+Đây chẳng phải là trong lòng có quỷ sao?
+“Hai khắc trước.”
+“Sao huynh không nói sớm?”
+“Đệ vốn định nói, nhưng lúc nãy hoàng thúc không cho, nên…”
+Sở Ngạo Thiên níu tay áo, kết quả vừa ngẩng đầu đã bắt gặp ánh mắt sắc lạnh như dao của Nhiếp Chính Vương, sợ đến mức toàn thân căng cứng, vội trốn sau lưng cấm quân.
+Cấm quân: “?”
+Sở Đệ Trì lạnh lùng quát:
+“Đồ vô dụng!”
+Việc nên nói thì không nói, lời vô nghĩa thì một đống.
+“Lập tức phái người xuất cung, chặn Tiêu Dao Vương lại cho ta!”
+“Tuân lệnh!”
+—
+Một đoàn xe ngựa nhẹ nhàng rời khỏi thành, lao nhanh về một phương hướng vô danh.
+“Mau!”
+“Giá!”
+Xa phu thúc ngựa cực nhanh, trông vô cùng gấp gáp.
+Nhưng dù nhanh đến đâu, vẫn bị một đội cấm quân cưỡi khoái mã đuổi kịp.
+“Dừng lại!”
+“Đứng yên!”
+Cấm quân quát lớn.
+Thế nhưng đoàn xe chẳng những không dừng mà còn chạy nhanh hơn, mãi đến khi cấm quân tăng tốc vượt lên, bao vây họ trong một cánh rừng nhỏ.
+Xa phu sợ hãi:
+“Ôi chao… các vị đại nhân, tiểu nhân đâu có phạm tội, các ngài đây là…”
+Một cấm quân lạnh giọng:
+“Bảo các ngươi dừng lại, chạy nhanh như vậy làm gì? Điếc à?”
+“Đại nhân hiểu lầm rồi, vừa rồi tiếng vó ngựa quá lớn, tiểu nhân không nghe rõ.”
+“Hừ!”
+Toàn là ngụy biện.
+“Tạ tiểu thư, chúng tôi đã chặn được người.”
+Cấm quân tách sang hai bên, nhường ra một lối đi.
+Sở Ly thúc ngựa tiến lên, ánh mắt nhàn nhạt nhìn về phía xe ngựa:
+“Tiêu Dao Vương đi vội như vậy, không biết định đi đâu?”
+Biết mình đã bại lộ, tình thế nguy cấp, nên vội vàng bỏ trốn sao?
+Xa phu sững người:
+“Tiêu Dao Vương? Tiêu Dao Vương nào?”
+Sở Ly lười phí lời, trực tiếp ra lệnh:
+“Các ngươi, lên vén rèm xe.”
+Hai người bước tới.
+Xa phu cuống quýt xua tay:
+“Tiểu nhân thật sự không biết Tiêu Dao Vương gì cả… các vị đại nhân… ôi!”
+“Tránh ra!”
+Cấm quân vừa định đưa tay vén rèm thì từ trong xe, một bàn tay trắng nõn thon dài đã chủ động vén màn lên, để lộ tà váy hoa lệ.
+“Không biết Tạ tiểu thư tìm phụ vương ta có chuyện gì?”
+Sở Minh Hoa?!
+Trong xe, ngoài nàng ta ra, không còn ai khác!
+Ánh mắt Sở Ly trầm xuống.
+Trúng kế rồi!
+Vốn tưởng đây là xe ngựa của Tiêu Dao Vương, không ngờ hắn đã kim thiền thoát xác.
+Quả nhiên xảo quyệt.
+Khóe môi Sở Minh Hoa cong lên, nụ cười đầy thâm ý.
+Hừ.
+Lúc này, e rằng phụ vương đã cách kinh thành hơn hai mươi dặm rồi.
+Tạ Vãn Nguyệt, xem ngươi còn đuổi thế nào.
+Muốn đấu với ta?
+Sở Ly thản nhiên nói:
+“Không thể tay không mà về. Không bắt được con lớn thì bắt con nhỏ.”
+“Cái gì?!”
+Nụ cười trên mặt Sở Minh Hoa lập tức cứng đờ.
+Hai cấm quân lao tới, kéo nàng xuống khỏi xe ngựa, dáng vẻ vô cùng chật vật.
+“Ngươi dám bắt ta? Tạ Vãn Nguyệt, ngươi dựa vào cái gì mà bắt ta? Thả ta ra!”
+“Đánh còn đánh rồi, có gì mà ta không dám bắt? Đem đi!”
+—
+Lúc này, cách kinh thành hơn hai mươi dặm.
+Một cỗ xe ngựa giản dị lặng lẽ rời khỏi đế đô.
+Ám vệ cưỡi ngựa tới bẩm báo:
+“Vương gia, cấm quân đã đuổi theo hướng quận chúa, không phát hiện chúng ta.”
+Trong xe ngựa.
+Tiêu Dao Vương ngồi vững như núi, lười nhác lật xem quyển sách trong tay.
+“Biết rồi.”
+Chẳng bao lâu sau, một ám vệ khác lại tới.
+“Vương gia, phủ đệ của chúng ta ở kinh thành đã bị niêm phong.”
+Tiêu Dao Vương đột ngột khép sách lại.
+Nhắc tới chuyện này là hắn nổi giận.
+Hắn ẩn nhẫn hơn hai mươi năm, cẩn trọng giữ mình, mọi chuyện vẫn luôn suôn sẻ.
+Ai ngờ Sở Ly chỉ tùy tiện giăng một cái bẫy, Sở Minh Hoa đã mắc câu, khiến hắn bại lộ.
+Đúng là đồ ngu!
+Hắn hít sâu một hơi:
+“Ngày đêm không nghỉ, lập tức trở về Cam Châu.”
+“Tuân lệnh!”
+Cam Châu là đất phong của hắn.
+Hai mươi năm qua hắn đã xây dựng căn cơ ở đó, có thuế má, tài sản, dân chúng, còn bí mật nuôi dưỡng một đội binh mã.
+Đến lúc ấy, trời cao hoàng đế xa, Nhiếp Chính Vương cũng chẳng có lý do xuất binh thảo phạt.
+Hừ!
+Bảy ngày sau.
+Đến Cam Châu.
+Tiêu Dao Vương vừa vào phủ, còn chưa kịp uống ngụm trà nghỉ ngơi thì bên dưới đã có người cấp báo.
+“Vương gia, Đông Lăng Thái tử dẫn theo mấy vạn tinh binh, cầu kiến ngài.”
+“Khụ… khụ…”
+Tiêu Dao Vương bị sặc hai ngụm nước.
+“Sở Dạ Ly rốt cuộc muốn làm gì? Đúng lúc này còn dẫn binh đến, chẳng phải là muốn nói với toàn bộ Đại Sở rằng bổn vương phản loạn sao?”
+Đúng là đồ ngu.
+Sao lại ngu y như Sở Minh Hoa.
+Hai người hợp sức hại hắn à?
+“Mau bảo hắn cút đi, không gặp.”
+“Nhưng Đông Lăng Thái tử đã dẫn binh áp sát thành rồi!”
+“Cái gì?”
+Ngoài thành Cam Châu.
+Hơn vạn đại quân đen nghịt trải dài.
+Khí thế chỉnh tề như rừng bạch dương sừng sững, uy phong lẫm liệt.
+Trên lưng ngựa phía trước, Sở Dạ Ly đang cười nói với mấy binh sĩ thủ thành.
+“Bản cung với Tiêu Dao Vương à? Quan hệ tốt vô cùng…”
+“Tiêu Dao Vương giúp ta lui binh…”
+“Đúng vậy, chúng ta định đánh hạ Đại Sở…”
+“Chúng ta đã hợp tác từ lâu rồi…”
+Mấy binh sĩ nghe mà trợn mắt há hốc miệng.
+“??”
+Trời ơi!
+Vương gia cấu kết với Thái tử tiền triều?
+Vương gia phản loạn rồi?
+Sao bọn họ không biết?
+Vậy giờ phải làm sao?
+Trung thành với Vương gia, cùng tạo phản?
+Hay trung thành với Đại Sở, đi tố giác Vương gia?
+Không phải…
+Tạo phản là chuyện lớn như vậy, sao Đông Lăng Thái tử lại cười tươi rói, nói như đang tán gẫu?
+“Sở Dạ Ly!”
+Đằng kia vang lên một tiếng quát lớn.
+Sở Dạ Ly nhướng mày.
+Nhắc Tào Tháo, Tào Tháo tới.
+Hắn xuống ngựa, chậm rãi bước tới.
+“Tiêu Dao Vương.”
+“Ngươi tới đây làm gì? Còn dẫn theo nhiều binh như vậy, ngươi…”
+Tiêu Dao Vương siết chặt nắm tay, nghiến răng.
+Sở Dạ Ly nói:
+“Tiêu Dao Vương cho rằng trở về đất phong là an toàn rồi sao? Hiện giờ Nhiếp Chính Vương đã phát hiện ngươi, đang tìm cách thanh trừng ngươi. Chẳng lẽ ngươi định ngồi chờ chết?”
+Nhắc tới chuyện này, Tiêu Dao Vương càng thêm tức giận.
+Đều do Sở Minh Hoa quá ngu.
+“Hơn nữa, ta tới là để giúp ngươi.”
+“Giúp bổn vương?”
+“Ngươi có đất phong, ta có tinh binh.”
+Sở Dạ Ly giơ tay chỉ về phía sau.
+“Thay vì chờ Nhiếp Chính Vương từng bước thanh trừng ngươi, sao không tự nắm quyền chủ động? Tiêu Dao Vương, chúng ta đang ở trên cùng một con thuyền.”
+Sắc mặt Tiêu Dao Vương dần trầm xuống.
+Ánh mắt vượt qua Sở Dạ Ly, nhìn về phía đội tinh binh phía sau, đáy mắt dần hiện lên vẻ sâu xa.
+—
+Đế đô.
+Khi cấp báo từ Cam Châu truyền về kinh thành.
+Sở Ngạo Thiên đập bàn đứng bật dậy.
+“Cái gì?”
+“Tiêu Dao Vương tập hợp binh mã ở Cam Châu, công khai tạo phản?”
+Quả thực vô pháp vô thiên!
+Quả thực càn rỡ!
+Sở Ly ngồi bên cửa sổ đọc sách, khẽ động tai, bình thản lật sang một trang khác.
+Ánh mắt Sở Đệ Trì vẫn lạnh nhạt:
+“Chuyện bé xé ra to.”
+“…”
+Sở Ngạo Thiên bĩu môi, cầm thư khẩn bước tới.
+“Hoàng thúc, trong mật báo nói Sở Dạ Ly đã hợp tác với Tiêu Dao Vương.”
+Sở Đệ Trì đáp:
+“Làm sao biết bọn chúng thật sự hợp tác? Sở Dạ Ly vốn mang ý đồ khác.”
+Sở Ly ngẩng đầu:
+“Đúng vậy.”
+“Mấy ngày trước, Sở Dạ Ly từng đưa cho ta hai trang sổ sách, bên trong toàn là nhược điểm của Tiêu Dao Vương. Hắn vừa bán đứng Tiêu Dao Vương, vừa hợp tác với Tiêu Dao Vương, thật không biết rốt cuộc có mục đích gì.”
+Sở Ngạo Thiên nhíu chặt mày, suy nghĩ:
+“Mặc kệ bọn chúng hợp tác thật hay giả, nội loạn Đại Sở vừa mới bình định, tuyệt đối không thể để Tiêu Dao Vương nhân cơ hội chia cắt chính quyền.”
+Phải xuất binh trấn áp.
+Nhưng đêm chính biến, Đại Sở tổn thất nặng nề.
+Nếu lúc này thật sự xuất binh đánh Tiêu Dao Vương, phòng thủ kinh thành sẽ trở nên sơ hở…
+Đột nhiên hắn sáng mắt lên.
+“Ta biết rồi!”
+“Sở Dạ Ly hợp tác với Tiêu Dao Vương là muốn dụ binh lực của chúng ta tới Cam Châu. Chờ chúng ta giao chiến ở đó, hắn sẽ nhân cơ hội đánh úp đế đô, rút củi dưới đáy nồi!”
+Hay lắm!
+Đã bị hắn đoán ra rồi!
+Con hồ ly già xảo quyệt ấy!
+Sở Ly và Sở Đệ Trì nhìn nhau.
+“Ta thấy lời Bát hoàng huynh nói rất có lý, không loại trừ khả năng này.”
+Sở Đệ Trì gật đầu:
+“Ừ.”
+“Hoàng thúc, vậy phải làm sao?”
+Nam nhân trầm ngâm giây lát.
+“Để Tần Mục Vũ ở lại trấn thủ đế đô. Ta dẫn Tiêu Dạ Hành tới Cam Châu, tiêu diệt Tiêu Dao Vương.”
+Sở Ly đứng dậy:
+“Ta cũng đi.”
+“Được.”
+Việc không nên chậm trễ.
+Sở Đệ Trì lập tức đi điều binh, sắp xếp nhân lực và quân nhu, sáng mai xuất phát.
+Sở Ngạo Thiên buồn bực thở dài:
+“Haiz… đánh mãi không hết chiến.”
+Sở Ly cười:
+“Bát hoàng huynh, đánh trận là đốt tiền. Huynh phải cố gắng kiếm tiền hơn nữa.”
+Sắc mặt Sở Ngạo Thiên lập tức cứng lại.
+Hắn bất giác nhớ tới tối qua, Khê Quý nhân và Thất Quý nhân tranh nhau hắn, lấy ngân phiếu ném tới tấp.
+Còn trưa hôm kia, năm vị phi tần thay nhau hầm canh cho hắn uống, còn lén nhét ngân phiếu dưới đáy bát…
+Chẳng lẽ đời này Sở Ngạo Thiên hắn chỉ có thể sống như thế?
+Không!
+Trong nhận thức của hắn, làm hoàng đế là có quyền lực dùng không hết, bạc tiêu không hết, phúc hưởng không hết.
+Sao đến lượt hắn thì mọi nhận thức trước đây đều bị đảo lộn?
+Rốt cuộc sai ở đâu?
+“Cửu muội, ngày mai muội lên đường. Hôm nay vừa đúng bốn mươi chín ngày của Khương Thái phó, chúng ta cùng tới thắp cho thầy một nén nhang, cầu người phù hộ.”
+“Được.”
+Khương Thái phó được an táng ngoài thành, trong tổ phần Khương gia, một nơi phong thủy cực tốt.
+Xe ngựa vừa dừng lại đã nghe phía xa vang lên tiếng quát mắng mơ hồ.
+“Ngươi cũng xứng tới đây… cút xa một chút… đừng làm bẩn đất Khương gia…”
+Sở Ngạo Thiên ngoái đầu nhìn quanh.
+“Tiếng gì vậy?”
+Sở Ly vén một góc rèm xe.
+Không xa là tổ phần Khương gia, được tu sửa sạch sẽ gọn gàng.
+Một ngôi mộ mới sừng sững giữa đó.
+Hương nến, tiền vàng nghi ngút.
+Người Khương gia đang cúng thất thất cho Khương Thái phó.
+Khương phu nhân ăn mặc giản dị, nhưng cây trâm trên đầu lấp lánh vô cùng chói mắt.
+Móng tay sơn đỏ chọc mạnh vào trán thiếu nữ.
+“Đồ con hoang!”
+“Nghiệt chủng!”
+“Đợi có dịp, ta sẽ giết chết ngươi.”
+“Mẫu thân.”
+Khương Thấm Tuyết ôm cánh tay bà ta, nũng nịu lay lay.
+“Mẫu thân đừng mắng muội muội như vậy nữa. Xa phu họ Vương trong nhà đã gần bốn mươi tuổi mà vẫn chưa cưới vợ, chi bằng gả muội ấy cho hắn.”
+Khương phu nhân nghe vậy liền cười.
+“Cũng phải!”
+“Khương Vãn à, Vương xa phu là gia nô của Khương gia, biết gốc biết rễ, rất đáng tin cậy. Gả cho hắn là hưởng phúc.”
+Khương Vãn lộ vẻ hoảng hốt.
+“Mẫu thân, Khương Vãn còn nhỏ, không muốn xuất giá.”
+“Không muốn? Định ở nhà ăn không ngồi rồi sao?”
+“Con biết y thuật và dược lý, có thể tự kiếm tiền nuôi sống mình.”
+“Đúng là tiện nhân sinh ra tiện chủng, y hệt ả kỹ nữ mẫu thân ngươi, suốt ngày chỉ biết lộ mặt bên ngoài! Thiên kim nhà ai lại như ngươi? Mặt mũi Khương gia đều bị ngươi làm mất sạch!”
+Khương phu nhân tức giận túm tai Khương Vãn, vừa mắng vừa kéo.
+Khương Thấm Tuyết che miệng bằng khăn, cười đến không giấu nổi.
+Toàn bộ cảnh ấy đều lọt vào mắt Sở Ngạo Thiên.
+Không ngờ lão sư cả đời đức cao vọng trọng, lại có một người con dâu hung hãn như vậy.
+Hắn phất tay áo xuống xe, sải bước đi tới.
+Khương Thấm Tuyết đang cười đến run cả người, eo nhỏ lắc lư, vui quá hóa buồn, bất cẩn trẹo chân.
+“A…”
+Đụng phải người.
+“Ngươi là ai? Không có mắt sao? Dám đụng bổn tiểu thư!”
+Sở Ly đứng vững, bình thản nhìn nàng.
+“Ta là Nhiếp Chính Vương phi tương lai.”
+Khương Thấm Tuyết ngẩn ra, rồi ôm bụng cười.
+“Ha ha! Ngươi là Nhiếp Chính Vương phi? Ha ha ha! Trời còn chưa tối mà đã nằm mơ rồi! Ha ha ha… Hoàng… Hoàng…”
+Miệng còn đang cười lớn thì chợt thấy một bóng người mặc long bào màu vàng sáng chậm rãi bước tới.
+Biểu cảm của nàng lập tức cứng đờ như vừa nuốt phải khổ qua.
+“Hoàng thượng!”
+Khương Thấm Tuyết, Khương phu nhân cùng đám gia nô Khương gia đồng loạt quỳ xuống.
+Sở Ngạo Thiên nhàn nhạt nói:
+“Muội đi thắp hương trước đi.”
+Hắn phải hảo hảo chỉnh đốn nữ nhân này.
+“Vâng.”
+Sở Ly đi trước.
+Sở Ngạo Thiên chắp tay sau lưng, nhìn đám người đang quỳ.
+“Có chuyện gì buồn cười đến vậy? Nói ra để trẫm cũng vui cùng.”
+Da đầu Khương Thấm Tuyết tê dại.
+“Hoàng… Hoàng thượng…”
+“Khương tiểu thư, miệng nàng cười to thật đấy. Một bữa chắc ăn được năm bát cơm nhỉ?”
+Mặt Khương Thấm Tuyết lập tức đỏ bừng như máu, xấu hổ đến tột cùng.
+“Hoàng… Hoàng thượng…”
+“Trẫm thích người miệng lớn. Ăn khỏe là có phúc mà, ha ha ha!”
+“Hả?”
+Khương Thấm Tuyết hoàn toàn ngây người.
+Khương phu nhân cũng thấp thỏm bất an.
+Rốt cuộc…
+Hoàng thượng đang khen hay chê?
+Sao không đoán nổi hỉ nộ của người?
+“Khương Thái phó có ân với trẫm. Dù công hay tư, trẫm đều nên đối xử tử tế với cháu gái của người. Khương tiểu thư, nàng có nguyện theo trẫm vào cung không?”
+Khương Thấm Tuyết không dám tin mở to mắt.
+Thật sao?
+Nàng không nghe nhầm chứ?
+Bao ngày nay biết bao quan viên muốn đưa người vào hậu cung, tốn bao bạc, chạy bao quan hệ cũng không thành.
+Không ngờ Hoàng thượng lại chủ động muốn nạp nàng?
+Chỉ vì thích miệng nàng lớn?
+Khương phu nhân vội chọc nhẹ nàng, thấp giọng nhắc:
+“Hoàng thượng hỏi con đấy!”
+Khương Thấm Tuyết hoàn hồn, vội vàng đáp:
+“Nguyện ý! Hoàng thượng, thần nữ nguyện ý! Miệng thần nữ rất lớn, ăn được rất nhiều, nhất định sẽ khiến Hoàng thượng hài lòng!”
+Sở Ngạo Thiên nhíu mày.
+“Trẫm không hỏi ngươi.”
+Hắn bước hai bước, dừng trước mặt Khương Vãn.
+“Khương tiểu thư, nàng có nguyện ý không?”
+Khương Vãn kinh ngạc ngẩng đầu.
+Nàng?
+Thật sự là hỏi nàng?
+Bất kể Hoàng thượng có dụng ý gì, cũng còn tốt hơn gả cho xa phu.
+“Bẩm Hoàng thượng, thần nữ nguyện ý.”
+Khương Thấm Tuyết lập tức cuống lên.
+Tại sao lại là Khương Vãn?
+Nàng là đích nữ, luận xuất thân, dung mạo hay phẩm hạnh, đều hơn Khương Vãn - một thứ nữ - không biết bao nhiêu lần.
+Rốt cuộc Hoàng thượng coi trọng nàng ta ở điểm nào?
+Khương phu nhân càng suýt cắn rách đầu lưỡi.
+Sao lại là Khương Vãn?
+Bà chần chừ hỏi:
+“Hoàng thượng, ý người là để Khương Vãn vào cung… làm cung nữ sao? Tuy xuất thân nó thấp hèn, nhưng tay chân cũng nhanh nhẹn, được làm cung nữ đã là nâng đỡ nó rồi.”
+Sở Ngạo Thiên hơi nổi giận:
+“Cháu ruột của lão sư, sao có thể làm nô? Trẫm muốn sắc phong nàng làm Vãn Quý nhân!”
+Khương phu nhân chỉ thấy máu dồn lên não, suýt ngất.
+Khương Thấm Tuyết càng không thể chấp nhận, suýt hét lên.
+Vì sao?
+Dựa vào cái gì?
+Nàng gào thét trong lòng, nàng muốn phát điên, muốn giậm chân, muốn hét lớn.
+Nàng không phục!
+Sở Ngạo Thiên lười để ý hai mẹ con ấy, phất tay áo nhìn bóng lưng Sở Ly đang quỳ trước mộ.
+“Cửu muội, muội thắp hương xong chưa?”
+Ở hướng quay lưng, không ai nhìn rõ biểu cảm của Sở Ly.
+Trong đáy mắt nàng lúc này là một mảnh ngưng trọng.
+Nàng nhìn ba nén nhang bị gãy trên mặt đất.
+Ba nén nhang.
+Có một nén gãy ngang.
+Nàng lại châm ba nén khác.
+Vừa cúi lạy hai lạy.
+“Rắc.”
+Lại gãy.
+Từ xưa đến nay, hương gãy là điềm chẳng lành.
+Nhìn bia mộ của Khương Thái phó, lòng Sở Ly chợt nặng trĩu.
+Lão sư, ngày mai chúng con sẽ tới Cam Châu thảo phạt Tiêu Dao Vương.
+Người dùng cách này để nói với con… đừng đi sao?
+Hay chuyến đi này… đã định trước là đại hung?
+“Cửu muội?”
+Tay áo Sở Ly khẽ phất qua, lặng lẽ ném hai nén hương gãy vào đống tiền giấy để cùng thiêu cháy.
+Đứng dậy, khuỷu tay vô tình chạm vào Khương Thấm Tuyết ở phía sau, khiến nàng ta giật bắn người.
+“Giật mình cái gì?”
+“Ta…”
+Khương Thấm Tuyết vì quá tức giận, cả người chìm trong đố kỵ và phẫn nộ nên mới thất thố như vậy.
+Lấy lại bình tĩnh, nàng nhỏ giọng:
+“Ta chỉ không nỡ nhìn Hoàng thượng bị Khương Vãn - một thứ nữ - lừa gạt, nên muốn nhờ Nhiếp Chính Vương phi khuyên Hoàng thượng.”
+“Thứ nữ?”
+“Đúng vậy. Nó là thứ xuất, thân phận thấp hèn, sao xứng vào cung, làm vẩn đục huyết mạch hoàng thất?”
+Sở Ly lạnh nhạt nhìn nàng.
+“Hoàng thượng cũng là thứ xuất.”
+Sắc mặt Khương Thấm Tuyết lập tức đại biến.
+Nàng còn muốn giải thích, nhưng Sở Ly đã lười nghe, cất bước vòng qua.
+“Hoàng thượng, huynh cứ tế bái đi, ta lên xe ngựa đợi.”
+Đi được hai bước, nàng quay đầu.
+“Khương Vãn, đi cùng ta.”
+Khương Vãn hơi kinh ngạc.
+Hoàn hồn lại, giữa ánh mắt đầy độc địa của Khương phu nhân và ánh nhìn phẫn nộ của Khương Thấm Tuyết, nàng lặng lẽ bước theo.
+Trên xe ngựa.
+Sở Ly nhìn ra sự câu nệ của Khương Vãn, dịu giọng:
+“Cô không cần căng thẳng. Hoàng thượng là người lương thiện, ôn hòa. Vào cung rồi cũng coi như rời khỏi Khương gia, hãy sống thật tốt cho bản thân.”
+Khóe mắt Khương Vãn đỏ lên, vừa xấu hổ vừa cảm động.
+Chuyện xấu trong nhà bị phơi bày trước mặt người ngoài, nàng vốn chỉ muốn tìm một cái lỗ để chui xuống.
+Thế nhưng Nhiếp Chính Vương phi lại ôn hòa gần gũi, còn an ủi nàng.
+“Nhiếp Chính Vương phi, người và Hoàng thượng đều là người tốt.”
+Nàng cẩn thận lấy từ trong ngực ra một món đồ được cất giữ như báu vật, hai tay dâng lên.
+“Miếng bình an khấu này là vật gia truyền do mẫu thân để lại cho ta. Nó có thể bảo bình an, hóa giải tai ách. Mong người đừng chê.”
+“Nếu là di vật của mẫu thân, cô cứ giữ lại cho mình.”
+Khương Vãn khẽ ngẩn người.
+“Mẫu thân ta chưa chết.”
+Sở Ly: “…”
+Khoảnh khắc trầm mặc này… quả thật có chút ngượng ngùng. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_330.html" class="btn">‹ Trước</a>
+            <a href="chuong_332.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

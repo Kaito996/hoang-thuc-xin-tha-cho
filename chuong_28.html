@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 28</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 28</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_27.html" class="btn">‹ Trước</a>
+            <a href="chuong_29.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 28: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
+Chương 28: [Thân nam nhi, sao lại có mùi hương?]
+Trong khoảnh khắc, Sở Ly như chạm phải ôn dịch, vội lùi liền mấy bước, cảnh giác che lấy chiếc cổ còn hơi nóng, nói:
+“Hoàng thúc nói đùa rồi! Thân nam nhi, sao có thể có mùi hương?”
+Nói xong, lập tức cáo lui đi dự yến.
+Bước đi vội vàng, như thể đang trốn chạy.
+Tiệc lửa trại kéo dài đến tận canh hai mới tàn. Săn được thú vật còn dư đều phân phát cho mọi người. Sở Ly được một cái đùi hươu, lúc trở về cung thì đã gần canh tư.
+Chỉ ngủ hơn một canh giờ, trời vừa hửng sáng đã vội vàng phân phó:
+“Cẩu Bát, mau đem cái đùi hươu này đến Ngọc Đường Cung, để tiểu phòng bếp làm dâng cho mẫu phi. Trời nóng oi bức, ta sợ để lâu sẽ hỏng.”
+Trong hậu cung, nữ nhân vào cung, có vinh sủng cũng như bị giam trong lồng.
+Trừ khi hoàng thượng ban ân, phi tần bình thường không được xuất cung. Nếu nhớ gia đình, còn phải dâng tấu, đợi hoàng thượng gật đầu mới được phép gặp thân nhân.
+Trong thâm cung, bốn bức tường ấy đã vây khốn bao nhiêu đời nữ nhân.
+“Chủ tử làm gì cũng nhớ đến nương nương, nương nương chắc hẳn rất vui.”
+“Ngươi đi đi, ta ngủ thêm chút nữa.”
+“Vâng.”
+Cẩu Bát lĩnh mệnh, mang đùi hươu vừa săn được đi ra. Nhưng chưa bao lâu đã hoảng hốt chạy về:
+“Không xong rồi!”
+“Chủ tử, Ngọc Đường Cung xảy ra chuyện rồi!”
+Ngọc Đường Cung
+“Ầm!”
+Liên tiếp tiếng động vang lên, vài chiếc bình hoa bị hất xuống đất vỡ nát, âm thanh loảng xoảng khiến cung nhân thái giám đều cúi đầu, đứng một bên run sợ.
+Người ra tay chính là Thôi cô cô, bước đến trước một nữ nhân dung mạo quý khí, đi hài thêu trân châu, bẩm:
+“Nương nương, nơi này không có.”
+Bên kia, hai cung nữ đập phá đồ vật cũng bước tới:
+“Nương nương, chỗ này cũng không tìm thấy.”
+“Ồ?”
+Hân Phi nhẹ vuốt khăn tay thêu hoa, môi cười như không cười:
+“Tỷ tỷ Ôn Phi, cung nữ của tỷ tay chân không sạch sẽ, trộm cây trâm ngọc Khổng Linh mà bản cung mang theo làm hồi môn. Bản cung thật sự nóng lòng, mong tỷ tỷ lượng thứ.”
+Ôn Phi nhìn cả phòng hỗn loạn, giọng bình thản:
+“Muội muội mất đồ, ta cũng lo lắng. Chỉ là những thứ bị đập này đều là vật tầm thường, sao sánh được với trâm ngọc hồi môn của muội?”
+“Nhưng cung nữ tên Thải Hoàn kia chưa từng thấy cây trâm đó, trong chuyện này e rằng có hiểu lầm?”
+Cung nữ Thải Hoàn quỳ trên đất, nước mắt đầm đìa, cổ họng đã khóc đến khàn đặc.
+Thôi cô cô đột nhiên tiến lên, tát mạnh một cái:
+“Tiện tỳ!”
+“Tôn Phi nương nương xưa nay hiền hòa, mới dung túng để ngươi thành ra to gan như vậy. Nếu còn dám cãi, liền đưa vào Thận Hình Ty chịu hình!”
+Lý cô cô sắc mặt biến đổi, muốn tiến lên ngăn cản.
+Ôn Phi giơ tay giữ lại.
+Lý cô cô: “Nương nương…”
+Người của Hân Phi ngay trước mặt đánh cung nữ trong cung, chẳng khác nào tát thẳng vào mặt chủ nhân.
+Đạo lý dân gian nói: đánh chó phải nhìn chủ. Cung nữ trong cung, há để người khác tùy tiện trừng phạt?
+Thải Hoàn vừa dập đầu vừa khóc:
+“Hôm qua nô tỳ đến Ngự Thiện Phòng lấy điểm tâm, Cúc Nhi ở Hợp Hoan Cung nói thiếu người, nhờ nô tỳ giúp một tay. Nô tỳ vào Hợp Hoan Cung đặt điểm tâm xuống rồi rời đi, tuyệt đối không hề trộm trâm ngọc của Hân Phi nương nương, xin nương nương minh giám!”
+Hợp Hoan Cung chính là nơi Hân Phi ở.
+Thôi cô cô lạnh giọng:
+“Hân Phi nương nương thân phận cao quý, trong cung há chỉ có một cung nữ? Cần gì phải mượn người của Ôn Phi nương nương?”
+“Ngươi rõ ràng lòng dạ bất chính, còn dám bịa lý do!”
+“Nô tỳ oan uổng! Oan uổng… a!”
+“Tiếp tục lục soát!”
+Thôi cô cô đá văng Thải Hoàn, sai người tiếp tục lục tung cung điện.
+Cung nhân lục soát khắp nơi, tiếng động ầm ầm, vừa tìm vừa đập, nói là tìm đồ nhưng chẳng khác gì phá hoại.
+Ôn Phi khẽ lắc đầu với Lý cô cô.
+Thải Hoàn từng vào Hợp Hoan Cung là sự thật không thể chối. Hiện tại dù Hân Phi nói gì cũng chiếm lý.
+Muốn giữ mạng nàng, chỉ có thể để Hân Phi trút hết cơn giận.
+Dù có đến trước mặt hoàng thượng, hoàng thượng cũng không thể vì một cung nữ mà trách phạt phi tần.
+Huống hồ, chuyện săn bắn hôm qua đã truyền khắp cung.
+Cửu hoàng tử nổi bật, lấn át cả Thất hoàng tử.
+Khang Hoàng Quý phi chỉ có một đứa con, há để con mình chịu nhục?
+Hôm nay Hân Phi đến đây, chắc chắn cũng có người chỉ điểm.
+Tôn gia… không dám đắc tội Khang Hoàng Quý phi.
+“Lục soát cho kỹ!”
+Thôi cô cô vênh mặt hống hách.
+Hân Phi phe phẩy khăn tay, chuỗi ngọc trên tóc khẽ vang:
+“Dạy dỗ nô tài phải dùng thủ đoạn nghiêm khắc mới ra thể thống. Ôn Phi tỷ tỷ dù xuất thân tướng môn, sao lại để hạ nhân thành ra… không biết liêm sỉ như vậy?”
+“Hôm nay dám trộm trâm của bản cung, ngày mai chẳng phải dám trộm người sao?”
+Phì—
+Thôi cô cô suýt bật cười.
+Đúng lúc này, Sở Ly chạy đến.
+Nhìn thấy cảnh mẫu phi bị bắt nạt, lửa giận bùng lên, nàng nhặt một viên đá, búng ngón tay bắn ra.
+“Á!”
+Thôi cô cô đột nhiên khuỵu xuống, quỳ rạp trên đất, mảnh vỡ bình hoa và chén trà lập tức đâm sâu vào chân.
+“Á!!”
+Đau thấu xương.
+Sở Ly bước vào:
+“Đây là chuyện gì vậy? Thôi cô cô?”
+Nàng giả vờ kinh ngạc:
+“Đất đầy hỗn loạn thế này, sao cô cô lại đứng không vững? Lỡ bị thương chân, sau này còn hầu hạ Hân Phi nương nương thế nào?”
+Thôi cô cô đau đến mồ hôi lạnh đầm đìa.
+Rõ ràng đang đứng yên, sao lại đột nhiên ngã?
+Thôi cô cô là nhũ mẫu của Hân Phi, thân tín nhiều năm. Thấy vậy, Hân Phi tất nhiên đau lòng.
+Lập tức sai cung nữ đỡ dậy, muốn truyền ngự y.
+Sở Ly liền nói:
+“Khoan đã. Một lão nô tỳ mà thôi, mạng tiện thôi, sao quan trọng bằng đồ của Hân Phi nương nương? Tất cả không được rời đi, tiếp tục tìm.”
+“Thôi mẫu phi, người thấy sao?”
+Vừa đỡ lên lại bị kéo dài, vết thương trên chân Thôi cô cô càng chảy máu nhiều hơn.
+Hân Phi lo cho nhũ mẫu, lại bị lời nàng chặn lại.
+“Trước truyền ngự y, những người khác tiếp tục tìm.”
+“Khoan đã.”
+Sở Ly bước lên chặn lại:
+“Thôi cô cô, có phải quá ích kỷ rồi không?”
+“Chỉ là bị thương chân, chưa chết, sao lại vì tư lợi mà bỏ mặc đồ của nương nương?”
+Thôi cô cô đau đến không nói nổi:
+“Lão nô… lão nô…”
+Sở Ly nhìn Hân Phi, nghiêm giọng:
+“Theo ta thấy, Hân mẫu phi quá nuông chiều hạ nhân. Nếu để bọn họ thành thói ích kỷ, hôm nay bỏ đồ, ngày mai bỏ chủ, chẳng phải nguy hại đến tính mạng nương nương?”
+“Đối với loại nô tỳ này, nên dùng thủ đoạn nghiêm minh, để chúng biết thân phận.”
+Hân Phi tức giận:
+“Ngươi!”
+Nàng sao không nghe ra ý châm chọc?
+“Thêm nữa, ta đã sai người bẩm báo phụ hoàng. Việc lớn như vậy, nếu phụ hoàng không biết, chẳng phải sẽ nghĩ Hân mẫu phi không được coi trọng sao?”
+Hân Phi suýt nghẹn họng.
+Nếu hoàng thượng đến mà không thấy trâm ngọc, lại thấy cảnh nàng đập phá Ngọc Đường Cung, chẳng phải tự rước họa vào thân?
+Sở Ly này thật đáng ghét!
+Văn không giỏi, võ không tinh, chỉ giỏi miệng lưỡi.
+“Đã không tìm được trâm ngọc Khổng Linh, chắc là ý trời. Người đâu, đỡ Thôi cô cô, chúng ta đi!” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_27.html" class="btn">‹ Trước</a>
+            <a href="chuong_29.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

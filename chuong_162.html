@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 162</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 162</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_161.html" class="btn">‹ Trước</a>
+            <a href="chuong_163.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 162: Giở trò ngầm
+Trên phố.
+Hướng Nguyệt sốt ruột chạy khắp nơi tìm kiếm, đến lúc quay đầu lại, bỗng bất ngờ trông thấy Sở Ly.
+“Á!”
+Nàng trợn tròn mắt:
+“Tiểu Sở công tử, vừa rồi ngài đi đâu vậy?”
+Sở Ly thần sắc vẫn như thường:
+“Vừa rồi ta không cẩn thận va phải người khác, ngươi không chịu giúp ta giải vây, đương nhiên ta phải tự nghĩ cách.”
+“Nghĩ cách gì?”
+Hướng Nguyệt không mấy tin lời nàng.
+“Ta nhân lúc hắn không để ý thì co chân bỏ chạy. Hắn đuổi ta suốt hai con phố, cuối cùng vẫn bị ta cắt đuôi. Ta vòng một vòng lớn, giờ mới quay lại.”
+Hướng Nguyệt nhíu mày.
+Thật sự là vậy?
+Nàng không nhân cơ hội giở trò gì chứ?
+Trong lòng Hướng Nguyệt sinh nghi, nhưng nhìn dáng vẻ Sở Ly, lại chẳng phát hiện được chút sơ hở nào. Dẫu có hoài nghi cũng không tìm được chứng cứ.
+Nhưng nghĩ kỹ lại, nếu nàng muốn bỏ trốn, vì sao còn quay về?
+Hướng Nguyệt lạnh giọng:
+“Sau này ngươi muốn làm gì thì phải nói trước với ta một tiếng, đừng có vô thanh vô tức biến mất khỏi tầm mắt ta nữa. Bằng không, ta nhất định sẽ bẩm báo nguyên vẹn với Trưởng công chúa.”
+Sở Ly kinh ngạc:
+“Bẩm báo Trưởng công chúa… ngươi lại để mất người rồi sao?”
+Nàng cố ý nhấn mạnh chữ “lại”, khiến sắc mặt Hướng Nguyệt càng thêm khó coi.
+Dám mỉa mai nàng!
+Đáng chết!
+Trừng theo bóng lưng Sở Ly chắp tay sau lưng, tiếp tục dạo phố, Hướng Nguyệt nghiến chặt răng hàm, vội vàng đuổi theo.
+Tiểu Sở công tử đã trở lại rồi, sao vẫn không thấy Hướng Úc?
+Hướng Úc đi đâu mất rồi?
+Nửa canh giờ sau, Sở Ly trở về Vương Gia khách điếm. Nghĩ đến ngày mai còn có việc phải làm, nàng lên giường nghỉ sớm.
+Đợi tiệc cung yến kết thúc, Sở Dạ Ly trở về thì trong phòng nàng chỉ còn thắp một ngọn đèn nhỏ để thức đêm, ánh sáng mờ tối. Hắn khẽ đẩy hé cửa, liền thấy thân hình nhỏ nhắn của thiếu nữ đang co tròn trên giường.
+Nàng thích cuộn chăn, co người như mèo mà ngủ.
+Cả người co thành một cục, quấn chăn kín mít, chỉ để lộ mỗi cái đầu nhỏ đen nhánh bên ngoài.
+Ánh nến vàng ấm rơi trên gương mặt nàng, dịu dàng đến cực điểm, cũng khiến trái tim Sở Dạ Ly mềm nhũn.
+Thác Bạt Minh Nguyệt đứng bên cạnh:
+“Dạ Ly ca ca, nàng đã ngủ rồi.”
+“Ta chỉ nhìn một chút.”
+Sở Dạ Ly không bước vào, nhưng trong lòng đã được lấp đầy.
+Hắn tưởng tượng sau này, mỗi lần trở về nhà đều có một ngọn đèn nhỏ vì hắn mà thắp sáng, có một người ở đây đợi hắn, trở thành bến đỗ để hắn quyến luyến và nương tựa.
+Đó là nhà.
+Là nhà của bọn họ.
+Là nhà của hắn và nàng.
+Sở Dạ Ly vịn khung cửa, ánh mắt dịu dàng vô cùng.
+Tiểu Cửu, hãy chịu thiệt thêm một thời gian nữa.
+Đợi mọi chuyện kết thúc, ta sẽ cho nàng một mái nhà bình yên.
+Chúng ta sẽ mãi mãi ở bên nhau.
+Thác Bạt Minh Nguyệt nhìn sự dịu dàng trong mắt hắn, tất cả đều hướng về một người khác. Ánh mắt nàng khẽ tối xuống, trong lòng không sao nói rõ là cảm giác gì, nhưng sự giáo dưỡng cùng phẩm hạnh tốt đẹp vẫn nhắc nhở nàng phải giữ lý trí.
+Chính vì lý trí, nàng mới đưa ra lời khuyên lý trí:
+“Dạ Ly ca ca tin nàng ấy, nhưng nàng ấy có tin huynh không?”
+“Nàng ấy thật sự là người đáng để tin sao?”
+Sở Dạ Ly nghiêng mắt nhìn nàng, đáy mắt thấp thoáng vẻ không vui.
+Thác Bạt Minh Nguyệt nói:
+“Dạ Ly ca ca đừng để bụng. Muội nói vậy không phải nhằm vào nàng ấy, chỉ là muốn nhắc huynh, quá tin người khác rất dễ đánh mất chính mình.”
+“Tiểu Cửu không phải người khác.”
+Mấy lời nhàn nhạt rơi xuống, hắn khép cửa lại, cất bước rời đi.
+Thác Bạt Minh Nguyệt mím môi.
+Chỉ bằng một câu nói ấy, huynh đã đánh mất chính mình rồi.
+Huynh đã không còn là Sở Dạ Ly bình tĩnh, trầm ổn, mọi việc đều bày mưu tính kế mà ta từng quen biết nữa.
+“Hướng Nguyệt.”
+“Công chúa.”
+Hướng Nguyệt vội vàng chạy tới.
+“Đêm nay Tiểu Sở công tử có gì khác thường không?”
+Hướng Nguyệt hơi do dự rồi mới đáp:
+“Không có, mọi chuyện đều bình thường.”
+Nàng giấu đi đoạn khúc mắc giữa chừng.
+Nếu để công chúa biết, nhất định sẽ trách nàng làm việc bất lực, liên tiếp phạm sai, còn sẽ trừng phạt nàng.
+Nàng nghĩ, Tiểu Sở công tử cũng đâu có bỏ trốn. Tuy giữa đường mất dấu nửa khắc, nhưng cuối cùng vẫn ngoan ngoãn quay về, hẳn không phải chuyện gì quan trọng.
+Chỉ là trong lòng nàng vẫn có chút bất an.
+Sao mãi vẫn không thấy Hướng Úc?
+—
+Sáng hôm sau.
+Sở Ly dậy từ rất sớm. Thác Bạt Minh Nguyệt vào triều dự tảo triều, Sở Dạ Ly cũng tới vương cung xử lý chính vụ. Nàng trèo qua cửa sổ.
+Thuận lợi chuồn ra ngoài.
+Sau khi gặp Độc Nhãn Long và Tế Nhãn Cẩu, cả ba lập tức tới Ty Cổ Cục, nhưng giữa đường lại tiện thể đi làm một việc khác.
+Ty Cổ Cục.
+Khi đến nơi, đúng lúc các vu sư phẩm cấp cao đều đang vào triều, trong Ty Cổ Cục chỉ còn đám hạ nhân qua lại.
+Ba người trèo tường từ cửa sau, lặng lẽ không một tiếng động mò vào.
+“Tiểu Sở công tử, bên này.”
+Đêm qua, Tế Nhãn Cẩu và Độc Nhãn Long đã nhân lúc trời tối dò xét đại khái bố cục bên trong Ty Cổ Cục.
+Có bọn họ giúp sức, Sở Ly làm việc thuận lợi hơn rất nhiều.
+“Đa tạ chư vị, tiểu kim điều nhất định sẽ không thiếu phần các ngươi.”
+Độc Nhãn Long mở cửa sổ, ba người lẻn vào một gian thư phòng.
+“Tiểu Sở công tử nói vậy thì khách sáo quá. Gan lớn thì no bụng, gan nhỏ thì chết đói. Làm mấy việc bình thường, sao kiếm nổi nhiều tiền như vậy?”
+Tế Nhãn Cẩu hạ giọng:
+“Tiểu Sở công tử không cần lo cho an nguy của bọn ta. Nếu tình thế không ổn, bọn ta tự biết chạy.”
+“… Ừ.”
+Rất tốt.
+Nàng thích nhất làm việc với kiểu người như vậy.
+Thẳng thắn trực tiếp, không có quá nhiều tâm cơ.
+“Nửa khắc nữa sẽ hạ triều. Đây là thư phòng của Cừu vu sư. Chờ hắn tan triều trở về, vừa hay có thể bắt được.” Độc Nhãn Long nói.
+Sở Ly thong thả quan sát một vòng.
+Nơi này chẳng khác thư phòng bình thường là bao, trên bàn bày đầy sách vở, giấy bút nghiên mực cùng đủ loại bình lọ.
+Trong những chiếc lọ ấy nuôi vô số côn trùng.
+Rết, bọ cạp, nhện, còn có cả giòi đen đang ngọ nguậy…
+Sở Ly chỉ nhìn một cái đã thấy da đầu tê dại.
+Đây chính là cổ trùng sao?!
+Nàng cầm chiếc ống trúc nhỏ cùng cái nhíp trên bàn, gắp thử mấy con.
+“Tiểu Sở công tử cẩn thận!”
+Độc Nhãn Long khẽ quát ngăn lại, làm Sở Ly giật mình, suýt nữa để cổ trùng chạm vào đầu ngón tay. Độc Nhãn Long lập tức gạt tay nàng ra:
+“Đừng để chúng chạm vào!”
+“Cổ trùng cực kỳ xảo quyệt. Đừng thấy chúng nhỏ xíu, chỉ bé thế này thôi, nhưng trên miệng đầy răng cưa và giác hút. Chỉ cần chạm vào da, chúng sẽ cắn rách da rồi chui vào cực nhanh.”
+Sở Ly chỉ thấy một con cổ trùng màu đen uốn éo thân mình, bò ra khỏi chiếc lọ.
+Dáng vẻ lúc lắc đầu tìm kiếm của nó giống hệt đang săn mồi.
+Máu…
+Chính là mỹ vị mà chúng yêu thích nhất.
+Trong lòng Sở Ly khẽ động, nàng dùng nhíp gắp mấy con cổ trùng bỏ vào ống trúc nhỏ, đậy kín nắp rồi cất vào trong tay áo.
+Đúng lúc ấy, bên ngoài vang lên tiếng bước chân.
+Sở Ly cảnh giác liếc nhìn, Độc Nhãn Long cùng Tế Nhãn Cẩu nhẹ nhàng nép sau cửa. Thế nên người kia vừa đẩy cửa, chân còn chưa kịp bước vào, đã bị bốn cánh tay kéo mạnh vào trong.
+“Ai… Ưm!”
+Cừu vu sư không kịp đề phòng, vừa vào đã lãnh ngay hai quyền vào mặt.
+“Á!”
+Là ai?
+Ai?
+“Á… Ư!”
+Sở Ly giơ tay:
+“Đừng đánh chết người.”
+Cừu vu sư đau đến hai mắt rưng rưng, hai má sưng to như bánh bao, lúc này mới nhìn rõ ba người trước mặt.
+Bọn họ là ai?
+Sao lại trốn trong thư phòng của hắn?
+Đây là Ty Cổ Cục!
+Bọn họ không muốn sống nữa sao?
+Sở Ly bước lên:
+“Ta hỏi ngươi, Ty Cổ Cục các ngươi nuôi cổ cho vương thất, có phải đang bí mật luyện cổ, chế tạo một đội quân hay không?”
+Thần sắc Cừu vu sư lập tức biến đổi.
+Nàng ta làm sao biết được?
+Đội quân cổ trùng được giấu trong núi sâu, bí mật nghiên cứu luyện chế, tuyệt đối không có người ngoài biết.
+“Hả… luyện cổ gì? Quân đội gì? Ta không hiểu ngươi đang nói gì.”
+“Đừng vội.”
+Độc Nhãn Long chậm rãi rút từ trong tay áo ra một chiếc trâm lược nhỏ đính hạt đào hoa.
+“Vừa rồi trên đường tới đây, tiện tay bọn ta bắt luôn con gái ngươi.”
+Cừu vu sư trợn trừng mắt:
+“!”
+Đó là trang sức của nữ nhi hắn!
+Con bé năm nay mới bốn tuổi rưỡi!
+Đám súc sinh này!
+“Các ngươi là ai? Rốt cuộc muốn làm gì?”
+Sở Ly nói:
+“Hãy nói cho ta biết, phải làm thế nào mới có thể khắc chế chúng, giết chết chúng.”
+—
+Cùng lúc đó.
+Phủ Ân Vương.
+Sau khi chứng minh được bản lĩnh của mình, Tần Mục Vũ lập tức được Ân Vương hạ lệnh đi tìm khoáng sơn, khai thác thiết quặng cho hắn.
+Có điều, hắn còn phái hẳn hai mươi người đi theo giám sát.
+Trước khi xuất phủ, còn xách cổ áo hắn tới, dạy dỗ một phen:
+“Bổn vương tin ngươi một lần. Chỉ cần ngươi tìm được thiết quặng cho bổn vương, mọi ân oán trước kia coi như xóa sạch. Nếu dám chạy… cái cổ thon dài này của ngươi, đoán xem bổn vương có bóp gãy được không?”
+Thân thể Tần Mục Vũ khẽ run. Hắn chỉ cảm thấy đầu ngón tay của đối phương vừa lạnh vừa mát, khiến da gà trên cổ cũng nổi lên.
+“Ta… nhất định sẽ tận lực. Chỉ mong sau khi xong việc, ngài có thể thả ta đi.”
+Ân Vương nheo mắt:
+“Được.”
+“Tiêu Giác, ngươi đi cùng Tần thiếu tướng quân.”
+Ám vệ Tiêu Giác lĩnh mệnh.
+Trước lúc xuất phát, Tần Mục Vũ yếu ớt đến mức không leo nổi lên ngựa, chọc cho tất cả mọi người cười vang.
+Ngay cả Ân Vương cũng bật cười.
+Yếu ớt mềm nhũn chẳng khác gì nữ tử.
+Ân Vương phất tay áo, thuận tay đỡ hắn một chưởng, đưa hắn lên lưng ngựa.
+Tần Mục Vũ siết chặt dây cương, tức đến đỏ cả mắt.
+Tiêu Giác cố nhịn cười…
+Thôi vẫn đừng cười thì hơn, như vậy không được tôn trọng người khác cho lắm. Dù sao Tần thiếu tướng quân trúng Nhuyễn Cốt Tán, toàn thân mềm nhũn không xương.
+“Chủ tử, bọn thuộc hạ xuất thành rồi.”
+Tần Mục Vũ thúc ngựa, mặt mày căng cứng, cực kỳ không vui. Sau khi ra khỏi thành, với từng dãy núi cần khảo sát, hắn đều đích thân kiểm tra, đo đạc.
+Cách làm ấy, Tiêu Giác hoàn toàn không hiểu.
+Tiêu Giác vẫn luôn đi theo hắn.
+Chỉ thấy Tần thiếu tướng quân lúc thì xuống ngựa, lúc thì nằm rạp xuống đất, lúc lại kiểm tra thổ chất, vừa viết vừa vẽ trên giấy.
+Dáng vẻ vô cùng nghiêm túc.
+Đây chính là cách người nước Sở khảo sát thiết quặng sao?
+Tiêu Giác tò mò tiến lên mấy bước, muốn xem hắn đang viết gì. Tần Mục Vũ lập tức cảnh giác ôm chặt cuốn sổ vào ngực:
+“Ngươi muốn làm gì?”
+Tiêu Giác khựng lại.
+Động tác đề phòng như đề phòng trộm này…
+“Ta chỉ muốn xem ngươi viết gì thôi.”
+“Ta đã đánh dấu những dãy núi đã khảo sát, cùng những nơi có khả năng tồn tại thiết quặng. Một khi khai thác được quặng, sẽ có thể chế tạo ra hàng vạn binh khí.”
+Tần Mục Vũ cảnh giác nói:
+“Thứ quan trọng như vậy, đương nhiên không thể cho ngươi xem.”
+Tiêu Giác đáp:
+“Ta là ám vệ cận thân của Ân Vương, là tâm phúc được ngài ấy tuyệt đối tín nhiệm.”
+“Thì sao?”
+Tần Mục Vũ vẫn che kín cuốn sổ.
+“Ngoài Ân Vương ra, bất cứ ai cũng không được xem. Ta không quen ngươi, ta chỉ tin hắn.”
+Nói xong, hắn cảnh giác đi sang chỗ khác.
+Tiêu Giác nhướng mày.
+Không ngờ Tần thiếu tướng quân lại cảnh giác như vậy.
+Tuy đề phòng hắn, nhưng phẩm chất cẩn trọng, trước sau như một của Tần thiếu tướng quân lại rất đáng quý. Người này giữ chữ tín, trọng đạo nghĩa, là người có thể yên tâm hợp tác.
+“Các ngươi đều đi theo Tần thiếu tướng quân, mọi việc nghe theo sự sắp xếp của hắn.”
+Hai mươi tên thị vệ đồng thanh:
+“Rõ!”
+Suốt nửa ngày, Tần Mục Vũ dẫn bọn họ chạy khắp nhiều nơi, sai khiến làm đủ loại việc, ai nấy đều mệt bở hơi tai.
+Đến buổi chiều, cả đoàn dừng chân tại một quán trà ven đường uống trà mát.
+Tần Mục Vũ lau mồ hôi trên trán, nghiêm túc chỉnh lý cuốn sổ.
+“Tiêu Giác? Ngươi tên Tiêu Giác phải không?”
+Tiêu Giác bước tới:
+“Tần thiếu tướng quân có gì sai bảo?”
+“Hôm nay chúng ta đã chạy cả ngày, khảo sát hơn mười dãy núi, trong lòng ta đã có đại khái. Ngươi mang bản thảo đầu tiên này về cho Ân Vương trước đi. Ta còn định tiếp tục khảo sát, có lẽ phải nửa tháng nữa mới quay về Vương đô.”
+Mỗi ngày đều gửi bản thảo về, cũng tiện để Ân Vương nắm bắt tình hình.
+Tiêu Giác cảm thấy rất hợp lý.
+Hắn định sai người mang về, nhưng nghĩ thứ quan trọng như vậy vẫn nên tự mình đi một chuyến thì ổn hơn. Hơn nữa cưỡi ngựa về Vương đô rồi quay lại, nhiều nhất cũng chỉ mất hai canh giờ. Tần thiếu tướng quân lại đang trúng Nhuyễn Cốt Tán, nơi này còn có hai mươi thị vệ trông chừng.
+Sau một phen cân nhắc, Tiêu Giác nói:
+“Ta sẽ mang về ngay.”
+Tần Mục Vũ đưa cuốn sổ cho hắn, nhưng vẫn chần chừ:
+“Ngươi sẽ không lén xem chứ?”
+Tiêu Giác suýt ngã khỏi lưng ngựa.
+“Ta trung thành với Ân Vương!”
+“Ngươi thề đi.”
+“Ta thề! Ta tuyệt đối không lén xem! Càng không làm loại chuyện bỉ ổi như lén xem! Tần thiếu tướng quân! Lần này ngài có thể yên! tâm! rồi! chứ!”
+Lúc ấy thần sắc Tần Mục Vũ mới dịu đi đôi chút.
+“Ta tạm tin ngươi một lần.”
+Tiêu Giác nghe vậy tức không nhẹ.
+Tiểu nhân chi tâm!
+Đúng là tiểu nhân chi tâm!
+Tuy hắn là ám vệ, phụng sự chủ nhân, nhưng làm việc quang minh lỗi lạc, chẳng khác gì quân tử.
+“Ta đi đây!”
+Hắn tức giận quất roi thúc ngựa phóng đi.
+Tần Mục Vũ nói:
+“Chúng ta ở đây uống một bát trà mát, nghỉ hai khắc rồi tiếp tục lên đường.”
+Hai mươi thị vệ gật đầu, dắt ngựa vào quán.
+Ông chủ quán vui vẻ đón khách.
+“Ông chủ, hai mươi bát trà mát.”
+Tần Mục Vũ lấy ngân lượng do Ân Vương cấp, đặt lên bàn một thỏi bạc lớn.
+“Được ngay! Các vị khách quan chờ một chút!”
+Ông chủ quay người đi lấy bát.
+Tần Mục Vũ liếc nhìn chiếc thùng lớn đựng trà mát, lại nhìn sang đám thị vệ đang nghỉ ngơi thư giãn, bỗng khẽ phất tay áo, ném một gói giấy nhỏ màu trắng vào trong.
+Gói giấy vừa chạm nước đã nhanh chóng tan ra…
+Ông chủ bưng trà mát tới.
+Một tên thị vệ bỗng hỏi:
+“Chúng ta có hai mươi mốt người mà chỉ có hai mươi bát trà. Tần thiếu tướng quân, ngài không uống sao?”
+“Hử? Thiếu một bát à?”
+Tần Mục Vũ chợt hiểu.
+“Là ta sơ suất. Ông chủ, làm thêm một bát nữa đi. Các ngươi cứ uống trước.”
+Ông chủ lại đi múc thêm một bát. Vừa quay người bưng bát trà trở lại thì thấy đám thị vệ vừa uống xong, từng người một lần lượt gục xuống bàn…
+—
+Phủ Ân Vương.
+Tiêu Giác dùng tốc độ nhanh nhất thúc ngựa trở về phủ.
+“Chủ tử, đây là kết quả khảo sát hôm nay, do chính tay Tần thiếu tướng quân ghi chép.”
+Hắn hai tay dâng lên.
+Lúc ấy, Ân Vương đang chơi với đứa nhỏ.
+Thác Bạt Mặc, bốn tuổi, nhưng không phải con ruột của hắn, mà là di cô tử của một vị phó tướng dưới trướng.
+Vị phó tướng ấy vì hắn mà chiến tử sa trường, thê tử cũng bệnh mất, gia đình tan nát, cả nhà đều là trung liệt.
+Niệm tình hắn trung thành tuyệt đối, Ân Vương liền nhận nuôi đứa con trai của vị phó tướng khi ấy mới chỉ nửa tuổi.
+“Đã có tin tức nhanh như vậy sao?”
+Ân Vương tung chiếc túi cát nhỏ trong tay ra ngoài.
+Tiểu gia hỏa bốn tuổi mắt sáng long lanh, chân tay lanh lẹ chạy đi nhặt.
+“Tần thiếu tướng quân vô cùng chuyên nghiệp, dường như rất tinh thông việc khai thác thiết quặng. Thuộc hạ cùng mọi người đi theo hắn suốt dọc đường, đều học hỏi được rất nhiều.”
+“Đưa đây, để bổn vương xem.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_161.html" class="btn">‹ Trước</a>
+            <a href="chuong_163.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

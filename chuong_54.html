@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 54</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 54</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_53.html" class="btn">‹ Trước</a>
+            <a href="chuong_55.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 54: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 54: Tướng quân phủ cháy lớn
+Sở Ly xuất cung.
+Sở Ngạo Thiên suy nghĩ một hồi, cuối cùng vẫn quyết định đi cùng nàng. Nếu thật sự đến Quốc Công phủ, hai người cùng đi, Phương Quốc Công hẳn cũng không đến mức làm khó Sở Ly.
+Vì cửu đệ, lần này hắn cũng xem như đem cả tính mạng ra đánh cược.
+Hoàng thành náo nhiệt huyên náo.
+Giữa dòng người qua lại, trước một cửa hàng trang sức, bọn họ bắt gặp vài bóng người quen thuộc.
+“Còn thỉnh Thất hoàng tử điện hạ chớ trêu đùa tiểu muội.”
+Ôn Chỉ Tịch chắn trước mặt một thiếu nữ dung mạo thanh tú, để mái bằng. Thiếu nữ mặc y sam màu bích lục, trông vô cùng ngoan ngoãn.
+Nàng là nữ nhi của Tam gia Ôn gia, chỉ là thứ xuất, tên gọi Ôn Nhã.
+Đứng đối diện các nàng là Thất hoàng tử Sở Cảnh Lân, cùng hai vị công tử quý tộc thuộc phe cánh của hắn.
+Sở Cảnh Lân nói:
+“Bản hoàng tử vừa gặp đã đem lòng ái mộ Ôn Nhã tiểu thư, tuyệt không phải trêu đùa. Chỉ cần nàng nguyện ý, ta lập tức hồi bẩm phụ hoàng, nạp nàng vào phủ.”
+Ôn Chỉ Tịch lập tức từ chối:
+“Tiểu muội còn chưa cập kê, tuổi tác còn nhỏ, đa tạ điện hạ ưu ái.”
+“Đại tỷ!”
+Ôn Nhã lập tức sốt ruột.
+Đại tỷ sao có thể tự tiện quyết định thay nàng?
+Nàng thích Thất hoàng tử.
+Nàng chỉ là thứ nữ, thân phận thấp kém, ngay cả những dịp như cung yến hay Xuân Nhật Yến cũng không có tư cách tham dự. Nay được Thất hoàng tử để mắt tới, đó là phúc phận nàng tu được mấy đời.
+Đây là cơ hội duy nhất để nàng đổi đời!
+Nếu bỏ lỡ lần này, e rằng cả đời nàng cũng không thể gả vào gia đình tốt đến vậy.
+Sở Cảnh Lân tiếc nuối lắc đầu:
+“Xem ra bản hoàng tử vẫn chưa đủ để khiến Ôn Nhã tiểu thư động tâm.”
+Ôn Nhã cuống lên, bất chấp lễ nghĩa liêm sỉ, vội vàng nói:
+“Nguyện ý, ta nguyện ý!”
+“Ôn Nhã!”
+Sắc mặt Ôn Chỉ Tịch đột nhiên biến đổi, đã mang theo vài phần tức giận. Nàng nắm cổ tay Ôn Nhã kéo sang một bên, giữa hàng mày đều là sự trầm ổn và khí độ của đích nữ:
+“Thu hồi tâm tư không nên có của ngươi!”
+“Cửu hoàng tử vừa mới sinh hiềm khích với Quốc Công phủ, Thất hoàng tử và Quốc Công phủ hận Ôn gia còn không kịp, sao có thể thật lòng yêu thích ngươi?”
+Sự tiếp cận của hắn, vốn mang dụng tâm khác.
+Ôn Nhã cay đắng nói:
+“Đại tỷ là đích nữ, sao hiểu được nỗi khổ của ta và di nương? Thất hoàng tử không để tâm thân phận thứ nữ của ta, rõ ràng là thật lòng thích ta. Tỷ lấy Cửu hoàng tử ra ép ta, chẳng lẽ không muốn ta được hạnh phúc sao?”
+Ôn Chỉ Tịch nổi giận:
+“Nữ nhi Ôn gia chúng ta, chưa bao giờ làm thiếp cho người khác.”
+“Nhưng ta là thứ xuất.”
+“Con người quý ở tự trọng!”
+Ôn Nhã phản bác:
+“Nếu Ôn gia có cốt khí như vậy, vì sao phụ thân không một lòng với mẫu thân? Năm đó chẳng phải vẫn sủng hạnh di nương hay sao?”
+“Đó là bởi vì…”
+Ôn Chỉ Tịch hít sâu một hơi, lời đến bên môi lại nuốt trở vào.
+Ôn lão gia tử sinh ba trai một gái.
+Ba người con trai đều tòng quân.
+Nữ nhi nhập cung làm Ôn phi, sinh hạ Cửu hoàng tử Sở Ly.
+Ba người con trai đều chỉ cưới một thê tử.
+Chỉ có Tam gia nạp thêm một Mai di nương.
+Bởi năm đó Mai di nương chỉ là một nha hoàn. Nhân lúc Tam gia say rượu, lén leo lên giường hắn, rồi sinh ra Ôn Nhã.
+Đó vốn là một chuyện không vẻ vang.
+Ôn Nhã vô tội.
+Vì thế hơn mười năm qua, Ôn gia chưa từng nhắc lại chuyện xấu ấy, cũng chưa từng vì thân phận thứ xuất mà coi thường nàng.
+Vốn dĩ chỉ là một đoạn nghiệt duyên.
+Ôn Chỉ Tịch nói:
+“Ngươi không cần hỏi nhiều như vậy. Tóm lại, ngươi muốn gả cho loại nam tử nào cũng được, duy chỉ không thể là Thất hoàng tử.”
+“Tại sao?”
+Thấy Thất hoàng tử sắp rời đi, Ôn Nhã gần như muốn khóc.
+“Ta thích hắn. Đại tỷ, hắn cũng thích ta. Chúng ta nhất kiến chung tình.”
+“Trên đời này lấy đâu ra nhiều nhất kiến chung tình như vậy? Theo ta về!”
+“Ta không muốn! Đại tỷ, để ta nói với Thất hoàng tử vài câu. Vì sao Cửu hoàng tử đắc tội Quốc Công phủ lại phải liên lụy đến ta? Rõ ràng ta chẳng làm gì cả, vì sao phải hy sinh hạnh phúc của ta?”
+Sở Cảnh Lân bước lên trước, vẻ mặt tiếc nuối:
+“Ôn Nhã tiểu thư.”
+“Thất hoàng tử, Thất hoàng tử cứu ta với! Ta không muốn theo đại tỷ về…”
+“Ăn nói hồ đồ gì vậy!”
+Một giọng nói mang theo mấy phần tức giận đột nhiên vang lên.
+Sở Ly chậm rãi bước tới.
+Nàng giơ tay lên định tát Ôn Nhã một cái.
+Nhưng khi bàn tay đã giơ đến giữa không trung, cuối cùng vẫn nhịn xuống.
+“Biểu huynh?”
+Ôn Chỉ Tịch hơi bất ngờ nhìn nàng.
+Sắc mặt Sở Ly âm trầm, vô cùng khó coi:
+“Chỉ Tịch, trước tiên đưa nàng về đi.”
+“Vâng.”
+Ôn Chỉ Tịch lập tức hành lễ, cưỡng ép kéo Ôn Nhã rời đi.
+Lúc đi, Ôn Nhã lưu luyến không nỡ, liên tiếp quay đầu, đôi mắt đẫm lệ nhìn về phía Thất hoàng tử.
+Sở Cảnh Lân đưa mắt tiễn nàng:
+“Nếu Ôn Nhã tiểu thư nghĩ thông rồi, ta sẽ luôn chờ nàng.”
+Trong lòng Ôn Nhã càng thêm chua xót và nôn nóng.
+Thất hoàng tử rõ ràng là thật lòng thích nàng!
+Nàng dung mạo không tệ, ôn nhu khả ái, lại hiền huệ hiểu chuyện, hoàn toàn đủ để khiến Thất hoàng tử động tâm.
+Huống hồ nàng chỉ là một thứ nữ, không dính líu đến tranh đấu quyền lực của gia tộc.
+Vì sao không thể để nàng có được hạnh phúc?
+Là thứ nữ, nàng chưa từng hưởng được vinh quang mà gia tộc mang lại, trái lại còn phải chịu sự kiềm chế và liên lụy từ gia tộc.
+Nếu nàng không phải nữ nhi Ôn gia thì tốt biết bao!
+Sở Cảnh Lân nhìn theo đến khi xe ngựa khuất hẳn.
+Nụ cười nơi khóe môi hắn dần lạnh xuống.
+“Sở Ly, nữ nhân Ôn gia các ngươi đúng là chẳng khác gì kỹ nữ thanh lâu, vẫy là tới, rẻ mạt vô cùng. Chắc hẳn chức quan của ba vị cữu cữu ngươi cũng là nhờ mẫu phi ngươi bán thân đổi lấy?”
+Hai vị công tử đi cùng mím môi cười.
+Dáng vẻ hèn mọn của Ôn Nhã kia thật đúng là không chịu nổi dụ dỗ.
+Chỉ sợ tùy tiện có nam nhân đến dỗ dành vài câu cũng có thể dụ lên giường.
+Quả thực hạ tiện.
+Sở Ly lạnh nhạt nói:
+“Ôn Nhã ngày thường rất ít ra ngoài. Thất hoàng huynh lấy một cô nương chưa hiểu sự đời để chế giễu Ôn gia, thay Quốc Công phủ xả giận, chẳng phải quá mức đáng khinh sao?”
+“Ta thay Quốc Công phủ xả giận khi nào?”
+Sở Cảnh Lân dừng một chút.
+“Hay là ngươi đã làm chuyện gì có lỗi với Quốc Công phủ, nên mới suy đoán ta như vậy?”
+Thật giả đúng sai, trong lòng đôi bên đều hiểu rõ.
+Sở Cảnh Lân đang đánh đố với nàng.
+Sở Ly lạnh nhạt nói:
+“Ta không muốn là địch với Thất hoàng huynh.”
+“Sở Ly.”
+Sở Cảnh Lân bước tới, lạnh lùng nhìn nàng.
+“Ngươi cho rằng ta sẽ sợ ngươi?”
+“Tần Mục Vũ hại chết biểu huynh ta, vậy mà còn có thể toàn thân trở ra. Thể diện Quốc Công phủ ở đâu? Thể diện Tĩnh Hoàng Quý phi ở đâu? Thể diện bản hoàng tử ở đâu?”
+Đường đường Quốc Công phủ lại chịu nỗi nhục như vậy!
+“Món nợ này, ta sẽ từ từ tính với ngươi.”
+Hắn dùng ngón tay chọc vào vai nàng, cười ngạo nghễ:
+“Đợi ta nạp Ôn Nhã vào phủ, ngày ngày bắt nàng lau giày, rửa thùng phân, làm việc nặng nhọc, để thiên hạ nhìn xem nữ nhi xuất thân võ tướng thế gia hiền huệ đến mức nào.”
+Trong lòng Sở Ly hiểu rõ.
+Từ khoảnh khắc nàng nhúng tay vào chuyện Quốc Công phủ, Ôn gia và Quốc Công phủ đã trở thành kẻ thù.
+Dù Ôn Nhã là thứ nữ, nhưng chỉ cần mang họ Ôn, nhất cử nhất động của nàng đều đại diện cho thể diện và vinh dự của Ôn gia.
+Sở Cảnh Lân cong môi:
+“Nghe nói tại Yên Liễu Hạng vùng Giang Nam lưu truyền một loại mật họa khuê phòng. Họa sư chuyên dùng đan thanh vẽ thân thể uyển chuyển của nữ tử, treo trong phòng để mua vui.”
+Vị công tử áo lam nói:
+“Người làm việc ấy đa phần là kỹ nữ nơi câu lan. Nữ tử lương gia tuyệt đối không làm nổi chuyện như vậy. Bởi thế loại họa này cực kỳ khó cầu, thậm chí có bức còn bán được giá trăm lượng vàng.”
+Sở Cảnh Lân trầm ngâm một tiếng:
+“Có điều Ôn Nhã tiểu thư là nữ nhi tướng môn, hành sự hẳn phóng khoáng hào sảng, chắc cũng làm được việc ấy.”
+Sắc mắt Sở Ly trầm xuống, nhìn thẳng hắn:
+“Đại Lý Tự đã tra rõ chân tướng, chuyện đó không liên quan đến Tần Thiếu tướng quân. Hơn nữa, Phương Hải Dương là loại người thế nào, trong lòng Thất hoàng huynh không thể không biết.”
+“Vì Quốc Công phủ mà Thất hoàng huynh nhất định phải làm đến mức này sao?”
+“Ngươi đang uy hiếp ta?”
+Sở Cảnh Lân cười.
+“Thật khiến người ta sợ hãi đấy, Sở Ly.”
+Đúng lúc ấy, từ phía xa vang lên tiếng hô hoán:
+“Tướng quân phủ cháy rồi!”
+“Lửa lớn quá! Cháy rồi! Trời ơi, sắp thiêu chết người rồi!” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_53.html" class="btn">‹ Trước</a>
+            <a href="chuong_55.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

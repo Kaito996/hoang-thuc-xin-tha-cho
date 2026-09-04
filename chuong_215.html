@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 215</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 215</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_214.html" class="btn">‹ Trước</a>
+            <a href="chuong_216.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 215: Mảnh mai nhỏ nhắn, mềm mại như không xương
+Tiêu Dạ Hành lập tức lên tiếng:
+“Ở đây vẫn còn công vụ. Hoằng Diễm, con vào trong trước đi.”
+“Vâng.”
+Sở Hoằng Diễm đứng dậy, ngoan ngoãn lại lanh lợi vô cùng.
+Bạch Cẩm Y tiếp tục lau mồ hôi trên trán…
+“Hôm nay đến đây thôi, tất cả giải tán. Ngày mai tiếp tục đến nha phủ Giang Nam thẩm án, giải oan cho bách tính.”
+Lý tri phủ chỉ muốn khóc mà không có nước mắt.
+Giải tán thì tốt.
+Giải tán là tốt rồi.
+Ông ta đã quỳ suốt hai ngày một đêm, nếu còn không kết thúc, e rằng thật sự sẽ đột tử.
+Bách tính cảm kích quỳ xuống dập đầu tạ ơn, lúc này mới lần lượt rời đi. Trọng Phong và Kinh Ảnh ở lại thu xếp những việc còn dang dở.
+Đúng lúc ấy, một hộ vệ vội vàng chạy tới:
+“Tiêu Đô đốc…”
+Hắn ghé sát bẩm báo mấy câu.
+Tiêu Dạ Hành nghe xong, liếc nhìn nam nhân sắc mặt vẫn còn lạnh lẽo kia, rồi bước tới:
+“Người của ta vừa báo, Sở Uyên Trì đang trên đường chạy đến Lâm Hồ Tiểu Trúc.”
+Hắn lại bổ sung một câu:
+“Còn mang theo kiếm.”
+Sở Đệ Trì hơi ép thấp hàng mày, rồi rất nhanh lại giãn ra.
+“Ta sắp dùng bữa tối cùng Tiểu Cửu rồi. Những kẻ không quan trọng, đừng đến quấy nhiễu.”
+Dứt lời, hắn đứng dậy đi vào Lâm Hồ Tiểu Trúc.
+Lục Vân Sơ nhấc thanh kiếm lên, nói:
+“Mang kiếm mà đến, tất có ý đồ bất chính. Nếu Nhiếp Chính Vương đã lên tiếng, ta đi chặn người này lại.”
+“Lục huynh.”
+Bạch Cẩm Y kịp thời gọi hắn lại.
+“Chi bằng gọi Tần tiểu thư ra. Tần tiểu thư ghét ác như thù, chuyện như thế này nàng thích nhất là đứng ra bênh vực chính nghĩa.”
+Lục Vân Sơ cảm thấy rất có lý.
+Tiêu Dạ Hành thì đi gọi Tần Mục Vũ:
+“Con đi với ta một chuyến đến nha phủ Giang Nam.”
+Tần Mục Vũ khó hiểu:
+“Chẳng phải sắp dùng bữa tối rồi sao?”
+Tiêu Dạ Hành đáp:
+“Hôm nay chúng ta thẩm án cả ngày, đến một ngụm trà còn chưa kịp uống. Hiện giờ thật sự thiếu người, con đi theo giúp ta một tay.”
+“Nhưng mà…”
+“Nếu không phải con là ngoại sanh của ta, ta còn chẳng dám tin tưởng giao việc. Mục Vũ, chúng ta là người một nhà.”
+“Được rồi, cữu cữu, con đi với người.”
+Qua lại một hồi, đến khi Sở Ly dắt Sở Hoằng Diễm bước vào chính sảnh, một bàn thức ăn thịnh soạn đã bày sẵn, nhưng từng chiếc ghế đều trống không, chỉ còn lại ba người: nàng, Sở Hoằng Diễm và Sở Đệ Trì.
+“Mọi người đâu cả rồi?”
+Đều đi đâu hết vậy?
+Sơ Tam đang múc canh, đáp:
+“Tiểu thư, nô tỳ không biết.”
+Sơ Nhất bưng chậu nước rửa tay đặt lên giá:
+“Tiểu thư, vừa rồi nô tỳ thấy Tần Thiếu tướng quân, Tần tiểu thư, Lục công tử và mọi người đều ra ngoài rồi, hình như có việc gì rất gấp.”
+Sở Đệ Trì xắn tay áo lên.
+“Tiểu Cửu, chúng ta ăn trước, không cần đợi họ.”
+“Lại đây rửa tay.”
+Sở Ly khẽ đáp một tiếng.
+“Vâng.”
+Vậy cũng được.
+Ai nấy đều đã ngoài hai mươi tuổi, đói thì biết ăn, mưa thì biết che ô, đâu cần bữa nào cũng phải giục.
+Nàng vừa bước tới, nam nhân đã nắm lấy hai bàn tay nàng, nhẹ nhàng ngâm vào chậu nước ấm.
+Rửa mu bàn tay.
+Xoa lòng bàn tay.
+Một bàn tay lớn gần như có thể bao trọn cả đôi tay của nàng.
+Mảnh mai, nhỏ nhắn, mềm mại như không xương.
+Khẽ vẩy nước, rồi lấy khăn lau sạch sẽ.
+Sở Hoằng Diễm đứng bên cạnh. Thân hình bốn tuổi của nó còn chưa cao bằng cái giá đặt chậu nước. Thấy Hoàng gia gia đối xử với Cửu Hoàng thúc tốt như vậy, trong lòng không khỏi thầm nghĩ:
+Hoàng gia gia đúng là một bậc trưởng bối hiền từ, khoan hậu.
+Thấy Cửu Hoàng thúc đã rửa tay xong, nó cũng ngoan ngoãn đưa hai tay ra.
+Ủa?
+Sao Hoàng gia gia lại dắt Cửu Hoàng thúc đi ngồi rồi?
+Nó còn chưa rửa tay mà.
+Chắc chắn là vì nó thấp quá, Hoàng gia gia không nhìn thấy.
+Nó nhất định phải ăn thật nhiều, mau chóng lớn cao!
+Sở Hoằng Diễm kiễng chân đứng lên chiếc ghế nhỏ, tự rửa sạch tay rồi leo lên ghế ngồi. Thấy Hoàng gia gia múc cho Cửu Hoàng thúc một bát canh, nó cũng vội nâng chiếc bát của mình đưa sang.
+Thế nhưng nam nhân lại như không hề nhìn thấy.
+“Tiểu Cửu, ta bảo Bạch Cẩm Y cho thêm vài vị dược liệu bổ khí dưỡng huyết vào bát canh trân châu này. Nàng uống nhiều một chút, vừa cường thân kiện thể.”
+“Đây là món cá bạc hấp mà nàng thích.”
+“Ăn thêm ít gan lợn.”
+Sở Ly khịt khịt mũi.
+“Ta không thích ăn gan lợn.”
+“Gan lợn bổ huyết.”
+Nàng vốn không thích ăn bất kỳ loại nội tạng động vật nào.
+“Ta không ăn.”
+“Được.”
+Sở Hoằng Diễm ngồi bên cạnh, ôm chiếc bát trống trơn của mình, trông mong nhìn Hoàng gia gia.
+Sao Hoàng gia gia chỉ nói chuyện với Cửu Hoàng thúc?
+Chẳng để ý gì đến nó cả.
+Đũa nó cũng không dám gắp xa, chỉ dám gắp đĩa khoai tây xào thanh đạm ngay trước mặt.
+“Diễm Nhi, sao con không gắp thức ăn?”
+Cửu Hoàng thúc nói chuyện với nó rồi!
+Đôi mắt tiểu thiếu niên sáng bừng, ngẩng đầu lên định mở miệng, nào ngờ Sở Đệ Trì đã nói trước:
+“Nó chỉ thích ăn khoai tây. Tiểu Cửu đừng học theo nó, kén ăn không tốt, món nào cũng phải ăn một ít. Đều là do cha mẹ nó nuông chiều thành hư.”
+Sở Ly xoa đầu nó:
+“Ở chỗ Cửu Hoàng thúc cũng như ở nhà mình, đừng câu nệ. Có gì cứ nói với ta.”
+Sở Hoằng Diễm vui vẻ ngẩng đầu, nhưng vừa chạm phải ánh mắt lướt qua nơi khóe mắt của Hoàng gia gia, nó lại vô thức rụt cổ, lí nhí xúc một miếng cơm trắng bỏ vào miệng.
+“Con biết rồi, Cửu Hoàng thúc.”
+Đúng lúc ấy, bên ngoài vang lên tiếng kêu thất thanh của mấy tỳ nữ:
+“Ngài không thể vào…”
+“Làm gì vậy… đứng lại… a!”
+Sở Ly quay đầu nhìn lại, chỉ thấy Sở Uyên Trì xách kiếm xông tới, một kiếm đâm bị thương Sơ Nhất đang ngăn cản hắn!
+Cánh tay Sơ Nhất nhuốm máu, vẻ mặt đầy áy náy và tự trách.
+“Tiểu thư, nô tỳ không cản được người này, hắn…”
+“Tránh ra!”
+Sở Uyên Trì quát lớn một tiếng. Thanh kiếm còn vương máu trực tiếp chỉ thẳng vào Sở Ly và Sở Đệ Trì trong đại sảnh.
+“Hai người các ngươi tư thông cấu kết, mưu đoạt hoàng vị. Nay lại còn dám nhắm đến Diễm Nhi. Cho dù hôm nay ta phải đồng quy vu tận với các ngươi, cũng tuyệt đối không để các ngươi được như ý dù chỉ nửa phần!” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_214.html" class="btn">‹ Trước</a>
+            <a href="chuong_216.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

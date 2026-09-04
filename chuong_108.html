@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 108</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 108</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_107.html" class="btn">‹ Trước</a>
+            <a href="chuong_109.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 108: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 108: Tiểu Cửu, ngươi sẽ bán đứng ta sao?
+“Có người muốn mưu hại tính mạng ngươi, sao có thể chỉ là lời thuận miệng?” Hắn cau mày, cả người chìm trong vùng sáng tối đan xen của ánh nến, vẻ mặt càng thêm âm trầm.
+‘’Huống hồ ta tặng ngươi con ưng là để ngươi giết thời gian, chứ không phải để ngươi thức đến ngất xỉu.”
+Sở Ly cắn chặt môi dưới.
+Nàng không có ý gì khác.
+Chỉ đơn thuần là hiếu thắng.
+“Con ưng của ta đâu?”
+“Ngươi thắng nó rồi, nhưng cũng thức đến chết luôn nó.”
+“?”
+“Con ưng ấy vừa từ Nam Cương bay suốt hai ngày hai đêm, còn chưa kịp nghỉ ngơi, lại bị ngươi thức cùng ba ngày ba đêm, đột tử rồi.”
+Sở Ly há hốc miệng.
+“Có điều, Nam Cương có rất nhiều ưng, cũng có rất nhiều thứ mà ngươi sẽ thích. Sau này ta sẽ từ từ mang về cho ngươi.”
+Sở Ly ngẩn người nhìn hắn.
+Không hiểu sao nàng lại cảm thấy bầu không khí tối nay thật hòa hợp.
+Dường như…
+Giữa bọn họ không nên hòa thuận đến vậy mới phải.
+Nhất thời, nàng mím môi, không biết nên nói gì, trái lại hắn lại chủ động mở lời:
+“Chiến sự ở Nam Cương ta đã sắp xếp ổn thỏa. Nếu không có gì bất ngờ, một mình An tướng quân cũng đủ trấn giữ. Nghe tin ngươi bị thương, ta liền lập tức trở về.”
+“Vậy phụ hoàng biết chưa?”
+“Vẫn chưa.”
+“Thế ngày mai ngươi còn vào triều sao?”
+“Hoàng thượng chưa hạ chỉ triệu ta hồi kinh. Nếu ta tùy tiện xuất hiện, sẽ phạm tội kháng chỉ, khi quân.” Hắn nhìn nàng, khẽ hỏi: “Có điều, Tiểu Cửu… ngươi sẽ bán đứng ta sao?”
+Sở Ly đối diện đôi mắt đen sâu thẳm của hắn, như thể bị ánh mắt ấy hút vào.
+Có sao?
+Nếu là trước kia…
+Chắc chắn sẽ.
+Nhưng bây giờ…
+Hắn ra chiến trường vì nước vì dân, nay trở về cũng là vì nàng. Nếu nàng đi tố giác hắn, chẳng phải quá không nên sao?
+Huống hồ, Bạch Cẩm Y cũng là phụng mệnh hắn mới đến chữa chân cho nàng. Chân nàng hiện giờ đã khỏi đến bảy tám phần.
+“Đương nhiên là sẽ.” Nàng đáp. 
+‘’Cho ngươi một khắc, lập tức rời đi. Ta sẽ coi như chưa từng nhìn thấy ngươi.”
+Sở Đệ Trì nhíu mày.
+“Thật sự sẽ?”
+“Đương nhiên!”
+Nàng ngẩng cằm.
+“Quan hệ giữa chúng ta hình như còn chưa tốt đến mức có thể vì nhau mà đâm hai đao sườn… À không, vì nhau mà lưỡng lặc sáp đao chứ? Nếu ngươi còn không đi, ta sẽ gọi người.”
+Hắn nắm lấy vai nàng, cúi người áp sát.
+“Ta gọi người thật đấy!”
+Hắn khựng lại.
+Một lúc sau, cuối cùng vẫn buông nàng ra.
+“Coi như ngươi lợi hại.”
+Dứt lời, hắn rời đi qua cửa sổ, bóng người rất nhanh đã hòa vào màn đêm.
+Chỉ còn lại chậu hoa trên bệ cửa sổ.
+Những cành lá đã cao hơn trước, xanh mơn mởn, tràn đầy sức sống.
+Sở Ly đưa tay sờ mặt mình.
+Trong đầu chỉ hiện lên đôi mắt đen thâm quầng của hắn.
+Quầng thâm rất đậm.
+Cũng không biết đã mấy ngày không ngủ.
+Nàng chỉ là ngã gãy chân thôi, chứ có chết đâu. Từ nơi xa như vậy vội vã trở về làm gì?
+Lỡ bị Hoàng thượng biết được, chẳng phải tự đưa đầu đến chịu chết sao?
+Không đúng.
+Cho dù nàng có chết thật, hắn cũng chẳng cần phải quay về chịu tang nàng.
+Vậy…
+Rốt cuộc vì sao hắn lại trở về?
+Bởi vì câu hỏi ấy, cả đêm Sở Ly trằn trọc không sao ngủ được, lật qua lật lại, trong đầu cứ miên man nghĩ ngợi.
+Sáng hôm sau, Cẩu Bát dìu nàng vịn tường, chậm rãi tập đi để chân hồi phục.
+Ngoài sân, Sở Ngạo Thiên đang leo cây.
+“Cửu đệ, nhìn ta này! Ta leo cao chưa? Chân cẳng ta có lợi hại không?”
+Tên này xưa nay miệng lưỡi thiếu đánh, lại chẳng có lương tâm. Sở Ly chẳng buồn để ý đến hắn.
+Gần trưa, Sở Dạ Ly tới.
+“Ngũ hoàng huynh.”
+Đúng là khách hiếm.
+Sở Ly sai Cẩu Bát đi pha trà.
+Hai người ngồi trong phòng.
+Hai kẻ đều đi đứng bất tiện ngồi cạnh nhau, ngươi nhìn ta, ta nhìn ngươi, lại có mấy phần thú vị khó nói.
+Sở Dạ Ly ân cần hỏi:
+“Chân đệ khá hơn chưa?”
+“Đã có thể chậm rãi đi lại, chắc không bao lâu nữa sẽ hồi phục.”
+“Vậy thì tốt. Đêm hôm ấy đáng lẽ ta nên đưa đệ về. Trong lòng ta vẫn luôn áy náy. Mấy ngày nay, một là vì hổ thẹn, hai là vì bận chính sự. Phụ hoàng liên tục giữ ta lại bàn việc, rất ít có thời gian tới thăm đệ.”
+Khoảng thời gian này, Ngũ hoàng tử ngày càng được Hoàng thượng trọng dụng.
+Bản thân hắn cũng rất nỗ lực, làm việc nghiêm túc. Chỉ trong hơn một tháng ngắn ngủi đã lập được hai công tích, khiến không ít quan viên phải nhìn hắn bằng con mắt khác.
+Sở Ly nói:
+“Nghe Ngụy viện phán nói, long thể của phụ hoàng ngày càng suy yếu, cần tĩnh dưỡng. Hiện giờ đúng lúc cần Ngũ hoàng huynh chia sẻ quốc sự với người. Chân của đệ không đáng ngại.”
+Chẳng mấy chốc, Cẩu Bát bưng trà lên.
+Hai huynh đệ ngồi đối diện trò chuyện.
+“Nếu không nhờ Tần thiếu tướng quân, Tần tướng quân, còn có mấy vị đại nhân bên nhà họ Ôn lên tiếng giúp ta trên triều, e rằng ta khó lòng đứng vững.”
+“Cửu đệ… đa tạ.”
+Ánh mắt Sở Ly thoáng mơ màng.
+Nàng bất giác nhớ tới cảnh hôm ấy hắn ngã khỏi xe lăn, mất hết thể diện trước bá quan văn võ.
+Có lẽ vì chính mình cũng bị gãy chân, nàng càng có thể cảm thông với hắn hơn.
+“Ngũ hoàng huynh khách khí rồi.”
+Nếu hôm ấy không phải hắn mở lời, Hoàng thượng cũng sẽ không nhanh như vậy đã đồng ý cho nàng xuất cung lập phủ.
+Có lẽ…
+Bọn họ đang giúp đỡ lẫn nhau?
+Sở Ly nhấp một ngụm trà, bất đắc dĩ mỉm cười.
+Sở Dạ Ly đẩy xe lăn.
+Trong lúc vô tình ngẩng đầu, hắn nhìn thấy dưới khe chiếc ghế bên cạnh có rơi một khối ngọc bội màu huyền mặc.
+Liếc nhìn Sở Ly.
+Nàng dường như không hề phát hiện.
+Hắn bình thản cúi người nhặt lên.
+Khối ngọc bội quý giá ấy được chạm khắc đồ đằng cự long cổ xưa phức tạp, là hoa văn chỉ hoàng thất mới có.
+Mặt sau còn có phù văn và ký hiệu tượng trưng cho thân phận Nhiếp Chính Vương.
+Đây…
+Là ngọc bội tùy thân của Nhiếp Chính Vương!
+Ánh mắt hắn phức tạp nhìn Sở Ly một cái.
+Đêm xuống.
+Sở Ly đang chuẩn bị nghỉ ngơi thì Sở Đệ Trì lại tới.
+Vẫn là trèo qua cửa sổ.
+Mỗi lần nhìn thấy hắn, Sở Ly đều có cảm giác như đang làm chuyện mờ ám. Nàng lập tức đảo mắt nhìn đông ngó tây, xác định không có ai mới hạ thấp giọng hỏi:
+“Sao ngươi vẫn chưa đi?”
+Vị tổ tông này…
+Còn ở lại Đế đô, là muốn tìm chết sao?
+Hắn không sợ Hoàng thượng biết à?
+Sở Đệ Trì bước tới.
+“Đợi chân ngươi khỏi hẳn, ta mới yên tâm rời đi.”
+Hai má Sở Ly nóng bừng.
+“Ta có khỏe hay không thì liên quan gì tới ngươi?”
+“Vậy ta muốn đi đâu thì đi, liên quan gì đến ngươi?”
+“Chiêu Lan điện là tẩm điện của ta!”
+“Trên đó có viết tên ngươi? Hay do ngươi xây?”
+“Ta…”
+Cốc cốc…
+Đúng lúc ấy, ngoài cửa đột nhiên vang lên tiếng gõ cửa, cùng giọng nói của Phúc công công:
+“Cửu hoàng tử điện hạ, đêm khuya quấy rầy thật có lỗi. Ban ngày Nội vụ phủ đưa nhầm một vị dược liệu, nô tài đặc biệt tới lấy lại, mong điện hạ mở cửa, tạo điều kiện cho nô tài.”
+Trong khoảnh khắc ấy, nếu bảo Sở Ly không hoảng thì là giả.
+“Mau đi!”
+Sở Đệ Trì bước tới bên cửa sổ, ánh mắt khẽ trầm xuống.
+“Bên ngoài có người.”
+“Mau trốn vào trong tủ!”
+“Bọn họ tới lấy dược liệu, tất sẽ lục tủ.”
+“Vậy…”
+“Cửu hoàng tử, nô tài xin vào.”
+“Khoan đã!”
+Sở Ly vừa ngồi thẳng người quát lên, cửa phòng đã bị Vương Đức Phúc đẩy mở.
+Ngay lập tức…
+Ánh mắt hắn và Nhiếp Chính Vương trong phòng chạm thẳng vào nhau.
+Vương Đức Phúc kinh ngạc:
+“Nhiếp Chính Vương điện hạ… sao ngài lại ở đây… Ngài… Người đâu! Mau đi bẩm báo Hoàng thượng!” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_107.html" class="btn">‹ Trước</a>
+            <a href="chuong_109.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

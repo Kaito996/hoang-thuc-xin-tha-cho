@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 13</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 13</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_12.html" class="btn">‹ Trước</a>
+            <a href="chuong_14.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 13: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
+Chương 13: [Dám gọi thẳng danh húy của Bản Vương nữa, coi chừng cái lưỡi của ngươi]
+“Tham kiến Nhiếp Chính Vương điện hạ.”
+Mấy tên thái giám vội vàng hành lễ, thần sắc cung kính vô cùng.
+Sở Đệ Trì quét mắt nhìn một vòng:
+“Đều lui xuống đi.”
+Cẩu Bát cùng tiểu thái giám nào dám trái lệnh, lập tức cúi đầu khom lưng lui ra ngoài.
+Thoáng chốc, trong phòng chỉ còn lại hai người.
+Sở Ly chống mép giường, khó nhọc ngồi dậy:
+“Ngài đến đây làm gì?”
+Nam nhân sải bước tiến vào:
+“Bản vương đã nói từ trước, ngựa của Bản vương không dễ điều khiển. Cửu Hoàng tử cứ khăng khăng muốn cưỡi. Chuyện này tuy không phải lỗi của Bản vương, nhưng rốt cuộc vẫn là ngựa của Bản vương làm ngươi bị thương, tự nhiên phải đến xem một chút.”
+Vành mắt Sở Ly đỏ lên, tay trái vớ lấy chiếc gối đầu, tức giận ném thẳng tới.
+“Đến xem ta chết chưa sao?”
+“Nhờ phúc của Hoàng thúc!”
+Nàng sẽ không dễ dàng chết như vậy đâu.
+Tuyệt đối không để hắn được như ý!
+Sở Đệ Trì giơ tay lên, dễ dàng đón lấy chiếc gối, nhìn gương mặt đỏ bừng vì tức giận kia.
+Rõ ràng là nam tử, lại sinh đến môi hồng răng trắng, lúc nổi giận càng giống hoa lê đẫm sương.
+“Gan lớn thật.”
+Dám động thủ với hắn.
+“Gan ta có lớn cũng không bằng Hoàng thúc!”
+Mưu sát hoàng tử, làm mà không hề nương tay.
+Người này thật khiến kẻ khác căm phẫn đến cực điểm.
+“Ồ?”
+Sở Đệ Trì nhìn nàng.
+Giọng nói của nàng đã nghẹn lại.
+“Xem ra ái tử được Hoàng đế sủng ái cũng chỉ có chút khí độ ấy thôi. Bản vương đã có thể tưởng tượng ra cảnh Đại Sở dần suy bại trong vài năm tới rồi.”
+“Ngươi sinh sau, e là không biết lúc tiền triều diệt vong. Vó ngựa đạp nát cung đình, máu nhuộm bốn phương. Loại hoàng tử trói gà không chặt như ngươi, sẽ là kẻ đầu tiên bị giết để tế cờ.”
+Sở Ly lạnh lùng trừng mắt nhìn hắn:
+“Nếu Đại Sở bị diệt, chẳng phải đúng ý Hoàng thúc sao?”
+Sở Đệ Trì khẽ cười:
+“Từ cổ chí kim, thành giả vi vương, bại giả vi khấu. Đó là đạo lý muôn đời bất biến.”
+“Ra ngoài!”
+Sở Ly tức giận chống người ngồi dậy:
+“Ta rất khỏe! Hoàng thúc đã xem xong rồi, có thể đi được chưa?”
+Sở Đệ Trì ném chiếc gối trở lại:
+“Nếu không có Hoàng đế chống lưng, ngươi dám lớn tiếng với Bản vương như vậy sao?”
+“Ngươi cút... Ưm!”
+Cằm nàng bất ngờ bị siết chặt.
+Nam nhân từ trên cao nhìn xuống, bóng tối lạnh lẽo phủ kín người nàng.
+“Ngươi cảm thấy được phụ mẫu yêu thương, gia đình hòa thuận là điều rất tốt sao?”
+“Chiếc giường ngươi nằm có ấm áp không?”
+“Huynh đệ đông đúc, trên dưới hòa mục, cả một đại gia đình quây quần bên nhau có vui vẻ không?”
+Những thứ ấy...
+Đều là những thứ cả đời này hắn không thể có.
+Hoàng đế đã hủy hoại hắn.
+Bắt hắn đoạn tử tuyệt tôn.
+Thế nhưng vẫn muốn lợi dụng hắn, ép cạn từng phần giá trị cuối cùng của hắn, bắt hắn bảo vệ giang sơn thái bình này.
+“Hãy tận hưởng đi, Sở Ly.”
+“Vài năm nữa thôi, e rằng trời đất sẽ đổi chủ.”
+Nói rồi, hắn lạnh lùng buông tay.
+Sở Ly ngã xuống giường, cánh tay phải đau nhói như bị khoan xuyên.
+Nước mắt dâng đầy hốc mắt nhưng nàng vẫn ngẩng cao đầu, nhất quyết không để rơi xuống.
+“Ngươi sẽ không thành công đâu!”
+“Vậy sao?”
+“Chúng ta cứ chờ xem.”
+Đúng lúc ấy, Trọng Phong bước nhanh tới cửa bẩm báo:
+“Chủ tử, có tin khẩn.”
+“Chiều hôm qua, Đại Hoàng tử phi trên đường từ Thiên Linh Tự hồi kinh đã bị sơn tặc bắt giữ. Đại Hoàng tử nóng lòng cứu người, cũng bị vây khốn theo. Hiện giờ sinh tử chưa rõ.”
+Hơi thở Sở Ly khựng lại.
+Sở Hoằng Diễm mới chỉ ba tuổi.
+Lại còn đang bệnh.
+Nếu thật sự mất đi phụ mẫu...
+Hơn nữa, Đại Hoàng tử phi tính tình ôn hòa, đối đãi với nàng vô cùng tốt.
+“Ngươi đã làm gì bọn họ?”
+Nàng lập tức nắm lấy tay Sở Đệ Trì:
+“Sở Đệ Trì! Ngươi đã làm gì bọn họ?”
+“Đại Hoàng tử là thân điệt của ngươi! Nếu bọn họ xảy ra chuyện, Sở Hoằng Diễm sẽ không sống nổi mất!”
+Trong mắt Sở Đệ Trì không có lấy một tia nhiệt độ:
+“Bản vương chưa từng nghe nói, trên đời này có ai rời khỏi ai mà không sống nổi cả.”
+Sở Ly sững người:
+“Quả nhiên là ngươi làm...”
+Sở Đệ Trì cười lạnh:
+“Là hắn ngu xuẩn.”
+“Đường đường là hoàng tử, vậy mà bị vài tên sơn tặc khống chế.”
+“Nếu Bản vương sinh ra loại phế vật ấy, từ lúc còn trong tã lót đã bóp chết rồi.”
+“Cho nên ngươi mới không có con!”
+Đó chính là báo ứng của trời cao.
+Ông trời có mắt.
+“Thả bọn họ ra!”
+“Đó là thái độ ngươi dùng để nói chuyện với Bản vương?”
+Sở Ly kích động đến cực điểm:
+“Ngươi sao có thể làm ra chuyện huynh đệ tương tàn như vậy?”
+“Không sợ báo ứng sao?”
+Sở Đệ Trì cười nhạo:
+“Xem ra đây chính là báo ứng của Hoàng đế.”
+“Sở Đệ Trì!”
+Sở Ly tức đến công tâm, giơ tay tát tới.
+Nhưng cổ tay đã bị hắn giữ chặt.
+Lực nơi đầu ngón tay mạnh đến mức như muốn nghiền nát xương nàng.
+“Dám gọi thẳng danh húy của Bản vương thêm lần nữa...”
+“Coi chừng cái lưỡi của ngươi.”
+“Lần này coi như ngoại lệ.”
+Hắn cười lạnh một tiếng, đẩy nàng ngã trở lại giường rồi xoay người rời đi.
+Ngoài điện.
+Sau trận mưa lớn, chăn đệm, gối đầu, y phục cùng tủ gỗ đều được mang ra sân phơi nắng.
+Sở Đệ Trì chậm rãi bước qua.
+Khóe mắt vô tình lướt nhìn.
+Trên giá tre phơi đồ có treo một chiếc hương nang màu giáng tử.
+Đường thêu tinh xảo.
+Bên dưới đính tua rua màu băng lam.
+Sau cơn mưa, những sợi tua rua xanh biếc co quắp dính vào nhau.
+Chỉ một thoáng nhìn, đồng tử của Sở Đệ Trì khẽ co lại.
+Có chút quen mắt.
+Hắn bước tới, đầu ngón tay khẽ chạm vào những sợi tua rua.
+Đây là...
+“Điện hạ! Hóa ra ngài ở đây!”
+Ngoài điện, Phúc công công chạy tới mồ hôi nhễ nhại.
+“Hoàng thượng khẩn triệu, thỉnh ngài lập tức đến Ngự Thư Phòng.”
+Sở Đệ Trì liếc nhìn vào trong điện một cái rồi xoay người rời đi.
+“Chủ tử.”
+Đợi hắn đi xa, Cẩu Bát mới dám bước vào.
+Nhìn thấy lớp băng trên tay phải của Sở Ly đã thấm máu đỏ tươi, hắn kinh hô:
+“Nô tài thay thuốc băng bó lại cho người.”
+“Không cần.”
+Sở Ly lạnh nhạt liếc qua.
+Dù có lành lại thì sao?
+Sở Đệ Trì cũng sẽ nghĩ đủ cách để hành hạ nàng.
+Chi bằng cứ để như vậy, từ từ dưỡng thương.
+Điều nàng lo hơn chính là chuyện Đại Hoàng tử và Đại Hoàng tử phi.
+Không biết hiện giờ có bình an hay không...
+Cẩu Bát ngập ngừng:
+“Đúng rồi, chủ tử.”
+“Lúc nãy Nhiếp Chính Vương rời đi, đứng ngoài sân khá lâu.”
+“Ngài ấy nhìn chằm chằm chiếc hương nang đang phơi nắng rất lâu.”
+Tim Sở Ly bỗng thắt lại.
+“Chiếc hương nang nào?”
+“Chính là chiếc hương nang nương nương tự tay thêu cho người.”
+“Chiếc người đeo trong đêm khánh công yến ấy.”
+Hơi thở Sở Ly lập tức căng cứng.
+Dường như nàng nghĩ tới điều gì đó.
+“Đi mau!”
+“Mau gọi Song Nhi tới đây!”
+Ngự Thư Phòng.
+Các vị hoàng tử, đại thần Nội Các, quan viên Bộ Binh cùng nhiều võ tướng đều có mặt.
+Mọi người đang bàn bạc kế sách giải cứu Đại Hoàng tử và Đại Hoàng tử phi khỏi tay sơn tặc.
+Một vị võ tướng lên tiếng:
+“Chỉ cần nói rõ thân phận Đại Hoàng tử, đám sơn tặc biết mình bắt nhầm hoàng tử đương triều, tất nhiên sẽ vì giữ mạng mà thả người.”
+Một vị lão thần Nội Các lập tức phản đối:
+“Không thể!”
+“Sơn tặc đều là lũ liều mạng. Một khi biết đã phạm trọng tội, trước sau gì cũng chết, biết đâu chúng sẽ làm liều, gây hại cho Đại Hoàng tử cùng Đại Hoàng tử phi.”
+Binh Bộ Thượng Thư nói:
+“Đám sơn tặc cố thủ tại Văn Xuyên Sơn. Núi này địa thế hiểm trở, rừng sâu đường hẹp.”
+“Chi bằng điều một đội tinh binh, nhân lúc đêm tối bí mật lên núi cứu người.”
+Lục Hoàng tử lắc đầu:
+“Khương đại nhân nói chưa thỏa đáng.”
+“Sơn tặc đã bố trí vô số cạm bẫy săn thú trong rừng.”
+“Chúng ta không quen địa hình. Một khi bại lộ hành tung, kinh động đám sơn tặc, Đại hoàng huynh và Đại hoàng tẩu tất sẽ gặp nguy hiểm đến tính mạng.”
+Trên long án, Sở Hoàng ngồi uy nghiêm, thần sắc nặng nề.
+Tiếng bàn luận càng lúc càng căng thẳng.
+Bầu không khí trong Ngự Thư Phòng nặng nề đến nghẹt thở.
+Mọi người đưa ra đủ loại kế sách nhưng vẫn chưa tìm được phương án thích hợp.
+Cuối cùng, ánh mắt của tất cả lại đồng loạt hướng về một người vẫn luôn trầm mặc không nói.
+Chính là Sở Đệ Trì.
+Chinh chiến sa trường nhiều năm, tinh thông địa hình cùng binh pháp.
+Nếu hắn đích thân xuất thủ, chuyện này ắt chẳng khó khăn gì.
+Thế nhưng...
+Nhiếp Chính Vương chỉ khẽ rũ mắt.
+Một tay cầm nắp chén trà, hờ hững xoay nhẹ.
+Dường như đang suy nghĩ điều gì đó.
+Hoàn toàn không để tâm tới những lời nghị luận xung quanh. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_12.html" class="btn">‹ Trước</a>
+            <a href="chuong_14.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

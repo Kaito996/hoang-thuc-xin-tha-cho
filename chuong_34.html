@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 34</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 34</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_33.html" class="btn">‹ Trước</a>
+            <a href="chuong_35.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 34: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 34: Chính vì ta yêu nàng, nên ngươi lại càng không được yêu nàng
+Sở Ly viết một đạo tấu chương, sai người đưa vào cung, xin nghỉ năm ngày.
+Đại ý tấu chương như sau:
+Phụ hoàng vạn an.
+Nhi thần xin cáo bệnh, xin được nghỉ phép.
+Nhi thần kính cáo.
+Năm ngày này, nàng vừa khéo lánh thân tại phủ tướng quân, một là để dưỡng bệnh, hai là bởi một khi hồi cung, rất có khả năng sẽ chạm mặt Nhiếp chính vương.
+Chẳng biết từ bao giờ, nàng lại sinh ra mấy phần kiêng dè đối với nam nhân ấy…
+Hoàng cung.
+“Bệ hạ, lão thần có tội! Cửu hoàng tử thực sự… thực sự là không chịu nghe lời can gián. Lão thần dạy dỗ không nghiêm, có thẹn với thánh ân của bệ hạ!”
+Trong Ngự thư phòng, Khương Thái phó quỳ sụp dưới đất, bất đắc dĩ than khổ.
+Trong lòng cay đắng, suýt nữa thì buột miệng nói ra câu “bùn nhão không trát được tường”.
+Ông đã gần bảy mươi, từ tiền triều đến Đại Sở, chính bởi làm người ngay thẳng, đức cao vọng trọng, mới có thể hầu hạ hai đời quân chủ.
+“Tháng này, Cửu hoàng tử chỉ đến học viện có hai lần! Trong đó có một lần còn là do lão thần ép buộc mới chịu đi.”
+Từ xưa đến nay, học trò bất trị luôn là nỗi đau đầu của bậc vi sư.
+Sở hoàng với tư cách phụ thân, cũng đau đầu không kém.
+Ông nhìn đạo tấu xin nghỉ trong tay.
+Người sắp tròn mười sáu tuổi rồi, vậy mà ngay cả thể thức viết tấu chương cũng không nắm được.
+“Làm phiền Khương ái khanh nhọc lòng, trẫm lát nữa nhất định sẽ nghiêm khắc răn dạy ‘nó’.”
+Khương Thái phó ôm một bụng phiền muộn rời đi, vừa ra ngoài thì gặp Thất hoàng tử, không khỏi thở dài cảm thán: nếu Cửu hoàng tử được một nửa an phận như Thất hoàng tử, ông đâu đến nỗi sầu đến bạc đầu.
+Nếu Cửu hoàng tử có mặt ở đây, e rằng sẽ đáp một câu:
+“Ngài đã bảy mươi rồi, tóc bạc sớm là phải, đừng có đổ lên đầu ta.”
+Sở Cảnh Lân từ sớm đã nghe động tĩnh trong Ngự thư phòng, khóe môi khẽ nhếch, hơi cúi đầu hành lễ:
+“Thầy đã đến tuổi hưởng thiên luân, không nên quá lao tâm. Rồng sinh chín con, mỗi đứa một khác.”
+Khương Thái phó vừa hận vừa tiếc.
+Một đời làm văn, môn sinh khắp thiên hạ, sao lại dạy ra được Cửu hoàng tử – một khối khổ qua như vậy?
+Sở Ly lại trốn học thêm năm ngày, khiến không ít đại thần lắc đầu thở dài: Cửu hoàng tử, quả là ấu tử bất khả giáo hóa!
+Khó thành đại khí.
+Ngày sau, nhiều lắm cũng chỉ làm một nhàn vương vô sự, sống qua loa cả đời mà thôi. Tám vị hoàng tử có ý tranh đoạt Đông cung càng không đặt nàng vào mắt; đối phó với nàng, nhúc nhích một ngón tay cũng thấy phí sức.
+Đúng lúc ấy, Sở Ly dưỡng thân hai ngày tại phủ tướng quân, nhàn nhã tự tại.
+“A Ly ca ca!”
+Tần Mục Tuyết năm nay mười bốn, dung mạo kiều quý. Nữ tử xuất thân tướng phủ, trong xương cốt đều mang vài phần huyết tính; lại là muội ruột của Tần Mục Vũ, từ thuở nhỏ gặp Sở Ly đã sinh lòng yêu mến.
+Nàng bưng bát thuốc đến, tự tay chăm sóc.
+“Thuốc sắc xong rồi!”
+Thân thể Sở Ly đã gần như hồi phục, nàng hỏi:
+“Mục Tuyết, huynh trưởng của muội đâu rồi?”
+“Không biết ạ, chắc lại đi mò cá ở đâu đó rồi.”
+Tần Mục Tuyết ngồi bên giường.
+Sở Ly hạ giọng:
+“Mấy ngày nay ta thấy huynh trưởng muội có chút khác thường, mỗi lần gặp hắn đều như mất hồn mất vía, chẳng lẽ là đã có người trong lòng rồi sao?”
+Tần Mục Tuyết vừa nghe liền hứng khởi, lập tức cúi người lại gần, thì thầm:
+“Chẳng phải thế sao? Tối qua, canh ba rồi mà huynh ấy còn luyện kiếm trong viện, vẻ mặt hưng phấn hơn cả nhặt được vàng.”
+“Lại có chuyện ấy ư? Ta thấy huynh ấy xưa nay luôn khắc kỷ thủ lễ, chưa từng như vậy.”
+“A Ly ca ca, ta nói cho huynh biết nhé,”
+Tần Mục Tuyết đưa tay che miệng:
+“Huynh ấy còn giấu sát người một thẻ trúc, coi như trân bảo. Hôm qua ta muốn xem, huynh ấy còn né tránh ta, không chừng là nữ tử nào đó tặng đấy.”
+“Thật sao?”
+Sở Ly chẳng nghe được chút phong thanh nào, Tần Mục Vũ lại đột nhiên có ý trung nhân?
+Việc này quả thật không phúc hậu.
+Nàng xem hắn là tri kỷ, hắn lại kim ốc tàng kiều.
+“Ta nói huynh nghe, hơn nữa còn—”
+Ngoài cửa, Tần Mục Vũ ôm một bộ y phục sạch sẽ, vừa bước tới liền thấy Tần Mục Tuyết kề sát Sở Ly, đầu ghé đầu, thân mật vô cùng.
+Sắc mặt hắn khẽ biến:
+“Mục Tuyết!”
+Tần Mục Tuyết giật mình.
+“Muội còn chưa bàn chuyện hôn nhân, sao có thể ở sát Cửu hoàng tử như vậy? Những điều nhũ mẫu dạy về nam nữ hữu biệt, lễ tiết khuê môn, muội đều quên sạch rồi sao!”
+Giọng hắn nghiêm khắc, khiến Tần Mục Tuyết hoảng sợ:
+“Đại ca…”
+Đại ca trước nay chưa từng mắng nàng nặng lời như thế.
+Hơn nữa, đại ca chẳng phải luôn tác hợp nàng với Cửu hoàng tử hay sao? Trái lại, Cửu hoàng tử lần nào cũng uyển chuyển từ chối tâm ý của nàng.
+Sở Ly nhận ra cảm xúc của Tần Mục Vũ quá mức kích động, khác hẳn ngày thường.
+“Xảy ra chuyện gì vậy?”
+Nàng lo lắng bước tới.
+“Không… không có gì.”
+Hắn đột ngột tránh tay nàng, thần sắc hoảng hốt:
+“A Ly, đây là y phục ta mặc lúc mười ba mười bốn tuổi, chưa cũ lắm, huynh tạm thay giặt đi. Mục Tuyết, theo ta ra ngoài.”
+“Đại ca?”
+“Ra ngoài!”
+Tần Mục Vũ kéo nàng đi, đi rất xa mới dừng lại.
+“Ta nói cho muội biết, bất kể trước kia muội có thích Cửu hoàng tử đến đâu, sau này tuyệt đối không được nảy sinh tâm tư ấy nữa. Nàng không thích muội, ta cũng không cho phép các ngươi ở bên nhau.”
+Tần Mục Tuyết không dám tin:
+“Tại sao?”
+Bởi vì…
+Cửu hoàng tử là nữ tử!
+“Bởi vì người của phủ tướng quân chúng ta đều trọng tình chuyên nhất. Phụ thân chỉ cưới một mình mẫu thân, tổ phụ cũng chỉ có một tổ mẫu. Ngày sau muội cũng chỉ có thể làm chính thê của người ta. Còn Cửu hoàng tử sinh ra nơi hoàng gia, tương lai tất sẽ tam thê tứ thiếp, ta không muốn muội chịu ủy khuất ấy.”
+“Nhưng trước kia huynh đâu có nói vậy.”
+Tần Mục Tuyết biện giải:
+“Huynh nói chúng ta cùng Cửu hoàng tử lớn lên từ nhỏ, ‘người’ tâm tính lương thiện, chân thành, là người đáng để phó thác. Chẳng phải huynh cũng rất thích Cửu hoàng tử sao?”
+“Chính vì ta thích nàng, nên ngươi lại càng không được thích nàng!”
+“Cái… cái gì?”
+Trong đầu Tần Mục Tuyết trống rỗng, môi run rẩy, nhất thời chưa kịp hiểu.
+Ý của đại ca là…
+Loại thích này, có phải chính là thứ nàng đang nghĩ tới hay không?
+“Đại ca, huynh điên rồi sao? Đã như vậy, độc lạc lạc bất như chúng lạc lạc, vì sao ba chúng ta không thể cùng sống chung?”
+Tần Mục Vũ: “??”
+Ai điên?
+Ai mới là kẻ điên?!
+Trong phòng.
+Sở Ly quen biết Tần Mục Vũ hơn mười năm, lần đầu tiên không hiểu nổi hắn. Trông cũng không giống gặp đại sự gì; đến bữa tối, Tần tướng quân và phu nhân còn gắp thức ăn cho nàng, thân thiết vô cùng.
+Nàng định tìm Tần Mục Vũ nói chuyện, nhưng đêm nay hắn trực ban, không gặp được.
+Tần Mục Tuyết khoác tay nàng, cùng tản bộ trong hoa viên để tiêu thực.
+“A Ly ca ca, ngày mai là Thu nhật yến. Hoàng hậu nương nương đích thân sai người chuẩn bị, sẽ có rất nhiều tuấn kiệt thanh niên tham dự. Nghe nói còn được thưởng thức cúc hoa ngũ sắc do Tư hoa cục trong cung bồi dưỡng nữa. Chúng ta cùng đi chơi nhé.”
+Cúc xưa nay đều là màu kim hoàng, nàng chưa từng thấy cúc nhiều màu.
+Sở Ly khẽ vê đầu ngón tay:
+“Nhiều thanh niên tuấn tú đều sẽ đi sao?”
+“Đúng vậy, con em quan lại, khuê nữ tuổi xuân. Nếu có hữu tình nhân, lưỡng tâm tương duyệt, còn có thể thỉnh Hoàng hậu nương nương đứng ra tác hợp, làm chứng cho đôi bên.”
+Thu nhật yến là hoạt động truyền thống, tổ chức vào mùa thu, kết hợp yến ẩm, thưởng hoa, văn hóa và biểu diễn.
+Thế nhưng, trong mắt Sở Ly lại ẩn chứa một tia lạnh lẽo.
+Ba ngày trước, nàng cùng Đoan Mộc Thương, Đoan Mộc Duệ và Mộc Tề Sơn đến Thủy Kính Đài nghe hí. Cùng ăn một mâm, cùng uống một loại rượu, vậy mà chỉ mình nàng gặp chuyện.
+Ngẫm kỹ lại, chính là Mộc Tề Sơn cầm hồ rượu, tự tay rót.
+Sau khi Đoan Mộc Thương và Đoan Mộc Duệ say gục, Mộc Tề Sơn là kẻ cuối cùng còn tỉnh táo.
+Tên hồ bằng cẩu hữu này quả thật không xứng, dám quay lưng đâm nàng. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_33.html" class="btn">‹ Trước</a>
+            <a href="chuong_35.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

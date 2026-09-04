@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 189</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 189</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_188.html" class="btn">‹ Trước</a>
+            <a href="chuong_190.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 189: Hoàng thúc!
+Sở Ly xuống lầu, liếc nhìn Lý Tri phủ đang mặt mày hoảng hốt. Khi
+ánh mắt hai người chạm nhau, Lý Tri phủ theo bản năng cúi đầu
+thấp xuống.
+“Sở cô nương.” Độc Nhãn Long bước lên.
+Xem ra tâm tình nàng rất tốt?
+“Trở về Hà Tây khách điếm.”
+“Được.”
+Giải quyết xong một nỗi lo trong lòng, lôi được hung thủ ẩn trong
+bóng tối ra ánh sáng, từ đêm nay nàng cũng có thể ngủ một giấc
+ngon lành, tâm tình đương nhiên không tệ.
+Nhưng ở khách điếm, chung quy cũng không phải kế lâu dài.
+Nàng sai mấy nha hoàn dùng một ngày để tìm được một tiểu lâu
+các khá đẹp, nằm gần hồ, có cả tiểu hoa viên, chẳng hề thua kém
+căn nhà trước kia đã bị thiêu hủy.
+Đương nhiên, giá tiền cũng rất… đẹp.
+Sau khi thương lượng với chủ nhà, hai bên viết khế ước, điểm chỉ,
+chỉ chờ quan phủ đóng ấn là có thể dọn vào ở.
+Hai ngày này, nàng vẫn tạm thời ở khách điếm.
+Con bạch vũ anh vũ đang tỉ mỉ chải chuốt bộ lông trắng muốt xinh
+đẹp của mình, cất tiếng:
+Hoàng thúc, xin tha cho. Cửu hoàng tử là nữ nhi
+FB: GÁC TRUYỆN CHILL
+131
+“Chủ nhân cứu mạng, cạc cạc——”
+“Chủ nhân cứu mạng.”
+Sở Ly nằm nghiêng trên nhuyễn tháp, chống đầu, chăm chú quan
+sát Quy sư thúc trong chậu nước, luyện Quy Tức Công.
+Nhưng…
+Nàng thật sự chẳng quan sát ra được điều gì.
+Quy sư thúc cứ nằm yên ở đó, một nằm là mấy canh giờ, không
+nhúc nhích, hệt như đã chết. Nàng nhìn mãi nhìn mãi, rồi lại buồn
+ngủ…
+‘Tiểu Cửu.’
+Ai?
+Ai đang gọi nàng?
+Sở Ly mở đôi mắt còn ngái ngủ, lúc này mới phát hiện mình chỉ
+chợp mắt một lát, bên ngoài cửa sổ đã là đèn hoa rực rỡ trong
+màn đêm.
+Nàng ngủ lâu vậy sao?
+‘Tiểu Cửu.’
+‘Ai ở đó?’
+Sở Ly nhìn về phía bình phong.
+Dưới ánh sáng mờ ảo, một bóng người cao lớn vạm vỡ lúc ẩn lúc
+hiện. Ánh nến nơi góc phòng khẽ lay động, khiến bóng người càng
+thêm mơ hồ, không nhìn rõ được.
+Hoàng thúc, xin tha cho. Cửu hoàng tử là nữ nhi
+FB: GÁC TRUYỆN CHILL
+132
+Nàng nghi hoặc bước tới.
+Thân ảnh ấy lúc gần lúc xa, phiêu hốt bất định.
+Nàng đưa tay vén rèm, chần chừ đẩy bình phong ra…
+Đột nhiên, một bàn tay kéo nàng vào trong.
+‘A…’
+Đôi tay ấy mạnh mẽ hữu lực, chỉ bằng một bàn tay đã giữ chặt cả
+hai cổ tay nàng. Chưa kịp nhìn rõ dung mạo đối phương, hơi thở
+nóng rực đã xâm nhập lãnh địa của nàng.
+‘Vì sao không đến tìm ta?’
+‘Vì sao không nói cho ta biết?’
+‘Ta phát điên vì nhớ nàng, thậm chí còn muốn theo nàng mà chết,
+kết thúc tất cả… Nữ nhân nhẫn tâm này!’
+‘Ta không…’
+“Hoàng thúc!”
+Dù chưa nhìn rõ mặt hắn, tiếng gọi ấy vẫn bật thốt ra. Nàng đột
+ngột mở mắt, bật ngồi dậy, sờ lên mặt, cổ rồi quần áo của mình,
+lúc này mới phát hiện…
+Chỉ là một giấc mộng.
+Nàng mơ thấy Sở Đệ Trì.
+Trong mộng, hắn siết chặt lấy nàng, hung hăng chất vấn sự vô tình
+và nhẫn tâm của nàng. Đôi mắt đỏ ngầu trong bóng tối đau đớn
+đến dữ tợn, như hai cục than hồng in hằn lên người nàng.
+Hoàng thúc, xin tha cho. Cửu hoàng tử là nữ nhi
+FB: GÁC TRUYỆN CHILL
+133
+Sao nàng lại mơ thấy hắn?
+Hắn…
+Đang trách nàng sao?
+Chuyện năm ấy xảy ra quá đột ngột, nàng chưa từng nghĩ mình sẽ
+bị bắn chết. Sau đó đến Giang Nam, cũng chỉ vì muốn dùng cái chết
+của mình để mọi thứ trở về đúng quỹ đạo.
+Nhưng…
+Vì sao hắn lại nhìn nàng bằng ánh mắt ấy…
+Đỏ đến vậy.
+Đau đớn đến vậy.
+Sở Ly đưa tay ôm ngực.
+Không biết đó là cảm giác gì, chỉ thấy như có một tảng đá đè nặng
+nơi lồng ngực, buồn bực, khó chịu, khiến tim nàng thắt lại.
+Đúng lúc ấy, một tiếng ngói vỡ đột nhiên xé toạc màn đêm.
+Rắc——
+Có người!
+Thần sắc Sở Ly lập tức nghiêm lại. Nàng hất tấm chăn mỏng trên
+người xuống, thổi tắt nến, nhẹ bước đến bên cửa sổ, chỉ nghe
+tiếng bước chân giẫm lên mái ngói.
+Đêm khuya tìm đến…
+Chẳng lẽ là thích khách do Sở Uyên Trì phái tới?
+Vẫn muốn lấy mạng nàng?
+Hoàng thúc, xin tha cho. Cửu hoàng tử là nữ nhi
+FB: GÁC TRUYỆN CHILL
+134
+Nàng thuận tay chạm vào chiếc bình hoa trên bàn,
+cẩn thận phân biệt hướng di chuyển của đối phương.
+Chờ một lát, lại nghe tiếng bước chân dần dần đi xa.
+Đi rồi?
+Không phải nhắm vào nàng?
+Chỉ là đi ngang qua?
+Sở Ly hé mở nửa cánh cửa sổ, chỉ thấy một thân ảnh mặc y phục
+đen ẩn trong màn đêm, lướt qua Hà Tây khách điếm, lặng lẽ lẻn
+vào một tòa lầu các khác.
+Rất nhanh, bên đó truyền đến tiếng đồ sứ vỡ cùng tiếng nữ tử
+kinh hô.
+Dâm tặc hái hoa!?
+Sở Ly khựng lại.
+Mấy ngày nay nàng từng nghe bách tính nhắc đến, nói vùng Giang
+Nam xuất hiện một tên dâm tặc hái hoa. Không ngờ hôm nay lại
+để nàng bắt gặp ngay một tên.
+Nàng lập tức chạy xuống lầu:
+“Sơ Nhất, Sơ Nhị, mau theo ta! Mang theo vũ khí tiện tay!”
+Ở lầu các đối diện.
+“Ngươi là ai… muốn chết… ưm… to gan…”
+Rầm!
+Choang!
+Hoàng thúc, xin tha cho. Cửu hoàng tử là nữ nhi
+FB: GÁC TRUYỆN CHILL
+135
+Trong phòng đã bị đốt mê hương, nhưng nữ tử vẫn
+không hôn mê.
+Nàng rút kiếm, giao đấu với tên nam nhân bịt mặt.
+Thế nhưng vì đã trúng mê dược, thể lực dần cạn kiệt, càng đánh
+càng đuối sức.
+“Không ngờ lại là một con ngựa hoang dữ dằn như vậy!”
+Tên bịt mặt liếm môi, đôi mắt vừa nhỏ vừa béo tràn đầy dục vọng
+dâm tà, trông vô cùng bỉ ổi.
+“Càng dữ…
+Ta càng thích.”
+“Hahaha!”
+Hắn chộp lấy bọc thuốc trong tay áo, tung mạnh ra. Đang định
+nhân cơ hội chế ngự nữ tử chỉ bằng một đòn thì sau lưng đột nhiên
+trúng một chưởng phong hùng hậu.
+“A!”
+Hắn lảo đảo chúi về phía trước, lăn liên tiếp bốn năm vòng.
+Nam nhân áo trắng thu lại nội lực nơi lòng bàn tay, đỡ lấy nữ tử
+đang lảo đảo sắp ngã.
+“Ngươi là kẻ nào? Đừng xen vào chuyện của người khác!”
+“Phiêu Miểu Môn, Lục Vân Sơ.”
+“Nhị sư huynh?!”
+Hoàng thúc, xin tha cho. Cửu hoàng tử là nữ nhi
+FB: GÁC TRUYỆN CHILL
+136
+Đúng lúc ấy, Sở Ly dẫn người chạy tới. Nhưng khi
+nhìn thấy gương mặt quen thuộc, rồi nhìn rõ nữ tử đang được hắn
+ôm cứu trong lòng, nàng kinh ngạc đến mức suýt rớt cả cằm.
+“Mục Tuyết?”
+“A Ly ca ca!”
+Tần Mục Tuyết mở to đôi mắt, không dám tin.
+Nàng vừa định lao tới thì vô tình nhìn thấy gương mặt tuấn nhã
+như trăng thanh gió mát của Lục Vân Sơ.
+Chỉ một ánh nhìn ấy, không biết là vì kinh diễm, hay vì mê dược
+phát tác, thân thể nàng mềm nhũn, ngất lịm trong vòng tay hắn. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_188.html" class="btn">‹ Trước</a>
+            <a href="chuong_190.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 87</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 87</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_86.html" class="btn">‹ Trước</a>
+            <a href="chuong_88.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 87: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 87: Chẳng lẽ hai người cãi nhau rồi?
+Phủ Tam hoàng tử.
+Hôm nay, tân khách qua lại tấp nập, tiếng pháo nổ vang từng hồi, bầu không khí náo nhiệt lan khắp nơi. Đèn lồng đỏ treo cao khắp phủ, rực rỡ cát tường.
+“Chúc mừng Tam hoàng tử…”
+“Bách niên hảo hợp…”
+“Chúc mừng! Chúc mừng!”
+Tam hoàng tử thành thân.
+Người hắn nghênh thú là thứ nữ của đương kim Tả tướng.
+Tuy chỉ là thứ xuất, nhưng chức vị và quyền thế của Tả tướng cũng đủ để trở thành một trợ lực lớn đối với Tam hoàng tử.
+Hạ nhân qua lại không ngớt.
+Chén ngọc ly vàng đan xen.
+Khung cảnh quá mức náo nhiệt, có rất nhiều gương mặt lạ mà Sở Ly chưa từng gặp. Cẩu Bát bám sát bên cạnh nàng, đôi mắt sáng rực:
+“Chủ tử, vừa rồi Tam hoàng tử và Tam hoàng tử phi đã bái đường xong. Có người trông thấy dung mạo dưới hồng cái đầu, bảo rằng tân nương là một mỹ nhân tuyệt sắc đấy!”
+“Vừa rồi còn có cả một đám trẻ con đi náo động phòng…”
+“Chủ tử…”
+Khó khăn lắm mới được xuất cung một chuyến, hắn vui đến mức không ngậm được miệng.
+Sở Ly ngồi trên lan can hành lang, cười nói:
+“Xem ngươi vui kìa, cứ như chính mình thành thân vậy.”
+Cẩu Bát ngẩn người, bĩu môi:
+“Chủ tử chỉ biết trêu nô tài thôi…”
+Hắn là thái giám.
+Làm sao thành thân được?
+“Ơ? Kia chẳng phải Tần Thiếu tướng quân sao?”
+Hắn đưa tay chỉ.
+Chỉ thấy thiếu niên mặc trường bào màu lam đang đứng giữa đám đông, ánh mắt liên tục tìm kiếm điều gì đó.
+Đúng lúc ấy…
+Ánh mắt hắn nhìn sang.
+“A Ly.”
+Ánh mắt Sở Ly tối đi.
+Nàng không khỏi nhớ tới chuyện ngày hôm đó…
+“Chúng ta sang hậu viện đi.”
+“Chủ tử?”
+Cẩu Bát khó hiểu.
+Rõ ràng Tần Thiếu tướng quân đến tìm chủ tử.
+Vì sao chủ tử lại tránh?
+Chẳng phải quan hệ của hai người từ trước đến nay luôn thân thiết nhất sao?
+Chẳng lẽ…
+Hai người cãi nhau rồi?
+Hắn đáp một tiếng “vâng”, đến khi Tần Mục Vũ chạy nhanh tới hành lang, bóng lưng Sở Ly đã khuất sau góc ngoặt.
+⸻
+Hậu viện.
+Một đám trẻ con đang cười đùa nô nghịch.
+Trong ngày đại hỷ như hôm nay, trẻ nhỏ đến náo động phòng vốn là điềm lành, tượng trưng cho sớm sinh quý tử, con đàn cháu đống.
+Huống hồ những đứa trẻ này đều là con cháu của hoàng thân quốc thích, trọng thần triều đình.
+Hạ nhân đều tận tâm chăm sóc, không dám để xảy ra chút sơ suất nào.
+“Cửu hoàng thúc!”
+Sở Ly vừa tới, đã có một tiểu oa nhi phấn điêu ngọc trác lao thẳng vào lòng nàng.
+Tiểu oa nhi ôm lấy hai chân nàng, giọng nói non nớt:
+“Cửu hoàng thúc, bế~”
+Đó là đích trưởng tử của Đại hoàng tử.
+Sở Hoằng Diễm.
+Sở Ly cúi người, luồn hai tay qua dưới nách đứa bé rồi bế lên.
+“Để Cửu hoàng thúc cân thử xem nào… xem Diễm nhi có béo thêm không. Ừm… hình như nhẹ đi một chút thì phải. Có phải không chịu ăn cơm đàng hoàng không?”
+Tiểu oa nhi ba tuổi đôi mắt sáng long lanh.
+Nói năng rõ ràng.
+Đầu óc lanh lợi.
+Lời nói cũng vô cùng hoạt bát đáng yêu.
+Ngày náo nhiệt thế này…
+Ai còn muốn ăn cơm chứ?
+“Cửu hoàng thúc, xem tân nương, đẹp, đẹp!”
+Thằng bé vung vẩy hai tay, kéo Sở Ly đi xem.
+Sở Ly cười khẽ:
+“Tiểu gia hỏa, còn nhỏ thế này đã biết đẹp hay không đẹp rồi à? Chờ con lớn lên, còn sợ không có tức phụ sao?”
+Sở Hoằng Diễm vui mừng lắc lư thân thể nhỏ xíu:
+“Muốn xem, con muốn xem.”
+“Ha ha! Được, được.”
+Sở Ly nắm bàn tay nhỏ của thằng bé, bước lên bậc thềm.
+Ngoài cửa đã có không ít đứa trẻ đứng vây quanh.
+Từng đôi mắt to trong veo, ngây thơ vô tà đều hướng vào bên trong.
+Trong tân phòng được trang hoàng đỏ rực.
+Trên cửa, trên cửa sổ đều dán chữ Hỷ đỏ thắm.
+Một thân ảnh mảnh mai quý khí đang ngồi trên hỷ sàng.
+Hồng cái đầu che kín dung nhan.
+Chỉ lờ mờ phác họa được đường nét của những món trâm sức trên đầu.
+Không khó nhận ra đó là một bộ phượng quan cực kỳ hoa lệ.
+Một bé gái mềm mại nói:
+“Sau này lớn lên, ta cũng muốn đẹp như nàng ấy.”
+Bên cạnh, một bé trai nói:
+“Tuyết Tuyết, nếu muội đẹp như vậy, sau này lớn lên ta cưới muội được không?”
+Lập tức có một bé trai khác chen vào:
+“Thế thì ta đóng vai con trai của hai người.”
+Phía sau, một bé gái mặc váy hồng nhảy dựng lên:
+“Vậy ta đóng vai mẫu thân của hai người. Quân Hoa, lúc con bái thiên địa với Tuyết Tuyết, phải dập đầu kính trà cho ta.”
+Những lời trẻ con non nớt ấy khiến cả đám tỳ nữ đều bật cười.
+Trên hỷ sàng.
+Tân nương cũng không nhịn được bật cười.
+Nàng bốc một nắm nhãn khô, lạc và kẹo từ trên giường, ôn nhu nói:
+“Lại đây, đến ăn kẹo nào.”
+Cha mẹ đã dặn dò từ trước.
+Bọn trẻ tuy còn nhỏ nhưng đều xuất thân danh môn, rất biết quy củ.
+Chỉ dám đứng ngoài cửa nhìn.
+Không dám tùy tiện xông vào.
+Tân nương dịu dàng vẫy tay:
+“Đừng sợ, vào đây đi.”
+Bọn trẻ chần chừ.
+Một tỳ nữ cười nói:
+“Chủ tử, bọn nhỏ có vẻ còn câu nệ. Để nô tỳ mang số kẹo người ban ra ngoài chia cho chúng nhé.”
+“Được.”
+Tỳ nữ đi vào phòng, ôm kẹo bước ra.
+Lúc ấy bọn trẻ mới vui vẻ ùa tới tranh nhau.
+Bàn tay Sở Hoằng Diễm bé xíu, vậy mà cũng cầm được ba quả nhãn cùng hai quả táo đỏ.
+“Cửu hoàng thúc, ăn.”
+Sở Ly cười:
+“Con giữ lấy mà ăn đi. Vốn chẳng có bao nhiêu, còn nỡ chia cho ta à?”
+Sở Hoằng Diễm sốt ruột.
+Mặc kệ nàng từ chối.
+Thằng bé nắm lấy vạt áo nàng, cố gắng kiễng chân, nhét quả táo đỏ vào miệng nàng.
+“Ngọt. Cửu hoàng thúc với Diễm nhi cùng ăn.”
+Phượng quan của tân nương khẽ lay động.
+Dưới hồng cái đầu tuy không nhìn thấy bên ngoài, nhưng nghe được tiếng nói, nàng ôn thanh hỏi:
+“Cửu hoàng tử cũng ở đây sao?”
+Sở Ly nhìn vào trong:
+“Tam hoàng tẩu.”
+Tân nương mỉm cười:
+“Thiếp thân vừa mới quá môn, e tiếp đãi chưa chu toàn. Xin Cửu hoàng tử cứ tự nhiên.”
+Sở Ly đáp:
+“Diễm nhi nhất quyết đòi sang đây, ta chỉ đi cùng nó.”
+Hai người hàn huyên vài câu.
+Sau đó Sở Ly dắt Sở Hoằng Diễm trở lại tiền viện.
+Nàng nhìn thấy Tần Mục Vũ.
+Tần Mục Vũ dường như muốn tìm nàng.
+Nhưng khi thấy Sở Ly đang dẫn Sở Hoằng Diễm, lại còn trò chuyện với Đại hoàng tử phi, hắn chỉ biết chần chừ đứng cách đó không xa.
+Đôi mắt hơi đỏ nhìn chăm chú vào nàng.
+Dường như có ngàn vạn lời muốn nói.
+Đại hoàng tử phi nắm tay Sở Hoằng Diễm, cúi người vuốt lại những nếp nhăn trên y phục của thằng bé rồi nói:
+“Lại quấn lấy Cửu hoàng thúc của con rồi. Xem con chơi đến mồ hôi đầy đầu, cả người vừa chua vừa hôi. Cửu hoàng thúc không chê con, đúng là ông trời phù hộ.”
+“Hửm?”
+Sở Hoằng Diễm chớp chớp mắt.
+Mẫu phi…
+Đang khen mình sao?
+“Đa tạ mẫu phi.”
+Đại hoàng tử phi lập tức dở khóc dở cười:
+“…”
+Niềm vui khi nuôi dạy con trẻ…
+Có lẽ chính là như vậy.
+Sở Ly nhìn khung cảnh mẫu tử hòa thuận ấy.
+Nàng chưa bao giờ dám nghĩ…
+Nếu một ngày nào đó, bản thân cũng có thể có con…
+“Cửu đệ, sắp khai yến rồi. Chúng ta cùng qua nhập tịch đi.”
+Đại hoàng tử phi nói.
+“Được.”
+Sở Ly gật đầu.
+Đúng lúc nàng chuẩn bị cùng Đại hoàng tử phi đi nhập tiệc…
+Đột nhiên…
+Một tiếng kêu hoảng hốt xé toạc bầu không khí.
+“Không hay rồi! Không hay rồi! Tân nương xảy ra chuyện rồi!”
+“Cái gì?!”
+Cả phủ Tam hoàng tử lập tức dậy sóng.
+Tân khách cùng hạ nhân đều vội vàng chạy về phía hậu viện.
+Thị vệ đã bao vây chính viện.
+Không cho bất kỳ ai tự ý tiến vào, tránh người đông sinh loạn.
+Tam hoàng tử Sở Tây Lăng bước nhanh vào trong, ôm lấy tân nương đang ngã dưới đất.
+“Mộng Điệp, rốt cuộc xảy ra chuyện gì? Mộng Điệp!”
+Dung nhan tinh xảo của nữ tử khép chặt hai mắt.
+Môi tím tái.
+Khóe miệng tràn ra một dòng máu đen.
+Máu đen.
+Là trúng độc!
+Hạ nhân cuống cuồng hỗn loạn.
+Đại phu vội vã chạy đến.
+Vừa bắt mạch xong, đã sợ đến suýt ngất.
+“Tam… Tam hoàng tử phi trúng độc! Đây là triệu chứng độc phát… đã… đã tắt thở rồi!”
+Sở Tây Lăng ôm chặt nữ tử.
+Đau đớn xen lẫn phẫn nộ khiến hai mắt hắn đỏ ngầu.
+“Mộng Điệp!”
+Sao lại trúng độc?
+“Nàng vẫn luôn ở trong tân phòng, chưa từng ra ngoài. Đang yên đang lành, sao có thể trúng độc? Đám người các ngươi rốt cuộc hầu hạ kiểu gì?”
+Toàn bộ hạ nhân trong chính viện đều quỳ rạp xuống đất.
+Ai nấy mặt mày trắng bệch.
+“Xin Tam hoàng tử tha mạng!”
+“Nô tỳ vẫn luôn canh giữ chính viện, nửa bước cũng không rời. Chúng nô tỳ cũng không biết vì sao lại xảy ra chuyện như vậy…”
+Ông trời ơi!
+Từ sau khi bái đường xong…
+Tân nương đã được đưa vào tân phòng.
+Sau đó vẫn luôn ở trong phòng.
+Ngay cả một miếng đồ ăn cũng chưa dùng.
+Cũng chưa từng chạm vào thứ gì.
+Vậy sao lại trúng độc được?
+Lục Tả tướng hốt hoảng chạy tới.
+Vừa nhìn thấy nữ tử đã tắt thở nằm dưới đất, ông lập tức thất thanh kêu lớn:
+“Điệp nhi!”
+“Không!”
+“Nữ nhi của ta! Điệp nhi! Điệp nhi!”
+Sao lại thành ra thế này?
+“Ai hại nó! Là ai!”
+Hài tử của ông!
+Phu thê Lục Tả tướng quỳ sụp xuống đất.
+Khóc đến đỏ hoe hai mắt.
+Trên đời này…
+Nỗi đau lớn nhất không gì hơn tóc bạc tiễn tóc xanh.
+Huống chi…
+Lại đúng vào ngày đại hôn trọng đại.
+Sở Tây Lăng nổi giận.
+“Mau vào cung bẩm báo phụ hoàng!”
+“Phong tỏa phủ đệ! Tất cả mọi người không được rời đi! Hôm nay, nhất định phải tìm ra hung thủ!”
+Sắc mặt mọi người đều trở nên nặng nề.
+Ai nấy mang tâm tư riêng.
+Sở Ly nhìn cảnh tượng trước mắt.
+Mày nàng từ đầu đến cuối vẫn nhíu chặt.
+Chỉ mới không lâu trước…
+Đó vẫn còn là một nữ tử ôn nhu trò chuyện với bọn trẻ.
+An tĩnh.
+Hiền hòa.
+Vậy mà giờ đây…
+Đã trở thành một thi thể.
+Sở Tây Lăng lạnh giọng:
+“Trương ma ma, ngươi nói đi. Hôm nay, những ai từng đến chính viện, từng tiếp xúc với Hoàng tử phi?”
+Trương ma ma hoảng sợ quỳ xuống đất, đáp:
+“Bẩm Tam hoàng tử, theo phân phó của người, hôm nay khách khứa đông đúc hỗn tạp, việc an toàn phải đặc biệt lưu tâm. Bởi vậy những người canh giữ chính viện đều là tâm phúc trước nay hầu hạ người.”
+“Ngoại trừ một đám trẻ con tới xin lộc mừng, thì không còn ai khác…”
+Khoan đã.
+Đột nhiên.
+Bà đổi giọng, như nhớ ra điều gì.
+“Cửu hoàng tử đã từng tới!”
+—————————
+Bạn tốt ơi! comment một chấm [.] cũng được. “Chấm”,”. “Hóng”, “Hay”, “Trời ơi” đều quý như vàng. 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_86.html" class="btn">‹ Trước</a>
+            <a href="chuong_88.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

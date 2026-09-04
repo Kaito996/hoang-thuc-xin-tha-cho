@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 27</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 27</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_26.html" class="btn">‹ Trước</a>
+            <a href="chuong_28.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 27: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
+Chương 27: [Rơi xuống nước hôn mê]
+Nước hồ tràn vào mũi miệng, sặc thẳng vào đường hô hấp, khiến Sở Ly gần như nghẹt thở.
+Cơ thể theo bản năng giãy giụa. Trong cơn mê man, nàng chỉ thấy nam nhân đứng trên bờ kia đang lạnh lùng nhìn xuống mình. Ánh mắt ấy còn lạnh hơn cả nước hồ trong đêm.
+Hắn sẽ không cứu nàng.
+Cũng phải thôi.
+Hắn hận Hoàng đế, tự nhiên cũng hận nhi tử của Hoàng đế.
+Ý thức của Sở Ly dần dần tan biến...
+Trên bờ.
+Sở Đệ Trì nhìn thân ảnh đang vùng vẫy trong nước. Chỉ thấy động tác của nàng ngày càng yếu đi, hai tay nổi lơ lửng trên mặt nước rồi chậm rãi chìm xuống đáy.
+Hắn khẽ nhíu mày kiếm.
+Một đại nam nhân mà lại không biết bơi?
+Là giả vờ hay thật sự như thế?
+“Sở Ly?”
+“Sở Ly?”
+Gọi hai tiếng, thấy nàng thật sự sắp chìm xuống, hắn lập tức phi thân tới. Khinh công lướt trên mặt nước, vớt người lên rồi ném xuống đất.
+Bàn tay mang theo nội lực đặt lên lưng nàng. Vừa vận công, Sở Ly đã ho sặc:
+“Khụ!”
+Nàng phun ra mấy ngụm nước, đầu nghiêng sang một bên rồi ngất đi.
+“Phế vật.”
+Ngay cả bơi cũng không biết, còn làm ướt cả bào phục của hắn.
+Sở Đệ Trì phủi vết nước trên tay áo. Trong lúc vô tình liếc mắt nhìn, chỉ thấy Sở Ly tựa vào tảng đá, đầu nghiêng sang một bên, để lộ chiếc cổ thon dài trắng muốt không tì vết. Dưới cổ áo thấp thoáng xương quai xanh như ẩn như hiện.
+Mái tóc rối xõa xuống. Nửa khuôn mặt tái nhợt chỉ lớn bằng bàn tay, đôi môi nhạt màu như cánh hoa anh đào. Hàng mi cong vút đọng những giọt nước li ti, dưới ánh trăng mờ ảo trông như những hạt trân châu phát sáng.
+Y phục ướt sũng dính chặt vào người, phác họa những đường nét mềm mại thanh tú, giống hệt vẻ dịu dàng chỉ nữ tử mới có.
+Chỉ nhìn một cái, ánh mắt Sở Đệ Trì đã trở nên sâu thẳm.
+Hắn bất giác nhớ tới nữ tử khiến mình mất khống chế trong đêm khánh công hôm ấy...
+Hắn xoay người ngồi xổm xuống:
+“Sở Ly?”
+Thật sự ngất rồi?
+“Tiểu Cửu?”
+Sở Ly không có phản ứng.
+Sở Đệ Trì không chút do dự đưa tay ra, tháo đai lưng của nàng. Đúng lúc định vạch y phục ra thì phía xa bỗng vang lên một giọng nói:
+“Nhiếp Chính Vương điện hạ? Người ở đây sao?”
+Sở Đệ Trì quay đầu lại, thần sắc hơi lạnh:
+“Tần Thiếu tướng quân?”
+Là Tần Mục Vũ.
+“Dạ yến đã chuẩn bị gần xong, thần mãi không thấy Cửu hoàng tử nên đi tìm thử.”
+Hồ nước nằm ở sườn núi, cách doanh địa tổ chức tiệc tối mấy chục trượng. Lại thêm trời đã tối nên hầu như không có ai qua lại.
+Sở Đệ Trì liếc nhìn Sở Ly một cái, bình thản buộc lại đai lưng cho nàng:
+“'Hắn' bị rơi xuống nước. Bản vương vừa cứu 'hắn' lên.”
+“Cửu hoàng tử!”
+Tần Mục Vũ lập tức bước tới.
+Thấy Sở Ly toàn thân ướt đẫm, tóc tai tán loạn, đã bất tỉnh nhưng không nguy hiểm tính mạng, hắn vội gọi:
+“Cửu hoàng tử, tỉnh lại đi! Cửu hoàng tử!”
+“'Hắn' không biết bơi sao?”
+Tần Mục Vũ ngẩng đầu đáp:
+“Nhiếp Chính Vương, thật ra Cửu hoàng tử biết bơi. Chỉ là không thể bất ngờ rơi xuống nước khi chưa có phòng bị.”
+“Vì sao?”
+“Có một năm vào mùa hè, chúng thần vào núi bắt cá, bơi lội. Không biết từ đâu xuất hiện một con thủy xà đuổi theo cắn Cửu hoàng tử. Người chạy... à không, bơi lên bờ nhanh nhất có thể, nhưng cuối cùng vẫn bị nó cắn vào... mông.”
+“Từ đó về sau, mỗi lần xuống nước, người đều phải kiểm tra kỹ trong nước, trên bờ và xung quanh, xác định an toàn mới dám xuống.”
+Lần này Sở Ly bất ngờ rơi xuống nước, lại là ban đêm.
+Trong đầu nàng lập tức hiện lên cảnh tượng hàng chục con thủy xà quấn lấy mình, không ngừng cắn xé.
+Vì phản ứng kích động quá mức nên cơ thể co cứng, không thể tự cứu.
+Giọng Sở Đệ Trì nhàn nhạt:
+“Tần Thiếu tướng quân rất hiểu 'hắn' nhỉ.”
+Tần Mục Vũ ngẩn người.
+Hắn không hiểu lời ấy có ý gì, chỉ thấy Nhiếp Chính Vương xoay người rời đi. Dáng vẻ lạnh nhạt khiến người khác không dám suy đoán thêm.
+Hắn vội cõng Sở Ly lên:
+“A Ly, tỉnh lại đi!”
+“A Ly.”
+Dạ yến sắp bắt đầu.
+Nếu chuyện Sở Ly rơi xuống nước hôn mê truyền ra ngoài, với việc hôm nay nàng đã quá nổi bật, chỉ e sẽ lại bị đẩy lên đầu sóng ngọn gió.
+Tần Mục Vũ đặc biệt đi đường phía sau doanh địa, lặng lẽ cõng nàng vào lều.
+Hắn sai người lấy một bộ y phục sạch sẽ, chuẩn bị thay cho nàng.
+“Tần Thiếu tướng quân, ngài có ở trong đó không?”
+Bên ngoài lều vang lên giọng của một cung nữ.
+Tần Mục Vũ ngẩng đầu:
+“Ta đang có việc quan trọng, ở cùng Cửu hoàng tử. Nếu Hoàng thượng hỏi vì sao chúng ta chưa dự tiệc thì cứ nói sẽ tới ngay.”
+Bên ngoài im lặng một lúc rồi mới đáp:
+“Nô tỳ phụng mệnh tới thay y phục cho Cửu hoàng tử. Tuy Tần Thiếu tướng quân và Cửu hoàng tử đều là nam tử, nhưng thân phận quân thần khác biệt, e rằng không tiện. Xin để nô tỳ làm việc này.”
+Tần Mục Vũ hơi chần chừ.
+Cầm bộ y phục trong tay suy nghĩ một lát rồi nói:
+“Vậy ngươi vào đi.”
+“Vâng.”
+Một cung nữ bước vào hành lễ.
+Tần Mục Vũ vén rèm đi ra ngoài.
+Chỉ là lúc rời đi, hắn hoàn toàn không chú ý tới thân ảnh mặc huyền y đang đứng trong bóng tối đối diện lều trại.
+Trong lều.
+Sở Ly nằm trên chiếc giường nhỏ, vẫn chưa tỉnh.
+Cung nữ bước tới, tháo đai lưng, cởi ngoại bào cho nàng. Hai tay vừa đặt lên phần cạp quần định kéo xuống thì một bàn tay trắng lạnh đột nhiên giữ lấy cổ tay nàng ta.
+“A!”
+“Cửu hoàng tử!”
+Sở Ly lập tức mở mắt, bật ngồi dậy:
+“Ngươi đang làm gì?”
+“Người rơi xuống nước hôn mê, y phục vẫn còn ướt, nô tỳ muốn thay giúp người.”
+Lúc này Sở Ly mới nhớ lại chuyện vừa rồi.
+Nàng chưa chết?
+May mà nhiều năm rèn luyện cảnh giác đã thành phản xạ tự nhiên. Nếu không để cung nữ phát hiện bí mật thì nguy to.
+“Ai sai ngươi tới?”
+“Là Nhiếp Chính Vương điện hạ.”
+Ánh mắt Sở Ly hơi trầm xuống:
+“Đặt y phục lại rồi ra ngoài. Ta tự thay.”
+Cung nữ lập tức quỳ xuống:
+“Nhiếp Chính Vương căn dặn nô tỳ phải chăm sóc người chu đáo. Nếu Cửu hoàng tử đuổi nô tỳ ra ngoài, điện hạ nhất định sẽ trách phạt nô tỳ hầu hạ không chu toàn. Xin Cửu hoàng tử khai ân!”
+Sở Ly xuống giường:
+“Quay lưng lại. Đợi ta thay xong thì đi nấu cho ta một bát canh gừng.”
+“Vâng.”
+Sở Ly đi sau bình phong, nhanh chóng thay y phục.
+Cung nữ đợi một lát, ước chừng nàng đã thay xong mới ra ngoài phục mệnh.
+“Điện hạ.”
+Sở Đệ Trì đứng dưới gốc cây, đôi mắt sâu thẳm:
+“Thế nào?”
+Cung nữ cúi đầu, thần sắc hơi thấp thỏm:
+“Cửu hoàng tử đã tỉnh. Người nói nô tỳ lạ mặt, không thích người ngoài hầu hạ nên tự mình thay y phục.”
+“Ngươi có nhìn thấy Cửu hoàng tử cởi y phục không?”
+“Người thay sau bình phong, nô tỳ không nhìn thấy.”
+“Đồ vô dụng.”
+Cung nữ kinh hoảng, không hiểu mình đã làm sai điều gì, vội quỳ xuống xin tha.
+“Cút đi.”
+“Vâng, vâng!”
+Sở Đệ Trì nhìn về phía lều trại.
+Chỉ thấy Sở Ly vén rèm bước ra.
+Một thân trường bào màu nguyệt bạch khiến nàng càng thêm nhỏ nhắn thanh tú. Đai lưng ôm lấy vòng eo thon mảnh. Giữa hàng mày trắng trẻo là đôi mắt sáng và hàm răng trắng, trông vô cùng nhu mỹ.
+“Tiểu Cửu.”
+Bước chân Sở Ly khựng lại.
+Lúc này nàng mới chú ý tới Nhiếp Chính Vương ở phía xa, đồng thời nhớ tới chuyện rơi xuống nước cùng ánh mắt lạnh lùng của hắn...
+“Tiệc lửa trại đã bắt đầu rồi, sao Hoàng thúc còn chưa qua đó?”
+Sở Đệ Trì nhìn thiếu niên đang đến gần, ánh mắt tối sầm:
+“Rửa sạch mồ hôi và huyết khí trên người rồi, Tiểu Cửu quả nhiên...”
+Hắn cúi thấp đầu, chóp mũi gần như chạm vào vành tai nàng:
+“Rất thơm.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_26.html" class="btn">‹ Trước</a>
+            <a href="chuong_28.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

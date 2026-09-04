@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 43</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 43</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_42.html" class="btn">‹ Trước</a>
+            <a href="chuong_44.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 43: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 43: Sở Đệ Trì, chính ngươi hại Tần Mục Vũ
+Sở Đệ Trì phất tay đẩy nàng ra.
+Sở Ly loạng choạng ngã xuống, trước mắt tối sầm, suýt nữa ngất đi.
+“Cửu hoàng tử! Cửu hoàng tử…”
+Phúc công công hoảng hốt vội sai người đến đỡ.
+Sở Ly cố gắng chống người dậy, gắng gượng giữ tỉnh táo.
+Cho đến tận chiều muộn, cửa Ngự thư phòng mới mở.
+Phương Quốc công bước ra, mặt đỏ bừng vì phẫn nộ, hai ống tay áo phất mạnh như gió, sắc mặt Tĩnh Hoàng quý phi và Thất hoàng tử đi bên cạnh cũng không khá hơn là bao.
+Tần tướng quân thần sắc mệt mỏi, chỉ trong một ngày mà râu cằm đã lún phún mọc, dáng vẻ tiều tụy.
+Chuyện đã đến nước này, Quốc công phủ và Tướng quân phủ đã thành tử địch không đội trời chung.
+Cuối cùng, Cửu hoàng tử quỳ suốt nửa ngày cũng được triệu vào.
+Bước vào điện, nàng run rẩy, sắc mặt trắng như xác chết:
+“Phụ hoàng…”
+“Tiểu Cửu!” Hoàng đế vội đỡ lấy nàng, thấy nàng như vậy không khỏi trách mắng:
+“Nếu đã có quyết định, tự khắc sẽ sai người báo cho con, cần gì phải tự hành hạ bản thân như thế.”
+Sở Ly cay mũi, vội nói:
+“Phụ hoàng, Tần Mục Vũ chắc chắn bị oan, xin hãy để Đại Lý Tự tra lại, đừng vội xử trí.”
+Hoàng đế thở dài.
+Hôm nay vì chuyện này mà ông đau đầu suốt một ngày.
+“Tiểu Cửu, trẫm biết con lo cho hắn, nhưng Đại Lý Tự đã điều tra rõ, Phương Hải Dương đúng là do Tần Mục Vũ giết.”
+Điều khiến ông khó xử là: làm sao xử lý vừa không làm mất lòng Tần tướng quân, vừa trấn an được Quốc công phủ.
+Đại Sở từ khi khai quốc đến nay, nội loạn chưa dứt, biên cương chiến sự triền miên, triều đình rất cần võ tướng.
+Tần tướng quân là nhân tài có thể dùng, con trai Tần Mục Vũ lại càng là tân tinh nổi bật.
+“Con không tin Tần Mục Vũ sẽ làm ra chuyện này!”
+Sở Ly gấp gáp nói:
+“Phụ hoàng, xin cho nhi thần gặp hắn một lần!”
+Hoàng đế ngồi xuống:
+“Con về trị thương trước đi, nhìn xem con thành ra bộ dạng gì rồi. Ngày mai trẫm cho phép con vào thiên lao thăm hắn.”
+“Phụ hoàng!”
+Nàng ăn không vào, ngủ không yên, ngồi cũng không yên. Nghĩ đến việc Tần Mục Vũ có thể bị xử tử, nàng sao có thể bình tĩnh?
+“Tiểu Cửu, nghe lời.”
+Nàng đứng lì không động.
+Một lúc lâu.
+“Thôi được, đi đi, cho con đi, vậy đã được chưa!”
+Thiên lao
+Không khí âm u, máu tanh, mùi ẩm mốc hòa lẫn, xen kẽ tiếng rên rỉ của phạm nhân, khiến người ta tuyệt vọng.
+Một Ngự lâm quân dẫn đường:
+“Cửu hoàng tử, bên này.”
+Rất nhanh, Sở Ly nhìn thấy thân ảnh đang ngồi trên giường gỗ trong bóng tối mờ mịt.
+“Mục Vũ?”
+Tần Mục Vũ khựng lại, tưởng nghe nhầm, ngẩng đầu:
+“Cửu hoàng tử?”
+Ngự lâm quân dặn dò chỉ được một khắc rồi lui ra.
+Tần Mục Vũ lập tức bước tới:
+“Nơi này là chốn lao ngục dơ bẩn, A Ly, sao ngươi lại đến đây!”
+Chỉ một ngày không gặp, hắn đã bị lột bỏ cẩm y, mặc áo tù trắng bẩn, chân tay đeo xiềng, mỗi bước động đều vang lên tiếng leng keng.
+Sở Ly chưa từng thấy hắn thảm hại như vậy.
+Trong trí nhớ nàng, hắn luôn là người ôn hòa, đoan chính, quân tử khiêm nhường.
+“Ta đã cầu phụ hoàng, sẽ tra rõ chuyện này, nhất định trả lại trong sạch cho ngươi.”
+Ánh mắt Tần Mục Vũ trầm xuống, chậm rãi buông tay, lùi lại:
+“Ngươi không cần phí công. Người… là ta giết.”
+Sở Ly đồng tử co mạnh.
+Mọi nghi hoặc, nàng đều không tin. Nhưng khi chính tai nghe lời này, lòng như sóng dữ cuộn trào.
+Nàng lập tức giữ bình tĩnh:
+“Ngươi nghĩ ta sẽ tin sao? Ngươi không có lý do giết hắn. Vì sao phải nhận tội? Ngươi đang giấu ta chuyện gì?”
+Sắc mặt Tần Mục Vũ khẽ biến, lập tức xoay người:
+“Một là một, hai là hai. Ta làm thì sẽ nhận.”
+“Tần Mục Vũ!”
+“Ngươi quay lại nhìn ta!”
+Sở Ly nắm song sắt:
+“Ta không tin ngươi giết Phương Hải Dương. Dù có muốn giết, ngươi cũng có trăm cách không để lộ, nhất định có chuyện giấu ta!”
+Tần Mục Vũ siết chặt nắm tay:
+“Hắn cấu kết Mộc Kỳ Sơn, muốn hại ngươi, ta không thể nhịn.”
+Mọi kẻ muốn hại nàng, hắn đều không thể nhịn.
+“Nhưng hắn chưa hại được ta, ngươi không có lý do giết hắn!”
+“Đó chính là lý do!”
+“Không phải lý do!”
+Sở Ly quỳ suốt một ngày, không ăn không uống, giọng đã khàn:
+“Chúng ta quen nhau hơn mười năm, ngươi nghĩ ta không hiểu ngươi sao? Ngươi là người duy nhất của Tần gia, từ nhỏ đã tự cường, muốn làm đại tướng quân, muốn gánh vác Tần gia…”
+“Ngươi sao có thể vì một kẻ như hắn mà hủy tiền đồ của mình!”
+Thân thể Tần Mục Vũ cứng lại.
+Từng chữ như đao đâm vào tim.
+A Ly…
+Hắn từ nhỏ nỗ lực, một nửa vì Tướng quân phủ, một nửa… là vì nàng.
+Hắn muốn làm tướng quân, cũng là để bảo vệ nàng.
+Phương Hải Dương biết bí mật của nàng… nếu không giết hắn, người chết sẽ là nàng.
+Nếu nàng gặp nguy, hắn thà dùng mạng mình để đổi.
+“Việc này đã định, không cần nói thêm. A Ly… là ta có lỗi với ngươi. Sau này, ngươi phải tự bảo trọng.”
+“Ngươi rốt cuộc giấu ta chuyện gì! Nói cho ta biết!”
+Sở Ly đập vào song sắt.
+Hắn ngồi lại trên giường gỗ, lưng quay về phía nàng, lạnh lẽo như đá.
+“Ngươi còn coi ta là bằng hữu không?!”
+“…”
+“Ngươi nói đi!!”
+“…”
+“Bao nhiêu năm giao tình, không đáng để ngươi tin sao?!”
+“…”
+“Ầm!!”
+“Ầm!!”
+“Tần Mục Vũ!!”
+Ngự lâm quân bước tới:
+“Cửu hoàng tử, đã hết giờ, mời người rời khỏi.”
+“Buông ta ra! Tần Mục Vũ!! Nếu ngươi dám bỏ ta lại, ta sẽ không tha cho ngươi!!”
+Nàng bị cưỡng chế kéo đi.
+Tiếng nàng dần xa.
+Trong thiên lao, Tần Mục Vũ siết chặt tay, nhắm mắt, khóe mắt rơi xuống hai giọt lệ.
+Nhưng… hắn không hối hận.
+Ra khỏi thiên lao.
+Cẩu Bát vội chạy tới:
+“Chủ tử! Vừa rồi nhị tiểu thư Tướng quân phủ sai người báo tin, nói hôm qua tại yến Thu nhật, nàng thấy người bên cạnh Nhiếp chính vương là Trọng Phong từng nói chuyện với Tần thiếu tướng quân. Sau khi về phủ, Tần thiếu tướng quân liền bắt đầu không bình thường.”
+Nhiếp chính vương!
+Sở Ly chấn động.
+Trong đầu hỗn loạn bỗng chốc có điểm tựa.
+“Là hắn… nhất định là hắn…”
+Nàng lập tức chạy đến Nhiếp chính vương phủ.
+“Chủ tử, trời đã tối, cung môn đã đóng!”
+Nhưng nàng vẫn xông ra khỏi cung, đến trước phủ Nhiếp chính vương, đập mạnh cửa.
+“Mở cửa!”
+“Mở cửa cho ta!”
+Thị vệ bước ra:
+“Cửu hoàng tử, điện hạ không có ở phủ, xin ngày mai quay lại.”
+“Hắn đi đâu?”
+“Chúng thuộc hạ không dám hỏi.”
+“Trời đã tối thế này còn không ở phủ? Ngươi dám lừa ta?”
+Thị vệ cúi đầu:
+“Thuộc hạ không dám!”
+Sở Ly không tin.
+“Chuyện lớn như vậy, hắn sao có thể không ở? Rõ ràng là cố ý tránh ta!”
+Nàng đạp mạnh cửa:
+“Sở Đệ Trì! Ngươi ra đây! Ta biết ngươi ở trong đó!”
+“Cửu hoàng tử, không được gọi thẳng danh húy điện hạ!”
+“Sở Đệ Trì!!” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_42.html" class="btn">‹ Trước</a>
+            <a href="chuong_44.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

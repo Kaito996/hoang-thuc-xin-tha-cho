@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 80</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 80</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_79.html" class="btn">‹ Trước</a>
+            <a href="chuong_81.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 80: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 80: Từ khi nào ngươi lại ngoan ngoãn như vậy?
+Khóe mắt Sở Đệ Trì khẽ nhướng lên.
+“Muốn bản vương chịu trách nhiệm với ngươi đến vậy sao?”
+Sở Ly mím môi.
+Nhìn vẻ mặt lả lơi trêu chọc của hắn, nàng biết hắn chỉ đang đùa bỡn mình. Ngay cả bản thân nàng khi nói ra những lời ấy cũng cảm thấy nực cười.
+Hắn sao có thể quan tâm đến sống chết của nàng?
+“Ta chỉ muốn có một con đường sống mà thôi. Hoàng thúc cao cao tại thượng, đương nhiên không thể thấu hiểu nỗi chua xót của những kẻ nhỏ bé như chúng ta.”
+“Yên tâm.”
+“Thiên hạ rộng lớn, sẽ có một con đường sống dành cho ngươi.”
+Sở Ly không thích cảm giác bị người khác nắm thóp như thế này.
+Giống như phải cầu xin sự ban ơn của hắn.
+“Nếu ngươi không cần ta băng bó, vậy ta xin cáo từ.”
+Nàng vừa bước xuống khỏi bàn thì cổ tay đã bị hắn nắm lấy.
+Một cuộn băng gạc được đặt vào lòng bàn tay nàng.
+Nàng mím môi.
+“Nằm sấp xuống.”
+Sở Đệ Trì bỗng nhướng mắt.
+Hai chữ ấy nghe có vẻ rất quen.
+Từ miệng nàng nói ra, lại mang một hương vị khác hẳn.
+Sở Ly mở băng gạc ra.
+Đợi một lúc mà không thấy hắn động đậy.
+Ngược lại, chỉ thấy đôi mắt đen sâu thẳm ấy chăm chú nhìn nàng.
+Tim nàng bỗng đập mạnh.
+Ánh mắt như vậy…
+Quá đỗi quen thuộc.
+“Ngươi…”
+“Vừa rồi…” Hắn đột nhiên cúi người, áp sát nàng, “Ngươi nói gì?”
+“Ta… ta bảo ngươi nằm sấp xuống. Ngươi không nằm thì ta băng bó thế nào? Vết thương của ngươi ở sau lưng, chẳng lẽ còn muốn nằm ngửa?”
+Sở Ly ưỡn ngực, nghiêm mặt trừng mắt nhìn hắn.
+Chứ còn có thể thế nào nữa?
+Trong đầu hắn rốt cuộc toàn nghĩ những thứ gì?
+“Ồ.”
+Nhìn dáng vẻ tức giận của nàng, hắn bỗng khẽ cười trầm một tiếng, buông nàng ra, rồi đi đến chiếc nhuyễn tháp bên cạnh, ngoan ngoãn nằm sấp xuống.
+Sở Ly vạch y phục của hắn ra.
+Tấm lưng rắn chắc của nam nhân nổi rõ những đường cơ bắp khỏe khoắn.
+Một vết đao dài vắt ngang sau lưng, máu đã nhuộm đỏ cả làn da.
+Nhưng đường sống lưng sâu và thẳng tắp kéo dài xuống tận nơi kín đáo, cơ thể cường tráng không hề có chút mỡ thừa nào, nhìn vô cùng đẹp mắt.
+Quả nhiên không hổ là người quanh năm chinh chiến.
+Thể chất mạnh hơn người thường không biết gấp bao nhiêu lần.
+Tấm lưng căng chặt ấy ẩn chứa sức bộc phát mãnh liệt, giống như một con báo săn đang tích tụ lực lượng, bất cứ lúc nào cũng có thể tung ra một đòn chí mạng.
+Sở Ly băng bó rất thành thạo.
+Bởi trước đây, mỗi lần cùng Sở Ngạo Thiên nghịch ngợm gây chuyện, nàng thường xuyên bị phạt, bị mắng, cũng vì thế mà quen với việc xử lý vết thương.
+Chẳng mấy chốc đã băng bó xong.
+Nàng vừa thu tay, chuẩn bị rời đi thì đã bị hắn ôm trở lại.
+“Muộn thế này rồi.”
+“Đêm nay ngủ ở đây.”
+Chiếc nhuyễn tháp vốn không lớn.
+Hắn nghiêng người nằm, ôm nàng vào lòng.
+Thân hình nàng gầy gò nho nhỏ, chẳng khác nào một chiếc gối ôm hình người, vừa vặn vô cùng.
+“Ta phải hồi cung.”
+“Cửa cung đã khóa rồi.”
+“Huống hồ…”
+“Từ khi nào ngươi lại ngoan ngoãn như vậy?”
+“Ta…”
+“Đừng nói nữa, Tiểu Cửu.”
+Hắn siết chặt nàng hơn.
+Cánh tay dài lại khẽ co vào.
+Lồng ngực rộng lớn áp sát vào tấm lưng nàng.
+Hai người gần như không còn chút khoảng cách.
+Đường nét cơ thể hắn hoàn mỹ in rõ lên người nàng.
+Nơi cần gầy thì gầy.
+Nơi cần đầy đặn thì đầy đặn.
+“Nếu còn cựa quậy nữa… sẽ đánh thức nó đấy.”
+⸻
+Đêm ấy.
+Sở Ly cứng đờ cả người, nơm nớp lo sợ.
+Nàng hoàn toàn không quen nằm chung với hắn như thế.
+Nhưng đến nửa đêm sau, bất tri bất giác cũng thiếp đi.
+Lúc mở mắt lần nữa…
+Trời đã sáng.
+Trọng Phong đến.
+“Chủ tử, đã điều tra rõ rồi.”
+“Đám ác bá kia nhận năm trăm lượng bạc, lợi dụng đêm Trung thu người đông hỗn loạn để trà trộn vào Hoàng thành, bắt cóc một người đeo mặt nạ sư tử.”
+Hắn liếc nhìn Sở Ly một cái rồi mới hạ giọng nói:
+“Việc này… e rằng có liên quan đến người trong cung.”
+Sở Ly ngồi đó, thần sắc vẫn bình thản.
+Mặt nạ sư tử.
+Tối qua…
+Là Ôn Nhã dẫn bọn họ đến quầy bán hoa đăng ấy.
+Cũng chính nàng ta đề nghị thích chiếc mặt nạ sư tử kia, còn bảo nàng đối thơ.
+Lúc đó…
+Tần Mục Tuyết nói mình thích.
+Thế là nàng đưa chiếc mặt nạ sư tử cho nàng ấy.
+Hóa ra…
+Người mà đám ác bá muốn bắt cóc vốn là nàng.
+Nhưng nàng với Ôn Nhã không oán không thù.
+Vì sao Ôn Nhã lại muốn hại nàng?
+Lần trước, khi mắt nàng bị bỏng, ở Ôn phủ dưỡng thương…
+Cũng là Ôn Nhã…
+Không.
+Là Thất Hoàng tử.
+Việc này không khó đoán.
+Chỉ trong chớp mắt, Sở Ly đã hiểu rõ mọi mắt xích.
+“Ta hồi cung trước.”
+Chuyện tối qua tuy đã bị ém xuống.
+Nhưng Sở Hoàng vẫn biết.
+Ngài sai phủ Thuận Thiên điều tra kỹ càng, đồng thời triệu Tần Mục Vũ và Tần Mục Tuyết vào cung hỏi rõ tình hình.
+“Có bị thương không?”
+Hai huynh muội Tần Mục Vũ, Tần Mục Tuyết quỳ xuống đáp lời, tạ ơn hoàng ân.
+Nói thật.
+Tần Mục Tuyết lúc ấy bị mê dược làm ngất.
+Suốt cả quá trình đều hôn mê, hoàn toàn không biết đã xảy ra chuyện gì.
+Chỉ cảm thấy sau khi tỉnh lại, toàn thân hơi ê ẩm.
+Sở Hoàng hỏi han thêm vài câu.
+Lúc ấy Sở Ly mới khoan thai đến nơi.
+“Nhi thần tham kiến phụ hoàng.”
+Sở Hoàng nhìn nàng, hỏi:
+“Tiểu Cửu, tối qua chẳng phải con ngủ cùng Tần Thiếu tướng quân sao?”
+“Sao hai huynh muội họ đã vào cung khá lâu rồi mà con mới tới?”
+Sở Ly khựng lại.
+Bên cạnh.
+Ánh mắt Tần Mục Vũ trầm xuống.
+Đêm qua…
+Hắn vốn không ở cùng Cửu Hoàng tử.
+Theo ý của Hoàng thượng…
+Đêm qua Cửu Hoàng tử cũng không ở trong cung, càng không ở chỗ hắn.
+Vậy nàng ở…
+Nhớ lại cảnh Nhiếp chính vương ôm nàng trở về thành.
+Dáng vẻ lạnh lùng cô ngạo ấy từng nói:
+“Mọi chuyện đã kết thúc rồi, Tần Thiếu tướng quân.”
+Giờ nhớ lại…
+Mới nhận ra khóe môi khẽ nhếch của Nhiếp chính vương dường như mang theo vài phần mỉa mai.
+Hắn đang khiêu khích.
+Hắn đang khoe khoang.
+Tần Mục Tuyết nghi hoặc quay đầu.
+“Đêm qua Cửu Hoàng tử ở…”
+“Tâu Hoàng thượng.”
+Tần Mục Vũ lên tiếng trước.
+“Cửu Hoàng tử ham ngủ, sáng nay thức dậy muộn. Thần không gọi nàng, là lỗi của thần.”
+Đại ca đang nói gì vậy?
+Tối qua…
+Rõ ràng Cửu Hoàng tử đâu có ở cùng bọn họ.
+Vì sao đại ca lại nói dối?
+Sở Ly mím môi.
+“Là nhi thần ham ngủ, cả ngày không biết cầu tiến, xin phụ hoàng trách phạt.”
+Sở Hoàng từ ái xoa đầu nàng.
+“Trẫm nghe nói tối qua trong thành có ác bá quấy phá.”
+“Tuy đã bị chế phục, nhưng chỉ cần con bình an là tốt rồi.”
+Cổ họng Sở Ly nghẹn lại.
+“Phụ hoàng…”
+“Cần gì phải cố gắng đến thế?”
+“Đứa con ngốc của trẫm.”
+“Con đầu thai vào hoàng gia là để hưởng phúc.”
+“Nếu ai ai cũng cầu tiến, ai cũng có tài năng, thì thiên hạ này cũng chẳng đủ chia.”
+Trong thiên hạ…
+Có đen thì có trắng.
+Có tà ác thì có chính nghĩa.
+Có siêng năng thì cũng có lười biếng.
+Vạn sự đều tồn tại đối lập.
+Hãy cho phép bản thân tồn tại.
+Cũng tôn trọng sự tồn tại của người khác.
+“Được rồi.”
+“Mau về nghỉ ngơi đi.”
+“Trẫm còn rất nhiều tấu chương phải phê.”
+“Tạ phụ hoàng.”
+Đúng lúc ấy.
+Vương Đức Phúc bước vào.
+“Hoàng thượng, Thất Hoàng tử muốn vào thỉnh an người, hiện đang chờ ở bên ngoài.”
+Sở Hoàng cau mày.
+Sắc mặt lập tức nhạt đi.
+“Bảo hắn ở Hoàng gia Học Uyển chuyên tâm tu đức.”
+“Không có việc gì thì đừng chạy lung tung.”
+“Cũng đừng lượn lờ trước mặt trẫm.”
+Làm ra chuyện ô nhục như cưỡng đoạt thê tử của thần tử.
+Vậy mà còn có mặt mũi đến thỉnh an?
+Ánh mắt Sở Ly khẽ chuyển.
+Nàng lui khỏi Ngự thư phòng.
+Sở Cảnh Lân nghe thấy tiếng bước chân, còn tưởng phụ hoàng triệu kiến, vui vẻ quay người lại.
+Nụ cười trên mặt lập tức thu lại.
+“Sở Ly.”
+Sở Ly bước ra.
+“Ta không chết.”
+“Có phải ngươi rất bất ngờ…”
+“Cũng rất thất vọng?”
+————————
+    Một chiếc comment = một cái ôm tinh thần cho admin. Hai chiếc comment thì admin dịch thêm chương. 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_79.html" class="btn">‹ Trước</a>
+            <a href="chuong_81.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

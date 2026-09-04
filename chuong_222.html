@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 222</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 222</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_221.html" class="btn">‹ Trước</a>
+            <a href="chuong_223.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 222: Đây chính là lời chính miệng nàng nói
+Sở Ly có một loại ảo giác như đang đứng giữa màn sương dày đặc, không nhìn rõ hắn rốt cuộc là thật hay giả, là vui hay giận.
+Thế nhưng từng câu từng chữ hắn nói lại kéo nàng trở về hiện thực:
+“Nàng cảm thấy ta sẽ tức giận sao?”
+“Không.”
+“Con người chỉ khi đối diện với những chuyện không thể khống chế mới hoảng loạn, mới để tâm. Mà thiên hạ này vẫn chưa có ai có thể khiến ta như lâm đại địch.”
+Chỉ là một Lam Uyên công tử nhỏ nhoi.
+Nàng nhìn xem, hắn sẽ để tâm sao?
+Sở Ly khẽ cắn môi dưới: “Hoàng thúc, người đã trở nên không giống trước đây nữa, nhưng ta lại vẫn luôn dùng ánh mắt của ngày trước để nhìn người…”
+Sự đại độ cùng khoan hòa của hắn trái lại khiến nàng có vài phần hổ thẹn.
+Là nàng lấy lòng tiểu nhân đo lòng quân tử rồi.
+“Con người sau khi trải qua sinh tử, tự nhiên sẽ trở nên khác biệt. Hiện giờ điều ta nguyện cầu duy nhất là nàng có thể sống thật tốt, cho dù không ở bên cạnh ta.”
+Mu bàn tay Sở Đệ Trì khẽ chạm lên gò má nàng, trong mắt có quá nhiều cảm xúc, phức tạp đến khó lòng che giấu:
+“Nàng nhất định phải sống thật tốt.”
+“Mẫu phi và Nhàn Vương không cần nàng phải bận tâm, ta sẽ chăm sóc tốt cho bọn họ. Mỗi tháng ta sẽ viết thư cho nàng, nói cho nàng biết tình hình của bọn họ.”
+Thần sắc Sở Ly lập tức trở nên khẩn trương:
+“Ta cũng hồi Đế đô!”
+Viết thư thì tính là chuyện gì chứ?
+Nàng cũng đâu phải thật sự chết rồi.
+Ban đầu nàng lựa chọn trốn ở Giang Nam, vẫn là vì sợ hắn. Nay nếu đã không sợ nữa, hắn cũng đã thay đổi tính tình, nàng cũng không muốn tiếp tục ẩn náu nữa.
+Sở Đệ Trì đè xuống ý mừng nơi đáy mày, trầm ổn nói: “Nàng muốn hồi Đế đô?”
+“Cho dù không vì mẫu phi và Bát hoàng huynh, ta cũng phải suy xét cho Sở Hồng Diễm. Đệ ấy còn nhỏ như vậy, lại rất thích quấn lấy ta.”
+Sở Đệ Trì không ngờ Sở Hồng Diễm còn có tác dụng này.
+“Vậy nàng muốn hồi Đế đô… Tiểu Cửu, nàng đây là đã đáp ứng lời thỉnh cầu của ta? Nàng đồng ý ở bên ta rồi?”
+Sở Ly cắn chặt môi dưới, đỏ mặt liếc nhìn xung quanh.
+Đây là giữa phố lớn, nơi này còn có nhiều người như vậy.
+“Có gì thì về rồi nói.”
+“Bây giờ nói.” Sở Đệ Trì nắm lấy cổ tay nàng, “Nói cho ta biết, Tiểu Cửu, nàng đồng ý rồi.”
+Nhìn ánh mắt nóng bỏng của nam nhân, tựa như than hồng nướng cháy, muốn nung chảy nàng, khiến cổ họng nàng khô khốc:
+“Ta… ừm…”
+Nàng nhỏ giọng lúng túng ậm ừ hai tiếng: “Ừm…”
+Niềm vui lan rộng trong đáy mắt nam nhân, tựa như cuồng đào mãnh liệt, hắn dùng sức ôm nàng vào lòng: “Đây chính là lời chính miệng nàng nói, chính miệng nàng đáp ứng!”
+Không được hối hận.
+Từ nay về sau, trong từ điển của hắn không có phản bội, không có hòa ly, không có chia lìa, chỉ có tang ngẫu.
+Sở Ly khép hai mắt, ngửi mùi trầm hương ô mộc nơi lồng ngực hắn. Hơi thở vô cùng quen thuộc ấy, trước đây từng khiến nàng hoảng sợ, nay lại khiến nàng an tâm.
+Vị Hoàng thúc khai minh này, xem như cũng là một người không tệ.
+Cứ như vậy đi.
+Một đời dài đằng đẵng, thăng trầm lên xuống, quanh co khúc khuỷu, bên cạnh nàng rồi cũng nên có một người bầu bạn.
+Dù sao, con người vốn là quần cư mà sống.
+Nàng còn có nhiều người thân, tri kỷ như vậy.
+Sở Đệ Trì ôm chặt nàng, hít lấy hương thơm nhàn nhạt vương nơi tóc nàng. Ý cười trên gương mặt đạt đến cực điểm, rồi dần dần trở nên u thâm.
+Càng lúc càng u thâm: “Ta sẽ không để nàng hối hận về lựa chọn hôm nay.”
+Từ nay về sau, nàng chính là trung tâm quyền bính của hắn.
+Ôm thân thể mềm mại thơm ngát trong lòng, nỗi tương tư dồn nén suốt mấy ngày cuối cùng cũng không thể tiếp tục áp chế, cuồn cuộn trào ra.
+Nếu còn không phát tiết, hắn e rằng bản thân sẽ nghẹn đến hỏng mất.
+“Nàng vẫn chưa biết ta nhớ nàng đến nhường nào đâu.”
+Nàng vĩnh viễn không thể tưởng tượng được.
+Sở Ly ngẩng đầu nhìn hắn: “Chúng ta… hình như chỉ mới một tháng không gặp?”
+“Trong một tháng này đã xảy ra quá nhiều chuyện, đại khởi đại lạc, tựa như đã trải qua mười năm dài đằng đẵng. Nó cũng khiến ta nhận rõ tình cảm của chính mình.”
+“Ta sẽ để nàng biết.”
+Ánh mắt Sở Đệ Trì sâu không thấy đáy: “Ta đưa nàng đi bái phỏng Tạ lão tướng quân.”
+“Bây giờ sao?”
+“Ừm, việc không nên chậm trễ. Chúng ta đi ngay bây giờ. Nếu nàng muốn hồi Đế đô, vẫn cần mượn thân phận nữ nhi của Tạ lão tướng quân. Chúng ta mau chóng đến chỗ ông ấy đi một chuyến cho có lệ.”
+Sở Ly lo lắng nhìn cánh tay hắn: “Nhưng thương thế của người vẫn chưa khỏi, không thích hợp bôn ba đường dài.”
+“Tạ lão tướng quân ở ngay ngoài thành Giang Nam, không xa.”
+Sở Ly kinh ngạc.
+“Trùng hợp vậy sao?”
+“Đúng vậy. Nếu không, lúc trước nàng cho rằng vì sao ta lại để nàng nhận Tạ lão tướng quân làm nghĩa phụ?”
+Giữa mày Sở Ly giãn ra.
+Hoàng thúc quả thật là người đi mười bước đã nhìn trăm bước, ánh mắt sâu xa, trù tính cũng lâu dài đến vậy, tựa như hết thảy đều nằm trong lòng bàn tay hắn.
+Cũng tốt.
+Vậy thì đi bái phỏng Tạ lão tướng quân một chuyến đi.
+“Ta bảo người đi mua chút lễ vật.”
+“Lễ vật ta đã chuẩn bị sẵn từ trước.”
+“Vậy ta đưa Diễm nhi theo. Tạ lão tướng quân tuổi già không nơi nương tựa, dưới gối cô quạnh, chắc hẳn sẽ thích trẻ con náo nhiệt một chút.”
+“Lần đầu chúng ta tới cửa, lại còn có việc cầu người, đưa Diễm nhi theo không tiện lắm. Đợi chúng ta gặp mặt ông ấy trước rồi hãy đưa nó theo, như vậy cũng không đến mức đường đột.”
+Sở Ly khẽ vê đầu ngón tay.
+Là nàng suy nghĩ chưa chu toàn.
+“Vậy chúng ta gọi Bạch thần y theo đi, tay của người cũng nên thay thuốc rồi.”
+“Bạch Cẩm Y tạm thời không rảnh, phải hồi Thần Y Cốc một chuyến. Hiện giờ e rằng đã rời khỏi thành Giang Nam rồi.”
+“Vậy ta đến y quán bốc chút thuốc.”
+Sở Đệ Trì thuận theo nàng.
+Mua thuốc xong, hai người ra khỏi thành, ngồi xe ngựa đến bên ngoài một hồ nước rộng lớn tựa biển. Sau đó đổi sang thuyền nhỏ.
+Mặt hồ mênh mông, sóng nước lấp lánh, gió mát phất qua gương mặt, phong cảnh đẹp đến nao lòng.
+Sở Ly nhìn cảnh sắc bên ngoài, lại nhìn chiếc thuyền càng lúc càng đi xa, càng lúc càng hẻo lánh, không khỏi hỏi:
+“Tạ lão tướng quân sống trên đảo giữa hồ sao?”
+Sở Đệ Trì nhìn gương mặt nhỏ nhắn sạch sẽ, thuần khiết như bàn tay của nàng, cười tủm tỉm: “Ừm, ông ấy thích yên tĩnh, muốn dưỡng lão, không thích người ngoài quấy nhiễu.”
+—————————
+    
+ Menu ẩm thực chương sau: Tiểu cửu. 
+Ít tương tác là ad ko lên món đâu 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_221.html" class="btn">‹ Trước</a>
+            <a href="chuong_223.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

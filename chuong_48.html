@@ -1,0 +1,369 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 48</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 48</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_47.html" class="btn">‹ Trước</a>
+            <a href="chuong_49.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 48: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 48: Muốn giữ mạng sống, vậy thì phải ngoan ngoãn nghe lời
+ Đọc xong nhớ thả một like, không là nam chính đợi nữ chính thêm 3 chap nữa mới gặp được nhau! 
+Trong khoảnh khắc ấy, Sở Ly biết rằng có một số chuyện đã vĩnh viễn không thể trở về như trước nữa.
+Giống như mũi tên đã rời dây cung, không thể quay đầu.
+Cuộc sống bình yên, những dự định tương lai, hy vọng được xuất cung lập phủ, quãng đời còn lại tránh xa thị phi…
+Tất cả đều tan biến như bọt nước, dần dần rời xa nàng.
+Nàng bị một bàn tay lớn túm lấy, kéo thẳng xuống vực sâu vô tận.
+Nước mắt trào ra nơi khóe mắt.
+Trong đôi mắt ngập tràn những mảnh vỡ ánh sáng, xen lẫn hận ý ngút trời, hai tay nàng siết chặt cổ nam nhân.
+Thế nhưng chiến mã đột nhiên chấn động dữ dội.
+Thân ngựa lắc mạnh.
+Theo quán tính, nàng bị hất thẳng vào lồng ngực hắn.
+“Rơi xuống sẽ chết người đấy.”
+Giọng nói lạnh nhạt của nam nhân vang lên như tiếng sấm bên tai.
+Hắn bắt lấy hai tay nàng, giữ chặt trên đỉnh đầu, ép vòng eo nàng cong lại như thân tôm.
+Chiếc cổ trắng ngần, thon dài hiện ra dưới ánh trăng.
+Đôi mắt nàng đầy lửa giận:
+“Thật sao?”
+“Nếu có thể trừ khử được tai họa như ngươi, e rằng tất cả mọi người đều sẽ vui mừng!”
+Sở Ly dùng hết sức lao người về phía trước, muốn ôm lấy hắn, kéo hắn cùng ngã khỏi lưng ngựa.
+“Nếu ngươi có bản lĩnh giết được bổn vương, đó là năng lực của ngươi.”
+Một tay hắn giữ lấy eo nàng.
+Thân hình vững như núi, sao có thể bị chút sức lực ấy làm lay chuyển?
+Bàn tay hắn bóp lấy chiếc cổ thon nhỏ không có yết hầu của nàng, hơi thở lạnh lẽo phả xuống:
+“Chỉ có điều, thân thể nữ nhân từ trước đến nay vốn là hương ôn nhu khiến nam nhân lưu luyến.”
+“Ngươi định ở ngay nơi này trừ khử bổn vương sao?”
+Trong mắt Sở Ly thoáng hiện tia đỏ máu.
+Nỗi nhục nhã mãnh liệt lập tức dâng lên trong lòng.
+“Sở Đệ Trì!”
+Nàng chộp lấy bàn tay hắn, hung hăng cắn mạnh một cái.
+“Đây là lần thứ hai.”
+Lần trước ở Hoàng gia học uyển, dấu răng kia mới lành không bao lâu.
+Cả người hắn đầy thương tích chiến trận và huân chương công lao, vậy mà lại liên tiếp bị một nữ nhân cắn tới hai lần.
+Sự việc không quá ba lần.
+Trong mắt Sở Đệ Trì lóe lên sát ý lạnh thấu xương:
+“Sở Ly, ngươi có biết mình phạm tội khi quân hay không?”
+Nữ giả nam trang.
+Từ Ôn phi, toàn bộ Ôn gia ở phía trên, cho tới cung nữ thái giám trong Chiêu Lan điện ở phía dưới.
+Thậm chí một con chó trong cung.
+Tất cả đều phải chịu tội tru diệt cửu tộc.
+“Chuyện này không phải cứ bỏ đi là có thể giải quyết được.”
+Sở Ly biết.
+Sao có thể không biết?
+Nàng không mang huyết mạch hoàng tộc.
+Chuyện này chẳng khác nào Ôn phi đội cho Hoàng đế một chiếc mũ xanh.
+Nhiều tội cộng lại, liên lụy cực rộng.
+Ít nhất cũng phải có hàng trăm người vì nàng mà mất mạng.
+Hắn nhìn nàng, khóe môi mang theo ý cười lạnh lẽo:
+“Muốn sống.”
+“Muốn cả nhà đều được sống.”
+“Vậy thì phải ngoan ngoãn nghe lời.”
+Khoảnh khắc đó, Sở Ly chỉ cảm thấy từng luồng khí lạnh dày đặc bò dọc sống lưng.
+Giống như bị mây đen che phủ.
+Mãi mãi không còn nhìn thấy ánh mặt trời.
+Mạng sống của nàng dường như không còn thuộc về bản thân nữa.
+Mà đã bị buộc chặt với mẫu phi, với Ôn gia, với người thân bằng hữu.
+Một người được hưởng vinh quang, tất cả cùng hưởng.
+Một người gặp họa, tất cả cùng chịu.
+Hắn ra lệnh:
+“Nhả ra.”
+Trong đôi mắt đỏ hồng của Sở Ly, hận ý và căm ghét đan xen.
+Nàng không thể không chậm rãi buông miệng.
+Nhưng ngay sau đó.
+Ánh mắt nàng trở nên tàn nhẫn.
+Sát ý bùng lên.
+Nhân lúc hắn không đề phòng, nàng ôm lấy eo hắn, dùng sức lao mạnh.
+Rầm!
+Hai người cùng ngã khỏi lưng ngựa.
+Lăn trên mặt đất mấy vòng.
+Sở Ly bị ngã đến choáng váng đầu óc.
+Còn chưa kịp hoàn hồn đã bị nam nhân đè xuống, nặng tới mức gần như không thở nổi.
+“Buông… buông ta ra…”
+“Nếu đã muốn chết, sao không chết dưới thân bổn vương?”
+“Như vậy còn có thể bảo toàn cho Ôn phi, coi như tận chút hiếu tâm của ngươi.”
+“Sở Đệ Trì… a!”
+Nước mắt nàng bắn tung.
+Nỗi nhục nhã mãnh liệt như muốn lột sạch tất cả tôn nghiêm của nàng, phơi bày giữa thiên hạ.
+Khiến nàng cả đời cũng không thể ngẩng đầu lên được.
+Mọi sự phản kháng đều trở nên vô ích.
+Nàng bị ép phải chìm xuống.
+“Khóc cái gì?”
+“Những đau đớn mà bổn vương từng chịu còn gấp trăm lần ngươi!”
+Cỏ dại đâm vào da thịt đau rát.
+Sở Ly cũng không biết mình đã vùng vẫy bao lâu.
+Cổ họng khô nóng như bị lửa thiêu.
+Khàn đặc đến mức gần như không phát ra tiếng.
+Không biết đã qua bao lâu.
+Hai người mới cưỡi ngựa trở về kinh thành.
+Lúc ấy cổng thành đã đóng.
+Đám binh sĩ thủ thành ban đầu còn rút kiếm cảnh cáo, không cho kẻ nào xông vào.
+Nhưng khi nhìn rõ nam nhân trên lưng ngựa.
+Cùng nữ tử được hắn ôm chặt trong lòng, không nhìn rõ dung mạo.
+Tất cả đều sợ hãi quỳ xuống một bên, vội vàng mở cổng thành.
+San Hô Thủy Tạ.
+Đêm đã khuya.
+Trong suối nước nóng.
+Người nọ đã hôn mê bất tỉnh.
+Nửa đêm về sáng.
+Bạch Cẩm Y đang ngủ ngon lại bị Trọng Phong gọi tới lần nữa.
+Vừa phủi tay áo vừa tức giận mắng:
+“Hai ngày gọi ta ba lần, dắt chó đi dạo còn chẳng chăm chỉ như thế!”
+Hắn đi thẳng vào Lan Đình Hiên.
+Trên giường nằm một nữ tử.
+Môi trắng bệch, hai gò má đỏ ửng.
+Chỉ nhìn một cái đã biết không bình thường.
+Nhìn kỹ hơn nữa.
+“Cửu hoàng tử?!”
+Ôi chao!
+Lại là nữ nhân?
+Kích thích thật đấy!
+Sở Đệ Trì đã thay một bộ cẩm bào sạch sẽ.
+Hoa phục màu tím sẫm khoác trên người.
+Dây lưng buộc hờ hững.
+Mái tóc đen vẫn còn nhỏ nước.
+“Khám cho nàng.”
+Bạch Cẩm Y đã quen với đủ loại chuyện kỳ lạ.
+Thần Y Cốc nhiều năm nay phục vụ hoàng thất các nước.
+Chuyện ly kỳ nào mà chưa từng thấy?
+Nghe nói bên cạnh Đại Tần quốc, ngay cả Hoàng hậu nương nương cũng là nam nhân.
+Mà Hoàng đế Đại Tần vẫn nhất quyết cưới người ấy, không ai thay thế được.
+Hắn bước tới bên giường, bắt mạch.
+“Đêm qua vừa hạ sốt, bây giờ lại sốt trở lại rồi.”
+“A Trì, rốt cuộc ngươi làm gì vậy?”
+“Mấy ngày nay thời tiết không tốt, nàng lại còn dầm mưa. Thân thể nhỏ bé này sao chịu nổi?”
+“Nếu cứ sốt rồi hạ, hạ rồi lại sốt như thế, lặp đi lặp lại mãi, rất có thể sẽ ảnh hưởng đến não bộ.”
+Sở Đệ Trì nhìn hắn:
+“Có biến thành kẻ ngốc không?”
+“Ngươi mong nàng biến thành kẻ ngốc sao?”
+Vừa hỏi xong.
+Bạch Cẩm Y lập tức nhận ra mình lỡ lời.
+Hắn nhanh chóng lấy túi kim châm bên người ra, bắt đầu châm cứu cho Sở Ly.
+Nhưng vẫn không nhịn được mà nói thêm một câu:
+“Trong cơ thể ngươi vẫn còn độc.”
+“Tuyệt đối không được có con.”
+“Tự mình cẩn thận một chút.”
+“Thì đã sao?”
+Bạch Cẩm Y nghẹn lời.
+Hôm nay tính khí của hắn sao lại nóng nảy đến vậy?
+Năm đó, lúc còn nhỏ.
+Đám người kia ép hắn uống độc Thất Diệp Tử.
+Khiến hắn đoạn tử tuyệt tôn.
+Độc tố còn sót lại trong cơ thể chưa được thanh trừ hoàn toàn.
+Một khi khiến nữ nhân mang thai.
+Thai nhi chắc chắn sẽ là thai chết.
+“Cả đời này ngươi sẽ không có con ruột của mình.”
+Tự biết lo liệu đi.
+Sau khi châm cứu xong.
+Bạch Cẩm Y để lại một đơn thuốc, dặn Trọng Phong đi bốc thuốc rồi trở về tiếp tục ngủ.
+Trên giường.
+Sở Ly nhắm chặt mắt, mê man ngủ.
+Nhưng giấc ngủ chẳng hề yên ổn.
+Trong đầu vô số hình ảnh liên tục hiện lên.
+“Đây là tội khi quân.”
+“Hắn còn chưa thoát khỏi Thiên Lao, ngươi đã vội bỏ đi?”
+“Ngươi thật sự tin chắc chứng cứ bổn vương đưa cho ngươi là thật?”
+“Ngươi thật sự tin chắc…”
+Tần Mục Vũ…
+Mục Vũ…
+Phương Quốc Công cầm kiếm, phẫn nộ xông vào Thiên Lao:
+“Hại chết con trai ta, ngươi phải đền mạng!”
+Kiếm vừa nâng lên.
+Đầu lìa khỏi cổ.
+“Tần Mục Vũ!”
+Sở Ly đột ngột bật dậy.
+Mồ hôi nóng trên trán tuôn như mưa.
+Cái đầu vừa hạ sốt lại nặng như ngàn cân.
+Ngoài cửa sổ đã thấp thoáng ánh sáng mờ mờ.
+Trời sắp sáng rồi.
+Chứng cứ là giả.
+Sở Đệ Trì đã lừa nàng.
+Tần Mục Vũ e rằng khó thoát khỏi cái chết.
+Nếu Tần tướng quân cầm phần chứng cứ giả đó tới Đại Lý Tự tố cáo.
+Chắc chắn sẽ bị Quốc Công phủ cắn ngược lại.
+Thêm một tội vu cáo.
+Sở Ly vén chăn.
+Hai chân vừa chạm đất.
+Cả người đã mềm nhũn quỳ sụp xuống.
+“Ưm…”
+Không còn chút sức lực nào.
+Nàng chậm rãi siết chặt hai tay.
+Cố nén vị chua xót cùng nỗi nhục nhã nơi khóe mắt.
+Cắn môi dưới đến gần bật máu.
+Vậy mà vẫn gắng gượng đứng dậy.
+Loạng choạng bước ra ngoài.
+Mưa sớm lất phất.
+Thân hình đơn bạc yếu ớt chui vào màn mưa mờ đục.
+Bước chân sâu nông không đều.
+Từng bước đi về phía ngoài.
+Kinh Ảnh cầm một tấm chăn mỏng tới, khoác lên vai nam nhân.
+“Chủ tử, Cửu hoàng tử đã rời đi rồi.”
+Tiết trời cuối thu mưa nhiều.
+Rất dễ nhiễm phong hàn.
+“Ồ.”
+Lúc ấy, Sở Đệ Trì đang đun trà.
+Những ngón tay thon dài, mạnh mẽ tùy ý nghịch bộ trà cụ men xanh trắng.
+Trong đáy mắt hắn không nhìn ra bất kỳ cảm xúc nào. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_47.html" class="btn">‹ Trước</a>
+            <a href="chuong_49.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

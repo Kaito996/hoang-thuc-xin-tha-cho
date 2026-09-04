@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 18</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 18</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_17.html" class="btn">‹ Trước</a>
+            <a href="chuong_19.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 18: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
+Chương 18: [Đem hoàng tử của trẫm lừa mất rồi thì phải làm sao đây]
+Tần Mục Vũ nhận ra có điều không ổn:
+“Có chuyện gì vậy? A... Ly...”
+Sở Ly lập tức bịt miệng hắn lại.
+Đừng gọi!
+Sắc mặt nàng trắng bệch như giấy, gần như không tìm thấy giọng nói của mình:
+“Người này là... là... ám vệ bên cạnh Nhiếp chính vương...”
+Nàng từng gặp hắn.
+Xong rồi!
+Hôm nay mới bị Nhiếp chính vương chỉnh đốn một trận, giờ lại đánh ám vệ của hắn đến thừa sống thiếu chết. Vừa rồi lúc vén áo lên nhìn, nàng thấy hắn bị đánh đến mặt mũi bầm dập, hai hàng máu mũi chảy ròng ròng...
+Thần sắc Tần Mục Vũ khẽ biến:
+“Ám vệ của Nhiếp chính vương sao lại xuất hiện ở Văn Xuyên sơn?”
+Sở Ly vốn đã nghi ngờ việc Đại hoàng tử phi bị sơn phỉ bắt có liên quan đến Nhiếp chính vương. Hiện giờ xem ra, quả thật là hắn làm!
+Nhưng dù biết vậy, nàng cũng không dám đối đầu trực diện.
+Không khéo còn bị hắn cắn ngược một cái.
+Ánh mắt Sở Ly xoay chuyển, cố ý đè giọng thô hơn, cao giọng nói:
+“Tứ hoàng tử, chúng ta có bắt người này không?”
+Tần Mục Vũ: “...”
+A Ly vốn chẳng ưa Tứ hoàng tử. Bây giờ kéo Tứ hoàng tử ra gánh tội thay, hắn thật sự không dám.
+Nhưng vì A Ly, cho dù phạm tội khi quân, hắn cũng cam lòng.
+Bàn tay siết chặt lại, trầm giọng đáp:
+“Không cần. Bắt hắn có thể sẽ đánh rắn động cỏ, hỏng mất đại sự của chúng ta.”
+“Tứ hoàng tử khai ân, vậy thì tha cho ngươi một mạng. Hừ! Đó là phúc phận của ngươi!”
+Sở Ly lớn tiếng nói xong, lại giáng một gậy lên đầu ám vệ.
+Ám vệ rên khẽ một tiếng, đầu lệch sang một bên rồi ngất đi.
+Hai người lập tức tiếp tục lên núi.
+Theo đúng kế hoạch, tuy có đôi lần phải vòng vo ứng phó với sơn phỉ, trải qua không ít nguy hiểm, cuối cùng vẫn thành công cứu được Đại hoàng tử cùng Đại hoàng tử phi, hộ tống về kinh.
+Hoàng đế nghe tin, long nhan đại duyệt.
+Lập tức tuyên Tần Mục Vũ và Sở Ly vào cung ban thưởng.
+Tần Mục Vũ được thăng một phẩm, từ đó đảm nhiệm chức Tòng ngũ phẩm Kỵ binh Đô úy.
+Sở Ly vốn muốn giấu công, tránh gây chú ý.
+Nhưng vì chuyện phân phủ xuất cung, đây là lần đầu tiên nàng chủ động đứng ra nhận công lao.
+“Tiểu Cửu tâm tư tỉ mỉ, không ngờ ngày trước ham chơi, nay lại giúp được đại sự như vậy.”
+Hoàng đế cười nói:
+“Tiểu Cửu muốn ban thưởng gì?”
+Sở Ly quỳ xuống, thành khẩn dập đầu:
+“Phụ hoàng, nhi thần muốn giống các hoàng huynh, xuất cung phân phủ, tự lập sinh hoạt.”
+Hoàng đế hơi nhíu mày:
+“Sao vậy? Ở cùng phụ hoàng và mẫu phi, ủy khuất con rồi?”
+“Không phải. Nhi thần thấy các hoàng huynh đều có phủ đệ riêng, rất ngưỡng mộ, nên cũng muốn được sống riêng.”
+“Con còn nhỏ.”
+Đợi đến năm mười tám tuổi, ông tự nhiên sẽ ban phủ đệ cho nàng.
+“Nhi thần đã có thể tự lập rồi!”
+Việc cứu Đại hoàng tử hôm nay chính là minh chứng.
+“Không được.”
+Hoàng đế phất tay:
+“Tính tình con đơn thuần, lại ham chơi, thích ăn, hiếu động. Nếu xuất cung sống riêng, lỡ kết giao với đám bằng hữu không ra gì, rồi đem hoàng tử của trẫm lừa mất thì phải làm sao?”
+Sở Ly còn định nói gì đó.
+Nhưng Hoàng đế đã quyết định:
+“Phúc công công, thưởng cho Cửu hoàng tử một thỏi tiểu kim điều để biểu dương.”
+Nhiếp chính vương phủ
+Kinh Ảnh ôm đôi mắt gấu trúc đen sì, gương mặt bầm dập đến mức mẹ ruột cũng chẳng nhận ra.
+Hắn quỳ một gối xuống đất.
+Trọng Phong muốn cười, nhưng cố nhịn.
+“Chủ tử...”
+Kinh Ảnh đầy bụng ủy khuất:
+“Thuộc hạ phụng mệnh ngài âm thầm cứu Đại hoàng tử phu phụ, kết quả bị Cửu hoàng tử và Tần tiểu tướng quân đè đầu đánh một trận. Bọn họ còn giả làm Tứ hoàng tử cùng hộ vệ, định lừa thuộc hạ...”
+Nhưng hắn đâu phải đồ ngốc.
+Âm thanh của Cửu hoàng tử, hắn làm sao không nhận ra?
+Trên ghế Thái sư.
+Nam nhân đan mười ngón tay vào nhau, khóe môi nhếch lên một nụ cười lạnh lẽo:
+“Rất tốt.”
+Sở Ly một mực khẳng định là hắn mua chuộc sơn phỉ, bắt cóc Đại hoàng tử phu phụ.
+Việc hắn làm, cho dù là mưu nghịch thí quân, hắn cũng dám nhận.
+Nhưng chuyện hắn chưa từng làm, đương nhiên sẽ không gánh cái nồi đen này.
+Phái người đi cứu.
+Kết quả còn bị Sở Ly đánh một trận.
+Tặng cho nàng mấy nam nhân.
+Nàng lại lấy cớ ngã ngựa, thương thế chưa lành để qua loa ứng phó.
+Quay đầu liền chạy đến Văn Xuyên sơn đánh sơn phỉ.
+Sở Ly.
+Rất tốt!
+Sở Ly cầm thỏi vàng nhỏ, bước ra khỏi Ngự thư phòng.
+Bộ dạng cúi đầu rũ vai có vài phần thất vọng.
+Còn phải đợi hai năm rưỡi nữa mới có phủ đệ riêng.
+Người đời đều hâm mộ hoàng thân quốc thích, vinh hoa thiên gia.
+Nhưng ai biết được, cho dù là hoàng tử cũng có vô số phiền não.
+“Cửu hoàng tử.”
+Trên cung đạo dài.
+Một ám vệ lên tiếng:
+“Nhiếp chính vương hôm nay ở Lâm Hoa điện, mời ngài qua đó một chuyến.”
+Sở Ly ngẩng đầu lên.
+Lập tức nhìn thấy một gương mặt bầm dập tím xanh.
+Trong lòng nàng đánh thót một cái.
+Chẳng phải chính là người bị nàng đánh ở Văn Xuyên sơn hôm nay sao?
+Dùng đầu ngón chân nghĩ cũng biết là chuyện gì.
+“Ta còn chưa dùng bữa tối, hay là...”
+“Lâm Hoa điện đã chuẩn bị thiện thực.”
+“Ta vừa hồi cung, người đầy mồ hôi, mùi khó ngửi lắm, hay là...”
+“Lâm Hoa điện có dục trì.”
+“Vết thương trên tay ta cần thay thuốc.”
+“Vậy càng dễ xử lý, chỉ cần truyền ngự y đến Lâm Hoa điện là được.”
+“...”
+Kinh Ảnh cười như không cười nhìn nàng.
+Vô duyên vô cớ bị đánh một trận, đến giờ vết thương vẫn còn đau âm ỉ.
+Hắn đã không chờ nổi cảnh chủ tử chỉnh đốn Cửu hoàng tử.
+“Cửu hoàng tử, mời!”
+Sở Ly mím môi.
+Sắc mặt nặng nề như ra pháp trường.
+Cảm giác ấy chẳng khác nào biết rõ phía trước là hình đài, nhưng vẫn phải tự mình từng bước bước tới.
+Tàn nhẫn như dùng dao cứa từng nhát lên da thịt.
+Nàng hít sâu một hơi, vội ghé tai Cẩu Bát dặn nhỏ:
+“Mau đi báo mẫu phi ta, bảo người lập tức đến Lâm Hoa điện cứu ta.”
+“Liên quan đến tính mạng, tuyệt đối không được chậm trễ.”
+Cẩu Bát vội vàng đáp ứng rồi chạy về hậu cung truyền tin.
+Sở Ly ưỡn ngực.
+Dù không muốn cũng chỉ có thể kiên trì đi về phía Lâm Hoa điện.
+Mỗi bước đều chậm chạp vô cùng.
+Chỉ mong giữa đường, Ôn phi sẽ sai người gọi nàng trở về.
+Kinh Ảnh ở bên cạnh hả hê:
+“Đi nhanh lên.”
+“...”
+Lâm Hoa điện từng là nơi ở của Nhiếp chính vương trong cung.
+Sau khi lập Nhiếp chính vương phủ, hắn dọn ra ngoài cung, nhưng Lâm Hoa điện vẫn được cung nhân quét dọn mỗi ngày.
+Hương thơm thanh nhã, sạch sẽ tinh tươm, đến một hạt bụi cũng không có.
+Bước vào điện.
+Sở Ly lại hít sâu một hơi, làm đủ công tác chuẩn bị tâm lý rồi mới nở nụ cười lấy lòng bước vào:
+“Hoàng thúc, người tìm ta?”
+Nàng lon ton chạy tới, vô cùng ngoan ngoãn.
+Trong điện.
+Đàn hương an thần lặng lẽ tỏa hương.
+Trên chiếc án thấp bằng gỗ đàn trăm năm chạm hoa văn tinh xảo.
+Nam nhân ngồi xếp bằng.
+Một thân tử bào hoa quý thêu đồ án Dạ Kỳ Lân, càng làm nổi bật khí độ nội liễm và tôn quý của hắn.
+Mái tóc đen buông dài tới eo.
+Ngọc quan chỉ búi lên một nửa.
+Dáng vẻ lười nhác rũ mắt nhưng vẫn như quân vương nắm giữ thiên hạ.
+Đôi mắt phượng hẹp dài quét qua gương mặt nàng.
+“Tay đã khỏi rồi?”
+“Chưa. Ngự y nói phải dưỡng nửa tháng.”
+“Nhưng bản vương thấy lúc ngươi dùng ná bắn Kinh Ảnh, thân thủ lại tốt lắm.”
+Biểu cảm của Sở Ly lập tức cứng đờ.
+Biết ngay là không giấu nổi.
+“Khi đó... ta tưởng hắn là sơn phỉ. Trong lúc cấp bách nên mới... mới...”
+Nàng thật sự không cố ý.
+“Vậy sao?”
+Sở Đệ Trì cười lạnh:
+“Nếu đã vậy, Cửu hoàng tử không bằng chép cho bản vương một quyển 《Địa Tạng Kinh》, đốt cho Chiêu Nhân Hoàng Thái hậu để tận hiếu đạo.”
+Một tên thái giám bưng văn phòng tứ bảo, cúi đầu đặt lên án thấp.
+Kinh Ảnh ôm một quyển 《Địa Tạng Kinh》 dày cộm.
+Sở Ly lập tức chết lặng.
+Quyển kinh này dày đến cỡ một bàn tay! Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_17.html" class="btn">‹ Trước</a>
+            <a href="chuong_19.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

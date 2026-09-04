@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 212</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 212</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_211.html" class="btn">‹ Trước</a>
+            <a href="chuong_213.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 212: Bổn vương sẽ ăn thịt ngươi sao?
+Người mà hắn nhìn lớn lên, tuyệt đối không thể chịu dù chỉ một chút va chạm hay tổn thương.
+Hắn sẽ rất đau lòng.
+Sợ nàng bị thương, sợ nàng khổ sở, sợ nàng khóc…
+Nhưng Sở Ly lại chẳng phải cũng mang tâm tình như vậy hay sao?
+Năm đó phủ Tướng quân cháy lớn, nàng thậm chí không cần cả mạng sống, lao thẳng vào biển lửa.
+Tình nghĩa giữa hai người, trên bằng hữu, dưới tình nhân.
+Đó là giao tình cả đời này vĩnh viễn sẽ không đâm sau lưng nhau.
+Là một lưỡi đao sắc bén được thêm vào trong tay, bất kể đúng sai phải trái, thiện ác trắng đen, mãi mãi sẽ vì ngươi mà xông pha vô địch.
+Sở Ly vỗ vỗ vai hắn, ghé sát nói nhỏ mấy câu bí mật.
+Tần Mục Vũ nghe xong, sắc mặt lúc này mới dịu lại.
+Trên hàng mi dài như cánh quạ còn đọng những hạt sương nhỏ li ti, gương mặt thiếu niên trắng trẻo, suýt nữa đã bật khóc:
+“Thật sao?”
+“Ừm, ta không lừa huynh.”
+“Vậy… vậy được rồi.”
+Dù Sở Đệ Trì có mười thành nội lực thâm hậu, cũng không nghe được hai người đang nói gì.
+Nhưng nụ cười trên mặt hắn lại càng lúc càng ôn nhu, còn ấm áp hơn cả tiết trời tháng sáu ở Giang Nam:
+“Được rồi, Tiểu Cửu, công vụ ở đây còn phải xử lý rất lâu, toàn những chuyện vụn vặt tầm thường. 
+Ngươi cùng Tần Thiếu tướng quân và bọn họ ra ngoài chơi đi.”
+Sở Ly hồ nghi nhìn hắn.
+Tính tình hắn thật sự thay đổi rồi sao?
+Hay đúng như Mục Vũ nói, tất cả đều là giả vờ?
+Trong lòng nàng vẫn còn một tia nghi hoặc.
+Trước khi hoàn toàn buông xuống đề phòng, nàng tuyệt đối sẽ không lơ là cảnh giác.
+“Vậy ngài cứ bận việc đi.”
+Nàng cùng Tần Mục Vũ và Tần Mục Tuyết rời đi.
+“Tiểu Cửu, lát nữa nhớ về dùng bữa tối.”
+“Biết rồi!”
+Sở Đệ Trì mỉm cười dịu dàng nhìn theo ba người rời đi.
+Lúc Sở Ly ngoảnh đầu lại, hắn còn đưa tay vẫy:
+“Đi đi.”
+Tiêu Dạ Hành cảm thấy bầu không khí quá mức áp lực, bèn cười trêu một câu:
+“Mấy đứa nhỏ này còn nhỏ tuổi, hiếu động ham chơi, làm trẻ con thật là khoái hoạt. Khiến ta nhớ lại lúc chúng ta còn trẻ, cùng nhau vào sinh ra tử, ăn lông ở lỗ…”
+Sở Đệ Trì nâng mắt lên, mang theo ý cười âm trầm nhìn hắn:
+“Bổn vương rất già sao?”
+Không ai dám tiếp lời:
+“…”
+Bạch Cẩm Y lại lấy khăn lau mồ hôi trên đầu.
+Tiêu Dạ Hành…
+Hay là ngươi đừng nói nữa thì hơn…
+Toàn bộ Lâm Hồ Tiểu Trúc chìm trong bầu không khí quỷ dị.
+Trọng Phong thề rằng, theo chủ tử hơn mười năm nay, hắn chưa từng thấy chủ tử cười như vậy.
+Cộng cả hơn mười năm lại cũng không bằng hôm nay cười nhiều như thế…
+Lương thiện?
+Khoan hòa?
+Khai minh?
+Hắn không tìm được từ nào thích hợp.
+Nhưng hắn có thể khẳng định, những từ ấy tuyệt đối không phải dùng để hình dung chủ tử.
+Đợi ba người đi xa, ý cười trên mặt Sở Đệ Trì từng chút một tan biến.
+Tay hắn siết chặt tay vịn ghế đến mức nứt toác.
+Chỉ vừa đổi tư thế ngồi một chút, đã dọa Tri phủ Lý bên cạnh “bịch” một tiếng quỳ sụp xuống đất.
+Hắn nhấc mí mắt nhìn qua:
+“Bổn vương sẽ ăn thịt ngươi sao?”
+Tri phủ Lý mồ hôi tuôn như mưa, đám thịt trên hai má run lẩy bẩy:
+“Kh… không dám…”
+Thời tiết hôm nay thật không tệ.
+Giết vài người trợ hứng đi.
+Cùng lúc đó, tại một phủ đệ khác.
+“Nhiếp Chính Vương đến Giang Nam rồi…”
+Tri phủ Lý bị áp giải, quỳ ngoài Lâm Hồ Tiểu Trúc, chuyện này đã truyền khắp toàn thành.
+Tô Dương đi tập kích Sở Ly ban đêm, nhưng mãi không trở về, tung tích không rõ.
+Đã xảy ra chuyện.
+Là chuyện cực lớn.
+Sở Uyên Trì thần sắc u ám, ngồi thất thần bên bàn sách.
+Rõ ràng là tiết trời tháng sáu, nhưng hắn không cảm nhận được chút ấm áp nào.
+Đến nước này, hắn biết mình đã không còn đường lui.
+Nhưng cho dù không đấu lại Sở Ly, hắn cũng phải trút ra cục tức trong lòng.
+Con người sống trên đời, sở dĩ còn sống, chính là vì một hơi thở này!
+“Người đâu!”
+Ngoài cửa, một tên tiểu tư vội vàng bước vào:
+“Công tử.”
+“Lập tức làm theo ý ta, đi khắp thành tung tin đương kim Cửu hoàng tử vẫn còn sống, đồng thời giả nam trang, cấu kết với Nhiếp Chính Vương, mưu đoạt hoàng vị…”
+Hắn muốn kéo cả Sở Ly lẫn Nhiếp Chính Vương xuống nước.
+Hắn đã không dễ chịu, bọn chúng cũng đừng hòng sống yên!
+Tiểu tư chần chừ:
+“Xin công tử nghĩ lại. Cửu hoàng tử nàng… nàng… nàng đến phủ chúng ta rồi.”
+“Ngươi nói cái gì?”
+Sở Uyên Trì đột ngột đứng bật dậy.
+Sở Ly tới rồi?
+Nàng còn dám tới?
+“Sao không ai bẩm báo với ta?”
+“Cửu hoàng tử nói nàng là cố nhân của phu nhân và tiểu thiếu gia, quan hệ rất tốt. Nô tài bẩm báo với phu nhân, chính phu nhân mời Cửu hoàng tử vào phủ làm khách.”
+Đáng chết!
+Uyển nhi và Diễm nhi!
+Thê tử và nhi tử của hắn!
+Đấu đá giữa người lớn, không liên lụy đến gia quyến hài tử.
+Nếu Sở Ly dám động tới thê nhi của hắn, hắn nhất định sẽ cùng nàng đồng quy vu tận!
+Sở Uyên Trì hất tên tiểu tư sang một bên, bước nhanh về phía hậu viện:
+“Diễm nhi!”
+Hắn lao vào hậu viện.
+Nhưng thứ hắn nhìn thấy lại là một thân ảnh thiếu niên khí chất lạnh lẽo.
+“Phu nhân và tiểu thiếu gia đã cùng A Ly ra ngoài chơi rồi.”
+Tần Mục Vũ xoay người lại.
+Sở Uyên Trì lạnh lùng nói:
+“Có chuyện gì thì nói thẳng với ta, thả bọn họ ra!”
+“Thả?”
+Tần Mục Vũ kinh ngạc.
+“Xin hỏi Đại hoàng tử, ngài từng thấy ai bắt người mà lại quang minh chính đại, đường đường chính chính bước vào từ cửa lớn như vậy chưa?”
+“A Ly đi vào phủ bằng chính môn, lại được phu nhân cho phép. Tiểu thiếu gia càng là vui vẻ đi theo nàng ra ngoài chơi.”
+“Điều đó chứng minh A Ly hành sự quang minh lỗi lạc, là người đáng để tin tưởng.”
+Ngược lại.
+Đại hoàng tử có tật giật mình, lòng dạ hẹp hòi, mới không phân biệt trắng đen mà khăng khăng cho rằng A Ly đang “hành hung bắt cóc”.
+Sở Uyên Trì bước lên phía trước, ánh mắt lạnh lẽo:
+“Tần Thiếu tướng quân, ngươi và ta không nhất thiết phải là địch nhân. Thê tử và nhi tử của ta hiện giờ ở đâu?”
+Một tay Tần Mục Vũ chắp sau lưng.
+Đôi mắt chậm rãi nâng lên, lạnh như mũi băng:
+“Kẻ thù của A Ly, chính là kẻ thù của ta.”
+Lần phóng hỏa trước đó, A Ly mềm lòng, nể mặt Sở Hoằng Diễm nên không truy cứu.
+Nhưng kể từ khoảnh khắc hắn phái người muốn hủy hoại sự trong sạch của A Ly…
+Chuyện này đã không còn đường quay lại nữa.
+“Đừng nói A Ly chưa từng cho ngươi cơ hội.”
+“Đại hoàng tử… tự giải quyết cho tốt.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_211.html" class="btn">‹ Trước</a>
+            <a href="chuong_213.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

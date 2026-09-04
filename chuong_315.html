@@ -1,0 +1,601 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 315</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 315</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_314.html" class="btn">‹ Trước</a>
+            <a href="chuong_316.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 315: Trận chiến bức cung【Đại chương】
+Sở Ly mở mắt, cất bước lao thẳng xuống mấy bậc thềm, một cước đá văng tên địch binh bên cạnh.
+“Địch quân tới bao nhiêu?”
+Thống lĩnh họ Lý giết đến đỏ cả mắt:
+“Tín binh ước chừng trong cung đã có hơn một vạn quân địch, ngoài ra chúng còn bao vây toàn bộ Đế Đô, quân lính cuồn cuộn tràn vào không dứt, số lượng quá lớn, khó mà ước tính!”
+Đêm nay, bọn họ gần như không có phần thắng.
+Binh lực hai bên chênh lệch quá lớn, hoàn toàn bị áp đảo về số lượng. Dẫu có đánh theo chiến thuật luân phiên xa luân chiến, cũng đủ để tiêu hao bọn họ đến chết.
+Sở Ly ngẩng đầu nhìn về phía chân trời, không phân biệt nổi mảng đen trĩu kia rốt cuộc là màn đêm hay là đại quân địch.
+Nàng cầm kiếm, hòa vào vô số bóng người đang chém giết.
+Chém giết.
+Giết!
+Vì gia, vì mảnh tịnh thổ đã nuôi dưỡng nàng từ thuở nhỏ.
+Dưới đại chiến, giang sơn chìm nổi, mỗi một thân ảnh đều nhỏ bé như loài kiến.
+Có người ngã xuống, có người kêu thảm, có người tháo chạy...
+Lần đầu tiên Sở Ly đối mặt với cục diện như thế này, chỉ cảm thấy trường kiếm trong tay vung đến mỏi nhừ, giết đến tê dại, vậy mà vẫn còn vô số địch quân không ngừng bổ sung, như rơi vào một vòng tuần hoàn vô tận.
+Giờ khắc này, đại nghĩa gia quốc trong đầu nàng lại càng thêm rõ ràng.
+Nếu bại, nàng sẽ trở thành hoàng tử mất nước, Bát hoàng huynh, mẫu phi, hoàng thúc, Tần Mục Vũ... tất cả đều sẽ trở thành tù nhân.
+Cuộc đời của nàng sẽ thay đổi long trời lở đất.
+Ngũ ca...
+Ta không thể thua.
+Con người sống trên đời, ai cũng ích kỷ. Huynh có đại nghĩa gia quốc của huynh, ta có tín niệm dành cho thân nhân chí thân của ta.
+Ta không thể thua!
+“A!”
+“Giết!”
+“Phập!”
+Hai quân đỏ mắt giao chiến, Sở Ly cầm thanh kiếm nhuốm máu, chém mở một con đường máu, đứng trên bậc thềm cao, nhìn chiến trường chênh lệch thực lực, thắng bại gần như đã định trước kia, lớn tiếng quát:
+“Các tướng sĩ! Giữ vững! Viện quân đang trên đường tới! Cầm cự thêm nửa khắc, phần thắng của chúng ta sẽ tăng thêm một phần!”
+Các tướng sĩ thật sự đã quá mệt mỏi.
+Quá mệt rồi.
+Trước mắt chỉ còn máu tanh cùng hỗn độn, đã không còn nhìn thấy hy vọng chiến thắng.
+“Hãy nghĩ đến quốc gia của chúng ta, nghĩ đến gia đình của các ngươi. Một khi thất bại, giang sơn đổi chủ, nhà chẳng còn là nhà, nước chẳng còn là nước! Các nhi lang! Chúng ta sẽ chiến đấu đến giây phút cuối cùng! Viện quân sắp đến!”
+Thế nhưng...
+Hy vọng thắng lợi quá mong manh...
+Bọn họ đã giết đến kiệt sức.
+Mệt quá...
+Cánh tay cầm kiếm đã tê dại, giống như một cỗ máy chỉ còn biết chém giết.
+Viện quân...
+Thật sự sẽ đến sao?
+Thống lĩnh Lý thấy sĩ khí sa sút, liền quát lớn:
+“Tạ tiểu thư thân là nữ tử còn thân tiên sĩ tốt, kề vai chiến đấu với chúng ta. Chúng ta đường đường nam nhi bảy thước, chẳng lẽ còn không bằng một nữ nhân?”
+Mọi người nghe vậy, trong mắt dần khôi phục vài phần huyết tính.
+“Đúng vậy! Tạ tiểu thư một nữ nhân còn không trốn không tránh, chúng ta có lý do gì mà từ bỏ?”
+“Giết!”
+“Chỉ có thắng mới bảo vệ được gia quyến chí thân!”
+“Xông lên!”
+Một đợt sĩ khí lại dâng cao, đẩy chiến ý lên thêm một tầng. Mọi người đỏ mắt xông tới, tiếp tục quần chiến.
+Sở Ly liếm đôi môi khô khốc, múa hai vòng kiếm hoa, đá văng thi thể bên cạnh, tiếp tục giao chiến với địch quân.
+Một tên ngã xuống, lập tức có hai tên khác bổ sung.
+Quá nhiều.
+Sở Ly gần như đã hao hết thể lực, vẫn bị mấy thanh trường kiếm bao vây. Song quyền nan địch tứ thủ, lo được phía trước, không lo được phía sau. Chỉ sơ sẩy một chút, một thanh kiếm đã đâm tới!
+Nhắm thẳng vào sau lưng!
+Keng!
+Đột nhiên, một tiếng xé gió vang lên. Sở Ly lập tức quay đầu, chỉ thấy một mũi tên phá tan màn đêm bắn lệch thanh kiếm kia, cho nàng một khoảng trống để ứng phó.
+Một kiếm xuyên tim tên địch trước mặt, hóa giải nguy cơ.
+Nhân lúc lấy hơi, nàng nhìn theo hướng mũi tên bắn tới.
+Trong màn đêm mênh mang, ánh mắt vượt qua vô số thân ảnh đang chém giết, chỉ thấy một bóng người mặc hắc y ngồi trên lưng ngựa, tĩnh lặng giữa bóng tối. Hắn ném cây cung trong tay xuống, đầu ngón tay lạnh nhạt khẽ chỉnh áo choàng trên vai, giọng nói bình thản:
+“Đừng làm nàng bị thương dù chỉ một sợi tóc.”
+“Còn những kẻ khác... thuận ta thì sống, nghịch ta thì chết.”
+Ngũ hoàng huynh!
+Bốn mắt nhìn nhau, cách nhau mấy trượng.
+Hắn ngồi trên lưng ngựa, cao cao tại thượng.
+Nàng đứng giữa vũng máu, cô thân độc ảnh.
+Tiểu Cửu.
+Lần này...
+Muội nhất định sẽ thuộc về ta.
+“Tạ tiểu thư cẩn thận!”
+Thống lĩnh Lý đột nhiên lao tới, đâm chết hai tên địch định đánh lén. Sở Ly không ngoảnh đầu, lập tức lao về phía trước.
+“Thống lĩnh Lý! Yểm hộ ta!”
+“Ngài định làm gì?”
+“Bắt giặc phải bắt vua trước!”
+Nàng muốn đánh cược một phen.
+Chỉ cần bắt được Sở Dạ Ly, mọi chuyện sẽ kết thúc.
+“Tạ tiểu thư, quá nguy hiểm!”
+“Không còn cách nào khác!”
+Sở Ly giương kiếm, chém văng chướng ngại hai bên, từng bước tiến gần Sở Dạ Ly.
+Thống lĩnh Lý thấy vậy, chỉ còn cách yểm hộ nàng, đánh lui địch quân chung quanh, mở đường hộ tống.
+Một con đường máu dần được khai mở.
+Cuối cùng, khoảng cách giữa hai người chỉ còn năm thước.
+Gần đến mức đưa tay là chạm.
+Nhưng quan hệ giữa hai người lại đã bị ngăn cách bởi một vực sâu không thể vượt qua.
+Không thể quay đầu nữa.
+Lần gặp này, đao kiếm đối đầu.
+Lần trước...
+Cũng là như vậy.
+Huynh muội chi tình, tình nghĩa năm xưa, dưới lập trường hôm nay, đã vĩnh viễn không thể quay lại.
+“Tiểu Cửu.”
+Sở Dạ Ly dịu dàng nhìn nàng, trong đáy mắt cất giấu vô vàn quyến luyến.
+“Lâu rồi không gặp.”
+Nhưng ngay cả trong mộng...
+Hắn cũng luôn nhớ nàng.
+Sở Ly chậm rãi nâng mũi kiếm nhuốm máu, chỉ thẳng vào hắn.
+Bàn tay đang nắm dây cương của hắn khựng lại, hô hấp hơi siết chặt.
+“Mũi kiếm của muội... vậy mà lại chỉ vào ta...”
+“Giữa huynh và ta, từ lâu đã là như vậy.”
+“Ngũ ca, ta hiểu huynh, huynh cũng nên hiểu ta.”
+Sở Dạ Ly chăm chú nhìn nàng:
+“Ta chưa từng nghĩ sẽ nhằm vào muội, cũng không muốn làm muội bị thương dù chỉ một chút. Tiểu Cửu, chúng ta vẫn có thể như trước kia. Gia nhân, bằng hữu, chí thân của muội, ta sẽ không làm hại bất kỳ ai.”
+Hắn nói được làm được.
+Điều hắn muốn chỉ là phục quốc, không muốn gì khác.
+Sở Ly khẽ cười, đôi mắt vẩn đục quét qua chiến trường tan hoang.
+“Đây là nhà của ta, nơi ta lớn lên từ thuở nhỏ... thôi vậy.”
+Nỗi đau mất nước, hắn hiểu sâu sắc.
+Làm sao lại không biết nỗi đau cùng bất lực của nàng khi đối diện với cảnh gia quốc sắp diệt vong?
+Rất nhanh thôi...
+Bọn họ sẽ trở thành cùng một loại người.
+Nếu đã định giữa hai người chỉ có một người được sống...
+Vậy thì đánh cược!
+Sở Ly xoay cổ tay, ánh mắt trở nên sắc bén, lao lên đâm tới.
+Sở Dạ Ly tung người xuống ngựa, nghiêng mình tránh né.
+“Trước kia muội chưa từng đối xử với ta như vậy.”
+“Huynh cũng nói rồi, đó là trước kia.”
+Sở Ly múa kiếm truy kích, hoàn toàn không lưu tình. Chỉ cần hạ được hắn trong thời gian ngắn nhất, thương vong sẽ giảm xuống mức lớn nhất.
+Đại nghĩa trước mắt.
+Nàng không thể vì tình riêng mà mềm lòng.
+Sở Dạ Ly liên tục né tránh lưỡi kiếm của nàng, tay phải vẫn chắp sau lưng, hoàn toàn không có ý xuất thủ.
+“Tiểu Cửu... ta rất nhớ muội.”
+“Đủ rồi!”
+“Ta nói đều là lời thật lòng. Khoảng thời gian trọng thương hôn mê ấy, ta luôn mơ về quá khứ của chúng ta, những ngày thơ ấu vô ưu vô lo.”
+Sở Dạ Ly vẫn né tránh trường kiếm trong tay nàng.
+“Ta muốn trở lại Thanh Phong Cư, trở lại những ngày trong mắt muội chỉ có mình ta.”
+Sở Ly lạnh lùng vung kiếm.
+“Thanh Phong Cư gì chứ? Ta chẳng nhớ gì cả!”
+Trong đôi mắt trầm xuống của Sở Dạ Ly đầy vẻ cố chấp.
+“Muội không nhớ, nhưng những lời muội từng nói, những việc muội từng làm, những lời hứa năm ấy... ta chưa từng quên một chữ!”
+Nàng từng nói...
+Bọn họ sẽ mãi mãi ở bên nhau.
+Nàng từng nói...
+Nàng sẽ không rời đi.
+Hắn tới để nàng thực hiện lời hứa.
+Nhìn mũi kiếm sắc bén trước mặt, Sở Dạ Ly đột nhiên dừng bước.
+Thanh nhuyễn kiếm cứ thế đâm xuyên bả vai hắn.
+Phập!
+Lưỡi kiếm nhập thể, máu bắn tung tóe.
+Hắn dùng tay không nắm lấy thanh kiếm.
+“Nhát kiếm này... coi như ta trả lại cho muội!”
+Bàn tay siết chặt, mạnh mẽ rút thanh kiếm ra. Bàn tay đỏ thẫm máu tươi chụp về phía nàng.
+Sau nhiều chiêu né tránh...
+Cuối cùng hắn cũng ra tay!
+Sở Ly lập tức nâng cao cảnh giác, chăm chú quan sát thân pháp cùng chiêu thức của hắn, vừa dùng kiếm hóa giải, vừa tìm kiếm cơ hội phản công.
+Hai người giao thủ.
+Thế công của nam nhân mãnh liệt, từng bước áp sát, mang theo khí thế xâm lược cực mạnh, xông thẳng vào lãnh địa của Sở Ly.
+Sở Ly cảm nhận được khí tức nguy hiểm, bị ép lùi mấy bước.
+“Muội không phải đối thủ của ta.”
+“Tiểu Cửu, đừng giãy giụa nữa.”
+“Thiên hạ cùng muội... ta đều muốn!”
+Lời lạnh lùng vừa dứt, hắn lập tức áp sát. Đầu ngón tay mang theo nội lực hùng hậu, đánh bật mũi kiếm, chụp lấy vai nàng.
+Nàng xoay người tránh né.
+Đầu ngón tay sắc bén của hắn liền hất rơi cây trâm cài tóc.
+Ba nghìn sợi tóc xanh buông xõa, như một dải gấm mềm mại, lướt qua kẽ ngón tay hắn, mang đến cảm giác thỏa mãn tột cùng.
+Sở Ly lùi ba năm bước, tay cầm lợi kiếm, mái tóc dài đến eo tung bay.
+Dưới ánh trăng.
+Giữa chiến trường.
+Đôi mắt lạnh lẽo càng thêm sắc bén, không chịu lùi nửa bước.
+Hắn không khỏi nheo đôi mắt đen, tựa như con mèo vừa được thỏa mãn, dục vọng chiếm hữu nơi đáy mắt càng thêm sâu đậm.
+“Thiên hạ là thiên hạ của huynh.”
+“Ta chỉ ở cùng quốc gia của ta, cùng gia nhân của ta!”
+Sở Ly lạnh giọng, xé một dải váy, buộc lại mái tóc rối tung.
+Cổ tay khẽ lật.
+Lại một lần nữa xông lên.
+Tiếp tục giao chiến với hắn!
+Võ công của hắn không yếu, Sở Ly lại thiếu kinh nghiệm thực chiến. Chỉ dựa vào nhiệt huyết cùng sự liều lĩnh, chưa đầy nửa khắc đã rơi vào thế hạ phong.
+Hắn từng bước áp sát.
+“Sau khi mọi chuyện kết thúc... ta sẽ là quốc gia của muội, là gia nhân của muội!”
+“Ta sẽ không ở bên huynh!”
+“Ta cứ muốn!”
+Sở Dạ Ly quát khẽ, mấy chiêu liên tiếp ép nàng vào góc, nắm lấy cổ tay, đoạt thanh nhuyễn kiếm.
+Đúng lúc ấy, một tiếng quát vang lên.
+“Đừng bắt nạt Cửu muội của ta!”
+“Bát hoàng huynh!”
+Sở Ngạo Thiên cầm kiếm lao tới, nhưng lập tức bị Sở Dạ Ly đá một cước ngã lăn.
+“Đừng động vào Bát hoàng huynh của ta!”
+Sở Dạ Ly giữ chặt hai tay Sở Ly, ánh mắt lạnh lùng nhìn Sở Ngạo Thiên như nhìn một phế vật.
+“Hoàng thượng.”
+“Kiếm... không phải cầm như vậy.”
+Sở Ngạo Thiên tức giận bò dậy, hai tay nắm chặt chuôi kiếm, phẫn nộ chém xuống.
+“Tên gian tặc! Ta sẽ giết ngươi!”
+Sở Dạ Ly nghiêng người né tránh.
+Sở Ngạo Thiên chém liền bảy tám nhát.
+Hắn chưa từng học võ, cũng chưa từng giết người. Thanh kiếm nặng trĩu bị hắn vung loạn mấy vòng, vậy mà vẫn không chạm nổi một góc áo của Sở Dạ Ly.
+Sở Dạ Ly chẳng khác nào dắt chó đi dạo, đùa bỡn hắn mấy vòng.
+Chung quanh, không ít thủ lĩnh địch cười vang.
+Sở Ngạo Thiên đỏ ngầu hai mắt, gào lên lao tới, lại bị đá ngã xuống đất.
+“Ha ha ha!”
+“Đây chính là hoàng đế Đại Sở sao?”
+“Đúng là một tên phế vật!”
+“Đại Sở không còn ai dùng được nữa sao? Lại để một tên phế vật làm hoàng đế! Ha ha ha!”
+Sở Ly giằng khỏi tay hắn, lập tức lao tới.
+“Bát hoàng huynh! Huynh không sao chứ?”
+Sở Ngạo Thiên chịu nhục nhã vô cùng.
+Lần đầu tiên trong đời cảm thấy mình vô dụng đến vậy.
+Không bảo vệ nổi quốc gia.
+Cũng không bảo vệ nổi Cửu muội.
+Từ nhỏ đến lớn...
+Hắn chỉ thích ham chơi.
+Hắn đúng là một phế vật chẳng nên thân.
+“Cửu muội... ta có phải vô dụng lắm không... chúng ta... có phải sẽ không đợi được viện quân nữa rồi...”
+Sở Ly siết chặt tay hắn.
+“Bát hoàng huynh, chúng ta nhất định sẽ kiên trì đến giây phút cuối cùng! Chúng ta nhất định làm được! Huynh là Bát hoàng huynh tốt nhất trên đời!”
+“Nghe ta.”
+“Bây giờ lập tức đi trốn!”
+“Trước khi mọi chuyện kết thúc, tuyệt đối đừng ra ngoài!”
+“Bảo vệ ngọc tỷ!”
+Chỉ cần không lấy được quốc tỷ Đại Sở.
+Địa vị của Sở Dạ Ly sẽ mãi mãi danh bất chính, ngôn bất thuận.
+Chỉ cần vị Sở đế chân chính còn sống...
+Sở Dạ Ly sẽ không bao giờ yên ổn.
+“Cửu muội! Ta không đi! Ta không thể bỏ mặc muội!”
+“Nghe ta!”
+Sở Ly siết chặt vai hắn.
+“Đại cục trước mắt, không thể nghĩ nhiều nữa! Bát hoàng huynh! Huynh nhất định phải bình an!”
+Sở Dạ Ly hạ lệnh:
+“Bắt lấy hắn!”
+Bắt giặc phải bắt vua trước.
+Bắt được Sở đế, trận chiến đêm nay cũng coi như kết thúc.
+Sở Ly một tay che chắn cho Sở Ngạo Thiên, một tay giương kiếm chỉ vào đám địch binh lang tử dã tâm, lạnh giọng quát:
+“Bát hoàng huynh! Đi!”
+“Cửu muội...”
+“Mau đi!”
+Nàng đẩy hắn một chưởng, cầm kiếm xông vào vô số địch binh, giết đến đỏ mắt, kéo chân bọn chúng, tranh thủ thời gian cho Sở Ngạo Thiên thoát đi.
+Hai mắt Sở Ngạo Thiên ngấn lệ.
+Nhìn cảnh ấy, hắn siết chặt hai tay, cuối cùng vẫn phải quay đầu bỏ chạy.
+Nhưng...
+Toàn bộ hoàng cung đều đã loạn.
+Khắp nơi đều là địch binh.
+Có thể chạy đi đâu?
+Lại có thể trốn ở nơi nào?
+“Hoàng thượng!”
+Dưới bức tường cung ngược sáng, Khương Thái phó bất chấp mưa máu gió tanh lao tới, nắm lấy tay Sở Ngạo Thiên.
+“Mau theo lão thần!”
+Hai người chạy về một hướng khác.
+Khương Thái phó dẫn Sở Ngạo Thiên xuyên vào Ngự Hoa Viên, vòng qua hòn giả sơn, nhưng vừa tới khúc ngoặt đã đụng phải năm sáu tên địch binh.
+“Sở đế ở đây!”
+“Bắt lấy hắn!”
+Sắc mặt Khương Thái phó đại biến, lập tức chắn trước mặt Sở Ngạo Thiên.
+Sở Ngạo Thiên vội ôm một tảng đá, ném mạnh tới.
+“Hoàng thượng! Người mau trốn!”
+“Lão sư! Chúng ta cùng chạy!”
+“Đừng quản lão thần!”
+Đúng lúc mấy tên địch cầm kiếm xông tới, một thân ảnh còn nhanh hơn một bước lao tới, vung kiếm đâm chết cả mấy tên.
+“Hoàng thượng! Người không sao chứ?”
+“Là Viên đại nhân!”
+Viên Thị lang rút kiếm, lo lắng bước tới.
+“Hoàng thượng, người có bị thương không?”
+Sở Ngạo Thiên lắc đầu.
+“Theo thần! Chúng ta trốn tới hậu điện!”
+Viên Thị lang biết chút quyền cước, một đường hộ tống Sở Ngạo Thiên xuyên qua đao quang kiếm ảnh, trốn vào một tòa hậu điện hẻo lánh.
+Sở Ngạo Thiên dìu Khương Thái phó bước vào trước.
+Viên Thị lang nhìn bóng lưng hai người, ánh mắt chợt híp lại, hung quang lóe lên.
+Đột nhiên cầm kiếm đâm thẳng về phía Sở Ngạo Thiên.
+“Hoàng thượng cẩn thận!”
+Khương Thái phó thấy được ở khóe mắt, lập tức cúi người nhào tới.
+Phập!
+Sở Ngạo Thiên quay đầu, chỉ thấy trường kiếm xuyên từ sau lưng Khương Thái phó ra trước ngực.
+Máu đỏ tí tách nhỏ xuống.
+Khuôn mặt già nua của ông trắng còn hơn giấy.
+“Lão sư!!”
+Viên Thị lang rút kiếm ra, lại đâm tiếp.
+“Sở Ngạo Thiên! Tên phế vật như ngươi còn không mau nhường ngôi!”
+Sở Ngạo Thiên chộp lấy hai cánh cửa, dùng sức khép mạnh.
+Rầm!
+Cửa vừa khép lại, kẹp trúng đầu Viên Thị lang, làm hắn choáng váng hoa mắt.
+Một cước đá hắn văng ra ngoài.
+Đóng cửa.
+Khóa chặt.
+Rồi vội vàng nhào đến bên Khương Thái phó, ấn chặt vết thương nơi ngực, hoảng loạn đến nói năng lộn xộn:
+“Lão sư! Người sẽ không sao đâu... gọi ngự y... ta đi gọi ngự y...”
+“Hoàng... thượng...”
+Khương Thái phó yếu ớt tựa ngồi dưới đất, giọng khàn khàn nhỏ đến gần như không nghe thấy.
+Đừng đi.
+Vô ích rồi.
+Ông không chống đỡ nổi nữa.
+“Đừng... quản ta... mau chạy... người nhất định phải... sống thật tốt...”
+“Lão sư!”
+Sở Ngạo Thiên cuống cuồng đè vết thương, nhưng máu như đê vỡ, thế nào cũng không cầm nổi, cứ không ngừng trào ra qua kẽ tay hắn.
+“Không! Người đừng chết! Đừng bỏ con!”
+Nước mắt lập tức trào đầy hốc mắt, từng giọt lớn rơi xuống.
+“Trước kia là con không nghe lời, cứ làm người phải nhọc lòng, con biết sai rồi! Sau này con sẽ không trốn học nữa, không chạy lung tung nữa, con sẽ chăm chỉ học hành! Lão sư! Xin người ở lại với con! Con sẽ sửa! Con nhất định sẽ trở thành học trò khiến người tự hào!”
+“Khụ... khụ...”
+Khương Thái phó khó nhọc thở dốc, mỗi hơi thở đều ho ra máu.
+Bàn tay đầy nếp nhăn, già nua, mang theo chút nhiệt độ đang dần mất đi, lần cuối cùng vuốt nhẹ gương mặt Sở Ngạo Thiên.
+“Hoàng... thượng... đừng khóc... ai rồi cũng sẽ chết... thần đi trước một bước... người nhất định... phải... kiên cường... khụ khụ!”
+Một ngụm máu lớn phun ra.
+Sở Ngạo Thiên ôm chặt lấy ông.
+“Lão sư! Con còn chưa từng khiến người yên lòng, người đừng đi... đừng đi!”
+“Thần... đã già rồi... không thể dạy người cả đời...”
+Khương Thái phó thở dốc.
+“Người... là học trò ngoan nhất thần từng dạy... sau này nhất định phải dũng cảm, kiên cường, không quên sơ tâm... Hoàng thượng... người nhất định phải làm một vị minh quân... nhất định... phải...”
+Giọng nói dần nhỏ lại.
+Chữ cuối cùng rơi xuống.
+Cánh tay ông nặng nề buông thõng trên mặt đất.
+Đôi mắt khép lại.
+“Lão sư!”
+Sở Ngạo Thiên ôm chặt lấy ông, nước mắt như mưa.
+“Lão sư!!”
+Tiếng khóc bi thương vang vọng khắp hậu điện.
+Không!
+Đừng bỏ hắn lại!
+Biết trước có ngày hôm nay, trước kia hắn đã nên ngoan ngoãn hơn.
+Nhớ lại những ngày luôn chọc Khương Thái phó tức đến thổi râu trợn mắt, tim hắn như bị khoét mất một mảng, đau đến nghẹt thở.
+“Hoàng thượng! Bát hoàng tử hôm nay lại trốn học!”
+“Hoàng thượng! Bài tập của Bát hoàng tử lại chưa làm xong!”
+“Gỗ mục không thể đẽo thành đồ!”
+“Hôm nay Bát hoàng tử có đến học uyển không?... Cái gì? Lại chạy theo Cửu hoàng tử rồi? Tức chết lão phu!”
+“Lão sư! Lão sư... Người mau dậy mắng con đi... đánh vào lòng bàn tay con đi... sau này con sẽ không trốn học nữa... con sẽ chăm chỉ đọc sách... lão sư!”
+Sở Ngạo Thiên nước mắt nước mũi giàn giụa.
+“Là con vô dụng! A! Là con vô dụng!”
+Từ nhỏ đến lớn...
+Hắn chỉ biết ăn chơi hưởng lạc.
+Chỉ hưởng thụ thân phận cùng đãi ngộ của hoàng tử.
+Lại không chịu gánh lấy trách nhiệm trên vai.
+Trên có lỗi với phụ hoàng.
+Dưới có lỗi với lê dân.
+Bao năm nay...
+Rốt cuộc hắn đã làm cái gì!
+“Hoàng thượng! Người còn định trốn trong đó đến bao giờ!”
+Rầm! Rầm!
+Tiếng đập cửa vang lên.
+Giọng Viên Thị lang lạnh lẽo.
+“Ngươi cứ trốn đi! Đợi ta phá cửa xong, sẽ là ngày chết của ngươi!”
+Ầm!
+Hắn dùng sức đá cửa.
+“Nam Man đã bao vây toàn bộ hoàng cung, bại cục đã định, Đại Sở sắp diệt vong. Dẫu thần tiên hạ phàm cũng không thể xoay chuyển càn khôn! Nếu ngươi ngoan ngoãn đi ra, biết đâu ta sẽ cho ngươi chết thống khoái một chút!”
+Ha ha ha!
+Sở Ngạo Thiên nhìn then cửa sắp bị đá gãy bằng đôi mắt nhòe lệ.
+Giờ phút này...
+Sự bất lực cùng bi ai ấy khiến hắn chẳng khác nào một đứa trẻ mất đi tất cả chỗ dựa.
+Khương Thái phó đã chết.
+Từ nay...
+Không còn trưởng bối nào dẫn đường cho hắn nữa.
+“Ta sẽ không chết... Lão sư... mạng này là người cho ta... ta không thể chết!”
+Sở Ngạo Thiên dìu Khương Thái phó, nhẹ nhàng đặt ông tựa vào chân tường.
+Ôm chặt ngọc tỷ trong ngực.
+Rồi chạy tới cửa sổ.
+Mở then.
+Đẩy cửa.
+Vừa trèo lên thì cửa chính bị đá tung.
+Viên Thị lang cầm kiếm xông vào, chỉ thấy Sở Ngạo Thiên nhảy qua cửa sổ.
+“Chạy đi đâu!”
+Hắn lập tức đuổi theo.
+“Chạy đi! Đêm nay, mặc cho ngươi chạy đến đâu, cũng chỉ có một con đường chết!”
+Sở Ngạo Thiên cởi long bào nổi bật trên người, ném xuống đất.
+Nhặt lấy một thanh kiếm.
+Băng qua đầy đất xác chết, lội trong máu, chạy thẳng vào Đại Thành điện.
+Trong điện, hơn một trăm gia quyến co rúm thành một góc.
+Trên mặt ai nấy đều đầy vẻ hoảng sợ và bất an.
+Đêm nay...
+Bọn họ sẽ chết ở đây sao?
+“Hoàng thượng? Hoàng thượng tới rồi!”
+“Hoàng thượng! Bên ngoài chiến sự thế nào?”
+“Đã bắt được địch quân chưa?”
+Sở Ngạo Thiên nhìn bọn họ.
+“Hỏi ta?”
+“Ta biết sao được!”
+“Ngươi không biết? Ngươi chẳng phải hoàng thượng sao?”
+“Ta là hoàng đế.”
+“Nhưng ta là vạn năng sao?”
+Hắn lạnh lùng đáp:
+“Quan viên trong triều cấu kết ngoại địch, mở toang cổng thành, thả quân địch vào, mới tạo nên trận đại chiến đêm nay!”
+“Kẻ thông đồng bán nước không chỉ có một người. Các ngươi là gia quyến của bọn chúng. Đêm nay, cho dù chết ở đây cũng là đáng tội!”
+Đám gia quyến nghẹn lời.
+Ai nấy rụt cổ lùi về sau.
+Trong triều có quan viên cấu kết ngoại địch, thân là gia quyến, không ít người đều biết nội tình...
+Vốn dĩ bọn họ mong Đại Sở diệt vong.
+Nhưng lúc này, bọn họ bị giam trong cung, ngay cả sống chết cũng không thể bảo đảm, chỉ còn biết bám víu vào Đại Sở.
+Trong số những người này.
+Một nửa trung thành với Đại Sở.
+Nửa còn lại lòng lang dạ sói.
+Rầm!
+Ngoài cửa, một tiếng đá cửa thật lớn.
+Viên Thị lang cầm kiếm xông vào.
+“Ồ, đều ở đây cả.”
+Sở Ngạo Thiên xoay người, trong mắt đan xen căm hận.
+“Viên Quảng! Ngươi giết Khương Thái phó! Ta muốn ngươi đền mạng!”
+Viên Thị lang cười lớn đầy mỉa mai.
+“Chỉ bằng tên phế vật ngay cả mèo quào ba chân cũng không biết như ngươi?”
+Ha ha ha!
+“Ta biết ngươi với Khương Thái phó tình sâu nghĩa nặng.”
+“Hoàng thượng, đừng vội.”
+“Thần sẽ lập tức tiễn người xuống gặp Khương Thái phó!”
+Hắn giơ kiếm.
+Mang theo sát ý ngập trời, trực tiếp lao tới.
+Sở Ngạo Thiên giương kiếm chống đỡ.
+Đám gia quyến sợ đến hét thất thanh.
+“A!”
+“Giết người!”
+Rầm!
+Hai mũi kiếm va nhau, âm thanh sắc bén chói tai.
+Viên Thị lang ra tay tàn nhẫn.
+Chưa đầy năm chiêu đã tung một cước đá văng Sở Ngạo Thiên.
+“Phế vật như ngươi căn bản không phải đối thủ của ta! Có tư cách gì làm hoàng đế!”
+Sở Ngạo Thiên hai mắt đỏ ngầu, vẫn ngoan cường giao chiến.
+Bị đá ngã...
+Lại lao lên.
+Bị đánh...
+Lại lao lên.
+Bị đâm...
+Như không biết đau, vẫn tiếp tục xông tới.
+Cuối cùng nắm được cơ hội, ôm lấy bắp chân hắn, hung hăng cắn một miếng.
+“A!”
+Nam nhân trưởng thành đánh nhau...
+Ai lại dùng miệng cắn?
+Viên Thị lang đau đến lảo đảo lùi mấy bước.
+Sở Ngạo Thiên nhân cơ hội một kiếm đâm trúng cẳng chân hắn.
+“A!”
+Đê tiện!
+Hắn nổi giận đá mạnh vào ngực Sở Ngạo Thiên.
+“Khụ khụ!”
+Sở Ngạo Thiên bị hất trượt trên nền điện trơn láng mấy trượng.
+Toàn thân đầy thương tích, y phục nhuộm đỏ máu.
+Mặt mũi tím bầm.
+Nhưng ánh mắt vẫn không hề chịu khuất phục.
+“Dám cắn ta? Tên phế vật vô dụng!”
+Viên Thị lang giận dữ, giơ cao trọng kiếm, quyết hạ sát thủ.
+“Chịu chết đi!”
+Đúng lúc ấy...
+Một tiếng tù và trầm hùng, mang theo sức xuyên thấu cực mạnh, như từ tận chân trời vọng tới.
+U——
+Âm thanh cao vút xé tan màn đêm.
+Mang theo sĩ khí hừng hực.
+Cổ vũ lòng người.
+Rõ ràng truyền vào tai mỗi người.
+Sở Ngạo Thiên chấn động tinh thần.
+Gần như tất cả mọi người đồng loạt nhìn ra ngoài.
+Trong màn đêm.
+Một làn sóng đen cuồn cuộn tràn vào hoàng cung.
+Chiến mã giẫm lên vết máu, xuyên qua chiến trường hỗn loạn, phi thẳng lên hơn trăm bậc thềm, trực chỉ Đại Thành điện.
+“Đô đốc Tiêu!”
+“Hoàng thượng.”
+“Thần... đã trở về.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_314.html" class="btn">‹ Trước</a>
+            <a href="chuong_316.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

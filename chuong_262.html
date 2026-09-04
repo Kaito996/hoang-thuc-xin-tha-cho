@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 262</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 262</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_261.html" class="btn">‹ Trước</a>
+            <a href="chuong_263.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 262: Ai nói nàng là Cửu Hoàng tử
+Không nhắc thì thôi, vừa nhắc đến Nhàn Vương, có người nói: “Thái giám chẳng phải đã nói, gần đây Nhàn Vương đang xử lý quân vụ trọng yếu sao?”
+“Tướng quân Lý, ngài có nhận được quân tình gì không?”
+“Không có.”
+“Tướng quân Vương?”
+“Bản tướng cũng chưa từng nhận được.”
+“Chuyện này…”
+Đám võ tướng nhìn nhau, chẳng một ai nhận được quân tình hay công văn quân vụ nào, vậy Nhàn Vương đang xử lý quân vụ gì?
+Đây chẳng phải là nói nhảm sao?
+Bách quan dần dần sinh nghi: “Nhàn Vương đâu?”
+“Không phải… xảy ra chuyện gì rồi chứ?”
+“Chẳng lẽ thật sự xảy ra chuyện…”
+“Ngài ấy lát nữa sẽ đến!”
+Đột nhiên, bên ngoài điện vọng vào một giọng nữ. Thanh âm trong trẻo mang theo lực xuyên thấu đặc biệt, xuyên qua đại điện huyên náo, khiến mọi người theo bản năng quay đầu nhìn lại.
+Ở cuối tấm thảm đỏ dài, một thân ảnh thon dài đi ngược sáng mà đến.
+Nữ tử mặc một bộ váy áo màu tím sẫm. Những đóa hoa thêu viền chỉ vàng theo từng bước chân lay động, dưới ánh nến phản chiếu sắc màu vô cùng phô trương. Màu tím sẫm vốn đã tôn lên vẻ tôn quý cuồng dã, khoác trên người nàng, khí thế hoàn toàn phóng thích.
+Trong lòng mọi người âm thầm nghi hoặc.
+Người này là ai?
+Đêm nay cung yến sao lại mời một nữ nhân tới?
+Nhìn nữ tử chậm rãi đi đến, gương mặt thanh lãnh dần dần lọt vào tầm mắt mọi người, không ít người đột nhiên đứng bật dậy, làm rơi cả chén rượu:
+“Ngươi!”
+“Ngươi là!”
+Dung mạo này, đôi mày đôi mắt này…
+Nhị Hoàng tử, Tam Hoàng tử, ngay cả Thất Hoàng tử cũng đứng phắt dậy, hai mắt nhìn chằm chằm nữ tử đang từng bước đi tới, vẻ kinh ngạc trong mắt đã lên đến cực điểm.
+“Sở Ly!”
+Thất Hoàng tử nằm mơ cũng không thể quên được gương mặt này.
+Chính là Sở Ly, kẻ đã khiến mẫu phi hắn từ vị trí Hoàng quý phi bị giáng xuống Quý phi; khiến ngoại công hắn từ Quốc công giáng thành Quận công; khiến hắn bị Phụ hoàng trách phạt.
+Lại là Sở Ly!
+“Sở Ly, chẳng phải ngươi đã chết rồi sao?”
+“Chuyện này, đây là Cửu Hoàng tử… sao lại là nữ tử?”
+“Rốt cuộc là chuyện gì thế này?”
+Văn võ bá quan đều chấn kinh nhìn nữ tử, gần như thất thanh: “Ngươi… ngươi là nữ tử…”
+“Đây chính là tội khi quân!”
+“Cửu Hoàng tử không phải huyết mạch Hoàng thất?”
+“Ngươi…”
+“Ai nói nàng là Cửu Hoàng tử?”
+Ngoài điện, một giọng nói lạnh lẽo nghiêm khắc đột nhiên xé gió truyền đến, cắt ngang lời mọi người. Bóng dáng cao lớn vĩ ngạn của nam nhân đổ xuống, che khuất Sở Ly nhỏ nhắn, tựa như một con hùng sư uy vũ, vững vàng đứng phía sau nàng.
+“Nhiếp Chính Vương… thần đẳng tham kiến Nhiếp Chính Vương!”
+Mọi người lập tức rầm rầm quỳ xuống đất.
+Sở Ly quay đầu lại, đôi mắt lại trợn lên.
+Hắn cũng mặc một bộ cẩm bào màu tím sẫm, càng tôn lên toàn thân vừa tôn quý lạnh lùng vừa âm lệ, chẳng khác nào một vai phản diện không dễ chọc.
+Sao lại mặc giống nàng vậy?
+Chẳng phải nói hắn tùy tiện mặc sao?
+Sở Đệ Trì mặt không đổi sắc, chắp tay sau lưng bước tới, lạnh lùng xuyên qua đám người, thẳng tiến lên chủ vị:
+“Vị này là ái nữ lúc tuổi già mới có của Tạ Ân Hồng tướng quân, Tạ Vãn Nguyệt.”
+“Bốn ngày trước, Lục Hoàng tử từng gặp Tạ tiểu thư, cũng nhận nhầm nàng thành Cửu Hoàng tử, vậy thì thôi đi, đằng này còn không phân rõ trắng đen đã cưỡng ép bắt cóc Tạ tiểu thư.”
+Hắn lười biếng chống khuỷu tay lên tay vịn, liếc xuống đám người phía dưới:
+“Lúc đó bản vương đã nổi giận.”
+“Tạ tướng quân là ai? Đó chính là trọng thần xương cánh tay đã vì Đại Sở ném đầu vẩy máu từ ngày Đại Sở khai quốc. Cả đời chinh chiến, chỉ có duy nhất một nữ nhi này. Nếu nàng phải chịu đủ mọi ức hiếp, chẳng phải sẽ khiến lão tướng lạnh tâm sao? Các ngươi nói xem có đúng không?”
+Chuyện này…
+Chuyện này…
+Mọi người quỳ trên mặt đất, hoảng sợ cúi đầu, nhất thời không dò ra được ý tứ của Nhiếp Chính Vương.
+“Bản vương thân là thành viên trọng yếu của Hoàng thất, há có thể dung túng Lục Hoàng tử sai càng thêm sai? Bởi vậy liền ra tay bảo hộ Tạ tiểu thư, nào ngờ lại vô tình làm lộ ra chuyện Lục Hoàng tử mưu phản.”
+Hắn vỗ lên tay vịn, vẻ mặt vô cùng đau lòng:
+“Bản vương rất thất vọng về Lục Hoàng tử. Lý đại nhân, ngươi nói xem, nếu ngươi là bản vương, ngươi có cứu Tạ tiểu thư không?”
+Lễ bộ Thượng thư đột nhiên bị điểm danh, da đầu tê rần.
+Hả?
+Chuyện này… chuyện này…
+Bao nhiêu người như vậy, sao lại chỉ hỏi ông ta?
+Toàn thân ông ta run lên bần bật: “Nhiếp Chính Vương nói cực phải, cực phải! Tạ lão tướng quân là lão thần võ tướng của triều ta. Nếu làm tổn thương Tạ tiểu thư, khiến ông ấy lạnh tâm, quân trung nhất định sẽ đại loạn.”
+“Lục Tả tướng, ngươi nói xem?”
+Trán Lục Tả tướng toát mồ hôi: “Nhiếp Chính Vương anh minh!”
+“Trương đại nhân?”
+“Vâng, vâng, lời Nhiếp Chính Vương nói quả thực rất đúng…”
+Mọi người không ngừng lau mồ hôi.
+Đều là những lão thần lăn lộn chốn quan trường bao năm, sao có thể nghe không hiểu hàm ý trong lời Nhiếp Chính Vương?
+Lục Hoàng tử thật sự mưu phản hay giả vờ mưu phản, quan trọng sao?
+Không quan trọng.
+Điều quan trọng là hắn đã bắt Tạ tiểu thư. Nhiếp Chính Vương nói hắn mưu phản, vậy hắn chính là mưu phản.
+Nếu có kẻ nào không có mắt, dám đi đắc tội Tạ tiểu thư, vậy thì sẽ có cùng kết cục với Lục Hoàng tử.
+Đám người vừa rồi còn nói ‘Cửu Hoàng tử chết đi sống lại’, ‘nữ giả nam trang, không phải huyết mạch Hoàng thất’, giờ đây tất cả đều im bặt. Mồ hôi lạnh tuôn ròng ròng, không ai dám nhiều lời thêm nửa câu.
+Sở Đệ Trì dịu dàng mỉm cười: “Tạ tiểu thư, mời nhập tọa.”
+Sở Ly cúi người tạ ơn.
+Sau khi ngồi xuống, nàng nhẹ nhàng vuốt ve gương mặt mình, cười hỏi:
+“Xin hỏi chư vị đại nhân, ta thật sự rất giống Cửu Hoàng tử sao?” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_261.html" class="btn">‹ Trước</a>
+            <a href="chuong_263.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

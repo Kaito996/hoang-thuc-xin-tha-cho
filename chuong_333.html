@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 333</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 333</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_332.html" class="btn">‹ Trước</a>
+            <a href="chuong_334.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 333: Sở Dạ Ly, ngươi đã hủy hoại cả đời bản vương
+Sở Dạ Ly đột ngột rút quân, tin tức vừa truyền ra, đám tư binh của Tiêu Dao Vương lập tức rơi vào cảnh hoảng loạn.
+Đông Lăng Thái tử rút quân rồi?
+Thật sự bỏ đi?
+Bọn họ làm sao có thể đánh thắng Nhiếp Chính Vương?
+Đêm nay… chẳng lẽ tất cả đều phải chết ở đây sao?
+“Vương gia, bây giờ phải làm sao?”
+“Vương gia, người nói một câu đi!”
+“Vương gia!”
+Mấy vị tướng sĩ tay cầm trường kiếm, toàn thân nhuốm máu, hai mắt đỏ ngầu, chạy đến trước mặt Tiêu Dao Vương, chờ đợi mệnh lệnh của ông ta.
+Thế nhưng Tiêu Dao Vương bỗng ngửa mặt cười lớn.
+Ông ta còn có thể hạ lệnh gì nữa?
+Ông ta chỉ có năm nghìn tư binh, lấy gì đối đầu với Nhiếp Chính Vương?
+“Sở Dạ Ly! Ngươi đã hủy hoại cả đời bản vương! Ngươi đã hủy hoại bản vương!”
+Ông ta vậy mà lại tin những lời ma quỷ của Sở Dạ Ly, cho rằng đôi bên thành tâm hợp tác, cùng có lợi.
+Không ngờ Sở Dạ Ly lại lật lọng.
+Thế nhưng ông ta thật sự không nghĩ ra, trừ khử mình thì có lợi gì cho Sở Dạ Ly?
+Chẳng phải bọn họ cùng trên một con thuyền sao?
+Bọn họ đều muốn đoạt lấy giang sơn Đại Sở.
+Có ông ta ở Đại Sở kiềm chế triều đình, khiến Nhiếp Chính Vương phân tâm, chẳng phải càng có lợi để Sở Dạ Ly nhân cơ hội ra tay hay sao? Vì sao Sở Dạ Ly lại nhắm vào ông ta?
+Tại sao!
+“Sở Dạ Ly, rốt cuộc bản vương đã đắc tội gì với ngươi? Đồ tiện chủng! Đồ dã chủng! Bảo sao năm đó Đông Lăng lại mất nước, đúng là đáng đời!”
+“Bản vương vậy mà lại tin lời quỷ quái của ngươi! Ha ha… ha ha ha!”
+Tiêu Dao Vương dang rộng hai tay, cười đến mức nước mắt sắp trào ra.
+“Vương gia!”
+Mấy tên tâm phúc nhân lúc hỗn loạn chạy tới, lau máu trên mặt, hoảng hốt nói:
+“Vương gia, người mau chạy đi!”
+“Cam Châu không giữ nổi nữa, đại cục đã định, người nhất định phải giữ lấy tính mạng, còn núi xanh thì chẳng lo thiếu củi đốt, ngày sau ắt có thể Đông Sơn tái khởi!”
+Trong đôi mắt đang cười của Tiêu Dao Vương dần dần dâng lên hận ý ngập trời.
+Sở Dạ Ly!
+Sau khi bản vương thoát thân, việc đầu tiên chính là tìm ngươi tính sổ!
+“Ngươi không còn cơ hội chạy nữa!”
+Phía không xa, một tiếng quát lạnh của nữ tử đột ngột vang lên.
+Giữa chiến trường hỗn loạn, Sở Ly cầm kiếm, thẳng tắp đánh tới chỗ ông ta.
+“Bảo vệ Vương gia!”
+“Vương gia mau chạy!”
+Mấy tên tâm phúc lao lên, vung tay ném những viên đạn khói trong tay áo xuống đất.
+Bùm! Bùm! Bùm!
+Khói dày đặc bốc lên, kèm theo mùi hăng sặc.
+Sở Ly giơ tay che mặt, còn chưa kịp phản ứng thì đã bị một đôi tay nhanh chóng ôm lấy kéo đi.
+“Khụ! Khụ khụ!”
+“Mau lấy nước!”
+“Khụ…”
+“Tiểu Cửu, mau uống vài ngụm nước, làn khói này có độc.”
+Sở Ly lập tức uống liền mấy ngụm lớn, đầu óc mới tỉnh táo hơn đôi chút. Đến khi nhìn lại thì hơn hai mươi người đã hộ tống Tiêu Dao Vương biến mất ở cuối con phố.
+“Mau đuổi theo… khụ khụ!”
+Bên kia.
+Một nhóm người bảo vệ Tiêu Dao Vương, nhanh chóng bỏ chạy.
+Phía sau, một nhóm khác bám sát không buông.
+Tiêu Dạ Hành dẫn theo hơn mười người chạy sang con phố bên trái, Trọng Phong dẫn hơn mười người chạy sang con phố bên phải, Sơ Nhất cầm một thanh kiếm, nhanh chóng theo sau.
+“Vương gia, bọn chúng đuổi tới rồi!”
+“Bọn chúng muốn bao vây chúng ta!”
+Đám tâm phúc che chở Tiêu Dao Vương.
+Lúc này, Tiêu Dao Vương vô cùng chật vật, hận ý trong mắt ngập trời.
+Mối thù hôm nay, bản vương ghi nhớ!
+Không đội trời chung!
+Vút!
+Một mũi tên xé gió lao tới, một tên tâm phúc lập tức ngã xuống chết tại chỗ. Những người còn lại vội vàng che chở Tiêu Dao Vương chui vào một con hẻm.
+“Vương gia, xin người cởi ngoại bào giao cho thuộc hạ mặc!”
+Đôi mắt Tiêu Dao Vương đỏ lên:
+“Lâm Phong, ngươi…”
+“Được vì Vương gia dốc sức, là vinh hạnh của thuộc hạ!”
+Lâm Phong đổi ngoại bào với Tiêu Dao Vương, đồng thời chia người thành hai nhóm.
+Một nhóm bảo vệ Tiêu Dao Vương thật sự, rút lui theo hướng khác của con hẻm.
+Một nhóm còn lại bảo vệ Lâm Phong, chạy theo hướng ngược lại.
+Vừa mới chạy ra đã bị phát hiện.
+“Tiêu Dao Vương ở bên kia!”
+“Đuổi theo!”
+Quân truy kích lập tức lao tới.
+Sơ Nhất chạy cuối cùng. Khi đi ngang con hẻm, nàng nhìn thấy vết máu trên đất cùng vô số dấu chân hỗn loạn.
+Một phần dấu chân chạy sang trái, một phần chạy sang phải…
+Trong đầu nàng xoay chuyển cực nhanh, lập tức hiểu ra điều gì.
+“Không ổn!”
+Nàng lớn tiếng hô:
+“Trọng Phong đại nhân! Tiêu Dao Vương thật chạy hướng này, kẻ bị đuổi kia là giả!”
+Không ít người quay đầu nhìn lại.
+“Cái gì?”
+Sơ Nhất chỉ vào con hẻm tối:
+“Ở bên này!”
+Dứt lời liền xông vào.
+Trọng Phong trong lòng siết chặt, lập tức đổi hướng. Hắn cùng Tiêu Dạ Hành chia làm hai đường, còn hắn đuổi theo Sơ Nhất.
+Đúng lúc ấy, Sở Ly cũng đuổi tới.
+“Trọng Phong, thế nào rồi?”
+“Chủ mẫu, ở bên này, Sơ Nhất đã đuổi theo!”
+“Mau!”
+Sở Ly cùng hắn xuyên qua con hẻm, lần theo vết máu và dấu chân trên mặt đất, vượt qua hai con phố, chạy tới một cổng thành hẻo lánh khác của Cam Châu, cuối cùng cũng chặn được Tiêu Dao Vương đang bỏ trốn.
+“Còn muốn chạy đi đâu!”
+Nàng giơ kiếm định ném tới, thì hai tên tâm phúc lập tức kéo Sơ Nhất đã bị bắt giữ chắn trước mặt Tiêu Dao Vương, coi nàng như tấm lá chắn sống.
+Động tác của Sở Ly lập tức khựng lại.
+Trọng Phong trầm giọng:
+“Sơ Nhất!”
+Tiêu Dao Vương nhìn thấy chi tiết ấy, đôi mắt lập tức nheo lại.
+Bọn chúng coi trọng nha đầu này?
+Thú vị thật.
+“Tiểu chất tử… à không, tiểu chất nữ, chỉ là một nha hoàn mà thôi, sao lại khiến ngươi dừng tay vậy?”
+Ông ta cong môi cười.
+Sở Ly lặng lẽ siết chặt chuôi kiếm, lạnh nhạt nói:
+“Ta dừng tay là vì muốn cho Tiêu Dao Vương một cơ hội. Ngươi đã bị dồn đến bước phải chạy trốn, đại cục đã định. Nếu thật lòng đầu hàng, ta có thể cầu xin Nhiếp Chính Vương tha cho ngươi một mạng.”
+“Ồ?”
+Thật sao?
+Tiêu Dao Vương cười.
+“Nếu không phải vì nha đầu này…”
+Ông ta chậm rãi vuốt đầu ngón tay, trong mắt đột nhiên lóe lên sát ý, rút đoản đao bên hông một tên tâm phúc, đâm thẳng về phía Sơ Nhất.
+“Vậy thì nàng cũng chẳng cần sống nữa!”
+“Dừng tay!”
+Phản ứng trong khoảnh khắc của con người sẽ phản bội bản tính.
+Khi lưỡi dao chỉ còn cách cổ Sơ Nhất đúng một tấc, nó đột ngột dừng lại.
+“Ha ha ha!”
+Tiêu Dao Vương đắc ý nhìn Sở Ly, hứng thú trong mắt càng thêm đậm.
+“Tiểu chất nữ, không biết nha hoàn này… đáng giá bao nhiêu?”
+Sở Ly siết chặt lòng bàn tay, sắc mặt lạnh đến cực điểm.
+Sơ Nhất bị khóa chặt hai tay phía sau, trên mặt không hề có vẻ sợ hãi, lớn tiếng nói:
+“Tiểu thư, đại cục là trên hết, đừng quản nô tỳ! Vì Đại Sở, đã có biết bao người hy sinh, thêm một mình nô tỳ cũng chẳng đáng là bao!”
+Ánh mắt Trọng Phong nặng nề và phức tạp, đôi mày vốn luôn bình tĩnh nay lần đầu tiên lộ rõ vẻ căng thẳng.
+Sở Ly sao có thể mặc kệ nàng?
+Năm đó ở Giang Nam, cửa sổ đều bị khóa chặt, Đại hoàng tử sai người phóng hỏa hại nàng. Nếu không nhờ Sơ Nhất bình tĩnh cơ trí, dùng dao phay chém vỡ cửa sổ cứu nàng, thì giờ này nàng còn chẳng biết mình sẽ ra sao.
+Sở Ly trầm giọng:
+“Tiêu Dao Vương, ngươi đã định trước sẽ thất bại, hà tất còn cố giãy giụa? Chi bằng chúng ta nói chuyện.”
+Giang sơn, lãnh địa, quyền lực… tất cả đều đã không còn khả năng.
+Bây giờ, có thể sống rời khỏi Cam Châu đã là may mắn lắm rồi.
+Tiêu Dao Vương cũng hiểu rõ điều ấy. Ông ta không thể chỉ dựa vào một nha hoàn nhỏ bé mà đòi hỏi lợi ích quá lớn.
+Nếu thương lượng không thành, mọi thứ sẽ lập tức sụp đổ.
+Ông ta cất cao giọng:
+“Bản vương muốn hai mươi con tuấn mã thượng hạng, cùng mười vạn lượng ngân phiếu. Chỉ cần để bản vương bình an rời khỏi Cam Châu, nha đầu này sẽ được giữ mạng.”
+Sơ Nhất vùng vẫy:
+“Tiểu thư, đừng quản nô tỳ! Nô tỳ không sợ… A!”
+“Câm miệng!”
+Tên tâm phúc bên cạnh giáng thẳng một cái tát.
+Sở Ly theo bản năng bước lên nửa bước, rồi dừng lại, sát ý trong mắt bừng bừng:
+“Ta đồng ý điều kiện của ngươi. Nhưng nếu người của ta còn bị tổn thương thêm dù chỉ nửa phần, ta cũng không dám bảo đảm ngươi có thể sống rời khỏi đây. Tiêu Dao Vương là người thông minh, hẳn sẽ không vì một nha hoàn mà chôn vùi cả tính mạng mình chứ?” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_332.html" class="btn">‹ Trước</a>
+            <a href="chuong_334.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

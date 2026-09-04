@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 92</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 92</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_91.html" class="btn">‹ Trước</a>
+            <a href="chuong_93.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 92: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 92: Sở Ly cáo trạng
+“Chứng cứ rành rành như núi, còn ai có thể oan uổng ngươi?”
+Sở Hoàng giận đến khó kiềm chế.
+“Lẽ nào còn có kẻ lẻn vào phủ của ngươi, trộm khối ngọc như ý này để hãm hại ngươi hay sao?”
+Sở Hạo Nguyệt nghẹn lời:
+“…”
+Vừa rồi hắn đúng là định nói như vậy.
+Nhưng Phụ hoàng đã nói trước, nếu hắn lại đem lời ấy ra biện giải, chẳng khác nào cố tình ngụy biện cho bản thân.
+Nhưng sự thật đúng là…
+Hắn bị hãm hại!
+Hắn muốn giết Sở Ly, điều đó là thật.
+Nhưng hắn còn chưa ngu xuẩn đến mức để lại một chứng cứ rõ ràng như “ngọc như ý”.
+Rốt cuộc là ai hãm hại hắn?
+Rốt cuộc là kẻ nào!
+“Phụ hoàng, nhi thần oan uổng! Nhi thần và Cửu đệ trước nay luôn giao hảo… Cửu đệ, Cửu đệ!”
+Sở Hạo Nguyệt muốn gọi Sở Ly tỉnh lại, để chính nàng làm chứng cho hắn.
+Nhưng…
+Sở Ly vẫn hôn mê trên giường.
+“Ngươi còn có mặt mũi gọi ‘nó’.”
+Sở Hoàng thất vọng vô cùng.
+“Từ nhỏ đến lớn, Tiểu Cửu gan dạ vốn nhỏ nhất. Hôm nay gặp phải thích khách, may mắn nhặt lại được một cái mạng, đã sớm bị dọa mất hồn.”
+Ôn phi vừa lau nước mắt vừa nghẹn ngào:
+“Không biết Cửu Hoàng tử đã đắc tội gì với Tứ Hoàng tử, mà lại phải chịu tai họa như vậy?”
+Sở Hạo Nguyệt chẳng khác nào người câm ăn hoàng liên, có khổ mà chẳng thể nói.
+Hắn oan uổng.
+“Sở Hạo Nguyệt, trẫm hỏi ngươi lần cuối.”
+Giọng nói uy nghiêm của Sở Hoàng vang lên.
+“Ngươi nhận, hay không nhận?”
+Sở Hạo Nguyệt biết rõ.
+Phụ hoàng không thích những kẻ khéo mồm khéo miệng.
+Trong mắt ngài, “thiết chứng” đã ở ngay trước mắt.
+Nếu hắn còn ngoan cố biện bạch, chỉ đổi lấy hình phạt càng nặng hơn.
+Hôm nay…
+Hắn không tránh được.
+Hắn chỉ có thể siết chặt hai nắm tay, nhắm nghiền đôi mắt đầy bất cam:
+“Nhi thần… nhận!”
+Sở Hoàng hỏi:
+“Vì sao lại làm vậy?”
+Vì sao ư?
+Sinh ra trong hoàng thất.
+Huynh đệ tương tàn chẳng phải là chuyện thường thấy sao?
+Còn phải hỏi vì sao?
+Ha.
+Thuở nhỏ, mẫu phi hắn mất sớm.
+Bao năm qua hắn luôn cô độc một mình, là người có cảm giác tồn tại thấp nhất trong số các Hoàng tử.
+Nếu không phải Tam Hoàng huynh thật lòng đối đãi với hắn, khắp nơi dìu dắt hắn, chỉ e hắn đã chẳng biết mình sẽ rơi vào cảnh ngộ nào.
+Đối với hắn…
+Tam Hoàng huynh có ân tái tạo.
+Sáng nay, Tam Hoàng huynh tìm gặp hắn, bóng gió rằng Sở Ly không phải hạng người lương thiện, sau này sẽ gây ảnh hưởng vô cùng nghiêm trọng.
+Nghe xong.
+Hắn lập tức bỏ tiền mua chuộc thích khách, muốn giết Sở Ly, thay Tam Hoàng huynh giải quyết phiền toái.
+Không ngờ…
+Sở Ly lại bình an vô sự trở về, còn cắn ngược hắn một cái.
+Là hắn làm ác trước.
+Là hắn đấu không lại Sở Ly.
+Kỹ không bằng người.
+Hắn nhận.
+Sở Hạo Nguyệt nhắm chặt hai mắt.
+“Bởi vì… nhi thần ghen ghét việc Phụ hoàng thiên vị ấu tử, nhất thời hồ đồ, đi lầm đường. Xin Phụ hoàng trách phạt.”
+“Hỗn trướng!”
+Sở Hoàng càng thêm nổi giận.
+“Đó mà cũng gọi là lý do?”
+“Những huynh đệ các ngươi, chẳng lẽ trẫm từng bạc đãi ai sao? Nếu trẫm không thương các ngươi, từng đứa các ngươi có thể bình yên trưởng thành sao?”
+“Chỉ vì một lý do hoang đường như vậy, mà ngươi lại đi sát hại đệ đệ mình.”
+“Sở Hạo Nguyệt!”
+“Ngươi thật khiến trẫm quá thất vọng!”
+Ngài phất tay áo, lạnh giọng nói:
+“Sáng sớm ngày mai, lập tức cút đến biên quan Tây Vực cho trẫm. Theo Lý tướng quân, Vương tướng quân trấn thủ nơi đó, hảo hảo suy ngẫm lỗi lầm của mình.”
+“Không có chiếu triệu, không được hồi kinh!”
+Biên quan Tây Vực…
+Khắp nơi cát vàng mênh mông.
+Cây cỏ khô héo.
+Khí hậu nóng bức.
+Nguồn nước khan hiếm.
+Là nơi điều kiện vô cùng gian khổ.
+Một người da dẻ trắng trẻo đến đó, chỉ ở vài ngày thôi, gương mặt cũng có thể khô ráp như vỏ cây.
+Bị điều đến nơi ấy trấn thủ…
+Chẳng khác nào chịu khổ.
+Huống hồ còn là một Hoàng tử sống trong nhung lụa.
+Hiển nhiên, lần này Sở Hoàng thật sự nổi giận.
+Sở Hạo Nguyệt dập đầu thật mạnh.
+“Nhi thần… lĩnh chỉ!”
+Hắn thần sắc ảm đạm, lặng lẽ lui khỏi chính điện.
+Ôn phi chần chừ lên tiếng:
+“Hoàng thượng, điều kiện nơi biên quan Tây Vực quá mức gian khổ, Tứ Hoàng tử e rằng…”
+“Không cần cầu tình cho hắn.”
+Sở Hoàng cắt ngang lời bà.
+“Ngọc bất trác bất thành khí.”
+“Nếu hắn biết phấn đấu, sau này trẫm sẽ cho hắn một cơ hội sửa đổi.”
+“Nếu không biết phấn đấu…”
+“Vậy cứ ở biên quan Tây Vực cả đời đi.”
+Ôn phi không dám nhiều lời nữa.
+Đúng lúc ấy.
+Trên giường, Sở Ly bất an lắc đầu, hai tay quờ quạng khắp nơi.
+“Đừng… đừng giết ta… đừng… A!”
+“Ly nhi!”
+Nàng đột nhiên bật ngồi dậy.
+Đôi mắt vừa mở ra vẫn còn đầy vẻ kinh hãi.
+Mồ hôi lạnh không ngừng túa ra.
+Người đã sợ đến mức mê sảng.
+Ôn phi đau lòng ôm lấy nàng, dịu giọng dỗ dành:
+“Ly nhi đừng sợ, an toàn rồi.”
+“Không ai dám hại con nữa.”
+“Đừng sợ, ngoan.”
+Sở Ly mất rất lâu mới dần bình tĩnh lại.
+Sở Hoàng nói:
+“Trẫm đã nghiêm trị Tứ Hoàng tử.”
+“Trẫm sẽ để tất cả mọi người biết rằng.”
+“Trẫm tuyệt đối không cho phép chuyện cốt nhục tương tàn xảy ra.”
+“Nếu không…”
+“Kết cục sẽ giống như Tứ Hoàng tử.”
+“Thậm chí còn nghiêm khắc hơn.”
+“Là… Tứ Hoàng huynh hại con sao?”
+Sở Ly nghẹn ngào.
+Khóe mắt đỏ hoe.
+Nàng nhỏ tuổi nhất, lại là ấu tử, từ trước đến nay luôn được Sở Hoàng đặc biệt yêu thương.
+“Phụ hoàng… Tứ Hoàng huynh sao lại…”
+“Tam Hoàng huynh cũng chỉ là nhất thời hồ đồ.”
+Sở Hoàng vô thức nói nhầm rồi sửa lại:
+“Ý trẫm là… Tứ Hoàng huynh của con cũng chỉ nhất thời hồ đồ.”
+“Chuyện đã qua rồi.”
+“Sau này sẽ không bao giờ xảy ra nữa.”
+Sở Ly nắm chặt chăn, cắn chặt môi dưới, cố không để mình bật khóc vì sợ hãi.
+Giọng khàn khàn:
+“Tứ Hoàng huynh trước nay vẫn luôn thân thiết với Tam Hoàng huynh.”
+“Lẽ nào Tam Hoàng huynh vẫn luôn trách con…”
+“Trong lòng huynh ấy vẫn cho rằng, là con hại chết Tam Hoàng tẩu mà huynh ấy yêu thương nhất?”
+“Nhưng… nhưng…”
+Sở Hoàng lập tức nhận ra điều gì đó.
+“Nhưng cái gì?”
+“Nhưng… Phụ hoàng…”
+“Nhi thần không dám nói…”
+“Nói!”
+Sở Hoàng vén vạt long bào, ngồi xuống mép giường, nhìn khuôn mặt nhỏ tái nhợt, đáng thương của nàng.
+“Có trẫm ở đây.”
+“Muốn nói gì thì cứ mạnh dạn nói.”
+“Trẫm không tin còn có kẻ nào to gan đến mức dám mưu hại ngươi ngay dưới mí mắt trẫm.”
+Sở Ly nửa hoảng sợ, nửa e dè, vừa khóc vừa nói:
+“Lần trước…”
+“Nhi thần từng tận mắt nhìn thấy Tam Hoàng huynh ở Bát Bảo Lâu đặt làm một cây ngân bộ dao hoa hải đường song đế thượng hạng…”
+“…đem tặng cho đích nữ của Tả tướng.”
+Sở Hoàng trầm hẳn ánh mắt.
+Tả tướng họ Lục có hai nữ nhi.
+Đích nữ là Lục Chiêu Dương.
+Thứ nữ là Lục Mộng Điệp.
+Hai tháng trước.
+Sở Tây Lăng từng cầu xin ngài ban hôn với thứ nữ Lục Mộng Điệp, nói rằng hai người lưỡng tình tương duyệt, tâm đầu ý hợp.
+Ngài nghĩ…
+Chỉ là một thứ nữ.
+Không thể đại diện cho thế lực của phủ Tả tướng.
+Cho nên đã đồng ý.
+Nhưng…
+Hắn lại còn tặng đích nữ phủ Tả tướng một cây ngân bộ dao hoa hải đường song đế.
+Đồ vật mang ý nghĩa “song đế”…
+Chính là biểu tượng của hai lòng gắn bó.
+Lẽ nào…
+Người con gái hắn thật lòng yêu thích lại là đích nữ phủ Tả tướng?
+Vậy vì sao hắn lại cưới thứ nữ?
+Sở Hoàng không phải kẻ ngốc.
+Làm Hoàng đế bao nhiêu năm, ngài đã nhìn quá nhiều lòng người và mưu tính.
+Bao nhiêu khúc khuỷu trong chuyện này chỉ vừa lướt qua đầu một vòng…
+Trong lòng ngài đã có đáp án.
+Sắc mặt lúc này cũng lạnh đi rất nhiều.
+Ngài đứng dậy nói:
+“Tiểu Cửu.”
+“Con cứ an tâm dưỡng thương.”
+“Trước khi cánh tay lành hẳn, không được ra khỏi cung.”
+“Vâng, Phụ hoàng.”
+“Trẫm còn rất nhiều tấu chương cần xử lý.”
+“Ôn phi, nàng hảo hảo chăm sóc ‘nó’.”
+“Thần thiếp lĩnh chỉ.”
+Sở Hoàng phất tay áo rời đi.
+Khi vừa bước đến trước cửa Chiêu Lan điện…
+Lại nhìn thấy Sở Hạo Nguyệt vẫn quỳ bên ngoài.
+“Sao ngươi còn ở đây?”
+Sở Hạo Nguyệt quỳ thẳng lưng, bình thản đáp:
+“Phụ hoàng lệnh cho nhi thần sáng mai mới lên đường đến biên quan Tây Vực.”
+“Vẫn còn một ngày.”
+“Nhi thần muốn đợi Cửu đệ tỉnh lại, nói chuyện với ‘đệ ấy’ vài câu.”
+Sở Hoàng không nói thêm điều gì.
+Ngài sải bước rời đi.
+“Vương Đức Phúc.”
+“Lập tức truyền đích nữ phủ Tả tướng nhập cung.”
+“Trẫm muốn đích thân triệu kiến.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_91.html" class="btn">‹ Trước</a>
+            <a href="chuong_93.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

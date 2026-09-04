@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 238</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 238</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_237.html" class="btn">‹ Trước</a>
+            <a href="chuong_239.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 238: Nàng đây là sai khiến cả ta rồi sao?
+Đúng lúc Sở Ngạo Thiên đã bày bố chu toàn tại Đông thành môn, chuẩn bị vạn vô nhất thất, thì ở Tây thành môn – nơi người qua lại thưa thớt nhất – một đoàn xe ngựa đã thuận lợi tiến vào thành.
+Nàng đã trở về!
+Đế đô!
+Đế đô quen thuộc!
+Trở lại nơi mình đã lớn lên, nhìn mọi cảnh vật thân thuộc trước mắt, niềm hưng phấn trong đáy mắt Sở Ly không hề giả tạo.
+Trăng sáng nhất vẫn là trăng nơi cố hương.
+Lá rụng về cội vốn là ý niệm đã khắc sâu trong cốt tủy của mỗi con người. Lần này trở về Đế đô, tâm tình của nàng cũng như vậy.
+“Chủ tử.”
+Một ám vệ cưỡi ngựa tiến tới, hạ giọng bẩm báo đôi câu.
+Sở Đệ Trì khẽ nâng tay, ra hiệu cho hắn lui xuống.
+“Tiểu Cửu.”
+“Ừm?”
+“Lão tướng quân họ Tạ hai ngày nay bệnh cũ ở chân tái phát, ta đã sai Bạch Cẩm Y đến xem cho ông ấy. Ba ngày nữa, ta sẽ đưa nàng đến bái phỏng.”
+Theo kế hoạch, nàng vẫn phải được ghi dưới danh nghĩa của lão tướng quân họ Tạ, như vậy sau này hành sự mới thuận tiện.
+“Được.”
+Thì ra lão tướng quân họ Tạ cư ngụ gần Đế đô.
+Đúng là đại lừa tử.
+“Vậy chúng ta về trước.”
+“Về đâu?”
+Đầu óc Sở Ly tỉnh táo vô cùng.
+“Ngươi có công vụ phải xử lý thì cứ đi trước. Ta định tìm một khách điếm để tạm trú.”
+Sở Đệ Trì khựng lại.
+“Nàng ở khách điếm?”
+“Không thì sao?”
+Hoàng cung là không thể trở về.
+Nhà họ Ôn càng không thể đến.
+“Nàng có được mấy đồng bạc, chịu nổi kiểu tiêu xài như vậy sao?”
+Sở Đệ Trì siết chặt dây cương, ngựa dừng lại. Hắn quyết định phải nói rõ với nàng một phen.
+“Lần này hồi kinh, nàng dẫn theo sáu thị nữ. Phải thuê bao nhiêu gian thượng phòng? Hơn nữa, nàng còn mang cả con lão quy kia về. Những khúc gỗ để nó cư ngụ, đá cuội và chậu cây cảnh của nó đều đã chuyển về cả rồi. Đem đến khách điếm thì đặt ở đâu cho tiện?”
+Sở Ly đáp:
+“Ta biết là không tiện. Nhưng ta cũng không định ở khách điếm lâu, chỉ tạm thời một thời gian. Đợi mua được phủ trạch thích hợp rồi, ta sẽ dọn sang.”
+“Được.”
+Nếu nàng đã nói như vậy...
+Hắn lập tức đưa tay chỉ ra phía sau.
+“Vậy thì nàng cứ mang toàn bộ đống đồ này vào khách điếm đi.”
+Đoàn xe phía sau kéo dài thật dài, tổng cộng mười hai cỗ xe ngựa, chở theo giường, bàn ghế, từng rương lớn chất đầy gấm vóc lụa là, châu báu trang sức, lại còn sáu rương đầy thoại bản...
+Chẳng khác nào dọn nhà.
+Miệng Sở Ly khẽ há ra.
+Nhiều quá!
+Nếu chuyển hết vào khách điếm, e rằng cũng chẳng có chỗ mà đặt!
+Sở Đệ Trì nói:
+“Vốn dĩ kế hoạch của ta là ta ở Nhiếp Chính Vương phủ, còn tư uyển San Hô Thủy Tạ thì cho nàng ở tạm. Ai ngờ nàng lại muốn ở khách điếm. Nàng cứ ở San Hô Thủy Tạ, đợi mua được phủ trạch rồi hẵng dọn đi. Nơi đó rộng rãi, thuận tiện hơn khách điếm nhiều, cũng sạch sẽ hơn.”
+Nhắc đến San Hô Thủy Tạ...
+Đó chính là nơi bọn họ kết oán với nhau, cũng là khởi đầu của mọi chuyện.
+Quan trọng hơn...
+Đó là tư trạch của hắn.
+Sở Ly khẽ cắn môi dưới.
+“Những thứ này đều là do ngươi mua. Ngươi cứ chuyển đi trước, đợi ta mua được phủ trạch rồi, ngươi lại giúp ta chuyển sang.”
+Sở Đệ Trì nguy hiểm nheo mắt.
+“Nàng đây là sai khiến cả ta rồi sao?”
+“Gọi là đến, đuổi là đi?”
+“Hoàng thúc, ta không có ý đó. Chỉ là ta dẫn theo nhiều người như vậy, lại mang theo nhiều đồ như vậy, nếu tùy tiện ở vào San Hô Thủy Tạ, ta sợ sẽ làm hỏng nơi ở của ngươi.”
+“Nàng nhìn xem ta giống loại người để ý một tòa trạch viện sao? Cho dù nàng có thiêu rụi nó, ta cũng chỉ khen nàng biết phóng hỏa.”
+Sở Ly do dự.
+Vốn dĩ nàng định ở khách điếm.
+Nàng cùng sáu thị nữ, mang theo Bạch Vũ Anh Vũ và Quy sư thúc, cả đoàn cũng không tính là quá phiền phức.
+Nhưng mà...
+Hoàng thúc đã mua cho nàng quá nhiều, quá nhiều, quá nhiều đồ!
+Nhiều đến mức khách điếm căn bản không thể chứa nổi!
+Trong thời gian ngắn, nàng cũng chưa thể mua được phủ trạch thích hợp, e rằng chỉ có thể đến San Hô Thủy Tạ tá túc.
+Nàng do dự hồi lâu, nhìn đôi mắt lạnh lẽo như băng tuyết của nam nhân trước mặt, nhỏ giọng hỏi:
+“Ngươi... sẽ không phải là cố ý chứ?”
+“Nàng nói cái gì?!”
+Giọng nam nhân đột nhiên cao hẳn lên, tức đến mức cả lồng ngực cũng run rẩy.
+“Được, được lắm! Ta vì nữ tử mình yêu mà vung ngàn vàng, không hề tiếc rẻ. Kết quả đến cuối cùng lại bị nghi ngờ là có dụng tâm khác. Hóa ra bạc trắng của ta đều là lá cây hái từ trên cây xuống, chẳng đáng một xu!”
+“Hoàng thúc!”
+Đừng tức giận.
+Nàng chỉ hỏi một câu mà thôi.
+Sở Đệ Trì nghiêm mặt nói:
+“Đã là quan hệ chân thành đối đãi nhau, vậy mà ngay cả sự tín nhiệm cơ bản nhất cũng không có. Nàng cứ yên tâm vào ở San Hô Thủy Tạ đi. Công vụ của ta bận rộn, hầu như đều xử lý tại Nhiếp Chính Vương phủ. Nàng không cần lo lắng chuyện gì khác.”
+Sắc mặt Sở Ly thoáng đỏ.
+Làm như thể nàng lấy dạ tiểu nhân đo lòng quân tử vậy.
+“Ta chỉ ở nhờ vài ngày, chứ không phải chiếm luôn tư trạch của ngươi. Nếu ngươi muốn đến đó xử lý công vụ, lẽ nào ta lại ngăn cản?”
+“Yên tâm đi.”
+“Ta sẽ không bước vào San Hô Thủy Tạ nửa bước.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_237.html" class="btn">‹ Trước</a>
+            <a href="chuong_239.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

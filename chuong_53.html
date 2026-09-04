@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 53</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 53</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_52.html" class="btn">‹ Trước</a>
+            <a href="chuong_54.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 53: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 53: Hoàng thúc đoan phương tự giữ mình?
+Chiêu Lan Điện.
+Lúc Sở Ly tỉnh lại, toàn thân mềm nhũn vô lực, đầu óc mê man nặng nề.
+Nàng muốn rót một chén nước uống, nào ngờ tay mềm đến mức làm rơi cả chén trà xuống đất.
+Choang!
+“Chủ tử!”
+Cẩu Bát vẫn luôn canh giữ ngoài cửa. Nghe thấy động tĩnh, hắn vội vàng chạy vào.
+“Ngài dậy rồi ạ? Chỉ cần gọi nô tài một tiếng là được, để nô tài hầu hạ.”
+Sở Ly vốn thích ngủ nướng.
+Ngày thường chẳng có chí hướng gì, cũng hiếm có ai tìm nàng.
+Cho dù ngủ tới tận mặt trời lên cao ba sào, cũng không ai cảm thấy kỳ quái.
+“Bây giờ là giờ nào rồi?”
+“Cuối giờ Tỵ.”
+Qua thêm nửa canh giờ nữa là tới giữa trưa.
+“Nhuận Ngọc đâu?”
+Cẩu Bát thoáng ngẩn ra.
+“Nhuận Ngọc là người Nhiếp Chính Vương đưa tới. Nàng ấy giống các cung nữ khác, hằng ngày làm chút việc quét dọn, giặt giũ. Chủ tử sao đột nhiên lại hỏi đến nàng ấy?”
+“Gọi nàng ta tới trước mặt ta hầu hạ.”
+Chuyện này…
+Chủ tử chẳng phải không thích Nhiếp Chính Vương, vẫn luôn đề phòng người đó sao?
+Sao đột nhiên lại đổi ý rồi?
+“Vâng.”
+⸻
+Mới ăn được hai miếng cơm.
+Bát hoàng tử Sở Ngạo Thiên đã gào to chạy vào:
+“Cửu đệ! Cửu đệ!”
+Sở Ly cầm đũa:
+“Làm gì?”
+“Ngươi sao giờ này mới ăn cơm? Không phải, sao ngươi chỉ biết ăn cơm thế? Tin đồn bên ngoài truyền khắp nơi rồi, ngươi chưa nghe thấy sao?”
+Sở Ngạo Thiên đoạt lấy bát canh cá diếc trong tay nàng, uống liền một hơi ba ngụm lớn.
+Lau khóe miệng xong, hắn chấn kinh nói:
+“Trong cung đều đang đồn, đêm hôm trước Nhiếp Chính Vương ôm một nữ nhân về kinh! Ngài ấy từ trước tới nay không gần nữ sắc, không nạp thê thiếp, đây là cây sắt già nở hoa rồi đó!”
+Dung sắc Sở Ly hơi cứng lại.
+“Là nữ nhân thế nào?”
+“Không nhìn rõ. Nghe nói lúc đó Nhiếp Chính Vương dùng y phục quấn kín, giấu chặt vô cùng.”
+“Ồ.”
+Nàng buông lỏng chiếc đũa, gắp một đũa khoai tây thái sợi bỏ vào miệng.
+Sở Ngạo Thiên há hốc mồm:
+“Ngươi không kinh ngạc sao? Sao ngươi lại ăn tiếp rồi?”
+Kinh ngạc chứ!
+Cả Đế Đô đều chấn động!
+Mấy năm nay, Hoàng đế ban hôn, Thái hậu tác hợp, không ít đại thần muốn đưa nữ nhi vào Nhiếp Chính Vương phủ.
+Nhưng chưa từng có ai thành công.
+Mọi người còn âm thầm nghi ngờ Nhiếp Chính Vương có đoạn tụ chi phích.
+Giờ đột nhiên truyền ra chuyện này, làm sao không khiến người khác kinh ngạc?
+Thần sắc Sở Ly vẫn bình thường.
+“Ừm.”
+“?”
+Hôm nay Cửu đệ rất không bình thường.
+“Nghe nói hôm qua ngươi tới Quốc Công phủ, giải quyết chuyện của Phương Hải Dương. Chẳng lẽ ngươi thật sự giống lời đồn, có lòng tranh đoạt ngôi vị?”
+Sở Ngạo Thiên nghiêm túc nói:
+“Cửu đệ, nếu sau này ngươi đoạt đích thành công, ngươi có phải sẽ là người đầu tiên trừ khử ta và mẫu phi ta không?”
+“Để ta suy nghĩ đã.”
+“Hả?!”
+“Ta không tranh trữ.”
+Không hiểu vì sao, trong lòng Sở Ngạo Thiên cứ thấp thỏm không yên.
+Hắn luôn cảm thấy hôm nay Sở Ly đặc biệt bình tĩnh.
+Giống như một lão hòa thượng ngồi thiền.
+Bình tĩnh đến một cảnh giới nào đó.
+“Ngươi tuyệt đối đừng tranh trữ, tuyệt đối đừng, Cửu đệ.”
+Sở Ly biết.
+Phía trên có phe Đại hoàng tử.
+Văn thần đều quy thuận dưới trướng, nhân hậu đức dày, được vạn người ủng hộ.
+Phía dưới có phe Tam hoàng tử.
+Võ tướng đều nắm trong tay, công lao hiển hách, bảo quốc an bang.
+Nàng chỉ là thân nữ nhi.
+Lấy mạng đi tranh sao?
+“Nếu ngươi quật khởi, ta sẽ thành kẻ đội sổ mất. Khương Thái phó nhất định sẽ ngày nào cũng tới Ngự Thư phòng cáo trạng ta!”
+“…”
+Sở Ngạo Thiên cũng là học trò khiến Khương Thái phó đau đầu.
+Bởi vì bất kể hắn làm gì, cũng chỉ mạnh hơn Sở Ly một chút.
+Sở Ly thuộc được một trang sách.
+Hắn thuộc được một trang rưỡi.
+Sở Ly viết được một bài văn.
+Hắn viết được một bài rưỡi.
+“Sáng nay ta nghe đám tiểu thái giám nói, phụ hoàng đã phạt Tần Thiếu tướng quân ba năm bổng lộc, không được thăng chức để xoa dịu cơn giận của Quốc Công phủ. Nhưng Quốc Công phủ chết một đích tử đấy!”
+Cục tức này đâu dễ nuốt trôi như vậy?
+“Quốc Công phủ sẽ không bỏ qua cho ngươi. Hai ngày này ngươi tốt nhất nên tránh đầu sóng ngọn gió.”
+“Ừm, biết rồi.”
+Sở Ly nhanh chóng ăn xong, chỉnh lại y phục, chuẩn bị ra ngoài.
+Sở Ngạo Thiên đuổi theo:
+“Cửu đệ, ngươi đi đâu?”
+“Quốc Công phủ.”
+“Hả?!”
+⸻
+Trong lúc ăn cơm, Sở Ly đã nghĩ kỹ.
+Nhiếp Chính Vương và Hoàng thượng bất hòa.
+Nàng kẹp ở giữa, chỉ là một quân cờ để trút giận.
+Chỉ cần khiến Nhiếp Chính Vương hài lòng, hắn sẽ không tiếp tục nhằm vào nàng nữa.
+Mà hiện giờ, thứ Nhiếp Chính Vương căm hận nhất chẳng phải là chuyện hắn ra Nam Cương đánh trận tám tháng trời, vất vả trở về kinh, lại bị Hoàng đế đoạt mất binh quyền Hắc Giáp Vệ sao?
+Đổi lại là bất kỳ ai, cũng khó mà nuốt nổi cục tức này.
+Chờ nàng nghĩ cách trả lại binh quyền cho hắn.
+Hắn nguôi giận.
+Tự nhiên sẽ buông tha nàng.
+“Cửu đệ, ngươi điên rồi sao?”
+Sở Ngạo Thiên đuổi theo ra ngoài, trợn tròn đôi mắt đầy vẻ không thể tin nổi.
+“Ngươi đừng xen vào những chuyện này! Chẳng lẽ ngươi không nghe đám đại thần bàn tán về ngươi thế nào sao?”
+“Họ nói ngươi có lòng tranh trữ. Nếu bị các hoàng tử khác để mắt tới, ngươi sẽ xong đời đấy!”
+Thần sắc Sở Ly bình tĩnh.
+Bị Nhiếp Chính Vương để mắt tới mới thật sự là xong đời.
+“Ta chỉ làm một phi vụ này thôi.”
+Sau khi kết thúc.
+Nàng sẽ tìm cơ hội xin Hoàng thượng cho xuất cung lập phủ.
+Tránh xa triều chính thị phi.
+“Sở Ly! Rốt cuộc ngươi đang nghĩ gì? Ngươi có biết…”
+“Tham kiến Nhiếp Chính Vương.”
+Phía xa truyền tới tiếng cung nữ hành lễ.
+Sở Ngạo Thiên lập tức nuốt những lời bên miệng xuống, nhìn nam nhân đang đi từ hướng Thọ Khang Cung tới, chắp tay hành lễ:
+“Hoàng thúc.”
+Sống lưng Sở Ly hơi cứng lại.
+Nàng chỉ nhìn thấy vạt trường bào màu giáng tử đang chậm rãi tiến gần.
+Khẽ cúi đầu.
+Không nhìn mặt hắn.
+Giọng cực nhỏ gọi một tiếng:
+“Hoàng thúc.”
+“Ừm.”
+“Tiểu Bát, Tiểu Cửu.”
+Sở Đệ Trì bước tới.
+“Hôm nay không phải ngày nghỉ học, sao các ngươi không ở Hoàng gia học uyển? Nếu để Hoàng đế biết được, e rằng lại phải đau đầu rồi.”
+Sắc mặt Sở Ngạo Thiên hơi xấu hổ.
+Hắn cười gượng:
+“Chúng ta… chúng ta chuẩn bị đi…”
+“Chăm chỉ học hành cũng tốt, để Hoàng đế bớt nhọc lòng. Nếu thật sự không có tâm tư học tập, cũng không cần miễn cưỡng. Rồng sinh chín con, mỗi con một khác. Người người đều có sở trường riêng.”
+Sở Ngạo Thiên nghe xong, trong lòng chỉ biết hô lớn:
+Ông trời ơi!
+Hoàng thúc thật đúng là một trưởng bối khai minh!
+“Bản vương vừa từ Thọ Khang Cung ra. Nếu các ngươi có thời gian, hãy thường xuyên tới trước mặt Thái hậu tận hiếu. Trăm điều thiện, hiếu đứng đầu. Hiếu tâm còn quan trọng hơn cả năng lực.”
+“Vâng, hoàng thúc, chúng ta biết rồi.”
+“Ừm.”
+Sở Đệ Trì không nói thêm gì.
+Cất bước rời đi.
+Từ đầu tới cuối cũng không cố ý nhìn Sở Ly lấy một lần.
+Hắn giữ đúng thân phận trưởng bối.
+Đoan phương tự trì.
+Ngôn từ ôn hòa.
+Quan tâm hậu bối.
+Khiến Sở Ngạo Thiên không khỏi cảm thán:
+“Người ta đều nói võ tướng huyết tính sát phạt. Không ngờ hoàng thúc đánh trận bao nhiêu năm như vậy mà vẫn khoan hậu từ ái.”
+“Mặc dù ngài ấy với phụ hoàng không được hòa thuận lắm, nhưng đối với đám hậu bối chúng ta thì cực kỳ tốt.”
+“Thật không biết nữ tử được ngài ấy ôm về kinh đêm hôm trước, rốt cuộc có phúc khí lớn đến nhường nào!”
+Nghe những lời đó.
+Miệng Sở Ly chỉ toàn vị đắng chát.
+Đến nửa điểm ý cười cũng không nặn ra nổi.
+Hắn đoan phương tự trì?
+Hắn khoan hậu từ ái?
+Người câm ăn hoàng liên.
+Có khổ mà không nói nên lời. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_52.html" class="btn">‹ Trước</a>
+            <a href="chuong_54.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

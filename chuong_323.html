@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 323</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 323</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_322.html" class="btn">‹ Trước</a>
+            <a href="chuong_324.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 323: Ký ức
+Thái Y viện.
+Sau trận đại chiến suốt một đêm, chiến trường để lại không thể dọn dẹp trong chốc lát. Các đại phu là những người bận rộn nhất, trong Thái Y viện lúc này chỉ còn một y nữ trực ban.
+Y nữ trông thấy Sở Ly, lập tức cung kính hành lễ:
+“Tạ tiểu thư, người có chỗ nào không khỏe sao?”
+Sở Ly chậm rãi bước vào.
+“Ta ngủ không được yên, lúc nào cũng bị mộng cảnh quấn lấy.”
+Y nữ chắp tay đáp:
+“Nguyên nhân dẫn đến chứng mộng yểm có rất nhiều. Theo tình trạng gần đây của người, hẳn là do lao lực quá độ, lại chịu kinh hãi. Để ta kê cho người một thang thuốc an thần, có thể giúp ngủ ngon.”
+Sở Ly nhìn y nữ đi đến trước tủ thuốc, mở từng ngăn kéo, cẩn thận cân từng vị dược liệu.
+Nàng như vô tình cất lời:
+“Khi còn nhỏ, ta từng ngã từ trên mái nhà xuống, đập mạnh vào phía sau đầu. May mắn giữ được mạng sống, nhưng lại quên mất rất nhiều chuyện.”
+Y nữ đã ngoài bốn mươi tuổi, làm việc trong cung nhiều năm, chuyên chẩn trị bệnh phụ khoa cho các phi tần, dĩ nhiên từng nghe chuyện Cửu hoàng tử bị ngã lúc nhỏ.
+À không…
+Là Tạ tiểu thư.
+Nhưng dù là Tạ tiểu thư hay Cửu hoàng tử, giờ cũng chẳng còn quan trọng nữa.
+Hiện nay huynh trưởng nàng là Hoàng đế, vị hôn phu tương lai là Nhiếp Chính Vương, mẫu phi là Thái hậu tương lai. Cho dù nàng từng phạm tội khi quân, cũng chẳng ai dám trị tội nàng.
+“Tạ tiểu thư có ý là…”
+“Có cách nào… khiến ta nhớ lại không?”
+“Việc này…”
+Vết thương từ thuở nhỏ, nay đã hơn mười năm.
+Nếu nói đến việc khôi phục ký ức thì quả thực vô cùng khó.
+Y nữ không dám bảo đảm.
+Suy nghĩ một lúc rồi nói:
+“Ta có thể điều chế cho người một bình thuốc hỗ trợ khôi phục ký ức. Nhưng có thể nhớ lại hay không, hoặc khi nào nhớ lại… ta không dám cam đoan.”
+“Làm phiền ngươi. Ba ngày sau ta sẽ đến lấy.”
+“Vâng.”
+Sở Ly vừa định rời đi thì nghiêng mắt nhìn lại.
+“Chuyện hôm nay…”
+“Tạ tiểu thư cứ yên tâm! Những điều không nên nói, ta tuyệt đối sẽ không tiết lộ nửa lời.”
+“Vậy thì tốt.”
+Rời khỏi Thái Y viện, Sở Ly định đến Ngự Thư phòng thì thấy Biết Cửu hớt ha hớt hải chạy vụt qua bên cạnh nàng.
+“Biết Cửu?”
+“Ơ? Tạ tiểu thư?”
+“Sao ngươi lại hoảng hốt như vậy?”
+Giờ đây Biết Cửu cũng coi như đã lên chức, mặc một bộ trường bào màu tía sẫm thêu mãng xà bốn móng, tượng trưng cho thân phận Tổng quản thái giám. Hắn cuống quýt nói:
+“Tạ tiểu thư không biết đấy thôi! Tiêu Dao Vương đã vào cung, nổi trận lôi đình, nô tài chống đỡ không nổi, đang định đi bẩm báo Hoàng thượng đây!”
+“Ồ?”
+Nàng còn chưa tìm hắn.
+Không ngờ hắn lại chủ động vào cung trước.
+“Hắn ở đâu? Dẫn ta tới.”
+“Vâng.”
+Vừa bước vào thiên điện, nàng đã nghe thấy giọng nói mang theo mấy phần tức giận của nam nhân vang lên từ bên trong.
+“Thế nào gọi là không biết tung tích của Minh Hoa Quận chúa?”
+“Con gái của bản vương chẳng lẽ lại tự dưng biến mất?”
+“Vương gia bớt giận! Nô tài thật sự không biết!”
+Hai tiểu thái giám quỳ dưới đất, sợ hãi đến cực điểm.
+“Đồ vô dụng!”
+“Tiêu Dao Vương gia chớ nổi giận.”
+Giọng nữ tử vang lên.
+Tiêu Dao Vương đặt chén trà xuống, nheo mắt nhìn nàng.
+“Tạ tiểu thư cũng đến vừa hay, chi bằng phân xử giúp bản vương.”
+“Hai ngày trước Minh Hoa vào cung, từ đó đến nay vẫn chưa trở về.”
+“Bản vương hỏi cung nhân, họ nói… là ngươi cưỡng ép giữ con bé lại?”
+Sở Ly liếc nhìn hai tiểu thái giám, hơi nâng cằm.
+Hai người lập tức hiểu ý, như được đại xá, vội vàng lui xuống.
+Sở Ly mỉm cười ngồi xuống.
+“Minh Hoa Quận chúa thân phận tôn quý, ai dám cưỡng ép giam giữ? Chỉ là lưu lại trong cung làm khách mà thôi.”
+“Nếu đã là khách, nào có đạo lý không cho bản vương gặp nữ nhi?”
+“Vương gia hiểu lầm rồi.”
+Sở Ly cười nhạt.
+“Chỉ là hai ngày nay xảy ra cung biến, Hoàng thượng nghe được vài lời đồn đãi, trong lòng không mấy vui vẻ.”
+Tiêu Dao Vương ôn hòa cười.
+“Ồ?”
+“Vương gia có điều chưa biết. Viên Thị lang vốn xưa nay trung hậu thành thật, vậy mà đột nhiên sinh lòng phản nghịch, mưu đồ hành thích Hoàng thượng.”
+“Sau khi thất bại, hắn còn khai rằng… là do ngài sai khiến.”
+Sở Ly nâng chén trà, nhấp một ngụm.
+“Hoàng thượng nghe xong vô cùng phẫn nộ.”
+“Ngài là thúc thúc của người, sao có thể sai người ám sát chính cháu ruột mình?”
+“Ngài nói có đúng không?”
+Tiêu Dao Vương nhìn dáng vẻ bình tĩnh ung dung của nàng, trên mặt từ đầu đến cuối vẫn treo nụ cười ôn hòa.
+“Ý của bản vương là…”
+“Phải có nhân chứng, vật chứng và chứng cứ xác thực, tất cả đều bày ra trước mắt.”
+“Không thể chỉ nghe lời nói một phía của gian thần.”
+“Tạ tiểu thư nghĩ sao?”
+Sở Ly khẽ cụp mắt, đáy mắt tối đi.
+Chính vì…
+Không có chứng cứ xác thực…
+“Đương nhiên ta tin Tiêu Dao Vương trong sạch.”
+“Chỉ là cũng lo không có lửa sao có khói, làm tổn hại thanh danh của ngài.”
+“Ha ha ha!”
+Tiêu Dao Vương vỗ tay vịn ghế, cười lớn.
+“Lấy bụng ta suy bụng người, câu nói ấy nên để bản vương trả lại cho Hoàng thượng mới đúng.”
+“Không có bất kỳ lý do nào mà lại cưỡng ép giữ Minh Hoa.”
+“Nếu chuyện này truyền ra ngoài, người ta e rằng sẽ cho rằng Hoàng thượng là một vị bạo quân thị phi bất phân, hắc bạch bất minh.”
+“Nhưng Hoàng thượng từ nhỏ bản tính thuần lương.”
+“Bản vương hiểu rất rõ.”
+“Người sao có thể tùy tiện giam giữ Minh Hoa?”
+“Tạ tiểu thư, ngươi nói xem?”
+Đầu ngón tay Sở Ly chợt siết chặt.
+Nàng ngẩng đầu nhìn Tiêu Dao Vương.
+Hai ánh mắt chạm nhau giữa không trung.
+Hắn vẫn cười ôn hòa như cũ.
+Hơn bốn mươi năm nay…
+Hắn vẫn luôn mang gương mặt khoan hậu ấy, khiến người ta không thể bắt bẻ nổi dù chỉ một lỗi nhỏ.
+Thế nhưng…
+Giữa từng câu từng chữ lại giấu đầy lưỡi dao.
+Đâm người đau đớn vô cùng, mà đối phương vẫn không tìm ra nửa điểm để trách cứ.
+Đó…
+Chính là Tiêu Dao Vương!
+“Hoàng thượng giá lâm!”
+Đúng lúc ấy, bên ngoài điện vang lên tiếng thông truyền.
+Sở Ngạo Thiên bước vào.
+Thấy Tiêu Dao Vương không hề có ý quỳ xuống hành lễ, hắn nói:
+“Trẫm chỉ đến xem một chút, không cần hành lễ.”
+Đi đến bên cạnh Sở Ly, hắn thấp giọng nói:
+“Viên Thị lang ở Thiên lao đã cắn lưỡi tự vẫn.”
+Ánh mắt Sở Ly càng thêm sâu thẳm.
+Tiêu Dao Vương đặt chén trà xuống, làm bộ đứng dậy hành lễ.
+Sở Ngạo Thiên đưa tay giữ lấy cánh tay hắn.
+“Trẫm đã nói rồi, không cần hành lễ.”
+“Như vậy sao được? Người là quân, bản vương là thần, bản vương đương nhiên phải hành lễ với người.”
+“Tiêu Dao Hoàng thúc khách sáo quá rồi.”
+“Ngài là trưởng bối.”
+“Muốn hành lễ thì cũng phải là trẫm, kẻ hậu bối này kính trọng ngài.”
+“Nếu ngài thật sự quỳ trước trẫm… trẫm e rằng sẽ tổn thọ.”
+Tiêu Dao Vương cũng không làm bộ từ chối, cười rồi ngồi trở lại.
+“Hôm nay bản vương đến là để đón Minh Hoa.”
+“Hoàng thượng cũng biết, bản vương chỉ có một nữ nhi này, từ nhỏ đã nâng như minh châu bảo bối.”
+Sở Ngạo Thiên gật đầu.
+“Đó là lẽ đương nhiên.”
+“Hôm qua xảy ra cung biến, trẫm lo nàng bị thương nên cho người bảo vệ nàng.”
+“Giờ Tiêu Dao Hoàng thúc đích thân đến đón, trẫm cũng yên tâm.”
+“Biết Cửu.”
+Theo một tiếng phân phó.
+Chẳng bao lâu sau, Biết Cửu đã dẫn Sở Minh Hoa đến.
+Vừa bước vào, nàng ta hơi ngẩng cằm, thần sắc kiêu ngạo, giống hệt một con gà trống thắng trận, khiêu khích nhìn Sở Ly.
+Chỉ bằng nàng…
+Cũng dám đấu với mình?
+Còn dám giam giữ mình?
+Giờ thì sao?
+Chẳng phải vẫn phải ngoan ngoãn thả mình ra?
+“Phụ vương.”
+“Tạ tiểu thư dù sao cũng chỉ là nữ nhi ngoại thần, không tiện lưu lại trong cung.”
+“Chi bằng… để nàng tiễn phụ vương và con xuất cung.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_322.html" class="btn">‹ Trước</a>
+            <a href="chuong_324.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

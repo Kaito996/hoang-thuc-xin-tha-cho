@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 10</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 10</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_9.html" class="btn">‹ Trước</a>
+            <a href="chuong_11.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 10: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
+Chương 10: [Tốt nhất nên cách xa Nhiếp Chính Vương một chút]
+Ngoài cổng San Hô Thủy Tạ.
+Khi Sở Đệ Trì bước ra, liền thấy Sở Ly đang ngồi xổm bên bậc thềm, trong tay cầm một cành cây nhỏ, chọc đám kiến dưới đất.
+Trọng Phong liếc nhìn một cái, cố ý dậm chân nặng hơn.
+Sở Ly vội ném cành cây đi, lập tức quay đầu:
+— Hoàng thúc.
+— Ừ.
+Sở Đệ Trì bước xuống bậc đá, khóe mắt khẽ liếc qua.
+Chẳng biết từ đâu có một mẩu bánh vụn, dẫn tới hơn chục con kiến bu quanh. Hắn thật không hiểu thứ đó có gì đáng chơi.
+— Hoàng thúc, chẳng phải nói chuẩn bị xe ngựa sao?
+Trọng Phong dắt tới ba con tuấn mã, nhưng không có xe.
+Sở Đệ Trì lạnh giọng:
+— Đường đường nam nhi, ngay cả cưỡi ngựa cũng không biết?
+— Đại Sở ta vốn là thiên hạ đoạt được trên lưng ngựa. Có loại hoàng tử như ngươi, thật khiến Hoàng thượng nở mày nở mặt.
+Sở Ly nghe tai trái lọt vào, tai phải lọt ra.
+Cứ việc mắng đi.
+Nàng không thèm tranh hơn thua bằng miệng lưỡi với hắn.
+Bị mắng vài câu cũng đâu rơi mất miếng thịt nào.
+Lục nghệ quân tử, nàng đều từng học qua, chỉ là luôn học trong điều kiện an toàn.
+Nhưng ba con chiến mã trước mắt cao lớn hùng tráng, hơi thở phì phò, nhìn là biết chiến mã quân doanh.
+Chiến mã theo chủ, tính tình cao ngạo, người thường khó mà thuần phục.
+Sở Đệ Trì tung người lên ngựa, động tác lưu loát:
+— Còn không lên ngựa?
+— Biết rồi.
+Sở Ly tiến lại gần, lúc này mới phát hiện con ngựa cao hơn nàng tới hai cái đầu.
+Cao thế này?
+Nắm yên ngựa, giẫm bàn đạp, thử mấy lần vẫn không leo nổi.
+Chiến mã phì hơi, nghiêng mắt nhìn nàng, dường như đang cười nhạo.
+Sở Ly có chút lúng túng.
+Nàng kiễng chân, cố sức trèo lên, đột nhiên phía sau có người đỡ một cái.
+Nhờ vậy mới thuận lợi ngồi được lên lưng ngựa.
+Ngồi trên cao, gần như có thể nhìn thấy mái nhà san sát phía xa.
+Nàng thở phào nhẹ nhõm:
+— Đa tạ.
+Người vừa giúp nàng chính là Tiêu Dạ Hành.
+Khi cười lên, vị Tiêu Đô đốc này trông khá ôn hòa dễ gần.
+Tiêu Dạ Hành cười nói:
+— Cửu hoàng tử khách khí.
+— Chỉ là chiến mã tính tình dữ dằn, điện hạ nhớ giữ chặt dây cương.
+— Vâng?... Vâng!
+Chiến mã bất ngờ tung vó lao đi.
+Quán tính suýt hất Sở Ly ngã khỏi lưng ngựa.
+Nàng vội siết dây cương, ép thấp người xuống, miễn cưỡng giữ vững thân hình.
+Cả đoàn phi ngựa ra khỏi kinh thành, hướng về Thiên Linh Tự.
+Ban đầu còn ổn.
+Nhưng vừa ra khỏi thành, đường núi gập ghềnh.
+Lưng ngựa xóc nảy đến mức nàng gần như muốn nôn hết bữa tối hôm qua.
+Khi đến Thiên Linh Tự, mặt trong hai đùi nàng đau rát như lửa đốt, e rằng da đã bị cọ xước.
+Trái lại, Sở Đệ Trì vẫn thần sắc như thường, sải bước đi thẳng vào chùa.
+— Đi mời Huyền Tuệ đại sư, bản vương phụng mệnh Thái hậu tới lấy Phật châu.
+— Vâng, chủ tử.
+Trọng Phong lĩnh mệnh.
+Sở Ly vịn tường, hai chân đau đến tê dại.
+Vừa lúc đó, Sở Đệ Trì quay đầu nhìn nàng.
+Nàng lập tức thu lại vẻ nhăn nhó, bình tĩnh nói:
+— Hoàng thúc cứ đi lấy Phật châu đi.
+— Ta muốn tới trước tượng Bồ Tát bái một chút.
+Nói xong liền cố tỏ ra tự nhiên mà bước đi.
+Đợi tới góc khuất, nàng mới đau đến mức nhảy cẫng lên.
+Hai tay liên tục vỗ vào mặt trong đùi.
+Đau như bị nước sôi làm bỏng.
+Vì sao lại bắt nàng đi cùng hoàng thúc tới lấy Phật châu chứ?
+Hoàng tổ mẫu rốt cuộc nghĩ gì vậy?
+Một giọng nói đột nhiên vang lên:
+— Chân bị cọ rách rồi?
+Sở Ly giật nảy mình quay đầu.
+Người này!
+Đi đường không có tiếng động sao?
+— Không... không có.
+— Không có vậy ngươi đang làm gì?
+— Lâu ngày không cưỡi ngựa, xương cụt bị xóc hơi đau.
+— Nghỉ một lát là ổn.
+Nói xong liền vội vàng bước vào đại điện lễ Phật.
+Khói hương trong chùa lượn lờ.
+Không khí thanh tịnh khiến lòng người bình an hơn hẳn.
+Người tới dâng hương phần lớn là nữ tử, rất ít thấy nam nhân.
+Sở Ly quỳ trước Phật đài, chắp hai tay thành kính.
+Trong lòng thầm khấn:
+"Bồ Tát phù hộ."
+"Mong con sớm khôi phục thân phận nữ nhi, lại không bị trị tội khi quân."
+"Đợi ngày được ban phủ xuất cung, có thể sống tiêu dao tự tại..."
+À đúng rồi.
+Tốt nhất là cách xa Nhiếp Chính Vương một chút.
+Đứng ngoài điện, Sở Đệ Trì nhìn dáng vẻ thành kính của nàng, khóe môi khẽ nhếch lên đầy châm biếm.
+Người đời thích cầu thần bái Phật.
+Sinh lão bệnh tử, nhân duyên tử tự, mưa thuận gió hòa...
+Đều cầu nơi thần Phật.
+Nếu thần Phật thật sự hữu dụng, vậy người đời đâu cần tự cường?
+Hắn không tin Phật.
+Lúc này, Trọng Phong bước nhanh trở lại:
+— Chủ tử, Huyền Tuệ đại sư đã chờ người tại thiền phòng.
+— Chuyện bảo ngươi điều tra, vẫn chưa có kết quả?
+— Thuộc hạ vô năng, xin chủ tử trách phạt!
+Trọng Phong cúi đầu:
+— Đêm khánh công yến đó, gia quyến bá quan, cung nữ cùng phi tần đều có mặt trong cung, số lượng quá đông.
+— Để tránh khiến người khác sinh nghi, thuộc hạ không dám trắng trợn điều tra trong cung.
+Nếu bị Hoàng thượng phát giác, tất sẽ sinh họa.
+Hơn nữa, chủ tử chỉ giao cho hắn vài sợi tua màu lam.
+Muốn tìm được chủ nhân của chúng, tuyệt không dễ dàng.
+Sở Đệ Trì lạnh nhạt liếc hắn:
+— Quả thật vô dụng.
+Nói rồi xoay người rời đi.
+Đúng lúc ấy, từ phía xa vang lên một giọng nữ dịu dàng:
+— Cửu đệ, sao đệ lại ở Thiên Linh Tự?
+Sở Đệ Trì nhìn sang.
+Mấy vị nữ tử trẻ tuổi, phục sức hoa quý, dưới sự hộ tống của tỳ nữ đang tiến vào chùa lễ Phật.
+— Đại hoàng tẩu, Nhị hoàng tẩu, hai vị cũng tới sao?
+Sở Ly đứng dậy.
+Người đến chính là Đại hoàng tử phi và Nhị hoàng tử phi.
+Bên cạnh còn có một thiếu nữ cúi người hành lễ:
+— Biểu huynh.
+Nàng là tiểu thư nhà mẹ đẻ của Ôn phi — Ôn Chỉ Tịch, cũng là biểu muội của Sở Ly.
+Sở Ly gật đầu:
+— Gần đây Thái hậu thường ho khan, ta tới Thiên Linh Tự cầu phúc cho người.
+Đại hoàng tử phi ôn hòa nói:
+— Nói cũng phải.
+— Dạo này thời tiết thất thường, Diễm nhi lại nhiễm phong hàn.
+— Cửu đệ cũng nên chú ý sức khỏe.
+— Ta bận chăm sóc Diễm nhi nên chưa kịp vào cung thăm đệ khi nghe tin đệ bị thương.
+Nhị hoàng tử phi cười:
+— Trai phạn ở Thiên Linh Tự rất ngon.
+— Sau khi lễ Phật xong, chúng ta ngồi lại trò chuyện nhé.
+— Được.
+Hai vị hoàng tử phi đi vào đại điện.
+Sở Ly cũng định bước theo thì Ôn Chỉ Tịch khẽ gọi:
+— Biểu huynh.
+Nàng dừng lại:
+— Có chuyện gì?
+Ôn Chỉ Tịch xoắn nhẹ ngón tay, hai má ửng hồng:
+— Biểu huynh.
+— Muội tự tay thêu một chiếc hương nang, bên trong đựng quyết minh tử thượng hạng.
+— Mang theo bên người rất có tác dụng an thần.
+Nàng lấy từ trong tay áo ra, ngượng ngùng đưa tới:
+— Mong biểu huynh...
+Trong đầu Sở Ly lập tức căng thẳng.
+Từ xưa đến nay, để bảo đảm huyết mạch thuần chính, quý tộc và hoàng thất thường kết thân với biểu huynh biểu muội.
+Nhưng nàng là nữ tử.
+Tuyệt đối không thể nhận tình ý của biểu muội.
+Hai người căn bản không có kết quả!
+Nàng chỉ là một hoàng tử ăn không ngồi rồi, chờ chết già.
+Không ngờ lại có sức hút lớn như vậy, khiến biểu muội đem lòng ái mộ.
+Xem ra sau này nàng càng phải khiêm tốn hơn mới được.
+Sở Ly vừa tiếc nuối vừa tàn nhẫn cự tuyệt:
+— Chỉ Tịch, thật xin lỗi, ta không thể...
+Ôn Chỉ Tịch chớp mắt:
+— Mong biểu huynh giúp muội chuyển tặng Ngũ hoàng tử.
+— Muội vô cùng cảm kích.
+— ?
+Sở Ly lập tức đổi sắc mặt, làm như không có chuyện gì mà nhận lấy hương nang:
+— À... tặng Ngũ hoàng huynh à.
+Khoan đã!
+Ngũ hoàng huynh năm xưa bị thương hai chân, thành phế nhân, chỉ có thể ngồi xe lăn suốt đời.
+Không ngờ trong hoàn cảnh ấy vẫn có nữ tử đem lòng yêu mến.
+Nàng còn tưởng biểu muội thích mình.
+Hóa ra sức hút của nàng còn không bằng vị Ngũ hoàng huynh tàn tật kia!
+Trong lòng muôn vàn cảm xúc, nhưng trên mặt vẫn bình thản:
+— Chuyện biểu muội nhờ, ta nhất định sẽ chuyển đến nơi.
+— Đa tạ biểu huynh!
+Ầm!
+Đột nhiên một tiếng sấm nổ vang xé toạc bầu trời.
+Mưa lớn trút xuống như thác.
+Bách tính tới lễ Phật ai nấy vội vàng xuống núi.
+Có người lại bị mắc kẹt.
+Một tiểu hòa thượng dẫm nước mưa chạy tới bẩm báo:
+— Mưa quá lớn, một cây cổ thụ đã đổ ngang đường xuống núi.
+— Hiện giờ không thể thông hành.
+— Chỉ đành chờ mưa tạnh rồi mới dọn dẹp được.
+Nhưng nhìn thế mưa này, e rằng hai ba canh giờ nữa cũng chưa chắc dừng.
+Đại hoàng tử phi lập tức sốt ruột:
+— Diễm nhi vẫn đang bệnh, không thể rời mẫu thân lâu được. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_9.html" class="btn">‹ Trước</a>
+            <a href="chuong_11.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

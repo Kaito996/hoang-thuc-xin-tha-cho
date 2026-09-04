@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 169</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 169</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_168.html" class="btn">‹ Trước</a>
+            <a href="chuong_170.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 169: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 169: Một mũi tên xuyên thấu tâm khẩu
+Sở Ly ra tay không chút lưu tình, mạnh mẽ đánh vào gáy Hướng Nguyệt khiến nàng ta ngất lịm, rồi lấy chìa khóa trên người nàng, mở sợi xích bạc đang khóa nơi cổ tay mình.
+Cuối cùng cũng khôi phục tự do!
+Nàng lập tức chạy vội ra ngoài, nhưng chợt nhớ tới điều gì, lại quay trở vào, bưng bát canh dưa chuột thịt băm đã bị bỏ thuốc mê đặt trên bàn.
+Nơi giam giữ tù binh.
+Một tiểu binh khiêng chậu cơm đi tới, lớn tiếng gọi:
+“Các huynh đệ, ăn bữa khuya nào!”
+Sáu tên vệ binh canh giữ tù binh kinh ngạc cười:
+“Đêm nay đại chiến, ngay cả doanh trù cũng được điều đi làm việc khác, vậy mà vẫn còn thời gian nấu bữa khuya?”
+“Có bận đến đâu cũng không thể để các huynh đệ chịu đói.”
+“Ha ha ha, được! Muộn thế này cũng vừa hay đói bụng rồi.”
+Bọn họ bước tới, bưng cơm chan canh dưa chuột thịt băm, ăn được hai miếng thì nhíu mày:
+“Ơ? Canh này sao nguội ngắt thế? Khó ăn quá.”
+Tiểu binh cúi đầu đáp:
+“Huynh đệ trong doanh trù đều đi làm việc khác cả rồi, chỉ còn một mình ta nấu cơm, bận không xuể.”
+“Ra là vậy, thế thì chúng ta càng phải ăn nhiều một chút… Sao đầu ta lại thấy choáng… Á… Cơm này… cơm này…”
+Rầm!
+Tiểu binh từ từ ngẩng đầu lên.
+Chính là Sở Ly.
+“Mục Vũ!”
+Nàng vội vàng chạy tới, rút kiếm chém đứt dây trói, cứu Tần Mục Vũ xuống.
+“A Ly, nàng không sao chứ?”
+“Ta không sao cả, còn huynh thế nào?”
+“Đều chỉ là ngoại thương.”
+“Việc cấp bách, chúng ta mau rời khỏi đây!” Sở Ly kéo một tên lính đang hôn mê tới, lột y phục trên người hắn. “Mau thay vào!”
+“A Ly, ta ngửi thấy mùi khói lửa, cũng nghe thấy tiếng chém giết. Sau khi thoát khỏi quân doanh Nam Man, nàng cứ chạy thẳng về phía đông, cứ chạy mãi. Bên đó có một tòa tiểu trấn thuộc địa giới Đại Sở.”
+Vừa thay y phục vệ binh Nam Man, Tần Mục Vũ vừa nói:
+“Đến đó rồi, nàng sẽ an toàn!”
+“Còn huynh thì sao?”
+“Chiến hỏa đã nổi, ta phải lập tức trở về chiến trường. Thêm một người là thêm một phần sức!”
+“Ta đi cùng huynh!”
+Thần sắc Tần Mục Vũ trầm xuống:
+“Sở Ly! Ta không cho phép…”
+“Suỵt, suỵt!”
+Sở Ly nắm lấy tay hắn, kéo hắn nấp sau lều trại.
+“Tuy đang giao chiến, nhưng trong quân doanh vẫn còn một đội vệ binh đóng giữ. Đây không phải nơi để nói chuyện, chúng ta đi trước đã.”
+Nàng phải đến Nam Cương.
+Nàng có thứ vô cùng quan trọng, nhất định phải giao tận tay Sở Đệ Trì.
+Hai người mặc y phục vệ binh Nam Man, đi lại trong quân doanh thuận tiện hơn rất nhiều. Hơn nữa, đêm nay mọi sự chú ý đều dồn hết về chiến trường, nên hai người vô cùng thuận lợi thoát khỏi quân doanh.
+Khi chạy tới chiến trường, trước mắt hiện ra một cảnh tượng hỗn loạn:
+Chiến hỏa ngút trời, khói súng mịt mù, tên bay như mưa, đao kiếm va chạm, máu chảy thành sông…
+Có người bị thương, có người bỏ mạng, tiếng kêu thảm thiết vang lên không dứt.
+Một tên vu cổ binh bị chém mất nửa cái đầu, nhãn cầu lủng lẳng rơi ra ngoài, vậy mà vẫn nắm chặt trường kiếm, sức mạnh như trâu, tiếp tục liều mạng chém giết…
+Sắc mặt Sở Ly trắng bệch, dạ dày cuộn lên khó chịu.
+“A Ly, nàng mau tìm chỗ an toàn mà trốn! Nhìn chiến cuộc này, Đại Sở cực kỳ bất lợi, thành môn chẳng mấy chốc sẽ bị công phá!”
+Tần Mục Vũ nhặt một thanh kiếm nhuốm máu dưới đất.
+Sở Ly giữ lấy hắn:
+“Thành môn sắp vỡ, lúc này huynh xông tới khác nào đi chịu chết!”
+“Tướng sĩ vẫn đang tử thủ, ta không thể đi. A Ly, nàng không cần lo cho ta, mau đi!”
+Tần Mục Vũ không ngoảnh đầu lại, lao thẳng vào dòng máu lửa.
+“Mục Vũ!”
+Ầm!
+Ngay lúc thành môn sắp bị công phá, hai bên trái phải chiến trường bỗng nhiên tràn ra vô số binh sĩ đen nghịt, tạo thành thế gọng kìm, lao vọt tới.
+“Giết!”
+“Bao vây chúng!”
+“Giá!”
+Kinh Ảnh và Trọng Phong lần lượt chỉ huy cánh trái và cánh phải, tiến hành giáp kích.
+Thấy tình thế không ổn, Thác Bạt Minh Nguyệt biến sắc:
+“Sao bọn chúng lại có nhiều binh như vậy!”
+“Không hay rồi! Công chúa!”
+Một tên vệ binh mặt đầy máu chạy tới.
+“Trên… trên thành… toàn là bia tên, cọc gỗ và người rơm! Ban đêm nhìn không rõ, chúng ta trúng kế rồi!”
+Đại Sở cố ý thổi hiệu giác, đánh chiến cổ, tạo thanh thế ngút trời, khiến bọn họ tưởng rằng toàn quân Đại Sở đều đã xuất kích, tử thủ thành môn, quyết chiến đến cùng.
+Không ngờ chỉ là Không Thành Kế!
+Bọn họ sắp bị bao vây rồi!
+Thác Bạt Minh Nguyệt lập tức hạ lệnh:
+“Cho binh sĩ rút về!”
+Đúng lúc ấy, thành môn mở rộng, An tướng quân dẫn kỵ binh xông ra:
+“Giết!”
+“Giết!”
+Quân Đại Sở tạo thành một vòng cung khổng lồ, bao vây toàn bộ quân Nam Man.
+Thác Bạt Minh Nguyệt siết chặt dây cương:
+“Đáng chết!”
+Là nàng sơ suất!
+Khi toàn quân công thành, tên, máy bắn đá, thang mây cùng các khí cụ công thành của họ đã tiêu hao bảy tám phần, trong khi binh sĩ Đại Sở ai nấy đều trang bị đầy đủ, quân nhu sung túc.
+Điều này vô cùng bất lợi cho bọn họ!
+“Dạ Ly ca ca, chúng ta rút trước!”
+“Không hay rồi, Công chúa! Phía sau… phía sau doanh trại của chúng ta bốc cháy, lương thảo bị thiêu rồi!”
+“Cái gì!”
+Thác Bạt Minh Nguyệt ngoái đầu nhìn lại, chỉ thấy nơi quân doanh đóng trại, lửa lớn ngút trời, gần như nhuộm đỏ nửa bầu trời.
+“Khốn kiếp!”
+Nàng túm cổ áo tên lính kia:
+“Đêm nay chúng ta phát động tập kích, Đại Sở hoàn toàn không đề phòng. Dù bọn chúng có bản lĩnh đến đâu cũng tuyệt đối không thể nhanh như vậy đã lẻn vào quân doanh của chúng ta, trừ phi…”
+Trừ phi…
+Có gian tế!
+Có kẻ ngầm báo tin cho Đại Sở, nên Đại Sở mới bày ra Không Thành Kế khiến bọn họ mắc bẫy; cũng vì thế mà mới thiêu được doanh trại của họ.
+“Công chúa! Bọn chúng đánh tới rồi!”
+“Chúng ta sắp bị bao vây!”
+“Lương thảo đều cháy sạch rồi, lửa quá lớn…”
+“Công chúa, không hay rồi!”
+“Công chúa…”
+Thác Bạt Minh Nguyệt giận đến cực điểm.
+Khinh người quá đáng!
+Nàng chuẩn bị chu toàn như vậy mà vẫn bị Đại Sở đánh cho trở tay không kịp.
+Nàng tuyệt đối không nhận thua!
+“Một nửa quân lập tức lui về cứu lương thảo! Vu cổ quân ở lại, giết cho ta! Giết một là hòa vốn, giết hai là lời một!”
+“Rõ!”
+Vệ binh rút lui trước, để lại hai nghìn vu cổ quân toàn lực chém giết.
+Toàn thân chúng đầy thương tích, cho dù gãy một chân hay một cánh tay cũng hoàn toàn không biết đau, vẫn điên cuồng tàn sát binh sĩ Đại Sở.
+“A!”
+“Phụt!”
+“Sao… sao giết không chết… khụ…”
+Binh sĩ Đại Sở liên tiếp đâm sáu bảy kiếm vào bụng chúng. Đang kinh hãi thì đã bị vu cổ quân một kiếm đâm chết.
+Vu cổ quân rút trường kiếm cắm trong bụng mình ra, lỗ máu không ngừng ộc ộc tuôn máu. Đôi mắt xanh tím vô hồn đảo qua đảo lại, hung hãn tàn sát binh sĩ Đại Sở xung quanh.
+Nhất thời, tiếng kêu thảm thiết vang dậy khắp nơi.
+Sở Dạ Ly lặng lẽ nhìn chiến trường hỗn loạn.
+Sở Đệ Trì quả thực không dễ đối phó, nhưng đội vu cổ quân của Nam Man cũng không khiến người thất vọng.
+Phía xa.
+Tần Mục Vũ và Sở Ly hợp sức thiêu hủy lương thảo, thành công phá vỡ kế hoạch của Nam Man. Họ cướp được một chiến mã.
+“Đi về phía đông! Nhớ kỹ!”
+Hắn đỡ nàng lên lưng ngựa, dùng sống kiếm quất mạnh vào mông ngựa.
+Chiến mã hí vang, tung cao vó rồi phi nước đại.
+“Mục Vũ!”
+A Ly… đi đi!
+Vĩnh biệt!
+Là một võ tướng, nơi này chính là trách nhiệm của ta!
+Nhìn chiến mã lao vào màn đêm sâu thẳm, Tần Mục Vũ đưa tay lau vệt máu trên mặt, rồi mới xoay người, đi về hướng ngược lại với Sở Ly, bước vào giữa biển lửa chiến tranh ngập trời…
+Khắp nơi hỗn loạn.
+“Giết!”
+“Giết!”
+Vu cổ quân vô cảm tàn sát, Kinh Ảnh và Trọng Phong giết đến mặt mũi đầy máu, thở hổn hển.
+Trên lưng chiến mã cao lớn, Sở Đệ Trì mặc trường bào gấm màu huyền mặc, lạnh lẽo như màn đêm. Chỉ thấy một mình hắn thúc ngựa vòng qua chiến trường, hướng thẳng tới quân doanh Nam Man.
+Sở Dạ Ly vẫn lặng lẽ nhìn chiến trường.
+Thác Bạt Minh Nguyệt nói:
+“Dạ Ly ca ca, dù Đại Sở đã bao vây chúng ta, binh lực gấp ba lần chúng ta, nhưng vu cổ quân của ta có thể lấy một địch trăm. Cho dù đánh theo kiểu luân chiến, không quá nửa canh giờ cũng sẽ tiêu hao sạch thể lực của bọn chúng.”
+Đến lúc đó, thắng lợi sẽ thuộc về bọn họ!
+“Sở Đệ Trì sẽ không ngồi chờ chết.” Sở Dạ Ly nói.
+“Tiểu Sở công tử đang ở trong tay chúng ta, lượng hắn cũng không dám làm càn!”
+“Đó là kẻ nào!”
+Đúng lúc ấy, một tên lính gác trên cao phát hiện một chiến mã khả nghi đang phi về phía đông:
+“Công chúa, người kia mặc y phục doanh trù. Một tên đầu bếp sao lại xuất hiện trên chiến trường?”
+Tất cả mọi người hoặc đang chém giết, hoặc đang rút lui, chỉ duy nhất người đó một người một ngựa chạy về phía đông.
+Tên lính gác lớn tiếng:
+“Gian tế!”
+“Kẻ đó nhất định là gian tế của Đại Sở!”
+Thác Bạt Minh Nguyệt lạnh lùng nhìn theo:
+“Bảo sao kế hoạch tập kích chu toàn như vậy vẫn thất bại. Thì ra Đại Sở đã sớm cài tai mắt trong quân ta!”
+Sở Dạ Ly thúc ngựa xoay nửa thân.
+“Cung!”
+Vệ binh hai tay dâng lên.
+Hắn giương cung.
+Lắp tên.
+Nhắm chuẩn mục tiêu cách đó mấy chục trượng, rồi bất ngờ buông năm ngón tay.
+Vút!
+“A!”
+Trên lưng ngựa cách ba bốn chục trượng, bóng người mảnh mai kia lập tức bị bắn rơi xuống ngựa.
+Một mũi tên xuyên thấu tâm khẩu!
+Tiếng kêu đau đớn lập tức bị nuốt chửng giữa tiếng chém giết vô tận.
+Sở Dạ Ly ném cây cung đi.
+Không hiểu vì sao, nơi đầu tim hắn bỗng nhói lên như bị kim đâm, tựa hồ có người dùng dao khoét mất một mảnh, vô cớ sinh ra cảm giác hoảng loạn.
+Gian tế của Đại Sở đã trà trộn vào quân doanh Nam Man, vậy thì rất có khả năng Tiểu Cửu đã nhân lúc hỗn loạn được cứu đi.
+Sắc mặt hắn trầm xuống:
+“Người đâu! Lập tức quay về quân doanh, canh giữ chặt Tiểu Sở công tử!”
+“Không hay rồi! Công chúa, không hay rồi! Tiểu Sở công tử biến mất rồi!”
+Đúng lúc ấy, Hướng Nguyệt hớt hải chạy tới từ phía không xa.
+Sắc mặt Sở Dạ Ly chợt biến:
+“Ngươi nói cái gì?”
+Hướng Nguyệt cuống quýt đáp:
+“Nô tỳ vốn vẫn luôn canh chừng Tiểu Sở công tử, nhưng không hiểu vì sao nàng ấy đột nhiên tỉnh lại, còn đánh ngất nô tỳ. Chờ nô tỳ tỉnh lại thì nàng ấy đã không còn ở đó nữa!” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_168.html" class="btn">‹ Trước</a>
+            <a href="chuong_170.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

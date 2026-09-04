@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 82</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 82</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_81.html" class="btn">‹ Trước</a>
+            <a href="chuong_83.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 82: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 82: Ta đã có người trong lòng rồi
+Lúc này.
+Sở Ly đang trên đường xuất cung, cùng đi còn có huynh muội Tần Mục Vũ và Tần Mục Tuyết.
+Tần Mục Tuyết nói:
+— “Tình hình tối qua thật sự hung hiểm đến vậy sao? A Ly ca ca, là huynh cứu muội. Đại ân đại đức như thế, muội không có gì báo đáp, chỉ nguyện lấy thân…”
+Sở Ly cắt ngang:
+— “Là ca ca muội cứu cả hai chúng ta.”
+— “Hả?”
+Không được.
+Nàng muốn lấy thân báo đáp A Ly ca ca cơ.
+Tần Mục Tuyết ôm lấy cánh tay Sở Ly:
+— “A Ly ca ca, huynh đừng khiêm tốn nữa. Muội biết huynh quan tâm muội, trong lòng huynh nhất định có muội.”
+Sở Ly gãi đầu:
+— ”…Ừm.”
+Để nàng nghĩ xem…
+Phải làm sao mới ứng phó được sự nhiệt tình này.
+Dù sao cũng phải kịp thời dập tắt ý niệm vốn không nên có của nàng ấy.
+— “Mục Tuyết, ta đã có người mình thích rồi. Ta đối xử tốt với muội, chỉ là xem muội như thân muội muội.”
+Tần Mục Tuyết sững sờ:
+— “Cái gì?!”
+Tin tức này quá đột ngột.
+— “Huynh có người mình thích rồi? Sao muội chưa từng biết? Từ nhỏ đến lớn, gần như muội chưa từng thấy bên cạnh huynh có vị cô nương nào thân cận cả.”
+Sở Ly vỗ nhẹ vai nàng:
+— “Ta không lừa muội. Đợi khi có dịp thích hợp, ta sẽ mời hai huynh muội gặp nàng.”
+— “A?”
+Là thật sao?
+Tần Mục Tuyết cắn chiếc khăn tay, tim như đang nhỏ máu.
+Nàng đã thích “chàng” bao nhiêu năm nay.
+Hôm nay đột nhiên lại nói với nàng những lời ấy…
+Chẳng phải là bảo nàng thất tình hay sao?
+Tần Mục Vũ đi phía sau, ánh mắt phức tạp vẫn luôn dừng trên người Sở Ly.
+Nàng đã có người mình thích rồi?
+Đêm qua…
+Nàng ở cùng Nhiếp Chính vương…
+Ý nghĩ ấy vừa nảy sinh, đã bị hắn cưỡng ép đè xuống.
+Bọn họ là thúc chất.
+Không thể có thứ tình cảm như vậy.
+Huống hồ, Nhiếp Chính vương quan tâm Cửu hoàng tử, là danh chính ngôn thuận, hợp tình hợp lý.
+Sao hắn có thể suy nghĩ lung tung được?
+Rất nhanh đã tới cổng cung.
+Sở Ly nói:
+— “Ta còn có việc khác phải xử lý. Chờ xong việc rồi gặp lại. Mục Tuyết, muội cùng ca ca về trước đi.”
+Tần Mục Tuyết vốn xuất thân võ tướng, tính tình thẳng thắn, sảng khoái.
+A Ly ca ca cho dù đã có người mình thích thì đã sao?
+Nàng sẽ công bằng cạnh tranh với người đó!
+— “Huynh đi đi.”
+Nàng phất tay.
+Đợi Sở Ly đi xa, Tần Mục Vũ vẫn ngẩn ngơ nhìn theo.
+Bộ dạng thất thần ấy, giống như hồn phách đã rời khỏi thân xác.
+— “Ca?”
+Nàng khẽ đẩy hắn.
+— “Đại ca?”
+— “Hả?”
+Tần Mục Vũ hoàn hồn.
+Tần Mục Tuyết nhíu mày:
+— “Huynh sao vậy? Sao cứ như người mất hồn thế? Có chuyện gì xảy ra à?”
+Nàng còn vừa thất tình xong, vậy mà cũng chưa buồn đến thế.
+Tần Mục Vũ thu lại ánh mắt mơ hồ:
+— “Không có gì, chắc là tối qua không nghỉ ngơi tốt.”
+Trong lòng hắn tràn đầy tự trách.
+Tối qua lúc xảy ra chuyện, hắn không thể lập tức bảo vệ tốt Sở Ly.
+Đợi đến khi hắn dẫn người chạy tới, mọi chuyện đều đã kết thúc.
+Đứng trước mặt Nhiếp Chính vương…
+Hắn bỗng có một cảm giác tự ti, hổ thẹn đến vô cùng chật vật.
+⸻
+Phủ Ôn gia.
+Lúc này, Sở Ly ngồi ở vị trí chủ tọa, nhấp một ngụm trà.
+Mai di nương và Ôn Nhã quỳ ngay chính giữa đại sảnh.
+Mẫu nữ hai người khóc đến nỗi không thành tiếng, không ngừng dập đầu nhận sai.
+Ôn Nhã khóc lóc:
+— “Ôn Nhã nhất thời hồ đồ. Thiên sai vạn sai đều là lỗi của con. Xin biểu huynh rộng lòng tha thứ!”
+Chuyện chiếc mặt nạ sư tử vừa bị lật ra…
+Ôn Nhã cũng không thể giấu nổi nữa.
+Vụ ác bá bắt cóc tối qua, nàng ta chính là một trong những kẻ chủ mưu.
+Mai di nương liên tiếp dập đầu năm sáu cái thật mạnh:
+— “Tiện thiếp không quản giáo tốt nàng, tiện thiếp có trách nhiệm không thể chối bỏ, cam nguyện chịu phạt. Chỉ xin Cửu hoàng tử khai ân, tha cho Ôn Nhã một mạng!”
+Ôn Chỉ Tịch đầy mặt tức giận, thất vọng nói:
+— “Đây đã là lần thứ hai rồi.”
+— “Lần trước, nể tình thân thích, Cửu hoàng tử mới đặc biệt khai ân. Không ngờ ngươi vẫn còn hồ đồ như thế, đúng là đồ ngu xuẩn!”
+Tam phu nhân Ôn gia nghiêm giọng quát:
+— “Lần trước bảo ngươi quỳ gối tự kiểm điểm, ngươi kiểm điểm hết vào bụng chó rồi hay sao?”
+Bà vỗ mạnh lên bàn:
+— “Người đâu, mang gia pháp!”
+Mai di nương kinh hãi đến mức mặt cắt không còn giọt máu.
+Ôn gia xuất thân võ tướng.
+Bởi vậy gia pháp là một cây nhuyễn tiên làm từ gân hổ, to bằng ngón tay cái.
+Trên thân roi còn gắn từng hàng móc ngược sắc bén.
+Mỗi roi quất xuống da thịt, những chiếc móc ấy sẽ cứa sống từng mảng da thịt.
+Dùng cây roi này trừng trị kẻ phạm trọng tội.
+Đến nam nhân còn không chịu nổi.
+Huống chi Ôn Nhã chỉ là một cô nương thân thể mảnh mai.
+Mai di nương vội vàng cầu xin:
+— “Phu nhân, tiện thiếp nguyện thay Ôn Nhã chịu phạt. Xin phu nhân khai ân. Dù là gấp đôi, gấp ba hình phạt, tiện thiếp cũng cam lòng nhận hết!”
+— “Chỉ là Ôn Nhã còn nhỏ. Nếu chịu gia pháp, trên người để lại sẹo, sau này sẽ không thể gả được vào gia đình tốt. Xin phu nhân khai ân!”
+Bà vừa khóc vừa dập đầu.
+Ôn Nhã nhào tới ôm lấy Mai di nương, khóc đến không thành tiếng.
+— “Cửu hoàng tử! Tiện thiếp cầu xin người! Cầu xin người giơ cao đánh khẽ!”
+Tam phu nhân Ôn gia quyết đoán nói:
+— “Làm ra loại chuyện này mà chưa lấy mạng nàng ta, đã là đặc biệt khai ân rồi.”
+— “Nếu Mai di nương còn tiếp tục cầu xin, chính là không biết điều.”
+— “Chi bằng mời Hoàng thượng tới phân xử.”
+Một khi Hoàng thượng nhúng tay…
+Ôn Nhã chắc chắn phải chết.
+Toàn thân Mai di nương run lên.
+Lập tức không dám nói thêm lời nào.
+— “Phu nhân, gia pháp đã mang tới.”
+Quản gia hai tay dâng cây roi lên.
+Tam phu nhân phất tay áo, ngồi vững trên ghế:
+— “Ai cũng phải trả giá cho hành vi của mình.”
+— “Đánh hai mươi roi, không được sai sót.”
+— “Tuân lệnh.”
+Chát!
+Quản gia vung roi.
+Tiếng roi xé gió sắc lạnh vang lên.
+Chỉ mới thử roi, lại xoay cổ tay vài cái…
+Đã dọa Ôn Nhã run rẩy toàn thân.
+Nếu thật sự quất xuống người…
+Đúng lúc ấy, Sở Ly đặt chén trà xuống, lên tiếng:
+— “Ôn Nhã.”
+— “Nếu ngươi khai ra kẻ đứng sau sai khiến mình, ta sẽ xử nhẹ, thế nào?”
+Ánh mắt Ôn Nhã khẽ dao động:
+— “Không có ai sai khiến ta…”
+— “Ngươi còn muốn chấp mê bất ngộ?”
+Sở Ly nhíu mày.
+Rốt cuộc Sở Cảnh Lân đã cho nàng ta lợi ích gì?
+— “Biểu huynh, thật sự không có ai sai khiến ta. Là ta nhất thời hồ đồ, lầm đường lạc lối…”
+Trong thư, Thất hoàng tử từng nói…
+Những khổ sở nàng chịu vì hắn, sau này hắn sẽ đền bù cho nàng gấp mười lần.
+Hắn sẽ cưới nàng.
+Sở Ly cười lạnh một tiếng.
+Nàng lạnh lùng đặt chén trà xuống bàn.
+— “Bị người khác lợi dụng, còn cam tâm làm áo cưới cho người ta.”
+— “Nếu trong lòng hắn thật sự có ngươi, đã sớm tới cứu ngươi rồi.”
+— “Đợi đến khi ngươi mang đầy mình sẹo, xấu xí đến mức không nỡ nhìn, hắn há còn thích ngươi sao?”
+— “Ôn Nhã, ngươi quá xem trọng bản thân mình rồi.”
+Cái đầu óc ấy…
+Nếu không đánh cho một trận, e rằng sẽ chẳng bao giờ tỉnh ngộ.
+Vì một người ngoài…
+Mà chẳng hề có chút vinh dự gia tộc, cũng chẳng có tinh thần đoàn kết.
+Nói nàng là một con bạch nhãn lang nuôi không thân cũng không quá đáng.
+Tam phu nhân Ôn gia hạ lệnh:
+— “Đánh!”
+Quản gia vung roi quất mạnh xuống.
+— “Á!”
+Một roi đánh nát y phục.
+Vết roi hằn sâu trên lưng, máu tươi lập tức bắn ra.
+Chát!
+— “Á! A!!”
+—————————
+Like 
+không làm bạn nghèo đi, nhưng giúp admin giàu… dopamine. 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_81.html" class="btn">‹ Trước</a>
+            <a href="chuong_83.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

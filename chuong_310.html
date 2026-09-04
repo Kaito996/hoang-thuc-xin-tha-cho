@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 310</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 310</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_309.html" class="btn">‹ Trước</a>
+            <a href="chuong_311.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 310: Núi mưa sắp đến, gió đầy lầu
+Đế đô.
+“Vẫn chưa tra được gì sao? Thôi... lui xuống đi... tiếp tục theo dõi...”
+Sở Ngạo Thiên phất tay với ám vệ, mấy người lập tức thi triển khinh công, thân pháp nhanh như quỷ mị, thoắt cái đã rút lui sạch sẽ, tốc độ nhanh đến mức khiến người ta phải líu lưỡi.
+Hắn lại lẩm bẩm chửi:
+“Uổng công có võ công cao như vậy, khoe khoang cho ai xem? Bảo các ngươi theo dõi Tiêu Dao Vương, kết quả ngay cả một chút dị thường cũng không tra ra được.”
+Cuối cùng còn bồi thêm một câu:
+“Một lũ vô dụng!”
+“Đừng nóng.” Sở Ly đứng bên cửa sổ, nhìn sân viện bên ngoài ngập tràn sắc thu, “Hoàng thúc Tiêu Dao dù sao cũng lớn hơn chúng ta hai mươi tuổi, ngay cả khi phụ hoàng còn tại vị cũng chưa từng nghi ngờ ông ấy, huống chi là chúng ta?”
+Muốn nắm được nhược điểm của ông ta, nói thì dễ, làm mới khó.
+Nhưng nàng có dự cảm, Tiêu Dao Vương tuyệt đối không đơn giản như vẻ bề ngoài, người này nhất định còn giấu một nước cờ.
+Sở Ngạo Thiên sốt ruột vò đầu:
+“Cửu muội, ta nóng lòng lắm! Cảm giác này giống như biết rõ hắn có vấn đề, nhưng lại không có chứng cứ, chỉ có thể trợn mắt nhìn.”
+“Nóng vội ăn không được đậu nóng.”
+Sở Ly khẽ vê đầu ngón tay, rũ mắt trầm ngâm:
+“Ông ta là lão hồ ly, nhưng Minh Hoa Quận chúa tuổi tác tương đương chúng ta, tâm cơ không sâu bằng Tiêu Dao Vương, không bằng thử bắt đầu từ nàng ta?”
+Sở Ngạo Thiên lập tức bước đến gần:
+“Ý của cửu muội là...”
+“Lần trước, Minh Hoa Quận chúa phái người ám sát ta, muốn lấy mạng ta, nàng ta lại thích Nhiếp Chính Vương...”
+Đúng lúc ấy, Minh Hoa Quận chúa lại vào cung.
+Nàng thường xuyên đến thỉnh an Hân phi, mỗi lần ngồi đều hai ba canh giờ mới xuất cung.
+Hôm nay cũng vậy.
+Chỉ là trên đường xuất cung, vừa hay trông thấy phía xa, Hoàng thượng cùng Tạ Vãn Nguyệt sóng vai đi tới, tiếng trò chuyện của hai người lọt vào tai:
+“Hoàng thẩm, gần đây hoàng thúc thế nào... khi nào người định hồi kinh... hoàng thẩm...”
+Sở Minh Hoa chợt dừng bước.
+Tiếng xưng hô ấy, hai chữ ấy vừa lọt vào tai liền như kim châm, khiến lửa giận trong mắt nàng bừng lên.
+Đồ vô sỉ!
+Tiện nhân!
+Không môi không sính, tự nhận thân phận Nhiếp Chính Vương phi thì cũng thôi, còn xúi giục Hoàng thượng gọi nàng là “hoàng thẩm”, thật cho rằng mình đã gả vào Nhiếp Chính Vương phủ rồi sao!
+Nàng đứng nguyên tại chỗ, trừng mắt nhìn theo bóng lưng hai người khuất dần, móng tay vì tức giận mà gần như bấm nát lòng bàn tay.
+Xuất cung.
+Hồi phủ.
+“Phụ vương!”
+Nàng đẩy cửa bước vào, thấy Tiêu Dao Vương đang nhàn nhã xách lồng trêu chim, vành mắt lập tức đỏ hoe, bao nhiêu ấm ức không nhịn nổi nữa:
+“Phụ vương, chúng ta còn phải ở đây đến bao giờ? Hôm nay vào cung, con gặp Tạ Vãn Nguyệt, con tiện nhân không biết liêm sỉ ấy, hết lấy lòng Hoàng thượng lại bám lấy Nhiếp Chính Vương, con hận không thể bóp chết nàng ta!”
+Tiêu Dao Vương vẫn ung dung đùa với chim, mỉm cười:
+“Quan hệ giữa nàng và Hoàng thượng vốn đã tốt, đâu cần cố ý lấy lòng.”
+“Ý người là gì?”
+Bởi vì...
+Nàng chính là Cửu hoàng tử.
+Quan hệ giữa nàng với Hoàng thượng và Nhiếp Chính Vương vốn dĩ đã vô cùng thân thiết.
+Tiêu Dao Vương khẽ cười, không giải thích, thong thả treo lồng chim lên.
+“Ta biết con có tình ý với Nhiếp Chính Vương, đừng vội.”
+“Phụ vương, nữ nhi sao có thể không vội?”
+Sở Minh Hoa đỏ mắt tiến lên:
+“Tạ Vãn Nguyệt kia có tư cách gì mà đem so với con?”
+“Nhẫn thêm chút nữa.”
+“Nữ nhi không nhịn được.”
+“Không nhịn được cũng phải nhịn.”
+Tiêu Dao Vương ngẩng đầu nhìn ra ngoài cửa sổ, trong mắt chìm sâu một tầng u quang.
+“Không bao lâu nữa... Đế đô này sẽ đổi trời.”
+—
+Nơi rừng sâu không một ai hay biết, một đạo đại quân khổng lồ đang lặng lẽ mai phục.
+Bách tính vẫn như thường ngày cày cấy, thương nhân vẫn buôn bán, triều thần cùng mọi người vẫn bận rộn việc của mình.
+Không một ai nhận ra, gió thu cuối mùa đã bắt đầu mang theo mùi huyết khí.
+Núi mưa sắp đến, gió đầy lầu.
+—
+Nam Cương.
+Sau khi Ân Vương rời đi, Nam Cương không còn bùng nổ chiến sự nữa.
+Quân đội rắn mất đầu, theo lý mà nói, đây chính là cơ hội tốt nhất để đoạt lại cương thổ.
+Nhưng sự tồn tại của Thác Bạt Mặc lại khiến Tần Mục Vũ có phần phân tâm.
+“Thúc thúc, khi nào phụ vương mới đến đón cháu?”
+“Thúc thúc, phụ vương cháu là người nhất ngôn cửu đỉnh, người đã nói sẽ đem Nam Cương tặng cho thúc, thì nhất định sẽ làm được.”
+“Thúc thúc...”
+Không biết từ bao giờ, Tần Mục Vũ trở nên ít nói.
+Đặc biệt là khi đối diện với Thác Bạt Mặc, vẻ lạnh nhạt của hắn càng khiến người ta cảm thấy cao quý, lãnh đạm.
+Mặc cho Thác Bạt Mặc líu ríu không ngừng, hắn chỉ cầm chủy thủ trong tay, thuần thục lột da một con thỏ.
+“Thúc thúc, thúc với phụ vương cháu là bằng hữu sao?”
+“Không.”
+“Vậy vì sao thúc lại chịu giúp phụ vương trông cháu?”
+Tần Mục Vũ cúi đầu lột da thỏ, không đáp.
+“Thúc thúc, khi nào phụ vương trở về?”
+“Người sẽ không trở lại nữa.”
+“Vì sao?”
+“Người không cần cháu nữa.”
+Thác Bạt Mặc khẽ sững người.
+Vốn ngoan ngoãn ngồi xổm bên cạnh xem hắn lột da thỏ, giờ đây lại không nói thêm lời nào.
+Tần Mục Vũ ngẩng đầu, đối diện với đôi mắt trong trẻo đã đỏ hoe của đứa bé, chẳng hiểu sao tim hắn bỗng siết chặt.
+Chỉ thất thần nửa khắc.
+Mũi dao trượt trên lớp da thỏ trơn nhẫy, cứa rách đầu ngón tay.
+“Suỵt!”
+“Thúc thúc, sao người bất cẩn như vậy!”
+Thác Bạt Mặc lập tức hoảng hốt, vội vàng lấy chiếc khăn tay nhỏ trong tay áo ra, quấn lấy ngón tay hắn.
+Máu đỏ rất nhanh đã thấm đẫm chiếc khăn tay màu lam nhạt.
+Một vết cắt rất dài...
+Thế nhưng Tần Mục Vũ dường như chẳng cảm thấy đau.
+Trong đầu hắn chỉ vang lên một trận ong ong, một dự cảm cực kỳ bất an dâng lên trong lòng.
+Đúng lúc ấy.
+“Thiếu tướng quân!”
+Vương Hằng vén rèm xông vào, lời gấp gáp vừa lên đến miệng, nhìn thấy Thác Bạt Mặc bên cạnh, lại nuốt trở xuống.
+Tần Mục Vũ đứng dậy.
+“Hai người các ngươi vào đây, đưa A Mặc đến chỗ cô nương Tang Tang chơi.”
+“Rõ!”
+Đợi hai binh sĩ đưa Thác Bạt Mặc rời đi, Vương Hằng mới bước nhanh tới:
+“Thiếu tướng quân, Nam Man chính biến, phát sinh binh biến... Ân Vương đã chết!”
+Tần Mục Vũ đột ngột ngẩng đầu:
+“Ngươi nói cái gì!”
+Ân Vương...
+Đã chết?
+“Ám vệ thân cận của ngài ấy bị trọng thương, một mình quay về Nam Cương, hiện đang chờ bên ngoài doanh trại!”
+Trước mắt Tần Mục Vũ tối sầm, vô ý hất rơi chủy thủ cùng con thỏ trên bàn, keng keng rơi xuống đất.
+Hắn dường như không hề nghe thấy, lập tức lao thẳng ra ngoài.
+“Tiêu Giác!”
+“Tần thiếu tướng quân!”
+Tiêu Giác ôm cánh tay, sắc mặt trắng bệch như giấy, lảo đảo mấy bước rồi quỳ một gối xuống đất.
+“Năm ngày trước, thuộc hạ theo chủ tử dẫn tinh binh quay về Vương đô. Công chúa đã đoạt được đại quyền, lại dùng hơn ba trăm mạng người trong Ân Vương phủ để uy hiếp.”
+“Chủ tử vì bảo vệ linh vị cùng tro cốt của mẫu thân, trúng bảy mũi tên, rơi xuống hộ thành hà... đến thi thể cũng không tìm thấy!”
+Bọn họ...
+Đã thua rồi!
+“Cái gì gọi là không tìm thấy thi thể? Nếu chưa tìm được thì tức là vẫn chưa chết!”
+Tiêu Giác đỏ hoe hai mắt:
+“Hộ thành hà nước chảy xiết, sâu đến mấy chục trượng, nước cuối thu lạnh thấu xương, chủ tử lại trúng bảy mũi tên, vết thương đều vào chỗ hiểm...”
+Cho dù thần linh giáng thế...
+Cũng khó cứu nổi.
+Huống hồ, hắn đã phái hơn vạn người tìm kiếm dọc hạ lưu hộ thành hà, nhưng căn bản không tìm được.
+Quan trọng hơn là...
+Hắn không còn cơ hội tiếp tục tìm nữa.
+Công chúa đã nắm đại quyền, hạ lệnh tiêu diệt toàn bộ cựu bộ của Ân Vương, thanh trừ dị kỷ.
+Chính hắn cũng phải liều mạng trốn chạy mới thoát được.
+Tiêu Giác cố nén đau nơi vết thương, khó nhọc lấy từ trong ngực ra một vật vẫn luôn được hắn cẩn thận gìn giữ, hai tay dâng lên:
+“Di nguyện cuối cùng của chủ tử... là phó thác Tiểu Thế tử cho Tần thiếu tướng quân...”
+“Còn cả Nam Cương...”
+“Chủ tử nói...”
+“Tần thiếu tướng quân, Nam Cương... trả lại cho ngươi.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_309.html" class="btn">‹ Trước</a>
+            <a href="chuong_311.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

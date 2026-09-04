@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 36</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 36</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_35.html" class="btn">‹ Trước</a>
+            <a href="chuong_37.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 36: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 36: Ta là người, ghét nhất kẻ phản bội
+Chát!
+Chát!
+Mấy cái tát giáng xuống, đánh đến mức miệng Dương Kiều Kiều lệch hẳn sang một bên, dáng vẻ thê thảm, khó coi vô cùng.
+Những người khác chỉ đứng lạnh lùng bàng quan.
+Thật ra, phía sau lưng không ít kẻ cũng từng lén lút nói xấu Cửu hoàng tử. Chỉ trách nàng ta ngu xuẩn, lại dám trực diện khiêu khích trước mặt Cửu hoàng tử, chẳng phải tự tìm lấy nhục đó sao?
+“Thế tử…”
+Dương Kiều Kiều bị đánh đến hoa mắt chóng mặt, hai má bỏng rát, vừa nhục vừa đau.
+“Thế tử, cứu ta…”
+Chuyện hôm nay một khi truyền ra ngoài, thanh danh của nàng coi như hủy sạch.
+Từ nay về sau ở kinh thành, nàng còn mặt mũi nào mà ngẩng đầu làm người?
+Sở Ly nói:
+“Nghe nói Phương thế tử và Dương tiểu thư có hôn ước trong người, nếu Phương thế tử chịu mở miệng, ta lập tức tấu rõ phụ hoàng, tha cho nàng ta.”
+Sắc mặt Phương Hải Dương u ám.
+Thân phận hắn cao quý bậc nào, tương lai kế thừa Quốc công phủ, lại có Tĩnh Hoàng quý phi là cô ruột chống lưng, tiền đồ vô lượng.
+Vậy mà vị hôn thê của hắn lại bị tát trước mặt toàn bộ công tử, thiên kim trong kinh thành, khiến hắn cũng mất sạch thể diện.
+Đường đường là Quốc công phủ tương lai chủ mẫu, sao có thể là kẻ nhục nhã đến thế?
+“Cửu hoàng tử quá lời rồi. Bản thế tử còn chưa thành thân, hôn ước kia, tự nhiên không tính.”
+Dương Kiều Kiều trừng lớn hai mắt, không dám tin:
+“Thế tử… thế tử… sao ngài có thể… a!”
+Chỉ vì một chuyện nhỏ như vậy, thế tử lại vứt bỏ nàng?
+“Đây là đang làm loạn chuyện gì?”
+Từ xa, một giọng nói già nua, hiền hòa mà uy nghiêm vang lên.
+Mọi người lập tức tản sang hai bên, vừa nhìn thấy người đến là lão nhân bên cạnh Hoàng hậu, liền đồng loạt hành lễ, cung kính gọi:
+“Trường Bội cô cô.”
+Trường Bội khẽ gật đầu:
+“Hôm nay Hoàng hậu nương nương đột nhiên có việc, sai lão nô đến đây thay mặt tiếp đãi chư vị. Ăn uống thoải mái, không cần câu nệ.”
+Ánh mắt bà dừng lại trên Dương Kiều Kiều đang quỳ dưới đất, mặt mũi sưng đỏ:
+“Đây là…”
+Tần Mục Tuyết lập tức đáp:
+“Trường Bội cô cô, Dương tiểu thư công khai châm chọc Cửu hoàng tử vô đức vô tài, khiến hoàng gia mất hết thể diện. Thiên gia uy nghiêm, há có thể trở thành trò cười cho thần tử?”
+Trường Bội nhíu mày.
+Lời này mà truyền đến tai Hoàng thượng, chém đầu còn là nhẹ.
+Cửu hoàng tử chỉ phạt chưởng miệng, đã xem như nhân từ.
+“Đừng tụ tập ở đây nữa, kẻo phá hỏng nhã hứng hôm nay. Hội Vân, đi mời một vị đại phu tới, trị thương cho Dương tiểu thư.”
+“Vâng.”
+Mọi người lần lượt tản đi.
+Sở Ly vừa rời bước, bên kia đã có ba bóng người vội vã chạy tới.
+“Cửu hoàng tử!”
+Chính là Đoan Mộc Thương, Đoan Mộc Duệ và Mộc Tề Sơn.
+Đoan Mộc Thương vội hỏi:
+“Hôm ấy ở Thủy Kính Đài, ngài rời đi lúc nào vậy? Sao chẳng nói với bọn ta một tiếng?”
+Đoan Mộc Duệ cau mày:
+“Nói ra cũng lạ, hôm đó rượu dường như đặc biệt dễ say.”
+Mộc Tề Sơn gật đầu theo:
+“Phải đó, đến khi chúng ta tỉnh rượu, ngoài cửa sổ đã là hoàng hôn rồi.”
+Ánh mắt Sở Ly không lộ dấu vết lướt qua người Mộc Tề Sơn.
+Hôm ấy, nếu không nhờ Tần Mục Vũ kịp thời đến, thân phận nàng bại lộ, e rằng chỉ có một con đường chết.
+Nàng nhàn nhạt nói:
+“Khi đó Tần thiếu tướng quân đến tìm ta, nên ta rời đi trước.”
+“Thì ra là vậy.”
+Đoan Mộc Thương bừng tỉnh:
+“Lần trước chưa đã, lần này nhân Thu nhật yến, chúng ta phải uống cho thỏa thích!”
+Sở Ly cười lớn, dáng vẻ phóng đãng, khoác vai hắn:
+“Đi, uống rượu!”
+“Ha ha ha, đi!”
+Mộc Tề Sơn theo sau. Khi lướt qua Phương Hải Dương, hắn cúi đầu thấp hơn, vẻ mặt hoảng hốt.
+Phương Hải Dương cười mà không cười:
+“Đồ phế vật vô dụng.”
+“Thế tử…”
+Không thể trách hắn.
+Thật sự không thể trách hắn.
+Hôm đó, hắn rõ ràng đã hạ dược Cửu hoàng tử, chỉ chờ “hắn” dâm loạn mất kiểm soát, rồi lột sạch y phục, ném ra giữa phố lớn, khiến thanh danh bại hoại.
+Nhưng Tần thiếu tướng quân lại xuất hiện.
+“Thất hoàng tử nhà ta ghét nhất chính là Cửu hoàng tử. Trong Thu thu săn bắn, còn bị Cửu hoàng tử đoạt mất công lao, thắng không vẻ vang. Ngươi ngay cả chút chuyện nhỏ này cũng làm không xong, phụ thân ngươi còn vọng tưởng nương nhờ Quốc công phủ sao?”
+Phương Hải Dương là biểu huynh ruột của Thất hoàng tử, chuyện săn bắn thu ấy khiến hắn uất ức vô cùng, quyết tâm phải xả cơn giận này cho vị biểu đệ.
+“Xin thế tử cho ta thêm một cơ hội, ta nhất định sẽ nghĩ ra biện pháp tốt hơn!”
+Mộc Tề Sơn vội vàng tỏ rõ trung tâm, không dám nhiều lời, lập tức theo lên, nhập bọn cùng Đoan Mộc Thương, Đoan Mộc Duệ và Sở Ly.
+Gió thổi lay bóng, mặt ao lấp lánh ánh nước.
+Cúc hoa nở rộ, trong cung tinh tâm bồi dưỡng ra đủ sắc cúc, thoạt nhìn năm màu rực rỡ, giữa tiết thu lá vàng rơi hết, lại giống hệt cảnh trăm hoa đua nở mùa xuân.
+Đẹp đến nao lòng.
+Các quý nữ tụ tập bên trái ao, các công tử tụ tập bên phải. Trường Bội cô cô ngồi ở trung tâm, không ít quý nữ thỉnh thoảng tiến lên bắt chuyện, tiện thể nịnh nọt.
+Đàm tiếu vui vẻ, uống rượu mua vui, không khí cực kỳ khoái hoạt.
+Sở Ly uống liền hai chén rượu, dường như đã say, bắt đầu nói lời ngông cuồng:
+“Ta là người, ghét nhất kẻ phản bội. Bất luận là ai dám đâm sau lưng ta, dù là bằng hữu của ta, ta cũng sẽ như bóp chết Dương tiểu thư, bóp chết hắn!”
+“Mộc Tề Sơn, ngươi nói có đúng không?”
+Trong lòng Mộc Tề Sơn chấn động, nhưng thấy Sở Ly say khướt, tựa hồ chỉ là lời nói khi hứng rượu.
+Hắn gượng cười:
+“Tự nhiên là vậy.”
+“Đến, uống rượu.”
+Trong lúc Mộc Tề Sơn bất an, sắc mặt biến đổi, hắn bỗng thấy Sở Ly phất tay áo che chắn, nhanh như chớp đổi chỗ hai chén rượu trên bàn.
+Cửu hoàng tử đã cầm lấy chén rượu của hắn!
+Còn trước mặt hắn, chính là chén rượu của Cửu hoàng tử!
+Tim hắn như rớt xuống vực sâu.
+Cửu hoàng tử… chẳng lẽ đã biết là hắn giở trò?
+Trong chén kia… chẳng lẽ có độc?
+Những lời Cửu hoàng tử vừa nói, là muốn lấy mạng hắn?
+“Ê, các ngươi nhìn kìa, trên mặt nước lại bay tới một đôi uyên ương!”
+Đoan Mộc Thương kinh ngạc kêu lên, kéo Sở Ly đi xem.
+“Đâu đâu?”
+Nhân cơ hội này, Mộc Tề Sơn vội vàng đổi chén rượu có độc sang một bên, rồi lấy một chén khác đặt về.
+“Thu nhật yến mà uyên ương bay tới, đó là điềm song hỷ, cát tường vô cùng.”
+Trường Bội cô cô cười nói:
+“Tuy Hoàng hậu nương nương không có mặt, nhưng chỉ cần đôi bên hữu tình, lão nô đều có thể tâu bẩm, xin nương nương ban hôn.”
+Hôn sự do thiên gia ban, không có chuyện hòa ly.
+Hàm ý phu thê đồng tâm, bạch đầu giai lão.
+Mấy vị quý nữ đỏ mặt, lén nhìn về phía người trong lòng.
+“Phương thế tử, trong số người có mặt hôm nay, hình như chỉ có ngài là đã có hôn ước? Đôi uyên ương kia, quả thực rất giống ngài và Dương tiểu thư.”
+Sở Ly mở miệng.
+Sắc mặt Phương Hải Dương trầm xuống.
+Dương Kiều Kiều đã mất sạch thể diện, sau này khó lòng gả vào nhà tốt. Cửu hoàng tử nói vậy, chẳng khác nào sỉ nhục hắn trước đám đông.
+“Cửu hoàng tử quá lời rồi. Bản thế tử xưa nay giữ mình trong sạch, cao nhã tự trọng, đến nay trong phủ ngay cả một thông phòng cũng không có.”
+Hắn bước tới, cầm lấy chén rượu trên bàn.
+Cười lạnh một tiếng:
+“Ngược lại là Cửu hoàng tử nên cố gắng hơn đi. Dù sao bản thế tử muốn thành thân, chỉ cần một lời là xong. Còn ta nghe nói, dường như chẳng có nhà khuê nữ nào nguyện ý gả cho ngài?”
+“Ta nguyện ý! Ta nguyện ý!”
+Bên trái ao, Tần Mục Tuyết lập tức nhảy dựng lên, vừa nhảy vừa vẫy tay.
+Ngay tức khắc, lại là một cái tát vang dội, giáng thẳng lên mặt Phương Hải Dương.
+Sắc mặt hắn khó coi đến cực điểm, răng hàm sau nghiến chặt, tay nắm chén rượu, chuẩn bị uống cạn thì Mộc Tề Sơn vội vàng gọi to:
+“Thế tử!”
+Chén rượu hắn cầm… chính là chén đã bị hạ dược!
+“Làm gì?”
+Phương Hải Dương lạnh lùng liếc sang.
+Mộc Tề Sơn hoảng hốt.
+Chén rượu này…
+Không thể uống!
+Hắn không dám công khai vạch trần, đắc tội Cửu hoàng tử, nhưng cũng không dám trơ mắt nhìn Phương thế tử uống vào mà mất mạng. Dẫu sao phụ thân hắn còn trông cậy nương nhờ Quốc công phủ để thăng quan tiến chức.
+“Làm gì mà ấp a ấp úng, như đàn bà thế?”
+“Thế tử, chén rượu của ngài… chén rượu này… vừa rồi rơi vào một con côn trùng nhỏ, e làm bẩn miệng ngài. Xin ngài dùng chén của ta.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_35.html" class="btn">‹ Trước</a>
+            <a href="chuong_37.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 95</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 95</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_94.html" class="btn">‹ Trước</a>
+            <a href="chuong_96.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 95: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 95: Bổn vương không thích làm quân tử
+Sở Ly nhìn hắn ung dung trốn vào nội thất, muốn mở miệng bảo hắn đi cũng đã không kịp, bất đắc dĩ chỉ có thể mặc kệ.
+Thật đúng là vô sỉ.
+Có lẽ từ trước đến nay, hắn vẫn luôn như vậy.
+Sở Ly âm thầm mắng mấy câu trong lòng, rồi hướng ra ngoài nói:
+“Vào đi.”
+Rất nhanh, Noãn Ngọc dẫn Tần Mục Vũ bước vào.
+Bốn mắt nhìn nhau trong khoảnh khắc ấy, vành mắt Tần Mục Vũ lập tức đỏ hoe, bộ dạng tủi thân chẳng khác nào một đứa trẻ bị cướp mất viên kẹo, khiến Sở Ly vội vàng đứng dậy, có chút luống cuống tay chân:
+“Ngươi đây là…”
+“A Ly.”
+Giọng hắn khàn đặc.
+“Cuối cùng người cũng chịu gặp ta rồi.”
+Tròn hai mươi bảy ngày.
+Mỗi một ngày, hắn đều đếm trên đầu ngón tay mà sống qua.
+Ngay cả trong mộng ban đêm, cũng đều là cảnh tượng của ngày hôm đó.
+“Hôm ấy là ta không đúng. Ta không nên bỏ mặc người một mình rồi tự ý rời đi. Ta rất hối hận. Mỗi lần muốn tìm người giải thích, người đều lấy đủ loại lý do để từ chối, thậm chí muốn gặp người một lần cũng khó.”
+Nếu không phải Tam hoàng tử thành thân, hai người gặp nhau trong yến tiệc, e rằng còn chẳng biết đến bao giờ mới có thể nói được với người một câu.
+Hắn thật sự rất hối hận.
+Hối hận đến xanh cả ruột.
+Đôi mắt Sở Ly tối đi.
+Chuyện ngày hôm ấy…
+Nàng biết Tần Mục Vũ không phải cố ý, cũng chưa từng trách hắn.
+Nhưng trong lòng vẫn có một nút thắt.
+Một nút thắt không thể nào cởi bỏ.
+Nàng khẽ mím môi, nở nụ cười như thường ngày:
+“Ngồi xuống rồi nói.”
+“A Ly, ta…”
+“Chuyện đã qua thì cứ để nó qua đi, ta không để trong lòng.”
+“Khi người nói dối thì sẽ như thế nào, lẽ nào ta lại không biết?”
+Tần Mục Vũ nhìn nàng với đầy vẻ chua xót. Những lời chôn giấu trong lòng suốt bao ngày, cuối cùng cũng lấy hết dũng khí để nói ra:
+“Hôm đó, khi nhìn thấy Nhiếp Chính Vương hôn nàng… đầu óc ta trống rỗng, gần như phát điên, bởi vì… ta… ta thích nàng.”
+“Từ rất nhiều năm trước, từ khi còn nhỏ, bảo vệ nàng đã trở thành một thói quen của ta.”
+Cho nên hắn mới mất khống chế.
+Cho nên hắn mới đau lòng đến vậy.
+Sở Ly kinh ngạc nhìn hắn:
+“Ngươi biết mình đang nói gì không?”
+Ánh mắt Tần Mục Vũ vô cùng kiên định:
+“A Ly, cho dù không nhận được hồi đáp, ta vẫn sẽ luôn bảo vệ nàng, giữ kín bí mật của nàng, giống như bảo vệ người nhà của ta vậy.”
+Hơi thở Sở Ly khựng lại.
+Hắn biết nàng là nữ tử rồi sao?
+Cũng phải.
+Bí mật của nàng sớm muộn gì cũng sẽ bị thiên hạ biết đến.
+Sớm một chút hay muộn một chút thì có gì khác nhau?
+Nàng rất nhanh đã bình tĩnh lại, nói:
+“Từ nhỏ đến lớn, ta vẫn luôn coi ngươi là bằng hữu tốt nhất. Ngươi liều mạng bảo vệ ta, ta cũng coi ngươi như người nhà mà bảo vệ.”
+Tần Mục Vũ khựng người.
+Chỉ là bằng hữu…
+Bằng hữu.
+Trong lòng nàng, chẳng lẽ không còn bất kỳ tình cảm nào khác sao?
+Hay là hắn có chỗ nào chưa đủ tốt?
+“A Ly, nàng hẳn phải hiểu tâm ý của ta. Sự yêu thích này của ta không giống tình bằng hữu. Ta… ta thật sự…”
+Đây là lần đầu tiên hắn bộc lộ cõi lòng.
+Giống hệt một thiếu niên mới biết yêu, nói chuyện vừa lắp bắp, nói được vài câu thì vành tai đã đỏ bừng.
+“Ta thật sự rất thích nàng…”
+Bàn tay đang đặt trên tay vịn của Sở Ly khẽ siết chặt.
+Từ trước đến nay, nàng chưa từng nảy sinh ý nghĩ nam nữ tư tình.
+Không chỉ với Tần Mục Vũ.
+Cho dù là bất kỳ nam tử nào khác, nàng cũng chưa từng có ý niệm như vậy.
+Huống hồ…
+Nàng đã không còn tư cách để thích một người nữa.
+Đến chính bản thân mình, nàng còn không bảo vệ nổi.
+“Đa tạ tấm chân tình của ngươi. Nhưng từ trước đến nay, ta vẫn luôn coi ngươi là bằng hữu tốt nhất của mình. Ta nghĩ… chúng ta nên mãi duy trì mối quan hệ ấy. Nếu vượt qua giới hạn đó, e rằng ngay cả bằng hữu cũng không thể làm được nữa.”
+Đồng tử Tần Mục Vũ khẽ run lên.
+Nàng vậy mà lại dứt khoát đến thế.
+Hai người cùng nhau lớn lên, cùng nhau bầu bạn, cùng nhau thấu hiểu nhau.
+Chẳng lẽ thật sự chỉ có thể dừng lại ở tình bằng hữu?
+Nhìn gương mặt tinh xảo của nàng, hắn bất giác nhớ tới cảnh tượng đã nhìn thấy ở phủ Nhiếp Chính Vương. Lời đến bên môi, mang theo vài phần nghẹn ngào:
+“Vậy… vậy còn Nhiếp Chính Vương…”
+“Ta không muốn nhắc đến hắn.”
+Sở Ly lạnh giọng cắt ngang.
+Tần Mục Vũ lập tức đổi lời:
+“Được, không nhắc nữa. Sau này ta sẽ không bao giờ nhắc đến hắn.”
+“A Ly, chúng ta vẫn như trước kia, được không?”
+“Nàng có thể vĩnh viễn tin tưởng ta. Bất kể nàng gặp phải chuyện gì, cần ta giúp điều gì, ta nhất định sẽ dốc toàn lực, cho dù phải đánh đổi bằng tính mạng, cũng quyết không từ.”
+Lời thề của thiếu niên luôn chân thành và cảm động nhất.
+Trong khoảnh khắc ấy, hơi thở Sở Ly có chút rối loạn.
+Nhưng lý trí vẫn thắng.
+Chỉ có tình bằng hữu mới có thể bảo đảm được sự gắn bó lâu dài.
+Chỉ có như vậy, nàng mới không kéo hắn vào vòng xoáy này.
+“Mục Vũ… cảm ơn ngươi. Chúng ta sẽ mãi là bằng hữu.”
+“Là bằng hữu tốt nhất.”
+Trên gương mặt Tần Mục Vũ nở nụ cười.
+Rạng rỡ như ánh mặt trời.
+Trong lòng Sở Ly lại vô cùng phức tạp, không nói rõ được là tư vị gì.
+Huống hồ, Sở Đệ Trì còn đang trốn trong nội thất, nàng cũng không dám nói nhiều, chỉ lấy cớ cần dưỡng thương để tiễn khách.
+Tần Mục Vũ cũng không tiện ở lại lâu.
+Từ đầu đến cuối chỉ ngồi chưa đầy một khắc, rồi đứng dậy cáo từ.
+Vừa bước chân qua ngưỡng cửa, Sở Đệ Trì đã lười biếng từ sau bình phong đi ra.
+“Lúc nãy khi Tần Thiếu tướng quân định nói về bổn vương, sao không để hắn nói tiếp?”
+Sở Ly nhìn hắn:
+“Ngài muốn nghe lời gì? Nịnh hót? Dối trá xã giao? Hay xu nịnh lấy lòng? Ngài cứ nói, ta nói cho ngài nghe.”
+Hắn khẽ cười.
+Đúng là một con mèo nhỏ đầy gai nhọn.
+Hắn thong thả bước tới.
+“Chính nàng nói quân tử quang minh chính đại. Nhưng Tần Thiếu tướng quân lại muốn ở sau lưng bàn tán về bổn vương. Xem ra hắn không phải quân tử.”
+Sở Ly khinh bỉ liếc hắn:
+“Hắn không phải, còn ngài là?”
+“Ừm…”
+Chuyện này thì…
+“Bổn vương không thích làm quân tử.”
+Nói rồi nâng cằm nàng lên, khẽ hôn một cái, tiếp tục chuyện còn dang dở ban nãy.
+Thân hình cao lớn ép sát về phía nàng.
+Sở Ly siết chặt quyển trúc giản, cố hết sức kéo giãn khoảng cách với hắn.
+“Ta còn phải xem trúc quyển. Nửa tháng nữa là đến Trùng Dương tế lễ rồi. Chắc hẳn Hoàng thúc cũng không muốn ta làm hỏng chuyện chứ?”
+Sở Đệ Trì ôm lấy vòng eo nhỏ nhắn của nàng.
+Bàn tay lớn siết nhẹ, vô cùng hài lòng với vòng eo mảnh mai chỉ vừa một bàn tay.
+Hừ nhẹ:
+“Mỗi năm Trùng Dương tế lễ đều là cùng một quy trình. Bộ Lễ đều đã ghi chép cả rồi. Nàng chẳng cần phải lo nghĩ nhiều.”
+“Một lát nữa bổn vương sẽ dạy nàng cách xem.”
+Hắn vừa định đè xuống, Sở Ly lập tức chống tay lên ngực hắn.
+“Ta… ta đến nguyệt sự rồi!”
+Hắn khựng lại.
+“Lần trước chẳng phải vừa mới có sao?”
+“Lần trước là một tháng trước. Giờ vừa đúng một tháng, lại đến kỳ nguyệt sự.”
+Sở Đệ Trì nhìn chằm chằm nàng, ánh mắt sắc bén như chim ưng.
+“Nàng không phải đang lừa bổn vương đấy chứ?”
+Sở Ly trừng mắt nhìn hắn.
+“Chuyện như thế này sao ta có thể đem ra đùa? Hơn nữa còn liên quan đến tính mạng. Ta tuy nhát gan, nhưng lại rất quý mạng mình.”
+Về phương diện này, tuy Sở Đệ Trì không hiểu nhiều, nhưng cũng biết vài phần thường thức.
+Nữ tử trong thời kỳ nguyệt sự tuyệt đối không thể hành phòng.
+Bạch Cẩm Y từng kể, lúc hành y từng gặp một đôi nam nữ vụng trộm vì không kiêng kỵ điều này mà ân ái. Sau đó nữ tử huyết băng, mất máu mà chết.
+Hắn hung hăng hôn lên môi nàng một cái thật kêu, rồi mới chịu buông ra.
+“Đưa trúc quyển đây.”
+“Làm gì?”
+Nhìn được mà không ăn được, hỏa khí trong lòng Sở Đệ Trì có phần bốc lên, giọng nói cũng chẳng còn khách khí:
+“Còn làm gì nữa? Chẳng lẽ ta ăn luôn cái trúc quyển đó? Đưa đây. Bổn vương dạy nàng cách lo liệu Trùng Dương tế lễ.”
+“…Ồ.”
+Hung dữ với nàng làm gì chứ?
+Có điều…
+Hắn lại tin lời nàng dễ dàng như vậy sao?
+Nếu là trước kia, nhất định hắn sẽ cưỡng ép kiểm chứng một phen…
+Bây giờ sao lại ôn hòa hơn nhiều?
+Chẳng lẽ…
+Giống như phụ hoàng vậy?
+Con người khi lớn tuổi rồi sẽ càng ngày càng chậm chạp? Càng ngày càng mềm lòng?
+“Đang nghĩ gì?”
+Giọng nam nhân bỗng vang lên.
+Đôi mắt đen sâu thẳm chăm chú khóa chặt lấy nàng, khiến Sở Ly chột dạ giật mình.
+Khuôn mặt trẻ trung như vậy của hắn…
+Thật chẳng ăn nhập gì với mấy chữ “đã lớn tuổi”.
+Nàng cố giữ vẻ bình tĩnh, đáp như không có chuyện gì:
+“Không nghĩ gì cả.”
+“Thật sao?”
+“Thật.”
+Nàng đáp qua loa một câu.
+Thì sao chứ?
+Chẳng lẽ hắn còn muốn chui vào đầu nàng mà xem?
+Đôi mắt Sở Đệ Trì u ám.
+Hắn luôn có cảm giác…
+Tiểu tử này lá gan càng ngày càng lớn.
+Bây giờ…
+Đã dám lớn tiếng với hắn rồi.
+—————————
+Đừng làm “độc giả tàng hình” nữa. Xuất hiện bằng một chiếc comment cho admin vui đi. 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_94.html" class="btn">‹ Trước</a>
+            <a href="chuong_96.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

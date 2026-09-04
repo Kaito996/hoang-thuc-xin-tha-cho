@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 256</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 256</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_255.html" class="btn">‹ Trước</a>
+            <a href="chuong_257.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 256: Nhàn vương nhất định phải chết
+“Ngươi không đi à?”
+Sở Ngạo Thiên hơi tiếc nuối, nhưng cũng không ép buộc hắn, chỉ dẫn theo tiểu thái giám thân cận của mình là Biết Cửu cùng đi về hậu cung.
+Trên con đường cung dài hun hút.
+Hắn chắp tay sau lưng, trong lòng suy tư:
+Tin Cửu muội vẫn còn sống, có nên nói cho Ôn phi biết không?
+Hay là đợi đến cung yến ba ngày sau rồi nói.
+Chuyện Cửu muội là nữ tử, Ôn phi có biết không?
+Cửu muội với Hoàng thúc từ khi nào…
+Sở Ngạo Thiên đang trầm tư, chợt liếc thấy mấy tên thái giám bên kia đang đẩy xe gỗ, lần lượt có trật tự đi qua.
+Đó là đội chuyên vận chuyển nước suối từ núi vào cung.
+Thân phận đạt đến phẩm cấp nhất định, nước uống sử dụng cũng khác với cung nhân, huống chi là cấp bậc Vương gia, Hoàng hậu, Quý phi.
+Hắn đang định cứ thế đi qua thì bỗng nhớ tới lời Hoàng thúc.
+Thân ở hoàng cung, phải cảnh giác.
+Phải luôn tỉnh táo.
+Chỉ cần gặp phải một lần ngoài ý muốn, cũng đủ để xuống Diêm Vương điện báo danh đầu thai.
+Hắn đi được hai bước, bỗng nhiên xoay người:
+“Không đúng!”
+“Vương gia, sao vậy?”
+“Mỗi ngày vào giờ Dậu, nước suối ngoài cung có ba xe, do bảy người vận chuyển, nhưng bọn họ có tám người.”
+Biết Cửu hơi sững sờ: “Chẳng lẽ hôm nay có thêm một người tới trực?”
+“Không thể nào.”
+Ở nơi quy củ nghiêm ngặt, nhất ngôn cửu đỉnh như hoàng cung, sao có thể xảy ra sai sót như vậy?
+Sở Ngạo Thiên lập tức bước nhanh đuổi theo: “Đứng lại!”
+Không hô thì còn đỡ, vừa hô một tiếng, một tiểu thái giám trong đội lập tức cúi thấp đầu, lách người chạy vào Ngự Hoa viên bên cạnh, chạy nhanh như bay.
+“Chạy đi đâu!”
+Sở Ngạo Thiên lập tức co chân đuổi theo.
+Quả nhiên có điều bất thường!
+Có người trà trộn vào trong!
+Ngự Hoa viên vừa rộng vừa phức tạp, kẻ kia chạy loạn khắp nơi, tốc độ cực nhanh. Nhưng Sở Ngạo Thiên từ nhỏ đã da dày thịt chắc, công phu trên đôi chân càng không phải hạng tầm thường.
+Chỉ thấy hắn bám chặt động tĩnh của người kia, nhanh chóng trèo lên núi giả, đi đường tắt, lúc lao vút xuống, một cước đá ngã người nọ xuống đất.
+“A!”
+Một thanh chủy thủ sáng loáng rơi ra.
+“Bắt lấy hắn!”
+Biết Cửu dẫn theo hai tên Ngự lâm quân đuổi tới, lập tức bẻ quặt hai tay người kia ra sau, ấn xuống mặt đất.
+“Buông ta ra… Ưm! Buông ra!”
+Nam nhân mặc y phục thái giám, nhưng mày thô mắt lớn, thần sắc hung sát, trong mắt mang theo sát ý, rõ ràng là người từ ngoài cung.
+Sở Ngạo Thiên lạnh lùng nhìn hắn:
+“Ngươi là ai? Mang chủy thủ trà trộn vào cung, có mục đích gì?”
+Nam nhân ra sức giãy giụa, một đôi mắt hung ác gắt gao trừng Nhàn vương:
+“Ngươi đã hủy hoại tất cả của Lục Hoàng tử, ta muốn giết ngươi, giết Hân phi nương nương, để ngươi cũng nếm thử nỗi thống khổ này!”
+“Ngươi là người của Lục Hoàng tử?”
+“Ha ha ha! Ngươi cho rằng bắt được ta là có thể bình an sao? Ha ha ha, từ nhiều ngày trước Lục Hoàng tử đã hạ độc ngươi rồi, hiện giờ e là độc đã ngấm tận phủ tạng!”
+Sở Ngạo Thiên nhíu chặt mày.
+Độc?
+Đang nghi hoặc, hắn bỗng mơ hồ cảm thấy trong mũi nóng ran…
+Biết Cửu hoảng sợ kêu lên: “Vương gia, ngài… mũi của ngài…”
+“Ta…”
+Sở Ngạo Thiên đưa tay lên, lại sờ thấy một bàn tay đỏ thẫm máu. Trước mắt hắn chợt tối sầm, lảo đảo mấy bước:
+“Máu… ta…”
+Hắn chảy máu mũi.
+Rất nhiều máu.
+“Ha ha ha ha!” Nam nhân điên cuồng cười lớn, khoái chí trút giận, “Đây chính là cái giá ngươi phải trả vì đắc tội Lục Hoàng tử! Ngươi còn nhớ bầu rượu Lục Hoàng tử mời ngươi cùng uống lúc trước không?”
+Thân thể Sở Ngạo Thiên lảo đảo, chực ngã, phải vịn lấy núi giả.
+“Vương gia!”
+“Vương gia!”
+“Rượu…”
+Hắn nhớ ra rồi.
+Ngày đó là thất đầu của Cửu muội. Hắn chuẩn bị tới Thanh Dương sơn thắp hương cho Cửu muội, Lục Hoàng tử đột nhiên xách một bầu rượu tới tìm hắn, cùng hắn uống rượu.
+Thì ra trong rượu có độc.
+“Khụ khụ…”
+Một trận trời đất quay cuồng, Sở Ngạo Thiên ngã xuống đất.
+Hoàng thúc nói đúng, con người cả đời này có thể chịu được bao nhiêu lần ngoài ý muốn…
+“Truyền Ngự y! Mau truyền Ngự y! Vương gia!” Biết Cửu quỳ sụp xuống đất.
+Sở Ngạo Thiên gắng gượng thân thể, dùng hết tia sức lực cuối cùng:
+“Chuyện này… đừng… kinh động… đừng để mẫu phi lo… lo lắng…”
+“Vương gia!”
+Biết Cửu gấp đến phát khóc.
+Hai tên Ngự lâm quân lập tức chia làm hai đường. Một người áp giải tên tặc kia, người còn lại chạy thẳng tới Thái Y viện.
+Trong hoàng cung lúc hoàng hôn, một bầu không khí cấp bách đang lặng lẽ lan tràn…
+Phía sau giả sơn.
+Một thân ảnh màu đen chậm rãi bước ra, nhìn bọn họ luống cuống đỡ Nhàn vương hồi cung, khóe môi cong lên một độ cong u ám.
+“Những năm qua, kẹp giữa Đại Hoàng tử và Lục Hoàng tử, ta làm trâu làm ngựa, bày mưu tính kế, đã chịu đủ những ngày tháng bị người khác sai khiến này rồi.”
+Bây giờ, Đại Hoàng tử và Lục Hoàng tử đều không còn cấu thành uy hiếp nữa.
+Độc Lục Hoàng tử hạ lên người Nhàn vương, ngược lại còn giúp hắn một đại ân.
+Thời khắc huy hoàng thuộc về hắn cuối cùng cũng sắp đến rồi!
+Nhàn vương nhất định phải chết!
+“Bên Thiên lao, nhất định phải diệt khẩu kẻ này.”
+Tên tặc kia là do hắn phái tới.
+“Ngoài ra, nói với Trần Thái y, nếu Nhàn vương được chữa khỏi, cả nhà hắn đều phải chết.”
+Phía sau, ám vệ cung kính cúi đầu:
+“Vâng, Nhị Hoàng tử.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_255.html" class="btn">‹ Trước</a>
+            <a href="chuong_257.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

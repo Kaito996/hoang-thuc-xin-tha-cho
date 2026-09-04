@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 282</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 282</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_281.html" class="btn">‹ Trước</a>
+            <a href="chuong_283.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 282: Hoàng thúc, người thật tốt
+Sở Ly vội bước tới: “Hoàng thúc, người sao vậy?”
+Sở Đệ Trì đưa tay ôm trán, thân hình cao lớn khẽ lay động như sắp ngã: “Ta... có lẽ mấy ngày nay quá mức lao lực... không đáng ngại, nghỉ chốc lát là được, vẫn nên tìm Tần Thiếu tướng quân trước đã.”
+Sở Ly đỡ lấy hắn, dìu đến ngồi bên bậc đá.
+Lúc này, bọn họ đang ở Vân Thành của Mạc Hoài châu.
+Trước đây, Sở Đệ Trì đã nhường cho Nam Man ba châu Mạc Hoài cùng hai mươi tám tòa thành. Hai ngày qua, đã đoạt lại được bảy thành.
+Quân Nam Man tan tác, vẫn đang liên tục rút lui.
+Theo xu thế này, không quá một tháng, sẽ thu hồi toàn bộ đất đã mất.
+“Đã có người phía dưới đi tìm Tần Mục Vũ, thêm ta cũng chẳng giúp được gì. Trái lại là người, mấy ngày liền đến một giấc ngủ ngon cũng chưa từng có.”
+Sở Ly đứng phía sau hắn, đưa tay xoa hai bên thái dương giúp hắn giảm bớt mệt mỏi.
+Sở Đệ Trì mệt mỏi ôm lấy eo nàng, tựa đầu vào bụng nhỏ của nàng: “Ta không mệt.”
+“Thấy Tiểu Cửu lo lắng cho Tần Thiếu tướng quân như vậy, ta cũng rất lo cho hắn. Dẫu sao, hắn cũng là bằng hữu tốt nhất của nàng.”
+Ánh mắt Sở Ly trầm xuống, bất giác nhớ tới đêm hôm đó, Sở Dạ Ly tự tay đâm chủy thủ vào tim mình...
+Không biết hiện giờ sống chết ra sao...
+Lại vẫn chưa tìm được Tần Mục Vũ.
+Tâm tư nàng càng thêm rối bời.
+Tần Mục Vũ, rốt cuộc ngươi đang ở đâu?
+Sở Đệ Trì đưa tay đỡ trán, mí mắt khẽ nâng lên, thấy nàng đang thất thần, không khỏi lại khẽ rên hai tiếng, trước mắt hoa lên.
+“Hoàng thúc, để ta dìu người đi nghỉ một lát!”
+“Không sao, vẫn nên tìm Tần Thiếu tướng quân trước... ừm...”
+“Người đừng cố gắng chống đỡ nữa, nghe ta!”
+“Nhưng mà...”
+“Ta sẽ ở bên cạnh canh người ngủ, đâu cũng không đi.”
+Sở Ly vừa đỡ Sở Đệ Trì đứng dậy, nam nhân liền yếu ớt tựa vào hõm cổ nàng, từng bước từng bước như sắp ngất đi. Đúng lúc ấy, Kinh Ảnh vội vàng chạy tới:
+“Chủ tử! Có tin tốt! Đã tìm được tung tích của Tần Thiếu tướng quân!”
+Sở Đệ Trì lập tức đứng thẳng người: “Cái gì?!”
+“Hắn ở đâu?”
+Kinh Ảnh đáp: “Tạ tiểu thư chớ vội. Ý của Tiêu Đô đốc là dùng Nam Man công chúa đổi lấy Tần Thiếu tướng quân, chỉ là việc này cần chủ tử gật đầu.”
+Sở Ly nhìn sang Sở Đệ Trì.
+Sở Đệ Trì lập tức tươi cười:
+“Bản vương đương nhiên đồng ý! Chỉ cần cứu được Tần Thiếu tướng quân, bất kể giá nào cũng đáng! Lập tức an bài nhân thủ, thả Nam Man công chúa trở về, trao đổi con tin!”
+Sở Ly khẽ thở phào:
+“Hoàng thúc, người thật tốt.”
+“Vậy... chúng ta còn ngủ nữa không?”
+“Người cứ đi nghỉ đi. Ta đi tìm Tần Mục Vũ, khỏi để người cứ mãi lo lắng cho hắn, như vậy cũng có thể yên tâm.”
+“Lời Tiểu Cửu nói... thật hợp lòng ta! Nay chiến sự còn đó, võ tướng quý giá, tuyệt đối không thể tổn thất. Thật hợp lòng ta! Ha ha ha!”
+Kinh Ảnh gãi đầu.
+Sao dáng vẻ chủ tử cười lên... lại có chút... âm trầm vậy?
+Theo kinh nghiệm nhiều năm của hắn, mỗi khi chủ tử cười như thế, nhất định sẽ có người gặp xui xẻo.
+Ồ.
+Người xui xẻo chính là hắn.
+Hắn bị phái đi cho chiến mã ăn.
+—
+Kinh Ảnh ôm một bó cỏ khô lớn, chuẩn bị đi cho ngựa ăn, liền thấy Trọng Phong cưỡi ngựa lướt qua, phía sau là một đội bộ binh chỉnh tề chạy theo, khí thế hùng dũng vô cùng.
+Hắn không phục.
+“Trọng Phong!”
+“Vì sao đều là tâm phúc của chủ tử, ngươi thì dẫn binh đoạt thành, còn ta lại phải đi cho ngựa ăn?”
+Trọng Phong ghìm cương, quay đầu nhìn hắn:
+“Chiến trận không có ngựa thì nửa bước cũng khó đi, cũng như xảo phụ không có gạo thì khó nấu thành cơm. Chiến mã vô cùng quan trọng.”
+Có lý.
+Kinh Ảnh tâm phục khẩu phục.
+—
+Thác Bạt Minh Nguyệt cuối cùng cũng chịu nhả miệng, đồng ý nói ra nơi giam giữ Tần Mục Vũ. Đổi lại, nàng cùng toàn bộ binh sĩ bị bắt đều được thả.
+Hai bên đạt thành thỏa thuận.
+Thác Bạt Minh Nguyệt khôi phục tự do, cắm tờ giấy vào đầu mũi tên, bắn thẳng lên thân cây cách đó mấy trượng.
+Vút!
+Nàng nhìn Tiêu Dạ Hành, người đứng đầu các tướng lĩnh, lần cuối rồi xoay người lên ngựa:
+“Chúng ta đi!”
+Tiếng vó ngựa dần xa. Một tên lính cũng chạy tới thân cây, lấy tờ giấy xuống, hai tay dâng lên:
+“Tiêu Đô đốc.”
+Tiêu Dạ Hành cầm lấy, liếc qua một lượt:
+“Đưa cho Tạ tiểu thư. Tất cả theo bản đốc thừa thắng truy kích, nhất định trong một tháng phải thu hồi toàn bộ đất đã mất.”
+Thác Bạt Minh Nguyệt...
+Bản đốc cho ngươi chạy trước nửa canh giờ.
+“Rõ!”
+—
+Bên kia.
+Thác Bạt Minh Nguyệt vừa rời đi nửa canh giờ thì nhận được cấp báo từ binh sĩ. Truy binh phía sau đã đuổi tới, nếu không mau rút, rất có thể sẽ lại bị bắt.
+Chạy?
+Hai chữ này thật quá mức chật vật.
+Lúc trước đánh chiếm ba châu Mạc Hoài cùng hai mươi tám tòa thành, dẫn quân đóng giữ, nàng từng kiêu ngạo bao nhiêu, thì hôm nay càng chật vật bấy nhiêu.
+Càng không ngờ đội quân vu cổ mà hoàng thất bí mật nghiên cứu suốt sáu năm, lại bại dưới tay Sở Ly.
+Là nàng đã xem thường Sở Ly!
+“Rút quân!”
+Nhưng tuyệt đối không phải chạy trốn.
+Đất đã tới tay, nàng sẽ không dễ dàng trả lại!
+Đêm xuống.
+Thác Bạt Minh Nguyệt dẫn người phi ngựa suốt đêm, lui về Lan Thành, gặp A Ngọc bên cạnh Sở Dạ Ly.
+Lúc này, sắc mặt A Ngọc xám như tro tàn, y phục nhăn nhúm dính đầy máu, đã mấy ngày không được chợp mắt:
+“Công chúa... chủ tử nhà ta... hắn...”
+E rằng không qua khỏi.
+Sắc mặt Thác Bạt Minh Nguyệt trắng bệch, vội vàng lao vào quân doanh, liền thấy Sở Dạ Ly nằm trong đại trướng, sắc mặt trắng bệch, không chút sinh khí.
+“Dạ Ly ca ca!”
+Nàng xông tới, vừa chạm vào đã thấy bàn tay lạnh cứng.
+Đầu ngón tay run rẩy chậm rãi đưa ra, gần như không dám chạm vào cổ hắn...
+Hầu như không cảm nhận được mạch đập.
+Đôi mắt nàng lập tức đỏ hoe, vừa giận vừa hận.
+Sở Dạ Ly!
+Ngươi hà tất phải như vậy!
+Hà tất chứ!
+Vì một nữ nhân, đáng sao?
+Thác Bạt Minh Nguyệt nắm lấy bàn tay lạnh lẽo của hắn, chậm rãi cúi đầu, áp lên mu bàn tay ấy. Nước mắt lặng lẽ rơi, cổ họng nghẹn cứng, dáng vẻ chật vật lúc này cùng hận ý trong lòng hòa lẫn vào nhau.
+“Ngươi là ánh hồng kinh diễm trong tuổi thiếu niên của ta. Ta sẽ không để ngươi chết. Người đáng chết... không phải là ngươi!”
+Một vị tướng hốt hoảng chạy vào báo:
+“Công chúa! Quân Sở đã đuổi tới! Chúng ta phải lập tức rút lui!”
+“Không rút!”
+Thác Bạt Minh Nguyệt ngẩng đầu, hai mắt đỏ ngầu:
+“Tập hợp toàn bộ binh lực, thề chết giữ vững Lan Thành! Hoặc cùng nhau sống, hoặc để toàn bộ bách tính Lan Thành chôn cùng!”
+—
+Sở Ly cầm được địa chỉ chính xác, tìm kiếm trong thành hồi lâu, cuối cùng phát hiện trong một trang viện hẻo lánh, dưới một mật thất ngầm vô cùng kín đáo, tìm được Tần Mục Vũ.
+Lúc ấy, hắn đang co ro nơi góc tường, cả người run rẩy.
+“Mục Vũ!”
+“Đừng chạm vào ta!”
+“Mục Vũ, là ta!”
+Tay Sở Ly vừa đặt lên cánh tay hắn đã bị hất mạnh ra. Nàng hoàn toàn không ngờ phản ứng của hắn lại lớn đến vậy. Nhưng khi nhìn thấy vẻ hoảng sợ trong mắt hắn, tim nàng như bị đâm mạnh một nhát.
+“Ngươi làm sao vậy?”
+“Ta...”
+Thân thể Tần Mục Vũ không ngừng run rẩy. Trong đầu không ngừng hiện lên từng cảnh tượng khi hắn bị trói tay trói chân, vô số bàn tay sờ soạng khắp người...
+Trên mặt...
+Trên eo...
+Trên chân...
+Mùi son phấn nồng đậm xộc thẳng vào mũi, như thể rơi xuống vực sâu không đáy, không thấy ánh mặt trời. Những tràng cười ấy giống như ma chú, không ngừng vang vọng bên tai...
+“Mục Vũ?”
+Sở Ly cuống quýt:
+“Ngươi đừng dọa ta!”
+Tần Mục Vũ đột nhiên tránh nàng:
+“Ta... ta không sao. Chỉ là quá lâu không nhìn thấy ánh sáng, ánh sáng có chút chói mắt, nhất thời chưa thích ứng.”
+Sở Ly đầy lo lắng nhìn hắn. Nàng vừa bước tới, hắn lại lùi ra sau.
+“Mục Vũ...”
+“A Ly... đừng đến gần ta... trên người ta bẩn...” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_281.html" class="btn">‹ Trước</a>
+            <a href="chuong_283.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

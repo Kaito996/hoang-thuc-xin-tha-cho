@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 79</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 79</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_78.html" class="btn">‹ Trước</a>
+            <a href="chuong_80.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 79: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 79: Hạng người như ngươi, chết một lần là đủ rồi
+Trở về thành.
+Đêm phồn hoa náo nhiệt cũng không vì khúc nhạc đệm này mà mất đi không khí vui tươi. Rất nhiều bách tính vẫn đang vui vẻ đón Tết Trung thu, hoàn toàn không hay biết đã xảy ra chuyện gì. Chỉ có đám binh sĩ trực đêm canh giữ cổng thành là lòng dạ bất an.
+“Trương ca, phải làm sao đây? Ta đâu biết đó là Cửu Hoàng tử. Lúc ngài tự xưng thân phận, ta còn tưởng ngài đang đùa, mãi đến khi Tiêu Đô đốc và Nhiếp chính vương tới…”
+Tên binh sĩ trực đêm sợ đến chết khiếp.
+“Nếu Cửu Hoàng tử có mệnh hệ gì, e rằng ta có chết cũng không có chỗ chôn…”
+“Hạng người như ngươi, chết một lần là đủ rồi.”
+Giọng nói lạnh lùng, bạc bẽo vang lên trong màn đêm.
+Ngoài cổng thành, nam nhân bước đi ngược sáng. Dưới màn đêm bao phủ, gương mặt lạnh lùng cao quý ấy càng trở nên u ám khó dò. Hàn ý tỏa ra khiến đám binh sĩ kinh hoảng quỳ sụp xuống đất.
+“Nhiếp chính vương bớt giận!”
+“Tiểu nhân có mắt không tròng, kính xin Nhiếp chính vương tha mạng! Tha mạng!”
+Tất cả đều quỳ rạp dưới đất, sợ đến mức không dám ngẩng đầu.
+Sở Đệ Trì lạnh lùng đảo mắt nhìn qua.
+Sở Ly khẽ giãy giụa trong lòng hắn.
+“Bọn họ chưa từng gặp ta, đừng làm khó họ.”
+“Xem ra Cửu Hoàng tử không chỉ quan tâm Tần Thiếu tướng quân, mà còn quan tâm cả những người này.”
+“Hẳn là một vị đại thiện nhân.”
+Sở Ly trừng mắt nhìn hắn.
+Hắn đang nói linh tinh gì vậy?
+Lẽ nào định giết hết đám binh sĩ này?
+Âm dương quái khí!
+“Thả ta xuống, ta phải hồi cung.”
+Sở Đệ Trì liếc Tiêu Dạ Hành một cái.
+Tiêu Dạ Hành khẽ gật đầu.
+“Ngươi về trước đi, nơi này để ta xử lý hậu sự.”
+“Điều tra rõ rồi?”
+“Ta biết.”
+Sở Đệ Trì vẫn bế vững Sở Ly, chọn một con phố ít người mà đi.
+Sở Ly cứ ngỡ là đang trở về hoàng cung.
+Nào ngờ đi một lúc, nàng mới nhận ra có gì đó không đúng.
+Đây là…
+San Hô Thủy Tạ?
+“Sao lại tới đây?”
+Sở Đệ Trì liếc nàng.
+“Ngươi tưởng bản vương sẽ đích thân bế ngươi về tận hoàng cung?”
+“Giá của ngươi cũng lớn thật.”
+Sở Ly nghẹn họng vì vừa xấu hổ vừa tức giận.
+Nàng chưa từng nghĩ như vậy.
+Huống hồ là hắn cứ nhất quyết bế nàng, không chịu để nàng xuống đất, giờ còn quay sang trách móc nàng.
+Bước vào San Hô Thủy Tạ.
+Tư trạch về đêm yên tĩnh lạ thường.
+Gió lay bóng cây, đèn lồng khẽ đung đưa.
+Màn đêm tĩnh mịch, yên bình đến mức không thấy nổi một hạ nhân.
+Đi thẳng vào Lan Đình Hiên, Sở Đệ Trì tiện tay đặt nàng ngồi lên bàn.
+Nàng vừa định nhảy xuống, nam nhân đã chống hai tay lên mép bàn hai bên người nàng, chặn lại.
+“Đi đâu?”
+“Ta phải hồi cung. Phiền Hoàng thúc sắp xếp hai hạ nhân đưa ta về.”
+Nàng bị trẹo chân, phải ngồi kiệu mới được.
+Nghĩ một chút, nàng lại bổ sung:
+“Ta sẽ trả thù lao.”
+Sở Đệ Trì đáp:
+“San Hô Thủy Tạ không có hạ nhân.”
+“Sao có thể?”
+“Một tòa phủ đệ lớn như vậy, cho dù không có hạ nhân thì cũng phải có tỳ nữ quét dọn, nấu nướng chứ. Xin Hoàng thúc phái người đưa ta hồi cung. Nếu đêm nay ta không về, mẫu phi sẽ lo lắng.”
+“Ồ.”
+Giọng hắn nhàn nhạt.
+“Ngươi còn đang bú sữa sao? Lớn thế này rồi mà vẫn không rời được mẫu thân?”
+Huống hồ…
+Nàng suốt ngày chỉ biết ăn chơi hưởng lạc, không làm việc đàng hoàng.
+Khi nào lại ngoan ngoãn như vậy?
+Không muốn ở cùng hắn thì cái cớ cũng thật vụng về.
+Hắn cúi người xuống.
+Sở Ly lập tức chống tay lên ngực hắn.
+“Ngươi làm gì?”
+Nam nhân cúi xuống, cánh tay dài vươn tới, rút chiếc hòm thuốc trong ngăn kéo ra.
+“San Hô Thủy Tạ không có tỳ nữ.”
+“Ngươi là nữ nhân đầu tiên từng tới nơi này.”
+Thì ra là lấy hòm thuốc.
+Nàng còn tưởng…
+Lấy hòm thuốc thì cần gì phải áp sát nàng như vậy?
+Khoan đã.
+Nàng là nữ nhân đầu tiên từng đến đây?
+Lẽ nào…
+“Ngươi nghèo đến mức không thuê nổi tỳ nữ sao?”
+Sở Ly kinh ngạc.
+Võ tướng bình thường đều khá nghèo.
+Bổng lộc nhận được phải mua binh khí, mua dược liệu, mua trang bị, còn phải thu phục lòng quân.
+Chút bổng lộc mỗi tháng căn bản không đủ chi tiêu.
+Đánh trận càng nhiều.
+Càng nghèo.
+Cho nên từ xưa đến nay, giữa các quốc gia thường dùng hòa thân để đổi lấy hòa bình, cùng nhau phát triển.
+“Ta cho ngươi một hòm thỏi vàng nhỏ.”
+“Sau này ngươi tránh xa ta một chút, được không?”
+Sở Đệ Trì lạnh lùng lườm nàng.
+“Con trai của Hoàng đế mà hiếm khi có đứa lanh lợi như vậy.”
+“Nếu sinh thêm vài đứa giống ngươi, chuyện khai cương khuếch thổ cũng chẳng phải lo nữa.”
+Rầm!
+Hòm thuốc bị ném xuống bên cạnh nàng.
+Một tay hắn chống bên người nàng, tay còn lại mở nắp hòm, lục lọi giữa đủ loại bình bình lọ lọ, cuối cùng lấy ra một chiếc bình tròn màu nâu sẫm.
+Hắn dùng miệng cắn bật nắp.
+Đổ rượu thuốc màu vàng nâu lên lòng bàn tay, rồi cầm lấy chân nàng, áp tay lên cổ chân.
+“Ưm…”
+Lạnh quá…
+Mà cũng đau quá.
+“Ta… ta tự làm được.”
+“Ngươi với tới sao?”
+Sở Ly ngạc nhiên.
+“Chỉ cần cúi người xuống một chút là chạm tới chân mình rồi.”
+“Ừ.”
+“Thông minh thật.”
+Hắn thuận miệng khen một câu.
+Bàn tay nắm lấy cẳng chân thon nhỏ của nàng, lòng bàn tay bao trọn mắt cá chân bị trẹo, chậm rãi xoa bóp để rượu thuốc thấm dần vào da thịt.
+“…”
+Sở Ly khẽ cắn môi dưới.
+Nàng không quen để người khác chạm vào chân mình…
+Hay đúng hơn là không quen để hắn chạm vào chân.
+Đối với cơ thể con người.
+Bàn chân vốn là nơi thấp nhất.
+Ngày nào cũng đi rất nhiều đường, chai sạn dày cộp, giẫm lên mặt đất.
+Vậy mà một người cao ngạo như Sở Đệ Trì lại bằng lòng chạm vào chân nàng.
+“Vết thương của ngươi thế nào rồi?”
+Sở Đệ Trì nhướng mày, dường như hơi bất ngờ.
+“Quan tâm bản vương?”
+Sở Ly đáp:
+“Chỉ là không muốn nợ ngươi điều gì.”
+“Cho dù ta hận ngươi, cũng sẽ không lợi dụng chuyện này.”
+“Ồ.”
+Phản ứng của hắn vẫn bình tĩnh như cũ.
+Sở Ly hoàn toàn không nhìn ra cảm xúc của hắn.
+Rất nhanh, hắn đã xoa thuốc xong.
+Dược tính phát huy tác dụng.
+Mắt cá chân nóng ấm lên, cơn đau cũng dịu đi rất nhiều.
+San Hô Thủy Tạ dường như thật sự không có hạ nhân.
+Suốt đoạn đường vừa rồi, phủ đệ rộng lớn yên tĩnh như nơi không người.
+Đến cả một thị vệ cũng không thấy.
+Sở Ly đành nói:
+“Để ta băng bó cho ngươi nhé?”
+Hắn không lên tiếng.
+Sở Ly coi như hắn đã ngầm đồng ý.
+Vết thương của hắn ở sau lưng.
+Nàng do dự đưa tay ra.
+Tháo đai lưng của hắn, vạch áo ngoài.
+Do chênh lệch chiều cao, nàng hơi vất vả.
+Đầu ngón tay khẽ chống lên lồng ngực hắn vài cái để mượn lực, rồi cởi bớt y phục.
+“Ngươi đang dụ dỗ bản vương sao?”
+Đầu ngón tay nàng run lên.
+“Coi như ta nhiều chuyện.”
+“Bây giờ ta hồi cung.”
+Nàng vừa định đứng dậy thì đã bị một bàn tay kéo trở lại.
+“Y phục của bản vương đã bị ngươi cởi đến một nửa.”
+“Ngươi coi bản vương là loại người tùy tiện lắm sao?”
+Hắn cau mày, vẻ mặt không vui.
+Sở Ly trợn tròn mắt.
+Suýt nữa tưởng mình nghe nhầm.
+Hắn cũng có mặt mũi nói câu đó sao?
+“Đêm nay không được hồi cung.”
+Hắn đã trực tiếp quyết định thay nàng.
+“Không, ta phải về!”
+“Không được về.”
+“Nếu Hoàng thượng hỏi, cứ nói tối nay ngươi ngủ ở Tướng quân phủ.”
+“Ta…”
+“Hoặc là ở lại.”
+“Hoặc là để bản vương làm ngươi trước rồi mới thả ngươi về.”
+“Dù sao cũng là chính tay ngươi cởi y phục của bản vương.”
+“Lớn thế này rồi, trước khi làm việc gì cũng phải nghĩ xem nên chịu trách nhiệm thế nào.”
+Nghe những lời ấy, Sở Ly không khỏi tức giận trừng mắt nhìn hắn.
+“Hoàng thúc dạy phải.”
+“Muốn băng bó cho ngươi là ta tự mình đa tình.”
+“Vậy còn Hoàng thúc thì sao?”
+“Trước khi làm chuyện đó với ta… ngươi đã từng nghĩ phải chịu trách nhiệm thế nào chưa?”
+Hắn đã làm rối loạn quỹ đạo cuộc đời vốn có của nàng.
+Hủy hoại tất cả mọi thứ của nàng.
+Thân phận của nàng vốn đã không thể để lộ.
+Giờ đây…
+Lại còn có nhược điểm rơi vào tay hắn.
+Càng không thể để người khác biết.
+Hứng lên thì ép buộc nàng hai lần.
+Hết hứng rồi…
+Cho dù ném nàng sang một bên, nàng cũng không dám oán trách nửa lời.
+Thậm chí còn phải cầu xin hắn giữ kín bí mật, tha cho nàng một con đường sống.
+Nói cho cùng…
+Nàng chẳng qua chỉ là nơi để hắn trút bỏ sự căm ghét đối với Hoàng đế và phát tiết cảm xúc mà thôi.
+Ngày nào nàng cũng sống trong nơm nớp lo sợ.
+Sợ thân phận bại lộ.
+Sợ liên lụy đến mẫu phi.
+Có một lần nằm mộng…
+Nàng mơ thấy thân phận bị phơi bày, Hoàng đế hạ chỉ xử trảm Ôn phi.
+Đại đao vung xuống.
+Đầu người rơi đất.
+Nàng thật sự quá sợ hãi.
+Mỗi lần gặp hắn…
+Nỗi sợ hãi và bất an ấy lại càng thêm sâu hơn.
+————-
+    Comment để điểm danh nào! Xem còn bao nhiêu đạo hữu vẫn đang cùng admin vượt kiếp cày truyện. 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_78.html" class="btn">‹ Trước</a>
+            <a href="chuong_80.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

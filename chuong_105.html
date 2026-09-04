@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 105</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 105</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_104.html" class="btn">‹ Trước</a>
+            <a href="chuong_106.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 105: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 105: Có Tiểu Cửu đau lòng cho ta, mọi chuyện đều đáng giá
+“Cái gì?!”
+Sở Ly buông đôi đũa xuống, lập tức chạy tới.
+Khi nàng đến Dưỡng Tâm điện, người của Thái Y viện, các phi tần hậu cung đều đã vây kín nơi đó. Rất nhiều trọng thần cùng các vị hoàng tử sau khi nhận được tin tức cũng đang hớt hải chạy vào cung.
+“Có chuyện gì vậy?”
+“Đang yên đang lành, sao Hoàng thượng lại thổ huyết?”
+“Long thể của Hoàng thượng trước nay vẫn luôn khỏe mạnh mà…”
+“Ngự y tra ra nguyên nhân chưa…”
+Mọi người ai nấy đều gấp gáp, người một câu ta một lời, khiến Dưỡng Tâm điện nhất thời ồn ào náo động.
+Sở Ly bước nhanh đến bên Ôn phi, thấp giọng hỏi:
+“Mẫu phi, rốt cuộc đã xảy ra chuyện gì?”
+Ôn phi lắc đầu:
+“Tối nay, Hoàng thượng dùng bữa một mình ở Dưỡng Tâm điện. Đang ăn thì bỗng nhiên thổ huyết rồi hôn mê. Khi ấy chỉ có Phúc công công hầu hạ bên cạnh, ta cũng không rõ chi tiết.”
+Sở Ly nói:
+“Đang ăn ngon lành sao lại đột nhiên thổ huyết được? Chẳng lẽ thức ăn có độc?”
+Ôn phi nắm lấy tay nàng, hạ thấp giọng hơn mấy phần.
+Người đông miệng tạp, có vài lời không thể nói bừa.
+“Ngụy viện phán đã kiểm tra rồi, ngự thiện không có độc.”
+Sở Ly nhíu chặt mày, nhất thời cũng không đoán ra nguyên do, chỉ đành lo lắng nhìn vào trong.
+Vì quá nhiều người, Hoàng hậu đã hạ lệnh chỉ cho phép Thái Y viện ở trong điện hầu hạ, những người còn lại đều phải chờ bên ngoài.
+Nàng cũng không vào được.
+Đúng lúc ấy, chẳng biết ai nói một câu:
+“Long thể của Hoàng thượng trước nay vẫn luôn khỏe mạnh, chỉ là mấy ngày gần đây triệu Ngũ hoàng tử hồi cung, ở cùng Ngũ hoàng tử vài hôm thì đã thành ra thế này…”
+Sở Ly quay đầu nhìn.
+Thấy vị lão thần vừa mở miệng, nàng lạnh giọng nói:
+“Hoàng thượng đâu chỉ gặp Ngũ hoàng tử? Ngày nào thượng triều chẳng gặp các vị đại thần như các ông?”
+Lão thần nói:
+“Không thể nói vậy được, Cửu hoàng tử. Ai ai cũng biết mẫu phi của Ngũ hoàng tử khó sinh mà mất, vừa sinh Ngũ hoàng tử xong đã buông tay nhân thế. Ngài ấy lại còn ngã gãy hai chân từ thuở nhỏ, được nuôi ngoài cung mới có thể tránh tai. Chỉ như vậy cũng đủ thấy…”
+Ngũ hoàng tử là người không lành.
+Khắc chết mẫu thân, khắc cả chính mình, nay hồi cung lại khắc đến Hoàng thượng.
+Mọi người nghe vậy, ai nấy đều mang vẻ mặt khác nhau, nhưng không một ai lên tiếng phản bác.
+Bởi vì trong lòng bọn họ đều cảm thấy lời ấy có lý.
+Giọng Sở Ly lạnh xuống:
+“Chỉ dựa vào suy đoán mà bỏ qua sự thật. Chẳng lẽ khi chư vị đại nhân xử lý công vụ cũng toàn dựa vào suy đoán? Thế thì còn cần động não làm gì? Thi Trạng nguyên để làm gì nữa?”
+Lão thần nghẹn họng, rõ ràng không phục.
+“Cửu đệ đừng nổi giận.”
+Sở Uyên Trì lên tiếng.
+“Việc tranh cãi những chuyện này chỉ là thứ yếu, long thể của phụ hoàng mới là quan trọng nhất. Ta biết đệ lo cho Ngũ đệ, nhưng cũng không thể vì vậy mà không để tâm đến phụ hoàng.”
+“Ta khi nào không để tâm đến phụ hoàng?”
+Sở Ly nhìn hắn.
+“Đại hoàng huynh nói vậy chẳng phải dễ khiến người ta hiểu lầm sao? Nghe như thể đệ cố ý thiên vị Ngũ hoàng huynh vậy.”
+Sở Uyên Trì nhíu mày, những người khác cũng lộ vẻ khác thường.
+Quan hệ giữa Cửu hoàng tử và Ngũ hoàng tử từ bao giờ lại thân thiết đến thế?
+Lại còn che chở hắn như vậy.
+Có Cửu hoàng tử giúp đỡ, chẳng trách Ngũ hoàng tử dám đường hoàng hồi cung.
+Hóa ra là có chỗ dựa.
+Sở Dạ Ly khẽ kéo tay áo Sở Ly:
+“Ta ở lại đây cũng chẳng giúp được gì, ngược lại còn khiến mọi người bàn tán, quấy nhiễu sự thanh tĩnh của phụ hoàng. Ta về trước, nếu có tin tức gì của phụ hoàng, sẽ sai người đến báo.”
+Tại sao lại là hắn phải đi?
+Chỉ vì từ nhỏ hắn không lớn lên trong hoàng cung, không cùng đám người này đồng lưu hợp ô, nên trở thành kẻ khác biệt?
+Tiểu thái giám đẩy xe lăn, đưa Ngũ hoàng tử rời đi.
+Khi vừa qua bậc cửa, một bàn tay đột nhiên đẩy mạnh tiểu thái giám.
+Tiểu thái giám không giữ được tay cầm.
+Chiếc xe lăn mắc vào ngạch cửa, Sở Dạ Ly lập tức chúi người về phía trước, ngã nhào xuống đất.
+Trước mặt bao người.
+Chật vật vô cùng.
+Đôi chân tàn phế kéo lê dưới thân.
+Cảnh tượng ấy rơi vào mắt mọi người, không ít kẻ lén bật cười.
+“Ngũ hoàng huynh!”
+Sở Ly lao tới.
+Chỉ thấy Sở Dạ Ly siết chặt hai bàn tay, móng tay gần như cắm sâu vào lòng bàn tay.
+Giờ khắc này, giống như bị lột sạch tất cả, trở thành trò cười của mọi người.
+Thân thể khẽ run.
+Hắn cố nén sự nhục nhã khôn cùng.
+Trong đáy mắt, hận ý cuồn cuộn như lửa ngập trời.
+Sở Ly vội vàng đỡ hắn dậy.
+Sở Cảnh Lân cười trộm:
+“Đến cái xe lăn cũng không biết đẩy. Người đâu, còn không mau lôi tên tiểu thái giám này xuống, đánh chết bằng gậy!”
+Tiểu thái giám sợ đến quỳ phịch xuống đất, liên tục cầu xin tha mạng.
+Hắn không cố ý.
+Không phải lỗi của hắn.
+Rõ ràng vừa rồi là Thất hoàng tử đẩy hắn một cái…
+Nhưng hắn nào dám khai Sở Cảnh Lân ra?
+Lại càng không dám gánh cái tội lớn như vậy, chỉ biết không ngừng dập đầu cầu xin, trán đập đến bật máu.
+“Điện hạ tha mạng! Nô tài thật sự không cố ý! Xin điện hạ tha mạng!”
+Sở Dạ Ly chống hai tay xuống đất.
+Hai bàn tay đã dính đầy bụi bặm.
+Nghe những tiếng cười khe khẽ.
+Nhìn những gương mặt đang chế giễu mình.
+Mỗi ánh mắt đều như một lưỡi dao đâm lên người hắn.
+Nhát nào cũng thấy máu.
+“Ngũ hoàng huynh, đứng lên!”
+Chỉ có Sở Ly dùng thân thể gầy gò ôm lấy dưới cánh tay hắn, hết sức dìu hắn dậy.
+“Đứng lên!”
+Đôi chân hoàn toàn mất tri giác, như hai món phế vật vô dụng đeo bám dưới thân.
+Muốn bỏ cũng chẳng bỏ được.
+Cuối cùng hắn lại ngồi lên xe lăn.
+Hắn nhìn tiểu thái giám:
+“Ngươi lui xuống đi.”
+Tiểu thái giám như vừa nhặt lại được một mạng, hoảng loạn bò lăn bò càng chạy mất.
+Sở Ly đẩy xe lăn đưa hắn rời đi.
+Sau lưng, những tiếng bàn tán không ngớt.
+“Một kẻ tàn phế ngay cả đi lại còn khó khăn, sao có thể đảm đương trọng trách?”
+“Làm thế chẳng phải để thiên hạ cười nhạo Đại Sở ta không còn ai dùng được sao?”
+“Hoàng thượng lần này hồ đồ thật.”
+“Nghe nói là Ngũ hoàng tử nóng lòng đoạt quyền, nên mới ra tay với Hoàng thượng, khiến Hoàng thượng thổ huyết hôn mê…”
+“Ngũ hoàng huynh, huynh đừng nghe bọn họ nói bậy.”
+Sở Ly vừa đẩy xe lăn đưa hắn về tẩm điện, vừa nói:
+“Từ nhỏ đến lớn, đệ cũng nghe những lời như vậy suốt. Khương thái phó ngày nào cũng mắng đệ là gỗ mục không thể đẽo thành đồ, vậy mà bao năm nay chẳng phải đệ vẫn sống tốt sao?”
+Thần sắc Sở Dạ Ly ảm đạm, gượng cười:
+“Để Tiểu Cửu phải lo lắng rồi. Bao năm nay ta cũng quen rồi, không sao.”
+Thế nhưng bàn tay siết chặt tay vịn xe lăn đã bán đứng tâm trạng của hắn.
+Vì cố nhẫn nhịn đến cực hạn, gân xanh trên mu bàn tay đều nổi cả lên.
+Hắn đang nhịn.
+Ai cũng có lòng tự tôn.
+Huống hồ hắn còn là một nam nhân trưởng thành.
+Lấy đôi chân của hắn ra làm nhục, chẳng khác nào rắc thêm một nắm muối vào vết thương đau nhất.
+Sự xấu hổ, khó xử và nhục nhã bị phơi bày trước mặt bao người như vậy, nào phải vài ba câu an ủi là có thể xóa đi?
+Sở Ly cố hết sức muốn an ủi hắn.
+Nhưng trên đời vốn chẳng có cái gọi là cảm đồng thân thụ.
+Dù khuyên thế nào, cũng chỉ là lời nói ngoài miệng.
+“Tiểu Cửu.”
+Hắn nhẹ nhàng phủ tay lên mu bàn tay nàng.
+“Đừng lo cho ta.”
+“Từ năm năm tuổi, ta đã sống ngoài cung.”
+“Khi ấy, quanh đó có rất nhiều đứa trẻ đồng trang lứa. Chúng nghịch ngợm, thường trèo lên tường, lén dùng ná bắn ta.”
+Đến giờ, trên mu bàn tay hắn vẫn còn vết sẹo do viên đá từ chiếc ná để lại.
+“Lớn hơn một chút, có hai đứa gan lớn bắt rắn thả vào sân. Ta chỉ có thể trơ mắt nhìn con rắn bò về phía mình mà chẳng thể chạy đi đâu.”
+Hơi thở Sở Ly nghẹn lại.
+“Ngũ hoàng huynh!”
+“Rắn không có độc.”
+“Bọn chúng tuy xấu, nhưng cũng biết chọn rắn không độc. Nếu ta chết, chúng cũng không thoát được.”
+Chuyện cũ nhiều năm.
+Hắn lại kể ra nhẹ nhàng như gió thoảng.
+Nếu đổi là nàng…
+Nàng không làm được.
+Hoàn toàn không thể ngồi bất động, trơ mắt nhìn con rắn bò đến cắn mình.
+Quá trình ấy đáng sợ và bất lực biết bao.
+Năm ấy…
+Hắn mới chỉ mấy tuổi!
+Trong lòng Sở Ly chua xót vô cùng.
+“Đều đã qua rồi, Ngũ hoàng huynh. Chỉ cần có đệ ở đây, sau này sẽ không còn ai bắt nạt huynh nữa.”
+“Tiểu Cửu ở cạnh ta, không sợ người đời dị nghị sao?”
+“Ở cạnh chính huynh trưởng của mình mà cũng bị người ta bàn tán, vậy những kẻ ấy căn bản không xứng làm người. Tốt nhất hãy cầu cho bọn họ cả đời đừng mắc trọng bệnh, đừng già yếu. Nếu không, kết cục nhất định còn thảm gấp trăm lần!”
+Sở Dạ Ly bật cười.
+Nhìn gương mặt dịu dàng của nàng.
+Đôi mắt trong trẻo như bảo thạch phản chiếu ánh mặt trời.
+Rực rỡ.
+Chân thành.
+Trong khoảnh khắc ấy.
+Hận ý ngập trời trong lòng hắn giống như được gió xuân xoa dịu.
+Hắn cảm nhận được…
+Sự cứu rỗi.
+“Tiểu Cửu, ta muốn uống chút rượu.”
+⸻
+Dưỡng Tâm điện.
+Sau hơn hai canh giờ chờ đợi, cuối cùng Sở Hoàng cũng tỉnh lại.
+Ông gắng gượng ngồi dậy trên long sàng, nhìn khắp căn phòng.
+Ngự y.
+Phi tần.
+Hoàng tử.
+Trọng thần.
+Cung nhân…
+Đông nghịt một mảng.
+“Trẫm sắp chết rồi sao? Mới tụ họp đông đủ thế này?”
+Sắc mặt Hoàng hậu biến đổi:
+“Hoàng thượng đang độ tráng niên, sao lại nói những lời xui xẻo như vậy? Ngụy viện phán nói, năm xưa người chinh chiến để lại bệnh cũ, gần đây lại lao lực quá độ, can hỏa uất kết, khí huyết bế tắc nên mới thổ huyết.”
+Sở Uyên Trì bước lên:
+“Phụ hoàng, xin người bảo trọng long thể.”
+Sở Tây Lăng cũng nói:
+“Xin phụ hoàng bảo trọng.”
+Đôi mắt Sở Hoàng đục ngầu quét qua từng người, cười lạnh:
+“Không đứa nào nên thân, bảo trẫm bảo trọng kiểu gì?”
+Mấy vị hoàng tử đều trầm mặt.
+Là bọn họ không nên thân nên phụ hoàng mới triệu Ngũ hoàng tử hồi cung?
+Lẽ nào phụ hoàng cho rằng Ngũ hoàng tử còn giỏi hơn bọn họ?
+Nhưng Ngũ hoàng tử từ nhỏ sống ngoài cung, chưa từng được giáo dưỡng bài bản.
+Sao có thể so với bọn họ?
+Hân phi dịu giọng:
+“Hoàng thượng bớt lo nghĩ đi. Dù sao vẫn còn có Cửu hoàng tử mà.”
+Ôn phi: “?”
+Hoàng thượng đang quở trách các hoàng tử.
+Đem Cửu hoàng tử ra lúc này chẳng phải cố ý kéo thù hận cho nàng sao?
+Ôn phi lập tức không chịu thua:
+“Hoàng thượng, gần đây Bát hoàng tử rất chăm chỉ. Khương thái phó còn nói học vấn của nó tiến bộ vượt bậc, chắc hẳn đang muốn san sẻ gánh nặng với người.”
+Hân phi trừng mắt.
+Bát hoàng tử có cố gắng đến đâu cũng không vượt nổi từng ấy vị hoàng tử phía trên.
+“Vẫn là Cửu hoàng tử chăm chỉ hơn. Mấy ngày nay, ngày nào Cửu hoàng tử cũng ở cùng Ngũ hoàng tử. Hai huynh đệ đồng lòng, lợi có thể chặt đứt vàng.”
+Ôn phi lạnh lùng liếc bà ta.
+Sở Hoàng nhìn hai người, tâm trạng u ám cuối cùng cũng dịu đi đôi chút.
+Vẫn là hai người này thật lòng quan tâm ông.
+⸻
+Ngự Phong điện.
+Hai người ngồi đối diện.
+Hết chén này đến chén khác rượu được rót xuống bụng.
+Có lẽ đã uống quá chén.
+Sở Ly ôm lấy Sở Dạ Ly, bật khóc:
+“Ngũ hoàng huynh, huynh thật đáng thương!”
+Nghe hắn kể chuyện thuở nhỏ, nàng thương cảm đến nước mắt nước mũi giàn giụa.
+“Đám súc sinh! Đồ súc sinh! Đệ muốn giết hết bọn chúng!”
+Đôi mắt Sở Dạ Ly đã nhuốm men say.
+Khóe mắt đỏ hoe.
+Giọng hơi nghẹn lại.
+“Có Tiểu Cửu đau lòng cho ta… thì tất cả đều đáng giá.”
+“Ngũ hoàng huynh quá lương thiện. Nhưng chỉ cần là người bình thường thì sẽ không làm ra chuyện bắt nạt độc ác như vậy.”
+Có những người…
+Sinh ra đã ác độc.
+Khắc sâu tận trong xương cốt.
+Sở Ly không cam lòng.
+Nhưng nói rồi nói lại, nàng chợt nghĩ đến bản thân.
+Đời nàng thì tốt đẹp hơn được bao nhiêu?
+Nàng cũng thấy mình thật đáng thương.
+Ở một ý nghĩa nào đó.
+Nàng và Ngũ hoàng huynh là cùng một loại người.
+Đều có thứ trói buộc.
+Đều bị người khác kiềm chế.
+Đều mang trong lòng quá nhiều bất lực và không cam tâm.
+Dù thân là hoàng tử.
+Cuộc đời cũng chẳng thể thuận buồm xuôi gió.
+Huống hồ là lê dân bách tính dưới thiên hạ.
+Nàng cầm chén rượu.
+Một hơi uống cạn.
+Sở Dạ Ly nắm chén rượu trong tay, khẽ lẩm bẩm:
+“Tiểu Cửu là người đầu tiên nguyện ý cùng ta uống rượu.”
+“Cũng là người đầu tiên nguyện ý thân cận với ta.”
+Là người thường xuyên đến thăm hắn nhất.
+Hắn không khỏi nhớ lại năm xưa.
+Một mình hắn ngồi trên xe lăn giữa sân viện.
+Ngồi suốt cả ngày.
+Không thể đi đâu.
+Một cái đầu nhỏ đen nhánh bỗng ló lên khỏi bức tường, tò mò nằm bò trên đó nhìn hắn.
+Ban đầu hắn còn tưởng là đứa trẻ hàng xóm.
+Lại đến cười nhạo, bắt nạt hắn.
+Nhưng nhìn hắn một lúc.
+Nàng lại tặng hắn một con vẹt.
+Con vẹt ấy biết nói chuyện.
+Có thể giải khuây.
+Sau này hắn mới biết.
+Đó là Cửu đệ nhỏ hơn hắn năm tuổi.
+Nghe nói Cửu đệ nghịch ngợm vô cùng.
+Ngày nào cũng leo trèo chạy nhảy, không thích học hành, khiến phụ hoàng đau đầu mà chẳng làm gì được.
+Nhưng mỗi lần lén xuất cung.
+Đều sẽ ghé qua Thanh Phong cư của hắn.
+Thường mang cho hắn bánh ngọt, đồ ăn vặt hoặc vài món đồ linh tinh.
+Nàng quá hoạt bát.
+Mỗi lần đến Thanh Phong cư đều không ngồi yên nổi một khắc.
+Ghế còn chưa kịp ấm.
+Đã chạy biến mất.
+Là hắn quá tẻ nhạt sao?
+Khiến nàng cảm thấy buồn chán.
+Thế nhưng…
+Nàng lại giống như ánh mặt trời rực rỡ.
+Tràn đầy sức sống.
+Bất kể xuân hạ thu đông.
+Hay ngày đêm luân chuyển.
+Đều giống một chú chim nhỏ tung cánh vui đùa.
+Tinh lực dồi dào.
+Khiến hắn không khỏi dõi theo.
+Cũng không khỏi nhớ mong.
+Đến tận đêm khuya.
+Có tiểu thái giám tới báo.
+Hoàng thượng đã tỉnh, muốn gặp Ngũ hoàng tử.
+Sở Dạ Ly đành phải đi một chuyến.
+Sở Ly một mình trở về Chiêu Lan điện.
+“Ta bảo A Ngọc đưa đệ.”
+“Không cần. Đường về không xa, đệ biết đường.”
+Nàng có hơi say.
+Nhưng vẫn chưa đến mức thần trí mê muội.
+Lúc rời đi.
+Bước chân loạng choạng.
+Đêm tối.
+Nàng đi xiêu vẹo.
+Khi đi ngang Ngự hoa viên, tiếng kêu thất thanh của tiểu thái giám xé tan màn đêm.
+“Không hay rồi! Cửu hoàng tử ngã từ bậc thềm xuống rồi!”
+Bên này.
+Hoàng thượng vừa mới thổ huyết, tỉnh lại chưa được nửa ngày.
+Bên kia.
+Cửu hoàng tử say rượu, ngã từ bậc thềm xuống, bị thương đến hôn mê.
+Chỉ trong một ngày.
+Liên tiếp xảy ra biến cố.
+Những lời bàn tán trong bóng tối càng nhiều hơn.
+“Ngũ hoàng tử đúng là tai tinh.”
+“Bây giờ ngay cả Cửu hoàng tử cũng bị khắc rồi. Xem Cửu hoàng tử còn dám che chở hắn nữa không. Trừ phi không cần cái mạng của mình.”
+“Bất kỳ ai đến gần Ngũ hoàng tử đều sẽ không có kết cục tốt…”
+⸻
+Chiêu Lan điện.
+Ngự y đã đến khám.
+Sở Ly bị gãy xương.
+Sau khi chữa trị, ít nhất cũng phải tĩnh dưỡng ba tháng.
+Ôn phi ngồi bên giường, thức trắng cả đêm.
+Nhìn gương mặt đang ngủ mê của Sở Ly, lo lắng đến đỏ hoe vành mắt.
+Sao lại ngã từ bậc thềm xuống?
+Ly nhi từ nhỏ đã khỏe mạnh, leo trèo chạy nhảy quen rồi.
+Sao lần này lại ngã nặng đến vậy?
+“Người đâu! Mau mời ngự y!”
+Chẳng bao lâu sau.
+Ngụy viện phán đeo hòm thuốc vội vàng chạy đến.
+Lễ còn chưa hành xong đã bị Ôn phi gọi lại:
+“Đã cả một đêm rồi, sao Cửu hoàng tử vẫn chưa tỉnh?”
+Ngụy viện phán tiến lên bắt mạch.
+Vuốt chòm râu hoa râm.
+Bắt mạch liên tiếp ba lần.
+Lúc này mới nói:
+“Nương nương không cần lo lắng. Cửu hoàng tử chỉ là… ngủ rồi.”
+“?”
+Ôn phi lo đến mức thức trắng cả đêm.
+Kết quả lại bảo bà rằng…
+Sở Ly ngủ mất rồi.
+Còn ngáy nữa.
+“Nương nương, Cửu hoàng tử uống quá nhiều rượu. Tối qua khi thần nắn chỉnh xương cho ‘ngài’, ‘ngài’ đến một tiếng cũng không kêu, đủ thấy say không nhẹ. Giờ men rượu đã tan bớt, ngủ rất ngon. Chờ tỉnh rượu thì tự nhiên sẽ tỉnh lại.”
+Ôn phi mím môi.
+Nhất thời không biết nên nói gì.
+Hóa ra…
+Bà đã lo lắng uổng công cả một đêm. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_104.html" class="btn">‹ Trước</a>
+            <a href="chuong_106.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

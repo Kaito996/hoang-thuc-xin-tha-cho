@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 55</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 55</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_54.html" class="btn">‹ Trước</a>
+            <a href="chuong_56.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 55: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 55: Xông vào biển lửa
+Sở Ly lập tức ngoảnh đầu lại, chỉ thấy nơi chân trời rộng lớn bốc lên cuồn cuộn khói đen, đúng là phương hướng của Tướng quân phủ.
+Đang yên đang lành, sao lại xảy ra hỏa hoạn?
+“Ôi chà, ông trời quả thật có mắt. Kẻ sát nhân dù thoát khỏi sự trừng phạt của luật pháp, cũng không thoát khỏi thiên ý đâu.”
+Sở Ly quay đầu lại:
+“Là ngươi làm?”
+Sở Cảnh Lân cau mày tức giận, phất tay nói:
+“Không chứng không cứ, ngươi dám vu khống ta? Người đâu, kiện lên Đại Lý Tự! Bản hoàng tử muốn tố cáo Cửu hoàng tử phỉ báng ta!”
+Hai vị quý công tử bên cạnh cười đến không khép nổi miệng.
+Giọng điệu này thật giống hệt bộ dạng năm đó Tướng quân phủ đến Đại Lý Tự cáo trạng.
+Ha ha ha!
+Phong thủy luân lưu mà!
+Sở Ly trong lòng hiểu rõ, nhưng lại không có chứng cứ.
+Sở Cảnh Lân!
+Khinh người quá đáng!
+Nàng không còn tâm trí để ý thêm, lập tức chạy về phía Tướng quân phủ.
+Khóe môi Sở Cảnh Lân dần lạnh xuống:
+“Sở Ly, nỗi đau mất người thân không nên chỉ có Quốc Công phủ gánh chịu. Tướng quân phủ cũng nên nếm thử cho biết!”
+⸻
+Tướng quân phủ.
+Lửa lớn ngút trời.
+Một nửa hậu viện đều đã chìm trong biển lửa.
+“Khụ khụ…”
+“Mau cứu hỏa… mang nước tới… khụ khụ…”
+“Nhanh lên!”
+Hạ nhân xách thùng, bưng chậu nước, chạy tới chạy lui.
+Không ít bá tánh đứng xa xa, không dám tới gần.
+Cũng có những người dân nhiệt tâm vội vàng mang thùng nước trong nhà tới hỗ trợ dập lửa.
+Khi Sở Ly chạy đến, gần như bị luồng nhiệt nóng rực táp vào mặt bỏng rát.
+Nàng vội túm lấy một tên hạ nhân, hỏi:
+“Người bên trong đều đã ra hết chưa?”
+Mặt người kia đầy tro bụi, bị khói hun đến ho sặc sụa:
+“Khụ khụ… Tướng quân đang thao luyện ở ngoại thành, nhận được tin đang trên đường trở về… Phu nhân bị khói làm ngất đi, vừa mới cứu ra ngoài…”
+“Thế còn Tần Mục Vũ và Tần Mục Tuyết?”
+“Thiếu gia và tiểu thư… bọn họ… bọn họ…”
+“Khụ khụ!”
+Trong biển lửa đột nhiên lao ra hai hộ vệ, đang bảo vệ Tần Mục Tuyết đã hôn mê vì hít quá nhiều khói.
+“Mục Tuyết!”
+Vừa mới ra ngoài, một thanh xà ngang bị lửa thiêu gãy liền rơi xuống.
+Ầm!
+Tia lửa tung tóe.
+Sở Ly vội lao tới, nắm lấy cổ tay Tần Mục Tuyết, cảm nhận được mạch đập vẫn còn, lúc ấy mới thở phào một hơi.
+“Tần Mục Vũ đâu?”
+Hai mắt hộ vệ đỏ hoe:
+“Lửa quá lớn, chúng thuộc hạ không nhìn thấy thiếu gia. Chúng thuộc hạ chỉ tìm được tiểu thư.”
+Tần Mục Vũ vẫn còn ở bên trong?
+Đồng tử Sở Ly co rút.
+Nàng lập tức định lao vào.
+“Cửu đệ!”
+Sở Ngạo Thiên vội vàng kéo nàng lại.
+“Ngươi điên rồi sao? Lửa lớn như vậy, ngươi không cần mạng nữa à? Xà ngang bên trong đều đã cháy gãy rồi, e rằng chẳng bao lâu nữa sẽ sập hết!”
+Một khi đi vào, chắc chắn phải chết.
+Biển lửa hừng hực phản chiếu đôi mắt Sở Ly đỏ rực.
+Trong đầu nàng hỗn loạn cuồn cuộn.
+Nàng xoay người lao vào căn dân trạch bên cạnh, chộp lấy một chiếc chăn dày, nhúng ướt hoàn toàn, khoác lên người, rồi không ngoảnh đầu lại, trực tiếp xông vào biển lửa.
+“Cửu đệ!”
+“Cửu hoàng tử!”
+“Trời ơi! Cửu hoàng tử sao lại lao vào rồi! Xảy ra đại sự mất thôi!”
+Sở Ngạo Thiên vừa kinh hãi vừa sốt ruột, nhảy nhót loạn xạ như khỉ, giậm chân liên tục.
+Làm sao đây?
+Làm sao đây?
+Nếu Cửu đệ chết rồi, trong tám vị hoàng tử hắn sẽ thành kẻ đội sổ, nhất định ngày nào cũng bị phụ hoàng lôi ra mắng!
+Sở Ngạo Thiên gãi tai gãi má, trong lúc cấp bách bỗng nghĩ ra một cách.
+Hắn quỳ phịch xuống trước biển lửa ngập trời.
+“Bát hoàng tử, ngài làm gì vậy?”
+Sở Ngạo Thiên chắp hai tay, miệng lẩm bẩm không ngừng:
+“Xin ông trời mau đổ mưa! Xin ông trời mau đổ mưa! Chỉ cần Cửu đệ bình an vô sự, dù tương lai ta tầm thường cả đời, lại cưới thêm tam thê tứ thiếp, lại có thêm mười vạn lượng bạc, lại được sống cả đời ăn no chờ chết, lại được một tòa đại trạch ba tiến ba xuất, ta cũng nguyện ý!”
+⸻
+Biển lửa làm mờ tầm mắt.
+Từng đợt sóng nhiệt cuồn cuộn ập tới, gần như có thể nung chảy mọi thứ.
+Sở Ly khoác chiếc chăn ướt, theo phương hướng trong ký ức, nhanh chóng lao vào viện tử của Tần Mục Vũ.
+Ầm!
+Xà ngang sụp xuống.
+Lửa bắn tung tóe.
+“Tần Mục Vũ!”
+“Tần Mục Vũ… khụ khụ!”
+Sở Ly tránh những nơi hỏa thế mạnh nhất, đá tung cánh cửa đang cháy rồi xông vào trong.
+Chỉ thấy một thân ảnh ngã gục nơi góc tường.
+Y phục trên người đã cháy mất một nửa.
+“Tần Mục Vũ!”
+Nàng lập tức chạy tới, dùng chân giẫm đạp, dùng tay vỗ mạnh lên hai chân hắn, cố gắng dập lửa.
+Nhưng hỏa thế quá lớn.
+Không những không dập được.
+Ngay cả chiếc chăn trên người nàng cũng sắp bị sóng nhiệt hong khô.
+Một khi khô đi rồi bốc cháy, cả hai đều phải chết.
+Sở Ly kéo cánh tay Tần Mục Vũ vắt lên cổ mình.
+Nàng lật mặt còn ướt của chiếc chăn phủ lên cả hai người, dùng hết sức đỡ hắn đứng dậy.
+“Ra ngoài! Chúng ta ra ngoài!”
+“Ngươi sẽ không có chuyện gì đâu!”
+Thân thể hắn nặng nề.
+Nàng bước đi vô cùng khó khăn.
+“A… A Ly…”
+Tần Mục Vũ mơ màng tỉnh lại.
+Toàn thân vô lực.
+Giọng nói khàn đặc.
+Đôi mắt Sở Ly bị sóng nhiệt đâm đến đỏ ngầu.
+“Mục Vũ!”
+“Ngươi… mau đi… có mê dược…”
+Sở Ly biết.
+Vụ hỏa hoạn này tuyệt đối không phải vô duyên vô cớ.
+Là Quốc Công phủ?
+Là Tĩnh Hoàng Quý phi?
+Hay là Thất hoàng tử?
+Nhất định là bọn họ!
+“Chúng ta sắp ra ngoài rồi. Mục Vũ, ngươi cố gắng thêm chút nữa, rất nhanh thôi.”
+“Không… đừng quản ta…”
+“Ta biết! Phải quản ngươi! Phải quản ngươi! Ta sẽ quản ngươi! Ngươi yên tâm, ta sẽ không bỏ ngươi lại!”
+Tần Mục Vũ hít lên một ngụm trọc khí.
+Khói sặc khiến hắn gần như không thở nổi.
+“Khụ khụ… ngươi… đừng…”
+“Ta không đi, ta vẫn ở đây.”
+“Ta… khụ!”
+Tần Mục Vũ vừa bị lửa công tâm, lại trúng mê dược, lần nữa ngất lịm.
+Sức nặng của hắn đè lên đôi vai gầy yếu của Sở Ly.
+Còn thêm sức nặng của chiếc chăn.
+Sóng nhiệt nóng rực như muốn thiêu mù đôi mắt nàng.
+Hai chân nàng run rẩy.
+Mỗi bước đi đều gian nan vô cùng.
+Ngọn lửa bắt đầu bén vào vạt áo nàng.
+Từng chút từng chút thiêu đốt thân thể nàng.
+Có lẽ vì đã quen với nhiệt độ ấy.
+Nàng thậm chí không còn cảm thấy đau đớn do bỏng rát trên da thịt.
+Trong đầu chỉ còn một ý niệm duy nhất.
+Đưa hắn ra ngoài.
+Nàng nghiến chặt răng.
+Đi đi.
+Đi đi.
+Mệt quá…
+Sở Ly dùng cả hai tay siết chặt lấy hắn.
+Từng đường gân xanh trên cánh tay đều nổi lên.
+Khói đặc sặc đến mức nàng gần như không thể thở nổi.
+“Mục Vũ… ngươi nặng thật đấy…”
+“Hồi nhỏ ta bị ngã gãy chân trong núi, rốt cuộc ngươi đã làm thế nào để cõng ta từ nơi xa mấy dặm về được?”
+“Khi đó… ngươi cũng chỉ mới tám tuổi thôi mà…”
+“Lúc ấy… ta cũng nặng như vậy sao…”
+Ầm!
+Một cây cột lớn đổ sập xuống.
+Sở Ly bị hất văng khỏi bậc thềm, lăn liên tiếp mấy vòng.
+Trước khi hôn mê.
+Nàng dường như nhìn thấy một vạt trường bào màu giáng tử lạnh lùng, cao quý… Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_54.html" class="btn">‹ Trước</a>
+            <a href="chuong_56.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

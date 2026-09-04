@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 77</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 77</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_76.html" class="btn">‹ Trước</a>
+            <a href="chuong_78.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 77: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 77: Kẻ nam nhân này muốn giết thì cứ giết, thả cô nương kia ra
+Sở Ly dùng tốc độ nhanh nhất chạy đến cổng thành.
+Chỉ thấy cửa Đông thành đang mở rộng, vô số bách tính nối đuôi nhau ra vào để cùng vui Tết Trung thu. Vì vậy, binh lính canh giữ cũng được tăng gấp đôi để bảo đảm an toàn.
+Nàng chạy tới, cất tiếng:
+“Thiên kim của Tướng quân phủ đã bị gian tặc bắt đi! Mau đóng cổng thành, lục soát toàn thành từ trong ra ngoài, tuyệt đối không được sai sót!”
+Không ít người nghi hoặc quay đầu nhìn nàng.
+Tần tiểu thư bị bắt?
+Người này là ai?
+Hoàng gia đã ban ân, đặc cách cho bách tính trong ngoài thành cùng nhau đón Trung thu. Nếu lúc này đóng cổng thành, vậy những người ở ngoài thành biết trở về nhà bằng cách nào?
+Tên binh sĩ trực đêm đặt tay lên chuôi kiếm bên hông, cau mày hỏi:
+“Ngươi là người phương nào?”
+“Ta là Cửu Hoàng tử đương triều, Sở Ly.”
+Mấy tên binh sĩ nhìn nhau.
+Với thân phận của bọn họ, chỉ là lính tuần đêm, canh cổng thành và tuần tra phố xá, lấy đâu ra tư cách diện kiến vị Cửu Hoàng tử tôn quý? Nay người này tự xưng là Cửu Hoàng tử, bọn họ biết làm sao phân biệt thật giả?
+Sở Ly nói:
+“Tần Thiếu tướng quân lập tức sẽ tới. Mau đóng cổng thành, truyền lệnh khắp bốn cửa.”
+“Khoan đã!”
+Tên lính trực đêm giơ tay ngăn lại.
+“Đêm nay là ngày hội. Nếu tùy tiện đóng cổng thành, tất sẽ khiến bách tính náo loạn, không thể đóng!”
+Sở Ly bước lên:
+“Hãy nghe ta!”
+“Không có mệnh lệnh từ cấp trên, chúng ta không thể tự ý đóng cổng thành.”
+“Thời gian chính là sinh mệnh, không thể chậm trễ thêm nữa!”
+“Chúng ta không thể nghe theo ngươi!”
+“Các ngươi…”
+Đêm nay nàng xuất cung, không mang theo yêu bài. Đã giải thích mấy lượt mà đám người này vẫn cứng đầu cứng cổ.
+Trong lúc Tần Mục Vũ còn chưa tới, nàng lại trông thấy mấy bóng người lén lút đã chạy ra khỏi thành.
+Chính là đám người bắt Tần Mục Tuyết!
+Thân hình nàng bật lên, cướp lấy chiến mã ở bên cạnh.
+Đám binh sĩ lập tức vây tới.
+“Ngươi muốn làm gì?”
+“Nếu Tần Thiếu tướng quân tới, nói với huynh ấy rằng ta đã xuất thành, đuổi theo về phía Tây… Giá!”
+Nắm chặt dây cương, nàng xoay đầu ngựa, lập tức phi thẳng ra khỏi thành.
+Đám binh sĩ vội vàng đuổi theo:
+“Đó là ngựa của chúng ta!”
+“Ngươi dám công khai cướp ngựa!”
+“Đứng lại!”
+“Đã xảy ra chuyện gì?”
+Một giọng nói ôn hòa, trầm ổn vang lên.
+Tên lính trực đêm vội quay đầu:
+“Kẻ kia mạo danh Cửu Hoàng tử, còn nói thiên kim Tướng quân phủ bị gian tặc bắt đi, lại ngang nhiên cướp ngựa, thật đúng là… Đô đốc Tiêu? Thuộc hạ tham kiến Tiêu Đô đốc!”
+—
+Ngoài thành.
+Ánh trăng tròn sáng tỏ, soi rõ sơn dã và quan đạo. Tiếng vó ngựa xé tan màn đêm, phi nước đại vô cùng gấp gáp.
+Phía trước, bảy tám tên hán tử đang khiêng Tần Mục Tuyết, vừa chạy vừa lạnh giọng nói:
+“Sao lại có người đuổi theo?”
+“Cứ thế này sớm muộn cũng dẫn quan binh tới.”
+“Tìm cách dụ hắn đi.”
+Đám người rất khôn khéo.
+Bọn chúng giật hết trâm cài và trang sức trên đầu Tần Mục Tuyết, ném xuống quan đạo, còn mình thì vội trốn vào khu rừng nhỏ bên cạnh.
+Con ngựa cứ men theo quan đạo mà phi xa dần.
+Lộc cộc… lộc cộc…
+Nhìn con ngựa đã chạy xa, mấy người mới âm thầm thở phào.
+“Đi, hội hợp với lão đại.”
+Vác Tần Mục Tuyết trên vai, bọn chúng thấp giọng nói:
+“Vụ này kiếm được không ít.”
+“Kim chủ bảo phải bắt một kẻ lòng dạ độc ác, tâm địa hiểm độc, có mối huyết hải thâm cừu với hắn. Không ngờ lại là một cô nương yếu đuối thế này.”
+“Vương Hằng, vậy là ngươi không hiểu rồi. Nữ nhân càng xinh đẹp càng như rắn rết.”
+Giữa những tiếng cười nói oang oang ấy…
+Tên đi cuối cùng lặng lẽ ngã xuống.
+Đi thêm vài bước.
+Lại thêm một tên ngã.
+Rồi thêm một tên nữa…
+“Vương Hằng, ngươi nói có đúng không?”
+Tên đang vác Tần Mục Tuyết cười ha hả.
+“Vương Hằng?”
+“Vương Hằng?”
+Sao đang nói chuyện mà tất cả đều im bặt?
+Hắn quay đầu nhìn lại.
+Chỉ thấy một vị công tử mặc cẩm y hoa phục đang bóp cổ một người, tiện tay đánh ngất xuống đất.
+Bảy huynh đệ của hắn…
+Trong chớp mắt chỉ còn lại một mình hắn.
+“Ngươi!”
+Hắn chẳng phải đã cưỡi ngựa, bị bọn chúng dụ đi rồi sao?
+Sao lại có thể lặng yên không tiếng động đuổi tới?
+Sở Ly xoay cổ tay, tung một cước đá mạnh.
+“Ngay cả người của Tướng quân phủ mà các ngươi cũng dám bắt, ta muốn xem thử gan các ngươi lớn đến mức nào!”
+“A!”
+Bụng tên kia đau quặn, cả người ngã vật xuống đất.
+Hắn ném Tần Mục Tuyết sang một bên, rút đại đao bên hông, hung hăng chém tới.
+“Tìm chết!”
+Hai người lập tức giao đấu.
+Sở Ly vốn có võ nghệ, đối phó với hắn chẳng mấy khó khăn. Chỉ qua vài chiêu đã đá văng thanh đại đao trong tay đối phương.
+“Ai sai ngươi tới?”
+Tên kia lăn ra xa mấy trượng, chộp lấy Tần Mục Tuyết định bỏ chạy.
+Không ngờ sống lưng đau nhói, gần như bị một cước giẫm gãy.
+“A!”
+“Nói!”
+Tên kia kêu thảm như lợn bị chọc tiết.
+Đột nhiên hắn rút từ trong tay áo ra một mũi tên báo hiệu, bắn thẳng lên trời.
+Vút!
+Đó là tín hiệu cầu viện.
+Sở Ly muốn ngăn cũng đã muộn.
+Nàng tung một cước đá vào huyệt thái dương của hắn, khiến hắn hôn mê bất tỉnh, rồi đỡ lấy Tần Mục Tuyết đang mê man vì trúng thuốc.
+“Mục Tuyết, tỉnh lại!”
+Nàng nắm lấy hai tay nàng ấy, thấy tay chân vẫn nguyên vẹn, không có ngoại thương, lúc này mới thở phào nhẹ nhõm.
+Nơi đây không nên ở lâu.
+Nàng xoay người cõng Tần Mục Tuyết lên lưng, vội vàng rời đi.
+Không ngờ mới chạy được bảy tám trượng thì đã bị mấy chục tiếng bước chân bao vây.
+Trong khu rừng tối mịt, vang lên giọng nói khàn khàn của một nam nhân:
+“Đã tới rồi, lại còn làm bị thương nhiều huynh đệ của ta như vậy. Không để lại chút gì mà muốn dễ dàng rời đi sao?”
+Hơn hai mươi tên đại hán vác đại đao, vẻ mặt âm trầm từng bước ép tới.
+Sở Ly vừa cõng Tần Mục Tuyết vừa lùi từng bước, cảnh giác nhìn bọn chúng.
+Xét cách ăn mặc, hẳn là một đám ác bá chiếm cứ một phương.
+“Hãy để chúng ta đi, ta sẽ trả gấp đôi thù lao.”
+Tên cầm đầu, một gã râu quai nón mặt đầy thịt, cất giọng thô lỗ:
+“Hừ! Nếu ngươi chịu ăn nói tử tế thì ta còn có thể cân nhắc. Nhưng ngươi đã làm bị thương bao nhiêu huynh đệ của ta. Cho dù ngươi trả gấp mười lần, ta cũng phải thay huynh đệ đòi lại món nợ này!”
+“Bắt chúng!”
+Lời vừa dứt.
+Hơn hai mươi người đồng loạt xông lên.
+Sở Ly cõng Tần Mục Tuyết, trong tay lại không có binh khí. Hai nắm tay khó địch bốn tay, nàng gắng sức tránh được mấy người thì vẫn bị đá ngã xuống đất.
+Tần Mục Tuyết lăn sang một bên.
+Chỉ thấy một tên ác bá giơ đại đao lên, hung hăng chém xuống Tần Mục Tuyết!
+Đồng tử Sở Ly co rút.
+Nàng lập tức nhào tới ôm chặt Tần Mục Tuyết, đồng thời tung chân đá vào hạ bàn tên ác bá.
+Tuy đá lui được hắn, nhưng vẫn còn hơn mười người khác đồng loạt vây công.
+Đao kiếm vô tình.
+Nàng không còn chỗ để tránh.
+Sở Ly nghiến chặt răng, ôm chặt Tần Mục Tuyết dưới thân.
+Ngay trong khoảnh khắc ngàn cân treo sợi tóc…
+Một mũi tên xé gió lao tới, đánh lệch lưỡi đao.
+Keng!
+Trong rừng, mấy bóng đen chớp lóe lao đến, mang theo khí thế áp bức sắc bén, khiến màn đêm càng thêm lạnh lẽo.
+Đám ác bá lập tức cảnh giác.
+“Ai đó?”
+“Còn có người?”
+Bọn chúng vội túm lấy Sở Ly, đặt đại đao ngang cổ nàng, lạnh giọng quát:
+“Kẻ tới là ai? Nếu dám manh động, ta sẽ giết cả hai người bọn chúng!”
+Trong chớp mắt.
+Mấy bóng người vẫn còn đứng cách đó vài chục trượng giữa khu rừng.
+Tốc độ quỷ dị như ma mị ấy khiến hơn hai mươi tên ác bá đều bất giác lùi nửa bước.
+Nhanh quá!
+Đây còn là người sao?
+Người đứng đầu mặc một thân cẩm bào màu huyền mặc.
+Đôi mắt đen sắc bén như chim ưng hờ hững nhìn Sở Ly đang bị kề đao vào cổ, nhàn nhạt nói:
+“Nam nhân kia muốn giết thì cứ giết, thả cô nương kia ra.”
+Sở Ly: “?”
+Đám ác bá nghe vậy lập tức kéo Tần Mục Tuyết dậy, kề đại đao lên cổ nàng ấy.
+“Nam nhân kia các ngươi có thể mang đi, nhưng cô nương này mới là người bọn ta cần.”
+Sở Đệ Trì khẽ gật đầu:
+“Sở Ly, còn không mau qua đây?”
+————-
+ Chiêu này của Nhiếp chính vương hay quá, chỉ với một câu nói, đã khiến đối phương tự đổi con tin mà không cần ra tay. Không mặc cả để cứu cả hai người, mà ngay từ đầu đã tạo ra một “sự lựa chọn” cho đối phương 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_76.html" class="btn">‹ Trước</a>
+            <a href="chuong_78.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

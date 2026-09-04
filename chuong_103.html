@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 103</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 103</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_102.html" class="btn">‹ Trước</a>
+            <a href="chuong_104.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 103: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 103: Có ảnh hưởng đến việc hắn ôm nàng ngủ không? 
+Không tin thì đã sao?
+Có ảnh hưởng đến việc hắn ôm nàng ngủ không?
+Hoàn toàn không ảnh hưởng.
+Hắn đưa cánh tay dài kéo chăn phủ kín hai người, ôm thân thể mềm mại mảnh khảnh của nàng vào lòng, rồi nhắm mắt ngủ.
+Hôm sau.
+Thanh Phong Cư.
+“Chủ tử, sáng nay người của chúng ta trông thấy Cửu hoàng tử từ tư trạch của Nhiếp Chính Vương đi ra. Bên phía hoàng cung cũng truyền tin, đêm qua Cửu hoàng tử không ở trong cung.”
+A Ngọc khom lưng bẩm báo, thần sắc mang theo vài phần vi diệu.
+Đêm qua… Cửu hoàng tử cùng Nhiếp Chính Vương ở chung một đêm.
+Nam nhân ngồi trên xe lăn, nhàn nhã đưa tay tỉa tót hoa cỏ, giọng nhàn nhạt:
+“Ngươi nói với ta những chuyện này để làm gì? Chuyện trong cung, từ trước đến nay ta chưa từng hỏi đến.”
+A Ngọc khẽ cười:
+“Vâng, là nô tài hồ đồ. Nghĩ rằng Đại hoàng tử hẳn sẽ rất hứng thú với tin tức này, nô tài sẽ lập tức sai người truyền tin đến chỗ Đại hoàng tử.”
+—
+Khi Sở Ly trở về hoàng cung, trong tay đã nhiều thêm một cuộn thư.
+Nghĩ đến thần sắc của Sở Đệ Trì khi giao nó cho nàng, bên tai nàng lại vang lên lời hắn:
+“Đường lui là do tự mình giành lấy.”
+“Cứ buông tay mà làm, phía sau đã có bản vương chống lưng cho ngươi.”
+Nàng chỉ lật sơ qua một lượt rồi lập tức gấp lại.
+Bên trong đều là chứng cứ nhiều năm qua Đại hoàng tử bí mật bổ nhiệm quan chức, cấu kết triều thần…
+Hình tượng vị đại hoàng huynh đoan chính, tự giữ mình, khắc kỷ thủ lễ trong lòng nàng hoàn toàn sụp đổ.
+Một khi những thứ này bị phơi bày, tất sẽ dấy lên sóng gió ngập trời. Đến lúc đó, thanh danh của Đại hoàng tử sẽ tan nát, quần thần liên thủ công kích, coi như phế bỏ.
+Nàng vẫn còn đang suy nghĩ…
+Rốt cuộc nên làm thế nào.
+Chưa nghĩ ra kết quả thì đã bị Phúc công công bên cạnh ngự giá mời đến Ngự Thư Phòng.
+Khi đến nơi, nàng thấy Đại hoàng tử cũng có mặt.
+“Phụ hoàng, Đại hoàng huynh.”
+Sở Hoàng và Sở Uyên Trì liếc nhìn nhau, dường như dùng ánh mắt trao đổi điều gì đó, rất nhanh đã dời mắt đi.
+Sở Uyên Trì mỉm cười lên tiếng:
+“Tiểu Cửu đến rồi. Hy vọng ta không quấy rầy muội nói chuyện với phụ hoàng.”
+Sở Ly lập tức đáp:
+“Phụ hoàng cùng Đại hoàng huynh đang bàn quốc sự, nhi thần chỉ là kẻ nhàn rỗi mà thôi. Nếu phụ hoàng và Đại hoàng huynh còn bận, nhi thần xin lui, lát nữa sẽ đến.”
+“Tiểu Cửu, không sao.”
+Sở Hoàng gọi nàng lại.
+“Trẫm và lão Đại chỉ đang bàn chuyện chiến sự Nam Cương.”
+Nói đến đây, thần sắc ông trở nên ngưng trọng:
+“Nam Cương vẫn luôn là vấn đề nan giải. Bao năm nay đều do Nhiếp Chính Vương xử lý. Nay hắn hồi kinh đã lâu, Nam Cương lại đại loạn, rất nhiều bách tính và tướng sĩ đã bỏ mạng, trẫm thực đau lòng.”
+Sở Ly biết Nam Cương lại nổi loạn.
+Nhưng chẳng phải phụ hoàng đã điều mấy vị tướng quân đến Nam Cương trấn áp rồi sao?
+Sở Uyên Trì nói:
+“Trương tướng quân và Lý tướng quân đều không thể dẹp yên loạn Nam Cương. Tình thế hiện giờ vô cùng nghiêm trọng. Nếu để Nam Man công thành chiếm đất, e rằng hậu hoạn vô cùng.”
+Sở Ly lập tức hiểu ra.
+Chỉ có Nhiếp Chính Vương mới có thể khống chế được cục diện Nam Cương.
+Nhưng binh quyền của Nhiếp Chính Vương đã bị thu hồi, hắn vốn không còn ý định xuất chinh.
+Nàng khẽ mím môi:
+“Theo ý phụ hoàng thì nên làm thế nào?”
+Sở Hoàng đáp:
+“Nhiếp Chính Vương nhiều năm ở Nam Cương, hiểu rõ nơi đó như lòng bàn tay. Trẫm định phái An tướng quân xuất chinh, thống lĩnh năm vạn binh mã, để Nhiếp Chính Vương phụ tá An tướng quân, cùng nhau bình định Nam Cương.”
+Trong lòng Sở Ly chỉ có một ý nghĩ:
+Sao có thể chứ?
+Nhiếp Chính Vương vốn đã là người dưới một người, trên vạn người, sao có thể chịu hạ mình đi phụ tá An tướng quân?
+Huống hồ Hoàng thượng đã thu binh quyền của hắn. Muốn hắn tận tâm tận lực vì nước, lại không chịu giao binh quyền, Sở Đệ Trì sao có thể làm chuyện chỉ có thiệt mà chẳng có lợi như vậy?
+Hắn đâu có ngốc.
+Tuy trong lòng nghĩ vậy, nhưng từ trước đến nay nàng chưa từng can dự triều chính. Dù biết việc này không ổn, nàng vẫn giả bộ ngu ngơ, thuận theo ý Hoàng đế mà nói:
+“Phụ hoàng đã có quyết định, nghĩ rằng chiến sự Nam Cương chẳng bao lâu nữa sẽ được bình định, bách tính cũng sẽ sớm được an cư lạc nghiệp.”
+Sở Hoàng vui mừng nói:
+“Xem ra Tiểu Cửu và trẫm quả nhiên nghĩ giống nhau.”
+Ông hài lòng vỗ vai nàng.
+“Vậy thì do con mang ý chỉ của trẫm đến cho Nhiếp Chính Vương.”
+“…?”
+Bảo nàng đi làm loại chuyện đắc tội người khác này, sắc mặt Sở Ly lập tức trầm xuống vài phần.
+“Phụ hoàng, thánh chỉ quan trọng như vậy, e rằng nhi thần không đủ khả năng đảm đương!”
+Huống hồ…
+Nhiếp Chính Vương căn bản sẽ không đáp ứng.
+Nếu thánh chỉ không tuyên được, nhiệm vụ thất bại, chẳng phải mọi lỗi lầm đều đổ lên đầu nàng sao?
+Sở Hoàng nhẹ nhàng vỗ vai nàng.
+“Tiểu Cửu làm được.”
+“Con từ trước đến nay chưa từng khiến trẫm thất vọng. Lần này cũng vậy.”
+Trong lòng Sở Ly bỗng lạnh đi.
+Đồng thời, nàng bất giác nhớ đến những lời Sở Đệ Trì từng nói:
+Hoàng thượng không thật lòng thương yêu nàng. Mỗi một vị hoàng tử đều chỉ là một công cụ có giá trị. Đến lúc cần dùng, sẽ được sử dụng một cách hợp lý.
+Hoàng thượng…
+Quả thật là người coi trọng lợi ích.
+Sở Uyên Trì mỉm cười:
+“Chỉ cần chiến sự Nam Cương được bình định, quốc thái dân an, công lao của Nhiếp Chính Vương, bách tính Đại Sở nhất định sẽ không quên.”
+Dứt lời, hắn nhìn ra ngoài điện.
+“Phụ hoàng, giờ này chắc Huyên nhi cũng sắp vào cung rồi.”
+Thần sắc Sở Hoàng lập tức hiền từ hơn vài phần.
+Chẳng bao lâu sau, một tiểu thái giám dẫn theo Sở Hoằng Diễm còn nhỏ tuổi bước tới.
+Tiểu gia hỏa tuy người chưa cao, nhưng lễ nghi lại ra dáng ra hình, quỳ xuống cung kính hành lễ.
+Giọng nói non nớt cất lên:
+“Hoàng gia gia, tôn nhi thỉnh an người.”
+“Diễm nhi, lại đây, mau đứng dậy, đến bên Hoàng gia gia.”
+Sở Hoàng mỉm cười vẫy tay.
+Đối với trưởng tôn mà mình yêu quý, ông tự nhiên hết mực cưng chiều.
+Sở Hoằng Diễm đứng dậy, ngọt ngào cười với Sở Ly:
+“Cửu Hoàng thúc.”
+Trái tim Sở Ly mềm nhũn.
+Nhìn tiểu gia hỏa bước đến bên Sở Hoàng, cảnh tượng ông cháu sum vầy, hưởng niềm vui thiên luân, đặc biệt là dáng vẻ hiểu chuyện của Sở Hoằng Diễm, khiến trong lòng nàng dâng lên muôn vàn cảm xúc khó tả.
+Đến khi trở về Chiêu Lan Điện, tâm trạng ấy vẫn nặng nề như cũ.
+“Chủ tử, sao người vừa về đã ủ rũ như vậy? Có tâm sự gì sao?”
+Cẩu Bát lo lắng hỏi.
+Sở Ly nhìn chồng mật hàm đặt trên bàn.
+Chỉ cần nàng sai người phát tán ra ngoài, Đại hoàng tử chắc chắn sẽ ngã ngựa.
+Nhưng đồng thời, nàng cũng sẽ phải đối mặt với sự trả thù của Đại hoàng tử.
+Lại nghĩ đến Sở Hoằng Diễm còn nhỏ, sau này tất sẽ oán hận nàng.
+Nàng day nhẹ huyệt thái dương.
+“Không có gì.”
+Sau một hồi suy nghĩ, nàng vẫn tạm thời cất những thứ ấy đi.
+Không bao lâu sau, Phúc công công mang thánh chỉ đến.
+Mà nàng…
+Lại phải mang chính đạo thánh chỉ ấy, đến Nhiếp Chính Vương phủ.
+—————————
+Khi đến nơi, Sở Đệ Trì đang ngồi trong sân ung dung thưởng trà.
+“Nhớ bản vương rồi?”
+Thấy Sở Ly chủ động tìm đến, hắn hiếm khi lộ vẻ kinh ngạc.
+Trong ấn tượng của hắn, nàng rất ít khi tự mình đến gặp hắn.
+Sở Ly đứng ở cửa, nhất thời không nói nên lời.
+Hắn đặt chén trà xuống.
+“Xem ra… chẳng phải chuyện gì tốt đẹp.”
+Sở Ly khẽ nghẹn.
+Nàng thực sự có chút không mở miệng nổi.
+“Ta… là phụ hoàng bảo ta tới.”
+“Hắn lại nghĩ ra chủ ý thối tha gì nữa?”
+Mặt Sở Ly đỏ bừng.
+Nàng chỉ đành cắn răng bước tới, lấy đạo thánh chỉ vẫn luôn ôm trong lòng đưa cho hắn.
+Sở Đệ Trì mở ra, chỉ lướt mắt nhìn một lượt.
+Trên gương mặt hắn nhất thời không nhìn ra bất cứ cảm xúc nào.
+“Mười năm đèn sách khổ học, trải qua hơn ba ngàn ngày đêm, đến lúc bảng vàng ghi danh, lại bị kẻ khác mạo danh cướp mất công lao.”
+“Tiểu Cửu, nếu ngươi là thư sinh ấy, ngươi sẽ làm thế nào?”
+Sở Ly không biết phải trả lời ra sao.
+Sở Hoàng muốn Nhiếp Chính Vương phụ tá An tướng quân.
+Vừa tước binh quyền của hắn, lại vừa lợi dụng tài năng của hắn.
+Việc này…
+Quả thật giống hệt ví dụ thư sinh mà hắn vừa nói.
+Bỏ ra biết bao tâm huyết…
+Cuối cùng lại chẳng thu được bất kỳ lợi ích nào.
+Nhưng…
+Nàng còn có thể làm gì?
+Nàng không thể thay đổi thánh ý của phụ hoàng.
+Cũng không muốn nhúng tay vào cuộc tranh đấu triều chính.
+Nói cho cùng…
+Nàng chỉ là một kẻ truyền chỉ mà thôi.
+“Tiểu Cửu.”
+“Ngươi có hy vọng bản vương đi không?”
+Sở Đệ Trì đặt thánh chỉ xuống, đôi mắt đen sâu thẳm nhìn thẳng vào nàng.
+Ánh mắt ấy khiến hô hấp Sở Ly khẽ ngưng lại.
+“Đó là ý chỉ của phụ hoàng.”
+“Bản vương hỏi ngươi.”
+“Ngươi có hy vọng bản vương đi không?”
+“Ta…”
+Làm sao nàng biết được?
+Việc này thì có liên quan gì đến nàng?
+Sở Ly quay đầu sang một bên.
+“Ta không biết.”
+“Ngươi sao lại không biết?”
+“Một khi bản vương rời kinh, ít nhất cũng phải hai năm.”
+“Trong khoảng thời gian ấy, sẽ chẳng còn ai quấy rầy ngươi nữa.”
+“Nhưng làm như vậy… ngươi với Hoàng thượng có gì khác nhau?”
+Đều là…
+Ép người khác cống hiến để đổi lấy lợi ích cho bản thân.
+Hắn chẳng qua chỉ là một thanh lợi kiếm có thể lợi dụng.
+Lúc còn hữu dụng thì vắt kiệt giá trị.
+Đến khi không còn cần nữa…
+Liền tước quyền, tìm mọi cách loại bỏ.
+Sở Ly giống như bị chạm vào nỗi đau, đột nhiên nổi giận:
+“Ta với Hoàng thượng không khác nhau?”
+“Đúng!”
+“Ta biết đạo thánh chỉ này rất bất công với ngươi.”
+“Nhưng chính ngươi cũng đã hủy hoại cuộc đời ta!”
+“Hủy tất cả của ta!”
+“Nỗi bất công của ta… ta biết nói với ai đây?”
+Nếu không phải vì hắn…
+Nàng sao có thể rơi vào bước đường ngày hôm nay?
+Sở Đệ Trì đứng dậy.
+“Vốn dĩ… ngươi đã là của bản vương.”
+Sở Ly trợn tròn mắt.
+“Ngươi nói bậy!”
+“Mỗi lần ở cạnh bản vương, ngươi hưởng thụ biết bao, vui vẻ biết bao.”
+“Đến tối ngủ còn tự chui vào lòng bản vương…”
+“Im miệng!”
+Nàng không có!
+“Đều là ngươi ép ta!”
+“Thật sao?”
+Hắn thong thả bước tới.
+Bàn tay lớn vòng qua eo nàng, ôm nàng ép sát vào lồng ngực mình.
+“Vì sao bản vương lại không tin…”
+“Ngươi thật sự chưa từng động lòng dù chỉ một chút?”
+Sở Ly bất giác nhớ đến đêm Trung Thu.
+Đêm ấy nàng bị tên ác bá bắt đi.
+Nếu hắn không kịp thời xuất hiện…
+E rằng nàng đã lành ít dữ nhiều.
+Rồi lại nhớ đến lần phủ Tướng quân bốc cháy.
+Nàng và Tần Mục Vũ suýt nữa bị mắc kẹt trong biển lửa.
+Cũng chính hắn đã cứu bọn họ.
+Chỉ là…
+Những rung động trong mắt nàng vừa lóe lên trong khoảnh khắc, liền bị nàng ép xuống.
+Nàng lạnh lùng mở miệng:
+“Ta…”
+“Được rồi.”
+“Nếu đây là đạo thánh chỉ do chính tay ngươi mang đến cho bản vương…”
+“Vậy bản vương sẽ chiều theo ý ngươi.”
+“Trở về cung đi.”
+“Bẩm lại với phụ hoàng ngươi.”
+“Sáng mai, bản vương sẽ cùng An tướng quân xuất chinh.”
+“Làm trợ thủ cho An tướng quân.”
+Sở Ly nghe rõ sự mỉa mai trong từng lời hắn nói.
+Nàng thực sự không còn mặt mũi đứng lại.
+Đẩy hắn ra.
+Rồi chật vật quay người bỏ chạy khỏi Nhiếp Chính Vương phủ.
+Đây là lần đầu tiên trong đời Sở Ly cảm thấy…
+Phụ hoàng thật đáng hổ thẹn.
+Công huân và năng lực của Nhiếp Chính Vương, thiên hạ ai ai cũng biết.
+Phụ hoàng vừa muốn lợi dụng hắn, lại vừa muốn đề phòng hắn.
+Cách làm ấy thực sự quá khó coi.
+Lại còn bắt nàng đứng ra truyền đạt ý chỉ, khiến nàng đến cả mặt mũi cũng không biết giấu vào đâu.
+Quả thực…
+Quá vô sỉ.
+Dù có cho nàng thêm mười cái mặt, nàng cũng không đủ dũng khí hạ thấp Nhiếp Chính Vương xuống làm một kẻ phụ tá dưới quyền An tướng quân.
+Sau khi chạy ra khỏi Nhiếp Chính Vương phủ, Sở Ly mới cảm thấy lồng ngực nhẹ đi đôi chút.
+Mặc dù làm như vậy thật sự rất vô sỉ…
+Nhưng nếu hắn rời kinh, cuộc sống của nàng cũng có thể trở lại như trước rồi chăng?
+Điều nàng mong cầu…
+Chẳng phải chỉ là một cuộc sống bình yên sao?
+Sáng sớm hôm sau.
+Nhiếp Chính Vương quả nhiên cùng An tướng quân xuất chinh, thẳng tiến Nam Cương.
+Tin tức ấy lập tức khiến văn võ bá quan âm thầm suy đoán không thôi.
+“Nhiếp Chính Vương vậy mà lại cam lòng chịu nhục đến mức này?”
+“Hay là Hoàng thượng đã hứa cho Nhiếp Chính Vương lợi ích gì đó?”
+“Từ bao giờ Nhiếp Chính Vương lại dễ nói chuyện như vậy?”
+Sau khi bãi triều, các đại thần vừa tản đi vừa bàn tán xôn xao.
+Những lời ấy lọt vào tai Sở Ly, khiến lòng nàng vô cùng khó chịu.
+Ngay cả các quan viên cũng biết.
+Ai ai cũng biết.
+Lần xuất chinh này…
+Đối với Nhiếp Chính Vương là sự sỉ nhục lớn đến nhường nào.
+Mà nguyên nhân hắn bằng lòng nhận lấy sự sỉ nhục ấy…
+Dường như…
+Là vì nàng.
+Là nàng đã mang đạo thánh chỉ ấy đến cho hắn.
+Là vì nàng.
+Rõ ràng hắn hoàn toàn có thể kháng chỉ.
+Thế nhưng…
+Vì nàng, hắn lại cam tâm chịu nhục.
+Trong lòng nàng bỗng sinh ra một ảo giác…
+Rằng đối với hắn…
+Nàng rất quan trọng.
+Chính bởi ảo giác ấy, nàng lại nhớ đến những việc phụ hoàng từng làm với Nhiếp Chính Vương.
+Bắt hắn đoạn tử tuyệt tôn.
+Lại còn ép hắn dốc cạn tâm huyết vì nước vì dân, vắt kiệt từng chút giá trị cuối cùng.
+Đến cuối cùng…
+Ra trận giết địch là hắn.
+Liều mạng là hắn.
+Đoạn tử tuyệt tôn là hắn.
+Chịu nhục là hắn.
+Xông pha trận mạc là hắn.
+Định quốc an bang cũng là hắn.
+Chỉ có Hoàng đế…
+Vẫn ung dung ngồi trên long ỷ, ngày qua ngày ban bố thánh chỉ.
+Sở Ly đột nhiên cảm thấy…
+Thật bất công với hắn.
+Đúng lúc ấy…
+“Chủ tử!”
+“Có việc gấp! Ôn phi nương nương mời người lập tức qua đó!”
+Vừa tiễn Nhiếp Chính Vương rời đi, Sở Ly nghe vậy liền nhíu chặt mày.
+Lại xảy ra chuyện gì nữa?
+Nàng lập tức chạy đến.
+Chỉ thấy Ôn phi đang đi qua đi lại trong điện, sắc mặt vừa lạnh vừa gấp.
+Đây là lần hiếm hoi nàng thấy Ôn phi nghiêm túc đến vậy.
+“Mẫu phi, xảy ra chuyện gì rồi?”
+“Ly nhi.”
+Ôn phi bước nhanh tới, nắm lấy tay nàng.
+“Ôn Nhã đã lấy trộm mật hàm trong thư phòng đưa cho Đại hoàng tử.”
+“Từ nay về sau… e rằng công lao và vinh quang của Ôn gia chúng ta đều sẽ thuộc về Đại hoàng tử.”
+Sở Ly sững sờ.
+Ngay sau đó, cơn giận bùng lên.
+“Ôn Nhã!”
+“Nó sao có thể làm ra chuyện như vậy?”
+Bao năm qua.
+Ôn gia vẫn luôn giữ thái độ trung lập.
+Không ủng hộ ai.
+Cũng không phản đối ai.
+Luôn giữ mình trong sạch.
+Không ngờ…
+Cuối cùng lại bị hủy trong tay Ôn Nhã.
+Ôn phi thở dài.
+“Hoàng thượng đã hạ chỉ ban hôn cho Ôn Nhã với Đại hoàng tử.”
+“Bây giờ… cho dù có đánh chết Ôn Nhã cũng không cứu vãn được nữa.”
+Huống hồ…
+Hiện giờ cũng chẳng còn ai dám động đến Ôn Nhã.
+Nàng ta sắp trở thành Trắc phi của Đại hoàng tử.
+Thân phận tôn quý.
+Ở Ôn gia, gần như muốn làm gì thì làm.
+Tam phu nhân nhà họ Ôn từng chất vấn nàng ta:
+“Đêm qua… có phải ngươi lén vào thư phòng hay không?”
+Ôn Nhã lập tức nổi giận:
+“Không có chứng cứ mà dám vu khống ta?”
+“Ngươi sỉ nhục ta chính là sỉ nhục Đại hoàng tử.”
+“Sỉ nhục Đại hoàng tử tức là sỉ nhục hoàng thất.”
+“Không ngờ Ôn gia lại mang lòng bất thần, dám bất kính với hoàng thất!”
+Tam phu nhân nhất thời không còn lời nào để nói.
+Sở Ly lạnh giọng:
+“Năm đó, Tam cữu mẫu thật không nên mềm lòng… để Mai di nương sinh hạ Ôn Nhã.”
+“Bây giờ nói gì cũng muộn rồi.”
+Ôn phi thở dài.
+“Sau này, nhất cử nhất động của Ôn gia đều sẽ không thể tách rời Đại hoàng tử.”
+“Muộn rồi sao?”
+Sở Ly chậm rãi nheo mắt.
+“Không.”
+“Vẫn chưa muộn.”
+Mọi chuyện… vẫn chưa hề muộn.
+Sở Ly lập tức trở về Chiêu Lan Điện, lấy xấp mật hàm trong ngăn kéo ra, sai Cẩu Bát mau chóng tung toàn bộ tin tức ra khắp kinh thành, càng nhanh càng tốt.
+Vốn dĩ, sau khi Sở Đệ Trì rời kinh, xuất chinh Nam Cương, nàng chỉ mong mọi chuyện trở lại quỹ đạo ban đầu, không muốn tiếp tục nhúng tay vào cuộc tranh đấu triều chính.
+Không ngờ Đại hoàng tử lại từng bước ép sát.
+Đã như vậy…
+Nàng cũng không cần nhẫn nhịn nữa.
+Chỉ trong vỏn vẹn hai canh giờ, cả Đế đô đã dấy lên một trận sóng gió ngập trời.
+“Có thật không? Đại hoàng tử vì muốn việc cứu trợ thiên tai diễn ra thuận lợi, lại giết bảy người dân không chịu phối hợp?”
+“Cái gì? Chức quan của Vương Thị lang lại do chính Đại hoàng tử bí mật bổ nhiệm?”
+“Đại hoàng tử lại còn…”
+Tin đồn nổi lên khắp nơi.
+Hơn nữa, từng lời đồn đều nói rõ đích danh từng người, từng sự việc, từng thời điểm cụ thể.
+Chỉ cần chịu khó điều tra một phen, thật giả lập tức có thể phân biệt.
+Chỉ trong chốc lát, danh tiếng đoan phương tự trì, ôn hòa hiền hậu của Đại hoàng tử hoàn toàn sụp đổ.
+Khi Sở Uyên Trì nhận được tin, hắn chẳng còn tâm trí chăm nom Sở Hoằng Diễm nữa, vội vàng chạy vào thư phòng.
+Nghe ám vệ bẩm báo xong, hắn mất khống chế, phất tay hất tung bút, mực, giấy, nghiên trên bàn xuống đất.
+“Ngươi nói cái gì!”
+Là ai?
+Rốt cuộc là kẻ nào?
+Lại nắm trong tay nhiều nhược điểm của hắn đến như vậy, còn dám công khai tất cả ra ngoài!
+“Đại hoàng huynh, giờ phải làm sao đây?”
+Nhị hoàng tử nghe được lời đồn, lập tức sốt ruột chạy tới.
+“Bên ngoài đều đang truyền nhau chuyện huynh coi mạng người như cỏ rác, bí mật bổ nhiệm quan chức, cấu kết triều thần. Dù có dốc sức đè ép cũng không thể ngăn nổi. Nếu những lời này truyền đến tai phụ hoàng…”
+Vậy thì…
+Mọi chuyện coi như xong.
+Sở Uyên Trì chống hai tay lên mặt bàn.
+Đôi mắt đỏ ngầu chậm rãi ngẩng lên, nhìn thẳng Nhị hoàng tử.
+“Hoảng cái gì?”
+“Nếu ta có mệnh hệ gì, ngươi sẽ trở thành trưởng tử của phụ hoàng.”
+“Đối với ngươi mà nói, chẳng phải sẽ giành được lợi ích lớn nhất sao?”
+Sắc mặt Nhị hoàng tử lập tức biến đổi.
+“Ta…”
+Hắn siết chặt hai nắm tay, vội vàng nói:
+“Ta và Đại hoàng huynh từ nhỏ cùng nhau lớn lên, tình nghĩa chẳng khác nào huynh đệ cùng một mẹ sinh ra.”
+“Đệ chưa bao giờ có suy nghĩ như vậy.”
+“Trong lòng đệ chỉ mong một ngày nào đó Đại hoàng huynh có thể đăng cơ xưng đế.”
+“Đến lúc ấy, đệ cũng được thơm lây, hưởng chút phú quý.”
+“Thật sao?”
+Sở Uyên Trì khẽ cười.
+Nụ cười nhạt đến mức không nhìn ra chút nhiệt độ nào.
+“Nói như vậy…”
+“Là ta đã hiểu lầm ngươi?”
+Nhị hoàng tử vội vàng gật đầu.
+“Đương nhiên.”
+“Đệ tuyệt đối không có lòng riêng.”
+Sở Uyên Trì nhìn hắn rất lâu.
+Rồi chậm rãi cất tiếng:
+“Nếu ngươi thật sự một lòng vì ta…”
+“Vậy thì vì sao…”
+“Ngươi lại dám sau lưng ta… bán đứng Lục đệ?”
+—————————
+ Đọc xong nhớ thả 
+, comment, không là nam chính đi 2 năm không rõ ngắn hay dài 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_102.html" class="btn">‹ Trước</a>
+            <a href="chuong_104.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

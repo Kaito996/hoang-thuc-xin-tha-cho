@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 8</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 8</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_7.html" class="btn">‹ Trước</a>
+            <a href="chuong_9.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 8: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
+Chương 8: [Hay là chúng ta thi xem ai tè xa hơn]
+Hương quế nhàn nhạt phảng phất nơi chóp mũi, khiến tâm trí cũng nhẹ nhàng trôi theo làn hương ấy.
+Phải công nhận một điều.
+Nhiếp Chính Vương thật sự rất đẹp.
+Tiên hoàng lật đổ tiền triều, giành lấy giang sơn từ những trận chém giết đẫm máu.
+Sở Đệ Trì kế thừa huyết mạch của Tiên hoàng.
+Sát khí quanh người hắn tựa như vừa bước ra từ chiến trường biên cương vạn dặm.
+Khí thế mạnh mẽ vô cùng.
+Đôi mày mắt ngông cuồng ấy giống hệt một quân vương đang nhìn xuống thiên hạ.
+Vạn vật đều không lọt nổi vào mắt hắn.
+“Hắt xì!”
+Một cánh hoa quế bất ngờ chui vào mũi Sở Ly khiến nàng hắt hơi.
+Cũng nhờ vậy mà tỉnh táo lại.
+Nàng vội vàng thoát khỏi vòng tay nam nhân.
+“Buông ta ra!”
+Sở Đệ Trì nhướng mày:
+“Ngươi ôm chặt cổ bản vương không chịu buông.”
+“Vậy mà còn bảo bản vương thả ra?”
+Sở Ly nghẹn họng.
+Sở Đệ Trì ngẩng đầu nhìn bức tường cao hơn ba mét, rồi liếc nàng:
+“Sao thế?”
+“Chột dạ à?”
+Cho nên mới trèo tường bỏ chạy.
+Gương mặt Sở Ly cứng lại.
+Vừa tức vừa giận trừng hắn:
+“Ta hành sự quang minh chính đại, ngồi ngay thẳng, chưa từng làm chuyện thương thiên hại lý.”
+“Ta chột dạ cái gì?”
+“Chỉ là ta muốn tới thỉnh an Hoàng tổ mẫu.”
+“Đi đường này gần hơn thôi!”
+Sở Đệ Trì nhìn nàng nghiêm túc nói dối.
+Ý lạnh nơi đáy mắt càng sâu hơn.
+“Trùng hợp thật.”
+“Bản vương cũng đang muốn tới thỉnh an Thái hậu.”
+“Vừa hay cùng đường với ngươi.”
+Sở Ly suýt cắn phải lưỡi.
+“...”
+Biết vậy đã không lấy cớ tới Thọ Khang cung.
+Chiêu Lan điện của nàng với Thọ Khang cung của Thái hậu, có chỗ nào thuận đường?
+Phụ hoàng ơi!
+Người muốn đối phó Nhiếp Chính Vương thì đừng lấy nhi thần ra làm bia đỡ đạn nữa!
+Mạng của nhi thần chẳng phải mạng sao?
+Không còn cách nào khác.
+Nàng đành phải đi cùng Nhiếp Chính Vương tới Thọ Khang cung.
+Suốt dọc đường.
+Sở Ly cúi gằm đầu.
+Cố gắng giảm cảm giác tồn tại.
+Ngoan ngoãn đến mức đáng thương.
+Sở Đệ Trì đi được vài bước lại phải dừng chờ nàng.
+Đi thêm vài bước lại phải chờ tiếp.
+Cuối cùng lạnh giọng hỏi:
+“Sao thế?”
+“Khép mông quá chặt nên không bước nổi à?”
+“Nghe bên ngoài đồn ngươi bất lực.”
+“Hay là còn có sở thích đoạn tụ nữa?”
+Mặt Sở Ly lập tức đỏ bừng.
+“Ngươi!”
+Tên khốn này!
+Lại đi khắp nơi bôi nhọ thanh danh nàng!
+“Ngươi mới bất lực!”
+“Cả nhà ngươi đều bất lực!”
+Khóe môi Sở Đệ Trì cong lên một nụ cười lạnh.
+Bỗng nhiên cúi sát lại:
+“Nếu được thật.”
+“Vì sao mỹ nhân bản vương tặng, ngươi lại ngồi trong lòng mà chẳng loạn?”
+Sở Ly theo bản năng ngửa người ra sau tránh né.
+Lập tức phản kích:
+“Ngươi bảo ta ngồi trong lòng mỹ nhân không loạn.”
+“Nhưng Hoàng thúc lớn tuổi như vậy rồi còn chưa cưới vợ nạp thiếp.”
+“Chẳng phải càng bất lực hơn sao?”
+Ý cười nơi khóe mắt Sở Đệ Trì càng sâu.
+Người dám nói hắn lớn tuổi.
+Sở Ly là người đầu tiên.
+Hắn là con út của Tiên hoàng.
+Sinh muộn.
+Năm nay mới hai mươi ba tuổi.
+“Bản vương bận chinh chiến khắp nơi.”
+“Không có tâm tư cho chuyện nhi nữ.”
+“Lấy thân làm gương cho vạn ngàn nam nhi Đại Sở.”
+“Thiết cốt tranh tranh, nhiệt huyết sôi trào.”
+“Đó mới là nam nhân Đại Sở.”
+“Cũng để tránh sau này cưới Vương phi rồi lại có một tiểu cữu tử ẻo lả như ngươi.”
+Sở Ly trừng to mắt.
+Hắn vừa nói gì?
+Nàng...
+Ẻo lả?!
+Nàng vốn là nữ nhân mà!
+Lồng ngực lập tức ưỡn lên.
+Bước chân sải thật rộng.
+“Ta là nam tử hán đường đường!”
+“Sau này tất nhiên sẽ giống Hoàng thúc, vì nước vì dân, tận trung với quân vương!”
+“Chỉ là ta còn nhỏ, vẫn đang tuổi lớn.”
+“Không phiền Hoàng thúc phải nhọc lòng!”
+Khẩu khí rất cứng.
+Sở Đệ Trì nhìn nàng:
+“Chí hướng lớn như vậy.”
+“Hay là chúng ta thi trước xem ai tè xa hơn?”
+Rầm!
+Chân Sở Ly trượt một cái.
+Suýt nữa ngã sấp mặt xuống đất.
+Hắn bao nhiêu tuổi rồi mà còn chơi trò trẻ con này?
+Chẳng lẽ nam nhân thiên hạ đều thích thi kiểu đó?
+Ấu trĩ!
+“Ta đã đến tuổi thúc phát rồi!”
+“Không còn là trẻ con!”
+“Xin Hoàng thúc chú ý lời nói!”
+“Thúc phát rồi mà còn mặc y phục màu ngó sen?”
+“Hay ở trong cung lâu quá, tự xem mình là nữ nhân rồi?”
+Sự châm chọc trong mắt Sở Đệ Trì không hề che giấu.
+Thọ Khang cung
+Thái hậu là một người phụ nữ ôn hòa nhưng không thiếu thủ đoạn.
+Năm đó Tiên hoàng khởi binh lật đổ tiền triều.
+Bà lo liệu hậu cần chu toàn.
+Mọi việc đều sắp xếp ổn thỏa.
+Để Tiên hoàng không còn nỗi lo phía sau.
+Có lẽ vì lúc trẻ tạo quá nhiều sát nghiệp.
+Nay tuổi đã cao.
+Bà ăn chay niệm Phật, ngày ngày tụng kinh.
+Khi hai người tới nơi.
+Thái hậu vừa tụng kinh xong.
+Nhìn thấy hai người bước vào.
+Nhiếp Chính Vương thì khí thế hiên ngang.
+Còn Sở Ly bên cạnh thì mím chặt môi.
+Chân mày nhíu lại.
+Vẻ mặt vừa tức vừa nghẹn.
+Thái hậu đặt kinh thư xuống:
+“Nhiếp Chính Vương lại bắt nạt Tiểu Cửu rồi sao?”
+Đúng là mắt sáng như đuốc!
+Sở Ly lập tức tố cáo:
+“Hoàng tổ mẫu, Hoàng thúc người ấy...”
+Nam nhân nghiêng đầu.
+Ánh mắt nhàn nhạt quét tới.
+Lời nói của nàng lập tức nghẹn lại.
+Cảm giác như có gai đâm sau lưng.
+Sở Đệ Trì không nói một chữ.
+Chỉ một ánh mắt.
+Đã khiến Sở Ly như mắc xương trong cổ họng.
+Hoàng tổ mẫu nhân từ.
+Xưa nay luôn yêu thương nàng.
+Nếu nàng tố cáo.
+Nhất định sẽ được bảo vệ.
+Nhưng rời khỏi Thọ Khang cung rồi...
+Chuyện đó chưa chắc.
+Huống hồ.
+Đứng trước mặt chính chủ mà đi tố cáo chính chủ.
+Khác nào tìm chết.
+Nàng khó khăn nuốt nước bọt.
+Đành đổi lời:
+“Hoàng thúc xuất chinh hơn tám tháng.”
+“Hoàng tổ mẫu hẳn rất nhớ người.”
+“Nghe nói Hoàng thúc vào cung, Tiểu Cửu đặc biệt cùng người tới thỉnh an Hoàng tổ mẫu.”
+Thái hậu xoay tràng hạt trong tay.
+Cười đến nỗi đuôi mắt đầy nếp nhăn:
+“Tiểu Cửu có lòng rồi.”
+“Ngồi xuống đi.”
+Sở Ly chờ Sở Đệ Trì ngồi trước.
+Thấy hắn đi về phía ghế bên trái.
+Nàng lập tức chạy sang ghế bên phải.
+Nào ngờ vừa chạm mông xuống ghế.
+Đã thấy bóng áo đen huyền ngồi xuống bên cạnh mình.
+Không phải hắn ngồi đối diện sao?
+Nàng không muốn ngồi cùng hắn!
+Sở Ly vừa đứng dậy.
+Đầu gối bỗng đau nhói.
+Bị hắn đá một cái.
+Cả người ngồi phịch xuống.
+Chân ghế ma sát nền đá phát ra tiếng chói tai.
+Két—!
+Thái hậu nhìn sang.
+Chỉ thấy hai người ngồi ngay ngắn.
+Thúc hiền cháu kính.
+Tư thế chuẩn mực vô cùng.
+Bà hơi khó hiểu.
+“Có chuyện gì thế?”
+“Tú Trúc.”
+“Đi lấy bánh ngọt và trà sữa mà Cửu hoàng tử thích.”
+“Còn Nhiếp Chính Vương thích Quân Tử Kiếm.”
+“Mang vò rượu ai gia cất từ hai năm trước ra.”
+Sở Ly lập tức đứng bật dậy:
+“Hoàng tổ mẫu, con đi cùng Tú Trúc cô cô.”
+Tú Trúc cô cô là người hầu thân cận của Thái hậu nhiều năm.
+Bà khom người đáp lời.
+Rồi dẫn theo Cửu hoàng tử đang chạy như bay ra ngoài.
+Sở Đệ Trì tựa tay lên ghế.
+Giọng điệu nhàn nhạt:
+“Khó được Thái hậu còn nhớ sở thích của ta.”
+“Ta cứ tưởng người bận rộn lắm.”
+Thái hậu khựng lại.
+“Ai gia biết trong lòng ngươi có oán niệm.”
+“Những năm qua ngươi trấn thủ biên cương, chinh chiến sa trường.”
+“Hôm qua lại bị Hoàng đế thu hồi binh quyền.”
+“Nhưng muốn quốc gia đồng lòng, thiên hạ thái bình.”
+“Thì giang sơn này không thể có hai chủ.”
+Công lao của hắn là thật.
+Nhưng công cao lấn chủ cũng là thật.
+Nếu lòng dân đều hướng về Nhiếp Chính Vương.
+Mà không phải quân vương.
+Đại Sở sớm muộn cũng sẽ loạn.
+“Hơn hai mươi năm trước.”
+“Tiên hoàng khởi binh lật đổ tiền triều.”
+“Cũng bởi lòng dân bất ổn, hoàng quyền nội đấu, hoàng tự điêu linh, không người kế tục.”
+“Cho nên mới diệt vong.”
+“Một quốc gia muốn cường thịnh.”
+“Phải con cháu hưng vượng.”
+Trong khi Nhiếp Chính Vương đến nay không thê thiếp.
+Không con nối dõi.
+Không thể so với Hoàng đế.
+Người có chín hoàng tử cùng vô số công chúa.
+Sở Đệ Trì lạnh giọng:
+“Ra trận là ta.”
+“Liều mạng cũng là ta.”
+“Cuối cùng chỉ nhận lại một câu công cao lấn chủ rồi bị thu binh quyền.”
+“Hoàng đế thì thê thiếp thành đàn, ngồi hưởng thiên hạ.”
+“Những hậu duệ mà bản vương và các tướng sĩ dùng mạng bảo vệ.”
+“Chẳng lẽ là loại phế vật như Cửu hoàng tử?”
+Ngoài cửa điện.
+Sở Ly cùng Tú Trúc cô cô vừa quay lại.
+Tú Trúc bưng khay điểm tâm.
+Còn nàng vừa đi vừa lén bốc bánh ăn.
+Linh động hoạt bát chẳng khác nào thiếu nữ.
+“Ngươi nhìn xem Hoàng đế sinh ra toàn những loại nhi tử gì?”
+“Kẻ thì tâm thuật bất chính.”
+“Kẻ thì như bùn nhão không trát nổi tường.”
+“Kẻ thì nhu nhược vô dụng.”
+“Thái hậu cho rằng những người như thế đủ tư cách kế thừa đại thống?”
+“Đủ sức đưa Đại Sở hưng thịnh?”
+“Đó là cháu ruột của ngươi!”
+Thái hậu nhận ra cơn giận trong hắn.
+Trầm giọng nói:
+“Năm ngươi ra đời.”
+“Đúng lúc tiền triều phản loạn.”
+“Chiêu Nhân Hoàng Thái hậu vì kinh hãi mà khó sinh.”
+“Nếu không phải huynh trưởng ruột của ngươi, tức đương kim Hoàng đế, giữa đêm mưa quỳ từng bước lên Phiêu Miểu Sơn cầu thần y.”
+“Thì ngươi đã chết từ trong bụng mẹ.”
+Hoàng đế và Nhiếp Chính Vương là huynh đệ cùng mẹ.
+Mẫu thân ruột là Chiêu Nhân Hoàng Thái hậu.
+Nhưng bà đã mất hơn mười năm trước.
+Thái hậu hiện nay là từ vị trí Hoàng Thái Quý Phi được tôn lập lên.
+“Ngươi và Hoàng đế là huynh đệ đồng bào.”
+“Cùng nhau đưa Đại Sở tới thời thái bình thịnh thế.”
+“Có gì không tốt?”
+Sở Đệ Trì phất tay áo đứng dậy.
+Mỉm cười nhạt:
+“Thái hậu đại nghĩa.”
+“Hy sinh một mình bản vương để thành toàn thiên hạ.”
+“Nếu vậy.”
+“Bất công trong lòng bản vương.”
+“Chỉ có thể dùng cách của riêng mình để giải quyết.”
+“Trì Nhi!”
+Ánh mắt Sở Đệ Trì khẽ dao động.
+Từ sau khi Chiêu Nhân Hoàng Thái hậu qua đời.
+Không còn ai đủ tư cách gọi hắn như vậy nữa.
+“Ai gia nói tất cả đều vì lê dân bách tính.”
+“Tranh đoạt quyền lực.”
+“Bách tính có tội tình gì?”
+“Ngươi không con nối dõi.”
+“Khó khiến người khác tâm phục khẩu phục.”
+“Làm một vị Vương gia quyền cao chức trọng.”
+“Có gì thiệt thòi cho ngươi?”
+Nếu quyền lực hỗn loạn.
+Sẽ là xác chất thành núi, máu chảy thành sông.
+Thái hậu từng đi qua con đường ấy.
+Không muốn nhìn thấy lần nữa.
+Đừng để giang sơn vừa mới yên ổn.
+Đừng để bách tính vừa mới có được chút thái bình.
+Lại chìm vào chiến loạn.
+Chuyện nhà còn khó phân xử.
+Huống hồ là chuyện hoàng gia.
+Bà thở dài:
+“Giữa tháng trước.”
+“Pháp sư chùa Thiên Linh đã cung phụng cho ai gia một chuỗi Phật châu.”
+“Ngươi tới đó lấy về giúp ai gia.”
+“Ngửi mùi hương khói chùa Thiên Linh.”
+“Nhìn dân sinh bá tánh.”
+“Tĩnh tâm một chút đi.”
+Sở Ly và Tú Trúc cô cô vừa bước vào điện.
+Đã thấy Sở Đệ Trì phất tay áo rời đi.
+Khí thế lạnh lẽo đến mức khiến không khí cũng như đông cứng.
+Làm người khác kinh sợ.
+Lúc lướt qua nàng.
+Sở Đệ Trì đột nhiên dừng chân.
+Lạnh lùng nhìn sang:
+“Còn đứng ngây ra đó làm gì?”
+“Hả?”
+Sở Ly chỉ vào mũi mình:
+“Ta?”
+“Theo bản vương.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_7.html" class="btn">‹ Trước</a>
+            <a href="chuong_9.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

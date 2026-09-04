@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 86</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 86</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_85.html" class="btn">‹ Trước</a>
+            <a href="chuong_87.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 86: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi 
+Chương 86: Nàng vì hắn, lẽ nào muốn cùng ta trở nên xa cách?
+“Đừng nhíu mày nữa, Tiểu Cửu.”
+Sở Dạ Ly ôn thanh nói:
+“A Ngọc, mang đàn của ta tới.”
+“Vâng, chủ tử.”
+Tiểu tư khom người hành lễ, rất nhanh đã ôm tới một cây cổ cầm tinh xảo. Thân đàn làm từ gỗ tử mộc màu huyền tím, khí độ trầm ổn, bề mặt giản dị mộc mạc, cũng giống như chủ nhân của nó, không hề phô trương, chỉ lặng lẽ nội liễm.
+Sở Dạ Ly khẽ vuốt dây đàn.
+Mỗi một tiếng đàn đều nhẹ tựa gió xuân, thanh nhã tròn đầy, khiến vành tai người nghe bất giác rung động.
+Sở Ly kinh ngạc:
+“Trước đây hình như muội chưa từng nghe Ngũ hoàng huynh gảy đàn.”
+Hắn khẽ cười:
+“Trước kia, muội cũng rất ít khi đến chỗ Ngũ hoàng huynh. Cho dù có đến, cũng chỉ ngồi chốc lát rồi đi.”
+Sở Ly cắn môi.
+Nghĩ kỹ lại, hình như đúng là như vậy.
+Nàng vốn ham chơi, chẳng thể ngồi yên.
+Thuở nhỏ, nàng thích chạy khắp nơi, còn Ngũ hoàng huynh chỉ có thể ngồi trên xe lăn. Hắn quá đỗi trầm tĩnh. Mỗi lần gặp nhau, hai người chỉ chào hỏi vài câu, nàng đã chạy theo Bát hoàng huynh đi chơi.
+Đến tận hôm nay ngồi ở đây, nàng mới phát hiện…
+Thì ra yên tĩnh cũng là một loại cảnh giới.
+Một loại trạng thái vô cùng hiếm có.
+Lặng lẽ ngồi nơi này, suy ngẫm mọi việc, không ai quấy nhiễu, như thể tự thành một phương thiên địa.
+Những điều trước kia chưa từng hiểu, dường như trong khoảnh khắc này đều đã ngộ ra.
+Đầu ngón tay thon dài của nam nhân nhẹ lướt qua dây đàn.
+Tiếng cầm du dương, thanh tịnh theo gió mà dấy lên, tựa như có thể thổi thẳng vào lòng người.
+Sở Ly ôm chén trà, co người trên ghế, chăm chú lắng nghe.
+Rất tĩnh tâm.
+Quả thực quá tĩnh tâm.
+⸻
+Tần Mục Vũ gần như chạy trốn khỏi nơi đó.
+Nhưng những hình ảnh trong đầu hắn, bất luận thế nào cũng không xua đi được.
+Nhiếp Chính Vương ôm A Ly.
+Hôn A Ly.
+Còn nói ra những lời kiểu như…
+Thân thể có thương tích, tạm thời không thể thỏa mãn nàng.
+Bọn họ sao có thể…
+Không.
+Không!
+A Ly không phải loại người như vậy!
+Hắn phải đối mặt thế nào?
+Phải đối diện ra sao?
+Hắn và A Ly quen biết từ thuở nhỏ, thân thiết không phân ngươi ta. Hắn luôn cho rằng mình hiểu nàng như lòng bàn tay.
+Thế nhưng hôm nay, hắn lại vô tình nhìn thấy một mặt mà nàng chưa từng để ai biết đến, hoàn toàn lật đổ mọi nhận thức trước đây của hắn.
+Trong khoảnh khắc ấy…
+A Ly giống như một người xa lạ.
+Một người mà hắn chưa từng quen biết.
+Hắn cứ chạy.
+Chạy mãi.
+Chạy đến mức thở hồng hộc, đầu óc thiếu dưỡng khí, những hình ảnh kia mới hơi nhạt đi đôi chút.
+Hắn chống tay lên tường, từng ngụm từng ngụm thở dốc.
+Theo bản năng đưa tay sờ vào trong tay áo.
+Nhưng…
+Hai tay đều trống không.
+Sắc mặt hắn khẽ biến, lập tức tìm kiếm.
+Hai bên tay áo đều rỗng.
+Trong ngực, trong túi áo…
+Cũng chẳng còn gì.
+Ngọc giản đâu?
+Đó là vật A Ly tặng hắn!
+Ba năm qua, ngoại trừ lúc tắm gội, hắn chưa từng rời thân nửa bước.
+Sao lại đột nhiên thất lạc?
+Lồng ngực hắn đau nhói.
+Tựa như thiếu mất một mảnh.
+Hắn vội vàng quay trở lại tìm.
+Nhất định là lúc chạy, vô ý đánh rơi.
+Rơi ở đâu rồi?
+Đó là quà A Ly tặng hắn.
+Nhất định phải tìm lại!
+Cũng chính trong khoảnh khắc ấy…
+Cơn đau quặn nơi tim khiến hắn bừng tỉnh, cuối cùng cũng nhận rõ lòng mình.
+Hắn để tâm đến nàng.
+Có lẽ…
+Hắn nên nghe nàng giải thích.
+Có lẽ…
+Nàng có nỗi khổ khó nói, không thể nói với hắn.
+Sao hắn có thể bỏ mặc nàng rồi một mình chạy đi?
+Biết đâu lúc này…
+Nàng đang rất cần hắn giúp đỡ?
+Hắn thật đáng chết!
+Hắn…
+Không phải cố ý.
+A Ly.
+A Ly!
+⸻
+“Hửm?”
+Sở Ly đột nhiên mở mắt.
+Lúc này nàng mới phát hiện mình đang nằm trên một chiếc tiểu tháp, trên người còn đắp một tấm chăn mỏng.
+Nghe Ngũ hoàng huynh gảy đàn…
+Quá tĩnh tâm.
+Tĩnh đến mức…
+Bất tri bất giác ngủ thiếp đi lúc nào chẳng hay.
+Nàng gãi gãi đầu, vén chăn ngồi dậy.
+Qua khung cửa sổ đang mở, nàng nhìn thấy Sở Dạ Ly ngồi dưới gốc cây ngô đồng.
+Hắn lặng lẽ ngồi trên xe lăn, trong tay cầm một quyển sách.
+Hàng mi khẽ rũ, chăm chú đọc.
+Ánh chiều tà rải xuống người hắn, phác họa nên một tầng quang mang màu vàng ấm áp.
+Ấm áp.
+Bình yên.
+Đẹp tựa một bức họa.
+Đột nhiên nàng phát hiện…
+Cuộc sống mà nàng vẫn luôn mong muốn, chính là dáng vẻ như Ngũ hoàng huynh lúc này.
+Hay là…
+Đi tìm hai người đánh gãy chân mình, rồi đến làm bạn với Ngũ hoàng huynh?
+Ý nghĩ vừa mới lóe lên…
+Nàng đã lập tức lắc đầu xua tan.
+Không được.
+Đau lắm.
+“Ngũ hoàng huynh, muội nên hồi cung rồi.”
+Sở Dạ Ly nghe tiếng, ngước mắt nhìn nàng.
+“Tỉnh rồi.”
+Ở chỗ Ngũ hoàng huynh…
+Nàng ngủ thật ngon.
+Cảm giác an chẩm thục thụy như vậy, đã rất lâu rồi nàng chưa từng có.
+“Vâng.”
+“Về đi, để A Ngọc đưa muội.”
+⸻
+Trở lại hoàng cung.
+Vừa bước vào Chiêu Lan điện, Cẩu Bát đã chạy bổ tới, hành lễ:
+“Chủ tử, cuối cùng người cũng trở về rồi.”
+Thấy bộ dạng của hắn, Sở Ly vừa đi vào trong vừa hỏi:
+“Có chuyện gì?”
+“Không có chuyện gì lớn, chỉ là… Tần Thiếu tướng quân trước sau đã phái ba lượt người đến hỏi tung tích của người.”
+Nhắc đến việc này, Cẩu Bát cũng thấy kỳ lạ.
+Tần Thiếu tướng quân vốn luôn thân thiết với chủ tử.
+Hai người thường xuyên chơi cùng nhau, hiểu nhau vô cùng.
+Thế mà…
+Tần Thiếu tướng quân lại không biết chủ tử ở đâu, còn liên tiếp sai người tới dò hỏi.
+Sở Ly khựng lại.
+Trong mắt thoáng qua một tia phức tạp.
+Nàng nói:
+“Nếu hắn còn sai người tới hỏi nữa, cứ bảo ta đang bận đọc sách học hành, không rảnh.”
+Cẩu Bát: “?”
+Chủ tử?
+Người nghiêm túc đấy à?
+Người từ bao giờ lại chủ động đọc sách học hành vậy?
+Lời này của người…
+Đến chó đi ngang nghe thấy cũng phải lắc đầu.
+Sở Ly nghiêng đầu nhìn vẻ mặt kinh ngạc của hắn, giơ tay vỗ một cái lên đầu hắn.
+“Ngốc à? Bảo ta đang ở cùng mẫu phi, tạm thời không rảnh. Chẳng lẽ thật sự định trả lời nguyên văn lời ta nói?”
+Không nhìn ra nàng tạm thời không muốn gặp Tần Mục Vũ sao?
+Cẩu Bát ôm đầu.
+Trong lòng có chút tủi thân, nhưng ngoài miệng nào dám nhiều lời.
+Chỉ buồn bực đáp một tiếng rồi lui ra ngoài canh gác.
+⸻
+Trong khoảng thời gian tiếp theo…
+Sở Ly vẫn luôn ở trong cung, chưa từng ra ngoài.
+Mỗi ngày, Tần Mục Vũ đều đến tìm nàng.
+Nhưng đều bị lấy đủ loại lý do để từ chối.
+Không thì đang ở chỗ Ôn phi.
+Không thì đang ở chỗ Hoàng thượng.
+Hoặc là ở Hoàng gia học uyển.
+Tóm lại…
+Không một lần nào hai người chạm mặt.
+Tần Mục Vũ hiểu rõ điều gì đó.
+Trong lòng chỉ còn vị đắng chát.
+A Ly…
+Nàng vì hắn…
+Lẽ nào muốn cùng ta trở nên xa cách sao…
+Giữa hai người…
+Đến cả cơ hội ngồi xuống, bình tâm nói chuyện với nhau cũng không còn nữa sao?
+Chớp mắt…
+Đã hơn nửa tháng trôi qua.
+Sở Ly không xuất cung.
+Sở Đệ Trì cũng không đến tìm nàng.
+Những ngày tháng bình yên này…
+Yên ổn đến mức tựa như một giấc mộng.
+Không quá chân thực.
+Nhưng nàng biết…
+Đây không phải mộng.
+Nếu nàng cứ ngồi chờ chết…
+Thì chỉ có thể để mặc Sở Đệ Trì từng bước khống chế mình.
+Thậm chí…
+Từng chút từng chút phơi bày tất cả.
+Đến khi mọi chuyện bị công khai trước thiên hạ…
+Rốt cuộc nàng sẽ rơi vào kết cục nào?
+Chúng bạn xa lánh?
+Hay vạn kiếp bất phục?
+Hay bị người đời phỉ nhổ?
+Hoàng tử…
+Cùng Hoàng thúc…
+Thân phận nữ tử của nàng, đã định sẵn nàng là người không chiếm lý.
+Mọi người đều sẽ chỉ trích nàng.
+Khinh miệt nàng.
+Mà sẽ chẳng ảnh hưởng đến Sở Đệ Trì dù chỉ nửa phần.
+“Chủ tử, hôm nay đến ngày phải dự hỷ yến của Tam hoàng tử rồi. Người xem muốn mặc bộ nào?”
+Cẩu Bát mở tủ y phục, hưng phấn cầm từng bộ ra ướm thử.
+Đây là hỷ yến nghênh thú Chính phi của Tam hoàng tử.
+Là trường hợp vô cùng long trọng.
+Thân là thái giám thân cận của Cửu hoàng tử, hắn đương nhiên phải theo hầu.
+Mà phủ Tam hoàng tử lại ở ngoài cung.
+Cuối cùng hắn cũng có thể theo chủ tử xuất cung dạo chơi rồi.
+Sở Ly chỉ thản nhiên liếc nhìn một cái.
+“Tùy ý đi.”
+“Đây là hỷ sự cưới Chính phi của Tam hoàng tử đấy! Văn võ bá quan, hoàng thân quốc thích đều sẽ tới dự. Ngay cả Tiêu Dao Vương gia đang trấn thủ phiên địa cũng đã hồi kinh. Hơn nữa nô tài còn nghe nói…”
+Cẩu Bát hứng khởi thao thao bất tuyệt.
+Sở Ly lại rơi vào trầm tư.
+Người đông hỗn tạp…
+Ắt sẽ dễ sinh thị phi.
+Nếu nàng có thể tìm được một cơ hội…
+Thuận thế rời đi… Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_85.html" class="btn">‹ Trước</a>
+            <a href="chuong_87.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

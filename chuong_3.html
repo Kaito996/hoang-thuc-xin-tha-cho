@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 3</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 3</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_2.html" class="btn">‹ Trước</a>
+            <a href="chuong_4.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 3: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
+Chương 3: [Sở Đệ Trì, cái thứ chó má ấy]
+Trọng Phong lui xuống.
+Mỹ kiều nương dáng người yểu điệu, hương thơm thoang thoảng nơi tay áo, chậm rãi tiến lên hầu hạ.
+“Đứng lại!”
+Người do Sở Đệ Trì đưa tới, có thể là hạng tốt lành gì chứ?
+Hắn có thể mang theo ý tốt gì?
+Giữ nữ nhân này bên cạnh, e rằng đến lúc ngủ, bị người ta một đao kết liễu lúc nào cũng chẳng hay.
+Sở Ly lạnh giọng nói:
+“Chiêu Lan điện không thiếu cung nhân hầu hạ. Ngươi từ đâu đến thì trở về đó đi.”
+Sắc mặt mỹ nhân khẽ biến, vội vàng quỳ xuống:
+“Nô gia tên Noãn Ngọc, một lòng muốn hầu hạ Cửu hoàng tử. Xin Cửu hoàng tử khai ân, cho nô gia được ở lại.”
+“Nô gia tuy ngu độn, nhưng hầu hạ người, làm việc nặng, lo liệu tiểu trù phòng, việc gì cũng biết làm. Cửu hoàng tử cứ việc sai bảo, nô gia nhất định tận tâm tận lực hầu hạ ngài đến vừa lòng.”
+Khi nàng cúi người dập đầu, lớp sa y mỏng nhẹ khẽ lay động, trước ngực lộ ra một khoảng tuyết trắng cùng khe sâu mê người, khiến tim người đập nhanh hơn.
+Trắng.
+Lớn.
+Mềm.
+Lại thêm giọng nói vội vàng, tủi thân như bị bắt nạt đến thảm hại, khiến người thấy mà sinh lòng thương xót.
+Sở Ly lạnh nhạt nhìn nàng:
+“Thật sự chuyện gì cũng nghe theo ta?”
+Noãn Ngọc đỏ mặt, khẽ che phong cảnh trước ngực:
+“Xin Cửu hoàng tử hạ lệnh. Không cần thương tiếc, cứ tùy ý sai khiến nô gia.”
+“Được. Vậy ta ra lệnh cho ngươi, trong hôm nay phải cọ rửa sạch toàn bộ bô xí trong Chiêu Lan điện!”
+“?”
+Trọng Phong tới Chiêu Lan điện một chuyến, bề ngoài là dâng mỹ nhân, thực chất đã âm thầm lục soát khắp điện.
+Sau khi rời đi, hắn lập tức bẩm báo kết quả với Nhiếp Chính Vương:
+“Chủ tử, trong số các vị hoàng tử, chỉ có Cửu hoàng tử gần đây từng ra vào Tương Tư Môn.”
+Tương Tư Môn là một tổ chức sát thủ trong giang hồ.
+Ra tay tất thấy máu, ngàn dặm đoạt mệnh không lưu danh, khiến người nghe tiếng đã khiếp sợ.
+Cũng chính là kẻ chủ mưu vụ ám sát chủ tử lần này.
+Tương Tư Môn ra tay cực kỳ tàn độc.
+Một tiễn xuyên tim!
+Sở Đệ Trì suýt nữa mất mạng.
+Đôi mắt đen như mực của hắn lạnh như băng:
+“Bản vương chinh chiến bên ngoài quanh năm, vậy mà không nhìn ra Cửu hoàng tử còn có tâm cơ như thế.”
+Trọng Phong do dự một lát rồi nói:
+“Cửu hoàng tử tuổi còn nhỏ, văn chẳng thành, võ chẳng nên, khó gánh đại sự. Có lẽ là kẻ khác thuê sát thủ, còn Cửu hoàng tử chỉ vô tình gánh tội thay?”
+Người đàn ông cười nhạt, cất bước đi thẳng tới Chiêu Lan điện.
+Trọng Phong chần chừ.
+Chủ tử là nghe lọt tai rồi, hay vẫn chưa nghe lọt?
+Khổ cho Cửu hoàng tử lại phải chịu thêm một trận đòn độc.
+Trước cửa điện.
+Cửa phòng khép hờ.
+Một tiểu thái giám đang hầu Cửu hoàng tử uống thuốc.
+Bên trong, tiếng chửi rủa vang khắp căn phòng:
+“Cái lão già lòng dạ độc ác ấy!”
+“Ta nguyền hắn sinh con không có hậu môn!”
+“Ta sẽ đâm hình nhân, đâm chết hắn! Hai ngón tay của ta cũng có thể bóp chết hắn! Ta nhất định sẽ bóp chết hắn! Sớm muộn gì cũng có ngày hắn hối hận không kịp!”
+“Sở Đệ Trì, cái thứ chó má ấy!”
+“Theo vai vế, ngươi nên gọi bản vương một tiếng Hoàng thúc.”
+Sở Ly toàn thân run lên, sợ đến mức suýt nữa mất tiếng.
+Ngẩng đầu lên liền thấy ngoài khe cửa khép hờ, bóng dáng huyền y đen như mực đang đứng đó.
+A!
+Nhiếp Chính Vương!
+Tại sao không ai thông báo?
+Những lời nàng vừa mắng, hắn đều nghe hết rồi?
+Hắn bước vào rồi!
+Hắn đang đi tới!
+Xong đời.
+Ngô mệnh hưu hĩ!
+Sở Đệ Trì đứng bên giường, từ trên cao nhìn xuống:
+“Tiểu Cửu sao có thể gọi thẳng danh húy của bản vương? Lễ nghĩa liêm sỉ, kính trên nhường dưới học từ nhỏ, đều học vào bụng chó cả rồi sao?”
+Khí thế áp bách mạnh mẽ khiến Sở Ly không dám cãi lại:
+“Hoàng... Hoàng thúc...”
+“Vừa rồi cháu đang mắng Đại hoàng huynh Sở Uyên Trì. Tiểu Cửu nào dám bất kính với Hoàng thúc.”
+“Thật sao?”
+Bàn tay lớn của nam nhân tùy ý vỗ xuống mông nàng.
+Đau!
+Vết thương nứt toác.
+Đau đến tận xương!
+Sở Ly lập tức siết chặt gối, toàn thân run rẩy, mồ hôi lạnh túa ra:
+“Đúng... đúng vậy...”
+“Nếu không thích Đại hoàng tử, sau này bớt qua lại với hắn đi.”
+Nàng và Đại hoàng huynh là huynh đệ ruột thịt, đến lượt hắn quản sao?
+Phụ hoàng từng nói:
+Nhiếp Chính Vương luôn muốn ly gián các hoàng tử, khơi mào tranh đấu. Chỉ cần các hoàng tử tàn sát lẫn nhau, hắn sẽ ngồi thu lợi ngư ông, sau này cướp quyền đăng cơ.
+Dù Đại hoàng huynh có thế nào, nàng cũng không mắc mưu hắn.
+“Điếc rồi à?”
+Bàn tay kia lại vỗ xuống nơi bị thương.
+Một trận bản tử mà vẫn chưa nhớ lâu?
+“Nghe thấy rồi! Nghe thấy rồi!”
+Sở Ly đau đến mức hét lên:
+“Hai tai đều nghe thấy rồi!”
+Sở Đệ Trì nhìn khuôn mặt đẫm mồ hôi, đôi môi trắng bệch của nàng.
+Giữa hàng mi thanh tú ấy, lại còn mềm mại mỹ lệ hơn nữ tử ba phần.
+“Đường đường là nam nhân.”
+“Mông còn vểnh hơn nữ nhân.”
+“Không ra thể thống gì.”
+Gương mặt vốn tái nhợt của Sở Ly lập tức đỏ bừng, vừa giận vừa xấu hổ.
+Vểnh chỗ nào chứ?
+Rõ ràng là bị đánh sưng lên!
+Hắn còn có mặt mũi mà nói!
+Nàng tức đến gào lên một tiếng, nhất thời không cẩn thận ngã khỏi giường.
+Chóp mũi vừa khéo đập vào đôi cẩm ngoa thêu chỉ vàng của nam nhân.
+Hắn đứng.
+Nàng nằm.
+Hắn cao cao tại thượng.
+Nàng phủ phục sát đất.
+A a a!
+Tôn nghiêm của nàng!
+Mông đau đến mức căn bản không bò dậy nổi!
+Trong cơn xấu hổ, nàng vội vàng tìm bậc thang cho chính mình:
+“Trời hè nóng bức... dưới đất... dưới đất mát hơn.”
+“Vậy Tiểu Cửu cứ từ từ hưởng mát. Bản vương còn có công vụ, không phụng bồi nữa.”
+Ngài mau cút đi cho rồi!
+Mỗi lần gặp ngài đều chẳng có chuyện gì tốt!
+Sở Ly chật vật nằm trên đất.
+Nửa thân dưới đau đến không điều khiển nổi.
+Hai tay dùng hết sức cũng không đứng dậy được, cuối cùng chỉ có thể thở dài.
+Ngã ở đâu thì nằm nướng ở đó.
+Mang bát tới.
+Nằm sấp dưới đất ăn cơm.
+Bát hoàng tử nghe tin Sở Ly bị phạt, lập tức chạy tới thăm.
+Không ngờ vừa bước vào đã thấy nàng nằm sấp dưới đất, cúi đầu ăn như liếm thức ăn.
+Hắn hoảng hốt kêu lớn:
+“Không xong rồi!”
+“Mau tới đây! Cửu đệ bị đánh đến ngốc luôn rồi! Đệ ấy coi mình là chó rồi!”
+Im miệng.
+Ngươi mới là chó.
+“Cẩu Bát, đỡ ta dậy!”
+Cẩu Bát không phải Bát hoàng tử, mà là tiểu thái giám thân cận của Sở Ly.
+Năm đó, Hân phi sinh Bát hoàng tử.
+Để chế nhạo Ôn phi, bà cố ý đổi tên thái giám hầu hạ Bát hoàng tử thành Biết Cửu.
+Ôn phi sao nuốt nổi cục tức ấy?
+Trong cơn tức giận, bà liền đổi tên thái giám thân cận của Sở Ly thành Cẩu Bát.
+Hai bên cố tình chọc tức nhau.
+Hai vị phi tần vào cung mười tám năm, đấu đá suốt mười tám năm.
+Theo lý thì phải cả đời không qua lại.
+Nhưng hai đứa con do họ sinh ra lại có tình cảm rất tốt từ nhỏ.
+Bát hoàng tử Sở Ngạo Thiên thích nhất là chơi cùng Sở Ly.
+“Hoàng thúc lại đánh đệ à?”
+“Chứ còn gì nữa? Cái lão khốn đó.”
+“Mỗi lần hắn khải hoàn hồi triều đều thanh thế cực lớn, uy vọng cực cao. Theo ta thấy, lần này hắn là giết gà dọa khỉ, cố ý chèn ép đệ để cảnh cáo hoàng thất.”
+“Trong chín hoàng tử, chẳng lẽ chỉ mình ta dễ bắt nạt nhất sao?”
+Mèo đổi thái tử còn chưa đủ.
+Giờ nàng lại thành con gà dùng để dọa khỉ.
+“Nghe nói năm nay hắn đã bình định biên quan, ký kết hòa ước. Tương lai hẳn sẽ ở lại đế đô, nếu không có biến cố sẽ không xuất chinh nữa.”
+“Huynh nói cái gì?! Hắn không đánh trận nữa?”
+Hắn sẽ ở lâu dài tại đế đô?
+Nghĩ đến cảnh sau này ngẩng đầu không thấy cúi đầu thấy Sở Đệ Trì...
+Hai mắt Sở Ly tối sầm, suýt nữa ngất xỉu.
+Sở Ngạo Thiên điên cuồng bấm nhân trung cho nàng:
+“Cửu đệ! Cửu đệ! Đệ phải chống đỡ đó!”
+Đừng bấm nữa.
+Không chịu nổi rồi.
+Nhiếp Chính Vương lại lập chiến công, danh chấn tứ phương.
+Năm ngày sau, Hoàng đế đặc biệt mở tiệc khánh công trong cung để ban thưởng tam quân.
+Thương thế của Sở Ly đã hồi phục được năm sáu phần.
+Nàng chẳng muốn tham dự cái yến khánh công chết tiệt ấy chút nào.
+Nhưng thân là hoàng tử, trừ phi chết hoặc tàn phế, nếu không không được vô cớ vắng mặt.
+Vì thế nàng chỉ có thể vểnh cái mông vừa sưng vừa cong của mình, miễn cưỡng tham gia.
+Đêm xuống.
+Đèn đuốc sáng rực.
+Trong Thừa Dương điện, bá quan văn võ đều có mặt.
+“Cửu đệ!”
+Đại hoàng tử Sở Uyên Trì cho lui mấy vị quan viên bên cạnh rồi sải bước tiến lên.
+“Vết thương của Cửu đệ khá hơn chưa?”
+Sở Ly thở dài:
+“Đa tạ Đại hoàng huynh quan tâm. Đệ còn trẻ, thân thể khỏe mạnh, một trận bản tử không đáng ngại.”
+Sở Uyên Trì nắm lấy tay nàng, trong mắt tràn đầy phẫn nộ:
+“Hắn lấy lý do gượng ép để trượng trách đệ. Chẳng phải cũng là đang đánh vào thể diện hoàng thất sao?”
+“Hoàng huynh biết trong lòng đệ đang uất ức.”
+“Đêm nay, ta đã chuẩn bị chu toàn.”
+“Nhất định sẽ đòi lại món nợ này cho đệ!” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_2.html" class="btn">‹ Trước</a>
+            <a href="chuong_4.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

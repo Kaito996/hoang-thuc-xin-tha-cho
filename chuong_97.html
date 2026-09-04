@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 97</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 97</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_96.html" class="btn">‹ Trước</a>
+            <a href="chuong_98.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 97: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 97: Đừng khóc nữa, nàng khóc khiến lòng ta cũng mềm rồi
+Sở Ly xách hai vò rượu bước ra.
+“Ôn Nhã.”
+“Biểu… biểu huynh…”
+Ôn Nhã theo bản năng cúi đầu. Chẳng hiểu vì sao, vừa nhìn thấy Sở Ly, nàng lại có cảm giác chột dạ và lúng túng.
+Nàng vừa bày tỏ tâm ý với Bát hoàng tử, kết quả lại bị biểu huynh nghe thấy.
+Cảm giác như bị lột sạch giữa thanh thiên bạch nhật…
+Sở Ngạo Thiên không hề nhận ra, sải bước đến bên cạnh Sở Ly:
+“Cửu đệ, giờ phải làm sao đây? Nàng ấy bảo muốn lấy thân báo đáp ta, nhưng ta chỉ muốn đi chọi dế thôi.”
+Hắn vốn chẳng thích nữ nhân.
+Từ nhỏ đến lớn, cách ba bữa lại thấy mẫu phi và Ôn phi đấu đá nhau.
+Hai người vì tranh sủng mà đủ mọi thủ đoạn tầng tầng lớp lớp. Lớn lên trong hoàn cảnh như vậy, khiến dục vọng của hắn đối với nữ nhân vô cùng nhạt nhẽo.
+Sở Ly nhìn hắn:
+“Lấy thân báo đáp?”
+“Đúng vậy, chính miệng nàng ấy nói.”
+“Ồ, huynh cứ sang Tây Nhai chơi trước đi, lát nữa ta sẽ đến tìm.”
+Sở Ngạo Thiên gãi đầu, trách:
+“Sao đệ không nói sớm? Đệ mà nói từ nãy thì ta đâu phải đứng chôn chân ở đây đợi đệ mua rượu, phí mất bao nhiêu thời gian.”
+Nói xong liền vội vàng chạy về phía Tây Nhai.
+Ôn Nhã nhìn theo, định mở miệng gọi hắn, nhưng thấy Sở Ly đứng đó, lại rụt rè nuốt lời trở vào.
+Sao Bát hoàng tử cứ thế mà đi mất?
+Sở Ly bước đến trước mặt nàng.
+“Ôn Nhã, thân là một cô nương còn chưa xuất giá, ngươi cho rằng những lời vừa rồi nói với Bát hoàng tử là thích hợp sao?”
+“Ta…”
+Khuôn mặt Ôn Nhã lập tức đỏ bừng.
+Một nửa vì xấu hổ, một nửa vì khó xử.
+“Biểu huynh, ta… ta vừa rồi đâu có nói gì với Bát hoàng tử, chỉ là chào hỏi vài câu thôi.”
+“Chào hỏi?”
+Sở Ly cười.
+“Bát hoàng tử không thích ngươi, chẳng lẽ ngươi không nhìn ra sao?”
+Không thể nào!
+Lần trước Bát hoàng tử đặc biệt đến Ôn phủ cứu nàng, sao có thể không thích nàng?
+Hơn nữa, dung mạo của nàng cũng đâu có kém.
+Nhất định là biểu huynh không đồng ý.
+Biểu huynh lo thân phận thứ xuất của nàng không xứng với Bát hoàng tử, cho nên mới cố ý đuổi Bát hoàng tử đi, không cho bọn họ có cơ hội ở cạnh nhau.
+Sở Ly vốn chẳng muốn để ý đến nàng.
+Nhưng dù sao nàng cũng là cháu gái ruột của Ôn phi.
+Nể mặt mẫu phi, nàng nói:
+“Phụ thân ngươi là võ tướng, ngươi là nữ nhi Ôn gia. Sau này, đừng làm những chuyện tự hạ thấp giá trị bản thân như thế nữa.”
+Mặt Ôn Nhã càng đỏ hơn, xấu hổ đến cực điểm, các ngón chân bấu chặt xuống mặt đất.
+Biểu huynh thiên vị.
+Nàng không phục.
+“Bởi vì ta là thứ nữ, cho nên biểu huynh không thích ta, hà khắc với ta. Trong lòng ta đều hiểu.”
+“?”
+Sở Ly kinh ngạc nhìn nàng.
+“Ta hà khắc với ngươi?”
+Nàng bị điên rồi sao?
+Nàng ta hại nàng suýt mù mắt, nàng nể mặt mẫu phi và cữu cữu nên tha một lần.
+Nàng ta hại nàng đêm Trung thu bị bắt, nguy hiểm đến tính mạng, nàng cũng nể mặt cữu cữu mà bỏ qua.
+Nếu không, chỉ hai tội ấy thôi cũng đủ để Ôn Nhã chết không toàn thây.
+“Biểu huynh chịu giúp trưởng tỷ chuyển túi thơm, thay tỷ ấy bày tỏ tâm ý với Ngũ hoàng tử. Còn ta chỉ nói với Bát hoàng tử vài câu, biểu huynh đã hạ thấp ta như vậy. Chẳng phải vì ta là thứ xuất, không xứng hay sao?”
+Sở Ly nhìn nàng bằng ánh mắt xa lạ.
+Mang họ Ôn…
+Quả thật là nâng cao nàng ta quá rồi.
+Nếu không phải trong người bọn họ cùng chảy chung một dòng máu, nàng thật sự muốn động thủ.
+“Ôn Chỉ Tịch ngưỡng mộ Ngũ hoàng tử, nhưng chưa từng tư hội với hắn, càng không bao giờ nói ra những lời như ‘lấy thân báo đáp’ trước mặt mọi người.”
+“Ôn Nhã, ngươi xem bản thân mình là thứ gì? Cởi sạch rồi chủ động dâng tận cửa để lấy lòng người khác sao? Mặc kệ ngươi nghĩ thế nào, Bát hoàng tử cũng không thích ngươi. Ngoài ra, những lời hôm nay là lần cuối cùng ta khuyên ngươi. Sau này nếu còn ngu xuẩn như vậy nữa, ta sẽ đích thân cho ngươi biết thế nào mới gọi là ‘hà khắc’ thật sự.”
+Nói xong, nàng lạnh lùng phất tay áo bỏ đi.
+Mới mua được hai vò rượu ngon, vậy mà tâm trạng cũng bị phá sạch.
+Nàng lười đi tìm Sở Ngạo Thiên, trực tiếp hồi cung.
+Ôn Nhã cứng đờ đứng nguyên tại chỗ, trong đầu chỉ không ngừng vang vọng:
+“Cởi sạch để lấy lòng…”
+“Cởi sạch…”
+Thì ra trong mắt biểu huynh, nàng lại là loại người như vậy.
+Chỉ vì trưởng tỷ là đích nữ, trưởng tỷ có thể đường đường chính chính bày tỏ tâm ý.
+Còn nàng làm vậy thì là thấp hèn, là đê tiện.
+Biểu huynh chẳng những nhục nhã nàng, còn không cho Bát hoàng tử ở cạnh nàng.
+Sao biểu huynh có thể đối xử với nàng như vậy?
+Chỉ vì nàng là thứ xuất sao?
+Nhưng Ôn phi cũng chỉ là phi tần của hoàng thượng, biểu huynh cũng là thứ xuất.
+Vậy mà biểu huynh lại luôn cho mình cao cao tại thượng, còn nàng thì thấp hèn đê tiện.
+Không công bằng.
+Thật không công bằng.
+Ôn Nhã tủi thân đến đỏ hoe vành mắt, dùng mu bàn tay lau khóe mắt, sống mũi cay xè.
+“Vừa ra phố đã được nhìn thấy mỹ nhân rơi lệ, đúng là hữu duyên.”
+Một giọng nói phong lưu, tao nhã vang lên.
+Nam nhân bàn tay rắn rỏi cầm một chiếc khăn gấm màu lam, đưa tới trước mặt nàng.
+Ôn Nhã nhận lấy khăn, vội che mắt, không muốn người khác nhìn thấy bộ dạng khóc lóc của mình.
+Thế nhưng…
+Nỗi tủi thân trong lòng sao có thể giấu nổi.
+Biểu huynh sỉ nhục nàng.
+Mẫu thân dùng roi đánh nàng.
+Trưởng tỷ cũng xem thường nàng.
+Cả Ôn gia trên dưới đều không thích nàng.
+Không ngờ…
+Cuối cùng lại là một người ngoài cho nàng sự ấm áp mà nàng luôn khao khát.
+“Đừng khóc nữa.”
+“Khóc đến mức lòng ta cũng mềm rồi.”
+Nam nhân dịu giọng nói:
+“Nàng rơi một giọt lệ, ta sẽ mua cho nàng một viên minh châu, được không?”
+Hai gò má Ôn Nhã đỏ ửng, e thẹn cúi đầu, không dám nhìn hắn.
+Chưa từng có ai nói với nàng những lời như vậy.
+Hắn thật sự rất thương nàng.
+Chẳng lẽ bộ dáng lê hoa đái vũ của nàng quá đẹp, khiến hắn vừa gặp đã nhất kiến chung tình?
+“Để công tử chê cười rồi. Xin hỏi công tử là…”
+Nam nhân vỗ nhẹ lên trán.
+“Mải ngắm mỹ nhân nên quên tự giới thiệu.”
+“Ta là Lục hoàng tử đương triều, Sở Hoài Cẩn.”
+⸻
+Sở Ly xách hai vò rượu cúc trên đường hồi cung.
+Bỗng vài con tuấn mã phi xuyên qua dòng người, dừng lại ngay trước mặt nàng.
+“Tiểu đông tây.”
+Nam nhân nắm dây cương, từ trên cao nhìn xuống.
+“Có những lúc quá mềm lòng cũng chẳng phải chuyện tốt.”
+Sở Ly ngẩng đầu nhìn.
+Sở Đệ Trì dẫn theo Trọng Phong và Kinh Ảnh.
+Ba người đều cưỡi ngựa, đeo kiếm, trông như sắp xuất thành làm việc.
+Nàng lùi sang bên cạnh hai bước, tránh chắn đường hắn.
+Con ngựa khẽ nhấc vó, đi vài bước tại chỗ.
+Sở Đệ Trì nói:
+“Người của bản vương nhìn thấy biểu muội của ngươi đang ở cùng Lục hoàng tử.”
+Sở Ly khựng lại.
+“Cái gì?”
+“Người thông minh thì không nên để lại bất cứ sơ hở nào cho mình.”
+Hắn liếc nàng một cái, siết chặt dây cương.
+“Đi.”
+Ba con ngựa lướt qua bên cạnh nàng, hướng ra khỏi thành.
+Tiếng vó ngựa dần xa.
+Thần sắc Sở Ly cũng trở nên nặng nề.
+Ôn Nhã lại ở cùng Lục hoàng tử.
+Lục hoàng tử là người của Đại hoàng tử.
+Hơn nữa, đại lễ Trùng Dương năm nay vốn phải do Lục hoàng tử chủ trì, lại bị nàng cướp mất.
+Hắn sao có thể không ôm hận?
+Ôn Nhã…
+Rốt cuộc phải đến mức nào mới chịu nhìn rõ sự thật?
+Đáng lẽ Sở Ly nên hồi cung.
+Nhưng nghĩ một lát, nàng dừng bước, đổi hướng đi về phía phủ Đại hoàng tử.
+…
+Tiểu tư thấy nàng đến thì vô cùng vui mừng, cung kính mời nàng vào phủ.
+“Cửu đệ đến rồi!”
+Sở Uyên Trì cười lớn nghênh đón, sai người dâng trà, tiếp đãi chu đáo.
+“Đột ngột tới đây mà không báo trước, làm phiền Đại hoàng huynh rồi.”
+Sở Ly vừa định đứng dậy thì đã bị hắn giữ vai, ấn ngồi xuống.
+“Huynh đệ chúng ta, nói những lời ấy chẳng phải quá khách sáo sao?”
+Sở Ly nói:
+“Lục hoàng huynh đang ở cùng biểu muội Ôn Nhã của ta. Ôn Nhã không phải người hiểu chuyện. Nếu xảy ra điều gì, e rằng sẽ liên lụy Lục hoàng huynh. Mong Đại hoàng huynh nhắc nhở huynh ấy đôi câu.”
+Nụ cười trên mặt Sở Uyên Trì khựng lại.
+Sở Ly nói thẳng:
+“Giống như lần trước, hôm Tam hoàng huynh đại hôn, Sở Hoằng Diễm đột nhiên phát bệnh, không thể kịp thời đứng ra biện hộ cho ta. Ta sợ Ôn Nhã làm chuyện ngu xuẩn, liên lụy đến Lục hoàng huynh. Đến lúc đó, người chịu thiệt chỉ có Lục hoàng huynh.”
+Sở Uyên Trì lại mỉm cười.
+“Cửu đệ nói vậy cũng là vì nghĩ cho Lục đệ. Nhưng ta nghĩ, hai người họ trai chưa cưới, gái chưa gả. Nếu thật sự lưỡng tình tương duyệt, chúng ta cũng không nên làm kẻ chia uyên rẽ thúy.”
+Sở Ly nhìn hắn, cười đến mức không khép miệng được.
+“Lục hoàng huynh mới gặp Ôn Nhã lần đầu. Nếu trên đời có nhiều chuyện nhất kiến chung tình như vậy, thì cũng chẳng có câu: ‘Nhân sinh nhược chỉ như sơ kiến, hà sự thu phong bi họa phiến.’”
+Nghe vậy, Sở Uyên Trì bật cười.
+Ha ha!
+Nói chuyện với người thông minh quả nhiên khác hẳn.
+“Hắn” đã thay đổi.
+Không còn giống trước kia nữa.
+Bao năm qua, “hắn” luôn cẩn trọng kín đáo, âm thầm vô danh, cảm giác tồn tại nhỏ bé đến mức có thể bị bỏ quên.
+Hiện giờ xem ra…
+Là hắn đã nhìn lầm.
+“Cửu đệ cứ yên tâm. Ta sẽ quản thúc Lục đệ.”
+…
+Rời khỏi phủ Đại hoàng tử, Sở Ly đang trên đường hồi cung thì gặp Tần Mục Tuyết mắt đỏ hoe chạy tới.
+“A Ly ca ca! Huynh mau đến phủ Tướng quân xem ca ca muội đi!”
+Sở Ly giữ lấy vai nàng.
+“Đã xảy ra chuyện gì?”
+Tần Mục Tuyết sốt ruột nói:
+“Muội cũng không biết. Nhưng từ lúc ca ca từ trong cung trở về, huynh ấy cứ uống rượu mãi, say khướt rồi, khuyên thế nào cũng không nghe. Trong miệng còn… còn cứ luôn gọi tên huynh.”
+Sở Ly mím môi.
+Im lặng mấy giây.
+Nàng không nói gì.
+Chỉ cầm lấy tay Tần Mục Tuyết, đặt lên ngực mình.
+Tần Mục Tuyết ngơ ngác.
+“A Ly ca ca… huynh làm gì vậy?”
+Lòng bàn tay đặt lên ngực Sở Ly.
+Ban đầu chỉ thấy cứng cứng.
+Nhưng khi ấn mạnh xuống…
+Bên dưới lớp vải quấn ngực lại là đường cong mềm mại hơi nhô lên…
+Trong nháy mắt, nàng mở to hai mắt.
+Nữ tử!
+A Ly ca ca lại là nữ tử!
+“Huynh… huynh sao lại…”
+“Mục Tuyết, muội và Mục Vũ đều là bằng hữu cùng ta lớn lên từ nhỏ. Ta tin tưởng hai người. Những năm qua phải che giấu thân phận, quả thực có nỗi khổ bất đắc dĩ.”
+Tần Mục Tuyết lập tức rút tay về, cảnh giác nhìn quanh.
+Chuyện này tuyệt đối không thể để người khác nghe thấy.
+Dù vô cùng chấn động, nhưng điều đáng lo hơn chính là tội khi quân.
+Nếu không phải bất đắc dĩ, A Ly ca ca sao phải nữ cải nam trang?
+Nàng hạ thấp giọng:
+“A Ly ca ca yên tâm. Chuyện này muội tuyệt đối sẽ không nói với người thứ hai.”
+Nàng đã bảo mà.
+Từ nhỏ nàng đã luôn thích A Ly ca ca.
+Thì ra A Ly ca ca là nữ tử.
+Chỉ có nữ tử mới trắng trẻo linh động, tuấn tú đáng yêu như vậy.
+Các nàng đều là những cô nương xinh đẹp.
+Thảo nào nàng lại thích.
+Sở Ly nói:
+“Ca ca muội… huynh ấy từng vào cung tìm ta. Ta đã nói rõ với huynh ấy rồi. Có lẽ nhất thời vẫn chưa thể chấp nhận.”
+Tần Mục Tuyết nghiêm túc nói:
+“Vậy là ca ca muội không hiểu chuyện rồi.”
+Một cô nương đẹp như vậy…
+Sao có thể giận nàng chứ?
+“A Ly ca ca, huynh đừng lo cho ca ca nữa. Muội nhất định sẽ khuyên huynh ấy. Dù sau này huynh xuất giá hay thành thân, cũng không có gì quan trọng hơn bí mật của huynh.”
+Một khi bí mật bị lộ…
+Chính là họa mất mạng.
+Nàng vô cùng nghiêm túc, quay người chạy ngay về.
+Nàng phải nói chuyện tử tế với ca ca.
+Tuyệt đối không thể vì tình cảm nam nữ mà phá hỏng hơn mười năm khổ tâm che giấu của A Ly ca ca.
+Cổ họng Sở Ly nghẹn lại vì cảm kích.
+Nàng càng xem Tần Mục Tuyết là bằng hữu tốt nhất của mình, là người đáng để phó thác cả tính mạng.
+Mà Tần Mục Tuyết cũng chưa từng khiến nàng thất vọng.
+Đó là một cô nương cầm lên được, buông xuống được.
+Chỉ tiếc vì thân phận hoàng tử này, nàng buộc phải khắc kỷ phục lễ, thậm chí không thể giống những khuê trung mật hữu, cùng Tần Mục Tuyết vui vẻ một phen.
+Thân phận này…
+Vừa là gông xiềng.
+Cũng là trói buộc.
+Có điều…
+Rất nhanh thôi.
+Nàng sẽ thoát khỏi nó.
+Sở Ly hít sâu một hơi rồi hồi cung.
+…
+Chiêu Lan điện.
+“Chủ tử, sao người lại về một mình? Bát hoàng tử đâu rồi?”
+Cẩu Bát bước lên nhận lấy hai vò rượu trong tay nàng.
+“Hắn đang chơi ở Tây Nhai. Mang hai vò rượu cúc này đến tặng Ôn phi đi.”
+“Vâng.”
+Sở Ly ngồi xuống, rót chén nước nghỉ ngơi.
+Chỉ cảm thấy cánh tay âm ỉ đau.
+Mới xách có hai vò rượu mà vết thương đã bắt đầu “kháng nghị”.
+Nàng tháo băng.
+“Chủ tử!”
+Cẩu Bát vừa đưa rượu xong liền chạy về.
+“Để nô tài làm! Để nô tài thay thuốc cho người!”
+Chuyện nhỏ thế này, đâu cần chủ tử tự động tay?
+Hắn sai người mang thuốc tới, cẩn thận tháo lớp băng.
+Không ngờ…
+Vết thương vừa đỏ vừa sưng.
+Thậm chí đã bắt đầu mưng mủ.
+Hôm nay trời không nóng.
+Vết thương cũng chưa hề dính nước.
+Sao lại hóa mủ?
+Cẩu Bát lo lắng:
+“Chủ tử, vết thương này đã mấy ngày rồi. Nếu cứ mãi không khỏi, liệu có ảnh hưởng đến việc người chủ trì đại lễ Trùng Dương không?”
+Sở Ly thử nâng cánh tay.
+“Hít…”
+Trước kia băng quấn chặt nên còn chưa đau lắm.
+Giờ thì đau vô cùng.
+“Chỉ là một vết dao thôi, sao mãi không lành?”
+Hôm đó nàng cắt cũng không sâu.
+Cẩu Bát cũng thấy kỳ lạ:
+“Để lát nữa nô tài lại sang Thái y viện, mời ngự y đến xem kỹ một lần.”
+“Không đúng.”
+Sở Ly cau mày.
+“Trong Thái y viện, vị nào chẳng y thuật cao minh, chân tài thực học? Không thể ngay cả vết thương do dao cũng chữa không khỏi.”
+“Nhất định là có chỗ nào đó xảy ra vấn đề.”
+“Ngươi đi ngay bây giờ, mời Viện phán Thái y viện tới, cứ nói thuốc bôi của ta đã dùng hết, bảo ông ấy kê lại đơn mới.”
+“Vâng.”
+Rất nhanh, Ngụy Viện phán đến.
+Sau khi hành lễ, ông bước lên kiểm tra.
+Nâng cánh tay Sở Ly lên quan sát kỹ một hồi, chân mày cũng nhíu chặt.
+“Hừm… đã mấy ngày rồi mà vết thương của Cửu hoàng tử chẳng những không lành, còn có dấu hiệu mưng mủ, rỉ dịch.”
+“Thuốc bôi hằng ngày đâu?”
+Cẩu Bát dâng thuốc lên.
+“Ngụy Viện phán, ngài xem thử.”
+Ngụy Viện phán cầm thuốc lên, xem kỹ rồi ngửi.
+“Thuốc không có vấn đề.”
+“Vậy vì sao vết thương của chủ tử nhà ta mãi không khỏi?”
+“Chuyện này…”
+Ngụy Viện phán suy đoán:
+“Có lẽ vô ý dính nước. Mồ hôi cũng là chất lỏng. Gần đây Cửu hoàng tử có kiêng ăn theo lời dặn không?”
+“Đều làm đúng theo lời dặn của ngự y.”
+“Vậy thì thật kỳ lạ.”
+“Có lẽ do thể chất?”
+Ngụy Viện phán nói:
+“Ta sẽ kê lại một phương thuốc bôi mới, bảo người giã nát dược thảo, lấy nước cốt đắp lên vết thương.”
+Sở Ly băng lại cánh tay, để Cẩu Bát tiễn Ngụy Viện phán ra ngoài.
+Còn nàng tiếp tục đọc thẻ tre, rồi lại đến tìm Lý Thượng thư bàn bạc quy trình đại lễ Trùng Dương.
+Hai ngày sau…
+Vết thương của nàng chẳng những không khá hơn, mà còn đỏ sưng nghiêm trọng hơn.
+Chuyện này…
+Rất không bình thường.
+Nếu cứ tiếp tục như vậy, e rằng cánh tay này cũng chẳng thể nhấc lên nổi.
+Đến lúc đó…
+Nàng còn chủ trì đại lễ Trùng Dương bằng cách nào? Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_96.html" class="btn">‹ Trước</a>
+            <a href="chuong_98.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

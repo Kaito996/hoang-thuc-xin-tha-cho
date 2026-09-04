@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 203</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 203</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_202.html" class="btn">‹ Trước</a>
+            <a href="chuong_204.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 203: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 203: Quản cho tốt ngoại sinh của ngươi, lần sau không được viện cớ này nữa
+Trong tân phòng, ánh nến lay động.
+Sở Đệ Trì đứng trước giường, vẻ mặt vẫn bình tĩnh như thường, nhưng bàn tay giấu trong tay áo đã siết chặt đến cực điểm, tất cả cảm xúc đều bị hắn bất động thanh sắc đè nén xuống.
+“Ta…”
+Sở Ly khẽ lên tiếng, giọng nói nhỏ đến mức như đang dò xét:
+“Để ta sai người chuẩn bị sương phòng cho các ngươi?”
+“Được.”
+Ánh mắt hắn lướt qua bộ hỉ phục đỏ thẫm trên người nàng, giọng khàn khàn như bị ép chặt nơi cuống họng:
+“Mọi chuyện ở đây cứ giao cho ta xử lý. Đêm nay, cứ ngủ một giấc thật yên ổn.”
+Hắn lui khỏi tân phòng.
+Khoảnh khắc cánh cửa khép lại, gân xanh trên mu bàn tay hắn nổi cuồn cuộn như từng con giao long!
+Đèn lồng đỏ.
+Rèm đỏ.
+Hỉ phục đỏ.
+Chữ Hỷ đỏ.
+Nam nhân phất tay áo bước ra, đi xuống bậc thềm, sải bước đến chỗ vắng người, hung hăng nện một quyền vào vách tường.
+Ầm!
+Một tiếng nổ vang lên, đá vụn bắn tung tóe, bức tường cứng rắn nứt toác thành từng khe.
+Liên tiếp mấy quyền giáng xuống, máu tươi văng ra, vậy mà hắn dường như chẳng hề cảm thấy đau.
+Gả chồng!
+Gả chồng!
+Lại dám sau lưng hắn mà gả chồng!
+Tần Mục Vũ biết nàng còn sống.
+Tần Mục Tuyết biết.
+Nhàn Vương cũng biết.
+Ai ai cũng biết.
+Chỉ mình hắn không biết!
+Vậy mà còn dám ngồi đó, vẻ mặt ngơ ngác nhìn hắn!
+Gan to bằng trời!
+Hắn từ Đế Đô một mạch chạy tới đây, suốt hai ngày hai đêm không nghỉ, dọc đường đến một ngụm nước cũng chưa kịp uống, vừa đến nơi đã thấy nàng mặc hỉ phục, ở cùng nam nhân khác!
+Đáng chết!
+Hắn thật muốn bóp chết nàng!!
+“A Trì.”
+Tiêu Dạ Hành bước nhanh tới.
+“Bên phía Tần Mục Vũ ta đã hỏi rõ rồi. Hai đứa nhỏ chỉ là diễn trò thôi. Dù gì ngươi cũng là trưởng bối, rộng lượng một chút.”
+Sở Đệ Trì chậm rãi ngước đôi mắt đỏ ngầu lạnh lẽo lên:
+“Ta đã rất rộng lượng rồi.”
+Không phải sao?
+Nếu không, Lâm Hồ Tiểu Trúc còn có thể yên ổn đứng đó được sao?
+“Tiêu Dạ Hành, quản cho tốt ngoại sinh của ngươi, lần sau không được viện cớ này nữa!”
+—
+Đêm ấy, Sở Ly trằn trọc khó ngủ.
+Nàng ôm chăn nằm trên giường, lật qua lật lại mãi vẫn không sao chợp mắt. Ánh mắt lo lắng cứ liên tục hướng về phía cửa sổ và cửa phòng. Chỉ cần bên ngoài có chút gió lay cỏ động cũng đủ khiến da đầu nàng tê dại.
+Hắn biết nàng còn sống.
+Vậy mà lại bình tĩnh đến thế, cứ như biến thành một con người khác.
+Trước kia, hắn cố chấp, bạo ngược.
+Lẽ nào hắn đang âm thầm toan tính chuyện gì?
+Sở Ly trở mình.
+Sở Đệ Trì ở ngay phòng bên cạnh.
+Hắn không đến, nàng đã không ngủ nổi.
+Nếu hắn thật sự xông vào, nàng càng không thể ngủ.
+Vậy rốt cuộc hắn muốn làm gì?
+Loại cảm giác này thật sự quá dày vò.
+Biết rõ tính tình của hắn không phải dễ dàng thay đổi, vậy mà kết quả hắn lại chẳng hề nổi nóng. Cách hành xử hoàn toàn không theo lẽ thường ấy khiến nàng càng thêm bất an thấp thỏm.
+Rốt cuộc hắn muốn gì?
+Nhưng đêm nay, người không ngủ được đâu chỉ có mình Sở Ly?
+Lý tri phủ, Thôi Tiền Tiến cùng đám người đang quỳ ngoài Lâm Hồ Tiểu Trúc còn khổ sở hơn gấp bội.
+Đầu gối đau nhức, không dám đứng dậy.
+Gió đêm lạnh buốt, không dám nhúc nhích.
+Cứ thế chịu đau chịu khổ quỳ suốt cả một đêm.
+Đến sáng sớm, bách tính nhìn thấy cảnh ấy đều kinh hãi:
+“Xảy ra chuyện gì vậy?”
+“Tri phủ đại nhân sao lại quỳ ngoài cửa… kia chẳng phải Lâm Hồ Tiểu Trúc của Sơ cô nương sao?”
+“Lẽ nào Sơ cô nương có lai lịch rất lớn?”
+“Trời ơi! Bên trong hình như có rất nhiều hắc y nhân…”
+Cổng Lâm Hồ Tiểu Trúc vẫn mở rộng.
+Sơ Ngũ và Sơ Lục đi chợ mua thức ăn trở về, mắt nhìn thẳng, bình thản bước qua giữa đám Lý tri phủ và quan binh đang quỳ kín một mảnh, tiến vào sân, đi thẳng đến nhà bếp nấu cơm.
+Sở Đệ Trì đã dậy từ sớm.
+Lúc này, hắn đang ngồi dưới gốc cây trong sân, thần sắc nhàn nhạt, trên tay cầm một quyển thoại bản.
+“Đây là sách thường ngày nàng đọc?”
+Sơ Nhất đứng bên cạnh, cúi đầu đầy câu nệ.
+“Vâng.”
+“Ăn uống thế nào?”
+“Trong chuyện ăn uống, nô tỳ tuyệt đối không dám qua loa. Tiểu thư thích vị cay, mỗi ngày đều chuẩn bị thêm canh cùng trà điểm, món ăn cũng đều là đặc sản Giang Nam, tiểu thư rất thích.”
+“Vân… Vân Dao hí lâu.”
+Chát!
+Quyển thoại bản đột ngột khép lại.
+Sơ Nhất sợ đến mức lập tức quỳ sụp xuống đất.
+Nàng chỉ là một nô tỳ bán thân thấp kém nhất, đến cả bách tính bình dân có thân phận tự do còn hơn nàng. Trước mặt Nhiếp Chính Vương, nàng nào dám nói dối?
+“Nô tỳ lỡ lời! Xin Nhiếp Chính Vương tha mạng! Tha mạng!”
+Đúng lúc ấy, cửa chính mở ra.
+Sở Đệ Trì lập tức đổi giọng:
+“Tiểu Cửu, nha hoàn của nàng thật biết giữ quy củ. Ta chỉ bảo nàng chuẩn bị ít trà điểm, tùy ý một chút là được, vậy mà nàng nhất quyết quỳ hầu.”
+Sở Ly vừa mới thức dậy, quầng mắt hơi thâm.
+Đêm qua, nàng ngủ không ngon.
+Bởi cứ mãi suy nghĩ lung tung, trằn trọc đến tận nửa đêm mới mơ mơ màng màng thiếp đi. Bây giờ tuy đã dậy, đầu óc vẫn còn ngơ ngẩn.
+Nàng dụi dụi mắt:
+“Sơ Nhất, đứng lên đi, cứ hầu hạ như trước là được.”
+Sơ Nhất mồ hôi lạnh túa khắp lưng, giọng run rẩy:
+“Các vị quý nhân thân phận tôn quý, được hầu hạ quý nhân là phúc phận mấy đời nô tỳ mới tu được.”
+Nàng cung kính dập đầu một cái, lúc ấy mới dám run rẩy đứng dậy đi chuẩn bị trà.
+“Đêm qua ngủ không ngon sao?”
+Sở Đệ Trì ôn hòa nhìn sang.
+Không hiểu vì sao, lòng Sở Ly lại thắt chặt.
+Nàng luôn cảm thấy trong đôi mắt đen bình hòa, ôn nhu ấy đang che giấu thứ gì đó còn sâu hơn nữa, nhưng nàng không dám nhìn thẳng, càng không dám tìm hiểu.
+Nàng quá hiểu tính tình của hắn.
+Biết rõ hắn là hạng người thế nào.
+Sự ôn hòa kia chỉ là lớp ngụy trang.
+“Hoàng thúc… nếu có chuyện gì, hay là chúng ta ngồi xuống nói chuyện cho rõ đi?”
+Ánh mắt nam nhân trở nên u ám.
+Nói?
+Nói cái gì?
+Nói hắn đã quấy rầy cuộc sống của nàng, nàng không hoan nghênh hắn đến, hay muốn đuổi hắn đi?
+Một tia lệ khí sắc bén lóe lên nơi đáy mắt, rồi lại bị hắn lặng lẽ giấu đi. Hắn khẽ cười:
+“Sao lại nói những lời xa cách như vậy? Ta chỉ đến xem nàng thế nào thôi. Chẳng lẽ nàng còn muốn đuổi ta đi?”
+ ----------------------
+Mấy nay tư bản giao lắm việc nên Ad hơi bận, dạo này lại mệt lười và bận dịch nốt truyện nên ko để lịch trước, có thể up muộn chút nhé. Cuối tuần cố gắng sẽ chỉnh đốn lại 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_202.html" class="btn">‹ Trước</a>
+            <a href="chuong_204.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

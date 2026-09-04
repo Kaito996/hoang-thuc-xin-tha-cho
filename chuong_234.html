@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 234</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 234</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_233.html" class="btn">‹ Trước</a>
+            <a href="chuong_235.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 234: Qua cầu rút ván
+
+“Các ngươi... các ngươi... khinh người quá đáng...”
+Nghe vậy, Độc Nhãn Long lập tức không phục:
+“Thôi đại nhân nói vậy là sai rồi. Ngài là nha sai, vì sao ra ngoài lại không mang theo người hộ tống? Chắc chắn là đi làm chuyện mờ ám không dám để ai biết.”
+
+Đao Ba Kiểm tiếp lời:
+
+“Chắc chắn phẩm hạnh của ngài có vấn đề.”
+
+“Đúng vậy! Nếu không thì sao lại bị đánh chứ? Phật gia có câu, trăm nhân tất có quả, ngài
+phải tự tìm nguyên nhân từ chính mình.”
+“...”
+Thôi Tiền Tiến tức đến hai mắt trợn trừng như mắt cá chết, bất chấp toàn thân đau đớn cũng
+muốn lao tới:
+“Ta liều mạng với các ngươi... A!”
+Độc Nhãn Long vung một cái tát, đánh vang dội đến mức hất văng hắn ra ngoài.
+“Thời thế đã khác rồi.”
+“Xưa chẳng bằng nay nữa đâu, Thôi đại nhân.”
+Tri phủ Lý đã đại thế tận rồi.
+Vị Tạ tiểu thư đứng sau lưng bọn họ mới là chỗ dựa thật sự.
+
+Thôi Tiền Tiến ho sặc ra máu, giận dữ không sao kiềm chế nổi:
+
+“Lý đại nhân sẽ không tha cho các ngươi đâu! Đừng có đắc ý! Nhiếp Chính Vương đã nói rồi, sẽ khoan thứ cho Lý đại nhân. Chỉ cần các ngươi còn ở thành Giang Nam một ngày, thì đừng hòng thoát khỏi pháp võng!”
+
+Mày Sở Ly khẽ nhướng lên.
+
+Có chuyện đó sao?
+“Ta vào xem thử.”
+Nàng vòng qua Thôi Tiền Tiến, bước tới trước phủ Tri phủ. Vừa đặt chân lên bậc thềm đã bị hai tên quan binh chặn lại.
+“Người đến là ai...”
+“Mù mắt chó của ngươi rồi sao? Tránh đường!”
+Độc Nhãn Long tiến lên mở đường.
+“Vị này chính là độc nữ của Tạ lão tướng quân.”
+Sắc mặt hai tên quan binh chợt biến.
+
+Chuyện Nhiếp Chính Vương tới Giang Nam chống lưng cho độc nữ của Tạ lão tướng quân đã
+truyền khắp thành, ai mà không biết danh hiệu Tạ tiểu thư?
+
+Bọn họ không dám cản nữa.
+Sở Ly đường hoàng bước thẳng vào.
+Vừa vào đại đường, nàng đã thấy Tri phủ Lý đang nhàn nhã uống trà.
+“Lý đại nhân thật có nhã hứng.”
+“A...”
+Tri phủ Lý vừa nhìn thấy nàng liền hoảng hốt như gặp quỷ, nắp chén rơi xuống làm nước trà
+bắn tung tóe, bỏng cả tay. Hắn đứng ngồi không yên, cuống quýt đến mức lục thần vô chủ.
+
+“Tạ... Tạ tiểu thư.”
+
+“Không biết Tạ tiểu thư đột nhiên tới đây là vì chuyện gì?”
+Sở Ly chậm rãi bước tới bên bàn án.
+
+Tri phủ Lý theo bản năng đứng bật dậy.
+Nàng vòng qua phía trong bàn án, hắn liền vội vàng lùi lại mấy bước. Nàng thuận thế ngồi
+vào vị trí của hắn, vắt chân lên, cầm lấy xấp hồ sơ trên bàn.
+
+“Đây đều là những vụ án đã xử lý xong?”
+“Đúng vậy.”
+Sở Ly lật từng bản hồ sơ.
+
+“Bồi thường hai trăm lượng... giảm án... vô tội phóng thích... bồi thường năm trăm lượng...
+bồi thường...”
+
+Rất nhiều oan án vì thời gian quá lâu, tồn đọng quá nhiều, khó lòng tra rõ, nên đều dùng cách
+bồi thường ngân lượng để hòa giải.
+
+Người đồng ý hòa giải thì ký tên điểm chỉ.
+Người không đồng ý thì tiếp tục trình báo, tiếp tục điều tra.
+“Những khoản ngân lượng này từ đâu mà có?”
+Tri phủ Lý hơi khom lưng.
+
+“Đều là lấy từ tư khố của hạ quan.”
+
+“Lý đại nhân thân là Tri phủ Giang Nam, tư khố lại có nhiều ngân lượng như vậy, vậy số bạc ấy từ đâu mà có?”
+
+“Việc này...”
+
+Trên trán hắn lấm tấm mồ hôi.
+
+Đương nhiên là tham ô.
+
+Từ xưa đến nay, kẻ làm quan, ai mà trên tay chẳng dính chút chuyện không thể để ánh sáng
+soi vào? Ngay cả đương kim Hoàng đế cũng không dám nói mọi việc mình làm đều quang
+minh chính đại, huống hồ bọn họ chỉ là những kẻ làm việc bên dưới?
+
+“Ngươi còn bao nhiêu ngân lượng?”
+“Đều lấy ra hết rồi!”
+Tri phủ Lý vội vàng đáp.
+“Tư khố của ta đều đã lấy ra để giải quyết các vụ án.”
+“Thật sao?”
+“Tạ tiểu thư, hạ quan tuyệt đối không dám nói nửa lời dối trá!”
+Bảy ngày trước, khi Nhiếp Chính Vương đến Giang Nam, hắn vốn cho rằng mình khó giữ được tính mạng, tiền đồ cũng tiêu tan, đã chuẩn bị sẵn tinh thần cho kết cục tệ nhất.
+
+Không ngờ Nhiếp Chính Vương lại bằng lòng cho hắn một cơ hội.
+
+Vì tiền đồ, vì mạng sống, hắn gần như đã tán tận gia tài.
+
+Suốt hơn ba mươi năm làm quan, toàn bộ số bạc tham ô được, hắn đều mang ra bồi thường cho bách tính.
+
+Hiện giờ hắn đã nghèo đến bốn bức tường trống trơn, hai tay thanh bạch, chỉ cầu giữ được tính mạng.
+
+Chỉ cần còn giữ được quan lộ, sau này còn sợ không tham được ngân lượng sao?
+
+Sở Ly lật xem hồ sơ, liếc nhìn dáng vẻ run run sợ sợ của hắn, thấy không giống giả vờ, lúc này mới nói:
+
+“Nếu Lý đại nhân đã xử lý xong nhiều vụ án như vậy, thì cũng nên thoái vị nhượng hiền đi.”
+
+“Cái gì?!”
+Tri phủ Lý đột ngột ngẩng đầu.
+
+“Nhiếp Chính Vương rõ ràng đã nói, chỉ cần ta lấy công chuộc tội thì sẽ tha thứ cho ta! Chính tay ta đã đánh đứa con trai của mình, còn tán tận gia tài để bồi thường bách tính, an ủi dân tình. Ý của ngươi là muốn qua cầu rút ván sao?”
+
+Lợi dụng xong hắn rồi thì một cước đá văng?
+
+Sở Ly khẽ nheo mắt, đầu ngón tay nhẹ gõ lên mặt bàn.
+“Lệnh lang cưỡng bức dân phụ, bị trừng trị là chuyện đương nhiên.”
+
+“Ngươi vơ vét mỡ máu của dân, nay hoàn trả lại cho bách tính cũng là điều nên làm.”
+
+Việc đó thì có liên quan gì đến qua cầu rút ván?
+
+“Nhiếp Chính Vương nói tha cho ngươi, nhiều nhất cũng chỉ là giữ lại cho ngươi một mạng,
+chứ đâu từng nói sẽ để ngươi tiếp tục ngồi trên chiếc ghế Tri phủ.”
+
+Tri phủ Lý không phục.
+
+Nhiếp Chính Vương rõ ràng đâu phải nói như vậy!
+Nếu biết là thế, hắn việc gì phải tán tận gia tài?
+Chi bằng trực tiếp từ quan, mang theo số tài sản cả đời tiêu không hết, trở về quê dưỡng lão còn hơn.
+
+Giờ thì bạc tích góp cả đời đều bị lừa sạch, quan chức cũng bị tước mất, khiến hắn vừa mất phu nhân lại thiệt quân, hai bàn tay trắng cuốn gói về quê.
+
+Rõ ràng là đang đùa bỡn hắn!
+
+“Tạ tiểu thư nói thì chưa chắc đã tính.”
+
+Tri phủ Lý đứng thẳng lưng, lạnh giọng nói:
+
+“Ngươi tuy là độc nữ của Tạ lão tướng quân, nhưng Tạ lão tướng quân đã sớm giải giáp quy
+điền. Còn ta vẫn mang quan chức trong người, hưởng bổng lộc triều đình. Từ khi nào đến lượt một nữ nhân như ngươi ở đây khoa tay múa chân, chỉ trỏ với ta?”
+
+Hắn còn giữ vài phần khách khí nên mới gọi nàng một tiếng Tạ tiểu thư.
+
+Nếu thật sự chọc giận hắn...
+
+Muốn chôn nàng xuống đất cũng chẳng phải việc khó!</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_233.html" class="btn">‹ Trước</a>
+            <a href="chuong_235.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

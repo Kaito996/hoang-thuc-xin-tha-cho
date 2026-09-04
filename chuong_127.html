@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 127</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 127</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_126.html" class="btn">‹ Trước</a>
+            <a href="chuong_128.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 127: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 127: Vậy Tiểu Cửu Gả Cho Ta, Được Không?
+Tân Đế băng hà, hoàng cung đại loạn, Đại Sở chấn động.
+Thế nhưng, tại một nơi cách xa Đế Đô mấy chục dặm, tất cả những điều ấy đã ở rất xa, rất xa Sở Ly…
+“Đau không?”
+Người nam nhân ngồi xổm bên cạnh nàng, nhẹ nhàng thoa lớp thuốc mỡ màu trắng sữa lên mu bàn tay bị bỏng của nàng.
+Hắn cúi đầu, khẽ khàng thổi lên vết thương.
+Là Sở Ly, còn có… Sở Dạ Ly.
+Hắn đứng dậy, bước đến bên bàn, bưng chậu nước ấm lại, cẩn thận lau sạch từng vết máu trên người nàng, rồi tỉ mỉ xử lý từng chỗ bị thương.
+Không sai.
+Là đi.
+Đi bằng đôi chân.
+Hôm đó, Đại Hoàng tử mượn cớ đến Chiêu Lan điện trò chuyện, nhưng thực chất là ngấm ngầm hạ độc thủ, phóng một mồi lửa.
+Thực ra, Sở Ly vốn đã chuẩn bị sẵn kế hoạch giả chết thoát thân, chỉ là không ngờ Đại Hoàng tử lại chủ động phóng hỏa.
+Khi ấy, tuy vô cùng bất ngờ, khiến kế hoạch của nàng phải tiến hành sớm hơn vài ngày, nhưng nàng cũng thuận nước đẩy thuyền, để bản thân “chết” trong trận đại hỏa ấy.
+Chỉ không ngờ Sở Dạ Ly lại bất ngờ xông tới.
+Vì cứu nàng, hắn chẳng màng tất cả.
+Cũng vì cứu nàng mà bại lộ bí mật hai chân mình hoàn toàn khỏe mạnh.
+Sở Ly đành phải mang theo hắn cùng rời đi.
+Thần sắc nàng phức tạp:
+“Đôi chân của huynh… từ trước đến nay đều khỏe mạnh?”
+Sở Dạ Ly cúi đầu, chăm chú xử lý vết thương cho nàng:
+“Vài năm trước đã chữa khỏi. Vì giữ mạng, đành tương kế tựu kế.”
+“Vậy tại sao…”
+“Bởi vì là muội.”
+Hắn bỗng ngẩng đầu, đôi mắt sâu thẳm tựa hắc diệu thạch.
+“Muội từng hỏi ta, liệu ta có vì hoàng quyền mà giết muội hay không. Câu hỏi ấy khiến ta trằn trọc mấy ngày mấy đêm, tự hỏi những gì mình kiên trì suốt bao năm qua… có đáng hay không.”
+“Cho đến khi nhìn thấy muội chôn thân trong biển lửa, tính mạng chỉ mành treo chuông, ta cuối cùng cũng đưa ra lựa chọn.”
+Hắn chọn nàng.
+Trong lòng hắn, nàng còn quan trọng hơn cả hoàng quyền.
+Lòng Sở Ly nặng trĩu.
+Sự lựa chọn ấy của hắn giống như một tảng đá lớn đè nặng nơi lồng ngực nàng.
+“Huynh không cần vì ta…”
+“Muội xứng đáng.”
+Sở Dạ Ly nắm lấy tay nàng.
+“Tiểu Cửu, có lẽ muội không biết. Trong những năm ta sống bên ngoài cung, muội là người duy nhất đối tốt với ta, cũng là người duy nhất ta muốn bảo hộ.”
+“Nhưng khi nhìn thấy muội lựa chọn rời khỏi hoàng cung, ta mới hiểu, hoàng quyền đối với muội… cũng chỉ đến thế mà thôi.”
+“Vậy thì ta cũng không cần nữa.”
+Điều hắn cần…
+Chỉ có nàng.
+“Từ nay về sau, chúng ta cùng nhau sống, được không?”
+Sở Ly chỉ cảm thấy bả vai mình nặng trĩu.
+Như thể vô tình gánh luôn cả trách nhiệm của hắn.
+Sau khi rời hoàng cung, điều nàng mong muốn là cuộc sống tiêu dao tự tại, một mình vô ưu vô lo, chứ không phải để Sở Dạ Ly mãi quấn lấy mình.
+Có lẽ trước kia nàng đối xử với hắn rất tốt.
+Nhưng tính nàng vốn ôn hòa, đối với bất kỳ ai cũng đều tốt.
+Hắn thực sự không cần vì những chuyện trong quá khứ mà nghiêm túc đến vậy.
+Điều nàng muốn chỉ là tìm một nơi không ai quen biết, bình bình đạm đạm sống hết quãng đời còn lại.
+Nàng vô cùng chán ghét loại cảm giác lấy danh nghĩa “vì tốt cho nàng” để trói buộc nàng bằng trách nhiệm, khiến nàng không cách nào thoát khỏi. Nàng cảm thấy chính mình đã liên lụy Sở Dạ Ly, về sau làm bất cứ việc gì cũng đều không thể không cân nhắc đến hắn.
+Nếu đã vậy…
+Chi bằng nàng cứ ở lại hoàng cung còn hơn.
+Thế nhưng, nàng cũng không thể phủ nhận sự thật rằng Sở Dạ Ly đã bất chấp sinh tử lao vào biển lửa cứu nàng.
+Sở Ly mím môi, giọng đầy phức tạp:
+“Huynh cũng bị thương, mau bôi thuốc rồi nghỉ ngơi đi. Ta hơi mệt, muốn ngủ một lát.”
+Hiện giờ, bọn họ đang tạm trú tại một trang viện hẻo lánh nhưng an toàn, cách rất xa Đế Đô.
+Đó là nơi Sở Dạ Ly tìm được.
+Kể từ khi trốn khỏi hoàng cung, suốt cả chặng đường đều là hắn đưa nàng đi.
+“Được. Muội nghỉ ngơi cho tốt, dưỡng thương cẩn thận, rồi chúng ta sẽ tiếp tục đi về phía Nam.”
+Sở Dạ Ly dịu dàng vuốt ve gò má nàng, từng lời từng cử chỉ đều ôn nhu vô cùng.
+Sau khi bôi thuốc cho nàng, đắp chăn cẩn thận, hắn mới bước ra ngoài.
+Trong sân.
+A Ngọc tiến lên.
+“Chủ tử.”
+Hắn hạ thấp giọng:
+“Trong cung truyền tin đến. Nhiếp chính vương sau khi biết tin Cửu Hoàng tử chết đã lao vào biển lửa, suýt nữa táng thân trong đó. Được cứu ra xong lại hộc máu hôn mê, từ đó suy sụp không gượng dậy nổi.”
+Đôi mắt ôn nhuận của Sở Dạ Ly bình tĩnh như nước.
+Hắn phân phó:
+“Xe ngựa đều chuẩn bị xong cả rồi chứ?”
+“Xin chủ tử yên tâm. Dọc đường đến Nam Cương, các điểm tiếp ứng đều đã chuẩn bị đầy đủ. Chỉ cần nửa tháng là có thể tới nơi. Thế lực của chúng ta đều ở bên đó. Nếu Nhiếp chính vương biết Cửu Hoàng tử vẫn còn sống, e rằng ngài ấy sẽ sẵn sàng dùng cả giang sơn Đại Sở để đổi lấy.”
+Trong phòng.
+Sở Ly ôm chăn, nói là ngủ nhưng thực ra chẳng hề buồn ngủ.
+Sau khi xuất cung, tình hình hiện tại đã lệch xa kế hoạch ban đầu.
+Nếu cứ mãi ở cạnh Sở Dạ Ly, nàng sẽ chẳng còn tự do, nơi nơi đều bị ràng buộc.
+Nhưng nghĩ kỹ lại, tuy Sở Dạ Ly đã cứu nàng, song kể cả không cứu nàng, với thân phận Hoàng tử, ở lại trong cung, phía trên lại có Nhiếp chính vương chấp chính, hắn cũng chẳng thể giành được lợi ích gì.
+Đã vậy…
+Chi bằng trực tiếp rời khỏi hoàng cung.
+Tránh xa vòng xoáy tranh quyền đoạt vị, mở ra một cuộc sống mới, chẳng phải còn tốt hơn sao?
+Nghĩ đến đây, lòng nàng mới hơi nhẹ nhõm.
+Nàng lén lấy mấy thỏi vàng nhỏ mang theo bên mình giấu xuống dưới gối, rồi lặng lẽ trèo ra ngoài qua cửa sổ.
+Men theo cửa sau.
+Leo lên bức tường.
+Đang định lặng lẽ rời đi thì phía sau đột nhiên vang lên một giọng nói:
+“Tiểu Cửu định bỏ lại ta sao?”
+Sống lưng Sở Ly khẽ cứng lại.
+Nàng nhìn xuống thì thấy chẳng biết từ lúc nào, Sở Dạ Ly đã đứng dưới chân tường, ngẩng đầu nhìn nàng.
+“Ta…”
+Ánh mắt hắn tối lại.
+“Vì cứu Tiểu Cửu, ta đã mất tất cả. Thân phận Hoàng tử, mối huyết hải thâm cừu của tiền triều, toàn bộ quá khứ đều đã bị chôn vùi trong trận đại hỏa ấy. Giờ đây, ta chỉ còn một mình Tiểu Cửu. Muội nỡ lòng bỏ mặc ta sao?”
+Hô hấp Sở Ly khựng lại.
+“Ngũ ca, muội không có ý đó. Muội… chỉ muốn ra ngoài đi dạo một chút.”
+“Xuống đây, cẩn thận ngã.”
+Hắn dang hai tay.
+Sở Ly cắn môi dưới, đành nhảy xuống.
+Sở Dạ Ly giữ lấy dưới cánh tay nàng, vững vàng đỡ được.
+Sở Ly thầm thở dài, trong lòng nặng nề vô cùng.
+“Tiểu Cửu không thích ta sao?”
+“Không có, Ngũ ca.”
+“Vậy vì sao lại muốn đi?”
+Trong mắt hắn, ánh sáng như vỡ vụn, mang theo vài phần tổn thương.
+Sở Ly đáp:
+“Muội không đi, muội sẽ luôn ở cùng Ngũ ca.”
+“Mãi mãi sao?”
+Hắn nhẹ nhàng vuốt ve gương mặt nàng.
+Sở Ly chỉ cảm thấy không gian bức bách đến nghẹt thở. Hơi thở áp sát ấy khiến nàng khó lòng hô hấp, có cảm giác như vừa thoát khỏi hang sói lại rơi vào miệng cọp.
+“Vâng…”
+“Vậy Tiểu Cửu gả cho ta, được không?”
+Sở Ly mở to hai mắt.
+“Ngũ ca…”
+“Từ lần đầu tiên gặp Tiểu Cửu khi còn nhỏ, ta đã biết muội là nữ tử. Mỗi lần muội trèo lên đầu tường nhìn ta, mỗi lần yến tiệc trong cung, gần như lần nào cũng vậy, giữa biển người đông đúc, ta đều có thể liếc mắt nhận ra muội.”
+“Ta nhìn muội từng chút một lớn lên, ngày càng rạng rỡ, soi sáng những tháng ngày cô độc và tẻ nhạt của ta.”
+Ngay từ cái nhìn đầu tiên.
+Hắn đã biết…
+Đời này e rằng mình sẽ chẳng thể dời mắt khỏi nàng nữa.
+Sở Ly kinh ngạc vô cùng.
+Tình nghĩa huynh muội…
+Sao có thể biến thành tình yêu nam nữ?
+Huống hồ, nàng cũng chưa từng có ý định thành thân.
+Điều nàng muốn chỉ là một mình bình yên, an ổn sống hết quãng đời còn lại.
+“Ngũ ca, muội không muốn thành thân. Hơn nữa, từ trước đến nay, muội luôn kính trọng Ngũ ca như huynh trưởng, chưa từng có tâm tư nào khác. Chuyện trận đại hỏa lần này, muội vô cùng cảm tạ huynh đã cứu mạng. Sau này, muội nhất định sẽ báo đáp. Nhưng những lời vừa rồi, xin Ngũ ca từ nay về sau đừng nhắc lại nữa.”
+Sở Ly lùi về sau hai bước, kéo giãn khoảng cách, xoay người định rời đi.
+Bỗng cổ tay bị siết chặt.
+Một sức mạnh kéo nàng quay trở lại.
+Sau lưng trầm xuống.
+Nàng đã bị ép lên bức tường lạnh lẽo.
+“Ưm!”
+“Vì Tiểu Cửu, ta có thể ngay cả mạng cũng không cần. Nếu có kẻ muốn đến cướp muội khỏi ta…”
+“Có lẽ ta sẽ phát điên.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_126.html" class="btn">‹ Trước</a>
+            <a href="chuong_128.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

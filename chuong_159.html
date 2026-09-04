@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 159</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 159</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_158.html" class="btn">‹ Trước</a>
+            <a href="chuong_160.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 159: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 159: Đào phạm không biết đạo nghĩa
+Tần Mục Vũ nói:
+“Nam Man nổi danh với vu cổ chi thuật, nghe nói ngay cả hài tử bảy tám tuổi cũng biết hạ cổ.”
+“Vu cổ mà vương thất dùng để luyện binh, tất nhiên không phải vật tầm thường, e rằng chỉ có thâm nhập vào vương thất, mới lần ra được đầu mối.”
+Hắn và A Ly đang ở Vương đô, cô lập vô viện.
+Nhưng nếu rời khỏi Vương đô, mặc cho Nam Man luyện thành đội quân vu cổ, ắt sẽ trở thành mối uy hiếp nghiêm trọng đối với bách tính Đại Sở.
+Sở Ly hạ giọng:
+“Ta sẽ tiếp tục ở bên cạnh Sở Dạ Ly. Hắn qua lại rất thân thiết với Thác Bạt Minh Nguyệt, hẳn sẽ có thu hoạch. Việc cấp bách nhất lúc này là đưa huynh xuất thành.”
+“Đưa ta đi?”
+Sao có thể được?
+Sao hắn có thể để nàng ở lại đây một mình?
+“Nam Man muốn xâm lược Đại Sở, ta là Thiếu tướng quân của Đại Sở, đương nhiên phải thân tiên sĩ tốt, sao có thể để một nữ tử như nàng mạo hiểm?”
+Sở Ly nắm lấy cổ tay hắn:
+“Vệ binh vẫn đang lùng bắt huynh khắp thành. Huynh ở lại đây chỉ càng thêm nguy hiểm. Còn ta với Sở Dạ Ly có hơn mười năm giao tình, ta tin hắn sẽ không làm hại ta.”
+Ít nhất là trước khi chưa chạm đến giới hạn cuối cùng của hắn.
+Nhưng… rốt cuộc giới hạn ấy là gì?
+Phục quốc?
+Quyền lực?
+Hay là thứ khác?
+Thần sắc Tần Mục Vũ vô cùng kiên quyết:
+“Ta có cách để ở lại.”
+“Mục Vũ, huynh phải mau đi! Huynh là nam đinh duy nhất của Tần gia. Nếu huynh xảy ra chuyện, Tần gia sẽ tuyệt tự.”
+“Có Mục Tuyết ở đó, nữ tử cũng như nam tử, đều có thể truyền thừa hương hỏa.”
+“Nhưng mà…”
+“Ta đã quyết!”
+Tần Mục Vũ quyết định cùng Sở Ly ở lại.
+Hai ngày nay, hắn ở trong phủ Ân Vương.
+Tên đại gian thần Ân Vương kia buôn lậu nhận hối lộ, giết người cướp của, cấu kết quan viên, mua bán quan chức, việc ác nào cũng làm, nhưng hắn lại là người của vương thất.
+Biết đâu từ hắn, có thể phát hiện được điều gì.
+Hắn có cách để lưu lại trong phủ Ân Vương.
+Sở Ly không lay chuyển được hắn. Hai người nhìn nhau, nhìn một hồi, bỗng đều bật cười.
+Cười vì sự điên cuồng của đối phương.
+Thật đúng là quá điên rồi!
+Từ nhỏ đến lớn, bọn họ cùng nhau trưởng thành, cùng lớn lên trong kinh thành Đại Sở, trong hoàn cảnh an ổn được che chở. Đây là lần đầu tiên rời nhà xa đến vậy, làm chuyện liếm máu trên lưỡi đao. Chỉ nghĩ thôi cũng thấy sống lưng phát lạnh.
+Điều Sở Ly mong muốn chẳng qua chỉ là cuộc sống nhàn tản, hai tay buông xuôi, hai chân duỗi thẳng, mặc kệ thế sự. Nhưng nàng cũng không thể trơ mắt nhìn chiến hỏa nổi lên khắp nơi.
+Ba vị cữu cữu đều là võ tướng.
+Một khi khai chiến, ba người họ tất sẽ xông pha trận mạc, Ôn gia sẽ là nơi đầu tiên chịu tai họa. Còn có Tướng quân phủ, Tần tướng quân và Tần Mục Vũ cũng đều là võ tướng.
+Nàng không muốn bất kỳ ai trong số họ xảy ra chuyện.
+“Mục Vũ, huynh có thấy tên khất cái ở cuối phố kia không? Cái ổ ăn mày lần trước chúng ta trốn vào, tên khất cái ấy sẽ là ám hiệu liên lạc của chúng ta.”
+Tần Mục Vũ ngẩng đầu nhìn theo.
+Không xa, một nam nhân trẻ tuổi mặc y phục rách nát, đầu tóc bù xù, cầm một cái bát, cúi đầu, trên má có một vết sẹo rất dễ nhận ra.
+Hắn là một trong Bát Đại Kim Cang, gã mặt sẹo.
+“Có đáng tin không?”
+“Đáng tin.”
+Sở Ly bảo hắn cứ yên tâm.
+Trên đời này, không ai lại gây khó dễ với tiền bạc.
+Nếu có phản bội, trừ phi kẻ đó nhận được nhiều tiền hơn.
+Nhưng thỏi vàng nhỏ của nàng đâu phải cải trắng ngoài chợ, đủ để mua lấy sự trung thành ngắn ngủi của mấy người đó.
+“Ưm…”
+Trên mặt đất, vị đại phu trung niên ôm trán, mơ màng tỉnh lại. Sở Ly cầm gậy, định gõ thêm một lần nữa cho ông ta ngất đi, thì Tần Mục Vũ giữ tay nàng lại.
+Đại phu vừa tỉnh, phát hiện trên bức họa truy nã, một tên đào phạm đã biến thành hai.
+Hai tên đào phạm đều ở trong y quán của ông!
+“Ta… ta phát tài rồi?”
+“Không, là ngươi sắp chết rồi.”
+Tần Mục Vũ bóp nát chén trà, mảnh sứ sắc bén kề sát cổ họng ông ta, khiến đại phu lập tức tỉnh táo hoàn toàn.
+“Tha mạng… tha mạng…”
+“Ta trúng Nhuyễn Cốt Tán, mau nghĩ cách giải cho ta.”
+“Vâng… vâng!”
+Đại phu nào còn dám nhiều lời?
+Đào phạm bị Trưởng công chúa truy bắt, tất nhiên là kẻ cùng hung cực ác, chắc chắn giết người không chớp mắt.
+Ông ta không dám mạo phạm nữa, chỉ đành coi như chưa từng thấy hai tên đào phạm này để giữ lấy mạng sống.
+Huống hồ, tên đào phạm này còn khá có đạo nghĩa.
+Ra tay chính là một thỏi vàng lớn như vậy.
+Chỉ riêng thỏi vàng ấy cũng đủ để ông kiếm lời to.
+Đại phu hài lòng nói:
+“Xin công tử ngồi xuống.”
+Ông bắt mạch, cẩn thận kiểm tra một lượt.
+“Công tử trúng Nhuyễn Cốt Tán, được điều chế từ cóc trong ngũ độc, phối thêm Dẫn Linh Thảo và Hoàn Âm Quả. Thông thường đại phu không giải được, nhưng đúng lúc lão phu biết cách.”
+Sở Ly nhìn chằm chằm từng động tác của ông, hờ hững thêm một câu:
+“Ông hẳn là người rất tiếc mạng sống của mình nhỉ?”
+Tay đại phu run lên.
+“Một y quán lớn thế này mở ở đây, hẳn gia sản không ít. Nếu mất mạng, phúc còn chưa hưởng xong, cuối cùng cũng chỉ tiện nghi cho kẻ khác.”
+Đại phu vội vàng nói:
+“Công tử yên tâm! Công tử yên tâm! Tiểu nhân biết giải loại Nhuyễn Cốt Tán này, tuyệt đối không dám giở bất cứ thủ đoạn nào!”
+Ông ta hoàn toàn thành thật.
+Người xưa nói, hòa thượng chạy được chứ miếu không chạy được. Y quán của ông mở ở đây, đâu thể dọn đi, tuyệt đối không dám đem tính mạng và gia sản của mình đi mật báo với Trưởng công chúa nữa.
+Ông thi triển y thuật, rất nhanh đã giải được loại Nhuyễn Cốt Tán đặc chế.
+Tần Mục Vũ co duỗi các ngón tay, cảm nhận biến hóa trong cơ thể.
+Sở Ly hỏi:
+“Thế nào?”
+“Khí lực đang dần hồi phục, nội lực cũng bắt đầu lưu chuyển.”
+Có võ công hộ thân, làm việc sẽ thuận lợi hơn nhiều.
+Lúc này Sở Ly mới yên tâm hơn một chút.
+“Nơi này không nên ở lâu, chúng ta đi thôi.”
+“Được.”
+Tần Mục Vũ tiện tay cầm luôn thỏi vàng trên bàn, rồi cùng Sở Ly đi ra ngoài.
+Đại phu trợn tròn mắt.
+Khoan đã!
+Thỏi vàng ấy chẳng phải là tiền khám bệnh cho ông sao?
+“Công tử xin dừng bước, cái này…”
+“Hử?”
+Tần Mục Vũ quay đầu, híp mắt, bàn tay siết chặt. Sức mạnh nội lực vừa hồi phục khiến khớp tay phát ra tiếng răng rắc.
+Da đầu đại phu tê dại, nào còn dám mở miệng?
+Chỉ biết rưng rưng nước mắt nhìn hai tên đào phạm nghênh ngang rời khỏi.
+Thỏi vàng của ông!
+Vàng của ông!
+Đào phạm không biết đạo nghĩa!
+Hai người rời khỏi y quán. Trên đường người qua kẻ lại, vô cùng náo nhiệt. Ở cuối phố, gã mặt sẹo cải trang thành khất cái khẽ chạm vào giữa mày, gật đầu ra hiệu với hai người rồi nhanh chóng lẩn vào ổ ăn mày.
+Sở Ly hiểu ý, hạ giọng nói:
+“Để tránh bị nghi ngờ, ta phải mau quay về Vương gia khách điếm. Mục Vũ, huynh định ẩn thân ở đâu?”
+“A Ly, nàng không cần lo cho ta. Ta đã nhớ chuyện dùng ổ ăn mày và tên khất cái mặt sẹo làm ám hiệu rồi. Có việc gì, chúng ta cứ lén tìm hắn truyền tin.”
+Sở Ly vẫn lo lắng cho hoàn cảnh và sự an toàn của hắn.
+Tần Mục Vũ đặt hai tay lên vai nàng, xoay người nàng lại:
+“Nàng đi trước đi.”
+“Còn huynh…”
+“Ta sẽ không để nàng phải lo lắng vô ích, tự biết chừng mực. Tin ta.”
+Sở Ly do dự một lát, rồi mới sải bước rời đi.
+Đợi bóng lưng nàng khuất xa, đáy mắt Tần Mục Vũ mới ánh lên vài phần tính toán.
+Ân Vương, đại gian thần của Nam Man, là kẻ âm hiểm độc ác, có thù tất báo.
+Hôm đó trong sương phòng, hắn khống chế y, bóp cổ y, chẳng khác nào vuốt râu hùm, làm tổn hại uy nghiêm của y, nên mới bị bắt về phủ Ân Vương giam hai ngày.
+Tuy không biết vì sao y không giết hắn, nhưng chính vì như vậy, càng chứng tỏ bản thân vẫn còn giá trị lợi dụng nhất định.
+Hắn ưỡn thẳng lưng, nhìn dòng người tấp nập trên phố, nghênh ngang bước đi.
+“Vô tình” va phải một người.
+“Ái chà… kẻ nào không có mắt…”
+Cô nương đang xách giỏ nổi giận định mắng, nhưng vừa nhìn thấy vị công tử ôn nhuận như ngọc, gương mặt thiếu niên trắng trẻo tuấn tú.
+Nét giận trên mặt lập tức tan biến, dịu dàng như nước:
+“Vị công tử này~”
+“Vừa rồi vô ý va phải cô nương, mong cô lượng thứ. Để tạ lỗi, cây trâm cô nương vừa nhìn trúng, ta mua tặng cô, được chăng?”
+Tần Mục Vũ lấy ra thỏi vàng ấy, đưa cho chủ quán.
+Chủ quán trợn mắt:
+“Công tử, tiểu nhân không đủ tiền thối!”
+“Không cần thối.”
+Hắn cầm cây trâm gỗ hoa lê trên sạp, đặt vào tay cô nương.
+Cô nương kinh ngạc vô cùng.
+“Công… công tử?”
+Nàng chỉ là nữ tử bình thường, xuất thân bình thường, dung mạo bình thường, lời ăn tiếng nói cũng bình thường. Sao xứng để vị công tử này vung tay một cái đã tiêu cả thỏi vàng?
+Khí độ và cách ra tay của hắn thật quá hào phóng!
+Chẳng lẽ… hắn để ý nàng?
+“Xin cô nương nhận lấy thành ý bồi tội của ta.”
+“Công tử, thứ này quá quý giá!”
+“Đổi lấy nụ cười của giai nhân, tự nhiên đáng giá.”
+Đôi mắt cô nương khẽ run, hai tay nâng cây trâm gỗ hoa lê trị giá cả một thỏi vàng, trong lòng quyết định mời công tử đi du hồ trò chuyện.
+Nhưng còn chưa kịp mở lời, phía bên kia đã có một đội thị vệ như lôi đình lao tới.
+“Tránh ra!”
+“Tất cả tránh ra!”
+Chuyện gì vậy?
+Biến cố xảy ra quá đột ngột. Cô nương còn đang nghi hoặc thì thấy vị công tử kia xoay người bỏ chạy.
+“Công tử?”
+Đám thị vệ đuổi theo hắn. Chỉ trong mấy hơi thở ngắn ngủi, đã bắt được hắn, bẻ quặt hai tay ra sau lưng rồi ném vào một cỗ xe ngựa màu đen.
+Đó là xe ngựa của phủ Ân Vương!
+Cô nương chấn động trong lòng.
+Nhắc đến Ân Vương, khắp Nam Man không ai là không biết, không ai là không sợ. Thậm chí còn có một câu:
+Thà đắc tội với Vương thượng, cả nhà bị chém đầu, cũng tuyệt đối không được đắc tội Ân Vương, nếu không sẽ sống không bằng chết.
+Trong xe ngựa.
+Tần Mục Vũ bị quẳng vào trong, đầu đập xuống sàn, choáng váng hoa mắt.
+Trên đỉnh đầu, vang lên giọng nói trầm lạnh như màn đêm của nam nhân:
+“Tiểu tử, đến nhà người khác làm khách, lại bóp cổ chủ nhân, đốt kho của chủ nhân, trộm tiền của chủ nhân, còn lấy tiền ấy mượn hoa hiến Phật để lấy lòng mỹ nhân. Dường như không phải việc quân tử nên làm.”
+Tần Mục Vũ chậm hai nhịp mới hoàn hồn. Trước mắt hắn là một đôi ủng gấm đen viền chỉ vàng, thêu hoa văn phóng túng, cùng trường bào đỏ thẫm đến tím, toát lên vẻ ngông cuồng của chủ nhân.
+Hắn chống người ngồi dậy:
+“Hôm đó vô tình đi nhầm vào sương phòng, cũng không cố ý mạo phạm. Ta đã xin lỗi rồi, nhưng Ân Vương lại cưỡng ép giam giữ ta. Ta đương nhiên phải nghĩ cách bỏ trốn.”
+“Nếu xin lỗi mà có tác dụng, dưới tay bản vương cũng chẳng có nhiều oan hồn đến thế.”
+Đó là vì ngươi là gian thần!
+Ngươi là đại gian thần giết người không chớp mắt, ăn thịt còn chẳng cần bỏ muối!
+“Hu!”
+Xe ngựa đột nhiên dừng gấp.
+Theo quán tính, Tần Mục Vũ ngửa người suýt văng ra ngoài, nhưng bị Ân Vương kéo một cái. Không ngờ lại đâm sầm vào đùi y.
+“Hừ!”
+Nghe tiếng động ấy, hình như hắn đã đụng đau Ân Vương.
+Tần Mục Vũ nói:
+“Là ngươi kéo ta! Chính ngươi kéo ta! Lúc đó ta trúng Nhuyễn Cốt Tán, không còn sức, là ngươi lôi ta về, chuyện này không thể trách ta!”
+Hắn giấu kín việc Nhuyễn Cốt Tán đã được giải.
+Ân Vương lạnh lùng liếc hắn một cái, ánh mắt như đang mắng hắn vô dụng yếu đuối, rồi lên tiếng với bên ngoài:
+“Có chuyện gì?”
+Thị vệ đánh xe đáp:
+“Chủ tử, Trưởng công chúa chặn xe của ngài.”
+“Ồ?”
+Thác Bạt Minh Nguyệt tới rồi.
+“Minh Nguyệt bái kiến Vương thúc.”
+Nàng đứng trước xe ngựa, dẫn theo sáu tên vệ binh. Tư thế không kiêu không nịnh, dường như đã có chuẩn bị từ trước.
+Sắc mặt Tần Mục Vũ khẽ biến.
+“Tìm ngươi?”
+“Ta…”
+“Chui xuống dưới vạt áo của bản vương.”
+Tần Mục Vũ do dự chốc lát, cuối cùng vẫn nghe lời, làm theo.
+Áo bào của y thật rộng. Không chỉ tà áo rộng rãi, mà ngay cả ống tay áo lớn cũng đủ giấu hai đứa trẻ. Tần Mục Vũ cuộn chặt thân mình chui vào.
+“Trốn kỹ chưa?”
+“Rồi.”
+“Mông vẫn còn lòi ra ngoài.”
+Tần Mục Vũ co người thêm, lại chui sâu vào hơn.
+“Lần này kín rồi.”
+Giữa đôi mày Ân Vương thoáng giãn ra một tia ý cười khó nhận thấy. Y vén một góc rèm xe, nhìn ra ngoài.
+“Thì ra là tiểu chất nữ Minh Nguyệt.”
+“Có việc gì?”
+Thác Bạt Minh Nguyệt mượn khe hở nơi góc rèm, quan sát toàn bộ bên trong xe, nhưng không phát hiện bóng dáng khả nghi nào.
+“Vương thúc, hai ngày nay ta đang truy bắt một tên đào phạm rất quan trọng. Vệ binh báo rằng hình như hắn từng qua lại với Vương thúc, nên ta mới đến xem.”
+Ân Vương cười lạnh:
+“Cho nên?”
+Là muốn khám xét xe ngựa của y?
+Hay muốn lục soát phủ Ân Vương?
+“Vệ binh chỉ nói hình như nhìn thấy, chứ không dám khẳng định. Thế mà ngươi đã dẫn người chặn xe của bản vương. Nếu sau này có kẻ nghi ngờ bản vương là gian thần, chẳng lẽ Công chúa cũng sẽ trực tiếp giết bản vương?”
+“Minh Nguyệt không dám!”
+“Vậy thì sao? Thác Bạt Minh Nguyệt, muốn đến phủ bản vương ngồi chơi một lát?”
+Thác Bạt Minh Nguyệt mím môi, vẫn chưa cam lòng nhìn vào trong xe, nhưng không thấy Tần Mục Vũ.
+“Vương thúc công vụ bận rộn, Minh Nguyệt không dám quấy rầy.”
+“Vậy còn chắn đường làm gì?”
+Từng lời từng chữ của nam nhân đều cuồng ngạo ép người, chẳng hề chừa cho Thác Bạt Minh Nguyệt chút thể diện nào.
+Nàng chỉ đành lui sang một bên, nhìn Ân Vương hạ rèm xe, nghênh ngang rời đi, mà không dám nói nặng lời.
+Vị Vương thúc này nắm giữ nửa giang sơn triều đình, ngay cả phụ vương cũng không dám dễ dàng đắc tội, nàng càng không dám đối đầu trực diện.
+Trước mắt sắp khai chiến, nếu triều đình xảy ra biến cố, trong ngoài đều có họa, chỉ càng khiến Ân Vương thúc được lợi.
+“Đinh Cửu, ngươi chắc chắn vừa rồi nhìn thấy Tần Thiếu tướng quân?”
+Tên vệ binh gọi là Đinh Cửu cúi đầu đáp:
+“Thuộc hạ không dám vọng ngôn, Công chúa điện hạ. Không lâu trước đó, thị vệ phủ Ân Vương cũng đang truy bắt một tên đào phạm.”
+Người họ bắt chính là cùng một người.
+Trong lòng Thác Bạt Minh Nguyệt đã có quyết định.
+Ân Vương thúc từ trước đến nay luôn đối đầu với phụ vương.
+Tần Mục Vũ là tù binh của nàng. Nàng nhất định phải bắt hắn trở về, mới có thể hợp tác với Sở Dạ Ly tốt hơn, dùng đó làm điều kiện đàm phán với Đại Sở.
+“Người đâu, báo cho nội tuyến của chúng ta trong phủ Ân Vương…”
+—
+Xe ngựa chạy đến phủ Ân Vương.
+Lại trở về nơi quen thuộc này.
+Tần Mục Vũ nhảy xuống xe, vừa định co giò bỏ chạy, đã bị Ân Vương túm lấy cổ áo phía sau, một tay xách ngược trở lại.
+Hắn giả vờ vùng vẫy mấy lần, nhưng không sao thoát được.
+“Thiếu tướng quân Đại Sở họ Tần, hóa ra chỉ là một phế vật trói gà không chặt.”
+Ân Vương cười nhạo, mấy tên thị vệ bên cạnh cũng phá lên cười.
+Tần Mục Vũ tức đến đỏ bừng mặt, nhưng trong lòng cũng càng thêm khẳng định, mình có thể ở lại phủ Ân Vương.
+Vị Ân Vương này vốn luôn như nước với lửa cùng vương thất, chuyện gì cũng thích đối đầu. Hắn có giá trị lợi dụng rất lớn đối với Thác Bạt Minh Nguyệt, nên Ân Vương sẽ không giết hắn.
+Y giữ hắn lại, chính là để cố ý chọc tức Thác Bạt Minh Nguyệt.
+Bọn chúng cười nhạo hắn.
+Hắn đều ghi nhớ hết!
+A Ly nói đúng.
+Bị mắng vài câu, cũng đâu mất miếng thịt nào.
+Quân tử báo thù, mười năm chưa muộn.
+“Vương gia, cuối cùng ngài cũng về rồi. Tiểu Thế tử đang quấy đòi tìm ngài đấy.”
+Trong phủ, quản gia sải bước tới.
+Tiểu Thế tử?
+Hắn đã có con rồi?! Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_158.html" class="btn">‹ Trước</a>
+            <a href="chuong_160.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

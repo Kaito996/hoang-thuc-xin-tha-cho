@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 239</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 239</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_238.html" class="btn">‹ Trước</a>
+            <a href="chuong_240.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 239: Da mặt ngươi mỏng, nhất định không làm nổi chuyện này
+San Hô Thủy Tạ.
+Tư uyển rộng lớn xa hoa, còn hơn cả Lâm Hồ Tiểu Trúc ở Giang Nam gấp năm lần. Hơn nữa, xung quanh đều đã dời sạch hàng xóm, cảnh trí thanh u, không còn những chuyện thị phi láng giềng. 
+Trên mảnh đất tấc đất tấc vàng của Đế đô, giá trị của tòa tư uyển này cao đến mức người thường căn bản không dám tưởng tượng.
+“Kinh Ảnh, Trọng Phong, giúp Tạ tiểu thư chuyển đồ.”
+Sở Đệ Trì xuống ngựa.
+“Đều cẩn thận một chút, đừng để va đập hỏng mất.”
+“Tuân lệnh!”
+Trọng Phong tháo bội kiếm bên hông sang một bên, sải bước đến cạnh xe ngựa. Vừa đưa tay ra, hắn đã thấy một thị nữ thân hình mảnh mai vác bổng một chiếc rương gỗ lớn nặng trịch lên vai, vững vàng bước thẳng vào San Hô Thủy Tạ.
+Hắn trợn tròn mắt.
+Cái đó phải nặng đến mức nào?
+Ít nhất cũng năm mươi cân chứ?
+Vậy mà nàng ta lại một mình vác đi?
+“Lợi hại chứ?”
+Kinh Ảnh ghé sát thì thầm.
+“Nghe nói lần trước ở Giang Nam gặp hỏa hoạn, chính nàng ấy cầm dao phay bổ cửa sổ, cứu Tạ tiểu thư đó.”
+“Tên là Sơ Nhất.”
+“Là người rất được việc.”
+Ánh mắt kinh ngạc của Trọng Phong đuổi theo bóng nàng.
+Quả thật là một người rất được việc.
+Chuyển đồ thôi.
+Mọi người lần lượt khuân vác hành lý, còn Sở Đệ Trì thì dẫn Sở Ly vào Lan Đình Hiên, đưa nàng đến chỗ ở.
+“Tiểu Cửu, nàng ở đây.”
+“Ta nhớ... đây chẳng phải là sương phòng của người sao?”
+“Cho nàng mượn ở vài ngày.”
+Vậy hắn đúng là hào phóng thật.
+“Nếu còn thiếu thứ gì, cứ việc nói với ta.”
+“Đa tạ Hoàng thúc.”
+Qua hơn nửa canh giờ, Lan Đình Hiên vốn mang tông màu lạnh đã được lấp đầy bởi đủ loại vật dụng của nữ tử. Bàn trang điểm, tủ y phục, gấm vóc lụa là, châu báu trang sức, ngay cả rèm cửa cũng được thay bằng màu hồng tường vi. Cả San Hô Thủy Tạ như được thay da đổi thịt, tràn đầy sinh khí.
+Trong ao có Quy sư thúc.
+Trên cành hải đường treo chiếc lồng của Bạch Vũ Anh Vũ.
+Sở Đệ Trì vô cùng hài lòng nhìn cảnh tượng ấy, khẽ nheo mắt.
+Không tệ.
+“Chủ tử, Nhàn Vương điện hạ đã đến.”
+Ngoài viện, Kinh Ảnh bẩm báo.
+Sở Ly hơi ngạc nhiên.
+Bát hoàng huynh!
+“Đường xa xe ngựa mệt nhọc, lại còn nhiều đồ phải sắp xếp. Tiểu Cửu, nàng cứ nghỉ ngơi cho tốt trước. Đợi thân phận của nàng được định xong, ta sẽ sắp xếp để hai người gặp mặt.”
+Sở Ly biết hắn còn có công vụ phải xử lý, liền gật đầu đáp ứng.
+Sở Đệ Trì nhanh chóng rời đi.
+Ngoài đại môn.
+Sở Ngạo Thiên ngồi xe ngựa đến, trong mũi không ngừng hừ hừ đầy ấm ức.
+“Hoàng thúc, người ta đợi người ở Đông thành môn suốt hai canh giờ, sao Hoàng thúc lại từ Tây thành môn trở về mà cũng không báo cho con một tiếng.”
+Làm hại hắn chờ uổng.
+“Chẳng phải bản vương đã sai người đi báo cho ngươi rồi sao? Nếu không, ngươi sao có thể chỉ chờ hai canh giờ?”
+Chuyện này...
+Hình như cũng có lý.
+Hoàng thúc anh minh!
+Sở Đệ Trì lên xe ngựa.
+“Tình hình hiện tại thế nào?”
+Sở Ngạo Thiên bảo thị vệ đánh xe về hoàng cung, nghiêm túc nói chính sự:
+“Nội ưu ngoại hoạn!”
+“Ngũ hoàng huynh ở Mạc Hoài châu tự lập làm vương, còn quân Nam Man cũng đóng quân tại đó. Trên triều đình, các hoàng huynh đều bắt nạt con, chẳng ai chịu nghe lời con, đặc biệt là Lục hoàng huynh!”
+“Huynh ấy mắng con là đồ phế vật, không xứng thống lĩnh bọn họ, càng không xứng dẫn dắt văn võ bá quan, còn nói…”
+“Bản vương đã trở về, bản vương muốn xem thử còn kẻ nào dám càn rỡ!”
+Lục hoàng tử, Sở Dực!
+Rất tốt.
+Chính hắn là kẻ đứng sau chống lưng cho Tri phủ Giang Nam, cấu kết với Đại hoàng tử Sở Uyên Trì, thậm chí còn phái người mưu đồ hủy hoại sự trong sạch của Sở Ly.
+Vậy thì bắt đầu từ hắn trước!
+Sở Ngạo Thiên há to miệng.
+“Không phải đâu, Hoàng thúc…”
+Điều hắn muốn nói là...
+Lục hoàng huynh mắng rất đúng.
+Hắn đúng là một tên phế vật!
+“Lần này hồi kinh, bản vương có mang về cho ngươi một món quà. Đó sẽ là thứ khiến ngươi kinh hỉ nhất, yêu thích nhất trong cả đời.”
+Hai mắt Sở Ngạo Thiên sáng lên.
+“Là gì vậy?”
+“Đợi ngươi học thông suốt Trị Quốc Sách, bản vương sẽ nói cho ngươi biết.”
+“A…”
+Hoàng thúc không phải đang lừa hắn đấy chứ?
+Sở Ngạo Thiên có chút không tin.
+Hắn nghi ngờ nhìn Hoàng thúc, đang định lên tiếng chất vấn vài câu thì lại thấy đôi mày kiếm của Hoàng thúc khẽ trầm xuống đầy uy nghiêm, sống lưng lập tức căng thẳng.
+Học!
+Lập tức học!
+Hoàng thúc là trưởng bối, sao có thể lừa gạt hậu bối được chứ!
+Bên phía San Hô Thủy Tạ.
+Kinh Ảnh và Trọng Phong đã giúp chuyển toàn bộ đồ đạc xong xuôi. Vì chỉ ở nhờ, Sở Ly không tiện động vào những vật dụng vốn có của Sở Đệ Trì, bèn giữ Trọng Phong lại, nhờ hắn sắp xếp chỗ ở cho sáu thị nữ, đồng thời giảng qua các quy củ.
+Trọng Phong vui vẻ nhận lời.
+“Các ngươi ở dãy sương phòng phía tây, tiện hầu hạ Tạ tiểu thư trong sinh hoạt hằng ngày... bên này là phòng bếp... nơi kia là thư phòng của Nhiếp Chính Vương, còn mật thất bên kia thì không được đến. Những nơi khác đều có thể tùy ý đi lại... hoa viên ở phía này...”
+“Đa tạ Trọng Phong đại nhân.”
+Sáu người lần lượt ghi nhớ.
+Trọng Phong gật đầu, nhìn thấy Sơ Nhất xắn tay áo đi ngang qua. Dáng vẻ nàng vẫn trầm ổn như cũ, đến cả vạt áo bị rách một mảng cũng không hề hay biết.
+Có lẽ là lúc trước khuân rương, vác đồ, vô ý bị móc rách.
+Hắn lui khỏi Lan Đình Hiên, nói với Kinh Ảnh đang chờ bên ngoài:
+“Chiếu theo kiểu y phục của thị nữ Nhiếp Chính Vương phủ, mua sáu bộ mới mang đến.”
+Kinh Ảnh hơi ngạc nhiên.
+“Chuyện này chẳng phải không đến lượt chúng ta bận tâm sao?”
+“Dù sao Tạ tiểu thư cũng đang ở San Hô Thủy Tạ, đây là địa bàn của chủ tử. Ăn mặc đồng bộ, chỉnh tề thì mới không làm mất thể diện của chủ tử.”
+Kinh Ảnh lập tức trầm ngâm.
+“Không ngờ ngươi lại cẩn thận như vậy, nói cũng có vài phần đạo lý. Ta đi mua ngay.”
+“Mua xong thì đưa cho ta, ta mang đi.”
+“Hả? Tại sao? Chẳng phải là ta mua sao?”
+Trọng Phong nghiêm mặt đáp:
+“Bạc của chúng ta đâu phải gió lớn thổi tới. Ta mang y phục qua, tiện thể tìm Tạ tiểu thư thanh toán lại tiền luôn. Da mặt ngươi mỏng, nhất định ngại làm chuyện như vậy.”
+Kinh Ảnh vỗ trán.
+“Đúng! Ta là người sĩ diện, vẫn là ngươi đi đưa thì thích hợp hơn.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_238.html" class="btn">‹ Trước</a>
+            <a href="chuong_240.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

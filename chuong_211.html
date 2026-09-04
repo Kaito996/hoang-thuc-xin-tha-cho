@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 211</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 211</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_210.html" class="btn">‹ Trước</a>
+            <a href="chuong_212.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 211: Thành thân, Mục Vũ ca ca
+Ba cái tiểu tử này…
+Đều chổng mông lên, trông chẳng khác nào mấy con cú mèo đậu trên cành cây.
+Thân hình nho nhỏ, cái đầu to to, bộ dạng ngơ ngác. Chỉ là gặm một củ khoai lang nướng thôi, vậy mà lại ăn ra cảm giác mềm thơm như đang gặm giò heo hầm.
+“Mục Tuyết, muội còn nhớ lão gia gia bán bánh nếp ở Nam nhai không?”
+“Muội nhớ chứ, hai tháng trước ông ấy vừa nạp phòng thiếp thứ tám.”
+“Bán bánh nếp kiếm được nhiều bạc vậy sao? Ta cũng muốn đi bán.”
+“Huynh dậy nổi sớm không?”
+“…”
+Sở Đệ Trì chống cằm, nhìn thân ảnh nhỏ gầy kia. Đôi mắt long lanh chớp chớp, đã lớn ngần này rồi mà nói chuyện toàn những đề tài gì thế này?
+Năm tám tuổi, hắn còn chẳng ngây thơ như vậy.
+Nhưng những lời ấy từ miệng Tiểu Cửu nói ra…
+Lại đáng yêu vô cùng.
+Nàng nhìn qua cũng thơm thơm.
+So với cảnh xử lý mấy vụ án lặt vặt trước mắt, bỗng chốc trở nên nhạt nhẽo vô vị.
+Hắn khẽ duỗi chân, bắt chéo chân, chỉ cảm thấy giờ khắc này năm tháng bình yên, khí hậu ôn hòa, ánh dương dịu nhẹ, ngay cả trong không khí cũng phảng phất hương hoa phù tang của ngày hạ.
+Giang Nam… quả thật là một nơi rất tốt.
+Đột nhiên.
+“Thành thân!”
+“Cạc cạc—”
+“Thành thân!”
+“Mục Vũ ca ca!”
+Trên cành hải đường treo một chiếc lồng chim, bên trong là con vẹt lông trắng đang chải chuốt bộ lông trắng muốt, cất tiếng hót lanh lảnh.
+Trong khoảnh khắc, tựa như mây đen che kín bầu trời, cuồng phong cuốn sạch vạn vật, bầu không khí trong Lâm Hồ Tiểu Trúc chợt đông cứng.
+Trời đất như đổi sắc.
+Người dân đang quỳ dưới đất khóc lóc kêu oan, đang nói dở bỗng giọng càng lúc càng nhỏ, kinh hãi nhìn nam nhân áo đen ngồi trên chủ vị, ánh mắt lạnh như băng.
+“Ai nuôi con vẹt này?”
+Tiêu Dạ Hành khẽ nhíu mày.
+Con vẹt này đang nói nhăng nói cuội cái gì?
+Ai dạy nó?
+Trong chớp mắt, tất cả mọi người đều nín thở, đến thở mạnh cũng không dám, dè dặt nhìn nhau, như thể có một lưỡi đao vô hình đang kề ngay cổ.
+Sở Ly mơ hồ cảm thấy bầu không khí có gì đó không đúng, chần chừ giơ tay phải lên.
+Tay phải vẫn đang cầm củ khoai lang.
+Lại chậm rãi giơ tay trái lên:
+“Ta nuôi…”
+“Hay!”
+Sở Đệ Trì vỗ mạnh tay vịn ghế, nụ cười trên gương mặt như quét sạch toàn bộ mây mù.
+“Bạch Vũ Anh Vũ vốn là một trong những giống vẹt hiếm có nhất, ánh mắt của Tiểu Cửu quả nhiên rất tốt.”
+“Hả?”
+Nàng?
+Sở Ly theo bản năng quay đầu nhìn Tần Mục Vũ, rồi lại nhìn Tần Mục Tuyết, luôn cảm thấy có chỗ nào không đúng.
+Bạch Cẩm Y lấy khăn gấm trong tay áo ra lau lớp mồ hôi mỏng trên trán.
+Tri phủ Lý, Thôi Tiền Tiến cùng đám bách tính đều thấy sống lưng lạnh toát.
+Khoảnh khắc vừa rồi, bọn họ còn tưởng Nhiếp Chính Vương sẽ rút Thượng Phương bảo kiếm ra chém người.
+Không ngờ…
+Cuối cùng lại cầm kiếm gọt táo cho mọi người xem.
+Khiến tất cả đều như bước trên băng mỏng, kinh hãi không thôi.
+“Thành thân!”
+“Mục Vũ ca ca!”
+Con vẹt lông trắng ngẩng đầu, cái mào trắng nhỏ trên đỉnh đầu đẹp vô cùng.
+“Mục Vũ ca ca—”
+Sở Ly khó nhọc nuốt miếng khoai lang trong miệng.
+Con vẹt này…
+Có phải không nên treo ở đây không?
+“Hoàng thúc…”
+“Hửm? Sao vậy?”
+Sở Đệ Trì cầm chén trà của mình đi tới.
+Ba người đang ngồi xổm trên bậc thềm, hắn khom lưng xoa đầu Sở Ly.
+“Ăn ít khoai lang thôi, khô lắm.”
+Hắn mở nắp chén trà, nhấp một ngụm.
+“Nước vừa đủ ấm, uống nhiều một chút.”
+Sở Ly ôm lấy chén trà.
+Tính tình của hắn…
+Tốt đến mức khiến nàng thấy không chân thực.
+Tần Mục Vũ nhìn chén trà ấy.
+Nhiếp Chính Vương đã uống qua, rồi lại đưa cho Sở Ly uống.
+Rõ ràng là cố ý tuyên bố chủ quyền ngay trước mặt hắn.
+Lòng hiếu thắng lập tức bị khơi dậy, ý xấu nổi lên, hắn cất cao giọng:
+“A Ly, con vẹt nàng nuôi thật thông minh. Chúng ta từ nhỏ cùng nhau lớn lên, ngay cả nó cũng biết quan hệ giữa chúng ta rất tốt.”
+Tần Mục Tuyết gật đầu, buột miệng:
+“Đúng vậy đúng vậy.”
+Khoan đã!
+Không đúng!
+Nàng lập tức ngậm miệng.
+Hàng mày của Sở Đệ Trì lười biếng mà ôn hòa, giọng nói cũng vô cùng dịu dàng:
+“Tình nghĩa cùng nhau lớn lên, tự nhiên không ai có thể sánh bằng. Có Tần Thiếu tướng quân cùng Tần tiểu thư làm nhà mẹ đẻ của Tiểu Cửu, sau này hẳn sẽ không ai dám bắt nạt Tiểu Cửu nữa.”
+Tần Mục Vũ nào muốn làm người nhà mẹ đẻ gì chứ.
+Hắn với A Ly là thanh mai trúc mã!
+Hắn lạnh lùng ngẩng đầu:
+“Ai dám bắt nạt A Ly, trước tiên phải bước qua xác ta!”
+Sở Đệ Trì đáp:
+“Chuyện đó không khó.”
+Tần Mục Vũ chấn động.
+Hắn vừa nói gì?
+Không khó?
+Hắn xem thường mình!
+“Nhiếp Chính Vương nói vậy e là quá tự phụ rồi! Ta đối với A Ly quan tâm chẳng kém bất kỳ ai, huống hồ ta mới là người hiểu nàng nhất!”
+Sở Đệ Trì bất đắc dĩ nói:
+“Tiểu Cửu, Tần Thiếu tướng quân hình như có thành kiến rất lớn với ta. Nhưng chuyến này ta đến Giang Nam, thật sự chưa làm gì cả, còn phải thay Tiêu Dạ Hành xử lý công vụ, bận đến mức không rảnh tay. Nếu ngươi có thời gian thì nhớ khuyên hắn cho tốt, đừng có như chó, gặp ai cũng phát điên cắn bậy.”
+“?”
+Tần Mục Vũ tức giận đứng bật dậy.
+Sở Ly vội nắm lấy cổ tay hắn:
+“Mục Vũ, đừng nói nữa.”
+“A Ly, nàng đừng dễ dàng tin hắn. Sự khoan dung rộng lượng, ôn hòa dễ gần của hắn… nhất định đều là giả vờ!”
+“Nhưng lần này hắn đến Giang Nam, quả thực chưa từng bắt nạt ta, ngay cả một câu nặng lời cũng chưa từng nói.”
+Ngay cả vừa rồi, khi Bạch Vũ Anh Vũ kêu loạn.
+Hắn cũng không nổi giận.
+Nếu là trước đây…
+Nàng thật sự không dám tưởng tượng.
+“A Ly, nàng đừng để hắn lừa!”
+“Ta biết. Nếu hắn dám bắt nạt ta, ta sẽ chạy.”
+“A Ly…”
+Hai mắt Tần Mục Vũ đỏ hoe, đột nhiên muốn khóc.
+“Ta không yên tâm về nàng… Ta thật sự rất sợ…” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_210.html" class="btn">‹ Trước</a>
+            <a href="chuong_212.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

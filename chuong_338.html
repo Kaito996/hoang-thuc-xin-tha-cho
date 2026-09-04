@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 338</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 338</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_337.html" class="btn">‹ Trước</a>
+            <a href="chuong_339.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 338: Cuối cùng, người có được nàng vẫn là ta
+Sở Dạ Ly nhìn nàng như vậy, đáy mắt cất giấu một tia bi thương.
+Nàng chưa từng lo lắng cho hắn như thế.
+Chưa từng khẩn thiết cầu xin hắn vì bất cứ điều gì như thế.
+Tựa như khi ánh dương ló rạng, hắn vĩnh viễn đứng ở phía ngược sáng, đứng nơi góc khuất nàng không nhìn thấy, mà nàng cũng chưa từng ngoái đầu nhìn lại.
+Đầu ngón tay khẽ run muốn chạm lên gương mặt nàng, nhưng cuối cùng vẫn dừng lại.
+“Ăn cơm trước đã.”
+“Đừng giận dỗi nữa, ăn xong, ta sẽ đáp ứng nàng.”
+Trong mắt Sở Ly lóe lên tia hy vọng:
+“Thật chứ?”
+“Ta đã từng lừa nàng khi nào?”
+Đến lúc này, cảm xúc của Sở Ly mới hơi bình ổn lại. Nàng siết chặt đôi đũa, cố gắng đè nén sóng gió trong lòng.
+Nàng không thể tự làm mình rối loạn.
+Đã đến nước này, khóc lóc cũng vô dụng. Chỉ có nghĩ mọi cách thay đổi cục diện, mới có thể xoay chuyển càn khôn.
+Nàng hít sâu một hơi, gắp một đũa cơm cùng thức ăn, đưa vào miệng, cố gắng nuốt xuống.
+Lần này, nàng đã bình tĩnh hơn nhiều.
+Sở Dạ Ly nhìn nàng:
+“Tiểu Cửu?”
+“Chuyện gì?”
+“Nàng… đã từng thật sự nhìn ta chưa?”
+Đã từng nhìn thấy tình ý và hy vọng trong mắt hắn chưa?
+Sở Ly đáp:
+“Ngươi có rất nhiều thứ, vậy ngươi đã từng trân trọng những gì mình đang có chưa?”
+Con người vốn là như vậy.
+Ở trong phúc mà không biết mình có phúc, đến khi mất đi rồi, mới chợt nhận ra bản thân từng có biết bao điều tốt đẹp.
+Sở Dạ Ly nghiêm túc nói:
+“Dẫu có nhiều đến đâu, cũng không bằng nàng.”
+“Tình cảm của con người rất phức tạp, không phải sao? Nếu yêu thì yêu, hận thì hận một cách dứt khoát, vậy ta đã có thể trực tiếp giết nàng, đâu cần phải trải qua bao khúc quanh như thế. Nhưng vì nàng, cho dù con đường này có quanh co đến mấy, chỉ cần cuối cùng có thể đi đến đích, ta cũng nguyện ý.”
+Thấy không?
+Người có đủ kiên nhẫn, rốt cuộc vẫn là người chiến thắng.
+“Cuối cùng, người có được nàng vẫn là ta.”
+Sở Ly rũ mắt, không nói thêm gì.
+Hoàng thúc sẽ không bao giờ đối xử với nàng như vậy.
+Trong mắt hoàng thúc, nàng chưa từng là món đồ để tranh giành.
+Về bản chất, sự khác biệt giữa Sở Dạ Ly và hoàng thúc, chính là sự khác biệt giữa ích kỷ và yêu thương. Có lẽ hắn vĩnh viễn cũng không hiểu được, mà nàng cũng chẳng muốn giải thích thêm.
+Lòng nàng chỉ nghĩ đến chính sự.
+Sở Dạ Ly còn định nói gì đó, thì Sở Ly đã đặt đũa xuống:
+“Ta ăn xong rồi.”
+Ý trong lời nói chính là: ngươi nên thả người rồi.
+“Nhưng ta vẫn chưa ăn.”
+“Trong lúc ăn cơm, hạ một mệnh lệnh cũng đâu mất bao nhiêu công sức? Chỉ là động miệng nói một câu mà thôi.”
+“Nàng thật thiên vị.”
+Sở Ly mím môi, chỉ lặng lẽ nhìn hắn.
+Sở Dạ Ly thở dài, đành buông đũa, dẫn nàng ra ngoài:
+“Thả Tiêu Dạ Hành.”
+Vừa đi đến đầu cầu thang, bên dưới đã vang lên một tràng tiếng bước chân hỗn loạn, dường như xảy ra chuyện gì.
+Tim Sở Ly thắt lại, lập tức chạy xuống, chỉ thấy bốn năm binh sĩ đang khống chế Tiêu Dạ Hành đang giãy giụa. Sau đầu gối hắn cắm một mũi tên, máu đã nhuộm đỏ nửa ống quần.
+“Tiêu đô đốc!”
+Sở Dạ Ly trầm giọng:
+“Có chuyện gì?”
+“Điện hạ, vừa rồi Tiêu đô đốc định bỏ trốn, bọn thuộc hạ bất đắc dĩ mới bắn bị thương hắn, rồi bắt trở lại.”
+Sở Dạ Ly nhíu mày. Chỉ thấy mũi tên đã xuyên thủng cả khoeo chân. Nếu chữa không tốt, e rằng sẽ tàn phế; dù may mắn chữa khỏi, ít nhất cũng phải dưỡng thương ba tháng.
+“Mời đại phu giỏi nhất chữa trị cho hắn, hộ tống hắn về đế đô dưỡng thương.”
+“Rõ!”
+Sở Ly lao tới, chỉ có thể trơ mắt nhìn Tiêu Dạ Hành bị cưỡng ép áp giải đi.
+Trong dạ dày nàng cuộn lên từng cơn.
+Tiêu Dạ Hành bị thương, lại bị áp giải về kinh, chút hy vọng vừa mới nhen nhóm trong lòng nàng cũng theo đó tan biến.
+Nàng ngẩng đầu nhìn nam nhân đứng trên cầu thang. Trong đôi mắt đỏ hoe mờ lệ chỉ còn ngập tràn hận ý:
+“Ngươi cố ý làm hắn bị thương!”
+“Rõ ràng ngươi đã hứa sẽ thả hắn đi! Ngươi nuốt lời!”
+Sở Dạ Ly trầm mắt bước tới:
+“Tiểu Cửu, vừa rồi chúng ta vẫn luôn ở trong phòng dùng bữa, ta thật sự không biết chuyện hắn bỏ trốn…”
+“Ngươi cho rằng ta sẽ tin sao? Ngay từ đầu ngươi đã không định buông tha hắn, ngươi lừa ta!”
+Sở Dạ Ly giữ lấy hai vai nàng:
+“Là người bên dưới lỡ tay, chuyện ta đã hứa với nàng, tuyệt đối sẽ không nuốt lời.”
+“Ngươi lừa ta! Sở Dạ Ly, ngươi lại lừa ta! Ta sẽ không bao giờ tin ngươi nữa, ta… ưm!”
+Lúc Sở Ly kích động quá mức, dạ dày bỗng co thắt dữ dội, sắc mặt lập tức trắng bệch.
+“Tiểu Cửu!”
+“Đừng tới gần ta!”
+Sở Ly nắm chặt vạt áo trước ngực, dùng sức đẩy hắn ra, lảo đảo lùi về sau mấy bước.
+“Ngươi thật độc ác… Sở Dạ Ly, ngươi thật sự quá độc ác…”
+Nàng lách qua người hắn, chạy lên lầu.
+“Tiểu Cửu, nàng tin ta, ta…”
+Ánh mắt Sở Dạ Ly dõi theo bóng nàng, nhưng ngay cả một lần ngoái đầu nàng cũng không dành cho hắn.
+Hắn siết chặt đầu ngón tay, ánh sáng trong mắt càng lúc càng lạnh lẽo, càng lúc càng âm trầm. Bỗng giơ tay, tát mạnh phó tướng một cái.
+“Đồ vô dụng!”
+“Đến một người cũng không trông nổi!”
+Phó tướng kinh hoảng quỳ sụp xuống:
+“Điện hạ bớt giận! Thuộc hạ vô dụng! Xin điện hạ bớt giận!”
+Sở Dạ Ly u ám siết chặt cổ áo, kéo mạnh một cái, nhưng luồng uất khí trong lồng ngực vẫn không cách nào trút ra.
+“Còn quỳ ở đây làm gì? Đợi ta mời ngươi ăn tối sao?”
+Phó tướng sợ đến mức lăn bò chạy ra ngoài.
+Việc đầu tiên sau khi ra ngoài là tăng gấp ba nhân thủ canh giữ Tiêu Dạ Hành, không dám để xảy ra thêm chút sơ suất nào.
+Thái dương Sở Dạ Ly âm ỉ đau nhức.
+A Ngọc khẽ nói:
+“Chủ tử, nghỉ ngơi sớm đi. Mấy ngày nay ngài việc gì cũng tự mình xử lý, phía trước còn phải đi đường xa, nên dưỡng sức mới phải.”
+Hắn chẳng có lòng nào nghỉ ngơi.
+Trong lòng cứ thấp thỏm bất an.
+Hắn xoay người lên lầu.
+Cửa phòng đóng chặt.
+Đứng ngoài cửa, nhớ lại những lời Sở Ly vừa nói cùng ánh mắt thất vọng nàng nhìn mình, trong lòng hắn như bị tảng đá lớn đè nặng, cả người vô cùng bức bối.
+Mất rất lâu mới miễn cưỡng điều chỉnh lại tâm trạng, hạ thấp giọng:
+“Tiểu Cửu, ta đã sai người chữa trị cho Tiêu Dạ Hành, hắn sẽ không sao đâu.”
+Trong phòng yên tĩnh.
+“Tiểu Cửu, nghe ta giải thích.”
+“Ta thật sự không biết chuyện này.”
+“Tiểu Cửu?”
+Sao không có tiếng đáp?
+“Tiểu Cửu?”
+Mày hắn dần nhíu chặt, trong lòng dâng lên một dự cảm chẳng lành. Hắn lập tức đẩy cửa xông vào, chỉ thấy trong phòng trống không, duy chỉ có cánh cửa sổ đang mở toang!
+“Chết tiệt!”
+________________________________________
+Sở Ly trèo cửa sổ bỏ trốn.
+Trong thành quá lớn, sau khi Sở Dạ Ly tiến vào, khắp nơi đều là người của hắn. Mà trên người nàng đến một đồng cũng không có. Nghĩ đi nghĩ lại, chỉ còn cách nhanh nhất là chạy tới nha môn tri phủ địa phương.
+Đánh trống kêu oan cầu cứu.
+“Ai vậy? Đêm hôm rồi còn đánh trống ầm ĩ?”
+Hai tên phủ binh khó chịu bước ra.
+“Không biết bình thường chỉ buổi sáng mới được đánh trống kêu oan sao?”
+Sở Ly bước nhanh lên trước:
+“Ta có việc gấp, muốn gặp tri phủ.”
+Một tên phủ binh cười khẩy, xua tay:
+“Ồ, ngươi tưởng mình là ai? Tri phủ đại nhân là người ngươi muốn gặp là gặp được sao…”
+“Việc này liên quan đến Nhiếp Chính Vương. Nếu các ngươi không đi bẩm báo, sau này truy cứu trách nhiệm, ta sẽ lấy hai người các ngươi tế kiếm trước!”
+Hai người giật mình.
+Thấy giọng điệu nàng nghiêm nghị, không giống giả dối, tuy trong lòng phát run, nhưng vẫn đi vào thông báo.
+Không bao lâu sau, Sở Ly được mời vào.
+“Xin cô nương ngồi đây chờ một lát, tri phủ đại nhân sẽ tới ngay.”
+Sở Ly gật đầu.
+Vừa ngồi xuống, đã nghe thấy một giọng trêu chọc:
+“Ôi chao! Đây chẳng phải Tạ cô nương sao?”
+Sở Ly quay đầu nhìn, vậy mà người tới lại là Tôn tri phủ của thành Thiên Thủy năm xưa, cùng nữ nhi của ông ta là Tôn Ngọc Tuyết.
+Tôn Ngọc Tuyết kinh ngạc:
+“Đúng là gặp quỷ thật. Ta nghe tin Nhiếp Chính Vương đã chết trận, còn tưởng với tình cảm của hai người, sẽ sống chết có nhau. Không ngờ, ngươi lại một mình trốn về.”
+Đôi mày liễu của Sở Ly khẽ nhíu.
+Sao hai người này lại ở đây?
+Tôn tri phủ vẫn mặc quan phục, chẳng lẽ đã được điều chức?
+“Tôn đại nhân.”
+“Ấy, một tiếng này của Tạ cô nương, hạ quan thật không dám nhận!”
+Sở Ly đứng dậy:
+“Chuyện gấp như lửa cháy. Nhiếp Chính Vương đang gặp nạn, mong Tôn đại nhân cấp cho ta một đội nhân mã, đồng thời bí mật đưa ta xuất thành. Chờ Nhiếp Chính Vương hồi kinh, nhất định sẽ trọng thưởng.”
+Tôn tri phủ coi như đã hiểu.
+Nàng đến cầu viện.
+“Tạ cô nương, Nhiếp Chính Vương gặp chuyện, hạ quan đau lòng khôn xiết, hận không thể vì ngài ấy mà xả thân. Hạ quan nhất định sẽ giúp cô!”
+Tôn Ngọc Tuyết lại cười:
+“Cha, cha hồ đồ rồi. Nhiếp Chính Vương đã chết, chẳng lẽ chúng ta đi tìm thi thể của hắn sao?”
+Tôn tri phủ ra vẻ kinh ngạc:
+“Ồ? Chết rồi sao?”
+Tôn Ngọc Tuyết che miệng cười duyên:
+“Đúng vậy! Nghe nói rơi xuống vực, xương cốt cũng chẳng còn. Chắc sớm đã bị dã thú ăn sạch rồi!”
+Tôn tri phủ thở dài:
+“Vậy thì thật đáng tiếc. Nhiếp Chính Vương còn trẻ như vậy, đúng là thiên đố anh tài.”
+Tôn Ngọc Tuyết cầm khăn tay, ra vẻ tiếc nuối:
+“Đúng thế! Hu hu… Nhiếp Chính Vương phủ to lớn như vậy, đến người nối dõi cũng không có, thật đáng thương biết bao.”
+Hai cha con người tung kẻ hứng, một câu than, một tiếng tiếc, diễn trò đến vô cùng tự nhiên.
+Sở Ly lạnh lùng nhìn bọn họ:
+“Tôn đại nhân, ngài ăn bổng lộc của Đại Sở, đáng lẽ phải trung quân ái quốc. Hiện nay người ngồi trên long ỷ là Bát hoàng huynh. Xét tình xét lý, với mối quan hệ giữa người và Nhiếp Chính Vương, ngài đều nên góp một phần sức lực.”
+“Tạ cô nương thật oai phong.”
+Tôn Ngọc Tuyết khinh khỉnh nhìn nàng.
+“Ngươi tưởng bây giờ Đại Sở vẫn còn là cục diện trước kia sao?”
+Đúng là trò cười!
+Nhiếp Chính Vương đã chết, chẳng còn ai chống lưng cho nàng. Nàng giờ chỉ là cái xác rỗng, còn dám lên mặt, cũng không sợ gió lớn làm rách lưỡi.
+“Nhiếp Chính Vương ngu xuẩn vô năng, chỉ vì chút chuyện nhỏ mà cách chức cha ta. Loại người như hắn có tư cách nắm quyền sao? Chết hay lắm! Chết thật quá hay! Ha ha… Á!”
+Chát!
+Một cái tát vang dội.
+Sở Ly đánh đến lòng bàn tay đỏ bừng, ánh mắt lạnh như kiếm:
+“Không được hắn để mắt đến, liền buông lời bôi nhọ. Tôn tiểu thư, xem ra gia giáo của cô cũng chỉ đến thế.”
+“Ngươi!”
+Tôn Ngọc Tuyết ôm má, giận dữ:
+“Ai thèm hắn để mắt? Hừ! Thiên hạ thiếu gì nam nhân tốt, ta Tôn Ngọc Tuyết đâu thèm một tên đoản mệnh!”
+“Thật sao?”
+Năm đó, cũng chẳng biết là ai ngay trước mắt nàng ra sức quyến rũ Nhiếp Chính Vương.
+Quyến rũ không thành, lại thẹn quá hóa giận, chó cùng rứt giậu.
+Nhìn hai cha con đã phản bội này, không khó tưởng tượng tình cảnh hiện giờ của Đại Sở…
+Xã tắc rung chuyển, quan viên trở mặt, lòng người hoảng loạn.
+Bát hoàng huynh sao có thể gánh nổi?
+Hoàng thúc…
+Người nhất định sẽ không gặp chuyện.
+Ta sẽ tìm được người!
+Sở Ly cất bước định đi.
+“Chặn nàng lại!”
+Mấy tên phủ binh lập tức xông lên, đứng thành nửa vòng tròn, chặn kín đường lui.
+Tôn Ngọc Tuyết khoanh tay trước ngực, ngẩng cao đầu bước tới:
+“Tạ cô nương, nha môn này đâu phải nơi ngươi muốn đến thì đến, muốn đi thì đi?”
+Huống hồ nàng còn tát mình một cái.
+Sở Ly bình tĩnh nhìn cảnh tượng trước mắt:
+“Tôn tiểu thư, cô có biết có câu, lạc đà gầy còn lớn hơn ngựa không?”
+Nàng còn chưa thất thế, đã dám bắt nạt lên đầu nàng.
+Cho dù nàng thật sự thất thế, cũng chưa đến lượt Tôn Ngọc Tuyết ngông cuồng.
+Tôn Ngọc Tuyết cười lạnh:
+“Nhiếp Chính Vương đã chết rồi, ngươi còn bày bộ dạng hù dọa ai?”
+“Ngươi biết ta là ai không?”
+“Chẳng phải chỉ là một con tiện nhân bám vào Nhiếp Chính Vương rồi cáo mượn oai hùm sao?”
+Nhớ đến chuyện năm đó, nàng ta hận đến nghiến răng.
+Nàng ta trẻ hơn Tạ Vãn Nguyệt, đẹp hơn, đáng yêu hơn, dịu dàng hơn.
+Thế mà Nhiếp Chính Vương ngay cả liếc nàng ta một cái cũng không thèm, còn nghiêm trị cha con họ.
+Tên Nhiếp Chính Vương mù mắt ấy!
+Chết hay lắm!
+Phong thủy luân lưu!
+Hôm nay nàng nhất định phải rửa sạch mối nhục năm xưa!
+Tôn Ngọc Tuyết siết chặt nắm tay:
+“Mấy người các ngươi, bắt lấy nàng ta! Để ta xem hôm nay có đánh nát mặt nàng ta không!”
+Đám phủ binh rút những cây côn gỗ to bằng cánh tay, đồng loạt xông tới.
+Sở Ly theo bản năng đưa tay sờ tay áo, chỉ thấy trống không, lúc này mới nhớ nhuyễn kiếm đã bị Sở Dạ Ly lấy mất. Nàng lập tức lùi ba bước, chộp lấy chiếc ghế quét ngang một vòng.
+Tôn Ngọc Tuyết tức đến nghiến răng:
+“Xông lên!”
+Mười hai người đồng loạt bao vây.
+Dù không có binh khí, Sở Ly cũng không hề rơi xuống thế hạ phong.
+Dù sao nàng cũng từng ra chiến trường.
+Tôn Ngọc Tuyết nhìn mà giậm chân:
+“Đúng là một nữ nhân thô bỉ! Nhiếp Chính Vương đúng là mù mắt mới coi trọng nàng ta!”
+Tôn tri phủ giơ tay:
+“Con gái đừng vội. Đêm nay nàng ta đừng hòng rời khỏi phủ này. Bây giờ Đông Lăng Thái tử nắm quyền, sẽ chẳng còn ai bảo vệ được nàng ta.”
+“Cha, con vẫn tức! Hồi đó nàng ta đứng bên cạnh Nhiếp Chính Vương, vênh váo biết bao. Chỉ cần nghĩ tới là con muốn rạch nát mặt nàng ta, để sau này nàng ta không thể quyến rũ nam nhân nữa!”
+“Còn phải bán nàng ta vào thanh lâu!”
+Tôn tri phủ vỗ nhẹ cánh tay nữ nhi, cười dỗ:
+“Được được được, đều theo ý con.”
+Hơn mười người vây đánh Sở Ly, hai bên giằng co bất phân thắng bại.
+Tôn Ngọc Tuyết bỗng nảy sinh ý xấu, bưng đĩa đậu rang thơm trên bàn, đổ xuống đất.
+Lách tách lách tách.
+Đậu lăn đầy nền.
+Sở Ly sơ ý giẫm phải một hạt, suýt trượt ngã xoạc chân. Mấy bàn tay lập tức nhào tới, nhân cơ hội khống chế nàng.
+“Bắt được rồi!”
+“Lần này xem ngươi chạy đi đâu!”
+Bọn chúng bẻ quặt hai tay Sở Ly, áp giải đến trước mặt Tôn Ngọc Tuyết.
+Tôn Ngọc Tuyết nhếch môi, vừa xoa cổ tay vừa nói:
+“Tạ cô nương, nếu ngươi quỳ xuống cầu xin, biết đâu ta vui vẻ, sẽ tha cho ngươi.”
+Sở Ly lạnh lùng nhìn nàng ta:
+“Tiểu nhân đắc chí.”
+“Ngươi!”
+Còn dám mạnh miệng!
+Tôn Ngọc Tuyết giận dữ giơ tay định tát.
+Đúng lúc bàn tay hạ xuống, Sở Ly mượn lực hai người đang giữ mình, bật người lên, tung một cước đá thẳng vào bụng Tôn Ngọc Tuyết.
+“A!”
+“Tuyết Nhi!”
+Một cước ấy đá nàng ta bay ra bốn năm bước, ngã chỏng vó.
+Tôn tri phủ vội vàng chạy tới, vừa giận vừa sốt ruột:
+“Con tiện nhân này, dám làm bị thương Tuyết Nhi của ta! Đánh chết nó cho ta! Đánh thật mạnh!”
+Đám phủ binh lĩnh mệnh, cầm những cây côn gỗ to bằng cánh tay, chuẩn bị hạ sát thủ.
+Đúng lúc ấy, bên ngoài đột nhiên xông vào một đội tinh binh mặc giáp nhẹ, đeo trường kiếm, nhanh chóng bao vây toàn bộ đại sảnh.
+Hai cha con đều ngây người:
+“Đây… đây là…”
+“Đông Lăng điện hạ!”
+Hai mắt Tôn Ngọc Tuyết lập tức sáng rực.
+Nhìn thấy tinh binh mở đường, nam nhân mặc hắc bào chắp tay sau lưng chậm rãi bước tới, dung mạo như ngọc, tôn quý kiêu ngạo, khí độ quanh thân chẳng hề thua kém Nhiếp Chính Vương.
+Năm đó, Nhiếp Chính Vương cách chức phụ thân, đày cả nhà bọn họ khỏi thành.
+Chính Đông Lăng điện hạ đã nâng đỡ Tôn gia.
+Ân tình ấy, chỉ có lấy thân báo đáp mới đủ.
+Tôn tri phủ lập tức quỳ xuống:
+“Hạ quan tham kiến Thái tử điện hạ.”
+Tôn Ngọc Tuyết đỏ mặt e thẹn hành lễ:
+“Tuyết Nhi thỉnh an điện hạ.”
+Sở Dạ Ly chậm rãi bước tới.
+Đôi mắt sắc bén như chim ưng đầu tiên rơi trên người Sở Ly. Thấy nàng bị phủ binh khống chế, ánh mắt hắn lập tức lạnh xuống.
+“Các ngươi đang làm gì?”
+Tôn Ngọc Tuyết tiến lên đáp lời:
+“Điện hạ, Tuyết Nhi đang trừng trị một tiện phụ, sợ làm bẩn mắt ngài, lập tức sai người áp giải nàng ta xuống.”
+Sở Dạ Ly nghiêng mắt:
+“Thật sao?”
+Mặt Tôn Ngọc Tuyết đỏ bừng.
+Điện hạ vậy mà nhìn nàng không chớp mắt?
+Nàng vừa thẹn vừa mừng.
+Dù nàng sinh ra đã xinh đẹp trẻ trung như trái cây vừa chín tới, nhưng bị nhìn chằm chằm như vậy, người ta cũng sẽ ngượng ngùng mà.
+Nàng xoắn khăn tay, giọng mềm mại như nước:
+“Điện hạ~ Tuyết Nhi sao dám lừa ngài… A!”
+Chát!
+Sở Dạ Ly giơ tay, một cái tát đánh nàng ngã xuống đất.
+Tôn tri phủ hoảng hốt bước lên:
+“Điện hạ, ngài… Á!”
+Bốp!
+Lại một cái tát nữa.
+Hai cha con ôm nhau quỳ dưới đất.
+Vì sao?
+Vì sao người bị đánh lại vẫn là bọn họ?
+“Ngay cả người của ta mà các ngươi cũng dám động, lá gan thật không nhỏ!”
+Sở Dạ Ly sải bước tới, đá văng hai tên phủ binh, kéo Sở Ly ôm vào lòng.
+Tôn Ngọc Tuyết trợn tròn mắt.
+Cái gì?!
+Thái tử điện hạ thích Tạ Vãn Nguyệt?
+Sao có thể!
+Vì sao Nhiếp Chính Vương thích nàng ta, Đông Lăng Thái tử cũng thích nàng ta?
+Rốt cuộc nàng ta có ma lực gì?
+Nàng không phục!
+Sở Ly ra sức vặn cổ tay nhưng không thoát được.
+“Buông ta!”
+“Buông nàng, để nàng đi tìm Sở Đệ Trì sao? Tiểu Cửu, rốt cuộc nàng còn muốn tự lừa mình đến bao giờ? Hắn đã chết rồi!”
+“Hắn chưa chết!”
+“Nàng tận mắt nhìn thấy, đừng tự dối mình nữa.”
+“Hắn chưa chết! Hắn chưa chết! Sở Dạ Ly, trả kiếm cho ta! Buông ta ra!”
+Nàng liều mạng giãy giụa.
+Mạnh đến mức giống hệt con lợn ngày Tết.
+Giữ chặt thì sợ nàng đau.
+Nới lỏng thì sợ nàng chạy.
+Trong lòng nàng chỉ có mỗi Sở Đệ Trì thôi sao?
+“Được! Được! Ta sẽ sai người đi tìm thi thể hắn. Chờ khi mang hài cốt của hắn đến trước mặt nàng, nàng sẽ hết hy vọng!”
+Lời lạnh lùng vừa dứt, hắn lập tức bế ngang nàng đang vùng vẫy không ngừng, cưỡng ép mang đi.
+“Buông ta! Buông ta! Sở Dạ Ly!”
+Đợi đến khi người đã đi xa, không còn nghe thấy tiếng nữa, Tôn Ngọc Tuyết mới dám ôm mặt, ngẩng đôi mắt đầy oán hận lên:
+“Tại sao… Cha, tại sao Thái tử điện hạ cũng thiên vị nàng ta? Chẳng lẽ con không ưu tú hơn nàng ta sao? Con rõ ràng còn trẻ, còn đẹp hơn nàng ta nhiều!”
+Nàng không cam tâm.
+“Con nhất định phải cướp Thái tử về!”
+Nàng siết chặt nắm tay, hạ quyết tâm.
+Đúng lúc ấy, một nam nhân mặc y phục ám vệ, tay cầm trường kiếm bước tới.
+“Ngươi là…”
+A Ngọc lạnh lùng liếc nhìn:
+“Chủ tử có lệnh. Chức tri phủ này, ngươi cũng không cần làm nữa. Tôn đại nhân, trước khi trời sáng, lập tức dẫn cả nhà cút về quê. Nếu không, chủ tử sẽ hạ lệnh xử giảo.”
+Toàn thân Tôn tri phủ chấn động.
+Không ngờ cả đời lên lên xuống xuống của mình, cuối cùng vẫn rơi xuống đáy vực.
+Ông ta tức giận đến mức quay tay tát mạnh Tôn Ngọc Tuyết một cái.
+“Đồ nghiệt nữ chỉ biết gây họa! Đều là ngươi hại ta!”
+“Cha…”
+Tôn Ngọc Tuyết ôm mặt khóc lớn.
+Rõ ràng là Tạ Vãn Nguyệt bắt nạt người!
+Tạ Vãn Nguyệt, ngươi khinh người quá đáng!
+________________________________________
+Đế đô.
+Sở Dạ Ly đã sai người về kinh trước báo tang.
+Khi tin Nhiếp Chính Vương tử trận lan truyền khắp nơi, cả kinh thành đều chấn động.
+“Nhiếp Chính Vương chết trận rồi!”
+“Sao có thể…”
+“Trời ơi…”
+Kinh ngạc, bi thương, đau xót, khó tin…
+Khắp kinh thành rối loạn như ong vỡ tổ, người người bàn tán.
+Trong đó, chấn động nhất chính là hoàng cung.
+Đại Thành điện.
+“Hoàng thúc chết trận rồi… Không… không thể nào…”
+Sở Ngạo Thiên nhìn mật báo trong tay, sắc mặt trắng bệch, liên tục lắc đầu.
+Sao người có thể chết?
+Người chinh chiến nhiều năm, kinh nghiệm dày dạn.
+Chỉ là tiêu diệt Tiêu Dao Vương mà thôi, sao lại phải đánh đổi bằng tính mạng?
+“Trẫm không tin…”
+“Bát đệ, ngươi không tin cũng vô dụng. Chuyện này hiện giờ đã truyền khắp đế đô rồi!”
+Đứng đầu bá quan, Sở Cảnh Lân khẽ nhếch môi, đáy mắt nửa đùa cợt, nửa khiêu khích.
+“Từ nay về sau, sẽ chẳng còn ai chống lưng cho ngươi nữa.”
+Bách quan đều cúi đầu.
+Trong lòng mỗi người đều mang tâm tư riêng, thần sắc khác nhau.
+Sở Ngạo Thiên siết chặt tờ mật báo, lạnh giọng nói:
+“Trẫm lập tức phái người đến Cam Châu cứu viện Nhiếp Chính Vương. Không biết chư vị ái khanh, ai nguyện đi?”
+Bách quan cúi đầu.
+Nhất thời, cả Đại Thành điện rộng lớn im phăng phắc.
+Tần Mục Vũ nhíu mày, liếc nhìn các đồng liêu xung quanh, tự nhiên hiểu rõ sự phản bội và lựa chọn của bọn họ.
+“Không một ai nguyện ý sao?”
+Sở Ngạo Thiên chỉ vào bọn họ.
+“Các… các ngươi… Trẫm ngày thường đối đãi với các ngươi không bạc!”
+“Ha ha ha!”
+Sở Cảnh Lân ngửa đầu cười lớn.
+“Bát đệ à Bát đệ, chẳng lẽ ngươi vẫn chưa nhìn rõ cục diện sao? Nhiếp Chính Vương đã chết, ngươi chẳng qua chỉ là một kẻ phế vật, sẽ không có ai cam tâm thần phục ngươi.”
+Hắn bước ra, từng bước từng bước tiến lên bậc thềm, đi về phía long ỷ.
+Sở Ngạo Thiên lạnh lùng nhìn hắn:
+“Ngươi muốn làm gì?”
+Muốn bức cung sao?
+“Thất hoàng huynh, tin Nhiếp Chính Vương tử trận còn chưa xác minh thật giả, huynh đã không kìm chế nổi rồi?”
+Sở Cảnh Lân cười lạnh:
+“Ta chỉ đang đưa ra lựa chọn tốt nhất cho Đại Sở mà thôi.”
+“Gia tộc mẫu thân ta có tiền, có thể bù đắp quốc khố, nuôi binh, ổn định xã tắc, an lòng dân. Bát đệ, sao không nhường ngôi vị này cho ta?”
+“Chỉ có ta mới gánh nổi trọng trách ấy.”
+Sở Ngạo Thiên đập bàn đứng dậy:
+“Ngươi càn rỡ!”
+“Ta càn rỡ thì đã sao? Hiện giờ còn ai quản được ta?”
+Sở Cảnh Lân nheo mắt lạnh lẽo, chộp lấy cánh tay Sở Ngạo Thiên, kéo hắn khỏi long ỷ.
+Sở Ngạo Thiên từ nhỏ thân thể khỏe mạnh, đánh nhau là giỏi nhất.
+Hắn vung một quyền, đánh đến khóe miệng Sở Cảnh Lân bật máu.
+“Ngươi dám đánh ta!”
+“Đánh chính là tên nghịch thần tặc tử như ngươi!”
+“Sở Ngạo Thiên! Đừng rượu mời không uống lại muốn uống rượu phạt! Ngươi không nhường ngôi cho ta, sớm muộn gì Đại Sở cũng sẽ chôn vùi trong tay ngươi!”
+“Đại Sở chỉ diệt vong dưới tay chính người Đại Sở! Nội đấu, nội loạn, chưa từng đồng lòng. Hôm nay trẫm đã nhìn rõ các ngươi! Hôm nay, dù phải đại nghĩa diệt thân, trẫm cũng tuyệt đối không chắp tay nhường ngôi!”
+Ngay giữa đại điện, hai huynh đệ đối chọi gay gắt, trực tiếp lao vào đánh nhau.
+Bách quan nhìn thấy, vừa gấp vừa hoảng.
+“Chuyện này…”
+“Đây… đây là chuyện gì vậy…”
+“Từ xưa đến nay, chưa từng có vị quân vương nào đánh nhau ngay trên Đại Thành điện!”
+“Cái này… cái này…”
+Xong rồi!
+Lần này Đại Sở thật sự hết rồi!
+Không còn hy vọng nữa.
+Ngay lúc bách quan đang luống cuống tay chân, bên ngoài điện đột nhiên vang lên một giọng nói mạnh mẽ, dứt khoát:
+“Thái tử điện hạ giá lâm!”
+Tinh thần mọi người đồng loạt chấn động.
+Thái tử?
+Tất cả đều quay đầu nhìn.
+Chỉ thấy hai hàng tinh binh chạy tới mở đường hai bên.
+Nam nhân tôn quý ấy từng bước từng bước bước lên bậc thềm, tiến thẳng vào Đại Thành điện.
+Ngược ánh mặt trời, bóng dáng hắn hắt vào trong điện, kéo dài thật cao, thật dài.
+Khí thế ấy đủ để trong nháy mắt trấn áp toàn bộ Đại Thành điện.
+Sở Ngạo Thiên và Sở Cảnh Lân đều bất giác dừng tay, kinh ngạc nhìn hắn.
+Hắn vậy mà ngang nhiên tiến cung như thế…
+Đôi mắt ôn lương của Sở Dạ Ly khẽ đảo qua, nhìn thẳng lên nơi cao nhất, chiếc long ỷ vàng son rực rỡ tượng trưng cho quyền lực, rồi nhìn hai huynh đệ vẫn còn đang túm chặt lấy nhau.
+Hắn lạnh nhạt nói:
+“Huynh đệ các ngươi sang bên kia đánh đi.”
+“Nhường chỗ cho ta.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_337.html" class="btn">‹ Trước</a>
+            <a href="chuong_339.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

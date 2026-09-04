@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 31</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 31</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_30.html" class="btn">‹ Trước</a>
+            <a href="chuong_32.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 31: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
+Chương 31: [Hai nam nhân ôm ôm ấp ấp, còn tặng túi hương]
+Nữ nhân sắc mặt khẽ biến, há miệng muốn nói nhưng không dám tiến lên nữa, chỉ có thể trơ mắt nhìn Tần Mục Vũ đưa Sở Ly rời đi.
+“Ngươi… cái này… ngươi…”
+Mộc Kỳ Sơn nhíu chặt mày.
+Chỉ đành thôi vậy!
+Hắn lập tức cầm chén rượu trên bàn, uống cạn một hơi, cùng Đoạn Mộc Thương và Đoạn Duệ “say” gục xuống.
+Rời khỏi Thủy Kính Đài.
+“A Ly.”
+“A Ly!”
+Tần Mục Vũ đỡ Sở Ly, giữ lấy một cánh tay nàng, liên tục vỗ lên gò má đỏ ửng.
+Nóng đến bỏng tay!
+“Ngươi đó, uống nhiều rượu như vậy làm gì!”
+Ý thức của Sở Ly gần như bị sóng nhiệt nuốt chửng. Trong khoảnh khắc ngắn ngủi còn tỉnh táo, nàng nhìn thấy Tần Mục Vũ liền an tâm dựa vào hắn:
+“Mục… Mục Vũ… ta bị hạ dược rồi…”
+Tần Mục Vũ sững lại một chút, rồi vui mừng vỗ tay:
+“Thật tốt quá! Muội muội ta đã để ý ngươi nhiều năm, không bằng nhân cơ hội này, ta gả nàng cho ngươi?”
+“…… Ta thân thể không tiện, lần sau nhất định.”
+“Không tiện chỗ nào?”
+Chẳng lẽ đúng như lời đồn, A Ly không được?
+Dù vậy, chắc muội muội cũng không để ý.
+Nếu A Ly có thể ở rể Tướng quân phủ, hắn sẽ rất vui!
+“Đừng hỏi nhiều, trước… đưa ta đến nơi mát một chút.”
+“Được thôi.”
+Tần Mục Vũ trong lòng còn nghi hoặc. Dù chưa từng trải qua chuyện này, nhưng cũng biết người trúng dược thì toàn thân nóng rực, cần âm dương điều hòa mới giải được.
+Nếu không, rất có thể bạo thể mà chết.
+Nhưng mùa thu oi bức, nào có nơi mát?
+Xuống nước?
+Băng khố?
+Hay là… có rồi!
+Hắn đã nghĩ ra nơi.
+“A Ly, ta biết một chỗ tốt, ta đưa ngươi đi ngay.”
+Sở Ly mơ màng tựa vào vai hắn, hơi thở nóng rực phả ra:
+“May mà ngươi tới, nếu không ta đã bị mấy nữ nhân kia ăn mất rồi.”
+Tần Mục Vũ tai hơi đỏ, chỉ thấy mùi rượu hòa cùng hương lan từ nàng, càng thêm mê người.
+A Ly… thân thể thật mềm…
+“A Ly, ta sẽ không để ai bắt nạt ngươi.”
+“Vì sao?”
+“Bởi vì…”
+Bọn họ cùng lớn lên, là bằng hữu tốt nhất.
+Hắn theo bước phụ thân, từ nhỏ lập chí làm tướng quân, lập công lập nghiệp. Sau này, dù A Ly thất thế trong tranh đoạt hoàng vị, cũng tuyệt không để ai bắt nạt “hắn”.
+Từ nhỏ hắn đã biết hoàng thất tàn khốc, tình thân mỏng như giấy.
+Nhìn hoàng thượng và nhiếp chính vương là biết, dù là huynh đệ ruột, vẫn luôn muốn lấy mạng nhau.
+Hắn sẽ bảo vệ “hắn” cả đời.
+“Bởi vì… Tần Mục Tuyết rất thích ngươi, ngươi là vị hôn phu tương lai của muội ấy.”
+Sở Ly cười khẽ, tựa vào vai hắn đầy an tâm, loạng choạng rút từ trong tay áo ra túi hương:
+“Cho… cho ngươi…”
+Tần Mục Vũ nắm túi hương, đồng tử co lại:
+“Đây là ngươi thêu cho ta?”
+“Đồ ngốc, ta sao biết thêu, đây là nữ nhi nhà Ngọc học sĩ nhờ ta chuyển cho ngươi.”
+“Ồ, tình ái là thứ loạn tâm trí, ta không cần.”
+“Cầm đi.”
+“Xấu lắm, ta không cần.”
+“Xấu chỗ nào? Ta thấy hoa văn tường vân cầu an thêu rất đẹp.”
+“Chính là xấu, còn xấu nữa.”
+Không xa.
+Vài kỵ mã phóng qua. Bạch Y công tử phe phẩy chiết phiến, cười như gió:
+“Ban ngày ban mặt, đúng là gặp quỷ. Hai nam nhân ôm ôm ấp ấp, còn tặng túi hương, như dây leo quấn quýt.”
+“Chậc chậc.”
+Ánh mắt liếc sang người mặc hắc bào bên cạnh.
+“À—”
+Con ngựa “Dạ Phù” bồn chồn dậm vó, tựa như cảm nhận được tâm trạng chủ nhân, thở phì phò nặng nề.
+“Chu Ly.”
+Sở Đệ Trì cưỡi ngựa, từ trên cao nhìn xuống. Ánh sáng ngược khiến không thấy rõ thần sắc trong mắt hắn.
+Tần Mục Vũ ngẩng đầu, vội hành lễ:
+“Tham kiến Nhiếp Chính Vương.”
+“Giờ này ngươi không ở Hoàng gia học uyển, tự ý rời đi, ra thể thống gì?”
+Sở Ly vừa nghe giọng hắn, thân thể như phản xạ, theo bản năng trốn ra sau lưng Tần Mục Vũ.
+“Mục Vũ, chúng ta đi mau.”
+Chỉ một động tác nhỏ, khiến ánh mắt Sở Đệ Trì lập tức trầm xuống, như mực đậm không đáy.
+Tần Mục Vũ thử dò xét sắc mặt:
+“Vương gia, mạt tướng xin đưa Cửu hoàng tử đi trước?”
+“Ngươi là muốn dạy hư Cửu hoàng tử sao?”
+“Không dám!”
+“Bản vương thấy ngươi rất dám.”
+Sở Ly nắm chặt tay Tần Mục Vũ:
+“Là ta muốn đi cùng Mục Vũ, liên quan gì đến hắn? Hoàng thúc quản cũng quá rộng rồi.”
+“Nếu nói ta lêu lổng, vậy hoàng thúc đứng đây chẳng phải càng nhàn rỗi sao?”
+Trong khoảnh khắc, không khí như đông cứng lại.
+Sở Đệ Trì bình thản:
+“Bản vương nói ngươi là vì tốt cho ngươi.”
+“Ta không còn là hài tử nữa, biết mình nên làm gì. Ta vốn là kẻ không nên thân, không cần người quản!”
+Sở Ly giận dữ nói.
+Nàng rất rõ—hắn tuyệt đối không có ý tốt.
+Hiện tại nàng trúng dược, ở cùng hắn sẽ lộ tẩy.
+Nhưng nhìn vào đôi mắt đen trầm của hắn, nàng lại không khỏi rùng mình.
+Một lúc lâu.
+Sở Đệ Trì lại nói, giọng lạnh như băng:
+“Đi theo bản vương về cung.”
+“Ta không đi.”
+“Bản vương chỉ nói một lần. Chu Ly, ngươi chắc chắn?”
+Sở Ly toàn thân nóng rực, lửa giận bùng lên:
+“Không đi! Không đi! Ta chỉ muốn ở cùng Mục Vũ! Ngươi hơn ta vài tuổi thì có gì ghê gớm, đừng bày trưởng bối ra dạy ta!”
+Nói xong liền kéo Tần Mục Vũ rời đi.
+Bước chân loạng choạng, suýt nữa ngã.
+Tần Mục Vũ đỡ nàng:
+“A Ly, làm vậy có ổn không?”
+“Hắn dọa ta, tưởng ta là quả hồng mềm sao!”
+Tần Mục Vũ toát mồ hôi lạnh:
+“A Ly, ngươi đang trúng dược, đừng nói lời quá khích…”
+“Ta rất tỉnh! Chu Đệ Trì, có giỏi thì giết ta đi! Ngươi giết ta đi—ưm!”
+“Tần Mục Vũ, buông miệng ta ra!”
+Hãy thả ta ra!
+Trời đất ơi!
+Chạy mau!
+Tần Mục Vũ kéo Sở Ly chạy như trốn mạng.
+Bạch Y công tử cười nhẹ cưỡi ngựa tiến tới:
+“Ồ, lâu ngày không gặp, Cửu hoàng tử tính tình tăng không ít, có phong thái năm xưa của ngươi.”
+Sở Đệ Trì ánh mắt u ám, nhìn theo hướng hai người rời đi, rồi lập tức quay ngựa.
+“Hử? Sao lại đi rồi?”
+Bạch Y công tử đuổi theo:
+“Ngươi đúng là nóng nảy, chuyện thiên vị người ngoài ta thấy nhiều rồi, nhưng đến lượt ngươi lại không giữ nổi bình tĩnh.”
+“Hơn nữa, ngươi so đo với cháu mình làm gì? Dù sao cũng là con của hoàng đế, ngươi chưa giết hắn đã là quá nhân từ rồi.” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_30.html" class="btn">‹ Trước</a>
+            <a href="chuong_32.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

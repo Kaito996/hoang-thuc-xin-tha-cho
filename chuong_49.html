@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 49</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 49</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_48.html" class="btn">‹ Trước</a>
+            <a href="chuong_50.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 49: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 49: A Ly, đừng khóc nữa
+Sáng sớm.
+Mưa bụi giăng kín, sương mù mờ đục.
+Bách tính đã bắt đầu một ngày tất bật của mình. Người người chống ô, bước chân vội vã, lác đác qua lại trên đường.
+Sở Ly đội mưa chạy về phía hoàng cung.
+Từ xa, nàng đã nhìn thấy một thân ảnh cao lớn đang quỳ trước cổng chính của hoàng cung.
+Là Phương Quốc Công.
+Ông quỳ giữa màn mưa, toàn thân ướt đẫm, thần sắc kiên quyết:
+“Con trai lão thần chết oan!”
+“Kính xin Hoàng thượng thánh xét, xử tử Tần Thiếu tướng quân!”
+Mấy vị quan viên dậy sớm vào triều vừa chống ô vừa lên tiếng an ủi nỗi đau mất con của ông:
+“Quốc Công đại nhân, ngài hãy đứng dậy trước đi, cẩn thận kẻo cảm lạnh.”
+“Hoàng thượng nhân từ, nhất định sẽ làm chủ cho ngài.”
+“Công đạo tự nằm trong lòng người, Quốc Công đại nhân!”
+Trước mắt Sở Ly tối sầm lại.
+Màn mưa mịt mờ che khuất tầm nhìn.
+Nàng nhìn không rõ lắm.
+Mơ hồ chỉ thấy hai tên Ngự lâm quân đeo kiếm bên hông đang đi về phía Thiên Lao.
+“Hắn bị oan…”
+Không!
+Nàng lao vào trong cung, bất chấp mưa lớn đuổi theo.
+Nhưng…
+Nàng quá mệt.
+Đầu óc choáng váng.
+Nước mưa lạnh buốt đập xuống người, mái tóc cũng bị xối tung, đôi chân nặng nề căn bản không thể đuổi kịp đám Ngự lâm quân.
+Dường như nàng đã dùng hết toàn bộ sức lực.
+Sở Ly loạng choạng ngã nhào xuống đất.
+Nước mưa lạnh bắn tung tóe.
+Trong tầm mắt mờ nhòe, nàng chỉ thấy trước cửa Thiên Lao, hai tên Ngự lâm quân đang dẫn Tần Mục Vũ đi ra.
+“Tần Mục Vũ!”
+“Cửu hoàng tử?”
+Mưa như trút nước.
+Nàng nhìn thấy Tần Mục Vũ chạy về phía mình.
+“Cửu hoàng tử… A Ly!”
+Tần Mục Vũ vẫn mặc áo tù nhân.
+Nhưng xiềng xích trên tay chân đã được tháo bỏ.
+Chỉ trong chốc lát, mưa đã làm hắn ướt đẫm.
+Hắn bất chấp tất cả ôm lấy nàng, dùng thân thể mình che chắn mưa gió.
+“A Ly, mưa lớn như vậy, sao ngươi lại chạy tới đây?”
+“Sao không có cung nhân đi theo?”
+Sở Ly nhìn hắn nguyên vẹn không chút tổn hại.
+Trong đầu nàng bất giác hiện lên cơn ác mộng kia.
+Hình ảnh Phương Quốc Công giơ kiếm chém xuống.
+Đầu và thân Tần Mục Vũ lìa nhau.
+Nàng vội vàng hỏi:
+“Sao ngươi được thả ra rồi?”
+“Có phải Hoàng thượng muốn xử trí ngươi không?”
+Tần Mục Vũ lắc đầu:
+“Không phải.”
+“Đại Lý Tự đã điều tra rõ rồi.”
+“Là Lương di nương trong Quốc Công phủ hại chết Phương Hải Dương.”
+“Bà ta muốn con trai thứ do mình sinh ra thay thế vị trí đích tử của Phương Hải Dương.”
+“Ta bị oan.”
+Toàn thân Sở Ly chấn động.
+Nói như vậy…
+Chứng cứ mà Nhiếp Chính Vương đưa cho nàng…
+Lại là thật.
+Hắn lừa nàng.
+Lại lừa nàng thêm một lần nữa.
+“A Ly, xin lỗi.”
+“Để ngươi phải lo lắng rồi.”
+Giọng Tần Mục Vũ nghẹn lại.
+“Hôm đó, đúng là ta đã xảy ra xung đột với Phương Hải Dương.”
+“Thậm chí còn đâm hắn một kiếm.”
+“Tại sao?”
+“Bởi vì…”
+Hai mắt hắn đỏ hoe.
+Không biết là do nước mưa làm đỏ hay vì nghẹn ngào.
+“Bởi vì… A Ly, ta muốn bảo vệ ngươi.”
+Từ ngày còn nhỏ được chọn làm thư đồng của Cửu hoàng tử.
+Ngay lần đầu tiên nhìn thấy nàng.
+Hắn đã quyết định sẽ bảo vệ nàng chu toàn.
+Phụ thân từng nói:
+Nam nhi của Tướng quân phủ phải đội trời đạp đất.
+Một khi đã nhận định điều gì thì từ đầu đến cuối không thay lòng đổi dạ.
+Cho dù đó là sai.
+Thì trong lòng họ cũng là đúng.
+“Ta biết.”
+“Là Phương Hải Dương xúi giục Mộc Tề Sơn hạ thuốc ngươi, muốn hại ngươi.”
+“Nếu thân phận của ngươi bị bại lộ…”
+“Ta không thể để ngươi rơi vào nguy hiểm.”
+“Hôm đó ta vốn định ra ngoài điều tra chuyện này.”
+“Ai ngờ lại gặp Phương Hải Dương.”
+“Lúc ấy hắn vừa biết mình sắp bị phế bỏ thân phận thế tử, tâm tính vô cùng hung bạo.”
+“Chúng ta còn chưa nói được mấy câu, hắn đã động thủ.”
+“Hắn nói muốn kéo ta xuống địa ngục cùng hắn.”
+“Ta rút kiếm tự vệ.”
+“Nhưng ta không ngờ một kiếm không trúng yếu hại ấy… hắn lại chết.”
+“Sau đó ta bị bắt vào Thiên Lao.”
+Sở Ly nắm lấy tay hắn.
+“Vậy hôm Thu Nhật Yến, Nhiếp Chính Vương sai Trọng Phong nói gì với ngươi?”
+Tần Mục Vũ đáp:
+“Trọng Phong nói chiến sự Nam Cương vẫn chưa yên ổn.”
+“Vừa bình định xong lại nổi loạn.”
+“Đó là nơi cực kỳ khó quản lý.”
+“Nhiếp Chính Vương cho rằng ta tuổi trẻ tài cao, có thể đi theo các lão tướng tới Nam Cương rèn luyện, lập công trạng.”
+“Chỉ tiếc ta không nên thân.”
+“Phụ lòng kỳ vọng của Nhiếp Chính Vương.”
+“Lại còn gây ra tai họa như thế này.”
+Sở Ly không dám tin:
+“Chỉ có vậy thôi?”
+“Không nói gì khác sao?”
+“Trọng Phong không nói gì khác.”
+Toàn thân nàng lại run lên.
+Từ đầu đến cuối nàng vẫn cho rằng Trọng Phong đã tiết lộ chuyện nàng là nữ tử cho Tần Mục Vũ biết.
+Sau đó xúi giục hắn giết Phương Hải Dương.
+Một mũi tên trúng hai đích.
+Nhưng nàng không ngờ…
+Thì ra nàng không chỉ bị Nhiếp Chính Vương đùa bỡn trong lòng bàn tay.
+Mà còn tự mình đem chính mình giao ra.
+Trong nhất thời.
+Nàng không biết nên trách bản thân quá ngu ngốc.
+Hay trách hắn quá sâu không lường được.
+“A Ly, xin lỗi.”
+“Là ta liên lụy tới ngươi.”
+“Ta không những không bảo vệ được ngươi.”
+“Mà còn khiến ngươi phải lo lắng vô ích.”
+Hai mắt Tần Mục Vũ đỏ bừng.
+“Là ta vô dụng!”
+Đột nhiên.
+Sở Ly bật khóc thành tiếng.
+“Mục Vũ…”
+Đâu chỉ riêng hắn.
+Ngay cả nàng cũng bị tính kế.
+Ngay cả Hoàng thượng cũng cảm thấy đau đầu.
+Bao nhiêu năm vẫn không thể trừ khử người đó.
+Một nam nhân như vậy…
+Đâu phải thứ bọn họ có thể đối phó?
+“Mục Vũ, ta…”
+“Mục Vũ!”
+Sở Ly ôm chặt lấy hắn.
+Đầy bụng tủi nhục.
+Nhưng lại không biết phải bắt đầu kể từ đâu.
+“Quốc Công phủ quyết không chịu buông tha ngươi.”
+“Ta cứ nghĩ ngươi sẽ chết…”
+“Ta sợ ngươi chết mất…”
+Nếu hắn thật sự chết.
+Nàng không dám tưởng tượng mình sẽ đau lòng đến mức nào.
+Nhưng cuối cùng.
+Cái chết của Phương Hải Dương chỉ là chuyện nội bộ của Quốc Công phủ.
+Tần Mục Vũ vào Thiên Lao một chuyến rồi được minh oan.
+Còn nàng…
+Lại bị kéo xuống vực sâu.
+Vĩnh viễn không thể trèo lên được nữa.
+Nàng không bao giờ có thể trở lại như trước kia.
+Nam nhân kia chỉ cần nhấc một đầu ngón tay.
+Thậm chí còn chẳng cần dụng tâm bố trí.
+Đã đủ để hủy hoại nàng.
+Một nửa là lo lắng.
+Một nửa là tủi nhục cùng hận ý.
+Tiếng khóc hòa lẫn tiếng mưa.
+“Là ta quá ngu ngốc…”
+“Ta lo cho ngươi…”
+“Ta sốt ruột…”
+“Ta…”
+Tần Mục Vũ luống cuống tay chân.
+“A Ly, đừng khóc.”
+“Đều là lỗi của ta.”
+“Sau này ta sẽ không bao giờ khiến ngươi phải lo lắng nữa.”
+“Hu hu…”
+Sở Ly khóc đến không thể ngừng lại.
+Ngay cả lúc bị Sở Đệ Trì ức hiếp.
+Nàng cũng chưa từng khóc đau lòng như vậy.
+Nàng hận.
+Nàng hận hắn đến tận xương tủy.
+Nàng muốn giết hắn!
+“A Ly!”
+Thấy nàng khóc.
+Tần Mục Vũ cũng không kiềm chế nổi mà đỏ cả mắt.
+Hắn ôm chặt lấy nàng.
+“Xin lỗi.”
+“Xin lỗi.”
+“A Ly, đừng khóc nữa.”
+“Đều là lỗi của ta.”
+Sở Ly vùi mặt vào lồng ngực hắn.
+Khóc đến không thể tự chủ.
+Con người vốn là sinh vật phức tạp.
+Dù bên ngoài có phải chịu bao nhiêu uất ức.
+Vẫn có thể nghiến răng chịu đựng.
+Nhưng một khi đứng trước người thân, bằng hữu thân thiết.
+Cho dù chỉ là chuyện nhỏ nhất.
+Cũng có thể khóc đến tê tâm liệt phế.
+Đến chính nàng cũng không phân biệt nổi.
+Rốt cuộc mình đang lo lắng.
+Hay đang tủi thân.
+Trên con phố dài.
+Mưa bụi giăng khắp nơi.
+Hai người quỳ trên mặt đất, ôm chặt lấy nhau.
+Toàn thân ướt sũng vì mưa.
+Cách đó không xa.
+Có một thân ảnh cao lớn lạnh lùng đang đứng.
+Nam nhân chống ô bằng một tay.
+Thân hình thẳng tắp.
+Tựa cây tùng xanh kiêu ngạo giữa trời đất.
+Mãng bào tím đậm khẽ lay động trong gió.
+Đôi mắt sâu thẳm nhìn xuống hai người đang ôm nhau.
+Hắn chỉ lặng lẽ đứng đó.
+Thế nhưng lại tỏa ra một loại uy áp vô hình.
+Đến cả mưa cũng như đang tránh né hắn.
+Không dám làm bẩn góc áo hắn.
+Hắn đứng cao cao tại thượng.
+Còn Sở Ly và Tần Mục Vũ toàn thân ướt đẫm.
+Chật vật không chịu nổi.
+Sự đối lập ấy đạt tới cực điểm.
+Đồng thời cũng chia cắt thành hai trận doanh hoàn toàn khác biệt.
+Hắn là hắn.
+Một mình một cõi.
+Còn nàng và Tần Mục Vũ là chúng ta.
+Sau một lúc lâu.
+Hắn chống ô bước tới.
+Từ trên cao lạnh nhạt liếc nhìn xuống.
+Giọng nói tôn quý mà xa cách:
+“Đừng chắn đường bổn vương vào triều.”
+ Người đọc im lặng là người bí ẩn nhất thế giới. Điểm danh bằng một like nào! 
+ Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_48.html" class="btn">‹ Trước</a>
+            <a href="chuong_50.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

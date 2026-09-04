@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 71</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 71</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_70.html" class="btn">‹ Trước</a>
+            <a href="chuong_72.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 71: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 71: A Ly, đừng làm những việc ấy
+Biệt uyển ngoại ô.
+Nơi đây địa thế khoáng đạt, cách xa sự náo nhiệt cùng huyên náo nơi trung tâm kinh thành, vô cùng thích hợp để tĩnh dưỡng.
+Trong một tiểu viện.
+“Đại ca, huynh đừng gấp như vậy. Thương thế này nào phải một sớm một chiều là có thể dưỡng khỏi?” Tần Mục Tuyết vội vàng bước lên, đỡ lấy Tần Mục Vũ đang vịn tường tập đi.
+Đôi chân hắn bị bỏng nặng, vẫn chưa khỏi hẳn.
+“Cả ngày nằm trên giường, người cũng sắp phế rồi. Ta xuống đất đi lại một chút, sẽ mau hồi phục hơn.”
+Tần Mục Tuyết nói:
+“Nhưng thương thế của huynh vốn phải tĩnh dưỡng. Chân chỉ cần hơi dùng sức, vết thương vừa mới đóng vảy sẽ lại nứt toác. Huynh chẳng qua là nóng lòng, nóng lòng muốn gặp A Ly ca ca.”
+Tần Mục Vũ khẽ trầm mặc.
+Đúng là bị nàng nói trúng tâm sự.
+“Mục Tuyết, muội không biết hoàn cảnh của nàng, ta không thể cách nàng quá xa.”
+“Đại ca, A Ly ca ca là hoàng tử, có hoàng gia che chở, sẽ không gặp nguy hiểm đâu.”
+“Muội không biết…”
+A Ly là nữ tử.
+Lời đã đến bên miệng, Tần Mục Vũ lại nuốt trở vào.
+Ít một người biết, sẽ bớt đi một phần nguy hiểm.
+“Chuyện này muội cũng không biết, chuyện kia muội cũng chẳng hay. Đại ca cứ cho rằng muội chẳng biết gì cả. Nhưng rõ ràng ba chúng ta cùng lớn lên với nhau, huynh nghĩ gì, lẽ nào muội lại không biết sao?”
+Tần Mục Tuyết dìu hắn ngồi xuống bên bàn đá, rồi quay người vào nhà bếp lấy thuốc.
+Tần Mục Vũ đưa tay vuốt đôi chân mình.
+E rằng vẫn phải dưỡng thêm một thời gian nữa.
+Hắn khẽ thở dài, vô tình ngẩng đầu lên, chợt nhìn thấy một thân ảnh đang đứng ngoài cổng viện, suýt nữa còn tưởng là ảo giác.
+Nhìn hai ba giây, hắn mới cất tiếng:
+“A… A Ly?”
+Sở Ly đến rồi.
+Nhìn thấy bộ dạng hiện tại của Tần Mục Vũ, khóe mắt nàng nóng ran, gần như không kìm được, vội chạy vào.
+“Thương thế của huynh thế nào rồi?”
+“Có phải nếu Tam cữu mẫu không nói cho ta biết, thì huynh định giấu luôn, đợi một thời gian nữa lại như người chẳng có chuyện gì xuất hiện trước mặt ta?”
+Lời đến bên miệng, Tần Mục Vũ chỉ nói:
+“A Ly, ta chỉ bị thương nhẹ thôi, không đáng ngại.”
+“Huynh suýt nữa đã mất mạng rồi, sao lại không đáng ngại?”
+Sở Ly nắm lấy hai tay hắn, kéo tay áo lên, quả nhiên nhìn thấy vết cắt đã kết vảy.
+Thì ra…
+Chất lỏng hôm đó dùng để rửa mắt cho nàng, chính là máu của hắn.
+“Mục Vũ, huynh không cần mạng nữa sao?”
+Sở Ly siết chặt tay hắn, cảm xúc mãnh liệt gần như không thể đè nén.
+“Sau này sẽ không còn ai dám ức hiếp huynh nữa. Sở Cảnh Lân đã phải trả giá rồi!”
+Ánh mắt Tần Mục Vũ trầm xuống.
+“Nàng đã làm gì?”
+“Thất hoàng tử làm nhiều điều bất nghĩa, nay đã phải trả giá cho hành vi của mình. Mẫu phi của hắn bị giáng vị, phủ Quốc công bị tước tước vị…”
+“A Ly!”
+Giọng Tần Mục Vũ bỗng trở nên vô cùng nặng nề.
+“Đừng làm những việc ấy.”
+Một khi thân phận của nàng bại lộ, đó sẽ là tội khi quân.
+Nói nhẹ thì một mình nàng gánh tội.
+Nói nặng thì cả nhà đều gặp họa.
+Hắn chỉ mong nàng có thể thuận lợi khai phủ, tự mình sinh tồn, tránh xa mọi thị phi.
+Hắn không muốn bàn tay nàng vấy lấy dù chỉ một giọt máu.
+Những việc ấy…
+Để hắn làm.
+“Ta chẳng làm gì cả, là hắn tự gặp báo ứng thôi.”
+Tần Mục Vũ biết nàng nói vậy chỉ là không muốn hắn lo lắng.
+Trong lòng hắn bỗng dâng lên nỗi căm ghét chính mình vô cùng.
+Hận bản thân vô dụng, không thể bảo vệ nàng.
+Bao năm cố gắng, hắn cũng chỉ là một võ tướng ngũ phẩm.
+Con đường thăng tiến của võ quan vốn không giống văn quan.
+Muốn vị cực nhân thần, võ tướng nhất định phải lập nên chiến công chân thực.
+Từ xưa đến nay, biết bao võ tướng quăng đầu, đổ máu, ngựa bọc thây nơi chiến địa, lấy chính tính mạng mình để dựng nên công huân.
+Vô số tướng sĩ bỏ mình nơi sa trường.
+Một tướng công thành, vạn cốt khô.
+Còn văn quan thì khác.
+Những đại thần Nội các, Thượng thư Lục bộ, ai nấy đều quan đến Chính Nhất phẩm, áo mũ chỉnh tề, cao cao tại thượng.
+“Là ta vô dụng, A Ly.”
+“Huynh đang nói mê sảng gì vậy?”
+Tần Mục Vũ…
+Hắn mới chỉ mười tám tuổi thôi!
+Đúng lúc ấy, Tần Mục Tuyết bưng bát thuốc vừa sắc xong bước ra.
+Nhìn thấy Sở Ly, nàng vô cùng kinh ngạc.
+“A Ly ca ca?”
+“Đưa thuốc cho ta đi.”
+“À… vâng.”
+Có Sở Ly ở đây, Tần Mục Tuyết ngược lại rảnh rang hơn.
+Nàng ngồi bên cạnh, nhìn Sở Ly cẩn thận chăm sóc Tần Mục Vũ, không khỏi thầm than trong lòng:
+A Ly ca ca đối với đại ca…
+Còn tốt hơn cả đối với nàng.
+Sở Ly quyết định ở lại chăm sóc hắn.
+Tần Mục Vũ bảo nàng hồi cung, nàng không chịu.
+Sở Ly xem xét thương thế của hắn, lại nhìn thuốc men, hỏi kỹ cả chế độ ăn uống, rồi quyết định tối nay sẽ hầm canh gà nhân sâm cho hắn bồi bổ.
+Buổi chiều.
+Sở Ly cùng Tần Mục Tuyết ra chợ mua thức ăn.
+Nhân tiện Tần Mục Tuyết cũng cần bốc thêm ít thuốc.
+Chợ xá đông đúc náo nhiệt.
+Thân phận Sở Ly cao quý, đứng giữa khung cảnh ấy có vẻ lạc lõng.
+Thế nhưng dáng vẻ nàng xách giỏ, xắn tay áo, lại chẳng hề có chút kiêu cách nào.
+Nàng chọn một con gà, bảo chủ quán làm thịt.
+Tần Mục Tuyết nhìn bộ dạng ấy của nàng, mấy lời cứ nghẹn nơi cổ họng, muốn nói lại thôi.
+Mua xong gà, hai người lại đi mua nhân sâm và hạt sen.
+Đi dạo một vòng lớn, Sở Ly mới nhận ra vẻ muốn nói lại ngừng của nàng.
+Nàng vỗ nhẹ mu bàn tay Tần Mục Tuyết, cười nói:
+“Đừng lo. Ta biết vào bếp, sẽ không làm hỏng đâu.”
+“Mẫu phi ta muốn lấy lòng phụ hoàng, thường tự tay hầm canh, làm điểm tâm trong tiểu trù phòng. Ta ngày ngày tai nghe mắt thấy, cũng học được đôi chút.”
+Điều Tần Mục Tuyết lo lắng không phải chuyện ấy.
+Nàng khẽ cắn môi dưới.
+“A Ly ca ca… muội chỉ là cảm thấy huynh… huynh đối với đại ca rất tốt. Đại ca cũng vậy. Huynh… huynh chẳng lẽ… có tật đoạn tụ?”
+Mấy chữ cuối cùng nhỏ đến mức gần như không nghe rõ.
+Sở Ly bật cười ha hả.
+“Muội nhìn đại ca muội xem. Ngày thường biết bao cô nương tặng túi thơm cho huynh ấy, trông giống người có tật đoạn tụ sao?”
+“Yên tâm đi. Mua đủ thức ăn rồi, chúng ta đi bốc thuốc.”
+Đại ca không phải đoạn tụ.
+Thế còn A Ly ca ca thì sao?
+Bao năm nay, nàng chưa từng thấy tiểu thư khuê các nhà nào tặng túi thơm cho A Ly ca ca cả.
+Tần Mục Tuyết khẽ thở dài.
+Trong y quán.
+Tần Mục Tuyết cầm đơn thuốc đi bốc thuốc.
+Sở Ly đứng một bên chờ.
+Đúng lúc ấy, một lão ma ma bước vào.
+Nhìn động tác nhanh nhẹn, hẳn là quản sự ma ma trong một gia đình quyền quý.
+Bà bước đến quầy.
+Lão đại phu vừa nhìn đã hiểu ý.
+“Thuốc của phủ họ Trương tháng này đã gói xong rồi.”
+Lão ma ma nhấc thử một chút.
+“Đủ lượng chứ?”
+“Xin Trương phu nhân cứ yên tâm. Mấy thang thuốc tránh thai này đều do lão phu kê, tuyệt đối không sai sót.”
+Trong những gia đình quyền quý.
+Thiếp thất có thể sinh con hay không, nên sinh hay không, được phép sinh hay không…
+Tất cả đều phải nghe theo sự sắp đặt của chủ mẫu.
+Chủ mẫu không cho thiếp thất sinh con, thì thuốc tránh thai dù phải cưỡng ép cũng sẽ đổ vào miệng bắt uống.
+Cho dù đã mang thai…
+Cũng phải ép phá đi.
+Hơi thở Sở Ly chợt căng cứng.
+Nàng theo bản năng đưa tay đặt lên bụng mình.
+Thuốc tránh thai…
+Nàng với tên nam nhân xấu xí kia liên tiếp mấy lần đều chưa…
+“A Ly ca ca, huynh sao vậy? Bụng không khỏe à?”
+Tần Mục Tuyết bốc thuốc xong, bước tới.
+Sắc mặt Sở Ly hơi trắng bệch.
+Nàng siết chặt đầu ngón tay, nói:
+“Mục Tuyết, muội sang cửa hàng đối diện mua ít đồ trước đi. Ta lấy cho mẫu phi ít thuốc bổ, lát nữa sẽ sang tìm muội.”
+“À, được.”
+Tần Mục Tuyết cười đáp rồi đi trước.
+Sở Ly bước đến chỗ lão đại phu, cất tiếng:
+“…”
+Chẳng bao lâu, trước sau chỉ hơn nửa khắc, nàng đã rời khỏi y quán.
+Không ngờ đúng lúc ấy, Bạch Cẩm Y ra ngoài mua dược liệu, vừa hay nhìn thấy nàng bước ra từ y quán.
+“Ủa?”
+Cửu hoàng tử?
+Mắt nàng chẳng phải đã khỏi rồi sao?
+Đến đây mua thuốc gì?
+Thuốc ở mấy y quán bên ngoài này, sao có thể tốt bằng thuốc do đệ tử chân truyền của Thần Y cốc như hắn kê?
+Bạch Cẩm Y khép chiếc quạt lại, cất bước vào y quán, hỏi:
+“Vị công tử trẻ vừa rồi đến mua loại thuốc gì?” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_70.html" class="btn">‹ Trước</a>
+            <a href="chuong_72.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

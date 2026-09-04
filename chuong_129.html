@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 129</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 129</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_128.html" class="btn">‹ Trước</a>
+            <a href="chuong_130.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 129: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 129: Những Thỏi Vàng Nhỏ Đâu Rồi?
+Chiêu Lan điện.
+Một mảnh hoang tàn.
+Một trận đại hỏa thiêu rụi tất cả. Cái gọi là tuyệt cảnh nở hoa, e rằng chỉ là thần thoại tồn tại trong thoại bản mà thôi. Sở Đệ Trì đã đứng ở đây tròn một ngày một đêm, từ lúc mặt trời mọc đến khi mặt trời lặn, từ đêm khuya đến lúc hừng đông. Nơi này yên tĩnh đến mức không một tiếng động.
+Cung nhân đi ngang qua từ rất xa, ngay cả nhìn thêm một cái hay nói thêm một câu cũng chẳng dám, chỉ cúi đầu vội vã bước qua.
+Tân Đế đã chết.
+Nhiếp chính vương… đã hóa điên.
+Suốt bốn ngày nay, hắn không ăn không uống, một giọt nước cũng chưa từng chạm môi. Ngoại trừ Chiêu Lan điện, hắn chưa từng đặt chân đến bất kỳ nơi nào khác.
+Không ai dám đến quấy rầy.
+Mấy ngày nay, đều là Tiêu Dạ Hành chạy ngược chạy xuôi thay hắn, miễn cưỡng ổn định cục diện. Lại thêm thân phận Nhàn Vương của Bát Hoàng tử trấn giữ, xã tắc mới miễn cưỡng duy trì được.
+Nhưng…
+Đó tuyệt đối không phải kế sách lâu dài.
+Tiêu Dạ Hành cùng Sở Ngạo Thiên bàn luận chính sự.
+“Nhị Hoàng tử đã tập hợp một nhóm người, cho rằng mật chỉ của Tân Đế không thể tính là thật. Hoàng thượng vẫn còn tại thế, dưới gối lại có nhiều Hoàng tử như vậy, dù thế nào cũng chưa đến lượt một vị Hoàng thúc kế thừa ngôi vị.”
+Sở Ngạo Thiên đỏ hoe mắt:
+“Ừm.”
+Tiêu Dạ Hành nói:
+“Tam Hoàng tử cũng đã liên lạc với mưu sĩ dưới trướng, âm thầm tung tin đồn, nói rằng Nhiếp chính vương có ý đồ soán vị, cái chết của Tân Đế không thể tách rời khỏi hắn.”
+Sở Ngạo Thiên cắn móng tay:
+“Ừm.”
+Tiêu Dạ Hành lại nói:
+“Nhiếp chính vương đã xử trí Đại Hoàng tử. Lục Hoàng tử cho rằng hắn tàn sát cháu ruột, sát hại huyết mạch hoàng thất, hành vi tàn nhẫn, khiến người căm phẫn. Hắn đã liên kết các tộc lão họ Sở, muốn bãi truất Nhiếp chính vương.”
+Sở Ngạo Thiên siết chặt mông, đáp:
+“Ừm.”
+Tiêu Dạ Hành vừa định mở miệng tiếp thì không nhịn được trừng hắn một cái.
+“Ngươi không thể nói cái gì khác sao?”
+“?”
+Hắn… không biết mà!
+Hắn đâu biết xử lý triều chính!
+Hắn dè dặt hỏi:
+“Hay là… đày hết đám người không có ý tốt ấy đến Tây Vực đào than?”
+Tiêu Dạ Hành đỡ trán.
+“Trong tay bọn chúng có quyền, có thế, có nhân mạch. Không phải ngươi hay ta có thể lay chuyển. Chỉ dựa vào thân phận Nhàn Vương của ngươi, cũng không phải đối thủ của bọn chúng.”
+Còn muốn đày người ta đi đào than.
+Đừng để chính mình bị bọn họ đày đi đã là may lắm rồi.
+“Hả? Vậy phải làm sao? Ta mới làm Vương gia có một ngày thôi, chẳng lẽ sẽ trở thành Vương gia đoản mệnh nhất trong lịch sử?”
+“Trời ơi!”
+“Ta không muốn đâu!”
+“Ta còn chưa kịp hưởng thụ cuộc sống nữa!”
+Tiêu Dạ Hành nhìn hắn, lắc đầu.
+Rồi bỏ đi.
+Đứa trẻ miệng còn hôi sữa, không đủ để cùng bàn mưu đại sự.
+Việc cấp bách nhất lúc này…
+Là phải để Nhiếp chính vương nhanh chóng chấp chính.
+Nếu hắn không xuất hiện, Đại Sở chẳng khác nào tòa cao ốc sắp đổ.
+Thế nhưng mỗi ngày hắn đều ở Chiêu Lan điện, như mất hồn mất vía, nước cơm chẳng màng. Dẫu nỗi nhớ Cửu Hoàng tử có khiến hắn không cách nào khống chế, nhưng người chết đã khuất, người sống vẫn phải tiếp tục sống.
+Con người…
+Cuối cùng vẫn phải nhìn về phía trước.
+Tiêu Dạ Hành đi đến Chiêu Lan điện.
+Chỉ thấy giữa đống phế tích đen kịt ấy, người nam nhân đang đứng đó, dùng đôi tay trần bới từng nắm tro tàn, mờ mịt tìm kiếm thứ gì.
+Đôi tay vốn đã bị lửa thiêu bỏng, còn chưa kịp lành.
+Giờ đây lại nứt toác, máu tươi đầm đìa.
+Thế nhưng hắn dường như chẳng hề biết đau.
+Tìm…
+Tìm mãi…
+“A Trì!”
+Tiêu Dạ Hành giữ lấy hắn, lại bị hắn hất mạnh ra.
+“Nàng sẽ không cứ thế mà đi…”
+“Nàng… ít nhất cũng phải để lại thứ gì đó chứ…”
+Trong mắt Sở Đệ Trì không còn tiêu cự.
+Hắn ở trong tòa cung điện nàng đã sống suốt mười sáu năm, từng chút từng chút bới tìm.
+“Ta có thể cảm nhận được…”
+“Nàng chưa đi.”
+“Nàng vẫn luôn ở đây.”
+“Hồi nhỏ, nàng đã từng bỏ lại ta một lần. Lớn rồi… sao còn có thể như vậy?”
+“Trái tim nàng…”
+“Thật quá nhẫn tâm…”
+Không.
+Không thể nào.
+“Hạt giống hoa ta tặng nàng… nàng trồng đẹp biết bao, lớn lên xanh non khỏe mạnh. Ta thậm chí còn có thể tưởng tượng được dáng vẻ nàng vừa gieo hạt vừa tỏ vẻ mất kiên nhẫn…”
+Chỉ một trận đại hỏa…
+Sao mọi thứ lại cảnh còn người mất?
+Cung điện đã cháy đến chỉ còn khung.
+Thế nhưng năm chậu hoa vẫn luôn đặt trong sân.
+Trong sân không có vật dễ cháy, vì vậy năm chậu hoa vẫn được giữ nguyên vẹn.
+Mầm hoa càng xanh non.
+Lại càng tôn lên sự tĩnh mịch và tuyệt vọng của đống phế tích này.
+Hắn điên cuồng bới tìm.
+“A Trì! Tỉnh lại đi!”
+Tiêu Dạ Hành ngăn hắn lại.
+“Nàng ấy đã đi rồi! Đại Hoàng tử ra tay tàn độc như vậy, ôm quyết tâm đồng quy vu tận với nàng. Ngay cả ngươi và ta cũng không kịp đề phòng!”
+“Việc cấp bách nhất lúc này là Đại Sở!”
+“Chính quyền, xã tắc, dân sinh… gánh nặng lớn như vậy đang đặt trên vai ngươi. Chẳng lẽ ngươi định mặc kệ bách tính của mình sao?”
+Hắn lớn tiếng khuyên nhủ, muốn mắng cho hắn tỉnh lại.
+“Huống hồ, trước khi đi, nàng đã hạ chỉ để ngươi đăng cơ chấp chính. Chẳng lẽ ngươi muốn phụ kỳ vọng của nàng?”
+Tỉnh lại đi!
+Đừng tiếp tục suy sụp nữa!
+Sự sa sút của hắn chỉ khiến đám người kia xé nát hắn, chia cắt hắn, nuốt chửng hắn.
+Nếu ngay cả quyền lực cũng không giữ nổi…
+Chỉ sợ đến cả di hài của Cửu Hoàng tử cũng không thể được an táng trong Đế lăng.
+Chẳng lẽ…
+Hắn muốn để Cửu Hoàng tử bị chôn ở Cảnh lăng của người thường sao?
+Thần sắc Sở Đệ Trì khẽ dao động.
+Sau nhiều ngày sống như cái xác không hồn, đây là câu đầu tiên thật sự lọt vào tai hắn.
+“Nàng… hạ chỉ để ta chấp chính?”
+Tiêu Dạ Hành đáp:
+“Đúng vậy. Nàng tự nhận mình không có tài trị quốc, đã sớm lập thánh chỉ, thiện nhượng đế vị cho ngươi.”
+“Hơn nữa, còn hạ chỉ sắc phong Bát Hoàng tử làm Nhàn Vương.”
+Sở Đệ Trì khựng lại.
+Nàng…
+Lại soạn đến hai đạo thánh chỉ?
+Mơ hồ…
+Hắn bỗng cảm thấy có điều gì đó không đúng.
+“Nàng còn để lại lời nào khác không?”
+Tiêu Dạ Hành chọn những chuyện quan trọng mấy ngày qua kể lại.
+“Nàng còn hạ chỉ, sau khi ngươi đăng cơ, Sở Hoàng sẽ trở thành Thái thượng hoàng, sắc phong Ôn phi làm Ôn Thái quý phi, địa vị chỉ đứng sau Hoàng hậu, hưởng vinh hoa cả đời.”
+Sở Đệ Trì hơi nhíu mày.
+“Còn ban một đạo thánh chỉ cho Ôn gia, sắc phong ba vị cữu cữu, đồng thời che chở cả Ôn gia.”
+Nghe đến đây, đôi mày kiếm của Sở Đệ Trì càng nhíu chặt.
+“Còn nữa?”
+“Còn có, nàng hạ chỉ cho Tướng quân phủ. Trước đây, Tần Thiếu tướng quân vì xảy ra tranh chấp với Tĩnh Quý phi, Phương gia và Thất Hoàng tử nên bị Hoàng thượng phạt bổng một năm, lại còn ba năm dù lập công thế nào cũng không được thăng quan tiến tước. Nàng đã hủy bỏ đạo chỉ ấy, còn nâng quan chức cho Tần Thiếu tướng quân.”
+“Còn nói…”
+Tiêu Dạ Hành chậm rãi kể tiếp.
+Đến lúc này…
+Sở Đệ Trì cuối cùng cũng phát hiện rốt cuộc điều gì không đúng.
+Đại Hoàng tử muốn giết Cửu Hoàng tử.
+Hung hăng kéo đến.
+Có chuẩn bị từ trước.
+Điều đó không sai.
+Nhưng còn Cửu Hoàng tử thì sao?
+Trước khi chết…
+Nàng lại sắp xếp chu toàn biết bao nhiêu chuyện.
+Mẫu tộc.
+Hoàng vị.
+Cho đến cả thanh mai trúc mã của chính mình.
+Tất cả đều được an bài ổn thỏa.
+Thoạt nhìn…
+Không giống như nàng bị người khác hại chết.
+Ngược lại…
+Càng giống như nàng đã chuẩn bị đầy đủ từ lâu.
+Chỉ chờ…
+Đến lúc chết.
+Ý nghĩ ấy vừa lóe lên trong đầu.
+Hắn lập tức lao vào đống phế tích lục tìm.
+Trong khoảnh khắc ấy…
+Máu nóng trong từng thớ xương như sôi trào.
+Hai tay hắn điên cuồng đào bới.
+“A Trì!”
+Tiêu Dạ Hành muốn ngăn cản hắn.
+Nhưng người nam nhân lúc này chẳng khác nào kẻ điên, hai mắt đầy vẻ si cuồng, miệng không ngừng lẩm bẩm:
+“Những thỏi vàng nhỏ đâu rồi…”
+“Vàng đâu…”
+Bao năm nay…
+Những thỏi vàng nhỏ nàng tích góp được ít nhất cũng phải mấy chục thỏi.
+Tiền bạc…
+Chính là gốc rễ để an thân lập mệnh.
+Vàng thật không sợ lửa.
+Dẫu lửa có lớn đến đâu cũng không thể thiêu hỏng.
+Thế nhưng…
+Hắn lật tung cả đống phế tích.
+Vẫn không tìm thấy…
+Dù chỉ một thỏi vàng nhỏ. Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_128.html" class="btn">‹ Trước</a>
+            <a href="chuong_130.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>

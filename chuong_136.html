@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#fdfbf7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Chương 136</title>
+    
+<style>
+    :root {
+        --bg-color: #fdfbf7; /* Màu nền giấy ấm, đỡ mỏi mắt */
+        --text-color: #1a1a1a;
+        --btn-bg: #007aff; /* Màu xanh chuẩn của iOS */
+        --btn-text: #ffffff;
+        --border-color: #e5e5ea;
+        --missing-bg: #ffebee;
+        --missing-text: #d32f2f;
+    }
+
+    /* Chế độ Dark Mode tự động theo hệ thống của iPhone */
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-color: #000000; /* Nền đen sâu (OLED) giúp tiết kiệm pin iPhone */
+            --text-color: #e5e5ea;
+            --btn-bg: #1c1c1e;
+            --btn-text: #0a84ff;
+            --border-color: #38383a;
+            --missing-bg: #3a1c1c;
+            --missing-text: #ff453a;
+        }
+    }
+
+    body { 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+        line-height: 1.6; 
+        color: var(--text-color); 
+        background-color: var(--bg-color);
+        margin: 0;
+        /* Tránh bị che bởi Dynamic Island và thanh ngang (Home Indicator) ở dưới cùng */
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+        padding: 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    h1 { 
+        font-size: 26px; 
+        text-align: center; 
+        margin-top: 10px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    h2 {
+        font-size: 22px; 
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+    }
+
+    /* Cỡ chữ to hơn, tối ưu để đọc truyện trên màn hình lớn của Pro Max */
+    .content { 
+        font-size: 20px; 
+        text-align: left; /* Đổi thành left thay vì justify để chữ không bị kéo giãn trên mobile */
+        margin-top: 25px; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 22px; /* Dãn khoảng cách các đoạn để dễ bấm ngón tay */
+    }
+
+    .nav-buttons { 
+        display: flex; 
+        justify-content: space-between; 
+        margin: 30px 0; 
+        padding-top: 15px; 
+        border-top: 1px solid var(--border-color); 
+    }
+    
+    .btn { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        margin: 0 5px;
+        padding: 14px 0; 
+        background-color: var(--btn-bg); 
+        color: var(--btn-text); 
+        text-decoration: none; 
+        border-radius: 12px; /* Bo góc to theo chuẩn UI iOS 18 */
+        font-size: 17px;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent; /* Tắt nháy xanh khi bấm trên Safari */
+    }
+    
+    .btn:active { 
+        opacity: 0.7; 
+    }
+    
+    .btn.disabled { 
+        background-color: var(--border-color); 
+        color: #8e8e93; 
+        pointer-events: none; 
+    }
+
+    .toc { 
+        display: grid; 
+        /* Cấu hình lưới 4 cột cho màn hình iPhone dọc */
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 12px; 
+        margin-top: 25px; 
+        padding-bottom: 30px;
+    }
+    
+    .toc a { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 5px; 
+        background-color: var(--btn-bg); 
+        text-decoration: none; 
+        color: var(--btn-text); 
+        border-radius: 8px; 
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .toc a.missing {
+        background-color: var(--missing-bg);
+        color: var(--missing-text);
+    }
+    
+    .back-btn {
+        display: block;
+        text-align: center;
+        color: #0a84ff;
+        text-decoration: none;
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        
+        <h2>Chương 136</h2>
+        
+        <div class="nav-buttons">
+            <a href="chuong_135.html" class="btn">‹ Trước</a>
+            <a href="chuong_137.html" class="btn">Sau ›</a>
+        </div>
+
+        <div class="content">
+            <p>Chương 136: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
+Chương 136: Nhiếp Chính Vương Đại Sở đã đến Nam Cương
+Sở Dạ Ly nhìn thấy nàng, thần sắc nhàn nhạt, chỉ khẽ gật đầu xem như chào hỏi.
+“Dạ Ly ca ca, muội nhớ huynh lắm!”
+“Huynh đã lâu lắm rồi không đến!”
+“Ngày nào muội cũng ngóng trông, chờ đợi. Phụ vương còn bảo muội trông đến mòn cả mắt, cuối cùng cũng đợi được huynh đến!” Thác Bạt Minh Nguyệt ôm lấy cánh tay hắn, không hề che giấu tình ý của mình.
+Một thân hồng y, rực rỡ chói mắt.
+Nàng vốn là một nữ tử như vậy.
+“Đa tạ Công chúa nhớ mong.”
+Sở Dạ Ly bất động thanh sắc rút cánh tay ra, lùi lại nửa bước.
+Rồi đi đến trước mặt Sở Ly:
+“Tiểu Cửu, không còn sớm nữa, nên về nghỉ ngơi thôi.”
+Sở Ly còn muốn nói chuyện với Tần Mục Vũ thêm một lúc, nhưng trong lòng vẫn nhớ chuyện bỏ trốn, còn phải nghĩ cách giải Nhuyễn Cốt Tán, đành gật đầu đáp ứng.
+Nào ngờ nàng cứ như người mù mở mắt, lúc đi lại đá trúng một khúc củi trong đống lửa. Khúc củi đang cháy bắn lên, rơi đúng mu bàn chân nàng.
+“A!”
+Sức nóng bỏng rát.
+Đau đến mức nàng nhảy dựng lên, ngã phịch xuống đất. Không biết từ đâu lại bò ra một con côn trùng, cắn ngay mắt cá chân nàng một cái.
+“Thiên Túc Trùng!”
+Thác Bạt Minh Nguyệt muốn ngăn cản, nhưng đã quá muộn.
+Nam Man nổi danh với cổ thuật, khí hậu nơi đây ẩm thấp âm u, ngay cả những con sâu nhỏ bé tưởng chừng vô hại cũng mang độc tính cực mạnh.
+Nàng lập tức ra lệnh:
+“Mau gọi quân y đến! Bảo hắn mang theo Xà Đầu Thảo!”
+Sở Dạ Ly bước nhanh tới, bế ngang Sở Ly lên, vội vàng chạy về lều.
+Sở Ly chỉ muốn khóc.
+Vốn dĩ nàng định giả vờ đau bụng tiêu chảy để tìm quân y.
+Nào ngờ lại thành ra thế này.
+Mu bàn chân bị bỏng phồng rộp.
+Chỉ trong chốc lát, đến khi quân y xách hòm thuốc chạy đến, mắt cá chân nàng đã sưng vù lên thành một cục lớn.
+Con sâu bé tí tẹo ấy nhìn chẳng có gì đáng sợ, ai ngờ độc tính lại mạnh đến vậy.
+Quân y đeo hòm thuốc, vội vàng chạy vào.
+“Mau!”
+Sở Dạ Ly sốt ruột nói:
+“Mau xem đi!”
+“Điện hạ chớ nóng vội!”
+Quân y bước nhanh vào:
+“Tiểu Sở công tử bị Thiên Túc Trùng cắn, không phải vấn đề lớn.”
+Sở Ly âm thầm thở phào.
+“Vậy thì tốt.”
+Nếu thật sự tàn phế, què chân, trở thành phế nhân…
+Chi bằng chết luôn cho xong.
+“Chỉ cần dùng dao rạch một đường hình chữ thập ở mắt cá chân, nặn hết độc bên trong ra, sau đó dùng thanh gỗ nung đỏ hơ lên vết thương, rồi đắp Xà Đầu Thảo, là sẽ khỏi.”
+Sở Ly trợn tròn mắt.
+Cái gì?!
+Rạch chân nàng ra?
+Còn phải lấy thanh gỗ nung đỏ để hơ?
+“Ta không muốn!”
+Đây là lời con người nói sao?
+Thác Bạt Minh Nguyệt đứng ngoài cửa lên tiếng:
+“Chỉ có cách này thôi. Bọn ta nếu chẳng may bị Thiên Túc Trùng cắn, cũng đều chữa như vậy.”
+Quân y nói:
+“Tiểu Sở công tử, mắt cá chân của ngài đã sưng thành thế này rồi. Nếu không kịp thời lấy độc ra, độc sẽ ngấm càng lúc càng sâu, cuối cùng e rằng ngay cả cái chân này cũng không giữ nổi!”
+“A!”
+Sao nàng lại xui xẻo đến thế?
+Toàn chuyện gì đâu không!
+Sở Dạ Ly trầm giọng, lập tức quyết định:
+“Làm ngay. Càng nhanh càng tốt.”
+“Không được!”
+Sở Dạ Ly giữ chặt chân nàng, ôm lấy thân thể đang vùng vẫy của nàng.
+“Cắn tay ta đi, Tiểu Cửu. Ráng nhịn một chút, sẽ nhanh qua thôi.”
+“Không! Không!”
+Đừng giữ chặt nàng!
+Như vậy nàng càng không có cảm giác an toàn!
+Sở Ly giãy giụa như cá nằm trên thớt.
+“Buông ta ra! Ta thấy ta khỏi rồi! Ta khỏi rồi!”
+“Tiểu Cửu, kiên cường một chút.”
+“Tay ta không đau nữa rồi!”
+Nói xong mới thấy không đúng.
+“Chân ta không đau nữa… Ưm!”
+Sở Dạ Ly nhét thẳng cánh tay mình vào miệng nàng.
+Rồi ôm chặt lấy nàng.
+Nàng trơ mắt nhìn quân y cầm một con dao găm sáng loáng, hơ qua ngọn lửa.
+“A!!!”
+Giết heo rồi!
+“A!”
+Đừng mà!
+Thả ta ra!
+“Ưm! Ưm ưm!”
+“Tiểu Cửu, cắn ta đi, cắn mạnh hết sức… Ưm!”
+Sở Ly la hét, trợn mắt, giãy giụa, vặn vẹo.
+Kết quả…
+Quân y còn chưa kịp hạ dao, chính nàng đã đập mạnh trán vào tấm ván đầu giường.
+Bốp!
+Trước mắt tối sầm.
+Ngất xỉu.
+Đến khi mở mắt ra lần nữa, đầu óc nàng vẫn còn mơ màng.
+“Tỉnh rồi?”
+Ánh mắt Sở Ly còn rời rạc.
+“Ta… đầu ta nặng quá…”
+“Đừng động.”
+“Đầu nàng bị quấn hơn chục vòng băng vải. Đêm qua, nàng tự đập mình ngất luôn.”
+“Vậy chân ta…”
+“Đã xử lý xong rồi, không sao nữa.”
+Sở Dạ Ly thức trắng cả đêm trông nàng, hai mắt hơi đỏ.
+Sở Ly kinh ngạc.
+Ồ.
+Hóa ra phương pháp gây mê bằng vật lý…
+Lại hữu hiệu đến vậy.
+Ngủ một giấc tỉnh dậy, chẳng còn chuyện gì nữa.
+Chỉ là đầu hơi nặng.
+Nàng chống hai tay lên đầu, khó nhọc ngồi dậy.
+Lúc này mới phát hiện y bào Sở Dạ Ly xộc xệch, trên mặt còn có mấy vết cào đỏ au, trông nhếch nhác như vừa bị lợn húc.
+Ngay cả trên cổ…
+Cũng in hằn một dấu răng đỏ chói.
+Nàng bất giác nhớ đến bộ dạng tối qua của mình…
+“Huynh… vết thương trên cổ và trên mặt huynh…”
+Sở Dạ Ly đưa tay vuốt nhẹ, cười trầm:
+“Tiểu Cửu xuống miệng chẳng hề nương tình.”
+Sở Ly hơi ngượng.
+“Cũng đâu thể trách ta. Nếu không phải huynh đưa ta đến nơi này, ta đã chẳng bị sâu cắn. Sâu ở Đại Sở đâu có độc như vậy.”
+“Được, được.”
+“Đều là lỗi của ta.”
+Hắn cầm một túi thơm trên bàn lên.
+“Trong túi thơm này có dược liệu xua côn trùng. Nàng mang theo bên người, vừa đuổi sâu bọ, vừa phòng cổ độc.”
+Sở Ly cầm lên xem.
+“Xấu quá vậy?”
+Đường kim mũi chỉ thật xấu.
+Hoa văn cũng xấu.
+Đây là thêu con mèo sao?
+Xấu thật.
+Sở Dạ Ly mím môi:
+“Đây là… ta… ta sai người phía dưới làm. Trong quân doanh toàn là nam nhân, tay nghề có lẽ hơi kém.”
+“Thảo nào.”
+Sở Ly hiểu ra, tiện tay treo túi thơm lên đai lưng.
+Đúng lúc ấy, Thác Bạt Minh Nguyệt bước vào.
+“Dạ Ly ca ca, bữa sáng đã chuẩn bị xong.”
+Tối qua Sở Ly đã nhìn thấy nàng, nhưng vì bị thương nên không để ý kỹ.
+Giờ mới nhận ra, nữ tử này rực rỡ như ánh mặt trời, sạch sẽ, phóng khoáng, đẹp đến nao lòng.
+“Ta là Thác Bạt Minh Nguyệt, Trưởng công chúa Nam Man. Ngươi cứ gọi ta là Minh Nguyệt.”
+Nàng không hề tỏ vẻ kiêu căng.
+Sở Ly đáp:
+“Tiểu Sở.”
+“Ta biết ngươi là ai.”
+Thác Bạt Minh Nguyệt nói xong liền quay người đi ra.
+Nàng là tân đế Đại Sở.
+Cũng là người mà Dạ Ly ca ca yêu.
+Nàng biết.
+Đêm qua, Dạ Ly ca ca thức trắng đêm chăm sóc nàng ấy, còn tự tay khâu một chiếc túi thơm.
+Một đại nam nhân, đến cầm kim xỏ chỉ cũng không biết, đầu ngón trỏ bị kim đâm chi chít lỗ nhỏ.
+Thế mà lại nói là do hạ nhân may.
+Chẳng mấy chốc, hạ nhân mang đồ ăn sáng tới.
+Đồng thời cũng mang theo một tin tức ngoài dự liệu.
+“Điện hạ!”
+“Nhiếp Chính Vương Đại Sở đã đến Nam Cương!” Ẩn bớt</p>
+
+        </div>
+
+        <div class="nav-buttons" style="margin-bottom: 50px;">
+            <a href="chuong_135.html" class="btn">‹ Trước</a>
+            <a href="chuong_137.html" class="btn">Sau ›</a>
+        </div>
+    </div>
+</body>
+</html>
