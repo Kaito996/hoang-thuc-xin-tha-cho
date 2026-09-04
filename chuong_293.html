@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 293</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,187 +62,196 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 293</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_292.html" class="btn">‹ Trước</a>
             <a href="chuong_294.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 293: Cả nhà đi gánh hát đi
-Sở Ly cầm khăn tay lên, chậm rãi lau khóe môi:
-“Tôn tiểu thư nói vậy là khách sáo rồi. Nhiếp Chính Vương không phải vật sở hữu của ta, không có chuyện đem ra trao đổi với nhau.”
-Khóe mắt Tôn Ngọc Tuyết giấu không nổi ý cười.
-Vậy...
-Ý nàng là đồng ý rồi?
-Thật là tốt quá!
-“Biểu ca, ta chợt nhớ ra còn chút việc, huynh cứ ngồi đây chốc lát, lát nữa ta sẽ quay lại.”
-Liễu Thắng Nam tự nhiên mừng rỡ khôn xiết. Đợi Tôn Ngọc Tuyết rời đi, ánh mắt vừa kinh diễm vừa thèm khát lập tức không chờ nổi mà rơi lên người Sở Ly:
-“Tạ tiểu thư, tại hạ là Liễu Thắng Nam, xin được ra mắt.”
-Dung mạo hắn chỉ ở mức bình thường, đôi mắt hẹp dài cứ nhìn chòng chọc vào Sở Ly, ánh mắt không hề che giấu chút nào.
-Sở Ly thần sắc bình thản:
-“Tạ Vãn Nguyệt.”
-“Phải, tại hạ biết khuê danh của Tạ tiểu thư, quả là một cái tên rất hay. Vãn Nguyệt... Vãn Nguyệt... tựa trăng sáng thanh khiết.”
-Liễu Thắng Nam vừa nói, vừa kéo ghế, ngồi sát bên cạnh Sở Ly.
-Vừa đến gần, dường như đã ngửi thấy mùi hương thoang thoảng trên người nàng, khiến hắn say đến đầu óc trống rỗng, lâng lâng như muốn ngất.
-Thơm quá.
-Đẹp quá.
-“Tại hạ năm nay vừa đỗ Cử nhân, phụ thân là phú thương ở thành Thiên Thủy, mẫu thân là thân muội muội của Tri phủ thành Thiên Thủy, là biểu huynh muội với Tôn Ngọc Tuyết. Gia sản trong nhà phong hậu, cẩm y ngọc thực, gấm vóc lụa là, hưởng mãi không hết, tiêu mãi không cạn...”
-Lải nhải.
-Hắn say sưa liệt kê từng điều kiện của mình.
-Không phải hắn khoác lác, chỉ với điều kiện và dung mạo của hắn, tương lai nhất định tiền đồ vô lượng. Biết bao nữ nhân mong được gả cho hắn, nhưng hắn chẳng để mắt đến ai.
-Phu nhân của hắn nhất định phải là mỹ nhân đẹp nhất thiên hạ!
-Chỉ cần gả cho hắn, cả đời hưởng không hết phúc, tiêu không hết bạc, quả thực là tổ tiên cũng phải bốc khói xanh mới cầu được vận may ấy!
-Khóe mắt Sở Ly nhàn nhạt quét qua hắn, nhìn dáng vẻ mê mẩn đến không tự kiềm chế nổi ấy, thần sắc vẫn bình thản, nâng chén trà lên nhấp một ngụm.
-Nàng chỉ là cãi với Hoàng thúc vài câu mà thôi.
-Chỉ là cãi nhau, đâu phải phạm thiên điều.
-Đồng thời.
-Ở một nơi khác.
-Sau khi rời khỏi tiền sảnh, Tôn Ngọc Tuyết không giấu nổi niềm vui trong lòng, bước nhanh về phía thư phòng ở Tây sương.
-“Tuyết Nhi?”
-Tôn Tri phủ vừa từ hành lang đi tới, thấy hướng nàng đi liền hỏi:
-“Con đến thư phòng làm gì? Bên đó là nơi Nhiếp Chính Vương cùng các vị phó tướng nghị sự, con là cô nương, chớ nên tự tiện xông vào.”
-“Phụ thân yên tâm, con không vào đâu.”
-“Ừ.”
-Khóe môi Tôn Ngọc Tuyết vẫn giấu ý cười. Đợi phụ thân đi xa, nàng lập tức co chân chạy vào thư phòng.
-Rầm!
-Cửa bị đẩy bật ra.
-Sau án thư, Sở Đệ Trì lập tức ngẩng đầu, hàng mày sắc bén quét tới, khiến sống lưng Tôn Ngọc Tuyết cứng đờ, giống như có hai thanh kiếm bắn thẳng vào người, làm nụ cười trên mặt nàng đông cứng:
-“Nhiếp... Nhiếp Chính Vương...”
-Mấy vị phó tướng đều cúi đầu.
-Kinh Ảnh và Trọng Phong đứng bên cạnh cũng không lên tiếng.
-Tôn Ngọc Tuyết rất nhanh đã trấn định tinh thần, nở nụ cười ngây thơ ngọt ngào:
-“Đây là nhà của ta, cũng là thư phòng của phụ thân ta. Chắc Nhiếp Chính Vương sẽ không trách Tuyết Nhi tự tiện đến đây chứ?”
-Nàng ngẩng khuôn mặt nhỏ, nụ cười ngọt đến mê người.
-Vệ phó tướng cúi đầu, đưa tay ôm trán, thầm nghĩ:
-Ý của Tôn tiểu thư là... Nhiếp Chính Vương chiếm chỗ của Tôn Tri phủ?
-Vương phó tướng cũng thở dài trong lòng:
-Ôi trời đất...
-Tôn tiểu thư nói vậy, chẳng lẽ là muốn đuổi Nhiếp Chính Vương đi?
-Sở Đệ Trì khép phong mật thư lại:
-“Có việc gì?”
-Tôn Ngọc Tuyết e lệ như đóa hoa khép cánh dưới trăng, giọng nói ngọt lịm:
-“Tuyết Nhi không có việc gì quan trọng cả~”
-“Kinh Ảnh, tiễn khách.”
-“Chỉ là lúc nãy trên đường tới đây, ta vô tình nhìn thấy vài chuyện không nên thấy.”
-“Chuyện gì?”
-Tôn Ngọc Tuyết nắm góc áo, dáng vẻ nửa muốn nói nửa muốn thôi, khiến người ta không khỏi chú ý:
-“Thật ra cũng chẳng phải chuyện gì quan trọng.”
-“Kinh Ảnh.”
-Kinh Ảnh vừa định bước lên, Tôn Ngọc Tuyết vội vàng nói:
-“Chính là... ta nhìn thấy Tạ tiểu thư!”
-Sở Đệ Trì nhíu mày.
-Nhớ lại chuyện tối qua...
-Đôi môi mỏng khẽ mím, cố nén tính tình hỏi:
-“Chuyện gì?”
-Tôn Ngọc Tuyết đỏ mặt:
-“Cũng chẳng phải chuyện gì quan trọng, chỉ mong Nhiếp Chính Vương đừng để lời Tuyết Nhi trong lòng.”
-“Kinh Ảnh.”
-“Nhưng Tuyết Nhi nghĩ đi nghĩ lại, vẫn quyết định phải nói cho Nhiếp Chính Vương biết.”
-Sở Đệ Trì bóp nát bức mật thư trong tay, trầm giọng:
-“...Chuyện gì?”
-“Chính là Tạ tiểu thư đang ở cùng biểu ca của ta! Ôi nha!”
-Nói xong, nàng ngượng ngùng che mặt, xấu hổ vô cùng.
-“...”
-Mấy vị phó tướng trên trán đồng loạt hiện lên mấy vạch đen, thật sự không nỡ nhìn bộ dáng nửa muốn nói nửa muốn thôi đầy kiểu cách của Tôn tiểu thư.
-Quan trọng hơn là, bọn họ đang bàn quân vụ.
-Một trường hợp quan trọng như vậy, Tôn tiểu thư lại cứ ngang nhiên xông vào...
-Khóe mắt Kinh Ảnh giật liên hồi.
-Muốn nói thì nói, không muốn nói thì thôi, bày nhiều trò làm gì.
-Trọng Phong vẫn không đổi sắc mặt, trầm ổn như núi.
-Sở Đệ Trì lạnh giọng cất lời:
-“Vậy sao?”
-“Ta tận mắt nhìn thấy bọn họ ngồi cùng nhau, vừa nói vừa cười, chẳng biết đang nói chuyện gì mà vui vẻ đến vậy, ngay cả ta cũng không chen vào được. Nếu Nhiếp Chính Vương không tin, chi bằng tự mình đến xem?”
-Kinh Ảnh cẩn thận nhìn sắc mặt chủ tử:
-“Chủ tử?”
-Trong đôi mắt bình tĩnh của Sở Đệ Trì không nhìn ra chút dao động nào. Hắn phủi vụn giấy trong tay, đứng dậy:
-“Hôm nay bàn đến đây thôi. Dương phó tướng và Lý quân sư lập tức áp giải dược liệu đến hội quân với Tiêu Đô đốc.”
-“Tuân lệnh!”
-“Giải tán.”
-Tôn Ngọc Tuyết mừng thầm trong lòng. Đợi mọi người đã rời đi gần hết, nàng mới dẫn Nhiếp Chính Vương đến tiền viện, đứng ngoài cửa đại sảnh rồi chỉ tay từ xa:
-“Người xem.”
-Nàng đâu có nói dối chứ?
-Tạ tiểu thư đang ngồi cùng biểu ca, nói cười vô cùng vui vẻ.
-Nàng không khỏi chân thành cảm thán:
-“Tạ tiểu thư dung nhan vô song, biểu ca phong quang tễ nguyệt. Hai người ngồi cạnh nhau, quả thật giống một đôi trai tài gái sắc.”
-Sở Đệ Trì đứng ngoài cửa, khẽ cười nhạt một tiếng:
-“Gọi Tôn Tri phủ tới đây.”
-Tôn Ngọc Tuyết hơi nghi hoặc.
-Gọi phụ thân đến làm gì?
-Chẳng lẽ... là thất vọng về Tạ Vãn Nguyệt, muốn lập tức tuyên bố cưới nàng làm trắc phi?
-Không phải chứ!
-Nàng còn nửa năm nữa mới cập kê, còn chưa đến tuổi xuất giá.
-Chẳng lẽ Nhiếp Chính Vương lại thích nàng đến vậy?
-Thật ngượng chết mất!
-Tôn Ngọc Tuyết đỏ bừng mặt, e lệ siết chặt góc áo, hai má nóng ran, không dám nhìn gương mặt lạnh lùng nghiêm nghị của nam nhân.
-Rất nhanh sau đó, Tôn Tri phủ một đường chạy vội tới, cung kính chắp tay:
-“Không biết Nhiếp Chính Vương đột nhiên triệu hạ quan đến là có việc gì?”
-Phụ thân à, đương nhiên là chuyện tốt~
-Chuyện tốt bằng trời!
-Sở Đệ Trì lạnh lùng nhìn ông như lưỡi kiếm:
-“Tôn Tri phủ ngày thường chính là dạy dỗ nữ nhi như vậy sao? Bản vương và Tạ tiểu thư chẳng qua chỉ không dùng bữa sáng cùng nhau mà thôi, Tôn tiểu thư đã ở sau lưng đặt điều bôi nhọ Tạ tiểu thư. Hay là thế này, cái chức Tri phủ của ngươi cũng đừng làm nữa, cả nhà cùng nhau đi gánh hát đi.”
-Tôn Tri phủ sợ đến hai chân mềm nhũn, lập tức quỳ sụp xuống đất:
-“Hạ quan không biết tiểu nữ phạm phải lỗi gì. Xin Nhiếp Chính Vương niệm tình nó lần đầu phạm lỗi mà khai ân!”
-Tôn Ngọc Tuyết càng như bị sét đánh ngang đầu.
-Không phải muốn cưới nàng sao?
-Vì sao lại phạt nàng?
-Vì sao?
-Chẳng phải hắn đã cãi nhau với Tạ Vãn Nguyệt rồi sao?
-Tối qua nàng rõ ràng tận mắt nhìn thấy hai người tan cuộc trong không vui!
-Trong đại sảnh, Sở Ly nghe thấy động tĩnh liền nghiêng đầu nhìn sang. Ánh mắt đầu tiên liền bắt gặp người nam nhân lãnh ngạo ấy, lại nhớ tới chuyện hắn cả đêm không trở về...
-Trên mặt vẫn bất động thanh sắc, nàng đứng dậy bước ra:
-“Đây là... xảy ra chuyện gì vậy?” Ẩn bớt</p>
+            <p>Chương 293: Cả nhà đi gánh hát đi</p>
+<p>Sở Ly cầm khăn tay lên, chậm rãi lau khóe môi:</p>
+<p>“Tôn tiểu thư nói vậy là khách sáo rồi. Nhiếp Chính Vương không phải vật sở hữu của ta, không có chuyện đem ra trao đổi với nhau.”</p>
+<p>Khóe mắt Tôn Ngọc Tuyết giấu không nổi ý cười.</p>
+<p>Vậy...</p>
+<p>Ý nàng là đồng ý rồi?</p>
+<p>Thật là tốt quá!</p>
+<p>“Biểu ca, ta chợt nhớ ra còn chút việc, huynh cứ ngồi đây chốc lát, lát nữa ta sẽ quay lại.”</p>
+<p>Liễu Thắng Nam tự nhiên mừng rỡ khôn xiết. Đợi Tôn Ngọc Tuyết rời đi, ánh mắt vừa kinh diễm vừa thèm khát lập tức không chờ nổi mà rơi lên người Sở Ly:</p>
+<p>“Tạ tiểu thư, tại hạ là Liễu Thắng Nam, xin được ra mắt.”</p>
+<p>Dung mạo hắn chỉ ở mức bình thường, đôi mắt hẹp dài cứ nhìn chòng chọc vào Sở Ly, ánh mắt không hề che giấu chút nào.</p>
+<p>Sở Ly thần sắc bình thản:</p>
+<p>“Tạ Vãn Nguyệt.”</p>
+<p>“Phải, tại hạ biết khuê danh của Tạ tiểu thư, quả là một cái tên rất hay. Vãn Nguyệt... Vãn Nguyệt... tựa trăng sáng thanh khiết.”</p>
+<p>Liễu Thắng Nam vừa nói, vừa kéo ghế, ngồi sát bên cạnh Sở Ly.</p>
+<p>Vừa đến gần, dường như đã ngửi thấy mùi hương thoang thoảng trên người nàng, khiến hắn say đến đầu óc trống rỗng, lâng lâng như muốn ngất.</p>
+<p>Thơm quá.</p>
+<p>Đẹp quá.</p>
+<p>“Tại hạ năm nay vừa đỗ Cử nhân, phụ thân là phú thương ở thành Thiên Thủy, mẫu thân là thân muội muội của Tri phủ thành Thiên Thủy, là biểu huynh muội với Tôn Ngọc Tuyết. Gia sản trong nhà phong hậu, cẩm y ngọc thực, gấm vóc lụa là, hưởng mãi không hết, tiêu mãi không cạn...”</p>
+<p>Lải nhải.</p>
+<p>Hắn say sưa liệt kê từng điều kiện của mình.</p>
+<p>Không phải hắn khoác lác, chỉ với điều kiện và dung mạo của hắn, tương lai nhất định tiền đồ vô lượng. Biết bao nữ nhân mong được gả cho hắn, nhưng hắn chẳng để mắt đến ai.</p>
+<p>Phu nhân của hắn nhất định phải là mỹ nhân đẹp nhất thiên hạ!</p>
+<p>Chỉ cần gả cho hắn, cả đời hưởng không hết phúc, tiêu không hết bạc, quả thực là tổ tiên cũng phải bốc khói xanh mới cầu được vận may ấy!</p>
+<p>Khóe mắt Sở Ly nhàn nhạt quét qua hắn, nhìn dáng vẻ mê mẩn đến không tự kiềm chế nổi ấy, thần sắc vẫn bình thản, nâng chén trà lên nhấp một ngụm.</p>
+<p>Nàng chỉ là cãi với Hoàng thúc vài câu mà thôi.</p>
+<p>Chỉ là cãi nhau, đâu phải phạm thiên điều.</p>
+<p>Đồng thời.</p>
+<p>Ở một nơi khác.</p>
+<p>Sau khi rời khỏi tiền sảnh, Tôn Ngọc Tuyết không giấu nổi niềm vui trong lòng, bước nhanh về phía thư phòng ở Tây sương.</p>
+<p>“Tuyết Nhi?”</p>
+<p>Tôn Tri phủ vừa từ hành lang đi tới, thấy hướng nàng đi liền hỏi:</p>
+<p>“Con đến thư phòng làm gì? Bên đó là nơi Nhiếp Chính Vương cùng các vị phó tướng nghị sự, con là cô nương, chớ nên tự tiện xông vào.”</p>
+<p>“Phụ thân yên tâm, con không vào đâu.”</p>
+<p>“Ừ.”</p>
+<p>Khóe môi Tôn Ngọc Tuyết vẫn giấu ý cười. Đợi phụ thân đi xa, nàng lập tức co chân chạy vào thư phòng.</p>
+<p>Rầm!</p>
+<p>Cửa bị đẩy bật ra.</p>
+<p>Sau án thư, Sở Đệ Trì lập tức ngẩng đầu, hàng mày sắc bén quét tới, khiến sống lưng Tôn Ngọc Tuyết cứng đờ, giống như có hai thanh kiếm bắn thẳng vào người, làm nụ cười trên mặt nàng đông cứng:</p>
+<p>“Nhiếp... Nhiếp Chính Vương...”</p>
+<p>Mấy vị phó tướng đều cúi đầu.</p>
+<p>Kinh Ảnh và Trọng Phong đứng bên cạnh cũng không lên tiếng.</p>
+<p>Tôn Ngọc Tuyết rất nhanh đã trấn định tinh thần, nở nụ cười ngây thơ ngọt ngào:</p>
+<p>“Đây là nhà của ta, cũng là thư phòng của phụ thân ta. Chắc Nhiếp Chính Vương sẽ không trách Tuyết Nhi tự tiện đến đây chứ?”</p>
+<p>Nàng ngẩng khuôn mặt nhỏ, nụ cười ngọt đến mê người.</p>
+<p>Vệ phó tướng cúi đầu, đưa tay ôm trán, thầm nghĩ:</p>
+<p>Ý của Tôn tiểu thư là... Nhiếp Chính Vương chiếm chỗ của Tôn Tri phủ?</p>
+<p>Vương phó tướng cũng thở dài trong lòng:</p>
+<p>Ôi trời đất...</p>
+<p>Tôn tiểu thư nói vậy, chẳng lẽ là muốn đuổi Nhiếp Chính Vương đi?</p>
+<p>Sở Đệ Trì khép phong mật thư lại:</p>
+<p>“Có việc gì?”</p>
+<p>Tôn Ngọc Tuyết e lệ như đóa hoa khép cánh dưới trăng, giọng nói ngọt lịm:</p>
+<p>“Tuyết Nhi không có việc gì quan trọng cả~”</p>
+<p>“Kinh Ảnh, tiễn khách.”</p>
+<p>“Chỉ là lúc nãy trên đường tới đây, ta vô tình nhìn thấy vài chuyện không nên thấy.”</p>
+<p>“Chuyện gì?”</p>
+<p>Tôn Ngọc Tuyết nắm góc áo, dáng vẻ nửa muốn nói nửa muốn thôi, khiến người ta không khỏi chú ý:</p>
+<p>“Thật ra cũng chẳng phải chuyện gì quan trọng.”</p>
+<p>“Kinh Ảnh.”</p>
+<p>Kinh Ảnh vừa định bước lên, Tôn Ngọc Tuyết vội vàng nói:</p>
+<p>“Chính là... ta nhìn thấy Tạ tiểu thư!”</p>
+<p>Sở Đệ Trì nhíu mày.</p>
+<p>Nhớ lại chuyện tối qua...</p>
+<p>Đôi môi mỏng khẽ mím, cố nén tính tình hỏi:</p>
+<p>“Chuyện gì?”</p>
+<p>Tôn Ngọc Tuyết đỏ mặt:</p>
+<p>“Cũng chẳng phải chuyện gì quan trọng, chỉ mong Nhiếp Chính Vương đừng để lời Tuyết Nhi trong lòng.”</p>
+<p>“Kinh Ảnh.”</p>
+<p>“Nhưng Tuyết Nhi nghĩ đi nghĩ lại, vẫn quyết định phải nói cho Nhiếp Chính Vương biết.”</p>
+<p>Sở Đệ Trì bóp nát bức mật thư trong tay, trầm giọng:</p>
+<p>“...Chuyện gì?”</p>
+<p>“Chính là Tạ tiểu thư đang ở cùng biểu ca của ta! Ôi nha!”</p>
+<p>Nói xong, nàng ngượng ngùng che mặt, xấu hổ vô cùng.</p>
+<p>“...”</p>
+<p>Mấy vị phó tướng trên trán đồng loạt hiện lên mấy vạch đen, thật sự không nỡ nhìn bộ dáng nửa muốn nói nửa muốn thôi đầy kiểu cách của Tôn tiểu thư.</p>
+<p>Quan trọng hơn là, bọn họ đang bàn quân vụ.</p>
+<p>Một trường hợp quan trọng như vậy, Tôn tiểu thư lại cứ ngang nhiên xông vào...</p>
+<p>Khóe mắt Kinh Ảnh giật liên hồi.</p>
+<p>Muốn nói thì nói, không muốn nói thì thôi, bày nhiều trò làm gì.</p>
+<p>Trọng Phong vẫn không đổi sắc mặt, trầm ổn như núi.</p>
+<p>Sở Đệ Trì lạnh giọng cất lời:</p>
+<p>“Vậy sao?”</p>
+<p>“Ta tận mắt nhìn thấy bọn họ ngồi cùng nhau, vừa nói vừa cười, chẳng biết đang nói chuyện gì mà vui vẻ đến vậy, ngay cả ta cũng không chen vào được. Nếu Nhiếp Chính Vương không tin, chi bằng tự mình đến xem?”</p>
+<p>Kinh Ảnh cẩn thận nhìn sắc mặt chủ tử:</p>
+<p>“Chủ tử?”</p>
+<p>Trong đôi mắt bình tĩnh của Sở Đệ Trì không nhìn ra chút dao động nào. Hắn phủi vụn giấy trong tay, đứng dậy:</p>
+<p>“Hôm nay bàn đến đây thôi. Dương phó tướng và Lý quân sư lập tức áp giải dược liệu đến hội quân với Tiêu Đô đốc.”</p>
+<p>“Tuân lệnh!”</p>
+<p>“Giải tán.”</p>
+<p>Tôn Ngọc Tuyết mừng thầm trong lòng. Đợi mọi người đã rời đi gần hết, nàng mới dẫn Nhiếp Chính Vương đến tiền viện, đứng ngoài cửa đại sảnh rồi chỉ tay từ xa:</p>
+<p>“Người xem.”</p>
+<p>Nàng đâu có nói dối chứ?</p>
+<p>Tạ tiểu thư đang ngồi cùng biểu ca, nói cười vô cùng vui vẻ.</p>
+<p>Nàng không khỏi chân thành cảm thán:</p>
+<p>“Tạ tiểu thư dung nhan vô song, biểu ca phong quang tễ nguyệt. Hai người ngồi cạnh nhau, quả thật giống một đôi trai tài gái sắc.”</p>
+<p>Sở Đệ Trì đứng ngoài cửa, khẽ cười nhạt một tiếng:</p>
+<p>“Gọi Tôn Tri phủ tới đây.”</p>
+<p>Tôn Ngọc Tuyết hơi nghi hoặc.</p>
+<p>Gọi phụ thân đến làm gì?</p>
+<p>Chẳng lẽ... là thất vọng về Tạ Vãn Nguyệt, muốn lập tức tuyên bố cưới nàng làm trắc phi?</p>
+<p>Không phải chứ!</p>
+<p>Nàng còn nửa năm nữa mới cập kê, còn chưa đến tuổi xuất giá.</p>
+<p>Chẳng lẽ Nhiếp Chính Vương lại thích nàng đến vậy?</p>
+<p>Thật ngượng chết mất!</p>
+<p>Tôn Ngọc Tuyết đỏ bừng mặt, e lệ siết chặt góc áo, hai má nóng ran, không dám nhìn gương mặt lạnh lùng nghiêm nghị của nam nhân.</p>
+<p>Rất nhanh sau đó, Tôn Tri phủ một đường chạy vội tới, cung kính chắp tay:</p>
+<p>“Không biết Nhiếp Chính Vương đột nhiên triệu hạ quan đến là có việc gì?”</p>
+<p>Phụ thân à, đương nhiên là chuyện tốt~</p>
+<p>Chuyện tốt bằng trời!</p>
+<p>Sở Đệ Trì lạnh lùng nhìn ông như lưỡi kiếm:</p>
+<p>“Tôn Tri phủ ngày thường chính là dạy dỗ nữ nhi như vậy sao? Bản vương và Tạ tiểu thư chẳng qua chỉ không dùng bữa sáng cùng nhau mà thôi, Tôn tiểu thư đã ở sau lưng đặt điều bôi nhọ Tạ tiểu thư. Hay là thế này, cái chức Tri phủ của ngươi cũng đừng làm nữa, cả nhà cùng nhau đi gánh hát đi.”</p>
+<p>Tôn Tri phủ sợ đến hai chân mềm nhũn, lập tức quỳ sụp xuống đất:</p>
+<p>“Hạ quan không biết tiểu nữ phạm phải lỗi gì. Xin Nhiếp Chính Vương niệm tình nó lần đầu phạm lỗi mà khai ân!”</p>
+<p>Tôn Ngọc Tuyết càng như bị sét đánh ngang đầu.</p>
+<p>Không phải muốn cưới nàng sao?</p>
+<p>Vì sao lại phạt nàng?</p>
+<p>Vì sao?</p>
+<p>Chẳng phải hắn đã cãi nhau với Tạ Vãn Nguyệt rồi sao?</p>
+<p>Tối qua nàng rõ ràng tận mắt nhìn thấy hai người tan cuộc trong không vui!</p>
+<p>Trong đại sảnh, Sở Ly nghe thấy động tĩnh liền nghiêng đầu nhìn sang. Ánh mắt đầu tiên liền bắt gặp người nam nhân lãnh ngạo ấy, lại nhớ tới chuyện hắn cả đêm không trở về...</p>
+<p>Trên mặt vẫn bất động thanh sắc, nàng đứng dậy bước ra:</p>
+<p>“Đây là... xảy ra chuyện gì vậy?” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_292.html" class="btn">‹ Trước</a>
             <a href="chuong_294.html" class="btn">Sau ›</a>
         </div>
@@ -251,15 +259,11 @@ Trên mặt vẫn bất động thanh sắc, nàng đứng dậy bước ra:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -271,11 +275,11 @@ Trên mặt vẫn bất động thanh sắc, nàng đứng dậy bước ra:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 170</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,125 +62,134 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 170</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_169.html" class="btn">‹ Trước</a>
             <a href="chuong_171.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 170: Hoàng thúc, người đưa ta về nhà đi
-Sao có thể như vậy!
-Chính tay hắn đã đút cho Tiểu Cửu uống một lượng lớn thuốc mê, sao nàng lại có thể tỉnh trước thời gian?
-Rốt cuộc đã xảy ra chuyện gì?
-Không hiểu vì sao, hô hấp của Sở Dạ Ly trở nên gấp gáp, trước mắt quay cuồng, tựa như đột nhiên phát bệnh nặng, đầu nặng chân nhẹ, ngột ngạt đến mức gần như không thể thở nổi.
-Hắn chống tay lên yên ngựa, siết chặt vạt áo nơi tâm khẩu, bên tai vang lên từng hồi ù ù.
-Dường như không còn nghe rõ bất cứ thứ gì.
-Tiếng chém giết, tiếng kêu thảm, tiếng binh khí va chạm… tất cả đều dần dần lùi xa, không còn lọt vào tai…
-Đúng lúc ấy, một tràng tiếng vó ngựa sắc bén xé toạc màn đêm, rõ ràng truyền đến.
-Cộp! Cộp!
-Hắn ngẩng đầu nhìn.
-Lại trông thấy Tướng Dạ.
-Đó là chiến mã của Nhiếp Chính Vương!
-Nó đạp gió lao tới trong đêm, phi nhanh như bay. Người đàn ông trên lưng ngựa nghiêng người lao xuống, lăn khỏi yên, ôm lấy thân hình gầy yếu bị một mũi tên xuyên thấu tâm khẩu.
-“Tiểu Cửu!”
-Giờ khắc ấy, thanh âm của người đàn ông ấy tựa như mũi tên bắn tới từ ngoài trăm dặm, xuyên qua chiến hỏa ngập trời, xuyên qua rừng đao mưa kiếm, vượt qua mấy chục trượng khoảng cách, vô cùng rõ ràng, vô cùng khắc sâu truyền vào tai Sở Dạ Ly.
-Tiểu… Cửu?
-Tiểu Cửu?
-Trong khoảnh khắc chợt ý thức được điều gì, sắc mặt hắn bỗng trắng bệch.
-Nhìn Sở Đệ Trì ôm chặt thân ảnh “tên đầu bếp” kia, đầu óc hắn hoàn toàn trống rỗng.
-Trong đầu chỉ còn lại tiếng mũi tên vừa rồi xé gió lao đi.
-Là tiếng mũi tên do chính tay hắn bắn ra.
-Tiểu Cửu?
-Không…
-Sao có thể…
-Bàn tay Sở Dạ Ly run rẩy, siết chặt dây cương, vậy mà vẫn ngã khỏi lưng ngựa.
-“Dạ Ly ca ca!”
-Thác Bạt Minh Nguyệt vội vàng nhảy xuống ngựa, đỡ lấy hai tay hắn, nhưng chỉ cảm thấy lạnh lẽo như thi thể, còn đang run lên dữ dội.
-Hắn ngẩng đôi mắt tan nát lên, chỉ nhìn thấy Sở Đệ Trì ôm người ấy, đau đớn đến tột cùng.
-“Tiểu Cửu!!”
-Chỉ trong chớp mắt, thế trận của hắn hoàn toàn hỗn loạn, tan tác không còn mảnh giáp.
-Đôi mắt Sở Đệ Trì đỏ ngầu, hai tay gắt gao đè lên vết thương nơi tâm khẩu của nàng, nhưng máu dường như có sinh mệnh, len qua từng kẽ ngón tay hắn, cuồn cuộn trào ra.
-“Đừng… Tiểu Cửu, đừng…”
-Hắn hoảng loạn đè chặt hơn, lại đè chặt hơn.
-Sở Ly vậy mà không cảm thấy đau, chỉ cảm thấy rất mệt.
-Rất mệt.
-Nàng gắng gượng mở mắt, chỉ nhìn thấy gương mặt mơ hồ của người đàn ông.
-Nàng khóc sao?
-Nàng đâu thấy đau, sao lại khóc chứ?
-“Hoàng… hoàng thúc…”
-Nàng khó nhọc giơ tay, từ trong ngực lấy ra tờ mật chỉ đã bị máu nhuộm đỏ.
-“Người… cất… cất kỹ nó…”
-“Tiểu Cửu, đừng nói nữa, đừng động khí, để ta cầm máu cho nàng!”
-Người đàn ông điên cuồng vận nội lực, không ngừng truyền vào cơ thể nàng.
-“Khụ… khụ khụ!”
-Vô dụng rồi.
-Nàng buồn ngủ quá.
-Nàng sắp không chống đỡ nổi nữa.
-“Hoàng thúc… nhất định phải cất kỹ… đừng để Nam Man… được như ý… đừng để bọn chúng tàn sát con dân của chúng ta… Nam Man dùng vu cổ… làm nhiều điều bất nghĩa… diệt sạch nhân tính… đây là… phương pháp khắc chế bọn chúng…”
-“Tiểu Cửu!”
-Hai tay Sở Đệ Trì đẫm máu, nước mắt hoảng loạn rơi lã chã.
-“Đừng nói với ta những điều ấy! Ta không cần giang sơn, cũng không cần xã tắc lê dân, ta chẳng cần gì nữa!”
-Có được bao nhiêu vật chất đi chăng nữa, cũng không có được thứ mình thật sự mong muốn.
-Cho dù đoạt được cả thiên hạ… cũng chỉ là uổng phí.
-“Người… đừng nói mê… Đại Sở… đều trông cậy vào người… ta biết… người hận ta… khụ khụ…”
-Sở Ly yếu ớt tựa trong lòng hắn, ho ra một ngụm máu.
-“Ta biết… vì phụ hoàng đã đối xử với người rất nhiều điều bất công… xin lỗi… phụ hoàng quả thực có lỗi với người… hoàng thúc…”
-“Ta không hận nàng, Tiểu Cửu, ta không hận nàng!”
-Hắn sai rồi!
-Tất cả đều là lỗi của hắn!
-“Hoàng thúc… ta buồn ngủ quá… ta rất muốn đến Giang Nam… nằm trên ghế mây… ngắm hoa sen, phơi nắng… Hoàng thúc… ta không muốn ở Nam Man… người… đưa ta về nhà đi… đưa ta về nhà…” Ẩn bớt</p>
+            <p>Chương 170: Hoàng thúc, người đưa ta về nhà đi</p>
+<p>Sao có thể như vậy!</p>
+<p>Chính tay hắn đã đút cho Tiểu Cửu uống một lượng lớn thuốc mê, sao nàng lại có thể tỉnh trước thời gian?</p>
+<p>Rốt cuộc đã xảy ra chuyện gì?</p>
+<p>Không hiểu vì sao, hô hấp của Sở Dạ Ly trở nên gấp gáp, trước mắt quay cuồng, tựa như đột nhiên phát bệnh nặng, đầu nặng chân nhẹ, ngột ngạt đến mức gần như không thể thở nổi.</p>
+<p>Hắn chống tay lên yên ngựa, siết chặt vạt áo nơi tâm khẩu, bên tai vang lên từng hồi ù ù.</p>
+<p>Dường như không còn nghe rõ bất cứ thứ gì.</p>
+<p>Tiếng chém giết, tiếng kêu thảm, tiếng binh khí va chạm… tất cả đều dần dần lùi xa, không còn lọt vào tai…</p>
+<p>Đúng lúc ấy, một tràng tiếng vó ngựa sắc bén xé toạc màn đêm, rõ ràng truyền đến.</p>
+<p>Cộp! Cộp!</p>
+<p>Hắn ngẩng đầu nhìn.</p>
+<p>Lại trông thấy Tướng Dạ.</p>
+<p>Đó là chiến mã của Nhiếp Chính Vương!</p>
+<p>Nó đạp gió lao tới trong đêm, phi nhanh như bay. Người đàn ông trên lưng ngựa nghiêng người lao xuống, lăn khỏi yên, ôm lấy thân hình gầy yếu bị một mũi tên xuyên thấu tâm khẩu.</p>
+<p>“Tiểu Cửu!”</p>
+<p>Giờ khắc ấy, thanh âm của người đàn ông ấy tựa như mũi tên bắn tới từ ngoài trăm dặm, xuyên qua chiến hỏa ngập trời, xuyên qua rừng đao mưa kiếm, vượt qua mấy chục trượng khoảng cách, vô cùng rõ ràng, vô cùng khắc sâu truyền vào tai Sở Dạ Ly.</p>
+<p>Tiểu… Cửu?</p>
+<p>Tiểu Cửu?</p>
+<p>Trong khoảnh khắc chợt ý thức được điều gì, sắc mặt hắn bỗng trắng bệch.</p>
+<p>Nhìn Sở Đệ Trì ôm chặt thân ảnh “tên đầu bếp” kia, đầu óc hắn hoàn toàn trống rỗng.</p>
+<p>Trong đầu chỉ còn lại tiếng mũi tên vừa rồi xé gió lao đi.</p>
+<p>Là tiếng mũi tên do chính tay hắn bắn ra.</p>
+<p>Tiểu Cửu?</p>
+<p>Không…</p>
+<p>Sao có thể…</p>
+<p>Bàn tay Sở Dạ Ly run rẩy, siết chặt dây cương, vậy mà vẫn ngã khỏi lưng ngựa.</p>
+<p>“Dạ Ly ca ca!”</p>
+<p>Thác Bạt Minh Nguyệt vội vàng nhảy xuống ngựa, đỡ lấy hai tay hắn, nhưng chỉ cảm thấy lạnh lẽo như thi thể, còn đang run lên dữ dội.</p>
+<p>Hắn ngẩng đôi mắt tan nát lên, chỉ nhìn thấy Sở Đệ Trì ôm người ấy, đau đớn đến tột cùng.</p>
+<p>“Tiểu Cửu!!”</p>
+<p>Chỉ trong chớp mắt, thế trận của hắn hoàn toàn hỗn loạn, tan tác không còn mảnh giáp.</p>
+<p>Đôi mắt Sở Đệ Trì đỏ ngầu, hai tay gắt gao đè lên vết thương nơi tâm khẩu của nàng, nhưng máu dường như có sinh mệnh, len qua từng kẽ ngón tay hắn, cuồn cuộn trào ra.</p>
+<p>“Đừng… Tiểu Cửu, đừng…”</p>
+<p>Hắn hoảng loạn đè chặt hơn, lại đè chặt hơn.</p>
+<p>Sở Ly vậy mà không cảm thấy đau, chỉ cảm thấy rất mệt.</p>
+<p>Rất mệt.</p>
+<p>Nàng gắng gượng mở mắt, chỉ nhìn thấy gương mặt mơ hồ của người đàn ông.</p>
+<p>Nàng khóc sao?</p>
+<p>Nàng đâu thấy đau, sao lại khóc chứ?</p>
+<p>“Hoàng… hoàng thúc…”</p>
+<p>Nàng khó nhọc giơ tay, từ trong ngực lấy ra tờ mật chỉ đã bị máu nhuộm đỏ.</p>
+<p>“Người… cất… cất kỹ nó…”</p>
+<p>“Tiểu Cửu, đừng nói nữa, đừng động khí, để ta cầm máu cho nàng!”</p>
+<p>Người đàn ông điên cuồng vận nội lực, không ngừng truyền vào cơ thể nàng.</p>
+<p>“Khụ… khụ khụ!”</p>
+<p>Vô dụng rồi.</p>
+<p>Nàng buồn ngủ quá.</p>
+<p>Nàng sắp không chống đỡ nổi nữa.</p>
+<p>“Hoàng thúc… nhất định phải cất kỹ… đừng để Nam Man… được như ý… đừng để bọn chúng tàn sát con dân của chúng ta… Nam Man dùng vu cổ… làm nhiều điều bất nghĩa… diệt sạch nhân tính… đây là… phương pháp khắc chế bọn chúng…”</p>
+<p>“Tiểu Cửu!”</p>
+<p>Hai tay Sở Đệ Trì đẫm máu, nước mắt hoảng loạn rơi lã chã.</p>
+<p>“Đừng nói với ta những điều ấy! Ta không cần giang sơn, cũng không cần xã tắc lê dân, ta chẳng cần gì nữa!”</p>
+<p>Có được bao nhiêu vật chất đi chăng nữa, cũng không có được thứ mình thật sự mong muốn.</p>
+<p>Cho dù đoạt được cả thiên hạ… cũng chỉ là uổng phí.</p>
+<p>“Người… đừng nói mê… Đại Sở… đều trông cậy vào người… ta biết… người hận ta… khụ khụ…”</p>
+<p>Sở Ly yếu ớt tựa trong lòng hắn, ho ra một ngụm máu.</p>
+<p>“Ta biết… vì phụ hoàng đã đối xử với người rất nhiều điều bất công… xin lỗi… phụ hoàng quả thực có lỗi với người… hoàng thúc…”</p>
+<p>“Ta không hận nàng, Tiểu Cửu, ta không hận nàng!”</p>
+<p>Hắn sai rồi!</p>
+<p>Tất cả đều là lỗi của hắn!</p>
+<p>“Hoàng thúc… ta buồn ngủ quá… ta rất muốn đến Giang Nam… nằm trên ghế mây… ngắm hoa sen, phơi nắng… Hoàng thúc… ta không muốn ở Nam Man… người… đưa ta về nhà đi… đưa ta về nhà…” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_169.html" class="btn">‹ Trước</a>
             <a href="chuong_171.html" class="btn">Sau ›</a>
         </div>
@@ -189,15 +197,11 @@ Tất cả đều là lỗi của hắn!
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -209,11 +213,11 @@ Tất cả đều là lỗi của hắn!
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

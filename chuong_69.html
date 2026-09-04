@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 69</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,289 +62,298 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 69</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_68.html" class="btn">‹ Trước</a>
             <a href="chuong_70.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 69: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 69: Ngươi, Sở Ly, thì là thứ gì?
-Hoàng cung.
-Buổi thượng triều hôm nay tại Đại Thành điện, trọng điểm đều xoay quanh chuyện của Thất hoàng tử.
-Thất hoàng tử gây ra bê bối xấu hổ, quần thần đồng loạt dâng tấu đàn hặc, đúng là tường đổ mọi người cùng xô. Những đại thần trước đây từng hết lòng ủng hộ Thất hoàng tử, giờ phút này đều không dám hé nửa lời.
-Bởi vậy, buổi triều hôm nay có ba điểm chính:
-Thứ nhất, Thất hoàng tử và Dương An thị nằm trên cùng một chiếc giường, cho dù giữa hai người không xảy ra chuyện gì, thì đó cũng là sự thật đã định.
-Thứ hai, Tĩnh Hoàng Quý phi đã bị giáng xuống thành Tĩnh Quý phi.
-Thứ ba, để giữ được Thất hoàng tử, Phương Quốc công lấy chính tước vị Quốc công của mình làm vật đánh đổi. Quốc công bị giáng xuống Quận công, đổi lấy việc Thất hoàng tử chỉ bị đưa vào Hoàng gia Học uyển, nghiêm khắc học tập, tu thân dưỡng đức, coi như hình phạt.
-Đến đây, tan triều.
-Tâm tình Sở Hoàng rất tốt.
-Ông đặc biệt sai người của Nội vụ phủ truyền lệnh đến Kính Sự phòng, treo lục đầu bài của Ôn phi và Hân phi lên.
-Vương Đức Phúc cười đầy ẩn ý:
-— Bao nhiêu năm qua rồi, Hoàng thượng vẫn thương yêu Ôn phi nương nương cùng Hân phi nương nương nhất.
-Sở Hoàng cười nói:
-— Ngươi không hiểu.
-— Trẫm thích nhất dáng vẻ hai người họ vì trẫm mà tranh giành ghen tuông.
-Hân phi sinh Bát hoàng tử.
-Ôn phi sinh Cửu hoàng tử.
-Hai đứa trẻ ấy đều vô tâm với chí lớn, tâm tính đơn thuần.
-Cho dù ông thiên vị Hân phi và Ôn phi đến đâu, cũng sẽ không dẫn tới tranh đấu quyền mưu.
-Nhưng những phi tần khác thì không được.
-Ví như…
-Tĩnh Quý phi.
-Một khi ông sủng ái quá mức, khiến thế lực nhà họ Phương càng thêm lớn mạnh, thì Phương gia nhất định sẽ dốc toàn lực phò tá Thất hoàng tử đoạt đích.
-Vương Đức Phúc vừa dâng trà vừa cười:
-— Lão nô ngu dốt, nào hiểu được những điều ấy?
-— Chỉ biết sau khi Thất hoàng tử bị xử phạt, Hoàng thượng cũng có thể thở phào nhẹ nhõm.
-— Phải.
-Nhiếp Chính Vương lần này cũng coi như giúp ông một việc không nhỏ.
-Tĩnh Quý phi bị giáng vị.
-Quốc công phủ bị tước bớt tước vị.
-Khí thế của bọn họ đã bị dội cho tắt ngấm.
-Mấy năm tới, hẳn có thể yên ổn.
-Chỉ là…
-Chiến sự Nam Cương đến nay vẫn chưa dẹp yên, khiến ông vô cùng đau đầu.
-— Trẫm trước đó đã phái Lý tướng quân và Vương tướng quân xuất chinh, nhưng vẫn không thể trấn áp được phản loạn Nam Cương.
-— Nếu có thể tìm được một lý do thích hợp, khiến Nhiếp Chính Vương lần nữa xuất chinh thì tốt biết bao.
-Chỉ khi Nhiếp Chính Vương thay ông thu phục Nam Cương…
-Ông mới có thể thật sự yên tâm.
-Đến lúc ấy…
-Nhiếp Chính Vương cũng không còn giá trị lợi dụng.
-Có thể yên tâm trừ khử.
-Nam Cương chưa thu phục ngày nào, ông vẫn còn bị bó tay bó chân ngày ấy.
-Vương Đức Phúc nói:
-— Hoàng thượng sao không trả lại binh quyền Hắc Giáp Vệ cho Nhiếp Chính Vương?
-— Lại ban thêm ân huệ.
-— Thiên tử rủ lòng thương xót, nghĩ rằng Nhiếp Chính Vương sẽ cam tâm tình nguyện vì người mà tận trung.
-Sở Hoàng lắc đầu:
-— Thả hổ về rừng, hậu hoạn vô cùng.
-Binh quyền đã trao ra…
-Muốn thu lại lần nữa sẽ rất khó.
-Ông phải nghĩ một biện pháp.
-Vừa không để Nhiếp Chính Vương nắm binh quyền.
-Lại vẫn khiến hắn cam tâm tình nguyện xuất chinh đánh trận, vì ông mà hiệu lực.
-⸻
-Trên đường lớn.
-Các quan viên lần lượt tan triều.
-Sở Ly và Sở Ngạo Thiên cũng đang trên đường hồi cung.
-Khi hai người đi ngang qua, vừa khéo nghe thấy các quan viên bàn luận:
-— Thất hoàng tử đại thế đã mất rồi.
-— Phải đấy. Trước kia hắn vốn là người có hy vọng kế vị nhất…
-— Phương Quốc công bị giáng tước, Tĩnh Quý phi bị giáng vị. Sau này muốn Đông Sơn tái khởi… e rằng khó lắm.
-— Theo ta thấy, Đại hoàng tử và Tam hoàng tử mới là người có khả năng nhất…
-Sở Ngạo Thiên khẽ động tai, hạ giọng:
-— Cửu đệ.
-— Chỉ sau một đêm, hoàng cung vậy mà đã đổi trời.
-Sở Ly thần sắc bình thản, cố ý làm ra vẻ kinh ngạc:
-— A?
-— Thật sao?
-— Đáng sợ quá.
-Sở Ngạo Thiên thở dài:
-— Ta cũng thấy đáng sợ.
-— Thất hoàng huynh kiêu ngạo như vậy, thế mà cũng ngã xuống.
-— Đủ thấy cuộc tranh đoạt ngôi vị trong hoàng thất tàn khốc đến mức nào.
-— Sau này ta chỉ cầu được làm một Vương gia nhàn tản.
-— Một phủ, hai phòng, ba thê bốn thiếp.
-— Lại thêm năm vạn lượng bổng lộc mỗi năm.
-— Thế là đủ.
-Sở Ly cười:
-— Yêu cầu của Bát hoàng huynh cũng đâu có nhỏ.
-Đúng lúc ấy.
-Một giọng nói già nua vang lên:
-— Bát hoàng tử, Cửu hoàng tử, xin dừng bước.
-Sở Ngạo Thiên vừa nghe thấy giọng nói ấy, lập tức như gai đâm sau lưng.
-Thậm chí đã hình thành phản xạ có điều kiện.
-Co giò…
-Vút một cái…
-Chạy mất.
-Sở Ly đứng nguyên tại chỗ:
-“???”
-Bát hoàng huynh…
-Huynh…
-— Cửu hoàng tử.
-Người kia bước tới.
-Chính là Khương Thái phó.
-Bị bỏ lại một mình, Sở Ly chỉ đành cứng da đầu, chắp hai tay thi lễ:
-— Lão sư.
-Khương Thái phó vừa tan triều.
-Mái tóc đã bạc trắng.
-Trong đôi mắt đục ngầu hiện lên vài phần cảm khái phức tạp.
-— Cửu hoàng tử, tháng này ngài đều không đến Học uyển.
-— Nếu còn tiếp tục như vậy…
-— Lão thần thật sự sợ mình không dạy dỗ tốt ngài.
-— Sau này sẽ…
-Sẽ đi vào vết xe đổ của Thất hoàng tử.
-Trong lòng ông vô cùng hổ thẹn.
-Ban đầu…
-Ông từng kỳ vọng ở Thất hoàng tử biết bao.
-Ai ngờ lại xảy ra chuyện xấu hổ như vậy.
-Việc này khiến ông bừng tỉnh.
-Nhất định phải tận tâm hơn trong việc dạy dỗ Cửu hoàng tử.
-Phải điêu khắc khúc gỗ mục này cho thật tốt.
-Sở Ly giải thích:
-— Lão sư.
-— Con không phải không đến Học uyển.
-— Quyển 《Quần Thư Trị Yếu》 mà lần trước người giao cho con, con vẫn luôn chăm chỉ học thuộc.
-Khương Thái phó lập tức cảm động.
-— Thật sao?
-— Cửu hoàng tử…
-— Ngài chủ động học thuộc sách?
-Ông kích động đến mức nước mắt lưng tròng.
-Đang định khảo sát học vấn.
-Sở Ly bỗng chỉ tay về phía trước:
-— Nhiếp Chính Vương!
-Khương Thái phó lập tức quay đầu.
-Đang định hành lễ.
-Nhưng nhìn khắp trường nhai…
-Làm gì có bóng dáng Nhiếp Chính Vương?
-Quay đầu lại…
-Chỉ thấy Sở Ly đã lật qua đầu tường, chuồn mất dạng.
-— Cửu hoàng tử!
-— Ngài… ngài…
-Ông tức đến mức râu ria run bần bật.
-⸻
-Bên này.
-Sở Ly vượt tường.
-Lướt qua trường nhai.
-Đang định bước vào Ngự hoa viên.
-Đột nhiên…
-Một giọng nói lạnh như băng truyền tới:
-— Sở Ly.
-— Hại ta đến nước này.
-— Ngươi hài lòng chưa?
-Sở Ly ngẩng đầu.
-Chỉ thấy Sở Cảnh Lân mặt đầy vẻ âm trầm.
-Chỉ sau một đêm.
-Cằm hắn đã lún phún râu.
-Đôi mắt đỏ ngầu.
-Trông như một con rắn độc âm hiểm.
-Đáng sợ vô cùng.
-Nàng bình tĩnh hỏi ngược lại:
-— Thất hoàng huynh.
-— Một khi đã nảy sinh ý định hại người…
-— Thì nên chuẩn bị sẵn sàng gánh chịu hậu quả.
-— Nếu ta không tự bảo vệ mình…
-— Hôm nay…
-— Rốt cuộc là ta đã chết?
-— Hay bị mù?
-— Hay bị giam cầm?
-— Hay bị biếm truất?
-Hai mắt Sở Cảnh Lân đầy oán hận:
-— Ta biết ngay là ngươi làm.
-— Ngươi biết tất cả.
-— Sở Ly.
-— Ngươi muốn tranh ngôi Hoàng vị với ta.
-Sở Ly lắc đầu.
-— Thất hoàng huynh.
-— Khương Thái phó là lão sư chung của chúng ta.
-— Người từng dạy chúng ta rằng:
-— “Trăm nhân ắt có quả.”
-— Huynh là học trò mà người luôn hết lời khen ngợi.
-— Chẳng lẽ ngay cả đạo lý ấy cũng không ngộ ra được sao?
-Nàng đã bao giờ tranh Hoàng vị?
-Nếu không phải hắn cứ luôn nhắm vào nàng.
-Ngoài sáng trong tối đủ loại thủ đoạn liên tiếp không dứt.
-Thì sao lại đi đến ngày hôm nay?
-— Huống hồ.
-— Phụ hoàng chỉ bảo Thất hoàng huynh vào Hoàng gia Học uyển học tập, tu thân dưỡng đức.
-— Cũng đâu tính là hình phạt gì nặng.
-Sở Cảnh Lân hận.
-Hận đến cực điểm.
-Bỗng nhiên bật cười.
-— Ta mất lòng người.
-— Mẫu phi mất lòng người.
-— Phương gia cũng mất lòng người.
-— Ta mất quá nhiều thứ.
-— Người bị phạt đâu phải ngươi.
-— Đương nhiên ngươi đứng nói thì không đau lưng.
-— Kim không đâm vào người mình…
-— Thì vĩnh viễn không biết đau!
-Nếu phụ hoàng đã muốn phạt hắn…
-Hắn cũng không ngại khiến mọi chuyện trở nên tệ hại hơn.
-Trong mắt Sở Cảnh Lân bừng lên sát ý rực cháy.
-Hắn đột ngột lao tới.
-Bóp chặt cổ Sở Ly.
-Ấn mạnh nàng lên giả sơn.
-— Ưm…
-— Ngươi, Sở Ly, thì là thứ gì?
-— Ôn phi thì là thứ gì?
-— Chắc cho dù ta giết ngươi…
-— Phụ hoàng cũng sẽ không bắt ta đền mạng!
-— Khụ!
-Sở Ly nắm lấy cổ tay hắn, ra sức giãy giụa.
-Nhưng Sở Cảnh Lân đang lửa giận ngút trời.
-Sát ý đã hoàn toàn nuốt chửng lý trí.
-Hắn chỉ muốn bóp chết Sở Ly.
-Để phát tiết cơn giận chất chứa trong lòng.
-Sở Ly gần như không thể thở nổi.
-Đúng lúc ấy.
-Một luồng khí tức lạnh lẽo xen vào.
-Sở Cảnh Lân bị một chưởng hất lùi mấy bước, ngã nhào xuống đất.
-Sở Ly ôm cổ, ho sặc sụa.
-Ngẩng đầu nhìn nam nhân khoác trường bào màu tử sẫm, trên áo thêu kim mãng bốn vuốt, khí thế ngông cuồng.
-— Hoàng thúc!
-Sở Cảnh Lân hai mắt đỏ hoe.
-— Xin Hoàng thúc làm chủ cho Lân nhi.
-— Lân nhi có ngày hôm nay…
-— Đều là do Sở Ly hại!
-Sở Ly lập tức nói:
-— Ta không hại hắn!
-Sở Đệ Trì quay đầu.
-Liếc nàng một cái.
-— Ngươi có hại hắn hay không…
-— Trong lòng bổn vương lẽ nào lại không rõ? Ẩn bớt</p>
+            <p>Chương 69: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 69: Ngươi, Sở Ly, thì là thứ gì?</p>
+<p>Hoàng cung.</p>
+<p>Buổi thượng triều hôm nay tại Đại Thành điện, trọng điểm đều xoay quanh chuyện của Thất hoàng tử.</p>
+<p>Thất hoàng tử gây ra bê bối xấu hổ, quần thần đồng loạt dâng tấu đàn hặc, đúng là tường đổ mọi người cùng xô. Những đại thần trước đây từng hết lòng ủng hộ Thất hoàng tử, giờ phút này đều không dám hé nửa lời.</p>
+<p>Bởi vậy, buổi triều hôm nay có ba điểm chính:</p>
+<p>Thứ nhất, Thất hoàng tử và Dương An thị nằm trên cùng một chiếc giường, cho dù giữa hai người không xảy ra chuyện gì, thì đó cũng là sự thật đã định.</p>
+<p>Thứ hai, Tĩnh Hoàng Quý phi đã bị giáng xuống thành Tĩnh Quý phi.</p>
+<p>Thứ ba, để giữ được Thất hoàng tử, Phương Quốc công lấy chính tước vị Quốc công của mình làm vật đánh đổi. Quốc công bị giáng xuống Quận công, đổi lấy việc Thất hoàng tử chỉ bị đưa vào Hoàng gia Học uyển, nghiêm khắc học tập, tu thân dưỡng đức, coi như hình phạt.</p>
+<p>Đến đây, tan triều.</p>
+<p>Tâm tình Sở Hoàng rất tốt.</p>
+<p>Ông đặc biệt sai người của Nội vụ phủ truyền lệnh đến Kính Sự phòng, treo lục đầu bài của Ôn phi và Hân phi lên.</p>
+<p>Vương Đức Phúc cười đầy ẩn ý:</p>
+<p>— Bao nhiêu năm qua rồi, Hoàng thượng vẫn thương yêu Ôn phi nương nương cùng Hân phi nương nương nhất.</p>
+<p>Sở Hoàng cười nói:</p>
+<p>— Ngươi không hiểu.</p>
+<p>— Trẫm thích nhất dáng vẻ hai người họ vì trẫm mà tranh giành ghen tuông.</p>
+<p>Hân phi sinh Bát hoàng tử.</p>
+<p>Ôn phi sinh Cửu hoàng tử.</p>
+<p>Hai đứa trẻ ấy đều vô tâm với chí lớn, tâm tính đơn thuần.</p>
+<p>Cho dù ông thiên vị Hân phi và Ôn phi đến đâu, cũng sẽ không dẫn tới tranh đấu quyền mưu.</p>
+<p>Nhưng những phi tần khác thì không được.</p>
+<p>Ví như…</p>
+<p>Tĩnh Quý phi.</p>
+<p>Một khi ông sủng ái quá mức, khiến thế lực nhà họ Phương càng thêm lớn mạnh, thì Phương gia nhất định sẽ dốc toàn lực phò tá Thất hoàng tử đoạt đích.</p>
+<p>Vương Đức Phúc vừa dâng trà vừa cười:</p>
+<p>— Lão nô ngu dốt, nào hiểu được những điều ấy?</p>
+<p>— Chỉ biết sau khi Thất hoàng tử bị xử phạt, Hoàng thượng cũng có thể thở phào nhẹ nhõm.</p>
+<p>— Phải.</p>
+<p>Nhiếp Chính Vương lần này cũng coi như giúp ông một việc không nhỏ.</p>
+<p>Tĩnh Quý phi bị giáng vị.</p>
+<p>Quốc công phủ bị tước bớt tước vị.</p>
+<p>Khí thế của bọn họ đã bị dội cho tắt ngấm.</p>
+<p>Mấy năm tới, hẳn có thể yên ổn.</p>
+<p>Chỉ là…</p>
+<p>Chiến sự Nam Cương đến nay vẫn chưa dẹp yên, khiến ông vô cùng đau đầu.</p>
+<p>— Trẫm trước đó đã phái Lý tướng quân và Vương tướng quân xuất chinh, nhưng vẫn không thể trấn áp được phản loạn Nam Cương.</p>
+<p>— Nếu có thể tìm được một lý do thích hợp, khiến Nhiếp Chính Vương lần nữa xuất chinh thì tốt biết bao.</p>
+<p>Chỉ khi Nhiếp Chính Vương thay ông thu phục Nam Cương…</p>
+<p>Ông mới có thể thật sự yên tâm.</p>
+<p>Đến lúc ấy…</p>
+<p>Nhiếp Chính Vương cũng không còn giá trị lợi dụng.</p>
+<p>Có thể yên tâm trừ khử.</p>
+<p>Nam Cương chưa thu phục ngày nào, ông vẫn còn bị bó tay bó chân ngày ấy.</p>
+<p>Vương Đức Phúc nói:</p>
+<p>— Hoàng thượng sao không trả lại binh quyền Hắc Giáp Vệ cho Nhiếp Chính Vương?</p>
+<p>— Lại ban thêm ân huệ.</p>
+<p>— Thiên tử rủ lòng thương xót, nghĩ rằng Nhiếp Chính Vương sẽ cam tâm tình nguyện vì người mà tận trung.</p>
+<p>Sở Hoàng lắc đầu:</p>
+<p>— Thả hổ về rừng, hậu hoạn vô cùng.</p>
+<p>Binh quyền đã trao ra…</p>
+<p>Muốn thu lại lần nữa sẽ rất khó.</p>
+<p>Ông phải nghĩ một biện pháp.</p>
+<p>Vừa không để Nhiếp Chính Vương nắm binh quyền.</p>
+<p>Lại vẫn khiến hắn cam tâm tình nguyện xuất chinh đánh trận, vì ông mà hiệu lực.</p>
+<p>⸻</p>
+<p>Trên đường lớn.</p>
+<p>Các quan viên lần lượt tan triều.</p>
+<p>Sở Ly và Sở Ngạo Thiên cũng đang trên đường hồi cung.</p>
+<p>Khi hai người đi ngang qua, vừa khéo nghe thấy các quan viên bàn luận:</p>
+<p>— Thất hoàng tử đại thế đã mất rồi.</p>
+<p>— Phải đấy. Trước kia hắn vốn là người có hy vọng kế vị nhất…</p>
+<p>— Phương Quốc công bị giáng tước, Tĩnh Quý phi bị giáng vị. Sau này muốn Đông Sơn tái khởi… e rằng khó lắm.</p>
+<p>— Theo ta thấy, Đại hoàng tử và Tam hoàng tử mới là người có khả năng nhất…</p>
+<p>Sở Ngạo Thiên khẽ động tai, hạ giọng:</p>
+<p>— Cửu đệ.</p>
+<p>— Chỉ sau một đêm, hoàng cung vậy mà đã đổi trời.</p>
+<p>Sở Ly thần sắc bình thản, cố ý làm ra vẻ kinh ngạc:</p>
+<p>— A?</p>
+<p>— Thật sao?</p>
+<p>— Đáng sợ quá.</p>
+<p>Sở Ngạo Thiên thở dài:</p>
+<p>— Ta cũng thấy đáng sợ.</p>
+<p>— Thất hoàng huynh kiêu ngạo như vậy, thế mà cũng ngã xuống.</p>
+<p>— Đủ thấy cuộc tranh đoạt ngôi vị trong hoàng thất tàn khốc đến mức nào.</p>
+<p>— Sau này ta chỉ cầu được làm một Vương gia nhàn tản.</p>
+<p>— Một phủ, hai phòng, ba thê bốn thiếp.</p>
+<p>— Lại thêm năm vạn lượng bổng lộc mỗi năm.</p>
+<p>— Thế là đủ.</p>
+<p>Sở Ly cười:</p>
+<p>— Yêu cầu của Bát hoàng huynh cũng đâu có nhỏ.</p>
+<p>Đúng lúc ấy.</p>
+<p>Một giọng nói già nua vang lên:</p>
+<p>— Bát hoàng tử, Cửu hoàng tử, xin dừng bước.</p>
+<p>Sở Ngạo Thiên vừa nghe thấy giọng nói ấy, lập tức như gai đâm sau lưng.</p>
+<p>Thậm chí đã hình thành phản xạ có điều kiện.</p>
+<p>Co giò…</p>
+<p>Vút một cái…</p>
+<p>Chạy mất.</p>
+<p>Sở Ly đứng nguyên tại chỗ:</p>
+<p>“???”</p>
+<p>Bát hoàng huynh…</p>
+<p>Huynh…</p>
+<p>— Cửu hoàng tử.</p>
+<p>Người kia bước tới.</p>
+<p>Chính là Khương Thái phó.</p>
+<p>Bị bỏ lại một mình, Sở Ly chỉ đành cứng da đầu, chắp hai tay thi lễ:</p>
+<p>— Lão sư.</p>
+<p>Khương Thái phó vừa tan triều.</p>
+<p>Mái tóc đã bạc trắng.</p>
+<p>Trong đôi mắt đục ngầu hiện lên vài phần cảm khái phức tạp.</p>
+<p>— Cửu hoàng tử, tháng này ngài đều không đến Học uyển.</p>
+<p>— Nếu còn tiếp tục như vậy…</p>
+<p>— Lão thần thật sự sợ mình không dạy dỗ tốt ngài.</p>
+<p>— Sau này sẽ…</p>
+<p>Sẽ đi vào vết xe đổ của Thất hoàng tử.</p>
+<p>Trong lòng ông vô cùng hổ thẹn.</p>
+<p>Ban đầu…</p>
+<p>Ông từng kỳ vọng ở Thất hoàng tử biết bao.</p>
+<p>Ai ngờ lại xảy ra chuyện xấu hổ như vậy.</p>
+<p>Việc này khiến ông bừng tỉnh.</p>
+<p>Nhất định phải tận tâm hơn trong việc dạy dỗ Cửu hoàng tử.</p>
+<p>Phải điêu khắc khúc gỗ mục này cho thật tốt.</p>
+<p>Sở Ly giải thích:</p>
+<p>— Lão sư.</p>
+<p>— Con không phải không đến Học uyển.</p>
+<p>— Quyển 《Quần Thư Trị Yếu》 mà lần trước người giao cho con, con vẫn luôn chăm chỉ học thuộc.</p>
+<p>Khương Thái phó lập tức cảm động.</p>
+<p>— Thật sao?</p>
+<p>— Cửu hoàng tử…</p>
+<p>— Ngài chủ động học thuộc sách?</p>
+<p>Ông kích động đến mức nước mắt lưng tròng.</p>
+<p>Đang định khảo sát học vấn.</p>
+<p>Sở Ly bỗng chỉ tay về phía trước:</p>
+<p>— Nhiếp Chính Vương!</p>
+<p>Khương Thái phó lập tức quay đầu.</p>
+<p>Đang định hành lễ.</p>
+<p>Nhưng nhìn khắp trường nhai…</p>
+<p>Làm gì có bóng dáng Nhiếp Chính Vương?</p>
+<p>Quay đầu lại…</p>
+<p>Chỉ thấy Sở Ly đã lật qua đầu tường, chuồn mất dạng.</p>
+<p>— Cửu hoàng tử!</p>
+<p>— Ngài… ngài…</p>
+<p>Ông tức đến mức râu ria run bần bật.</p>
+<p>⸻</p>
+<p>Bên này.</p>
+<p>Sở Ly vượt tường.</p>
+<p>Lướt qua trường nhai.</p>
+<p>Đang định bước vào Ngự hoa viên.</p>
+<p>Đột nhiên…</p>
+<p>Một giọng nói lạnh như băng truyền tới:</p>
+<p>— Sở Ly.</p>
+<p>— Hại ta đến nước này.</p>
+<p>— Ngươi hài lòng chưa?</p>
+<p>Sở Ly ngẩng đầu.</p>
+<p>Chỉ thấy Sở Cảnh Lân mặt đầy vẻ âm trầm.</p>
+<p>Chỉ sau một đêm.</p>
+<p>Cằm hắn đã lún phún râu.</p>
+<p>Đôi mắt đỏ ngầu.</p>
+<p>Trông như một con rắn độc âm hiểm.</p>
+<p>Đáng sợ vô cùng.</p>
+<p>Nàng bình tĩnh hỏi ngược lại:</p>
+<p>— Thất hoàng huynh.</p>
+<p>— Một khi đã nảy sinh ý định hại người…</p>
+<p>— Thì nên chuẩn bị sẵn sàng gánh chịu hậu quả.</p>
+<p>— Nếu ta không tự bảo vệ mình…</p>
+<p>— Hôm nay…</p>
+<p>— Rốt cuộc là ta đã chết?</p>
+<p>— Hay bị mù?</p>
+<p>— Hay bị giam cầm?</p>
+<p>— Hay bị biếm truất?</p>
+<p>Hai mắt Sở Cảnh Lân đầy oán hận:</p>
+<p>— Ta biết ngay là ngươi làm.</p>
+<p>— Ngươi biết tất cả.</p>
+<p>— Sở Ly.</p>
+<p>— Ngươi muốn tranh ngôi Hoàng vị với ta.</p>
+<p>Sở Ly lắc đầu.</p>
+<p>— Thất hoàng huynh.</p>
+<p>— Khương Thái phó là lão sư chung của chúng ta.</p>
+<p>— Người từng dạy chúng ta rằng:</p>
+<p>— “Trăm nhân ắt có quả.”</p>
+<p>— Huynh là học trò mà người luôn hết lời khen ngợi.</p>
+<p>— Chẳng lẽ ngay cả đạo lý ấy cũng không ngộ ra được sao?</p>
+<p>Nàng đã bao giờ tranh Hoàng vị?</p>
+<p>Nếu không phải hắn cứ luôn nhắm vào nàng.</p>
+<p>Ngoài sáng trong tối đủ loại thủ đoạn liên tiếp không dứt.</p>
+<p>Thì sao lại đi đến ngày hôm nay?</p>
+<p>— Huống hồ.</p>
+<p>— Phụ hoàng chỉ bảo Thất hoàng huynh vào Hoàng gia Học uyển học tập, tu thân dưỡng đức.</p>
+<p>— Cũng đâu tính là hình phạt gì nặng.</p>
+<p>Sở Cảnh Lân hận.</p>
+<p>Hận đến cực điểm.</p>
+<p>Bỗng nhiên bật cười.</p>
+<p>— Ta mất lòng người.</p>
+<p>— Mẫu phi mất lòng người.</p>
+<p>— Phương gia cũng mất lòng người.</p>
+<p>— Ta mất quá nhiều thứ.</p>
+<p>— Người bị phạt đâu phải ngươi.</p>
+<p>— Đương nhiên ngươi đứng nói thì không đau lưng.</p>
+<p>— Kim không đâm vào người mình…</p>
+<p>— Thì vĩnh viễn không biết đau!</p>
+<p>Nếu phụ hoàng đã muốn phạt hắn…</p>
+<p>Hắn cũng không ngại khiến mọi chuyện trở nên tệ hại hơn.</p>
+<p>Trong mắt Sở Cảnh Lân bừng lên sát ý rực cháy.</p>
+<p>Hắn đột ngột lao tới.</p>
+<p>Bóp chặt cổ Sở Ly.</p>
+<p>Ấn mạnh nàng lên giả sơn.</p>
+<p>— Ưm…</p>
+<p>— Ngươi, Sở Ly, thì là thứ gì?</p>
+<p>— Ôn phi thì là thứ gì?</p>
+<p>— Chắc cho dù ta giết ngươi…</p>
+<p>— Phụ hoàng cũng sẽ không bắt ta đền mạng!</p>
+<p>— Khụ!</p>
+<p>Sở Ly nắm lấy cổ tay hắn, ra sức giãy giụa.</p>
+<p>Nhưng Sở Cảnh Lân đang lửa giận ngút trời.</p>
+<p>Sát ý đã hoàn toàn nuốt chửng lý trí.</p>
+<p>Hắn chỉ muốn bóp chết Sở Ly.</p>
+<p>Để phát tiết cơn giận chất chứa trong lòng.</p>
+<p>Sở Ly gần như không thể thở nổi.</p>
+<p>Đúng lúc ấy.</p>
+<p>Một luồng khí tức lạnh lẽo xen vào.</p>
+<p>Sở Cảnh Lân bị một chưởng hất lùi mấy bước, ngã nhào xuống đất.</p>
+<p>Sở Ly ôm cổ, ho sặc sụa.</p>
+<p>Ngẩng đầu nhìn nam nhân khoác trường bào màu tử sẫm, trên áo thêu kim mãng bốn vuốt, khí thế ngông cuồng.</p>
+<p>— Hoàng thúc!</p>
+<p>Sở Cảnh Lân hai mắt đỏ hoe.</p>
+<p>— Xin Hoàng thúc làm chủ cho Lân nhi.</p>
+<p>— Lân nhi có ngày hôm nay…</p>
+<p>— Đều là do Sở Ly hại!</p>
+<p>Sở Ly lập tức nói:</p>
+<p>— Ta không hại hắn!</p>
+<p>Sở Đệ Trì quay đầu.</p>
+<p>Liếc nàng một cái.</p>
+<p>— Ngươi có hại hắn hay không…</p>
+<p>— Trong lòng bổn vương lẽ nào lại không rõ? Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_68.html" class="btn">‹ Trước</a>
             <a href="chuong_70.html" class="btn">Sau ›</a>
         </div>
@@ -353,15 +361,11 @@ Liếc nàng một cái.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -373,11 +377,11 @@ Liếc nàng một cái.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

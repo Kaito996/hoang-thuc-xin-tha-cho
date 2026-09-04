@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 107</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,216 +62,225 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 107</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_106.html" class="btn">‹ Trước</a>
             <a href="chuong_108.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 107: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 107: Bá đạo Vương gia phải lòng ta
-Cẩu Bát sai người chuẩn bị năm chậu hoa, mỗi chậu đều đựng đầy đất màu mỡ. Một nắm nhỏ hạt giống được rắc xuống, phủ lên một lớp đất mỏng rồi tưới nước.
-Hai chậu đặt đầu giường, hai chậu đặt ngoài cửa hứng nắng, còn một chậu đặt trên bệ cửa sổ.
-Sáng hôm sau.
-Vừa mở mắt nhìn, nàng đã thấy những mầm non xanh mướt xuyên qua lớp đất mỏng, nhú đầu lên.
-Nảy mầm rồi!
-Quá trình tự tay chăm bón rồi nhìn thấy thành quả ấy mang đến cho nàng niềm vui khó có thể diễn tả thành lời. Nàng lập tức bảo người dời cả năm chậu hoa lên chiếc bàn thấp trước giường, quyết định ngày nào cũng phải ngắm, cẩn thận chăm sóc chúng.
-Buổi chiều, Bạch Cẩm Y tới.
-Trông hắn nhẹ nhàng thanh thoát là thế, vậy mà thò tay vào tay áo một lúc, lại lấy ra mấy quyển thoại bản.
-Chỉ thấy trên bìa ghi những cái tên như 《Bá Đạo Vương Gia Phải Lòng Ta》, 《Bạo Quân Không Cưới Ta Thì Không Được》, 《Ta Sinh Ba Thai Cho Bạo Quân, Bạo Quân Cười Tới Méo Cả Miệng》…
-Sở Ly nhìn mà mừng rỡ vô cùng.
-“Làm sao ngươi biết ta thích đọc mấy thứ này?”
-Đúng là đưa than sưởi ấm giữa ngày tuyết.
-So với những quyển sách cùng chính sử mà Khương Thái phó ngày nào cũng bắt nàng đọc, mấy cuốn thoại bản này thú vị hơn nhiều.
-Mặt Bạch Cẩm Y đỏ bừng, nhất thời không biết nói gì.
-Còn chẳng phải vì nhận người ta nhờ vả sao.
-Đáng chết!
-Lúc hắn ra chợ tìm mua mấy cuốn thoại bản này, nào quên được ánh mắt của đám phụ nhân và các cô nương nhìn mình. Ai nấy hai mắt sáng rực, hận không thể nhào tới lột sạch hắn.
-Một đời anh danh…
-Hủy sạch.
-“Ta không biết.”
-“Nhưng có người biết.”
-Hắn mở miệng nói:
-“Nghe người nào đó kể, có một lần Chiêu Lan điện bị dột mưa, tẩm điện của ngươi bị ướt, tất cả đồ đạc đều được mang ra sân phơi.”
-“Người đó vô tình nhìn thấy… một cái rương lớn đầy thoại bản.”
-Sở Ly mím môi.
-Người nào đó…
-Chẳng phải hắn đang ở Nam Cương sao?
-Trong lòng nàng thoáng rối loạn, nhưng rất nhanh đã lấy lại bình tĩnh, chỉ xem như là quà của Bạch Cẩm Y.
-“Đa tạ.”
-“Ta sẽ chuyển lời cảm tạ của ngươi tới người ấy.”
-Có những cuốn thoại bản này, quãng thời gian dưỡng thương của Sở Ly phong phú hơn hẳn.
-Tuy Khương Thái phó mỗi ngày vẫn không ngừng “mài giũa” nàng, nhưng cũng coi như tìm được niềm vui trong gian khổ.
-Sau bảy tám ngày chăm sóc, mấy chậu hoa nàng trồng cũng đã mọc thành cây non cao chừng bảy tám phân, còn vươn ra hai chiếc lá xanh bé xíu.
-Màu xanh tượng trưng cho sức sống.
-Ngày nào nàng cũng nhìn chúng lớn lên từng chút một, trong lòng vô cùng vui vẻ.
-Đến ngày thứ chín, Bạch Cẩm Y tới, trên tay còn xách theo một cái lồng.
-“Đây là gì?”
-“Thỏ.”
-Thế nhưng khi con thỏ được thả ra, toàn thân lại phủ bộ lông đỏ rực như hồ ly lửa, còn đôi mắt thì xanh lam, hoàn toàn khác với những con thỏ nàng từng thấy.
-“Sao nó lại như vậy?”
-Bạch Cẩm Y cười nói:
-“Đây là giống thỏ đặc hữu của Nam Cương.”
-Sở Ly khẽ ngẩn người.
-Nam Cương…
-Từ nhỏ nàng sinh ra ở Đế đô, lớn lên cũng ở Đế đô, rất hiếm khi rời khỏi nơi này, càng đừng nói tới vùng đất xa xôi như Nam Cương.
-Lần đầu tiên nàng nhận ra…
-Người giỏi còn có người giỏi hơn.
-Ngoài trời còn có trời.
-Nàng vẫn luôn tự cho rằng Đế đô phồn hoa hưng thịnh, vậy mà thế giới bên ngoài lại rộng lớn, xa lạ đến thế.
-Khắp nơi đều là những điều nàng chưa từng nghe, chưa từng thấy.
-Nàng ngẩng đầu nhìn lên.
-Thứ nàng thấy chỉ là một khoảng trời vuông vức.
-Từ trước tới nay…
-Nàng chưa từng biết thế giới bên ngoài rực rỡ đến nhường nào.
-Thì ra…
-Thỏ ở Nam Cương lại có màu đỏ.
-“Con thỏ này rất hiền, hoạt bát, không cắn người, cũng rất dễ nuôi.”
-“Nuôi nó bên cạnh ngươi, cũng coi như có thứ giết thời gian.”
-Bạch Cẩm Y bế con thỏ đặt lên đùi nàng.
-Con thỏ ngẩng cái đầu nhỏ, đôi mắt xanh biếc long lanh đảo qua đảo lại.
-Khi Sở Ly đưa tay véo đôi tai nó, nó ngứa ngáy liền né tránh, đôi tai dài dựng lên rồi lại cụp xuống, dựng lên rồi lại cụp xuống, đáng yêu vô cùng.
-Thế là…
-Nàng bắt đầu nuôi thỏ.
-Đọc thoại bản.
-Cuộc sống cũng coi như nhàn nhã.
-Chỉ tiếc cảnh đẹp chẳng kéo dài.
-Mới được hai canh giờ.
-Con thỏ kia đã ngồi xổm bên chậu hoa, nhóp nhép nhai sạch những mầm non vừa mới nhú.
-“Hoa của ta!”
-Sở Ly biến sắc.
-“Dừng miệng! Dừng miệng!”
-“Đó là hoa của ta!”
-Buổi tối.
-Trên bàn ăn xuất hiện thêm hai món.
-Một đĩa đầu thỏ cay tê.
-Một đĩa thịt thỏ kho.
-…
-Trong thời gian dưỡng thương, Ngũ hoàng tử dường như rất bận, rất ít tới thăm nàng.
-Ngoài Ôn phi và Sở Ngạo Thiên, người tới nhiều nhất chính là Bạch Cẩm Y.
-Hôm ấy.
-Hắn lại mang tới một con hắc ưng oai phong lẫm liệt.
-Con ưng ấy cực kỳ uy vũ, bộ lông đen bóng mượt mà, đôi mắt sắc bén như hắc diệu thạch, chiếc mỏ nhọn tựa hồ có thể mổ thủng cả đá cứng.
-Nó ngẩng cao đầu, tự nhiên toát ra vài phần kiêu ngạo như đang cúi nhìn lãnh địa của mình.
-Bạch Cẩm Y nói:
-“Đây là hắc ưng đưa từ Nam Cương tới.”
-“Nó rất giỏi lượn giữa núi rừng, bất kỳ con mồi nhỏ bé nào cũng không thể thoát khỏi ánh mắt của nó.”
-“Nếu thuần hóa được, nó còn có thể trở thành tín sứ bay ngàn dặm trong một ngày.”
-Dùng còn tốt hơn bồ câu.
-Lại uy phong hơn bồ câu rất nhiều.
-Mang nó đi săn, e rằng còn lợi hại hơn chó săn gấp bội.
-Sở Ly vốn thích những loài vật oai phong bá khí như vậy, vui vẻ nhận lấy, lập tức hạ lệnh:
-“Không cho bất kỳ ai vào quấy rầy.”
-“Ta muốn thuần phục con ưng này.”
-Muốn thuần phục hắc ưng chỉ có một cách.
-Chịu đựng.
-Từ xưa đã có câu “ngao ưng”, phải thức cùng nó, chịu đựng đến khi nó khuất phục mới có thể thuần hóa.
-Thế là…
-Hai đôi mắt đen láy nhìn chằm chằm vào nhau.
-Nàng tựa trên giường.
-Nó đậu trên cây sào dài.
-Một người một ưng không nói một lời, chỉ nhìn chằm chằm đối phương, ngay cả cơm cũng không ăn, cứ thế trừng mắt nhìn nhau không rời.
-Cẩu Bát đứng ngoài cửa, lo lắng không thôi, lại không dám tùy tiện quấy rầy.
-Một ngày.
-Hai ngày.
-Ba ngày…
-Cuối cùng hắn thật sự không chịu nổi nữa.
-Đánh liều nguy cơ mất đầu, hắn mạnh tay đẩy cửa xông vào.
-Kết quả…
-Chỉ thấy con hắc ưng đập cánh loạn xạ, cổ ngoẹo sang một bên rồi ngã vật xuống đất.
-Còn Cửu hoàng tử thì trợn trắng mắt, lè lưỡi, ngủ mê man đến trời đất tối tăm.
-Sở Ly cũng chẳng biết rốt cuộc mình có chịu thắng được con ưng hay không.
-Nàng chỉ nhớ…
-Không biết từ lúc nào mình đã mất ý thức.
-Đến khi tỉnh lại lần nữa…
-Trong cơn mơ hồ, nàng lại nhìn thấy một gương mặt lạnh lùng.
-“Tỉnh rồi?”
-Giọng nam nhân chân thật vang lên, khiến nàng lập tức tỉnh táo, bật ngồi dậy.
-“Hoàng thúc!”
-Sao hắn lại ở đây?
-Nàng theo bản năng nhìn trái nhìn phải, lại liếc ra ngoài cửa sổ, cảnh giác chẳng khác nào một tên trộm.
-Không có thánh chỉ của Hoàng thượng mà tự ý rời Nam Cương…
-Chẳng phải là tội kháng chỉ sao?
-“Chân khá hơn chưa?”
-Hắn ngồi bên mép giường.
-Bộ trường bào màu huyền mặc vẫn còn mặc trên người, nhiều chỗ đã nhăn nhúm.
-Cả người vẫn lạnh lùng thanh lãnh như cũ, nhưng lại mang theo vài phần phong trần mệt mỏi.
-Hắn…
-Đã thúc ngựa ngày đêm trở về.
-Sở Ly ôm chăn, dè dặt nhìn hắn.
-“Ừm…”
-“Đang yên đang lành, sao lại ngã từ trên bậc thềm xuống?”
-“Có người đẩy ta!”
-Câu này…
-Đến cả mẫu phi nàng cũng chưa từng nói.
-Bởi nàng biết, không có chứng cứ thì căn bản sẽ chẳng ai tin.
-Huống hồ hôm đó nàng còn uống rượu.
-Nhưng từ nhỏ đến lớn, uống rượu, nghe hí, xem diễn, nàng đã chơi biết bao trò.
-Nàng còn chưa say đến mức tự làm gãy chân mình!
-Nói xong, Sở Ly mới nhận ra mình nói những lời này cũng vô ích.
-Hắn làm sao tin được?
-Thế nhưng…
-Sở Đệ Trì khẽ kéo lại góc chăn cho nàng, thấp giọng nói:
-“Ta sẽ phái người điều tra.”
-Sở Ly sững người.
-“Hoàng thúc… ta chỉ thuận miệng nói thôi.”
-Vậy mà…
-Hắn lại tin nàng.
-——————
-Tiêu đề mấy quyển thoại bản gửi đến là thay cho mấy lời tỏ tình đấy nhỉ 
- Ẩn bớt</p>
+            <p>Chương 107: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 107: Bá đạo Vương gia phải lòng ta</p>
+<p>Cẩu Bát sai người chuẩn bị năm chậu hoa, mỗi chậu đều đựng đầy đất màu mỡ. Một nắm nhỏ hạt giống được rắc xuống, phủ lên một lớp đất mỏng rồi tưới nước.</p>
+<p>Hai chậu đặt đầu giường, hai chậu đặt ngoài cửa hứng nắng, còn một chậu đặt trên bệ cửa sổ.</p>
+<p>Sáng hôm sau.</p>
+<p>Vừa mở mắt nhìn, nàng đã thấy những mầm non xanh mướt xuyên qua lớp đất mỏng, nhú đầu lên.</p>
+<p>Nảy mầm rồi!</p>
+<p>Quá trình tự tay chăm bón rồi nhìn thấy thành quả ấy mang đến cho nàng niềm vui khó có thể diễn tả thành lời. Nàng lập tức bảo người dời cả năm chậu hoa lên chiếc bàn thấp trước giường, quyết định ngày nào cũng phải ngắm, cẩn thận chăm sóc chúng.</p>
+<p>Buổi chiều, Bạch Cẩm Y tới.</p>
+<p>Trông hắn nhẹ nhàng thanh thoát là thế, vậy mà thò tay vào tay áo một lúc, lại lấy ra mấy quyển thoại bản.</p>
+<p>Chỉ thấy trên bìa ghi những cái tên như 《Bá Đạo Vương Gia Phải Lòng Ta》, 《Bạo Quân Không Cưới Ta Thì Không Được》, 《Ta Sinh Ba Thai Cho Bạo Quân, Bạo Quân Cười Tới Méo Cả Miệng》…</p>
+<p>Sở Ly nhìn mà mừng rỡ vô cùng.</p>
+<p>“Làm sao ngươi biết ta thích đọc mấy thứ này?”</p>
+<p>Đúng là đưa than sưởi ấm giữa ngày tuyết.</p>
+<p>So với những quyển sách cùng chính sử mà Khương Thái phó ngày nào cũng bắt nàng đọc, mấy cuốn thoại bản này thú vị hơn nhiều.</p>
+<p>Mặt Bạch Cẩm Y đỏ bừng, nhất thời không biết nói gì.</p>
+<p>Còn chẳng phải vì nhận người ta nhờ vả sao.</p>
+<p>Đáng chết!</p>
+<p>Lúc hắn ra chợ tìm mua mấy cuốn thoại bản này, nào quên được ánh mắt của đám phụ nhân và các cô nương nhìn mình. Ai nấy hai mắt sáng rực, hận không thể nhào tới lột sạch hắn.</p>
+<p>Một đời anh danh…</p>
+<p>Hủy sạch.</p>
+<p>“Ta không biết.”</p>
+<p>“Nhưng có người biết.”</p>
+<p>Hắn mở miệng nói:</p>
+<p>“Nghe người nào đó kể, có một lần Chiêu Lan điện bị dột mưa, tẩm điện của ngươi bị ướt, tất cả đồ đạc đều được mang ra sân phơi.”</p>
+<p>“Người đó vô tình nhìn thấy… một cái rương lớn đầy thoại bản.”</p>
+<p>Sở Ly mím môi.</p>
+<p>Người nào đó…</p>
+<p>Chẳng phải hắn đang ở Nam Cương sao?</p>
+<p>Trong lòng nàng thoáng rối loạn, nhưng rất nhanh đã lấy lại bình tĩnh, chỉ xem như là quà của Bạch Cẩm Y.</p>
+<p>“Đa tạ.”</p>
+<p>“Ta sẽ chuyển lời cảm tạ của ngươi tới người ấy.”</p>
+<p>Có những cuốn thoại bản này, quãng thời gian dưỡng thương của Sở Ly phong phú hơn hẳn.</p>
+<p>Tuy Khương Thái phó mỗi ngày vẫn không ngừng “mài giũa” nàng, nhưng cũng coi như tìm được niềm vui trong gian khổ.</p>
+<p>Sau bảy tám ngày chăm sóc, mấy chậu hoa nàng trồng cũng đã mọc thành cây non cao chừng bảy tám phân, còn vươn ra hai chiếc lá xanh bé xíu.</p>
+<p>Màu xanh tượng trưng cho sức sống.</p>
+<p>Ngày nào nàng cũng nhìn chúng lớn lên từng chút một, trong lòng vô cùng vui vẻ.</p>
+<p>Đến ngày thứ chín, Bạch Cẩm Y tới, trên tay còn xách theo một cái lồng.</p>
+<p>“Đây là gì?”</p>
+<p>“Thỏ.”</p>
+<p>Thế nhưng khi con thỏ được thả ra, toàn thân lại phủ bộ lông đỏ rực như hồ ly lửa, còn đôi mắt thì xanh lam, hoàn toàn khác với những con thỏ nàng từng thấy.</p>
+<p>“Sao nó lại như vậy?”</p>
+<p>Bạch Cẩm Y cười nói:</p>
+<p>“Đây là giống thỏ đặc hữu của Nam Cương.”</p>
+<p>Sở Ly khẽ ngẩn người.</p>
+<p>Nam Cương…</p>
+<p>Từ nhỏ nàng sinh ra ở Đế đô, lớn lên cũng ở Đế đô, rất hiếm khi rời khỏi nơi này, càng đừng nói tới vùng đất xa xôi như Nam Cương.</p>
+<p>Lần đầu tiên nàng nhận ra…</p>
+<p>Người giỏi còn có người giỏi hơn.</p>
+<p>Ngoài trời còn có trời.</p>
+<p>Nàng vẫn luôn tự cho rằng Đế đô phồn hoa hưng thịnh, vậy mà thế giới bên ngoài lại rộng lớn, xa lạ đến thế.</p>
+<p>Khắp nơi đều là những điều nàng chưa từng nghe, chưa từng thấy.</p>
+<p>Nàng ngẩng đầu nhìn lên.</p>
+<p>Thứ nàng thấy chỉ là một khoảng trời vuông vức.</p>
+<p>Từ trước tới nay…</p>
+<p>Nàng chưa từng biết thế giới bên ngoài rực rỡ đến nhường nào.</p>
+<p>Thì ra…</p>
+<p>Thỏ ở Nam Cương lại có màu đỏ.</p>
+<p>“Con thỏ này rất hiền, hoạt bát, không cắn người, cũng rất dễ nuôi.”</p>
+<p>“Nuôi nó bên cạnh ngươi, cũng coi như có thứ giết thời gian.”</p>
+<p>Bạch Cẩm Y bế con thỏ đặt lên đùi nàng.</p>
+<p>Con thỏ ngẩng cái đầu nhỏ, đôi mắt xanh biếc long lanh đảo qua đảo lại.</p>
+<p>Khi Sở Ly đưa tay véo đôi tai nó, nó ngứa ngáy liền né tránh, đôi tai dài dựng lên rồi lại cụp xuống, dựng lên rồi lại cụp xuống, đáng yêu vô cùng.</p>
+<p>Thế là…</p>
+<p>Nàng bắt đầu nuôi thỏ.</p>
+<p>Đọc thoại bản.</p>
+<p>Cuộc sống cũng coi như nhàn nhã.</p>
+<p>Chỉ tiếc cảnh đẹp chẳng kéo dài.</p>
+<p>Mới được hai canh giờ.</p>
+<p>Con thỏ kia đã ngồi xổm bên chậu hoa, nhóp nhép nhai sạch những mầm non vừa mới nhú.</p>
+<p>“Hoa của ta!”</p>
+<p>Sở Ly biến sắc.</p>
+<p>“Dừng miệng! Dừng miệng!”</p>
+<p>“Đó là hoa của ta!”</p>
+<p>Buổi tối.</p>
+<p>Trên bàn ăn xuất hiện thêm hai món.</p>
+<p>Một đĩa đầu thỏ cay tê.</p>
+<p>Một đĩa thịt thỏ kho.</p>
+<p>…</p>
+<p>Trong thời gian dưỡng thương, Ngũ hoàng tử dường như rất bận, rất ít tới thăm nàng.</p>
+<p>Ngoài Ôn phi và Sở Ngạo Thiên, người tới nhiều nhất chính là Bạch Cẩm Y.</p>
+<p>Hôm ấy.</p>
+<p>Hắn lại mang tới một con hắc ưng oai phong lẫm liệt.</p>
+<p>Con ưng ấy cực kỳ uy vũ, bộ lông đen bóng mượt mà, đôi mắt sắc bén như hắc diệu thạch, chiếc mỏ nhọn tựa hồ có thể mổ thủng cả đá cứng.</p>
+<p>Nó ngẩng cao đầu, tự nhiên toát ra vài phần kiêu ngạo như đang cúi nhìn lãnh địa của mình.</p>
+<p>Bạch Cẩm Y nói:</p>
+<p>“Đây là hắc ưng đưa từ Nam Cương tới.”</p>
+<p>“Nó rất giỏi lượn giữa núi rừng, bất kỳ con mồi nhỏ bé nào cũng không thể thoát khỏi ánh mắt của nó.”</p>
+<p>“Nếu thuần hóa được, nó còn có thể trở thành tín sứ bay ngàn dặm trong một ngày.”</p>
+<p>Dùng còn tốt hơn bồ câu.</p>
+<p>Lại uy phong hơn bồ câu rất nhiều.</p>
+<p>Mang nó đi săn, e rằng còn lợi hại hơn chó săn gấp bội.</p>
+<p>Sở Ly vốn thích những loài vật oai phong bá khí như vậy, vui vẻ nhận lấy, lập tức hạ lệnh:</p>
+<p>“Không cho bất kỳ ai vào quấy rầy.”</p>
+<p>“Ta muốn thuần phục con ưng này.”</p>
+<p>Muốn thuần phục hắc ưng chỉ có một cách.</p>
+<p>Chịu đựng.</p>
+<p>Từ xưa đã có câu “ngao ưng”, phải thức cùng nó, chịu đựng đến khi nó khuất phục mới có thể thuần hóa.</p>
+<p>Thế là…</p>
+<p>Hai đôi mắt đen láy nhìn chằm chằm vào nhau.</p>
+<p>Nàng tựa trên giường.</p>
+<p>Nó đậu trên cây sào dài.</p>
+<p>Một người một ưng không nói một lời, chỉ nhìn chằm chằm đối phương, ngay cả cơm cũng không ăn, cứ thế trừng mắt nhìn nhau không rời.</p>
+<p>Cẩu Bát đứng ngoài cửa, lo lắng không thôi, lại không dám tùy tiện quấy rầy.</p>
+<p>Một ngày.</p>
+<p>Hai ngày.</p>
+<p>Ba ngày…</p>
+<p>Cuối cùng hắn thật sự không chịu nổi nữa.</p>
+<p>Đánh liều nguy cơ mất đầu, hắn mạnh tay đẩy cửa xông vào.</p>
+<p>Kết quả…</p>
+<p>Chỉ thấy con hắc ưng đập cánh loạn xạ, cổ ngoẹo sang một bên rồi ngã vật xuống đất.</p>
+<p>Còn Cửu hoàng tử thì trợn trắng mắt, lè lưỡi, ngủ mê man đến trời đất tối tăm.</p>
+<p>Sở Ly cũng chẳng biết rốt cuộc mình có chịu thắng được con ưng hay không.</p>
+<p>Nàng chỉ nhớ…</p>
+<p>Không biết từ lúc nào mình đã mất ý thức.</p>
+<p>Đến khi tỉnh lại lần nữa…</p>
+<p>Trong cơn mơ hồ, nàng lại nhìn thấy một gương mặt lạnh lùng.</p>
+<p>“Tỉnh rồi?”</p>
+<p>Giọng nam nhân chân thật vang lên, khiến nàng lập tức tỉnh táo, bật ngồi dậy.</p>
+<p>“Hoàng thúc!”</p>
+<p>Sao hắn lại ở đây?</p>
+<p>Nàng theo bản năng nhìn trái nhìn phải, lại liếc ra ngoài cửa sổ, cảnh giác chẳng khác nào một tên trộm.</p>
+<p>Không có thánh chỉ của Hoàng thượng mà tự ý rời Nam Cương…</p>
+<p>Chẳng phải là tội kháng chỉ sao?</p>
+<p>“Chân khá hơn chưa?”</p>
+<p>Hắn ngồi bên mép giường.</p>
+<p>Bộ trường bào màu huyền mặc vẫn còn mặc trên người, nhiều chỗ đã nhăn nhúm.</p>
+<p>Cả người vẫn lạnh lùng thanh lãnh như cũ, nhưng lại mang theo vài phần phong trần mệt mỏi.</p>
+<p>Hắn…</p>
+<p>Đã thúc ngựa ngày đêm trở về.</p>
+<p>Sở Ly ôm chăn, dè dặt nhìn hắn.</p>
+<p>“Ừm…”</p>
+<p>“Đang yên đang lành, sao lại ngã từ trên bậc thềm xuống?”</p>
+<p>“Có người đẩy ta!”</p>
+<p>Câu này…</p>
+<p>Đến cả mẫu phi nàng cũng chưa từng nói.</p>
+<p>Bởi nàng biết, không có chứng cứ thì căn bản sẽ chẳng ai tin.</p>
+<p>Huống hồ hôm đó nàng còn uống rượu.</p>
+<p>Nhưng từ nhỏ đến lớn, uống rượu, nghe hí, xem diễn, nàng đã chơi biết bao trò.</p>
+<p>Nàng còn chưa say đến mức tự làm gãy chân mình!</p>
+<p>Nói xong, Sở Ly mới nhận ra mình nói những lời này cũng vô ích.</p>
+<p>Hắn làm sao tin được?</p>
+<p>Thế nhưng…</p>
+<p>Sở Đệ Trì khẽ kéo lại góc chăn cho nàng, thấp giọng nói:</p>
+<p>“Ta sẽ phái người điều tra.”</p>
+<p>Sở Ly sững người.</p>
+<p>“Hoàng thúc… ta chỉ thuận miệng nói thôi.”</p>
+<p>Vậy mà…</p>
+<p>Hắn lại tin nàng.</p>
+<p>——————</p>
+<p>Tiêu đề mấy quyển thoại bản gửi đến là thay cho mấy lời tỏ tình đấy nhỉ</p>
+<p>Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_106.html" class="btn">‹ Trước</a>
             <a href="chuong_108.html" class="btn">Sau ›</a>
         </div>
@@ -280,15 +288,11 @@ Tiêu đề mấy quyển thoại bản gửi đến là thay cho mấy lời t�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -300,11 +304,11 @@ Tiêu đề mấy quyển thoại bản gửi đến là thay cho mấy lời t�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

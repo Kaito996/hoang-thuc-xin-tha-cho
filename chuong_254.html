@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 254</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,140 +62,149 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 254</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_253.html" class="btn">‹ Trước</a>
             <a href="chuong_255.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 254: Cửu đệ biến thành Cửu muội
-“?”
-Hắn chỉ là chấn kinh đến mức nhất thời mất tiếng.
-Sở Ngạo Thiên nuốt khan, hồi lâu mới tìm lại được giọng nói của mình: “Ngươi… ngươi trông rất giống Cửu đệ của ta.”
-“Bát Hoàng huynh, ta chính là Sở Ly.”
-“Đến giọng nói cũng giống hệt.”
-“Ta chính là.”
-“Biểu cảm cũng y như đúc.”
-“…”
-Sở Ly cảm thấy hắn quả thực vẫn hơi ngốc. Con người khi chịu phải cú chấn kinh quá lớn, đầu óc sẽ trở nên trống rỗng, mất đi năng lực suy nghĩ bình thường.
-Trầm ngâm nửa giây.
-“Bát Hoàng huynh, còn nhớ chuyện huynh năm tuổi từng đái dầm không? Huynh sợ bị Hân phi nương nương trách phạt, đã dùng miệng liếm khô…”
-“Ưm!”
-Sở Ngạo Thiên đột nhiên bịt chặt miệng nàng, đôi mắt gần như trừng ra khỏi hốc:
-“Ta khinh!”
-Nơi đông người thế này, lời đó đâu thể tùy tiện nói bừa.
-“Ngươi thật sự là Sở Ly?”
-Sở Ly gạt tay hắn ra: “Hàng thật giá thật.”
-Hắn không dám tin, vừa đưa tay định sờ ngực nàng thì—— bốp!
-Sở Đệ Trì đánh hắn: “Tay ngươi đặt đi đâu đấy?”
-Sở Ngạo Thiên đau đớn ôm tay, thần sắc có vài phần ấm ức: “Hoàng thúc, ta chỉ muốn xem nàng có phải giả hay không. Sao nàng lại biến thành nữ tử? Ta cũng muốn biến.”
-“Nàng vốn dĩ đã là nữ tử, là ngươi ngu ngốc, hơn mười năm qua vẫn không phát hiện mà thôi.”
-“Á?”
-Cửu đệ vốn dĩ là Cửu muội?
-Ông trời ơi!
-Bảo sao hồi nhỏ Cửu muội cứ nhất quyết không chịu thi xem ai tiểu xa hơn với hắn.
-Mỗi lần hắn không cần dùng tay đỡ mà vẫn có thể tiểu vừa cao vừa xa, mẫu phi đều khen hắn lợi hại.
-Sở Ngạo Thiên bị đả kích liên tiếp đến mức mất tiếng:
-“Là Cửu muội… Cửu muội… thì ra là ta ngu… Hoàng thúc thông minh như vậy, nhất định đã phát hiện từ rất nhiều năm trước rồi nhỉ?”
-Người vừa mất tiếng đột nhiên biến thành Sở Đệ Trì: “…”
-Sở Đệ Trì bỗng nhiên nhìn hắn cực kỳ không thuận mắt: “Thân là Vương gia một nước, xuất hành không mang hộ vệ thì thôi, đến cả cảnh giác cơ bản nhất cũng không có. Chỉ một tên tiểu tốt đã đánh ngất, bắt giữ được ngươi.”
-Nếu đổi thành thế hệ của hắn, không biết đã chết bao nhiêu lần rồi.
-Môi trường quá an nhàn, quả nhiên là cái nôi nuôi phế một con người.
-Sở Ngạo Thiên giải thích: “Hoàng thúc, không phải như vậy, là vì ta nhận được tin tức của Cửu muội…”
-“Có nhiều lý do hơn nữa, đứng trước sinh tử cũng không phải lý do.”
-Sở Đệ Trì lạnh giọng cắt lời:
-“Bản vương hiểu ngươi, vậy kẻ đối địch với ngươi chẳng lẽ cũng sẽ hiểu ngươi? Bản vương khoan thứ cho ngươi, nhưng khi nguy hiểm thật sự ập đến, vào thời khắc sinh tử, ai sẽ khoan thứ cho ngươi?”
-Giọng Sở Ngạo Thiên đột nhiên im bặt, lúc này mới ý thức được sự việc nghiêm trọng đến mức nào.
-Là hắn…
-Là hắn sơ suất…
-Không hiểu vì sao, mấy ngày không gặp, Sở Ly cảm thấy Hoàng thúc đối với Sở Ngạo Thiên nghiêm khắc và khắt khe hơn hẳn.
-Nếu là trước đây, Hoàng thúc chưa bao giờ hỏi han hay quản nhiều chuyện của Sở Ngạo Thiên, càng không dạy hắn những đạo lý an thân lập mệnh này.
-“Đang nói chuyện gì vậy?”
-Đúng lúc này, Tiêu Dạ Hành và Sơ Tam mang cơm canh nóng hổi tới.
-“Nhàn vương điện hạ, đồ ăn đã hâm nóng rồi.”
-Sở Ngạo Thiên vừa hay đang đói, mắt lập tức sáng lên, đang định co chân chạy thì—
-“Hửm?” Ngón trỏ đang cong lại của Sở Đệ Trì gõ lên bàn đá.
-Một chân Sở Ngạo Thiên vừa bước ra lập tức cứng đờ…
-“Ta… ta vẫn chưa đói… Tiêu Đô đốc, cứ để đó trước đi.”
-Có rất nhiều chuyện, Sở Đệ Trì chỉ dùng lời nói suông dạy hắn thì ngược lại không thể dạy được. Phải thông qua từng chuyện thực tế xảy ra, tiến hành nhìn lại, hắn mới có thể khắc sâu ấn tượng.
-Ví dụ như chuyện lần này.
-“Đầu còn đau không?”
-Sở Ngạo Thiên sờ sau gáy, có chút thụ sủng nhược kinh: “Đa tạ Hoàng thúc quan tâm, không đau lắm nữa.”
-Sở Đệ Trì ngồi ngay ngắn, nhìn hắn: “Tối qua ngươi không ở trong cung đàng hoàng đọc sách, vậy làm sao nhận được tin tức của Tiểu Cửu?”
-Chuyện này…
-Sở Ngạo Thiên hơi do dự:
-“Hoàng thúc… ta… ta có người đưa tin…”
-“Người đưa tin nào?”
-“Chính… chính là người bán dế ở Tây nhai… Cứ cách một ngày, hắn lại nhờ người đưa dế vào cung cho ta chơi…”
-Nhìn ánh mắt Hoàng thúc dần trở nên uy nghiêm, giọng hắn cũng càng lúc càng nhỏ, suýt chút nữa bật khóc.
-Hoàng thúc à!
-Thật sự không thể trách hắn được!
-Ngày ngày thượng triều, phê tấu chương, tiếp kiến đại thần, phê tấu chương, đọc sách, phê tấu chương, những ngày tháng ấy đã chiếm hết toàn bộ cuộc đời hắn. Nếu đến cả đấu dế, chọi gà để thư giãn mua vui cũng không được nữa, đời hắn chẳng phải đã biến thành một con trâu ngựa rồi sao.
-Sở Đệ Trì hỏi: “Người đưa tin này họ tên gì? Bối cảnh thế nào? Lai lịch ra sao? Gia thế thế nào?”
-“Ta không biết, hắn chỉ đưa dế cho ta thôi…”
-“Không biết?”
-Sở Đệ Trì cười lạnh:
-“Ngươi cái gì cũng không biết, vậy mà dám gọi hắn là người đưa tin? Dám tin tưởng tình báo hắn mang tới? Hắn bảo ngươi tạo phản, ngươi cũng đi sao?”
-Sở Ngạo Thiên giống như bị một gậy nện thẳng vào đầu, bừng tỉnh ngộ ra.
-“Đứng dưới bức tường kia cho bản vương, nghiêm túc tự kiểm điểm một canh giờ rồi mới được ăn cơm!”
-Sở Ngạo Thiên biết sai rồi!
-Nhưng từ tối qua đến tận bây giờ hắn vẫn chưa ăn gì.
-Hắn cắn môi dưới, khóe mắt ánh lên lệ quang: “Hoàng thúc, có thể về cung tự kiểm điểm không?”
-“Không thể.”
-Sở Ngạo Thiên cuống lên: “Nhưng… nhưng tốt xấu gì ta cũng là Vương gia một nước, chẳng lẽ lại để Tiêu Đô đốc là người ngoài đứng nhìn ta chịu phạt sao?”
-Sở Đệ Trì giơ tay: “Tiêu Dạ Hành, ngồi xuống.” Ẩn bớt</p>
+            <p>Chương 254: Cửu đệ biến thành Cửu muội</p>
+<p>“?”</p>
+<p>Hắn chỉ là chấn kinh đến mức nhất thời mất tiếng.</p>
+<p>Sở Ngạo Thiên nuốt khan, hồi lâu mới tìm lại được giọng nói của mình: “Ngươi… ngươi trông rất giống Cửu đệ của ta.”</p>
+<p>“Bát Hoàng huynh, ta chính là Sở Ly.”</p>
+<p>“Đến giọng nói cũng giống hệt.”</p>
+<p>“Ta chính là.”</p>
+<p>“Biểu cảm cũng y như đúc.”</p>
+<p>“…”</p>
+<p>Sở Ly cảm thấy hắn quả thực vẫn hơi ngốc. Con người khi chịu phải cú chấn kinh quá lớn, đầu óc sẽ trở nên trống rỗng, mất đi năng lực suy nghĩ bình thường.</p>
+<p>Trầm ngâm nửa giây.</p>
+<p>“Bát Hoàng huynh, còn nhớ chuyện huynh năm tuổi từng đái dầm không? Huynh sợ bị Hân phi nương nương trách phạt, đã dùng miệng liếm khô…”</p>
+<p>“Ưm!”</p>
+<p>Sở Ngạo Thiên đột nhiên bịt chặt miệng nàng, đôi mắt gần như trừng ra khỏi hốc:</p>
+<p>“Ta khinh!”</p>
+<p>Nơi đông người thế này, lời đó đâu thể tùy tiện nói bừa.</p>
+<p>“Ngươi thật sự là Sở Ly?”</p>
+<p>Sở Ly gạt tay hắn ra: “Hàng thật giá thật.”</p>
+<p>Hắn không dám tin, vừa đưa tay định sờ ngực nàng thì—— bốp!</p>
+<p>Sở Đệ Trì đánh hắn: “Tay ngươi đặt đi đâu đấy?”</p>
+<p>Sở Ngạo Thiên đau đớn ôm tay, thần sắc có vài phần ấm ức: “Hoàng thúc, ta chỉ muốn xem nàng có phải giả hay không. Sao nàng lại biến thành nữ tử? Ta cũng muốn biến.”</p>
+<p>“Nàng vốn dĩ đã là nữ tử, là ngươi ngu ngốc, hơn mười năm qua vẫn không phát hiện mà thôi.”</p>
+<p>“Á?”</p>
+<p>Cửu đệ vốn dĩ là Cửu muội?</p>
+<p>Ông trời ơi!</p>
+<p>Bảo sao hồi nhỏ Cửu muội cứ nhất quyết không chịu thi xem ai tiểu xa hơn với hắn.</p>
+<p>Mỗi lần hắn không cần dùng tay đỡ mà vẫn có thể tiểu vừa cao vừa xa, mẫu phi đều khen hắn lợi hại.</p>
+<p>Sở Ngạo Thiên bị đả kích liên tiếp đến mức mất tiếng:</p>
+<p>“Là Cửu muội… Cửu muội… thì ra là ta ngu… Hoàng thúc thông minh như vậy, nhất định đã phát hiện từ rất nhiều năm trước rồi nhỉ?”</p>
+<p>Người vừa mất tiếng đột nhiên biến thành Sở Đệ Trì: “…”</p>
+<p>Sở Đệ Trì bỗng nhiên nhìn hắn cực kỳ không thuận mắt: “Thân là Vương gia một nước, xuất hành không mang hộ vệ thì thôi, đến cả cảnh giác cơ bản nhất cũng không có. Chỉ một tên tiểu tốt đã đánh ngất, bắt giữ được ngươi.”</p>
+<p>Nếu đổi thành thế hệ của hắn, không biết đã chết bao nhiêu lần rồi.</p>
+<p>Môi trường quá an nhàn, quả nhiên là cái nôi nuôi phế một con người.</p>
+<p>Sở Ngạo Thiên giải thích: “Hoàng thúc, không phải như vậy, là vì ta nhận được tin tức của Cửu muội…”</p>
+<p>“Có nhiều lý do hơn nữa, đứng trước sinh tử cũng không phải lý do.”</p>
+<p>Sở Đệ Trì lạnh giọng cắt lời:</p>
+<p>“Bản vương hiểu ngươi, vậy kẻ đối địch với ngươi chẳng lẽ cũng sẽ hiểu ngươi? Bản vương khoan thứ cho ngươi, nhưng khi nguy hiểm thật sự ập đến, vào thời khắc sinh tử, ai sẽ khoan thứ cho ngươi?”</p>
+<p>Giọng Sở Ngạo Thiên đột nhiên im bặt, lúc này mới ý thức được sự việc nghiêm trọng đến mức nào.</p>
+<p>Là hắn…</p>
+<p>Là hắn sơ suất…</p>
+<p>Không hiểu vì sao, mấy ngày không gặp, Sở Ly cảm thấy Hoàng thúc đối với Sở Ngạo Thiên nghiêm khắc và khắt khe hơn hẳn.</p>
+<p>Nếu là trước đây, Hoàng thúc chưa bao giờ hỏi han hay quản nhiều chuyện của Sở Ngạo Thiên, càng không dạy hắn những đạo lý an thân lập mệnh này.</p>
+<p>“Đang nói chuyện gì vậy?”</p>
+<p>Đúng lúc này, Tiêu Dạ Hành và Sơ Tam mang cơm canh nóng hổi tới.</p>
+<p>“Nhàn vương điện hạ, đồ ăn đã hâm nóng rồi.”</p>
+<p>Sở Ngạo Thiên vừa hay đang đói, mắt lập tức sáng lên, đang định co chân chạy thì—</p>
+<p>“Hửm?” Ngón trỏ đang cong lại của Sở Đệ Trì gõ lên bàn đá.</p>
+<p>Một chân Sở Ngạo Thiên vừa bước ra lập tức cứng đờ…</p>
+<p>“Ta… ta vẫn chưa đói… Tiêu Đô đốc, cứ để đó trước đi.”</p>
+<p>Có rất nhiều chuyện, Sở Đệ Trì chỉ dùng lời nói suông dạy hắn thì ngược lại không thể dạy được. Phải thông qua từng chuyện thực tế xảy ra, tiến hành nhìn lại, hắn mới có thể khắc sâu ấn tượng.</p>
+<p>Ví dụ như chuyện lần này.</p>
+<p>“Đầu còn đau không?”</p>
+<p>Sở Ngạo Thiên sờ sau gáy, có chút thụ sủng nhược kinh: “Đa tạ Hoàng thúc quan tâm, không đau lắm nữa.”</p>
+<p>Sở Đệ Trì ngồi ngay ngắn, nhìn hắn: “Tối qua ngươi không ở trong cung đàng hoàng đọc sách, vậy làm sao nhận được tin tức của Tiểu Cửu?”</p>
+<p>Chuyện này…</p>
+<p>Sở Ngạo Thiên hơi do dự:</p>
+<p>“Hoàng thúc… ta… ta có người đưa tin…”</p>
+<p>“Người đưa tin nào?”</p>
+<p>“Chính… chính là người bán dế ở Tây nhai… Cứ cách một ngày, hắn lại nhờ người đưa dế vào cung cho ta chơi…”</p>
+<p>Nhìn ánh mắt Hoàng thúc dần trở nên uy nghiêm, giọng hắn cũng càng lúc càng nhỏ, suýt chút nữa bật khóc.</p>
+<p>Hoàng thúc à!</p>
+<p>Thật sự không thể trách hắn được!</p>
+<p>Ngày ngày thượng triều, phê tấu chương, tiếp kiến đại thần, phê tấu chương, đọc sách, phê tấu chương, những ngày tháng ấy đã chiếm hết toàn bộ cuộc đời hắn. Nếu đến cả đấu dế, chọi gà để thư giãn mua vui cũng không được nữa, đời hắn chẳng phải đã biến thành một con trâu ngựa rồi sao.</p>
+<p>Sở Đệ Trì hỏi: “Người đưa tin này họ tên gì? Bối cảnh thế nào? Lai lịch ra sao? Gia thế thế nào?”</p>
+<p>“Ta không biết, hắn chỉ đưa dế cho ta thôi…”</p>
+<p>“Không biết?”</p>
+<p>Sở Đệ Trì cười lạnh:</p>
+<p>“Ngươi cái gì cũng không biết, vậy mà dám gọi hắn là người đưa tin? Dám tin tưởng tình báo hắn mang tới? Hắn bảo ngươi tạo phản, ngươi cũng đi sao?”</p>
+<p>Sở Ngạo Thiên giống như bị một gậy nện thẳng vào đầu, bừng tỉnh ngộ ra.</p>
+<p>“Đứng dưới bức tường kia cho bản vương, nghiêm túc tự kiểm điểm một canh giờ rồi mới được ăn cơm!”</p>
+<p>Sở Ngạo Thiên biết sai rồi!</p>
+<p>Nhưng từ tối qua đến tận bây giờ hắn vẫn chưa ăn gì.</p>
+<p>Hắn cắn môi dưới, khóe mắt ánh lên lệ quang: “Hoàng thúc, có thể về cung tự kiểm điểm không?”</p>
+<p>“Không thể.”</p>
+<p>Sở Ngạo Thiên cuống lên: “Nhưng… nhưng tốt xấu gì ta cũng là Vương gia một nước, chẳng lẽ lại để Tiêu Đô đốc là người ngoài đứng nhìn ta chịu phạt sao?”</p>
+<p>Sở Đệ Trì giơ tay: “Tiêu Dạ Hành, ngồi xuống.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_253.html" class="btn">‹ Trước</a>
             <a href="chuong_255.html" class="btn">Sau ›</a>
         </div>
@@ -204,15 +212,11 @@ Sở Đệ Trì giơ tay: “Tiêu Dạ Hành, ngồi xuống.” Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -224,11 +228,11 @@ Sở Đệ Trì giơ tay: “Tiêu Dạ Hành, ngồi xuống.” Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

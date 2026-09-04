@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 322</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,235 +62,244 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 322</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_321.html" class="btn">‹ Trước</a>
             <a href="chuong_323.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 322: Thần và Nhiếp Chính Vương là cùng một bối phận
-Sở Ngạo Thiên: “?”
-“Ấy?”
-“Sao lại đi rồi?”
-“Tiêu Đô đốc, trẫm vẫn còn lời chưa nói xong.”
-“Thần xin cáo lui.”
-“Đợi đã!”
-Tiêu Dạ Hành chuồn mất.
-Sở Đệ Trì mới bao nhiêu tuổi, cần hắn phụng dưỡng lúc lâm chung sao?
-Huống hồ, Sở Đệ Trì quanh năm chinh chiến sa trường, thân thể cường kiện, mọi phương diện đều vượt trội.
-Ngược lại là Hoàng thượng…
-Uống rượu, vui chơi, chọi dế, ngủ nướng, từ trên xuống dưới đều toát ra dáng vẻ của một vị đại gia trung niên vô ưu vô lo.
-Ai chết trước còn chưa biết được.
-“Hoàng thúc, ta nói sai chỗ nào sao?”
-Sở Ngạo Thiên nhìn Tiêu Dạ Hành bước ra khỏi Đại Thành điện, nghi hoặc quay đầu nhìn sang bên cạnh, kết quả… Hoàng thúc cũng đi mất.
-“Ấy?”
-“Hai người này…”
-“Sao lại bỏ ta ở đây?”
-“Hoàng thúc… Tiêu Đô đốc… Hoàng thúc…”
-Hắn nhìn trái ngó phải.
-“Tiêu Đô đốc… Hoàng thúc… Cái này… cái này…”
-Cuối cùng liền nhấc chân đuổi theo:
-“Tiêu Đô đốc!”
-Ngoài đại điện, ánh dương vẫn rực rỡ, giang sơn muôn đời.
-Tiêu Dạ Hành đứng trên bậc thềm cao, trước mặt là quảng trường hùng vĩ rộng lớn, từng tòa cung điện lớp lớp trùng điệp thu trọn vào tầm mắt. Tám cây long trụ chạm rồng khổng lồ chống đỡ Đại Thành điện, hắn chắp tay sau lưng đứng cạnh long trụ, nghiêng người ngoảnh lại:
-“Hoàng thượng còn có việc gì?”
-Sở Ngạo Thiên nhìn dáng vẻ ấy của hắn, bước chân dần chậm lại.
-Ánh mặt trời như phủ lên người hắn một tầng hào quang vàng nhạt.
-Vốn dĩ hắn đã cao lớn lạnh lùng, xuất thân võ tướng, nhuệ khí trong cốt cách không thể xem thường, giữa mày trầm ổn kiêu ngạo, là cùng một loại người với Sở Đệ Trì.
-Sở Ngạo Thiên bất giác nhớ lại hai năm qua, giang sơn thăng trầm, từng khoảnh khắc Tiêu Đô đốc ở bên cạnh mình.
-Hoàng thúc không có mặt, Tiêu Đô đốc giúp hắn xử lý chính vụ, bảo vệ an nguy, cứu hắn giữa nước sôi lửa bỏng.
-“Hoàng thượng, đây là tấu chương hôm nay.”
-“Hoàng thượng…”
-“Hoàng thượng, thần đã trở về.”
-“Ngôi vị này, ngươi phải ngồi cho vững!”
-Sở Ngạo Thiên từng bước tiến đến, cổ họng hơi nghẹn lại.
-“Ta… Tiêu Đô đốc, ta đã nạp rất nhiều phi tần.”
-Tiêu Dạ Hành khẽ cười:
-“Rất tốt, đó là đạo làm vua vô cùng quan trọng.”
-“Nhưng ta vốn không hề thích họ.”
-“Hoàng thượng không cần thích. Chỉ cần nuôi trong hậu cung để củng cố thế lực tiền triều là đủ. Đời người còn rất dài, sau này rồi cũng sẽ gặp được nữ tử mình yêu.”
-Sở Ngạo Thiên tiến thêm một bước.
-“Còn ngươi thì sao?”
-“Đợi mọi việc kết thúc, thần sẽ trở về Giang Nam.”
-“Ngươi muốn đi?”
-Không hiểu vì sao, lòng Sở Ngạo Thiên bỗng thắt lại.
-Trải qua cung biến cùng sinh tử, hắn cũng không phân rõ đó là tình quân thần hay là giao tình sinh tử, ngược lại càng hoài niệm khoảng thời gian mình còn là Nhàn Vương, Tiêu Đô đốc ngày đêm phò tá bên cạnh.
-Hơi thở hắn có phần nghẹn ngào.
-“Ngươi… có thể ở lại Đế đô, tiếp tục phò tá ta được không?”
-“Ý của ta là…”
-“Ta không thể thiếu ngươi, Tiêu Đô đốc.”
-Lời vừa dứt, như sợ đối phương hiểu lầm, hắn vội vàng bổ sung:
-“Ta rất thưởng thức tài năng và mưu lược của ngươi, sợ ngươi ở lại Giang Nam sẽ bị mai một.”
-“Nếu ngươi ở Đế đô, chúng ta có thể thường xuyên ngồi đối ẩm trà, nhàn gõ quân cờ dưới ánh đèn.”
-Tiêu Dạ Hành xoay người nhìn hắn.
-Bốn mắt giao nhau.
-Đôi đồng tử đen thẳm ấy sâu đến mức không nhìn thấy đáy.
-Bàn tay giấu trong tay áo của Sở Ngạo Thiên từ từ siết chặt.
-Lại siết chặt hơn…
-“Hoàng thượng.”
-“Có!”
-Nam nhân khẽ cười trầm thấp.
-“Có Nhiếp Chính Vương ở đây, nào đến lượt thần?”
-“Huống hồ…”
-“Thần và Nhiếp Chính Vương là cùng một bối phận.”
-“Hoàng thượng thực sự không cần cố kết thân với thần.”
-“Như vậy sẽ hạ thấp bối phận của thần.”
-Nói xong, hắn vỗ nhẹ lên vai Sở Ngạo Thiên rồi ung dung rời đi.
-Sở Ngạo Thiên tiến lên nửa bước, vịn lấy long trụ, nhìn bóng lưng tiêu sái của nam nhân chắp tay sau lưng bước xuống bậc thềm, thất thần khẽ gọi:
-“Tiêu Đô đốc…”
-Lâm Hoa điện.
-Sở Đệ Trì bước tới.
-Thái giám đang định hành lễ thì đã bị hắn phất tay cho lui.
-Hắn nhẹ nhàng đẩy cửa.
-Trên giường nổi lên một khối nhỏ dưới chăn, chính là Sở Ly đang say ngủ.
-Ngay cả khi ngủ, đôi mày liễu của nàng vẫn nhíu chặt, khiến Sở Đệ Trì đau lòng vô cùng.
-Hắn nhẹ vuốt giữa chân mày nàng.
-“Vất vả rồi, Tiểu Cửu.”
-“Ưm…”
-Sở Ly vô thức trở mình.
-Trong mộng, nàng bước vào một khu đình viện thanh u nhã nhặn, nhìn lá dương bay ngợp trời cùng đàn nhạn đang bay về phương nam.
-“Tiểu Cửu.”
-Ai?
-Nàng quay người lại.
-Vậy mà không nhìn rõ gương mặt đối phương.
-“Chúng ta sẽ mãi mãi ở bên nhau chứ?”
-Là ai?
-Nàng chạy lên vài bước, muốn đến gần.
-Đột nhiên sương mù dày đặc bốc lên, che phủ tất cả.
-Đến khi tầm mắt sáng tỏ trở lại…
-Chỉ thấy Sở Ngạo Thiên thuở nhỏ đang trèo cây.
-“Tiểu Cửu, đệ che kín từ đầu đến chân chưa? Ta sắp chọc đây… Á! Ong vò vẽ bay ra rồi! Mau chạy!”
-“A a! Mông huynh bị đốt rồi!”
-“Bát hoàng huynh, huynh mặc quần hở đũng nên mới bị đốt đó!”
-Khung cảnh bỗng xoay chuyển.
-“Tiểu Cửu, đừng cố chấp nữa. Thiên hạ và muội… ta đều muốn.”
-“Một kiếm này xem như trả lại cho muội. Nhưng… muội là của ta.”
-Nàng lùi nửa bước.
-Bất ngờ rơi xuống vực sâu vô tận.
-Bốn phía là máu tươi cùng cảnh tượng hỗn loạn, bên tai vang lên tiếng gào thét phẫn nộ:
-“Ngươi hại chết Trúc ma ma!”
-“Tại sao?”
-“Chẳng phải ngươi từng nói sẽ vĩnh viễn không phản bội ta sao? Tại sao?”
-“Bà ấy chết rồi!”
-“Không phải ta… không phải ta…” Sở Ly mê man lắc đầu, mồ hôi đầy trán.
-“Không phải… không phải…”
-“Tiểu Cửu?”
-Sắc mặt Sở Đệ Trì hơi biến.
-Hắn nắm lấy hai vai nàng.
-“Tiểu Cửu, tỉnh lại!”
-“Không phải ta làm… không phải ta!”
-Sở Ly đột nhiên bật ngồi dậy, đâm thẳng vào lòng nam nhân, hoảng sợ theo bản năng giãy giụa.
-“Là ta!”
-Sở Đệ Trì ôm chặt lấy nàng, dịu dàng dỗ dành:
-“Là ta.”
-“Không sao rồi.”
-“Tiểu Cửu, chỉ là một giấc mộng thôi.”
-Mộng?
-Thật là mộng sao?
-Vì sao…
-Nàng chẳng nhớ được điều gì?
-Sở Ly ngồi trên giường, hô hấp nặng nề, mồ hôi đầm đìa, ánh mắt mờ mịt khiến nàng không phân biệt nổi đâu là mộng, đâu là thực.
-Trúc ma ma…
-Chính là bài vị được phụng thờ trong Nhiếp Chính Vương phủ.
-Nhìn gương mặt đầy lo lắng của nam nhân, có một câu đã lên đến miệng, nàng muốn hỏi, nhưng lại không dám mở lời…
-“Đừng sợ.”
-“Ta ở đây.”
-Sở Đệ Trì nhẹ nhàng vỗ lưng nàng.
-Sở Ly nhanh chóng điều chỉnh cảm xúc.
-“Ta không sao… có lẽ hai ngày nay thần kinh căng thẳng quá thôi…”
-“Ta sẽ bảo Thái y viện kê một đơn thuốc an thần.”
-“Đúng lúc ta cũng không muốn ngủ nữa, để ta tự đến đó một chuyến.”
-“Ta đi cùng nàng.”
-Sở Đệ Trì khom người, cầm đôi hài thêu xỏ vào chân nàng, chỉnh ngay ngắn rồi nắm tay nàng cùng đi ra ngoài.
-Ngoài điện, Trọng Phong bước nhanh tới.
-“Chủ tử, vừa nhận được tin báo, quân Nam Man rút về hướng Cam Châu, dọc đường thông suốt không chút cản trở, rút lui vô cùng thuận lợi!”
-Sở Ly ngẩng đầu.
-“Cam Châu?”
-Nếu nàng nhớ không lầm…
-Phía tây khu vực ấy chính là phong địa của Tiêu Dao Vương.
-Nếu không có gian thần tiếp ứng, Sở Dạ Ly và Thác Bạt Minh Nguyệt sao có thể rút lui thuận lợi như vậy ngay trong lãnh thổ Đại Sở?
-Triều đình Đại Sở này…
-Đã sớm ô yên chướng khí, đến lúc phải thanh lọc thật kỹ rồi!
-“Hoàng thúc, người cứ đi trước đi. Ta đến Thái y viện lấy đơn thuốc rồi sẽ qua.”
-Sở Đệ Trì xoa đầu nàng.
-“Lấy thuốc xong, uống thuốc an thần rồi trở về ngủ bù.”
-“Những việc vặt này không cần nàng phải bận tâm.”
-“Đi đi.”
-“Vâng!”
-Sở Ly hơi nhấc váy, vừa xuống bậc thềm đã chạy đi.
-“Tiểu Cửu.”
-“Hử?”
-Nàng quay đầu.
-Sở Đệ Trì đứng trên bậc thềm, nói:
-“Trước đó nàng đã hứa với ta, đợi mọi chuyện kết thúc sẽ bàn đến chuyện nghị thân…”
-Sở Ly mỉm cười.
-“Phụ mẫu chi mệnh, môi chước chi ngôn. Ta nói không tính.”
-“Nếu người có bản lĩnh… thì nghĩ cách khiến mẫu phi ta gật đầu đi!”
-Dứt lời, nàng liền chạy chậm rời đi.
-Sở Đệ Trì nhìn theo bóng lưng nàng, ý cười lan sâu trong đáy mắt, thỏa mãn đến cực điểm.
-Trọng Phong đứng chờ bên cạnh, hơi cúi đầu xin chỉ thị:
-“Chủ tử, phía quân địch bây giờ có cần đi xử lý không?”
-“Chủ tử?”
-“Chủ tử?”
-Khóe môi mỏng của Sở Đệ Trì khẽ cong, ý cười vẫn chưa tan.
-“Lập tức phái người đến khố phòng chọn hai mươi tám lễ vật thượng hạng.”
-“Ngày mai đến phủ Tạ lão tướng quân, bái phỏng Ôn phi.”
-“Tuân lệnh.”
-“À đúng rồi…”
-“Vừa rồi ngươi nói gì ấy nhỉ?”
-Trọng Phong: “…” Ẩn bớt</p>
+            <p>Chương 322: Thần và Nhiếp Chính Vương là cùng một bối phận</p>
+<p>Sở Ngạo Thiên: “?”</p>
+<p>“Ấy?”</p>
+<p>“Sao lại đi rồi?”</p>
+<p>“Tiêu Đô đốc, trẫm vẫn còn lời chưa nói xong.”</p>
+<p>“Thần xin cáo lui.”</p>
+<p>“Đợi đã!”</p>
+<p>Tiêu Dạ Hành chuồn mất.</p>
+<p>Sở Đệ Trì mới bao nhiêu tuổi, cần hắn phụng dưỡng lúc lâm chung sao?</p>
+<p>Huống hồ, Sở Đệ Trì quanh năm chinh chiến sa trường, thân thể cường kiện, mọi phương diện đều vượt trội.</p>
+<p>Ngược lại là Hoàng thượng…</p>
+<p>Uống rượu, vui chơi, chọi dế, ngủ nướng, từ trên xuống dưới đều toát ra dáng vẻ của một vị đại gia trung niên vô ưu vô lo.</p>
+<p>Ai chết trước còn chưa biết được.</p>
+<p>“Hoàng thúc, ta nói sai chỗ nào sao?”</p>
+<p>Sở Ngạo Thiên nhìn Tiêu Dạ Hành bước ra khỏi Đại Thành điện, nghi hoặc quay đầu nhìn sang bên cạnh, kết quả… Hoàng thúc cũng đi mất.</p>
+<p>“Ấy?”</p>
+<p>“Hai người này…”</p>
+<p>“Sao lại bỏ ta ở đây?”</p>
+<p>“Hoàng thúc… Tiêu Đô đốc… Hoàng thúc…”</p>
+<p>Hắn nhìn trái ngó phải.</p>
+<p>“Tiêu Đô đốc… Hoàng thúc… Cái này… cái này…”</p>
+<p>Cuối cùng liền nhấc chân đuổi theo:</p>
+<p>“Tiêu Đô đốc!”</p>
+<p>Ngoài đại điện, ánh dương vẫn rực rỡ, giang sơn muôn đời.</p>
+<p>Tiêu Dạ Hành đứng trên bậc thềm cao, trước mặt là quảng trường hùng vĩ rộng lớn, từng tòa cung điện lớp lớp trùng điệp thu trọn vào tầm mắt. Tám cây long trụ chạm rồng khổng lồ chống đỡ Đại Thành điện, hắn chắp tay sau lưng đứng cạnh long trụ, nghiêng người ngoảnh lại:</p>
+<p>“Hoàng thượng còn có việc gì?”</p>
+<p>Sở Ngạo Thiên nhìn dáng vẻ ấy của hắn, bước chân dần chậm lại.</p>
+<p>Ánh mặt trời như phủ lên người hắn một tầng hào quang vàng nhạt.</p>
+<p>Vốn dĩ hắn đã cao lớn lạnh lùng, xuất thân võ tướng, nhuệ khí trong cốt cách không thể xem thường, giữa mày trầm ổn kiêu ngạo, là cùng một loại người với Sở Đệ Trì.</p>
+<p>Sở Ngạo Thiên bất giác nhớ lại hai năm qua, giang sơn thăng trầm, từng khoảnh khắc Tiêu Đô đốc ở bên cạnh mình.</p>
+<p>Hoàng thúc không có mặt, Tiêu Đô đốc giúp hắn xử lý chính vụ, bảo vệ an nguy, cứu hắn giữa nước sôi lửa bỏng.</p>
+<p>“Hoàng thượng, đây là tấu chương hôm nay.”</p>
+<p>“Hoàng thượng…”</p>
+<p>“Hoàng thượng, thần đã trở về.”</p>
+<p>“Ngôi vị này, ngươi phải ngồi cho vững!”</p>
+<p>Sở Ngạo Thiên từng bước tiến đến, cổ họng hơi nghẹn lại.</p>
+<p>“Ta… Tiêu Đô đốc, ta đã nạp rất nhiều phi tần.”</p>
+<p>Tiêu Dạ Hành khẽ cười:</p>
+<p>“Rất tốt, đó là đạo làm vua vô cùng quan trọng.”</p>
+<p>“Nhưng ta vốn không hề thích họ.”</p>
+<p>“Hoàng thượng không cần thích. Chỉ cần nuôi trong hậu cung để củng cố thế lực tiền triều là đủ. Đời người còn rất dài, sau này rồi cũng sẽ gặp được nữ tử mình yêu.”</p>
+<p>Sở Ngạo Thiên tiến thêm một bước.</p>
+<p>“Còn ngươi thì sao?”</p>
+<p>“Đợi mọi việc kết thúc, thần sẽ trở về Giang Nam.”</p>
+<p>“Ngươi muốn đi?”</p>
+<p>Không hiểu vì sao, lòng Sở Ngạo Thiên bỗng thắt lại.</p>
+<p>Trải qua cung biến cùng sinh tử, hắn cũng không phân rõ đó là tình quân thần hay là giao tình sinh tử, ngược lại càng hoài niệm khoảng thời gian mình còn là Nhàn Vương, Tiêu Đô đốc ngày đêm phò tá bên cạnh.</p>
+<p>Hơi thở hắn có phần nghẹn ngào.</p>
+<p>“Ngươi… có thể ở lại Đế đô, tiếp tục phò tá ta được không?”</p>
+<p>“Ý của ta là…”</p>
+<p>“Ta không thể thiếu ngươi, Tiêu Đô đốc.”</p>
+<p>Lời vừa dứt, như sợ đối phương hiểu lầm, hắn vội vàng bổ sung:</p>
+<p>“Ta rất thưởng thức tài năng và mưu lược của ngươi, sợ ngươi ở lại Giang Nam sẽ bị mai một.”</p>
+<p>“Nếu ngươi ở Đế đô, chúng ta có thể thường xuyên ngồi đối ẩm trà, nhàn gõ quân cờ dưới ánh đèn.”</p>
+<p>Tiêu Dạ Hành xoay người nhìn hắn.</p>
+<p>Bốn mắt giao nhau.</p>
+<p>Đôi đồng tử đen thẳm ấy sâu đến mức không nhìn thấy đáy.</p>
+<p>Bàn tay giấu trong tay áo của Sở Ngạo Thiên từ từ siết chặt.</p>
+<p>Lại siết chặt hơn…</p>
+<p>“Hoàng thượng.”</p>
+<p>“Có!”</p>
+<p>Nam nhân khẽ cười trầm thấp.</p>
+<p>“Có Nhiếp Chính Vương ở đây, nào đến lượt thần?”</p>
+<p>“Huống hồ…”</p>
+<p>“Thần và Nhiếp Chính Vương là cùng một bối phận.”</p>
+<p>“Hoàng thượng thực sự không cần cố kết thân với thần.”</p>
+<p>“Như vậy sẽ hạ thấp bối phận của thần.”</p>
+<p>Nói xong, hắn vỗ nhẹ lên vai Sở Ngạo Thiên rồi ung dung rời đi.</p>
+<p>Sở Ngạo Thiên tiến lên nửa bước, vịn lấy long trụ, nhìn bóng lưng tiêu sái của nam nhân chắp tay sau lưng bước xuống bậc thềm, thất thần khẽ gọi:</p>
+<p>“Tiêu Đô đốc…”</p>
+<p>Lâm Hoa điện.</p>
+<p>Sở Đệ Trì bước tới.</p>
+<p>Thái giám đang định hành lễ thì đã bị hắn phất tay cho lui.</p>
+<p>Hắn nhẹ nhàng đẩy cửa.</p>
+<p>Trên giường nổi lên một khối nhỏ dưới chăn, chính là Sở Ly đang say ngủ.</p>
+<p>Ngay cả khi ngủ, đôi mày liễu của nàng vẫn nhíu chặt, khiến Sở Đệ Trì đau lòng vô cùng.</p>
+<p>Hắn nhẹ vuốt giữa chân mày nàng.</p>
+<p>“Vất vả rồi, Tiểu Cửu.”</p>
+<p>“Ưm…”</p>
+<p>Sở Ly vô thức trở mình.</p>
+<p>Trong mộng, nàng bước vào một khu đình viện thanh u nhã nhặn, nhìn lá dương bay ngợp trời cùng đàn nhạn đang bay về phương nam.</p>
+<p>“Tiểu Cửu.”</p>
+<p>Ai?</p>
+<p>Nàng quay người lại.</p>
+<p>Vậy mà không nhìn rõ gương mặt đối phương.</p>
+<p>“Chúng ta sẽ mãi mãi ở bên nhau chứ?”</p>
+<p>Là ai?</p>
+<p>Nàng chạy lên vài bước, muốn đến gần.</p>
+<p>Đột nhiên sương mù dày đặc bốc lên, che phủ tất cả.</p>
+<p>Đến khi tầm mắt sáng tỏ trở lại…</p>
+<p>Chỉ thấy Sở Ngạo Thiên thuở nhỏ đang trèo cây.</p>
+<p>“Tiểu Cửu, đệ che kín từ đầu đến chân chưa? Ta sắp chọc đây… Á! Ong vò vẽ bay ra rồi! Mau chạy!”</p>
+<p>“A a! Mông huynh bị đốt rồi!”</p>
+<p>“Bát hoàng huynh, huynh mặc quần hở đũng nên mới bị đốt đó!”</p>
+<p>Khung cảnh bỗng xoay chuyển.</p>
+<p>“Tiểu Cửu, đừng cố chấp nữa. Thiên hạ và muội… ta đều muốn.”</p>
+<p>“Một kiếm này xem như trả lại cho muội. Nhưng… muội là của ta.”</p>
+<p>Nàng lùi nửa bước.</p>
+<p>Bất ngờ rơi xuống vực sâu vô tận.</p>
+<p>Bốn phía là máu tươi cùng cảnh tượng hỗn loạn, bên tai vang lên tiếng gào thét phẫn nộ:</p>
+<p>“Ngươi hại chết Trúc ma ma!”</p>
+<p>“Tại sao?”</p>
+<p>“Chẳng phải ngươi từng nói sẽ vĩnh viễn không phản bội ta sao? Tại sao?”</p>
+<p>“Bà ấy chết rồi!”</p>
+<p>“Không phải ta… không phải ta…” Sở Ly mê man lắc đầu, mồ hôi đầy trán.</p>
+<p>“Không phải… không phải…”</p>
+<p>“Tiểu Cửu?”</p>
+<p>Sắc mặt Sở Đệ Trì hơi biến.</p>
+<p>Hắn nắm lấy hai vai nàng.</p>
+<p>“Tiểu Cửu, tỉnh lại!”</p>
+<p>“Không phải ta làm… không phải ta!”</p>
+<p>Sở Ly đột nhiên bật ngồi dậy, đâm thẳng vào lòng nam nhân, hoảng sợ theo bản năng giãy giụa.</p>
+<p>“Là ta!”</p>
+<p>Sở Đệ Trì ôm chặt lấy nàng, dịu dàng dỗ dành:</p>
+<p>“Là ta.”</p>
+<p>“Không sao rồi.”</p>
+<p>“Tiểu Cửu, chỉ là một giấc mộng thôi.”</p>
+<p>Mộng?</p>
+<p>Thật là mộng sao?</p>
+<p>Vì sao…</p>
+<p>Nàng chẳng nhớ được điều gì?</p>
+<p>Sở Ly ngồi trên giường, hô hấp nặng nề, mồ hôi đầm đìa, ánh mắt mờ mịt khiến nàng không phân biệt nổi đâu là mộng, đâu là thực.</p>
+<p>Trúc ma ma…</p>
+<p>Chính là bài vị được phụng thờ trong Nhiếp Chính Vương phủ.</p>
+<p>Nhìn gương mặt đầy lo lắng của nam nhân, có một câu đã lên đến miệng, nàng muốn hỏi, nhưng lại không dám mở lời…</p>
+<p>“Đừng sợ.”</p>
+<p>“Ta ở đây.”</p>
+<p>Sở Đệ Trì nhẹ nhàng vỗ lưng nàng.</p>
+<p>Sở Ly nhanh chóng điều chỉnh cảm xúc.</p>
+<p>“Ta không sao… có lẽ hai ngày nay thần kinh căng thẳng quá thôi…”</p>
+<p>“Ta sẽ bảo Thái y viện kê một đơn thuốc an thần.”</p>
+<p>“Đúng lúc ta cũng không muốn ngủ nữa, để ta tự đến đó một chuyến.”</p>
+<p>“Ta đi cùng nàng.”</p>
+<p>Sở Đệ Trì khom người, cầm đôi hài thêu xỏ vào chân nàng, chỉnh ngay ngắn rồi nắm tay nàng cùng đi ra ngoài.</p>
+<p>Ngoài điện, Trọng Phong bước nhanh tới.</p>
+<p>“Chủ tử, vừa nhận được tin báo, quân Nam Man rút về hướng Cam Châu, dọc đường thông suốt không chút cản trở, rút lui vô cùng thuận lợi!”</p>
+<p>Sở Ly ngẩng đầu.</p>
+<p>“Cam Châu?”</p>
+<p>Nếu nàng nhớ không lầm…</p>
+<p>Phía tây khu vực ấy chính là phong địa của Tiêu Dao Vương.</p>
+<p>Nếu không có gian thần tiếp ứng, Sở Dạ Ly và Thác Bạt Minh Nguyệt sao có thể rút lui thuận lợi như vậy ngay trong lãnh thổ Đại Sở?</p>
+<p>Triều đình Đại Sở này…</p>
+<p>Đã sớm ô yên chướng khí, đến lúc phải thanh lọc thật kỹ rồi!</p>
+<p>“Hoàng thúc, người cứ đi trước đi. Ta đến Thái y viện lấy đơn thuốc rồi sẽ qua.”</p>
+<p>Sở Đệ Trì xoa đầu nàng.</p>
+<p>“Lấy thuốc xong, uống thuốc an thần rồi trở về ngủ bù.”</p>
+<p>“Những việc vặt này không cần nàng phải bận tâm.”</p>
+<p>“Đi đi.”</p>
+<p>“Vâng!”</p>
+<p>Sở Ly hơi nhấc váy, vừa xuống bậc thềm đã chạy đi.</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Hử?”</p>
+<p>Nàng quay đầu.</p>
+<p>Sở Đệ Trì đứng trên bậc thềm, nói:</p>
+<p>“Trước đó nàng đã hứa với ta, đợi mọi chuyện kết thúc sẽ bàn đến chuyện nghị thân…”</p>
+<p>Sở Ly mỉm cười.</p>
+<p>“Phụ mẫu chi mệnh, môi chước chi ngôn. Ta nói không tính.”</p>
+<p>“Nếu người có bản lĩnh… thì nghĩ cách khiến mẫu phi ta gật đầu đi!”</p>
+<p>Dứt lời, nàng liền chạy chậm rời đi.</p>
+<p>Sở Đệ Trì nhìn theo bóng lưng nàng, ý cười lan sâu trong đáy mắt, thỏa mãn đến cực điểm.</p>
+<p>Trọng Phong đứng chờ bên cạnh, hơi cúi đầu xin chỉ thị:</p>
+<p>“Chủ tử, phía quân địch bây giờ có cần đi xử lý không?”</p>
+<p>“Chủ tử?”</p>
+<p>“Chủ tử?”</p>
+<p>Khóe môi mỏng của Sở Đệ Trì khẽ cong, ý cười vẫn chưa tan.</p>
+<p>“Lập tức phái người đến khố phòng chọn hai mươi tám lễ vật thượng hạng.”</p>
+<p>“Ngày mai đến phủ Tạ lão tướng quân, bái phỏng Ôn phi.”</p>
+<p>“Tuân lệnh.”</p>
+<p>“À đúng rồi…”</p>
+<p>“Vừa rồi ngươi nói gì ấy nhỉ?”</p>
+<p>Trọng Phong: “…” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_321.html" class="btn">‹ Trước</a>
             <a href="chuong_323.html" class="btn">Sau ›</a>
         </div>
@@ -299,15 +307,11 @@ Trọng Phong: “…” Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -319,11 +323,11 @@ Trọng Phong: “…” Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

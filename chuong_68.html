@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 68</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,314 +62,323 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 68</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_67.html" class="btn">‹ Trước</a>
             <a href="chuong_69.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 68: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 68: Ta vẫn luôn cho rằng Hoàng thúc là người tốt
-Đương nhiên…
-Hắn không buông tha nàng.
-Một khi đã nếm được tư vị ấy.
-Liền có chút nghiện.
-Mà nàng cũng chẳng khách khí, lời hay lời dở đều đã nói hết. Đã biết nói cũng vô dụng, nàng dứt khoát dùng hai tay cào hắn.
-Cào đến trước ngực, sau vai, trên cổ hắn đều hiện lên từng vệt máu đỏ rớm.
-Không ngờ, ngược lại càng khiến hứng thú của hắn tăng thêm.
-Cuối cùng, nàng không chống đỡ nổi, mơ màng ngất đi.
-Lúc ý thức đã mơ hồ, chỉ nghe thấy bên tai vang lên một tiếng thở dài trầm thấp của hắn:
-— A Ly…
-⸻
-Đêm khuya.
-Đèn đuốc lập lòe.
-Một chiếc cẩm bào rộng lớn bọc lấy thân hình nhỏ nhắn của nàng, che kín đến mức kín không kẽ hở, ngay cả một tấc bàn chân nhỏ cũng không để lộ ra ngoài.
-Khi những ám tiêu ngày đêm mai phục bên ngoài Nhiếp Chính Vương phủ nhìn thấy cảnh ấy, lập tức trừng lớn hai mắt.
-— Đến rồi!
-— Nữ tử được Nhiếp Chính Vương kim ốc tàng kiều cuối cùng cũng xuất hiện!
-— Chỉ cần tra ra thân phận của nàng ta, muốn khống chế Nhiếp Chính Vương chẳng phải dễ như trở bàn tay sao?
-Hai người lập tức chỉnh đốn tinh thần, chuẩn bị âm thầm tiếp cận.
-Đúng lúc ấy…
-Sau lưng bỗng vang lên một giọng nói u ám như quỷ mị:
-— Đẹp lắm sao?
-Hai người chỉ cảm thấy sống lưng tê dại.
-Vừa quay đầu lại…
-Đã bị một đôi tay chộp lấy đầu, đập mạnh vào nhau.
-“Rầm!”
-Hai tiếng kêu thảm vang lên.
-Cả hai đồng thời ngất lịm xuống đất.
-Trọng Phong phủi phủi tay, lạnh lùng nhìn bọn chúng:
-— Người trong cung phái tới, đúng là hết lứa này đến lứa khác đều chẳng ra gì.
-— Xem ra khí số của hoàng thất Đại Sở… cũng chẳng còn kéo dài được bao lâu.
-⸻
-Tây Nhai.
-Sở Ngạo Thiên chơi đến quên cả trời đất.
-Hắn hứng khởi mua hai con gà chọi, ba con dế, bốn con rết.
-Ôm đống chiến lợi phẩm, hớn hở chạy về trà lâu tìm Sở Ly.
-Ai ngờ…
-Người đã đi.
-Phòng trống không.
-— Người đâu?
-Hắn sững sờ nửa khắc, lập tức cuống cuồng tìm kiếm.
-— Cửu đệ?
-— Cửu đệ!
-Sở Ly còn đang giả mù.
-Lỡ như bị người ta bắt cóc thì sao…
-Nghĩ vậy, Sở Ngạo Thiên càng sốt ruột.
-Việc đầu tiên hắn làm là gọi tiểu nhị tới.
-— Người trong gian phòng này đâu rồi?
-Tiểu nhị nhớ lại một lúc mới đáp:
-— Cách đây không lâu, hình như có một nam nhân ăn mặc rất quý khí, khí chất lạnh lùng bước vào đây.
-— À đúng rồi!
-— Trên đầu vị công tử ấy có một vết thương rất dài, nhìn đáng sợ lắm.
-— Hoàng thúc?
-Sở Ngạo Thiên lập tức thở phào nhẹ nhõm.
-Hắn còn tưởng Cửu đệ bị kẻ xấu bắt mất.
-Thì ra là đi cùng Hoàng thúc.
-Không sao là tốt rồi.
-Đúng lúc ấy.
-Hai vị khách uống trà đi ngang hành lang, vừa đi vừa trò chuyện:
-— Chẳng phải sao… Cửu hoàng tử lại dám đập vỡ đầu Nhiếp Chính Vương, đúng là nghé con mới sinh chẳng sợ hổ…
-Sở Ngạo Thiên lập tức trợn tròn mắt.
-— Các ngươi nói gì?
-Hai vị trà khách quay đầu nhìn hắn.
-— Công tử còn chưa biết sao?
-— Khắp kinh thành đều truyền khắp rồi.
-— Nhiếp Chính Vương kháng lại phượng chỉ của Hoàng hậu, Cửu hoàng tử nổi giận, liền đập Nhiếp Chính Vương một trận, thay Hoàng hậu trút giận.
-Sắc mặt Sở Ngạo Thiên lập tức trắng bệch.
-Đến lúc này…
-Hắn mới phản ứng lại.
-Vết sẹo xấu xí như con rết trên đầu Hoàng thúc…
-Lại là do Sở Ly đập!
-Vậy thì…
-Hoàng thúc mời hắn tới Tây Nhai, còn đặc biệt dặn phải đưa Cửu đệ theo…
-Thì ra…
-Là muốn tìm Sở Ly báo thù!
-Xong rồi!
-Cửu đệ chẳng phải sẽ cho rằng…
-Là hắn bán đứng “đệ ấy” sao?
-Xong rồi!
-Xong rồi!
-Xong rồi!
-Toang thật rồi!
-Hiểu lầm này lớn quá!
-Trời xanh làm chứng.
-Hắn tuyệt đối không hề có ý bán đứng Sở Ly.
-Lỡ như Sở Ly tức giận…
-Sau này không chơi với hắn nữa thì biết làm sao?
-Sở Ngạo Thiên cuống đến mức liên tục đập trán.
-Đi đi lại lại bảy tám vòng.
-Đột nhiên linh quang lóe lên.
-Hắn ôm lấy cây cột.
-Rồi…
-Lắc đầu đâm mạnh tới.
-“Rầm!”
-Hai mắt nhắm nghiền.
-Tròng trắng trợn ngược.
-Hai chân duỗi thẳng.
-Hai tay buông xuôi.
-Chuyện hồng trần thế tục…
-Không còn liên quan đến hắn nữa.
-⸻
-Nhiếp Chính Vương phủ.
-Sở Đệ Trì bế Sở Ly trở về.
-Hai người cùng tắm suối nước nóng.
-Chỉ là nàng đã mệt đến mức mơ mơ màng màng, nằm úp trên vai hắn, đầu gục xuống, bất tỉnh nhân sự.
-Hắn cẩn thận tắm rửa cho nàng.
-Những chỗ khác thì không sao.
-Chỉ là khi bàn tay đi ngang nách cùng phần eo, chạm đúng nơi sợ nhột của nàng.
-Nàng bất mãn lẩm bẩm mấy tiếng:
-— Ưm…
-— Tránh ra…
-Hắn khẽ cười trầm thấp.
-Đại chưởng ôm lấy dưới nách nàng.
-Lật người nàng lại.
-Đầu ngón tay nhẹ nhàng vuốt ve nơi sau thắt lưng, một vị trí rất khó nhận ra.
-Ở đó…
-Có một vết bớt.
-Là một cánh hoa màu hồng nhạt.
-Gần như hòa làm một với làn da.
-Nhuốm những giọt nước long lanh.
-Đẹp đẽ như đang sống.
-Chỉ nhìn thôi…
-Ánh mắt hắn cũng dần trở nên sâu thẳm.
-— A Ly.
-— Dù ngươi có đập chết ta…
-— Cũng chẳng hề gì.
-Chỉ có một điều.
-Không được rời khỏi ta.
-⸻
-Rất lâu sau.
-Hắn bế nàng trở về tẩm phòng.
-Cùng nằm chung một giường.
-Cánh tay mạnh mẽ ôm lấy vòng eo nhỏ của nàng.
-Kéo nàng áp sát vào lòng.
-Không chừa lấy một khe hở.
-Hắn vùi đầu vào hõm cổ nàng.
-Ngửi hương u lan nhàn nhạt trên người nàng.
-Vô cùng thỏa mãn.
-Một đêm yên giấc.
-⸻
-Sáng hôm sau.
-Lúc Sở Ly tỉnh dậy.
-Sở Đệ Trì đã không còn ở đó.
-Nhìn căn phòng xa lạ.
-Nàng đá tung chăn.
-Bật dậy liền mở miệng chửi lớn.
-Bao năm qua, nàng không tranh không đoạt.
-Tính tình bình thản như lão ô quy.
-Mà điều kiện tiên quyết của sự bình thản ấy…
-Là phải nghĩ thông, nhìn thoáng.
-Trong lòng có tức giận thì phải phát tiết ngay tại chỗ.
-Nếu không…
-Chỉ có tự làm mình nghẹn chết.
-Nhưng…
-Không một ai để ý tới nàng.
-Nhiếp Chính Vương phủ vốn thanh tĩnh.
-Người hầu cũng rất ít.
-Ngay cả trong viện cũng chẳng có một tỳ nữ hầu hạ.
-Nàng có mắng đến long trời lở đất…
-Cũng chẳng khác nào đấm vào bông.
-Mềm nhũn, chẳng có chút sức lực.
-Sở Ly chỉnh đốn lại y phục.
-Chuẩn bị rời đi.
-Ra khỏi cửa rồi.
-Nàng vẫn thấy tức không chịu nổi.
-Liền quay trở lại.
-Đạp đổ chậu hoa trên bậc thềm.
-Giẫm nát tấm bình phong cẩm tú chạm khắc hai mặt.
-Xé tan cả bức cổ họa danh quý treo trên tường.
-Thấy vậy…
-Trong lòng nàng mới dễ chịu hơn đôi chút.
-Phủi phủi tay.
-Chuẩn bị đi tìm Sở Ngạo Thiên tính sổ.
-Ai ngờ…
-Vừa bước vào trà lâu.
-Liền nhìn thấy trong nhã phòng.
-Sở Ngạo Thiên nằm bất tỉnh dưới đất.
-Trên đầu còn nổi hẳn một cục u.
-Trông như vừa gặp đại họa.
-— Bát hoàng huynh?
-— Bát hoàng huynh, tỉnh lại đi!
-Sở Ngạo Thiên nghiêng đầu.
-Rất lâu sau mới lờ mờ tỉnh lại.
-— Cửu… Cửu đệ…
-— Hự…
-— Cửu đệ!
-Hai mắt hắn đỏ hoe.
-Nước mũi cũng chảy ra.
-— Cửu đệ!
-— Thật sự là đệ!
-— Bát hoàng huynh, huynh làm sao vậy?
-Sở Ngạo Thiên ôm lấy nàng, đau khổ kể lể:
-— Tối qua ta thấy Nhiếp Chính Vương bước vào trà lâu, lo đệ gặp chuyện chẳng lành.
-— Ai ngờ còn chưa vào được nhã phòng…
-— Đã bị một nam nhân mặc hắc y, đeo bội kiếm chặn lại.
-— Ta thật sự lo cho đệ.
-— Liền giao thủ với hắn hai chiêu.
-— Ai ngờ hắn túm lấy đầu ta đập vào tường.
-— Đập ta ngất luôn!
-Sở Ly trầm mắt.
-— Có chuyện đó sao?
-Nàng còn tưởng…
-Là Bát hoàng huynh bán đứng nàng.
-Cố ý liên thủ với Sở Đệ Trì, lừa nàng xuất cung.
-Sở Ngạo Thiên ôm đầu.
-Đau đến mức hai mắt đỏ hoe.
-— Cửu đệ…
-— Ta có lỗi với đệ.
-— Đều tại bình thường ta vô dụng, không được phụ hoàng yêu quý.
-— Nếu không…
-— Đám người đó sao dám tùy tiện ra tay với một hoàng tử?
-Sở Ly tin lời hắn.
-Đỡ hắn đứng dậy.
-— Bát hoàng huynh.
-— Người đánh ngất huynh có phải cao hơn huynh nửa cái đầu, trên tay áo còn thêu hoa văn ám kim không?
-Sở Ngạo Thiên gật đầu như giã tỏi.
-— Đúng!
-— Chính là hắn!
-— Sao đệ biết?
-— Nếu ta đoán không nhầm.
-— Hắn là tâm phúc bên cạnh Nhiếp Chính Vương.
-— Tên là Trọng Phong.
-Sở Ngạo Thiên đau lòng nói:
-— Cửu đệ…
-— Là ta không bảo vệ được đệ!
-— Không sao.
-Sở Ly nhẹ giọng.
-— Bát hoàng huynh đã tận lực rồi.
-Sở Ngạo Thiên nghiến răng nghiến lợi:
-— Ta vẫn luôn cho rằng Hoàng thúc là người tốt.
-— Không ngờ hắn lại âm hiểm như vậy.
-— Ra tay cũng độc ác.
-— Sau này…
-— Ta tuyệt đối sẽ không dễ dàng tin hắn nữa.
-Sở Ly đỡ hắn.
-Hai người cùng đi trên đường hồi cung.
-Vừa đi vừa nói.
-— Hắn quả thực tội ác tày trời.
-Sở Ngạo Thiên ôm ngực.
-— Đâu chỉ thế!
-— Quả thực chính là một tên khốn!
-Sở Ly gật đầu.
-— Đúng.
-— Quá xấu xa.
-— Đúng!
-— Cửu đệ.
-— Sau này chúng ta đừng bao giờ nói chuyện với hắn nữa.
-— Ừ! Ẩn bớt</p>
+            <p>Chương 68: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 68: Ta vẫn luôn cho rằng Hoàng thúc là người tốt</p>
+<p>Đương nhiên…</p>
+<p>Hắn không buông tha nàng.</p>
+<p>Một khi đã nếm được tư vị ấy.</p>
+<p>Liền có chút nghiện.</p>
+<p>Mà nàng cũng chẳng khách khí, lời hay lời dở đều đã nói hết. Đã biết nói cũng vô dụng, nàng dứt khoát dùng hai tay cào hắn.</p>
+<p>Cào đến trước ngực, sau vai, trên cổ hắn đều hiện lên từng vệt máu đỏ rớm.</p>
+<p>Không ngờ, ngược lại càng khiến hứng thú của hắn tăng thêm.</p>
+<p>Cuối cùng, nàng không chống đỡ nổi, mơ màng ngất đi.</p>
+<p>Lúc ý thức đã mơ hồ, chỉ nghe thấy bên tai vang lên một tiếng thở dài trầm thấp của hắn:</p>
+<p>— A Ly…</p>
+<p>⸻</p>
+<p>Đêm khuya.</p>
+<p>Đèn đuốc lập lòe.</p>
+<p>Một chiếc cẩm bào rộng lớn bọc lấy thân hình nhỏ nhắn của nàng, che kín đến mức kín không kẽ hở, ngay cả một tấc bàn chân nhỏ cũng không để lộ ra ngoài.</p>
+<p>Khi những ám tiêu ngày đêm mai phục bên ngoài Nhiếp Chính Vương phủ nhìn thấy cảnh ấy, lập tức trừng lớn hai mắt.</p>
+<p>— Đến rồi!</p>
+<p>— Nữ tử được Nhiếp Chính Vương kim ốc tàng kiều cuối cùng cũng xuất hiện!</p>
+<p>— Chỉ cần tra ra thân phận của nàng ta, muốn khống chế Nhiếp Chính Vương chẳng phải dễ như trở bàn tay sao?</p>
+<p>Hai người lập tức chỉnh đốn tinh thần, chuẩn bị âm thầm tiếp cận.</p>
+<p>Đúng lúc ấy…</p>
+<p>Sau lưng bỗng vang lên một giọng nói u ám như quỷ mị:</p>
+<p>— Đẹp lắm sao?</p>
+<p>Hai người chỉ cảm thấy sống lưng tê dại.</p>
+<p>Vừa quay đầu lại…</p>
+<p>Đã bị một đôi tay chộp lấy đầu, đập mạnh vào nhau.</p>
+<p>“Rầm!”</p>
+<p>Hai tiếng kêu thảm vang lên.</p>
+<p>Cả hai đồng thời ngất lịm xuống đất.</p>
+<p>Trọng Phong phủi phủi tay, lạnh lùng nhìn bọn chúng:</p>
+<p>— Người trong cung phái tới, đúng là hết lứa này đến lứa khác đều chẳng ra gì.</p>
+<p>— Xem ra khí số của hoàng thất Đại Sở… cũng chẳng còn kéo dài được bao lâu.</p>
+<p>⸻</p>
+<p>Tây Nhai.</p>
+<p>Sở Ngạo Thiên chơi đến quên cả trời đất.</p>
+<p>Hắn hứng khởi mua hai con gà chọi, ba con dế, bốn con rết.</p>
+<p>Ôm đống chiến lợi phẩm, hớn hở chạy về trà lâu tìm Sở Ly.</p>
+<p>Ai ngờ…</p>
+<p>Người đã đi.</p>
+<p>Phòng trống không.</p>
+<p>— Người đâu?</p>
+<p>Hắn sững sờ nửa khắc, lập tức cuống cuồng tìm kiếm.</p>
+<p>— Cửu đệ?</p>
+<p>— Cửu đệ!</p>
+<p>Sở Ly còn đang giả mù.</p>
+<p>Lỡ như bị người ta bắt cóc thì sao…</p>
+<p>Nghĩ vậy, Sở Ngạo Thiên càng sốt ruột.</p>
+<p>Việc đầu tiên hắn làm là gọi tiểu nhị tới.</p>
+<p>— Người trong gian phòng này đâu rồi?</p>
+<p>Tiểu nhị nhớ lại một lúc mới đáp:</p>
+<p>— Cách đây không lâu, hình như có một nam nhân ăn mặc rất quý khí, khí chất lạnh lùng bước vào đây.</p>
+<p>— À đúng rồi!</p>
+<p>— Trên đầu vị công tử ấy có một vết thương rất dài, nhìn đáng sợ lắm.</p>
+<p>— Hoàng thúc?</p>
+<p>Sở Ngạo Thiên lập tức thở phào nhẹ nhõm.</p>
+<p>Hắn còn tưởng Cửu đệ bị kẻ xấu bắt mất.</p>
+<p>Thì ra là đi cùng Hoàng thúc.</p>
+<p>Không sao là tốt rồi.</p>
+<p>Đúng lúc ấy.</p>
+<p>Hai vị khách uống trà đi ngang hành lang, vừa đi vừa trò chuyện:</p>
+<p>— Chẳng phải sao… Cửu hoàng tử lại dám đập vỡ đầu Nhiếp Chính Vương, đúng là nghé con mới sinh chẳng sợ hổ…</p>
+<p>Sở Ngạo Thiên lập tức trợn tròn mắt.</p>
+<p>— Các ngươi nói gì?</p>
+<p>Hai vị trà khách quay đầu nhìn hắn.</p>
+<p>— Công tử còn chưa biết sao?</p>
+<p>— Khắp kinh thành đều truyền khắp rồi.</p>
+<p>— Nhiếp Chính Vương kháng lại phượng chỉ của Hoàng hậu, Cửu hoàng tử nổi giận, liền đập Nhiếp Chính Vương một trận, thay Hoàng hậu trút giận.</p>
+<p>Sắc mặt Sở Ngạo Thiên lập tức trắng bệch.</p>
+<p>Đến lúc này…</p>
+<p>Hắn mới phản ứng lại.</p>
+<p>Vết sẹo xấu xí như con rết trên đầu Hoàng thúc…</p>
+<p>Lại là do Sở Ly đập!</p>
+<p>Vậy thì…</p>
+<p>Hoàng thúc mời hắn tới Tây Nhai, còn đặc biệt dặn phải đưa Cửu đệ theo…</p>
+<p>Thì ra…</p>
+<p>Là muốn tìm Sở Ly báo thù!</p>
+<p>Xong rồi!</p>
+<p>Cửu đệ chẳng phải sẽ cho rằng…</p>
+<p>Là hắn bán đứng “đệ ấy” sao?</p>
+<p>Xong rồi!</p>
+<p>Xong rồi!</p>
+<p>Xong rồi!</p>
+<p>Toang thật rồi!</p>
+<p>Hiểu lầm này lớn quá!</p>
+<p>Trời xanh làm chứng.</p>
+<p>Hắn tuyệt đối không hề có ý bán đứng Sở Ly.</p>
+<p>Lỡ như Sở Ly tức giận…</p>
+<p>Sau này không chơi với hắn nữa thì biết làm sao?</p>
+<p>Sở Ngạo Thiên cuống đến mức liên tục đập trán.</p>
+<p>Đi đi lại lại bảy tám vòng.</p>
+<p>Đột nhiên linh quang lóe lên.</p>
+<p>Hắn ôm lấy cây cột.</p>
+<p>Rồi…</p>
+<p>Lắc đầu đâm mạnh tới.</p>
+<p>“Rầm!”</p>
+<p>Hai mắt nhắm nghiền.</p>
+<p>Tròng trắng trợn ngược.</p>
+<p>Hai chân duỗi thẳng.</p>
+<p>Hai tay buông xuôi.</p>
+<p>Chuyện hồng trần thế tục…</p>
+<p>Không còn liên quan đến hắn nữa.</p>
+<p>⸻</p>
+<p>Nhiếp Chính Vương phủ.</p>
+<p>Sở Đệ Trì bế Sở Ly trở về.</p>
+<p>Hai người cùng tắm suối nước nóng.</p>
+<p>Chỉ là nàng đã mệt đến mức mơ mơ màng màng, nằm úp trên vai hắn, đầu gục xuống, bất tỉnh nhân sự.</p>
+<p>Hắn cẩn thận tắm rửa cho nàng.</p>
+<p>Những chỗ khác thì không sao.</p>
+<p>Chỉ là khi bàn tay đi ngang nách cùng phần eo, chạm đúng nơi sợ nhột của nàng.</p>
+<p>Nàng bất mãn lẩm bẩm mấy tiếng:</p>
+<p>— Ưm…</p>
+<p>— Tránh ra…</p>
+<p>Hắn khẽ cười trầm thấp.</p>
+<p>Đại chưởng ôm lấy dưới nách nàng.</p>
+<p>Lật người nàng lại.</p>
+<p>Đầu ngón tay nhẹ nhàng vuốt ve nơi sau thắt lưng, một vị trí rất khó nhận ra.</p>
+<p>Ở đó…</p>
+<p>Có một vết bớt.</p>
+<p>Là một cánh hoa màu hồng nhạt.</p>
+<p>Gần như hòa làm một với làn da.</p>
+<p>Nhuốm những giọt nước long lanh.</p>
+<p>Đẹp đẽ như đang sống.</p>
+<p>Chỉ nhìn thôi…</p>
+<p>Ánh mắt hắn cũng dần trở nên sâu thẳm.</p>
+<p>— A Ly.</p>
+<p>— Dù ngươi có đập chết ta…</p>
+<p>— Cũng chẳng hề gì.</p>
+<p>Chỉ có một điều.</p>
+<p>Không được rời khỏi ta.</p>
+<p>⸻</p>
+<p>Rất lâu sau.</p>
+<p>Hắn bế nàng trở về tẩm phòng.</p>
+<p>Cùng nằm chung một giường.</p>
+<p>Cánh tay mạnh mẽ ôm lấy vòng eo nhỏ của nàng.</p>
+<p>Kéo nàng áp sát vào lòng.</p>
+<p>Không chừa lấy một khe hở.</p>
+<p>Hắn vùi đầu vào hõm cổ nàng.</p>
+<p>Ngửi hương u lan nhàn nhạt trên người nàng.</p>
+<p>Vô cùng thỏa mãn.</p>
+<p>Một đêm yên giấc.</p>
+<p>⸻</p>
+<p>Sáng hôm sau.</p>
+<p>Lúc Sở Ly tỉnh dậy.</p>
+<p>Sở Đệ Trì đã không còn ở đó.</p>
+<p>Nhìn căn phòng xa lạ.</p>
+<p>Nàng đá tung chăn.</p>
+<p>Bật dậy liền mở miệng chửi lớn.</p>
+<p>Bao năm qua, nàng không tranh không đoạt.</p>
+<p>Tính tình bình thản như lão ô quy.</p>
+<p>Mà điều kiện tiên quyết của sự bình thản ấy…</p>
+<p>Là phải nghĩ thông, nhìn thoáng.</p>
+<p>Trong lòng có tức giận thì phải phát tiết ngay tại chỗ.</p>
+<p>Nếu không…</p>
+<p>Chỉ có tự làm mình nghẹn chết.</p>
+<p>Nhưng…</p>
+<p>Không một ai để ý tới nàng.</p>
+<p>Nhiếp Chính Vương phủ vốn thanh tĩnh.</p>
+<p>Người hầu cũng rất ít.</p>
+<p>Ngay cả trong viện cũng chẳng có một tỳ nữ hầu hạ.</p>
+<p>Nàng có mắng đến long trời lở đất…</p>
+<p>Cũng chẳng khác nào đấm vào bông.</p>
+<p>Mềm nhũn, chẳng có chút sức lực.</p>
+<p>Sở Ly chỉnh đốn lại y phục.</p>
+<p>Chuẩn bị rời đi.</p>
+<p>Ra khỏi cửa rồi.</p>
+<p>Nàng vẫn thấy tức không chịu nổi.</p>
+<p>Liền quay trở lại.</p>
+<p>Đạp đổ chậu hoa trên bậc thềm.</p>
+<p>Giẫm nát tấm bình phong cẩm tú chạm khắc hai mặt.</p>
+<p>Xé tan cả bức cổ họa danh quý treo trên tường.</p>
+<p>Thấy vậy…</p>
+<p>Trong lòng nàng mới dễ chịu hơn đôi chút.</p>
+<p>Phủi phủi tay.</p>
+<p>Chuẩn bị đi tìm Sở Ngạo Thiên tính sổ.</p>
+<p>Ai ngờ…</p>
+<p>Vừa bước vào trà lâu.</p>
+<p>Liền nhìn thấy trong nhã phòng.</p>
+<p>Sở Ngạo Thiên nằm bất tỉnh dưới đất.</p>
+<p>Trên đầu còn nổi hẳn một cục u.</p>
+<p>Trông như vừa gặp đại họa.</p>
+<p>— Bát hoàng huynh?</p>
+<p>— Bát hoàng huynh, tỉnh lại đi!</p>
+<p>Sở Ngạo Thiên nghiêng đầu.</p>
+<p>Rất lâu sau mới lờ mờ tỉnh lại.</p>
+<p>— Cửu… Cửu đệ…</p>
+<p>— Hự…</p>
+<p>— Cửu đệ!</p>
+<p>Hai mắt hắn đỏ hoe.</p>
+<p>Nước mũi cũng chảy ra.</p>
+<p>— Cửu đệ!</p>
+<p>— Thật sự là đệ!</p>
+<p>— Bát hoàng huynh, huynh làm sao vậy?</p>
+<p>Sở Ngạo Thiên ôm lấy nàng, đau khổ kể lể:</p>
+<p>— Tối qua ta thấy Nhiếp Chính Vương bước vào trà lâu, lo đệ gặp chuyện chẳng lành.</p>
+<p>— Ai ngờ còn chưa vào được nhã phòng…</p>
+<p>— Đã bị một nam nhân mặc hắc y, đeo bội kiếm chặn lại.</p>
+<p>— Ta thật sự lo cho đệ.</p>
+<p>— Liền giao thủ với hắn hai chiêu.</p>
+<p>— Ai ngờ hắn túm lấy đầu ta đập vào tường.</p>
+<p>— Đập ta ngất luôn!</p>
+<p>Sở Ly trầm mắt.</p>
+<p>— Có chuyện đó sao?</p>
+<p>Nàng còn tưởng…</p>
+<p>Là Bát hoàng huynh bán đứng nàng.</p>
+<p>Cố ý liên thủ với Sở Đệ Trì, lừa nàng xuất cung.</p>
+<p>Sở Ngạo Thiên ôm đầu.</p>
+<p>Đau đến mức hai mắt đỏ hoe.</p>
+<p>— Cửu đệ…</p>
+<p>— Ta có lỗi với đệ.</p>
+<p>— Đều tại bình thường ta vô dụng, không được phụ hoàng yêu quý.</p>
+<p>— Nếu không…</p>
+<p>— Đám người đó sao dám tùy tiện ra tay với một hoàng tử?</p>
+<p>Sở Ly tin lời hắn.</p>
+<p>Đỡ hắn đứng dậy.</p>
+<p>— Bát hoàng huynh.</p>
+<p>— Người đánh ngất huynh có phải cao hơn huynh nửa cái đầu, trên tay áo còn thêu hoa văn ám kim không?</p>
+<p>Sở Ngạo Thiên gật đầu như giã tỏi.</p>
+<p>— Đúng!</p>
+<p>— Chính là hắn!</p>
+<p>— Sao đệ biết?</p>
+<p>— Nếu ta đoán không nhầm.</p>
+<p>— Hắn là tâm phúc bên cạnh Nhiếp Chính Vương.</p>
+<p>— Tên là Trọng Phong.</p>
+<p>Sở Ngạo Thiên đau lòng nói:</p>
+<p>— Cửu đệ…</p>
+<p>— Là ta không bảo vệ được đệ!</p>
+<p>— Không sao.</p>
+<p>Sở Ly nhẹ giọng.</p>
+<p>— Bát hoàng huynh đã tận lực rồi.</p>
+<p>Sở Ngạo Thiên nghiến răng nghiến lợi:</p>
+<p>— Ta vẫn luôn cho rằng Hoàng thúc là người tốt.</p>
+<p>— Không ngờ hắn lại âm hiểm như vậy.</p>
+<p>— Ra tay cũng độc ác.</p>
+<p>— Sau này…</p>
+<p>— Ta tuyệt đối sẽ không dễ dàng tin hắn nữa.</p>
+<p>Sở Ly đỡ hắn.</p>
+<p>Hai người cùng đi trên đường hồi cung.</p>
+<p>Vừa đi vừa nói.</p>
+<p>— Hắn quả thực tội ác tày trời.</p>
+<p>Sở Ngạo Thiên ôm ngực.</p>
+<p>— Đâu chỉ thế!</p>
+<p>— Quả thực chính là một tên khốn!</p>
+<p>Sở Ly gật đầu.</p>
+<p>— Đúng.</p>
+<p>— Quá xấu xa.</p>
+<p>— Đúng!</p>
+<p>— Cửu đệ.</p>
+<p>— Sau này chúng ta đừng bao giờ nói chuyện với hắn nữa.</p>
+<p>— Ừ! Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_67.html" class="btn">‹ Trước</a>
             <a href="chuong_69.html" class="btn">Sau ›</a>
         </div>
@@ -378,15 +386,11 @@ Sở Ly gật đầu.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -398,11 +402,11 @@ Sở Ly gật đầu.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

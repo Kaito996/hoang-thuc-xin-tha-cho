@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 30</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,178 +62,187 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 30</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_29.html" class="btn">‹ Trước</a>
             <a href="chuong_31.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 30: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 30: [Tướng quân phủ, Tần Mục Vũ, có gì chỉ giáo?]
-“Ồ, đưa cho Tần thiếu tướng quân sao, không vấn đề gì.”
-Sở Ly!
-Biểu muội của Ôn Trĩ Hi, còn có Ngọc tiểu thư kia, chưa đủ làm bài học nhãn tiền hay sao? Cớ gì lại còn hớn hở dính vào?
-Thế nhưng…
-Nàng không phục a!
-Vì sao Ngũ hoàng tử, Tần Mục Vũ đều có người ái mộ, còn nàng—một thiếu niên phong lưu tuấn dật, anh tuấn tiêu sái, lại không có nữ tử nào ái mộ?
-Thật vô lý.
-Ngọc Kiều đỏ mặt vui sướng:
-“Đa tạ Cửu hoàng tử, đa tạ!”
-Nàng nắm vạt áo, vội vã cùng tỳ nữ rời đi.
-Thiếu nữ hoài xuân, bước chân nhẹ như gió.
-Sở Ly nắm túi hương trong tay, trăm mối khó giải.
-Nàng… không xấu.
-Rốt cuộc là sai ở đâu?
-“Sở huynh!”
-Lúc này, phía xa, mấy vị công tử thân khoác cẩm y, ngọc bội đeo hông, phe phẩy chiết phiến tiến lại—chính là đám bằng hữu thường ngày của nàng.
-Vì thân phận, bên ngoài chỉ xưng như vậy.
-“Đoàn huynh, Mộc huynh, Đoạn Mộc huynh.”
-Ba họ ghép lại, lại có chút thú vị.
-Đoạn Mộc Thương bước lên trước, mắt sáng như bát quái:
-“Sở huynh, nghe nói kỳ thu săn trước, ngươi đại xuất phong đầu, tiễn thuật siêu quần, còn lập công cứu giá. Chúng ta mòn mỏi chờ đợi, cuối cùng cũng đợi được ngươi xuất cung.”
-Đoạn Duệ khép phiến, vội hỏi:
-“Có thật không? Có thật không? Sở huynh, ngươi muốn bỏ chúng ta, một bước lên trời sao?”
-Sở Ly mặt đầy “cà chua hỏng”.
-Đừng nhắc nữa.
-Đến giờ nàng còn chưa biết kẻ nào hãm hại mình, nếu bắt được, nhất định phải chém chết tên súc sinh đó!
-“Người đời truyền miệng, khoa trương quá mức thôi. Ta là dạng gì, các ngươi còn không rõ sao?”
-“Ha ha ha!”
-Mọi người bật cười.
-Bọn họ đều là thế gia công tử, giống như Sở Ly, ăn chơi không lo, không cần phấn đấu, ngày thường tụ lại du ngoạn hưởng lạc, vô cùng khoái hoạt.
-Mộc Kỳ Sơn ánh mắt chuyển động, nói:
-“Mấy ngày nay Sở huynh không ra cung, có điều không biết, Phượng Dương nhai mới khai một toà hí quán, hoa đán từ Giang Nam mời đến, một khúc ngàn kim.”
-“Ồ?”
-Thu cao khí sảng, nghe hí uống rượu, quả thật khoái ý.
-“Vậy còn chờ gì? Hôm nay ta mời.”
-“Sở huynh hào khí!”
-Thủy Kính Đài
-Thủy Kính Đài là một hí quán xây bên hồ, lầu ba tầng cao vươn lên, soi bóng mặt nước lấp lánh, liễu rủ ven hồ, trong tiếng thuyền du dương vọng lại là thanh âm hí khúc, khiến dân chúng không khỏi ngẩng nhìn say mê.
-Bốn người bước vào.
-Chưởng quỹ lập tức tiến tới:
-“Ôi chao, bốn vị công tử, mời vào!”
-Sở Ly lấy từ tay áo ra một thỏi kim:
-“Cho chúng ta một nhã gian thượng hạng, món ngon rượu ngon cứ mang hết lên.”
-Chưởng quỹ mắt sáng rực.
-Kim thỏi!
-Bình thường khách dùng bạc, ngân phiếu, hiếm có người hào phóng như vậy.
-Đừng nói nhã gian, dù có bán cả hoa đán của Thủy Kính Đài, cũng không thành vấn đề!
-Sở Ly:
-“Nhớ trả tiền thừa.”
-Tiết kiệm thì tiết kiệm, tiêu thì tiêu đúng chỗ—Sở Ly xưa nay như vậy.
-Chưởng quỹ khóe miệng giật giật:
-“…Vâng, công tử.”
-Rượu lên vài chén, bốn người dần say, nói cười rôm rả.
-“Vừa nãy ở cung môn, ta thấy có tiểu thư tặng túi hương cho Sở huynh, thật có phúc a!”
-“Thật sao?”
-“Sở huynh giấu giếm làm gì, cho chúng ta xem với chứ?”
-Sở Ly cầm chén rượu:
-“Có tiểu thư gì đâu, người ta nhờ ta chuyển giao thôi.”
-“Ta không tin. Sở huynh phong lưu tuấn tú, lại giữ mình trong sạch, ngay cả thông phòng cũng không có, chẳng lẽ không được?”
-“…Ngươi say rồi.”
-“Ai say?” Đoạn Mộc Thương loạng choạng đứng dậy, đưa tay định tháo đai lưng:
-“Sở huynh, ta dạy ngươi thế nào là… khôi phục nam phong…”
-Đoạn Duệ ôm vò rượu cười lớn:
-“Ngươi đừng lắc nữa… mới uống mấy chén đã thành thế này sao?”
-“Ta… không có…”
-“Ầm!”
-Chưa dứt lời, Đoạn Mộc Thương đã ngã gục xuống bàn.
-Đoạn Duệ muốn đỡ, lại bị hắn đè trúng, cũng ngã theo.
-Sở Ly ánh mắt trầm xuống.
-Rượu này…
-Nàng xưa nay biết chừng mực, chưa từng say ở bên ngoài. Nhưng hôm nay mới uống ba chén, thân thể đã nóng lên như lửa đốt, bụng như có hỏa diễm thiêu đốt.
-Khô nóng, bức bối, từng tầng nhiệt khí trào dâng, khiến nàng nhớ đến đêm yến khải công, cảm giác nóng rực trên người Nhiếp Chính Vương…
-“Choang!”
-Chén rượu rơi xuống đất vỡ nát.
-Đây là xuân dược!
-Nhưng… cùng một loại rượu, vì sao chỉ mình nàng trúng?
-Mộc Kỳ Sơn bước tới đỡ:
-“Sở huynh, ngươi sao vậy?”
-“Rượu do ngươi rót?”
-“Ta chỉ cầm bình rượu, chuyện khác ta không biết, rốt cuộc là sao vậy?” hắn giả vờ vô tội.
-Sở Ly hất tay hắn, quay người lao xuống lầu.
-“Sở huynh? Sở huynh!”
-Mộc Kỳ Sơn đuổi theo vài bước, nhìn bóng nàng loạng choạng, khóe môi chậm rãi nhếch lên.
-Hắn phe phẩy chiết phiến, ra hiệu.
-Ở góc hành lang, mấy nữ tử lập tức đuổi theo.
-Mấy nữ nhân mềm mại va vào người Sở Ly, không những không làm dịu, ngược lại càng khiến nàng bức bối khó chịu.
-“Công tử, người nóng quá…”
-“Công tử~”
-Thân thể mềm mại áp sát, chặn đường.
-Sở Ly vịn lan can, đầu nặng trĩu, trước mắt mơ hồ, nội lực cưỡng ép áp chế hỏa khí, chút lý trí còn sót lại nói nàng phải lập tức tìm nơi an toàn.
-“Tránh ra.”
-Nàng trầm giọng.
-“Công tử tuấn tú như vậy, sao không cùng chúng ta uống vài chén?”
-“Ta đàn tiêu rất giỏi… a!”
-Sở Ly trực tiếp hất ra.
-Nữ nhân kia lại ôm chặt eo nàng không buông.
-Chưởng quỹ chạy tới:
-“Có chuyện gì vậy?”
-“Chưởng quỹ, công tử nhà chúng ta uống say nói mê, làm phiền đưa về nhã gian.”
-“Làm càn!”
-Chưởng quỹ mắng một tiếng, lập tức sai hai đại hán lực lưỡng kéo Sở Ly trở về phòng.
-“Buông ra… càn rỡ…”
-Nhiệt khí như thủy triều, khiến nàng tay chân mềm nhũn, dần mất khả năng phản kháng.
-Bốn nữ nhân nhìn nhau cười, liền bắt đầu tiến lại.
-Đúng lúc đó, bên ngoài vang lên một tiếng quát trầm lạnh:
-“Buông ‘hắn’ ra!”
-Nữ nhân lạnh giọng:
-“Ngươi là ai? Đừng xen vào việc người khác.”
-Một nam tử xông vào Thủy Kính Đài, lập tức ôm lấy vai Sở Ly, kéo nàng vào lòng.
-“Ngươi—”
-Hắn liếc mắt lạnh lùng:
-“Tướng quân phủ, Tần Mục Vũ, có gì chỉ giáo?” Ẩn bớt</p>
+            <p>Chương 30: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 30: [Tướng quân phủ, Tần Mục Vũ, có gì chỉ giáo?]</p>
+<p>“Ồ, đưa cho Tần thiếu tướng quân sao, không vấn đề gì.”</p>
+<p>Sở Ly!</p>
+<p>Biểu muội của Ôn Trĩ Hi, còn có Ngọc tiểu thư kia, chưa đủ làm bài học nhãn tiền hay sao? Cớ gì lại còn hớn hở dính vào?</p>
+<p>Thế nhưng…</p>
+<p>Nàng không phục a!</p>
+<p>Vì sao Ngũ hoàng tử, Tần Mục Vũ đều có người ái mộ, còn nàng—một thiếu niên phong lưu tuấn dật, anh tuấn tiêu sái, lại không có nữ tử nào ái mộ?</p>
+<p>Thật vô lý.</p>
+<p>Ngọc Kiều đỏ mặt vui sướng:</p>
+<p>“Đa tạ Cửu hoàng tử, đa tạ!”</p>
+<p>Nàng nắm vạt áo, vội vã cùng tỳ nữ rời đi.</p>
+<p>Thiếu nữ hoài xuân, bước chân nhẹ như gió.</p>
+<p>Sở Ly nắm túi hương trong tay, trăm mối khó giải.</p>
+<p>Nàng… không xấu.</p>
+<p>Rốt cuộc là sai ở đâu?</p>
+<p>“Sở huynh!”</p>
+<p>Lúc này, phía xa, mấy vị công tử thân khoác cẩm y, ngọc bội đeo hông, phe phẩy chiết phiến tiến lại—chính là đám bằng hữu thường ngày của nàng.</p>
+<p>Vì thân phận, bên ngoài chỉ xưng như vậy.</p>
+<p>“Đoàn huynh, Mộc huynh, Đoạn Mộc huynh.”</p>
+<p>Ba họ ghép lại, lại có chút thú vị.</p>
+<p>Đoạn Mộc Thương bước lên trước, mắt sáng như bát quái:</p>
+<p>“Sở huynh, nghe nói kỳ thu săn trước, ngươi đại xuất phong đầu, tiễn thuật siêu quần, còn lập công cứu giá. Chúng ta mòn mỏi chờ đợi, cuối cùng cũng đợi được ngươi xuất cung.”</p>
+<p>Đoạn Duệ khép phiến, vội hỏi:</p>
+<p>“Có thật không? Có thật không? Sở huynh, ngươi muốn bỏ chúng ta, một bước lên trời sao?”</p>
+<p>Sở Ly mặt đầy “cà chua hỏng”.</p>
+<p>Đừng nhắc nữa.</p>
+<p>Đến giờ nàng còn chưa biết kẻ nào hãm hại mình, nếu bắt được, nhất định phải chém chết tên súc sinh đó!</p>
+<p>“Người đời truyền miệng, khoa trương quá mức thôi. Ta là dạng gì, các ngươi còn không rõ sao?”</p>
+<p>“Ha ha ha!”</p>
+<p>Mọi người bật cười.</p>
+<p>Bọn họ đều là thế gia công tử, giống như Sở Ly, ăn chơi không lo, không cần phấn đấu, ngày thường tụ lại du ngoạn hưởng lạc, vô cùng khoái hoạt.</p>
+<p>Mộc Kỳ Sơn ánh mắt chuyển động, nói:</p>
+<p>“Mấy ngày nay Sở huynh không ra cung, có điều không biết, Phượng Dương nhai mới khai một toà hí quán, hoa đán từ Giang Nam mời đến, một khúc ngàn kim.”</p>
+<p>“Ồ?”</p>
+<p>Thu cao khí sảng, nghe hí uống rượu, quả thật khoái ý.</p>
+<p>“Vậy còn chờ gì? Hôm nay ta mời.”</p>
+<p>“Sở huynh hào khí!”</p>
+<p>Thủy Kính Đài</p>
+<p>Thủy Kính Đài là một hí quán xây bên hồ, lầu ba tầng cao vươn lên, soi bóng mặt nước lấp lánh, liễu rủ ven hồ, trong tiếng thuyền du dương vọng lại là thanh âm hí khúc, khiến dân chúng không khỏi ngẩng nhìn say mê.</p>
+<p>Bốn người bước vào.</p>
+<p>Chưởng quỹ lập tức tiến tới:</p>
+<p>“Ôi chao, bốn vị công tử, mời vào!”</p>
+<p>Sở Ly lấy từ tay áo ra một thỏi kim:</p>
+<p>“Cho chúng ta một nhã gian thượng hạng, món ngon rượu ngon cứ mang hết lên.”</p>
+<p>Chưởng quỹ mắt sáng rực.</p>
+<p>Kim thỏi!</p>
+<p>Bình thường khách dùng bạc, ngân phiếu, hiếm có người hào phóng như vậy.</p>
+<p>Đừng nói nhã gian, dù có bán cả hoa đán của Thủy Kính Đài, cũng không thành vấn đề!</p>
+<p>Sở Ly:</p>
+<p>“Nhớ trả tiền thừa.”</p>
+<p>Tiết kiệm thì tiết kiệm, tiêu thì tiêu đúng chỗ—Sở Ly xưa nay như vậy.</p>
+<p>Chưởng quỹ khóe miệng giật giật:</p>
+<p>“…Vâng, công tử.”</p>
+<p>Rượu lên vài chén, bốn người dần say, nói cười rôm rả.</p>
+<p>“Vừa nãy ở cung môn, ta thấy có tiểu thư tặng túi hương cho Sở huynh, thật có phúc a!”</p>
+<p>“Thật sao?”</p>
+<p>“Sở huynh giấu giếm làm gì, cho chúng ta xem với chứ?”</p>
+<p>Sở Ly cầm chén rượu:</p>
+<p>“Có tiểu thư gì đâu, người ta nhờ ta chuyển giao thôi.”</p>
+<p>“Ta không tin. Sở huynh phong lưu tuấn tú, lại giữ mình trong sạch, ngay cả thông phòng cũng không có, chẳng lẽ không được?”</p>
+<p>“…Ngươi say rồi.”</p>
+<p>“Ai say?” Đoạn Mộc Thương loạng choạng đứng dậy, đưa tay định tháo đai lưng:</p>
+<p>“Sở huynh, ta dạy ngươi thế nào là… khôi phục nam phong…”</p>
+<p>Đoạn Duệ ôm vò rượu cười lớn:</p>
+<p>“Ngươi đừng lắc nữa… mới uống mấy chén đã thành thế này sao?”</p>
+<p>“Ta… không có…”</p>
+<p>“Ầm!”</p>
+<p>Chưa dứt lời, Đoạn Mộc Thương đã ngã gục xuống bàn.</p>
+<p>Đoạn Duệ muốn đỡ, lại bị hắn đè trúng, cũng ngã theo.</p>
+<p>Sở Ly ánh mắt trầm xuống.</p>
+<p>Rượu này…</p>
+<p>Nàng xưa nay biết chừng mực, chưa từng say ở bên ngoài. Nhưng hôm nay mới uống ba chén, thân thể đã nóng lên như lửa đốt, bụng như có hỏa diễm thiêu đốt.</p>
+<p>Khô nóng, bức bối, từng tầng nhiệt khí trào dâng, khiến nàng nhớ đến đêm yến khải công, cảm giác nóng rực trên người Nhiếp Chính Vương…</p>
+<p>“Choang!”</p>
+<p>Chén rượu rơi xuống đất vỡ nát.</p>
+<p>Đây là xuân dược!</p>
+<p>Nhưng… cùng một loại rượu, vì sao chỉ mình nàng trúng?</p>
+<p>Mộc Kỳ Sơn bước tới đỡ:</p>
+<p>“Sở huynh, ngươi sao vậy?”</p>
+<p>“Rượu do ngươi rót?”</p>
+<p>“Ta chỉ cầm bình rượu, chuyện khác ta không biết, rốt cuộc là sao vậy?” hắn giả vờ vô tội.</p>
+<p>Sở Ly hất tay hắn, quay người lao xuống lầu.</p>
+<p>“Sở huynh? Sở huynh!”</p>
+<p>Mộc Kỳ Sơn đuổi theo vài bước, nhìn bóng nàng loạng choạng, khóe môi chậm rãi nhếch lên.</p>
+<p>Hắn phe phẩy chiết phiến, ra hiệu.</p>
+<p>Ở góc hành lang, mấy nữ tử lập tức đuổi theo.</p>
+<p>Mấy nữ nhân mềm mại va vào người Sở Ly, không những không làm dịu, ngược lại càng khiến nàng bức bối khó chịu.</p>
+<p>“Công tử, người nóng quá…”</p>
+<p>“Công tử~”</p>
+<p>Thân thể mềm mại áp sát, chặn đường.</p>
+<p>Sở Ly vịn lan can, đầu nặng trĩu, trước mắt mơ hồ, nội lực cưỡng ép áp chế hỏa khí, chút lý trí còn sót lại nói nàng phải lập tức tìm nơi an toàn.</p>
+<p>“Tránh ra.”</p>
+<p>Nàng trầm giọng.</p>
+<p>“Công tử tuấn tú như vậy, sao không cùng chúng ta uống vài chén?”</p>
+<p>“Ta đàn tiêu rất giỏi… a!”</p>
+<p>Sở Ly trực tiếp hất ra.</p>
+<p>Nữ nhân kia lại ôm chặt eo nàng không buông.</p>
+<p>Chưởng quỹ chạy tới:</p>
+<p>“Có chuyện gì vậy?”</p>
+<p>“Chưởng quỹ, công tử nhà chúng ta uống say nói mê, làm phiền đưa về nhã gian.”</p>
+<p>“Làm càn!”</p>
+<p>Chưởng quỹ mắng một tiếng, lập tức sai hai đại hán lực lưỡng kéo Sở Ly trở về phòng.</p>
+<p>“Buông ra… càn rỡ…”</p>
+<p>Nhiệt khí như thủy triều, khiến nàng tay chân mềm nhũn, dần mất khả năng phản kháng.</p>
+<p>Bốn nữ nhân nhìn nhau cười, liền bắt đầu tiến lại.</p>
+<p>Đúng lúc đó, bên ngoài vang lên một tiếng quát trầm lạnh:</p>
+<p>“Buông ‘hắn’ ra!”</p>
+<p>Nữ nhân lạnh giọng:</p>
+<p>“Ngươi là ai? Đừng xen vào việc người khác.”</p>
+<p>Một nam tử xông vào Thủy Kính Đài, lập tức ôm lấy vai Sở Ly, kéo nàng vào lòng.</p>
+<p>“Ngươi—”</p>
+<p>Hắn liếc mắt lạnh lùng:</p>
+<p>“Tướng quân phủ, Tần Mục Vũ, có gì chỉ giáo?” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_29.html" class="btn">‹ Trước</a>
             <a href="chuong_31.html" class="btn">Sau ›</a>
         </div>
@@ -242,15 +250,11 @@ Hắn liếc mắt lạnh lùng:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -262,11 +266,11 @@ Hắn liếc mắt lạnh lùng:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

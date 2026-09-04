@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 314</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,192 +62,201 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 314</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_313.html" class="btn">‹ Trước</a>
             <a href="chuong_315.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 314: Nếu còn kẻ nào không tin tà, cứ việc đến thử
-Ban ngày này là một ngày dài dằng dặc, khó vượt qua nhất trong suốt cuộc đời Sở Ly.
-Từng khắc từng giây như bị kéo chậm gấp mười lần.
-Đế đô vẫn phong thành, hoàng cung vẫn giới nghiêm, bách tính thấp thỏm bất an, cung nhân làm việc trong nơm nớp lo sợ, các đại thần không cần vào triều, ai nấy đều ở trong phủ của mình, mang theo những tâm tư khác nhau...
-Cả tòa Đế đô chìm trong một bầu không khí quỷ dị mà ngưng trọng.
-Mặt trời mọc rồi lặn.
-Đến chiều tà, gió đêm dưới ánh tà dương mang theo chút hàn ý.
-Một ngày yên bình.
-Đêm xuống.
-Khương Thái phó bưng cơm canh tới, thấy Hoàng thượng và Tạ tiểu thư vẫn luôn canh giữ bên ngoài Đại Thành điện, ngồi trên bậc thềm, bèn bước tới:
-“Hoàng thượng, Tạ tiểu thư, hai người đã một ngày một đêm chưa chợp mắt rồi, dùng chút gì, nghỉ ngơi một lát đi.”
-Sở Ngạo Thiên trợn mắt:
-“Lão sư, sao người lại quay về?”
-Chẳng phải đã được đưa về phủ rồi sao?
-Khương Thái phó cười khổ:
-“Quốc nạn trước mắt, lão thần sao có thể trốn ở trong nhà? Tuy lão thần tuổi đã cao, nhưng ta...”
-Ta không thể trơ mắt nhìn hai học trò của mình rơi vào cảnh nguy nan.
-Làm người dạy học, phải có khí tiết.
-Một người là Bát hoàng tử, một người là Cửu hoàng tử, hai học trò từng khiến ông đau đầu nhất, nay lại gánh vác giang sơn Đại Sở.
-Dẫu có chết, ông cũng mãn nguyện.
-Sở Ngạo Thiên nắm lấy tay ông, vừa giận vừa thương:
-“Người tới đây làm gì! Người già như vậy rồi, còn tới đây gây thêm phiền cho ta sao! Ta sẽ sai người đưa người xuất cung!”
-Khương Thái phó cười:
-“Hoàng thượng cũng cảm nhận được tâm tình năm xưa lão thần dạy dỗ các người, chỉ tiếc rèn sắt không thành thép rồi chứ?”
-Khóe mắt Sở Ngạo Thiên đỏ bừng:
-“Người!”
-Khương Thái phó nhẹ nhàng vỗ mu bàn tay hắn. Bàn tay đầy nếp nhăn ấy lại vô cùng dày dặn, ấm áp.
-“Hoàng thượng trưởng thành rồi.”
-“Lão sư...”
-Khương Thái phó đưa tay về phía Sở Ly:
-“Cửu hoàng tử.”
-Sống mũi Sở Ly cay xè:
-“Lão sư...”
-Khương Thái phó nắm lấy tay hai người, chồng chặt lên nhau:
-“Huynh đệ các con đều là hài tử tốt, là học trò ngoan nhất mà lão thần từng dạy. Bất luận quốc gia hưng suy, các con nhất định phải đồng tâm hiệp lực. Sinh trong hoàng gia, thứ đáng quý nhất chính là thân tình.”
-Sở Ly biết.
-Nàng vẫn luôn biết.
-Ba thầy trò ở cùng một chỗ, ngắm mặt trời lặn, nhìn màn đêm buông xuống, hưởng thụ chút yên bình cuối cùng.
-Đêm xuống.
-Giờ Tý.
-Khi vạn vật tĩnh lặng, tiếng chuông từ Chung Cổ lâu phá tan sự yên tĩnh của đêm nay:
-Đoong——
-Đoong!
-Đoong!
-Ba tiếng, đại lễ tế tự.
-Năm tiếng, quân vương băng hà.
-Bảy tiếng, binh biến.
-Tròn bảy tiếng chuông, gấp gáp mà nặng nề, vang xa mấy dặm, bao trùm khắp hoàng thành. Muôn nhà đèn lửa, bách tính đều giật mình tỉnh giấc.
-“Có chuyện rồi!”
-“Không hay, xảy ra đại sự rồi!”
-“Báo——”
-Một tên binh sĩ chạy gấp:
-“Không hay rồi, Hoàng thượng! Lang trung bộ Binh họ Dương phản loạn, mở Tây thành môn, địch quân đã vào thành!”
-Sở Ngạo Thiên bật người đứng dậy:
-“Dương Lang trung!”
-Sở Ly lập tức nói:
-“Lập tức điều toàn bộ binh lực, rút Hộ thành quân, tử thủ hoàng cung!”
-“Tuân lệnh!”
-“Dương Lang trung, tên phản đồ này!”
-“Quốc nạn trước mắt, bất cứ ai cũng có thể đâm sau lưng, thấy gió trở cờ, trèo cao đạp thấp, đó vốn là nhân tính.”
-Trái lại, phản ứng của Sở Ly vô cùng bình tĩnh.
-Trận chiến này sớm muộn gì cũng sẽ tới.
-Thành bại quyết định ngay trong đêm nay.
-Sở Ly xoay người, đi thẳng vào Đại Thành điện:
-“Gia quyến của Dương Lang trung đâu?”
-Hơn trăm người chen chúc với vẻ mặt kinh hoàng.
-Bọn họ đều đã nghe thấy bảy tiếng chuông cảnh báo.
-Đại họa đã tới.
-Thế nhưng bọn họ vẫn bị nhốt ở đây, sắp phải đối mặt với nguy hiểm chưa biết. Ai nấy đều lo sợ, đứng ngồi không yên.
-Trong đám người, một nam tử chừng mười bảy mười tám tuổi bước ra:
-“Hắn là phụ thân ta.”
-“Ồ, ngươi là đích tử? Phụ thân ngươi cấu kết ngoại địch, xem ra đã từ bỏ ngươi rồi.”
-Dương Thiên cười lạnh:
-“Phụ thân chưa từng từ bỏ ta, chỉ là thuận theo minh chủ mà thôi! Nhìn Đại Sở hiện giờ xem, ô yên chướng khí, đã thành cái dạng gì rồi? Một tên hoàng đế phế vật, từ khi đăng cơ đến nay, chiến tranh không dứt, nội loạn liên miên, dân chúng bất an. Hắn có tư cách gì làm hoàng đế!”
-Trong bao nhiêu hoàng tử, người có tư cách hơn Sở Ngạo Thiên đâu phải không có.
-Cuối cùng lại để một tên phế vật lên ngôi.
-Đại Sở hết rồi!
-“Thay vì trơ mắt nhìn Đại Sở diệt vong, chẳng bằng dùng đám phế vật các ngươi làm lễ vật ra mắt dâng cho Đông Lăng Thái tử!”
-Vừa dứt lời, Dương Thiên rút thanh chủy thủ giấu bên hông, lao thẳng về phía Sở Ngạo Thiên.
-Nhanh như chớp.
-Sự việc xảy ra quá đột ngột.
-Hành thích!
-Ánh mắt Sở Ly lạnh buốt. Nàng trở tay rút đoản đao bên hông một ám vệ, bước nhanh lên trước, giữ chặt vai Dương Thiên, đâm thẳng một nhát.
-“Ưm!”
-Dao trắng đâm vào, dao đỏ rút ra.
-Nắm chặt chuôi đao, nàng xoáy mạnh nửa vòng, máu tươi lập tức phun tung tóe như lúc giết heo ngày Tết.
-“A!”
-“Giết người!”
-“A!”
-Trong điện phần lớn đều là phụ nhân và nữ tử trong gia quyến đại thần, nào đã từng thấy cảnh tượng như vậy, lập tức sợ đến thất thanh thét chói tai, hoa dung thất sắc.
-Sở Ly đá văng Dương Thiên, lạnh lùng ném thanh đao nhuốm máu xuống đất.
-Choang!
-“Đại thần mưu phản, gia quyến đồng tội. Từ giờ trở đi, tốt nhất hãy cầu mong phu quân, phụ thân của các ngươi vì thê nhi mà biết lựa chọn cho khôn ngoan.”
-“Nếu còn kẻ nào không tin tà, cứ việc đến thử.”
-“Đóng cửa!”
-—
-Địch quân vào thành.
-Bọn chúng đồng loạt mặc giáp trụ Nam Man, đeo trường kiếm. Kỵ binh, cung binh, bộ binh đều chỉnh tề nối nhau tiến vào thành.
-Bách tính hoảng loạn trốn trong nhà, đến cả nến cũng không dám thắp. Có mấy người không kịp ẩn nấp, sợ đến ngồi phịch xuống đất, quần cũng ướt vì tiểu tiện.
-Thủ lĩnh địch quân cưỡi đại mã, chậm rãi tiến lại.
-“Đừng giết ta... tha mạng...”
-“Tha mạng...”
-Hắn từ trên cao nhìn xuống, cất cao giọng:
-“Đêm nay, chúng ta chỉ đánh chiếm hoàng cung. Kẻ đầu hàng không giết, bách tính không giết, nữ nhân không giết.”
-Tam quân đồng thanh:
-“Tuân lệnh!”
-“Tiến đến hoàng cung!”
-“Tuân lệnh!”
-Mấy bách tính sợ đến mềm nhũn, trơ mắt nhìn địch quân đi ngang trước mặt mà không hề động đến mình. Từ sống đến chết rồi lại từ chết trở về sống, cảm giác lên xuống ấy khiến họ sợ đến mức chẳng nói nên lời:
-“Không... không giết chúng ta?”
-“Bọn chúng chẳng phải địch quân sao?”
-“Bọn chúng là ai...”
-Hoàng cung giới nghiêm.
-Khi quân Nam Man áp sát hoàng cung, Hộ thành quân đã bao vây nơi này kín như bưng. Từng người đều tuốt kiếm, sẵn sàng nghênh chiến.
-Thủ lĩnh địch quân lớn tiếng:
-“Binh lực của các ngươi hoàn toàn không đủ chống đỡ, đừng vùng vẫy vô ích nữa. Đông Lăng điện hạ yêu dân như con, đêm nay, kẻ đầu hàng sẽ không chết!”
-Thống lĩnh Hộ thành quân họ Lý quát lớn:
-“Phi! Gian nịnh xâm lăng, chúng ta vì quốc gia, vì lê dân bách tính, nguyện thân tiên sĩ tốt, chết cũng không hối tiếc. Thà đứng mà chết, quyết không quỳ mà sống!”
-“Các tướng sĩ! Đêm nay, đều phải giữ vững!”
-Thủ lĩnh địch quân cười lạnh:
-“Rượu mời không uống, lại muốn uống rượu phạt. Đã vậy, chúng ta cũng chẳng cần khách khí nữa!”
-“Tấn công!”
-Một tiếng hạ lệnh, trận chiến bức cung chính thức khai màn!
-Trong cung hỗn loạn thành một mảnh. Đao quang kiếm ảnh chằng chịt, cung nhân tháo chạy, gia quyến gào khóc, gió đêm mang theo mùi máu tanh nồng nặc...
-Sở Ly đứng trên bậc thềm cao trước Đại Thành điện, từ trên cao nhìn xuống quảng trường rộng lớn cùng chiến trường hỗn loạn ấy, vung tay rút thanh nhuyễn kiếm giấu trong tay áo.
-Nàng giương nhuyễn kiếm, khép mắt lại, bên tai tràn ngập tiếng chém giết vang vọng.
-“Nghĩa phụ, đây là thanh kiếm người đã tặng cho con.”
-“Ý nghĩa của Lục Hợp, là thiên hạ bình định, thương sinh an ổn, tứ hải quy nhất. Nghĩa phụ, đêm nay, con nhất định sẽ không phụ thanh kiếm này!” Ẩn bớt</p>
+            <p>Chương 314: Nếu còn kẻ nào không tin tà, cứ việc đến thử</p>
+<p>Ban ngày này là một ngày dài dằng dặc, khó vượt qua nhất trong suốt cuộc đời Sở Ly.</p>
+<p>Từng khắc từng giây như bị kéo chậm gấp mười lần.</p>
+<p>Đế đô vẫn phong thành, hoàng cung vẫn giới nghiêm, bách tính thấp thỏm bất an, cung nhân làm việc trong nơm nớp lo sợ, các đại thần không cần vào triều, ai nấy đều ở trong phủ của mình, mang theo những tâm tư khác nhau...</p>
+<p>Cả tòa Đế đô chìm trong một bầu không khí quỷ dị mà ngưng trọng.</p>
+<p>Mặt trời mọc rồi lặn.</p>
+<p>Đến chiều tà, gió đêm dưới ánh tà dương mang theo chút hàn ý.</p>
+<p>Một ngày yên bình.</p>
+<p>Đêm xuống.</p>
+<p>Khương Thái phó bưng cơm canh tới, thấy Hoàng thượng và Tạ tiểu thư vẫn luôn canh giữ bên ngoài Đại Thành điện, ngồi trên bậc thềm, bèn bước tới:</p>
+<p>“Hoàng thượng, Tạ tiểu thư, hai người đã một ngày một đêm chưa chợp mắt rồi, dùng chút gì, nghỉ ngơi một lát đi.”</p>
+<p>Sở Ngạo Thiên trợn mắt:</p>
+<p>“Lão sư, sao người lại quay về?”</p>
+<p>Chẳng phải đã được đưa về phủ rồi sao?</p>
+<p>Khương Thái phó cười khổ:</p>
+<p>“Quốc nạn trước mắt, lão thần sao có thể trốn ở trong nhà? Tuy lão thần tuổi đã cao, nhưng ta...”</p>
+<p>Ta không thể trơ mắt nhìn hai học trò của mình rơi vào cảnh nguy nan.</p>
+<p>Làm người dạy học, phải có khí tiết.</p>
+<p>Một người là Bát hoàng tử, một người là Cửu hoàng tử, hai học trò từng khiến ông đau đầu nhất, nay lại gánh vác giang sơn Đại Sở.</p>
+<p>Dẫu có chết, ông cũng mãn nguyện.</p>
+<p>Sở Ngạo Thiên nắm lấy tay ông, vừa giận vừa thương:</p>
+<p>“Người tới đây làm gì! Người già như vậy rồi, còn tới đây gây thêm phiền cho ta sao! Ta sẽ sai người đưa người xuất cung!”</p>
+<p>Khương Thái phó cười:</p>
+<p>“Hoàng thượng cũng cảm nhận được tâm tình năm xưa lão thần dạy dỗ các người, chỉ tiếc rèn sắt không thành thép rồi chứ?”</p>
+<p>Khóe mắt Sở Ngạo Thiên đỏ bừng:</p>
+<p>“Người!”</p>
+<p>Khương Thái phó nhẹ nhàng vỗ mu bàn tay hắn. Bàn tay đầy nếp nhăn ấy lại vô cùng dày dặn, ấm áp.</p>
+<p>“Hoàng thượng trưởng thành rồi.”</p>
+<p>“Lão sư...”</p>
+<p>Khương Thái phó đưa tay về phía Sở Ly:</p>
+<p>“Cửu hoàng tử.”</p>
+<p>Sống mũi Sở Ly cay xè:</p>
+<p>“Lão sư...”</p>
+<p>Khương Thái phó nắm lấy tay hai người, chồng chặt lên nhau:</p>
+<p>“Huynh đệ các con đều là hài tử tốt, là học trò ngoan nhất mà lão thần từng dạy. Bất luận quốc gia hưng suy, các con nhất định phải đồng tâm hiệp lực. Sinh trong hoàng gia, thứ đáng quý nhất chính là thân tình.”</p>
+<p>Sở Ly biết.</p>
+<p>Nàng vẫn luôn biết.</p>
+<p>Ba thầy trò ở cùng một chỗ, ngắm mặt trời lặn, nhìn màn đêm buông xuống, hưởng thụ chút yên bình cuối cùng.</p>
+<p>Đêm xuống.</p>
+<p>Giờ Tý.</p>
+<p>Khi vạn vật tĩnh lặng, tiếng chuông từ Chung Cổ lâu phá tan sự yên tĩnh của đêm nay:</p>
+<p>Đoong——</p>
+<p>Đoong!</p>
+<p>Đoong!</p>
+<p>Ba tiếng, đại lễ tế tự.</p>
+<p>Năm tiếng, quân vương băng hà.</p>
+<p>Bảy tiếng, binh biến.</p>
+<p>Tròn bảy tiếng chuông, gấp gáp mà nặng nề, vang xa mấy dặm, bao trùm khắp hoàng thành. Muôn nhà đèn lửa, bách tính đều giật mình tỉnh giấc.</p>
+<p>“Có chuyện rồi!”</p>
+<p>“Không hay, xảy ra đại sự rồi!”</p>
+<p>“Báo——”</p>
+<p>Một tên binh sĩ chạy gấp:</p>
+<p>“Không hay rồi, Hoàng thượng! Lang trung bộ Binh họ Dương phản loạn, mở Tây thành môn, địch quân đã vào thành!”</p>
+<p>Sở Ngạo Thiên bật người đứng dậy:</p>
+<p>“Dương Lang trung!”</p>
+<p>Sở Ly lập tức nói:</p>
+<p>“Lập tức điều toàn bộ binh lực, rút Hộ thành quân, tử thủ hoàng cung!”</p>
+<p>“Tuân lệnh!”</p>
+<p>“Dương Lang trung, tên phản đồ này!”</p>
+<p>“Quốc nạn trước mắt, bất cứ ai cũng có thể đâm sau lưng, thấy gió trở cờ, trèo cao đạp thấp, đó vốn là nhân tính.”</p>
+<p>Trái lại, phản ứng của Sở Ly vô cùng bình tĩnh.</p>
+<p>Trận chiến này sớm muộn gì cũng sẽ tới.</p>
+<p>Thành bại quyết định ngay trong đêm nay.</p>
+<p>Sở Ly xoay người, đi thẳng vào Đại Thành điện:</p>
+<p>“Gia quyến của Dương Lang trung đâu?”</p>
+<p>Hơn trăm người chen chúc với vẻ mặt kinh hoàng.</p>
+<p>Bọn họ đều đã nghe thấy bảy tiếng chuông cảnh báo.</p>
+<p>Đại họa đã tới.</p>
+<p>Thế nhưng bọn họ vẫn bị nhốt ở đây, sắp phải đối mặt với nguy hiểm chưa biết. Ai nấy đều lo sợ, đứng ngồi không yên.</p>
+<p>Trong đám người, một nam tử chừng mười bảy mười tám tuổi bước ra:</p>
+<p>“Hắn là phụ thân ta.”</p>
+<p>“Ồ, ngươi là đích tử? Phụ thân ngươi cấu kết ngoại địch, xem ra đã từ bỏ ngươi rồi.”</p>
+<p>Dương Thiên cười lạnh:</p>
+<p>“Phụ thân chưa từng từ bỏ ta, chỉ là thuận theo minh chủ mà thôi! Nhìn Đại Sở hiện giờ xem, ô yên chướng khí, đã thành cái dạng gì rồi? Một tên hoàng đế phế vật, từ khi đăng cơ đến nay, chiến tranh không dứt, nội loạn liên miên, dân chúng bất an. Hắn có tư cách gì làm hoàng đế!”</p>
+<p>Trong bao nhiêu hoàng tử, người có tư cách hơn Sở Ngạo Thiên đâu phải không có.</p>
+<p>Cuối cùng lại để một tên phế vật lên ngôi.</p>
+<p>Đại Sở hết rồi!</p>
+<p>“Thay vì trơ mắt nhìn Đại Sở diệt vong, chẳng bằng dùng đám phế vật các ngươi làm lễ vật ra mắt dâng cho Đông Lăng Thái tử!”</p>
+<p>Vừa dứt lời, Dương Thiên rút thanh chủy thủ giấu bên hông, lao thẳng về phía Sở Ngạo Thiên.</p>
+<p>Nhanh như chớp.</p>
+<p>Sự việc xảy ra quá đột ngột.</p>
+<p>Hành thích!</p>
+<p>Ánh mắt Sở Ly lạnh buốt. Nàng trở tay rút đoản đao bên hông một ám vệ, bước nhanh lên trước, giữ chặt vai Dương Thiên, đâm thẳng một nhát.</p>
+<p>“Ưm!”</p>
+<p>Dao trắng đâm vào, dao đỏ rút ra.</p>
+<p>Nắm chặt chuôi đao, nàng xoáy mạnh nửa vòng, máu tươi lập tức phun tung tóe như lúc giết heo ngày Tết.</p>
+<p>“A!”</p>
+<p>“Giết người!”</p>
+<p>“A!”</p>
+<p>Trong điện phần lớn đều là phụ nhân và nữ tử trong gia quyến đại thần, nào đã từng thấy cảnh tượng như vậy, lập tức sợ đến thất thanh thét chói tai, hoa dung thất sắc.</p>
+<p>Sở Ly đá văng Dương Thiên, lạnh lùng ném thanh đao nhuốm máu xuống đất.</p>
+<p>Choang!</p>
+<p>“Đại thần mưu phản, gia quyến đồng tội. Từ giờ trở đi, tốt nhất hãy cầu mong phu quân, phụ thân của các ngươi vì thê nhi mà biết lựa chọn cho khôn ngoan.”</p>
+<p>“Nếu còn kẻ nào không tin tà, cứ việc đến thử.”</p>
+<p>“Đóng cửa!”</p>
+<p>—</p>
+<p>Địch quân vào thành.</p>
+<p>Bọn chúng đồng loạt mặc giáp trụ Nam Man, đeo trường kiếm. Kỵ binh, cung binh, bộ binh đều chỉnh tề nối nhau tiến vào thành.</p>
+<p>Bách tính hoảng loạn trốn trong nhà, đến cả nến cũng không dám thắp. Có mấy người không kịp ẩn nấp, sợ đến ngồi phịch xuống đất, quần cũng ướt vì tiểu tiện.</p>
+<p>Thủ lĩnh địch quân cưỡi đại mã, chậm rãi tiến lại.</p>
+<p>“Đừng giết ta... tha mạng...”</p>
+<p>“Tha mạng...”</p>
+<p>Hắn từ trên cao nhìn xuống, cất cao giọng:</p>
+<p>“Đêm nay, chúng ta chỉ đánh chiếm hoàng cung. Kẻ đầu hàng không giết, bách tính không giết, nữ nhân không giết.”</p>
+<p>Tam quân đồng thanh:</p>
+<p>“Tuân lệnh!”</p>
+<p>“Tiến đến hoàng cung!”</p>
+<p>“Tuân lệnh!”</p>
+<p>Mấy bách tính sợ đến mềm nhũn, trơ mắt nhìn địch quân đi ngang trước mặt mà không hề động đến mình. Từ sống đến chết rồi lại từ chết trở về sống, cảm giác lên xuống ấy khiến họ sợ đến mức chẳng nói nên lời:</p>
+<p>“Không... không giết chúng ta?”</p>
+<p>“Bọn chúng chẳng phải địch quân sao?”</p>
+<p>“Bọn chúng là ai...”</p>
+<p>Hoàng cung giới nghiêm.</p>
+<p>Khi quân Nam Man áp sát hoàng cung, Hộ thành quân đã bao vây nơi này kín như bưng. Từng người đều tuốt kiếm, sẵn sàng nghênh chiến.</p>
+<p>Thủ lĩnh địch quân lớn tiếng:</p>
+<p>“Binh lực của các ngươi hoàn toàn không đủ chống đỡ, đừng vùng vẫy vô ích nữa. Đông Lăng điện hạ yêu dân như con, đêm nay, kẻ đầu hàng sẽ không chết!”</p>
+<p>Thống lĩnh Hộ thành quân họ Lý quát lớn:</p>
+<p>“Phi! Gian nịnh xâm lăng, chúng ta vì quốc gia, vì lê dân bách tính, nguyện thân tiên sĩ tốt, chết cũng không hối tiếc. Thà đứng mà chết, quyết không quỳ mà sống!”</p>
+<p>“Các tướng sĩ! Đêm nay, đều phải giữ vững!”</p>
+<p>Thủ lĩnh địch quân cười lạnh:</p>
+<p>“Rượu mời không uống, lại muốn uống rượu phạt. Đã vậy, chúng ta cũng chẳng cần khách khí nữa!”</p>
+<p>“Tấn công!”</p>
+<p>Một tiếng hạ lệnh, trận chiến bức cung chính thức khai màn!</p>
+<p>Trong cung hỗn loạn thành một mảnh. Đao quang kiếm ảnh chằng chịt, cung nhân tháo chạy, gia quyến gào khóc, gió đêm mang theo mùi máu tanh nồng nặc...</p>
+<p>Sở Ly đứng trên bậc thềm cao trước Đại Thành điện, từ trên cao nhìn xuống quảng trường rộng lớn cùng chiến trường hỗn loạn ấy, vung tay rút thanh nhuyễn kiếm giấu trong tay áo.</p>
+<p>Nàng giương nhuyễn kiếm, khép mắt lại, bên tai tràn ngập tiếng chém giết vang vọng.</p>
+<p>“Nghĩa phụ, đây là thanh kiếm người đã tặng cho con.”</p>
+<p>“Ý nghĩa của Lục Hợp, là thiên hạ bình định, thương sinh an ổn, tứ hải quy nhất. Nghĩa phụ, đêm nay, con nhất định sẽ không phụ thanh kiếm này!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_313.html" class="btn">‹ Trước</a>
             <a href="chuong_315.html" class="btn">Sau ›</a>
         </div>
@@ -256,15 +264,11 @@ Nàng giương nhuyễn kiếm, khép mắt lại, bên tai tràn ngập tiếng
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -276,11 +280,11 @@ Nàng giương nhuyễn kiếm, khép mắt lại, bên tai tràn ngập tiếng
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

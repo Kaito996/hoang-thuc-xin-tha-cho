@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 175</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,175 +62,184 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 175</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_174.html" class="btn">‹ Trước</a>
             <a href="chuong_176.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 175: Hoàng thúc sao lại đau lòng như chết thê tử vậy
-Tám người giật bắn mình, đồng loạt vung xẻng, cảnh giác nhìn về phía phát ra âm thanh:
-“Ai!”
-“Là kẻ nào!”
-Ánh trăng xuyên qua cành lá, rơi xuống từng mảng sáng tối loang lổ. Một thân ảnh cao dài, ôn nhuận đạp màn đêm mà đến, tay phe phẩy chiết phiến, phong thái thanh nhã, không nhiễm bụi trần.
-Nam nhân ngọc quan cao thúc, khép chiết phiến lại:
-“Phiểu Miểu Môn, Lục Vân Sơ.”
-“Nhị sư huynh của nàng.”
-—
-Phiểu Miểu Sơn.
-Cách Đế Đô hai trăm dặm, tại Thanh Châu có một nơi tên là Phiểu Miểu Sơn. Trên núi tọa lạc một môn phái —— Phiểu Miểu Môn.
-Môn phái này không lớn, thậm chí thu nhận đệ tử cũng rất tùy ý, nhưng vị môn chủ lão đầu tử kia lại là người thật sự có bản lĩnh.
-Lão dạy đại đệ tử kiếm pháp, nhị đệ tử tâm pháp, tam đệ tử khinh công. Mỗi người một môn tuyệt học, không hề trùng lặp, mà môn nào cũng đều là đỉnh tiêm.
-Lão đầu tử từ trước đến nay không tranh không đoạt, là một dòng nước trong hiếm có giữa chính đạo võ lâm, được người trong giang hồ vô cùng kính trọng.
-“Sư phụ, ta đưa tiểu sư đệ về rồi.”
-Lục Vân Sơ đặt người đang mê man bên cạnh dòng suối róc rách. Nước suối trong veo nơi sơn cốc thanh khiết như ngọc, bên trong nở đầy từng đóa liên hoa, đẹp đến động lòng người.
-“Tiểu sư đệ về rồi!”
-Đại sư huynh lập tức đẩy cửa bước ra, sải chân cực lớn, vậy mà y bào vẫn không hề lay động, đủ thấy nội lực thâm hậu đến mức nào.
-Căn nhà gỗ nơi sườn núi hòa cùng cảnh sắc thiên nhiên, càng thêm mộc mạc giản dị.
-“Tiểu sư đệ đến rồi!”
-Bên kia, tam sư huynh vác cuốc trên vai, xắn tay áo, vừa từ ruộng trở về.
-Đừng thấy y ăn mặc giản dị mà coi thường.
-Chỉ trong chớp mắt, chỉ nghe một tiếng “vút”, người đang ở ngoài hơn mười trượng đã trong nháy mắt xuất hiện ngay trước mặt.
-Tám Đại Kim Cương đứng phía sau đồng loạt trầm sắc mặt.
-Khinh công thật lợi hại!
-Đây chính là Phiểu Miểu Môn trong truyền thuyết?
-Nghe nói Phiểu Miểu Môn tuy môn phái nhỏ, nhân số không nhiều, thậm chí đã dần rút khỏi giang hồ, nhưng danh tiếng lại vang xa. Mỗi một lần võ lâm có đại hội hay sự kiện trọng đại, Phiểu Miểu Môn đều được mời tham dự.
-Nghe nói, năm kia loạn phỉ, năm năm trước thiên tai, bảy năm trước đại loạn võ lâm… đều là Phiểu Miểu Môn đứng ra bình định.
-Chỉ dựa vào mấy người bọn họ?
-Ba nam nhân vây quanh Sở Ly, tranh nhau nhìn nàng.
-“Chậc, sắc mặt này không ổn.”
-“Nhìn là biết trúng cổ rồi.”
-“Sao trên người còn dính đất?”
-“Vừa đào từ dưới đất lên.”
-“Cái gì! Khốn kiếp! Kẻ nào dám chôn tiểu sư đệ của ta!”
-“Khụ… khụ khụ ——”
-Phía sau vang lên một tiếng ho khan vô cùng hùng hậu.
-Ba người đồng loạt quay đầu:
-“Sư phụ.”
-Cố Nguyên Minh, lão đầu tử ấy, tóc bạc trắng xóa, chống một cây trúc trượng. Trên người mặc trường bào đã giặt đến bạc màu, nhưng lưng vẫn thẳng tắp, mang theo khí chất tiên phong đạo cốt, dù tuổi già vẫn nhẹ nhàng phiêu dật.
-“Tiểu Cửu đến rồi.”
-Lão mỉm cười bước tới.
-Bàn tay dày rộng đặt lên cổ nàng bắt mạch, lại lật mí mắt kiểm tra một phen, rồi lấy ra một con dao nhỏ, rạch một đường trên cánh tay nàng.
-—
-Tiếp nhận tin dữ Sở Ly lại chết thêm một lần nữa, Sở Ngạo Thiên trở về hoàng cung. Hai mắt hắn sưng đỏ, nhưng không dám mãi chìm trong đau thương.
-Triều cục và thời cuộc hiện nay, chỉ cần hắn lơi lỏng một chút thôi, cũng sẽ bị mấy vị hoàng huynh xé xác nuốt sống.
-“Vương gia, cuối cùng ngài cũng về rồi!”
-Tiểu thái giám Biết Cửu trông ngóng mãi.
-Sở Ngạo Thiên nén đau thương, đi vào chính điện:
-“Lại xảy ra chuyện gì?”
-“Là Tam hoàng huynh gây khó dễ? Hay Lục hoàng huynh tụ tập người? Hay Thất hoàng huynh lại gây sự?”
-Biết Cửu vội xua tay:
-“Từ khi Nhiếp Chính Vương hồi kinh, bọn họ không còn ngang ngược như trước nữa.”
-Kể từ lúc Nhiếp Chính Vương đồng ý thoái vị, mấy vị hoàng tử đã bắt đầu nội đấu kịch liệt.
-Bây giờ, bọn họ đang tranh đoạt đến đỏ cả mắt.
-“Thế xảy ra chuyện gì?”
-“Là mẫu phi ngài hầm cho ngài một chung canh, còn dặn nô tài nhất định phải nhìn ngài uống hết.”
-Sở Ngạo Thiên cứng người.
-Đẩy cửa bước vào, chỉ thấy trên bàn đặt một bát canh. Không biết là mùi rau thơm, xì dầu, tiêu hay thứ gì khác hòa lẫn vào nhau. Nước canh đen sì, bên trên nổi lềnh bềnh mấy hạt câu kỷ đỏ.
-Hắn nghẹn cứng cổ họng:
-“Không phải ta đã bảo bà ấy sang cung Ôn phi chơi rồi sao? Sao vẫn còn rảnh đi hầm canh?”
-Từ sau khi Sở Ly mất, Sở Ngạo Thiên thương Ôn phi tuổi trung niên mất con, liền mong mẫu phi mình sang bầu bạn nhiều hơn. Nay phụ hoàng liệt giường, Cửu đệ cũng đi rồi, hai người cũng chẳng còn đấu đá nữa.
-Biết Cửu do dự hỏi:
-“Vương gia… để nô tài múc cho ngài uống?”
-Uống?
-Uống cái rắm!
-Thứ này uống được sao?
-Ban ngày hắn phải đối phó với bầy lang sói nơi triều đình, ban đêm còn phải đối phó với mẫu phi nhà mình. Một cái đầu mà như hai cái lớn, chưa lật bàn đã là giỏi lắm rồi, còn uống canh gì nữa!
-Sở Ngạo Thiên chống tay lên bàn, quay đầu chạy thẳng đến Ngọc Đường Cung, định kiếm chuyện cho mẫu phi làm, để bà đừng suốt ngày chỉ nghĩ đến việc hầm canh cho hắn.
-Nào ngờ vừa tới cổng Ngọc Đường Cung, đã thấy mấy vị phi tử đang ngồi trong sân đánh bài.
-Hân phi vỗ lên tay Ôn phi. Hai người đấu đá hơn mười năm, nay lần đầu tiên hòa thuận đến vậy.
-“Ôn muội muội, món canh gà ác hầm câu kỷ mà muội dạy ta ấy, thật ngon, thật ngon!”
-Ôn phi chỉ cười nhàn nhạt:
-“Bao năm qua, ta cũng xem như tận mắt nhìn A Thiên lớn lên. Lúc Ly nhi còn sống, thích nhất là cùng nó chơi đùa…”
-Nói đến đây, bà nghẹn ngào.
-Hân phi siết chặt tay bà:
-“Ôn muội muội, bao năm nay là ta quá hẹp hòi. Không ngờ trước lúc Cửu hoàng tử rời đi, lại đối xử với Thiên nhi tốt như vậy… là ta lòng dạ quá nông cạn…”
-Bà thật hổ thẹn.
-Sau này, các nàng sẽ không tranh đấu nữa.
-“A Thiên là đứa trẻ hiếu thuận. Nếu Ôn muội muội không chê, cứ xem nó như con trai mình.”
-Hai vị phi tử ngồi bên cạnh cũng xen vào vài câu.
-Mấy người vừa trò chuyện vừa đánh bài, bầu không khí vô cùng hòa thuận.
-Đến lúc đang vui vẻ, nhắc tới hôm nay đến lượt Hân phi hầu hạ Sở Hoàng, sắc mặt mọi người lập tức thay đổi.
-“Sao lại đến lượt ta nữa? Chẳng phải hôm trước ta vừa hầu hạ Hoàng thượng sao? Đó là phu quân của ngươi, ngươi đi mà hầu.”
-Ôn phi cũng lập tức đổi sắc mặt:
-“Hôm kia mới đến lượt ta, sao lại thành phu quân của ta? Là phu quân của ngươi.”
-“Phu quân ngươi.”
-“Phu quân ngươi.”
-“Phu quân ngươi.”
-Đánh bài đánh một hồi, lại cãi nhau tiếp.
-Sở Ngạo Thiên nhìn mà đau cả đầu.
-Bởi vì cái chết của Cửu đệ đã làm Hân phi bừng tỉnh. Trong lòng bà vẫn còn sợ hãi, quyết định phải đối xử với con trai tốt gấp bội. Thế là ba hôm hai bữa lại hầm canh, làm bánh, nấu cơm cho hắn.
-Hắn trốn không nổi.
-Vì vậy mới đẩy Hân phi sang chỗ Ôn phi.
-Ai ngờ hai người hóa giải hiềm khích, Ôn phi còn hào phóng dạy Hân phi nấu nướng, khiến Hân phi càng siêng hầm canh cho hắn hơn.
-Lần nào cũng ép hắn uống sạch.
-Hắn muốn từ chối, Hân phi liền lau nước mắt:
-“Muốn phụng dưỡng cha mẹ, nhưng cha mẹ chẳng còn chờ được.”
-“Con xem Ôn phi đi, đáng thương biết bao.”
-“Ta chỉ có mình con là con trai. Con không thể thành toàn cho mẫu phi chút tâm ý này sao?”
-“Nào, Ngạo Thiên, uống canh đi.”
-Cuộc sống như thế này, rốt cuộc đến bao giờ mới kết thúc?
-Gánh nặng trên vai hắn, đến bao giờ mới có thể vứt đi?
-Khoan đã!
-Cửu đệ chết rồi, vậy mà Hoàng thúc đau lòng cái gì?
-Nghe nói từ lúc hồi kinh, người liền tự nhốt mình trong Lâm Hoa Điện, suốt đêm uống rượu không ngủ.
-Hoàng thúc sao lại đau lòng như chết thê tử vậy?
-Quan hệ giữa người với Cửu đệ… đâu có thân thiết đến thế?
-Sở Ngạo Thiên đột nhiên ý thức được vấn đề này, mơ hồ ngửi thấy mùi của một đại bí mật, lập tức chạy đến Lâm Hoa Điện, cong mông trèo lên tường. Biết Cửu đứng dưới làm bệ đỡ cho hắn.
-“Vương… Vương gia… chúng ta lén nhìn Nhiếp Chính Vương thế này… không… không hợp quy củ đâu. Lỡ bị phát hiện thì…”
-“Suỵt! Đừng nói! Ta hình như vừa phát hiện ra một bí mật động trời!” Ẩn bớt</p>
+            <p>Chương 175: Hoàng thúc sao lại đau lòng như chết thê tử vậy</p>
+<p>Tám người giật bắn mình, đồng loạt vung xẻng, cảnh giác nhìn về phía phát ra âm thanh:</p>
+<p>“Ai!”</p>
+<p>“Là kẻ nào!”</p>
+<p>Ánh trăng xuyên qua cành lá, rơi xuống từng mảng sáng tối loang lổ. Một thân ảnh cao dài, ôn nhuận đạp màn đêm mà đến, tay phe phẩy chiết phiến, phong thái thanh nhã, không nhiễm bụi trần.</p>
+<p>Nam nhân ngọc quan cao thúc, khép chiết phiến lại:</p>
+<p>“Phiểu Miểu Môn, Lục Vân Sơ.”</p>
+<p>“Nhị sư huynh của nàng.”</p>
+<p>—</p>
+<p>Phiểu Miểu Sơn.</p>
+<p>Cách Đế Đô hai trăm dặm, tại Thanh Châu có một nơi tên là Phiểu Miểu Sơn. Trên núi tọa lạc một môn phái —— Phiểu Miểu Môn.</p>
+<p>Môn phái này không lớn, thậm chí thu nhận đệ tử cũng rất tùy ý, nhưng vị môn chủ lão đầu tử kia lại là người thật sự có bản lĩnh.</p>
+<p>Lão dạy đại đệ tử kiếm pháp, nhị đệ tử tâm pháp, tam đệ tử khinh công. Mỗi người một môn tuyệt học, không hề trùng lặp, mà môn nào cũng đều là đỉnh tiêm.</p>
+<p>Lão đầu tử từ trước đến nay không tranh không đoạt, là một dòng nước trong hiếm có giữa chính đạo võ lâm, được người trong giang hồ vô cùng kính trọng.</p>
+<p>“Sư phụ, ta đưa tiểu sư đệ về rồi.”</p>
+<p>Lục Vân Sơ đặt người đang mê man bên cạnh dòng suối róc rách. Nước suối trong veo nơi sơn cốc thanh khiết như ngọc, bên trong nở đầy từng đóa liên hoa, đẹp đến động lòng người.</p>
+<p>“Tiểu sư đệ về rồi!”</p>
+<p>Đại sư huynh lập tức đẩy cửa bước ra, sải chân cực lớn, vậy mà y bào vẫn không hề lay động, đủ thấy nội lực thâm hậu đến mức nào.</p>
+<p>Căn nhà gỗ nơi sườn núi hòa cùng cảnh sắc thiên nhiên, càng thêm mộc mạc giản dị.</p>
+<p>“Tiểu sư đệ đến rồi!”</p>
+<p>Bên kia, tam sư huynh vác cuốc trên vai, xắn tay áo, vừa từ ruộng trở về.</p>
+<p>Đừng thấy y ăn mặc giản dị mà coi thường.</p>
+<p>Chỉ trong chớp mắt, chỉ nghe một tiếng “vút”, người đang ở ngoài hơn mười trượng đã trong nháy mắt xuất hiện ngay trước mặt.</p>
+<p>Tám Đại Kim Cương đứng phía sau đồng loạt trầm sắc mặt.</p>
+<p>Khinh công thật lợi hại!</p>
+<p>Đây chính là Phiểu Miểu Môn trong truyền thuyết?</p>
+<p>Nghe nói Phiểu Miểu Môn tuy môn phái nhỏ, nhân số không nhiều, thậm chí đã dần rút khỏi giang hồ, nhưng danh tiếng lại vang xa. Mỗi một lần võ lâm có đại hội hay sự kiện trọng đại, Phiểu Miểu Môn đều được mời tham dự.</p>
+<p>Nghe nói, năm kia loạn phỉ, năm năm trước thiên tai, bảy năm trước đại loạn võ lâm… đều là Phiểu Miểu Môn đứng ra bình định.</p>
+<p>Chỉ dựa vào mấy người bọn họ?</p>
+<p>Ba nam nhân vây quanh Sở Ly, tranh nhau nhìn nàng.</p>
+<p>“Chậc, sắc mặt này không ổn.”</p>
+<p>“Nhìn là biết trúng cổ rồi.”</p>
+<p>“Sao trên người còn dính đất?”</p>
+<p>“Vừa đào từ dưới đất lên.”</p>
+<p>“Cái gì! Khốn kiếp! Kẻ nào dám chôn tiểu sư đệ của ta!”</p>
+<p>“Khụ… khụ khụ ——”</p>
+<p>Phía sau vang lên một tiếng ho khan vô cùng hùng hậu.</p>
+<p>Ba người đồng loạt quay đầu:</p>
+<p>“Sư phụ.”</p>
+<p>Cố Nguyên Minh, lão đầu tử ấy, tóc bạc trắng xóa, chống một cây trúc trượng. Trên người mặc trường bào đã giặt đến bạc màu, nhưng lưng vẫn thẳng tắp, mang theo khí chất tiên phong đạo cốt, dù tuổi già vẫn nhẹ nhàng phiêu dật.</p>
+<p>“Tiểu Cửu đến rồi.”</p>
+<p>Lão mỉm cười bước tới.</p>
+<p>Bàn tay dày rộng đặt lên cổ nàng bắt mạch, lại lật mí mắt kiểm tra một phen, rồi lấy ra một con dao nhỏ, rạch một đường trên cánh tay nàng.</p>
+<p>—</p>
+<p>Tiếp nhận tin dữ Sở Ly lại chết thêm một lần nữa, Sở Ngạo Thiên trở về hoàng cung. Hai mắt hắn sưng đỏ, nhưng không dám mãi chìm trong đau thương.</p>
+<p>Triều cục và thời cuộc hiện nay, chỉ cần hắn lơi lỏng một chút thôi, cũng sẽ bị mấy vị hoàng huynh xé xác nuốt sống.</p>
+<p>“Vương gia, cuối cùng ngài cũng về rồi!”</p>
+<p>Tiểu thái giám Biết Cửu trông ngóng mãi.</p>
+<p>Sở Ngạo Thiên nén đau thương, đi vào chính điện:</p>
+<p>“Lại xảy ra chuyện gì?”</p>
+<p>“Là Tam hoàng huynh gây khó dễ? Hay Lục hoàng huynh tụ tập người? Hay Thất hoàng huynh lại gây sự?”</p>
+<p>Biết Cửu vội xua tay:</p>
+<p>“Từ khi Nhiếp Chính Vương hồi kinh, bọn họ không còn ngang ngược như trước nữa.”</p>
+<p>Kể từ lúc Nhiếp Chính Vương đồng ý thoái vị, mấy vị hoàng tử đã bắt đầu nội đấu kịch liệt.</p>
+<p>Bây giờ, bọn họ đang tranh đoạt đến đỏ cả mắt.</p>
+<p>“Thế xảy ra chuyện gì?”</p>
+<p>“Là mẫu phi ngài hầm cho ngài một chung canh, còn dặn nô tài nhất định phải nhìn ngài uống hết.”</p>
+<p>Sở Ngạo Thiên cứng người.</p>
+<p>Đẩy cửa bước vào, chỉ thấy trên bàn đặt một bát canh. Không biết là mùi rau thơm, xì dầu, tiêu hay thứ gì khác hòa lẫn vào nhau. Nước canh đen sì, bên trên nổi lềnh bềnh mấy hạt câu kỷ đỏ.</p>
+<p>Hắn nghẹn cứng cổ họng:</p>
+<p>“Không phải ta đã bảo bà ấy sang cung Ôn phi chơi rồi sao? Sao vẫn còn rảnh đi hầm canh?”</p>
+<p>Từ sau khi Sở Ly mất, Sở Ngạo Thiên thương Ôn phi tuổi trung niên mất con, liền mong mẫu phi mình sang bầu bạn nhiều hơn. Nay phụ hoàng liệt giường, Cửu đệ cũng đi rồi, hai người cũng chẳng còn đấu đá nữa.</p>
+<p>Biết Cửu do dự hỏi:</p>
+<p>“Vương gia… để nô tài múc cho ngài uống?”</p>
+<p>Uống?</p>
+<p>Uống cái rắm!</p>
+<p>Thứ này uống được sao?</p>
+<p>Ban ngày hắn phải đối phó với bầy lang sói nơi triều đình, ban đêm còn phải đối phó với mẫu phi nhà mình. Một cái đầu mà như hai cái lớn, chưa lật bàn đã là giỏi lắm rồi, còn uống canh gì nữa!</p>
+<p>Sở Ngạo Thiên chống tay lên bàn, quay đầu chạy thẳng đến Ngọc Đường Cung, định kiếm chuyện cho mẫu phi làm, để bà đừng suốt ngày chỉ nghĩ đến việc hầm canh cho hắn.</p>
+<p>Nào ngờ vừa tới cổng Ngọc Đường Cung, đã thấy mấy vị phi tử đang ngồi trong sân đánh bài.</p>
+<p>Hân phi vỗ lên tay Ôn phi. Hai người đấu đá hơn mười năm, nay lần đầu tiên hòa thuận đến vậy.</p>
+<p>“Ôn muội muội, món canh gà ác hầm câu kỷ mà muội dạy ta ấy, thật ngon, thật ngon!”</p>
+<p>Ôn phi chỉ cười nhàn nhạt:</p>
+<p>“Bao năm qua, ta cũng xem như tận mắt nhìn A Thiên lớn lên. Lúc Ly nhi còn sống, thích nhất là cùng nó chơi đùa…”</p>
+<p>Nói đến đây, bà nghẹn ngào.</p>
+<p>Hân phi siết chặt tay bà:</p>
+<p>“Ôn muội muội, bao năm nay là ta quá hẹp hòi. Không ngờ trước lúc Cửu hoàng tử rời đi, lại đối xử với Thiên nhi tốt như vậy… là ta lòng dạ quá nông cạn…”</p>
+<p>Bà thật hổ thẹn.</p>
+<p>Sau này, các nàng sẽ không tranh đấu nữa.</p>
+<p>“A Thiên là đứa trẻ hiếu thuận. Nếu Ôn muội muội không chê, cứ xem nó như con trai mình.”</p>
+<p>Hai vị phi tử ngồi bên cạnh cũng xen vào vài câu.</p>
+<p>Mấy người vừa trò chuyện vừa đánh bài, bầu không khí vô cùng hòa thuận.</p>
+<p>Đến lúc đang vui vẻ, nhắc tới hôm nay đến lượt Hân phi hầu hạ Sở Hoàng, sắc mặt mọi người lập tức thay đổi.</p>
+<p>“Sao lại đến lượt ta nữa? Chẳng phải hôm trước ta vừa hầu hạ Hoàng thượng sao? Đó là phu quân của ngươi, ngươi đi mà hầu.”</p>
+<p>Ôn phi cũng lập tức đổi sắc mặt:</p>
+<p>“Hôm kia mới đến lượt ta, sao lại thành phu quân của ta? Là phu quân của ngươi.”</p>
+<p>“Phu quân ngươi.”</p>
+<p>“Phu quân ngươi.”</p>
+<p>“Phu quân ngươi.”</p>
+<p>Đánh bài đánh một hồi, lại cãi nhau tiếp.</p>
+<p>Sở Ngạo Thiên nhìn mà đau cả đầu.</p>
+<p>Bởi vì cái chết của Cửu đệ đã làm Hân phi bừng tỉnh. Trong lòng bà vẫn còn sợ hãi, quyết định phải đối xử với con trai tốt gấp bội. Thế là ba hôm hai bữa lại hầm canh, làm bánh, nấu cơm cho hắn.</p>
+<p>Hắn trốn không nổi.</p>
+<p>Vì vậy mới đẩy Hân phi sang chỗ Ôn phi.</p>
+<p>Ai ngờ hai người hóa giải hiềm khích, Ôn phi còn hào phóng dạy Hân phi nấu nướng, khiến Hân phi càng siêng hầm canh cho hắn hơn.</p>
+<p>Lần nào cũng ép hắn uống sạch.</p>
+<p>Hắn muốn từ chối, Hân phi liền lau nước mắt:</p>
+<p>“Muốn phụng dưỡng cha mẹ, nhưng cha mẹ chẳng còn chờ được.”</p>
+<p>“Con xem Ôn phi đi, đáng thương biết bao.”</p>
+<p>“Ta chỉ có mình con là con trai. Con không thể thành toàn cho mẫu phi chút tâm ý này sao?”</p>
+<p>“Nào, Ngạo Thiên, uống canh đi.”</p>
+<p>Cuộc sống như thế này, rốt cuộc đến bao giờ mới kết thúc?</p>
+<p>Gánh nặng trên vai hắn, đến bao giờ mới có thể vứt đi?</p>
+<p>Khoan đã!</p>
+<p>Cửu đệ chết rồi, vậy mà Hoàng thúc đau lòng cái gì?</p>
+<p>Nghe nói từ lúc hồi kinh, người liền tự nhốt mình trong Lâm Hoa Điện, suốt đêm uống rượu không ngủ.</p>
+<p>Hoàng thúc sao lại đau lòng như chết thê tử vậy?</p>
+<p>Quan hệ giữa người với Cửu đệ… đâu có thân thiết đến thế?</p>
+<p>Sở Ngạo Thiên đột nhiên ý thức được vấn đề này, mơ hồ ngửi thấy mùi của một đại bí mật, lập tức chạy đến Lâm Hoa Điện, cong mông trèo lên tường. Biết Cửu đứng dưới làm bệ đỡ cho hắn.</p>
+<p>“Vương… Vương gia… chúng ta lén nhìn Nhiếp Chính Vương thế này… không… không hợp quy củ đâu. Lỡ bị phát hiện thì…”</p>
+<p>“Suỵt! Đừng nói! Ta hình như vừa phát hiện ra một bí mật động trời!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_174.html" class="btn">‹ Trước</a>
             <a href="chuong_176.html" class="btn">Sau ›</a>
         </div>
@@ -239,15 +247,11 @@ Sở Ngạo Thiên đột nhiên ý thức được vấn đề này, mơ hồ n
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -259,11 +263,11 @@ Sở Ngạo Thiên đột nhiên ý thức được vấn đề này, mơ hồ n
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

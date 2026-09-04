@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 291</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,201 +62,210 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 291</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_288.html" class="btn">‹ Trước</a>
             <a href="chuong_292.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 291: Hoàng thúc, đừng như vậy
-Nhiếp Tang tết hai bím tóc buông trước ngực, trên đó buộc dải lụa màu hồng, trông vô cùng xinh xắn, ngoan ngoãn.
-“Mục Tuyết tỷ tỷ, Lục công tử.”
-Xuất phát từ lễ nghĩa, Lục Vân Sơ đứng dậy chắp tay:
-“Nhiếp cô nương.”
-Tiểu nhân trong lòng Tần Mục Tuyết đang giậm chân liên hồi.
-Huynh ấy khách khí với người khác như vậy!
-Lúc ban đầu, khi hai người mới gặp mặt lần đầu, huynh ấy còn chưa từng ôn nhu nho nhã, phong độ lễ độ như thế.
-Lẽ nào duyên phận giữa nàng và Lục sư huynh... đã định sẵn chỉ có một đêm xuân do trúng dược ấy?
-“Tang Tang, qua đây.”
-“Vâng.”
-“Muội không ở châu thành yên ổn, cứ chạy khắp nơi.” Nhiếp Yếm nắm tay nàng, để nàng ngồi xuống bên cạnh.
-“Ca ca, muội ở trong thành lâu lắm rồi, bất kể là Thượng Kinh hay các châu thành khác đều giống hệt nhau, chẳng có gì thú vị. Muội có thể ra chiến trường không?”
-Mi tâm Nhiếp Yếm giật mạnh.
-Đúng là không nói thì thôi, đã nói là khiến người kinh hãi.
-“Muội còn chưa cao bằng con ngựa, vừa lên chiến trường đã bị giẫm chết rồi. Huống hồ một cô nương như muội, sao cứ luôn nghĩ đến chuyện ra chiến trường?”
-Nhiếp Tang buồn bực đáp:
-“Chính vì chưa từng thấy nên mới tò mò chiến trường trông như thế nào.”
-“Muội cứ tưởng đến biên quan là sẽ được nhìn thấy, nào ngờ huynh trấn thủ ở đây bảy năm rồi mà một trận đánh nhỏ cũng chưa từng có. Chức tướng quân của huynh chắc là dùng bạc mua được nhỉ?”
-“...”
-—
-‘Chúng ta sẽ mãi mãi ở bên nhau chứ?’
-‘A Ly!’
-‘Tiểu Cửu, bên này...’
-‘Tiểu Cửu...’
-Vút!
-Sở Ly đột nhiên mở mắt.
-Không biết từ lúc nào nàng đã gục trên bàn mà ngủ thiếp đi. Ngoài cửa sổ, hoàng hôn bị mây đen che kín, gió mát hiu hiu, mưa đã bắt đầu rơi, nhưng trên trán nàng lại phủ một tầng mồ hôi mịn.
-Nàng lại nằm mộng.
-Trong mộng, có người đang gọi nàng.
-Lúc vui vẻ, lúc thì thầm, lúc trầm thấp, lúc đau đớn...
-Nhưng sương mù dày đặc nổi lên, che khuất tầm mắt, làm lạc mất phương hướng. Nàng đứng giữa màn sương, căn bản không nhìn rõ dung mạo của người đối diện.
-Là ai?
-Rốt cuộc là ai?
-Gần đây, lồng ngực nàng luôn nặng trĩu, càng ngày càng ăn ngủ không yên.
-Sở Ly đẩy mở cửa sổ, đón làn gió mát trước mặt. Những hạt mưa nhỏ li ti rơi lên gương mặt, không khí vô cùng thanh mát, nhưng cảm giác nặng nề trong lòng vẫn chẳng hề vơi bớt.
-Nàng có chút phiền táo.
-Nàng rút nhuyễn kiếm trong tay áo, cầm kiếm nhảy vào sân, giữa màn mưa lất phất chỉnh tề chém đứt một hàng cành cây, bắt đầu luyện kiếm.
-Trong đầu hiện lên vô số hình ảnh.
-Là sư phụ:
-‘Hôm nay vi sư truyền cho con một bộ Vô Ngân Kiếm Pháp... tên tiểu tử ngốc này, sao lại thất thần nữa rồi!’
-Là đại sư huynh:
-‘Chậc chậc, tiểu sư đệ lại bị mắng rồi.’
-Là nhị sư huynh:
-‘Bộ công pháp này của ta tên là Du Long Kinh Ảnh, đệ nhìn cho kỹ!’
-Là Bát hoàng huynh:
-‘Cửu đệ, mẫu phi không cho ta chơi cùng đệ.’
-Là mẫu phi:
-‘Ly nhi, đều do mẫu phi nhất thời ích kỷ, làm lỡ cả đời con.’
-Là hoàng thúc:
-‘Tiểu Cửu, lại đây.’
-Là...
-Sở Dạ Ly:
-‘Mạng này, nếu nàng không đến lấy, ta sẽ tự mình trả lại cho nàng!’
-Lưỡi kiếm hàn quang lạnh như tuyết.
-Hai tay Sở Ly dường như nhuốm đầy máu. Hổ khẩu khẽ run, vừa sắp cầm không vững thanh kiếm thì một bàn tay lớn bỗng bao lấy tay nàng từ phía sau, thân hình cũng áp sát.
-“Tiểu Cửu.”
-Hơi thở của Sở Đệ Trì gần ngay bên tai. Hắn vững vàng nắm lấy tay nàng, cầm nhuyễn kiếm, dẫn theo nội lực quét ngang.
-"Rẹt!"
-Thân kiếm mềm lập tức bật thẳng lên, tựa như một con độc xà phun lưỡi đoạt mạng, bộc phát ra sát ý ngập trời.
-“Một khi đã rút kiếm, kiếm chính là sinh mệnh thứ hai của nàng. Phải cầm cho vững.”
-Hắn đến từ khi nào?
-Sao nàng chẳng hề phát hiện?
-Nhất thời thất thần, nàng vô ý giẫm lên chân hắn, suýt nữa lảo đảo ngã xuống.
-Hắn ôm lấy vòng eo nhỏ của nàng, khẽ nhấc lên.
-“Luyện kiếm còn đứng không vững, ta còn có thể trông mong nàng trên giường được sao?”
-Gò má Sở Ly hơi đỏ lên.
-“Người đến từ khi nào?”
-“Ta đã đứng dưới hành lang khá lâu, chỉ là nàng vẫn luôn không để ý.”
-Hắn nắm lấy bàn tay mềm mại của nàng, dẫn nàng múa từng đóa kiếm hoa.
-Màn mưa lạnh lẽo dường như bị nhuyễn kiếm chém thành vô số mảnh, nổ tung thành những hạt mưa li ti, mỗi giọt đều sắc bén như lưỡi đao.
-Hắn dẫn nàng luyện kiếm.
-Sức bộc phát trong lòng bàn tay người đàn ông dường như đủ sức xoay chuyển càn khôn, khiến Sở Ly hoàn toàn không thể chống đỡ.
-Nội lực của hắn chấn đến mức tay nàng đau nhức, nhưng bộ kiếm pháp hắn truyền dạy lại có thể chém tan hạt mưa, mang theo lực xuyên thấu cực mạnh, thậm chí còn lợi hại hơn cả bộ kiếm pháp sư phụ từng dạy.
-Dường như nàng chưa bao giờ thật sự lĩnh hội thực lực của hắn.
-Nội lực của hắn sâu không lường được.
-Nàng cố gắng ghi nhớ, cố gắng học theo, nhưng cảm giác nặng nề trong lồng ngực cứ bám riết lấy nàng, khiến nàng không thể tập trung.
-“Sao đột nhiên lại muốn luyện kiếm?”
-Sở Ly rũ mắt.
-“Muốn mình lợi hại hơn một chút, không muốn kéo chân người.”
-“Nhưng kiếm thức vừa rồi của nàng hoàn toàn không có chương pháp.”
-Đầu ngón tay nàng khẽ run.
-“Thật sao?”
-“Nàng có tâm sự.”
-Bước chân nàng khẽ loạng choạng, nhưng chỉ trong chớp mắt đã được hắn đỡ lấy vòng eo, vững vàng giữ lại.
-“Nàng đang nghĩ gì?”
-Mấy ngày nay nàng luôn ngủ không ngon, hắn đều nhìn thấy.
-Sở Ly nhìn nhát kiếm vừa chém ra, nhàn nhạt nói:
-“Không nghĩ gì cả.”
-Lời vừa dứt, nàng lập tức cảm nhận được lực nơi bàn tay hắn nắm lấy tay mình bỗng tăng mạnh.
-Một kiếm chém lên thân cây, để lại một vết cắt sâu hoắm.
-Nàng buột miệng:
-“Sở Dạ Ly sẽ chết sao?”
-Đôi mắt Sở Đệ Trì trầm như màn đêm, còn lạnh hơn cơn mưa tối nay vài phần.
-“Có lẽ sẽ không.”
-Kể từ đêm chia tay bên bờ sông Mạc Hoài, Sở Dạ Ly đã hoàn toàn mất tung tích, mãi không tra được nơi hắn ở, cũng chẳng tìm thấy thi thể.
-“Cũng có lẽ sẽ.”
-“Tiểu Cửu, nàng hy vọng hắn chết sao?”
-“Ta...”
-Nàng không biết.
-Nếu phải nói, điều nàng mong muốn là thái bình, là an ổn, mọi người đều có thể bình an sống tiếp. Nhưng mỗi người đều có suy nghĩ của riêng mình, sẽ không hành động theo ý nguyện của nàng.
-Sở Đệ Trì trầm giọng:
-“Hắn có lẽ may mắn nhặt lại được một mạng, nhưng ta sẽ giết hắn.”
-Keng!
-Trường kiếm tuột khỏi tay rơi xuống đất.
-Lục Hợp rơi xuống nền, phát ra tiếng vang thanh thúy, bắn tung những hạt mưa li ti, nhưng âm thanh ấy lại giống như một tảng đá lớn nện xuống giữa hai người, vang dội đến mức chấn động màng tai.
-Sở Ly nhìn bàn tay mình, rồi nhìn thanh kiếm dưới đất. Khi ngẩng đầu lên, đối diện với nàng là đôi mắt sâu không thấy đáy của người đàn ông.
-Trong khoảnh khắc ấy, dường như nàng lại nhìn thấy con người quen thuộc kia.
-Cố chấp đến mức khiến người ta sợ hãi.
-“Hoàng thúc...”
-Hắn tiến lên.
-“Ta đã nói, kiếm là sinh mệnh thứ hai của nàng. Vì sao lại cầm không vững?”
-Nàng theo bản năng lùi nửa bước.
-“Ta... chắc là vì trời mưa, quá trơn.”
-Hắn từng bước ép sát.
-“Nàng có tâm sự.”
-“Ta không có.”
-“Nàng đang nghĩ đến hắn.”
-“Ta không...”
-Hai tay người đàn ông giơ lên, vòng qua dưới cánh tay nàng, ép cả người nàng vào thân cây.
-Mùi trầm hương ô mộc nồng đậm tràn ngập khứu giác, ngay cả không khí để hô hấp cũng trở nên gấp gáp.
-“Nếu không có tâm sự, vì sao mấy ngày nay đều ngủ không ngon? Vì sao ngay cả kiếm cũng đánh rơi?”
-“Ta...”
-Nàng cho rằng đây chỉ là cảm xúc bình thường của một con người.
-Con người là sinh linh có tình cảm phức tạp, không tồn tại yêu hận tuyệt đối.
-Nàng và Sở Dạ Ly cũng coi như lớn lên cùng nhau từ nhỏ. Với hắn, nàng có tình thân, có thương xót, có khuyên giải, có bất lực, cũng có lo lắng, đó đều là điều bình thường.
-Cũng giống như đối với hoàng thúc, nàng từng hận, cũng từng yêu, cũng từng mê mang, không thể chỉ dùng một lời mà khái quát.
-Sở Đệ Trì nâng cằm nàng lên.
-“Nhìn ta.”
-“Hoàng thúc, đừng như vậy. Mấy ngày nay chỉ là ta ngủ không ngon...”
-“Nhìn ta.”
-Hắn khóa chặt ánh mắt nàng, chăm chú nhìn gương mặt nhỏ khiến hắn yêu đến không nỡ buông tay, hận không thể lúc nào cũng buộc nàng bên mình.
-Nhưng đôi mắt long lanh ấy cứ luôn chất chứa quá nhiều tâm tư.
-Hắn cúi đầu, định hôn nàng.
-Sở Ly theo bản năng chống tay lên ngực hắn, nghiêng đầu tránh đi.
-Chỉ một động tác rất khẽ.
-Lại như xé mở một khe nứt giữa hai người... Ẩn bớt</p>
+            <p>Chương 291: Hoàng thúc, đừng như vậy</p>
+<p>Nhiếp Tang tết hai bím tóc buông trước ngực, trên đó buộc dải lụa màu hồng, trông vô cùng xinh xắn, ngoan ngoãn.</p>
+<p>“Mục Tuyết tỷ tỷ, Lục công tử.”</p>
+<p>Xuất phát từ lễ nghĩa, Lục Vân Sơ đứng dậy chắp tay:</p>
+<p>“Nhiếp cô nương.”</p>
+<p>Tiểu nhân trong lòng Tần Mục Tuyết đang giậm chân liên hồi.</p>
+<p>Huynh ấy khách khí với người khác như vậy!</p>
+<p>Lúc ban đầu, khi hai người mới gặp mặt lần đầu, huynh ấy còn chưa từng ôn nhu nho nhã, phong độ lễ độ như thế.</p>
+<p>Lẽ nào duyên phận giữa nàng và Lục sư huynh... đã định sẵn chỉ có một đêm xuân do trúng dược ấy?</p>
+<p>“Tang Tang, qua đây.”</p>
+<p>“Vâng.”</p>
+<p>“Muội không ở châu thành yên ổn, cứ chạy khắp nơi.” Nhiếp Yếm nắm tay nàng, để nàng ngồi xuống bên cạnh.</p>
+<p>“Ca ca, muội ở trong thành lâu lắm rồi, bất kể là Thượng Kinh hay các châu thành khác đều giống hệt nhau, chẳng có gì thú vị. Muội có thể ra chiến trường không?”</p>
+<p>Mi tâm Nhiếp Yếm giật mạnh.</p>
+<p>Đúng là không nói thì thôi, đã nói là khiến người kinh hãi.</p>
+<p>“Muội còn chưa cao bằng con ngựa, vừa lên chiến trường đã bị giẫm chết rồi. Huống hồ một cô nương như muội, sao cứ luôn nghĩ đến chuyện ra chiến trường?”</p>
+<p>Nhiếp Tang buồn bực đáp:</p>
+<p>“Chính vì chưa từng thấy nên mới tò mò chiến trường trông như thế nào.”</p>
+<p>“Muội cứ tưởng đến biên quan là sẽ được nhìn thấy, nào ngờ huynh trấn thủ ở đây bảy năm rồi mà một trận đánh nhỏ cũng chưa từng có. Chức tướng quân của huynh chắc là dùng bạc mua được nhỉ?”</p>
+<p>“...”</p>
+<p>—</p>
+<p>‘Chúng ta sẽ mãi mãi ở bên nhau chứ?’</p>
+<p>‘A Ly!’</p>
+<p>‘Tiểu Cửu, bên này...’</p>
+<p>‘Tiểu Cửu...’</p>
+<p>Vút!</p>
+<p>Sở Ly đột nhiên mở mắt.</p>
+<p>Không biết từ lúc nào nàng đã gục trên bàn mà ngủ thiếp đi. Ngoài cửa sổ, hoàng hôn bị mây đen che kín, gió mát hiu hiu, mưa đã bắt đầu rơi, nhưng trên trán nàng lại phủ một tầng mồ hôi mịn.</p>
+<p>Nàng lại nằm mộng.</p>
+<p>Trong mộng, có người đang gọi nàng.</p>
+<p>Lúc vui vẻ, lúc thì thầm, lúc trầm thấp, lúc đau đớn...</p>
+<p>Nhưng sương mù dày đặc nổi lên, che khuất tầm mắt, làm lạc mất phương hướng. Nàng đứng giữa màn sương, căn bản không nhìn rõ dung mạo của người đối diện.</p>
+<p>Là ai?</p>
+<p>Rốt cuộc là ai?</p>
+<p>Gần đây, lồng ngực nàng luôn nặng trĩu, càng ngày càng ăn ngủ không yên.</p>
+<p>Sở Ly đẩy mở cửa sổ, đón làn gió mát trước mặt. Những hạt mưa nhỏ li ti rơi lên gương mặt, không khí vô cùng thanh mát, nhưng cảm giác nặng nề trong lòng vẫn chẳng hề vơi bớt.</p>
+<p>Nàng có chút phiền táo.</p>
+<p>Nàng rút nhuyễn kiếm trong tay áo, cầm kiếm nhảy vào sân, giữa màn mưa lất phất chỉnh tề chém đứt một hàng cành cây, bắt đầu luyện kiếm.</p>
+<p>Trong đầu hiện lên vô số hình ảnh.</p>
+<p>Là sư phụ:</p>
+<p>‘Hôm nay vi sư truyền cho con một bộ Vô Ngân Kiếm Pháp... tên tiểu tử ngốc này, sao lại thất thần nữa rồi!’</p>
+<p>Là đại sư huynh:</p>
+<p>‘Chậc chậc, tiểu sư đệ lại bị mắng rồi.’</p>
+<p>Là nhị sư huynh:</p>
+<p>‘Bộ công pháp này của ta tên là Du Long Kinh Ảnh, đệ nhìn cho kỹ!’</p>
+<p>Là Bát hoàng huynh:</p>
+<p>‘Cửu đệ, mẫu phi không cho ta chơi cùng đệ.’</p>
+<p>Là mẫu phi:</p>
+<p>‘Ly nhi, đều do mẫu phi nhất thời ích kỷ, làm lỡ cả đời con.’</p>
+<p>Là hoàng thúc:</p>
+<p>‘Tiểu Cửu, lại đây.’</p>
+<p>Là...</p>
+<p>Sở Dạ Ly:</p>
+<p>‘Mạng này, nếu nàng không đến lấy, ta sẽ tự mình trả lại cho nàng!’</p>
+<p>Lưỡi kiếm hàn quang lạnh như tuyết.</p>
+<p>Hai tay Sở Ly dường như nhuốm đầy máu. Hổ khẩu khẽ run, vừa sắp cầm không vững thanh kiếm thì một bàn tay lớn bỗng bao lấy tay nàng từ phía sau, thân hình cũng áp sát.</p>
+<p>“Tiểu Cửu.”</p>
+<p>Hơi thở của Sở Đệ Trì gần ngay bên tai. Hắn vững vàng nắm lấy tay nàng, cầm nhuyễn kiếm, dẫn theo nội lực quét ngang.</p>
+<p>"Rẹt!"</p>
+<p>Thân kiếm mềm lập tức bật thẳng lên, tựa như một con độc xà phun lưỡi đoạt mạng, bộc phát ra sát ý ngập trời.</p>
+<p>“Một khi đã rút kiếm, kiếm chính là sinh mệnh thứ hai của nàng. Phải cầm cho vững.”</p>
+<p>Hắn đến từ khi nào?</p>
+<p>Sao nàng chẳng hề phát hiện?</p>
+<p>Nhất thời thất thần, nàng vô ý giẫm lên chân hắn, suýt nữa lảo đảo ngã xuống.</p>
+<p>Hắn ôm lấy vòng eo nhỏ của nàng, khẽ nhấc lên.</p>
+<p>“Luyện kiếm còn đứng không vững, ta còn có thể trông mong nàng trên giường được sao?”</p>
+<p>Gò má Sở Ly hơi đỏ lên.</p>
+<p>“Người đến từ khi nào?”</p>
+<p>“Ta đã đứng dưới hành lang khá lâu, chỉ là nàng vẫn luôn không để ý.”</p>
+<p>Hắn nắm lấy bàn tay mềm mại của nàng, dẫn nàng múa từng đóa kiếm hoa.</p>
+<p>Màn mưa lạnh lẽo dường như bị nhuyễn kiếm chém thành vô số mảnh, nổ tung thành những hạt mưa li ti, mỗi giọt đều sắc bén như lưỡi đao.</p>
+<p>Hắn dẫn nàng luyện kiếm.</p>
+<p>Sức bộc phát trong lòng bàn tay người đàn ông dường như đủ sức xoay chuyển càn khôn, khiến Sở Ly hoàn toàn không thể chống đỡ.</p>
+<p>Nội lực của hắn chấn đến mức tay nàng đau nhức, nhưng bộ kiếm pháp hắn truyền dạy lại có thể chém tan hạt mưa, mang theo lực xuyên thấu cực mạnh, thậm chí còn lợi hại hơn cả bộ kiếm pháp sư phụ từng dạy.</p>
+<p>Dường như nàng chưa bao giờ thật sự lĩnh hội thực lực của hắn.</p>
+<p>Nội lực của hắn sâu không lường được.</p>
+<p>Nàng cố gắng ghi nhớ, cố gắng học theo, nhưng cảm giác nặng nề trong lồng ngực cứ bám riết lấy nàng, khiến nàng không thể tập trung.</p>
+<p>“Sao đột nhiên lại muốn luyện kiếm?”</p>
+<p>Sở Ly rũ mắt.</p>
+<p>“Muốn mình lợi hại hơn một chút, không muốn kéo chân người.”</p>
+<p>“Nhưng kiếm thức vừa rồi của nàng hoàn toàn không có chương pháp.”</p>
+<p>Đầu ngón tay nàng khẽ run.</p>
+<p>“Thật sao?”</p>
+<p>“Nàng có tâm sự.”</p>
+<p>Bước chân nàng khẽ loạng choạng, nhưng chỉ trong chớp mắt đã được hắn đỡ lấy vòng eo, vững vàng giữ lại.</p>
+<p>“Nàng đang nghĩ gì?”</p>
+<p>Mấy ngày nay nàng luôn ngủ không ngon, hắn đều nhìn thấy.</p>
+<p>Sở Ly nhìn nhát kiếm vừa chém ra, nhàn nhạt nói:</p>
+<p>“Không nghĩ gì cả.”</p>
+<p>Lời vừa dứt, nàng lập tức cảm nhận được lực nơi bàn tay hắn nắm lấy tay mình bỗng tăng mạnh.</p>
+<p>Một kiếm chém lên thân cây, để lại một vết cắt sâu hoắm.</p>
+<p>Nàng buột miệng:</p>
+<p>“Sở Dạ Ly sẽ chết sao?”</p>
+<p>Đôi mắt Sở Đệ Trì trầm như màn đêm, còn lạnh hơn cơn mưa tối nay vài phần.</p>
+<p>“Có lẽ sẽ không.”</p>
+<p>Kể từ đêm chia tay bên bờ sông Mạc Hoài, Sở Dạ Ly đã hoàn toàn mất tung tích, mãi không tra được nơi hắn ở, cũng chẳng tìm thấy thi thể.</p>
+<p>“Cũng có lẽ sẽ.”</p>
+<p>“Tiểu Cửu, nàng hy vọng hắn chết sao?”</p>
+<p>“Ta...”</p>
+<p>Nàng không biết.</p>
+<p>Nếu phải nói, điều nàng mong muốn là thái bình, là an ổn, mọi người đều có thể bình an sống tiếp. Nhưng mỗi người đều có suy nghĩ của riêng mình, sẽ không hành động theo ý nguyện của nàng.</p>
+<p>Sở Đệ Trì trầm giọng:</p>
+<p>“Hắn có lẽ may mắn nhặt lại được một mạng, nhưng ta sẽ giết hắn.”</p>
+<p>Keng!</p>
+<p>Trường kiếm tuột khỏi tay rơi xuống đất.</p>
+<p>Lục Hợp rơi xuống nền, phát ra tiếng vang thanh thúy, bắn tung những hạt mưa li ti, nhưng âm thanh ấy lại giống như một tảng đá lớn nện xuống giữa hai người, vang dội đến mức chấn động màng tai.</p>
+<p>Sở Ly nhìn bàn tay mình, rồi nhìn thanh kiếm dưới đất. Khi ngẩng đầu lên, đối diện với nàng là đôi mắt sâu không thấy đáy của người đàn ông.</p>
+<p>Trong khoảnh khắc ấy, dường như nàng lại nhìn thấy con người quen thuộc kia.</p>
+<p>Cố chấp đến mức khiến người ta sợ hãi.</p>
+<p>“Hoàng thúc...”</p>
+<p>Hắn tiến lên.</p>
+<p>“Ta đã nói, kiếm là sinh mệnh thứ hai của nàng. Vì sao lại cầm không vững?”</p>
+<p>Nàng theo bản năng lùi nửa bước.</p>
+<p>“Ta... chắc là vì trời mưa, quá trơn.”</p>
+<p>Hắn từng bước ép sát.</p>
+<p>“Nàng có tâm sự.”</p>
+<p>“Ta không có.”</p>
+<p>“Nàng đang nghĩ đến hắn.”</p>
+<p>“Ta không...”</p>
+<p>Hai tay người đàn ông giơ lên, vòng qua dưới cánh tay nàng, ép cả người nàng vào thân cây.</p>
+<p>Mùi trầm hương ô mộc nồng đậm tràn ngập khứu giác, ngay cả không khí để hô hấp cũng trở nên gấp gáp.</p>
+<p>“Nếu không có tâm sự, vì sao mấy ngày nay đều ngủ không ngon? Vì sao ngay cả kiếm cũng đánh rơi?”</p>
+<p>“Ta...”</p>
+<p>Nàng cho rằng đây chỉ là cảm xúc bình thường của một con người.</p>
+<p>Con người là sinh linh có tình cảm phức tạp, không tồn tại yêu hận tuyệt đối.</p>
+<p>Nàng và Sở Dạ Ly cũng coi như lớn lên cùng nhau từ nhỏ. Với hắn, nàng có tình thân, có thương xót, có khuyên giải, có bất lực, cũng có lo lắng, đó đều là điều bình thường.</p>
+<p>Cũng giống như đối với hoàng thúc, nàng từng hận, cũng từng yêu, cũng từng mê mang, không thể chỉ dùng một lời mà khái quát.</p>
+<p>Sở Đệ Trì nâng cằm nàng lên.</p>
+<p>“Nhìn ta.”</p>
+<p>“Hoàng thúc, đừng như vậy. Mấy ngày nay chỉ là ta ngủ không ngon...”</p>
+<p>“Nhìn ta.”</p>
+<p>Hắn khóa chặt ánh mắt nàng, chăm chú nhìn gương mặt nhỏ khiến hắn yêu đến không nỡ buông tay, hận không thể lúc nào cũng buộc nàng bên mình.</p>
+<p>Nhưng đôi mắt long lanh ấy cứ luôn chất chứa quá nhiều tâm tư.</p>
+<p>Hắn cúi đầu, định hôn nàng.</p>
+<p>Sở Ly theo bản năng chống tay lên ngực hắn, nghiêng đầu tránh đi.</p>
+<p>Chỉ một động tác rất khẽ.</p>
+<p>Lại như xé mở một khe nứt giữa hai người... Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_288.html" class="btn">‹ Trước</a>
             <a href="chuong_292.html" class="btn">Sau ›</a>
         </div>
@@ -265,15 +273,11 @@ Lại như xé mở một khe nứt giữa hai người... Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -285,11 +289,11 @@ Lại như xé mở một khe nứt giữa hai người... Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

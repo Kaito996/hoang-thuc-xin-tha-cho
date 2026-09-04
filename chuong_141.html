@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 141</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,215 +62,224 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 141</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_140.html" class="btn">‹ Trước</a>
             <a href="chuong_142.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 141: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 141: Sở Ly, dáng vẻ muội nói dối thật sự rất khó coi
-Sở Ly hô hấp chợt siết lại: “Mật… mật tín gì cơ?”
-Ánh mắt Sở Dạ Ly khẽ hạ xuống: “Ta đã nhìn thấy rồi.”
-Lúc ở bàn đàm phán, Sở Đệ Trì nắm lấy tay nàng, lặng lẽ giấu một mảnh mật thư vào lòng bàn tay nàng.
-Hắn đã biết ngay, Sở Đệ Trì trấn thủ Nam Cương suốt tám năm, sao có thể dễ dàng đáp ứng cắt nhường lãnh thổ Nam Cương?
-Quả nhiên có trá.
-Cái gọi là ước hẹn mười lăm ngày, chẳng qua chỉ là cái cớ để hắn kéo dài thời gian, bố trí cạm bẫy mà thôi.
-Sở Ly siết chặt lòng bàn tay, mồ hôi mỏng lặng lẽ rịn ra.
-“Không có… mật tín gì cả…”
-“Tiểu Cửu, dáng vẻ muội nói dối thật sự rất khó coi.”
-Hắn khẽ thở dài một tiếng, đưa tay về phía cổ tay nàng, nhưng lại bị nàng cảnh giác né tránh.
-Nàng đang đề phòng hắn!
-Tư thế căng cứng ấy, cứ như thể hai người đang đứng ở hai phe đối lập.
-Hắn không thích cảm giác đó.
-Rõ ràng bọn họ đang ở bên nhau.
-“Đưa ta xem.”
-“Không!”
-“Tiểu Cửu, ta chỉ xem một chút thôi.”
-Sở Ly chống gậy, xoay người định đi, nhưng dáng vẻ tập tễnh ấy vừa bước được hai bước, Sở Dạ Ly đã vươn tay kéo một cái, ôm nàng ngồi lên đùi mình.
-“Đưa ta xem. Hắn muốn cứu muội trở về, còn ta cũng chỉ muốn được ở bên muội.”
-Sở Ly càng siết chặt bàn tay.
-Phong mật tín này đối với nàng quan trọng vô cùng, bên trong nhất định viết cách cứu nàng. Nếu để Sở Dạ Ly xem được, nhận ra kế hoạch của Sở Đệ Trì, vậy nàng và Tần Mục Vũ còn trốn thế nào được?
-Nhưng nhìn ánh mắt của người nam nhân trước mặt, tuy ôn nhu lại đầy áp bức.
-Ánh mắt ấy nàng quá quen thuộc rồi.
-Căn bản không có chỗ để cự tuyệt.
-Ngay lúc Sở Dạ Ly đưa tay tới, định cưỡng ép đoạt lấy, Sở Ly lập tức chộp lấy mảnh giấy, nhét thẳng vào miệng.
-“Tiểu Cửu!”
-Thà nuốt xuống, cũng tuyệt đối không cho hắn xem!
-Sắc mặt Sở Dạ Ly khẽ biến: “Nhả ra!”
-Giấy vàng thô ráp như vậy, sao có thể ăn được?
-Nếu cưỡng ép nuốt xuống, nhất định sẽ hại dạ dày.
-Hắn bóp lấy cằm nàng, banh miệng nàng ra, mặc kệ nàng vùng vẫy, cưỡng ép móc mảnh giấy ra.
-“Khụ!”
-Sở Ly đau đến khóe mắt ươn ướt: “Khụ… khụ… trả… trả cho ta…”
-“Chỉ là một tờ mật thư mà thôi, muội đã nóng lòng muốn rời khỏi ta đến vậy sao?”
-Sở Dạ Ly cố nén cơn giận, mở tờ giấy đã bị nước miếng thấm ướt ra.
-Bên trên chỉ có sáu chữ cuồng thảo phóng khoáng:
-—— Nguyện khanh tâm, tự ngã tâm.
-(“Nguyện lòng nàng cũng như lòng ta.”)
-Đây nào phải kế hoạch bí mật đào thoát?
-Rõ ràng là thư tình Sở Đệ Trì viết cho Sở Ly.
-Vỏn vẹn sáu chữ, lại chất chứa hết nỗi tương tư của nam nữ. Dẫu cách xa hai phương, cũng chẳng màng sớm tối kề cận, chỉ mong hai tấm lòng tương tri tương hợp.
-Mà Sở Ly lại liều mạng bảo vệ tờ thư tình này, chẳng phải chính là đã tình căn thâm chủng với Sở Đệ Trì hay sao?
-Trong nháy mắt, hai mắt Sở Dạ Ly như bị đâm đau.
-“Trả cho ta!”
-Sở Ly đưa tay cướp lại, Sở Dạ Ly năm ngón tay siết mạnh, trực tiếp vò nát mảnh giấy, ném xuống đất.
-Sở Ly lao tới nhặt.
-“Sở Ly!”
-Sở Dạ Ly giữ lấy nàng, ép nàng xuống giường.
-“Muội với Sở Đệ Trì là thân thúc chất, sao có thể sinh ra thứ tình cảm bất chính? Loại chuyện bại hoại phong tục, trái nghịch luân thường như vậy, muội không sợ bị người đời phỉ báng sao?”
-Toàn thân Sở Ly run lên.
-Hắn biết rồi…
-Nhưng nàng chẳng phải cũng thấy khó xử sao?
-Nàng và Sở Đệ Trì… căn bản không phải như hắn nghĩ.
-“Ở bên cạnh ta, trong lòng muội lại chỉ nhớ tới người khác. Muội không thể nhìn ta một lần sao!”
-Sở Dạ Ly cúi người áp xuống.
-Sợi dây trong đầu Sở Ly lập tức căng cứng.
-“Ngũ ca!”
-Hắn định làm gì?
-“Buông ta ra! Ưm… Ngũ ca… chân đau, chân đau!”
-Sở Ly liều mạng giãy giụa, nhất thời chẳng biết nên ôm ngực, giữ chặt đai quần hay ôm lấy chân mình nữa.
-Nàng rất sợ!
-Tại sao?
-Tại sao hắn với Sở Đệ Trì đều thích động tay động chân với nàng như vậy?
-Có lẽ đối với bọn họ chuyện này rất thú vị, nhưng Sở Ly thật sự chán ghét đến cực điểm. Nàng không hề muốn trở thành cái cớ để bọn họ tranh giành nhau!
-Một tiếng “chân đau”, khiến Sở Dạ Ly kịp ghìm cương trước bờ vực.
-Lý trí dần quay trở lại.
-Nhìn khóe mắt nàng đỏ hoe, cắn chặt môi dưới, cả người khẽ run, trong đôi mắt đầy vẻ hoảng loạn chưa từng biết đến, tim hắn như bị ai bóp mạnh.
-Hắn đang làm gì vậy?
-Hắn đâu phải loại người như thế.
-“Tiểu Cửu, ta…”
-Hắn muốn đưa tay ra, nhưng nàng lại né tránh.
-Ánh mắt Sở Dạ Ly tối sầm.
-Hắn đã có chút mất khống chế.
-Nhìn nàng và Nhiếp chính vương tâm ý tương thông, hắn hoàn toàn mất đi lý trí. Nếu trong tình yêu cũng có trước có sau, thì hắn với Sở Đệ Trì rõ ràng là như nhau.
-Hắn rút người lại, bóng lưng rời đi có phần chật vật.
-Sở Ly ôm chặt y phục, chăm chăm nhìn ra ngoài, mãi đến khi xác định hắn đã đi xa, nàng mới cẩn thận bước xuống giường.
-Đáng tiếc, mật thư đã bị xé nát từ lâu.
-Dù có ghép thế nào, cũng chẳng còn nhìn rõ nét chữ ban đầu.
-—
-Bên ngoài.
-Sở Dạ Ly bước nhanh ra ngoài, hít một hơi gió lạnh, đầu óc cũng tỉnh táo hơn nhiều.
-Hắn không khỏi bắt đầu nghĩ, rốt cuộc từ khi nào Sở Ly lại nảy sinh tình ý với Sở Đệ Trì?
-Suốt gần tám năm qua, Sở Đệ Trì luôn trấn thủ Nam Cương, hiếm khi hồi kinh. Cho dù mỗi lần về kinh báo cáo chức vụ, cũng chưa từng ở lại quá nửa tháng.
-Sở Ly sao có thể thích hắn?
-Nếu nói Sở Ly thích Tần Mục Vũ, còn khiến người ta tin hơn.
-Rất nhanh, hắn chợt hiểu ra.
-Nhất định là Sở Đệ Trì cố ý!
-Cố ý lừa hắn!
-Hôm nay, hắn cố tình để lộ dấu răng trên cổ. Sở Đệ Trì nhìn thấy, trong lòng ôm hận, nên mới dùng cách này để kích thích hắn.
-Khiến hắn mất khống chế.
-Khiến Sở Ly nổi giận.
-Thành công chia rẽ quan hệ giữa hắn và Sở Ly.
-Hai ngày nay, vì chuyện Tần Mục Vũ bị bắt mà Sở Ly vẫn luôn giận hắn. Khó khăn lắm hắn mới dỗ được nàng nguôi giận.
-Giờ đây…
-Chỉ e Sở Ly lại càng chán ghét hắn hơn.
-Sở Đệ Trì!
-Được!
-Rất được!
-Người họ Sở các ngươi, chẳng có ai tốt lành cả!
-Ngoại trừ Sở Ly.
-Sở Dạ Ly bực bội kéo cổ áo, vừa lúc nhìn thấy một ám vệ bước vào trướng của chủ tướng, hắn liền đi theo.
-“Tướng quân.”
-Ám vệ quỳ một gối xuống đất.
-“Ta sẽ lập tức viết một phong mật tín, ngươi mau mang về vương đô, trình lên Vương thượng.”
-Vệ Bàng Trung cầm bút, vừa nhìn thấy Sở Dạ Ly bước vào, nụ cười trên mặt thế nào cũng không giấu nổi.
-“Đông Lăng điện hạ!”
-Ha ha ha!
-Đông Lăng điện hạ hợp tác với bọn họ quả nhiên đầy thành ý, vậy mà thật sự bắt được Sở Đế đem tới.
-Sở Dạ Ly chậm rãi bước tới:
-“Vệ tướng quân định viết thư gì?”
-“Tất nhiên là báo tin Sở Đế đang ở trong tay chúng ta cho Vương thượng.”
-Vệ Bàng Trung cười lớn:
-“Có Sở Đế trong tay, chẳng những chúng ta có thể đánh chiếm Nam Cương, mà còn có thể một đường bắc tiến, thôn tính Đại Sở, ngày ấy chẳng còn xa!”
-Giọng điệu ngạo mạn vô cùng.
-Sở Dạ Ly nhàn nhạt nói:
-“Nói vậy là định giam giữ Sở Đế?”
-“Đông Lăng điện hạ mang Sở Đế đến đây, chẳng phải chính vì mục đích này sao?”
-“Ý ta là, hoàng thất Đại Sở con cháu đông đúc. Sở Đế xếp thứ chín, phía trên còn có tám vị huynh trưởng, giá trị lợi dụng của hắn vẫn chưa lớn đến thế.”
-Một khi vượt quá giới hạn nào đó, Đại Sở thà từ bỏ Sở Ly, lập tân đế khác.
-Vệ Bàng Trung nheo mắt, đầy vẻ tính toán:
-“Hoàng thất Đại Sở đông con cháu thì đã sao? Hoàng thất coi trọng nhất chính là thể diện. Nếu Đại Sở không chịu cứu tân đế, vậy ta sẽ chặt từng ngón tay của ‘hắn’, róc từng miếng thịt của ‘hắn’, từng chút từng chút gửi về Đại Sở.”
-Một Đại Sở rộng lớn, vậy mà ngay cả hoàng đế của mình cũng không cứu nổi, chỉ có thể mặc người xâu xé.
-Nỗi quốc sỉ như vậy, đủ khiến cả Đại Sở phải hổ thẹn.
-“Ha ha ha!”
-Hắn thật muốn xem, để cứu Sở Đế, Đại Sở sẽ nhượng bộ đến mức nào.
-Hắn muốn vắt kiệt từng chút giá trị lợi dụng cuối cùng của Sở Đế!
-Vệ Bàng Trung cười lớn không ngớt, dường như đã nhìn thấy cảnh mình công thành đoạt đất, mở rộng cương thổ, lập nên công lao hiển hách, được Vương thượng sắc phong làm Trấn Quốc Đại tướng quân.
-Hắn cúi đầu đề bút viết thư.
-Sở Dạ Ly nhìn động tác của hắn, đôi mắt dần tối lại, chậm rãi bước đến cạnh bàn:
-“Còn ai biết thân phận của nàng?”
-Vệ Bàng Trung đáp:
-“Việc này hệ trọng, ta vẫn chưa công bố. Ngoài ba tên binh sĩ hầu cận bên cạnh trong buổi đàm phán hôm nay, cùng tên ám vệ này ra, tạm thời chưa ai biết thân phận thật sự của Tiểu Sở công tử.”
-“Ồ, vậy thì tốt.”
-Sở Dạ Ly gật đầu.
-Vệ Bàng Trung cúi đầu viết thư.
-Đúng lúc ấy, ánh nến lay động phản chiếu hàn mang trên lưỡi đao.
-Phụt!
-Cổ hắn bị cắt đứt.
-“Ư…”
-Hắn mở to hai mắt, không dám tin nhìn kẻ ra tay.
-“Ngươi… ặc… ặc…”
-Tên ám vệ thấy tình thế không ổn, lập tức đứng dậy định hô người.
-Vừa chạy được hai bước, một thanh chủy thủ đã xuyên thẳng vào sau lưng.
-“Ư!”
-Sở Dạ Ly thong thả lau vết máu trên đầu ngón tay, đôi mắt lạnh lẽo như hàn băng.
-“Dám động đến người của ta, các ngươi coi như ta đã chết rồi sao?”
-————————————
-Sở Đệ Trì và Sở Dạ Ly thay phiên đút dấm cho nhau ăn 
- Ẩn bớt</p>
+            <p>Chương 141: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 141: Sở Ly, dáng vẻ muội nói dối thật sự rất khó coi</p>
+<p>Sở Ly hô hấp chợt siết lại: “Mật… mật tín gì cơ?”</p>
+<p>Ánh mắt Sở Dạ Ly khẽ hạ xuống: “Ta đã nhìn thấy rồi.”</p>
+<p>Lúc ở bàn đàm phán, Sở Đệ Trì nắm lấy tay nàng, lặng lẽ giấu một mảnh mật thư vào lòng bàn tay nàng.</p>
+<p>Hắn đã biết ngay, Sở Đệ Trì trấn thủ Nam Cương suốt tám năm, sao có thể dễ dàng đáp ứng cắt nhường lãnh thổ Nam Cương?</p>
+<p>Quả nhiên có trá.</p>
+<p>Cái gọi là ước hẹn mười lăm ngày, chẳng qua chỉ là cái cớ để hắn kéo dài thời gian, bố trí cạm bẫy mà thôi.</p>
+<p>Sở Ly siết chặt lòng bàn tay, mồ hôi mỏng lặng lẽ rịn ra.</p>
+<p>“Không có… mật tín gì cả…”</p>
+<p>“Tiểu Cửu, dáng vẻ muội nói dối thật sự rất khó coi.”</p>
+<p>Hắn khẽ thở dài một tiếng, đưa tay về phía cổ tay nàng, nhưng lại bị nàng cảnh giác né tránh.</p>
+<p>Nàng đang đề phòng hắn!</p>
+<p>Tư thế căng cứng ấy, cứ như thể hai người đang đứng ở hai phe đối lập.</p>
+<p>Hắn không thích cảm giác đó.</p>
+<p>Rõ ràng bọn họ đang ở bên nhau.</p>
+<p>“Đưa ta xem.”</p>
+<p>“Không!”</p>
+<p>“Tiểu Cửu, ta chỉ xem một chút thôi.”</p>
+<p>Sở Ly chống gậy, xoay người định đi, nhưng dáng vẻ tập tễnh ấy vừa bước được hai bước, Sở Dạ Ly đã vươn tay kéo một cái, ôm nàng ngồi lên đùi mình.</p>
+<p>“Đưa ta xem. Hắn muốn cứu muội trở về, còn ta cũng chỉ muốn được ở bên muội.”</p>
+<p>Sở Ly càng siết chặt bàn tay.</p>
+<p>Phong mật tín này đối với nàng quan trọng vô cùng, bên trong nhất định viết cách cứu nàng. Nếu để Sở Dạ Ly xem được, nhận ra kế hoạch của Sở Đệ Trì, vậy nàng và Tần Mục Vũ còn trốn thế nào được?</p>
+<p>Nhưng nhìn ánh mắt của người nam nhân trước mặt, tuy ôn nhu lại đầy áp bức.</p>
+<p>Ánh mắt ấy nàng quá quen thuộc rồi.</p>
+<p>Căn bản không có chỗ để cự tuyệt.</p>
+<p>Ngay lúc Sở Dạ Ly đưa tay tới, định cưỡng ép đoạt lấy, Sở Ly lập tức chộp lấy mảnh giấy, nhét thẳng vào miệng.</p>
+<p>“Tiểu Cửu!”</p>
+<p>Thà nuốt xuống, cũng tuyệt đối không cho hắn xem!</p>
+<p>Sắc mặt Sở Dạ Ly khẽ biến: “Nhả ra!”</p>
+<p>Giấy vàng thô ráp như vậy, sao có thể ăn được?</p>
+<p>Nếu cưỡng ép nuốt xuống, nhất định sẽ hại dạ dày.</p>
+<p>Hắn bóp lấy cằm nàng, banh miệng nàng ra, mặc kệ nàng vùng vẫy, cưỡng ép móc mảnh giấy ra.</p>
+<p>“Khụ!”</p>
+<p>Sở Ly đau đến khóe mắt ươn ướt: “Khụ… khụ… trả… trả cho ta…”</p>
+<p>“Chỉ là một tờ mật thư mà thôi, muội đã nóng lòng muốn rời khỏi ta đến vậy sao?”</p>
+<p>Sở Dạ Ly cố nén cơn giận, mở tờ giấy đã bị nước miếng thấm ướt ra.</p>
+<p>Bên trên chỉ có sáu chữ cuồng thảo phóng khoáng:</p>
+<p>—— Nguyện khanh tâm, tự ngã tâm.</p>
+<p>(“Nguyện lòng nàng cũng như lòng ta.”)</p>
+<p>Đây nào phải kế hoạch bí mật đào thoát?</p>
+<p>Rõ ràng là thư tình Sở Đệ Trì viết cho Sở Ly.</p>
+<p>Vỏn vẹn sáu chữ, lại chất chứa hết nỗi tương tư của nam nữ. Dẫu cách xa hai phương, cũng chẳng màng sớm tối kề cận, chỉ mong hai tấm lòng tương tri tương hợp.</p>
+<p>Mà Sở Ly lại liều mạng bảo vệ tờ thư tình này, chẳng phải chính là đã tình căn thâm chủng với Sở Đệ Trì hay sao?</p>
+<p>Trong nháy mắt, hai mắt Sở Dạ Ly như bị đâm đau.</p>
+<p>“Trả cho ta!”</p>
+<p>Sở Ly đưa tay cướp lại, Sở Dạ Ly năm ngón tay siết mạnh, trực tiếp vò nát mảnh giấy, ném xuống đất.</p>
+<p>Sở Ly lao tới nhặt.</p>
+<p>“Sở Ly!”</p>
+<p>Sở Dạ Ly giữ lấy nàng, ép nàng xuống giường.</p>
+<p>“Muội với Sở Đệ Trì là thân thúc chất, sao có thể sinh ra thứ tình cảm bất chính? Loại chuyện bại hoại phong tục, trái nghịch luân thường như vậy, muội không sợ bị người đời phỉ báng sao?”</p>
+<p>Toàn thân Sở Ly run lên.</p>
+<p>Hắn biết rồi…</p>
+<p>Nhưng nàng chẳng phải cũng thấy khó xử sao?</p>
+<p>Nàng và Sở Đệ Trì… căn bản không phải như hắn nghĩ.</p>
+<p>“Ở bên cạnh ta, trong lòng muội lại chỉ nhớ tới người khác. Muội không thể nhìn ta một lần sao!”</p>
+<p>Sở Dạ Ly cúi người áp xuống.</p>
+<p>Sợi dây trong đầu Sở Ly lập tức căng cứng.</p>
+<p>“Ngũ ca!”</p>
+<p>Hắn định làm gì?</p>
+<p>“Buông ta ra! Ưm… Ngũ ca… chân đau, chân đau!”</p>
+<p>Sở Ly liều mạng giãy giụa, nhất thời chẳng biết nên ôm ngực, giữ chặt đai quần hay ôm lấy chân mình nữa.</p>
+<p>Nàng rất sợ!</p>
+<p>Tại sao?</p>
+<p>Tại sao hắn với Sở Đệ Trì đều thích động tay động chân với nàng như vậy?</p>
+<p>Có lẽ đối với bọn họ chuyện này rất thú vị, nhưng Sở Ly thật sự chán ghét đến cực điểm. Nàng không hề muốn trở thành cái cớ để bọn họ tranh giành nhau!</p>
+<p>Một tiếng “chân đau”, khiến Sở Dạ Ly kịp ghìm cương trước bờ vực.</p>
+<p>Lý trí dần quay trở lại.</p>
+<p>Nhìn khóe mắt nàng đỏ hoe, cắn chặt môi dưới, cả người khẽ run, trong đôi mắt đầy vẻ hoảng loạn chưa từng biết đến, tim hắn như bị ai bóp mạnh.</p>
+<p>Hắn đang làm gì vậy?</p>
+<p>Hắn đâu phải loại người như thế.</p>
+<p>“Tiểu Cửu, ta…”</p>
+<p>Hắn muốn đưa tay ra, nhưng nàng lại né tránh.</p>
+<p>Ánh mắt Sở Dạ Ly tối sầm.</p>
+<p>Hắn đã có chút mất khống chế.</p>
+<p>Nhìn nàng và Nhiếp chính vương tâm ý tương thông, hắn hoàn toàn mất đi lý trí. Nếu trong tình yêu cũng có trước có sau, thì hắn với Sở Đệ Trì rõ ràng là như nhau.</p>
+<p>Hắn rút người lại, bóng lưng rời đi có phần chật vật.</p>
+<p>Sở Ly ôm chặt y phục, chăm chăm nhìn ra ngoài, mãi đến khi xác định hắn đã đi xa, nàng mới cẩn thận bước xuống giường.</p>
+<p>Đáng tiếc, mật thư đã bị xé nát từ lâu.</p>
+<p>Dù có ghép thế nào, cũng chẳng còn nhìn rõ nét chữ ban đầu.</p>
+<p>—</p>
+<p>Bên ngoài.</p>
+<p>Sở Dạ Ly bước nhanh ra ngoài, hít một hơi gió lạnh, đầu óc cũng tỉnh táo hơn nhiều.</p>
+<p>Hắn không khỏi bắt đầu nghĩ, rốt cuộc từ khi nào Sở Ly lại nảy sinh tình ý với Sở Đệ Trì?</p>
+<p>Suốt gần tám năm qua, Sở Đệ Trì luôn trấn thủ Nam Cương, hiếm khi hồi kinh. Cho dù mỗi lần về kinh báo cáo chức vụ, cũng chưa từng ở lại quá nửa tháng.</p>
+<p>Sở Ly sao có thể thích hắn?</p>
+<p>Nếu nói Sở Ly thích Tần Mục Vũ, còn khiến người ta tin hơn.</p>
+<p>Rất nhanh, hắn chợt hiểu ra.</p>
+<p>Nhất định là Sở Đệ Trì cố ý!</p>
+<p>Cố ý lừa hắn!</p>
+<p>Hôm nay, hắn cố tình để lộ dấu răng trên cổ. Sở Đệ Trì nhìn thấy, trong lòng ôm hận, nên mới dùng cách này để kích thích hắn.</p>
+<p>Khiến hắn mất khống chế.</p>
+<p>Khiến Sở Ly nổi giận.</p>
+<p>Thành công chia rẽ quan hệ giữa hắn và Sở Ly.</p>
+<p>Hai ngày nay, vì chuyện Tần Mục Vũ bị bắt mà Sở Ly vẫn luôn giận hắn. Khó khăn lắm hắn mới dỗ được nàng nguôi giận.</p>
+<p>Giờ đây…</p>
+<p>Chỉ e Sở Ly lại càng chán ghét hắn hơn.</p>
+<p>Sở Đệ Trì!</p>
+<p>Được!</p>
+<p>Rất được!</p>
+<p>Người họ Sở các ngươi, chẳng có ai tốt lành cả!</p>
+<p>Ngoại trừ Sở Ly.</p>
+<p>Sở Dạ Ly bực bội kéo cổ áo, vừa lúc nhìn thấy một ám vệ bước vào trướng của chủ tướng, hắn liền đi theo.</p>
+<p>“Tướng quân.”</p>
+<p>Ám vệ quỳ một gối xuống đất.</p>
+<p>“Ta sẽ lập tức viết một phong mật tín, ngươi mau mang về vương đô, trình lên Vương thượng.”</p>
+<p>Vệ Bàng Trung cầm bút, vừa nhìn thấy Sở Dạ Ly bước vào, nụ cười trên mặt thế nào cũng không giấu nổi.</p>
+<p>“Đông Lăng điện hạ!”</p>
+<p>Ha ha ha!</p>
+<p>Đông Lăng điện hạ hợp tác với bọn họ quả nhiên đầy thành ý, vậy mà thật sự bắt được Sở Đế đem tới.</p>
+<p>Sở Dạ Ly chậm rãi bước tới:</p>
+<p>“Vệ tướng quân định viết thư gì?”</p>
+<p>“Tất nhiên là báo tin Sở Đế đang ở trong tay chúng ta cho Vương thượng.”</p>
+<p>Vệ Bàng Trung cười lớn:</p>
+<p>“Có Sở Đế trong tay, chẳng những chúng ta có thể đánh chiếm Nam Cương, mà còn có thể một đường bắc tiến, thôn tính Đại Sở, ngày ấy chẳng còn xa!”</p>
+<p>Giọng điệu ngạo mạn vô cùng.</p>
+<p>Sở Dạ Ly nhàn nhạt nói:</p>
+<p>“Nói vậy là định giam giữ Sở Đế?”</p>
+<p>“Đông Lăng điện hạ mang Sở Đế đến đây, chẳng phải chính vì mục đích này sao?”</p>
+<p>“Ý ta là, hoàng thất Đại Sở con cháu đông đúc. Sở Đế xếp thứ chín, phía trên còn có tám vị huynh trưởng, giá trị lợi dụng của hắn vẫn chưa lớn đến thế.”</p>
+<p>Một khi vượt quá giới hạn nào đó, Đại Sở thà từ bỏ Sở Ly, lập tân đế khác.</p>
+<p>Vệ Bàng Trung nheo mắt, đầy vẻ tính toán:</p>
+<p>“Hoàng thất Đại Sở đông con cháu thì đã sao? Hoàng thất coi trọng nhất chính là thể diện. Nếu Đại Sở không chịu cứu tân đế, vậy ta sẽ chặt từng ngón tay của ‘hắn’, róc từng miếng thịt của ‘hắn’, từng chút từng chút gửi về Đại Sở.”</p>
+<p>Một Đại Sở rộng lớn, vậy mà ngay cả hoàng đế của mình cũng không cứu nổi, chỉ có thể mặc người xâu xé.</p>
+<p>Nỗi quốc sỉ như vậy, đủ khiến cả Đại Sở phải hổ thẹn.</p>
+<p>“Ha ha ha!”</p>
+<p>Hắn thật muốn xem, để cứu Sở Đế, Đại Sở sẽ nhượng bộ đến mức nào.</p>
+<p>Hắn muốn vắt kiệt từng chút giá trị lợi dụng cuối cùng của Sở Đế!</p>
+<p>Vệ Bàng Trung cười lớn không ngớt, dường như đã nhìn thấy cảnh mình công thành đoạt đất, mở rộng cương thổ, lập nên công lao hiển hách, được Vương thượng sắc phong làm Trấn Quốc Đại tướng quân.</p>
+<p>Hắn cúi đầu đề bút viết thư.</p>
+<p>Sở Dạ Ly nhìn động tác của hắn, đôi mắt dần tối lại, chậm rãi bước đến cạnh bàn:</p>
+<p>“Còn ai biết thân phận của nàng?”</p>
+<p>Vệ Bàng Trung đáp:</p>
+<p>“Việc này hệ trọng, ta vẫn chưa công bố. Ngoài ba tên binh sĩ hầu cận bên cạnh trong buổi đàm phán hôm nay, cùng tên ám vệ này ra, tạm thời chưa ai biết thân phận thật sự của Tiểu Sở công tử.”</p>
+<p>“Ồ, vậy thì tốt.”</p>
+<p>Sở Dạ Ly gật đầu.</p>
+<p>Vệ Bàng Trung cúi đầu viết thư.</p>
+<p>Đúng lúc ấy, ánh nến lay động phản chiếu hàn mang trên lưỡi đao.</p>
+<p>Phụt!</p>
+<p>Cổ hắn bị cắt đứt.</p>
+<p>“Ư…”</p>
+<p>Hắn mở to hai mắt, không dám tin nhìn kẻ ra tay.</p>
+<p>“Ngươi… ặc… ặc…”</p>
+<p>Tên ám vệ thấy tình thế không ổn, lập tức đứng dậy định hô người.</p>
+<p>Vừa chạy được hai bước, một thanh chủy thủ đã xuyên thẳng vào sau lưng.</p>
+<p>“Ư!”</p>
+<p>Sở Dạ Ly thong thả lau vết máu trên đầu ngón tay, đôi mắt lạnh lẽo như hàn băng.</p>
+<p>“Dám động đến người của ta, các ngươi coi như ta đã chết rồi sao?”</p>
+<p>————————————</p>
+<p>Sở Đệ Trì và Sở Dạ Ly thay phiên đút dấm cho nhau ăn</p>
+<p>Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_140.html" class="btn">‹ Trước</a>
             <a href="chuong_142.html" class="btn">Sau ›</a>
         </div>
@@ -279,15 +287,11 @@ Sở Đệ Trì và Sở Dạ Ly thay phiên đút dấm cho nhau ăn
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -299,11 +303,11 @@ Sở Đệ Trì và Sở Dạ Ly thay phiên đút dấm cho nhau ăn
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 251</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,151 +62,160 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 251</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_250.html" class="btn">‹ Trước</a>
             <a href="chuong_252.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 251: Bây giờ rời đi còn kịp không?
-“Lại sai người đi báo cho Tiêu Dao Hoàng thúc, Thái hậu, Nhị Hoàng huynh, Tam Hoàng huynh và Thất đệ, ngày mai, ta muốn hát một vở đại hí.”
-“Vâng!”
-Bên Thái hậu, hắn đích thân đi mời.
-Ám vệ túm lấy Nhàn vương đang hôn mê, dùng túi đen trùm kín đầu hắn, khiêng hắn rời đi thì sau gáy bỗng bị người ta nện mạnh một búa.
-Doang!
-Ngày hôm sau.
-Trời xanh nắng ấm.
-Trong phủ Lục Hoàng tử, một màn ‘Hồng Môn Yến’ đang được diễn ra:Trong sân đại sảnh, một nam nhân bị trói chặt tay chân, buộc trên ghế. 
-Tấm vải đen trùm trên đầu che kín gương mặt, trong miệng không ngừng phát ra tiếng “ưm ưm”, giãy giụa không thôi.
-Xung quanh là mấy đạo thân ảnh tôn quý đang ngồi.
-“Lục đệ gọi mọi người chúng ta tới, lại không nói rõ ràng, rốt cuộc
-là chuyện gì?” Nhị Hoàng tử hỏi.
-Tam Hoàng tử nhìn người đang giãy giụa kia:
-“Người này là ai?”
-Sở Dực cong môi: “Nhị Hoàng huynh, Tam Hoàng huynh đừng nóng vội. Nhân vật chính của vở hí hôm nay còn chưa tới. Đợi người tới rồi, nhất định sẽ khiến các huynh kinh ngạc đến rớt cằm.”
-Sở Ly và Nhàn vương từ nhỏ đã thân thiết như một thể. Nhàn vương gặp nạn, Sở Ly không thể nào khoanh tay đứng nhìn.
-Nàng nhất định sẽ tới.
-Nếu nói một mình hắn nhận nhầm Sở Ly, chẳng lẽ tất cả mọi người đều sẽ nhận nhầm sao?
-Trên ghế thượng tọa, một vị lão Vương gia tuổi tác đã cao chính là huynh đệ của Sở Hoàng, được phong làm Tiêu Dao vương. Bởi bản tính không tranh không đoạt, nên được ban hai chữ ‘Tiêu
-Dao’. Nhiều năm qua, ông vẫn luôn sống tại đất phong của mình, mãi đến khi Sở Hoàng liệt phế, triều chính rung chuyển, mới trở về Đế đô.
-Tiêu Dao vương ôn hòa hỏi:
-“Tiểu Lục, chúng ta đang đợi ai?”
-“Một tên gian nịnh phản quốc!”
-Thần sắc mọi người hơi khựng lại.
-Lời này cũng đâu thể tùy tiện nói bừa!
-“Một tên gian nịnh từng ở bên cạnh chúng ta, thân như thủ túc, cùng nhau trưởng thành, nhưng lại dã tâm bừng bừng, xúi giục chính quyền; một tên nghịch thần từng lừa gạt tất cả mọi người, tội đủ để tru di cả nhà!”
-Sắc mặt mấy người ngồi trong sảnh dần dần ngưng trọng.
-Nhìn dáng vẻ của Lục Hoàng tử, không giống đang nói đùa.
-Sở Dực cười lạnh.
-Cứ chờ xem đi!
-“Lát nữa, người từ ngoài cửa bước vào sẽ khiến tất cả các vị không thể ngờ tới. Một kẻ chết đi sống lại, tráo đổi thái tử, dùng thuật ‘ly miêu hoán thái tử’!”
-Một kẻ đủ sức chọc giận tất cả mọi người.
-Đến lúc đó, mượn tay mọi người, còn sợ không trừ khử được Sở Ly sao?
-Thần sắc Tiêu Dao vương hơi ngưng lại.
-Đến cả chuyện ‘ly miêu hoán thái tử’ cũng nói ra, có thể thấy sự tình nghiêm trọng đến mức nào.
-“Rốt cuộc đã xảy ra chuyện gì? Tiểu Lục, đừng úp úp mở mở nữa, mau nói cho chúng ta biết.”
-“Tiêu Dao Hoàng thúc đừng nóng vội.”
-Bây giờ công bố thì còn gì là cảm giác mong đợi nữa.
-Sở Dực phất tay: “Muốn lôi một người ra khỏi bóng tối, công khai tội ác của nàng trước thiên hạ, cần phải có thủ đoạn cực lớn.”
-Vừa hay, hắn thông minh trầm ổn, lại sở hữu thủ đoạn như vậy.
-“Tất cả chúng ta đều bị nàng lừa!”
-“Phụ hoàng, Thái hậu, tất cả mọi người, toàn bộ đều bị nàng đùa bỡn trong lòng bàn tay. Chúng ta còn ở đây nội đấu, nào hay quyền chính Đại Sở từ lâu đã rơi vào tay người ngoài!”
-Cái gì?
-Hoàng quyền rơi vào tay kẻ khác?
-Lời này là thế nào?
-Sao còn úp úp mở mở nữa, sắp khiến bọn họ sốt ruột chết rồi!
-Điệu đã kéo cao đến như vậy, khẩu vị lại bị treo lơ lửng giữa chừng.
-Bọn họ chẳng còn tâm tư uống trà, không ngừng suy đoán, ánh mắt đồng loạt nhìn về phía cửa. 
-Giữa tiếng tuyên dương rầm rộ
-của Sở Dực, cuối cùng tiếng bước chân cũng vang lên…
-Tới rồi!
-Người này tới rồi!
-“Chư vị hãy nhìn.” Giọng Sở Dực đột nhiên cao vút: “Người này chính là kẻ đã tỉ mỉ ngụy trang hơn mười năm, che mắt tất cả mọi người, nữ cải nam trang, dã tâm lang sói, ve sầu thoát xác, chết đi sống lại…”
-Nhiếp… Nhiếp chính vương?!
-Một góc áo huyền mặc lướt vào, nam nhân chắp tay sau lưng,lười biếng bước tới:
-“Thật náo nhiệt.”
-Mọi người ngẩn ngơ: “?”
-Vòng vo một hồi lớn như vậy, Lục Hoàng tử muốn đối phó Nhiếp chính vương?
-Sở Đệ Trì chậm rãi bước tới: “Nhiều người như vậy, Tiểu Lục sao lại cố tình không gọi bản vương? Chắc sẽ không trách bản vương tự tiện đến chứ?”
-Ai dám đối đầu trực diện với Nhiếp chính vương?
-Nhị Hoàng tử cúi đầu, nhìn về phía Tam Hoàng tử.
-Tam Hoàng tử cũng không muốn làm kẻ chim đầu đàn, chỉ nhấp một ngụm trà, hạ thấp cảm giác tồn tại.
-Thất Hoàng tử im lặng không nói.
-“Sao tất cả đều không nói gì?”
-“Câm cả rồi à?”
-Sở Đệ Trì phất tay áo, đi đến bên cạnh chủ vị. Nhị
-Hoàng tử lập tức nhấc mông lên, nhường chỗ.
-Sở Dực: “Sao lại là ngươi?”
-“Hôm nay, người ngồi đây đều là hoàng tộc. Vì sao bản vương không thể tới? Hay là các ngươi gạt bản vương ra ngoài, chuẩn bị mưu đồ đối phó bản vương?”
-Thần sắc mọi người khẽ biến.
-Cho dù có thủ đoạn gì, cũng là âm thầm tiến hành. Ai dám trực tiếp đâm đầu vào Nhiếp chính vương?
-Không muốn sống nữa sao?
-Lục Hoàng tử gọi bọn họ tới, chẳng lẽ là muốn kéo bọn họ xuống nước!
-Sơ suất rồi!
-“Người này là ai?” Sở Đệ Trì vừa ngồi xuống đã nhìn thấy nam nhân mặc cẩm bào bị trói tay chân, đầu trùm túi đen, không ngừng giãy giụa kia.
-“Sao lại trói hắn?”
-Sở Dực chậm rãi cong môi: “Hoàng thúc cần gì phải biết rõ còn hỏi?”
-Nhiếp chính vương và Cửu Hoàng tử cấu kết với nhau, Nhàn vương xảy ra chuyện, Cửu Hoàng tử không tiện ra mặt, liền để Nhiếp chính vương tới cứu người.
-Một đường đi đơn giản như vậy, thật sự cho rằng
-hắn không hiểu sao?
-“Hoàng thúc, ngươi cho rằng ta không biết mục đích ngươi tới đây sao? Nhất cử nhất động của ngươi, từ lâu đã nằm trong tính toán của ta!”
-Thần sắc mấy người ngồi trong sảnh đều trở nên sâu kín khó đoán.
-Lục Hoàng tử điên rồi sao?
-Đến cả bọn họ cũng không dám tùy tiện đối đầu với Nhiếp chính vương, vậy mà hắn lại dám ngay trước mặt bao nhiêu người, trực tiếp công kích Nhiếp chính vương.
-Muốn chết thì đừng kéo bọn họ theo.
-Bây giờ rời đi… còn kịp không? Ẩn bớt</p>
+            <p>Chương 251: Bây giờ rời đi còn kịp không?</p>
+<p>“Lại sai người đi báo cho Tiêu Dao Hoàng thúc, Thái hậu, Nhị Hoàng huynh, Tam Hoàng huynh và Thất đệ, ngày mai, ta muốn hát một vở đại hí.”</p>
+<p>“Vâng!”</p>
+<p>Bên Thái hậu, hắn đích thân đi mời.</p>
+<p>Ám vệ túm lấy Nhàn vương đang hôn mê, dùng túi đen trùm kín đầu hắn, khiêng hắn rời đi thì sau gáy bỗng bị người ta nện mạnh một búa.</p>
+<p>Doang!</p>
+<p>Ngày hôm sau.</p>
+<p>Trời xanh nắng ấm.</p>
+<p>Trong phủ Lục Hoàng tử, một màn ‘Hồng Môn Yến’ đang được diễn ra:Trong sân đại sảnh, một nam nhân bị trói chặt tay chân, buộc trên ghế.</p>
+<p>Tấm vải đen trùm trên đầu che kín gương mặt, trong miệng không ngừng phát ra tiếng “ưm ưm”, giãy giụa không thôi.</p>
+<p>Xung quanh là mấy đạo thân ảnh tôn quý đang ngồi.</p>
+<p>“Lục đệ gọi mọi người chúng ta tới, lại không nói rõ ràng, rốt cuộc</p>
+<p>là chuyện gì?” Nhị Hoàng tử hỏi.</p>
+<p>Tam Hoàng tử nhìn người đang giãy giụa kia:</p>
+<p>“Người này là ai?”</p>
+<p>Sở Dực cong môi: “Nhị Hoàng huynh, Tam Hoàng huynh đừng nóng vội. Nhân vật chính của vở hí hôm nay còn chưa tới. Đợi người tới rồi, nhất định sẽ khiến các huynh kinh ngạc đến rớt cằm.”</p>
+<p>Sở Ly và Nhàn vương từ nhỏ đã thân thiết như một thể. Nhàn vương gặp nạn, Sở Ly không thể nào khoanh tay đứng nhìn.</p>
+<p>Nàng nhất định sẽ tới.</p>
+<p>Nếu nói một mình hắn nhận nhầm Sở Ly, chẳng lẽ tất cả mọi người đều sẽ nhận nhầm sao?</p>
+<p>Trên ghế thượng tọa, một vị lão Vương gia tuổi tác đã cao chính là huynh đệ của Sở Hoàng, được phong làm Tiêu Dao vương. Bởi bản tính không tranh không đoạt, nên được ban hai chữ ‘Tiêu</p>
+<p>Dao’. Nhiều năm qua, ông vẫn luôn sống tại đất phong của mình, mãi đến khi Sở Hoàng liệt phế, triều chính rung chuyển, mới trở về Đế đô.</p>
+<p>Tiêu Dao vương ôn hòa hỏi:</p>
+<p>“Tiểu Lục, chúng ta đang đợi ai?”</p>
+<p>“Một tên gian nịnh phản quốc!”</p>
+<p>Thần sắc mọi người hơi khựng lại.</p>
+<p>Lời này cũng đâu thể tùy tiện nói bừa!</p>
+<p>“Một tên gian nịnh từng ở bên cạnh chúng ta, thân như thủ túc, cùng nhau trưởng thành, nhưng lại dã tâm bừng bừng, xúi giục chính quyền; một tên nghịch thần từng lừa gạt tất cả mọi người, tội đủ để tru di cả nhà!”</p>
+<p>Sắc mặt mấy người ngồi trong sảnh dần dần ngưng trọng.</p>
+<p>Nhìn dáng vẻ của Lục Hoàng tử, không giống đang nói đùa.</p>
+<p>Sở Dực cười lạnh.</p>
+<p>Cứ chờ xem đi!</p>
+<p>“Lát nữa, người từ ngoài cửa bước vào sẽ khiến tất cả các vị không thể ngờ tới. Một kẻ chết đi sống lại, tráo đổi thái tử, dùng thuật ‘ly miêu hoán thái tử’!”</p>
+<p>Một kẻ đủ sức chọc giận tất cả mọi người.</p>
+<p>Đến lúc đó, mượn tay mọi người, còn sợ không trừ khử được Sở Ly sao?</p>
+<p>Thần sắc Tiêu Dao vương hơi ngưng lại.</p>
+<p>Đến cả chuyện ‘ly miêu hoán thái tử’ cũng nói ra, có thể thấy sự tình nghiêm trọng đến mức nào.</p>
+<p>“Rốt cuộc đã xảy ra chuyện gì? Tiểu Lục, đừng úp úp mở mở nữa, mau nói cho chúng ta biết.”</p>
+<p>“Tiêu Dao Hoàng thúc đừng nóng vội.”</p>
+<p>Bây giờ công bố thì còn gì là cảm giác mong đợi nữa.</p>
+<p>Sở Dực phất tay: “Muốn lôi một người ra khỏi bóng tối, công khai tội ác của nàng trước thiên hạ, cần phải có thủ đoạn cực lớn.”</p>
+<p>Vừa hay, hắn thông minh trầm ổn, lại sở hữu thủ đoạn như vậy.</p>
+<p>“Tất cả chúng ta đều bị nàng lừa!”</p>
+<p>“Phụ hoàng, Thái hậu, tất cả mọi người, toàn bộ đều bị nàng đùa bỡn trong lòng bàn tay. Chúng ta còn ở đây nội đấu, nào hay quyền chính Đại Sở từ lâu đã rơi vào tay người ngoài!”</p>
+<p>Cái gì?</p>
+<p>Hoàng quyền rơi vào tay kẻ khác?</p>
+<p>Lời này là thế nào?</p>
+<p>Sao còn úp úp mở mở nữa, sắp khiến bọn họ sốt ruột chết rồi!</p>
+<p>Điệu đã kéo cao đến như vậy, khẩu vị lại bị treo lơ lửng giữa chừng.</p>
+<p>Bọn họ chẳng còn tâm tư uống trà, không ngừng suy đoán, ánh mắt đồng loạt nhìn về phía cửa.</p>
+<p>Giữa tiếng tuyên dương rầm rộ</p>
+<p>của Sở Dực, cuối cùng tiếng bước chân cũng vang lên…</p>
+<p>Tới rồi!</p>
+<p>Người này tới rồi!</p>
+<p>“Chư vị hãy nhìn.” Giọng Sở Dực đột nhiên cao vút: “Người này chính là kẻ đã tỉ mỉ ngụy trang hơn mười năm, che mắt tất cả mọi người, nữ cải nam trang, dã tâm lang sói, ve sầu thoát xác, chết đi sống lại…”</p>
+<p>Nhiếp… Nhiếp chính vương?!</p>
+<p>Một góc áo huyền mặc lướt vào, nam nhân chắp tay sau lưng,lười biếng bước tới:</p>
+<p>“Thật náo nhiệt.”</p>
+<p>Mọi người ngẩn ngơ: “?”</p>
+<p>Vòng vo một hồi lớn như vậy, Lục Hoàng tử muốn đối phó Nhiếp chính vương?</p>
+<p>Sở Đệ Trì chậm rãi bước tới: “Nhiều người như vậy, Tiểu Lục sao lại cố tình không gọi bản vương? Chắc sẽ không trách bản vương tự tiện đến chứ?”</p>
+<p>Ai dám đối đầu trực diện với Nhiếp chính vương?</p>
+<p>Nhị Hoàng tử cúi đầu, nhìn về phía Tam Hoàng tử.</p>
+<p>Tam Hoàng tử cũng không muốn làm kẻ chim đầu đàn, chỉ nhấp một ngụm trà, hạ thấp cảm giác tồn tại.</p>
+<p>Thất Hoàng tử im lặng không nói.</p>
+<p>“Sao tất cả đều không nói gì?”</p>
+<p>“Câm cả rồi à?”</p>
+<p>Sở Đệ Trì phất tay áo, đi đến bên cạnh chủ vị. Nhị</p>
+<p>Hoàng tử lập tức nhấc mông lên, nhường chỗ.</p>
+<p>Sở Dực: “Sao lại là ngươi?”</p>
+<p>“Hôm nay, người ngồi đây đều là hoàng tộc. Vì sao bản vương không thể tới? Hay là các ngươi gạt bản vương ra ngoài, chuẩn bị mưu đồ đối phó bản vương?”</p>
+<p>Thần sắc mọi người khẽ biến.</p>
+<p>Cho dù có thủ đoạn gì, cũng là âm thầm tiến hành. Ai dám trực tiếp đâm đầu vào Nhiếp chính vương?</p>
+<p>Không muốn sống nữa sao?</p>
+<p>Lục Hoàng tử gọi bọn họ tới, chẳng lẽ là muốn kéo bọn họ xuống nước!</p>
+<p>Sơ suất rồi!</p>
+<p>“Người này là ai?” Sở Đệ Trì vừa ngồi xuống đã nhìn thấy nam nhân mặc cẩm bào bị trói tay chân, đầu trùm túi đen, không ngừng giãy giụa kia.</p>
+<p>“Sao lại trói hắn?”</p>
+<p>Sở Dực chậm rãi cong môi: “Hoàng thúc cần gì phải biết rõ còn hỏi?”</p>
+<p>Nhiếp chính vương và Cửu Hoàng tử cấu kết với nhau, Nhàn vương xảy ra chuyện, Cửu Hoàng tử không tiện ra mặt, liền để Nhiếp chính vương tới cứu người.</p>
+<p>Một đường đi đơn giản như vậy, thật sự cho rằng</p>
+<p>hắn không hiểu sao?</p>
+<p>“Hoàng thúc, ngươi cho rằng ta không biết mục đích ngươi tới đây sao? Nhất cử nhất động của ngươi, từ lâu đã nằm trong tính toán của ta!”</p>
+<p>Thần sắc mấy người ngồi trong sảnh đều trở nên sâu kín khó đoán.</p>
+<p>Lục Hoàng tử điên rồi sao?</p>
+<p>Đến cả bọn họ cũng không dám tùy tiện đối đầu với Nhiếp chính vương, vậy mà hắn lại dám ngay trước mặt bao nhiêu người, trực tiếp công kích Nhiếp chính vương.</p>
+<p>Muốn chết thì đừng kéo bọn họ theo.</p>
+<p>Bây giờ rời đi… còn kịp không? Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_250.html" class="btn">‹ Trước</a>
             <a href="chuong_252.html" class="btn">Sau ›</a>
         </div>
@@ -215,15 +223,11 @@ Bây giờ rời đi… còn kịp không? Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -235,11 +239,11 @@ Bây giờ rời đi… còn kịp không? Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

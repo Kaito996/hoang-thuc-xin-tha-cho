@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 47</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,130 +62,139 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 47</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_46.html" class="btn">‹ Trước</a>
             <a href="chuong_48.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 47: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 47: Chỉ cần là đồ của hoàng đế, bổn vương đều thích
-“Thuộc hạ đã tìm khắp nơi, không có kết quả. Nàng không ở trong cung của Ôn phi, các cung khác cũng đã tra qua, đều không thấy người!”
-Lúc ấy, Sở Đệ Trì đang ngồi xếp bằng trước án, nhàn nhã uống trà. Áo bào tím thêu mãng xà rực quý khí buông xuống, ánh nến lay động khiến đôi mắt hắn càng thêm u ám khó lường.
-“Không vội.”
-Hắn uống xong chén trà, mới chậm rãi giơ tay.
-Giữa ngón tay thon dài kẹp một mảnh gỗ mỏng.
-Trọng Phong vừa nhìn liền nhận ra.
-Thiên lý hương!
-Trên người Cửu hoàng tử từ lâu đã bị hạ loại hương liệu đặc biệt có thể truy tung ngàn dặm.
-Đêm xuống.
-Ngoài hoàng thành, một con tuấn mã màu hồng sẫm xé gió lao đi, cuốn theo lá khô trên mặt đất.
-Trên lưng ngựa chính là Sở Ly.
-Nàng đã nghĩ kỹ rồi.
-Nhiếp chính vương và hoàng đế vốn bất hòa, nàng không muốn bị kẹt giữa hai người. Hơn nữa, sự tồn tại của nàng chỉ khiến mẫu phi và Ôn gia bị liên lụy.
-Nếu đã vậy, không bằng rời đi.
-Nàng vốn chỉ là một hoàng tử vô dụng, ăn không ngồi rồi, có biến mất vài năm cũng chẳng ai để ý.
-“Giá!”
-Nàng thúc ngựa, định rời kinh đi tìm sư môn.
-Nhưng phía sau… lại có tiếng vó ngựa thứ hai.
-Sở Ly sững lại, quay đầu.
-Một bóng người cưỡi ngựa đen đang đuổi tới.
-Dù cách xa, khí thế áp bức vẫn khiến nàng lạnh cả sống lưng.
-Sao có thể…
-Nàng đã đi đường nhỏ, còn không mang theo Cẩu Bát, hắn làm sao biết?
-Nàng lập tức quất roi bỏ chạy.
-Nhưng chiến mã của quân doanh sao có thể so với ngựa thường. Chỉ trong chớp mắt đã bị đuổi kịp.
-Giọng nam trầm lạnh như ma chú vang bên tai:
-“Không muốn đến Thủy tạ San Hô, hóa ra lại thích cưỡi ngựa.”
-“A!”
-Thân thể nàng bị kéo mạnh.
-“Buông ta ra!”
-Nàng hoảng loạn giãy giụa.
-Hắn siết chặt cánh tay, trói nàng vào lòng, lạnh giọng:
-“Cửu hoàng tử thích cưỡi ngựa, thật khéo, bổn vương cũng thích.”
-Bàn tay nóng rực siết eo nàng, trực tiếp kéo nàng ngồi lên đùi hắn.
-“Sở Đệ Trì, buông ta ra! Ngươi điên rồi sao!”
-Hắn cười lạnh:
-“Không thể làm? Nhưng ta đã làm rồi. Đã có lần đầu, còn sợ lần thứ hai sao?”
-Sở Ly vùng vẫy:
-“Cho dù ngã chết, ta cũng không chịu nhục!”
-“Vậy sao?”
-Hắn bóp lấy cổ nàng, ánh mắt lạnh lẽo:
-“Đồ vong ân phụ nghĩa. Lấy được chứng cứ của bổn vương rồi còn muốn chạy? Người thất tín phải bị trừng phạt.”
-“Rõ ràng là ngươi hãm hại Tần Mục Vũ!”
-“Thì sao?”
-Ánh mắt hắn càng lạnh:
-“Ngươi không phải vẫn phải cầu ta sao? Hắn còn chưa ra khỏi thiên lao, ngươi đã vội chạy. Ngươi tin chắc thứ ta đưa là thật?”
-“Ngươi… lừa ta?”
-“Ngươi chưa đưa thứ ta muốn, ta sao có thể làm việc lỗ vốn?”
-“Vì sao?”
-Sở Ly đỏ mắt:
-“Ngươi muốn gì cũng có, vì sao lại là ta? Ta rốt cuộc đã đắc tội ngươi chỗ nào?”
-Nàng chỉ muốn sống yên ổn đến mười tám tuổi, ra cung lập phủ, sống một đời nhàn tản.
-Nàng vốn không hại ai.
-Hắn khẽ cong môi, cắn nhẹ bên tai nàng:
-“Bởi vì ngươi là con của hoàng đế.”
-“Chỉ cần là đồ của hoàng đế, bổn vương đều thích.”
-Sở Ly đỏ mắt tức giận, vung tay đánh tới:
-“Sở Đệ Trì, ngươi sao không chết đi!”
-“Yên tâm, ta có chết… cũng sẽ không buông tha ngươi.”
-Hắn siết tay kéo nàng vào lòng, bàn tay trực tiếp chạm xuống vạt áo.
-“Đừng chạm vào ta!”
-Hắn ép chặt eo nàng:
-“Có nhược điểm trong tay ta, ngươi không có quyền từ chối.”
-“Không… đừng… a!” Ẩn bớt</p>
+            <p>Chương 47: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 47: Chỉ cần là đồ của hoàng đế, bổn vương đều thích</p>
+<p>“Thuộc hạ đã tìm khắp nơi, không có kết quả. Nàng không ở trong cung của Ôn phi, các cung khác cũng đã tra qua, đều không thấy người!”</p>
+<p>Lúc ấy, Sở Đệ Trì đang ngồi xếp bằng trước án, nhàn nhã uống trà. Áo bào tím thêu mãng xà rực quý khí buông xuống, ánh nến lay động khiến đôi mắt hắn càng thêm u ám khó lường.</p>
+<p>“Không vội.”</p>
+<p>Hắn uống xong chén trà, mới chậm rãi giơ tay.</p>
+<p>Giữa ngón tay thon dài kẹp một mảnh gỗ mỏng.</p>
+<p>Trọng Phong vừa nhìn liền nhận ra.</p>
+<p>Thiên lý hương!</p>
+<p>Trên người Cửu hoàng tử từ lâu đã bị hạ loại hương liệu đặc biệt có thể truy tung ngàn dặm.</p>
+<p>Đêm xuống.</p>
+<p>Ngoài hoàng thành, một con tuấn mã màu hồng sẫm xé gió lao đi, cuốn theo lá khô trên mặt đất.</p>
+<p>Trên lưng ngựa chính là Sở Ly.</p>
+<p>Nàng đã nghĩ kỹ rồi.</p>
+<p>Nhiếp chính vương và hoàng đế vốn bất hòa, nàng không muốn bị kẹt giữa hai người. Hơn nữa, sự tồn tại của nàng chỉ khiến mẫu phi và Ôn gia bị liên lụy.</p>
+<p>Nếu đã vậy, không bằng rời đi.</p>
+<p>Nàng vốn chỉ là một hoàng tử vô dụng, ăn không ngồi rồi, có biến mất vài năm cũng chẳng ai để ý.</p>
+<p>“Giá!”</p>
+<p>Nàng thúc ngựa, định rời kinh đi tìm sư môn.</p>
+<p>Nhưng phía sau… lại có tiếng vó ngựa thứ hai.</p>
+<p>Sở Ly sững lại, quay đầu.</p>
+<p>Một bóng người cưỡi ngựa đen đang đuổi tới.</p>
+<p>Dù cách xa, khí thế áp bức vẫn khiến nàng lạnh cả sống lưng.</p>
+<p>Sao có thể…</p>
+<p>Nàng đã đi đường nhỏ, còn không mang theo Cẩu Bát, hắn làm sao biết?</p>
+<p>Nàng lập tức quất roi bỏ chạy.</p>
+<p>Nhưng chiến mã của quân doanh sao có thể so với ngựa thường. Chỉ trong chớp mắt đã bị đuổi kịp.</p>
+<p>Giọng nam trầm lạnh như ma chú vang bên tai:</p>
+<p>“Không muốn đến Thủy tạ San Hô, hóa ra lại thích cưỡi ngựa.”</p>
+<p>“A!”</p>
+<p>Thân thể nàng bị kéo mạnh.</p>
+<p>“Buông ta ra!”</p>
+<p>Nàng hoảng loạn giãy giụa.</p>
+<p>Hắn siết chặt cánh tay, trói nàng vào lòng, lạnh giọng:</p>
+<p>“Cửu hoàng tử thích cưỡi ngựa, thật khéo, bổn vương cũng thích.”</p>
+<p>Bàn tay nóng rực siết eo nàng, trực tiếp kéo nàng ngồi lên đùi hắn.</p>
+<p>“Sở Đệ Trì, buông ta ra! Ngươi điên rồi sao!”</p>
+<p>Hắn cười lạnh:</p>
+<p>“Không thể làm? Nhưng ta đã làm rồi. Đã có lần đầu, còn sợ lần thứ hai sao?”</p>
+<p>Sở Ly vùng vẫy:</p>
+<p>“Cho dù ngã chết, ta cũng không chịu nhục!”</p>
+<p>“Vậy sao?”</p>
+<p>Hắn bóp lấy cổ nàng, ánh mắt lạnh lẽo:</p>
+<p>“Đồ vong ân phụ nghĩa. Lấy được chứng cứ của bổn vương rồi còn muốn chạy? Người thất tín phải bị trừng phạt.”</p>
+<p>“Rõ ràng là ngươi hãm hại Tần Mục Vũ!”</p>
+<p>“Thì sao?”</p>
+<p>Ánh mắt hắn càng lạnh:</p>
+<p>“Ngươi không phải vẫn phải cầu ta sao? Hắn còn chưa ra khỏi thiên lao, ngươi đã vội chạy. Ngươi tin chắc thứ ta đưa là thật?”</p>
+<p>“Ngươi… lừa ta?”</p>
+<p>“Ngươi chưa đưa thứ ta muốn, ta sao có thể làm việc lỗ vốn?”</p>
+<p>“Vì sao?”</p>
+<p>Sở Ly đỏ mắt:</p>
+<p>“Ngươi muốn gì cũng có, vì sao lại là ta? Ta rốt cuộc đã đắc tội ngươi chỗ nào?”</p>
+<p>Nàng chỉ muốn sống yên ổn đến mười tám tuổi, ra cung lập phủ, sống một đời nhàn tản.</p>
+<p>Nàng vốn không hại ai.</p>
+<p>Hắn khẽ cong môi, cắn nhẹ bên tai nàng:</p>
+<p>“Bởi vì ngươi là con của hoàng đế.”</p>
+<p>“Chỉ cần là đồ của hoàng đế, bổn vương đều thích.”</p>
+<p>Sở Ly đỏ mắt tức giận, vung tay đánh tới:</p>
+<p>“Sở Đệ Trì, ngươi sao không chết đi!”</p>
+<p>“Yên tâm, ta có chết… cũng sẽ không buông tha ngươi.”</p>
+<p>Hắn siết tay kéo nàng vào lòng, bàn tay trực tiếp chạm xuống vạt áo.</p>
+<p>“Đừng chạm vào ta!”</p>
+<p>Hắn ép chặt eo nàng:</p>
+<p>“Có nhược điểm trong tay ta, ngươi không có quyền từ chối.”</p>
+<p>“Không… đừng… a!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_46.html" class="btn">‹ Trước</a>
             <a href="chuong_48.html" class="btn">Sau ›</a>
         </div>
@@ -194,15 +202,11 @@ Hắn ép chặt eo nàng:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -214,11 +218,11 @@ Hắn ép chặt eo nàng:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

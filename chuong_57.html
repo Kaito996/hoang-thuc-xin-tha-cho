@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 57</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,217 +62,226 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 57</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_56.html" class="btn">‹ Trước</a>
             <a href="chuong_58.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 57: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 57: Hoàng thúc, người tha cho ta đi
-“Cái… cái gì…”
-Sở Ly trong nháy mắt căng cứng thân thể.
-Tần Mục Vũ ở bên ngoài?
-Trong lúc cứng đờ, nàng chỉ cảm nhận được bàn tay to lớn của nam nhân siết lấy vòng eo mình, tính xâm lược cực mạnh ấy khiến nàng khẩn trương:
-“Đừng chạm…”
-“Đừng lên tiếng.” Hắn ôm nàng, “Đừng ngã ra ngoài, cẩn thận bị hắn nhìn thấy.”
-Toàn thân Sở Ly run rẩy, bởi phẫn nộ, bởi nhục nhã, nàng cũng không phân biệt nổi. Chỉ biết mọi cảm quan trên thân thể đều bị khuếch đại vô hạn, nàng giống như bị đặt trên lửa mà nướng.
-Muốn đẩy hắn ra, lại không dám.
-Một bên là mất sạch thể diện, bị công khai trước bàn dân thiên hạ mà nhục nhã; một bên là bị ép thuận theo, cùng hắn tư thông cẩu thả, chịu đủ khuất nhục.
-Nàng không dám lên tiếng.
-Bờ môi dưới bị nàng cắn chặt đang run lên:
-“Sở Đệ Trì, ngươi sẽ gặp báo ứng! Ngươi quả thực đã phát điên rồi!”
-Thân thể nàng ngồi trên bệ cửa sổ, bệ cửa hẹp nhỏ, nhiều lần suýt nữa ngã xuống ngoài, lại không thể không dựa vào người hắn để chống đỡ.
-Nam nhân thần sắc cuồng ngạo:
-“Báo ứng thứ đó chỉ có thể cầu trời. Thay vì cầu trời, chẳng bằng cầu bản vương còn hữu dụng hơn.”
-“Ngươi!”
-Sở Ly phẫn nộ lắc đầu, muốn cọ rơi lớp vải bịt mắt.
-“Nếu mù thật thì đáng tiếc đôi mắt này. Chỉ không biết Tần Thiếu tướng quân có đủ kiên nhẫn chăm sóc ngươi cả đời hay không?”
-Sở Ly nghẹn cơn giận nơi cổ họng mà không thể phát tiết:
-“Đừng để ta có cơ hội.”
-“Nếu không, ta nhất định sẽ giết ngươi!”
-“Thật sao?”
-Hắn bóp lấy phần thịt mềm nơi eo nàng. Làn da trắng ngần mịn màng đến mức một tay là có thể nắm trọn, trơn nhẵn như muốn tuột khỏi tay.
-Lớp vải che kín hai mắt. Khuôn mặt nàng ngẩng lên đỏ bừng, cắn chặt răng môi, cố nhịn không dám phát ra tiếng động.
-Mái tóc tản loạn rủ bên người.
-Bộ dạng đáng thương hỗn loạn ấy khiến người ta chỉ muốn hung hăng chà đạp.
-Hắn cắn mạnh lên vai nàng.
-“Vậy thì xem là ngươi tàn nhẫn hơn, hay bản vương tàn nhẫn hơn.”
-Trong đầu Sở Ly trống rỗng.
-Nàng gần như sắp ngất đi.
-Thính giác, khứu giác, xúc giác, trong không gian thị giác hoàn toàn tối đen ấy, trở nên vô cùng nhạy bén.
-Bên ngoài dường như có tiếng bước chân đi ngang qua.
-Nàng ngậm chặt miệng, mồ hôi đầm đìa khắp người, không dám phát ra tiếng nào.
-Ban đầu còn cố nhịn mà thấp giọng mắng chửi:
-“Ta sẽ không tha cho ngươi!”
-“Sở Đệ Trì, đồ súc sinh!”
-“Ta vĩnh viễn sẽ không tha thứ cho ngươi!”
-Dần dần, chửi mắng cũng vô dụng.
-Biến thành những tiếng nức nở cầu xin:
-“Hoàng thúc… người tha cho ta đi… ta chưa từng đắc tội người, cũng không tham dự tranh đấu quyền mưu, càng sẽ không tạo thành bất cứ uy hiếp nào đối với người… cầu xin người tha cho ta…”
-“Sau này ta sẽ không mắng người nữa…”
-—
-Lên lên xuống xuống, bị ném lên tận mây xanh rồi lại rơi xuống vực sâu.
-Cuối cùng ngất đi.
-Sở Đệ Trì ôm nàng đặt vào ôn tuyền trì, cẩn thận tẩy rửa, sau đó bọc kín lại, lặng lẽ không tiếng động đưa về Ôn gia.
-Khi quay lại San Hô Thủy Tạ, Bạch Cẩm Y đã sốt ruột chờ từ lâu.
-“Sao lâu vậy?”
-Lão già này.
-Ba năm không khai trai, một lần khai trai liền ăn suốt ba năm.
-Không biết tiết chế.
-“Cánh tay ngươi không muốn nữa rồi sao?”
-Bạch Cẩm Y cầm sẵn thuốc và băng vải đã chuẩn bị từ trước, giúp hắn băng bó.
-Chỉ thấy toàn bộ cánh tay phải của Sở Đệ Trì đều bị thương.
-Da bị lửa thiêu nhăn nhúm, bỏng nổi từng bọng nước, lại vì vừa rồi vận động quá mức mà rỉ máu.
-Nhìn mà kinh tâm động phách.
-“Lửa lớn như vậy, cũng chỉ có ngươi dám xông vào.”
-“Hôm đó nhiều người như thế, ngươi công khai cứu nàng, chẳng phải là đang tuyên bố với mọi người rằng ngươi đối với Cửu hoàng tử không giống người khác sao?”
-“Ngươi làm vậy chỉ khiến nàng bị đẩy lên đầu sóng ngọn gió.”
-Những kẻ có tâm sẽ lợi dụng Cửu hoàng tử để đối phó hắn.
-Sở Đệ Trì ngồi đó với thần sắc lạnh nhạt, dường như hoàn toàn không cảm thấy đau. Đáy mắt âm u một mảnh:
-“Đồ vong ân phụ nghĩa.”
-Bạch Cẩm Y lại nói:
-“Bất quá, cho dù ngươi không cứu nàng, nàng cũng sớm đã bị đẩy lên đầu sóng ngọn gió rồi.”
-“Hoàng đế để nàng đến Quốc Công phủ, cũng đã biến nàng thành nơi trút giận của Quốc Công phủ.”
-“Xem ra cái gọi là sủng ái của hoàng đế đối với Cửu hoàng tử, cuối cùng cũng không thắng nổi giang sơn xã tắc.”
-Sở Đệ Trì rũ mắt lạnh lùng, không biết đang suy nghĩ điều gì.
-“Ăn cây táo rào cây sung.”
-“?”
-Hắn đang nói chuyện với hắn, hắn có nghe thấy không?
-Sao lại tự lẩm bẩm một mình rồi?
-Bạch Cẩm Y thật sự chịu thua.
-“Cửu hoàng tử lúc nhỏ từng ngã hỏng đầu, rất nhiều chuyện đều nhớ không rõ.”
-“Ngươi so đo với nàng, chẳng phải tự chuốc lấy nhàm chán sao?”
-“Ngươi đối tốt với nàng, sớm muộn gì cũng có ngày nàng hiểu được.”
-—
-Ôn gia.
-Khi nghe thấy tiếng mở cửa, Sở Ly đột nhiên bừng tỉnh, giống như chim sợ cành cong, ngã từ trên giường xuống.
-“Biểu huynh!”
-Thần sắc Ôn Chỉ Tịch căng thẳng, vội vàng chạy tới:
-“Mau, hai người các ngươi mau lại đây, cùng ta đỡ Cửu hoàng tử!”
-Trong đầu Sở Ly hỗn loạn một mảnh:
-“Chỉ Tịch?”
-Nàng đang ở đâu?
-“Biểu huynh, huynh vì cứu Tần Thiếu tướng quân mà bị thương mắt, nhất định phải dưỡng thương thật tốt.”
-“Tần Thiếu tướng quân, Tần tiểu thư và mọi người đều đang ở Ôn gia, huynh đừng lo lắng.”
-Ôn Chỉ Tịch vội vàng đỡ nàng lên giường.
-“Đây là Ôn gia?”
-“Đúng vậy.”
-“Tướng quân phủ bị thiêu hỏng rồi, Đại Lý Tự vẫn đang điều tra. Mẫu thân làm chủ, đón người Tần gia đến nhà chúng ta dưỡng thương.”
-“Đợi bọn họ dưỡng khỏi rồi rời đi cũng không muộn.”
-“Hơn nữa, Tướng quân phủ muốn tu sửa còn cần một khoảng thời gian nữa.”
-Sở Ly nắm lấy tay nàng:
-“Ta vẫn luôn ở Ôn gia sao?”
-“Đúng vậy.”
-Ôn Chỉ Tịch không hiểu vì sao biểu huynh lại hỏi như vậy.
-“Ta nghe tin Tướng quân phủ cháy lớn, liền lập tức dẫn người tới cứu các huynh.”
-Sở Ly hoảng hốt lắc đầu.
-Không.
-Không đúng.
-Trước đó, nàng chắc chắn không ở Ôn gia.
-Tên nam nhân kia đã ở đó!
-Phản ứng của thân thể sẽ không nói dối.
-Dù nàng mê man ngất đi, nhưng những khuất nhục phải chịu lại giống như dấu sắt nung đỏ, in sâu trên thân thể, vĩnh viễn không thể xóa bỏ.
-“Đôi mắt của ta bao lâu nữa mới nhìn thấy được?”
-“Biểu huynh đừng sốt ruột.”
-“Đại phu nói phải dưỡng cho tốt. Ba ngày sau mới có thể tháo băng bịt mắt.”
-“Nếu hồi phục tốt, không quá năm ngày là có thể nhìn thấy rồi.”
-Năm ngày!
-Còn phải năm ngày nữa!
-Sở Ly không có cảm giác an toàn, siết chặt tay Ôn Chỉ Tịch:
-“Chỉ Tịch, muội có thể ở bên ta không?”
-“Buổi tối… chúng ta ngủ cùng nhau.”
-Ôn Chỉ Tịch ngẩn người, hai má hơi đỏ:
-“Biểu huynh, chuyện này… e rằng không thích hợp lắm…”
-Nam nữ hữu biệt.
-Huống hồ nàng và biểu huynh đều không còn là trẻ con nữa, càng phải coi trọng nam nữ đại phòng.
-Sau này nàng còn phải xuất giá.
-Sở Ly vì quá sốt ruột mà quên mất hiện giờ mình vẫn là một “nam nhân”, nhất thời nóng lòng mới nói ra lời đường đột như vậy.
-“Xin lỗi, ta không có ý mạo phạm.”
-Ôn Chỉ Tịch nhẹ giọng an ủi nàng.
-Biểu huynh vừa thoát khỏi biển lửa, cửu tử nhất sinh.
-Hẳn là đã bị kinh hãi.
-“Biểu huynh yên tâm, ta sẽ chăm sóc huynh thật tốt.”
-“Buổi tối đợi huynh ngủ rồi, ta mới trở về phòng.”
-Ôn Chỉ Tịch nắm lấy hai tay nàng.
-“Vừa rồi mẫu thân có tới.”
-“Nhưng Tướng quân phủ còn rất nhiều việc cần xử lý hậu sự. Tần Thiếu tướng quân bọn họ lại đều bị thương.”
-“Mẫu thân chỉ có thể giúp đỡ thu xếp.”
-“Đợi muộn hơn một chút, người sẽ lại tới thăm huynh.”
-Có Ôn Chỉ Tịch ở bên cạnh, tâm tình Sở Ly mới hơi ổn định lại.
-Nhưng nàng vẫn nắm chặt tay nàng ấy, không dám buông ra.
-Đôi mắt đã không nhìn thấy nữa.
-Nếu trong tay không nắm lấy thứ gì đó, nàng sẽ giống như chiếc lá rụng phiêu linh giữa không trung, hoàn toàn không có cảm giác an toàn.
-Khoảng chừng hai khắc sau.
-Ôn Nhã bưng thuốc bước vào:
-“Đại tỷ, thuốc của biểu huynh đã sắc xong rồi, vừa mới để nguội, có thể uống được rồi.”
-“Đưa đây cho ta.”
-Ôn Chỉ Tịch ngồi thẳng người, tự mình chăm sóc.
-Ôn Nhã đứng một bên.
-Sở Ly hỏi tình hình ở Tướng quân phủ, lại hỏi thêm một số chuyện khác.
-Nói tới nói lui, Ôn Chỉ Tịch bỗng nhắc đến chuyện khác:
-“Biểu huynh, lần trước ta nhờ huynh đưa túi thơm cho Ngũ hoàng tử…”
-“Ngài ấy… có nhận không?”
-Ôn Nhã hơi kinh ngạc.
-Đại tỷ thích Ngũ hoàng tử?
-Nhưng Ngũ hoàng tử là một hoàng tử tàn tật mắc bệnh ở chân mà!
-Thế nhưng ngay sau đó, nỗi chua xót trong lòng nàng càng thêm mãnh liệt.
-Đại tỷ thân là đích nữ, lại thích một vị hoàng tử tàn phế.
-Vậy thì vì sao nàng không thể ở bên Thất hoàng tử?
-Hơn nữa, Thất hoàng tử cũng đã nói rồi.
-Ngài ấy thật lòng thích nàng. Ẩn bớt</p>
+            <p>Chương 57: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 57: Hoàng thúc, người tha cho ta đi</p>
+<p>“Cái… cái gì…”</p>
+<p>Sở Ly trong nháy mắt căng cứng thân thể.</p>
+<p>Tần Mục Vũ ở bên ngoài?</p>
+<p>Trong lúc cứng đờ, nàng chỉ cảm nhận được bàn tay to lớn của nam nhân siết lấy vòng eo mình, tính xâm lược cực mạnh ấy khiến nàng khẩn trương:</p>
+<p>“Đừng chạm…”</p>
+<p>“Đừng lên tiếng.” Hắn ôm nàng, “Đừng ngã ra ngoài, cẩn thận bị hắn nhìn thấy.”</p>
+<p>Toàn thân Sở Ly run rẩy, bởi phẫn nộ, bởi nhục nhã, nàng cũng không phân biệt nổi. Chỉ biết mọi cảm quan trên thân thể đều bị khuếch đại vô hạn, nàng giống như bị đặt trên lửa mà nướng.</p>
+<p>Muốn đẩy hắn ra, lại không dám.</p>
+<p>Một bên là mất sạch thể diện, bị công khai trước bàn dân thiên hạ mà nhục nhã; một bên là bị ép thuận theo, cùng hắn tư thông cẩu thả, chịu đủ khuất nhục.</p>
+<p>Nàng không dám lên tiếng.</p>
+<p>Bờ môi dưới bị nàng cắn chặt đang run lên:</p>
+<p>“Sở Đệ Trì, ngươi sẽ gặp báo ứng! Ngươi quả thực đã phát điên rồi!”</p>
+<p>Thân thể nàng ngồi trên bệ cửa sổ, bệ cửa hẹp nhỏ, nhiều lần suýt nữa ngã xuống ngoài, lại không thể không dựa vào người hắn để chống đỡ.</p>
+<p>Nam nhân thần sắc cuồng ngạo:</p>
+<p>“Báo ứng thứ đó chỉ có thể cầu trời. Thay vì cầu trời, chẳng bằng cầu bản vương còn hữu dụng hơn.”</p>
+<p>“Ngươi!”</p>
+<p>Sở Ly phẫn nộ lắc đầu, muốn cọ rơi lớp vải bịt mắt.</p>
+<p>“Nếu mù thật thì đáng tiếc đôi mắt này. Chỉ không biết Tần Thiếu tướng quân có đủ kiên nhẫn chăm sóc ngươi cả đời hay không?”</p>
+<p>Sở Ly nghẹn cơn giận nơi cổ họng mà không thể phát tiết:</p>
+<p>“Đừng để ta có cơ hội.”</p>
+<p>“Nếu không, ta nhất định sẽ giết ngươi!”</p>
+<p>“Thật sao?”</p>
+<p>Hắn bóp lấy phần thịt mềm nơi eo nàng. Làn da trắng ngần mịn màng đến mức một tay là có thể nắm trọn, trơn nhẵn như muốn tuột khỏi tay.</p>
+<p>Lớp vải che kín hai mắt. Khuôn mặt nàng ngẩng lên đỏ bừng, cắn chặt răng môi, cố nhịn không dám phát ra tiếng động.</p>
+<p>Mái tóc tản loạn rủ bên người.</p>
+<p>Bộ dạng đáng thương hỗn loạn ấy khiến người ta chỉ muốn hung hăng chà đạp.</p>
+<p>Hắn cắn mạnh lên vai nàng.</p>
+<p>“Vậy thì xem là ngươi tàn nhẫn hơn, hay bản vương tàn nhẫn hơn.”</p>
+<p>Trong đầu Sở Ly trống rỗng.</p>
+<p>Nàng gần như sắp ngất đi.</p>
+<p>Thính giác, khứu giác, xúc giác, trong không gian thị giác hoàn toàn tối đen ấy, trở nên vô cùng nhạy bén.</p>
+<p>Bên ngoài dường như có tiếng bước chân đi ngang qua.</p>
+<p>Nàng ngậm chặt miệng, mồ hôi đầm đìa khắp người, không dám phát ra tiếng nào.</p>
+<p>Ban đầu còn cố nhịn mà thấp giọng mắng chửi:</p>
+<p>“Ta sẽ không tha cho ngươi!”</p>
+<p>“Sở Đệ Trì, đồ súc sinh!”</p>
+<p>“Ta vĩnh viễn sẽ không tha thứ cho ngươi!”</p>
+<p>Dần dần, chửi mắng cũng vô dụng.</p>
+<p>Biến thành những tiếng nức nở cầu xin:</p>
+<p>“Hoàng thúc… người tha cho ta đi… ta chưa từng đắc tội người, cũng không tham dự tranh đấu quyền mưu, càng sẽ không tạo thành bất cứ uy hiếp nào đối với người… cầu xin người tha cho ta…”</p>
+<p>“Sau này ta sẽ không mắng người nữa…”</p>
+<p>—</p>
+<p>Lên lên xuống xuống, bị ném lên tận mây xanh rồi lại rơi xuống vực sâu.</p>
+<p>Cuối cùng ngất đi.</p>
+<p>Sở Đệ Trì ôm nàng đặt vào ôn tuyền trì, cẩn thận tẩy rửa, sau đó bọc kín lại, lặng lẽ không tiếng động đưa về Ôn gia.</p>
+<p>Khi quay lại San Hô Thủy Tạ, Bạch Cẩm Y đã sốt ruột chờ từ lâu.</p>
+<p>“Sao lâu vậy?”</p>
+<p>Lão già này.</p>
+<p>Ba năm không khai trai, một lần khai trai liền ăn suốt ba năm.</p>
+<p>Không biết tiết chế.</p>
+<p>“Cánh tay ngươi không muốn nữa rồi sao?”</p>
+<p>Bạch Cẩm Y cầm sẵn thuốc và băng vải đã chuẩn bị từ trước, giúp hắn băng bó.</p>
+<p>Chỉ thấy toàn bộ cánh tay phải của Sở Đệ Trì đều bị thương.</p>
+<p>Da bị lửa thiêu nhăn nhúm, bỏng nổi từng bọng nước, lại vì vừa rồi vận động quá mức mà rỉ máu.</p>
+<p>Nhìn mà kinh tâm động phách.</p>
+<p>“Lửa lớn như vậy, cũng chỉ có ngươi dám xông vào.”</p>
+<p>“Hôm đó nhiều người như thế, ngươi công khai cứu nàng, chẳng phải là đang tuyên bố với mọi người rằng ngươi đối với Cửu hoàng tử không giống người khác sao?”</p>
+<p>“Ngươi làm vậy chỉ khiến nàng bị đẩy lên đầu sóng ngọn gió.”</p>
+<p>Những kẻ có tâm sẽ lợi dụng Cửu hoàng tử để đối phó hắn.</p>
+<p>Sở Đệ Trì ngồi đó với thần sắc lạnh nhạt, dường như hoàn toàn không cảm thấy đau. Đáy mắt âm u một mảnh:</p>
+<p>“Đồ vong ân phụ nghĩa.”</p>
+<p>Bạch Cẩm Y lại nói:</p>
+<p>“Bất quá, cho dù ngươi không cứu nàng, nàng cũng sớm đã bị đẩy lên đầu sóng ngọn gió rồi.”</p>
+<p>“Hoàng đế để nàng đến Quốc Công phủ, cũng đã biến nàng thành nơi trút giận của Quốc Công phủ.”</p>
+<p>“Xem ra cái gọi là sủng ái của hoàng đế đối với Cửu hoàng tử, cuối cùng cũng không thắng nổi giang sơn xã tắc.”</p>
+<p>Sở Đệ Trì rũ mắt lạnh lùng, không biết đang suy nghĩ điều gì.</p>
+<p>“Ăn cây táo rào cây sung.”</p>
+<p>“?”</p>
+<p>Hắn đang nói chuyện với hắn, hắn có nghe thấy không?</p>
+<p>Sao lại tự lẩm bẩm một mình rồi?</p>
+<p>Bạch Cẩm Y thật sự chịu thua.</p>
+<p>“Cửu hoàng tử lúc nhỏ từng ngã hỏng đầu, rất nhiều chuyện đều nhớ không rõ.”</p>
+<p>“Ngươi so đo với nàng, chẳng phải tự chuốc lấy nhàm chán sao?”</p>
+<p>“Ngươi đối tốt với nàng, sớm muộn gì cũng có ngày nàng hiểu được.”</p>
+<p>—</p>
+<p>Ôn gia.</p>
+<p>Khi nghe thấy tiếng mở cửa, Sở Ly đột nhiên bừng tỉnh, giống như chim sợ cành cong, ngã từ trên giường xuống.</p>
+<p>“Biểu huynh!”</p>
+<p>Thần sắc Ôn Chỉ Tịch căng thẳng, vội vàng chạy tới:</p>
+<p>“Mau, hai người các ngươi mau lại đây, cùng ta đỡ Cửu hoàng tử!”</p>
+<p>Trong đầu Sở Ly hỗn loạn một mảnh:</p>
+<p>“Chỉ Tịch?”</p>
+<p>Nàng đang ở đâu?</p>
+<p>“Biểu huynh, huynh vì cứu Tần Thiếu tướng quân mà bị thương mắt, nhất định phải dưỡng thương thật tốt.”</p>
+<p>“Tần Thiếu tướng quân, Tần tiểu thư và mọi người đều đang ở Ôn gia, huynh đừng lo lắng.”</p>
+<p>Ôn Chỉ Tịch vội vàng đỡ nàng lên giường.</p>
+<p>“Đây là Ôn gia?”</p>
+<p>“Đúng vậy.”</p>
+<p>“Tướng quân phủ bị thiêu hỏng rồi, Đại Lý Tự vẫn đang điều tra. Mẫu thân làm chủ, đón người Tần gia đến nhà chúng ta dưỡng thương.”</p>
+<p>“Đợi bọn họ dưỡng khỏi rồi rời đi cũng không muộn.”</p>
+<p>“Hơn nữa, Tướng quân phủ muốn tu sửa còn cần một khoảng thời gian nữa.”</p>
+<p>Sở Ly nắm lấy tay nàng:</p>
+<p>“Ta vẫn luôn ở Ôn gia sao?”</p>
+<p>“Đúng vậy.”</p>
+<p>Ôn Chỉ Tịch không hiểu vì sao biểu huynh lại hỏi như vậy.</p>
+<p>“Ta nghe tin Tướng quân phủ cháy lớn, liền lập tức dẫn người tới cứu các huynh.”</p>
+<p>Sở Ly hoảng hốt lắc đầu.</p>
+<p>Không.</p>
+<p>Không đúng.</p>
+<p>Trước đó, nàng chắc chắn không ở Ôn gia.</p>
+<p>Tên nam nhân kia đã ở đó!</p>
+<p>Phản ứng của thân thể sẽ không nói dối.</p>
+<p>Dù nàng mê man ngất đi, nhưng những khuất nhục phải chịu lại giống như dấu sắt nung đỏ, in sâu trên thân thể, vĩnh viễn không thể xóa bỏ.</p>
+<p>“Đôi mắt của ta bao lâu nữa mới nhìn thấy được?”</p>
+<p>“Biểu huynh đừng sốt ruột.”</p>
+<p>“Đại phu nói phải dưỡng cho tốt. Ba ngày sau mới có thể tháo băng bịt mắt.”</p>
+<p>“Nếu hồi phục tốt, không quá năm ngày là có thể nhìn thấy rồi.”</p>
+<p>Năm ngày!</p>
+<p>Còn phải năm ngày nữa!</p>
+<p>Sở Ly không có cảm giác an toàn, siết chặt tay Ôn Chỉ Tịch:</p>
+<p>“Chỉ Tịch, muội có thể ở bên ta không?”</p>
+<p>“Buổi tối… chúng ta ngủ cùng nhau.”</p>
+<p>Ôn Chỉ Tịch ngẩn người, hai má hơi đỏ:</p>
+<p>“Biểu huynh, chuyện này… e rằng không thích hợp lắm…”</p>
+<p>Nam nữ hữu biệt.</p>
+<p>Huống hồ nàng và biểu huynh đều không còn là trẻ con nữa, càng phải coi trọng nam nữ đại phòng.</p>
+<p>Sau này nàng còn phải xuất giá.</p>
+<p>Sở Ly vì quá sốt ruột mà quên mất hiện giờ mình vẫn là một “nam nhân”, nhất thời nóng lòng mới nói ra lời đường đột như vậy.</p>
+<p>“Xin lỗi, ta không có ý mạo phạm.”</p>
+<p>Ôn Chỉ Tịch nhẹ giọng an ủi nàng.</p>
+<p>Biểu huynh vừa thoát khỏi biển lửa, cửu tử nhất sinh.</p>
+<p>Hẳn là đã bị kinh hãi.</p>
+<p>“Biểu huynh yên tâm, ta sẽ chăm sóc huynh thật tốt.”</p>
+<p>“Buổi tối đợi huynh ngủ rồi, ta mới trở về phòng.”</p>
+<p>Ôn Chỉ Tịch nắm lấy hai tay nàng.</p>
+<p>“Vừa rồi mẫu thân có tới.”</p>
+<p>“Nhưng Tướng quân phủ còn rất nhiều việc cần xử lý hậu sự. Tần Thiếu tướng quân bọn họ lại đều bị thương.”</p>
+<p>“Mẫu thân chỉ có thể giúp đỡ thu xếp.”</p>
+<p>“Đợi muộn hơn một chút, người sẽ lại tới thăm huynh.”</p>
+<p>Có Ôn Chỉ Tịch ở bên cạnh, tâm tình Sở Ly mới hơi ổn định lại.</p>
+<p>Nhưng nàng vẫn nắm chặt tay nàng ấy, không dám buông ra.</p>
+<p>Đôi mắt đã không nhìn thấy nữa.</p>
+<p>Nếu trong tay không nắm lấy thứ gì đó, nàng sẽ giống như chiếc lá rụng phiêu linh giữa không trung, hoàn toàn không có cảm giác an toàn.</p>
+<p>Khoảng chừng hai khắc sau.</p>
+<p>Ôn Nhã bưng thuốc bước vào:</p>
+<p>“Đại tỷ, thuốc của biểu huynh đã sắc xong rồi, vừa mới để nguội, có thể uống được rồi.”</p>
+<p>“Đưa đây cho ta.”</p>
+<p>Ôn Chỉ Tịch ngồi thẳng người, tự mình chăm sóc.</p>
+<p>Ôn Nhã đứng một bên.</p>
+<p>Sở Ly hỏi tình hình ở Tướng quân phủ, lại hỏi thêm một số chuyện khác.</p>
+<p>Nói tới nói lui, Ôn Chỉ Tịch bỗng nhắc đến chuyện khác:</p>
+<p>“Biểu huynh, lần trước ta nhờ huynh đưa túi thơm cho Ngũ hoàng tử…”</p>
+<p>“Ngài ấy… có nhận không?”</p>
+<p>Ôn Nhã hơi kinh ngạc.</p>
+<p>Đại tỷ thích Ngũ hoàng tử?</p>
+<p>Nhưng Ngũ hoàng tử là một hoàng tử tàn tật mắc bệnh ở chân mà!</p>
+<p>Thế nhưng ngay sau đó, nỗi chua xót trong lòng nàng càng thêm mãnh liệt.</p>
+<p>Đại tỷ thân là đích nữ, lại thích một vị hoàng tử tàn phế.</p>
+<p>Vậy thì vì sao nàng không thể ở bên Thất hoàng tử?</p>
+<p>Hơn nữa, Thất hoàng tử cũng đã nói rồi.</p>
+<p>Ngài ấy thật lòng thích nàng. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_56.html" class="btn">‹ Trước</a>
             <a href="chuong_58.html" class="btn">Sau ›</a>
         </div>
@@ -281,15 +289,11 @@ Ngài ấy thật lòng thích nàng. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -301,11 +305,11 @@ Ngài ấy thật lòng thích nàng. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

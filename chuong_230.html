@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 230</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,148 +62,157 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 230</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_229.html" class="btn">‹ Trước</a>
             <a href="chuong_231.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 230: Dỗ dành
-“Nhất định là do nàng quá có bản lĩnh, thủ đoạn lại cao siêu, nên mới có thể huấn luyện ta trở nên chuyên nhất như vậy.”
-Miệng Sở Ly há to.
-Hả?
-Còn có thể nói như vậy sao?
-Sở Đệ Trì trầm giọng, lời lẽ nghiêm túc: “Đến lúc đó, không biết sẽ có bao nhiêu nữ tử hâm mộ nàng. Nàng vừa có tiền, vừa có quyền, vừa có thế, điểm nào chẳng tốt hơn việc hiện giờ nàng trốn ở Giang Nam, lén lén lút lút?”
-“Quan trọng hơn là nàng còn không cần sinh con.”
-Thế đạo hiện nay vô cùng hà khắc với nữ tử.
-Nữ nhân gánh trên vai trọng trách truyền thừa, nhưng lại có địa vị cực kỳ bất công.
-Nữ nhân phải phu xướng phụ tùy, tương phu giáo tử, khai chi tán diệp, truyền tông tiếp đại. Thế nhưng thế đạo này lại hạn chế nữ nhân, không cho các nàng xuất đầu lộ diện. Thậm chí chỉ nói với nam nhân xa lạ một câu cũng có khả năng truyền ra lời đồn đại.
-Nam nhân tam thê tứ thiếp là chuyện thường tình.
-Nữ nhân một khi bị nghi ngờ trinh tiết, liền sẽ trở thành đối tượng bị ngàn người chỉ trích.
-“Ta nghe nói dân gian cưới gả, nữ nhân nhất định phải sinh được nhi tử mới có thể nối dõi tông đường. Nếu liên tiếp sinh con gái, còn sẽ bị công bà, phu quân mắng chửi, đuổi ra khỏi nhà.”
-“Ta trên không cha mẹ, dưới không phiền não vì công bà.”
-“Hơn nữa, sinh con vô cùng đau đớn, chẳng khác nào một chân bước vào Quỷ Môn Quan. Một khi sơ sẩy còn có thể mất mạng. Ta sẽ không để nàng mạo hiểm như vậy.”
-Sở Đệ Trì nắm lấy bàn tay nhỏ của nàng, dùng lời lẽ gia thường nhất, trao cho nàng lời hứa mà người đời không ai có thể làm được.
-Đầu óc Sở Ly tỉnh táo vô cùng:
-“Không sinh con, chẳng lẽ không phải vì người không sinh được sao?”
-Nam nhân mặt không đổi sắc: “Ta có thể sinh. Bạch Cẩm Y đã nghiên cứu ra giải dược rồi, ta uống giải dược là có thể sinh. Nhưng Tiểu Cửu của ta vẫn còn là một đứa trẻ, ta không nỡ để nàng chịu khổ như vậy.”
-Sở Ly khẽ cắn môi dưới, nửa tin nửa ngờ nhìn hắn.
-Thật sao?
-Nghe hắn nói như vậy, hình như cũng không tệ?
-“Người không thể cả đời không sinh con chứ? Cơ nghiệp to lớn của Nhiếp Chính Vương phủ, ai sẽ kế thừa?”
-“Con cái không phải chuyện khó. Nếu nàng thích trẻ con, chúng ta nhận nuôi một đứa.” Hắn suy nghĩ nửa giây, “Nhận nhi tử của Nhàn Vương, thế nào?”
-“Hả?”
-Nhận nhi tử của Bát hoàng huynh?
-“Huynh ấy có đồng ý không?”
-Huống hồ Bát hoàng huynh đến nay vẫn chưa cưới thê thiếp, bên cạnh cũng không có thông phòng cung nữ. Dựa vào tính tình ham chơi của huynh ấy, còn không biết phải mất bao nhiêu năm mới khai khiếu.
-Đợi huynh ấy thành thân sinh con, chẳng biết phải chờ đến năm nào tháng nào?
-“Sao lại không đồng ý?” Sở Đệ Trì nói, “Từ nhỏ đến lớn, nàng đối xử với hắn tốt như vậy, bồi hắn chơi, giúp hắn thu dọn hậu quả, phong vương và ban đất phong cho hắn, cho hắn thân phận cùng tôn vinh chí cao vô thượng.”
-“Tục ngữ có câu, nuôi quân ngàn ngày, dùng quân một giờ. Đã đến lúc hắn báo đáp chúng ta rồi.”
-Sở Ly nghĩ như vậy, không nhịn được bật cười.
-Nhi tử của Bát hoàng huynh nhất định sẽ giống huynh ấy, là một tiểu khóc nhè tròn tròn mập mập lại còn sợ ma!
-Hơn nữa, nàng thích trẻ con.
-Đôi mắt thâm thúy của Sở Đệ Trì quan sát vẻ dao động trên gương mặt nàng, môi mỏng khẽ cong lên. Bàn tay lớn vỗ vỗ eo nhỏ của nàng: “Nhặt cần trúc về đây, ta câu cá cho nàng ăn.”
-“Ồ!”
-“Hắt xì!”
-Ở nơi xa xôi Đế đô, Sở Ngạo Thiên đang xem tấu chương trong chính điện thì đột nhiên hắt xì một cái. Toàn thân hắn giật nảy, run lên một trận.
-Chuyện gì vậy?
-Tháng sáu nóng như thế này, sao hắn còn thấy rét run?
-Chẳng lẽ…
-Canh đại bổ ô kê kỷ tử mà mẫu phi hầm sáng nay vẫn chưa chín?
-Sở Ngạo Thiên xoa xoa mũi. Hắn vừa cầm quyển tấu chương tiếp theo lên, bên ngoài điện đã có một binh sĩ chạy trăm dặm cấp tốc, phong trần mệt mỏi tới báo:
-“Cấp báo!”
-“Cấp báo!”
-Sở Ngạo Thiên ngẩng đầu nhìn: “Vì sao lại hoảng hốt như vậy?”
-“Nhàn Vương điện hạ, Mạc Hoài châu có cấp báo!”
-“Đưa đây.”
-Sở Ngạo Thiên xé mật thư. Khi nhìn thấy nội dung bên trong, thần sắc đột nhiên biến đổi.
-Ba châu hai mươi tám thành Mạc Hoài vốn do Nhiếp Chính Vương làm chủ, phân chia làm lãnh địa của Nam Man. Thế nhưng nay lại xuất hiện một Thái tử tiền triều, tự lập làm vương tại Mạc Hoài châu.
-Quan trọng hơn, vị Thái tử tiền triều này chính là Sở Dạ Ly!
-“Ngũ hoàng huynh? Huynh ấy chiếm ba châu Mạc Hoài, tự lập làm vương?”
-Đây chẳng phải muốn phân liệt Đại Sở sao?
-Ngũ hoàng huynh sao lại là Thái tử tiền triều?
-Ông trời ơi!
-Hiện giờ chính quyền Đại Sở nội loạn còn chưa bình ổn, Mạc Hoài lại xảy ra biến cố lớn, xuất hiện một Thái tử tiền triều muốn phân liệt chính quyền Đại Sở. Một chuyện lớn như vậy, hắn làm sao ứng phó nổi?
-Chỉ e là sắp đánh trận rồi!
-“Người đâu! Mau đi mời Hoàng thúc trở về! Mau mau đi mời Hoàng thúc!”
-Mạc Hoài.
-Từ sau khi quân đội Nam Man đóng quân, bách tính ba châu hai mươi tám thành Mạc Hoài đều thấp thỏm bất an, một lòng hướng về Sở quốc. 
-Thế nhưng hai ngày trước, một nam nhân tự xưng là Thái tử tiền triều đã đứng ra.
-Tất cả bách tính lớn tuổi đều biết, hơn hai mươi năm trước, Sở quốc diệt Đông Lăng, từ đó mới mở mang thành cương vực Sở quốc ngày nay.
-Nếu nói vẫn còn di cô tiền triều, vậy cũng là chuyện hợp lý.
-Sự xuất hiện của Thái tử tiền triều đã khiến lòng dân an định:
-Hắn tới để phục quốc, không phải tới tàn sát bách tính.
-Sở quốc diệt Đông Lăng, giết sạch huyết mạch hoàng thất tiền triều. Hành động báo thù của hắn hoàn toàn hợp lý, thậm chí chính nghĩa.
-Tin tức vừa truyền ra, bách tính lập tức chia thành hai phe.
-Một phe cho rằng bọn họ là con dân Sở quốc.
-Phe còn lại lại cho rằng Sở quốc diệt Đông Lăng, thủ đoạn tàn nhẫn, giết sạch hoàng thất. Thái tử Đông Lăng sao có thể không hận? Báo thù hoàn toàn là hành động có thể lý giải.
-Vậy hãy xem cuộc tranh đấu giữa Đại Sở và tiền triều Đông Lăng, rốt cuộc bên nào thắng, bên nào bại.
-“Công chúa, mấy ngày nay, bách tính Đại Sở đã thân thiện với chúng ta hơn nhiều rồi.” Trương Bá Thiên tướng quân vui mừng nhìn thành quả mấy ngày qua.
-Thác Bạt Minh Nguyệt cong môi:
-“Tiếp tục lấy danh nghĩa Thái tử Đông Lăng rộng rãi ban ân, trợ giúp bách tính Đại Sở, thu mua lòng người.”
-“Vâng!”
-Nàng hạ thành lâu, trở về châu phủ. Vừa bước vào sân viện, nàng đã nhìn thấy nam nhân đang ngồi dưới giàn nho, lười biếng mà thỏa mãn nhìn nữ tử trước mặt.
-Hắn chống cằm, nghiêng người, si ngốc ngắm nhìn nàng từ mọi góc độ, mọi phương diện.
-Nữ tử mặc nam trang, tóc được buộc gọn. Gương mặt kia có tám phần tương tự Sở Ly.
-Nàng ngồi ở đó, bất động như một bức họa.
-Nhìn thấy Thác Bạt Minh Nguyệt tới, nữ tử lập tức đứng dậy: “Nô tỳ thỉnh an Công chúa.”
-Thần sắc Sở Dạ Ly lại đột nhiên âm trầm, hoàn toàn khác với vẻ ôn nhuận ban nãy. 
-Trong nháy mắt, hắn tựa như rơi xuống vực sâu, âm lệ đến mức có thể ăn thịt người:
-“Câm miệng!”
-Vừa mở miệng, liền không giống nàng nữa.
-“Còn dám mở miệng, ta sẽ cắt lưỡi ngươi!” Ẩn bớt</p>
+            <p>Chương 230: Dỗ dành</p>
+<p>“Nhất định là do nàng quá có bản lĩnh, thủ đoạn lại cao siêu, nên mới có thể huấn luyện ta trở nên chuyên nhất như vậy.”</p>
+<p>Miệng Sở Ly há to.</p>
+<p>Hả?</p>
+<p>Còn có thể nói như vậy sao?</p>
+<p>Sở Đệ Trì trầm giọng, lời lẽ nghiêm túc: “Đến lúc đó, không biết sẽ có bao nhiêu nữ tử hâm mộ nàng. Nàng vừa có tiền, vừa có quyền, vừa có thế, điểm nào chẳng tốt hơn việc hiện giờ nàng trốn ở Giang Nam, lén lén lút lút?”</p>
+<p>“Quan trọng hơn là nàng còn không cần sinh con.”</p>
+<p>Thế đạo hiện nay vô cùng hà khắc với nữ tử.</p>
+<p>Nữ nhân gánh trên vai trọng trách truyền thừa, nhưng lại có địa vị cực kỳ bất công.</p>
+<p>Nữ nhân phải phu xướng phụ tùy, tương phu giáo tử, khai chi tán diệp, truyền tông tiếp đại. Thế nhưng thế đạo này lại hạn chế nữ nhân, không cho các nàng xuất đầu lộ diện. Thậm chí chỉ nói với nam nhân xa lạ một câu cũng có khả năng truyền ra lời đồn đại.</p>
+<p>Nam nhân tam thê tứ thiếp là chuyện thường tình.</p>
+<p>Nữ nhân một khi bị nghi ngờ trinh tiết, liền sẽ trở thành đối tượng bị ngàn người chỉ trích.</p>
+<p>“Ta nghe nói dân gian cưới gả, nữ nhân nhất định phải sinh được nhi tử mới có thể nối dõi tông đường. Nếu liên tiếp sinh con gái, còn sẽ bị công bà, phu quân mắng chửi, đuổi ra khỏi nhà.”</p>
+<p>“Ta trên không cha mẹ, dưới không phiền não vì công bà.”</p>
+<p>“Hơn nữa, sinh con vô cùng đau đớn, chẳng khác nào một chân bước vào Quỷ Môn Quan. Một khi sơ sẩy còn có thể mất mạng. Ta sẽ không để nàng mạo hiểm như vậy.”</p>
+<p>Sở Đệ Trì nắm lấy bàn tay nhỏ của nàng, dùng lời lẽ gia thường nhất, trao cho nàng lời hứa mà người đời không ai có thể làm được.</p>
+<p>Đầu óc Sở Ly tỉnh táo vô cùng:</p>
+<p>“Không sinh con, chẳng lẽ không phải vì người không sinh được sao?”</p>
+<p>Nam nhân mặt không đổi sắc: “Ta có thể sinh. Bạch Cẩm Y đã nghiên cứu ra giải dược rồi, ta uống giải dược là có thể sinh. Nhưng Tiểu Cửu của ta vẫn còn là một đứa trẻ, ta không nỡ để nàng chịu khổ như vậy.”</p>
+<p>Sở Ly khẽ cắn môi dưới, nửa tin nửa ngờ nhìn hắn.</p>
+<p>Thật sao?</p>
+<p>Nghe hắn nói như vậy, hình như cũng không tệ?</p>
+<p>“Người không thể cả đời không sinh con chứ? Cơ nghiệp to lớn của Nhiếp Chính Vương phủ, ai sẽ kế thừa?”</p>
+<p>“Con cái không phải chuyện khó. Nếu nàng thích trẻ con, chúng ta nhận nuôi một đứa.” Hắn suy nghĩ nửa giây, “Nhận nhi tử của Nhàn Vương, thế nào?”</p>
+<p>“Hả?”</p>
+<p>Nhận nhi tử của Bát hoàng huynh?</p>
+<p>“Huynh ấy có đồng ý không?”</p>
+<p>Huống hồ Bát hoàng huynh đến nay vẫn chưa cưới thê thiếp, bên cạnh cũng không có thông phòng cung nữ. Dựa vào tính tình ham chơi của huynh ấy, còn không biết phải mất bao nhiêu năm mới khai khiếu.</p>
+<p>Đợi huynh ấy thành thân sinh con, chẳng biết phải chờ đến năm nào tháng nào?</p>
+<p>“Sao lại không đồng ý?” Sở Đệ Trì nói, “Từ nhỏ đến lớn, nàng đối xử với hắn tốt như vậy, bồi hắn chơi, giúp hắn thu dọn hậu quả, phong vương và ban đất phong cho hắn, cho hắn thân phận cùng tôn vinh chí cao vô thượng.”</p>
+<p>“Tục ngữ có câu, nuôi quân ngàn ngày, dùng quân một giờ. Đã đến lúc hắn báo đáp chúng ta rồi.”</p>
+<p>Sở Ly nghĩ như vậy, không nhịn được bật cười.</p>
+<p>Nhi tử của Bát hoàng huynh nhất định sẽ giống huynh ấy, là một tiểu khóc nhè tròn tròn mập mập lại còn sợ ma!</p>
+<p>Hơn nữa, nàng thích trẻ con.</p>
+<p>Đôi mắt thâm thúy của Sở Đệ Trì quan sát vẻ dao động trên gương mặt nàng, môi mỏng khẽ cong lên. Bàn tay lớn vỗ vỗ eo nhỏ của nàng: “Nhặt cần trúc về đây, ta câu cá cho nàng ăn.”</p>
+<p>“Ồ!”</p>
+<p>“Hắt xì!”</p>
+<p>Ở nơi xa xôi Đế đô, Sở Ngạo Thiên đang xem tấu chương trong chính điện thì đột nhiên hắt xì một cái. Toàn thân hắn giật nảy, run lên một trận.</p>
+<p>Chuyện gì vậy?</p>
+<p>Tháng sáu nóng như thế này, sao hắn còn thấy rét run?</p>
+<p>Chẳng lẽ…</p>
+<p>Canh đại bổ ô kê kỷ tử mà mẫu phi hầm sáng nay vẫn chưa chín?</p>
+<p>Sở Ngạo Thiên xoa xoa mũi. Hắn vừa cầm quyển tấu chương tiếp theo lên, bên ngoài điện đã có một binh sĩ chạy trăm dặm cấp tốc, phong trần mệt mỏi tới báo:</p>
+<p>“Cấp báo!”</p>
+<p>“Cấp báo!”</p>
+<p>Sở Ngạo Thiên ngẩng đầu nhìn: “Vì sao lại hoảng hốt như vậy?”</p>
+<p>“Nhàn Vương điện hạ, Mạc Hoài châu có cấp báo!”</p>
+<p>“Đưa đây.”</p>
+<p>Sở Ngạo Thiên xé mật thư. Khi nhìn thấy nội dung bên trong, thần sắc đột nhiên biến đổi.</p>
+<p>Ba châu hai mươi tám thành Mạc Hoài vốn do Nhiếp Chính Vương làm chủ, phân chia làm lãnh địa của Nam Man. Thế nhưng nay lại xuất hiện một Thái tử tiền triều, tự lập làm vương tại Mạc Hoài châu.</p>
+<p>Quan trọng hơn, vị Thái tử tiền triều này chính là Sở Dạ Ly!</p>
+<p>“Ngũ hoàng huynh? Huynh ấy chiếm ba châu Mạc Hoài, tự lập làm vương?”</p>
+<p>Đây chẳng phải muốn phân liệt Đại Sở sao?</p>
+<p>Ngũ hoàng huynh sao lại là Thái tử tiền triều?</p>
+<p>Ông trời ơi!</p>
+<p>Hiện giờ chính quyền Đại Sở nội loạn còn chưa bình ổn, Mạc Hoài lại xảy ra biến cố lớn, xuất hiện một Thái tử tiền triều muốn phân liệt chính quyền Đại Sở. Một chuyện lớn như vậy, hắn làm sao ứng phó nổi?</p>
+<p>Chỉ e là sắp đánh trận rồi!</p>
+<p>“Người đâu! Mau đi mời Hoàng thúc trở về! Mau mau đi mời Hoàng thúc!”</p>
+<p>Mạc Hoài.</p>
+<p>Từ sau khi quân đội Nam Man đóng quân, bách tính ba châu hai mươi tám thành Mạc Hoài đều thấp thỏm bất an, một lòng hướng về Sở quốc.</p>
+<p>Thế nhưng hai ngày trước, một nam nhân tự xưng là Thái tử tiền triều đã đứng ra.</p>
+<p>Tất cả bách tính lớn tuổi đều biết, hơn hai mươi năm trước, Sở quốc diệt Đông Lăng, từ đó mới mở mang thành cương vực Sở quốc ngày nay.</p>
+<p>Nếu nói vẫn còn di cô tiền triều, vậy cũng là chuyện hợp lý.</p>
+<p>Sự xuất hiện của Thái tử tiền triều đã khiến lòng dân an định:</p>
+<p>Hắn tới để phục quốc, không phải tới tàn sát bách tính.</p>
+<p>Sở quốc diệt Đông Lăng, giết sạch huyết mạch hoàng thất tiền triều. Hành động báo thù của hắn hoàn toàn hợp lý, thậm chí chính nghĩa.</p>
+<p>Tin tức vừa truyền ra, bách tính lập tức chia thành hai phe.</p>
+<p>Một phe cho rằng bọn họ là con dân Sở quốc.</p>
+<p>Phe còn lại lại cho rằng Sở quốc diệt Đông Lăng, thủ đoạn tàn nhẫn, giết sạch hoàng thất. Thái tử Đông Lăng sao có thể không hận? Báo thù hoàn toàn là hành động có thể lý giải.</p>
+<p>Vậy hãy xem cuộc tranh đấu giữa Đại Sở và tiền triều Đông Lăng, rốt cuộc bên nào thắng, bên nào bại.</p>
+<p>“Công chúa, mấy ngày nay, bách tính Đại Sở đã thân thiện với chúng ta hơn nhiều rồi.” Trương Bá Thiên tướng quân vui mừng nhìn thành quả mấy ngày qua.</p>
+<p>Thác Bạt Minh Nguyệt cong môi:</p>
+<p>“Tiếp tục lấy danh nghĩa Thái tử Đông Lăng rộng rãi ban ân, trợ giúp bách tính Đại Sở, thu mua lòng người.”</p>
+<p>“Vâng!”</p>
+<p>Nàng hạ thành lâu, trở về châu phủ. Vừa bước vào sân viện, nàng đã nhìn thấy nam nhân đang ngồi dưới giàn nho, lười biếng mà thỏa mãn nhìn nữ tử trước mặt.</p>
+<p>Hắn chống cằm, nghiêng người, si ngốc ngắm nhìn nàng từ mọi góc độ, mọi phương diện.</p>
+<p>Nữ tử mặc nam trang, tóc được buộc gọn. Gương mặt kia có tám phần tương tự Sở Ly.</p>
+<p>Nàng ngồi ở đó, bất động như một bức họa.</p>
+<p>Nhìn thấy Thác Bạt Minh Nguyệt tới, nữ tử lập tức đứng dậy: “Nô tỳ thỉnh an Công chúa.”</p>
+<p>Thần sắc Sở Dạ Ly lại đột nhiên âm trầm, hoàn toàn khác với vẻ ôn nhuận ban nãy.</p>
+<p>Trong nháy mắt, hắn tựa như rơi xuống vực sâu, âm lệ đến mức có thể ăn thịt người:</p>
+<p>“Câm miệng!”</p>
+<p>Vừa mở miệng, liền không giống nàng nữa.</p>
+<p>“Còn dám mở miệng, ta sẽ cắt lưỡi ngươi!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_229.html" class="btn">‹ Trước</a>
             <a href="chuong_231.html" class="btn">Sau ›</a>
         </div>
@@ -212,15 +220,11 @@ Vừa mở miệng, liền không giống nàng nữa.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -232,11 +236,11 @@ Vừa mở miệng, liền không giống nàng nữa.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

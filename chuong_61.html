@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 61</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,197 +62,206 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 61</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_60.html" class="btn">‹ Trước</a>
             <a href="chuong_62.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 61: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 61: Dẫu sao cũng là thúc cháu, nào có thể khoanh tay đứng nhìn
-Ba ngày tiếp theo, Tần Mục Vũ đích thân chăm sóc Sở Ly, mọi việc đều tự tay làm.
-Sở Ly thích ngồi trước cửa sổ, lắng nghe bọn hạ nhân ngoài sân chuyện trò:
-“Nghe nói hôm phủ Tướng quân cháy, Nhiếp Chính Vương cũng có mặt… Chính Nhiếp Chính Vương đã cứu Cửu hoàng tử… Nhiếp Chính Vương xưa nay độc lai độc vãng, cao cao tại thượng, từ bao giờ lại quản đến những chuyện thế này?”
-“Dẫu sao cũng là thúc cháu, nào có thể khoanh tay đứng nhìn?”
-“Ai mà biết được…”
-Đến ngày thứ tư.
-Đôi mắt Sở Ly đã có thể nhìn thấy những vệt sáng mờ mờ, nhưng Tần Mục Vũ lại không thấy đâu.
-Ôn Chỉ Tịch nói:
-“Tần Thiếu tướng quân đi xử lý công vụ rồi. Sau khi phủ Tướng quân bị thiêu rụi, rất nhiều việc dồn lại một chỗ. Chỉ e mấy ngày tới huynh ấy sẽ bận đến mức chẳng thấy bóng dáng.”
-Sở Ly lo lắng:
-“Vết thương của huynh ấy đều khỏi cả rồi sao?”
-“Huynh ấy…”
-Ôn Chỉ Tịch không dám nói thật.
-Thương thế của Tần Thiếu tướng quân vốn rất nặng, vậy mà lại chẳng màng dưỡng thương, vẫn kiên trì ngày đêm chăm sóc biểu huynh. Dẫu thân thể có cường tráng đến đâu, cũng phải kiệt quệ.
-Mẫu thân đã tự quyết định đưa huynh ấy đến biệt viện ở ngoại ô tĩnh dưỡng, để tránh sau khi mắt biểu huynh hồi phục, nhìn thấy dáng vẻ của Tần Thiếu tướng quân lại càng thêm lo lắng.
-“Huynh ấy đều khỏe rồi, biểu huynh cứ yên tâm.”
-Sở Ly đưa tay sờ lớp băng trên mắt, khẽ vẫy tay trước mặt mình, đại khái đã có thể nhìn thấy bóng người lờ mờ.
-“Vậy thì tốt.”
-Nằm suốt mấy ngày, đến xương cốt cũng mềm nhũn cả rồi.
-“Ta muốn ra ngoài đi dạo.”
-“Biểu huynh, để muội đi cùng.”
-Ôn Chỉ Tịch sai người chuẩn bị xe ngựa, dẫn theo hai nha hoàn, dìu Sở Ly ra khỏi phủ.
-Ở đầu ngõ bên kia, một bóng người lặng lẽ bước ra.
-“Cửu hoàng tử điện hạ.”
-Trông dáng vẻ, dường như hắn đã đứng đợi trong ngõ từ rất lâu.
-Ôn Chỉ Tịch cảnh giác nhìn hắn.
-“Ngươi là…”
-Sở Ly giơ tay lên.
-Đôi mắt nàng vẫn mờ mịt, không nhìn rõ, nhưng dựa vào giọng nói mà đoán được.
-“Phương Hiểu Lâm?”
-“Là thần.”
-Phương Hiểu Lâm chắp tay, cung kính hành đại lễ.
-“Nghe tin Cửu hoàng tử bị thương, thần vẫn luôn muốn tới thăm, nhưng không dám mạo muội xông vào. Hôm nay cuối cùng cũng được gặp điện hạ.”
-Sở Ly quay sang Ôn Chỉ Tịch.
-“Dải băng này không được thoải mái lắm. Muội đi đổi cho ta một dải mỏng nhẹ hơn đi.”
-Ôn Chỉ Tịch đâu phải người ngốc.
-Người này họ Phương, lại là người của Quốc Công phủ, hai người hẳn là có chuyện muốn nói riêng.
-“Được.”
-Nàng rời đi, nhưng vẫn dặn hai nha hoàn đứng cách đó không xa, cẩn thận quan sát để phòng bất trắc.
-Xung quanh chỉ còn hai người.
-Giọng Sở Ly cũng thẳng thắn hơn vài phần.
-“Không biết Phương công tử tìm ta có việc gì?”
-Phương Hiểu Lâm cũng đi thẳng vào vấn đề:
-“Di nương đã được an táng, thần cũng đã được nhận làm con thừa tự dưới danh nghĩa phu nhân, được xem như đích tử để bồi dưỡng, sau này có thể kế thừa Quốc Công phủ. Tất cả những điều ấy đều nhờ Cửu hoàng tử chu toàn.”
-Hắn lại cúi người hành thêm một đại lễ.
-Lương di nương hại chết Phương Hải Dương. Theo lẽ thường, hắn cũng sẽ bị liên lụy.
-Cho dù không chết, tiền đồ cũng coi như bị hủy sạch.
-Đâu còn có ngày hôm nay?
-Nhưng hắn biết, tất cả chỉ là bề ngoài.
-Quốc Công phu nhân hận hắn.
-Nếu có cơ hội, bà nhất định sẽ trừ khử hắn.
-Hắn phải tìm cho mình một chỗ dựa, mới có thể bảo đảm tiền đồ sau này.
-Nếu nói Lương di nương là người tàn nhẫn, thì hắn cũng chẳng kém.
-Hắn cũng là kẻ thông minh.
-Hắn chắp tay nói:
-“Đại ân của Cửu hoàng tử, thần nguyện dốc hết sức mình báo đáp điện hạ.”
-Sở Ly khẽ vuốt khóe mắt, nhẹ cười.
-“Chuyện phủ Tướng quân bị hỏa hoạn, ngươi hẳn cũng biết?”
-Phương Hiểu Lâm đảo mắt.
-“Thần không biết việc này có liên quan gì đến Quốc Công phủ hay không. Nhưng điều thần có thể khẳng định là, hơn một tháng gần đây, phụ thân qua lại với Bộ Binh vô cùng mật thiết, đặc biệt là sau khi Nhiếp Chính Vương giao trả binh quyền Hắc Giáp Vệ.”
-“Ồ?”
-Bộ Binh?
-Vậy thì thú vị rồi.
-Khoảng nửa khắc sau, Ôn Chỉ Tịch quay lại, dìu Sở Ly lên xe ngựa, tiếp tục đi dạo.
-Phương Hiểu Lâm chắp tay tiễn đưa.
-Đợi xe ngựa đi xa, gã tiểu tư mới bước tới.
-“Công tử, vì sao người lại đứng về phía Cửu hoàng tử, bán đứng Quốc Công phủ?”
-“Đây không thể gọi là bán đứng.”
-Phương Hiểu Lâm nói:
-“Tần Thiếu tướng quân bị thương rất nặng. Cửu hoàng tử lại thân thiết với hắn như vậy, chắc chắn đang nổi giận, nghĩ cách đối phó Quốc Công phủ. Ta chỉ thuận nước đẩy thuyền, tặng ‘hắn’ một ân tình. Nếu ‘hắn’ thật sự tra ra được nhược điểm của Quốc Công phủ, thì chỉ có lợi cho ta.”
-“Trong tay ta nắm giữ nhược điểm này, người của Quốc Công phủ sẽ không dám dễ dàng động đến ta.”
-Hắn muốn từng bước…
-Từng bước một leo lên.
-Hắn muốn báo thù cho Lương di nương!
-—
-Trong thành.
-Người xe qua lại tấp nập, náo nhiệt vô cùng.
-Sở Ly thay một dải băng mỏng nhẹ hơn, nhìn mọi thứ cũng rõ hơn đôi chút. Đến nơi đông người, nàng bèn xuống xe ngựa.
-Dưỡng bệnh mấy ngày, suýt nữa nghẹn đến phát điên.
-Ôn Chỉ Tịch dìu nàng.
-“Biểu huynh, huynh có muốn mua gì không? Muội chỉ cho huynh xem.”
-“Cứ đi dạo khắp nơi, ngửi chút nhân khí.”
-“Được.”
-Ôn Chỉ Tịch sợ người đông chen lấn va phải Sở Ly, nên bảo vệ nàng vô cùng chu đáo.
-Tầm mắt Sở Ly vẫn mờ mịt, nhưng cũng không phải hoàn toàn không nhìn thấy.
-Đột nhiên, giữa đám đông vang lên tiếng hô hoảng hốt:
-“Ngựa kinh rồi! Tránh ra! Hu… Mau tránh ra!”
-Mọi người kinh hãi.
-Một thiếu phụ trẻ ôm đứa trẻ vừa bước xuống kiệu, còn chưa đứng vững, đã sắp bị con ngựa điên lao tới đâm trúng.
-Trong lúc nguy cấp, có một bàn tay kéo nàng sang bên.
-“Hu… oa…”
-Đứa trẻ hơn một tuổi trong lòng nàng lại bị hất văng ra ngoài.
-“Kỳ Nhi!”
-Một đôi tay vững vàng đỡ lấy.
-“Kỳ Nhi! Con của ta!”
-Thiếu phụ sợ đến mặt mày thất sắc, vội vàng giành lấy đứa trẻ ôm vào lòng, cuống cuồng kiểm tra từ trên xuống dưới.
-Ôn Chỉ Tịch cũng vội kéo Sở Ly lại.
-“Biểu huynh! Mắt huynh còn chưa khỏi hẳn, sao có thể đột nhiên lao tới như vậy? May mà không bị thương. A Di Đà Phật!”
-Thiếu phụ hồn vía lên mây, hồi lâu mới hoàn hồn.
-“Đa tạ Cửu hoàng tử ra tay cứu giúp! Đa tạ Cửu hoàng tử!”
-Sở Ly mơ hồ nhìn nàng.
-“Ngươi biết ta?”
-“Thần phụ là Dương An thị, con dâu của nhà Binh bộ Thị lang. Hôm nay đưa Kỳ Nhi ra phố bốc thuốc. Nếu không nhờ Cửu hoàng tử kịp thời cứu giúp, chỉ e Kỳ Nhi lành ít dữ nhiều.”
-Dương An thị cảm kích nói.
-Sở Ly hiểu ý.
-“Binh bộ Thị lang tuổi trẻ tài cao, ngay cả phụ hoàng cũng từng ban lời khen ngợi. Sao lại để ngươi đích thân ra ngoài bốc thuốc?”
-Hạ nhân đâu?
-Nha hoàn đâu?
-Không có ai hầu hạ sao?
-Thần sắc Dương An thị có phần né tránh, như có điều khó nói, chỉ qua loa đáp:
-“Thần phụ lo cho Kỳ Nhi, sợ hạ nhân làm không chu đáo nên mới tự mình ra ngoài… Vẫn phải đa tạ Cửu hoàng tử. Nếu điện hạ không chê, xin nể mặt đến phủ dùng trà, để thần phụ có cơ hội tỏ chút lòng cảm tạ.”
-Nếu là trước kia, Sở Ly tuyệt đối sẽ không dính dáng dù chỉ nửa phần với các triều thần hay gia quyến của họ.
-Nhưng giờ phút này, nàng chỉ điềm nhiên mỉm cười.
-“Được. Đi dạo cả một quãng đường, ta cũng đang muốn tìm một chỗ uống chén trà.”
-Thế nhưng, khi vừa đến phủ Binh bộ Thị lang, thính lực nhạy bén của Sở Ly lập tức bắt được một giọng nói quen thuộc.
-“Thất hoàng huynh?”
-“Huynh cũng ở đây?”
-Cách đó không xa, Sở Cảnh Lân cùng Dương Thị lang của Bộ Binh vừa bước ra khỏi thư phòng.
-Hai người đang bàn bạc chuyện cơ mật, nào ngờ vừa ra khỏi cửa đã bị Sở Ly bắt gặp ngay tại trận.
-Sắc mặt Sở Cảnh Lân khẽ biến.
-Không có sự cho phép của Hoàng thượng, hoàng tử tham dự triều chính, hoặc âm thầm qua lại với đại thần, kết bè kết cánh, đều là đại kỵ.
-Sở Hoàng cực kỳ chán ghét chuyện này!
-Tiền triều chính vì quân vương quản lý không nghiêm, khiến các hoàng tử và triều thần cấu kết với nhau, làm triều cương hỗn loạn, ô yên chướng khí, cuối cùng mới dẫn đến mất nước.
-Sắc mặt Dương Thị lang cũng lập tức thay đổi, hung hăng trừng mắt nhìn thê tử Dương An thị.
-Dương An thị run lên bần bật, suýt nữa ôm không nổi đứa trẻ.
-Đứa trẻ trong lòng như cảm nhận được điều gì, vừa mở miệng đã bật khóc.
-“Oa… ưm!”
-Nhưng vừa mới cất tiếng, miệng nó đã bị Dương An thị hoảng hốt bịt chặt.
-Sở Ly hơi nghiêng đầu.
-Đôi mắt bị băng vải che kín mờ mịt tìm về hướng phát ra âm thanh.
-“Thất hoàng huynh?” Ẩn bớt</p>
+            <p>Chương 61: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 61: Dẫu sao cũng là thúc cháu, nào có thể khoanh tay đứng nhìn</p>
+<p>Ba ngày tiếp theo, Tần Mục Vũ đích thân chăm sóc Sở Ly, mọi việc đều tự tay làm.</p>
+<p>Sở Ly thích ngồi trước cửa sổ, lắng nghe bọn hạ nhân ngoài sân chuyện trò:</p>
+<p>“Nghe nói hôm phủ Tướng quân cháy, Nhiếp Chính Vương cũng có mặt… Chính Nhiếp Chính Vương đã cứu Cửu hoàng tử… Nhiếp Chính Vương xưa nay độc lai độc vãng, cao cao tại thượng, từ bao giờ lại quản đến những chuyện thế này?”</p>
+<p>“Dẫu sao cũng là thúc cháu, nào có thể khoanh tay đứng nhìn?”</p>
+<p>“Ai mà biết được…”</p>
+<p>Đến ngày thứ tư.</p>
+<p>Đôi mắt Sở Ly đã có thể nhìn thấy những vệt sáng mờ mờ, nhưng Tần Mục Vũ lại không thấy đâu.</p>
+<p>Ôn Chỉ Tịch nói:</p>
+<p>“Tần Thiếu tướng quân đi xử lý công vụ rồi. Sau khi phủ Tướng quân bị thiêu rụi, rất nhiều việc dồn lại một chỗ. Chỉ e mấy ngày tới huynh ấy sẽ bận đến mức chẳng thấy bóng dáng.”</p>
+<p>Sở Ly lo lắng:</p>
+<p>“Vết thương của huynh ấy đều khỏi cả rồi sao?”</p>
+<p>“Huynh ấy…”</p>
+<p>Ôn Chỉ Tịch không dám nói thật.</p>
+<p>Thương thế của Tần Thiếu tướng quân vốn rất nặng, vậy mà lại chẳng màng dưỡng thương, vẫn kiên trì ngày đêm chăm sóc biểu huynh. Dẫu thân thể có cường tráng đến đâu, cũng phải kiệt quệ.</p>
+<p>Mẫu thân đã tự quyết định đưa huynh ấy đến biệt viện ở ngoại ô tĩnh dưỡng, để tránh sau khi mắt biểu huynh hồi phục, nhìn thấy dáng vẻ của Tần Thiếu tướng quân lại càng thêm lo lắng.</p>
+<p>“Huynh ấy đều khỏe rồi, biểu huynh cứ yên tâm.”</p>
+<p>Sở Ly đưa tay sờ lớp băng trên mắt, khẽ vẫy tay trước mặt mình, đại khái đã có thể nhìn thấy bóng người lờ mờ.</p>
+<p>“Vậy thì tốt.”</p>
+<p>Nằm suốt mấy ngày, đến xương cốt cũng mềm nhũn cả rồi.</p>
+<p>“Ta muốn ra ngoài đi dạo.”</p>
+<p>“Biểu huynh, để muội đi cùng.”</p>
+<p>Ôn Chỉ Tịch sai người chuẩn bị xe ngựa, dẫn theo hai nha hoàn, dìu Sở Ly ra khỏi phủ.</p>
+<p>Ở đầu ngõ bên kia, một bóng người lặng lẽ bước ra.</p>
+<p>“Cửu hoàng tử điện hạ.”</p>
+<p>Trông dáng vẻ, dường như hắn đã đứng đợi trong ngõ từ rất lâu.</p>
+<p>Ôn Chỉ Tịch cảnh giác nhìn hắn.</p>
+<p>“Ngươi là…”</p>
+<p>Sở Ly giơ tay lên.</p>
+<p>Đôi mắt nàng vẫn mờ mịt, không nhìn rõ, nhưng dựa vào giọng nói mà đoán được.</p>
+<p>“Phương Hiểu Lâm?”</p>
+<p>“Là thần.”</p>
+<p>Phương Hiểu Lâm chắp tay, cung kính hành đại lễ.</p>
+<p>“Nghe tin Cửu hoàng tử bị thương, thần vẫn luôn muốn tới thăm, nhưng không dám mạo muội xông vào. Hôm nay cuối cùng cũng được gặp điện hạ.”</p>
+<p>Sở Ly quay sang Ôn Chỉ Tịch.</p>
+<p>“Dải băng này không được thoải mái lắm. Muội đi đổi cho ta một dải mỏng nhẹ hơn đi.”</p>
+<p>Ôn Chỉ Tịch đâu phải người ngốc.</p>
+<p>Người này họ Phương, lại là người của Quốc Công phủ, hai người hẳn là có chuyện muốn nói riêng.</p>
+<p>“Được.”</p>
+<p>Nàng rời đi, nhưng vẫn dặn hai nha hoàn đứng cách đó không xa, cẩn thận quan sát để phòng bất trắc.</p>
+<p>Xung quanh chỉ còn hai người.</p>
+<p>Giọng Sở Ly cũng thẳng thắn hơn vài phần.</p>
+<p>“Không biết Phương công tử tìm ta có việc gì?”</p>
+<p>Phương Hiểu Lâm cũng đi thẳng vào vấn đề:</p>
+<p>“Di nương đã được an táng, thần cũng đã được nhận làm con thừa tự dưới danh nghĩa phu nhân, được xem như đích tử để bồi dưỡng, sau này có thể kế thừa Quốc Công phủ. Tất cả những điều ấy đều nhờ Cửu hoàng tử chu toàn.”</p>
+<p>Hắn lại cúi người hành thêm một đại lễ.</p>
+<p>Lương di nương hại chết Phương Hải Dương. Theo lẽ thường, hắn cũng sẽ bị liên lụy.</p>
+<p>Cho dù không chết, tiền đồ cũng coi như bị hủy sạch.</p>
+<p>Đâu còn có ngày hôm nay?</p>
+<p>Nhưng hắn biết, tất cả chỉ là bề ngoài.</p>
+<p>Quốc Công phu nhân hận hắn.</p>
+<p>Nếu có cơ hội, bà nhất định sẽ trừ khử hắn.</p>
+<p>Hắn phải tìm cho mình một chỗ dựa, mới có thể bảo đảm tiền đồ sau này.</p>
+<p>Nếu nói Lương di nương là người tàn nhẫn, thì hắn cũng chẳng kém.</p>
+<p>Hắn cũng là kẻ thông minh.</p>
+<p>Hắn chắp tay nói:</p>
+<p>“Đại ân của Cửu hoàng tử, thần nguyện dốc hết sức mình báo đáp điện hạ.”</p>
+<p>Sở Ly khẽ vuốt khóe mắt, nhẹ cười.</p>
+<p>“Chuyện phủ Tướng quân bị hỏa hoạn, ngươi hẳn cũng biết?”</p>
+<p>Phương Hiểu Lâm đảo mắt.</p>
+<p>“Thần không biết việc này có liên quan gì đến Quốc Công phủ hay không. Nhưng điều thần có thể khẳng định là, hơn một tháng gần đây, phụ thân qua lại với Bộ Binh vô cùng mật thiết, đặc biệt là sau khi Nhiếp Chính Vương giao trả binh quyền Hắc Giáp Vệ.”</p>
+<p>“Ồ?”</p>
+<p>Bộ Binh?</p>
+<p>Vậy thì thú vị rồi.</p>
+<p>Khoảng nửa khắc sau, Ôn Chỉ Tịch quay lại, dìu Sở Ly lên xe ngựa, tiếp tục đi dạo.</p>
+<p>Phương Hiểu Lâm chắp tay tiễn đưa.</p>
+<p>Đợi xe ngựa đi xa, gã tiểu tư mới bước tới.</p>
+<p>“Công tử, vì sao người lại đứng về phía Cửu hoàng tử, bán đứng Quốc Công phủ?”</p>
+<p>“Đây không thể gọi là bán đứng.”</p>
+<p>Phương Hiểu Lâm nói:</p>
+<p>“Tần Thiếu tướng quân bị thương rất nặng. Cửu hoàng tử lại thân thiết với hắn như vậy, chắc chắn đang nổi giận, nghĩ cách đối phó Quốc Công phủ. Ta chỉ thuận nước đẩy thuyền, tặng ‘hắn’ một ân tình. Nếu ‘hắn’ thật sự tra ra được nhược điểm của Quốc Công phủ, thì chỉ có lợi cho ta.”</p>
+<p>“Trong tay ta nắm giữ nhược điểm này, người của Quốc Công phủ sẽ không dám dễ dàng động đến ta.”</p>
+<p>Hắn muốn từng bước…</p>
+<p>Từng bước một leo lên.</p>
+<p>Hắn muốn báo thù cho Lương di nương!</p>
+<p>—</p>
+<p>Trong thành.</p>
+<p>Người xe qua lại tấp nập, náo nhiệt vô cùng.</p>
+<p>Sở Ly thay một dải băng mỏng nhẹ hơn, nhìn mọi thứ cũng rõ hơn đôi chút. Đến nơi đông người, nàng bèn xuống xe ngựa.</p>
+<p>Dưỡng bệnh mấy ngày, suýt nữa nghẹn đến phát điên.</p>
+<p>Ôn Chỉ Tịch dìu nàng.</p>
+<p>“Biểu huynh, huynh có muốn mua gì không? Muội chỉ cho huynh xem.”</p>
+<p>“Cứ đi dạo khắp nơi, ngửi chút nhân khí.”</p>
+<p>“Được.”</p>
+<p>Ôn Chỉ Tịch sợ người đông chen lấn va phải Sở Ly, nên bảo vệ nàng vô cùng chu đáo.</p>
+<p>Tầm mắt Sở Ly vẫn mờ mịt, nhưng cũng không phải hoàn toàn không nhìn thấy.</p>
+<p>Đột nhiên, giữa đám đông vang lên tiếng hô hoảng hốt:</p>
+<p>“Ngựa kinh rồi! Tránh ra! Hu… Mau tránh ra!”</p>
+<p>Mọi người kinh hãi.</p>
+<p>Một thiếu phụ trẻ ôm đứa trẻ vừa bước xuống kiệu, còn chưa đứng vững, đã sắp bị con ngựa điên lao tới đâm trúng.</p>
+<p>Trong lúc nguy cấp, có một bàn tay kéo nàng sang bên.</p>
+<p>“Hu… oa…”</p>
+<p>Đứa trẻ hơn một tuổi trong lòng nàng lại bị hất văng ra ngoài.</p>
+<p>“Kỳ Nhi!”</p>
+<p>Một đôi tay vững vàng đỡ lấy.</p>
+<p>“Kỳ Nhi! Con của ta!”</p>
+<p>Thiếu phụ sợ đến mặt mày thất sắc, vội vàng giành lấy đứa trẻ ôm vào lòng, cuống cuồng kiểm tra từ trên xuống dưới.</p>
+<p>Ôn Chỉ Tịch cũng vội kéo Sở Ly lại.</p>
+<p>“Biểu huynh! Mắt huynh còn chưa khỏi hẳn, sao có thể đột nhiên lao tới như vậy? May mà không bị thương. A Di Đà Phật!”</p>
+<p>Thiếu phụ hồn vía lên mây, hồi lâu mới hoàn hồn.</p>
+<p>“Đa tạ Cửu hoàng tử ra tay cứu giúp! Đa tạ Cửu hoàng tử!”</p>
+<p>Sở Ly mơ hồ nhìn nàng.</p>
+<p>“Ngươi biết ta?”</p>
+<p>“Thần phụ là Dương An thị, con dâu của nhà Binh bộ Thị lang. Hôm nay đưa Kỳ Nhi ra phố bốc thuốc. Nếu không nhờ Cửu hoàng tử kịp thời cứu giúp, chỉ e Kỳ Nhi lành ít dữ nhiều.”</p>
+<p>Dương An thị cảm kích nói.</p>
+<p>Sở Ly hiểu ý.</p>
+<p>“Binh bộ Thị lang tuổi trẻ tài cao, ngay cả phụ hoàng cũng từng ban lời khen ngợi. Sao lại để ngươi đích thân ra ngoài bốc thuốc?”</p>
+<p>Hạ nhân đâu?</p>
+<p>Nha hoàn đâu?</p>
+<p>Không có ai hầu hạ sao?</p>
+<p>Thần sắc Dương An thị có phần né tránh, như có điều khó nói, chỉ qua loa đáp:</p>
+<p>“Thần phụ lo cho Kỳ Nhi, sợ hạ nhân làm không chu đáo nên mới tự mình ra ngoài… Vẫn phải đa tạ Cửu hoàng tử. Nếu điện hạ không chê, xin nể mặt đến phủ dùng trà, để thần phụ có cơ hội tỏ chút lòng cảm tạ.”</p>
+<p>Nếu là trước kia, Sở Ly tuyệt đối sẽ không dính dáng dù chỉ nửa phần với các triều thần hay gia quyến của họ.</p>
+<p>Nhưng giờ phút này, nàng chỉ điềm nhiên mỉm cười.</p>
+<p>“Được. Đi dạo cả một quãng đường, ta cũng đang muốn tìm một chỗ uống chén trà.”</p>
+<p>Thế nhưng, khi vừa đến phủ Binh bộ Thị lang, thính lực nhạy bén của Sở Ly lập tức bắt được một giọng nói quen thuộc.</p>
+<p>“Thất hoàng huynh?”</p>
+<p>“Huynh cũng ở đây?”</p>
+<p>Cách đó không xa, Sở Cảnh Lân cùng Dương Thị lang của Bộ Binh vừa bước ra khỏi thư phòng.</p>
+<p>Hai người đang bàn bạc chuyện cơ mật, nào ngờ vừa ra khỏi cửa đã bị Sở Ly bắt gặp ngay tại trận.</p>
+<p>Sắc mặt Sở Cảnh Lân khẽ biến.</p>
+<p>Không có sự cho phép của Hoàng thượng, hoàng tử tham dự triều chính, hoặc âm thầm qua lại với đại thần, kết bè kết cánh, đều là đại kỵ.</p>
+<p>Sở Hoàng cực kỳ chán ghét chuyện này!</p>
+<p>Tiền triều chính vì quân vương quản lý không nghiêm, khiến các hoàng tử và triều thần cấu kết với nhau, làm triều cương hỗn loạn, ô yên chướng khí, cuối cùng mới dẫn đến mất nước.</p>
+<p>Sắc mặt Dương Thị lang cũng lập tức thay đổi, hung hăng trừng mắt nhìn thê tử Dương An thị.</p>
+<p>Dương An thị run lên bần bật, suýt nữa ôm không nổi đứa trẻ.</p>
+<p>Đứa trẻ trong lòng như cảm nhận được điều gì, vừa mở miệng đã bật khóc.</p>
+<p>“Oa… ưm!”</p>
+<p>Nhưng vừa mới cất tiếng, miệng nó đã bị Dương An thị hoảng hốt bịt chặt.</p>
+<p>Sở Ly hơi nghiêng đầu.</p>
+<p>Đôi mắt bị băng vải che kín mờ mịt tìm về hướng phát ra âm thanh.</p>
+<p>“Thất hoàng huynh?” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_60.html" class="btn">‹ Trước</a>
             <a href="chuong_62.html" class="btn">Sau ›</a>
         </div>
@@ -261,15 +269,11 @@ Sở Ly hơi nghiêng đầu.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -281,11 +285,11 @@ Sở Ly hơi nghiêng đầu.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

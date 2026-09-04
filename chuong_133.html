@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 133</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,170 +62,179 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 133</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_132.html" class="btn">‹ Trước</a>
             <a href="chuong_134.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 133: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 133: Đừng nói lời giận dỗi, Tiểu Cửu
-Đêm ấy.
-Ngoại vi chiến trường, màn đêm đặc biệt ngưng trọng. Trên mảnh đất Nam Cương đầy núi cao và đầm lầy này, có vô số nơi ẩn nấp tự nhiên, vô cùng thích hợp để đánh du kích.
-Mấy trăm bóng đen ẩn mình trong màn đêm, mượn địa hình che chắn, từng chút từng chút lặng lẽ tiến lên.
-“Thiếu tướng quân, cánh trái an toàn.”
-“Thiếu tướng quân, chúng ta đã phóng một mồi lửa ở Hiệp Quan, tạm thời dẫn dụ toán quân canh giữ rời đi, hiện giờ chính là lúc phòng thủ mỏng nhất.”
-Tần Mục Vũ mặc một thân kình trang màu đen, phóng mắt nhìn doanh địa Nam Man ở phía xa, đáy mắt tràn đầy vẻ kiên định.
-A Ly ở đó!
-A Ly nhất định bị người uy hiếp, nên mới bất đắc dĩ xuất hiện tại đây.
-Tân đế Đại Sở thân hãm hiểm cảnh, hắn không thể ngồi yên dù chỉ một khắc.
-Điều hắn bảo vệ là giang sơn này, cũng là nàng.
-“Tất cả, làm theo kế hoạch.”
-“Rõ!”
-Mọi người lặng lẽ ẩn nấp, từng bước áp sát…
-Mọi việc đều thuận lợi.
-Vượt qua lãnh địa Nam Cương, vừa mới tiến sâu vào địa giới Nam Man, trong màn đêm u ám, bỗng nhiên vang lên một hồi tù và sắc bén, đột ngột.
-“U ——”
-Tiếng tù và xé toạc màn đêm.
-Đêm tối vốn yên bình, trong chớp mắt liền xuất hiện vô số vị khách không mời mà đến.
-“Không hay!”
-“Có mai phục!”
-—
-Sở Ly trò chuyện với một đám binh sĩ xong, liền đi tắm.
-Điều kiện trong quân gian khổ, nàng không thể tắm nước nóng, chỉ đến dòng suối nơi hậu sơn quân doanh tắm rửa. Thế nhưng vừa tắm được một nửa, nàng đã nghe thấy tiếng tù và vang lên.
-Ngay sau đó, vô số bóng người trong doanh địa bắt đầu chuyển động.
-Nàng lập tức bật dậy.
-Có chuyện gì?
-Đánh trận?
-Tập kích?
-Vội vàng mặc y phục, chạy về doanh địa, tiện tay giữ lấy một người hỏi:
-“Có chuyện gì vậy?”
-Tên binh sĩ vừa chạy vừa đáp:
-“Hai hồi tù và là hiệu lệnh tập hợp khẩn cấp, chúng ta phải lập tức chạy tới với tốc độ nhanh nhất!”
-Bất kể đang thao luyện, trực đêm, cho ngựa ăn hay đang ngủ, tất cả đều lập tức cảnh giác, nhanh chóng tập hợp.
-Mí mắt phải của Sở Ly giật một cái.
-Mắt trái giật là tài, mắt phải giật là họa.
-Trong lòng nàng bỗng dâng lên một dự cảm chẳng lành.
-Nàng buộc chặt đai lưng, theo đám binh sĩ cùng chạy tới.
-Người rất đông.
-Hiện trường vô cùng hỗn loạn.
-Có người gấp rút báo tin, có người chạy tới chạy lui… đủ loại âm thanh nối tiếp không dứt. Nàng còn chưa kịp phân biệt đông tây nam bắc thì đã nghe thấy từng tràng reo hò vang lên.
-Chỉ thấy Sở Dạ Ly cưỡi trên lưng chiến mã cao lớn, hắc bào như mực. Phía sau hắn là đám binh sĩ Đại Sở bị áp giải, còn có một bóng người quen thuộc.
-Tần Mục Vũ!
-Toàn thân hắn đẫm máu, gần như không còn nhìn rõ dung mạo.
-Đồng tử Sở Ly co rụt, đẩy đám binh sĩ ra, chạy vội tới:
-“Tần Mục Vũ!”
-Không ít người đều quay đầu nhìn.
-Tần Mục Vũ kinh ngạc:
-“A Ly, quả nhiên là muội! Muội không sao chứ? Có bị thương không… ưm!”
-Cảm xúc càng thêm kích động, hắn lập tức bị hai tên binh sĩ áp giải đấm liền hai quyền.
-“Dừng tay!”
-Sở Ly ngẩng đầu nhìn Sở Dạ Ly trên lưng ngựa, lửa giận trong mắt không sao che giấu được.
-Là hắn làm!
-“Ngươi bắt hắn!”
-Sở Dạ Ly còn chưa kịp lên tiếng, Vệ tướng quân đứng bên cạnh đã cười lớn:
-“Tên nhóc miệng còn hôi sữa này quả nhiên dễ bắt! Mau giam con tin lại, đợi tối mai vừa nhập dạ, chúng ta sẽ thừa thắng xông lên, nhân thế công thẳng tiến vào Nam Cương!”
-“Hay!”
-“Hay!”
-Đám binh sĩ giơ cao binh khí, đồng thanh hò reo, cả doanh trại đều tràn ngập niềm vui chiến thắng.
-Sở Ly trơ mắt nhìn bọn họ áp giải Tần Mục Vũ đi. Nàng định đuổi theo thì bị Sở Dạ Ly gọi lại:
-“Yên tâm, hắn sẽ không nguy hiểm đến tính mạng.”
-Nàng chỉ thấy buồn cười:
-“Thật sao? Vậy đây chính là ân huệ ngươi ban cho Tần Mục Vũ? Ta còn phải cảm tạ ngươi?”
-Sở Dạ Ly cau mày:
-“Là Vệ tướng quân điều binh tập kích, bắt được Tần thiếu tướng quân.”
-“Ngươi dám nói chuyện này không liên quan đến ngươi sao?”
-“Là Vệ tướng quân bắt hắn.”
-Sở Ly trừng mắt nhìn hắn:
-“Lẽ nào ngươi hoàn toàn không hay biết? Lẽ nào ngươi chưa từng nhúng tay? Ta không tin!”
-Bao nhiêu năm nay, Nam Man vì sao không đánh vào Nam Cương?
-Cố tình đúng lúc Sở Dạ Ly tới, Nam Man lại muốn nhất cử công phá Nam Cương.
-“Ngươi mai phục ở Đại Sở nhiều năm như vậy, vậy mà lại giúp người Nam Man tấn công chính quốc gia của mình, còn bắt cả Tần Mục Vũ. Nếu hắn có mệnh hệ gì, ta tuyệt đối sẽ không để yên cho ngươi!”
-Sở Dạ Ly xoay người xuống ngựa, sải bước đến trước mặt nàng:
-“Nam Man muốn đoạt lại Nam Cương, đoạt lại lãnh thổ vốn thuộc về họ. Bọn họ sẽ không làm hại Tần thiếu tướng quân.”
-“Còn ngươi thì sao?”
-Sở Ly lạnh lùng nhìn hắn:
-“Ngươi giúp Nam Man đoạt lại Nam Cương, Nam Man giúp ngươi đoạt lấy hoàng vị. Thực ra ngươi đâu cần phiền phức như vậy? Ngươi đã bắt được ta, chỉ cần để ta hạ chỉ thiện vị cho ngươi là được rồi.”
-Ánh mắt Sở Dạ Ly trở nên sâu thẳm.
-“Đừng nói lời giận dỗi, Tiểu Cửu.”
-Hắn làm như vậy, tự có đạo lý của mình.
-Nàng đã táng thân trong biển lửa, Cửu hoàng tử ngày xưa đã chết.
-Hiện giờ còn sống là Sở Ly, là Sở Ly có thân phận tự do.
-Đợi đến khi hắn nắm đại quyền trong tay, hắn sẽ có thể đường đường chính chính cưới nàng qua cửa.
-Nàng sẽ không còn là Tân đế Đại Sở nữa.
-Nàng có thể tự do tự tại khôi phục nữ trang, từ nay về sau không còn bị thân phận gò bó.
-“Sau này khi muội hiểu được tâm ý của ta, muội chỉ cần biết rằng, mọi việc ta làm đều là vì muốn tốt cho muội, vậy là đủ.”
-“Ta không biết!”
-Nàng cũng chẳng muốn biết.
-“Tiểu Cửu, muội không phải ta, muội sẽ không hiểu nỗi khó xử của ta. Nhưng tấm lòng của ta đối với muội…”
-“Ta không muốn biết!”
-Sở Ly đẩy hắn ra, quay người định chạy đi tìm Tần Mục Vũ.
-Sở Dạ Ly nắm lấy cổ tay nàng.
-“Người do Vệ tướng quân hạ lệnh giam giữ, muội không gặp được đâu. Đợi lát nữa ta nói với Vệ tướng quân xong, sẽ đưa muội tới gặp hắn.”
-Sở Ly còn biết làm sao?
-“Vậy bây giờ ngươi lập tức đi nói với ông ta.”
-“Chúng ta đi ăn cơm trước.”
-“Ta không đói.”
-“Lúc nãy muội chỉ ăn thịt thỏ nướng thôi, không ăn cơm sao chịu nổi?”
-“Ta đã nói ta không đói! Ta muốn gặp Tần Mục Vũ trước! Ngay bây giờ!”
-Nàng không thể chờ thêm dù chỉ một khắc, cũng không thể ngồi yên.
-Sở Dạ Ly mím môi.
-Nàng lại lo lắng cho hắn đến vậy.
-“Tiểu Cửu, nghe lời đi. Ta đã nói sẽ bảo hắn bình an thì nhất định sẽ làm được. Ta không lừa muội, muộn một chút rồi chúng ta sẽ đi.”
-“Sở Dạ Ly!!”
-Nàng thật sự chịu hết nổi! Ẩn bớt</p>
+            <p>Chương 133: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 133: Đừng nói lời giận dỗi, Tiểu Cửu</p>
+<p>Đêm ấy.</p>
+<p>Ngoại vi chiến trường, màn đêm đặc biệt ngưng trọng. Trên mảnh đất Nam Cương đầy núi cao và đầm lầy này, có vô số nơi ẩn nấp tự nhiên, vô cùng thích hợp để đánh du kích.</p>
+<p>Mấy trăm bóng đen ẩn mình trong màn đêm, mượn địa hình che chắn, từng chút từng chút lặng lẽ tiến lên.</p>
+<p>“Thiếu tướng quân, cánh trái an toàn.”</p>
+<p>“Thiếu tướng quân, chúng ta đã phóng một mồi lửa ở Hiệp Quan, tạm thời dẫn dụ toán quân canh giữ rời đi, hiện giờ chính là lúc phòng thủ mỏng nhất.”</p>
+<p>Tần Mục Vũ mặc một thân kình trang màu đen, phóng mắt nhìn doanh địa Nam Man ở phía xa, đáy mắt tràn đầy vẻ kiên định.</p>
+<p>A Ly ở đó!</p>
+<p>A Ly nhất định bị người uy hiếp, nên mới bất đắc dĩ xuất hiện tại đây.</p>
+<p>Tân đế Đại Sở thân hãm hiểm cảnh, hắn không thể ngồi yên dù chỉ một khắc.</p>
+<p>Điều hắn bảo vệ là giang sơn này, cũng là nàng.</p>
+<p>“Tất cả, làm theo kế hoạch.”</p>
+<p>“Rõ!”</p>
+<p>Mọi người lặng lẽ ẩn nấp, từng bước áp sát…</p>
+<p>Mọi việc đều thuận lợi.</p>
+<p>Vượt qua lãnh địa Nam Cương, vừa mới tiến sâu vào địa giới Nam Man, trong màn đêm u ám, bỗng nhiên vang lên một hồi tù và sắc bén, đột ngột.</p>
+<p>“U ——”</p>
+<p>Tiếng tù và xé toạc màn đêm.</p>
+<p>Đêm tối vốn yên bình, trong chớp mắt liền xuất hiện vô số vị khách không mời mà đến.</p>
+<p>“Không hay!”</p>
+<p>“Có mai phục!”</p>
+<p>—</p>
+<p>Sở Ly trò chuyện với một đám binh sĩ xong, liền đi tắm.</p>
+<p>Điều kiện trong quân gian khổ, nàng không thể tắm nước nóng, chỉ đến dòng suối nơi hậu sơn quân doanh tắm rửa. Thế nhưng vừa tắm được một nửa, nàng đã nghe thấy tiếng tù và vang lên.</p>
+<p>Ngay sau đó, vô số bóng người trong doanh địa bắt đầu chuyển động.</p>
+<p>Nàng lập tức bật dậy.</p>
+<p>Có chuyện gì?</p>
+<p>Đánh trận?</p>
+<p>Tập kích?</p>
+<p>Vội vàng mặc y phục, chạy về doanh địa, tiện tay giữ lấy một người hỏi:</p>
+<p>“Có chuyện gì vậy?”</p>
+<p>Tên binh sĩ vừa chạy vừa đáp:</p>
+<p>“Hai hồi tù và là hiệu lệnh tập hợp khẩn cấp, chúng ta phải lập tức chạy tới với tốc độ nhanh nhất!”</p>
+<p>Bất kể đang thao luyện, trực đêm, cho ngựa ăn hay đang ngủ, tất cả đều lập tức cảnh giác, nhanh chóng tập hợp.</p>
+<p>Mí mắt phải của Sở Ly giật một cái.</p>
+<p>Mắt trái giật là tài, mắt phải giật là họa.</p>
+<p>Trong lòng nàng bỗng dâng lên một dự cảm chẳng lành.</p>
+<p>Nàng buộc chặt đai lưng, theo đám binh sĩ cùng chạy tới.</p>
+<p>Người rất đông.</p>
+<p>Hiện trường vô cùng hỗn loạn.</p>
+<p>Có người gấp rút báo tin, có người chạy tới chạy lui… đủ loại âm thanh nối tiếp không dứt. Nàng còn chưa kịp phân biệt đông tây nam bắc thì đã nghe thấy từng tràng reo hò vang lên.</p>
+<p>Chỉ thấy Sở Dạ Ly cưỡi trên lưng chiến mã cao lớn, hắc bào như mực. Phía sau hắn là đám binh sĩ Đại Sở bị áp giải, còn có một bóng người quen thuộc.</p>
+<p>Tần Mục Vũ!</p>
+<p>Toàn thân hắn đẫm máu, gần như không còn nhìn rõ dung mạo.</p>
+<p>Đồng tử Sở Ly co rụt, đẩy đám binh sĩ ra, chạy vội tới:</p>
+<p>“Tần Mục Vũ!”</p>
+<p>Không ít người đều quay đầu nhìn.</p>
+<p>Tần Mục Vũ kinh ngạc:</p>
+<p>“A Ly, quả nhiên là muội! Muội không sao chứ? Có bị thương không… ưm!”</p>
+<p>Cảm xúc càng thêm kích động, hắn lập tức bị hai tên binh sĩ áp giải đấm liền hai quyền.</p>
+<p>“Dừng tay!”</p>
+<p>Sở Ly ngẩng đầu nhìn Sở Dạ Ly trên lưng ngựa, lửa giận trong mắt không sao che giấu được.</p>
+<p>Là hắn làm!</p>
+<p>“Ngươi bắt hắn!”</p>
+<p>Sở Dạ Ly còn chưa kịp lên tiếng, Vệ tướng quân đứng bên cạnh đã cười lớn:</p>
+<p>“Tên nhóc miệng còn hôi sữa này quả nhiên dễ bắt! Mau giam con tin lại, đợi tối mai vừa nhập dạ, chúng ta sẽ thừa thắng xông lên, nhân thế công thẳng tiến vào Nam Cương!”</p>
+<p>“Hay!”</p>
+<p>“Hay!”</p>
+<p>Đám binh sĩ giơ cao binh khí, đồng thanh hò reo, cả doanh trại đều tràn ngập niềm vui chiến thắng.</p>
+<p>Sở Ly trơ mắt nhìn bọn họ áp giải Tần Mục Vũ đi. Nàng định đuổi theo thì bị Sở Dạ Ly gọi lại:</p>
+<p>“Yên tâm, hắn sẽ không nguy hiểm đến tính mạng.”</p>
+<p>Nàng chỉ thấy buồn cười:</p>
+<p>“Thật sao? Vậy đây chính là ân huệ ngươi ban cho Tần Mục Vũ? Ta còn phải cảm tạ ngươi?”</p>
+<p>Sở Dạ Ly cau mày:</p>
+<p>“Là Vệ tướng quân điều binh tập kích, bắt được Tần thiếu tướng quân.”</p>
+<p>“Ngươi dám nói chuyện này không liên quan đến ngươi sao?”</p>
+<p>“Là Vệ tướng quân bắt hắn.”</p>
+<p>Sở Ly trừng mắt nhìn hắn:</p>
+<p>“Lẽ nào ngươi hoàn toàn không hay biết? Lẽ nào ngươi chưa từng nhúng tay? Ta không tin!”</p>
+<p>Bao nhiêu năm nay, Nam Man vì sao không đánh vào Nam Cương?</p>
+<p>Cố tình đúng lúc Sở Dạ Ly tới, Nam Man lại muốn nhất cử công phá Nam Cương.</p>
+<p>“Ngươi mai phục ở Đại Sở nhiều năm như vậy, vậy mà lại giúp người Nam Man tấn công chính quốc gia của mình, còn bắt cả Tần Mục Vũ. Nếu hắn có mệnh hệ gì, ta tuyệt đối sẽ không để yên cho ngươi!”</p>
+<p>Sở Dạ Ly xoay người xuống ngựa, sải bước đến trước mặt nàng:</p>
+<p>“Nam Man muốn đoạt lại Nam Cương, đoạt lại lãnh thổ vốn thuộc về họ. Bọn họ sẽ không làm hại Tần thiếu tướng quân.”</p>
+<p>“Còn ngươi thì sao?”</p>
+<p>Sở Ly lạnh lùng nhìn hắn:</p>
+<p>“Ngươi giúp Nam Man đoạt lại Nam Cương, Nam Man giúp ngươi đoạt lấy hoàng vị. Thực ra ngươi đâu cần phiền phức như vậy? Ngươi đã bắt được ta, chỉ cần để ta hạ chỉ thiện vị cho ngươi là được rồi.”</p>
+<p>Ánh mắt Sở Dạ Ly trở nên sâu thẳm.</p>
+<p>“Đừng nói lời giận dỗi, Tiểu Cửu.”</p>
+<p>Hắn làm như vậy, tự có đạo lý của mình.</p>
+<p>Nàng đã táng thân trong biển lửa, Cửu hoàng tử ngày xưa đã chết.</p>
+<p>Hiện giờ còn sống là Sở Ly, là Sở Ly có thân phận tự do.</p>
+<p>Đợi đến khi hắn nắm đại quyền trong tay, hắn sẽ có thể đường đường chính chính cưới nàng qua cửa.</p>
+<p>Nàng sẽ không còn là Tân đế Đại Sở nữa.</p>
+<p>Nàng có thể tự do tự tại khôi phục nữ trang, từ nay về sau không còn bị thân phận gò bó.</p>
+<p>“Sau này khi muội hiểu được tâm ý của ta, muội chỉ cần biết rằng, mọi việc ta làm đều là vì muốn tốt cho muội, vậy là đủ.”</p>
+<p>“Ta không biết!”</p>
+<p>Nàng cũng chẳng muốn biết.</p>
+<p>“Tiểu Cửu, muội không phải ta, muội sẽ không hiểu nỗi khó xử của ta. Nhưng tấm lòng của ta đối với muội…”</p>
+<p>“Ta không muốn biết!”</p>
+<p>Sở Ly đẩy hắn ra, quay người định chạy đi tìm Tần Mục Vũ.</p>
+<p>Sở Dạ Ly nắm lấy cổ tay nàng.</p>
+<p>“Người do Vệ tướng quân hạ lệnh giam giữ, muội không gặp được đâu. Đợi lát nữa ta nói với Vệ tướng quân xong, sẽ đưa muội tới gặp hắn.”</p>
+<p>Sở Ly còn biết làm sao?</p>
+<p>“Vậy bây giờ ngươi lập tức đi nói với ông ta.”</p>
+<p>“Chúng ta đi ăn cơm trước.”</p>
+<p>“Ta không đói.”</p>
+<p>“Lúc nãy muội chỉ ăn thịt thỏ nướng thôi, không ăn cơm sao chịu nổi?”</p>
+<p>“Ta đã nói ta không đói! Ta muốn gặp Tần Mục Vũ trước! Ngay bây giờ!”</p>
+<p>Nàng không thể chờ thêm dù chỉ một khắc, cũng không thể ngồi yên.</p>
+<p>Sở Dạ Ly mím môi.</p>
+<p>Nàng lại lo lắng cho hắn đến vậy.</p>
+<p>“Tiểu Cửu, nghe lời đi. Ta đã nói sẽ bảo hắn bình an thì nhất định sẽ làm được. Ta không lừa muội, muộn một chút rồi chúng ta sẽ đi.”</p>
+<p>“Sở Dạ Ly!!”</p>
+<p>Nàng thật sự chịu hết nổi! Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_132.html" class="btn">‹ Trước</a>
             <a href="chuong_134.html" class="btn">Sau ›</a>
         </div>
@@ -234,15 +242,11 @@ Nàng thật sự chịu hết nổi! Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -254,11 +258,11 @@ Nàng thật sự chịu hết nổi! Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

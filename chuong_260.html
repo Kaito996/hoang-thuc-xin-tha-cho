@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 260</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,138 +62,147 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 260</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_259.html" class="btn">‹ Trước</a>
             <a href="chuong_261.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 260: Ta gánh cho đệ, đừng sợ
-Sở Ly suốt đêm chạy tới Tây Thành, trong một con ngõ nhỏ chật hẹp hỗn loạn, dò hỏi được nơi cần đến.
-Lúc nàng tới, một nam nhân trung niên mặc trường sam màu xám đang ôm tấm ván gỗ, đóng cửa được một nửa.
-Sở Ly bước lên bậc thềm.
-“Xin lỗi, hôm nay đã đóng cửa…”
-“Mở cửa.”
-Nam nhân trung niên nhíu mày: “Ngươi nghe không hiểu tiếng người à? Ta nói đã đóng cửa rồi, nếu vẫn không hiểu, ta không ngại dạy dỗ ngươi…”
-Xoẹt!
-Hàn mang chợt lóe, một thanh nhuyễn kiếm bật ra, ngang nhiên kề trên cổ hắn.
-Sắc mặt hắn lập tức sa sầm:
-“Ngươi!”
-Còn mang theo gia hỏa tới.
-Một con nhãi con nhỏ tuổi mà đã ngông cuồng như vậy, tưởng hắn là người ăn chay sao?
-“Người đâu!”
-Một tiếng quát lớn vang lên. Trong tiệm, bốn tên tay sai cầm gậy gỗ, vẻ mặt hung ác chạy ra, chĩa thẳng về phía Sở Ly: “Con nha đầu không biết trời cao đất dày, có biết đây là nơi nào không mà dám chạy tới đây giương oai?”
-“Là nơi nào?”
-Giọng nam nhân lười biếng vang lên. Chỉ thấy phía sau Sở Ly, Kinh Ảnh xách kiếm, mặc một thân kình trang, chậm rãi bước ra từ nơi tối tăm chìm trong màn đêm.
-Cùng đi tới còn có bốn tên ám vệ, khí tức lạnh lẽo, quanh thân tràn ngập sát phạt chi khí.
-Tay của bốn tên tay sai lập tức mềm nhũn.
-Những người này vừa nhìn đã biết là hạng chân chính từng uống máu trên lưỡi đao, bọn họ tuyệt đối không phải đối thủ.
-Kinh Ảnh nhìn nam nhân trung niên: “Đóng cửa rồi sao?”
-“Chưa, chưa…”
-“Ồ.”
-Sở Ly va mạnh vào vai hắn, tiến thẳng vào trong tiệm.
-Đó là một cửa tiệm vừa nhỏ vừa cũ nát, ném giữa phố lớn cũng chẳng khiến người ta nhìn thêm một lần. Nhưng bên trong lại tràn ngập một mùi hương nồng đậm, âm trầm. Trong quầy bày đầy những bình bình lọ lọ màu đen, màu nâu, vừa nhìn đã biết là độc vật hại người.
-“Đồ đạc không ít.”
-Nam nhân trung niên thấp thỏm bất an, không biết ý đồ của nàng là gì, càng không biết lai lịch của mấy nam nhân áo đen vừa nhìn đã biết không dễ trêu chọc này:
-“Tiểu thư quá khen, tiểu nhân chỉ làm chút buôn bán nhỏ…”
-Có người luyện độc, mang tới chỗ hắn đổi bạc; hắn lại bán ra kiếm lời, đi theo con đường không thể đưa ra ánh sáng.
-Sở Ly đi một vòng trong tiệm, xoay người ngồi xuống:
-“Ta hỏi ngươi.”
-“Khoảng hơn mười ngày trước, có người mua độc dược ở chỗ ngươi. Khi loại độc mạn tính này phát tác, sắc mặt chuyển xanh tím, chảy máu mũi không ngừng, sau đó rơi vào hôn mê, bất tỉnh nhân sự. Ngươi có ấn tượng gì không?”
-Nam nhân trung niên lau mồ hôi trên trán:
-“Tiểu nhân chỉ phụ trách bán hàng, không rõ đặc tính của từng loại độc… Hơn nữa, mỗi loại độc đều đi kèm một viên giải dược. Có người tới mua độc, sẽ bán giải dược cùng một thể.”
-Nếu giải dược bị thất lạc, hoặc bị người khác uống mất, người trúng độc chỉ có thể chờ chết, không thuốc chữa.
-Đôi mắt Sở Ly lạnh xuống, giơ tay túm lấy cổ áo hắn:
-“Lẽ nào loại độc này chỉ có một bình? Giải dược cũng chỉ có duy nhất một viên?”
-Nam nhân trung niên lảo đảo ngã nhào xuống đất, giọng run rẩy:
-“Vâng, vâng…”
-“Khốn kiếp!”
-Sở Dực đã ăn giải dược, vậy Sở Ngạo Thiên chỉ có thể chờ chết sao?
-Nàng không tin!
-“Kinh Ảnh, đập nát nơi này cho ta, tất cả giải dược đều mang đi!”
-“Vâng.”
-Kinh Ảnh rút kiếm. Bốn tên ám vệ cũng lập tức động thủ, xách ghế ném mạnh, đập vỡ quầy hàng, lục lọi từng bình từng lọ bên trong.
-Ông chủ trung niên đau lòng nhìn cảnh tượng trước mắt:
-“Tiểu thư tha mạng… Tiểu nhân làm chút buôn bán nhỏ cũng chỉ để nuôi gia đình, xin người hạ thủ lưu tình!”
-“Buôn bán thứ lấy mạng người, trong mắt ngươi chỉ là buôn bán nhỏ?” Sở Ly cười lạnh, “Nếu đã vậy, ta tặng mỗi người trong nhà ngươi một bình.”
-“Không, không không! Không thể, không thể được!”
-“Đốt nơi này cho ta!”
-Ầm!
-Một ngọn lửa bùng vọt lên giữa không trung. Khói đặc cuồn cuộn, lửa lớn bừng bừng thiêu đốt trong tiệm, thu hút không ít người tới vây xem bàn tán.
-Một bên khác, Sở Ly đã mang theo một đống lớn giải dược trở về hoàng cung.
-Nàng chạy thẳng vào chủ điện.
-“Bát Hoàng huynh thế nào rồi?”
-Trước giường, Sở Đệ Trì và Tiêu Dạ Hành vẫn luôn canh giữ. Mấy cung nhân quỳ trên mặt đất, cúi đầu, đến thở mạnh cũng không dám.
-Sở Ngạo Thiên không hề chuyển biến tốt hơn.
-Đối với loại độc này, các ngự y đều bó tay vô phương.
-Trên gương mặt xanh tím kia, khóe môi khẽ mấp máy, hắn đã bắt đầu nói mê:
-“Cửu đệ, đệ đi chậm thôi… Ta gánh cho đệ, đệ đừng sợ nhé… Phụ hoàng… Phụ hoàng, người đừng phạt đệ ấy…”
-“Cửu đệ…”
-Mắt Sở Ly cay xè. Trước mặt mọi người, rốt cuộc nàng vẫn cố gắng khống chế được.
-Nhưng Sở Đệ Trì vừa ôm nàng vào lòng, vỗ nhẹ lên lưng, nàng liền giống như con đê vỡ bờ, hoàn toàn mất khống chế.
-Sao lại có thể như vậy!
-Nếu Bát Hoàng huynh xảy ra chuyện gì…
-“Đừng vội, người vẫn còn đây, nhất định sẽ có cách.”
-Sở Ly lau nước mắt, nghẹn ngào xoay người: “Đem toàn bộ giải dược lục soát được đưa cho Thái Y viện kiểm tra, lần lượt đối chứng.”
-Kinh Ảnh hiểu ý.
-Hắn xách một túi vải lớn đi tới cửa, nhìn sáu vị ngự y đang quỳ chờ, nói:
-“Trong đống bình bình lọ lọ này có thể có giải dược. Ai tìm ra được, giải độc cho Nhàn vương, Nhiếp Chính vương sẽ trọng thưởng.”
-Bốp!
-Hắn ném xuống đất, lập tức lộ ra chừng bảy, tám mươi chiếc bình lớn nhỏ.
-Sáu người không dám chậm trễ, vội vàng tay năm tay mười tìm kiếm.
-Trong đó, một vị ngự y cúi đầu, cầm sáu bảy chiếc bình nhỏ, làm bộ kiểm tra, nhanh chóng giấu một chiếc bình sứ nhỏ vào trong tay áo. Ẩn bớt</p>
+            <p>Chương 260: Ta gánh cho đệ, đừng sợ</p>
+<p>Sở Ly suốt đêm chạy tới Tây Thành, trong một con ngõ nhỏ chật hẹp hỗn loạn, dò hỏi được nơi cần đến.</p>
+<p>Lúc nàng tới, một nam nhân trung niên mặc trường sam màu xám đang ôm tấm ván gỗ, đóng cửa được một nửa.</p>
+<p>Sở Ly bước lên bậc thềm.</p>
+<p>“Xin lỗi, hôm nay đã đóng cửa…”</p>
+<p>“Mở cửa.”</p>
+<p>Nam nhân trung niên nhíu mày: “Ngươi nghe không hiểu tiếng người à? Ta nói đã đóng cửa rồi, nếu vẫn không hiểu, ta không ngại dạy dỗ ngươi…”</p>
+<p>Xoẹt!</p>
+<p>Hàn mang chợt lóe, một thanh nhuyễn kiếm bật ra, ngang nhiên kề trên cổ hắn.</p>
+<p>Sắc mặt hắn lập tức sa sầm:</p>
+<p>“Ngươi!”</p>
+<p>Còn mang theo gia hỏa tới.</p>
+<p>Một con nhãi con nhỏ tuổi mà đã ngông cuồng như vậy, tưởng hắn là người ăn chay sao?</p>
+<p>“Người đâu!”</p>
+<p>Một tiếng quát lớn vang lên. Trong tiệm, bốn tên tay sai cầm gậy gỗ, vẻ mặt hung ác chạy ra, chĩa thẳng về phía Sở Ly: “Con nha đầu không biết trời cao đất dày, có biết đây là nơi nào không mà dám chạy tới đây giương oai?”</p>
+<p>“Là nơi nào?”</p>
+<p>Giọng nam nhân lười biếng vang lên. Chỉ thấy phía sau Sở Ly, Kinh Ảnh xách kiếm, mặc một thân kình trang, chậm rãi bước ra từ nơi tối tăm chìm trong màn đêm.</p>
+<p>Cùng đi tới còn có bốn tên ám vệ, khí tức lạnh lẽo, quanh thân tràn ngập sát phạt chi khí.</p>
+<p>Tay của bốn tên tay sai lập tức mềm nhũn.</p>
+<p>Những người này vừa nhìn đã biết là hạng chân chính từng uống máu trên lưỡi đao, bọn họ tuyệt đối không phải đối thủ.</p>
+<p>Kinh Ảnh nhìn nam nhân trung niên: “Đóng cửa rồi sao?”</p>
+<p>“Chưa, chưa…”</p>
+<p>“Ồ.”</p>
+<p>Sở Ly va mạnh vào vai hắn, tiến thẳng vào trong tiệm.</p>
+<p>Đó là một cửa tiệm vừa nhỏ vừa cũ nát, ném giữa phố lớn cũng chẳng khiến người ta nhìn thêm một lần. Nhưng bên trong lại tràn ngập một mùi hương nồng đậm, âm trầm. Trong quầy bày đầy những bình bình lọ lọ màu đen, màu nâu, vừa nhìn đã biết là độc vật hại người.</p>
+<p>“Đồ đạc không ít.”</p>
+<p>Nam nhân trung niên thấp thỏm bất an, không biết ý đồ của nàng là gì, càng không biết lai lịch của mấy nam nhân áo đen vừa nhìn đã biết không dễ trêu chọc này:</p>
+<p>“Tiểu thư quá khen, tiểu nhân chỉ làm chút buôn bán nhỏ…”</p>
+<p>Có người luyện độc, mang tới chỗ hắn đổi bạc; hắn lại bán ra kiếm lời, đi theo con đường không thể đưa ra ánh sáng.</p>
+<p>Sở Ly đi một vòng trong tiệm, xoay người ngồi xuống:</p>
+<p>“Ta hỏi ngươi.”</p>
+<p>“Khoảng hơn mười ngày trước, có người mua độc dược ở chỗ ngươi. Khi loại độc mạn tính này phát tác, sắc mặt chuyển xanh tím, chảy máu mũi không ngừng, sau đó rơi vào hôn mê, bất tỉnh nhân sự. Ngươi có ấn tượng gì không?”</p>
+<p>Nam nhân trung niên lau mồ hôi trên trán:</p>
+<p>“Tiểu nhân chỉ phụ trách bán hàng, không rõ đặc tính của từng loại độc… Hơn nữa, mỗi loại độc đều đi kèm một viên giải dược. Có người tới mua độc, sẽ bán giải dược cùng một thể.”</p>
+<p>Nếu giải dược bị thất lạc, hoặc bị người khác uống mất, người trúng độc chỉ có thể chờ chết, không thuốc chữa.</p>
+<p>Đôi mắt Sở Ly lạnh xuống, giơ tay túm lấy cổ áo hắn:</p>
+<p>“Lẽ nào loại độc này chỉ có một bình? Giải dược cũng chỉ có duy nhất một viên?”</p>
+<p>Nam nhân trung niên lảo đảo ngã nhào xuống đất, giọng run rẩy:</p>
+<p>“Vâng, vâng…”</p>
+<p>“Khốn kiếp!”</p>
+<p>Sở Dực đã ăn giải dược, vậy Sở Ngạo Thiên chỉ có thể chờ chết sao?</p>
+<p>Nàng không tin!</p>
+<p>“Kinh Ảnh, đập nát nơi này cho ta, tất cả giải dược đều mang đi!”</p>
+<p>“Vâng.”</p>
+<p>Kinh Ảnh rút kiếm. Bốn tên ám vệ cũng lập tức động thủ, xách ghế ném mạnh, đập vỡ quầy hàng, lục lọi từng bình từng lọ bên trong.</p>
+<p>Ông chủ trung niên đau lòng nhìn cảnh tượng trước mắt:</p>
+<p>“Tiểu thư tha mạng… Tiểu nhân làm chút buôn bán nhỏ cũng chỉ để nuôi gia đình, xin người hạ thủ lưu tình!”</p>
+<p>“Buôn bán thứ lấy mạng người, trong mắt ngươi chỉ là buôn bán nhỏ?” Sở Ly cười lạnh, “Nếu đã vậy, ta tặng mỗi người trong nhà ngươi một bình.”</p>
+<p>“Không, không không! Không thể, không thể được!”</p>
+<p>“Đốt nơi này cho ta!”</p>
+<p>Ầm!</p>
+<p>Một ngọn lửa bùng vọt lên giữa không trung. Khói đặc cuồn cuộn, lửa lớn bừng bừng thiêu đốt trong tiệm, thu hút không ít người tới vây xem bàn tán.</p>
+<p>Một bên khác, Sở Ly đã mang theo một đống lớn giải dược trở về hoàng cung.</p>
+<p>Nàng chạy thẳng vào chủ điện.</p>
+<p>“Bát Hoàng huynh thế nào rồi?”</p>
+<p>Trước giường, Sở Đệ Trì và Tiêu Dạ Hành vẫn luôn canh giữ. Mấy cung nhân quỳ trên mặt đất, cúi đầu, đến thở mạnh cũng không dám.</p>
+<p>Sở Ngạo Thiên không hề chuyển biến tốt hơn.</p>
+<p>Đối với loại độc này, các ngự y đều bó tay vô phương.</p>
+<p>Trên gương mặt xanh tím kia, khóe môi khẽ mấp máy, hắn đã bắt đầu nói mê:</p>
+<p>“Cửu đệ, đệ đi chậm thôi… Ta gánh cho đệ, đệ đừng sợ nhé… Phụ hoàng… Phụ hoàng, người đừng phạt đệ ấy…”</p>
+<p>“Cửu đệ…”</p>
+<p>Mắt Sở Ly cay xè. Trước mặt mọi người, rốt cuộc nàng vẫn cố gắng khống chế được.</p>
+<p>Nhưng Sở Đệ Trì vừa ôm nàng vào lòng, vỗ nhẹ lên lưng, nàng liền giống như con đê vỡ bờ, hoàn toàn mất khống chế.</p>
+<p>Sao lại có thể như vậy!</p>
+<p>Nếu Bát Hoàng huynh xảy ra chuyện gì…</p>
+<p>“Đừng vội, người vẫn còn đây, nhất định sẽ có cách.”</p>
+<p>Sở Ly lau nước mắt, nghẹn ngào xoay người: “Đem toàn bộ giải dược lục soát được đưa cho Thái Y viện kiểm tra, lần lượt đối chứng.”</p>
+<p>Kinh Ảnh hiểu ý.</p>
+<p>Hắn xách một túi vải lớn đi tới cửa, nhìn sáu vị ngự y đang quỳ chờ, nói:</p>
+<p>“Trong đống bình bình lọ lọ này có thể có giải dược. Ai tìm ra được, giải độc cho Nhàn vương, Nhiếp Chính vương sẽ trọng thưởng.”</p>
+<p>Bốp!</p>
+<p>Hắn ném xuống đất, lập tức lộ ra chừng bảy, tám mươi chiếc bình lớn nhỏ.</p>
+<p>Sáu người không dám chậm trễ, vội vàng tay năm tay mười tìm kiếm.</p>
+<p>Trong đó, một vị ngự y cúi đầu, cầm sáu bảy chiếc bình nhỏ, làm bộ kiểm tra, nhanh chóng giấu một chiếc bình sứ nhỏ vào trong tay áo. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_259.html" class="btn">‹ Trước</a>
             <a href="chuong_261.html" class="btn">Sau ›</a>
         </div>
@@ -202,15 +210,11 @@ Trong đó, một vị ngự y cúi đầu, cầm sáu bảy chiếc bình nhỏ
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -222,11 +226,11 @@ Trong đó, một vị ngự y cúi đầu, cầm sáu bảy chiếc bình nhỏ
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

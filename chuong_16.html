@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 16</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,272 +62,281 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 16</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_15.html" class="btn">‹ Trước</a>
             <a href="chuong_17.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 16: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 16: [Nữ nhân đêm đó, rốt cuộc là ai]
-Sau khi hạ triều, Sở Đệ Trì ghé qua Chiêu Lan điện một chuyến, nhưng lại vồ hụt.
-Hỏi thái giám mới biết, Sở Ly đang ở Hoàng gia Học uyển.
-Vừa bước vào, hắn đã nhìn thấy dưới khung cửa sổ học thất, Sở Ly đang ngồi đó, cúi đầu cầm bút, chăm chú viết gì đó.
-Tần Mục Vũ chống một tay lên án thư, hơi cúi người xuống, trông như đang nửa ôm lấy Sở Ly vào lòng.
-Hai người vừa viết vừa trao đổi, ngươi một câu ta một câu.
-Tần Mục Vũ hơi cúi đầu.
-Sở Ly hơi ngẩng đầu.
-Dưới ánh nắng ấm áp, bóng dáng hai người như được phủ lên một tầng hào quang nhàn nhạt.
-Cảnh tượng ấy lọt vào mắt Sở Đệ Trì.
-Đôi mắt đen lạnh lẽo càng trở nên bình tĩnh đến đáng sợ.
-“ Mục Vũ, đi từ đây sẽ tới sườn núi, ngươi xem chỗ này...”
-Sở Ly chỉ lên bản đồ, từng bước phân tích.
-Có lẽ ánh mắt nào đó quá mức nóng bỏng, khí thế quá mức cường đại khiến người ta không thể xem nhẹ.
-Sở Ly ngẩng đầu.
-Liền nhìn thấy thân ảnh huyền bào đứng dưới hành lang phía xa.
-Đầu ngón tay khẽ run.
-Một giọt mực đậm rơi xuống giấy Tuyên Thành, loang ra thành một vệt đen.
-“ A Ly, ta đi ngay đây.”
-Tần Mục Vũ cuộn bản đồ lại.
-Lòng nóng như lửa đốt vì muốn cứu người, lập tức rời đi.
-Vừa đi chưa được bao lâu.
-Một bóng người cao lớn đã xuất hiện ngoài khung cửa.
-Thân hình cao ngất gần như che khuất toàn bộ ô cửa sổ.
-Thân thể nhỏ gầy của Sở Ly hoàn toàn chìm trong bóng tối.
-“ A Ly?”
-Thanh âm trầm thấp nghiền ngẫm hai chữ ấy.
-Không phân biệt được hỉ nộ.
-Sở Ly siết chặt đầu ngón tay, ngẩng đầu chất vấn:
-“Ngươi đã làm gì Song Nhi?”
-“Song Nhi là ai?”
-Sở Đệ Trì lười nhác nói:
-“À... cung nữ kia sao?”
-“Cửu hoàng tử đã tự tay đưa nàng cho bổn vương, hẳn nên đoán được kết cục của nàng.”
-“Ngươi!”
-Sở Ly đẩy bàn đứng dậy.
-“Ngươi giết nàng!”
-Sở Đệ Trì bóp lấy cằm nàng.
-“Bất cứ kẻ nào dám lừa gạt bổn vương đều sẽ không có kết cục tốt.”
-“Bao gồm cả ngươi.”
-Sở Ly vùng vẫy:
-“Nàng chỉ là một cung nữ!”
-“Cho dù có phạm sai lầm lớn đến đâu, ngươi thân phận tôn quý, cao cao tại thượng, sao có thể chấp nhặt với một cung nữ?”
-Sở Đệ Trì nhìn đôi mắt phẫn nộ của nàng, khẽ cười:
-“Nhưng rõ ràng...”
-“Chính ngươi đã hại chết nàng.”
-“Bất quá, Tiểu Cửu à, ngươi cũng đừng quá để tâm.”
-“Dù sao cũng chỉ là một mạng tiện dân, chết chưa đủ tiếc.”
-Sở Ly cứng đờ sống lưng.
-Trong mắt hắn không có lấy nửa phần nhiệt độ.
-Là nàng.
-Chính nàng đã tự tay đưa Song Nhi vào Nhiếp Chính Vương phủ...
-Sở Đệ Trì cười nói:
-“Giờ xem ra, trên tay ngươi cũng đã dính máu.”
-“Chúng ta là cùng một loại người rồi.”
-Không!
-Sở Ly nắm lấy cổ tay hắn, cố sức giãy giụa:
-“Ngươi sẽ gặp báo ứng!”
-Bàn tay đang giữ nàng mạnh mẽ hữu lực.
-Nhưng cũng là bàn tay đã nhuốm đầy máu tươi.
-Từng mạng người chất chồng.
-Lạnh lẽo như một con độc xà.
-Không có lấy một tia nhiệt độ mà con người nên có.
-“Ngươi hại Đại hoàng huynh cùng Đại hoàng tẩu.”
-“Ngươi hại chết Song Nhi.”
-Sở Đệ Trì chẳng có hứng thú tranh luận đúng sai với nàng.
-Hai ngón tay siết mạnh.
-Gần như muốn nghiền nát cằm nàng.
-“Người phụ nữ đêm đó... rốt cuộc là ai?”
-“Ta không biết!”
-“Nếu không biết, sao ngươi phải che giấu cho nàng?”
-“Nếu không biết, vì sao chiếc hương nang kia lại xuất hiện trong cung điện của ngươi?”
-“Hay là...”
-Ánh mắt sắc bén như chim ưng của hắn chậm rãi lướt dọc chiếc cổ thon dài của nàng.
-Từng tấc một.
-Dần dần đi xuống.
-“Là ngươi?”
-Hô hấp của Sở Ly chợt nghẹn lại.
-Trong khoảnh khắc.
-Tim nàng gần như ngừng đập.
-Một khi bại lộ.
-Nàng sẽ chết không có chỗ chôn.
-“Ngươi làm đủ điều ác, còn muốn hại chết ta!”
-“Âm mưu của ngươi sẽ không thành đâu!”
-Sở Ly liều mạng vùng vẫy.
-“Buông ta ra!”
-Trong lúc giằng co, y phục xô lệch.
-Chiếc cổ trắng ngần vốn đã thanh mảnh.
-Làn da nơi ngực lộ ra dưới lớp áo càng trắng đến chói mắt.
-Tựa như quả trứng vừa bóc vỏ.
-Ánh mắt Sở Đệ Trì chợt sắc lại.
-Bàn tay lập tức muốn luồn vào trong cổ áo.
-Đúng lúc ấy—
-“Rắc!”
-Miệng hổ trên tay hắn bị cắn mạnh.
-“Xuỵt!”
-Sở Ly lao tới.
-Tóm lấy tay hắn liền cắn.
-Nàng dùng hết sức lực toàn thân.
-Như muốn cắn đứt cả bàn tay hắn.
-Đôi mắt ngập tràn phẫn nộ hung hăng trừng hắn.
-Giống như một con thú nhỏ đang phát điên.
-Lông còn chưa mọc đủ.
-Nhưng hung dữ vô cùng.
-“Lá gan thật lớn!”
-Sở Đệ Trì thuận thế bóp cằm nàng.
-Ấn thẳng nàng xuống mặt bàn.
-Đúng lúc ấy.
-Ngoài kia vang lên tiếng bước chân.
-“Cửu hoàng tử...”
-Là Khương Thái phó.
-Ông ôm mấy quyển sách trong tay.
-Quyển trên cùng chính là 《Quần Thư Trị Yếu》.
-Đang định mang tới cho Cửu hoàng tử.
-Nhưng vừa bước vào học thất.
-Bên trong lại trống không.
-“Cửu hoàng tử?”
-Vừa rồi chẳng phải còn ở đây với Tần gia tiểu công tử sao?
-Sao chỉ mới đi lấy sách một lát đã chạy mất?
-Đúng là học sinh khiến ông đau đầu nhất.
-Ấy vậy mà Hoàng thượng lại sủng ái vô cùng.
-Khương Thái phó vuốt râu.
-Đi vòng qua tấm bình phong bên cạnh, tới bục giảng chỉnh lý thư tịch.
-Hoàn toàn không phát hiện phía sau bình phong đang giấu hai người.
-Sở Ly bị ép trong góc.
-Khóe môi còn vương máu.
-Nàng muốn chạy ra ngoài.
-Sở Đệ Trì nhấc chân.
-Đầu gối trực tiếp chặn giữa hai chân nàng.
-“Buông ta ra...”
-“Nói lớn hơn chút nữa đi, Tiểu Cửu.”
-Nam nhân lấy khăn tay từ trong tay áo ra.
-Quấn lên miệng vết thương nơi tay.
-Nụ cười lạnh trong mắt hắn độc địa như tẩm độc.
-“Gọi lớn lên.”
-“Để Khương Thái phó nhìn cho rõ.”
-“Xem bộ dạng ngươi dang hai chân trong học thất, quyến rũ hoàng thúc như thế nào.”
-Sở Ly vừa kinh hãi vừa phẫn nộ nhìn hắn.
-Hắn sao có thể nói ra những lời như vậy?
-Tên điên này!
-“Người cùng ngươi một đêm xuân tiêu là Song Nhi!”
-“Ngươi đã hại chết nàng.”
-“Còn muốn ta vô duyên vô cớ biến ra thêm một người nữa sao?”
-“Phải không?”
-Sở Đệ Trì khẽ cười.
-“Tiểu Cửu.”
-“Bổn vương đang cho ngươi cơ hội.”
-“Đừng để cơ hội đến rồi mà vô dụng.”
-“Lại bước theo vết xe đổ của Song Nhi.”
-Sở Ly siết chặt hai nắm tay.
-Gần như nghiến nát răng:
-“Người phụ nữ đó chính là Song Nhi!”
-“Miệng cứng thật!”
-Sở Đệ Trì buộc xong khăn trên tay.
-Bàn tay trực tiếp hạ xuống.
-“Đừng...”
-Sở Ly ngửa người ra sau.
-Không còn đường tránh né.
-Nhưng lại không dám kêu lớn.
-Sợ Khương Thái phó phát hiện.
-Nàng cong lưng.
-Nước mắt tủi nhục tràn nơi khóe mắt.
-“A...”
-Kiếm mi của Sở Đệ Trì đột nhiên nhíu chặt.
-Nhìn gương mặt đỏ bừng của nàng.
-Không có nửa phần khí huyết phương cương của nam nhân.
-Nhưng sau khi cưỡng ép dò xét.
-Hắn cũng đã có được đáp án.
-“Cùng là nam nhân.”
-“Ngươi kêu cái gì?”
-Sở Ly đỏ bừng mặt:
-“Hoàng thúc phong tư thiên nhân... ta... ta...”
-Đột ngột.
-Sở Đệ Trì thu tay lại.
-Đẩy nàng ra.
-Tựa như vừa chạm phải thứ gì dơ bẩn.
-“Phế vật!”
-“Tính tình nhu nhược, chẳng khác gì nữ nhân.”
-“Trong hoàn cảnh như thế này mà vẫn dám vọng tưởng đến bổn vương!”
-“Hoàng thượng sinh ra một đứa con như ngươi, đúng là nỗi nhục của Đại Sở!”
-Thân ảnh Sở Đệ Trì lóe lên.
-Trực tiếp vượt cửa sổ rời đi.
-Gương mặt lạnh lùng đến cực điểm.
-Lưng Sở Ly đã thấm đẫm mồ hôi lạnh.
-Đợi hắn đi xa.
-Nàng mới như bị rút cạn toàn bộ sức lực, ngồi phịch xuống đất.
-Nhiều năm nữ giả nam trang.
-Nàng đương nhiên có vô số kinh nghiệm ứng phó.
-Cũng chuẩn bị rất chu toàn.
-Nhưng nếu Sở Đệ Trì không tìm được người phụ nữ đêm đó.
-Hắn tuyệt đối sẽ không dễ dàng bỏ cuộc.
-Vốn nàng định chờ đến năm mười tám tuổi.
-Đủ tuổi sẽ được phong phủ, xuất cung sống riêng.
-Nhưng hiện tại xem ra...
-Nàng không thể tiếp tục ở lại trong cung nữa.
-Phải tìm cơ hội thích hợp.
-Nhanh chóng dọn ra ngoài cung.
-Rời xa hoàng quyền cùng thị phi.
-Có lẽ như vậy, Nhiếp Chính Vương sẽ không tiếp tục để mắt tới nàng nữa.
-Ngoài Hoàng gia Học uyển.
-Trọng Phong thấy nam nhân bước ra liền nhanh chóng tiến lên:
-“Chủ tử.”
-Đôi mắt Sở Đệ Trì lạnh như mực.
-Hàn ý thấu xương.
-Đột nhiên hắn quay đầu lại:
-“Đi an bài vài nam nhân.”
-“Lập tức đưa vào Chiêu Lan điện.” Ẩn bớt</p>
+            <p>Chương 16: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 16: [Nữ nhân đêm đó, rốt cuộc là ai]</p>
+<p>Sau khi hạ triều, Sở Đệ Trì ghé qua Chiêu Lan điện một chuyến, nhưng lại vồ hụt.</p>
+<p>Hỏi thái giám mới biết, Sở Ly đang ở Hoàng gia Học uyển.</p>
+<p>Vừa bước vào, hắn đã nhìn thấy dưới khung cửa sổ học thất, Sở Ly đang ngồi đó, cúi đầu cầm bút, chăm chú viết gì đó.</p>
+<p>Tần Mục Vũ chống một tay lên án thư, hơi cúi người xuống, trông như đang nửa ôm lấy Sở Ly vào lòng.</p>
+<p>Hai người vừa viết vừa trao đổi, ngươi một câu ta một câu.</p>
+<p>Tần Mục Vũ hơi cúi đầu.</p>
+<p>Sở Ly hơi ngẩng đầu.</p>
+<p>Dưới ánh nắng ấm áp, bóng dáng hai người như được phủ lên một tầng hào quang nhàn nhạt.</p>
+<p>Cảnh tượng ấy lọt vào mắt Sở Đệ Trì.</p>
+<p>Đôi mắt đen lạnh lẽo càng trở nên bình tĩnh đến đáng sợ.</p>
+<p>“ Mục Vũ, đi từ đây sẽ tới sườn núi, ngươi xem chỗ này...”</p>
+<p>Sở Ly chỉ lên bản đồ, từng bước phân tích.</p>
+<p>Có lẽ ánh mắt nào đó quá mức nóng bỏng, khí thế quá mức cường đại khiến người ta không thể xem nhẹ.</p>
+<p>Sở Ly ngẩng đầu.</p>
+<p>Liền nhìn thấy thân ảnh huyền bào đứng dưới hành lang phía xa.</p>
+<p>Đầu ngón tay khẽ run.</p>
+<p>Một giọt mực đậm rơi xuống giấy Tuyên Thành, loang ra thành một vệt đen.</p>
+<p>“ A Ly, ta đi ngay đây.”</p>
+<p>Tần Mục Vũ cuộn bản đồ lại.</p>
+<p>Lòng nóng như lửa đốt vì muốn cứu người, lập tức rời đi.</p>
+<p>Vừa đi chưa được bao lâu.</p>
+<p>Một bóng người cao lớn đã xuất hiện ngoài khung cửa.</p>
+<p>Thân hình cao ngất gần như che khuất toàn bộ ô cửa sổ.</p>
+<p>Thân thể nhỏ gầy của Sở Ly hoàn toàn chìm trong bóng tối.</p>
+<p>“ A Ly?”</p>
+<p>Thanh âm trầm thấp nghiền ngẫm hai chữ ấy.</p>
+<p>Không phân biệt được hỉ nộ.</p>
+<p>Sở Ly siết chặt đầu ngón tay, ngẩng đầu chất vấn:</p>
+<p>“Ngươi đã làm gì Song Nhi?”</p>
+<p>“Song Nhi là ai?”</p>
+<p>Sở Đệ Trì lười nhác nói:</p>
+<p>“À... cung nữ kia sao?”</p>
+<p>“Cửu hoàng tử đã tự tay đưa nàng cho bổn vương, hẳn nên đoán được kết cục của nàng.”</p>
+<p>“Ngươi!”</p>
+<p>Sở Ly đẩy bàn đứng dậy.</p>
+<p>“Ngươi giết nàng!”</p>
+<p>Sở Đệ Trì bóp lấy cằm nàng.</p>
+<p>“Bất cứ kẻ nào dám lừa gạt bổn vương đều sẽ không có kết cục tốt.”</p>
+<p>“Bao gồm cả ngươi.”</p>
+<p>Sở Ly vùng vẫy:</p>
+<p>“Nàng chỉ là một cung nữ!”</p>
+<p>“Cho dù có phạm sai lầm lớn đến đâu, ngươi thân phận tôn quý, cao cao tại thượng, sao có thể chấp nhặt với một cung nữ?”</p>
+<p>Sở Đệ Trì nhìn đôi mắt phẫn nộ của nàng, khẽ cười:</p>
+<p>“Nhưng rõ ràng...”</p>
+<p>“Chính ngươi đã hại chết nàng.”</p>
+<p>“Bất quá, Tiểu Cửu à, ngươi cũng đừng quá để tâm.”</p>
+<p>“Dù sao cũng chỉ là một mạng tiện dân, chết chưa đủ tiếc.”</p>
+<p>Sở Ly cứng đờ sống lưng.</p>
+<p>Trong mắt hắn không có lấy nửa phần nhiệt độ.</p>
+<p>Là nàng.</p>
+<p>Chính nàng đã tự tay đưa Song Nhi vào Nhiếp Chính Vương phủ...</p>
+<p>Sở Đệ Trì cười nói:</p>
+<p>“Giờ xem ra, trên tay ngươi cũng đã dính máu.”</p>
+<p>“Chúng ta là cùng một loại người rồi.”</p>
+<p>Không!</p>
+<p>Sở Ly nắm lấy cổ tay hắn, cố sức giãy giụa:</p>
+<p>“Ngươi sẽ gặp báo ứng!”</p>
+<p>Bàn tay đang giữ nàng mạnh mẽ hữu lực.</p>
+<p>Nhưng cũng là bàn tay đã nhuốm đầy máu tươi.</p>
+<p>Từng mạng người chất chồng.</p>
+<p>Lạnh lẽo như một con độc xà.</p>
+<p>Không có lấy một tia nhiệt độ mà con người nên có.</p>
+<p>“Ngươi hại Đại hoàng huynh cùng Đại hoàng tẩu.”</p>
+<p>“Ngươi hại chết Song Nhi.”</p>
+<p>Sở Đệ Trì chẳng có hứng thú tranh luận đúng sai với nàng.</p>
+<p>Hai ngón tay siết mạnh.</p>
+<p>Gần như muốn nghiền nát cằm nàng.</p>
+<p>“Người phụ nữ đêm đó... rốt cuộc là ai?”</p>
+<p>“Ta không biết!”</p>
+<p>“Nếu không biết, sao ngươi phải che giấu cho nàng?”</p>
+<p>“Nếu không biết, vì sao chiếc hương nang kia lại xuất hiện trong cung điện của ngươi?”</p>
+<p>“Hay là...”</p>
+<p>Ánh mắt sắc bén như chim ưng của hắn chậm rãi lướt dọc chiếc cổ thon dài của nàng.</p>
+<p>Từng tấc một.</p>
+<p>Dần dần đi xuống.</p>
+<p>“Là ngươi?”</p>
+<p>Hô hấp của Sở Ly chợt nghẹn lại.</p>
+<p>Trong khoảnh khắc.</p>
+<p>Tim nàng gần như ngừng đập.</p>
+<p>Một khi bại lộ.</p>
+<p>Nàng sẽ chết không có chỗ chôn.</p>
+<p>“Ngươi làm đủ điều ác, còn muốn hại chết ta!”</p>
+<p>“Âm mưu của ngươi sẽ không thành đâu!”</p>
+<p>Sở Ly liều mạng vùng vẫy.</p>
+<p>“Buông ta ra!”</p>
+<p>Trong lúc giằng co, y phục xô lệch.</p>
+<p>Chiếc cổ trắng ngần vốn đã thanh mảnh.</p>
+<p>Làn da nơi ngực lộ ra dưới lớp áo càng trắng đến chói mắt.</p>
+<p>Tựa như quả trứng vừa bóc vỏ.</p>
+<p>Ánh mắt Sở Đệ Trì chợt sắc lại.</p>
+<p>Bàn tay lập tức muốn luồn vào trong cổ áo.</p>
+<p>Đúng lúc ấy—</p>
+<p>“Rắc!”</p>
+<p>Miệng hổ trên tay hắn bị cắn mạnh.</p>
+<p>“Xuỵt!”</p>
+<p>Sở Ly lao tới.</p>
+<p>Tóm lấy tay hắn liền cắn.</p>
+<p>Nàng dùng hết sức lực toàn thân.</p>
+<p>Như muốn cắn đứt cả bàn tay hắn.</p>
+<p>Đôi mắt ngập tràn phẫn nộ hung hăng trừng hắn.</p>
+<p>Giống như một con thú nhỏ đang phát điên.</p>
+<p>Lông còn chưa mọc đủ.</p>
+<p>Nhưng hung dữ vô cùng.</p>
+<p>“Lá gan thật lớn!”</p>
+<p>Sở Đệ Trì thuận thế bóp cằm nàng.</p>
+<p>Ấn thẳng nàng xuống mặt bàn.</p>
+<p>Đúng lúc ấy.</p>
+<p>Ngoài kia vang lên tiếng bước chân.</p>
+<p>“Cửu hoàng tử...”</p>
+<p>Là Khương Thái phó.</p>
+<p>Ông ôm mấy quyển sách trong tay.</p>
+<p>Quyển trên cùng chính là 《Quần Thư Trị Yếu》.</p>
+<p>Đang định mang tới cho Cửu hoàng tử.</p>
+<p>Nhưng vừa bước vào học thất.</p>
+<p>Bên trong lại trống không.</p>
+<p>“Cửu hoàng tử?”</p>
+<p>Vừa rồi chẳng phải còn ở đây với Tần gia tiểu công tử sao?</p>
+<p>Sao chỉ mới đi lấy sách một lát đã chạy mất?</p>
+<p>Đúng là học sinh khiến ông đau đầu nhất.</p>
+<p>Ấy vậy mà Hoàng thượng lại sủng ái vô cùng.</p>
+<p>Khương Thái phó vuốt râu.</p>
+<p>Đi vòng qua tấm bình phong bên cạnh, tới bục giảng chỉnh lý thư tịch.</p>
+<p>Hoàn toàn không phát hiện phía sau bình phong đang giấu hai người.</p>
+<p>Sở Ly bị ép trong góc.</p>
+<p>Khóe môi còn vương máu.</p>
+<p>Nàng muốn chạy ra ngoài.</p>
+<p>Sở Đệ Trì nhấc chân.</p>
+<p>Đầu gối trực tiếp chặn giữa hai chân nàng.</p>
+<p>“Buông ta ra...”</p>
+<p>“Nói lớn hơn chút nữa đi, Tiểu Cửu.”</p>
+<p>Nam nhân lấy khăn tay từ trong tay áo ra.</p>
+<p>Quấn lên miệng vết thương nơi tay.</p>
+<p>Nụ cười lạnh trong mắt hắn độc địa như tẩm độc.</p>
+<p>“Gọi lớn lên.”</p>
+<p>“Để Khương Thái phó nhìn cho rõ.”</p>
+<p>“Xem bộ dạng ngươi dang hai chân trong học thất, quyến rũ hoàng thúc như thế nào.”</p>
+<p>Sở Ly vừa kinh hãi vừa phẫn nộ nhìn hắn.</p>
+<p>Hắn sao có thể nói ra những lời như vậy?</p>
+<p>Tên điên này!</p>
+<p>“Người cùng ngươi một đêm xuân tiêu là Song Nhi!”</p>
+<p>“Ngươi đã hại chết nàng.”</p>
+<p>“Còn muốn ta vô duyên vô cớ biến ra thêm một người nữa sao?”</p>
+<p>“Phải không?”</p>
+<p>Sở Đệ Trì khẽ cười.</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Bổn vương đang cho ngươi cơ hội.”</p>
+<p>“Đừng để cơ hội đến rồi mà vô dụng.”</p>
+<p>“Lại bước theo vết xe đổ của Song Nhi.”</p>
+<p>Sở Ly siết chặt hai nắm tay.</p>
+<p>Gần như nghiến nát răng:</p>
+<p>“Người phụ nữ đó chính là Song Nhi!”</p>
+<p>“Miệng cứng thật!”</p>
+<p>Sở Đệ Trì buộc xong khăn trên tay.</p>
+<p>Bàn tay trực tiếp hạ xuống.</p>
+<p>“Đừng...”</p>
+<p>Sở Ly ngửa người ra sau.</p>
+<p>Không còn đường tránh né.</p>
+<p>Nhưng lại không dám kêu lớn.</p>
+<p>Sợ Khương Thái phó phát hiện.</p>
+<p>Nàng cong lưng.</p>
+<p>Nước mắt tủi nhục tràn nơi khóe mắt.</p>
+<p>“A...”</p>
+<p>Kiếm mi của Sở Đệ Trì đột nhiên nhíu chặt.</p>
+<p>Nhìn gương mặt đỏ bừng của nàng.</p>
+<p>Không có nửa phần khí huyết phương cương của nam nhân.</p>
+<p>Nhưng sau khi cưỡng ép dò xét.</p>
+<p>Hắn cũng đã có được đáp án.</p>
+<p>“Cùng là nam nhân.”</p>
+<p>“Ngươi kêu cái gì?”</p>
+<p>Sở Ly đỏ bừng mặt:</p>
+<p>“Hoàng thúc phong tư thiên nhân... ta... ta...”</p>
+<p>Đột ngột.</p>
+<p>Sở Đệ Trì thu tay lại.</p>
+<p>Đẩy nàng ra.</p>
+<p>Tựa như vừa chạm phải thứ gì dơ bẩn.</p>
+<p>“Phế vật!”</p>
+<p>“Tính tình nhu nhược, chẳng khác gì nữ nhân.”</p>
+<p>“Trong hoàn cảnh như thế này mà vẫn dám vọng tưởng đến bổn vương!”</p>
+<p>“Hoàng thượng sinh ra một đứa con như ngươi, đúng là nỗi nhục của Đại Sở!”</p>
+<p>Thân ảnh Sở Đệ Trì lóe lên.</p>
+<p>Trực tiếp vượt cửa sổ rời đi.</p>
+<p>Gương mặt lạnh lùng đến cực điểm.</p>
+<p>Lưng Sở Ly đã thấm đẫm mồ hôi lạnh.</p>
+<p>Đợi hắn đi xa.</p>
+<p>Nàng mới như bị rút cạn toàn bộ sức lực, ngồi phịch xuống đất.</p>
+<p>Nhiều năm nữ giả nam trang.</p>
+<p>Nàng đương nhiên có vô số kinh nghiệm ứng phó.</p>
+<p>Cũng chuẩn bị rất chu toàn.</p>
+<p>Nhưng nếu Sở Đệ Trì không tìm được người phụ nữ đêm đó.</p>
+<p>Hắn tuyệt đối sẽ không dễ dàng bỏ cuộc.</p>
+<p>Vốn nàng định chờ đến năm mười tám tuổi.</p>
+<p>Đủ tuổi sẽ được phong phủ, xuất cung sống riêng.</p>
+<p>Nhưng hiện tại xem ra...</p>
+<p>Nàng không thể tiếp tục ở lại trong cung nữa.</p>
+<p>Phải tìm cơ hội thích hợp.</p>
+<p>Nhanh chóng dọn ra ngoài cung.</p>
+<p>Rời xa hoàng quyền cùng thị phi.</p>
+<p>Có lẽ như vậy, Nhiếp Chính Vương sẽ không tiếp tục để mắt tới nàng nữa.</p>
+<p>Ngoài Hoàng gia Học uyển.</p>
+<p>Trọng Phong thấy nam nhân bước ra liền nhanh chóng tiến lên:</p>
+<p>“Chủ tử.”</p>
+<p>Đôi mắt Sở Đệ Trì lạnh như mực.</p>
+<p>Hàn ý thấu xương.</p>
+<p>Đột nhiên hắn quay đầu lại:</p>
+<p>“Đi an bài vài nam nhân.”</p>
+<p>“Lập tức đưa vào Chiêu Lan điện.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_15.html" class="btn">‹ Trước</a>
             <a href="chuong_17.html" class="btn">Sau ›</a>
         </div>
@@ -336,15 +344,11 @@ Hàn ý thấu xương.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -356,11 +360,11 @@ Hàn ý thấu xương.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

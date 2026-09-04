@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 268</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,266 +62,199 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 268</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_267.html" class="btn">‹ Trước</a>
             <a href="chuong_269.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 268: Trước mặt mẫu phi, nhớ nói tốt về ta nhiều một chút
-
-Lại trở về Ngọc Đường cung, cảm giác như đã cách một đời.
-Mẫu phi vẫn khỏe chứ?
-Có nhớ nàng không?
-Có phải ngày nào cũng khóc?
-Từ trước đến nay, mẫu phi vốn không phải người kiên cường.
-Sở Ly chần chừ đứng ngoài điện, trong lòng bỗng sinh ra một nỗi e dè kiểu “càng gần quê cũ càng thêm khiếp sợ”.
-“Vào đi.” Sở Đệ Trì khẽ vỗ lưng nàng, “Ôn phi nương nương rất nhớ nàng.”
-“Là ta bất hiếu.”
-Không thể ở bên cạnh phụng dưỡng dưới gối, còn khiến người đầu bạc tiễn kẻ đầu xanh, khiến mẫu phi vì nàng mà nhọc lòng.
-Từ nay về sau, nàng nhất định sẽ hiếu kính mẫu phi thật tốt.
-Sở Ly hít sâu một hơi, điều chỉnh tâm trạng, ngẩng đầu ưỡn ngực bước vào, vừa đi đến cửa đã nghe thấy bên trong vang lên một tiếng hô đầy khí thế:
-“Hồ rồi!”
-Ôn phi bật dậy, đẩy đổ bàn mạt chược.
-“Bạc đâu, đưa bạc đây!”
-Ba vị phi tần nhìn bài của bà, sắc mặt đều có chút khó coi.
-“Hôm nay vận may của ta kém quá.”
-“Ta đã thua mất ba lượng bạc rồi.”
-“Ôn phi tỷ tỷ chẳng chịu nhường bọn muội chút nào.”
-Ôn phi vừa thu bạc vừa cười nói:
-“Sáng nay chim khách cứ ríu rít ngoài cửa sổ, hôm nay nhất định sẽ có chuyện tốt xảy ra.”
-“Mẫu phi.”
-Ai gọi bà?
-Bà đang cầm một xấp ngân phiếu, vô tình quay đầu nhìn lại, đôi mắt lập tức trợn tròn.
-Cả Ngọc Đường cung đều sững sờ.
-Trong ánh mắt nhớ nhung nồng đậm của Sở Ly còn xen lẫn chút biểu cảm phức tạp:
-“Mẫu phi, thời gian con… à không, thời gian ta không ở đây, hình như người béo lên nhiều rồi.”
-Choang!
-Ôn phi run lên dữ dội, xấp ngân phiếu trong tay rơi đầy đất.
-“Ngươi… ngươi là…”
-“Mẫu phi, ta là Sở Ly!”
-“Ly nhi?”
-Ôn phi không dám tin, loạng choạng lùi tới bảy tám bước rồi mới lao đến trước mặt nàng, run rẩy sờ mặt, sờ cổ, sờ tay nàng.
-“Ngươi… ngươi chưa chết… con của ta!”
-“Mẫu phi!”
-Hai mẹ con ôm nhau khóc nức nở.
-Các phi tần cùng cung nhân đều kinh ngạc tột độ.
-Cửu hoàng tử là nữ tử?
-Thế nhưng, khi nhìn thấy Nhiếp Chính Vương đứng ở bên cạnh, lại còn mặc y phục cùng tông màu, cùng loại gấm với Cửu hoàng tử, tất cả đều lặng lẽ nuốt lời vào bụng.
-Mặc kệ Cửu hoàng tử có phải nữ tử hay không, cho dù nàng có leo lên trời, cũng chẳng ai dám chỉ trỏ.
-Thứ nhất, vì Nhiếp Chính Vương.
-Thứ hai, nay Nhàn Vương đã đăng cơ tân đế, với mối quan hệ giữa hai người, Nhàn Vương chấp chính hay cả Đại Sở để Sở Ly định đoạt… thì có gì khác nhau?
-
-Đành than một tiếng.
-
-Thế không bằng người, chỉ có thể ngậm miệng.
-
-Đợi cảm xúc của hai mẹ con bình ổn hơn, Sở Đệ Trì mới tiến lên.
-
-“Mẫu phi, đừng đứng nói chuyện nữa.”
-
-Ôn phi đột nhiên ngẩng đầu, vừa kinh ngạc vừa được sủng ái mà lo sợ:
-
-“Ngươi gọi ta là gì?”
-
-Sở Ly trừng hắn một cái.
-
-“Mẫu phi, đừng để ý đến hắn.”
-
-“Các con… các con…”
-
-“Đúng vậy, chúng con muốn trở thành người một nhà, mong mẫu phi thành toàn.” Sở Đệ Trì nắm lấy tay nàng. 
-“Ta sẽ dùng tất cả những gì mình có để đối tốt với nàng, không để nàng bị tổn thương, cũng không để bất cứ ai bắt nạt nàng. Chỉ cần mẫu phi gật đầu, ta nhất định không phụ kỳ vọng.”
-
-Ôn phi há hốc miệng.
-
-Chỉ trong một ngày ngắn ngủi, bà liên tiếp chịu hai cú chấn động.
-Nhiếp Chính Vương vậy mà lại thích Ly nhi!
-
-Hai người ở bên nhau từ khi nào?
-
-Sở Ly khẽ cắn môi.
-
-Đây là lần đầu tiên nói chuyện như vậy trước mặt trưởng bối, tất nhiên có chút ngượng ngùng.
-
-“Hoàng thúc, hiện giờ ta chưa có tâm tư ấy.”
-
-“Vì sao?”
-
-“Cục diện vẫn chưa ổn định, trong có nội hoạn, ngoài có ngoại ưu, hơn nữa Tần Mục Vũ vẫn luôn trấn thủ chiến khu, biết bao tướng sĩ còn đang đối mặt chiến sự. Tạm thời ta không thể yên lòng để nghĩ đến chuyện này.”
-
-Sở Đệ Trì siết chặt bàn tay.
-
-Thì ra là đang lo cho Tần Thiếu tướng quân!
-
-Xa đến vậy mà vẫn còn nhớ hắn!
-
-Siết tay!
-
-Hắn siết tay!
-
-Suýt nữa cắn nát cả răng hàm sau!
-
-Nhưng trên mặt vẫn ôn hòa đến cực điểm:
-
-“Đừng lo, những chuyện ấy sớm muộn cũng sẽ giải quyết. Đợi mọi chuyện lắng xuống, chúng ta thành thân, được không?”
-
-Sở Ly ngượng ngùng.
-
-“Cứ để sau rồi tính, kế hoạch vốn chẳng bao giờ theo kịp biến hóa.”
-“Còn có thể có biến hóa gì nữa?”
-
-Chẳng lẽ nàng sẽ thay lòng?
-
-“Thôi được rồi, ta còn muốn ở lại dùng bữa trưa với mẫu phi, ngài đi làm việc của mình đi.”
-
-Hắn không thể ở lại ăn cùng sao?
-
-“Chúng ta là mẹ con, còn có chuyện riêng muốn tâm sự.”
-Cũng phải.
-
-Trước khi đi, Sở Đệ Trì không quên ghé sát tai Sở Ly, thấp giọng dặn dò:
-
-“Trước mặt mẫu phi, nhớ nói tốt về ta nhiều một chút. Cứ bảo bình thường ta vừa xuống bếp, vừa làm việc nhà, lại còn quét dọn, trải giường, đối với nàng thì nói gì nghe nấy, bảo sao làm vậy, tuyệt không hai lời.”
-
-“…”
-
-Ôn phi đã kinh ngạc đến mức không nói nên lời, kéo Sở Ly trò chuyện suốt cả một buổi chiều.
-
-Sở Ly đại khái kể lại những chuyện đã xảy ra trong thời gian qua.
-Mãi đến tối, Ôn phi mới hoàn hồn, quyết định ngày mai lên Thiên Linh tự lễ Phật, cảm tạ ông trời phù hộ.
-
-Về chuyện hôn sự giữa nàng và Nhiếp Chính Vương, bà hoàn toàn ủng hộ ý kiến của Sở Ly.
-
-Sở Ly muốn gả thì gả, không muốn gả thì thôi, bà tuyệt đối không can thiệp.
-
-Trong lòng Sở Ly vô cùng cảm động.
-
-Được ở cạnh người thân, cảm giác thuộc về một mái nhà đã lấp đầy trái tim nàng.
-
-Sở Ly vừa rời đi, Ôn phi kích động đến mức không ngủ được, lập tức quay sang tìm Hân phi.
-
-Bên này, Hân phi cũng đã từ chỗ Sở Ngạo Thiên biết được chuyện của Sở Ly.
-
-Hai người gặp mặt.
-
-Hân phi vui mừng nắm lấy tay bà.
-
-“Ôn muội muội, muội sinh được một nữ nhi thật tốt, còn nâng đỡ con trai ta. Ta thật sự cảm kích muội! Tối nay, ta đã xin chỉ dụ của Hoàng thượng, phong cả hai chúng ta làm Thái hậu. Ngày mai, Lễ bộ sẽ mang tôn hiệu đã soạn sẵn đến để chúng ta lựa chọn.”
-
-Có thể làm Thái hậu hay không, với Ôn phi thật ra cũng chẳng quá quan trọng.
-
-“Hân tỷ tỷ, ta có chuyện muốn nói với tỷ… Nào, ngồi xuống.”
-
-Nói đến chuyện hôn sự.
-
-Hân phi gật gù:
-
-“Đó là chuyện tốt mà!”
-
-“Nhưng Ly nhi không chịu gật đầu, con bé không đồng ý.”
-
-“Việc đó có gì khó? Bảo Hoàng thượng ban hôn cho bọn họ chẳng phải xong rồi sao? Cái gọi là nuôi con ngàn ngày, dùng con một lúc, lúc này không dùng thì còn đợi đến bao giờ?”
-
-“Hân tỷ tỷ cao kiến!”
-
-“Hahaha!”
-
-Hai người nắm tay nhau cười lớn.
-
-Sở Hoàng đã liệt, con trai con gái đều thành tài, con rể lại là Nhiếp Chính Vương quyền khuynh triều dã, bản thân lại được phong Thái hậu, có bạc tiêu mãi không hết, huống hồ hai người còn trẻ, mới ngoài ba mươi tuổi…
-
-Cuộc sống này quả thực đẹp đến không còn gì để nói!
-
-Đẹp quá rồi!
-
-Đây mới là cuộc sống mà một người phụ nữ thành công nên được hưởng.
-
-Bên này.
-
-Sở Ly ở cùng Ôn phi suốt một ngày, chuẩn bị trở về San Hô Thủy Tạ, không ngờ lại bị Sở Ngạo Thiên gọi sang.
-
-Trước đó không lâu, Sở Ngạo Thiên trúng độc hôn mê, nay đăng cơ, thân thể vừa khá hơn một chút, nhất quyết kéo nàng lại, muốn nghe tường tận những chuyện xảy ra trong mấy tháng qua.
-
-Thế là, những gì đã kể với Ôn phi, nàng lại kể một lần nữa cho Sở Ngạo Thiên.
-
-Nói liền một mạch hai canh giờ rưỡi, khóe miệng khô đến nổi cả bọt.
-Nghe xong câu chuyện đầy sóng gió, cận kề sinh tử ấy, Sở Ngạo Thiên vừa lo lắng, thần sắc lại vô cùng phức tạp.
-
-“Cửu… Cửu…”
-
-Miệng há ra, hồi lâu vẫn không thốt nổi lời nào, như bị ai bóp nghẹn cổ họng.
-
-“Cửu…”
-
-Mấy lần muốn nói rồi lại thôi.
-
-Sở Ly nhận ra sự khác thường.
-
-“Sao vậy?”
-
-Sở Ngạo Thiên há miệng, không phát nổi tiếng.
-“…”
-Sở Ly lo lắng:
-“Có chuyện gì sao? Bát hoàng huynh với ta chẳng lẽ còn khách sáo?”
-
-Sở Ngạo Thiên nhìn gương mặt trẻ trung xinh đẹp của nàng, nàng còn nhỏ hơn hắn mười lăm ngày. Có mấy lời mắc nghẹn nơi cổ họng, mấy lần muốn nói rồi lại nuốt trở vào.
-
-Cuối cùng, dưới sự động viên của Sở Ly, mặt hắn đỏ bừng, nghẹn đến mức suýt thở không nổi, mới khó khăn bật ra được hai chữ:
-
-“Thẩm… thẩm.”</p>
+            <p>Chương 268: Trước mặt mẫu phi, nhớ nói tốt về ta nhiều một chút</p>
+<p>Lại trở về Ngọc Đường cung, cảm giác như đã cách một đời.</p>
+<p>Mẫu phi vẫn khỏe chứ?</p>
+<p>Có nhớ nàng không?</p>
+<p>Có phải ngày nào cũng khóc?</p>
+<p>Từ trước đến nay, mẫu phi vốn không phải người kiên cường.</p>
+<p>Sở Ly chần chừ đứng ngoài điện, trong lòng bỗng sinh ra một nỗi e dè kiểu “càng gần quê cũ càng thêm khiếp sợ”.</p>
+<p>“Vào đi.” Sở Đệ Trì khẽ vỗ lưng nàng, “Ôn phi nương nương rất nhớ nàng.”</p>
+<p>“Là ta bất hiếu.”</p>
+<p>Không thể ở bên cạnh phụng dưỡng dưới gối, còn khiến người đầu bạc tiễn kẻ đầu xanh, khiến mẫu phi vì nàng mà nhọc lòng.</p>
+<p>Từ nay về sau, nàng nhất định sẽ hiếu kính mẫu phi thật tốt.</p>
+<p>Sở Ly hít sâu một hơi, điều chỉnh tâm trạng, ngẩng đầu ưỡn ngực bước vào, vừa đi đến cửa đã nghe thấy bên trong vang lên một tiếng hô đầy khí thế:</p>
+<p>“Hồ rồi!”</p>
+<p>Ôn phi bật dậy, đẩy đổ bàn mạt chược.</p>
+<p>“Bạc đâu, đưa bạc đây!”</p>
+<p>Ba vị phi tần nhìn bài của bà, sắc mặt đều có chút khó coi.</p>
+<p>“Hôm nay vận may của ta kém quá.”</p>
+<p>“Ta đã thua mất ba lượng bạc rồi.”</p>
+<p>“Ôn phi tỷ tỷ chẳng chịu nhường bọn muội chút nào.”</p>
+<p>Ôn phi vừa thu bạc vừa cười nói:</p>
+<p>“Sáng nay chim khách cứ ríu rít ngoài cửa sổ, hôm nay nhất định sẽ có chuyện tốt xảy ra.”</p>
+<p>“Mẫu phi.”</p>
+<p>Ai gọi bà?</p>
+<p>Bà đang cầm một xấp ngân phiếu, vô tình quay đầu nhìn lại, đôi mắt lập tức trợn tròn.</p>
+<p>Cả Ngọc Đường cung đều sững sờ.</p>
+<p>Trong ánh mắt nhớ nhung nồng đậm của Sở Ly còn xen lẫn chút biểu cảm phức tạp:</p>
+<p>“Mẫu phi, thời gian con… à không, thời gian ta không ở đây, hình như người béo lên nhiều rồi.”</p>
+<p>Choang!</p>
+<p>Ôn phi run lên dữ dội, xấp ngân phiếu trong tay rơi đầy đất.</p>
+<p>“Ngươi… ngươi là…”</p>
+<p>“Mẫu phi, ta là Sở Ly!”</p>
+<p>“Ly nhi?”</p>
+<p>Ôn phi không dám tin, loạng choạng lùi tới bảy tám bước rồi mới lao đến trước mặt nàng, run rẩy sờ mặt, sờ cổ, sờ tay nàng.</p>
+<p>“Ngươi… ngươi chưa chết… con của ta!”</p>
+<p>“Mẫu phi!”</p>
+<p>Hai mẹ con ôm nhau khóc nức nở.</p>
+<p>Các phi tần cùng cung nhân đều kinh ngạc tột độ.</p>
+<p>Cửu hoàng tử là nữ tử?</p>
+<p>Thế nhưng, khi nhìn thấy Nhiếp Chính Vương đứng ở bên cạnh, lại còn mặc y phục cùng tông màu, cùng loại gấm với Cửu hoàng tử, tất cả đều lặng lẽ nuốt lời vào bụng.</p>
+<p>Mặc kệ Cửu hoàng tử có phải nữ tử hay không, cho dù nàng có leo lên trời, cũng chẳng ai dám chỉ trỏ.</p>
+<p>Thứ nhất, vì Nhiếp Chính Vương.</p>
+<p>Thứ hai, nay Nhàn Vương đã đăng cơ tân đế, với mối quan hệ giữa hai người, Nhàn Vương chấp chính hay cả Đại Sở để Sở Ly định đoạt… thì có gì khác nhau?</p>
+<p>Đành than một tiếng.</p>
+<p>Thế không bằng người, chỉ có thể ngậm miệng.</p>
+<p>Đợi cảm xúc của hai mẹ con bình ổn hơn, Sở Đệ Trì mới tiến lên.</p>
+<p>“Mẫu phi, đừng đứng nói chuyện nữa.”</p>
+<p>Ôn phi đột nhiên ngẩng đầu, vừa kinh ngạc vừa được sủng ái mà lo sợ:</p>
+<p>“Ngươi gọi ta là gì?”</p>
+<p>Sở Ly trừng hắn một cái.</p>
+<p>“Mẫu phi, đừng để ý đến hắn.”</p>
+<p>“Các con… các con…”</p>
+<p>“Đúng vậy, chúng con muốn trở thành người một nhà, mong mẫu phi thành toàn.” Sở Đệ Trì nắm lấy tay nàng.</p>
+<p>“Ta sẽ dùng tất cả những gì mình có để đối tốt với nàng, không để nàng bị tổn thương, cũng không để bất cứ ai bắt nạt nàng. Chỉ cần mẫu phi gật đầu, ta nhất định không phụ kỳ vọng.”</p>
+<p>Ôn phi há hốc miệng.</p>
+<p>Chỉ trong một ngày ngắn ngủi, bà liên tiếp chịu hai cú chấn động.</p>
+<p>Nhiếp Chính Vương vậy mà lại thích Ly nhi!</p>
+<p>Hai người ở bên nhau từ khi nào?</p>
+<p>Sở Ly khẽ cắn môi.</p>
+<p>Đây là lần đầu tiên nói chuyện như vậy trước mặt trưởng bối, tất nhiên có chút ngượng ngùng.</p>
+<p>“Hoàng thúc, hiện giờ ta chưa có tâm tư ấy.”</p>
+<p>“Vì sao?”</p>
+<p>“Cục diện vẫn chưa ổn định, trong có nội hoạn, ngoài có ngoại ưu, hơn nữa Tần Mục Vũ vẫn luôn trấn thủ chiến khu, biết bao tướng sĩ còn đang đối mặt chiến sự. Tạm thời ta không thể yên lòng để nghĩ đến chuyện này.”</p>
+<p>Sở Đệ Trì siết chặt bàn tay.</p>
+<p>Thì ra là đang lo cho Tần Thiếu tướng quân!</p>
+<p>Xa đến vậy mà vẫn còn nhớ hắn!</p>
+<p>Siết tay!</p>
+<p>Hắn siết tay!</p>
+<p>Suýt nữa cắn nát cả răng hàm sau!</p>
+<p>Nhưng trên mặt vẫn ôn hòa đến cực điểm:</p>
+<p>“Đừng lo, những chuyện ấy sớm muộn cũng sẽ giải quyết. Đợi mọi chuyện lắng xuống, chúng ta thành thân, được không?”</p>
+<p>Sở Ly ngượng ngùng.</p>
+<p>“Cứ để sau rồi tính, kế hoạch vốn chẳng bao giờ theo kịp biến hóa.”</p>
+<p>“Còn có thể có biến hóa gì nữa?”</p>
+<p>Chẳng lẽ nàng sẽ thay lòng?</p>
+<p>“Thôi được rồi, ta còn muốn ở lại dùng bữa trưa với mẫu phi, ngài đi làm việc của mình đi.”</p>
+<p>Hắn không thể ở lại ăn cùng sao?</p>
+<p>“Chúng ta là mẹ con, còn có chuyện riêng muốn tâm sự.”</p>
+<p>Cũng phải.</p>
+<p>Trước khi đi, Sở Đệ Trì không quên ghé sát tai Sở Ly, thấp giọng dặn dò:</p>
+<p>“Trước mặt mẫu phi, nhớ nói tốt về ta nhiều một chút. Cứ bảo bình thường ta vừa xuống bếp, vừa làm việc nhà, lại còn quét dọn, trải giường, đối với nàng thì nói gì nghe nấy, bảo sao làm vậy, tuyệt không hai lời.”</p>
+<p>“…”</p>
+<p>Ôn phi đã kinh ngạc đến mức không nói nên lời, kéo Sở Ly trò chuyện suốt cả một buổi chiều.</p>
+<p>Sở Ly đại khái kể lại những chuyện đã xảy ra trong thời gian qua.</p>
+<p>Mãi đến tối, Ôn phi mới hoàn hồn, quyết định ngày mai lên Thiên Linh tự lễ Phật, cảm tạ ông trời phù hộ.</p>
+<p>Về chuyện hôn sự giữa nàng và Nhiếp Chính Vương, bà hoàn toàn ủng hộ ý kiến của Sở Ly.</p>
+<p>Sở Ly muốn gả thì gả, không muốn gả thì thôi, bà tuyệt đối không can thiệp.</p>
+<p>Trong lòng Sở Ly vô cùng cảm động.</p>
+<p>Được ở cạnh người thân, cảm giác thuộc về một mái nhà đã lấp đầy trái tim nàng.</p>
+<p>Sở Ly vừa rời đi, Ôn phi kích động đến mức không ngủ được, lập tức quay sang tìm Hân phi.</p>
+<p>Bên này, Hân phi cũng đã từ chỗ Sở Ngạo Thiên biết được chuyện của Sở Ly.</p>
+<p>Hai người gặp mặt.</p>
+<p>Hân phi vui mừng nắm lấy tay bà.</p>
+<p>“Ôn muội muội, muội sinh được một nữ nhi thật tốt, còn nâng đỡ con trai ta. Ta thật sự cảm kích muội! Tối nay, ta đã xin chỉ dụ của Hoàng thượng, phong cả hai chúng ta làm Thái hậu. Ngày mai, Lễ bộ sẽ mang tôn hiệu đã soạn sẵn đến để chúng ta lựa chọn.”</p>
+<p>Có thể làm Thái hậu hay không, với Ôn phi thật ra cũng chẳng quá quan trọng.</p>
+<p>“Hân tỷ tỷ, ta có chuyện muốn nói với tỷ… Nào, ngồi xuống.”</p>
+<p>Nói đến chuyện hôn sự.</p>
+<p>Hân phi gật gù:</p>
+<p>“Đó là chuyện tốt mà!”</p>
+<p>“Nhưng Ly nhi không chịu gật đầu, con bé không đồng ý.”</p>
+<p>“Việc đó có gì khó? Bảo Hoàng thượng ban hôn cho bọn họ chẳng phải xong rồi sao? Cái gọi là nuôi con ngàn ngày, dùng con một lúc, lúc này không dùng thì còn đợi đến bao giờ?”</p>
+<p>“Hân tỷ tỷ cao kiến!”</p>
+<p>“Hahaha!”</p>
+<p>Hai người nắm tay nhau cười lớn.</p>
+<p>Sở Hoàng đã liệt, con trai con gái đều thành tài, con rể lại là Nhiếp Chính Vương quyền khuynh triều dã, bản thân lại được phong Thái hậu, có bạc tiêu mãi không hết, huống hồ hai người còn trẻ, mới ngoài ba mươi tuổi…</p>
+<p>Cuộc sống này quả thực đẹp đến không còn gì để nói!</p>
+<p>Đẹp quá rồi!</p>
+<p>Đây mới là cuộc sống mà một người phụ nữ thành công nên được hưởng.</p>
+<p>Bên này.</p>
+<p>Sở Ly ở cùng Ôn phi suốt một ngày, chuẩn bị trở về San Hô Thủy Tạ, không ngờ lại bị Sở Ngạo Thiên gọi sang.</p>
+<p>Trước đó không lâu, Sở Ngạo Thiên trúng độc hôn mê, nay đăng cơ, thân thể vừa khá hơn một chút, nhất quyết kéo nàng lại, muốn nghe tường tận những chuyện xảy ra trong mấy tháng qua.</p>
+<p>Thế là, những gì đã kể với Ôn phi, nàng lại kể một lần nữa cho Sở Ngạo Thiên.</p>
+<p>Nói liền một mạch hai canh giờ rưỡi, khóe miệng khô đến nổi cả bọt.</p>
+<p>Nghe xong câu chuyện đầy sóng gió, cận kề sinh tử ấy, Sở Ngạo Thiên vừa lo lắng, thần sắc lại vô cùng phức tạp.</p>
+<p>“Cửu… Cửu…”</p>
+<p>Miệng há ra, hồi lâu vẫn không thốt nổi lời nào, như bị ai bóp nghẹn cổ họng.</p>
+<p>“Cửu…”</p>
+<p>Mấy lần muốn nói rồi lại thôi.</p>
+<p>Sở Ly nhận ra sự khác thường.</p>
+<p>“Sao vậy?”</p>
+<p>Sở Ngạo Thiên há miệng, không phát nổi tiếng.</p>
+<p>“…”</p>
+<p>Sở Ly lo lắng:</p>
+<p>“Có chuyện gì sao? Bát hoàng huynh với ta chẳng lẽ còn khách sáo?”</p>
+<p>Sở Ngạo Thiên nhìn gương mặt trẻ trung xinh đẹp của nàng, nàng còn nhỏ hơn hắn mười lăm ngày. Có mấy lời mắc nghẹn nơi cổ họng, mấy lần muốn nói rồi lại nuốt trở vào.</p>
+<p>Cuối cùng, dưới sự động viên của Sở Ly, mặt hắn đỏ bừng, nghẹn đến mức suýt thở không nổi, mới khó khăn bật ra được hai chữ:</p>
+<p>“Thẩm… thẩm.”</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_267.html" class="btn">‹ Trước</a>
             <a href="chuong_269.html" class="btn">Sau ›</a>
         </div>
@@ -330,15 +262,11 @@ Cuối cùng, dưới sự động viên của Sở Ly, mặt hắn đỏ bừng
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -350,11 +278,11 @@ Cuối cùng, dưới sự động viên của Sở Ly, mặt hắn đỏ bừng
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

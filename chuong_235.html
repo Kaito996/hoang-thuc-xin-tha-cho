@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 235</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,184 +62,193 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 235</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_234.html" class="btn">‹ Trước</a>
             <a href="chuong_236.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 235: Ta muốn giết ngươi
-“Ta chỉ là một nữ nhân?”
-Sở Ly nguy hiểm nheo đôi mắt lại.
-“Hôm nay, chính nữ nhân mà ngươi khinh thường này sẽ dạy cho ngươi một bài học!”
-Chát!
-Nàng ném mạnh tập hồ sơ xuống, chộp lấy kinh đường mộc trên bàn, liên tiếp gõ ba tiếng.
-Chát! Chát! Chát!
-Âm thanh thanh thúy vang vọng khắp đại đường, tất cả quan binh đều quay đầu nhìn sang.
-“Các ngươi đều nghe cho rõ.”
-Nàng cúi mắt nhìn xuống phía dưới.
-“Các ngươi đã theo Lý Tri phủ làm sai dịch nhiều năm, tay chân hắn có sạch sẽ hay không, các ngươi rõ hơn ai hết. Hiện giờ, Nhiếp Chính Vương đã có lệnh, chiếc ô sa của hắn nhất định không giữ được nữa. Đây chính là cơ hội tốt để các ngươi biểu lộ trung thành, lập công kiến nghiệp!”
-Thần sắc đám quan binh lập tức nghiêm lại, theo bản năng nhìn nhau.
-“Ý của Tạ tiểu thư là…”
-“Nhiếp Chính Vương mấy ngày nay ở thành Giang Nam trừng gian diệt ác, chuyện đã truyền khắp toàn thành…”
-“Tạ tiểu thư muốn chúng ta tố cáo Lý đại nhân?”
-Tri phủ Lý quát lớn:
-“Bọn chúng đều là người của ta, ăn bổng lộc do ta phát. Ngươi ở ngay phủ Tri phủ của ta mà dám mua chuộc người của ta? Hừ!”
-Cũng không tự cân nhắc xem mình có bao nhiêu phân lượng!
-Sở Ly lại giơ kinh đường mộc lên.
-“Ai là người đầu tiên đứng ra, ta thưởng hai trăm lượng!”
-Chát!
-Độc Nhãn Long sải bước tiến lên, ngay tại chỗ lấy ra hai tờ ngân phiếu mệnh giá lớn, giơ cao lên.
-Một tên quan binh lập tức quỳ sụp xuống phía trước.
-“Tạ tiểu thư, tiểu nhân muốn tố cáo Lý Tri phủ! 
-Năm kia, lão nhân họ Lâm ở thôn Lâm Gia không nộp nổi thuế lương, hắn liền cưỡng bức nữ nhi của lão!”
-“Chuyện này thiên chân vạn xác, người có thể lập tức phái người đến thôn Lâm Gia điều tra!”
-Toàn thân Tri phủ Lý chấn động, giận dữ không gì sánh nổi trừng tên quan binh kia.
-“Vương Hằng! Ngươi! Ngươi lại dám…”
-Phản bội hắn!
-Vương Hằng cúi đầu.
-Xin lỗi, đại nhân!
-Thứ nhất, Nhiếp Chính Vương vẫn còn ở Giang Nam, chiếc ô sa của Lý đại nhân khẳng định
-không giữ nổi nữa.
-Thứ hai, ai có thể cự tuyệt sự mê hoặc của hai trăm lượng bạc?
-Đám tiểu tốt như bọn họ ngày ngày làm trâu làm ngựa, một tháng cũng chỉ được ba lượng tiền công. Hai trăm lượng này đủ để hắn không ăn không uống làm suốt sáu năm.
-Những quan binh khác thấy có lợi lộc, lập tức thi nhau xông lên.
-“Tạ tiểu thư, tiểu nhân biết chuyện Lý đại nhân cấu kết với phú thương Giang Nam Trương
-viên ngoại!”
-“Tạ tiểu thư, năm năm trước khi Giang Nam tu sửa công trình thủy lợi, Lý đại nhân ít nhất đã
-tham ô hơn vạn lượng!”
-“Tạ tiểu thư…”
-Đôi mắt Tri phủ Lý trợn tròn như mắt cá vàng.
-“Các… các ngươi… phản rồi!”
-Hắn là Tri phủ!
-Hắn mới là vị quan lớn nhất thành Giang Nam!
-Loại chuyện này, một khi đã xé ra một lỗ hổng thì chẳng khác nào đê vỡ, có muốn ngăn cũng
-không ngăn nổi.
-Sở Ly giơ tay chỉ.
-“Ngươi.”
-“Hả?”
-Tên sư gia đứng bên cạnh run cầm cập.
-“Tiểu nhân không tham ô! Tiểu nhân trong sạch!”
-“Ngươi thu thập toàn bộ chứng cứ mà những người này trình báo, dâng lên Quận thủ. À phải
-rồi, nếu hắn nói Nhiếp Chính Vương qua cầu rút ván, vậy thì trước hết cho ta khám nhà hắn, sau đó bắt người.”
-Sư gia sợ đến mức liên tục lau mồ hôi.
-Còn tưởng muốn chỉnh hắn…
-Dọa chết rồi.
-Hắn run rẩy cầm bút lên.
-Ghi.
-Hắn lập tức ghi ngay.
-“Lũ phản đồ các ngươi! Bao năm nay bản quan nuôi các ngươi uổng công rồi! Một lũ cỏ đầu tường!”
-Tri phủ Lý tức đỏ cả mắt.
-Mà tất cả những chuyện này, đều là do con tiện phụ tên Tạ Ly kia gây ra!
-“Con đĩ này, ta muốn giết ngươi!”
-Hắn rút bội kiếm bên hông một tên nha sai, lao thẳng tới.
-“Ta giết ngươi!”
-“Tạ tiểu thư!”
-Bát Đại Kim Cương đồng loạt biến sắc, hoàn toàn không ngờ Tri phủ Lý lại đột nhiên nổi sát
-tâm. Muốn lao tới cứu thì đã không kịp nữa.
-Đao quang kiếm ảnh.
-Hàn mang chợt hiện.
-Sở Ly một tay chống lên bàn, mượn lực nghiêng người nhảy lên, một cú quét ngang trực tiếp
-đá văng hắn ra ngoài.
-Ầm!
-Bát Đại Kim Cương đồng loạt thở phào nhẹ nhõm.
-Ngoài đại đường, một thân ảnh mặc trường bào màu mực khẽ phất tay, tán đi nội lực đang tụ
-nơi lòng bàn tay.
-Tiêu Dạ Hành bật cười.
-“Nhìn bộ dạng căng thẳng của ngươi kìa. Nàng ở đây chỉ toàn bắt nạt người khác, ai có thể
-bắt nạt được nàng?”
-Sắc mặt Sở Đệ Trì vẫn nhàn nhạt.
-“Ngươi không hiểu.”
-“Ta không hiểu? Sao ta lại không hiểu? Hai chúng ta lớn lên cùng nhau từ nhỏ. Vừa rồi rõ
-ràng ngươi căng thẳng, hơn nữa…”
-“Ngươi độc thân.”
-“Ta độc thân cũng đâu cản trở ta hiểu ngươi.”
-“Ngươi độc thân.”
-“Ta…”
-“Ngươi độc thân.”
-Tiêu Dạ Hành: “…”
-Không biết nói chuyện thì đừng nói nữa.
-Làm như sợ người khác không biết hắn có cái miệng vậy.
-Tiêu Dạ Hành tức tối phất tay áo bỏ đi, lười nhìn thêm.
-Hắn độc thân, đương nhiên không thể thấu hiểu cảm giác luôn canh cánh vì một người, lo
-nàng ăn có ngon không, ngủ có ấm không, có nằm mộng hay không, càng đừng nói đến tình
-huống vừa rồi.
-Yêu đối phương như yêu chính bản thân mình.
-Trân trọng đối phương như trân trọng chính bản thân mình.
-Trong đại đường.
-Tri phủ Lý bị hai tên quan binh khống chế, trong miệng vẫn không cam lòng chửi rủa không
-ngừng. Nhưng với từng ấy tội danh chồng chất, hắn khó thoát khỏi cái chết.
-Hắn chắc chắn phải chết!
-Xử lý xong việc này, Sở Ly lập tức cảm thấy thư thái hơn nhiều, cũng có thể an tâm trở về Đế
-đô.
-“Tám vị huynh đài, dọc đường này đa tạ các vị đã đáng tin cậy giúp đỡ. Tiễn quân ngàn dặm,
-cuối cùng cũng phải từ biệt. Xin cáo từ tại đây.”
-Bát Đại Kim Cương vô cùng luyến tiếc Sở Ly…
-...cùng những thỏi vàng của nàng.
-Rời khỏi nàng rồi, biết đi đâu mới tìm được công việc tốt như thế?
-Tám người lưu luyến vô cùng.
-“Tạ tiểu thư, sau này nếu có việc gì, xin cứ việc sai bảo huynh đệ tám người chúng ta.”
-“Chúng ta nguyện lấy người làm đầu!”
-“Người chính là tri giao, chí hữu của chúng ta!”
-Người trong giang hồ trời sinh phóng khoáng, coi trọng nhất chính là hai chữ nghĩa khí.
-Sở Ly có chút cảm động.
-“Vậy sau này tìm các vị, có phải trả tiền không?”
-“…”
-“Có điều cổ nhân nói rất đúng, thân huynh đệ cũng phải minh toán sổ sách.”
-Được.
-Hiểu rồi. Ẩn bớt</p>
+            <p>Chương 235: Ta muốn giết ngươi</p>
+<p>“Ta chỉ là một nữ nhân?”</p>
+<p>Sở Ly nguy hiểm nheo đôi mắt lại.</p>
+<p>“Hôm nay, chính nữ nhân mà ngươi khinh thường này sẽ dạy cho ngươi một bài học!”</p>
+<p>Chát!</p>
+<p>Nàng ném mạnh tập hồ sơ xuống, chộp lấy kinh đường mộc trên bàn, liên tiếp gõ ba tiếng.</p>
+<p>Chát! Chát! Chát!</p>
+<p>Âm thanh thanh thúy vang vọng khắp đại đường, tất cả quan binh đều quay đầu nhìn sang.</p>
+<p>“Các ngươi đều nghe cho rõ.”</p>
+<p>Nàng cúi mắt nhìn xuống phía dưới.</p>
+<p>“Các ngươi đã theo Lý Tri phủ làm sai dịch nhiều năm, tay chân hắn có sạch sẽ hay không, các ngươi rõ hơn ai hết. Hiện giờ, Nhiếp Chính Vương đã có lệnh, chiếc ô sa của hắn nhất định không giữ được nữa. Đây chính là cơ hội tốt để các ngươi biểu lộ trung thành, lập công kiến nghiệp!”</p>
+<p>Thần sắc đám quan binh lập tức nghiêm lại, theo bản năng nhìn nhau.</p>
+<p>“Ý của Tạ tiểu thư là…”</p>
+<p>“Nhiếp Chính Vương mấy ngày nay ở thành Giang Nam trừng gian diệt ác, chuyện đã truyền khắp toàn thành…”</p>
+<p>“Tạ tiểu thư muốn chúng ta tố cáo Lý đại nhân?”</p>
+<p>Tri phủ Lý quát lớn:</p>
+<p>“Bọn chúng đều là người của ta, ăn bổng lộc do ta phát. Ngươi ở ngay phủ Tri phủ của ta mà dám mua chuộc người của ta? Hừ!”</p>
+<p>Cũng không tự cân nhắc xem mình có bao nhiêu phân lượng!</p>
+<p>Sở Ly lại giơ kinh đường mộc lên.</p>
+<p>“Ai là người đầu tiên đứng ra, ta thưởng hai trăm lượng!”</p>
+<p>Chát!</p>
+<p>Độc Nhãn Long sải bước tiến lên, ngay tại chỗ lấy ra hai tờ ngân phiếu mệnh giá lớn, giơ cao lên.</p>
+<p>Một tên quan binh lập tức quỳ sụp xuống phía trước.</p>
+<p>“Tạ tiểu thư, tiểu nhân muốn tố cáo Lý Tri phủ!</p>
+<p>Năm kia, lão nhân họ Lâm ở thôn Lâm Gia không nộp nổi thuế lương, hắn liền cưỡng bức nữ nhi của lão!”</p>
+<p>“Chuyện này thiên chân vạn xác, người có thể lập tức phái người đến thôn Lâm Gia điều tra!”</p>
+<p>Toàn thân Tri phủ Lý chấn động, giận dữ không gì sánh nổi trừng tên quan binh kia.</p>
+<p>“Vương Hằng! Ngươi! Ngươi lại dám…”</p>
+<p>Phản bội hắn!</p>
+<p>Vương Hằng cúi đầu.</p>
+<p>Xin lỗi, đại nhân!</p>
+<p>Thứ nhất, Nhiếp Chính Vương vẫn còn ở Giang Nam, chiếc ô sa của Lý đại nhân khẳng định</p>
+<p>không giữ nổi nữa.</p>
+<p>Thứ hai, ai có thể cự tuyệt sự mê hoặc của hai trăm lượng bạc?</p>
+<p>Đám tiểu tốt như bọn họ ngày ngày làm trâu làm ngựa, một tháng cũng chỉ được ba lượng tiền công. Hai trăm lượng này đủ để hắn không ăn không uống làm suốt sáu năm.</p>
+<p>Những quan binh khác thấy có lợi lộc, lập tức thi nhau xông lên.</p>
+<p>“Tạ tiểu thư, tiểu nhân biết chuyện Lý đại nhân cấu kết với phú thương Giang Nam Trương</p>
+<p>viên ngoại!”</p>
+<p>“Tạ tiểu thư, năm năm trước khi Giang Nam tu sửa công trình thủy lợi, Lý đại nhân ít nhất đã</p>
+<p>tham ô hơn vạn lượng!”</p>
+<p>“Tạ tiểu thư…”</p>
+<p>Đôi mắt Tri phủ Lý trợn tròn như mắt cá vàng.</p>
+<p>“Các… các ngươi… phản rồi!”</p>
+<p>Hắn là Tri phủ!</p>
+<p>Hắn mới là vị quan lớn nhất thành Giang Nam!</p>
+<p>Loại chuyện này, một khi đã xé ra một lỗ hổng thì chẳng khác nào đê vỡ, có muốn ngăn cũng</p>
+<p>không ngăn nổi.</p>
+<p>Sở Ly giơ tay chỉ.</p>
+<p>“Ngươi.”</p>
+<p>“Hả?”</p>
+<p>Tên sư gia đứng bên cạnh run cầm cập.</p>
+<p>“Tiểu nhân không tham ô! Tiểu nhân trong sạch!”</p>
+<p>“Ngươi thu thập toàn bộ chứng cứ mà những người này trình báo, dâng lên Quận thủ. À phải</p>
+<p>rồi, nếu hắn nói Nhiếp Chính Vương qua cầu rút ván, vậy thì trước hết cho ta khám nhà hắn, sau đó bắt người.”</p>
+<p>Sư gia sợ đến mức liên tục lau mồ hôi.</p>
+<p>Còn tưởng muốn chỉnh hắn…</p>
+<p>Dọa chết rồi.</p>
+<p>Hắn run rẩy cầm bút lên.</p>
+<p>Ghi.</p>
+<p>Hắn lập tức ghi ngay.</p>
+<p>“Lũ phản đồ các ngươi! Bao năm nay bản quan nuôi các ngươi uổng công rồi! Một lũ cỏ đầu tường!”</p>
+<p>Tri phủ Lý tức đỏ cả mắt.</p>
+<p>Mà tất cả những chuyện này, đều là do con tiện phụ tên Tạ Ly kia gây ra!</p>
+<p>“Con đĩ này, ta muốn giết ngươi!”</p>
+<p>Hắn rút bội kiếm bên hông một tên nha sai, lao thẳng tới.</p>
+<p>“Ta giết ngươi!”</p>
+<p>“Tạ tiểu thư!”</p>
+<p>Bát Đại Kim Cương đồng loạt biến sắc, hoàn toàn không ngờ Tri phủ Lý lại đột nhiên nổi sát</p>
+<p>tâm. Muốn lao tới cứu thì đã không kịp nữa.</p>
+<p>Đao quang kiếm ảnh.</p>
+<p>Hàn mang chợt hiện.</p>
+<p>Sở Ly một tay chống lên bàn, mượn lực nghiêng người nhảy lên, một cú quét ngang trực tiếp</p>
+<p>đá văng hắn ra ngoài.</p>
+<p>Ầm!</p>
+<p>Bát Đại Kim Cương đồng loạt thở phào nhẹ nhõm.</p>
+<p>Ngoài đại đường, một thân ảnh mặc trường bào màu mực khẽ phất tay, tán đi nội lực đang tụ</p>
+<p>nơi lòng bàn tay.</p>
+<p>Tiêu Dạ Hành bật cười.</p>
+<p>“Nhìn bộ dạng căng thẳng của ngươi kìa. Nàng ở đây chỉ toàn bắt nạt người khác, ai có thể</p>
+<p>bắt nạt được nàng?”</p>
+<p>Sắc mặt Sở Đệ Trì vẫn nhàn nhạt.</p>
+<p>“Ngươi không hiểu.”</p>
+<p>“Ta không hiểu? Sao ta lại không hiểu? Hai chúng ta lớn lên cùng nhau từ nhỏ. Vừa rồi rõ</p>
+<p>ràng ngươi căng thẳng, hơn nữa…”</p>
+<p>“Ngươi độc thân.”</p>
+<p>“Ta độc thân cũng đâu cản trở ta hiểu ngươi.”</p>
+<p>“Ngươi độc thân.”</p>
+<p>“Ta…”</p>
+<p>“Ngươi độc thân.”</p>
+<p>Tiêu Dạ Hành: “…”</p>
+<p>Không biết nói chuyện thì đừng nói nữa.</p>
+<p>Làm như sợ người khác không biết hắn có cái miệng vậy.</p>
+<p>Tiêu Dạ Hành tức tối phất tay áo bỏ đi, lười nhìn thêm.</p>
+<p>Hắn độc thân, đương nhiên không thể thấu hiểu cảm giác luôn canh cánh vì một người, lo</p>
+<p>nàng ăn có ngon không, ngủ có ấm không, có nằm mộng hay không, càng đừng nói đến tình</p>
+<p>huống vừa rồi.</p>
+<p>Yêu đối phương như yêu chính bản thân mình.</p>
+<p>Trân trọng đối phương như trân trọng chính bản thân mình.</p>
+<p>Trong đại đường.</p>
+<p>Tri phủ Lý bị hai tên quan binh khống chế, trong miệng vẫn không cam lòng chửi rủa không</p>
+<p>ngừng. Nhưng với từng ấy tội danh chồng chất, hắn khó thoát khỏi cái chết.</p>
+<p>Hắn chắc chắn phải chết!</p>
+<p>Xử lý xong việc này, Sở Ly lập tức cảm thấy thư thái hơn nhiều, cũng có thể an tâm trở về Đế</p>
+<p>đô.</p>
+<p>“Tám vị huynh đài, dọc đường này đa tạ các vị đã đáng tin cậy giúp đỡ. Tiễn quân ngàn dặm,</p>
+<p>cuối cùng cũng phải từ biệt. Xin cáo từ tại đây.”</p>
+<p>Bát Đại Kim Cương vô cùng luyến tiếc Sở Ly…</p>
+<p>...cùng những thỏi vàng của nàng.</p>
+<p>Rời khỏi nàng rồi, biết đi đâu mới tìm được công việc tốt như thế?</p>
+<p>Tám người lưu luyến vô cùng.</p>
+<p>“Tạ tiểu thư, sau này nếu có việc gì, xin cứ việc sai bảo huynh đệ tám người chúng ta.”</p>
+<p>“Chúng ta nguyện lấy người làm đầu!”</p>
+<p>“Người chính là tri giao, chí hữu của chúng ta!”</p>
+<p>Người trong giang hồ trời sinh phóng khoáng, coi trọng nhất chính là hai chữ nghĩa khí.</p>
+<p>Sở Ly có chút cảm động.</p>
+<p>“Vậy sau này tìm các vị, có phải trả tiền không?”</p>
+<p>“…”</p>
+<p>“Có điều cổ nhân nói rất đúng, thân huynh đệ cũng phải minh toán sổ sách.”</p>
+<p>Được.</p>
+<p>Hiểu rồi. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_234.html" class="btn">‹ Trước</a>
             <a href="chuong_236.html" class="btn">Sau ›</a>
         </div>
@@ -248,15 +256,11 @@ Hiểu rồi. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -268,11 +272,11 @@ Hiểu rồi. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

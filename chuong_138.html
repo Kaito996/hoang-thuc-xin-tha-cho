@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 138</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,198 +62,207 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 138</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_137.html" class="btn">‹ Trước</a>
             <a href="chuong_139.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 138: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 138: Ừm, ngoan ngoãn ở yên đó
-“Hả?”
-Chết ở ngoài… hình như không ổn lắm?
-“Vậy người đến Nam Cương làm gì?”
-“Bản vương trấn thủ Nam Cương gần mười năm, nơi này tự nhiên cũng thân thuộc như về nhà.”
-Sở Ly trợn tròn mắt.
-Nói như vậy… hắn thật sự mặc kệ nàng?
-Để mặc nàng và Tần Mục Vũ ở lại đây?
-Nam Cương đã ở ngay trước mắt, lãnh thổ Đại Sở chỉ cách trong gang tấc, chỉ cần đi thêm nửa khắc là có thể đặt chân lên quê hương, kết quả hắn lại bảo… không quản nàng?
-Vành mắt nàng đỏ hoe:
-“Hoàng thúc…”
-“Nuốt vào.”
-Miệng nàng xẹp xuống, nghẹn nơi cổ họng, đôi mắt mờ sương long lanh ngấn nước:
-“Nu… nuốt rồi.”
-Nàng đâu biết rằng, trên chiến trường hai quân giằng co, nơi vạn quân đóng giữ, giữa mảnh đất ngập tràn mùi máu tanh này, người nam nhân kia đang phải gắng gượng đè nén một cơn xúc động lớn đến nhường nào.
-Sóng ngầm trong đáy mắt hắn gần như cuồn cuộn thành sóng dữ.
-Nàng còn sống!
-Vẫn còn sống!
-Tuy sống có hơi thảm…
-Nhưng ít nhất chưa chết.
-Người nam nhân cao ngạo ngồi trên lưng chiến mã, tư thái tôn quý, không ai dám mạo phạm, từ trên cao nhìn xuống thiếu niên chống gậy. Vốn đã không cao, giờ lại què một chân, nom chẳng khác gì một ông lão nhỏ, còn sụt sịt mũi, bộ dạng đáng thương đến cực điểm.
-Sở Đệ Trì siết chặt dây cương, cưỡng ép đè nén sóng ngầm trong mắt, lạnh giọng:
-“Bản vương hỏi ngươi.”
-“Hôm ấy trong cung xảy ra hỏa hoạn, có nằm ngoài dự liệu của ngươi không?”
-Sở Ly cũng không biết phải trả lời thế nào. Ban đầu nàng vốn đã chuẩn bị bỏ trốn, ngay cả tài sản cũng lén chuyển đi rồi, chỉ không ngờ Đại hoàng tử lại tìm tới liều mạng với nàng.
-Nàng chỉ có thể đẩy nhanh kế hoạch.
-“Có phải Sở Dạ Ly đưa ngươi đi không?”
-Giọng nam nhân run nhè nhẹ như băng mỏng, bàn tay khẽ siết lại, cất giấu sự căng thẳng mà chẳng ai hay biết.
-Hắn muốn chính tai nghe nàng trả lời.
-Lại sợ câu trả lời của nàng.
-Hãy nói với hắn.
-Nàng là bị Sở Dạ Ly đưa đi.
-Nàng chưa từng có ý định rời xa hắn.
-Sở Ly hé môi, vốn định nói thật, nhưng vừa nhìn thấy đôi mắt trong trẻo mà áp bức của nam nhân, tựa như có một lưỡi đao vô hình đang kề sát sau gáy.
-Theo trực giác của nữ nhân, lời đến bên môi lại đổi thành:
-“Là hắn đưa ta đi.”
-Sở Đệ Trì khẽ thở ra, buông lỏng bàn tay, thần sắc giữa hai hàng mày cũng giãn ra thấy rõ.
-“Ừm, ngoan ngoãn ở yên đó.”
-Hắn thúc ngựa tiến lên, Kinh Ảnh và Trọng Phong theo sau, hướng về chiếc bàn đàm phán ở chính giữa.
-“Đi!”
-Một tên lính Nam Man mặt sẹo đẩy Sở Ly một cái.
-Chân nàng còn đang bị thương, nhất thời đứng không vững, ngã nhào xuống đất đầy chật vật.
-“Ngươi đẩy ta làm gì? Ta không biết tự đi sao?”
-Tên lính mặt sẹo nói:
-“Sắp đàm phán rồi, ngươi không nên ở đây. Cho ngươi ra nhìn cố thổ một chút đã là đủ rồi, nên biết đủ đi.”
-Sở Ly cắn chặt môi dưới, cố nhịn cơn đau nơi bàn chân, chống gậy khó nhọc bò dậy.
-“Mau lên!”
-Thúc cái gì mà thúc!
-Nàng đi là được chứ gì!
-Hai quân giằng co.
-Chính giữa là nơi đàm phán.
-Mỗi bên cử bốn người, những người còn lại lui ra mấy trượng.
-Sở Ly đứng cách đó hơn hai mươi trượng, nhìn thấy Sở Đệ Trì dẫn theo Kinh Ảnh, Trọng Phong cùng một vị phó tướng ngồi bên bàn đàm phán.
-Phía Nam Man là Vệ tướng quân cùng ba người nàng không quen biết.
-Hai bên đã đông đủ.
-“Đại Sở Nhiếp Chính Vương, lâu rồi không gặp.”
-Vệ Bàng Trung ngồi xuống, hai tay đan vào nhau, cười âm trầm nhìn nam nhân đối diện.
-Dù có hóa thành tro, ông ta cũng nhận ra người này.
-Tám năm trước, khi biết người được cử đến trấn thủ Nam Cương chỉ là Sở Đệ Trì mười bốn tuổi, ông ta suýt cười rụng răng, chê cười Đại Sở không còn người, lại phái một đứa trẻ còn chưa mọc đủ lông đến ứng chiến.
-Ông ta từng buông lời:
-Trong vòng nửa năm, nhất định hạ được Nam Cương.
-Kết quả, tám năm trôi qua, Nam Cương vẫn vững như bàn thạch, còn ông ta thì chẳng cười nổi nữa.
-Cho đến hôm nay.
-Trong tay nắm con tin, nắm quyền chủ động, ông ta mới lộ ra nụ cười đã lâu không thấy.
-Sở Đệ Trì tựa lưng vào ghế, dang rộng hai tay đặt lên tay vịn, thân cao chín thước, khí thế áp đảo cả một khoảng trời.
-“Kẻ bại trận muốn gặp bản vương làm gì? Chẳng lẽ muốn treo đầu lên xà nhà, lấy dùi đâm đùi, ghi nhớ nỗi nhục để tự khích lệ mình?”
-Sắc mặt Vệ Bàng Trung trầm xuống:
-“Bàn về binh pháp, ta không bằng ngươi. Nhưng bây giờ chẳng phải chính ngươi chủ động đến đây, đề nghị đàm phán, muốn cầu hòa sao?”
-“Cầu hòa?”
-Cầu?
-Đôi mắt đen của Sở Đệ Trì khẽ nheo lại.
-“Vệ tướng quân có phải hiểu lầm bản vương điều gì rồi không? Bản vương chỉ cho ngươi một cơ hội đôi bên cùng có lợi, mỗi bên lùi một bước. Nếu không, một khi đánh thật, sẽ không chỉ chết một hai người đơn giản như vậy.”
-Vệ Bàng Trung đã giao thủ với Sở Đệ Trì suốt tám năm, biết rõ tên tiểu tử này mưu sâu kế hiểm, chỉ cần sơ suất một chút là sẽ mắc bẫy.
-Rõ ràng chính hắn đề nghị đàm phán, vậy mà lại bày ra dáng vẻ nắm quyền chủ động.
-Quả là đảo lộn càn khôn!
-“Con tin đang ở trong tay bản tướng quân, ngươi dám làm càn sao?”
-“Ngươi cứ thử xem.”
-Sở Đệ Trì khẽ nâng tay.
-“Xem là một con tin quan trọng, hay tôn nghiêm của Đại Sở quan trọng hơn.”
-Bên cạnh, Kinh Ảnh lên tiếng:
-“Vệ tướng quân là người hiểu chuyện. Nam nhân nói chuyện với nhau, đừng như nữ nhân cứ lải nhải đấu võ mồm nữa. Trực tiếp đưa ra điều kiện của các ngươi đi.”
-Vệ Bàng Trung lạnh lùng nhìn Sở Đệ Trì, hoàn toàn không đoán được tâm tư của hắn.
-Người này trí dũng song toàn.
-Nếu thật sự không để tâm con tin, cứ trực tiếp khai chiến là được, hà tất còn do dự?
-Nếu thật sự coi trọng con tin, sao lại bày ra vẻ chẳng hề quan tâm?
-Luận về tâm kế, Vệ Bàng Trung nhìn không thấu.
-Không biết rõ ý đồ thực sự của địch nhân thì khó lòng kê đúng thuốc.
-Ông ta trầm ngâm một lát rồi giơ tay:
-“Người đâu.”
-Bên cạnh, một tên lính tiến lên.
-Chính là tên lính mặt sẹo vừa đẩy ngã Sở Ly.
-Hắn lấy ra quyển sổ đã chuẩn bị sẵn.
-“Nếu Nhiếp Chính Vương muốn giải quyết hòa bình, bản tướng quân cũng không muốn nhìn thấy cảnh xác chất thành núi.”
-Vệ Bàng Trung ra lệnh cho tên lính mặt sẹo đọc điều kiện của Nam Man.
-Tên lính mặt sẹo lớn tiếng:
-“Thứ nhất, toàn bộ Nam Cương phải thuộc quyền thống trị của Nam Man.”
-Đôi mắt đen của Sở Đệ Trì khẽ nheo lại, chậm rãi ngồi thẳng người, hai đầu ngón tay đan vào nhau, chăm chú nhìn tên lính mặt sẹo.
-“Thứ hai, Đại Sở phải bồi thường một trăm vạn lượng bạc, coi như bồi thường tổn thất chiến tranh suốt tám năm qua.”
-Hắn vẫn như có điều suy nghĩ nhìn tên lính mặt sẹo.
-“Thứ ba, toàn bộ hàng hóa của Đại Sở xuất sang Nam Man phải được miễn mọi loại thuế quan.”
-“Thứ tư, chúng ta còn muốn…”
-“Những thứ các ngươi đòi hỏi đều không thực tế.”
-Sở Đệ Trì cắt ngang.
-“Trọng Phong, cho bọn chúng chút gì đó thực tế đi.”
-Trọng Phong khẽ gật đầu.
-Vệ Bàng Trung nhíu mày:
-“Ý gì?”
-Chỉ thấy Trọng Phong rút kiếm, tay nâng kiếm hạ, một nhát chém đứt cánh tay phải của tên lính mặt sẹo.
-“A!!!”
-Bàn tay đứt lìa rơi xuống đất.
-Quyển sổ cũng rơi xuống, nhuộm đầy máu tươi. Tên lính mặt sẹo đau đến gần như ngất lịm.
-Tay của hắn!
-Tay của hắn!
-Vệ Bàng Trung đứng bật dậy:
-“Ngươi có ý gì!”
-Trọng Phong vừa rút kiếm, quân đội hai bên lập tức cảnh giác. Sĩ khí cuồn cuộn dâng lên, vô hình va chạm với nhau, chỉ cần chủ tướng hạ lệnh là chiến sự sẽ bùng nổ ngay tức khắc.
-Trọng Phong lau sạch máu trên lưỡi kiếm rồi lui về sau lưng Sở Đệ Trì.
-Vừa rồi, chính tên tiểu tốt không có mắt này đã đẩy ngã Cửu hoàng tử!
-“Đừng căng thẳng.”
-Sở Đệ Trì ung dung bắt chéo chân.
-“Vệ tướng quân chẳng lẽ muốn vì một tên tiểu tốt mà khai chiến với bản vương? Chỉ là bản vương nhìn hắn không vừa mắt mà thôi.”
-Vệ Bàng Trung chống hai tay lên bàn, mặt đầy tức giận:
-“Nhiếp Chính Vương định xé rách mặt mũi sao?”
-Đánh chó cũng phải nhìn chủ chứ!
-“Một con tin không đáng giá nhiều như vậy. Nam Cương có thể giao cho các ngươi, nhưng các ngươi phải gả công chúa sang Đại Sở.”
-Một vị công chúa, cộng thêm việc trả lại con tin.
-Đổi lấy toàn bộ lãnh thổ Nam Cương.
-Nói cách khác…
-Chính là hòa thân.
-Từ xưa đến nay, hòa thân luôn là cách phổ biến và hiệu quả nhất để duy trì hòa bình giữa hai nước, tránh khỏi chiến tranh.
-“Khiển thiếp nhất thân an xã tắc, bất tri hà xứ dụng tướng quân.”
-Vệ Bàng Trung đang định nổi giận quát mắng thì phía sau bỗng vang lên một giọng cười nhàn nhạt:
-“Nếu Nhiếp Chính Vương đích thân nghênh thú Nam Man công chúa, lập làm Nhiếp Chính Vương phi, e rằng đó mới là thành ý lớn nhất để thúc đẩy hòa bình giữa hai nước.” Ẩn bớt</p>
+            <p>Chương 138: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 138: Ừm, ngoan ngoãn ở yên đó</p>
+<p>“Hả?”</p>
+<p>Chết ở ngoài… hình như không ổn lắm?</p>
+<p>“Vậy người đến Nam Cương làm gì?”</p>
+<p>“Bản vương trấn thủ Nam Cương gần mười năm, nơi này tự nhiên cũng thân thuộc như về nhà.”</p>
+<p>Sở Ly trợn tròn mắt.</p>
+<p>Nói như vậy… hắn thật sự mặc kệ nàng?</p>
+<p>Để mặc nàng và Tần Mục Vũ ở lại đây?</p>
+<p>Nam Cương đã ở ngay trước mắt, lãnh thổ Đại Sở chỉ cách trong gang tấc, chỉ cần đi thêm nửa khắc là có thể đặt chân lên quê hương, kết quả hắn lại bảo… không quản nàng?</p>
+<p>Vành mắt nàng đỏ hoe:</p>
+<p>“Hoàng thúc…”</p>
+<p>“Nuốt vào.”</p>
+<p>Miệng nàng xẹp xuống, nghẹn nơi cổ họng, đôi mắt mờ sương long lanh ngấn nước:</p>
+<p>“Nu… nuốt rồi.”</p>
+<p>Nàng đâu biết rằng, trên chiến trường hai quân giằng co, nơi vạn quân đóng giữ, giữa mảnh đất ngập tràn mùi máu tanh này, người nam nhân kia đang phải gắng gượng đè nén một cơn xúc động lớn đến nhường nào.</p>
+<p>Sóng ngầm trong đáy mắt hắn gần như cuồn cuộn thành sóng dữ.</p>
+<p>Nàng còn sống!</p>
+<p>Vẫn còn sống!</p>
+<p>Tuy sống có hơi thảm…</p>
+<p>Nhưng ít nhất chưa chết.</p>
+<p>Người nam nhân cao ngạo ngồi trên lưng chiến mã, tư thái tôn quý, không ai dám mạo phạm, từ trên cao nhìn xuống thiếu niên chống gậy. Vốn đã không cao, giờ lại què một chân, nom chẳng khác gì một ông lão nhỏ, còn sụt sịt mũi, bộ dạng đáng thương đến cực điểm.</p>
+<p>Sở Đệ Trì siết chặt dây cương, cưỡng ép đè nén sóng ngầm trong mắt, lạnh giọng:</p>
+<p>“Bản vương hỏi ngươi.”</p>
+<p>“Hôm ấy trong cung xảy ra hỏa hoạn, có nằm ngoài dự liệu của ngươi không?”</p>
+<p>Sở Ly cũng không biết phải trả lời thế nào. Ban đầu nàng vốn đã chuẩn bị bỏ trốn, ngay cả tài sản cũng lén chuyển đi rồi, chỉ không ngờ Đại hoàng tử lại tìm tới liều mạng với nàng.</p>
+<p>Nàng chỉ có thể đẩy nhanh kế hoạch.</p>
+<p>“Có phải Sở Dạ Ly đưa ngươi đi không?”</p>
+<p>Giọng nam nhân run nhè nhẹ như băng mỏng, bàn tay khẽ siết lại, cất giấu sự căng thẳng mà chẳng ai hay biết.</p>
+<p>Hắn muốn chính tai nghe nàng trả lời.</p>
+<p>Lại sợ câu trả lời của nàng.</p>
+<p>Hãy nói với hắn.</p>
+<p>Nàng là bị Sở Dạ Ly đưa đi.</p>
+<p>Nàng chưa từng có ý định rời xa hắn.</p>
+<p>Sở Ly hé môi, vốn định nói thật, nhưng vừa nhìn thấy đôi mắt trong trẻo mà áp bức của nam nhân, tựa như có một lưỡi đao vô hình đang kề sát sau gáy.</p>
+<p>Theo trực giác của nữ nhân, lời đến bên môi lại đổi thành:</p>
+<p>“Là hắn đưa ta đi.”</p>
+<p>Sở Đệ Trì khẽ thở ra, buông lỏng bàn tay, thần sắc giữa hai hàng mày cũng giãn ra thấy rõ.</p>
+<p>“Ừm, ngoan ngoãn ở yên đó.”</p>
+<p>Hắn thúc ngựa tiến lên, Kinh Ảnh và Trọng Phong theo sau, hướng về chiếc bàn đàm phán ở chính giữa.</p>
+<p>“Đi!”</p>
+<p>Một tên lính Nam Man mặt sẹo đẩy Sở Ly một cái.</p>
+<p>Chân nàng còn đang bị thương, nhất thời đứng không vững, ngã nhào xuống đất đầy chật vật.</p>
+<p>“Ngươi đẩy ta làm gì? Ta không biết tự đi sao?”</p>
+<p>Tên lính mặt sẹo nói:</p>
+<p>“Sắp đàm phán rồi, ngươi không nên ở đây. Cho ngươi ra nhìn cố thổ một chút đã là đủ rồi, nên biết đủ đi.”</p>
+<p>Sở Ly cắn chặt môi dưới, cố nhịn cơn đau nơi bàn chân, chống gậy khó nhọc bò dậy.</p>
+<p>“Mau lên!”</p>
+<p>Thúc cái gì mà thúc!</p>
+<p>Nàng đi là được chứ gì!</p>
+<p>Hai quân giằng co.</p>
+<p>Chính giữa là nơi đàm phán.</p>
+<p>Mỗi bên cử bốn người, những người còn lại lui ra mấy trượng.</p>
+<p>Sở Ly đứng cách đó hơn hai mươi trượng, nhìn thấy Sở Đệ Trì dẫn theo Kinh Ảnh, Trọng Phong cùng một vị phó tướng ngồi bên bàn đàm phán.</p>
+<p>Phía Nam Man là Vệ tướng quân cùng ba người nàng không quen biết.</p>
+<p>Hai bên đã đông đủ.</p>
+<p>“Đại Sở Nhiếp Chính Vương, lâu rồi không gặp.”</p>
+<p>Vệ Bàng Trung ngồi xuống, hai tay đan vào nhau, cười âm trầm nhìn nam nhân đối diện.</p>
+<p>Dù có hóa thành tro, ông ta cũng nhận ra người này.</p>
+<p>Tám năm trước, khi biết người được cử đến trấn thủ Nam Cương chỉ là Sở Đệ Trì mười bốn tuổi, ông ta suýt cười rụng răng, chê cười Đại Sở không còn người, lại phái một đứa trẻ còn chưa mọc đủ lông đến ứng chiến.</p>
+<p>Ông ta từng buông lời:</p>
+<p>Trong vòng nửa năm, nhất định hạ được Nam Cương.</p>
+<p>Kết quả, tám năm trôi qua, Nam Cương vẫn vững như bàn thạch, còn ông ta thì chẳng cười nổi nữa.</p>
+<p>Cho đến hôm nay.</p>
+<p>Trong tay nắm con tin, nắm quyền chủ động, ông ta mới lộ ra nụ cười đã lâu không thấy.</p>
+<p>Sở Đệ Trì tựa lưng vào ghế, dang rộng hai tay đặt lên tay vịn, thân cao chín thước, khí thế áp đảo cả một khoảng trời.</p>
+<p>“Kẻ bại trận muốn gặp bản vương làm gì? Chẳng lẽ muốn treo đầu lên xà nhà, lấy dùi đâm đùi, ghi nhớ nỗi nhục để tự khích lệ mình?”</p>
+<p>Sắc mặt Vệ Bàng Trung trầm xuống:</p>
+<p>“Bàn về binh pháp, ta không bằng ngươi. Nhưng bây giờ chẳng phải chính ngươi chủ động đến đây, đề nghị đàm phán, muốn cầu hòa sao?”</p>
+<p>“Cầu hòa?”</p>
+<p>Cầu?</p>
+<p>Đôi mắt đen của Sở Đệ Trì khẽ nheo lại.</p>
+<p>“Vệ tướng quân có phải hiểu lầm bản vương điều gì rồi không? Bản vương chỉ cho ngươi một cơ hội đôi bên cùng có lợi, mỗi bên lùi một bước. Nếu không, một khi đánh thật, sẽ không chỉ chết một hai người đơn giản như vậy.”</p>
+<p>Vệ Bàng Trung đã giao thủ với Sở Đệ Trì suốt tám năm, biết rõ tên tiểu tử này mưu sâu kế hiểm, chỉ cần sơ suất một chút là sẽ mắc bẫy.</p>
+<p>Rõ ràng chính hắn đề nghị đàm phán, vậy mà lại bày ra dáng vẻ nắm quyền chủ động.</p>
+<p>Quả là đảo lộn càn khôn!</p>
+<p>“Con tin đang ở trong tay bản tướng quân, ngươi dám làm càn sao?”</p>
+<p>“Ngươi cứ thử xem.”</p>
+<p>Sở Đệ Trì khẽ nâng tay.</p>
+<p>“Xem là một con tin quan trọng, hay tôn nghiêm của Đại Sở quan trọng hơn.”</p>
+<p>Bên cạnh, Kinh Ảnh lên tiếng:</p>
+<p>“Vệ tướng quân là người hiểu chuyện. Nam nhân nói chuyện với nhau, đừng như nữ nhân cứ lải nhải đấu võ mồm nữa. Trực tiếp đưa ra điều kiện của các ngươi đi.”</p>
+<p>Vệ Bàng Trung lạnh lùng nhìn Sở Đệ Trì, hoàn toàn không đoán được tâm tư của hắn.</p>
+<p>Người này trí dũng song toàn.</p>
+<p>Nếu thật sự không để tâm con tin, cứ trực tiếp khai chiến là được, hà tất còn do dự?</p>
+<p>Nếu thật sự coi trọng con tin, sao lại bày ra vẻ chẳng hề quan tâm?</p>
+<p>Luận về tâm kế, Vệ Bàng Trung nhìn không thấu.</p>
+<p>Không biết rõ ý đồ thực sự của địch nhân thì khó lòng kê đúng thuốc.</p>
+<p>Ông ta trầm ngâm một lát rồi giơ tay:</p>
+<p>“Người đâu.”</p>
+<p>Bên cạnh, một tên lính tiến lên.</p>
+<p>Chính là tên lính mặt sẹo vừa đẩy ngã Sở Ly.</p>
+<p>Hắn lấy ra quyển sổ đã chuẩn bị sẵn.</p>
+<p>“Nếu Nhiếp Chính Vương muốn giải quyết hòa bình, bản tướng quân cũng không muốn nhìn thấy cảnh xác chất thành núi.”</p>
+<p>Vệ Bàng Trung ra lệnh cho tên lính mặt sẹo đọc điều kiện của Nam Man.</p>
+<p>Tên lính mặt sẹo lớn tiếng:</p>
+<p>“Thứ nhất, toàn bộ Nam Cương phải thuộc quyền thống trị của Nam Man.”</p>
+<p>Đôi mắt đen của Sở Đệ Trì khẽ nheo lại, chậm rãi ngồi thẳng người, hai đầu ngón tay đan vào nhau, chăm chú nhìn tên lính mặt sẹo.</p>
+<p>“Thứ hai, Đại Sở phải bồi thường một trăm vạn lượng bạc, coi như bồi thường tổn thất chiến tranh suốt tám năm qua.”</p>
+<p>Hắn vẫn như có điều suy nghĩ nhìn tên lính mặt sẹo.</p>
+<p>“Thứ ba, toàn bộ hàng hóa của Đại Sở xuất sang Nam Man phải được miễn mọi loại thuế quan.”</p>
+<p>“Thứ tư, chúng ta còn muốn…”</p>
+<p>“Những thứ các ngươi đòi hỏi đều không thực tế.”</p>
+<p>Sở Đệ Trì cắt ngang.</p>
+<p>“Trọng Phong, cho bọn chúng chút gì đó thực tế đi.”</p>
+<p>Trọng Phong khẽ gật đầu.</p>
+<p>Vệ Bàng Trung nhíu mày:</p>
+<p>“Ý gì?”</p>
+<p>Chỉ thấy Trọng Phong rút kiếm, tay nâng kiếm hạ, một nhát chém đứt cánh tay phải của tên lính mặt sẹo.</p>
+<p>“A!!!”</p>
+<p>Bàn tay đứt lìa rơi xuống đất.</p>
+<p>Quyển sổ cũng rơi xuống, nhuộm đầy máu tươi. Tên lính mặt sẹo đau đến gần như ngất lịm.</p>
+<p>Tay của hắn!</p>
+<p>Tay của hắn!</p>
+<p>Vệ Bàng Trung đứng bật dậy:</p>
+<p>“Ngươi có ý gì!”</p>
+<p>Trọng Phong vừa rút kiếm, quân đội hai bên lập tức cảnh giác. Sĩ khí cuồn cuộn dâng lên, vô hình va chạm với nhau, chỉ cần chủ tướng hạ lệnh là chiến sự sẽ bùng nổ ngay tức khắc.</p>
+<p>Trọng Phong lau sạch máu trên lưỡi kiếm rồi lui về sau lưng Sở Đệ Trì.</p>
+<p>Vừa rồi, chính tên tiểu tốt không có mắt này đã đẩy ngã Cửu hoàng tử!</p>
+<p>“Đừng căng thẳng.”</p>
+<p>Sở Đệ Trì ung dung bắt chéo chân.</p>
+<p>“Vệ tướng quân chẳng lẽ muốn vì một tên tiểu tốt mà khai chiến với bản vương? Chỉ là bản vương nhìn hắn không vừa mắt mà thôi.”</p>
+<p>Vệ Bàng Trung chống hai tay lên bàn, mặt đầy tức giận:</p>
+<p>“Nhiếp Chính Vương định xé rách mặt mũi sao?”</p>
+<p>Đánh chó cũng phải nhìn chủ chứ!</p>
+<p>“Một con tin không đáng giá nhiều như vậy. Nam Cương có thể giao cho các ngươi, nhưng các ngươi phải gả công chúa sang Đại Sở.”</p>
+<p>Một vị công chúa, cộng thêm việc trả lại con tin.</p>
+<p>Đổi lấy toàn bộ lãnh thổ Nam Cương.</p>
+<p>Nói cách khác…</p>
+<p>Chính là hòa thân.</p>
+<p>Từ xưa đến nay, hòa thân luôn là cách phổ biến và hiệu quả nhất để duy trì hòa bình giữa hai nước, tránh khỏi chiến tranh.</p>
+<p>“Khiển thiếp nhất thân an xã tắc, bất tri hà xứ dụng tướng quân.”</p>
+<p>Vệ Bàng Trung đang định nổi giận quát mắng thì phía sau bỗng vang lên một giọng cười nhàn nhạt:</p>
+<p>“Nếu Nhiếp Chính Vương đích thân nghênh thú Nam Man công chúa, lập làm Nhiếp Chính Vương phi, e rằng đó mới là thành ý lớn nhất để thúc đẩy hòa bình giữa hai nước.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_137.html" class="btn">‹ Trước</a>
             <a href="chuong_139.html" class="btn">Sau ›</a>
         </div>
@@ -262,15 +270,11 @@ Vệ Bàng Trung đang định nổi giận quát mắng thì phía sau bỗng v
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -282,11 +286,11 @@ Vệ Bàng Trung đang định nổi giận quát mắng thì phía sau bỗng v
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

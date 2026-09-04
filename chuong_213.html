@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 213</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,153 +62,162 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 213</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_212.html" class="btn">‹ Trước</a>
             <a href="chuong_214.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 213: Vậy thì xem rốt cuộc là ai không tha cho ai
-“Đứng lại!”
-“Các ngươi định làm gì thê nhi của ta! Nếu dám động đến một sợi tóc của bọn họ, ta tuyệt đối sẽ không tha cho Sở Ly!”
-Tần Mục Vũ sải bước rời đi:
-“Vậy thì xem rốt cuộc là ai không tha cho ai!”
-“Khốn kiếp!”
-Chỉ là một thiếu tướng quân nho nhỏ, cũng dám càn rỡ trước mặt hắn!
-Sở Uyên Trì hất tung lư hương cùng bộ trà cụ trên bàn đá, cơn giận bốc tận trời, lao thẳng vào phòng, rút trường kiếm trên giá binh khí xuống.
-Sở Ly!
-Ngươi dám hại con trai ta!
-Ta sẽ bắt ngươi đền mạng!
-—
-Thành Giang Nam náo nhiệt vô cùng. Chuyện xảy ra tại Lâm Hồ Tiểu Trúc đã truyền khắp toàn thành, bá tánh đều đang bàn tán:
-“Nhiếp Chính Vương quả thật là Thanh Thiên đại lão gia!”
-“Đúng vậy, nhờ ngài ấy làm chủ cho ta…”
-“Oan khuất của phụ thân ta cuối cùng cũng được rửa sạch…”
-“Nhìn kìa! Chẳng phải là Sơ cô nương… à không, giờ là Tạ tiểu thư rồi!”
-“Tạ tiểu thư!”
-Mấy thím xách giỏ cười tươi chào hỏi Sở Ly. Lúc này, nàng đang dẫn theo bọn trẻ.
-Sở Hoằng Diễm tay trái cầm một túi cá khô cay, tay phải cầm một xâu kẹo hồ lô, giọng nói lanh lảnh:
-“Cửu Hoàng thúc, vì sao bọn họ lại gọi người là Tạ tiểu thư?”
-Sở Ly xoa đầu cậu bé:
-“Bởi vì ta có chín cái mạng, nên cũng có chín thân phận.”
-Đôi mắt Sở Hoằng Diễm lập tức mở to.
-“Oa?”
-“Lợi hại quá!”
-“Vậy người sẽ chết sao?”
-“Có chứ, nhóc con. Mèo có chín cái mạng, nhưng chỉ có một trái tim.”
-Phía sau, Tần Mục Tuyết thân mật khoác tay Dương Uyển, vừa đi vừa cười nói:
-“Uyển nhi tỷ tỷ dạy dỗ Hoằng Diễm thật tốt. Sau này lớn lên, nhất định sẽ có tiền đồ.”
-Làm mẫu thân, lời thích nghe nhất chính là được người khác khen ngợi con mình.
-Dương Uyển ngoài miệng mỉm cười khiêm nhường, dịu dàng, nhưng một tia u sầu giữa hàng mày đã để lộ nỗi cay đắng trong lòng.
-“Thuyền hoa!”
-Đột nhiên, giọng Sở Hoằng Diễm đầy phấn khích:
-“Nhiều mặt nạ quá! Cái mặt nạ con khỉ kia đáng yêu thật!”
-Sở Ly nắm lấy tay cậu bé:
-“Cẩn thận, đừng để rơi xuống nước. Mục Tuyết, muội đưa thằng bé lên thuyền hoa chơi đi.”
-“Được.”
-Tần Mục Tuyết bước tới:
-“Tiểu Hoằng Diễm, đi nào, dì dẫn con đi chơi.”
-Sở Hoằng Diễm nắm tay nàng, ngẩng gương mặt nhỏ trắng trẻo như ngọc, non nớt gọi một tiếng:
-“Mục Tuyết tỷ tỷ.”
-Tần Mục Tuyết hơi sững sờ.
-“Con với Cửu Hoàng thúc là người một nhà, theo vai vế thì phải gọi như vậy. Nhưng Mục Tuyết tỷ tỷ trẻ trung xinh đẹp như thế, đâu phải là dì.”
-Tình mẫu tử trong mắt Tần Mục Tuyết gần như tan chảy, hận không thể ôm cậu bé hôn mấy cái.
-Đi!
-Dẫn nó đi chơi!
-Đứa trẻ ngoan ngoãn đáng yêu như vậy, dù có mua luôn cả chiếc thuyền hoa cho nó, nàng cũng cam lòng!
-Sở Ly mỉm cười nhìn hai người lên thuyền hoa, bóng dáng dần khuất giữa dòng người tấp nập, không còn nhìn rõ nữa. Nàng mới lên tiếng:
-“Đại tẩu, nửa năm nay sống ở Giang Nam có ổn không?”
-Dương Uyển khẽ đáp:
-“Người nhà quây quần, dưới ánh đèn ấm áp, ấy là điều đáng quý nhất.”
-Ý cười nơi khóe mắt Sở Ly dần nhạt đi:
-“Nếu đã như vậy, vì sao tẩu không biết trân quý, còn nhất quyết đối đầu với ta?”
-Sắc mặt Dương Uyển khẽ biến.
-Nàng biết, hôm nay Sở Ly tìm mình, tuyệt đối không chỉ đơn giản là đi dạo.
-Ân oán giữa Sở Uyên Trì và Sở Ly, nàng đều hiểu rõ.
-“Tiểu Cửu, có phải đại ca con đã làm chuyện gì có lỗi với con không? Mong con nể tình Hoằng Diễm còn nhỏ, rộng lòng tha thứ cho huynh ấy. Ta chỉ là một phụ nhân, không xen vào được chuyện giữa nam nhân, nhưng Diễm nhi vẫn còn nhỏ.”
-“Diễm nhi nó…”
-Hai mắt Dương Uyển đỏ hoe, nghẹn ngào nức nở:
-“Nó không thể không có phụ thân…”
-Sở Ly xoay người nhìn nàng, ánh mắt bình tĩnh lạ thường trước gương mặt của một người mẫu thân đang đẫm lệ:
-“Đại tẩu, tẩu có biết không? Trên đời này, chưa từng có chuyện gì hoàn toàn trắng hay hoàn toàn đen.”
-“Người quang minh đến đâu, trong lòng cũng đều cất giấu một góc tối.”
-“Còn tẩu…”
-“Tình mẫu tử của tẩu dành cho Hoằng Diễm không ai có thể phủ nhận. Nhưng lòng riêng của tẩu thì sao? Là người đầu gối tay ấp với đại ca, chẳng lẽ tẩu không biết huynh ấy muốn hại ta? Thế nhưng tẩu không hề khuyên can, lại còn ngầm dung túng. Chỉ như vậy mà tẩu có thể tự xem mình sạch sẽ vô can sao?”
-Thần sắc Dương Uyển khẽ run lên.
-“Tiểu Cửu…”
-“Tẩu đang đánh cược.”
-“Nếu thắng, cả nhà tẩu sẽ được trở về Đế Đô, quay lại hoàng thất, lấy lại quyền thế.”
-“Nếu thua, thì sự thiên vị của ta dành cho Hoằng Diễm sẽ trở thành đường lui của tẩu.”
-Sở Hoằng Diễm còn nhỏ như vậy, vậy mà đã trở thành một quân cờ để người lớn lợi dụng.
-“Đại tẩu, tẩu luôn cho rằng mình chưa từng hại ta. Nhưng sự ngầm chấp thuận của tẩu, cũng là một loại hành hung.”
-Dương Uyển nhìn gương mặt bình tĩnh, trầm ổn của nàng, đôi mắt mờ lệ càng thêm mông lung.
-Đã hơn nửa năm rồi nàng chưa gặp Tiểu Cửu.
-Nàng thay đổi rất nhiều.
-Khi còn ở Đế Đô, Tiểu Cửu rất yêu quý Hoằng Diễm, thường xuyên đến phủ Đại Hoàng tử chơi. Quan hệ giữa hai người thúc tẩu cũng vô cùng thân thiết.
-Nhưng sau khi trải qua biến cố gia môn, mất hết thân phận, dù tình cảm có tốt đến đâu cũng sẽ nảy sinh khoảng cách.
-Sở Ly có cuộc đời của riêng mình.
-Nàng cũng có gia đình và dự định của chính mình.
-Mỗi việc các nàng làm đều là vì mưu cầu lợi ích cho bản thân. Không có đúng hay sai, chỉ có thành hay bại.
-Bây giờ nói rõ ra cũng tốt, để nàng không còn ngày ngày canh cánh trong lòng, đêm đêm trằn trọc bất an.
-Đúng vậy.
-Nàng biết Sở Uyên Trì sẽ không bỏ qua cho Sở Ly, nhất định sẽ dùng mọi thủ đoạn để trả thù.
-Mà nàng vẫn luôn ngầm chấp nhận.
-“Tiểu Cửu, con đã trưởng thành hơn rất nhiều.”
-Dương Uyển khẽ mỉm cười, giọng nói mang theo vài phần an ủi:
-“Như vậy cũng tốt. Đế Đô vốn là nơi ăn thịt người. Con trở nên trầm ổn hơn một chút, người khác sẽ không dễ bề tính kế con nữa.”
-“Còn tẩu thì sao, đại tẩu?” Ẩn bớt</p>
+            <p>Chương 213: Vậy thì xem rốt cuộc là ai không tha cho ai</p>
+<p>“Đứng lại!”</p>
+<p>“Các ngươi định làm gì thê nhi của ta! Nếu dám động đến một sợi tóc của bọn họ, ta tuyệt đối sẽ không tha cho Sở Ly!”</p>
+<p>Tần Mục Vũ sải bước rời đi:</p>
+<p>“Vậy thì xem rốt cuộc là ai không tha cho ai!”</p>
+<p>“Khốn kiếp!”</p>
+<p>Chỉ là một thiếu tướng quân nho nhỏ, cũng dám càn rỡ trước mặt hắn!</p>
+<p>Sở Uyên Trì hất tung lư hương cùng bộ trà cụ trên bàn đá, cơn giận bốc tận trời, lao thẳng vào phòng, rút trường kiếm trên giá binh khí xuống.</p>
+<p>Sở Ly!</p>
+<p>Ngươi dám hại con trai ta!</p>
+<p>Ta sẽ bắt ngươi đền mạng!</p>
+<p>—</p>
+<p>Thành Giang Nam náo nhiệt vô cùng. Chuyện xảy ra tại Lâm Hồ Tiểu Trúc đã truyền khắp toàn thành, bá tánh đều đang bàn tán:</p>
+<p>“Nhiếp Chính Vương quả thật là Thanh Thiên đại lão gia!”</p>
+<p>“Đúng vậy, nhờ ngài ấy làm chủ cho ta…”</p>
+<p>“Oan khuất của phụ thân ta cuối cùng cũng được rửa sạch…”</p>
+<p>“Nhìn kìa! Chẳng phải là Sơ cô nương… à không, giờ là Tạ tiểu thư rồi!”</p>
+<p>“Tạ tiểu thư!”</p>
+<p>Mấy thím xách giỏ cười tươi chào hỏi Sở Ly. Lúc này, nàng đang dẫn theo bọn trẻ.</p>
+<p>Sở Hoằng Diễm tay trái cầm một túi cá khô cay, tay phải cầm một xâu kẹo hồ lô, giọng nói lanh lảnh:</p>
+<p>“Cửu Hoàng thúc, vì sao bọn họ lại gọi người là Tạ tiểu thư?”</p>
+<p>Sở Ly xoa đầu cậu bé:</p>
+<p>“Bởi vì ta có chín cái mạng, nên cũng có chín thân phận.”</p>
+<p>Đôi mắt Sở Hoằng Diễm lập tức mở to.</p>
+<p>“Oa?”</p>
+<p>“Lợi hại quá!”</p>
+<p>“Vậy người sẽ chết sao?”</p>
+<p>“Có chứ, nhóc con. Mèo có chín cái mạng, nhưng chỉ có một trái tim.”</p>
+<p>Phía sau, Tần Mục Tuyết thân mật khoác tay Dương Uyển, vừa đi vừa cười nói:</p>
+<p>“Uyển nhi tỷ tỷ dạy dỗ Hoằng Diễm thật tốt. Sau này lớn lên, nhất định sẽ có tiền đồ.”</p>
+<p>Làm mẫu thân, lời thích nghe nhất chính là được người khác khen ngợi con mình.</p>
+<p>Dương Uyển ngoài miệng mỉm cười khiêm nhường, dịu dàng, nhưng một tia u sầu giữa hàng mày đã để lộ nỗi cay đắng trong lòng.</p>
+<p>“Thuyền hoa!”</p>
+<p>Đột nhiên, giọng Sở Hoằng Diễm đầy phấn khích:</p>
+<p>“Nhiều mặt nạ quá! Cái mặt nạ con khỉ kia đáng yêu thật!”</p>
+<p>Sở Ly nắm lấy tay cậu bé:</p>
+<p>“Cẩn thận, đừng để rơi xuống nước. Mục Tuyết, muội đưa thằng bé lên thuyền hoa chơi đi.”</p>
+<p>“Được.”</p>
+<p>Tần Mục Tuyết bước tới:</p>
+<p>“Tiểu Hoằng Diễm, đi nào, dì dẫn con đi chơi.”</p>
+<p>Sở Hoằng Diễm nắm tay nàng, ngẩng gương mặt nhỏ trắng trẻo như ngọc, non nớt gọi một tiếng:</p>
+<p>“Mục Tuyết tỷ tỷ.”</p>
+<p>Tần Mục Tuyết hơi sững sờ.</p>
+<p>“Con với Cửu Hoàng thúc là người một nhà, theo vai vế thì phải gọi như vậy. Nhưng Mục Tuyết tỷ tỷ trẻ trung xinh đẹp như thế, đâu phải là dì.”</p>
+<p>Tình mẫu tử trong mắt Tần Mục Tuyết gần như tan chảy, hận không thể ôm cậu bé hôn mấy cái.</p>
+<p>Đi!</p>
+<p>Dẫn nó đi chơi!</p>
+<p>Đứa trẻ ngoan ngoãn đáng yêu như vậy, dù có mua luôn cả chiếc thuyền hoa cho nó, nàng cũng cam lòng!</p>
+<p>Sở Ly mỉm cười nhìn hai người lên thuyền hoa, bóng dáng dần khuất giữa dòng người tấp nập, không còn nhìn rõ nữa. Nàng mới lên tiếng:</p>
+<p>“Đại tẩu, nửa năm nay sống ở Giang Nam có ổn không?”</p>
+<p>Dương Uyển khẽ đáp:</p>
+<p>“Người nhà quây quần, dưới ánh đèn ấm áp, ấy là điều đáng quý nhất.”</p>
+<p>Ý cười nơi khóe mắt Sở Ly dần nhạt đi:</p>
+<p>“Nếu đã như vậy, vì sao tẩu không biết trân quý, còn nhất quyết đối đầu với ta?”</p>
+<p>Sắc mặt Dương Uyển khẽ biến.</p>
+<p>Nàng biết, hôm nay Sở Ly tìm mình, tuyệt đối không chỉ đơn giản là đi dạo.</p>
+<p>Ân oán giữa Sở Uyên Trì và Sở Ly, nàng đều hiểu rõ.</p>
+<p>“Tiểu Cửu, có phải đại ca con đã làm chuyện gì có lỗi với con không? Mong con nể tình Hoằng Diễm còn nhỏ, rộng lòng tha thứ cho huynh ấy. Ta chỉ là một phụ nhân, không xen vào được chuyện giữa nam nhân, nhưng Diễm nhi vẫn còn nhỏ.”</p>
+<p>“Diễm nhi nó…”</p>
+<p>Hai mắt Dương Uyển đỏ hoe, nghẹn ngào nức nở:</p>
+<p>“Nó không thể không có phụ thân…”</p>
+<p>Sở Ly xoay người nhìn nàng, ánh mắt bình tĩnh lạ thường trước gương mặt của một người mẫu thân đang đẫm lệ:</p>
+<p>“Đại tẩu, tẩu có biết không? Trên đời này, chưa từng có chuyện gì hoàn toàn trắng hay hoàn toàn đen.”</p>
+<p>“Người quang minh đến đâu, trong lòng cũng đều cất giấu một góc tối.”</p>
+<p>“Còn tẩu…”</p>
+<p>“Tình mẫu tử của tẩu dành cho Hoằng Diễm không ai có thể phủ nhận. Nhưng lòng riêng của tẩu thì sao? Là người đầu gối tay ấp với đại ca, chẳng lẽ tẩu không biết huynh ấy muốn hại ta? Thế nhưng tẩu không hề khuyên can, lại còn ngầm dung túng. Chỉ như vậy mà tẩu có thể tự xem mình sạch sẽ vô can sao?”</p>
+<p>Thần sắc Dương Uyển khẽ run lên.</p>
+<p>“Tiểu Cửu…”</p>
+<p>“Tẩu đang đánh cược.”</p>
+<p>“Nếu thắng, cả nhà tẩu sẽ được trở về Đế Đô, quay lại hoàng thất, lấy lại quyền thế.”</p>
+<p>“Nếu thua, thì sự thiên vị của ta dành cho Hoằng Diễm sẽ trở thành đường lui của tẩu.”</p>
+<p>Sở Hoằng Diễm còn nhỏ như vậy, vậy mà đã trở thành một quân cờ để người lớn lợi dụng.</p>
+<p>“Đại tẩu, tẩu luôn cho rằng mình chưa từng hại ta. Nhưng sự ngầm chấp thuận của tẩu, cũng là một loại hành hung.”</p>
+<p>Dương Uyển nhìn gương mặt bình tĩnh, trầm ổn của nàng, đôi mắt mờ lệ càng thêm mông lung.</p>
+<p>Đã hơn nửa năm rồi nàng chưa gặp Tiểu Cửu.</p>
+<p>Nàng thay đổi rất nhiều.</p>
+<p>Khi còn ở Đế Đô, Tiểu Cửu rất yêu quý Hoằng Diễm, thường xuyên đến phủ Đại Hoàng tử chơi. Quan hệ giữa hai người thúc tẩu cũng vô cùng thân thiết.</p>
+<p>Nhưng sau khi trải qua biến cố gia môn, mất hết thân phận, dù tình cảm có tốt đến đâu cũng sẽ nảy sinh khoảng cách.</p>
+<p>Sở Ly có cuộc đời của riêng mình.</p>
+<p>Nàng cũng có gia đình và dự định của chính mình.</p>
+<p>Mỗi việc các nàng làm đều là vì mưu cầu lợi ích cho bản thân. Không có đúng hay sai, chỉ có thành hay bại.</p>
+<p>Bây giờ nói rõ ra cũng tốt, để nàng không còn ngày ngày canh cánh trong lòng, đêm đêm trằn trọc bất an.</p>
+<p>Đúng vậy.</p>
+<p>Nàng biết Sở Uyên Trì sẽ không bỏ qua cho Sở Ly, nhất định sẽ dùng mọi thủ đoạn để trả thù.</p>
+<p>Mà nàng vẫn luôn ngầm chấp nhận.</p>
+<p>“Tiểu Cửu, con đã trưởng thành hơn rất nhiều.”</p>
+<p>Dương Uyển khẽ mỉm cười, giọng nói mang theo vài phần an ủi:</p>
+<p>“Như vậy cũng tốt. Đế Đô vốn là nơi ăn thịt người. Con trở nên trầm ổn hơn một chút, người khác sẽ không dễ bề tính kế con nữa.”</p>
+<p>“Còn tẩu thì sao, đại tẩu?” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_212.html" class="btn">‹ Trước</a>
             <a href="chuong_214.html" class="btn">Sau ›</a>
         </div>
@@ -217,15 +225,11 @@ Dương Uyển khẽ mỉm cười, giọng nói mang theo vài phần an ủi:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -237,11 +241,11 @@ Dương Uyển khẽ mỉm cười, giọng nói mang theo vài phần an ủi:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

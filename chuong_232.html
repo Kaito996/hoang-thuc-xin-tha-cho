@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 232</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,221 +62,157 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 232</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_231.html" class="btn">‹ Trước</a>
             <a href="chuong_233.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 232: Nàng vẫn còn nhỏ, quá nghịch ngợm rồi
-
-Nơi bụng dưới nóng rực như ngưng tụ thành một ngọn lửa, đang lan dần tới tứ chi. Cổ họng khô khốc tựa lữ nhân đi giữa sa mạc, khát cầu một nguồn nước.
-
-Trước mắt Sở Ly hoa lên, sắc mặt chợt biến.
-Trong tầm nhìn dần mờ mịt, mơ hồ chỉ thấy nam nhân chậm rãi cong môi mỏng, vẻ âm u nơi đáy mắt đã quét sạch không còn, đầu ngón tay thon dài kẹp một gói giấy nhỏ màu trắng.
-
-“Nhiễu Chỉ Nhu.”
-
-Lục hoàng tử từng sai ám vệ, mưu đồ dùng Nhiễu Chỉ Nhu hủy hoại sự trong sạch của nàng.
-Ngày ấy, khi trừng trị tên ám vệ kia, hắn đã giữ lại một ít.
-
-“Thứ này vô sắc vô vị, cần son phấn cùng hương hoa làm chất dẫn mới phát tác. Ta còn chưa từng thấy loại dược vật kỳ lạ như vậy, cũng không biết dược hiệu ra sao.”
-
-Sở Ly lảo đảo, gần như không đứng vững nổi, đúng lúc hoàng hôn buông xuống, mưa lại đổ.
-Mưa xối xả như thủy triều, một khi tràn tới liền không thể vãn hồi.
-
-“Người... Người...”
-
-Thảo nào hắn lại dẫn nàng ra ngoài dạo một vòng.
-
-“Người...”
-
-Nàng lảo đảo mấy bước, đã bị nam nhân vớt vào lòng.
-
-“Nàng cho rằng ném hết mấy thứ kia đi thì ta sẽ không còn cách nào đối phó nàng sao?”
-Hắn lắc đầu, khẽ thở dài.
-
-“Tiểu Cửu à, nàng vẫn còn nhỏ, quá nghịch ngợm rồi.”
-
-Cơn nóng rực dần nuốt chửng lý trí. Trước sau chỉ chưa đến nửa khắc, nàng đã hoàn toàn mất sức chống đỡ. Trong đầu trống rỗng chỉ còn lại duy nhất một mình hắn.
-
-Nàng bấu víu lấy hắn.
-
-Hắn là sự mát lạnh duy nhất.
-
-Băng cùng hỏa hòa làm một.
-
-Chiếc lồng chim treo trên cành liễu, con vẹt lông trắng tròn xoe đôi mắt, đảo qua đảo lại nhìn chăm chú.
-
-“Hoàng thúc...”
-
-Ngày đêm đảo lộn, trời đất chẳng còn phân biệt.
-
-“Không đủ, còn xa mới đủ... Tiểu Cửu, ngoan nào...”
-
-Thành Giang Nam.
-
-Một phong cấp báo được đưa tới tay. Sắc mặt Tiêu Dạ Hành âm trầm, trở tay vỗ mạnh xuống bàn.
-
-“Tần Mục Vũ!”
-
-“Cữu cữu?”
-
-“Tự mình xem đi!”
-
-Tần Mục Vũ nghi hoặc cầm lấy mật tín. Khi nhìn rõ nội dung bên trong, sắc mặt lập tức đại biến.
-
-“Con tự ý rời bỏ chức trách, từ Mạc Hoài Hà chạy tới thành Giang Nam. Hiện giờ, Sở Dạ Ly đã tự lập làm vương tại Mạc Hoài Châu. Nếu Nam Man cấp binh lực cho hắn, giúp hắn vượt qua Mạc Hoài Hà, không cần quá ba ngày, hắn có thể đánh tới thành Giang Nam, rồi một đường vung quân tiến về phương bắc, thẳng đến đế đô!”
-
-Tiêu Dạ Hành nghiêm giọng quát:
-
-“Nếu con ngoan ngoãn trấn thủ tiền tuyến, có thể xảy ra chuyện lớn như thế sao?”
-
-Tần Mục Vũ mím chặt khóe môi.
-
-Hắn không ngờ sự tình lại nghiêm trọng đến vậy.
-Lúc ấy, vừa nhận được tin A Ly còn sống, hắn liền vội vã chạy tới Giang Nam, căn bản không còn lòng dạ nào để ý chuyện khác.
-
-“Con lập tức trở về!”
-
-Nhưng...
-
-Hắn lại có vài phần do dự.
-
-“Phía A Ly...”
-
-“Đã là lúc nào rồi mà con còn nhớ nhung Cửu hoàng tử? Nàng ở cùng Nhiếp Chính Vương, chẳng lẽ Nhiếp Chính Vương còn có thể ăn thịt nó sao? Trái lại là con tự tiện rời bỏ chức trách. Nếu bị kẻ có tâm nắm được nhược điểm, cái đầu trên cổ con cùng cả Tướng quân phủ, con còn muốn giữ hay không?”
-
-Tiêu Dạ Hành chỉ ngón tay vào trán hắn, vẻ mặt hận thiết bất thành cương.
-
-Suốt ngày chỉ biết nhi nữ tình trường.
-Đấng nam nhi, đại trượng phu, lẽ ra phải chí tại bốn phương.
-
-“Con vẫn còn quá nôn nóng. Nếu sau này thống lĩnh đại quân ra chiến trường, chẳng lẽ muốn để hàng vạn tướng sĩ vô tội phải chôn theo sự khinh suất của con sao?”
-
-“Cữu cữu, con...”
-
-Thần sắc Tần Mục Vũ tối đi.
-
-Hắn có một bầu nhiệt huyết, cũng có người luôn canh cánh trong lòng. Nhưng lúc này nghe cữu cữu nói như vậy, hắn mới ý thức được sai lầm của mình.
-
-Ở cương vị nào, lo việc cương vị ấy.
-
-“Lần sau con sẽ không như vậy nữa.”
-
-Hắn cầm lấy bội kiếm, sải bước đi ra ngoài, gọi tâm phúc dưới trướng.
-
-“Vương Hằng, chuẩn bị ngựa, chúng ta lập tức trở về Mạc Hoài Hà!”
-
-Ở căn phòng bên cạnh, Tần Mục Tuyết bước ra, nhìn thấy cảnh ấy liền hỏi:
-
-“Ca, huynh phải đi rồi sao?”
-
-Tần Mục Vũ tỉ mỉ nói rõ tình hình trước mắt.
-Nghe xong, thần sắc Tần Mục Tuyết cũng trầm xuống.
-
-“Huynh mau đi ngay, đừng chậm trễ!”
-
-Hưng vong thiên hạ, thất phu hữu trách.
-
-Không chỉ ca ca, ngay cả trong cốt tủy nàng cũng tràn đầy phần trách nhiệm ấy.
-
-Là con dân Đại Sở, là thiên kim của Tướng quân phủ, trước đại nghĩa gia quốc, nàng đương nhiên sẽ không vì nhi nữ tình trường mà lưu luyến.
-
-Ban đầu tới Giang Nam là vì bái sư học võ, để sau này có thể ra chiến trường, trợ giúp đại ca, vì nước phân ưu. Chỉ vì gặp được A Ly ca ca nên mới tạm gác lại.
-
-Hiện giờ, nàng cũng nên rời đi rồi.
-
-Chỉ là...
-
-Nàng nhìn về phía sương phòng của Lục sư huynh, đáy mắt hiện lên vài phần không nỡ.
-
-Lục sư huynh giữ mình trong sạch, không gần nữ sắc, vậy mà chỉ vì trúng dược, âm sai dương thác phát sinh quan hệ với nàng.
-
-Vì chuyện đó, nàng vẫn luôn vô cùng áy náy.
-
-Duyên phận cầu không được, chi bằng cứ buông xuống. Có thể có được vài ngày ngắn ngủi ở bên nhau, nàng đã thấy mãn nguyện lắm rồi.
-
-Đến đây...
-
-Xin từ biệt!
-
-Tiểu trúc ven hồ vốn đang náo nhiệt, nay mỗi người một ngả, nói tan liền tan.
-
-Tiêu Dạ Hành lập tức phái người tới Hồ Tâm đảo đưa tin cho Sở Đệ Trì, đồng thời điều động lục quân tại Giang Nam tới đóng quân dọc vùng Mạc Hoài Hà, lại sai người đến Mạc Hoài Châu dò xét tình hình cụ thể.
-
-Ngũ hoàng tử Sở Dạ Ly, sao lại trở thành Thái tử tiền triều?
-
-Chỉ riêng chuyện này đã khiến hắn bận rộn suốt cả ngày.
-
-Đến bữa tối cũng chẳng được yên ổn.
-
-Lục Vân Sơ cầm đũa, nhìn chỗ ngồi trên bàn rõ ràng đang để trống, hỏi:
-
-“Sao không thấy Tần tiểu... Tần Thiếu tướng quân?”
-
-Bên cạnh, Bạch Cẩm Y hạ giọng đáp:
-“Mạc Hoài Châu xảy ra biến cố, huynh muội họ đều đã rời đi.”
-
-Sắc mặt Lục Vân Sơ chợt trầm xuống, bàn tay siết chặt đôi đũa, phát ra một tiếng “rắc”.
-Đều đi rồi?
-
-Nàng rời đi từ lúc nào, ngay cả một lời chào cũng chẳng nói với hắn?
-
-Đó chính là cái gọi là thích của nàng sao?
-Hay cho một Tần Mục Tuyết trở mặt vô tình, xong việc liền phủi sạch không nhận người! Hắn, Lục Vân Sơ, há lại là kẻ có thể tùy tiện bị nàng đuổi đi như thế?</p>
+            <p>Chương 232: Nàng vẫn còn nhỏ, quá nghịch ngợm rồi</p>
+<p>Nơi bụng dưới nóng rực như ngưng tụ thành một ngọn lửa, đang lan dần tới tứ chi. Cổ họng khô khốc tựa lữ nhân đi giữa sa mạc, khát cầu một nguồn nước.</p>
+<p>Trước mắt Sở Ly hoa lên, sắc mặt chợt biến.</p>
+<p>Trong tầm nhìn dần mờ mịt, mơ hồ chỉ thấy nam nhân chậm rãi cong môi mỏng, vẻ âm u nơi đáy mắt đã quét sạch không còn, đầu ngón tay thon dài kẹp một gói giấy nhỏ màu trắng.</p>
+<p>“Nhiễu Chỉ Nhu.”</p>
+<p>Lục hoàng tử từng sai ám vệ, mưu đồ dùng Nhiễu Chỉ Nhu hủy hoại sự trong sạch của nàng.</p>
+<p>Ngày ấy, khi trừng trị tên ám vệ kia, hắn đã giữ lại một ít.</p>
+<p>“Thứ này vô sắc vô vị, cần son phấn cùng hương hoa làm chất dẫn mới phát tác. Ta còn chưa từng thấy loại dược vật kỳ lạ như vậy, cũng không biết dược hiệu ra sao.”</p>
+<p>Sở Ly lảo đảo, gần như không đứng vững nổi, đúng lúc hoàng hôn buông xuống, mưa lại đổ.</p>
+<p>Mưa xối xả như thủy triều, một khi tràn tới liền không thể vãn hồi.</p>
+<p>“Người... Người...”</p>
+<p>Thảo nào hắn lại dẫn nàng ra ngoài dạo một vòng.</p>
+<p>“Người...”</p>
+<p>Nàng lảo đảo mấy bước, đã bị nam nhân vớt vào lòng.</p>
+<p>“Nàng cho rằng ném hết mấy thứ kia đi thì ta sẽ không còn cách nào đối phó nàng sao?”</p>
+<p>Hắn lắc đầu, khẽ thở dài.</p>
+<p>“Tiểu Cửu à, nàng vẫn còn nhỏ, quá nghịch ngợm rồi.”</p>
+<p>Cơn nóng rực dần nuốt chửng lý trí. Trước sau chỉ chưa đến nửa khắc, nàng đã hoàn toàn mất sức chống đỡ. Trong đầu trống rỗng chỉ còn lại duy nhất một mình hắn.</p>
+<p>Nàng bấu víu lấy hắn.</p>
+<p>Hắn là sự mát lạnh duy nhất.</p>
+<p>Băng cùng hỏa hòa làm một.</p>
+<p>Chiếc lồng chim treo trên cành liễu, con vẹt lông trắng tròn xoe đôi mắt, đảo qua đảo lại nhìn chăm chú.</p>
+<p>“Hoàng thúc...”</p>
+<p>Ngày đêm đảo lộn, trời đất chẳng còn phân biệt.</p>
+<p>“Không đủ, còn xa mới đủ... Tiểu Cửu, ngoan nào...”</p>
+<p>Thành Giang Nam.</p>
+<p>Một phong cấp báo được đưa tới tay. Sắc mặt Tiêu Dạ Hành âm trầm, trở tay vỗ mạnh xuống bàn.</p>
+<p>“Tần Mục Vũ!”</p>
+<p>“Cữu cữu?”</p>
+<p>“Tự mình xem đi!”</p>
+<p>Tần Mục Vũ nghi hoặc cầm lấy mật tín. Khi nhìn rõ nội dung bên trong, sắc mặt lập tức đại biến.</p>
+<p>“Con tự ý rời bỏ chức trách, từ Mạc Hoài Hà chạy tới thành Giang Nam. Hiện giờ, Sở Dạ Ly đã tự lập làm vương tại Mạc Hoài Châu. Nếu Nam Man cấp binh lực cho hắn, giúp hắn vượt qua Mạc Hoài Hà, không cần quá ba ngày, hắn có thể đánh tới thành Giang Nam, rồi một đường vung quân tiến về phương bắc, thẳng đến đế đô!”</p>
+<p>Tiêu Dạ Hành nghiêm giọng quát:</p>
+<p>“Nếu con ngoan ngoãn trấn thủ tiền tuyến, có thể xảy ra chuyện lớn như thế sao?”</p>
+<p>Tần Mục Vũ mím chặt khóe môi.</p>
+<p>Hắn không ngờ sự tình lại nghiêm trọng đến vậy.</p>
+<p>Lúc ấy, vừa nhận được tin A Ly còn sống, hắn liền vội vã chạy tới Giang Nam, căn bản không còn lòng dạ nào để ý chuyện khác.</p>
+<p>“Con lập tức trở về!”</p>
+<p>Nhưng...</p>
+<p>Hắn lại có vài phần do dự.</p>
+<p>“Phía A Ly...”</p>
+<p>“Đã là lúc nào rồi mà con còn nhớ nhung Cửu hoàng tử? Nàng ở cùng Nhiếp Chính Vương, chẳng lẽ Nhiếp Chính Vương còn có thể ăn thịt nó sao? Trái lại là con tự tiện rời bỏ chức trách. Nếu bị kẻ có tâm nắm được nhược điểm, cái đầu trên cổ con cùng cả Tướng quân phủ, con còn muốn giữ hay không?”</p>
+<p>Tiêu Dạ Hành chỉ ngón tay vào trán hắn, vẻ mặt hận thiết bất thành cương.</p>
+<p>Suốt ngày chỉ biết nhi nữ tình trường.</p>
+<p>Đấng nam nhi, đại trượng phu, lẽ ra phải chí tại bốn phương.</p>
+<p>“Con vẫn còn quá nôn nóng. Nếu sau này thống lĩnh đại quân ra chiến trường, chẳng lẽ muốn để hàng vạn tướng sĩ vô tội phải chôn theo sự khinh suất của con sao?”</p>
+<p>“Cữu cữu, con...”</p>
+<p>Thần sắc Tần Mục Vũ tối đi.</p>
+<p>Hắn có một bầu nhiệt huyết, cũng có người luôn canh cánh trong lòng. Nhưng lúc này nghe cữu cữu nói như vậy, hắn mới ý thức được sai lầm của mình.</p>
+<p>Ở cương vị nào, lo việc cương vị ấy.</p>
+<p>“Lần sau con sẽ không như vậy nữa.”</p>
+<p>Hắn cầm lấy bội kiếm, sải bước đi ra ngoài, gọi tâm phúc dưới trướng.</p>
+<p>“Vương Hằng, chuẩn bị ngựa, chúng ta lập tức trở về Mạc Hoài Hà!”</p>
+<p>Ở căn phòng bên cạnh, Tần Mục Tuyết bước ra, nhìn thấy cảnh ấy liền hỏi:</p>
+<p>“Ca, huynh phải đi rồi sao?”</p>
+<p>Tần Mục Vũ tỉ mỉ nói rõ tình hình trước mắt.</p>
+<p>Nghe xong, thần sắc Tần Mục Tuyết cũng trầm xuống.</p>
+<p>“Huynh mau đi ngay, đừng chậm trễ!”</p>
+<p>Hưng vong thiên hạ, thất phu hữu trách.</p>
+<p>Không chỉ ca ca, ngay cả trong cốt tủy nàng cũng tràn đầy phần trách nhiệm ấy.</p>
+<p>Là con dân Đại Sở, là thiên kim của Tướng quân phủ, trước đại nghĩa gia quốc, nàng đương nhiên sẽ không vì nhi nữ tình trường mà lưu luyến.</p>
+<p>Ban đầu tới Giang Nam là vì bái sư học võ, để sau này có thể ra chiến trường, trợ giúp đại ca, vì nước phân ưu. Chỉ vì gặp được A Ly ca ca nên mới tạm gác lại.</p>
+<p>Hiện giờ, nàng cũng nên rời đi rồi.</p>
+<p>Chỉ là...</p>
+<p>Nàng nhìn về phía sương phòng của Lục sư huynh, đáy mắt hiện lên vài phần không nỡ.</p>
+<p>Lục sư huynh giữ mình trong sạch, không gần nữ sắc, vậy mà chỉ vì trúng dược, âm sai dương thác phát sinh quan hệ với nàng.</p>
+<p>Vì chuyện đó, nàng vẫn luôn vô cùng áy náy.</p>
+<p>Duyên phận cầu không được, chi bằng cứ buông xuống. Có thể có được vài ngày ngắn ngủi ở bên nhau, nàng đã thấy mãn nguyện lắm rồi.</p>
+<p>Đến đây...</p>
+<p>Xin từ biệt!</p>
+<p>Tiểu trúc ven hồ vốn đang náo nhiệt, nay mỗi người một ngả, nói tan liền tan.</p>
+<p>Tiêu Dạ Hành lập tức phái người tới Hồ Tâm đảo đưa tin cho Sở Đệ Trì, đồng thời điều động lục quân tại Giang Nam tới đóng quân dọc vùng Mạc Hoài Hà, lại sai người đến Mạc Hoài Châu dò xét tình hình cụ thể.</p>
+<p>Ngũ hoàng tử Sở Dạ Ly, sao lại trở thành Thái tử tiền triều?</p>
+<p>Chỉ riêng chuyện này đã khiến hắn bận rộn suốt cả ngày.</p>
+<p>Đến bữa tối cũng chẳng được yên ổn.</p>
+<p>Lục Vân Sơ cầm đũa, nhìn chỗ ngồi trên bàn rõ ràng đang để trống, hỏi:</p>
+<p>“Sao không thấy Tần tiểu... Tần Thiếu tướng quân?”</p>
+<p>Bên cạnh, Bạch Cẩm Y hạ giọng đáp:</p>
+<p>“Mạc Hoài Châu xảy ra biến cố, huynh muội họ đều đã rời đi.”</p>
+<p>Sắc mặt Lục Vân Sơ chợt trầm xuống, bàn tay siết chặt đôi đũa, phát ra một tiếng “rắc”.</p>
+<p>Đều đi rồi?</p>
+<p>Nàng rời đi từ lúc nào, ngay cả một lời chào cũng chẳng nói với hắn?</p>
+<p>Đó chính là cái gọi là thích của nàng sao?</p>
+<p>Hay cho một Tần Mục Tuyết trở mặt vô tình, xong việc liền phủi sạch không nhận người! Hắn, Lục Vân Sơ, há lại là kẻ có thể tùy tiện bị nàng đuổi đi như thế?</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_231.html" class="btn">‹ Trước</a>
             <a href="chuong_233.html" class="btn">Sau ›</a>
         </div>
@@ -285,15 +220,11 @@ Hay cho một Tần Mục Tuyết trở mặt vô tình, xong việc liền ph�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -305,11 +236,11 @@ Hay cho một Tần Mục Tuyết trở mặt vô tình, xong việc liền ph�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 144</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,298 +62,307 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 144</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_143.html" class="btn">‹ Trước</a>
             <a href="chuong_145.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 144: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 144: Sở Ly biến mất rồi
-Doanh địa Nam Man.
-“Đệm trải mềm hơn một chút… Gói hết số điểm tâm này lại, còn cả trà sữa nàng thích uống nữa…”
-Sở Dạ Ly đích thân căn dặn thuộc hạ, mọi việc đều tự mình lo liệu.
-Cách đó không xa.
-Thác Bạt Minh Nguyệt đứng lặng tại chỗ. Nàng đã chuẩn bị xuất phát, còn thị nữ thân cận Hướng Nguyệt đứng bên cạnh thì ánh mắt đầy vẻ u ám, thấp giọng nói:
-“Công chúa, người đã thích Đông Lăng điện hạ nhiều năm như vậy, nhưng ánh mắt của ngài ấy chưa từng đặt lên người.”
-Nàng thực sự bất bình.
-Bây giờ, vì một người ngoài mà hắn tận tâm đến thế, còn hơn cả sự quan tâm dành cho công chúa.
-Còn công chúa thì sao?
-Vừa nghe tin hắn đến quân doanh, liền cưỡi khoái mã, ngày đêm không nghỉ từ Vương đô chạy tới.
-Thác Bạt Minh Nguyệt bình thản nói:
-“Nếu mọi tấm chân tình trên đời đều được đáp lại; nếu mọi đoạn tình cảm đều có thể song hướng mà đến, thì trên thế gian này đã không có nhiều chuyện tuẫn tình, oán ngẫu hay ý nan bình đến vậy.”
-“Công chúa…”
-“Đi chuẩn bị đi, một khắc nữa chúng ta xuất phát.”
-Hướng Nguyệt không cam lòng.
-Công chúa sao có thể nói những lời như vậy?
-Nàng là Trưởng công chúa tôn quý nhất Nam Man!
-Muốn kiểu nam tử nào, chỉ cần hạ lệnh là có được; nàng sinh ra vốn để hưởng thụ thiên hạ này, hà tất phải chịu ấm ức?
-Hướng Nguyệt càng nghĩ càng thấy bất bình thay công chúa.
-Một khắc sau.
-“Tiểu Cửu, cẩn thận dưới chân.” Sở Dạ Ly đỡ Sở Ly.
-“Tần Mục Vũ đâu?”
-“Hắn ngồi xe ngựa khác.”
-“Ta muốn ngồi cùng huynh ấy.”
-“…”
-Hướng Nguyệt bước tới, không kiêu không nịnh nói:
-“Tiểu Sở công tử, lần này đội ngũ chúng ta đi gọn nhẹ, chỉ có hai cỗ xe ngựa. Tù binh ngồi một xe, còn ngài cùng Công chúa và Đông Lăng điện hạ ngồi một xe.”
-Sở Ly nói:
-“Nếu không thể ở cạnh huynh ấy để bảo đảm an toàn cho huynh ấy, ta sẽ đứng ngồi không yên.”
-Hướng Nguyệt cười lạnh trong lòng.
-Đúng là vô lý gây sự.
-Đông Lăng điện hạ đâu phải người có nhiều kiên nhẫn.
-“Được, theo ý nàng vậy.” Sở Dạ Ly bất đắc dĩ đáp.
-Hướng Nguyệt: “?”
-Nàng không dám tin nhìn Sở Dạ Ly dìu Sở Ly sang cỗ xe còn lại, ngồi cùng tù binh Tần Mục Vũ, còn vị Trưởng công chúa tôn quý của nàng thì bị bỏ lại, một mình ngồi riêng một cỗ xe!
-Điên rồi!
-Đông Lăng điện hạ sao có thể làm vậy?
-“Tần Thiếu tướng quân là tù binh, điện hạ không nên ngồi cùng xe với hắn!”
-“Theo ta được biết, Đại Sở chúng ta dường như chưa từng ngược đãi tù binh.” Sở Ly bước lên xe ngựa, quay đầu nhìn Hướng Nguyệt.
-Đều là nữ nhân, có những khí tức giữa nữ nhân với nhau, chỉ nữ nhân mới cảm nhận được.
-Thị nữ này không thích nàng.
-Rất tốt.
-Lúc bước lên bậc xe, Sở Ly lỡ trẹo chân.
-“A…”
-“Tiểu Cửu cẩn thận!”
-Sở Dạ Ly nhanh tay lẹ mắt ôm lấy eo nàng.
-Sở Ly giật mình ôm lấy cổ hắn, lòng còn sợ hãi:
-“Vẫn là Ngũ ca tốt nhất. Có huynh ở đây, ta rất yên tâm.”
-“Ngũ ca, ta chưa từng đến Vương đô Nam Man, cũng không biết nơi đó như thế nào, có chút sợ hãi. Hay là chúng ta… cùng cả Tần Mục Vũ nữa, ngồi chung một xe đi?”
-Trong mắt Sở Dạ Ly khẽ sáng lên.
-Tiểu Cửu chủ động mời hắn?
-Kể từ khi rời khỏi hoàng cung Đại Sở, đây là lần đầu tiên nàng chủ động với hắn.
-Dù chỉ là một yêu cầu rất nhỏ.
-“Được.”
-Hướng Nguyệt trợn tròn mắt:
-“Điện hạ, vậy Trưởng công chúa thì sao?”
-“Công chúa thân phận tôn quý, thanh danh trong sạch, ta không nên ở riêng với nàng ấy, tránh làm hỏng danh tiết của nàng.”
-Nói xong, Sở Dạ Ly bế Sở Ly lên xe.
-Sở Ly vòng tay ôm cổ hắn, quay đầu nhìn Hướng Nguyệt.
-Khóe mắt khẽ cong lên.
-Hướng Nguyệt nhìn thấy, tức giận đến nghiến răng.
-Đáng chết!
-Thật đáng ghét!
-“Công chúa, bọn họ ngồi cùng xe với tù binh, bỏ mặc người một mình!” Hướng Nguyệt tức tối chạy đến bẩm báo.
-Thác Bạt Minh Nguyệt nghe xong, chỉ ôn hòa mỉm cười:
-“Biết rồi.”
-“Công chúa!”
-Sao công chúa không tức giận?
-Sao lúc nào cũng rộng lượng như vậy?
-Rõ ràng Tiểu Sở công tử là cố ý!
-Không hề có ý tốt!
-Rất nhanh, đoàn người khởi hành.
-Hai mươi cao thủ hạng nhất hộ tống hai cỗ xe ngựa ở giữa, tiến về Vương đô.
-Suốt dọc đường cũng coi như yên ổn.
-“Mục Vũ, huynh đói không?”
-“Mục Vũ, huynh khát không?”
-“Mục Vũ…”
-“Ta vẫn ổn, A Ly.”
-Trong xe ngựa có ba người, không gian vốn khá rộng rãi.
-Chỉ là vì hai người nào đó quá thân mật, khiến Sở Dạ Ly ngồi một bên cảm thấy vô cùng chật chội.
-Hình như hắn không nên có mặt ở đây?
-Xe ngựa rộng như vậy, hai người họ không thể ngồi đàng hoàng sao? Vì sao cứ phải co rúm ở một góc, khiến cảm giác như bọn họ là “chúng ta”, còn hắn chỉ là người ngoài.
-“Mục Vũ, huynh ăn ít thịt bò khô lót dạ đi.”
-Sở Ly đưa túi đồ ăn đã gói sẵn cho Tần Mục Vũ.
-Sở Dạ Ly vừa mở miệng:
-“Tiểu Cửu…”
-Đó là đồ hắn đặc biệt chuẩn bị cho nàng.
-Thế nhưng vừa cầm miếng thịt bò khô lên, tay Tần Mục Vũ đã mềm nhũn, miếng thịt rơi xuống đất.
-Ánh mắt Sở Ly thoáng hiện vẻ tức giận.
-“Giải Nhuyễn Cốt Tán cho huynh ấy!”
-“Không phải ta hạ thuốc, Tiểu Cửu.”
-“Huynh nhất định có thể giải!”
-Sở Ly nhìn Sở Dạ Ly.
-“Trúng Nhuyễn Cốt Tán, ngay cả cầm miếng thịt bò khô huynh ấy cũng không có sức, chứ đừng nói cầm kiếm, căn bản không thể uy hiếp các huynh.”
-“Cho dù giải Nhuyễn Cốt Tán, chỉ bằng một mình huynh ấy cũng không thể trốn khỏi vòng vây tầng tầng lớp lớp của Nam Man, hà tất phải làm nhục huynh ấy như vậy?”
-Sở Dạ Ly đỡ lấy hai vai nàng.
-“Đừng nóng, đừng nóng.”
-Hắn dịu giọng dỗ dành:
-“Lần này chúng ta không mang theo quân y. Đợi đến Vương đô, chúng ta tìm một y quán giải Nhuyễn Cốt Tán cho huynh ấy, được không?”
-Sở Ly nửa tin nửa ngờ:
-“Thật chứ?”
-“Ta lừa muội bao giờ? Đừng giận nữa, uống chén trà sữa cho nguôi giận.”
-“Mục Vũ, huynh thích đồ ngọt nhất, nếm thử trà sữa này đi… A, tay huynh không có sức à? Ta đút cho huynh.”
-“Ngọt không? Ngon không?”
-“Ngon lắm, A Ly. Ta chợt nhớ hồi nhỏ chúng ta trốn học, lén đi lấy tổ ong. Mắt muội bị ong đốt sưng lên, còn ta thì bị đốt đầy đầu. Mật ong lúc ấy cũng ngọt như thế!”
-Sở Dạ Ly: “??”
-Hay là hai người quay đầu nhìn thử xem, trong xe vẫn còn một người nữa?
-Nắm chặt bàn tay.
-Bấu chặt mặt bàn.
-Hai chân đạp xuống sàn.
-Mím chặt môi mỏng.
-Ánh mắt liếc xéo như dao gần như muốn lăng trì thiếu niên kia, vậy mà thiếu niên vẫn chẳng thèm nhìn hắn, vui vẻ trò chuyện với Sở Ly, hai người nói chuyện vô cùng hợp ý.
-Hướng Nguyệt đi theo đoàn người, không ngừng nghe thấy tiếng cười nói từ xe ngựa truyền ra, lặng lẽ siết chặt đầu ngón tay.
-Lòng người chẳng lẽ làm bằng đá sao?
-Bao năm nay, công chúa một lòng một dạ với Đông Lăng điện hạ, chưa từng cưỡng cầu điều gì. Vậy mà Đông Lăng điện hạ lại đối xử với công chúa như thế?
-Trước đây nàng vẫn luôn nghĩ Đông Lăng điện hạ trời sinh lạnh nhạt.
-Nàng đã sai.
-Trước mặt Tiểu Sở công tử, Đông Lăng điện hạ bộc lộ một mặt mà các nàng chưa từng thấy.
-Không có so sánh thì không có tổn thương.
-Giờ có sự so sánh ấy rồi, Hướng Nguyệt càng thấy bất công thay công chúa.
-Cuối cùng, nàng không nhịn được nữa:
-“Đông Lăng điện hạ.”
-“Mấy ngày trước, công chúa vừa nghe tin ngài đến quân doanh liền cưỡi ngựa suốt ba ngày ba đêm chạy tới, hai đùi bị yên ngựa cọ rách. Cũng không biết vết thương của công chúa đã đỡ hơn chưa.”
-Nghe như vô tình, nhưng thực chất là muốn Sở Dạ Ly sang thăm Thác Bạt Minh Nguyệt.
-“Công chúa bị thương sao?”
-Sở Ly vén rèm xe lên, nhìn Hướng Nguyệt đang đầy vẻ bất bình.
-Nàng thân mật khoác lấy cánh tay Sở Dạ Ly.
-“Ngũ ca, huynh đâu biết y thuật, mà vết thương lại ở đùi, vị trí nhạy cảm như vậy. Huynh là ngoại nam, sao có thể đến gần công chúa? Ngũ ca, huynh ở với ta đi!”
-Sở Dạ Ly nhìn bàn tay nhỏ đang ôm lấy khuỷu tay mình, nhất thời thụ sủng nhược kinh.
-Giống như một con mèo kiêu ngạo, ngày nào cũng chỉ biết cắn người, đột nhiên trở nên ngoan ngoãn, cọ cọ vào gấu quần hắn.
-Khoảnh khắc ấy, hắn đến cử động cũng không dám.
-Chỉ sợ đây là giấc mộng Hoàng Lương.
-“Tiểu Cửu nói đúng. Quả thật ta không biết y thuật, cũng chẳng giúp được gì. Đợi đến thị trấn tiếp theo, ta sẽ tìm đại phu khám cho công chúa.”
-Buông rèm xe xuống.
-“Ngũ ca là tốt nhất.”
-Giọng nói nũng nịu của Sở Ly xuyên qua rèm xe, lọt vào tai Hướng Nguyệt.
-Hai cỗ xe ngựa.
-Chiếc phía sau cười nói không ngớt.
-Chiếc phía trước chỉ có một mình Thác Bạt Minh Nguyệt ngồi lặng lẽ, cô đơn.
-Hướng Nguyệt gần như tức đến phát điên.
-Đông Lăng điện hạ chẳng lẽ mù rồi?
-Tiểu Sở công tử kia rõ ràng là cố ý!
-Bốn ngày tiếp theo đều như vậy.
-Mượn cớ chân bị thương, còn Tần Mục Vũ thì trúng Nhuyễn Cốt Tán, hai người đều không thể rời khỏi sự “chăm sóc” của Sở Dạ Ly.
-Bất kể ăn cơm, đi đường hay làm gì khác, Sở Ly đều quấn lấy Sở Dạ Ly, căn bản không cho Thác Bạt Minh Nguyệt có cơ hội ở riêng với hắn.
-Thác Bạt Minh Nguyệt vẫn điềm tĩnh, chưa từng lộ vẻ tức giận.
-Nhưng Hướng Nguyệt thì thực sự sắp nổ tung, như một quả bóng căng phồng sắp phát nổ.
-Cuối cùng, ngày thứ sáu, bọn họ đến Vương đô!
-Vì chuyến đi này cưỡi ngựa nhẹ, bí mật hành trình nên không thể trực tiếp vào vương cung, phải để thị vệ chuyên trách vào thông truyền, được Vương thượng triệu kiến mới có thể diện kiến.
-Trước đó, mọi người tạm thời nghỉ chân tại một khách điếm.
-Nhân lúc mọi người đang chuyển hành lý, Hướng Nguyệt cuối cùng cũng tìm được cơ hội nói riêng:
-“Đông Lăng điện hạ, lúc nãy Trưởng công chúa lên lầu, chân bước hơi loạng choạng, e rằng vết thương ở đùi nặng thêm rồi. Sáng mai diện kiến Vương thượng, nếu người nhìn thấy, hẳn sẽ rất đau lòng.”
-Sở Dạ Ly nghe vậy, khựng lại.
-“Bốn ngày trước, khi đến thị trấn, nàng ấy không đi tìm đại phu sao?”
-“Điện hạ quên rồi sao? Trưởng công chúa lo ngài không quen đồ ăn Nam Man, nên đích thân xuống bếp nấu cho ngài, nào còn thời gian đi tìm đại phu?”
-Sở Dạ Ly thoáng sững người.
-Trong sân.
-Sở Ly và Tần Mục Vũ đứng sát nhau. Một người toàn thân vô lực, một người chân què, nhìn qua quả thật rất thảm.
-Hai người nhỏ giọng thì thầm:
-“Vị Trưởng công chúa kia thích huynh ấy.”
-“Ta nhìn ra rồi.”
-“Nàng ấy là người si tình, đáng tiếc Ngũ ca không thích nàng ấy, Ngũ ca phụ lòng nàng ấy.”
-“A Ly, muội tin lâu ngày sinh tình, hay nhất kiến chung tình?”
-“Ta… Suỵt! Bọn họ tới rồi.”
-Sở Ly đứng thẳng người, nhìn Sở Dạ Ly đang đi tới.
-“Tiểu Cửu, ta lên xem Trưởng công chúa trước. Một khắc sau chúng ta gặp ở đại sảnh, dùng xong bữa tối, ta sẽ đưa muội đi dạo Vương đô.”
-“Được, Ngũ ca.”
-“Người đâu, dỡ hành lý xuống, sắp xếp cẩn thận, rồi đưa bọn họ đến tiền sảnh.”
-“Rõ!”
-Tám tên thị tùng lĩnh mệnh, Sở Dạ Ly đi lên lầu trước.
-Hướng Nguyệt lại không rời đi.
-Có vài lời, vài cơn giận, nàng đã nén trong lòng quá lâu.
-Nếu không nói ra, nàng sẽ nghẹn chết mất.
-“Bốn người các ngươi, mang hành lý lên lầu.”
-“Rõ.”
-“Còn hai người các ngươi, dắt ngựa sang chuồng cho ăn cỏ. Hai người còn lại, vào vương cung báo tin.”
-Việc này…
-Như vậy chẳng phải tất cả đều đi hết sao? Ai sẽ trông tù binh và Tiểu Sở công tử?
-“Hướng Nguyệt cô nương, e rằng chúng ta phải ở lại trông chừng…”
-“Có ta ở đây. Một kẻ trúng Nhuyễn Cốt Tán, một kẻ chân què, chẳng lẽ còn mọc cánh bay lên trời được?”
-“Vâng… chúng tôi đi ngay.”
-Hướng Nguyệt là thị nữ thân cận của Trưởng công chúa, lời nàng có vài phần trọng lượng, đâu phải bọn họ dám đắc tội.
-Rất nhanh, tất cả mọi người đều bị điều đi.
-Hướng Nguyệt lạnh lùng bước về phía Sở Ly.
-Lúc này, Sở Ly đang dựa vào người Tần Mục Vũ. Hai người mang dáng vẻ “già yếu bệnh tật”, còn Hướng Nguyệt là người biết võ, bên hông còn đeo một cây roi.
-“Ngươi… ngươi muốn làm gì?”
-Sở Ly lộ vẻ hoảng hốt, lùi về sau mấy bước.
-Hướng Nguyệt thong thả tháo cây roi đen bên hông xuống.
-“Công chúa nói với ta, ngươi là nữ tử.”
-“Đúng, ta là nữ tử.”
-“Không biết nếu một roi này quất lên mặt ngươi, hủy đi dung mạo của ngươi, Đông Lăng điện hạ còn có thích cái bộ dạng đầy tâm cơ, làm bộ làm tịch của ngươi nữa hay không!”
-Suốt dọc đường này, nàng đã nhịn đủ rồi.
-Không thể nhịn thêm nữa!
-Con tiện nhân này dựa vào cái gì mà được Đông Lăng điện hạ ưu ái, còn Trưởng công chúa thân phận cao quý lại chỉ có thể nhẫn nhịn chịu đựng?
-Sở Ly hoảng hốt lùi lại:
-“Ngươi… ngươi hiểu lầm rồi. Ta đối với Ngũ ca không có ý đó, cũng sẽ không tranh giành với Trưởng công chúa…”
-“Thật sao?”
-Hướng Nguyệt chợt túm lấy cổ áo nàng.
-“Suốt dọc đường, những thủ đoạn bẩn thỉu ngươi giở ra còn chưa đủ sao? Hay ngươi tưởng ta mù?”
-“Buông ta ra!”
-“Tiểu Sở công tử, ta cảnh cáo ngươi, đây là Nam Man, là địa bàn của chúng ta! Mau cất cái vẻ giả tạo đáng ghê tởm ấy đi, nếu không ta nhất định sẽ khiến ngươi… Ưm!”
-Sau gáy bỗng đau nhói.
-Giống như quả dưa hấu bị đập vỡ.
-Hướng Nguyệt chỉ cảm thấy trước mắt tối sầm, trời đất quay cuồng. Nàng loạng choạng xoay nửa người lại, chỉ thấy Tần Mục Vũ đang cầm một khúc gỗ lớn.
-“Ngươi…”
-Hắn chẳng phải trúng Nhuyễn Cốt Tán sao?
-Chẳng phải ngay cả cầm chén nước cũng không còn sức sao?
-Tần Mục Vũ cười lạnh:
-“Ta là người tập võ, nội lực hộ thân. Dù trúng Nhuyễn Cốt Tán, nhưng đánh ngất ngươi vẫn dư sức!”
-Hắn yếu ớt vô lực?
-Không.
-Hắn giả vờ.
-Bốp!
-Lại một gậy giáng xuống, đánh Hướng Nguyệt ngất lịm trên đất.
-Sở Ly ném cây gậy đi, phủi vụn gỗ trong lòng bàn tay. Động tác duỗi chân duỗi tay ấy, nào còn giống người què?
-Chân què?
-Nàng giả vờ.
-Chân nàng đã khỏi từ lâu.
-May mà Hướng Nguyệt sơ hở, điều hết mọi người đi, mới cho bọn họ cơ hội bỏ trốn, cũng không uổng công mấy ngày nay hai người giả bệnh.
-“Hướng Nguyệt, xin lỗi, đắc tội rồi. Trưởng công chúa là người tốt, ta cũng sẽ không tranh giành Sở Dạ Ly với nàng ấy. Nhưng ta cần phải rời đi. Ngươi cứ nằm đây một lúc, rất nhanh sẽ có người tới cứu.”
-“A Ly, xung quanh bây giờ không có ai, chúng ta mau đi!”
-“Đi!”
-Hai người chuồn mất.
-Trong nhã phòng trên lầu.
-Sở Dạ Ly đang hỏi thăm thương thế của Thác Bạt Minh Nguyệt, nhưng nàng cho rằng vết trầy ở đùi chỉ là vết thương do cưỡi ngựa cọ xát, không đáng ngại.
-Tính nàng quá cương trực, ngay thẳng và kiêu ngạo, tuyệt đối không làm ra chuyện như nữ nhi yếu đuối, đem chút thương tích nhỏ đi tranh thủ sự thương hại.
-Trong lòng Sở Dạ Ly dâng lên cảm giác khó tả.
-Điều hắn nợ nàng…
-Quá nhiều.
-Hỏi thăm vài câu, ngồi một lát, hắn xuống lầu đi ra hậu viện, chỉ thấy Hướng Nguyệt nằm lẻ loi trên đất, thị vệ không thấy bóng dáng, mà quan trọng hơn là…
-Sở Ly biến mất rồi!
-Người đâu?! Ẩn bớt</p>
+            <p>Chương 144: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 144: Sở Ly biến mất rồi</p>
+<p>Doanh địa Nam Man.</p>
+<p>“Đệm trải mềm hơn một chút… Gói hết số điểm tâm này lại, còn cả trà sữa nàng thích uống nữa…”</p>
+<p>Sở Dạ Ly đích thân căn dặn thuộc hạ, mọi việc đều tự mình lo liệu.</p>
+<p>Cách đó không xa.</p>
+<p>Thác Bạt Minh Nguyệt đứng lặng tại chỗ. Nàng đã chuẩn bị xuất phát, còn thị nữ thân cận Hướng Nguyệt đứng bên cạnh thì ánh mắt đầy vẻ u ám, thấp giọng nói:</p>
+<p>“Công chúa, người đã thích Đông Lăng điện hạ nhiều năm như vậy, nhưng ánh mắt của ngài ấy chưa từng đặt lên người.”</p>
+<p>Nàng thực sự bất bình.</p>
+<p>Bây giờ, vì một người ngoài mà hắn tận tâm đến thế, còn hơn cả sự quan tâm dành cho công chúa.</p>
+<p>Còn công chúa thì sao?</p>
+<p>Vừa nghe tin hắn đến quân doanh, liền cưỡi khoái mã, ngày đêm không nghỉ từ Vương đô chạy tới.</p>
+<p>Thác Bạt Minh Nguyệt bình thản nói:</p>
+<p>“Nếu mọi tấm chân tình trên đời đều được đáp lại; nếu mọi đoạn tình cảm đều có thể song hướng mà đến, thì trên thế gian này đã không có nhiều chuyện tuẫn tình, oán ngẫu hay ý nan bình đến vậy.”</p>
+<p>“Công chúa…”</p>
+<p>“Đi chuẩn bị đi, một khắc nữa chúng ta xuất phát.”</p>
+<p>Hướng Nguyệt không cam lòng.</p>
+<p>Công chúa sao có thể nói những lời như vậy?</p>
+<p>Nàng là Trưởng công chúa tôn quý nhất Nam Man!</p>
+<p>Muốn kiểu nam tử nào, chỉ cần hạ lệnh là có được; nàng sinh ra vốn để hưởng thụ thiên hạ này, hà tất phải chịu ấm ức?</p>
+<p>Hướng Nguyệt càng nghĩ càng thấy bất bình thay công chúa.</p>
+<p>Một khắc sau.</p>
+<p>“Tiểu Cửu, cẩn thận dưới chân.” Sở Dạ Ly đỡ Sở Ly.</p>
+<p>“Tần Mục Vũ đâu?”</p>
+<p>“Hắn ngồi xe ngựa khác.”</p>
+<p>“Ta muốn ngồi cùng huynh ấy.”</p>
+<p>“…”</p>
+<p>Hướng Nguyệt bước tới, không kiêu không nịnh nói:</p>
+<p>“Tiểu Sở công tử, lần này đội ngũ chúng ta đi gọn nhẹ, chỉ có hai cỗ xe ngựa. Tù binh ngồi một xe, còn ngài cùng Công chúa và Đông Lăng điện hạ ngồi một xe.”</p>
+<p>Sở Ly nói:</p>
+<p>“Nếu không thể ở cạnh huynh ấy để bảo đảm an toàn cho huynh ấy, ta sẽ đứng ngồi không yên.”</p>
+<p>Hướng Nguyệt cười lạnh trong lòng.</p>
+<p>Đúng là vô lý gây sự.</p>
+<p>Đông Lăng điện hạ đâu phải người có nhiều kiên nhẫn.</p>
+<p>“Được, theo ý nàng vậy.” Sở Dạ Ly bất đắc dĩ đáp.</p>
+<p>Hướng Nguyệt: “?”</p>
+<p>Nàng không dám tin nhìn Sở Dạ Ly dìu Sở Ly sang cỗ xe còn lại, ngồi cùng tù binh Tần Mục Vũ, còn vị Trưởng công chúa tôn quý của nàng thì bị bỏ lại, một mình ngồi riêng một cỗ xe!</p>
+<p>Điên rồi!</p>
+<p>Đông Lăng điện hạ sao có thể làm vậy?</p>
+<p>“Tần Thiếu tướng quân là tù binh, điện hạ không nên ngồi cùng xe với hắn!”</p>
+<p>“Theo ta được biết, Đại Sở chúng ta dường như chưa từng ngược đãi tù binh.” Sở Ly bước lên xe ngựa, quay đầu nhìn Hướng Nguyệt.</p>
+<p>Đều là nữ nhân, có những khí tức giữa nữ nhân với nhau, chỉ nữ nhân mới cảm nhận được.</p>
+<p>Thị nữ này không thích nàng.</p>
+<p>Rất tốt.</p>
+<p>Lúc bước lên bậc xe, Sở Ly lỡ trẹo chân.</p>
+<p>“A…”</p>
+<p>“Tiểu Cửu cẩn thận!”</p>
+<p>Sở Dạ Ly nhanh tay lẹ mắt ôm lấy eo nàng.</p>
+<p>Sở Ly giật mình ôm lấy cổ hắn, lòng còn sợ hãi:</p>
+<p>“Vẫn là Ngũ ca tốt nhất. Có huynh ở đây, ta rất yên tâm.”</p>
+<p>“Ngũ ca, ta chưa từng đến Vương đô Nam Man, cũng không biết nơi đó như thế nào, có chút sợ hãi. Hay là chúng ta… cùng cả Tần Mục Vũ nữa, ngồi chung một xe đi?”</p>
+<p>Trong mắt Sở Dạ Ly khẽ sáng lên.</p>
+<p>Tiểu Cửu chủ động mời hắn?</p>
+<p>Kể từ khi rời khỏi hoàng cung Đại Sở, đây là lần đầu tiên nàng chủ động với hắn.</p>
+<p>Dù chỉ là một yêu cầu rất nhỏ.</p>
+<p>“Được.”</p>
+<p>Hướng Nguyệt trợn tròn mắt:</p>
+<p>“Điện hạ, vậy Trưởng công chúa thì sao?”</p>
+<p>“Công chúa thân phận tôn quý, thanh danh trong sạch, ta không nên ở riêng với nàng ấy, tránh làm hỏng danh tiết của nàng.”</p>
+<p>Nói xong, Sở Dạ Ly bế Sở Ly lên xe.</p>
+<p>Sở Ly vòng tay ôm cổ hắn, quay đầu nhìn Hướng Nguyệt.</p>
+<p>Khóe mắt khẽ cong lên.</p>
+<p>Hướng Nguyệt nhìn thấy, tức giận đến nghiến răng.</p>
+<p>Đáng chết!</p>
+<p>Thật đáng ghét!</p>
+<p>“Công chúa, bọn họ ngồi cùng xe với tù binh, bỏ mặc người một mình!” Hướng Nguyệt tức tối chạy đến bẩm báo.</p>
+<p>Thác Bạt Minh Nguyệt nghe xong, chỉ ôn hòa mỉm cười:</p>
+<p>“Biết rồi.”</p>
+<p>“Công chúa!”</p>
+<p>Sao công chúa không tức giận?</p>
+<p>Sao lúc nào cũng rộng lượng như vậy?</p>
+<p>Rõ ràng Tiểu Sở công tử là cố ý!</p>
+<p>Không hề có ý tốt!</p>
+<p>Rất nhanh, đoàn người khởi hành.</p>
+<p>Hai mươi cao thủ hạng nhất hộ tống hai cỗ xe ngựa ở giữa, tiến về Vương đô.</p>
+<p>Suốt dọc đường cũng coi như yên ổn.</p>
+<p>“Mục Vũ, huynh đói không?”</p>
+<p>“Mục Vũ, huynh khát không?”</p>
+<p>“Mục Vũ…”</p>
+<p>“Ta vẫn ổn, A Ly.”</p>
+<p>Trong xe ngựa có ba người, không gian vốn khá rộng rãi.</p>
+<p>Chỉ là vì hai người nào đó quá thân mật, khiến Sở Dạ Ly ngồi một bên cảm thấy vô cùng chật chội.</p>
+<p>Hình như hắn không nên có mặt ở đây?</p>
+<p>Xe ngựa rộng như vậy, hai người họ không thể ngồi đàng hoàng sao? Vì sao cứ phải co rúm ở một góc, khiến cảm giác như bọn họ là “chúng ta”, còn hắn chỉ là người ngoài.</p>
+<p>“Mục Vũ, huynh ăn ít thịt bò khô lót dạ đi.”</p>
+<p>Sở Ly đưa túi đồ ăn đã gói sẵn cho Tần Mục Vũ.</p>
+<p>Sở Dạ Ly vừa mở miệng:</p>
+<p>“Tiểu Cửu…”</p>
+<p>Đó là đồ hắn đặc biệt chuẩn bị cho nàng.</p>
+<p>Thế nhưng vừa cầm miếng thịt bò khô lên, tay Tần Mục Vũ đã mềm nhũn, miếng thịt rơi xuống đất.</p>
+<p>Ánh mắt Sở Ly thoáng hiện vẻ tức giận.</p>
+<p>“Giải Nhuyễn Cốt Tán cho huynh ấy!”</p>
+<p>“Không phải ta hạ thuốc, Tiểu Cửu.”</p>
+<p>“Huynh nhất định có thể giải!”</p>
+<p>Sở Ly nhìn Sở Dạ Ly.</p>
+<p>“Trúng Nhuyễn Cốt Tán, ngay cả cầm miếng thịt bò khô huynh ấy cũng không có sức, chứ đừng nói cầm kiếm, căn bản không thể uy hiếp các huynh.”</p>
+<p>“Cho dù giải Nhuyễn Cốt Tán, chỉ bằng một mình huynh ấy cũng không thể trốn khỏi vòng vây tầng tầng lớp lớp của Nam Man, hà tất phải làm nhục huynh ấy như vậy?”</p>
+<p>Sở Dạ Ly đỡ lấy hai vai nàng.</p>
+<p>“Đừng nóng, đừng nóng.”</p>
+<p>Hắn dịu giọng dỗ dành:</p>
+<p>“Lần này chúng ta không mang theo quân y. Đợi đến Vương đô, chúng ta tìm một y quán giải Nhuyễn Cốt Tán cho huynh ấy, được không?”</p>
+<p>Sở Ly nửa tin nửa ngờ:</p>
+<p>“Thật chứ?”</p>
+<p>“Ta lừa muội bao giờ? Đừng giận nữa, uống chén trà sữa cho nguôi giận.”</p>
+<p>“Mục Vũ, huynh thích đồ ngọt nhất, nếm thử trà sữa này đi… A, tay huynh không có sức à? Ta đút cho huynh.”</p>
+<p>“Ngọt không? Ngon không?”</p>
+<p>“Ngon lắm, A Ly. Ta chợt nhớ hồi nhỏ chúng ta trốn học, lén đi lấy tổ ong. Mắt muội bị ong đốt sưng lên, còn ta thì bị đốt đầy đầu. Mật ong lúc ấy cũng ngọt như thế!”</p>
+<p>Sở Dạ Ly: “??”</p>
+<p>Hay là hai người quay đầu nhìn thử xem, trong xe vẫn còn một người nữa?</p>
+<p>Nắm chặt bàn tay.</p>
+<p>Bấu chặt mặt bàn.</p>
+<p>Hai chân đạp xuống sàn.</p>
+<p>Mím chặt môi mỏng.</p>
+<p>Ánh mắt liếc xéo như dao gần như muốn lăng trì thiếu niên kia, vậy mà thiếu niên vẫn chẳng thèm nhìn hắn, vui vẻ trò chuyện với Sở Ly, hai người nói chuyện vô cùng hợp ý.</p>
+<p>Hướng Nguyệt đi theo đoàn người, không ngừng nghe thấy tiếng cười nói từ xe ngựa truyền ra, lặng lẽ siết chặt đầu ngón tay.</p>
+<p>Lòng người chẳng lẽ làm bằng đá sao?</p>
+<p>Bao năm nay, công chúa một lòng một dạ với Đông Lăng điện hạ, chưa từng cưỡng cầu điều gì. Vậy mà Đông Lăng điện hạ lại đối xử với công chúa như thế?</p>
+<p>Trước đây nàng vẫn luôn nghĩ Đông Lăng điện hạ trời sinh lạnh nhạt.</p>
+<p>Nàng đã sai.</p>
+<p>Trước mặt Tiểu Sở công tử, Đông Lăng điện hạ bộc lộ một mặt mà các nàng chưa từng thấy.</p>
+<p>Không có so sánh thì không có tổn thương.</p>
+<p>Giờ có sự so sánh ấy rồi, Hướng Nguyệt càng thấy bất công thay công chúa.</p>
+<p>Cuối cùng, nàng không nhịn được nữa:</p>
+<p>“Đông Lăng điện hạ.”</p>
+<p>“Mấy ngày trước, công chúa vừa nghe tin ngài đến quân doanh liền cưỡi ngựa suốt ba ngày ba đêm chạy tới, hai đùi bị yên ngựa cọ rách. Cũng không biết vết thương của công chúa đã đỡ hơn chưa.”</p>
+<p>Nghe như vô tình, nhưng thực chất là muốn Sở Dạ Ly sang thăm Thác Bạt Minh Nguyệt.</p>
+<p>“Công chúa bị thương sao?”</p>
+<p>Sở Ly vén rèm xe lên, nhìn Hướng Nguyệt đang đầy vẻ bất bình.</p>
+<p>Nàng thân mật khoác lấy cánh tay Sở Dạ Ly.</p>
+<p>“Ngũ ca, huynh đâu biết y thuật, mà vết thương lại ở đùi, vị trí nhạy cảm như vậy. Huynh là ngoại nam, sao có thể đến gần công chúa? Ngũ ca, huynh ở với ta đi!”</p>
+<p>Sở Dạ Ly nhìn bàn tay nhỏ đang ôm lấy khuỷu tay mình, nhất thời thụ sủng nhược kinh.</p>
+<p>Giống như một con mèo kiêu ngạo, ngày nào cũng chỉ biết cắn người, đột nhiên trở nên ngoan ngoãn, cọ cọ vào gấu quần hắn.</p>
+<p>Khoảnh khắc ấy, hắn đến cử động cũng không dám.</p>
+<p>Chỉ sợ đây là giấc mộng Hoàng Lương.</p>
+<p>“Tiểu Cửu nói đúng. Quả thật ta không biết y thuật, cũng chẳng giúp được gì. Đợi đến thị trấn tiếp theo, ta sẽ tìm đại phu khám cho công chúa.”</p>
+<p>Buông rèm xe xuống.</p>
+<p>“Ngũ ca là tốt nhất.”</p>
+<p>Giọng nói nũng nịu của Sở Ly xuyên qua rèm xe, lọt vào tai Hướng Nguyệt.</p>
+<p>Hai cỗ xe ngựa.</p>
+<p>Chiếc phía sau cười nói không ngớt.</p>
+<p>Chiếc phía trước chỉ có một mình Thác Bạt Minh Nguyệt ngồi lặng lẽ, cô đơn.</p>
+<p>Hướng Nguyệt gần như tức đến phát điên.</p>
+<p>Đông Lăng điện hạ chẳng lẽ mù rồi?</p>
+<p>Tiểu Sở công tử kia rõ ràng là cố ý!</p>
+<p>Bốn ngày tiếp theo đều như vậy.</p>
+<p>Mượn cớ chân bị thương, còn Tần Mục Vũ thì trúng Nhuyễn Cốt Tán, hai người đều không thể rời khỏi sự “chăm sóc” của Sở Dạ Ly.</p>
+<p>Bất kể ăn cơm, đi đường hay làm gì khác, Sở Ly đều quấn lấy Sở Dạ Ly, căn bản không cho Thác Bạt Minh Nguyệt có cơ hội ở riêng với hắn.</p>
+<p>Thác Bạt Minh Nguyệt vẫn điềm tĩnh, chưa từng lộ vẻ tức giận.</p>
+<p>Nhưng Hướng Nguyệt thì thực sự sắp nổ tung, như một quả bóng căng phồng sắp phát nổ.</p>
+<p>Cuối cùng, ngày thứ sáu, bọn họ đến Vương đô!</p>
+<p>Vì chuyến đi này cưỡi ngựa nhẹ, bí mật hành trình nên không thể trực tiếp vào vương cung, phải để thị vệ chuyên trách vào thông truyền, được Vương thượng triệu kiến mới có thể diện kiến.</p>
+<p>Trước đó, mọi người tạm thời nghỉ chân tại một khách điếm.</p>
+<p>Nhân lúc mọi người đang chuyển hành lý, Hướng Nguyệt cuối cùng cũng tìm được cơ hội nói riêng:</p>
+<p>“Đông Lăng điện hạ, lúc nãy Trưởng công chúa lên lầu, chân bước hơi loạng choạng, e rằng vết thương ở đùi nặng thêm rồi. Sáng mai diện kiến Vương thượng, nếu người nhìn thấy, hẳn sẽ rất đau lòng.”</p>
+<p>Sở Dạ Ly nghe vậy, khựng lại.</p>
+<p>“Bốn ngày trước, khi đến thị trấn, nàng ấy không đi tìm đại phu sao?”</p>
+<p>“Điện hạ quên rồi sao? Trưởng công chúa lo ngài không quen đồ ăn Nam Man, nên đích thân xuống bếp nấu cho ngài, nào còn thời gian đi tìm đại phu?”</p>
+<p>Sở Dạ Ly thoáng sững người.</p>
+<p>Trong sân.</p>
+<p>Sở Ly và Tần Mục Vũ đứng sát nhau. Một người toàn thân vô lực, một người chân què, nhìn qua quả thật rất thảm.</p>
+<p>Hai người nhỏ giọng thì thầm:</p>
+<p>“Vị Trưởng công chúa kia thích huynh ấy.”</p>
+<p>“Ta nhìn ra rồi.”</p>
+<p>“Nàng ấy là người si tình, đáng tiếc Ngũ ca không thích nàng ấy, Ngũ ca phụ lòng nàng ấy.”</p>
+<p>“A Ly, muội tin lâu ngày sinh tình, hay nhất kiến chung tình?”</p>
+<p>“Ta… Suỵt! Bọn họ tới rồi.”</p>
+<p>Sở Ly đứng thẳng người, nhìn Sở Dạ Ly đang đi tới.</p>
+<p>“Tiểu Cửu, ta lên xem Trưởng công chúa trước. Một khắc sau chúng ta gặp ở đại sảnh, dùng xong bữa tối, ta sẽ đưa muội đi dạo Vương đô.”</p>
+<p>“Được, Ngũ ca.”</p>
+<p>“Người đâu, dỡ hành lý xuống, sắp xếp cẩn thận, rồi đưa bọn họ đến tiền sảnh.”</p>
+<p>“Rõ!”</p>
+<p>Tám tên thị tùng lĩnh mệnh, Sở Dạ Ly đi lên lầu trước.</p>
+<p>Hướng Nguyệt lại không rời đi.</p>
+<p>Có vài lời, vài cơn giận, nàng đã nén trong lòng quá lâu.</p>
+<p>Nếu không nói ra, nàng sẽ nghẹn chết mất.</p>
+<p>“Bốn người các ngươi, mang hành lý lên lầu.”</p>
+<p>“Rõ.”</p>
+<p>“Còn hai người các ngươi, dắt ngựa sang chuồng cho ăn cỏ. Hai người còn lại, vào vương cung báo tin.”</p>
+<p>Việc này…</p>
+<p>Như vậy chẳng phải tất cả đều đi hết sao? Ai sẽ trông tù binh và Tiểu Sở công tử?</p>
+<p>“Hướng Nguyệt cô nương, e rằng chúng ta phải ở lại trông chừng…”</p>
+<p>“Có ta ở đây. Một kẻ trúng Nhuyễn Cốt Tán, một kẻ chân què, chẳng lẽ còn mọc cánh bay lên trời được?”</p>
+<p>“Vâng… chúng tôi đi ngay.”</p>
+<p>Hướng Nguyệt là thị nữ thân cận của Trưởng công chúa, lời nàng có vài phần trọng lượng, đâu phải bọn họ dám đắc tội.</p>
+<p>Rất nhanh, tất cả mọi người đều bị điều đi.</p>
+<p>Hướng Nguyệt lạnh lùng bước về phía Sở Ly.</p>
+<p>Lúc này, Sở Ly đang dựa vào người Tần Mục Vũ. Hai người mang dáng vẻ “già yếu bệnh tật”, còn Hướng Nguyệt là người biết võ, bên hông còn đeo một cây roi.</p>
+<p>“Ngươi… ngươi muốn làm gì?”</p>
+<p>Sở Ly lộ vẻ hoảng hốt, lùi về sau mấy bước.</p>
+<p>Hướng Nguyệt thong thả tháo cây roi đen bên hông xuống.</p>
+<p>“Công chúa nói với ta, ngươi là nữ tử.”</p>
+<p>“Đúng, ta là nữ tử.”</p>
+<p>“Không biết nếu một roi này quất lên mặt ngươi, hủy đi dung mạo của ngươi, Đông Lăng điện hạ còn có thích cái bộ dạng đầy tâm cơ, làm bộ làm tịch của ngươi nữa hay không!”</p>
+<p>Suốt dọc đường này, nàng đã nhịn đủ rồi.</p>
+<p>Không thể nhịn thêm nữa!</p>
+<p>Con tiện nhân này dựa vào cái gì mà được Đông Lăng điện hạ ưu ái, còn Trưởng công chúa thân phận cao quý lại chỉ có thể nhẫn nhịn chịu đựng?</p>
+<p>Sở Ly hoảng hốt lùi lại:</p>
+<p>“Ngươi… ngươi hiểu lầm rồi. Ta đối với Ngũ ca không có ý đó, cũng sẽ không tranh giành với Trưởng công chúa…”</p>
+<p>“Thật sao?”</p>
+<p>Hướng Nguyệt chợt túm lấy cổ áo nàng.</p>
+<p>“Suốt dọc đường, những thủ đoạn bẩn thỉu ngươi giở ra còn chưa đủ sao? Hay ngươi tưởng ta mù?”</p>
+<p>“Buông ta ra!”</p>
+<p>“Tiểu Sở công tử, ta cảnh cáo ngươi, đây là Nam Man, là địa bàn của chúng ta! Mau cất cái vẻ giả tạo đáng ghê tởm ấy đi, nếu không ta nhất định sẽ khiến ngươi… Ưm!”</p>
+<p>Sau gáy bỗng đau nhói.</p>
+<p>Giống như quả dưa hấu bị đập vỡ.</p>
+<p>Hướng Nguyệt chỉ cảm thấy trước mắt tối sầm, trời đất quay cuồng. Nàng loạng choạng xoay nửa người lại, chỉ thấy Tần Mục Vũ đang cầm một khúc gỗ lớn.</p>
+<p>“Ngươi…”</p>
+<p>Hắn chẳng phải trúng Nhuyễn Cốt Tán sao?</p>
+<p>Chẳng phải ngay cả cầm chén nước cũng không còn sức sao?</p>
+<p>Tần Mục Vũ cười lạnh:</p>
+<p>“Ta là người tập võ, nội lực hộ thân. Dù trúng Nhuyễn Cốt Tán, nhưng đánh ngất ngươi vẫn dư sức!”</p>
+<p>Hắn yếu ớt vô lực?</p>
+<p>Không.</p>
+<p>Hắn giả vờ.</p>
+<p>Bốp!</p>
+<p>Lại một gậy giáng xuống, đánh Hướng Nguyệt ngất lịm trên đất.</p>
+<p>Sở Ly ném cây gậy đi, phủi vụn gỗ trong lòng bàn tay. Động tác duỗi chân duỗi tay ấy, nào còn giống người què?</p>
+<p>Chân què?</p>
+<p>Nàng giả vờ.</p>
+<p>Chân nàng đã khỏi từ lâu.</p>
+<p>May mà Hướng Nguyệt sơ hở, điều hết mọi người đi, mới cho bọn họ cơ hội bỏ trốn, cũng không uổng công mấy ngày nay hai người giả bệnh.</p>
+<p>“Hướng Nguyệt, xin lỗi, đắc tội rồi. Trưởng công chúa là người tốt, ta cũng sẽ không tranh giành Sở Dạ Ly với nàng ấy. Nhưng ta cần phải rời đi. Ngươi cứ nằm đây một lúc, rất nhanh sẽ có người tới cứu.”</p>
+<p>“A Ly, xung quanh bây giờ không có ai, chúng ta mau đi!”</p>
+<p>“Đi!”</p>
+<p>Hai người chuồn mất.</p>
+<p>Trong nhã phòng trên lầu.</p>
+<p>Sở Dạ Ly đang hỏi thăm thương thế của Thác Bạt Minh Nguyệt, nhưng nàng cho rằng vết trầy ở đùi chỉ là vết thương do cưỡi ngựa cọ xát, không đáng ngại.</p>
+<p>Tính nàng quá cương trực, ngay thẳng và kiêu ngạo, tuyệt đối không làm ra chuyện như nữ nhi yếu đuối, đem chút thương tích nhỏ đi tranh thủ sự thương hại.</p>
+<p>Trong lòng Sở Dạ Ly dâng lên cảm giác khó tả.</p>
+<p>Điều hắn nợ nàng…</p>
+<p>Quá nhiều.</p>
+<p>Hỏi thăm vài câu, ngồi một lát, hắn xuống lầu đi ra hậu viện, chỉ thấy Hướng Nguyệt nằm lẻ loi trên đất, thị vệ không thấy bóng dáng, mà quan trọng hơn là…</p>
+<p>Sở Ly biến mất rồi!</p>
+<p>Người đâu?! Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_143.html" class="btn">‹ Trước</a>
             <a href="chuong_145.html" class="btn">Sau ›</a>
         </div>
@@ -362,15 +370,11 @@ Người đâu?! Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -382,11 +386,11 @@ Người đâu?! Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

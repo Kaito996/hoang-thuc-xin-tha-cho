@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 50</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,301 +62,310 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 50</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_49.html" class="btn">‹ Trước</a>
             <a href="chuong_51.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 50: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 50: Chúc mừng Tần Thiếu tướng quân, nỗi oan đã được rửa sạch
-Sở Ly khẽ cứng người.
-Tần Mục Vũ lập tức quỳ sang một bên:
-“Tham kiến Nhiếp Chính Vương điện hạ.”
-Sở Đệ Trì đi ngang qua trước mặt Sở Ly, giọng điệu nhàn nhạt:
-“Chúc mừng Tần Thiếu tướng quân, nỗi oan đã được minh giải.”
-Tần Mục Vũ cúi đầu đáp:
-“Mạt tướng nhất thời hồ đồ, tính tình nóng nảy, đã phụ sự kỳ vọng và trọng thác của Nhiếp Chính Vương.”
-“Không sao.”
-“Ngươi còn trẻ tuổi, khó tránh khỏi lúc nhiệt huyết dâng cao.”
-“Sau này nếu có cơ hội thích hợp, bổn vương tự sẽ tiến cử ngươi với Hoàng thượng.”
-Giọng nam nhân chậm rãi, lạnh nhạt, hòa cùng tiếng mưa rơi lộp bộp.
-Phong thái cao quý ấy như đứng trên tất cả, dường như vạn vật đều không lọt vào mắt hắn.
-“Ngoại thương của Cửu hoàng tử hình như không nhẹ?”
-Sở Ly kéo chặt vạt áo.
-Theo bản năng cúi đầu xuống.
-Còn chưa kịp trả lời.
-Hắn đã ung dung rời đi.
-Trên con phố dài.
-Mưa bụi giăng khắp nơi.
-Bóng lưng hắn mờ ảo trong làn nước mưa.
-Bước chân vẫn vững vàng mạnh mẽ.
-Tựa như hoàn toàn tách biệt với thế giới xung quanh.
-Tần Mục Vũ vội vàng đỡ nàng đứng dậy:
-“A Ly, mưa lớn quá!”
-“Ta đưa ngươi về cung trước.”
-⸻
-Chiêu Lan Điện
-Hai người đội mưa trở về.
-Dọa Cẩu Bát sợ đến mức cuống cuồng.
-Lúc thì lấy ô.
-Lúc thì lấy chăn.
-Lúc lại đi tìm quần áo.
-Bận đến mức chân tay luống cuống.
-Tần Mục Vũ vội vàng dìu Sở Ly ngồi xuống chiếc trường kỷ nhỏ.
-Liên tiếp phân phó:
-“Mau nấu một bát canh gừng thật đậm!”
-“Ngươi đi chuẩn bị nước nóng để Cửu hoàng tử tắm!”
-“Ngươi đi lấy một tấm chăn thật dày!”
-“Có rượu thuốc trị thương không?”
-“Mau đi!”
-Một tràng mệnh lệnh được đưa ra.
-Mấy tiểu thái giám lập tức chạy tán loạn khắp nơi.
-“A Ly!”
-Tần Mục Vũ dùng chăn bọc kín thân thể ướt sũng của nàng.
-Lúc này mới phát hiện.
-Khuỷu tay.
-Mu bàn tay.
-Cổ.
-Đều có những vết trầy xước.
-Ống quần ướt đẫm cuộn lên.
-Ngay cả hai đầu gối cũng bầm tím đến đáng sợ.
-“Sao ngươi bị thương thành thế này?”
-Sở Ly khẽ co chân lại.
-Lén giấu đi những vết thương trên đầu gối.
-Sắc mặt mờ mịt:
-“Có lẽ vừa rồi trên đường lớn bị ngã một cái.”
-Tần Mục Vũ vô cùng tự trách:
-“Đều là lỗi của ta.”
-Một thái giám mang rượu thuốc tới.
-Hắn lập tức đổ ra lòng bàn tay.
-Xoa cho nóng rồi nhẹ nhàng thoa lên vết thương.
-Rượu thuốc hoạt huyết tan ứ là hữu hiệu nhất.
-“Là ta liên lụy tới ngươi.”
-Hắn quỳ bên cạnh trường kỷ.
-Trên gương mặt còn đọng những giọt nước mưa.
-Cúi đầu khẽ thổi lên chỗ bị thương.
-Khóe mắt Sở Ly cay xè.
-Nàng cố nuốt xuống tất cả đau khổ, tủi nhục mà không thể nói với bất kỳ ai.
-Như chiếc xương cá mắc nghẹn nơi cổ họng.
-Nuốt không trôi.
-Mà nhổ cũng không được.
-Ngoài cửa.
-Noãn Ngọc nhìn thấy cảnh ấy.
-Nhưng không bước vào phòng.
-⸻
-Ngự Thư Phòng
-“Hoàng thượng.”
-“Phương Quốc Công đã quỳ ngoài cửa cung suốt một đêm.”
-“Tâm ý vô cùng kiên quyết.”
-“Bách tính đều tận mắt chứng kiến, cảm động trước tình phụ tử sâu nặng của ông ấy.”
-“Đối với kết quả điều tra của Đại Lý Tự, ông ấy hoàn toàn không chịu chấp nhận.”
-“Nhất quyết muốn Tần Thiếu tướng quân đền mạng.”
-Trương Các lão chắp tay trong tay áo.
-Thần sắc cực kỳ khó xử.
-Mấy vị đại thần Nội các đang cùng nhau bàn bạc chuyện này.
-Sở Hoàng đế từ đầu đến cuối vẫn nhíu chặt mày.
-Rất lâu không nói lời nào.
-Lý Các lão lên tiếng:
-“Tuy nói là Phương Quốc Công nạp thiếp không hiền, để thiếp thất mưu hại đích tử.”
-“Nhưng việc Tần Thiếu tướng quân đâm Phương công tử một kiếm là sự thật.”
-“Phương Quốc Công cứ bám chặt điểm này không buông.”
-“Tướng quân phủ quả thật rất khó thoát thân.”
-“Huống hồ hiện nay Nam Cương lại nổi chiến sự.”
-“Võ tướng đang thiếu hụt.”
-“Tần Thiếu tướng quân là nhân tài mới nổi.”
-“Giết đi thì đáng tiếc quá.”
-Còn Phương Hải Dương của Quốc Công phủ.
-Chẳng qua chỉ là một tên công tử ăn chơi lêu lổng.
-Để một võ tướng trẻ đầy triển vọng phải đền mạng cho một tên thế tử vô dụng.
-Đám lão thần yêu quý nhân tài trong Nội các đều không đồng ý.
-Đại Sở mới lập quốc không lâu.
-Căn cơ còn chưa vững.
-Đúng là thời điểm vô cùng cần người tài.
-Dương Các lão nói:
-“Nhưng Quốc Công phủ năm xưa vì khai quốc mà táng gia bại sản.”
-“Xuất tiền mua lương, mua binh khí, lập công lao hiển hách.”
-“Em gái ruột của Phương Quốc Công lại là Tĩnh Hoàng Quý Phi.”
-“Nếu Hoàng thượng xử lý không thỏa đáng.”
-“Rất có thể khiến Quốc Công phủ sinh lòng oán hận.”
-Một khi thần tử mang hận trong lòng.
-Sẽ không thể toàn tâm toàn ý trung thành với quân vương.
-Mà thần tử không tận tâm làm việc.
-Xã tắc tất sinh dao động.
-Sở Hoàng đế suy nghĩ hồi lâu rồi hỏi:
-“Theo ý chư vị Các lão, nên cân nhắc thế nào?”
-Trương Các lão đáp:
-“Lão thần có một kế vụng.”
-“Hoàng thượng lui về phía sau.”
-“Phái một vị hoàng tử thay mặt hoàng gia đứng ra giải quyết việc này.”
-“Như vậy vừa không tổn hại thiên uy của Hoàng thượng.”
-“Quốc Công phủ cũng không dám công khai chống đối hoàng tử, mang tội bất kính với hoàng thất.”
-Nói trắng ra.
-Chính là tìm một vị hoàng tử ra gánh hết thù oán.
-“Cửu hoàng tử là thích hợp nhất.”
-Sở Hoàng đế nhíu mày:
-“Tiểu Cửu không hiểu những chuyện này.”
-Trương Các lão nói:
-“Chính vì Cửu hoàng tử không tham chính, không dính líu triều chính.”
-“Nhiều năm nay không kết bè kết cánh, không tranh quyền đoạt lợi.”
-“Nên mới là người thích hợp nhất để đứng ra.”
-“Dù ‘ngài ấy’ có đắc tội Quốc Công phủ.”
-“Quốc Công phủ cũng không thể phí sức đối phó một hoàng tử không có thực quyền.”
-⸻
-Quốc Công phủ
-Mưa đã tạnh.
-Cũng đến lúc tính sổ sau mùa thu.
-“Tiện phụ!”
-Choang!
-Một chén trà đập thẳng lên đầu Lương di nương.
-Máu tươi bắn tung tóe.
-Lương di nương quỳ trên đất.
-Mặt trắng như tờ giấy.
-“Lòng dạ độc ác!”
-“Mưu hại con trai ta!”
-“Đồ lòng lang dạ sói!”
-“Hôm nay ta phải lột da ngươi!”
-Quốc Công phu nhân giẫm mạnh lên bàn tay bà ta.
-Ra sức nghiền ép.
-“A——!”
-Mười đầu ngón tay đau đớn thấu tim.
-Đại Lý Tự đã gửi kết quả điều tra về.
-Bốn ngày trước.
-Lương di nương mua tại chợ đen một loại độc dược tên là Câu Vẫn.
-Âm thầm hạ vào đồ ăn của Phương Hải Dương.
-Khiến sau khi bị thương, vết thương không thể cầm máu.
-Cuối cùng chảy máu đến chết.
-Lúc biết được chân tướng.
-Quốc Công phu nhân tức giận đến mức suýt ngất.
-Bình thường bà vẫn cho rằng Lương di nương ngoan ngoãn hiểu chuyện.
-Chưa từng gây sóng gió.
-Dù đã sinh một thứ tử.
-Nhưng thấy bà ta nhiều năm an phận thủ thường nên cũng không cố ý chèn ép.
-Không ngờ vừa nghe tin Phương Hải Dương có khả năng bị phế bỏ vị trí thế tử.
-Bà ta đã không chờ nổi mà ra tay độc ác.
-“Đồ độc phụ!”
-Mấy cái tát giáng xuống.
-Quốc Công phu nhân túm tóc bà ta đập mạnh vào cột.
-“Ta hận không thể uống máu ngươi!”
-“Ăn thịt ngươi!”
-“Nghiền nát xương ngươi cho chó ăn!”
-“Cái mạng hèn của ngươi chết một trăm lần cũng không đổi lại được Dương nhi của ta!”
-“A! A!”
-Tiếng kêu thảm thiết liên tiếp vang lên.
-Đúng lúc ấy.
-Một ma ma vội vàng chạy vào.
-“Phu nhân!”
-“Lão gia đã về!”
-Phương Quốc Công nhìn cảnh tượng trước mắt.
-Trên mặt không có quá nhiều cảm xúc.
-Trong mắt ông.
-Một thiếp thất như Lương di nương chẳng khác nào nô tài.
-Muốn đánh.
-Muốn giết.
-Muốn bán đi.
-Chỉ là một câu nói.
-“Phu nhân.”
-Hiện giờ ông còn có việc quan trọng hơn cần tính toán.
-“Cái chết của Dương nhi đã không thể cứu vãn.”
-“Dù đau lòng đến đâu.”
-“Chúng ta cũng phải tính cho tương lai lâu dài.”
-Quốc Công phủ vốn xuất thân từ gia tộc phú thương.
-Năm xưa khai quốc.
-Nhờ bỏ ra số tiền khổng lồ giúp đỡ Hoàng đế nên mới có vinh hoa hôm nay.
-Nhưng những năm gần đây.
-Hoàng thượng đề cao nông nghiệp, hạn chế thương nghiệp.
-Ngày càng coi trọng võ tướng.
-Trong khi môn sinh dưới trướng Quốc Công phủ đều là văn thần.
-Tình thế cực kỳ bất lợi.
-Quốc Công phu nhân lau nước mắt:
-“Ý của lão gia là?”
-Phương Quốc Công trầm giọng:
-“Đại Lý Tự muốn kết án.”
-“Nhưng ta nhất định phải cắn chặt Tướng quân phủ không buông.”
-“Để giữ mạng con trai độc nhất.”
-“Tần tướng quân chắc chắn phải cúi đầu thần phục Quốc Công phủ.”
-“Có cầu tất ứng.”
-“Ta muốn Tướng quân phủ dốc toàn lực phò tá Thất hoàng tử.”
-“Đến lúc tranh đoạt ngôi vị sau này, Thất hoàng tử mới có nhiều phần thắng hơn.”
-Chỉ khi Thất hoàng tử đoạt đích thành công.
-Mới có thể bảo đảm vinh hoa trăm năm của Quốc Công phủ.
-“Huống hồ.”
-“Cửu hoàng tử giao tình rất sâu với Tướng quân phủ.”
-“Nếu Tướng quân phủ ủng hộ Thất hoàng tử.”
-“E rằng Cửu hoàng tử và các võ tướng thuộc Ôn gia cũng sẽ vì nể mặt Cửu hoàng tử mà giúp đỡ Thất hoàng tử.”
-Dù đau đớn vì mất con.
-Nhưng Quốc Công phu nhân vẫn hiểu đại cục.
-Chỉ cần sau này Thất hoàng tử đăng cơ.
-Quốc Công phủ sẽ một bước trở thành ngoại thích.
-Địa vị của bà với tư cách Quốc cữu phu nhân sẽ chỉ đứng sau Thái hậu và Hoàng hậu.
-Vinh hoa phú quý cả đời.
-Đến lúc đó.
-Chọn một thứ tử ngoan ngoãn trong phủ nhận làm con nuôi là được.
-Tính toán cho tương lai.
-Dù sao cũng tốt hơn chỉ biết ngồi đây khóc lóc.
-“Lương thị.”
-Phương Quốc Công lạnh giọng ra lệnh:
-“Lát nữa người của Đại Lý Tự sẽ tới.”
-“Ngươi phải một mực khẳng định rằng mình chưa từng hại Dương nhi.”
-“Là Tần Mục Vũ giết hắn.”
-“Nghe rõ chưa?”
-Lương di nương đau đớn đến cùng cực.
-Bà ta đã không còn lựa chọn nào khác.
-“Vâng…”
-Đọc xong không like cũng không sao... nhưng like  tí thì tối Ad ra thêm 3 chương nữa nhé 
-" Ẩn bớt</p>
+            <p>Chương 50: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 50: Chúc mừng Tần Thiếu tướng quân, nỗi oan đã được rửa sạch</p>
+<p>Sở Ly khẽ cứng người.</p>
+<p>Tần Mục Vũ lập tức quỳ sang một bên:</p>
+<p>“Tham kiến Nhiếp Chính Vương điện hạ.”</p>
+<p>Sở Đệ Trì đi ngang qua trước mặt Sở Ly, giọng điệu nhàn nhạt:</p>
+<p>“Chúc mừng Tần Thiếu tướng quân, nỗi oan đã được minh giải.”</p>
+<p>Tần Mục Vũ cúi đầu đáp:</p>
+<p>“Mạt tướng nhất thời hồ đồ, tính tình nóng nảy, đã phụ sự kỳ vọng và trọng thác của Nhiếp Chính Vương.”</p>
+<p>“Không sao.”</p>
+<p>“Ngươi còn trẻ tuổi, khó tránh khỏi lúc nhiệt huyết dâng cao.”</p>
+<p>“Sau này nếu có cơ hội thích hợp, bổn vương tự sẽ tiến cử ngươi với Hoàng thượng.”</p>
+<p>Giọng nam nhân chậm rãi, lạnh nhạt, hòa cùng tiếng mưa rơi lộp bộp.</p>
+<p>Phong thái cao quý ấy như đứng trên tất cả, dường như vạn vật đều không lọt vào mắt hắn.</p>
+<p>“Ngoại thương của Cửu hoàng tử hình như không nhẹ?”</p>
+<p>Sở Ly kéo chặt vạt áo.</p>
+<p>Theo bản năng cúi đầu xuống.</p>
+<p>Còn chưa kịp trả lời.</p>
+<p>Hắn đã ung dung rời đi.</p>
+<p>Trên con phố dài.</p>
+<p>Mưa bụi giăng khắp nơi.</p>
+<p>Bóng lưng hắn mờ ảo trong làn nước mưa.</p>
+<p>Bước chân vẫn vững vàng mạnh mẽ.</p>
+<p>Tựa như hoàn toàn tách biệt với thế giới xung quanh.</p>
+<p>Tần Mục Vũ vội vàng đỡ nàng đứng dậy:</p>
+<p>“A Ly, mưa lớn quá!”</p>
+<p>“Ta đưa ngươi về cung trước.”</p>
+<p>⸻</p>
+<p>Chiêu Lan Điện</p>
+<p>Hai người đội mưa trở về.</p>
+<p>Dọa Cẩu Bát sợ đến mức cuống cuồng.</p>
+<p>Lúc thì lấy ô.</p>
+<p>Lúc thì lấy chăn.</p>
+<p>Lúc lại đi tìm quần áo.</p>
+<p>Bận đến mức chân tay luống cuống.</p>
+<p>Tần Mục Vũ vội vàng dìu Sở Ly ngồi xuống chiếc trường kỷ nhỏ.</p>
+<p>Liên tiếp phân phó:</p>
+<p>“Mau nấu một bát canh gừng thật đậm!”</p>
+<p>“Ngươi đi chuẩn bị nước nóng để Cửu hoàng tử tắm!”</p>
+<p>“Ngươi đi lấy một tấm chăn thật dày!”</p>
+<p>“Có rượu thuốc trị thương không?”</p>
+<p>“Mau đi!”</p>
+<p>Một tràng mệnh lệnh được đưa ra.</p>
+<p>Mấy tiểu thái giám lập tức chạy tán loạn khắp nơi.</p>
+<p>“A Ly!”</p>
+<p>Tần Mục Vũ dùng chăn bọc kín thân thể ướt sũng của nàng.</p>
+<p>Lúc này mới phát hiện.</p>
+<p>Khuỷu tay.</p>
+<p>Mu bàn tay.</p>
+<p>Cổ.</p>
+<p>Đều có những vết trầy xước.</p>
+<p>Ống quần ướt đẫm cuộn lên.</p>
+<p>Ngay cả hai đầu gối cũng bầm tím đến đáng sợ.</p>
+<p>“Sao ngươi bị thương thành thế này?”</p>
+<p>Sở Ly khẽ co chân lại.</p>
+<p>Lén giấu đi những vết thương trên đầu gối.</p>
+<p>Sắc mặt mờ mịt:</p>
+<p>“Có lẽ vừa rồi trên đường lớn bị ngã một cái.”</p>
+<p>Tần Mục Vũ vô cùng tự trách:</p>
+<p>“Đều là lỗi của ta.”</p>
+<p>Một thái giám mang rượu thuốc tới.</p>
+<p>Hắn lập tức đổ ra lòng bàn tay.</p>
+<p>Xoa cho nóng rồi nhẹ nhàng thoa lên vết thương.</p>
+<p>Rượu thuốc hoạt huyết tan ứ là hữu hiệu nhất.</p>
+<p>“Là ta liên lụy tới ngươi.”</p>
+<p>Hắn quỳ bên cạnh trường kỷ.</p>
+<p>Trên gương mặt còn đọng những giọt nước mưa.</p>
+<p>Cúi đầu khẽ thổi lên chỗ bị thương.</p>
+<p>Khóe mắt Sở Ly cay xè.</p>
+<p>Nàng cố nuốt xuống tất cả đau khổ, tủi nhục mà không thể nói với bất kỳ ai.</p>
+<p>Như chiếc xương cá mắc nghẹn nơi cổ họng.</p>
+<p>Nuốt không trôi.</p>
+<p>Mà nhổ cũng không được.</p>
+<p>Ngoài cửa.</p>
+<p>Noãn Ngọc nhìn thấy cảnh ấy.</p>
+<p>Nhưng không bước vào phòng.</p>
+<p>⸻</p>
+<p>Ngự Thư Phòng</p>
+<p>“Hoàng thượng.”</p>
+<p>“Phương Quốc Công đã quỳ ngoài cửa cung suốt một đêm.”</p>
+<p>“Tâm ý vô cùng kiên quyết.”</p>
+<p>“Bách tính đều tận mắt chứng kiến, cảm động trước tình phụ tử sâu nặng của ông ấy.”</p>
+<p>“Đối với kết quả điều tra của Đại Lý Tự, ông ấy hoàn toàn không chịu chấp nhận.”</p>
+<p>“Nhất quyết muốn Tần Thiếu tướng quân đền mạng.”</p>
+<p>Trương Các lão chắp tay trong tay áo.</p>
+<p>Thần sắc cực kỳ khó xử.</p>
+<p>Mấy vị đại thần Nội các đang cùng nhau bàn bạc chuyện này.</p>
+<p>Sở Hoàng đế từ đầu đến cuối vẫn nhíu chặt mày.</p>
+<p>Rất lâu không nói lời nào.</p>
+<p>Lý Các lão lên tiếng:</p>
+<p>“Tuy nói là Phương Quốc Công nạp thiếp không hiền, để thiếp thất mưu hại đích tử.”</p>
+<p>“Nhưng việc Tần Thiếu tướng quân đâm Phương công tử một kiếm là sự thật.”</p>
+<p>“Phương Quốc Công cứ bám chặt điểm này không buông.”</p>
+<p>“Tướng quân phủ quả thật rất khó thoát thân.”</p>
+<p>“Huống hồ hiện nay Nam Cương lại nổi chiến sự.”</p>
+<p>“Võ tướng đang thiếu hụt.”</p>
+<p>“Tần Thiếu tướng quân là nhân tài mới nổi.”</p>
+<p>“Giết đi thì đáng tiếc quá.”</p>
+<p>Còn Phương Hải Dương của Quốc Công phủ.</p>
+<p>Chẳng qua chỉ là một tên công tử ăn chơi lêu lổng.</p>
+<p>Để một võ tướng trẻ đầy triển vọng phải đền mạng cho một tên thế tử vô dụng.</p>
+<p>Đám lão thần yêu quý nhân tài trong Nội các đều không đồng ý.</p>
+<p>Đại Sở mới lập quốc không lâu.</p>
+<p>Căn cơ còn chưa vững.</p>
+<p>Đúng là thời điểm vô cùng cần người tài.</p>
+<p>Dương Các lão nói:</p>
+<p>“Nhưng Quốc Công phủ năm xưa vì khai quốc mà táng gia bại sản.”</p>
+<p>“Xuất tiền mua lương, mua binh khí, lập công lao hiển hách.”</p>
+<p>“Em gái ruột của Phương Quốc Công lại là Tĩnh Hoàng Quý Phi.”</p>
+<p>“Nếu Hoàng thượng xử lý không thỏa đáng.”</p>
+<p>“Rất có thể khiến Quốc Công phủ sinh lòng oán hận.”</p>
+<p>Một khi thần tử mang hận trong lòng.</p>
+<p>Sẽ không thể toàn tâm toàn ý trung thành với quân vương.</p>
+<p>Mà thần tử không tận tâm làm việc.</p>
+<p>Xã tắc tất sinh dao động.</p>
+<p>Sở Hoàng đế suy nghĩ hồi lâu rồi hỏi:</p>
+<p>“Theo ý chư vị Các lão, nên cân nhắc thế nào?”</p>
+<p>Trương Các lão đáp:</p>
+<p>“Lão thần có một kế vụng.”</p>
+<p>“Hoàng thượng lui về phía sau.”</p>
+<p>“Phái một vị hoàng tử thay mặt hoàng gia đứng ra giải quyết việc này.”</p>
+<p>“Như vậy vừa không tổn hại thiên uy của Hoàng thượng.”</p>
+<p>“Quốc Công phủ cũng không dám công khai chống đối hoàng tử, mang tội bất kính với hoàng thất.”</p>
+<p>Nói trắng ra.</p>
+<p>Chính là tìm một vị hoàng tử ra gánh hết thù oán.</p>
+<p>“Cửu hoàng tử là thích hợp nhất.”</p>
+<p>Sở Hoàng đế nhíu mày:</p>
+<p>“Tiểu Cửu không hiểu những chuyện này.”</p>
+<p>Trương Các lão nói:</p>
+<p>“Chính vì Cửu hoàng tử không tham chính, không dính líu triều chính.”</p>
+<p>“Nhiều năm nay không kết bè kết cánh, không tranh quyền đoạt lợi.”</p>
+<p>“Nên mới là người thích hợp nhất để đứng ra.”</p>
+<p>“Dù ‘ngài ấy’ có đắc tội Quốc Công phủ.”</p>
+<p>“Quốc Công phủ cũng không thể phí sức đối phó một hoàng tử không có thực quyền.”</p>
+<p>⸻</p>
+<p>Quốc Công phủ</p>
+<p>Mưa đã tạnh.</p>
+<p>Cũng đến lúc tính sổ sau mùa thu.</p>
+<p>“Tiện phụ!”</p>
+<p>Choang!</p>
+<p>Một chén trà đập thẳng lên đầu Lương di nương.</p>
+<p>Máu tươi bắn tung tóe.</p>
+<p>Lương di nương quỳ trên đất.</p>
+<p>Mặt trắng như tờ giấy.</p>
+<p>“Lòng dạ độc ác!”</p>
+<p>“Mưu hại con trai ta!”</p>
+<p>“Đồ lòng lang dạ sói!”</p>
+<p>“Hôm nay ta phải lột da ngươi!”</p>
+<p>Quốc Công phu nhân giẫm mạnh lên bàn tay bà ta.</p>
+<p>Ra sức nghiền ép.</p>
+<p>“A——!”</p>
+<p>Mười đầu ngón tay đau đớn thấu tim.</p>
+<p>Đại Lý Tự đã gửi kết quả điều tra về.</p>
+<p>Bốn ngày trước.</p>
+<p>Lương di nương mua tại chợ đen một loại độc dược tên là Câu Vẫn.</p>
+<p>Âm thầm hạ vào đồ ăn của Phương Hải Dương.</p>
+<p>Khiến sau khi bị thương, vết thương không thể cầm máu.</p>
+<p>Cuối cùng chảy máu đến chết.</p>
+<p>Lúc biết được chân tướng.</p>
+<p>Quốc Công phu nhân tức giận đến mức suýt ngất.</p>
+<p>Bình thường bà vẫn cho rằng Lương di nương ngoan ngoãn hiểu chuyện.</p>
+<p>Chưa từng gây sóng gió.</p>
+<p>Dù đã sinh một thứ tử.</p>
+<p>Nhưng thấy bà ta nhiều năm an phận thủ thường nên cũng không cố ý chèn ép.</p>
+<p>Không ngờ vừa nghe tin Phương Hải Dương có khả năng bị phế bỏ vị trí thế tử.</p>
+<p>Bà ta đã không chờ nổi mà ra tay độc ác.</p>
+<p>“Đồ độc phụ!”</p>
+<p>Mấy cái tát giáng xuống.</p>
+<p>Quốc Công phu nhân túm tóc bà ta đập mạnh vào cột.</p>
+<p>“Ta hận không thể uống máu ngươi!”</p>
+<p>“Ăn thịt ngươi!”</p>
+<p>“Nghiền nát xương ngươi cho chó ăn!”</p>
+<p>“Cái mạng hèn của ngươi chết một trăm lần cũng không đổi lại được Dương nhi của ta!”</p>
+<p>“A! A!”</p>
+<p>Tiếng kêu thảm thiết liên tiếp vang lên.</p>
+<p>Đúng lúc ấy.</p>
+<p>Một ma ma vội vàng chạy vào.</p>
+<p>“Phu nhân!”</p>
+<p>“Lão gia đã về!”</p>
+<p>Phương Quốc Công nhìn cảnh tượng trước mắt.</p>
+<p>Trên mặt không có quá nhiều cảm xúc.</p>
+<p>Trong mắt ông.</p>
+<p>Một thiếp thất như Lương di nương chẳng khác nào nô tài.</p>
+<p>Muốn đánh.</p>
+<p>Muốn giết.</p>
+<p>Muốn bán đi.</p>
+<p>Chỉ là một câu nói.</p>
+<p>“Phu nhân.”</p>
+<p>Hiện giờ ông còn có việc quan trọng hơn cần tính toán.</p>
+<p>“Cái chết của Dương nhi đã không thể cứu vãn.”</p>
+<p>“Dù đau lòng đến đâu.”</p>
+<p>“Chúng ta cũng phải tính cho tương lai lâu dài.”</p>
+<p>Quốc Công phủ vốn xuất thân từ gia tộc phú thương.</p>
+<p>Năm xưa khai quốc.</p>
+<p>Nhờ bỏ ra số tiền khổng lồ giúp đỡ Hoàng đế nên mới có vinh hoa hôm nay.</p>
+<p>Nhưng những năm gần đây.</p>
+<p>Hoàng thượng đề cao nông nghiệp, hạn chế thương nghiệp.</p>
+<p>Ngày càng coi trọng võ tướng.</p>
+<p>Trong khi môn sinh dưới trướng Quốc Công phủ đều là văn thần.</p>
+<p>Tình thế cực kỳ bất lợi.</p>
+<p>Quốc Công phu nhân lau nước mắt:</p>
+<p>“Ý của lão gia là?”</p>
+<p>Phương Quốc Công trầm giọng:</p>
+<p>“Đại Lý Tự muốn kết án.”</p>
+<p>“Nhưng ta nhất định phải cắn chặt Tướng quân phủ không buông.”</p>
+<p>“Để giữ mạng con trai độc nhất.”</p>
+<p>“Tần tướng quân chắc chắn phải cúi đầu thần phục Quốc Công phủ.”</p>
+<p>“Có cầu tất ứng.”</p>
+<p>“Ta muốn Tướng quân phủ dốc toàn lực phò tá Thất hoàng tử.”</p>
+<p>“Đến lúc tranh đoạt ngôi vị sau này, Thất hoàng tử mới có nhiều phần thắng hơn.”</p>
+<p>Chỉ khi Thất hoàng tử đoạt đích thành công.</p>
+<p>Mới có thể bảo đảm vinh hoa trăm năm của Quốc Công phủ.</p>
+<p>“Huống hồ.”</p>
+<p>“Cửu hoàng tử giao tình rất sâu với Tướng quân phủ.”</p>
+<p>“Nếu Tướng quân phủ ủng hộ Thất hoàng tử.”</p>
+<p>“E rằng Cửu hoàng tử và các võ tướng thuộc Ôn gia cũng sẽ vì nể mặt Cửu hoàng tử mà giúp đỡ Thất hoàng tử.”</p>
+<p>Dù đau đớn vì mất con.</p>
+<p>Nhưng Quốc Công phu nhân vẫn hiểu đại cục.</p>
+<p>Chỉ cần sau này Thất hoàng tử đăng cơ.</p>
+<p>Quốc Công phủ sẽ một bước trở thành ngoại thích.</p>
+<p>Địa vị của bà với tư cách Quốc cữu phu nhân sẽ chỉ đứng sau Thái hậu và Hoàng hậu.</p>
+<p>Vinh hoa phú quý cả đời.</p>
+<p>Đến lúc đó.</p>
+<p>Chọn một thứ tử ngoan ngoãn trong phủ nhận làm con nuôi là được.</p>
+<p>Tính toán cho tương lai.</p>
+<p>Dù sao cũng tốt hơn chỉ biết ngồi đây khóc lóc.</p>
+<p>“Lương thị.”</p>
+<p>Phương Quốc Công lạnh giọng ra lệnh:</p>
+<p>“Lát nữa người của Đại Lý Tự sẽ tới.”</p>
+<p>“Ngươi phải một mực khẳng định rằng mình chưa từng hại Dương nhi.”</p>
+<p>“Là Tần Mục Vũ giết hắn.”</p>
+<p>“Nghe rõ chưa?”</p>
+<p>Lương di nương đau đớn đến cùng cực.</p>
+<p>Bà ta đã không còn lựa chọn nào khác.</p>
+<p>“Vâng…”</p>
+<p>Đọc xong không like cũng không sao... nhưng like  tí thì tối Ad ra thêm 3 chương nữa nhé</p>
+<p>" Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_49.html" class="btn">‹ Trước</a>
             <a href="chuong_51.html" class="btn">Sau ›</a>
         </div>
@@ -365,15 +373,11 @@ Bà ta đã không còn lựa chọn nào khác.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -385,11 +389,11 @@ Bà ta đã không còn lựa chọn nào khác.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

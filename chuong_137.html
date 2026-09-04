@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 137</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,203 +62,212 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 137</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_136.html" class="btn">‹ Trước</a>
             <a href="chuong_138.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 137: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 137: Hoàng thúc, người nhất định phải cố lên
-Sở Ly đột ngột ngẩng đầu.
-Sở Đệ Trì đến rồi!
-“Tiểu Cửu vui lắm sao?” Sở Dạ Ly nhìn nàng.
-“Không có.”
-Chỉ là nơi đất khách quê người, nếu có thể gặp người của Đại Sở, lại còn là Hoàng thúc của mình, nàng cảm thấy trong lòng an tâm hơn vài phần.
-Chỉ vậy mà thôi.
-“Đặt thức ăn xuống, tạm thời không cần bận tâm, Vệ tướng quân tự có đối sách.”
-“Vâng.”
-Thuộc hạ lui xuống.
-Sở Dạ Ly bưng thức ăn, bày lên chiếc án thấp cạnh giường nhỏ, múc một thìa đưa tới bên miệng nàng:
-“A.”
-“Ta tự ăn.”
-“Không phải nàng bảo đầu nặng sao? Để ta đút.”
-“Cũng được.”
-Tâm tình của Sở Ly khá hơn nhiều, cũng không câu nệ, vừa nhai vừa hỏi:
-“Ngươi nói xem, Nhiếp Chính Vương đến rồi, Nam Man và Đại Sở, bên nào sẽ thắng?”
-Sở Dạ Ly múc thêm vài thìa canh thịt băm, khuấy đều.
-“Tiểu Cửu mong bên nào thắng?”
-“Đương nhiên là Đại Sở.”
-“Nếu Đại Sở thắng, muội đã từng nghĩ ta sẽ ra sao chưa?”
-Sở Ly nói:
-“Nếu Đại Sở thắng, mọi chuyện huynh từng làm trước đây, ta đều có thể chuyện cũ bỏ qua. Ta chỉ hy vọng huynh có thể buông bỏ khúc mắc, sống thật tốt.”
-Sở Dạ Ly khẽ cười một tiếng, trong tiếng cười ấy không phân rõ là cảm xúc gì:
-“Mạng sống của cả tộc, nào phải nói buông là buông được?”
-Sở Ly mím môi:
-“Huynh biết không? Trước năm nay, ta vẫn luôn ngây thơ cho rằng, con người sống trên đời, chỉ cần không tranh quyền, không đoạt lợi, thì có thể đứng ngoài mọi chuyện, sống vô ưu vô lo.”
-Hiện thực nói với nàng, nàng quá ngây thơ.
-“Trải qua biết bao chuyện trong năm nay, ta mới hiểu được một đạo lý: không có cuộc đời của ai là thuận buồm xuôi gió, mỗi người đều có lúc đắc ý, cũng có lúc thất ý. Trên đời này, nhất định phải có người chịu ủy khuất!”
-Nhiếp Chính Vương quyền khuynh triều dã, cũng không thể muốn gì được nấy.
-Sở Hoàng nắm giữ quyền lực của cả một quốc gia, kết cục lại ra sao?
-“Người chết đã yên nghỉ, Sở Hoàng nay đã liệt giường, cũng coi như đang chuộc lại tội nghiệt lật đổ tiền triều. Ta hy vọng huynh có thể sống thật tốt, vui vẻ mà sống, Ngũ ca.”
-Sở Ly ăn một miếng cơm.
-“Nhưng nếu ta thắng, chúng ta có thể cùng nhau sống thật tốt, chẳng phải rất tốt sao?”
-Sở Dạ Ly nhẹ nhàng lau hạt cơm nơi khóe môi nàng, nói:
-“Đợi mọi chuyện bụi lắng gió yên, ta sẽ đem tất cả những gì ta có thể cho muội.”
-“Muội thích rong chơi, ta sẽ đưa muội đi thật nhiều thật nhiều nơi. Mùa xuân, chúng ta đến Thanh Thành Sơn ngắm mưa hoa hạnh; mùa hạ, xuống Tô Châu tránh nóng, chèo thuyền; mùa thu, ta hái hoa quế cho nàng, ủ thành rượu; mùa đông, chúng ta cùng đến Bắc Thành ngắm tuyết.”
-Trong mắt hắn ánh lên vẻ mong chờ, khát vọng bức tranh ấy.
-Hắn muốn đem tất cả những điều tốt đẹp nhất dưới gầm trời, trao hết cho nàng.
-Từ thuở thiếu niên gặp gỡ, kể từ khoảnh khắc nàng xông vào đáy mắt hắn, hắn đã bắt đầu mưu tính cho ngày hôm nay.
-Nhưng những thứ ấy, lại chẳng phải điều Sở Ly mong muốn.
-“Ta… chân có hơi đau.”
-Sở Ly kéo câu chuyện trở về thực tại.
-“Sao vậy?”
-Sở Dạ Ly lập tức khẩn trương:
-“Người đâu, gọi quân y đến!”
-Rất nhanh, quân y chạy tới.
-Kiểm tra một lượt, không phát hiện vấn đề gì.
-Sở Dạ Ly mắng hắn vô dụng.
-Quân y oan ức, lại kiểm tra thêm một lượt nữa, vẫn không tìm ra nguyên nhân, lại bị mắng thêm một trận.
-Hắn thực sự quá oan.
-Vội gọi thêm hai đồng liêu tới cùng nhau thương nghị. Sở Dạ Ly vì lo cho Sở Ly nên vừa thúc giục vừa mắng, còn Sở Ly thì nhân lúc sơ hở, lén lục hòm thuốc.
-Trong hòm thuốc có rất nhiều bình lọ, băng gạc, kéo, dược liệu và thuốc mỡ.
-Rốt cuộc bình nào mới là thuốc giải Nhuyễn Cốt Tán?
-Nàng lật bên này, xem bên kia, thật sự không phân biệt nổi, chỉ đành mỗi bình lấy một ít, vội vàng giấu vào tay áo, tránh bị phát hiện.
-Bên kia, Sở Dạ Ly vẫn đang mắng quân y.
-“Ngũ ca, hình như chân ta lại không đau nữa!”
-Ba vị quân y: “…”
-Buổi sáng, thám tử báo tin, Đại Sở Nhiếp Chính Vương đã đến Nam Cương.
-Đến giờ Ngọ, Nam Cương gửi tới một phong thư, yêu cầu đàm phán.
-Vệ tướng quân cười lớn:
-“Nhiếp Chính Vương danh chấn thiên hạ, trấn thủ Nam Cương nhiều năm, thủ đoạn sấm rền gió cuốn. Chúng ta đánh bao nhiêu năm như vậy, đến cả một ngọn núi ở Nam Cương cũng không công phá nổi, không ngờ hắn lại chủ động đề nghị đàm phán.”
-“Lần này, quyền chủ động nằm trong tay Nam Man chúng ta!”
-“Chúng ta đang chiếm ưu thế.”
-Ông trầm ngâm:
-“Chỉ có điều, trong thư hắn yêu cầu người của hắn phải bình an vô sự, lập tức được trao trả. Hắn coi trọng vị Tần Thiếu tướng quân kia đến vậy sao?”
-Ông gọi Sở Dạ Ly đến cùng bàn bạc.
-Người mà lá thư nhắc đến, sao có thể là Tần Mục Vũ?
-Là Sở Ly.
-Vì Sở Ly, Sở Đệ Trì không tiếc lấy thân mạo hiểm.
-Sở Dạ Ly nói:
-“Vệ tướng quân không ngại trước tiên đưa ra vài điều kiện, thử xem thành ý của hắn đến đâu, phòng ngừa có trá.”
-“Đông Lăng điện hạ nói rất phải.”
-Vệ tướng quân cầm bút, vung tay viết xuống.
-Yêu cầu quân Đại Sở rút khỏi Nam Cương. Chờ bọn họ hoàn toàn chiếm được Nam Cương, sẽ thả Tần Thiếu tướng quân.
-Chưa đầy nửa ngày, thư hồi đáp đã được gửi trở lại.
-Nét chữ của Nhiếp Chính Vương trên giấy ngông cuồng bao nhiêu, khí thế cũng ngạo nghễ bấy nhiêu.
-“To gan!”
-Vệ tướng quân đọc xong thư, tức giận đập bàn đứng dậy.
-“Tên Sở Đệ Trì cuồng vọng này, lại còn nói cho chúng ta một cơ hội đàm phán! Rốt cuộc là ai cho ai cơ hội? Rõ ràng là hắn cầu xin đến đàm phán!”
-Lại còn nói đừng kính tửu bất cật, chỉ thích phạt tửu.
-Lại còn nói tiên lễ hậu binh, nếu không biết quý trọng cơ hội, một khi động thủ sẽ không còn đường hối hận.
-Quá cuồng vọng!
-Thật quá cuồng vọng!
-“Chúng ta đang nắm con tin trong tay, hắn không sợ chọc giận bản tướng quân, để bản tướng quân giết con tin sao?”
-Sở Dạ Ly bình tĩnh hơn nhiều:
-“Hắn đang cược rằng ngài không dám giết.”
-“Bản tướng quân có gì mà không dám? Ta lập tức đi chém đầu Tần Thiếu tướng quân!”
-Miệng thì nói vậy, nhưng ông không hề nhúc nhích.
-Người chết rồi, sẽ mất giá trị.
-Chỉ khi còn sống, quân cờ trong tay mới thêm được một phần sức nặng.
-Đánh trận, hạ sách là liều quân số, liều thân xác máu thịt; trung sách là thế lực ngang nhau, đấu trí chu toàn; thượng sách là đánh vào lòng người.
-Cổ nhân có câu: Vận trù duy ác chi trung, quyết thắng thiên lý chi ngoại.
-Không cần đổ máu mà khuất phục được đối phương, ấy mới là thượng thượng sách.
-Vệ tướng quân ngồi xuống:
-“Theo ý Đông Lăng điện hạ, nên làm thế nào?”
-Sở Dạ Ly nói:
-“Nếu hắn muốn đàm phán, vậy thì đàm phán. Không để hắn tận mắt nhìn thấy con tin, hắn sao có thể dễ dàng bị nắm thóp?”
-Sở Đệ Trì đâu phải kẻ ngu.
-Hắn muốn Sở Ly, vậy thì để hắn nhìn thấy Sở Ly.
-Ngày hôm sau.
-Đàm phán.
-Ba quân bày trận, mỗi bên đóng quân trước đội ngũ của mình. Chính giữa là một khoảng đất trống rộng lớn, chính là nơi đàm phán.
-Sở Ly cũng được đưa tới.
-Thực ra… là chính nàng muốn tới.
-Nàng muốn gặp Sở Đệ Trì, nàng muốn về Đại Sở, nàng muốn về nhà!
-Chỉ cần nhìn thấy mảnh đất quê hương của Đại Sở, nàng đã kích động đến không thôi, chống gậy bước thật nhanh.
-Thế nên, khi Sở Đệ Trì nhìn thấy Sở Ly, chỉ thấy nàng…
-Đầu quấn đầy băng, chân băng kín từng vòng từng vòng, chống gậy, bộ dạng đáng thương vô cùng…
-Ánh mắt hắn lập tức lạnh buốt, sát ý hiện lên trong đáy mắt:
-“Bọn chúng dùng hình với ngươi rồi?”
-Đã gần một tháng!
-Cuối cùng nàng cũng nghe được giọng nói quen thuộc.
-Đó là thanh âm của quê hương!
-Không hiểu sao, trong lòng Sở Ly bỗng trào lên vô vàn tủi thân:
-“Không có, ta không cẩn thận đập đầu vào bàn nên bị thương.”
-“Thế còn chân ngươi?”
-“Lúc đi đường, ta giẫm vào đống lửa, bị bỏng.”
-“Ngươi mù rồi à?”
-Bộ dạng mình đầy thương tích mà ý chí vẫn kiên cường thế kia, thật sự không bị dùng hình? Toàn là tự mình gây ra?
-Nếu không phải chính miệng nàng nói, hắn cũng chẳng tin.
-Sở Ly tủi thân:
-“Không chỉ vậy, ta còn bị côn trùng cắn!”
-“…”
-Nói to như vậy, rất đáng tự hào sao?
-Đi xa một chuyến mà chẳng khác nào chạy nạn.
-Để xem sau này nàng còn dám lén lút chạy lung tung nữa không!
-“Hoàng thúc.”
-Nàng thật sự rất muốn về nhà!
-Qua lần này, cuối cùng nàng cũng hiểu, kim oa ngân oa, không bằng ổ chó nhà mình; bốn bể năm châu, cũng không bằng cố thổ của chính mình.
-Trăng sáng nhất vẫn là trăng nơi quê hương.
-Sở Ly trông mong nhìn hắn.
-Hắn tinh thông binh pháp, nhất định có thể cứu nàng trở về.
-Hắn chính là hy vọng duy nhất của nàng và Tần Mục Vũ.
-Đặt trọn kỳ vọng, nàng bỗng muốn khóc:
-“Hoàng thúc, người nhất định phải cố lên! Cứu ta với Tần Mục Vũ trở về đi. Tần Mục Vũ còn bị thương nữa, hai bọn ta chỉ trông cậy vào người thôi!”
-Ánh mắt Sở Đệ Trì càng lạnh thêm ba phần, lạnh lùng ngồi trên lưng ngựa:
-“Chết luôn ở ngoài đó đi.” Ẩn bớt</p>
+            <p>Chương 137: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 137: Hoàng thúc, người nhất định phải cố lên</p>
+<p>Sở Ly đột ngột ngẩng đầu.</p>
+<p>Sở Đệ Trì đến rồi!</p>
+<p>“Tiểu Cửu vui lắm sao?” Sở Dạ Ly nhìn nàng.</p>
+<p>“Không có.”</p>
+<p>Chỉ là nơi đất khách quê người, nếu có thể gặp người của Đại Sở, lại còn là Hoàng thúc của mình, nàng cảm thấy trong lòng an tâm hơn vài phần.</p>
+<p>Chỉ vậy mà thôi.</p>
+<p>“Đặt thức ăn xuống, tạm thời không cần bận tâm, Vệ tướng quân tự có đối sách.”</p>
+<p>“Vâng.”</p>
+<p>Thuộc hạ lui xuống.</p>
+<p>Sở Dạ Ly bưng thức ăn, bày lên chiếc án thấp cạnh giường nhỏ, múc một thìa đưa tới bên miệng nàng:</p>
+<p>“A.”</p>
+<p>“Ta tự ăn.”</p>
+<p>“Không phải nàng bảo đầu nặng sao? Để ta đút.”</p>
+<p>“Cũng được.”</p>
+<p>Tâm tình của Sở Ly khá hơn nhiều, cũng không câu nệ, vừa nhai vừa hỏi:</p>
+<p>“Ngươi nói xem, Nhiếp Chính Vương đến rồi, Nam Man và Đại Sở, bên nào sẽ thắng?”</p>
+<p>Sở Dạ Ly múc thêm vài thìa canh thịt băm, khuấy đều.</p>
+<p>“Tiểu Cửu mong bên nào thắng?”</p>
+<p>“Đương nhiên là Đại Sở.”</p>
+<p>“Nếu Đại Sở thắng, muội đã từng nghĩ ta sẽ ra sao chưa?”</p>
+<p>Sở Ly nói:</p>
+<p>“Nếu Đại Sở thắng, mọi chuyện huynh từng làm trước đây, ta đều có thể chuyện cũ bỏ qua. Ta chỉ hy vọng huynh có thể buông bỏ khúc mắc, sống thật tốt.”</p>
+<p>Sở Dạ Ly khẽ cười một tiếng, trong tiếng cười ấy không phân rõ là cảm xúc gì:</p>
+<p>“Mạng sống của cả tộc, nào phải nói buông là buông được?”</p>
+<p>Sở Ly mím môi:</p>
+<p>“Huynh biết không? Trước năm nay, ta vẫn luôn ngây thơ cho rằng, con người sống trên đời, chỉ cần không tranh quyền, không đoạt lợi, thì có thể đứng ngoài mọi chuyện, sống vô ưu vô lo.”</p>
+<p>Hiện thực nói với nàng, nàng quá ngây thơ.</p>
+<p>“Trải qua biết bao chuyện trong năm nay, ta mới hiểu được một đạo lý: không có cuộc đời của ai là thuận buồm xuôi gió, mỗi người đều có lúc đắc ý, cũng có lúc thất ý. Trên đời này, nhất định phải có người chịu ủy khuất!”</p>
+<p>Nhiếp Chính Vương quyền khuynh triều dã, cũng không thể muốn gì được nấy.</p>
+<p>Sở Hoàng nắm giữ quyền lực của cả một quốc gia, kết cục lại ra sao?</p>
+<p>“Người chết đã yên nghỉ, Sở Hoàng nay đã liệt giường, cũng coi như đang chuộc lại tội nghiệt lật đổ tiền triều. Ta hy vọng huynh có thể sống thật tốt, vui vẻ mà sống, Ngũ ca.”</p>
+<p>Sở Ly ăn một miếng cơm.</p>
+<p>“Nhưng nếu ta thắng, chúng ta có thể cùng nhau sống thật tốt, chẳng phải rất tốt sao?”</p>
+<p>Sở Dạ Ly nhẹ nhàng lau hạt cơm nơi khóe môi nàng, nói:</p>
+<p>“Đợi mọi chuyện bụi lắng gió yên, ta sẽ đem tất cả những gì ta có thể cho muội.”</p>
+<p>“Muội thích rong chơi, ta sẽ đưa muội đi thật nhiều thật nhiều nơi. Mùa xuân, chúng ta đến Thanh Thành Sơn ngắm mưa hoa hạnh; mùa hạ, xuống Tô Châu tránh nóng, chèo thuyền; mùa thu, ta hái hoa quế cho nàng, ủ thành rượu; mùa đông, chúng ta cùng đến Bắc Thành ngắm tuyết.”</p>
+<p>Trong mắt hắn ánh lên vẻ mong chờ, khát vọng bức tranh ấy.</p>
+<p>Hắn muốn đem tất cả những điều tốt đẹp nhất dưới gầm trời, trao hết cho nàng.</p>
+<p>Từ thuở thiếu niên gặp gỡ, kể từ khoảnh khắc nàng xông vào đáy mắt hắn, hắn đã bắt đầu mưu tính cho ngày hôm nay.</p>
+<p>Nhưng những thứ ấy, lại chẳng phải điều Sở Ly mong muốn.</p>
+<p>“Ta… chân có hơi đau.”</p>
+<p>Sở Ly kéo câu chuyện trở về thực tại.</p>
+<p>“Sao vậy?”</p>
+<p>Sở Dạ Ly lập tức khẩn trương:</p>
+<p>“Người đâu, gọi quân y đến!”</p>
+<p>Rất nhanh, quân y chạy tới.</p>
+<p>Kiểm tra một lượt, không phát hiện vấn đề gì.</p>
+<p>Sở Dạ Ly mắng hắn vô dụng.</p>
+<p>Quân y oan ức, lại kiểm tra thêm một lượt nữa, vẫn không tìm ra nguyên nhân, lại bị mắng thêm một trận.</p>
+<p>Hắn thực sự quá oan.</p>
+<p>Vội gọi thêm hai đồng liêu tới cùng nhau thương nghị. Sở Dạ Ly vì lo cho Sở Ly nên vừa thúc giục vừa mắng, còn Sở Ly thì nhân lúc sơ hở, lén lục hòm thuốc.</p>
+<p>Trong hòm thuốc có rất nhiều bình lọ, băng gạc, kéo, dược liệu và thuốc mỡ.</p>
+<p>Rốt cuộc bình nào mới là thuốc giải Nhuyễn Cốt Tán?</p>
+<p>Nàng lật bên này, xem bên kia, thật sự không phân biệt nổi, chỉ đành mỗi bình lấy một ít, vội vàng giấu vào tay áo, tránh bị phát hiện.</p>
+<p>Bên kia, Sở Dạ Ly vẫn đang mắng quân y.</p>
+<p>“Ngũ ca, hình như chân ta lại không đau nữa!”</p>
+<p>Ba vị quân y: “…”</p>
+<p>Buổi sáng, thám tử báo tin, Đại Sở Nhiếp Chính Vương đã đến Nam Cương.</p>
+<p>Đến giờ Ngọ, Nam Cương gửi tới một phong thư, yêu cầu đàm phán.</p>
+<p>Vệ tướng quân cười lớn:</p>
+<p>“Nhiếp Chính Vương danh chấn thiên hạ, trấn thủ Nam Cương nhiều năm, thủ đoạn sấm rền gió cuốn. Chúng ta đánh bao nhiêu năm như vậy, đến cả một ngọn núi ở Nam Cương cũng không công phá nổi, không ngờ hắn lại chủ động đề nghị đàm phán.”</p>
+<p>“Lần này, quyền chủ động nằm trong tay Nam Man chúng ta!”</p>
+<p>“Chúng ta đang chiếm ưu thế.”</p>
+<p>Ông trầm ngâm:</p>
+<p>“Chỉ có điều, trong thư hắn yêu cầu người của hắn phải bình an vô sự, lập tức được trao trả. Hắn coi trọng vị Tần Thiếu tướng quân kia đến vậy sao?”</p>
+<p>Ông gọi Sở Dạ Ly đến cùng bàn bạc.</p>
+<p>Người mà lá thư nhắc đến, sao có thể là Tần Mục Vũ?</p>
+<p>Là Sở Ly.</p>
+<p>Vì Sở Ly, Sở Đệ Trì không tiếc lấy thân mạo hiểm.</p>
+<p>Sở Dạ Ly nói:</p>
+<p>“Vệ tướng quân không ngại trước tiên đưa ra vài điều kiện, thử xem thành ý của hắn đến đâu, phòng ngừa có trá.”</p>
+<p>“Đông Lăng điện hạ nói rất phải.”</p>
+<p>Vệ tướng quân cầm bút, vung tay viết xuống.</p>
+<p>Yêu cầu quân Đại Sở rút khỏi Nam Cương. Chờ bọn họ hoàn toàn chiếm được Nam Cương, sẽ thả Tần Thiếu tướng quân.</p>
+<p>Chưa đầy nửa ngày, thư hồi đáp đã được gửi trở lại.</p>
+<p>Nét chữ của Nhiếp Chính Vương trên giấy ngông cuồng bao nhiêu, khí thế cũng ngạo nghễ bấy nhiêu.</p>
+<p>“To gan!”</p>
+<p>Vệ tướng quân đọc xong thư, tức giận đập bàn đứng dậy.</p>
+<p>“Tên Sở Đệ Trì cuồng vọng này, lại còn nói cho chúng ta một cơ hội đàm phán! Rốt cuộc là ai cho ai cơ hội? Rõ ràng là hắn cầu xin đến đàm phán!”</p>
+<p>Lại còn nói đừng kính tửu bất cật, chỉ thích phạt tửu.</p>
+<p>Lại còn nói tiên lễ hậu binh, nếu không biết quý trọng cơ hội, một khi động thủ sẽ không còn đường hối hận.</p>
+<p>Quá cuồng vọng!</p>
+<p>Thật quá cuồng vọng!</p>
+<p>“Chúng ta đang nắm con tin trong tay, hắn không sợ chọc giận bản tướng quân, để bản tướng quân giết con tin sao?”</p>
+<p>Sở Dạ Ly bình tĩnh hơn nhiều:</p>
+<p>“Hắn đang cược rằng ngài không dám giết.”</p>
+<p>“Bản tướng quân có gì mà không dám? Ta lập tức đi chém đầu Tần Thiếu tướng quân!”</p>
+<p>Miệng thì nói vậy, nhưng ông không hề nhúc nhích.</p>
+<p>Người chết rồi, sẽ mất giá trị.</p>
+<p>Chỉ khi còn sống, quân cờ trong tay mới thêm được một phần sức nặng.</p>
+<p>Đánh trận, hạ sách là liều quân số, liều thân xác máu thịt; trung sách là thế lực ngang nhau, đấu trí chu toàn; thượng sách là đánh vào lòng người.</p>
+<p>Cổ nhân có câu: Vận trù duy ác chi trung, quyết thắng thiên lý chi ngoại.</p>
+<p>Không cần đổ máu mà khuất phục được đối phương, ấy mới là thượng thượng sách.</p>
+<p>Vệ tướng quân ngồi xuống:</p>
+<p>“Theo ý Đông Lăng điện hạ, nên làm thế nào?”</p>
+<p>Sở Dạ Ly nói:</p>
+<p>“Nếu hắn muốn đàm phán, vậy thì đàm phán. Không để hắn tận mắt nhìn thấy con tin, hắn sao có thể dễ dàng bị nắm thóp?”</p>
+<p>Sở Đệ Trì đâu phải kẻ ngu.</p>
+<p>Hắn muốn Sở Ly, vậy thì để hắn nhìn thấy Sở Ly.</p>
+<p>Ngày hôm sau.</p>
+<p>Đàm phán.</p>
+<p>Ba quân bày trận, mỗi bên đóng quân trước đội ngũ của mình. Chính giữa là một khoảng đất trống rộng lớn, chính là nơi đàm phán.</p>
+<p>Sở Ly cũng được đưa tới.</p>
+<p>Thực ra… là chính nàng muốn tới.</p>
+<p>Nàng muốn gặp Sở Đệ Trì, nàng muốn về Đại Sở, nàng muốn về nhà!</p>
+<p>Chỉ cần nhìn thấy mảnh đất quê hương của Đại Sở, nàng đã kích động đến không thôi, chống gậy bước thật nhanh.</p>
+<p>Thế nên, khi Sở Đệ Trì nhìn thấy Sở Ly, chỉ thấy nàng…</p>
+<p>Đầu quấn đầy băng, chân băng kín từng vòng từng vòng, chống gậy, bộ dạng đáng thương vô cùng…</p>
+<p>Ánh mắt hắn lập tức lạnh buốt, sát ý hiện lên trong đáy mắt:</p>
+<p>“Bọn chúng dùng hình với ngươi rồi?”</p>
+<p>Đã gần một tháng!</p>
+<p>Cuối cùng nàng cũng nghe được giọng nói quen thuộc.</p>
+<p>Đó là thanh âm của quê hương!</p>
+<p>Không hiểu sao, trong lòng Sở Ly bỗng trào lên vô vàn tủi thân:</p>
+<p>“Không có, ta không cẩn thận đập đầu vào bàn nên bị thương.”</p>
+<p>“Thế còn chân ngươi?”</p>
+<p>“Lúc đi đường, ta giẫm vào đống lửa, bị bỏng.”</p>
+<p>“Ngươi mù rồi à?”</p>
+<p>Bộ dạng mình đầy thương tích mà ý chí vẫn kiên cường thế kia, thật sự không bị dùng hình? Toàn là tự mình gây ra?</p>
+<p>Nếu không phải chính miệng nàng nói, hắn cũng chẳng tin.</p>
+<p>Sở Ly tủi thân:</p>
+<p>“Không chỉ vậy, ta còn bị côn trùng cắn!”</p>
+<p>“…”</p>
+<p>Nói to như vậy, rất đáng tự hào sao?</p>
+<p>Đi xa một chuyến mà chẳng khác nào chạy nạn.</p>
+<p>Để xem sau này nàng còn dám lén lút chạy lung tung nữa không!</p>
+<p>“Hoàng thúc.”</p>
+<p>Nàng thật sự rất muốn về nhà!</p>
+<p>Qua lần này, cuối cùng nàng cũng hiểu, kim oa ngân oa, không bằng ổ chó nhà mình; bốn bể năm châu, cũng không bằng cố thổ của chính mình.</p>
+<p>Trăng sáng nhất vẫn là trăng nơi quê hương.</p>
+<p>Sở Ly trông mong nhìn hắn.</p>
+<p>Hắn tinh thông binh pháp, nhất định có thể cứu nàng trở về.</p>
+<p>Hắn chính là hy vọng duy nhất của nàng và Tần Mục Vũ.</p>
+<p>Đặt trọn kỳ vọng, nàng bỗng muốn khóc:</p>
+<p>“Hoàng thúc, người nhất định phải cố lên! Cứu ta với Tần Mục Vũ trở về đi. Tần Mục Vũ còn bị thương nữa, hai bọn ta chỉ trông cậy vào người thôi!”</p>
+<p>Ánh mắt Sở Đệ Trì càng lạnh thêm ba phần, lạnh lùng ngồi trên lưng ngựa:</p>
+<p>“Chết luôn ở ngoài đó đi.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_136.html" class="btn">‹ Trước</a>
             <a href="chuong_138.html" class="btn">Sau ›</a>
         </div>
@@ -267,15 +275,11 @@ Hắn chính là hy vọng duy nhất của nàng và Tần Mục Vũ.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -287,11 +291,11 @@ Hắn chính là hy vọng duy nhất của nàng và Tần Mục Vũ.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

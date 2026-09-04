@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 206</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,149 +62,158 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 206</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_205.html" class="btn">‹ Trước</a>
             <a href="chuong_207.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 206: Lại đây, để ta ôm nàng
-“Ở đây chỉ có hai chúng ta. nàng có tránh ta hay không, chẳng lẽ ta lại không nhìn ra?”
-Sở Đệ Trì khẽ thở dài.
-“Tiểu Cửu, nàng không tin ta.”
-Vừa rồi, hẳn là nàng đã cho rằng hắn sẽ dùng gói Nhiễu Chỉ Nhu ấy lên người nàng.
-Sắc mặt Sở Ly hơi cứng lại.
-Thực ra, hắn quang minh lỗi lạc, còn nàng lại lấy dạ tiểu nhân mà nghi ngờ hắn…
-“Nàng biết không? Thật ra ta không thích làm chuyện đó.”  (Admin:
-Ông lại văn vở)
-Hắn vén vạt áo, ngồi ngay xuống bậc thềm bên cạnh.
-“Từ khi còn rất nhỏ, Sở Hoàng đã ép ta uống một loại độc dược tuyệt tự. Bao năm qua, ta chưa từng chạm vào nữ nhân, cũng chưa từng cưới thê nạp thiếp, càng không thích chuyện phòng the.”
-Sở Ly đứng lặng tại chỗ, ngơ ngác nhìn hắn.
-Là vậy sao?
-Nhưng trước kia, hắn rõ ràng…
-“Sau này, ta cũng sẽ không ép nàng làm chuyện ấy nữa (Admin: Sở Ly chớ tin lời xảo ngôn 
-)
-“Sau khi trải qua sinh tử, ta đã nghĩ thông rất nhiều chuyện. Nàng là bảo vật mất đi rồi lại tìm về của ta. Từ nay về sau, ta tuyệt đối sẽ không để nàng rơi thêm một giọt nước mắt nào nữa.”
-Gió nhẹ lay động.
-Thanh âm ôn hòa của người đàn ông như cơn gió xuân từ từ lướt qua gương mặt, khẽ khàng len vào tận đáy lòng.
-“Lần này đến Giang Nam, ta chỉ muốn đến thăm nàng, chứ không phải đến ép buộc nàng.”
-Hơi thở Sở Ly trở nên gấp gáp.
-“Trước kia… người chưa bao giờ nói với ta những lời như vậy…”
-Hay nói đúng hơn, với một người kiêu ngạo và tự phụ như hắn, hành sự luôn quyết đoán dứt khoát, cần gì phải giải thích với bất kỳ ai?
-“Con người đều sẽ thay đổi, Tiểu Cửu.”
-Sở Đệ Trì nhìn nàng.
-“Bây giờ có thể nói cho ta biết, vì sao nàng trốn ở Giang Nam, rõ ràng còn sống mà lại không nói cho ta biết được không?”
-“Ta…”
-Sở Ly nhìn dáng vẻ ôn hòa đến cùng cực của hắn, tựa như thật sự chỉ đang cùng nàng trò chuyện.
-Trong lòng nàng không khỏi mờ mịt.
-“Ta… không thích hoàng cung vuông vức ấy, không muốn tiếp tục sống giữa những âm mưu minh thương ám tiễn nữa… Ta cũng sợ…”
-“Sợ điều gì?”
-“Sợ…”
-Nàng cắn chặt môi dưới, muốn nói lại thôi, khẽ nhìn về phía hắn.
-“Sợ ta bắt nạt nàng?”
-Sở Đệ Trì tiếp lời.
-“Kể từ sau khi điện Chiêu Lan bốc cháy, nàng giả chết rời đi, ta đã từng bắt nạt nàng lần nào chưa?”
-Sở Ly lắc đầu.
-“Nhưng nàng có biết, cứ thế mà bỏ đi là một quyết định vô cùng thiếu sáng suốt không?”
-Sở Đệ Trì nói:
-“Nàng trốn ở đây, mẫu phi không cần nữa? Bát hoàng huynh không cần nữa? Người thân, bằng hữu đều không cần nữa sao?”
-Sở Ly đương nhiên là muốn.
-Nhưng nàng đi đến bước này, cũng là bị ép.
-Nàng không còn lựa chọn.
-Nói cho cùng, nàng vẫn là sợ hắn.
-Con người hắn quá mức cường thế.
-Trước kia lúc nào cũng bắt nạt nàng, khiến nàng không thể đối phó nổi, chỉ có thể tránh né. Giờ đây hắn đột nhiên thay đổi tính tình, không còn bắt nạt nàng nữa, ngược lại khiến nàng trở tay không kịp.
-“Khi một người nắm trong tay quyền lực, thì nên tận dụng nó đến mức tối đa để mưu lợi cho bản thân. Đó mới là cách làm thông minh.”
-“Nàng không biết lợi dụng quyền lực, vừa muốn có cuộc sống yên ổn, vừa muốn đoàn tụ cùng mẫu thân và huynh trưởng, lại còn muốn quang minh chính đại. Kết quả chỉ có thể trốn ở nơi này, để một tên Tri phủ nho nhỏ bắt nạt. Mấy năm làm hoàng tử coi như uổng phí.”
-Cổ họng Sở Ly nghẹn lại, trong lòng dâng lên vài phần xấu hổ.
-“Khi ấy ta trúng Sinh Tử Cổ. Sau khi hạ táng, được sư phụ cứu sống. Ta lo mình chết rồi sống lại, lại còn là thân nữ nhi, sẽ liên lụy đến mẫu phi, nên mới trốn đến Giang Nam thành!”
-Sở Đệ Trì khẽ gật đầu, tỏ vẻ đã hiểu.
-“Sau đó thì sao?”
-“Sau đó, Giang Nam thành xuất hiện dâm tặc hái hoa. Ta tình cờ gặp Mục Tuyết, Mục Tuyết lại nói cho Mục Vũ biết. Bọn ta bàn nhau giả thành thân để dẫn dụ hung thủ, nào ngờ người lại tới.”
-“Hết rồi?”
-“Hết rồi.”
-Ánh mắt Sở Đệ Trì càng thêm nhu hòa.
-“Đừng sợ. Có ta ở đây, thân phận của nàng rất dễ sắp xếp. Cửu hoàng tử năm xưa đã chết. Ta sẽ an bài cho con một thân phận mới. Như vậy, con có thể quang minh chính đại sống tiếp, cũng có thể đường đường chính chính trở về Đế Đô thăm người thân.”
-Sở Ly lập tức nói:
-“Nhưng Đế Đô thành có rất nhiều người quen biết con. Bọn họ đều biết ta là Cửu hoàng tử.”
-“Ta nói nàng là ai, thì nàng chính là người đó.”
-Người đàn ông trầm giọng:
-“Thiên hạ chi nan sự, tất tác vu dị; thiên hạ chi đại sự, tất tác vu tế.”
-“Nàng có ta, có Nhàn Vương, có Ôn phi, còn có biết bao người quyền cao chức trọng đứng phía sau. Trong tay đang nắm một bộ bài đẹp đến thế, đánh thế nào cũng thắng.”
-“Nói cho ta biết, nàng còn sợ điều gì?”
-Hô hấp Sở Ly khựng lại.
-Nàng ngơ ngẩn nhìn hắn.
-Hắn không đến để chất vấn nàng, cũng không đến để bắt nạt nàng.
-Ngược lại, hắn đến để trải đường, giải ưu cho nàng.
-Trước giờ, nàng vẫn luôn cho rằng người mình sợ nhất chính là hắn.
-Cũng bởi vì Đế Đô có hắn, nên nàng mới không dám quay về.
-Nhưng hắn đã thay đổi.
-Vậy thì bao ngày tháng nàng trốn đông trốn tây, rốt cuộc là vì điều gì?
-Thực ra nàng vốn chẳng cần phải trốn.
-Ở nơi đất khách Giang Nam, tuy cuộc sống thanh nhàn tự tại, nhưng mỗi khi đêm xuống, chỉ còn lại một mình, nàng luôn nhớ đến mẫu phi. Không biết chân của mẫu phi có lại đau không? Bát hoàng huynh sợ ma như vậy, tiểu thái giám trực đêm có còn tận tâm canh giữ không?
-Nỗi nhớ…
-Nhìn gương mặt ôn hòa của người đàn ông, lớp phòng bị trong lòng Sở Ly dần dần xuất hiện những vết rạn.
-Nàng khẽ giải thích:
-“Hoàng thúc, ta cứ tưởng người sẽ mắng ta. Ta sợ người lại giống như trước kia, không chịu buông tha ta… Chuyện ta còn sống… ta không phải cố ý không nói cho người biết…”
-Sở Đệ Trì khẽ cười, thở dài:
-“Ta không trách nàng.”
-Hắn ngồi trên bậc thềm, dang hai tay ra.
-“Lại đây, để ta ôm nàng.”
---------
-*Thiên hạ nan sự, tất tác vu dị; thiên hạ đại sự, tất tác vu tế.
-Việc khó trong thiên hạ đều bắt đầu từ chỗ dễ; việc lớn trong thiên hạ đều khởi đầu từ những điều nhỏ bé. Ẩn bớt</p>
+            <p>Chương 206: Lại đây, để ta ôm nàng</p>
+<p>“Ở đây chỉ có hai chúng ta. nàng có tránh ta hay không, chẳng lẽ ta lại không nhìn ra?”</p>
+<p>Sở Đệ Trì khẽ thở dài.</p>
+<p>“Tiểu Cửu, nàng không tin ta.”</p>
+<p>Vừa rồi, hẳn là nàng đã cho rằng hắn sẽ dùng gói Nhiễu Chỉ Nhu ấy lên người nàng.</p>
+<p>Sắc mặt Sở Ly hơi cứng lại.</p>
+<p>Thực ra, hắn quang minh lỗi lạc, còn nàng lại lấy dạ tiểu nhân mà nghi ngờ hắn…</p>
+<p>“Nàng biết không? Thật ra ta không thích làm chuyện đó.”  (Admin:</p>
+<p>Ông lại văn vở)</p>
+<p>Hắn vén vạt áo, ngồi ngay xuống bậc thềm bên cạnh.</p>
+<p>“Từ khi còn rất nhỏ, Sở Hoàng đã ép ta uống một loại độc dược tuyệt tự. Bao năm qua, ta chưa từng chạm vào nữ nhân, cũng chưa từng cưới thê nạp thiếp, càng không thích chuyện phòng the.”</p>
+<p>Sở Ly đứng lặng tại chỗ, ngơ ngác nhìn hắn.</p>
+<p>Là vậy sao?</p>
+<p>Nhưng trước kia, hắn rõ ràng…</p>
+<p>“Sau này, ta cũng sẽ không ép nàng làm chuyện ấy nữa (Admin: Sở Ly chớ tin lời xảo ngôn</p>
+<p>)</p>
+<p>“Sau khi trải qua sinh tử, ta đã nghĩ thông rất nhiều chuyện. Nàng là bảo vật mất đi rồi lại tìm về của ta. Từ nay về sau, ta tuyệt đối sẽ không để nàng rơi thêm một giọt nước mắt nào nữa.”</p>
+<p>Gió nhẹ lay động.</p>
+<p>Thanh âm ôn hòa của người đàn ông như cơn gió xuân từ từ lướt qua gương mặt, khẽ khàng len vào tận đáy lòng.</p>
+<p>“Lần này đến Giang Nam, ta chỉ muốn đến thăm nàng, chứ không phải đến ép buộc nàng.”</p>
+<p>Hơi thở Sở Ly trở nên gấp gáp.</p>
+<p>“Trước kia… người chưa bao giờ nói với ta những lời như vậy…”</p>
+<p>Hay nói đúng hơn, với một người kiêu ngạo và tự phụ như hắn, hành sự luôn quyết đoán dứt khoát, cần gì phải giải thích với bất kỳ ai?</p>
+<p>“Con người đều sẽ thay đổi, Tiểu Cửu.”</p>
+<p>Sở Đệ Trì nhìn nàng.</p>
+<p>“Bây giờ có thể nói cho ta biết, vì sao nàng trốn ở Giang Nam, rõ ràng còn sống mà lại không nói cho ta biết được không?”</p>
+<p>“Ta…”</p>
+<p>Sở Ly nhìn dáng vẻ ôn hòa đến cùng cực của hắn, tựa như thật sự chỉ đang cùng nàng trò chuyện.</p>
+<p>Trong lòng nàng không khỏi mờ mịt.</p>
+<p>“Ta… không thích hoàng cung vuông vức ấy, không muốn tiếp tục sống giữa những âm mưu minh thương ám tiễn nữa… Ta cũng sợ…”</p>
+<p>“Sợ điều gì?”</p>
+<p>“Sợ…”</p>
+<p>Nàng cắn chặt môi dưới, muốn nói lại thôi, khẽ nhìn về phía hắn.</p>
+<p>“Sợ ta bắt nạt nàng?”</p>
+<p>Sở Đệ Trì tiếp lời.</p>
+<p>“Kể từ sau khi điện Chiêu Lan bốc cháy, nàng giả chết rời đi, ta đã từng bắt nạt nàng lần nào chưa?”</p>
+<p>Sở Ly lắc đầu.</p>
+<p>“Nhưng nàng có biết, cứ thế mà bỏ đi là một quyết định vô cùng thiếu sáng suốt không?”</p>
+<p>Sở Đệ Trì nói:</p>
+<p>“Nàng trốn ở đây, mẫu phi không cần nữa? Bát hoàng huynh không cần nữa? Người thân, bằng hữu đều không cần nữa sao?”</p>
+<p>Sở Ly đương nhiên là muốn.</p>
+<p>Nhưng nàng đi đến bước này, cũng là bị ép.</p>
+<p>Nàng không còn lựa chọn.</p>
+<p>Nói cho cùng, nàng vẫn là sợ hắn.</p>
+<p>Con người hắn quá mức cường thế.</p>
+<p>Trước kia lúc nào cũng bắt nạt nàng, khiến nàng không thể đối phó nổi, chỉ có thể tránh né. Giờ đây hắn đột nhiên thay đổi tính tình, không còn bắt nạt nàng nữa, ngược lại khiến nàng trở tay không kịp.</p>
+<p>“Khi một người nắm trong tay quyền lực, thì nên tận dụng nó đến mức tối đa để mưu lợi cho bản thân. Đó mới là cách làm thông minh.”</p>
+<p>“Nàng không biết lợi dụng quyền lực, vừa muốn có cuộc sống yên ổn, vừa muốn đoàn tụ cùng mẫu thân và huynh trưởng, lại còn muốn quang minh chính đại. Kết quả chỉ có thể trốn ở nơi này, để một tên Tri phủ nho nhỏ bắt nạt. Mấy năm làm hoàng tử coi như uổng phí.”</p>
+<p>Cổ họng Sở Ly nghẹn lại, trong lòng dâng lên vài phần xấu hổ.</p>
+<p>“Khi ấy ta trúng Sinh Tử Cổ. Sau khi hạ táng, được sư phụ cứu sống. Ta lo mình chết rồi sống lại, lại còn là thân nữ nhi, sẽ liên lụy đến mẫu phi, nên mới trốn đến Giang Nam thành!”</p>
+<p>Sở Đệ Trì khẽ gật đầu, tỏ vẻ đã hiểu.</p>
+<p>“Sau đó thì sao?”</p>
+<p>“Sau đó, Giang Nam thành xuất hiện dâm tặc hái hoa. Ta tình cờ gặp Mục Tuyết, Mục Tuyết lại nói cho Mục Vũ biết. Bọn ta bàn nhau giả thành thân để dẫn dụ hung thủ, nào ngờ người lại tới.”</p>
+<p>“Hết rồi?”</p>
+<p>“Hết rồi.”</p>
+<p>Ánh mắt Sở Đệ Trì càng thêm nhu hòa.</p>
+<p>“Đừng sợ. Có ta ở đây, thân phận của nàng rất dễ sắp xếp. Cửu hoàng tử năm xưa đã chết. Ta sẽ an bài cho con một thân phận mới. Như vậy, con có thể quang minh chính đại sống tiếp, cũng có thể đường đường chính chính trở về Đế Đô thăm người thân.”</p>
+<p>Sở Ly lập tức nói:</p>
+<p>“Nhưng Đế Đô thành có rất nhiều người quen biết con. Bọn họ đều biết ta là Cửu hoàng tử.”</p>
+<p>“Ta nói nàng là ai, thì nàng chính là người đó.”</p>
+<p>Người đàn ông trầm giọng:</p>
+<p>“Thiên hạ chi nan sự, tất tác vu dị; thiên hạ chi đại sự, tất tác vu tế.”</p>
+<p>“Nàng có ta, có Nhàn Vương, có Ôn phi, còn có biết bao người quyền cao chức trọng đứng phía sau. Trong tay đang nắm một bộ bài đẹp đến thế, đánh thế nào cũng thắng.”</p>
+<p>“Nói cho ta biết, nàng còn sợ điều gì?”</p>
+<p>Hô hấp Sở Ly khựng lại.</p>
+<p>Nàng ngơ ngẩn nhìn hắn.</p>
+<p>Hắn không đến để chất vấn nàng, cũng không đến để bắt nạt nàng.</p>
+<p>Ngược lại, hắn đến để trải đường, giải ưu cho nàng.</p>
+<p>Trước giờ, nàng vẫn luôn cho rằng người mình sợ nhất chính là hắn.</p>
+<p>Cũng bởi vì Đế Đô có hắn, nên nàng mới không dám quay về.</p>
+<p>Nhưng hắn đã thay đổi.</p>
+<p>Vậy thì bao ngày tháng nàng trốn đông trốn tây, rốt cuộc là vì điều gì?</p>
+<p>Thực ra nàng vốn chẳng cần phải trốn.</p>
+<p>Ở nơi đất khách Giang Nam, tuy cuộc sống thanh nhàn tự tại, nhưng mỗi khi đêm xuống, chỉ còn lại một mình, nàng luôn nhớ đến mẫu phi. Không biết chân của mẫu phi có lại đau không? Bát hoàng huynh sợ ma như vậy, tiểu thái giám trực đêm có còn tận tâm canh giữ không?</p>
+<p>Nỗi nhớ…</p>
+<p>Nhìn gương mặt ôn hòa của người đàn ông, lớp phòng bị trong lòng Sở Ly dần dần xuất hiện những vết rạn.</p>
+<p>Nàng khẽ giải thích:</p>
+<p>“Hoàng thúc, ta cứ tưởng người sẽ mắng ta. Ta sợ người lại giống như trước kia, không chịu buông tha ta… Chuyện ta còn sống… ta không phải cố ý không nói cho người biết…”</p>
+<p>Sở Đệ Trì khẽ cười, thở dài:</p>
+<p>“Ta không trách nàng.”</p>
+<p>Hắn ngồi trên bậc thềm, dang hai tay ra.</p>
+<p>“Lại đây, để ta ôm nàng.”</p>
+<p>--------</p>
+<p>*Thiên hạ nan sự, tất tác vu dị; thiên hạ đại sự, tất tác vu tế.</p>
+<p>Việc khó trong thiên hạ đều bắt đầu từ chỗ dễ; việc lớn trong thiên hạ đều khởi đầu từ những điều nhỏ bé. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_205.html" class="btn">‹ Trước</a>
             <a href="chuong_207.html" class="btn">Sau ›</a>
         </div>
@@ -213,15 +221,11 @@ Việc khó trong thiên hạ đều bắt đầu từ chỗ dễ; việc lớn 
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -233,11 +237,11 @@ Việc khó trong thiên hạ đều bắt đầu từ chỗ dễ; việc lớn 
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

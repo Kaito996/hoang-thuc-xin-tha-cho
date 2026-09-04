@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 22</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,242 +62,251 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 22</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_20.html" class="btn">‹ Trước</a>
             <a href="chuong_23.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 22: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 22: [Cửu Hoàng Tử Ở Cùng Nhiếp Chính Vương]
-“Tham kiến Hoàng thượng!”
-Mọi người đồng loạt quỳ xuống, tiếng hô vang vọng khắp Hoàng gia liệp trường, khí thế ngút trời.
-Sở Hoàng mặc một thân kình trang chuyên dùng cho cưỡi ngựa bắn cung. Tuy đã gần năm mươi tuổi, nhưng phong thái cầm kiếm vẫn không giấu được vẻ oai hùng năm xưa.
-Ông bước lên nơi cao, cắm trường kiếm xuống đất, khí thế như cầu vồng xuyên trời:
-“Bình thân.”
-“Tạ Hoàng thượng!”
-“Lại đến mùa Thu Liệp. Chỉ khi lớp trẻ có tài có chí, Đại Sở mới ngày càng hưng thịnh. Khai quốc không dễ, dựng nước không dễ, nhưng giữ vững giang sơn này lại càng không dễ hơn.”
-Sở Hoàng nhìn mọi người, từng lời mạnh mẽ:
-“Đại Sở cần nhân tài, trẫm càng cần các ngươi!”
-“Năm nay, người đoạt hạng nhất sẽ được ban thưởng một cây Hi Mộc Lưu Kim Cung!”
-Bốn Ngự tiền thị vệ khiêng một bệ gỗ lớn đặt trước mặt mọi người.
-Trên bệ gỗ là một cây cung khổng lồ, khí thế bức người, tựa như mang theo cả một chiến trường.
-Mọi người đồng loạt hít vào một hơi lạnh.
-“Nghe nói trong thần thoại thượng cổ, Hậu Nghệ bắn mặt trời cũng dùng Hi Mộc Cung!”
-“Hi Mộc cứng rắn vô song, không gì phá nổi. Nhìn tay cầm hình kỳ lân được đúc bằng lưu kim kia kìa, thật là tôn quý!”
-“Nghe nói dây cung được làm từ gân hổ. Chỉ nam nhân dũng mãnh nhất Đại Sở mới có thể kéo được cây cung nặng như vậy!”
-“Nếu ta có được nó, nhất định sẽ đặt trong từ đường, làm vật gia truyền, đời đời truyền lại!”
-“Ha ha! Trương phó tướng chí lớn thật đấy. Nhưng Đại hoàng tử, Tam hoàng tử đều tinh thông kỵ xạ, lại còn có Nhiếp Chính Vương nữa. Chỉ sợ khó mà tranh nổi...”
-Hi Mộc Lưu Kim Cung vừa xuất hiện đã thành công khơi dậy ý chí tranh tài của mọi người.
-Nhưng vẫn chưa hết.
-Sở Hoàng lại nói:
-“Người nào muốn thử đều có thể lên sờ, thử kéo cung. Sau nửa canh giờ sẽ chính thức bắt đầu Thu Liệp.”
-Lập tức có không ít người hưng phấn tiến lên.
-Một vị phó tướng tính tình hào sảng bước lên đài trước tiên.
-Vừa nắm lấy cây cung, một luồng khí lạnh truyền vào lòng bàn tay.
-Nặng!
-Nặng như ngàn cân!
-Hắn âm thầm dùng sức, vậy mà không thể nhấc nổi.
-Sắc mặt khẽ đổi.
-Lại tiếp tục dùng lực.
-Vẫn vô cùng miễn cưỡng.
-“Vương thiếu tướng, ngươi được không đấy?”
-Hắn trầm mặt:
-“Vệ công tử, hay là ngươi thử xem?”
-Một vị công tử trẻ tuổi đầy tự tin bước tới.
-Nhưng cây cung lưu kim quá nặng.
-Mặt đỏ bừng, gân cổ nổi lên, vậy mà ngay cả dây cung cũng không kéo nổi.
-“Không được thì để ta.”
-“Để ta thử.”
-Những người khác nhao nhao tiến lên.
-Ai cũng muốn sờ thử thần cung, khơi dậy ý chí tranh đấu.
-Nhưng cuối cùng ai nấy đều đỏ bừng mặt vì gắng sức.
-Thất Hoàng tử cười lạnh:
-“Một đám phế vật, đứng đây làm trò cười cho ai xem?”
-Hắn ném kiếm cho thị vệ bên cạnh rồi sải bước lên đài.
-“Để ta!”
-Mọi người lập tức tránh ra.
-Hắn tự tin nắm lấy cây cung.
-Nhưng chỉ ba bốn nhịp thở sau, sắc mặt đã trở nên khó coi...
-Sở Ly nhìn thấy cảnh ấy thì vui không chịu nổi.
-“Ha ha! Ha ha ha!”
-Thất Hoàng tử trầm mặt, ánh mắt sắc như dao quét về phía nàng.
-“Ngươi cười cái gì?”
-“Cây cung ngay cả ta còn kéo không nổi, chỉ sợ ngươi đến dây cung cũng chẳng đụng được.”
-“Phế vật mà không tự biết, còn há cái miệng cười ngây ngô.”
-Sở Ly cười hì hì:
-“Đệ có tự mình biết mình, tất nhiên sẽ không giống Thất hoàng huynh.”
-Thật mất mặt.
-“Ngươi!”
-Thất Hoàng tử tức đến mức muốn xông lên túm cổ áo nàng.
-Ai ngờ Sở Ly hai chân mềm nhũn, ngồi phịch xuống đất.
-“Ta sẽ méc phụ hoàng huynh đánh ta.”
-“...”
-Phế vật.
-Đúng là phế vật!
-Làm gì có Hoàng tử nào lưu manh vô lại như nàng?
-Nếu hắn thật sự so đo với Sở Ly thì chẳng khác nào tự hạ thấp thân phận mình, để người khác cười chê.
-“Sở Ly, ngươi cứ chờ đó cho ta!”
-Năm nay hắn nhất định dùng thực lực chứng minh.
-Sở Ly chính là một tên phế vật!
-Hoàng gia liệp trường chiếm trọn tám ngọn núi lớn.
-Núi non liên miên bất tận, bên trong có vô số dã thú.
-Mùa thu chính là thời điểm con mồi béo tốt nhất.
-Theo tiếng tù và đầy khí thế vang lên, mấy chục người đồng loạt thúc ngựa lao vào rừng.
-Sở Ly cưỡi ngựa đi cùng Tần Mục Vũ.
-“A Ly, lát nữa để ta bắn giúp ngươi.”
-Tần Mục Vũ năm nào cũng vậy.
-Sợ Sở Ly đứng chót bảng.
-Nhưng bản thân Sở Ly vốn chẳng có ý định nổi bật.
-Nàng chỉ xem đây là một chuyến đi chơi.
-“Hoàng thượng nói nghiêm cấm gian lận.”
-“Không sao.”
-“Mũi tên của mỗi người đều có ký hiệu riêng.”
-“Ta dùng tên của ngươi để bắn. Chỉ cần ngươi không nói thì chẳng ai biết.”
-Sở Ly nghiêng đầu nhìn hắn:
-“Ngốc à?”
-“Ngươi giúp ta thì sẽ làm chậm tiến độ của chính mình.”
-“Nếu ngươi đoạt được hạng nhất, đó mới là vinh quang thật sự.”
-Nhắc tới chuyện này, Tần Mục Vũ kéo dây cương, ghé sát nàng hơn, hạ giọng:
-“Nói ra mới lạ.”
-“Năm ngoái Tam hoàng tử đoạt hạng nhất, số con mồi của Nhiếp Chính Vương chỉ ít hơn đúng một con.”
-“Năm kia Đại hoàng tử đứng đầu, Nhiếp Chính Vương cũng chỉ kém một con.”
-“Ba năm trước cũng vậy.”
-“A Ly, ngươi nói xem, là Nhiếp Chính Vương kỹ nghệ không bằng người hay cố ý như thế?”
-Theo lý mà nói.
-Nhiếp Chính Vương chinh chiến sa trường, bách chiến bách thắng.
-Kỵ xạ chắc chắn thuộc hàng đỉnh cao.
-Làm sao có thể năm nào cũng đứng thứ hai?
-Sở Ly khẽ cười:
-“Hắn dùng cách đó để khiêu khích phụ hoàng.”
-“Dù người khác đoạt hạng nhất, trong lòng họ cũng hiểu là Nhiếp Chính Vương cố ý nhường.”
-“Khiến tất cả đều thấy khó chịu.”
-“Mục đích của hắn đạt được rồi.”
-Tần Mục Vũ thấp giọng:
-“Xem ra năm nay kết quả cũng chẳng có gì bất ngờ.”
-“Đã định trước như vậy, chẳng bằng nhân cơ hội này chơi cho đã.”
-“Động vật trong Hoàng gia liệp trường béo tốt lắm.”
-Mọi người vừa vào rừng đã nóng lòng tìm kiếm con mồi, giương cung bắn tên.
-Chỉ có Sở Ly và Tần Mục Vũ vừa đi vừa trò chuyện, không hề vội vàng.
-“Tiêu Đô đốc, kia chẳng phải ngoại sinh của ngài sao?”
-Một vị phó tướng ở gần đó hỏi.
-Tiêu Dạ Hành nheo mắt nhìn theo.
-Chỉ thấy hai thiếu niên cưỡi ngựa sát bên nhau, đầu gần như chạm đầu, chẳng biết đang nói gì mà cười đến vui vẻ.
-Hắn liếc nhìn Sở Đệ Trì bên cạnh.
-Nam nhân mặc cẩm y hoa phục, ngồi thẳng trên lưng ngựa.
-Ánh mắt nhìn hai người kia.
-Lạnh như băng tuyết.
-Không ai biết hắn đang nghĩ gì.
-Tiêu Dạ Hành cất cao giọng:
-“Mục Vũ!”
-Tần Mục Vũ quay đầu:
-“Cữu cữu?”
-“Thu Liệp đã bắt đầu rồi.”
-“Sao còn kéo Cửu Hoàng tử nói chuyện?”
-“Nếu làm ảnh hưởng thành tích của Cửu Hoàng tử, hủy mất thanh danh của ngài ấy, ngươi gánh nổi tội sao?”
-Tiêu Dạ Hành thúc ngựa tới, trực tiếp mang Tần Mục Vũ đi.
-Sở Ly nhìn thấy Nhiếp Chính Vương thì vành tai bỗng thấy đau âm ỉ.
-Nhưng nhớ tới những lời hắn từng nói ở San Hô Thủy Tạ.
-Lại lo hắn nhân dịp Thu Liệp mà âm thầm đại khai sát giới.
-Nàng đành thúc ngựa tiến lên.
-“Hoàng thúc.”
-“Năm nào Hoàng thúc cũng có chiến tích xuất sắc.”
-“Tiểu Cửu tự biết kỵ xạ không giỏi.”
-“Hay là để cháu đi theo phía sau, giúp Hoàng thúc nhặt con mồi nhé?”
-Sở Đệ Trì lạnh nhạt liếc nàng một cái.
-“Ngươi còn biết thêu túi thơm?”
-“Hả?”
-Sở Ly vừa hỏi lại thì đã thấy hắn thúc chiến mã Tướng Dạ tiến sâu vào rừng.
-Lời này là có ý gì?
-Nàng suy nghĩ hai giây.
-Không hiểu.
-Liền vội vàng đuổi theo.
-Đi cùng hắn, hắn hẳn sẽ không tiện tiện tay giết luôn nàng chứ?
-Khoan đã!
-Nếu thật sự đi cùng hắn...
-Muốn giết nàng thì càng dễ hơn!
-Cho dù nàng chết trong rừng cũng chẳng ai biết.
-Nghĩ tới đây.
-Sở Ly giả vờ đuổi theo một đoạn.
-Sau đó dần dần giảm tốc.
-Kéo giãn khoảng cách.
-Rồi lập tức quất ngựa chạy sang hướng khác.
-Chuồn!
-Chuồn là thượng sách!
-Không xa.
-“Lục Hoàng tử, ngài nhìn kìa.”
-“Cửu Hoàng tử đang ở cùng Nhiếp Chính Vương.”
-Mỗi người tham gia Thu Liệp đều có một thị vệ chuyên đi thu nhặt con mồi.
-Lục Hoàng tử nheo mắt nhìn.
-Một kế hoạch lập tức hình thành trong đầu.
-“Thứ ta cần đâu?”
-“Đã chuẩn bị xong.”
-Tên thị vệ thấy xung quanh không có ai liền cẩn thận lấy từ trong tay áo ra một gói giấy nhỏ.
-Lục Hoàng tử dùng hai ngón tay kẹp lấy.
-“Chỉ một chút bột thuốc này thôi mà đủ khiến mãnh thú phát cuồng sao?”
-“Vâng.”
-“Thuốc này được bán trong chợ đen, thuộc hàng cấm phẩm.”
-“Nô tài phải tốn rất nhiều công sức mới kiếm được ngần ấy.”
-“Đủ rồi.”
-Mãnh thú nổi điên.
-Nếu cắn chết Nhiếp Chính Vương thì cũng là chuyện hợp tình hợp lý.
-Nếu không cắn chết được hắn...
-Mà cắn chết Sở Ly bên cạnh.
-Thì Nhiếp Chính Vương cũng khó thoát khỏi trách nhiệm.
-Mối thù của Đại hoàng tẩu.
-Hôm nay nhất định phải báo! Ẩn bớt</p>
+            <p>Chương 22: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 22: [Cửu Hoàng Tử Ở Cùng Nhiếp Chính Vương]</p>
+<p>“Tham kiến Hoàng thượng!”</p>
+<p>Mọi người đồng loạt quỳ xuống, tiếng hô vang vọng khắp Hoàng gia liệp trường, khí thế ngút trời.</p>
+<p>Sở Hoàng mặc một thân kình trang chuyên dùng cho cưỡi ngựa bắn cung. Tuy đã gần năm mươi tuổi, nhưng phong thái cầm kiếm vẫn không giấu được vẻ oai hùng năm xưa.</p>
+<p>Ông bước lên nơi cao, cắm trường kiếm xuống đất, khí thế như cầu vồng xuyên trời:</p>
+<p>“Bình thân.”</p>
+<p>“Tạ Hoàng thượng!”</p>
+<p>“Lại đến mùa Thu Liệp. Chỉ khi lớp trẻ có tài có chí, Đại Sở mới ngày càng hưng thịnh. Khai quốc không dễ, dựng nước không dễ, nhưng giữ vững giang sơn này lại càng không dễ hơn.”</p>
+<p>Sở Hoàng nhìn mọi người, từng lời mạnh mẽ:</p>
+<p>“Đại Sở cần nhân tài, trẫm càng cần các ngươi!”</p>
+<p>“Năm nay, người đoạt hạng nhất sẽ được ban thưởng một cây Hi Mộc Lưu Kim Cung!”</p>
+<p>Bốn Ngự tiền thị vệ khiêng một bệ gỗ lớn đặt trước mặt mọi người.</p>
+<p>Trên bệ gỗ là một cây cung khổng lồ, khí thế bức người, tựa như mang theo cả một chiến trường.</p>
+<p>Mọi người đồng loạt hít vào một hơi lạnh.</p>
+<p>“Nghe nói trong thần thoại thượng cổ, Hậu Nghệ bắn mặt trời cũng dùng Hi Mộc Cung!”</p>
+<p>“Hi Mộc cứng rắn vô song, không gì phá nổi. Nhìn tay cầm hình kỳ lân được đúc bằng lưu kim kia kìa, thật là tôn quý!”</p>
+<p>“Nghe nói dây cung được làm từ gân hổ. Chỉ nam nhân dũng mãnh nhất Đại Sở mới có thể kéo được cây cung nặng như vậy!”</p>
+<p>“Nếu ta có được nó, nhất định sẽ đặt trong từ đường, làm vật gia truyền, đời đời truyền lại!”</p>
+<p>“Ha ha! Trương phó tướng chí lớn thật đấy. Nhưng Đại hoàng tử, Tam hoàng tử đều tinh thông kỵ xạ, lại còn có Nhiếp Chính Vương nữa. Chỉ sợ khó mà tranh nổi...”</p>
+<p>Hi Mộc Lưu Kim Cung vừa xuất hiện đã thành công khơi dậy ý chí tranh tài của mọi người.</p>
+<p>Nhưng vẫn chưa hết.</p>
+<p>Sở Hoàng lại nói:</p>
+<p>“Người nào muốn thử đều có thể lên sờ, thử kéo cung. Sau nửa canh giờ sẽ chính thức bắt đầu Thu Liệp.”</p>
+<p>Lập tức có không ít người hưng phấn tiến lên.</p>
+<p>Một vị phó tướng tính tình hào sảng bước lên đài trước tiên.</p>
+<p>Vừa nắm lấy cây cung, một luồng khí lạnh truyền vào lòng bàn tay.</p>
+<p>Nặng!</p>
+<p>Nặng như ngàn cân!</p>
+<p>Hắn âm thầm dùng sức, vậy mà không thể nhấc nổi.</p>
+<p>Sắc mặt khẽ đổi.</p>
+<p>Lại tiếp tục dùng lực.</p>
+<p>Vẫn vô cùng miễn cưỡng.</p>
+<p>“Vương thiếu tướng, ngươi được không đấy?”</p>
+<p>Hắn trầm mặt:</p>
+<p>“Vệ công tử, hay là ngươi thử xem?”</p>
+<p>Một vị công tử trẻ tuổi đầy tự tin bước tới.</p>
+<p>Nhưng cây cung lưu kim quá nặng.</p>
+<p>Mặt đỏ bừng, gân cổ nổi lên, vậy mà ngay cả dây cung cũng không kéo nổi.</p>
+<p>“Không được thì để ta.”</p>
+<p>“Để ta thử.”</p>
+<p>Những người khác nhao nhao tiến lên.</p>
+<p>Ai cũng muốn sờ thử thần cung, khơi dậy ý chí tranh đấu.</p>
+<p>Nhưng cuối cùng ai nấy đều đỏ bừng mặt vì gắng sức.</p>
+<p>Thất Hoàng tử cười lạnh:</p>
+<p>“Một đám phế vật, đứng đây làm trò cười cho ai xem?”</p>
+<p>Hắn ném kiếm cho thị vệ bên cạnh rồi sải bước lên đài.</p>
+<p>“Để ta!”</p>
+<p>Mọi người lập tức tránh ra.</p>
+<p>Hắn tự tin nắm lấy cây cung.</p>
+<p>Nhưng chỉ ba bốn nhịp thở sau, sắc mặt đã trở nên khó coi...</p>
+<p>Sở Ly nhìn thấy cảnh ấy thì vui không chịu nổi.</p>
+<p>“Ha ha! Ha ha ha!”</p>
+<p>Thất Hoàng tử trầm mặt, ánh mắt sắc như dao quét về phía nàng.</p>
+<p>“Ngươi cười cái gì?”</p>
+<p>“Cây cung ngay cả ta còn kéo không nổi, chỉ sợ ngươi đến dây cung cũng chẳng đụng được.”</p>
+<p>“Phế vật mà không tự biết, còn há cái miệng cười ngây ngô.”</p>
+<p>Sở Ly cười hì hì:</p>
+<p>“Đệ có tự mình biết mình, tất nhiên sẽ không giống Thất hoàng huynh.”</p>
+<p>Thật mất mặt.</p>
+<p>“Ngươi!”</p>
+<p>Thất Hoàng tử tức đến mức muốn xông lên túm cổ áo nàng.</p>
+<p>Ai ngờ Sở Ly hai chân mềm nhũn, ngồi phịch xuống đất.</p>
+<p>“Ta sẽ méc phụ hoàng huynh đánh ta.”</p>
+<p>“...”</p>
+<p>Phế vật.</p>
+<p>Đúng là phế vật!</p>
+<p>Làm gì có Hoàng tử nào lưu manh vô lại như nàng?</p>
+<p>Nếu hắn thật sự so đo với Sở Ly thì chẳng khác nào tự hạ thấp thân phận mình, để người khác cười chê.</p>
+<p>“Sở Ly, ngươi cứ chờ đó cho ta!”</p>
+<p>Năm nay hắn nhất định dùng thực lực chứng minh.</p>
+<p>Sở Ly chính là một tên phế vật!</p>
+<p>Hoàng gia liệp trường chiếm trọn tám ngọn núi lớn.</p>
+<p>Núi non liên miên bất tận, bên trong có vô số dã thú.</p>
+<p>Mùa thu chính là thời điểm con mồi béo tốt nhất.</p>
+<p>Theo tiếng tù và đầy khí thế vang lên, mấy chục người đồng loạt thúc ngựa lao vào rừng.</p>
+<p>Sở Ly cưỡi ngựa đi cùng Tần Mục Vũ.</p>
+<p>“A Ly, lát nữa để ta bắn giúp ngươi.”</p>
+<p>Tần Mục Vũ năm nào cũng vậy.</p>
+<p>Sợ Sở Ly đứng chót bảng.</p>
+<p>Nhưng bản thân Sở Ly vốn chẳng có ý định nổi bật.</p>
+<p>Nàng chỉ xem đây là một chuyến đi chơi.</p>
+<p>“Hoàng thượng nói nghiêm cấm gian lận.”</p>
+<p>“Không sao.”</p>
+<p>“Mũi tên của mỗi người đều có ký hiệu riêng.”</p>
+<p>“Ta dùng tên của ngươi để bắn. Chỉ cần ngươi không nói thì chẳng ai biết.”</p>
+<p>Sở Ly nghiêng đầu nhìn hắn:</p>
+<p>“Ngốc à?”</p>
+<p>“Ngươi giúp ta thì sẽ làm chậm tiến độ của chính mình.”</p>
+<p>“Nếu ngươi đoạt được hạng nhất, đó mới là vinh quang thật sự.”</p>
+<p>Nhắc tới chuyện này, Tần Mục Vũ kéo dây cương, ghé sát nàng hơn, hạ giọng:</p>
+<p>“Nói ra mới lạ.”</p>
+<p>“Năm ngoái Tam hoàng tử đoạt hạng nhất, số con mồi của Nhiếp Chính Vương chỉ ít hơn đúng một con.”</p>
+<p>“Năm kia Đại hoàng tử đứng đầu, Nhiếp Chính Vương cũng chỉ kém một con.”</p>
+<p>“Ba năm trước cũng vậy.”</p>
+<p>“A Ly, ngươi nói xem, là Nhiếp Chính Vương kỹ nghệ không bằng người hay cố ý như thế?”</p>
+<p>Theo lý mà nói.</p>
+<p>Nhiếp Chính Vương chinh chiến sa trường, bách chiến bách thắng.</p>
+<p>Kỵ xạ chắc chắn thuộc hàng đỉnh cao.</p>
+<p>Làm sao có thể năm nào cũng đứng thứ hai?</p>
+<p>Sở Ly khẽ cười:</p>
+<p>“Hắn dùng cách đó để khiêu khích phụ hoàng.”</p>
+<p>“Dù người khác đoạt hạng nhất, trong lòng họ cũng hiểu là Nhiếp Chính Vương cố ý nhường.”</p>
+<p>“Khiến tất cả đều thấy khó chịu.”</p>
+<p>“Mục đích của hắn đạt được rồi.”</p>
+<p>Tần Mục Vũ thấp giọng:</p>
+<p>“Xem ra năm nay kết quả cũng chẳng có gì bất ngờ.”</p>
+<p>“Đã định trước như vậy, chẳng bằng nhân cơ hội này chơi cho đã.”</p>
+<p>“Động vật trong Hoàng gia liệp trường béo tốt lắm.”</p>
+<p>Mọi người vừa vào rừng đã nóng lòng tìm kiếm con mồi, giương cung bắn tên.</p>
+<p>Chỉ có Sở Ly và Tần Mục Vũ vừa đi vừa trò chuyện, không hề vội vàng.</p>
+<p>“Tiêu Đô đốc, kia chẳng phải ngoại sinh của ngài sao?”</p>
+<p>Một vị phó tướng ở gần đó hỏi.</p>
+<p>Tiêu Dạ Hành nheo mắt nhìn theo.</p>
+<p>Chỉ thấy hai thiếu niên cưỡi ngựa sát bên nhau, đầu gần như chạm đầu, chẳng biết đang nói gì mà cười đến vui vẻ.</p>
+<p>Hắn liếc nhìn Sở Đệ Trì bên cạnh.</p>
+<p>Nam nhân mặc cẩm y hoa phục, ngồi thẳng trên lưng ngựa.</p>
+<p>Ánh mắt nhìn hai người kia.</p>
+<p>Lạnh như băng tuyết.</p>
+<p>Không ai biết hắn đang nghĩ gì.</p>
+<p>Tiêu Dạ Hành cất cao giọng:</p>
+<p>“Mục Vũ!”</p>
+<p>Tần Mục Vũ quay đầu:</p>
+<p>“Cữu cữu?”</p>
+<p>“Thu Liệp đã bắt đầu rồi.”</p>
+<p>“Sao còn kéo Cửu Hoàng tử nói chuyện?”</p>
+<p>“Nếu làm ảnh hưởng thành tích của Cửu Hoàng tử, hủy mất thanh danh của ngài ấy, ngươi gánh nổi tội sao?”</p>
+<p>Tiêu Dạ Hành thúc ngựa tới, trực tiếp mang Tần Mục Vũ đi.</p>
+<p>Sở Ly nhìn thấy Nhiếp Chính Vương thì vành tai bỗng thấy đau âm ỉ.</p>
+<p>Nhưng nhớ tới những lời hắn từng nói ở San Hô Thủy Tạ.</p>
+<p>Lại lo hắn nhân dịp Thu Liệp mà âm thầm đại khai sát giới.</p>
+<p>Nàng đành thúc ngựa tiến lên.</p>
+<p>“Hoàng thúc.”</p>
+<p>“Năm nào Hoàng thúc cũng có chiến tích xuất sắc.”</p>
+<p>“Tiểu Cửu tự biết kỵ xạ không giỏi.”</p>
+<p>“Hay là để cháu đi theo phía sau, giúp Hoàng thúc nhặt con mồi nhé?”</p>
+<p>Sở Đệ Trì lạnh nhạt liếc nàng một cái.</p>
+<p>“Ngươi còn biết thêu túi thơm?”</p>
+<p>“Hả?”</p>
+<p>Sở Ly vừa hỏi lại thì đã thấy hắn thúc chiến mã Tướng Dạ tiến sâu vào rừng.</p>
+<p>Lời này là có ý gì?</p>
+<p>Nàng suy nghĩ hai giây.</p>
+<p>Không hiểu.</p>
+<p>Liền vội vàng đuổi theo.</p>
+<p>Đi cùng hắn, hắn hẳn sẽ không tiện tiện tay giết luôn nàng chứ?</p>
+<p>Khoan đã!</p>
+<p>Nếu thật sự đi cùng hắn...</p>
+<p>Muốn giết nàng thì càng dễ hơn!</p>
+<p>Cho dù nàng chết trong rừng cũng chẳng ai biết.</p>
+<p>Nghĩ tới đây.</p>
+<p>Sở Ly giả vờ đuổi theo một đoạn.</p>
+<p>Sau đó dần dần giảm tốc.</p>
+<p>Kéo giãn khoảng cách.</p>
+<p>Rồi lập tức quất ngựa chạy sang hướng khác.</p>
+<p>Chuồn!</p>
+<p>Chuồn là thượng sách!</p>
+<p>Không xa.</p>
+<p>“Lục Hoàng tử, ngài nhìn kìa.”</p>
+<p>“Cửu Hoàng tử đang ở cùng Nhiếp Chính Vương.”</p>
+<p>Mỗi người tham gia Thu Liệp đều có một thị vệ chuyên đi thu nhặt con mồi.</p>
+<p>Lục Hoàng tử nheo mắt nhìn.</p>
+<p>Một kế hoạch lập tức hình thành trong đầu.</p>
+<p>“Thứ ta cần đâu?”</p>
+<p>“Đã chuẩn bị xong.”</p>
+<p>Tên thị vệ thấy xung quanh không có ai liền cẩn thận lấy từ trong tay áo ra một gói giấy nhỏ.</p>
+<p>Lục Hoàng tử dùng hai ngón tay kẹp lấy.</p>
+<p>“Chỉ một chút bột thuốc này thôi mà đủ khiến mãnh thú phát cuồng sao?”</p>
+<p>“Vâng.”</p>
+<p>“Thuốc này được bán trong chợ đen, thuộc hàng cấm phẩm.”</p>
+<p>“Nô tài phải tốn rất nhiều công sức mới kiếm được ngần ấy.”</p>
+<p>“Đủ rồi.”</p>
+<p>Mãnh thú nổi điên.</p>
+<p>Nếu cắn chết Nhiếp Chính Vương thì cũng là chuyện hợp tình hợp lý.</p>
+<p>Nếu không cắn chết được hắn...</p>
+<p>Mà cắn chết Sở Ly bên cạnh.</p>
+<p>Thì Nhiếp Chính Vương cũng khó thoát khỏi trách nhiệm.</p>
+<p>Mối thù của Đại hoàng tẩu.</p>
+<p>Hôm nay nhất định phải báo! Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_20.html" class="btn">‹ Trước</a>
             <a href="chuong_23.html" class="btn">Sau ›</a>
         </div>
@@ -306,15 +314,11 @@ Hôm nay nhất định phải báo! Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -326,11 +330,11 @@ Hôm nay nhất định phải báo! Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 74</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,275 +62,284 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 74</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_73.html" class="btn">‹ Trước</a>
             <a href="chuong_75.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 74: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 74: Khi ngươi còn nhỏ, ta còn từng bế ngươi
-— Liên quan gì đến ngươi!
-Sở Ly tức giận đẩy hắn ra.
-Muốn đẩy thật đấy, nhưng căn bản không đẩy nổi.
-Sở Đệ Trì vẫn chống hai tay hai bên người nàng, vững như bàn thạch, trầm giọng:
-— Người đâu.
-Sở Ly trợn mắt:
-— Là thuốc đau bụng! Ta đau bụng!
-Hắn nhíu mày:
-— Gọi Bạch Cẩm Y đến xem.
-— Nữ tử mỗi tháng đều sẽ đau một hai ngày, lát nữa là khỏi, không đáng ngại.
-Sở Đệ Trì lập tức hiểu ra:
-— Thì ra là nguyệt sự đến rồi.
-Sở Ly siết chặt góc chăn, mặt đỏ bừng vì xấu hổ.
-Trong lòng âm thầm mắng:
-Hắn đường đường là một đại nam nhân, vậy mà cứ thản nhiên nói chuyện nguyệt sự như cơm bữa. Có biết ngượng hay không?
-Nàng nghiến răng:
-— Không biết xấu hổ.
-Sở Đệ Trì đáp ngay:
-— Không cần, cho ngươi đấy.
-— Ai thèm cái mặt xấu xí của ngươi!
-Hắn khựng lại một thoáng.
-Theo bản năng nghiêng mặt sang bên là phía không bị thương, liếc nàng:
-— Còn sức mắng người như vậy, xem ra bụng cũng không đau lắm.
-Sở Ly hừ lạnh, quay đầu sang chỗ khác.
-Một câu cũng không muốn nói với hắn.
-Có hắn ở đây, nàng chẳng còn chút riêng tư hay tự do nào.
-Ngay cả ngủ cũng không thấy an toàn.
-Rốt cuộc hắn muốn gì?
-⸻
-Sau một hồi im lặng.
-Cuối cùng Sở Đệ Trì lên tiếng trước:
-— Tiểu Cửu.
-Sở Ly giả vờ như không nghe thấy.
-— Tiểu Cửu?
-Nàng càng ngậm chặt miệng.
-Dù sao nàng đã nói dối rằng mình đang có nguyệt sự.
-Hắn còn có thể làm gì nàng?
-Lột quần nàng kiểm tra chắc?
-Lột đi!
-Có bản lĩnh thì lột đi!
-Nghĩ vậy, nàng càng thêm không sợ.
-Sở Đệ Trì bất đắc dĩ bật cười.
-Bỗng nhiên, bàn tay to lớn của hắn đặt lên bụng dưới của nàng.
-Sở Ly giật bắn người như chim sợ cành cong.
-Nàng nổi giận đẩy mạnh hắn:
-— Ngươi muốn làm gì? Đồ cầm thú!
-Ánh mắt nam nhân thoáng chốc lạnh xuống.
-Hắn biết nàng hiểu lầm.
-Hắn chỉ từng nghe nói dùng lòng bàn tay sưởi ấm bụng dưới có thể giảm đau khi đến tháng mà thôi.
-Là hắn nhất thời mềm lòng.
-Trong hoàng thất này, không có ai đáng để tin tưởng.
-Một khi hắn lộ ra chút mềm yếu.
-Chẳng khác nào tự tay đưa dao cho nàng.
-Để nàng đâm chết hắn.
-Sở Đệ Trì phất tay áo, ngồi thẳng dậy.
-— Không có gì.
-— Chỉ là chợt nhớ tới nhiều năm trước, có một con sâu mũi bám trên người bổn vương, thế nào cũng không gỡ ra được.
-Sở Ly nhíu mày:
-— Kể với ta làm gì? Đạp chết nó là được rồi.
-— Đạp chết ngươi sao?
-— Ta?
-Sở Ly bật cười:
-— Phụ hoàng nói khi còn nhỏ ta tròn trịa đáng yêu, trắng trẻo như búp bê sứ, ai nhìn cũng thích. Từ lúc nào lại thành sâu mũi rồi?
-Sở Đệ Trì bình thản đáp:
-— Phụ hoàng ngươi lừa ngươi thôi.
-— Phụ hoàng không thể lừa ta!
-Vừa nói xong, Sở Ly đã muốn cắn đứt lưỡi mình.
-Lời này nghe thật ngây thơ.
-Nhưng Sở Đệ Trì không vạch trần nàng.
-Chỉ nhàn nhạt nói:
-— Hồi nhỏ ngươi khóc nhiều lắm.
-— Có lần ngươi bị mấy vị hoàng huynh đánh cho bò lê bò càng, gặp bổn vương giữa đường liền chạy tới cáo trạng.
-— Vừa khóc vừa sụt sịt.
-— Hít vào thì bong bóng nước mũi xẹp xuống.
-— Thở ra lại phồng lên.
-— Khóc oa oa đến mức liên tục thổi ra bốn năm cái bong bóng nước mũi.
-Sở Ly kinh hãi ngồi bật dậy.
-Hai chân dang ra.
-Miệng há hốc.
-Cằm suýt rơi xuống đất.
-Hắn đang nói cái gì vậy?
-Nói nhảm cái gì thế?
-Nàng hồi nhỏ sao có thể dùng nước mũi thổi bong bóng được?
-Mẫu phi từng nói rõ ràng.
-Lúc nhỏ nàng trắng trẻo mũm mĩm như một củ sen nhỏ.
-Đáng yêu vô cùng.
-— Ngươi nói bậy!
-Nàng thật sự tức rồi.
-— Đừng có ở đây bôi nhọ thanh danh của ta!
-— Nếu nói vậy, ta còn từng thấy ngươi mặc quần thủng đũng nữa kìa!
-— Hồi nhỏ ta còn từng bế ngươi!
-Sở Đệ Trì nhìn nàng với vẻ mặt bình thản.
-— Khi đó ngươi khóc đến mức bổn vương phát phiền.
-— Bổn vương không có kiên nhẫn dỗ dành nhi tử của Hoàng đế.
-— Thế nên lấy ngọc bội trên người đưa cho ngươi, bảo là kẹo.
-— Ai ngờ ngươi thật sự cắn một cái.
-— Còn làm gãy luôn chiếc răng sữa.
-Sở Ly lập tức đưa tay che miệng.
-Nàng nhớ rõ.
-Bên cạnh chiếc răng sâu ở hàm trái có một chiếc răng mọc không đẹp lắm.
-Mẫu phi từng kể.
-Khi còn nhỏ, nàng ham ăn kẹo cứng nên làm hỏng răng sữa.
-Sau đó răng mới mọc lên hơi lệch.
-Chuyện riêng tư như vậy…
-Hắn làm sao biết được?
-— Ngươi…
-— Thì ra là ngươi…
-Sở Ly tức đến bốc khói.
-Nàng túm lấy cổ áo hắn:
-— Thì ra từ nhỏ ngươi đã có ý đồ bất chính với ta!
-— Đồ nam nhân đầy mưu mô quỷ kế!
-⸻
-Sở Đệ Trì ngồi bên mép giường.
-Sở Ly quỳ trên nệm, thẳng lưng túm cổ áo hắn.
-Dù vậy.
-Cho dù hắn đang ngồi.
-Nàng vẫn thấp hơn hắn một đoạn.
-Khóe mày nam nhân khẽ nhướng lên.
-Hai tay đặt lên eo nàng.
-Nhẹ nhàng kéo một cái.
-Người đã rơi thẳng vào lòng hắn.
-Thuận tiện bị hôn một cái.
-— SỞ ĐỆ TRÌ!
-— Gọi Hoàng thúc.
-Hắn điềm nhiên đáp:
-— Chúng ta tiếp tục cá cược đi.
-Sở Ly tức giận hất hắn ra.
-— Ta không muốn cược nữa!
-— Hơn nữa ta đã thắng rồi!
-— Rõ ràng ngươi từng hứa sẽ không chạm vào ta dù chỉ một ngón tay!
-Sở Đệ Trì nhìn nàng.
-— Không cá cược, bổn vương lấy đâu ra cơ hội chạm vào ngươi?
-— Ngươi…
-Lúc nói câu ấy.
-Ánh mắt hắn không hề che giấu.
-Sự chiếm hữu trần trụi hiện rõ.
-Ánh mắt tối tăm ấy lướt từ khuôn mặt, xuống cổ, rồi xuống người nàng.
-Đầy vẻ xâm lược.
-Sở Ly bất giác run lên.
-— Ta không muốn…
-— Vậy cược xem.
-— Trong lòng Tần Thiếu tướng quân, ngươi quan trọng hơn hay gia đình hắn quan trọng hơn.
-Sắc mặt nàng lập tức nghiêm túc.
-— Ngươi muốn làm gì?
-Từ sau khi Phương Hải Dương chết.
-Đại tướng quân phủ bị liên lụy.
-Phủ tướng quân bị thiêu hủy.
-Đã xảy ra quá nhiều chuyện.
-Không thể chịu thêm sóng gió nào nữa.
-Sở Đệ Trì cười lạnh:
-— Tĩnh Quý phi bị giáng vị.
-— Quốc công phủ bị tước tước vị.
-— Tiền đồ của Thất Hoàng tử cũng bị hủy sạch.
-— Ngươi nghĩ Phương gia nuốt trôi cục tức này sao?
-— Bọn họ nhất định sẽ tìm cơ hội trả thù.
-— Không cần bổn vương ra tay.
-— Mà bổn vương cũng khinh thường làm vậy.
-Nói đến đây, hắn liếc nàng:
-— Chỉ có vài kẻ lấy dạ tiểu nhân đo lòng quân tử.
-— Mới luôn dùng ác ý lớn nhất để suy đoán bổn vương.
-Sở Ly lạnh lùng trừng hắn.
-Nhưng không thể phủ nhận lời ấy.
-Phương gia chắc chắn sẽ trả thù.
-Nàng chậm rãi nói:
-— Ta và Tần Thiếu tướng quân có giao tình rất tốt.
-— Nhưng tình bạn và tình thân không hề đối lập nhau.
-— Chúng có thể cùng tồn tại.
-— Dù sau này thật sự xảy ra chuyện.
-— Nếu hắn chọn gia đình mình.
-— Đó cũng là đạo hiếu.
-Tình bạn?
-Nghe thấy hai chữ ấy.
-Khóe môi Sở Đệ Trì khẽ nhếch.
-Tâm trạng rõ ràng tốt hơn vài phần.
-Hắn kết luận:
-— Vậy cược cái này.
-— Cược kiểu đó cũng vô ích.
-— Dù Tần Thiếu tướng quân chọn gia đình hay chọn tình bạn, ta đều hiểu và sẽ không giận.
-— Thật sao?
-Sở Đệ Trì khẽ cong môi.
-Ý cười nơi đáy mắt sâu như hồ ly.
-Cược là chuyện này.
-Mà cũng không phải chuyện này.
-Đợi thêm một thời gian nữa.
-Nàng sẽ hiểu.
-⸻
-Hắn đứng dậy.
-— Sở Ly.
-— Dưỡng thân thể cho tốt.
-— Chờ nguyệt sự của ngươi kết thúc, bổn vương sẽ lại tới tìm ngươi.
-Ý tứ trong lời nói không hề che giấu.
-Ham muốn được nói ra một cách trắng trợn.
-Giống như một con sư tử đực đang nắm chắc con mồi trong tay.
-Khiến Sở Ly rùng mình.
-— Ngươi đừng quá đáng…
-— Ưm!
-Sở Đệ Trì kéo chiếc chăn mỏng lên.
-Quấn nàng từ cổ xuống chân thật kín.
-Bọc thành một cái kén tròn vo.
-Rồi đặt lại ngay ngắn trên giường.
-Động tác lưu loát liền mạch.
-— Ngủ ngon.
-Nói xong.
-Hắn xoay người rời đi.
-Dáng vẻ ra vào tự nhiên ấy.
-Tựa như hắn không phải đang hỏi ý kiến nàng.
-Mà chỉ đơn thuần là thông báo.
-Một thông báo…
-Không cho nàng bất cứ cơ hội từ chối nào. Ẩn bớt</p>
+            <p>Chương 74: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 74: Khi ngươi còn nhỏ, ta còn từng bế ngươi</p>
+<p>— Liên quan gì đến ngươi!</p>
+<p>Sở Ly tức giận đẩy hắn ra.</p>
+<p>Muốn đẩy thật đấy, nhưng căn bản không đẩy nổi.</p>
+<p>Sở Đệ Trì vẫn chống hai tay hai bên người nàng, vững như bàn thạch, trầm giọng:</p>
+<p>— Người đâu.</p>
+<p>Sở Ly trợn mắt:</p>
+<p>— Là thuốc đau bụng! Ta đau bụng!</p>
+<p>Hắn nhíu mày:</p>
+<p>— Gọi Bạch Cẩm Y đến xem.</p>
+<p>— Nữ tử mỗi tháng đều sẽ đau một hai ngày, lát nữa là khỏi, không đáng ngại.</p>
+<p>Sở Đệ Trì lập tức hiểu ra:</p>
+<p>— Thì ra là nguyệt sự đến rồi.</p>
+<p>Sở Ly siết chặt góc chăn, mặt đỏ bừng vì xấu hổ.</p>
+<p>Trong lòng âm thầm mắng:</p>
+<p>Hắn đường đường là một đại nam nhân, vậy mà cứ thản nhiên nói chuyện nguyệt sự như cơm bữa. Có biết ngượng hay không?</p>
+<p>Nàng nghiến răng:</p>
+<p>— Không biết xấu hổ.</p>
+<p>Sở Đệ Trì đáp ngay:</p>
+<p>— Không cần, cho ngươi đấy.</p>
+<p>— Ai thèm cái mặt xấu xí của ngươi!</p>
+<p>Hắn khựng lại một thoáng.</p>
+<p>Theo bản năng nghiêng mặt sang bên là phía không bị thương, liếc nàng:</p>
+<p>— Còn sức mắng người như vậy, xem ra bụng cũng không đau lắm.</p>
+<p>Sở Ly hừ lạnh, quay đầu sang chỗ khác.</p>
+<p>Một câu cũng không muốn nói với hắn.</p>
+<p>Có hắn ở đây, nàng chẳng còn chút riêng tư hay tự do nào.</p>
+<p>Ngay cả ngủ cũng không thấy an toàn.</p>
+<p>Rốt cuộc hắn muốn gì?</p>
+<p>⸻</p>
+<p>Sau một hồi im lặng.</p>
+<p>Cuối cùng Sở Đệ Trì lên tiếng trước:</p>
+<p>— Tiểu Cửu.</p>
+<p>Sở Ly giả vờ như không nghe thấy.</p>
+<p>— Tiểu Cửu?</p>
+<p>Nàng càng ngậm chặt miệng.</p>
+<p>Dù sao nàng đã nói dối rằng mình đang có nguyệt sự.</p>
+<p>Hắn còn có thể làm gì nàng?</p>
+<p>Lột quần nàng kiểm tra chắc?</p>
+<p>Lột đi!</p>
+<p>Có bản lĩnh thì lột đi!</p>
+<p>Nghĩ vậy, nàng càng thêm không sợ.</p>
+<p>Sở Đệ Trì bất đắc dĩ bật cười.</p>
+<p>Bỗng nhiên, bàn tay to lớn của hắn đặt lên bụng dưới của nàng.</p>
+<p>Sở Ly giật bắn người như chim sợ cành cong.</p>
+<p>Nàng nổi giận đẩy mạnh hắn:</p>
+<p>— Ngươi muốn làm gì? Đồ cầm thú!</p>
+<p>Ánh mắt nam nhân thoáng chốc lạnh xuống.</p>
+<p>Hắn biết nàng hiểu lầm.</p>
+<p>Hắn chỉ từng nghe nói dùng lòng bàn tay sưởi ấm bụng dưới có thể giảm đau khi đến tháng mà thôi.</p>
+<p>Là hắn nhất thời mềm lòng.</p>
+<p>Trong hoàng thất này, không có ai đáng để tin tưởng.</p>
+<p>Một khi hắn lộ ra chút mềm yếu.</p>
+<p>Chẳng khác nào tự tay đưa dao cho nàng.</p>
+<p>Để nàng đâm chết hắn.</p>
+<p>Sở Đệ Trì phất tay áo, ngồi thẳng dậy.</p>
+<p>— Không có gì.</p>
+<p>— Chỉ là chợt nhớ tới nhiều năm trước, có một con sâu mũi bám trên người bổn vương, thế nào cũng không gỡ ra được.</p>
+<p>Sở Ly nhíu mày:</p>
+<p>— Kể với ta làm gì? Đạp chết nó là được rồi.</p>
+<p>— Đạp chết ngươi sao?</p>
+<p>— Ta?</p>
+<p>Sở Ly bật cười:</p>
+<p>— Phụ hoàng nói khi còn nhỏ ta tròn trịa đáng yêu, trắng trẻo như búp bê sứ, ai nhìn cũng thích. Từ lúc nào lại thành sâu mũi rồi?</p>
+<p>Sở Đệ Trì bình thản đáp:</p>
+<p>— Phụ hoàng ngươi lừa ngươi thôi.</p>
+<p>— Phụ hoàng không thể lừa ta!</p>
+<p>Vừa nói xong, Sở Ly đã muốn cắn đứt lưỡi mình.</p>
+<p>Lời này nghe thật ngây thơ.</p>
+<p>Nhưng Sở Đệ Trì không vạch trần nàng.</p>
+<p>Chỉ nhàn nhạt nói:</p>
+<p>— Hồi nhỏ ngươi khóc nhiều lắm.</p>
+<p>— Có lần ngươi bị mấy vị hoàng huynh đánh cho bò lê bò càng, gặp bổn vương giữa đường liền chạy tới cáo trạng.</p>
+<p>— Vừa khóc vừa sụt sịt.</p>
+<p>— Hít vào thì bong bóng nước mũi xẹp xuống.</p>
+<p>— Thở ra lại phồng lên.</p>
+<p>— Khóc oa oa đến mức liên tục thổi ra bốn năm cái bong bóng nước mũi.</p>
+<p>Sở Ly kinh hãi ngồi bật dậy.</p>
+<p>Hai chân dang ra.</p>
+<p>Miệng há hốc.</p>
+<p>Cằm suýt rơi xuống đất.</p>
+<p>Hắn đang nói cái gì vậy?</p>
+<p>Nói nhảm cái gì thế?</p>
+<p>Nàng hồi nhỏ sao có thể dùng nước mũi thổi bong bóng được?</p>
+<p>Mẫu phi từng nói rõ ràng.</p>
+<p>Lúc nhỏ nàng trắng trẻo mũm mĩm như một củ sen nhỏ.</p>
+<p>Đáng yêu vô cùng.</p>
+<p>— Ngươi nói bậy!</p>
+<p>Nàng thật sự tức rồi.</p>
+<p>— Đừng có ở đây bôi nhọ thanh danh của ta!</p>
+<p>— Nếu nói vậy, ta còn từng thấy ngươi mặc quần thủng đũng nữa kìa!</p>
+<p>— Hồi nhỏ ta còn từng bế ngươi!</p>
+<p>Sở Đệ Trì nhìn nàng với vẻ mặt bình thản.</p>
+<p>— Khi đó ngươi khóc đến mức bổn vương phát phiền.</p>
+<p>— Bổn vương không có kiên nhẫn dỗ dành nhi tử của Hoàng đế.</p>
+<p>— Thế nên lấy ngọc bội trên người đưa cho ngươi, bảo là kẹo.</p>
+<p>— Ai ngờ ngươi thật sự cắn một cái.</p>
+<p>— Còn làm gãy luôn chiếc răng sữa.</p>
+<p>Sở Ly lập tức đưa tay che miệng.</p>
+<p>Nàng nhớ rõ.</p>
+<p>Bên cạnh chiếc răng sâu ở hàm trái có một chiếc răng mọc không đẹp lắm.</p>
+<p>Mẫu phi từng kể.</p>
+<p>Khi còn nhỏ, nàng ham ăn kẹo cứng nên làm hỏng răng sữa.</p>
+<p>Sau đó răng mới mọc lên hơi lệch.</p>
+<p>Chuyện riêng tư như vậy…</p>
+<p>Hắn làm sao biết được?</p>
+<p>— Ngươi…</p>
+<p>— Thì ra là ngươi…</p>
+<p>Sở Ly tức đến bốc khói.</p>
+<p>Nàng túm lấy cổ áo hắn:</p>
+<p>— Thì ra từ nhỏ ngươi đã có ý đồ bất chính với ta!</p>
+<p>— Đồ nam nhân đầy mưu mô quỷ kế!</p>
+<p>⸻</p>
+<p>Sở Đệ Trì ngồi bên mép giường.</p>
+<p>Sở Ly quỳ trên nệm, thẳng lưng túm cổ áo hắn.</p>
+<p>Dù vậy.</p>
+<p>Cho dù hắn đang ngồi.</p>
+<p>Nàng vẫn thấp hơn hắn một đoạn.</p>
+<p>Khóe mày nam nhân khẽ nhướng lên.</p>
+<p>Hai tay đặt lên eo nàng.</p>
+<p>Nhẹ nhàng kéo một cái.</p>
+<p>Người đã rơi thẳng vào lòng hắn.</p>
+<p>Thuận tiện bị hôn một cái.</p>
+<p>— SỞ ĐỆ TRÌ!</p>
+<p>— Gọi Hoàng thúc.</p>
+<p>Hắn điềm nhiên đáp:</p>
+<p>— Chúng ta tiếp tục cá cược đi.</p>
+<p>Sở Ly tức giận hất hắn ra.</p>
+<p>— Ta không muốn cược nữa!</p>
+<p>— Hơn nữa ta đã thắng rồi!</p>
+<p>— Rõ ràng ngươi từng hứa sẽ không chạm vào ta dù chỉ một ngón tay!</p>
+<p>Sở Đệ Trì nhìn nàng.</p>
+<p>— Không cá cược, bổn vương lấy đâu ra cơ hội chạm vào ngươi?</p>
+<p>— Ngươi…</p>
+<p>Lúc nói câu ấy.</p>
+<p>Ánh mắt hắn không hề che giấu.</p>
+<p>Sự chiếm hữu trần trụi hiện rõ.</p>
+<p>Ánh mắt tối tăm ấy lướt từ khuôn mặt, xuống cổ, rồi xuống người nàng.</p>
+<p>Đầy vẻ xâm lược.</p>
+<p>Sở Ly bất giác run lên.</p>
+<p>— Ta không muốn…</p>
+<p>— Vậy cược xem.</p>
+<p>— Trong lòng Tần Thiếu tướng quân, ngươi quan trọng hơn hay gia đình hắn quan trọng hơn.</p>
+<p>Sắc mặt nàng lập tức nghiêm túc.</p>
+<p>— Ngươi muốn làm gì?</p>
+<p>Từ sau khi Phương Hải Dương chết.</p>
+<p>Đại tướng quân phủ bị liên lụy.</p>
+<p>Phủ tướng quân bị thiêu hủy.</p>
+<p>Đã xảy ra quá nhiều chuyện.</p>
+<p>Không thể chịu thêm sóng gió nào nữa.</p>
+<p>Sở Đệ Trì cười lạnh:</p>
+<p>— Tĩnh Quý phi bị giáng vị.</p>
+<p>— Quốc công phủ bị tước tước vị.</p>
+<p>— Tiền đồ của Thất Hoàng tử cũng bị hủy sạch.</p>
+<p>— Ngươi nghĩ Phương gia nuốt trôi cục tức này sao?</p>
+<p>— Bọn họ nhất định sẽ tìm cơ hội trả thù.</p>
+<p>— Không cần bổn vương ra tay.</p>
+<p>— Mà bổn vương cũng khinh thường làm vậy.</p>
+<p>Nói đến đây, hắn liếc nàng:</p>
+<p>— Chỉ có vài kẻ lấy dạ tiểu nhân đo lòng quân tử.</p>
+<p>— Mới luôn dùng ác ý lớn nhất để suy đoán bổn vương.</p>
+<p>Sở Ly lạnh lùng trừng hắn.</p>
+<p>Nhưng không thể phủ nhận lời ấy.</p>
+<p>Phương gia chắc chắn sẽ trả thù.</p>
+<p>Nàng chậm rãi nói:</p>
+<p>— Ta và Tần Thiếu tướng quân có giao tình rất tốt.</p>
+<p>— Nhưng tình bạn và tình thân không hề đối lập nhau.</p>
+<p>— Chúng có thể cùng tồn tại.</p>
+<p>— Dù sau này thật sự xảy ra chuyện.</p>
+<p>— Nếu hắn chọn gia đình mình.</p>
+<p>— Đó cũng là đạo hiếu.</p>
+<p>Tình bạn?</p>
+<p>Nghe thấy hai chữ ấy.</p>
+<p>Khóe môi Sở Đệ Trì khẽ nhếch.</p>
+<p>Tâm trạng rõ ràng tốt hơn vài phần.</p>
+<p>Hắn kết luận:</p>
+<p>— Vậy cược cái này.</p>
+<p>— Cược kiểu đó cũng vô ích.</p>
+<p>— Dù Tần Thiếu tướng quân chọn gia đình hay chọn tình bạn, ta đều hiểu và sẽ không giận.</p>
+<p>— Thật sao?</p>
+<p>Sở Đệ Trì khẽ cong môi.</p>
+<p>Ý cười nơi đáy mắt sâu như hồ ly.</p>
+<p>Cược là chuyện này.</p>
+<p>Mà cũng không phải chuyện này.</p>
+<p>Đợi thêm một thời gian nữa.</p>
+<p>Nàng sẽ hiểu.</p>
+<p>⸻</p>
+<p>Hắn đứng dậy.</p>
+<p>— Sở Ly.</p>
+<p>— Dưỡng thân thể cho tốt.</p>
+<p>— Chờ nguyệt sự của ngươi kết thúc, bổn vương sẽ lại tới tìm ngươi.</p>
+<p>Ý tứ trong lời nói không hề che giấu.</p>
+<p>Ham muốn được nói ra một cách trắng trợn.</p>
+<p>Giống như một con sư tử đực đang nắm chắc con mồi trong tay.</p>
+<p>Khiến Sở Ly rùng mình.</p>
+<p>— Ngươi đừng quá đáng…</p>
+<p>— Ưm!</p>
+<p>Sở Đệ Trì kéo chiếc chăn mỏng lên.</p>
+<p>Quấn nàng từ cổ xuống chân thật kín.</p>
+<p>Bọc thành một cái kén tròn vo.</p>
+<p>Rồi đặt lại ngay ngắn trên giường.</p>
+<p>Động tác lưu loát liền mạch.</p>
+<p>— Ngủ ngon.</p>
+<p>Nói xong.</p>
+<p>Hắn xoay người rời đi.</p>
+<p>Dáng vẻ ra vào tự nhiên ấy.</p>
+<p>Tựa như hắn không phải đang hỏi ý kiến nàng.</p>
+<p>Mà chỉ đơn thuần là thông báo.</p>
+<p>Một thông báo…</p>
+<p>Không cho nàng bất cứ cơ hội từ chối nào. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_73.html" class="btn">‹ Trước</a>
             <a href="chuong_75.html" class="btn">Sau ›</a>
         </div>
@@ -339,15 +347,11 @@ Không cho nàng bất cứ cơ hội từ chối nào. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -359,11 +363,11 @@ Không cho nàng bất cứ cơ hội từ chối nào. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

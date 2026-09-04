@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 307</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,247 +62,256 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 307</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_300.html" class="btn">‹ Trước</a>
             <a href="chuong_309.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 307: Thiên Vương cái Địa Hổ
-Đế đô.
-“Hoàng thẩm, lực tay thế này có được không?”
-“Hoàng thẩm, có thoải mái không?”
-Trong Ngự hoa viên, dưới ánh nắng thu ấm áp, Sở Ngạo Thiên khom lưng khúm núm vây quanh Sở Ly, tận tình bóp vai cho nàng.
-Sở Ly cắn quả táo trong tay:
-“Cũng tạm.”
-“Nếu ngươi bận thì không cần để ý đến ta.”
-Sao có thể được?
-Từ khi Cửu muội trở về, cả người hắn như được tiếp thêm tự tin, có chỗ dựa. Mỗi lần lâm triều, đám đại thần kia đều không còn dám hất mặt với hắn nữa.
-Nếu rời Cửu muội...
-Hắn biết sống sao đây!
-“Hoàng thúc không có ở đây, ta nhất định phải chăm sóc Hoàng thẩm thật chu đáo. Đợi Hoàng thúc trở về, nhất định sẽ thưởng cho ta!”
-Hì hì.
-Sở Ly liếc hắn một cái, không khỏi thầm nghĩ:
-Đến cả ngôi vị Hoàng đế tôn quý nhất thiên hạ cũng đã cho ngươi rồi, còn có phần thưởng nào vượt qua được ngôi vị ấy nữa?
-“Chuyện ta bảo ngươi điều tra, thế nào rồi?”
-Sở Ngạo Thiên vừa bóp vai vừa đáp:
-“Ta nghe lời ngươi, sai Hoàng gia ám vệ đi điều tra. Quả nhiên là Minh Hoa Quận chúa mượn danh Nghênh phi, ở bên ngoài xúi giục thương nhân, gây nhiễu loạn lòng dân, cố ý gây khó dễ cho ta.”
-“Quả nhiên là nàng ta.”
-“Ngươi nói vậy là ý gì? Chẳng lẽ ngươi sớm đã nghi ngờ nàng ta?”
-Sở Ly đáp:
-“Lần này, sau khi ta rời Đế đô, từng gặp một nhóm sát thủ. Chính là do Minh Hoa Quận chúa phái tới.”
-Thật quá đáng!
-Sở Ngạo Thiên lập tức thẳng lưng.
-“Nàng ta muốn làm gì? Muốn tạo phản hay sao? Phụ thân nàng là Tiêu Dao Vương, nhiều năm nay làm người khiêm nhường, hành sự giản dị, chưa từng có lòng bất thần. Sao lại nuôi ra được một đứa con như thế...”
-Nói đến đây, giọng hắn dần nhỏ lại.
-Tiêu Dao Vương...
-Thật sự chỉ là người đạm bạc danh lợi, không tranh không đoạt như vẻ bề ngoài sao?
-Có câu:
-Thượng bất chính, hạ tắc loạn.
-Thần sắc hắn dần trở nên ngưng trọng.
-“Cửu muội, ý ngươi là...”
-“Ta chỉ là suy đoán, chưa có chứng cứ. Cứ âm thầm cho người theo dõi là được.”
-“Được!”
-Hắn hiểu rồi.
-Hắn sẽ cho người âm thầm giám sát cả Sở Minh Hoa lẫn Tiêu Dao Vương.
-Không xa.
-Dưới hành lang.
-Khương Thái phó cùng Biết Cửu đứng đó, nhìn hai vị chủ tử trong Ngự hoa viên đang cười nói vui vẻ.
-Ánh mắt Khương Thái phó phần nhiều đều đặt trên người Sở Ly.
-Hít—
-Kể từ lần đầu tiên gặp “Tạ tiểu thư”, trong lòng ông vẫn luôn có một suy đoán...
-Giống.
-Thật sự quá giống.
-Nhưng ông không dám hỏi.
-Liệu Tạ tiểu thư...
-Có phải chính là Cửu Hoàng tử hay không?
-Mỗi lần nhìn thấy nàng, hạt giống hiếu kỳ trong lòng lại bén rễ nảy mầm, lớn dần, đến mức không thể kiềm chế.
-Cửu Hoàng tử nghịch ngợm, hiếu động, lanh lợi, không thích học hành, ham chơi.
-Mà vị Tạ tiểu thư này lại trầm ổn, tâm tư linh hoạt, thông tuệ lanh lợi, còn biết võ công.
-Giữa hai người có rất nhiều điểm khác biệt.
-Nhưng...
-Trên đời sao lại có hai người giống nhau đến thế?
-Đang mải suy nghĩ, bỗng thấy Hoàng thượng và Tạ tiểu thư đi tới.
-Khương Thái phó lập tức cúi đầu, đứng sang một bên hầu hạ.
-Đợi đến lúc vạt áo hai người lướt qua trước mắt.
-Ông thật sự không nhịn được nữa.
-Mấy chữ buột miệng thốt ra:
-“Thiên Vương cái Địa Hổ!”
-“Thái phó một mét năm!”
-Sở Ly quay đầu lại.
-Hai tròng mắt Khương Thái phó trợn to:
-“Ngươi!”
-Là Cửu Hoàng tử!
-Quả nhiên là Cửu Hoàng tử!
-Sở Ly sờ sờ chóp mũi, khẽ cười, không nói thêm gì, cùng Sở Ngạo Thiên đi về phía hậu cung.
-Chỉ còn Khương Thái phó đứng ngây người tại chỗ, phải mất trọn nửa khắc mới hoàn hồn.
-Ngoài kinh ngạc.
-Trong lòng ông càng nhiều hơn là sự vui mừng.
-Còn sống...
-Là tốt rồi.
-Bình an...
-Là tốt rồi.
-Hậu cung.
-Từ khi Sở Ngạo Thiên đăng cơ đến nay, chiến sự liên miên không dứt, vì vậy đại điển đăng cơ vẫn luôn bị trì hoãn.
-Phi tần của Sở Hoàng cũng vẫn được an trí nguyên vẹn trong các cung điện cũ.
-Chỉ chờ chiến tranh kết thúc, mọi việc lắng xuống rồi mới từ từ xử lý.
-Sở Hoàng đã bại liệt.
-Tân Hoàng lại chưa nạp phi.
-Các phi tần không còn phải tranh sủng.
-Trong nhất thời, hậu cung nghênh đón sự hòa thuận chưa từng có.
-Đánh bài.
-Phơi nắng.
-Buôn chuyện.
-Lấy Nghênh phi làm tâm.
-Lấy Ôn phi làm bán kính.
-Vẽ thành một vòng tròn.
-Các phi tần đều xoay quanh hai người.
-Khi Sở Ly và Sở Ngạo Thiên tới.
-Hợp Hoan cung đang vô cùng náo nhiệt.
-Tám chín vị cung phi cùng cung nữ.
-Một đám người y phục đỏ đỏ xanh xanh đang đánh bài.
-Bên cạnh đặt một chiếc xe lăn.
-Trên đó là Sở Hoàng đã bại liệt.
-Thân thể ông vẫn không hề chuyển biến.
-Ngoài tròng mắt còn có thể động đậy.
-Những chỗ khác hoàn toàn bất động.
-Ông chỉ có thể ngồi bất động ở đó.
-Nhìn những phi tần trẻ trung xinh đẹp, hoạt bát mỹ lệ của mình cười nói, múa hát, đùa giỡn đuổi bắt.
-Muốn chạm cũng không chạm được.
-Chỉ có thể trừng mắt nhìn.
-Khi thấy Sở Ly.
-Cảm xúc ông lập tức kích động.
-Nước dãi chảy ròng ròng.
-“Ư... ư...”
-“Ôi chao.”
-Ôn phi vội quay đầu lại.
-“Bệ hạ khát nước rồi chăng? Hai ngươi còn đứng ngây ra đó làm gì? Mau đút nước cho Bệ hạ!”
-“Vâng.”
-Hai cung nữ lập tức tiến lên.
-“Ư!!”
-Đôi mắt Sở Hoàng gần như muốn lồi khỏi hốc.
-Ông gắt gao trừng Sở Ly.
-Toàn thân căng cứng.
-Dốc hết sức lực bú sữa mẹ cũng không nhúc nhích nổi.
-Là nàng!
-Chính nàng hạ dược.
-Biến ông thành bộ dạng như ngày hôm nay.
-Tên nghịch tử này!
-“Bệ hạ sao vậy?”
-Nghênh phi lo lắng.
-“Chẳng lẽ muốn đi ngoài?”
-Ôn phi thở dài:
-“Miệng không nói được, thân không động được, thật đáng thương. Chúng ta lại chẳng đoán nổi tâm tư của Bệ hạ. Hôm qua Ngự thiện phòng làm món cá lát cay, môi Bệ hạ đỏ bừng lên mà cũng chẳng hé răng.”
-Nghênh phi cầm khăn tay:
-“Bệ hạ cả đời hiếu thắng.”
-“Còn không phải sao?”
-“Thôi vậy, có thể đẩy ngài ấy ra phơi nắng đã là tốt lắm rồi. Chúng ta tiếp tục đánh bài đi.”
-“Nào nào, tiền ván trước đưa đây.”
-Không ai để ý tới Sở Hoàng nữa.
-Ông tức đến méo cả miệng.
-“Ư! Ư!”
-Lớn mật!
-Ông muốn giết Sở Ly!
-Ông muốn phế hết đám nữ nhân này!
-Đỡ ông dậy!
-Ông muốn san bằng cả Vương cung!
-—
-Nam Cương.
-Mang theo đứa nhỏ suốt hai ngày.
-Đầu của Tần Mục Vũ muốn nổ tung.
-Kế hoạch quân sự tập kích đoạt lại Nam Cương vốn đã định, cũng đành phải hoãn lại.
-Bất kể nam hay nữ.
-Ai chăm trẻ.
-Người đó đều phát ngốc.
-“Ca ca, sáng nay chúng ta ăn gì?”
-“Ca ca, con ngựa này của huynh đẹp quá!”
-“Ca ca, sao huynh không để ý tới ta?”
-“Ca ca...”
-Líu ra líu ríu.
-Suốt ngày như gà mái sắp đẻ trứng vậy.
-Tần Mục Vũ trầm mắt nhìn Thác Bạt Mặc đang thao thao bất tuyệt.
-Trong lòng không khỏi nghĩ.
-Ân Vương đâu có như thế.
-Sao lại sinh ra một tiểu thoại lao như vậy?
-Nhiếp Tang thì lại rất thích cậu bé.
-Cùng cậu chơi đùa rất vui vẻ.
-Tần Mục Tuyết lại trầm giọng suy nghĩ:
-“Ân Vương sao còn chưa đến đón nhi tử? Chuyện này chẳng lẽ có trá?”
-Ví như...
-Lợi dụng đứa trẻ bề ngoài vô hại này.
-Để nó ẩn náu trong quân doanh của bọn họ.
-Âm thầm dò la quân cơ trọng yếu.
-Tuy đại chiến đang cận kề.
-Nhưng bọn họ cũng không thể tàn sát một đứa trẻ bốn năm tuổi.
-Lục Vân Sơ trầm giọng:
-“Ân Vương coi nhẹ đứa con này như vậy... chẳng lẽ... không phải thân sinh?”
-Tần Mục Tuyết nhìn Tần Mục Vũ:
-“Ca, là thân sinh sao?”
-Tần Mục Vũ thật sự thấy buồn cười.
-“Muội hỏi ta, ta hỏi ai?”
-Đúng là nực cười.
-Lại đi hỏi hắn.
-Hắn chẳng có kiên nhẫn nuôi nhi tử thay Ân Vương.
-“Ta đã phái năm đợt người đi báo tin rồi. Trước tối nay, nếu còn không tới đón... thì giết.”
-“Ca ca, huynh muốn giết ai vậy?”
-Lời vừa dứt.
-Vạt áo chợt nặng xuống.
-Chỉ thấy tiểu gia hỏa đang nắm lấy vạt áo hắn, ngẩng khuôn mặt nhỏ trắng trẻo như ngọc lên, tò mò nhìn hắn.
-Hắn khựng lại một thoáng.
-“Đại nhân nói chuyện, tiểu hài tử không được xen miệng.”
-“Ồ!” Ẩn bớt</p>
+            <p>Chương 307: Thiên Vương cái Địa Hổ</p>
+<p>Đế đô.</p>
+<p>“Hoàng thẩm, lực tay thế này có được không?”</p>
+<p>“Hoàng thẩm, có thoải mái không?”</p>
+<p>Trong Ngự hoa viên, dưới ánh nắng thu ấm áp, Sở Ngạo Thiên khom lưng khúm núm vây quanh Sở Ly, tận tình bóp vai cho nàng.</p>
+<p>Sở Ly cắn quả táo trong tay:</p>
+<p>“Cũng tạm.”</p>
+<p>“Nếu ngươi bận thì không cần để ý đến ta.”</p>
+<p>Sao có thể được?</p>
+<p>Từ khi Cửu muội trở về, cả người hắn như được tiếp thêm tự tin, có chỗ dựa. Mỗi lần lâm triều, đám đại thần kia đều không còn dám hất mặt với hắn nữa.</p>
+<p>Nếu rời Cửu muội...</p>
+<p>Hắn biết sống sao đây!</p>
+<p>“Hoàng thúc không có ở đây, ta nhất định phải chăm sóc Hoàng thẩm thật chu đáo. Đợi Hoàng thúc trở về, nhất định sẽ thưởng cho ta!”</p>
+<p>Hì hì.</p>
+<p>Sở Ly liếc hắn một cái, không khỏi thầm nghĩ:</p>
+<p>Đến cả ngôi vị Hoàng đế tôn quý nhất thiên hạ cũng đã cho ngươi rồi, còn có phần thưởng nào vượt qua được ngôi vị ấy nữa?</p>
+<p>“Chuyện ta bảo ngươi điều tra, thế nào rồi?”</p>
+<p>Sở Ngạo Thiên vừa bóp vai vừa đáp:</p>
+<p>“Ta nghe lời ngươi, sai Hoàng gia ám vệ đi điều tra. Quả nhiên là Minh Hoa Quận chúa mượn danh Nghênh phi, ở bên ngoài xúi giục thương nhân, gây nhiễu loạn lòng dân, cố ý gây khó dễ cho ta.”</p>
+<p>“Quả nhiên là nàng ta.”</p>
+<p>“Ngươi nói vậy là ý gì? Chẳng lẽ ngươi sớm đã nghi ngờ nàng ta?”</p>
+<p>Sở Ly đáp:</p>
+<p>“Lần này, sau khi ta rời Đế đô, từng gặp một nhóm sát thủ. Chính là do Minh Hoa Quận chúa phái tới.”</p>
+<p>Thật quá đáng!</p>
+<p>Sở Ngạo Thiên lập tức thẳng lưng.</p>
+<p>“Nàng ta muốn làm gì? Muốn tạo phản hay sao? Phụ thân nàng là Tiêu Dao Vương, nhiều năm nay làm người khiêm nhường, hành sự giản dị, chưa từng có lòng bất thần. Sao lại nuôi ra được một đứa con như thế...”</p>
+<p>Nói đến đây, giọng hắn dần nhỏ lại.</p>
+<p>Tiêu Dao Vương...</p>
+<p>Thật sự chỉ là người đạm bạc danh lợi, không tranh không đoạt như vẻ bề ngoài sao?</p>
+<p>Có câu:</p>
+<p>Thượng bất chính, hạ tắc loạn.</p>
+<p>Thần sắc hắn dần trở nên ngưng trọng.</p>
+<p>“Cửu muội, ý ngươi là...”</p>
+<p>“Ta chỉ là suy đoán, chưa có chứng cứ. Cứ âm thầm cho người theo dõi là được.”</p>
+<p>“Được!”</p>
+<p>Hắn hiểu rồi.</p>
+<p>Hắn sẽ cho người âm thầm giám sát cả Sở Minh Hoa lẫn Tiêu Dao Vương.</p>
+<p>Không xa.</p>
+<p>Dưới hành lang.</p>
+<p>Khương Thái phó cùng Biết Cửu đứng đó, nhìn hai vị chủ tử trong Ngự hoa viên đang cười nói vui vẻ.</p>
+<p>Ánh mắt Khương Thái phó phần nhiều đều đặt trên người Sở Ly.</p>
+<p>Hít—</p>
+<p>Kể từ lần đầu tiên gặp “Tạ tiểu thư”, trong lòng ông vẫn luôn có một suy đoán...</p>
+<p>Giống.</p>
+<p>Thật sự quá giống.</p>
+<p>Nhưng ông không dám hỏi.</p>
+<p>Liệu Tạ tiểu thư...</p>
+<p>Có phải chính là Cửu Hoàng tử hay không?</p>
+<p>Mỗi lần nhìn thấy nàng, hạt giống hiếu kỳ trong lòng lại bén rễ nảy mầm, lớn dần, đến mức không thể kiềm chế.</p>
+<p>Cửu Hoàng tử nghịch ngợm, hiếu động, lanh lợi, không thích học hành, ham chơi.</p>
+<p>Mà vị Tạ tiểu thư này lại trầm ổn, tâm tư linh hoạt, thông tuệ lanh lợi, còn biết võ công.</p>
+<p>Giữa hai người có rất nhiều điểm khác biệt.</p>
+<p>Nhưng...</p>
+<p>Trên đời sao lại có hai người giống nhau đến thế?</p>
+<p>Đang mải suy nghĩ, bỗng thấy Hoàng thượng và Tạ tiểu thư đi tới.</p>
+<p>Khương Thái phó lập tức cúi đầu, đứng sang một bên hầu hạ.</p>
+<p>Đợi đến lúc vạt áo hai người lướt qua trước mắt.</p>
+<p>Ông thật sự không nhịn được nữa.</p>
+<p>Mấy chữ buột miệng thốt ra:</p>
+<p>“Thiên Vương cái Địa Hổ!”</p>
+<p>“Thái phó một mét năm!”</p>
+<p>Sở Ly quay đầu lại.</p>
+<p>Hai tròng mắt Khương Thái phó trợn to:</p>
+<p>“Ngươi!”</p>
+<p>Là Cửu Hoàng tử!</p>
+<p>Quả nhiên là Cửu Hoàng tử!</p>
+<p>Sở Ly sờ sờ chóp mũi, khẽ cười, không nói thêm gì, cùng Sở Ngạo Thiên đi về phía hậu cung.</p>
+<p>Chỉ còn Khương Thái phó đứng ngây người tại chỗ, phải mất trọn nửa khắc mới hoàn hồn.</p>
+<p>Ngoài kinh ngạc.</p>
+<p>Trong lòng ông càng nhiều hơn là sự vui mừng.</p>
+<p>Còn sống...</p>
+<p>Là tốt rồi.</p>
+<p>Bình an...</p>
+<p>Là tốt rồi.</p>
+<p>Hậu cung.</p>
+<p>Từ khi Sở Ngạo Thiên đăng cơ đến nay, chiến sự liên miên không dứt, vì vậy đại điển đăng cơ vẫn luôn bị trì hoãn.</p>
+<p>Phi tần của Sở Hoàng cũng vẫn được an trí nguyên vẹn trong các cung điện cũ.</p>
+<p>Chỉ chờ chiến tranh kết thúc, mọi việc lắng xuống rồi mới từ từ xử lý.</p>
+<p>Sở Hoàng đã bại liệt.</p>
+<p>Tân Hoàng lại chưa nạp phi.</p>
+<p>Các phi tần không còn phải tranh sủng.</p>
+<p>Trong nhất thời, hậu cung nghênh đón sự hòa thuận chưa từng có.</p>
+<p>Đánh bài.</p>
+<p>Phơi nắng.</p>
+<p>Buôn chuyện.</p>
+<p>Lấy Nghênh phi làm tâm.</p>
+<p>Lấy Ôn phi làm bán kính.</p>
+<p>Vẽ thành một vòng tròn.</p>
+<p>Các phi tần đều xoay quanh hai người.</p>
+<p>Khi Sở Ly và Sở Ngạo Thiên tới.</p>
+<p>Hợp Hoan cung đang vô cùng náo nhiệt.</p>
+<p>Tám chín vị cung phi cùng cung nữ.</p>
+<p>Một đám người y phục đỏ đỏ xanh xanh đang đánh bài.</p>
+<p>Bên cạnh đặt một chiếc xe lăn.</p>
+<p>Trên đó là Sở Hoàng đã bại liệt.</p>
+<p>Thân thể ông vẫn không hề chuyển biến.</p>
+<p>Ngoài tròng mắt còn có thể động đậy.</p>
+<p>Những chỗ khác hoàn toàn bất động.</p>
+<p>Ông chỉ có thể ngồi bất động ở đó.</p>
+<p>Nhìn những phi tần trẻ trung xinh đẹp, hoạt bát mỹ lệ của mình cười nói, múa hát, đùa giỡn đuổi bắt.</p>
+<p>Muốn chạm cũng không chạm được.</p>
+<p>Chỉ có thể trừng mắt nhìn.</p>
+<p>Khi thấy Sở Ly.</p>
+<p>Cảm xúc ông lập tức kích động.</p>
+<p>Nước dãi chảy ròng ròng.</p>
+<p>“Ư... ư...”</p>
+<p>“Ôi chao.”</p>
+<p>Ôn phi vội quay đầu lại.</p>
+<p>“Bệ hạ khát nước rồi chăng? Hai ngươi còn đứng ngây ra đó làm gì? Mau đút nước cho Bệ hạ!”</p>
+<p>“Vâng.”</p>
+<p>Hai cung nữ lập tức tiến lên.</p>
+<p>“Ư!!”</p>
+<p>Đôi mắt Sở Hoàng gần như muốn lồi khỏi hốc.</p>
+<p>Ông gắt gao trừng Sở Ly.</p>
+<p>Toàn thân căng cứng.</p>
+<p>Dốc hết sức lực bú sữa mẹ cũng không nhúc nhích nổi.</p>
+<p>Là nàng!</p>
+<p>Chính nàng hạ dược.</p>
+<p>Biến ông thành bộ dạng như ngày hôm nay.</p>
+<p>Tên nghịch tử này!</p>
+<p>“Bệ hạ sao vậy?”</p>
+<p>Nghênh phi lo lắng.</p>
+<p>“Chẳng lẽ muốn đi ngoài?”</p>
+<p>Ôn phi thở dài:</p>
+<p>“Miệng không nói được, thân không động được, thật đáng thương. Chúng ta lại chẳng đoán nổi tâm tư của Bệ hạ. Hôm qua Ngự thiện phòng làm món cá lát cay, môi Bệ hạ đỏ bừng lên mà cũng chẳng hé răng.”</p>
+<p>Nghênh phi cầm khăn tay:</p>
+<p>“Bệ hạ cả đời hiếu thắng.”</p>
+<p>“Còn không phải sao?”</p>
+<p>“Thôi vậy, có thể đẩy ngài ấy ra phơi nắng đã là tốt lắm rồi. Chúng ta tiếp tục đánh bài đi.”</p>
+<p>“Nào nào, tiền ván trước đưa đây.”</p>
+<p>Không ai để ý tới Sở Hoàng nữa.</p>
+<p>Ông tức đến méo cả miệng.</p>
+<p>“Ư! Ư!”</p>
+<p>Lớn mật!</p>
+<p>Ông muốn giết Sở Ly!</p>
+<p>Ông muốn phế hết đám nữ nhân này!</p>
+<p>Đỡ ông dậy!</p>
+<p>Ông muốn san bằng cả Vương cung!</p>
+<p>—</p>
+<p>Nam Cương.</p>
+<p>Mang theo đứa nhỏ suốt hai ngày.</p>
+<p>Đầu của Tần Mục Vũ muốn nổ tung.</p>
+<p>Kế hoạch quân sự tập kích đoạt lại Nam Cương vốn đã định, cũng đành phải hoãn lại.</p>
+<p>Bất kể nam hay nữ.</p>
+<p>Ai chăm trẻ.</p>
+<p>Người đó đều phát ngốc.</p>
+<p>“Ca ca, sáng nay chúng ta ăn gì?”</p>
+<p>“Ca ca, con ngựa này của huynh đẹp quá!”</p>
+<p>“Ca ca, sao huynh không để ý tới ta?”</p>
+<p>“Ca ca...”</p>
+<p>Líu ra líu ríu.</p>
+<p>Suốt ngày như gà mái sắp đẻ trứng vậy.</p>
+<p>Tần Mục Vũ trầm mắt nhìn Thác Bạt Mặc đang thao thao bất tuyệt.</p>
+<p>Trong lòng không khỏi nghĩ.</p>
+<p>Ân Vương đâu có như thế.</p>
+<p>Sao lại sinh ra một tiểu thoại lao như vậy?</p>
+<p>Nhiếp Tang thì lại rất thích cậu bé.</p>
+<p>Cùng cậu chơi đùa rất vui vẻ.</p>
+<p>Tần Mục Tuyết lại trầm giọng suy nghĩ:</p>
+<p>“Ân Vương sao còn chưa đến đón nhi tử? Chuyện này chẳng lẽ có trá?”</p>
+<p>Ví như...</p>
+<p>Lợi dụng đứa trẻ bề ngoài vô hại này.</p>
+<p>Để nó ẩn náu trong quân doanh của bọn họ.</p>
+<p>Âm thầm dò la quân cơ trọng yếu.</p>
+<p>Tuy đại chiến đang cận kề.</p>
+<p>Nhưng bọn họ cũng không thể tàn sát một đứa trẻ bốn năm tuổi.</p>
+<p>Lục Vân Sơ trầm giọng:</p>
+<p>“Ân Vương coi nhẹ đứa con này như vậy... chẳng lẽ... không phải thân sinh?”</p>
+<p>Tần Mục Tuyết nhìn Tần Mục Vũ:</p>
+<p>“Ca, là thân sinh sao?”</p>
+<p>Tần Mục Vũ thật sự thấy buồn cười.</p>
+<p>“Muội hỏi ta, ta hỏi ai?”</p>
+<p>Đúng là nực cười.</p>
+<p>Lại đi hỏi hắn.</p>
+<p>Hắn chẳng có kiên nhẫn nuôi nhi tử thay Ân Vương.</p>
+<p>“Ta đã phái năm đợt người đi báo tin rồi. Trước tối nay, nếu còn không tới đón... thì giết.”</p>
+<p>“Ca ca, huynh muốn giết ai vậy?”</p>
+<p>Lời vừa dứt.</p>
+<p>Vạt áo chợt nặng xuống.</p>
+<p>Chỉ thấy tiểu gia hỏa đang nắm lấy vạt áo hắn, ngẩng khuôn mặt nhỏ trắng trẻo như ngọc lên, tò mò nhìn hắn.</p>
+<p>Hắn khựng lại một thoáng.</p>
+<p>“Đại nhân nói chuyện, tiểu hài tử không được xen miệng.”</p>
+<p>“Ồ!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_300.html" class="btn">‹ Trước</a>
             <a href="chuong_309.html" class="btn">Sau ›</a>
         </div>
@@ -311,15 +319,11 @@ Hắn khựng lại một thoáng.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -331,11 +335,11 @@ Hắn khựng lại một thoáng.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

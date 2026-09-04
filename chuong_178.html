@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 178</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,173 +62,182 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 178</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_177.html" class="btn">‹ Trước</a>
             <a href="chuong_179.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 178: Nhã, đại nhã
-“Quy Tức Công, điều cốt yếu chính là hô hấp thật chậm, chậm đến mức hơi thở yếu ớt, khiến người khác không thể phát giác, giống như rùa, nằm yên một chỗ suốt nửa năm một năm cũng chẳng ai để ý, ấy mới là đại thành.”
-“Con chỉ cần mỗi ngày nhìn Quy sư thúc, quan sát nhịp thở của nó, rồi điều hòa hô hấp theo, lâu ngày ắt sẽ luyện thành.”
-Như vậy, Sở Ly cũng không cần phải ở mãi trong sư môn.
-Chỉ cần mang theo Quy sư thúc, đi đến đâu luyện đến đó.
-Cố Nguyên Minh quả thực rất hiểu và rất biết nghĩ cho Sở Ly.
-Tuy nàng cũng chẳng biết luyện môn công pháp này để làm gì, nhưng nghe có vẻ rất nhàn, lại chẳng cản trở nàng vui chơi, liền ngoan ngoãn đáp:
-“Đa tạ sư phụ!”
-Nàng đưa hai tay nhận lấy Quy sư thúc.
-Nghiêng đầu nhìn kỹ.
-Quy sư thúc rụt đầu, nhắm nghiền hai mắt, bốn chân cũng co quắp nhăn nheo, mai rùa nứt nẻ, trông vô cùng già nua, đúng dáng vẻ tuổi cao sức yếu.
-“Đồ nhi, cố gắng luyện tập.” Cố Nguyên Minh vỗ vai nàng.
-“Tiểu sư đệ tiếp theo có dự định gì?” Lục Vân Sơ hỏi.
-Sở Ly suy nghĩ một lát:
-“Ta muốn đến Giang Nam.”
-Ba ngày sau.
-Thân thể Sở Ly đã hồi phục gần như hoàn toàn. Nàng dắt theo một con ngựa, ôm Quy sư thúc, chuẩn bị lên đường đến Giang Nam, bắt đầu cuộc sống mà mình hằng mong ước.
-“Sư phụ, các sư huynh không cần tiễn nữa, đợi ta ổn định xong sẽ trở về thăm mọi người.”
-Cố Nguyên Minh vốn là người trong giang hồ, chẳng có nhiều tâm tư lưu luyến nhi nữ, chỉ phất tay dặn dò:
-“Thân thể con mới hồi phục, nhớ kỹ chớ kiêu, chớ nóng nảy, chớ sa vào rượu sắc. Siêng năng rèn luyện mới là chính đạo.”
-“Sư phụ cứ yên tâm, đồ nhi nhất định cần kiệm chăm chỉ!”
-Sở Ly lên ngựa.
-“Nhớ chăm chỉ luyện công, chớ quên sơ tâm.”
-Nàng thúc ngựa rời đi.
-“Sư phụ yên tâm, đồ nhi ghi nhớ.”
-“Quy Tức Công đại thành thì nhớ đưa Quy sư thúc về!”
-“… Biết rồi!”
-Xuống núi.
-Dưới chân núi, Bát Đại Kim Cương đã chờ sẵn.
-“Tiểu Sở công tử.”
-Sở Ly nắm chặt dây cương.
-“Đi!”
-Giờ đây, cuối cùng nàng cũng được tự do.
-Cuối cùng cũng có thể sống cuộc đời nhàn tản tùy ý, cần kiệm tiết kiệm, gian khổ mộc mạc, lấy kiệm dưỡng liêm mà nàng hằng mơ ước!
-Chuyến này đến Giang Nam, nàng nhất định sẽ tu thân dưỡng tính, bắt đầu lại từ đầu.
-Hai ngày sau.
-Thành Giang Nam nằm ở phía nam Đại Sở, tiếp giáp ba châu Mạc Hoài. Đây là vùng đất khí hậu ôn hòa, bốn mùa như xuân, rất thích hợp để an cư, đồng thời cũng là nơi sản sinh biết bao thi nhân mặc khách cùng những khúc dân ca Ngô nồng nàn.
-Vùng sông nước Giang Nam, kênh đào len lỏi khắp phố phường, chảy qua trước những mái nhà và cầu đá. Trên mặt nước, từng chiếc thuyền xuôi ngược, có người buôn bán, cũng có ca nữ cất tiếng hát mềm mại, dư âm quanh quẩn mãi không tan.
-“Rút tiền.”
-Tại Ngân trang Vệ gia, Sở Ly đặt một tờ chứng từ lên quầy.
-Chưởng quỹ vừa nhìn tên người gửi liền kinh ngạc.
-Người gửi: Sở Ly.
-Đây chẳng phải vị tân đế vừa táng thân trong biển lửa sao?
-Nói là tân đế cũng chưa đúng. Cửu hoàng tử còn chưa kịp đăng cơ đã bị thiêu chết trong điện Chiêu Lan, đúng là vị hoàng đế yểu mệnh nhất trong lịch sử.
-“Cửu hoàng tử đã qua đời, tờ chứng từ này…”
-Sở Ly đã sớm đoán được đối phương sẽ nói vậy, liền đáp:
-“Ta là nam sủng mà Cửu hoàng tử nuôi ở bên ngoài, đây là tài sản nàng ấy tặng cho ta.”
-“Tạm không bàn thân phận của ta, chẳng lẽ Cửu hoàng tử gửi vàng vào ngân trang các ngươi, chỉ vì nàng ấy chết rồi thì số vàng này liền trở thành tài sản của ngân trang?”
-Chưởng quỹ vội vàng xua tay:
-“Không dám! Không dám!”
-Ngân trang Vệ gia là ngân trang lớn nhất Đại Sở, còn mở chi nhánh ở nhiều nước khác, với cơ nghiệp lớn như vậy, danh tiếng là quan trọng nhất.
-“Xin hỏi công tử muốn rút bao nhiêu?”
-“Toàn bộ.”
-Hai mươi lăm thỏi tiểu kim.
-Sau khi kiểm tra tính xác thực của chứng từ, chưởng quỹ trầm ngâm:
-“Công tử, hiện trong ngân khố không đủ số vàng này. Trước mắt ta có thể giao cho công tử bảy thỏi, số còn lại trong vòng năm ngày ta sẽ điều chuyển đủ rồi đích thân mang đến tận nơi, được chứ?”
-“Không cần, năm ngày sau ta tự đến lấy.”
-“Vâng.”
-Chưởng quỹ lập tức cầm chìa khóa, vào kho được canh phòng nghiêm ngặt nhiều lớp, mang ra bảy thỏi tiểu kim.
-Sở Ly nhận lấy rồi rời đi.
-Ngay lập tức, chưởng quỹ dặn hộ vệ bên cạnh:
-“Theo sau hắn, xem thử vị công tử này là người thế nào.”
-Một hộ vệ khác nhỏ giọng hỏi:
-“Chưởng quỹ nghi ngờ chứng từ này có vấn đề sao?”
-“Cửu hoàng tử đã mất. Theo quy củ, số vàng gửi trong ngân trang phải hoàn trả cho thân quyến của ngài ấy. Nhưng người này lại cầm chứng từ đến rút tiền, ta buộc phải chi trả. Lỡ đâu hắn là đạo tặc, trộm tài sản của Cửu hoàng tử…”
-Hai mươi lăm thỏi tiểu kim, đâu phải con số nhỏ.
-Nếu xử lý không ổn, danh tiếng của ngân trang sẽ bị tổn hại.
-“Chưởng quỹ, lúc nãy hắn nói mình là nam sủng của Cửu hoàng tử. Thuộc hạ từng nghe lời đồn ở kinh thành rằng Cửu hoàng tử quả thật có sở thích đoạn tụ.”
-Chưởng quỹ ngẫm nghĩ, để cẩn thận hơn, liền dặn:
-“Phái hai người đến kinh thành dò hỏi.”
-“Rõ.”
-…
-Trên đường phố.
-Rời khỏi Ngân trang Vệ gia, Sở Ly cúi đầu đi qua mấy con phố, bước chân dần nhanh hơn. Khi dòng người đông đúc chồng chéo, nàng nghiêng người một cái rồi biến mất nơi góc phố.
-Phía sau, một hộ vệ vội vàng đuổi tới.
-Người đâu?
-Đi đâu rồi?
-Rõ ràng vừa nãy còn ở đây.
-Hắn đảo mắt tìm khắp nơi, nhưng đối phương như bốc hơi khỏi nhân gian, chớp mắt đã không thấy bóng dáng.
-Một lát sau.
-Từ góc phố, một nữ tử búi tóc xanh, vận y phục trắng nhã nhặn thong thả bước ra.
-Hai người lướt qua nhau.
-Hộ vệ vẫn còn ngoái đầu nhìn quanh tìm kiếm, còn nữ tử khẽ vuốt má mình, ung dung rời đi.
-“Tiểu… Tiểu Sở công tử? Người… người là nữ tử sao?!”
-Bát Đại Kim Cương hoàn toàn ngây người.
-Sở Ly lấy ra bốn thỏi tiểu kim.
-“Đi lại giang hồ, thân phận là thứ không đáng bận tâm nhất. Ngân trang Vệ gia nói chưa đủ vàng, năm ngày sau sẽ giao nốt.”
-Theo lý thì tám người phải chia tám thỏi.
-Nhưng trước mắt chỉ lấy được bốn thỏi.
-Độc Nhãn Long cười híp mắt:
-“Không sao cả. Được làm việc cho Tiểu Sở… à không, Sở cô nương là vinh hạnh của huynh đệ chúng ta.”
-Viễn Kiến Ưng híp mắt đầy vẻ cao thâm:
-“Giang Nam là thành trì lớn nhất vùng Mạc Hoài, nơi tụ hội của phú thương quý tộc. Ngân trang Vệ gia ngoài mặt nói thiếu vàng, e rằng thật ra đang nghi ngờ thân phận của Sở cô nương.”
-Thông minh.
-Sở Ly nhìn hắn một cái.
-“Lúc nãy ta cố ý mặc nam trang đi rút tiền. Sau này sẽ luôn lấy nữ trang xuất hiện, bọn họ sẽ không tra được đến ta.”
-Độc Nhãn Long chắp tay:
-“Ngân trang Vệ gia có thể đứng đầu cả nước, tất nhiên không dễ bị qua mặt. Trong vài tháng tới, tám huynh đệ chúng ta sẽ tạm ở lại thành Giang Nam. Sở cô nương nếu có việc gì, cứ việc sai bảo, huynh đệ chúng ta nhất định dốc sức khuyển mã.”
-“Dễ nói, dễ nói.”
-Nói xong, đôi bên chia đường.
-Sở Ly cất ba thỏi tiểu kim vào người, không kìm được mà tìm ngay một hí viện sang trọng. Nàng chọn chỗ ngồi đẹp nhất, gọi một bàn rượu ngon món quý để bù đắp những ngày bôn ba trên đường.
-Trên sân khấu, đào hát trang điểm đậm, vung tay áo nước, cất lên những làn điệu Giang Nam uyển chuyển du dương.
-Ở một góc đại sảnh, tiên sinh kể chuyện gõ bàn gỗ, vuốt râu thao thao bất tuyệt, xung quanh người nghe chen kín, chăm chú không chớp mắt.
-Tiểu nhị bưng chiếc ấm trà vòi dài, biểu diễn màn rót trà bằng động tác vắt tay điêu luyện.
-Ngoài cửa sổ, dòng nước lặng lẽ chảy qua. Trên sông, từng chiếc thuyền chống những chiếc ô giấy dầu đủ màu sắc, đẹp như tranh vẽ. Trên cầu đá, người qua kẻ lại tấp nập, cảnh tượng náo nhiệt vô cùng.
-Sở Ly nhấp một ngụm rượu nhỏ.
-Chậc.
-Nhã!
-Đại nhã! Ẩn bớt</p>
+            <p>Chương 178: Nhã, đại nhã</p>
+<p>“Quy Tức Công, điều cốt yếu chính là hô hấp thật chậm, chậm đến mức hơi thở yếu ớt, khiến người khác không thể phát giác, giống như rùa, nằm yên một chỗ suốt nửa năm một năm cũng chẳng ai để ý, ấy mới là đại thành.”</p>
+<p>“Con chỉ cần mỗi ngày nhìn Quy sư thúc, quan sát nhịp thở của nó, rồi điều hòa hô hấp theo, lâu ngày ắt sẽ luyện thành.”</p>
+<p>Như vậy, Sở Ly cũng không cần phải ở mãi trong sư môn.</p>
+<p>Chỉ cần mang theo Quy sư thúc, đi đến đâu luyện đến đó.</p>
+<p>Cố Nguyên Minh quả thực rất hiểu và rất biết nghĩ cho Sở Ly.</p>
+<p>Tuy nàng cũng chẳng biết luyện môn công pháp này để làm gì, nhưng nghe có vẻ rất nhàn, lại chẳng cản trở nàng vui chơi, liền ngoan ngoãn đáp:</p>
+<p>“Đa tạ sư phụ!”</p>
+<p>Nàng đưa hai tay nhận lấy Quy sư thúc.</p>
+<p>Nghiêng đầu nhìn kỹ.</p>
+<p>Quy sư thúc rụt đầu, nhắm nghiền hai mắt, bốn chân cũng co quắp nhăn nheo, mai rùa nứt nẻ, trông vô cùng già nua, đúng dáng vẻ tuổi cao sức yếu.</p>
+<p>“Đồ nhi, cố gắng luyện tập.” Cố Nguyên Minh vỗ vai nàng.</p>
+<p>“Tiểu sư đệ tiếp theo có dự định gì?” Lục Vân Sơ hỏi.</p>
+<p>Sở Ly suy nghĩ một lát:</p>
+<p>“Ta muốn đến Giang Nam.”</p>
+<p>Ba ngày sau.</p>
+<p>Thân thể Sở Ly đã hồi phục gần như hoàn toàn. Nàng dắt theo một con ngựa, ôm Quy sư thúc, chuẩn bị lên đường đến Giang Nam, bắt đầu cuộc sống mà mình hằng mong ước.</p>
+<p>“Sư phụ, các sư huynh không cần tiễn nữa, đợi ta ổn định xong sẽ trở về thăm mọi người.”</p>
+<p>Cố Nguyên Minh vốn là người trong giang hồ, chẳng có nhiều tâm tư lưu luyến nhi nữ, chỉ phất tay dặn dò:</p>
+<p>“Thân thể con mới hồi phục, nhớ kỹ chớ kiêu, chớ nóng nảy, chớ sa vào rượu sắc. Siêng năng rèn luyện mới là chính đạo.”</p>
+<p>“Sư phụ cứ yên tâm, đồ nhi nhất định cần kiệm chăm chỉ!”</p>
+<p>Sở Ly lên ngựa.</p>
+<p>“Nhớ chăm chỉ luyện công, chớ quên sơ tâm.”</p>
+<p>Nàng thúc ngựa rời đi.</p>
+<p>“Sư phụ yên tâm, đồ nhi ghi nhớ.”</p>
+<p>“Quy Tức Công đại thành thì nhớ đưa Quy sư thúc về!”</p>
+<p>“… Biết rồi!”</p>
+<p>Xuống núi.</p>
+<p>Dưới chân núi, Bát Đại Kim Cương đã chờ sẵn.</p>
+<p>“Tiểu Sở công tử.”</p>
+<p>Sở Ly nắm chặt dây cương.</p>
+<p>“Đi!”</p>
+<p>Giờ đây, cuối cùng nàng cũng được tự do.</p>
+<p>Cuối cùng cũng có thể sống cuộc đời nhàn tản tùy ý, cần kiệm tiết kiệm, gian khổ mộc mạc, lấy kiệm dưỡng liêm mà nàng hằng mơ ước!</p>
+<p>Chuyến này đến Giang Nam, nàng nhất định sẽ tu thân dưỡng tính, bắt đầu lại từ đầu.</p>
+<p>Hai ngày sau.</p>
+<p>Thành Giang Nam nằm ở phía nam Đại Sở, tiếp giáp ba châu Mạc Hoài. Đây là vùng đất khí hậu ôn hòa, bốn mùa như xuân, rất thích hợp để an cư, đồng thời cũng là nơi sản sinh biết bao thi nhân mặc khách cùng những khúc dân ca Ngô nồng nàn.</p>
+<p>Vùng sông nước Giang Nam, kênh đào len lỏi khắp phố phường, chảy qua trước những mái nhà và cầu đá. Trên mặt nước, từng chiếc thuyền xuôi ngược, có người buôn bán, cũng có ca nữ cất tiếng hát mềm mại, dư âm quanh quẩn mãi không tan.</p>
+<p>“Rút tiền.”</p>
+<p>Tại Ngân trang Vệ gia, Sở Ly đặt một tờ chứng từ lên quầy.</p>
+<p>Chưởng quỹ vừa nhìn tên người gửi liền kinh ngạc.</p>
+<p>Người gửi: Sở Ly.</p>
+<p>Đây chẳng phải vị tân đế vừa táng thân trong biển lửa sao?</p>
+<p>Nói là tân đế cũng chưa đúng. Cửu hoàng tử còn chưa kịp đăng cơ đã bị thiêu chết trong điện Chiêu Lan, đúng là vị hoàng đế yểu mệnh nhất trong lịch sử.</p>
+<p>“Cửu hoàng tử đã qua đời, tờ chứng từ này…”</p>
+<p>Sở Ly đã sớm đoán được đối phương sẽ nói vậy, liền đáp:</p>
+<p>“Ta là nam sủng mà Cửu hoàng tử nuôi ở bên ngoài, đây là tài sản nàng ấy tặng cho ta.”</p>
+<p>“Tạm không bàn thân phận của ta, chẳng lẽ Cửu hoàng tử gửi vàng vào ngân trang các ngươi, chỉ vì nàng ấy chết rồi thì số vàng này liền trở thành tài sản của ngân trang?”</p>
+<p>Chưởng quỹ vội vàng xua tay:</p>
+<p>“Không dám! Không dám!”</p>
+<p>Ngân trang Vệ gia là ngân trang lớn nhất Đại Sở, còn mở chi nhánh ở nhiều nước khác, với cơ nghiệp lớn như vậy, danh tiếng là quan trọng nhất.</p>
+<p>“Xin hỏi công tử muốn rút bao nhiêu?”</p>
+<p>“Toàn bộ.”</p>
+<p>Hai mươi lăm thỏi tiểu kim.</p>
+<p>Sau khi kiểm tra tính xác thực của chứng từ, chưởng quỹ trầm ngâm:</p>
+<p>“Công tử, hiện trong ngân khố không đủ số vàng này. Trước mắt ta có thể giao cho công tử bảy thỏi, số còn lại trong vòng năm ngày ta sẽ điều chuyển đủ rồi đích thân mang đến tận nơi, được chứ?”</p>
+<p>“Không cần, năm ngày sau ta tự đến lấy.”</p>
+<p>“Vâng.”</p>
+<p>Chưởng quỹ lập tức cầm chìa khóa, vào kho được canh phòng nghiêm ngặt nhiều lớp, mang ra bảy thỏi tiểu kim.</p>
+<p>Sở Ly nhận lấy rồi rời đi.</p>
+<p>Ngay lập tức, chưởng quỹ dặn hộ vệ bên cạnh:</p>
+<p>“Theo sau hắn, xem thử vị công tử này là người thế nào.”</p>
+<p>Một hộ vệ khác nhỏ giọng hỏi:</p>
+<p>“Chưởng quỹ nghi ngờ chứng từ này có vấn đề sao?”</p>
+<p>“Cửu hoàng tử đã mất. Theo quy củ, số vàng gửi trong ngân trang phải hoàn trả cho thân quyến của ngài ấy. Nhưng người này lại cầm chứng từ đến rút tiền, ta buộc phải chi trả. Lỡ đâu hắn là đạo tặc, trộm tài sản của Cửu hoàng tử…”</p>
+<p>Hai mươi lăm thỏi tiểu kim, đâu phải con số nhỏ.</p>
+<p>Nếu xử lý không ổn, danh tiếng của ngân trang sẽ bị tổn hại.</p>
+<p>“Chưởng quỹ, lúc nãy hắn nói mình là nam sủng của Cửu hoàng tử. Thuộc hạ từng nghe lời đồn ở kinh thành rằng Cửu hoàng tử quả thật có sở thích đoạn tụ.”</p>
+<p>Chưởng quỹ ngẫm nghĩ, để cẩn thận hơn, liền dặn:</p>
+<p>“Phái hai người đến kinh thành dò hỏi.”</p>
+<p>“Rõ.”</p>
+<p>…</p>
+<p>Trên đường phố.</p>
+<p>Rời khỏi Ngân trang Vệ gia, Sở Ly cúi đầu đi qua mấy con phố, bước chân dần nhanh hơn. Khi dòng người đông đúc chồng chéo, nàng nghiêng người một cái rồi biến mất nơi góc phố.</p>
+<p>Phía sau, một hộ vệ vội vàng đuổi tới.</p>
+<p>Người đâu?</p>
+<p>Đi đâu rồi?</p>
+<p>Rõ ràng vừa nãy còn ở đây.</p>
+<p>Hắn đảo mắt tìm khắp nơi, nhưng đối phương như bốc hơi khỏi nhân gian, chớp mắt đã không thấy bóng dáng.</p>
+<p>Một lát sau.</p>
+<p>Từ góc phố, một nữ tử búi tóc xanh, vận y phục trắng nhã nhặn thong thả bước ra.</p>
+<p>Hai người lướt qua nhau.</p>
+<p>Hộ vệ vẫn còn ngoái đầu nhìn quanh tìm kiếm, còn nữ tử khẽ vuốt má mình, ung dung rời đi.</p>
+<p>“Tiểu… Tiểu Sở công tử? Người… người là nữ tử sao?!”</p>
+<p>Bát Đại Kim Cương hoàn toàn ngây người.</p>
+<p>Sở Ly lấy ra bốn thỏi tiểu kim.</p>
+<p>“Đi lại giang hồ, thân phận là thứ không đáng bận tâm nhất. Ngân trang Vệ gia nói chưa đủ vàng, năm ngày sau sẽ giao nốt.”</p>
+<p>Theo lý thì tám người phải chia tám thỏi.</p>
+<p>Nhưng trước mắt chỉ lấy được bốn thỏi.</p>
+<p>Độc Nhãn Long cười híp mắt:</p>
+<p>“Không sao cả. Được làm việc cho Tiểu Sở… à không, Sở cô nương là vinh hạnh của huynh đệ chúng ta.”</p>
+<p>Viễn Kiến Ưng híp mắt đầy vẻ cao thâm:</p>
+<p>“Giang Nam là thành trì lớn nhất vùng Mạc Hoài, nơi tụ hội của phú thương quý tộc. Ngân trang Vệ gia ngoài mặt nói thiếu vàng, e rằng thật ra đang nghi ngờ thân phận của Sở cô nương.”</p>
+<p>Thông minh.</p>
+<p>Sở Ly nhìn hắn một cái.</p>
+<p>“Lúc nãy ta cố ý mặc nam trang đi rút tiền. Sau này sẽ luôn lấy nữ trang xuất hiện, bọn họ sẽ không tra được đến ta.”</p>
+<p>Độc Nhãn Long chắp tay:</p>
+<p>“Ngân trang Vệ gia có thể đứng đầu cả nước, tất nhiên không dễ bị qua mặt. Trong vài tháng tới, tám huynh đệ chúng ta sẽ tạm ở lại thành Giang Nam. Sở cô nương nếu có việc gì, cứ việc sai bảo, huynh đệ chúng ta nhất định dốc sức khuyển mã.”</p>
+<p>“Dễ nói, dễ nói.”</p>
+<p>Nói xong, đôi bên chia đường.</p>
+<p>Sở Ly cất ba thỏi tiểu kim vào người, không kìm được mà tìm ngay một hí viện sang trọng. Nàng chọn chỗ ngồi đẹp nhất, gọi một bàn rượu ngon món quý để bù đắp những ngày bôn ba trên đường.</p>
+<p>Trên sân khấu, đào hát trang điểm đậm, vung tay áo nước, cất lên những làn điệu Giang Nam uyển chuyển du dương.</p>
+<p>Ở một góc đại sảnh, tiên sinh kể chuyện gõ bàn gỗ, vuốt râu thao thao bất tuyệt, xung quanh người nghe chen kín, chăm chú không chớp mắt.</p>
+<p>Tiểu nhị bưng chiếc ấm trà vòi dài, biểu diễn màn rót trà bằng động tác vắt tay điêu luyện.</p>
+<p>Ngoài cửa sổ, dòng nước lặng lẽ chảy qua. Trên sông, từng chiếc thuyền chống những chiếc ô giấy dầu đủ màu sắc, đẹp như tranh vẽ. Trên cầu đá, người qua kẻ lại tấp nập, cảnh tượng náo nhiệt vô cùng.</p>
+<p>Sở Ly nhấp một ngụm rượu nhỏ.</p>
+<p>Chậc.</p>
+<p>Nhã!</p>
+<p>Đại nhã! Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_177.html" class="btn">‹ Trước</a>
             <a href="chuong_179.html" class="btn">Sau ›</a>
         </div>
@@ -237,15 +245,11 @@ Nhã!
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -257,11 +261,11 @@ Nhã!
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

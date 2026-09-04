@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 188</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,164 +62,173 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 188</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_187.html" class="btn">‹ Trước</a>
             <a href="chuong_189.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 188: Nàng cùng Nhiếp Chính Vương cấu kết làm gian
-Là nàng!
-Trong nháy mắt, hắn hiểu ra điều gì đó, lập tức cất bước đi thẳng về phía trà lâu.
-Độc Nhãn Long chắn ngay trước cửa:
-“Ngươi muốn làm c...”
-Ưm!
-Hắn bị một chưởng đẩy bật sang bên.
-Sở Uyên Trì đi thẳng lên lầu hai, mạnh tay đẩy tung cửa phòng bao. Chỉ thấy nữ tử đang nâng một chén trà, uể oải xoay người lại, nâng chén về phía hắn.
-Kính hắn.
-Nàng nhấp một ngụm trà, hương vị thơm ngát khiến khóe mày khẽ nhướng.
-Trà không tệ.
-Nơi Giang Nam này, quả thực rất thích hợp để dưỡng lão, làm một con cá mặn an nhàn.
-“Sở Ly! Quả nhiên là ngươi!”
-Lại là một nữ nhân, còn bắt cóc cả nhi tử của hắn.
-“Có chuyện gì thì cứ nhằm vào ta, đừng hại nhi tử ta, nó mới chỉ bốn tuổi!”
-Sở Ly khẽ chậc một tiếng, nhổ lá trà đắng trong miệng, đầu lưỡi nhẹ cắn vị chát còn sót lại.
-“Đại ca nói vậy, sao ta nghe không hiểu?”
-“Con người ta trước nay yêu ghét phân minh, người không phạm ta, ta không phạm người. Đại ca nói như vậy, chẳng lẽ đã làm chuyện gì có lỗi với ta sao?”
-Nàng cố ý tỏ vẻ kinh ngạc.
-Có vài lời tuy không nói trắng ra, nhưng trong lòng cả hai đều hiểu rõ.
-Nàng cố ý mang Sở Hoằng Diễm đi.
-Đó là sự thị uy, cũng là sự báo phục của nàng.
-Nếu còn có lần sau, e rằng nàng sẽ không chỉ đơn giản là mang Sở Hoằng Diễm đi nữa.
-Ánh mắt Sở Uyên Trì trầm xuống, sâu không thấy đáy.
-Nàng đã lôi Trương lão Tứ ra, lần theo đầu mối mà tìm đến tận hắn.
-Xem ra cũng có chút bản lĩnh.
-Khi hàn ý trong mắt dâng đến cực điểm, nó bỗng chốc tan biến, hóa thành một nụ cười ôn hòa. Hắn kéo ghế ngồi xuống.
-“Cửu đệ chẳng phải đã chết rồi sao? Thế nào lại biến thành Cửu muội? Chuyện này phụ hoàng biết chứ?”
-Đây chính là tội khi quân.
-Cả Ôn gia cũng đừng hòng thoát.
-Khóe môi hắn cong lên:
-“Không biết nếu phụ hoàng biết được, sẽ có phản ứng thế nào. Tân đế do chính người khâm điểm, vậy mà lại là một nữ tử.”
-Nghĩ đến thôi, hắn cũng có vài phần mong chờ.
-Dựa vào chuyện này khống chế Ôn gia, trở về Đế Đô.
-Đúng là một quân cờ tự đưa đến tận cửa.
-Sở Ly mỉm cười ôn hòa, nhấp thêm hai ngụm trà rồi nói:
-“Phụ hoàng sớm đã biết rồi. Nếu không, ta nào dám đường đường chính chính lộ diện như vậy?”
-Sở Uyên Trì nhíu mày:
-“Không thể nào!”
-Nếu phụ hoàng đã biết, tuyệt đối không thể truyền ngôi cho nàng.
-Nàng đang lừa hắn!
-“Ngươi lợi dụng trận hỏa hoạn để giả chết thoát thân, lại chậm chạp không chịu trở về Đế Đô. Xem ra, so với hoàng vị, tự do mới là thứ ngươi yêu thích nhất.”
-Chỉ cần hắn công khai việc này, là có thể kéo Sở Ly, Ôn phi cùng toàn bộ Ôn gia xuống nước.
-Sở Ly bước đến trước mặt hắn.
-“Đại ca, hôm nay ta dám đứng trước mặt huynh, dám gặp Sở Hoằng Diễm, huynh đoán xem, ta là đến cảnh cáo huynh, hay ngu xuẩn đến mức tự đến chịu chết?”
-Nàng cúi người, hơi thở lạnh lẽo phả bên tai hắn:
-“Rốt cuộc ai mới là kẻ ngu?”
-Sở Uyên Trì nhìn thẳng vào mắt nàng.
-“Ngươi...”
-Không thể nào!
-Nàng nữ phẫn nam trang, ngụy trang suốt mười sáu năm.
-Tội danh lớn như vậy, đủ để liên lụy cả Ôn gia.
-Chắc chắn nàng đang cố giữ bình tĩnh, muốn lừa hắn!
-“Sở Ly! Ôn gia dùng nữ anh giả mạo hoàng tử, ly miêu tráo thái tử, lấy giả loạn chân, đó là tội khi quân! Dẫu tru di cả nhà Ôn gia cũng không quá đáng!”
-Sở Ly bình thản nhìn hắn:
-“Hiện giờ, người nắm quyền là ai?”
-Là Nhiếp Chính Vương.
-“Quyền lực của Nhiếp Chính Vương là ai ban cho?”
-Là nàng.
-Nàng từ tay Sở Hoàng đoạt lấy hoàng vị.
-Sau đó giả chết thoát thân, lại đem hoàng quyền giao cho Sở Đệ Trì.
-“Đại ca, huynh nói xem, nếu Nhiếp Chính Vương biết huynh dám nhằm vào ta, rốt cuộc người chết sẽ là ai?”
-“Ngươi...”
-Đồng tử Sở Uyên Trì chợt co rút.
-Nàng và Nhiếp Chính Vương cấu kết làm gian!
-Một kẻ ly miêu tráo thái tử, một kẻ mưu đoạt hoàng quyền!
-“Các ngươi...”
-Đến lúc này mới biết mọi chuyện thì đã quá muộn.
-Đại Sở hiện nay, từ lâu đã không còn là thiên hạ của Sở Hoàng.
-Là Sở Đệ Trì định đoạt!
-Sở Uyên Trì thật đúng là mù mắt.
-Bao nhiêu năm qua, hắn không nhìn thấu lớp ngụy trang nữ phẫn nam trang của nàng, càng không ngờ từ nhỏ đến lớn, vị “Cửu đệ” ham chơi, hiếu động, không tranh không đoạt ấy, lại có tâm cơ sâu đến vậy, bày ra một ván cờ lớn như thế, cuối cùng trở thành người thắng sau cùng.
-Hắn từng nghĩ mình có thể thua Tam đệ giỏi ngụy trang.
-Cũng từng nghĩ sẽ thua Thất đệ có mẫu tộc quyền thế hiển hách.
-Nhưng nằm mơ hắn cũng không ngờ, bản thân lại thua vị Cửu đệ cá mặn vô dụng nhất!
-Hắn không cam lòng!
-Hắn nuốt không trôi cơn tức này!
-Bốn mắt nhìn nhau.
-Nàng ung dung mà ngạo nghễ, khí định thần nhàn.
-So với sự không cam tâm và kinh hãi của hắn, chỉ riêng khí thế trầm ổn ấy, Sở Ly đã hơn hắn một bậc.
-Hoàng thúc từng nói, khi đàm phán với người khác, cãi vã đôi co là hạ sách, chế ước lẫn nhau là trung sách, còn đấu trí về tâm lý mới là thượng sách.
-Đàm phán, nói cho cùng chính là cuộc đấu tâm lý.
-So xem ai trầm được khí hơn.
-Kẻ nào mất bình tĩnh trước, kẻ đó là người thua.
-Những lời nàng vừa nói đều là giả.
-Tội khi quân là thật.
-Nữ phẫn nam trang là thật.
-Liên lụy cả Ôn gia cũng là thật.
-Thế nhưng Sở Uyên Trì dường như thật sự cho rằng Nhiếp Chính Vương sẽ đứng về phía nàng.
-Xem ra...
-Nàng thắng rồi.
-“Đại ca, ăn ngon, uống ngon. Ta còn có việc, xin cáo từ trước.”
-Sở Ly nâng chén trà, khẽ chạm vào chén trà bên tay hắn, uống cạn rồi thong dong rời đi.
-Trong đôi mắt mỏi mệt của Sở Uyên Trì tràn ngập phẫn nộ, không cam lòng cùng kinh hãi.
-Ngông cuồng!
-Quá ngông cuồng!
-Nàng lại dám dùng giọng điệu như vậy để nói chuyện với hắn!
-Nhưng hiện giờ Nhiếp Chính Vương nắm giữ triều chính, nàng lại cùng Nhiếp Chính Vương đồng mưu hoàng quyền. Nếu hắn dám nhằm vào Sở Ly, Nhiếp Chính Vương nhất định sẽ không tha cho hắn.
-Hắn nào còn dám công khai chuyện Sở Ly vẫn còn sống, hơn nữa còn là một nữ tử?
-Hắn không dám đánh cược. Ẩn bớt</p>
+            <p>Chương 188: Nàng cùng Nhiếp Chính Vương cấu kết làm gian</p>
+<p>Là nàng!</p>
+<p>Trong nháy mắt, hắn hiểu ra điều gì đó, lập tức cất bước đi thẳng về phía trà lâu.</p>
+<p>Độc Nhãn Long chắn ngay trước cửa:</p>
+<p>“Ngươi muốn làm c...”</p>
+<p>Ưm!</p>
+<p>Hắn bị một chưởng đẩy bật sang bên.</p>
+<p>Sở Uyên Trì đi thẳng lên lầu hai, mạnh tay đẩy tung cửa phòng bao. Chỉ thấy nữ tử đang nâng một chén trà, uể oải xoay người lại, nâng chén về phía hắn.</p>
+<p>Kính hắn.</p>
+<p>Nàng nhấp một ngụm trà, hương vị thơm ngát khiến khóe mày khẽ nhướng.</p>
+<p>Trà không tệ.</p>
+<p>Nơi Giang Nam này, quả thực rất thích hợp để dưỡng lão, làm một con cá mặn an nhàn.</p>
+<p>“Sở Ly! Quả nhiên là ngươi!”</p>
+<p>Lại là một nữ nhân, còn bắt cóc cả nhi tử của hắn.</p>
+<p>“Có chuyện gì thì cứ nhằm vào ta, đừng hại nhi tử ta, nó mới chỉ bốn tuổi!”</p>
+<p>Sở Ly khẽ chậc một tiếng, nhổ lá trà đắng trong miệng, đầu lưỡi nhẹ cắn vị chát còn sót lại.</p>
+<p>“Đại ca nói vậy, sao ta nghe không hiểu?”</p>
+<p>“Con người ta trước nay yêu ghét phân minh, người không phạm ta, ta không phạm người. Đại ca nói như vậy, chẳng lẽ đã làm chuyện gì có lỗi với ta sao?”</p>
+<p>Nàng cố ý tỏ vẻ kinh ngạc.</p>
+<p>Có vài lời tuy không nói trắng ra, nhưng trong lòng cả hai đều hiểu rõ.</p>
+<p>Nàng cố ý mang Sở Hoằng Diễm đi.</p>
+<p>Đó là sự thị uy, cũng là sự báo phục của nàng.</p>
+<p>Nếu còn có lần sau, e rằng nàng sẽ không chỉ đơn giản là mang Sở Hoằng Diễm đi nữa.</p>
+<p>Ánh mắt Sở Uyên Trì trầm xuống, sâu không thấy đáy.</p>
+<p>Nàng đã lôi Trương lão Tứ ra, lần theo đầu mối mà tìm đến tận hắn.</p>
+<p>Xem ra cũng có chút bản lĩnh.</p>
+<p>Khi hàn ý trong mắt dâng đến cực điểm, nó bỗng chốc tan biến, hóa thành một nụ cười ôn hòa. Hắn kéo ghế ngồi xuống.</p>
+<p>“Cửu đệ chẳng phải đã chết rồi sao? Thế nào lại biến thành Cửu muội? Chuyện này phụ hoàng biết chứ?”</p>
+<p>Đây chính là tội khi quân.</p>
+<p>Cả Ôn gia cũng đừng hòng thoát.</p>
+<p>Khóe môi hắn cong lên:</p>
+<p>“Không biết nếu phụ hoàng biết được, sẽ có phản ứng thế nào. Tân đế do chính người khâm điểm, vậy mà lại là một nữ tử.”</p>
+<p>Nghĩ đến thôi, hắn cũng có vài phần mong chờ.</p>
+<p>Dựa vào chuyện này khống chế Ôn gia, trở về Đế Đô.</p>
+<p>Đúng là một quân cờ tự đưa đến tận cửa.</p>
+<p>Sở Ly mỉm cười ôn hòa, nhấp thêm hai ngụm trà rồi nói:</p>
+<p>“Phụ hoàng sớm đã biết rồi. Nếu không, ta nào dám đường đường chính chính lộ diện như vậy?”</p>
+<p>Sở Uyên Trì nhíu mày:</p>
+<p>“Không thể nào!”</p>
+<p>Nếu phụ hoàng đã biết, tuyệt đối không thể truyền ngôi cho nàng.</p>
+<p>Nàng đang lừa hắn!</p>
+<p>“Ngươi lợi dụng trận hỏa hoạn để giả chết thoát thân, lại chậm chạp không chịu trở về Đế Đô. Xem ra, so với hoàng vị, tự do mới là thứ ngươi yêu thích nhất.”</p>
+<p>Chỉ cần hắn công khai việc này, là có thể kéo Sở Ly, Ôn phi cùng toàn bộ Ôn gia xuống nước.</p>
+<p>Sở Ly bước đến trước mặt hắn.</p>
+<p>“Đại ca, hôm nay ta dám đứng trước mặt huynh, dám gặp Sở Hoằng Diễm, huynh đoán xem, ta là đến cảnh cáo huynh, hay ngu xuẩn đến mức tự đến chịu chết?”</p>
+<p>Nàng cúi người, hơi thở lạnh lẽo phả bên tai hắn:</p>
+<p>“Rốt cuộc ai mới là kẻ ngu?”</p>
+<p>Sở Uyên Trì nhìn thẳng vào mắt nàng.</p>
+<p>“Ngươi...”</p>
+<p>Không thể nào!</p>
+<p>Nàng nữ phẫn nam trang, ngụy trang suốt mười sáu năm.</p>
+<p>Tội danh lớn như vậy, đủ để liên lụy cả Ôn gia.</p>
+<p>Chắc chắn nàng đang cố giữ bình tĩnh, muốn lừa hắn!</p>
+<p>“Sở Ly! Ôn gia dùng nữ anh giả mạo hoàng tử, ly miêu tráo thái tử, lấy giả loạn chân, đó là tội khi quân! Dẫu tru di cả nhà Ôn gia cũng không quá đáng!”</p>
+<p>Sở Ly bình thản nhìn hắn:</p>
+<p>“Hiện giờ, người nắm quyền là ai?”</p>
+<p>Là Nhiếp Chính Vương.</p>
+<p>“Quyền lực của Nhiếp Chính Vương là ai ban cho?”</p>
+<p>Là nàng.</p>
+<p>Nàng từ tay Sở Hoàng đoạt lấy hoàng vị.</p>
+<p>Sau đó giả chết thoát thân, lại đem hoàng quyền giao cho Sở Đệ Trì.</p>
+<p>“Đại ca, huynh nói xem, nếu Nhiếp Chính Vương biết huynh dám nhằm vào ta, rốt cuộc người chết sẽ là ai?”</p>
+<p>“Ngươi...”</p>
+<p>Đồng tử Sở Uyên Trì chợt co rút.</p>
+<p>Nàng và Nhiếp Chính Vương cấu kết làm gian!</p>
+<p>Một kẻ ly miêu tráo thái tử, một kẻ mưu đoạt hoàng quyền!</p>
+<p>“Các ngươi...”</p>
+<p>Đến lúc này mới biết mọi chuyện thì đã quá muộn.</p>
+<p>Đại Sở hiện nay, từ lâu đã không còn là thiên hạ của Sở Hoàng.</p>
+<p>Là Sở Đệ Trì định đoạt!</p>
+<p>Sở Uyên Trì thật đúng là mù mắt.</p>
+<p>Bao nhiêu năm qua, hắn không nhìn thấu lớp ngụy trang nữ phẫn nam trang của nàng, càng không ngờ từ nhỏ đến lớn, vị “Cửu đệ” ham chơi, hiếu động, không tranh không đoạt ấy, lại có tâm cơ sâu đến vậy, bày ra một ván cờ lớn như thế, cuối cùng trở thành người thắng sau cùng.</p>
+<p>Hắn từng nghĩ mình có thể thua Tam đệ giỏi ngụy trang.</p>
+<p>Cũng từng nghĩ sẽ thua Thất đệ có mẫu tộc quyền thế hiển hách.</p>
+<p>Nhưng nằm mơ hắn cũng không ngờ, bản thân lại thua vị Cửu đệ cá mặn vô dụng nhất!</p>
+<p>Hắn không cam lòng!</p>
+<p>Hắn nuốt không trôi cơn tức này!</p>
+<p>Bốn mắt nhìn nhau.</p>
+<p>Nàng ung dung mà ngạo nghễ, khí định thần nhàn.</p>
+<p>So với sự không cam tâm và kinh hãi của hắn, chỉ riêng khí thế trầm ổn ấy, Sở Ly đã hơn hắn một bậc.</p>
+<p>Hoàng thúc từng nói, khi đàm phán với người khác, cãi vã đôi co là hạ sách, chế ước lẫn nhau là trung sách, còn đấu trí về tâm lý mới là thượng sách.</p>
+<p>Đàm phán, nói cho cùng chính là cuộc đấu tâm lý.</p>
+<p>So xem ai trầm được khí hơn.</p>
+<p>Kẻ nào mất bình tĩnh trước, kẻ đó là người thua.</p>
+<p>Những lời nàng vừa nói đều là giả.</p>
+<p>Tội khi quân là thật.</p>
+<p>Nữ phẫn nam trang là thật.</p>
+<p>Liên lụy cả Ôn gia cũng là thật.</p>
+<p>Thế nhưng Sở Uyên Trì dường như thật sự cho rằng Nhiếp Chính Vương sẽ đứng về phía nàng.</p>
+<p>Xem ra...</p>
+<p>Nàng thắng rồi.</p>
+<p>“Đại ca, ăn ngon, uống ngon. Ta còn có việc, xin cáo từ trước.”</p>
+<p>Sở Ly nâng chén trà, khẽ chạm vào chén trà bên tay hắn, uống cạn rồi thong dong rời đi.</p>
+<p>Trong đôi mắt mỏi mệt của Sở Uyên Trì tràn ngập phẫn nộ, không cam lòng cùng kinh hãi.</p>
+<p>Ngông cuồng!</p>
+<p>Quá ngông cuồng!</p>
+<p>Nàng lại dám dùng giọng điệu như vậy để nói chuyện với hắn!</p>
+<p>Nhưng hiện giờ Nhiếp Chính Vương nắm giữ triều chính, nàng lại cùng Nhiếp Chính Vương đồng mưu hoàng quyền. Nếu hắn dám nhằm vào Sở Ly, Nhiếp Chính Vương nhất định sẽ không tha cho hắn.</p>
+<p>Hắn nào còn dám công khai chuyện Sở Ly vẫn còn sống, hơn nữa còn là một nữ tử?</p>
+<p>Hắn không dám đánh cược. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_187.html" class="btn">‹ Trước</a>
             <a href="chuong_189.html" class="btn">Sau ›</a>
         </div>
@@ -228,15 +236,11 @@ Hắn không dám đánh cược. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -248,11 +252,11 @@ Hắn không dám đánh cược. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

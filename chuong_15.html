@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 15</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,211 +62,220 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 15</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_14.html" class="btn">‹ Trước</a>
             <a href="chuong_16.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 15: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 15: [Phú dưỡng bản thân, bần dưỡng nhi tử]
-“Tiền niên, có một thuộc hạ cố ý man trá bổn vương. Hiện nay, cỏ trên phần mộ hắn e rằng đã cao đến hai thước.”
-Thanh âm lãnh bạc vang lên giữa đêm tĩnh mịch, tựa như một lưỡi đao sắc bén đang từng chút rạch nát da thịt, khiến máu tươi rỉ ra.
-“Ngươi có biết, lừa gạt bổn vương sẽ có kết cục gì không?”
-Song Nhi sợ đến mức quỳ sụp xuống đất:
-“ Nô tỳ chỉ nguyện hầu hạ điện hạ, trung tâm bất nhị, tuyệt vô lòng riêng, cầu điện hạ minh giám!”
-Sở Đệ Trì từ trên cao nhìn xuống nàng:
-“Vậy hãy để bổn vương xem thử, ngươi trung thành đến mức nào.”
-“Người đâu!”
-Ngoài cửa, bốn thị vệ bước nhanh vào:
-“Điện hạ.”
-Nam nhân lười biếng tựa người trên ghế Thái Sư:
-“Đêm đó ngươi hầu hạ bổn vương rất vừa ý. Chi bằng để bổn vương xem thử bản lĩnh hầu hạ nam nhân của ngươi.”
-Đồng tử Song Nhi co rút mãnh liệt.
-Ngay giây sau, nàng đã bị bốn thị vệ lôi ra giữa sân, cưỡng ép lột bỏ y phục.
-“Điện hạ tha mạng!”
-“Điện hạ! Nô tỳ sống là người của ngài, chết là quỷ của ngài! Cầu điện hạ khai ân... A! Điện hạ!”
-Hoàng cung
-Chiêu Lan điện
-Đêm ấy, Sở Ly ngủ không yên.
-Trong mộng luôn hiện lên cảnh tượng nàng bị hất khỏi lưng ngựa, rồi con chiến mã giương cao vó sắt, hung hăng đạp xuống.
-Nếu thật sự đạp trúng...
-Với sức nặng mấy trăm cân ấy, nàng nào còn mạng sống?
-Nhiếp Chính Vương cứu nàng sao?
-Nhưng nếu nàng bị ngựa giẫm chết, chẳng phải đúng ý hắn? Cớ gì hắn lại tha cho nàng?
-“Chủ tử, đến giờ uống thuốc rồi.”
-Cẩu Bát bưng chén thuốc đen đặc, đắng ngắt bước vào.
-Sở Ly day nhẹ mi tâm, thần sắc có phần hoảng hốt.
-“Giờ nào rồi?”
-“Đã cuối giờ Thìn. Chừng hai khắc nữa Hoàng thượng sẽ hạ triều.”
-“À đúng rồi, sáng nay Hân phi nương nương sai người mang tới không ít dược liệu thượng hạng để bồi bổ cho ngài.”
-Mấy ngày nay Sở Ly bị thương, Sở Hoàng lo Ôn phi ưu tư quá độ nên ngày nào cũng ở lại Chiêu Lan điện.
-Điều đó khiến tử địch của Ôn phi là Hân phi tức đến nghiến răng.
-“Con hồ ly tinh ấy!”
-“Lần trước Cửu hoàng tử bị đánh, Hoàng thượng đã ở cạnh nàng năm ngày liền. Nay Cửu hoàng tử ngã ngựa, Hoàng thượng lại tiếp tục bầu bạn với nàng.”
-“Theo bổn cung thấy, đây rõ ràng là thủ đoạn tranh sủng!”
-Bán nhi cầu vinh?
-Ai mà chẳng có hoàng tử?
-“Người đâu! Đè Bát hoàng tử xuống, đánh gãy chân nó cho bổn cung!”
-Sở Ngạo Thiên: “???”
-Không được!
-Chuyện này tuyệt đối không được!
-“Mẫu phi! Nhi thần là thân sinh cốt nhục của người mà!”
-“Bần dưỡng nhi tử, phú dưỡng bản thân. Bổn cung tuyệt không để Ôn phi kia đắc ý vênh váo!”
-Sở Ngạo Thiên lập tức nịnh nọt:
-“Mẫu phi anh minh thần võ, liếc mắt đã nhìn thấu thủ đoạn của Ôn phi. Chỉ cần Cửu đệ sớm bình phục, âm mưu của nàng ta tự khắc phá sản.”
-Hân phi cảm thấy rất có lý.
-Lập tức sai người chọn những dược liệu tốt nhất đưa tới cho Cửu hoàng tử dưỡng thương.
-Cẩu Bát thấp giọng hỏi:
-“Chủ tử, số dược liệu Hân phi nương nương đưa tới, có cần mang đến Thái Y viện kiểm tra kỹ một lượt không?”
-“Không cần.”
-Gan Hân phi có lớn đến đâu cũng không dám công khai hạ độc nàng.
-Huống hồ nhiều năm nay, Hân phi và mẫu phi minh tranh ám đấu, chiêu số tầng tầng lớp lớp.
-Bước tiếp theo bà ta định đi quân gì, Sở Ly chỉ cần bấm ngón tay cũng đoán ra được.
-Đúng lúc ấy, ngoài cửa vang lên tiếng bẩm báo của một tiểu thái giám:
-“Chủ tử, Trọng Phong đại nhân cầu kiến.”
-Ánh mắt Sở Ly trầm xuống.
-Lại đến làm gì?
-Phàm dính líu đến Nhiếp Chính Vương phủ thì tuyệt đối không có chuyện tốt.
-“Cho hắn vào.”
-“Vâng.”
-Rất nhanh, Trọng Phong bước vào:
-“Tham kiến Cửu hoàng tử.”
-Hắn đưa mắt nhìn quanh điện:
-“Không biết Song Nhi cô nương có trở về chưa?”
-Sở Ly lập tức nhận ra có điều bất thường:
-“Song Nhi theo hoàng thúc tới Nhiếp Chính Vương phủ, sao có thể hồi cung?”
-Trọng Phong làm ra vẻ khó xử:
-“Tối qua khi sắp xếp chỗ ở, có hạ nhân lắm miệng nói vài câu với Song Nhi. Nàng để lại chiếc khăn tay này rồi khóc chạy khỏi vương phủ. Đến nay vẫn chưa có tung tích.”
-Nói rồi, hắn lấy từ trong tay áo ra một chiếc khăn lụa dính máu.
-Vết máu đỏ sẫm đã khô, thấm đẫm cả đóa hải đường thêu tinh xảo phía trên.
-Đồng tử Sở Ly co lại.
-Nàng lao tới, chộp lấy chiếc khăn.
-Đúng là của Song Nhi!
-“Song Nhi cô nương hiện đã là người của Nhiếp Chính Vương phủ. Nếu Cửu hoàng tử gặp nàng, mong ngài khuyên nàng sớm quay về.”
-“Vương gia đang rất lo lắng cho nàng.”
-“Thuộc hạ cáo lui.”
-Trọng Phong chắp tay hành lễ rồi rời khỏi Chiêu Lan điện.
-Hai mắt Sở Ly đỏ ngầu.
-Song Nhi đã hầu hạ nàng suốt chín năm!
-Sở Đệ Trì mang nàng ấy đi, giờ lại còn giả nhân giả nghĩa đến báo tin.
-Cho dù biết rõ là hắn gây ra, nàng cũng chẳng làm gì được.
-Không thể lay động hắn dù chỉ một chút.
-Sở Đệ Trì!
-Vì sao?
-Rốt cuộc nàng đã làm gì khiến hắn hận hoàng thất đến vậy, hận nàng đến vậy?
-Hoàng gia Học uyển
-Khương Thái phó đang sắp xếp thư tịch.
-Ông đích thân phủi bụi từng quyển sách, thu dọn ngay ngắn.
-Thấy người tới, ông hỏi:
-“Cửu hoàng tử, hôm nay là ngày nghỉ học. Ngài tới Học uyển làm gì?”
-Sở Ly đã nghỉ học gần nửa tháng.
-Nàng vốn tưởng chỉ cần trốn trong Chiêu Lan điện là có thể tránh được mọi phiền toái.
-Nhưng Sở Đệ Trì căn bản không có ý định buông tha nàng.
-Đại hoàng tử, Đại hoàng tử phi, rồi Song Nhi...
-Không biết còn bao nhiêu người nữa sẽ chết dưới tay hắn.
-Hắn chính là một đao phủ tâm ngoan thủ lạt.
-“Thái phó cứ bận việc của mình. Ta chỉ đến ngồi một lát.”
-Khương Thái phó vuốt chòm râu bạc:
-“Vậy thì nhân tiện tiếp tục học thuộc 《Quần Thư Trị Yếu》 đi.”
-“Cửu hoàng tử, ngài không thể trì hoãn mãi được. Khi bằng tuổi ngài, bảy vị hoàng huynh của ngài đều đã hoàn thành chương trình học. Chỉ còn ngài và Bát hoàng tử...”
-“...”
-Sở Ly tới Học uyển là để ngửi mùi bút mực, mong tĩnh tâm đôi chút.
-“Nhưng ngài đang bị thương, ta sẽ thúc giục Bát hoàng tử trước, sau đó mới tới ngài.”
-“... Đa tạ Thái phó.”
-“Cửu hoàng tử hồ đồ rồi sao? Thần họ Khương.”
-Là Khương Thái phó.
-Sở Ly: “...”
-Bát hoàng huynh chỉ lớn hơn nàng có mười mấy ngày.
-Thúc hắn khác gì thúc nàng.
-Đọc sách cũng giống Nhiếp Chính Vương phủ — đều là những thứ khiến Sở Ly đau đầu và kháng cự vô cùng.
-Ngồi được khoảng hai khắc.
-Một thiếu niên áo lam, ôn nhuận như ngọc, vội vã chạy vào.
-“Cửu hoàng tử!”
-Sở Ly quay đầu.
-Thiếu niên chừng mười bảy mười tám tuổi, dung mạo thanh tú, khí chất ôn hòa, bên hông đeo ngọc bội và hương nang.
-Đó chính là người bạn thân nhất của nàng — Tần Mục Vũ, tiểu công tử của Tần gia.
-Tần gia xuất thân võ tướng.
-Từ năm mười bốn tuổi, Tần Mục Vũ đã theo phụ huynh lập công nơi chiến trường.
-Hiện nay đã mang chức quan Chính lục phẩm.
-Chạy tới gần, hắn mới hạ thấp giọng:
-“A Ly, nghe thái giám nói ngươi tìm ta. Ta vừa nhận được tin liền chạy tới ngay.”
-Sở Ly kéo hắn sang một bên:
-“Đại hoàng huynh và Đại hoàng tẩu đã bị sơn phỉ khống chế hai ngày. Ngươi có biết tình hình cụ thể không?”
-“Đương nhiên biết.”
-Chuyện này đã kinh động không ít võ tướng.
-Ai nấy đều tìm cách vừa cứu được người, vừa dẹp yên sơn phỉ.
-Nhưng trong tay đám phỉ có con tin, khiến mọi việc vô cùng khó khăn.
-“Sơn phỉ đang chiếm cứ ở Văn Xuyên sơn. Núi ấy địa thế hiểm trở, cực khó tiến vào.”
-“Hôm qua Lục hoàng tử đã thử dùng biện pháp chiêu an, nhưng đám thô phỉ ấy căn bản không chịu quy thuận.”
-Sở Ly khẽ siết đầu ngón tay:
-“Văn Xuyên sơn?”
-“Lần trước tiên sinh khảo nghiệm kỵ xạ, chẳng phải chúng ta từng đi ngang nơi đó sao?”
-“Ta biết trong khu rừng rậm có một con đường nhỏ dẫn thẳng lên núi.”
-Tần Mục Vũ mừng rỡ:
-“Thật sao?”
-Đương nhiên là thật.
-Từ nhỏ Sở Ly đã thích ăn chơi hưởng lạc.
-Nàng không tranh quyền đoạt vị, không can dự triều chính, nên chẳng ai rảnh hơi đi nhằm vào một “phế vật hoàng tử”.
-Suốt ngày rong chơi, đùa chim, săn bắn, trèo cây, lội nước.
-Khắp kinh thành và vùng phụ cận đều đã bị nàng khám phá gần hết.
-Sở Ly lập tức lấy giấy bút.
-“Mục Vũ, ngươi nhìn đây.”
-Nàng nhanh chóng hạ bút.
-Tần Mục Vũ nghiêm túc ghé sát tới xem.
-Hai người chăm chú bàn bạc, hoàn toàn không phát hiện bên ngoài hành lang, Nhiếp Chính Vương Sở Đệ Trì đang đứng lặng nhìn họ. Ẩn bớt</p>
+            <p>Chương 15: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 15: [Phú dưỡng bản thân, bần dưỡng nhi tử]</p>
+<p>“Tiền niên, có một thuộc hạ cố ý man trá bổn vương. Hiện nay, cỏ trên phần mộ hắn e rằng đã cao đến hai thước.”</p>
+<p>Thanh âm lãnh bạc vang lên giữa đêm tĩnh mịch, tựa như một lưỡi đao sắc bén đang từng chút rạch nát da thịt, khiến máu tươi rỉ ra.</p>
+<p>“Ngươi có biết, lừa gạt bổn vương sẽ có kết cục gì không?”</p>
+<p>Song Nhi sợ đến mức quỳ sụp xuống đất:</p>
+<p>“ Nô tỳ chỉ nguyện hầu hạ điện hạ, trung tâm bất nhị, tuyệt vô lòng riêng, cầu điện hạ minh giám!”</p>
+<p>Sở Đệ Trì từ trên cao nhìn xuống nàng:</p>
+<p>“Vậy hãy để bổn vương xem thử, ngươi trung thành đến mức nào.”</p>
+<p>“Người đâu!”</p>
+<p>Ngoài cửa, bốn thị vệ bước nhanh vào:</p>
+<p>“Điện hạ.”</p>
+<p>Nam nhân lười biếng tựa người trên ghế Thái Sư:</p>
+<p>“Đêm đó ngươi hầu hạ bổn vương rất vừa ý. Chi bằng để bổn vương xem thử bản lĩnh hầu hạ nam nhân của ngươi.”</p>
+<p>Đồng tử Song Nhi co rút mãnh liệt.</p>
+<p>Ngay giây sau, nàng đã bị bốn thị vệ lôi ra giữa sân, cưỡng ép lột bỏ y phục.</p>
+<p>“Điện hạ tha mạng!”</p>
+<p>“Điện hạ! Nô tỳ sống là người của ngài, chết là quỷ của ngài! Cầu điện hạ khai ân... A! Điện hạ!”</p>
+<p>Hoàng cung</p>
+<p>Chiêu Lan điện</p>
+<p>Đêm ấy, Sở Ly ngủ không yên.</p>
+<p>Trong mộng luôn hiện lên cảnh tượng nàng bị hất khỏi lưng ngựa, rồi con chiến mã giương cao vó sắt, hung hăng đạp xuống.</p>
+<p>Nếu thật sự đạp trúng...</p>
+<p>Với sức nặng mấy trăm cân ấy, nàng nào còn mạng sống?</p>
+<p>Nhiếp Chính Vương cứu nàng sao?</p>
+<p>Nhưng nếu nàng bị ngựa giẫm chết, chẳng phải đúng ý hắn? Cớ gì hắn lại tha cho nàng?</p>
+<p>“Chủ tử, đến giờ uống thuốc rồi.”</p>
+<p>Cẩu Bát bưng chén thuốc đen đặc, đắng ngắt bước vào.</p>
+<p>Sở Ly day nhẹ mi tâm, thần sắc có phần hoảng hốt.</p>
+<p>“Giờ nào rồi?”</p>
+<p>“Đã cuối giờ Thìn. Chừng hai khắc nữa Hoàng thượng sẽ hạ triều.”</p>
+<p>“À đúng rồi, sáng nay Hân phi nương nương sai người mang tới không ít dược liệu thượng hạng để bồi bổ cho ngài.”</p>
+<p>Mấy ngày nay Sở Ly bị thương, Sở Hoàng lo Ôn phi ưu tư quá độ nên ngày nào cũng ở lại Chiêu Lan điện.</p>
+<p>Điều đó khiến tử địch của Ôn phi là Hân phi tức đến nghiến răng.</p>
+<p>“Con hồ ly tinh ấy!”</p>
+<p>“Lần trước Cửu hoàng tử bị đánh, Hoàng thượng đã ở cạnh nàng năm ngày liền. Nay Cửu hoàng tử ngã ngựa, Hoàng thượng lại tiếp tục bầu bạn với nàng.”</p>
+<p>“Theo bổn cung thấy, đây rõ ràng là thủ đoạn tranh sủng!”</p>
+<p>Bán nhi cầu vinh?</p>
+<p>Ai mà chẳng có hoàng tử?</p>
+<p>“Người đâu! Đè Bát hoàng tử xuống, đánh gãy chân nó cho bổn cung!”</p>
+<p>Sở Ngạo Thiên: “???”</p>
+<p>Không được!</p>
+<p>Chuyện này tuyệt đối không được!</p>
+<p>“Mẫu phi! Nhi thần là thân sinh cốt nhục của người mà!”</p>
+<p>“Bần dưỡng nhi tử, phú dưỡng bản thân. Bổn cung tuyệt không để Ôn phi kia đắc ý vênh váo!”</p>
+<p>Sở Ngạo Thiên lập tức nịnh nọt:</p>
+<p>“Mẫu phi anh minh thần võ, liếc mắt đã nhìn thấu thủ đoạn của Ôn phi. Chỉ cần Cửu đệ sớm bình phục, âm mưu của nàng ta tự khắc phá sản.”</p>
+<p>Hân phi cảm thấy rất có lý.</p>
+<p>Lập tức sai người chọn những dược liệu tốt nhất đưa tới cho Cửu hoàng tử dưỡng thương.</p>
+<p>Cẩu Bát thấp giọng hỏi:</p>
+<p>“Chủ tử, số dược liệu Hân phi nương nương đưa tới, có cần mang đến Thái Y viện kiểm tra kỹ một lượt không?”</p>
+<p>“Không cần.”</p>
+<p>Gan Hân phi có lớn đến đâu cũng không dám công khai hạ độc nàng.</p>
+<p>Huống hồ nhiều năm nay, Hân phi và mẫu phi minh tranh ám đấu, chiêu số tầng tầng lớp lớp.</p>
+<p>Bước tiếp theo bà ta định đi quân gì, Sở Ly chỉ cần bấm ngón tay cũng đoán ra được.</p>
+<p>Đúng lúc ấy, ngoài cửa vang lên tiếng bẩm báo của một tiểu thái giám:</p>
+<p>“Chủ tử, Trọng Phong đại nhân cầu kiến.”</p>
+<p>Ánh mắt Sở Ly trầm xuống.</p>
+<p>Lại đến làm gì?</p>
+<p>Phàm dính líu đến Nhiếp Chính Vương phủ thì tuyệt đối không có chuyện tốt.</p>
+<p>“Cho hắn vào.”</p>
+<p>“Vâng.”</p>
+<p>Rất nhanh, Trọng Phong bước vào:</p>
+<p>“Tham kiến Cửu hoàng tử.”</p>
+<p>Hắn đưa mắt nhìn quanh điện:</p>
+<p>“Không biết Song Nhi cô nương có trở về chưa?”</p>
+<p>Sở Ly lập tức nhận ra có điều bất thường:</p>
+<p>“Song Nhi theo hoàng thúc tới Nhiếp Chính Vương phủ, sao có thể hồi cung?”</p>
+<p>Trọng Phong làm ra vẻ khó xử:</p>
+<p>“Tối qua khi sắp xếp chỗ ở, có hạ nhân lắm miệng nói vài câu với Song Nhi. Nàng để lại chiếc khăn tay này rồi khóc chạy khỏi vương phủ. Đến nay vẫn chưa có tung tích.”</p>
+<p>Nói rồi, hắn lấy từ trong tay áo ra một chiếc khăn lụa dính máu.</p>
+<p>Vết máu đỏ sẫm đã khô, thấm đẫm cả đóa hải đường thêu tinh xảo phía trên.</p>
+<p>Đồng tử Sở Ly co lại.</p>
+<p>Nàng lao tới, chộp lấy chiếc khăn.</p>
+<p>Đúng là của Song Nhi!</p>
+<p>“Song Nhi cô nương hiện đã là người của Nhiếp Chính Vương phủ. Nếu Cửu hoàng tử gặp nàng, mong ngài khuyên nàng sớm quay về.”</p>
+<p>“Vương gia đang rất lo lắng cho nàng.”</p>
+<p>“Thuộc hạ cáo lui.”</p>
+<p>Trọng Phong chắp tay hành lễ rồi rời khỏi Chiêu Lan điện.</p>
+<p>Hai mắt Sở Ly đỏ ngầu.</p>
+<p>Song Nhi đã hầu hạ nàng suốt chín năm!</p>
+<p>Sở Đệ Trì mang nàng ấy đi, giờ lại còn giả nhân giả nghĩa đến báo tin.</p>
+<p>Cho dù biết rõ là hắn gây ra, nàng cũng chẳng làm gì được.</p>
+<p>Không thể lay động hắn dù chỉ một chút.</p>
+<p>Sở Đệ Trì!</p>
+<p>Vì sao?</p>
+<p>Rốt cuộc nàng đã làm gì khiến hắn hận hoàng thất đến vậy, hận nàng đến vậy?</p>
+<p>Hoàng gia Học uyển</p>
+<p>Khương Thái phó đang sắp xếp thư tịch.</p>
+<p>Ông đích thân phủi bụi từng quyển sách, thu dọn ngay ngắn.</p>
+<p>Thấy người tới, ông hỏi:</p>
+<p>“Cửu hoàng tử, hôm nay là ngày nghỉ học. Ngài tới Học uyển làm gì?”</p>
+<p>Sở Ly đã nghỉ học gần nửa tháng.</p>
+<p>Nàng vốn tưởng chỉ cần trốn trong Chiêu Lan điện là có thể tránh được mọi phiền toái.</p>
+<p>Nhưng Sở Đệ Trì căn bản không có ý định buông tha nàng.</p>
+<p>Đại hoàng tử, Đại hoàng tử phi, rồi Song Nhi...</p>
+<p>Không biết còn bao nhiêu người nữa sẽ chết dưới tay hắn.</p>
+<p>Hắn chính là một đao phủ tâm ngoan thủ lạt.</p>
+<p>“Thái phó cứ bận việc của mình. Ta chỉ đến ngồi một lát.”</p>
+<p>Khương Thái phó vuốt chòm râu bạc:</p>
+<p>“Vậy thì nhân tiện tiếp tục học thuộc 《Quần Thư Trị Yếu》 đi.”</p>
+<p>“Cửu hoàng tử, ngài không thể trì hoãn mãi được. Khi bằng tuổi ngài, bảy vị hoàng huynh của ngài đều đã hoàn thành chương trình học. Chỉ còn ngài và Bát hoàng tử...”</p>
+<p>“...”</p>
+<p>Sở Ly tới Học uyển là để ngửi mùi bút mực, mong tĩnh tâm đôi chút.</p>
+<p>“Nhưng ngài đang bị thương, ta sẽ thúc giục Bát hoàng tử trước, sau đó mới tới ngài.”</p>
+<p>“... Đa tạ Thái phó.”</p>
+<p>“Cửu hoàng tử hồ đồ rồi sao? Thần họ Khương.”</p>
+<p>Là Khương Thái phó.</p>
+<p>Sở Ly: “...”</p>
+<p>Bát hoàng huynh chỉ lớn hơn nàng có mười mấy ngày.</p>
+<p>Thúc hắn khác gì thúc nàng.</p>
+<p>Đọc sách cũng giống Nhiếp Chính Vương phủ — đều là những thứ khiến Sở Ly đau đầu và kháng cự vô cùng.</p>
+<p>Ngồi được khoảng hai khắc.</p>
+<p>Một thiếu niên áo lam, ôn nhuận như ngọc, vội vã chạy vào.</p>
+<p>“Cửu hoàng tử!”</p>
+<p>Sở Ly quay đầu.</p>
+<p>Thiếu niên chừng mười bảy mười tám tuổi, dung mạo thanh tú, khí chất ôn hòa, bên hông đeo ngọc bội và hương nang.</p>
+<p>Đó chính là người bạn thân nhất của nàng — Tần Mục Vũ, tiểu công tử của Tần gia.</p>
+<p>Tần gia xuất thân võ tướng.</p>
+<p>Từ năm mười bốn tuổi, Tần Mục Vũ đã theo phụ huynh lập công nơi chiến trường.</p>
+<p>Hiện nay đã mang chức quan Chính lục phẩm.</p>
+<p>Chạy tới gần, hắn mới hạ thấp giọng:</p>
+<p>“A Ly, nghe thái giám nói ngươi tìm ta. Ta vừa nhận được tin liền chạy tới ngay.”</p>
+<p>Sở Ly kéo hắn sang một bên:</p>
+<p>“Đại hoàng huynh và Đại hoàng tẩu đã bị sơn phỉ khống chế hai ngày. Ngươi có biết tình hình cụ thể không?”</p>
+<p>“Đương nhiên biết.”</p>
+<p>Chuyện này đã kinh động không ít võ tướng.</p>
+<p>Ai nấy đều tìm cách vừa cứu được người, vừa dẹp yên sơn phỉ.</p>
+<p>Nhưng trong tay đám phỉ có con tin, khiến mọi việc vô cùng khó khăn.</p>
+<p>“Sơn phỉ đang chiếm cứ ở Văn Xuyên sơn. Núi ấy địa thế hiểm trở, cực khó tiến vào.”</p>
+<p>“Hôm qua Lục hoàng tử đã thử dùng biện pháp chiêu an, nhưng đám thô phỉ ấy căn bản không chịu quy thuận.”</p>
+<p>Sở Ly khẽ siết đầu ngón tay:</p>
+<p>“Văn Xuyên sơn?”</p>
+<p>“Lần trước tiên sinh khảo nghiệm kỵ xạ, chẳng phải chúng ta từng đi ngang nơi đó sao?”</p>
+<p>“Ta biết trong khu rừng rậm có một con đường nhỏ dẫn thẳng lên núi.”</p>
+<p>Tần Mục Vũ mừng rỡ:</p>
+<p>“Thật sao?”</p>
+<p>Đương nhiên là thật.</p>
+<p>Từ nhỏ Sở Ly đã thích ăn chơi hưởng lạc.</p>
+<p>Nàng không tranh quyền đoạt vị, không can dự triều chính, nên chẳng ai rảnh hơi đi nhằm vào một “phế vật hoàng tử”.</p>
+<p>Suốt ngày rong chơi, đùa chim, săn bắn, trèo cây, lội nước.</p>
+<p>Khắp kinh thành và vùng phụ cận đều đã bị nàng khám phá gần hết.</p>
+<p>Sở Ly lập tức lấy giấy bút.</p>
+<p>“Mục Vũ, ngươi nhìn đây.”</p>
+<p>Nàng nhanh chóng hạ bút.</p>
+<p>Tần Mục Vũ nghiêm túc ghé sát tới xem.</p>
+<p>Hai người chăm chú bàn bạc, hoàn toàn không phát hiện bên ngoài hành lang, Nhiếp Chính Vương Sở Đệ Trì đang đứng lặng nhìn họ. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_14.html" class="btn">‹ Trước</a>
             <a href="chuong_16.html" class="btn">Sau ›</a>
         </div>
@@ -275,15 +283,11 @@ Hai người chăm chú bàn bạc, hoàn toàn không phát hiện bên ngoài 
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -295,11 +299,11 @@ Hai người chăm chú bàn bạc, hoàn toàn không phát hiện bên ngoài 
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 32</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,174 +62,183 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 32</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_31.html" class="btn">‹ Trước</a>
             <a href="chuong_33.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 32: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 32: [Tên tiểu tử phản chủ này!]
-Từ khi vào thu, khu vực phía Bắc Đại Sở vì hạn hán mà suốt hơn năm tháng không mưa, vô số ruộng đồng khô cạn chết sạch, lương thực giảm mạnh.
-Không ít bách tính gặp thiên tai, vì mưu sinh mà buộc phải rời quê chạy nạn, tụ tập bên ngoài kinh thành phồn thịnh.
-Sở Hoàng biết tin, lập tức sai đại thần phát chẩn ngân và lương thảo đến cứu tế phương Bắc. Còn dân chạy nạn tụ về ngoài thành thì giao cho Nhiếp Chính Vương an trí.
-Sở Đệ Trì tự mình an bài nạn dân, sai y sư, phát vật tư, lại dựng cháo lều bên ngoài thành để phát cháo cứu đói.
-Ra khỏi thành.
-Đến nơi dân chạy nạn tụ tập.
-Không ít người thấy hắn liền cảm kích mà tiến lên:
-“Nhiếp Chính Vương thiên ân! Hoàng thượng thiên ân! Cứu chúng ta dân thường!”
-“Đa tạ Nhiếp Chính Vương…”
-“Ngài đúng là người tốt a!”
-Chỉ là, Sở Đệ Trì thần sắc âm trầm, cưỡi ngựa cao cao, khí chất lạnh lùng kiêu sát khiến người chỉ dám nhìn xa, không dám lại gần.
-Không ít người thấy có chút sợ hãi.
-Bạch Y công tử tiến lên cười nói:
-“Nhiếp Chính Vương vốn ít lời, xưa nay đã vậy. Hắn chính là vì quan tâm các ngươi nên mới đích thân tới đây.”
-Dân chạy nạn nghe vậy liền gật đầu.
-Đúng.
-Vị Nhiếp Chính Vương này thân phận tôn quý như vậy mà lại đích thân làm việc, thật sự là bậc thượng vị đáng kính.
-Chỗ lều cháo.
-Nạn dân xếp thành ba hàng, lần lượt bưng bát chờ phát.
-Tiêu Dạ Hành xắn tay áo, cầm muôi lớn tự tay múc cháo. Vừa thấy Sở Đệ Trì và Bạch Y công tử đến, hắn liếc cái đã thấy ngay sắc mặt như gan lợn của đối phương.
-“Ngươi làm gì vậy?”
-“Hoàng thượng sai ngươi đến phát cháo, dù không vui cũng đừng lộ ra mặt như thế. Hiện giờ ngươi không còn binh quyền, cũng không có chức thực, có được phát cháo là tốt lắm rồi.”
-Tiêu Dạ Hành đặt muôi sắt lớn vào tay Sở Đệ Trì.
-Nhìn dáng hắn mặt âm u, vốn là tay cầm kiếm giết địch, nay lại cầm muôi phát cháo, thật đúng là buồn cười.
-Quả thực nực cười.
-“Ngươi cũng có ngày hôm nay.”
-Tiêu Dạ Hành bật cười.
-Nhưng cười một lúc lại thấy sắc mặt hắn càng lúc càng âm trầm khác thường, liền thu lại:
-“Được rồi, đại trượng phu co được duỗi được. Gần đây Bộ Binh báo lại, Tứ hoàng tử, Lục hoàng tử, Thất hoàng tử đều từng dò hỏi về binh quyền Hắc Giáp Vệ. Ngươi nhân lúc này nghỉ ngơi cũng tốt.”
-Đừng có mặt như đưa đám nữa.
-Sở Đệ Trì lạnh lùng cầm muôi, bắt đầu múc cháo cho nạn dân.
-Một muôi—một bát.
-Một muôi—một bát.
-Động tác như huấn luyện quân doanh, làm nạn dân sợ đến run tay.
-Tiêu Dạ Hành thấy không ổn, nhìn Bạch Y công tử hỏi nhỏ:
-“Ai chọc hắn?”
-“Đừng nói nữa. Trên đường ra thành gặp tiểu cháu trai của hắn, bị bỏ lại một mình nên tức giận.”
-“Cửu hoàng tử?”
-“Không thì còn ai.”
-“Chỉ vì chuyện đó mà tức? Ta còn tưởng đại sự gì. Cửu hoàng tử với Tần Mục Vũ từ nhỏ lớn lên bên nhau, thân như huynh đệ, cái này cũng không tính là ‘nghiêng về ngoài’. Theo ta thấy, hắn mới là người ngoài.”
-Bạch Y công tử chỉ cười không đáp.
-Ai mà biết được.
-Tiêu Dạ Hành thấy Sở Đệ Trì sắc mặt quá kém, liền sai người:
-“Lương thực không đủ, lập tức gọi Tần thiếu tướng quân đưa tới, không được chậm trễ.”
-“Rõ!”
-Nhưng rất nhanh, thuộc hạ chạy về:
-“Đại nhân! Tần thiếu tướng quân không có ở phủ tướng quân. Chúng thuộc hạ tìm khắp nơi đều không thấy!”
-Tiêu Dạ Hành nhíu mày.
-Trong kinh thành có bao lớn đâu, còn bay đi được chắc?
-“Tiếp tục tìm!”
-“Rõ!”
-Nhưng ngay sau đó lại có người thở hồng hộc chạy tới:
-“Không xong rồi! Thiếu gia… Tần thiếu tướng quân đưa Cửu hoàng tử về phủ chúng ta, còn vào mật thất của đại nhân, dùng luôn hàn băng sàng rồi!”
-Cái gì?!
-Hàn băng sàng là vật hắn tốn bao năm mới tìm từ cực bắc, dùng để luyện công.
-Hắn còn không nỡ dùng, Tần Mục Vũ lại đem cho người ngoài?
-Trong mật thất còn đầy bảo vật của hắn!
-Tiêu Dạ Hành trợn mắt:
-“Tên tiểu tử phản chủ này!”
-Bạch Y công tử kinh ngạc:
-“Không phải ngươi nói bọn họ lớn lên cùng nhau, thân như huynh đệ sao? Sao lại thành ‘nghiêng về ngoài’? Hay trong mắt Tần thiếu tướng quân, ngươi mới là người ngoài?”
-“…”
-Lúc này tại phủ họ Tiêu
-Trong mật thất.
-Một chiếc hàn băng sàng màu lam tỏa khí lạnh thấu xương, gần như làm không gian đông cứng.
-Sở Ly nằm trên đó, trong cơ thể nhiệt khí cuồn cuộn, bên ngoài hàn khí xâm nhập, vô cùng thống khổ.
-“A Ly, ngươi đỡ hơn chưa?”
-“Nóng… lạnh…”
-“Đừng gấp, ta nghĩ cách! Ta đi nghĩ cách ngay!” Tần Mục Vũ vội chạy tới tủ bên, lục tung lấy ra một đống bình lọ đỏ xanh đủ màu.
-“A Ly, đây đều là thuốc luyện công của cữu cữu ta, nghe nói một viên đáng ngàn vàng… nhưng rốt cuộc viên nào giải được xuân dược?”
-Hắn luống cuống lục tìm.
-Lọ đỏ? Hay lọ đen?
-Không cần nghĩ nữa!
-Đều là thuốc tốt, chắc không chết người.
-“A Ly, ngươi uống cái màu trắng này, nhanh lên!”
-Hắn đổ vào miệng nàng hai viên, lại lấy thêm một bình mùi thuốc thanh đạm kỳ dị.
-“Cái này chắc cũng là đồ tốt, uống thêm! Cái này nữa… cái này cũng tốt!”
-Tần Mục Vũ đem toàn bộ “thuốc tốt” nhét cho Sở Ly.
-“A Ly, ngươi thấy đỡ chưa?”
-“Ta…”
-Nuốt quá nhiều đan dược, cổ họng khô rát dính lại.
-Sở Ly khó khăn nuốt xuống:
-“Mục Vũ… ngươi làm vậy, cữu cữu ngươi có đánh ngươi không?”
-“Không sao, mẫu thân ta thương ta lắm, hắn không dám đánh.”
-Mẫu thân của Tần Mục Vũ là tỷ muội với Tiêu Dạ Hành, chỉ là Tiêu Dạ Hành là con muộn của tổ mẫu, nên tuổi không chênh nhiều.
-“Khụ… khụ khụ…”
-“Uống thêm nước!”
-Sau khi uống đan dược, không biết tác dụng gì, chỉ thấy trong bụng Sở Ly khí huyết cuộn trào, nội lực dâng mạnh.
-Đúng là linh dược!
-Nhiều năm tu luyện không tiến bộ, lần này lại như đột phá.
-Lúc này, bên ngoài có tiếng gọi:
-“Tiểu công tử! Tiêu đô đốc gọi người! Nói lương thực ngoài thành không đủ, lập tức cần tiếp viện!”
-Tần Mục Vũ quay đầu:
-“Bảo ta không rảnh.”
-“Mục Vũ!”
-Sở Ly nắm tay hắn:
-“Ngươi đi lo chính sự đi, không cần lo ta, ta ở đây sẽ không sao.”
-“Nếu ta đi, ngươi một mình ta không yên tâm.”
-“Ta chờ ngươi về.”
-Tần Mục Vũ sắc mặt trầm xuống, dù không muốn cũng không thể trì hoãn cứu tế, lập tức đứng dậy:
-“Ta đi rồi về ngay!”
-Sở Ly ngồi xếp bằng trên hàn băng sàng, vận công áp chế nhiệt khí.
-Nhưng dược tính quá mạnh, vẫn đang xâm nhập.
-Một đợt nhiệt lại ập tới.
-Nàng choáng váng, gần như ngất đi.
-Đột nhiên, một bàn tay đặt sau lưng nàng, nội lực hùng hậu tràn vào, giúp nàng điều tức.
-Sở Ly kinh ngạc:
-“Ngươi về nhanh vậy sao?” Ẩn bớt</p>
+            <p>Chương 32: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 32: [Tên tiểu tử phản chủ này!]</p>
+<p>Từ khi vào thu, khu vực phía Bắc Đại Sở vì hạn hán mà suốt hơn năm tháng không mưa, vô số ruộng đồng khô cạn chết sạch, lương thực giảm mạnh.</p>
+<p>Không ít bách tính gặp thiên tai, vì mưu sinh mà buộc phải rời quê chạy nạn, tụ tập bên ngoài kinh thành phồn thịnh.</p>
+<p>Sở Hoàng biết tin, lập tức sai đại thần phát chẩn ngân và lương thảo đến cứu tế phương Bắc. Còn dân chạy nạn tụ về ngoài thành thì giao cho Nhiếp Chính Vương an trí.</p>
+<p>Sở Đệ Trì tự mình an bài nạn dân, sai y sư, phát vật tư, lại dựng cháo lều bên ngoài thành để phát cháo cứu đói.</p>
+<p>Ra khỏi thành.</p>
+<p>Đến nơi dân chạy nạn tụ tập.</p>
+<p>Không ít người thấy hắn liền cảm kích mà tiến lên:</p>
+<p>“Nhiếp Chính Vương thiên ân! Hoàng thượng thiên ân! Cứu chúng ta dân thường!”</p>
+<p>“Đa tạ Nhiếp Chính Vương…”</p>
+<p>“Ngài đúng là người tốt a!”</p>
+<p>Chỉ là, Sở Đệ Trì thần sắc âm trầm, cưỡi ngựa cao cao, khí chất lạnh lùng kiêu sát khiến người chỉ dám nhìn xa, không dám lại gần.</p>
+<p>Không ít người thấy có chút sợ hãi.</p>
+<p>Bạch Y công tử tiến lên cười nói:</p>
+<p>“Nhiếp Chính Vương vốn ít lời, xưa nay đã vậy. Hắn chính là vì quan tâm các ngươi nên mới đích thân tới đây.”</p>
+<p>Dân chạy nạn nghe vậy liền gật đầu.</p>
+<p>Đúng.</p>
+<p>Vị Nhiếp Chính Vương này thân phận tôn quý như vậy mà lại đích thân làm việc, thật sự là bậc thượng vị đáng kính.</p>
+<p>Chỗ lều cháo.</p>
+<p>Nạn dân xếp thành ba hàng, lần lượt bưng bát chờ phát.</p>
+<p>Tiêu Dạ Hành xắn tay áo, cầm muôi lớn tự tay múc cháo. Vừa thấy Sở Đệ Trì và Bạch Y công tử đến, hắn liếc cái đã thấy ngay sắc mặt như gan lợn của đối phương.</p>
+<p>“Ngươi làm gì vậy?”</p>
+<p>“Hoàng thượng sai ngươi đến phát cháo, dù không vui cũng đừng lộ ra mặt như thế. Hiện giờ ngươi không còn binh quyền, cũng không có chức thực, có được phát cháo là tốt lắm rồi.”</p>
+<p>Tiêu Dạ Hành đặt muôi sắt lớn vào tay Sở Đệ Trì.</p>
+<p>Nhìn dáng hắn mặt âm u, vốn là tay cầm kiếm giết địch, nay lại cầm muôi phát cháo, thật đúng là buồn cười.</p>
+<p>Quả thực nực cười.</p>
+<p>“Ngươi cũng có ngày hôm nay.”</p>
+<p>Tiêu Dạ Hành bật cười.</p>
+<p>Nhưng cười một lúc lại thấy sắc mặt hắn càng lúc càng âm trầm khác thường, liền thu lại:</p>
+<p>“Được rồi, đại trượng phu co được duỗi được. Gần đây Bộ Binh báo lại, Tứ hoàng tử, Lục hoàng tử, Thất hoàng tử đều từng dò hỏi về binh quyền Hắc Giáp Vệ. Ngươi nhân lúc này nghỉ ngơi cũng tốt.”</p>
+<p>Đừng có mặt như đưa đám nữa.</p>
+<p>Sở Đệ Trì lạnh lùng cầm muôi, bắt đầu múc cháo cho nạn dân.</p>
+<p>Một muôi—một bát.</p>
+<p>Một muôi—một bát.</p>
+<p>Động tác như huấn luyện quân doanh, làm nạn dân sợ đến run tay.</p>
+<p>Tiêu Dạ Hành thấy không ổn, nhìn Bạch Y công tử hỏi nhỏ:</p>
+<p>“Ai chọc hắn?”</p>
+<p>“Đừng nói nữa. Trên đường ra thành gặp tiểu cháu trai của hắn, bị bỏ lại một mình nên tức giận.”</p>
+<p>“Cửu hoàng tử?”</p>
+<p>“Không thì còn ai.”</p>
+<p>“Chỉ vì chuyện đó mà tức? Ta còn tưởng đại sự gì. Cửu hoàng tử với Tần Mục Vũ từ nhỏ lớn lên bên nhau, thân như huynh đệ, cái này cũng không tính là ‘nghiêng về ngoài’. Theo ta thấy, hắn mới là người ngoài.”</p>
+<p>Bạch Y công tử chỉ cười không đáp.</p>
+<p>Ai mà biết được.</p>
+<p>Tiêu Dạ Hành thấy Sở Đệ Trì sắc mặt quá kém, liền sai người:</p>
+<p>“Lương thực không đủ, lập tức gọi Tần thiếu tướng quân đưa tới, không được chậm trễ.”</p>
+<p>“Rõ!”</p>
+<p>Nhưng rất nhanh, thuộc hạ chạy về:</p>
+<p>“Đại nhân! Tần thiếu tướng quân không có ở phủ tướng quân. Chúng thuộc hạ tìm khắp nơi đều không thấy!”</p>
+<p>Tiêu Dạ Hành nhíu mày.</p>
+<p>Trong kinh thành có bao lớn đâu, còn bay đi được chắc?</p>
+<p>“Tiếp tục tìm!”</p>
+<p>“Rõ!”</p>
+<p>Nhưng ngay sau đó lại có người thở hồng hộc chạy tới:</p>
+<p>“Không xong rồi! Thiếu gia… Tần thiếu tướng quân đưa Cửu hoàng tử về phủ chúng ta, còn vào mật thất của đại nhân, dùng luôn hàn băng sàng rồi!”</p>
+<p>Cái gì?!</p>
+<p>Hàn băng sàng là vật hắn tốn bao năm mới tìm từ cực bắc, dùng để luyện công.</p>
+<p>Hắn còn không nỡ dùng, Tần Mục Vũ lại đem cho người ngoài?</p>
+<p>Trong mật thất còn đầy bảo vật của hắn!</p>
+<p>Tiêu Dạ Hành trợn mắt:</p>
+<p>“Tên tiểu tử phản chủ này!”</p>
+<p>Bạch Y công tử kinh ngạc:</p>
+<p>“Không phải ngươi nói bọn họ lớn lên cùng nhau, thân như huynh đệ sao? Sao lại thành ‘nghiêng về ngoài’? Hay trong mắt Tần thiếu tướng quân, ngươi mới là người ngoài?”</p>
+<p>“…”</p>
+<p>Lúc này tại phủ họ Tiêu</p>
+<p>Trong mật thất.</p>
+<p>Một chiếc hàn băng sàng màu lam tỏa khí lạnh thấu xương, gần như làm không gian đông cứng.</p>
+<p>Sở Ly nằm trên đó, trong cơ thể nhiệt khí cuồn cuộn, bên ngoài hàn khí xâm nhập, vô cùng thống khổ.</p>
+<p>“A Ly, ngươi đỡ hơn chưa?”</p>
+<p>“Nóng… lạnh…”</p>
+<p>“Đừng gấp, ta nghĩ cách! Ta đi nghĩ cách ngay!” Tần Mục Vũ vội chạy tới tủ bên, lục tung lấy ra một đống bình lọ đỏ xanh đủ màu.</p>
+<p>“A Ly, đây đều là thuốc luyện công của cữu cữu ta, nghe nói một viên đáng ngàn vàng… nhưng rốt cuộc viên nào giải được xuân dược?”</p>
+<p>Hắn luống cuống lục tìm.</p>
+<p>Lọ đỏ? Hay lọ đen?</p>
+<p>Không cần nghĩ nữa!</p>
+<p>Đều là thuốc tốt, chắc không chết người.</p>
+<p>“A Ly, ngươi uống cái màu trắng này, nhanh lên!”</p>
+<p>Hắn đổ vào miệng nàng hai viên, lại lấy thêm một bình mùi thuốc thanh đạm kỳ dị.</p>
+<p>“Cái này chắc cũng là đồ tốt, uống thêm! Cái này nữa… cái này cũng tốt!”</p>
+<p>Tần Mục Vũ đem toàn bộ “thuốc tốt” nhét cho Sở Ly.</p>
+<p>“A Ly, ngươi thấy đỡ chưa?”</p>
+<p>“Ta…”</p>
+<p>Nuốt quá nhiều đan dược, cổ họng khô rát dính lại.</p>
+<p>Sở Ly khó khăn nuốt xuống:</p>
+<p>“Mục Vũ… ngươi làm vậy, cữu cữu ngươi có đánh ngươi không?”</p>
+<p>“Không sao, mẫu thân ta thương ta lắm, hắn không dám đánh.”</p>
+<p>Mẫu thân của Tần Mục Vũ là tỷ muội với Tiêu Dạ Hành, chỉ là Tiêu Dạ Hành là con muộn của tổ mẫu, nên tuổi không chênh nhiều.</p>
+<p>“Khụ… khụ khụ…”</p>
+<p>“Uống thêm nước!”</p>
+<p>Sau khi uống đan dược, không biết tác dụng gì, chỉ thấy trong bụng Sở Ly khí huyết cuộn trào, nội lực dâng mạnh.</p>
+<p>Đúng là linh dược!</p>
+<p>Nhiều năm tu luyện không tiến bộ, lần này lại như đột phá.</p>
+<p>Lúc này, bên ngoài có tiếng gọi:</p>
+<p>“Tiểu công tử! Tiêu đô đốc gọi người! Nói lương thực ngoài thành không đủ, lập tức cần tiếp viện!”</p>
+<p>Tần Mục Vũ quay đầu:</p>
+<p>“Bảo ta không rảnh.”</p>
+<p>“Mục Vũ!”</p>
+<p>Sở Ly nắm tay hắn:</p>
+<p>“Ngươi đi lo chính sự đi, không cần lo ta, ta ở đây sẽ không sao.”</p>
+<p>“Nếu ta đi, ngươi một mình ta không yên tâm.”</p>
+<p>“Ta chờ ngươi về.”</p>
+<p>Tần Mục Vũ sắc mặt trầm xuống, dù không muốn cũng không thể trì hoãn cứu tế, lập tức đứng dậy:</p>
+<p>“Ta đi rồi về ngay!”</p>
+<p>Sở Ly ngồi xếp bằng trên hàn băng sàng, vận công áp chế nhiệt khí.</p>
+<p>Nhưng dược tính quá mạnh, vẫn đang xâm nhập.</p>
+<p>Một đợt nhiệt lại ập tới.</p>
+<p>Nàng choáng váng, gần như ngất đi.</p>
+<p>Đột nhiên, một bàn tay đặt sau lưng nàng, nội lực hùng hậu tràn vào, giúp nàng điều tức.</p>
+<p>Sở Ly kinh ngạc:</p>
+<p>“Ngươi về nhanh vậy sao?” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_31.html" class="btn">‹ Trước</a>
             <a href="chuong_33.html" class="btn">Sau ›</a>
         </div>
@@ -238,15 +246,11 @@ Sở Ly kinh ngạc:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -258,11 +262,11 @@ Sở Ly kinh ngạc:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 7</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,271 +62,280 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 7</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_6.html" class="btn">‹ Trước</a>
             <a href="chuong_8.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 7: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 7: [Cửu hoàng tử bất lực]
-Nhịn suốt một đêm, cuối cùng Sở Ly cũng có thể tắm rửa.
-Ngâm mình trong nước, nàng dùng bồ kết ra sức chà xát làn da trên người.
-Từng tấc một.
-Từng chỗ một.
-Hận không thể chà luôn cả lớp da đi.
-Da bị chà đến đỏ ửng.
-Mọi mùi hương đều phải rửa sạch.
-Nàng hít một hơi thật sâu, lặn xuống nước.
-Đến khi ngoi lên khỏi mặt nước, lại giật mình kinh hãi.
-Bên ngoài tấm bình phong, dưới bóng người mờ ảo, rõ ràng đang đứng một người.
-Nàng lập tức cúi thấp người xuống, che kín phần ngực.
-“Ai ở ngoài đó?”
-“Nô gia tới hầu hạ điện hạ.”
-Giọng nữ nhân mềm mại mê hoặc.
-Chính là Noãn Ngọc, người được Nhiếp Chính Vương ban cho.
-Sở Ly nhíu mày.
-Người này là tai mắt của Nhiếp Chính Vương.
-Lại không có lý do hợp lý để đuổi nàng ta đi.
-Ngày ngày bị người khác dòm ngó trước mắt, nhất cử nhất động đều phải dè dặt.
-Vô cùng bất tiện.
-Trong cung điện của mình, sao có thể dung thứ cho kẻ khác giám sát?
-Ánh mắt Sở Ly xoay chuyển, lập tức quát lớn:
-“To gan!”
-“Dám nhìn trộm bản hoàng tử tắm rửa!”
-“Người đâu, kéo nữ nhân cả gan làm loạn này tới Thận Hình Ty, đánh hai mươi đại bản!”
-Noãn Ngọc ngơ ngác:
-“Hả?”
-Đánh nàng?
-Nàng làm sai điều gì?
-Nếu là nữ tử bị nhìn thấy thân thể, danh tiết quý hơn sinh mạng, đương nhiên phải phạt nặng.
-Nhưng Cửu hoàng tử là nam nhân đường đường chính chính.
-Vốn nên thê thiếp thành đàn, mỹ nhân vây quanh.
-Nàng cố ý mặc sa y mỏng tới lúc Cửu hoàng tử tắm, khoe dáng quyến rũ, muốn dẫn dụ hắn.
-Sao lại bị ghép tội “nhìn trộm”?
-Đây chẳng phải là tình thú sao?
-Nàng thật oan uổng!
-Hai mươi đại bản giáng xuống.
-Noãn Ngọc giống hệt Sở Ly trước đó, nằm sấp trên giường không nhúc nhích nổi.
-Cùng lúc ấy, trong ngoài cung bắt đầu lan truyền không ít lời đồn:
-“Nghe nói chưa? Nhiếp Chính Vương tặng mỹ nhân cho Cửu hoàng tử, kết quả mỹ nhân bị đánh đến không xuống giường nổi.”
-“Mỹ nhân trong lòng mà Cửu hoàng tử vẫn không động tâm, còn xuống tay ác như vậy. Chẳng lẽ ‘ngài ấy’... không được?”
-“Hay là thật sự có ẩn tật...”
-“Cái gì? Cửu hoàng tử bất lực?!”
-Chiêu Lan điện đóng kín cửa.
-Sở Ly còn chưa biết bên ngoài đang đồn đãi những gì.
-Ngược lại, vì Noãn Ngọc không còn lảng vảng trước mắt nên nàng được mấy ngày thanh tịnh, thương thế cũng khá lên rất nhiều.
-Hôm nay.
-Sở Ly đang ôm một quyển thoại bản có tên:
-《Thần Y Kiều Thê, Nhất Thai Song Bảo, Bá Đạo Vương Gia Yêu Nàng Đến Chết》
-(Thần y kiều thê, một thai song bảo, bá đạo vương gia yêu nàng đến chết)
-Nàng đọc đến say sưa ngon lành.
-Lúc này, Phúc công công bên cạnh Hoàng thượng tới truyền chỉ.
-Cánh cổng lớn của Chiêu Lan điện vẫn đóng kín mít.
-Chỉ chừa một ô cửa nhỏ để liên thông trong ngoài.
-Gương mặt già nua đầy nếp nhăn nhưng vẫn trắng trẻo âm nhu của Phúc công công thò vào qua ô cửa nhỏ.
-Trông chẳng khác nào đi thăm tù.
-“Ôi chao, Cửu hoàng tử!”
-“Ngài đóng cửa kín thế này là đề phòng trộm cắp sao?”
-Sở Ly đang phơi nắng trong sân, vừa đọc thoại bản vừa trả lời:
-“Phúc công công, có chuyện gì vậy?”
-“Hoàng thượng triệu ngài tới Ngự thư phòng.”
-“Nói là muốn ban thưởng cho ngài.”
-“Hả?”
-Nàng lập công gì sao?
-Sở Ly do dự mở miệng:
-“Ta không cần ban thưởng.”
-Mấy ngày nay nàng đóng cửa không ra ngoài, tránh được không ít phiền phức.
-Cũng không gặp Nhiếp Chính Vương.
-Nàng không muốn ra ngoài.
-Nàng biết chuyện xảy ra trong đêm khánh công là có người mượn tay nàng để đối phó Nhiếp Chính Vương.
-Có người cố tình hãm hại nàng.
-Nhưng vì muốn che giấu thân phận nữ nhi, nàng không muốn điều tra.
-Cũng không muốn tranh giành với các vị hoàng huynh.
-Nàng chỉ cần tránh đi là được.
-Nhịn thêm hai ba năm nữa.
-Đến mười tám tuổi, xuất cung lập phủ.
-Khi ấy sẽ được sống tự do tự tại.
-Phúc công công sốt ruột đến mức bấm tay hoa lan:
-“Tiểu tổ tông của ta ơi!”
-“Ngài là người đầu tiên dám từ chối ban thưởng của Hoàng thượng đấy!”
-“Ngài cứ nói với phụ hoàng là ta quyên hết cho quốc khố.”
-“Nhưng Hoàng thượng muốn thưởng vàng cho ngài.”
-Sở Ly lập tức ngẩng đầu.
-Khoan!
-Đại Sở quốc lực hùng hậu, quốc khố dồi dào.
-Thiếu gì chút vàng của nàng?
-“Ta thay y phục một chút rồi tới ngay!”
-Ban bình hoa, tranh chữ, cổ vật gì đó thì nàng chẳng hứng thú.
-Nhưng nếu là vàng...
-Lập tức có tinh thần.
-Ai có thể từ chối những thỏi vàng lấp lánh cơ chứ?
-Điều kiện để làm cá mặn là không lo ăn mặc.
-Chỉ khi tích đủ bạc tiền mới có thể sống nhàn hạ cả đời.
-Ngự thư phòng
-Suốt sáu ngày không bước chân ra khỏi điện.
-Hôm nay vì vàng mà Sở Ly dũng cảm xông tới Ngự thư phòng.
-“Nhi thần thỉnh an phụ hoàng!”
-Sở Ly quỳ thẳng tắp dưới đất.
-Nhưng ánh mắt lại không ngừng đảo quanh bàn ghế, kệ tủ, giá đỡ.
-Ra sức tìm tung tích của vàng.
-Sở Hoàng đích thân đỡ nàng dậy.
-Trịnh trọng vỗ vai nàng:
-“Tiểu Cửu, hợp ý trẫm nhất!”
-“?”
-Tim Sở Ly giật thót.
-Mỗi lần phụ hoàng nói câu này...
-Nàng đều có dự cảm chẳng lành.
-Quả nhiên.
-Sở Hoàng nói:
-“Từ khi Nhiếp Chính Vương hồi kinh, hành sự ngông cuồng, tùy ý làm bậy, không ai dám can gián.”
-“Chỉ có Tiểu Cửu không sợ cường quyền.”
-“Tự tay đánh cho mỹ nhân hắn tặng một trận.”
-“Đã giúp trẫm trút được cơn giận.”
-“Trẫm nhân cơ hội đó lấy cớ hắn dâng mỹ nhân mê hoặc hoàng tử để trách phạt hắn.”
-“Tiếp theo, hắn nhất định sẽ yên phận một thời gian.”
-Hai mắt Sở Ly tối sầm.
-Suýt nữa không phân biệt nổi đông tây nam bắc.
-Nàng đánh Noãn Ngọc là vì Nhiếp Chính Vương đánh nàng.
-Chỉ đơn giản muốn trả đũa cho hả giận.
-Thế mà phụ hoàng lại lấy chuyện đó để phạt Nhiếp Chính Vương.
-Chẳng phải tương đương với việc nàng đắc tội hắn sao?
-Ngồi không trong nhà.
-Vạ từ trên trời rơi xuống.
-Sở Hoàng vô cùng vui vẻ.
-Đối với tiểu nhi tử này hết sức hài lòng.
-“Tiểu Cửu.”
-“Mặc dù con văn không thành, võ không nên.”
-“Không hiểu chính sự như các hoàng huynh.”
-“Lại nhát gan, ăn nhiều, thấp bé.”
-“Nhưng con lại là đứa con mà trẫm yêu thích nhất.”
-Sở Ly:
-“...”
-Đây là đang khen nàng sao?
-Nhận được một thỏi vàng nhỏ làm phần thưởng.
-Mới qua một đêm.
-Thỏi vàng còn chưa kịp ủ ấm.
-Đã nhận được tin:
-Nhiếp Chính Vương vào cung.
-Hơn nữa còn đang đi thẳng tới Chiêu Lan điện.
-Trời đất ơi!
-Chẳng lẽ Nhiếp Chính Vương cho rằng nàng cấu kết với phụ hoàng để đối phó hắn?
-Nàng tuyệt đối không có ý đó!
-Trời đất chứng giám!
-“Chủ tử.”
-“Còn một lát nữa Nhiếp Chính Vương sẽ tới.”
-“Chúng ta có mở cửa điện không?”
-Cẩu Bát hỏi.
-Không mở!
-Nhiếp Chính Vương tới tìm phiền phức.
-Nàng sao có kết cục tốt được?
-Nhưng nếu hắn xông vào...
-Chẳng phải sẽ bắt được nàng tại trận sao?
-Sở Ly cất kỹ thỏi vàng nhỏ.
-Lập tức nói:
-“Đóng chặt cửa điện.”
-“Cố thủ được bao lâu thì cố.”
-“Ta tới cung Thái hậu tránh đầu sóng ngọn gió trước.”
-Nói xong.
-Lập tức trèo tường.
-“Chủ tử!”
-“Thương thế của ngài vừa mới khỏi, cẩn thận ngã...”
-“Mau tới tiền điện canh giữ!”
-“Không cần lo cho ta!”
-“Vâng.”
-Sở Ly đạp lên hòn đá.
-Mượn lực từ tường.
-Nhờ có võ công nên dễ dàng trèo lên bức tường cao hơn ba mét.
-“Leo tường làm gì?”
-Ai?!
-Sở Ly quay đầu nhìn.
-Bất ngờ thấy Nhiếp Chính Vương đang đứng dưới chân tường.
-Ngẩng đầu nhìn nàng.
-Xuất hiện đột ngột như quỷ mị.
-Dọa nàng trượt chân.
-Ngã ngửa xuống dưới.
-“A!”
-Lần này xong đời rồi.
-Cái mông vừa mới dưỡng lành.
-Nếu ngã từ trên cao xuống.
-Chỉ sợ lại phải nằm sấp trên giường thêm mười ngày nửa tháng.
-Đúng là khắc tinh của nàng!
-Sở Ly nhắm mắt.
-Thở dài một tiếng.
-Chuẩn bị nhận mệnh.
-Nhưng ngay giây tiếp theo.
-Cơ thể bỗng chìm xuống.
-Một đôi cánh tay mạnh mẽ hữu lực đã đỡ lấy nàng.
-Ơ?
-Mở mắt nhìn.
-Nàng phát hiện mình đang nằm trong lòng Nhiếp Chính Vương.
-Theo tư thế bế ngang kiểu công chúa.
-Mà theo phản xạ tự nhiên của cơ thể.
-Hai tay nàng còn đang ôm cổ hắn.
-Nàng ngẩng đầu nhìn lên.
-Dáng người nhỏ nhắn.
-Hắn cúi đầu nhìn xuống.
-Hai lọn tóc đen rủ bên má khẽ lay động.
-Càng làm nổi bật vẻ lạnh lùng ngông cuồng nơi hàng mày.
-Tiết đầu thu.
-Gió nhẹ thoảng qua.
-Hương hoa quế từ cành cây bay tới, thấm vào lòng người.
-Vài bông hoa vàng nhạt rơi xuống vai nam nhân.
-Khoảnh khắc ấy.
-Giữa hai người yên tĩnh đến mức có thể nghe rõ tiếng hít thở của đối phương.
-Đẹp như một bức họa. Ẩn bớt</p>
+            <p>Chương 7: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 7: [Cửu hoàng tử bất lực]</p>
+<p>Nhịn suốt một đêm, cuối cùng Sở Ly cũng có thể tắm rửa.</p>
+<p>Ngâm mình trong nước, nàng dùng bồ kết ra sức chà xát làn da trên người.</p>
+<p>Từng tấc một.</p>
+<p>Từng chỗ một.</p>
+<p>Hận không thể chà luôn cả lớp da đi.</p>
+<p>Da bị chà đến đỏ ửng.</p>
+<p>Mọi mùi hương đều phải rửa sạch.</p>
+<p>Nàng hít một hơi thật sâu, lặn xuống nước.</p>
+<p>Đến khi ngoi lên khỏi mặt nước, lại giật mình kinh hãi.</p>
+<p>Bên ngoài tấm bình phong, dưới bóng người mờ ảo, rõ ràng đang đứng một người.</p>
+<p>Nàng lập tức cúi thấp người xuống, che kín phần ngực.</p>
+<p>“Ai ở ngoài đó?”</p>
+<p>“Nô gia tới hầu hạ điện hạ.”</p>
+<p>Giọng nữ nhân mềm mại mê hoặc.</p>
+<p>Chính là Noãn Ngọc, người được Nhiếp Chính Vương ban cho.</p>
+<p>Sở Ly nhíu mày.</p>
+<p>Người này là tai mắt của Nhiếp Chính Vương.</p>
+<p>Lại không có lý do hợp lý để đuổi nàng ta đi.</p>
+<p>Ngày ngày bị người khác dòm ngó trước mắt, nhất cử nhất động đều phải dè dặt.</p>
+<p>Vô cùng bất tiện.</p>
+<p>Trong cung điện của mình, sao có thể dung thứ cho kẻ khác giám sát?</p>
+<p>Ánh mắt Sở Ly xoay chuyển, lập tức quát lớn:</p>
+<p>“To gan!”</p>
+<p>“Dám nhìn trộm bản hoàng tử tắm rửa!”</p>
+<p>“Người đâu, kéo nữ nhân cả gan làm loạn này tới Thận Hình Ty, đánh hai mươi đại bản!”</p>
+<p>Noãn Ngọc ngơ ngác:</p>
+<p>“Hả?”</p>
+<p>Đánh nàng?</p>
+<p>Nàng làm sai điều gì?</p>
+<p>Nếu là nữ tử bị nhìn thấy thân thể, danh tiết quý hơn sinh mạng, đương nhiên phải phạt nặng.</p>
+<p>Nhưng Cửu hoàng tử là nam nhân đường đường chính chính.</p>
+<p>Vốn nên thê thiếp thành đàn, mỹ nhân vây quanh.</p>
+<p>Nàng cố ý mặc sa y mỏng tới lúc Cửu hoàng tử tắm, khoe dáng quyến rũ, muốn dẫn dụ hắn.</p>
+<p>Sao lại bị ghép tội “nhìn trộm”?</p>
+<p>Đây chẳng phải là tình thú sao?</p>
+<p>Nàng thật oan uổng!</p>
+<p>Hai mươi đại bản giáng xuống.</p>
+<p>Noãn Ngọc giống hệt Sở Ly trước đó, nằm sấp trên giường không nhúc nhích nổi.</p>
+<p>Cùng lúc ấy, trong ngoài cung bắt đầu lan truyền không ít lời đồn:</p>
+<p>“Nghe nói chưa? Nhiếp Chính Vương tặng mỹ nhân cho Cửu hoàng tử, kết quả mỹ nhân bị đánh đến không xuống giường nổi.”</p>
+<p>“Mỹ nhân trong lòng mà Cửu hoàng tử vẫn không động tâm, còn xuống tay ác như vậy. Chẳng lẽ ‘ngài ấy’... không được?”</p>
+<p>“Hay là thật sự có ẩn tật...”</p>
+<p>“Cái gì? Cửu hoàng tử bất lực?!”</p>
+<p>Chiêu Lan điện đóng kín cửa.</p>
+<p>Sở Ly còn chưa biết bên ngoài đang đồn đãi những gì.</p>
+<p>Ngược lại, vì Noãn Ngọc không còn lảng vảng trước mắt nên nàng được mấy ngày thanh tịnh, thương thế cũng khá lên rất nhiều.</p>
+<p>Hôm nay.</p>
+<p>Sở Ly đang ôm một quyển thoại bản có tên:</p>
+<p>《Thần Y Kiều Thê, Nhất Thai Song Bảo, Bá Đạo Vương Gia Yêu Nàng Đến Chết》</p>
+<p>(Thần y kiều thê, một thai song bảo, bá đạo vương gia yêu nàng đến chết)</p>
+<p>Nàng đọc đến say sưa ngon lành.</p>
+<p>Lúc này, Phúc công công bên cạnh Hoàng thượng tới truyền chỉ.</p>
+<p>Cánh cổng lớn của Chiêu Lan điện vẫn đóng kín mít.</p>
+<p>Chỉ chừa một ô cửa nhỏ để liên thông trong ngoài.</p>
+<p>Gương mặt già nua đầy nếp nhăn nhưng vẫn trắng trẻo âm nhu của Phúc công công thò vào qua ô cửa nhỏ.</p>
+<p>Trông chẳng khác nào đi thăm tù.</p>
+<p>“Ôi chao, Cửu hoàng tử!”</p>
+<p>“Ngài đóng cửa kín thế này là đề phòng trộm cắp sao?”</p>
+<p>Sở Ly đang phơi nắng trong sân, vừa đọc thoại bản vừa trả lời:</p>
+<p>“Phúc công công, có chuyện gì vậy?”</p>
+<p>“Hoàng thượng triệu ngài tới Ngự thư phòng.”</p>
+<p>“Nói là muốn ban thưởng cho ngài.”</p>
+<p>“Hả?”</p>
+<p>Nàng lập công gì sao?</p>
+<p>Sở Ly do dự mở miệng:</p>
+<p>“Ta không cần ban thưởng.”</p>
+<p>Mấy ngày nay nàng đóng cửa không ra ngoài, tránh được không ít phiền phức.</p>
+<p>Cũng không gặp Nhiếp Chính Vương.</p>
+<p>Nàng không muốn ra ngoài.</p>
+<p>Nàng biết chuyện xảy ra trong đêm khánh công là có người mượn tay nàng để đối phó Nhiếp Chính Vương.</p>
+<p>Có người cố tình hãm hại nàng.</p>
+<p>Nhưng vì muốn che giấu thân phận nữ nhi, nàng không muốn điều tra.</p>
+<p>Cũng không muốn tranh giành với các vị hoàng huynh.</p>
+<p>Nàng chỉ cần tránh đi là được.</p>
+<p>Nhịn thêm hai ba năm nữa.</p>
+<p>Đến mười tám tuổi, xuất cung lập phủ.</p>
+<p>Khi ấy sẽ được sống tự do tự tại.</p>
+<p>Phúc công công sốt ruột đến mức bấm tay hoa lan:</p>
+<p>“Tiểu tổ tông của ta ơi!”</p>
+<p>“Ngài là người đầu tiên dám từ chối ban thưởng của Hoàng thượng đấy!”</p>
+<p>“Ngài cứ nói với phụ hoàng là ta quyên hết cho quốc khố.”</p>
+<p>“Nhưng Hoàng thượng muốn thưởng vàng cho ngài.”</p>
+<p>Sở Ly lập tức ngẩng đầu.</p>
+<p>Khoan!</p>
+<p>Đại Sở quốc lực hùng hậu, quốc khố dồi dào.</p>
+<p>Thiếu gì chút vàng của nàng?</p>
+<p>“Ta thay y phục một chút rồi tới ngay!”</p>
+<p>Ban bình hoa, tranh chữ, cổ vật gì đó thì nàng chẳng hứng thú.</p>
+<p>Nhưng nếu là vàng...</p>
+<p>Lập tức có tinh thần.</p>
+<p>Ai có thể từ chối những thỏi vàng lấp lánh cơ chứ?</p>
+<p>Điều kiện để làm cá mặn là không lo ăn mặc.</p>
+<p>Chỉ khi tích đủ bạc tiền mới có thể sống nhàn hạ cả đời.</p>
+<p>Ngự thư phòng</p>
+<p>Suốt sáu ngày không bước chân ra khỏi điện.</p>
+<p>Hôm nay vì vàng mà Sở Ly dũng cảm xông tới Ngự thư phòng.</p>
+<p>“Nhi thần thỉnh an phụ hoàng!”</p>
+<p>Sở Ly quỳ thẳng tắp dưới đất.</p>
+<p>Nhưng ánh mắt lại không ngừng đảo quanh bàn ghế, kệ tủ, giá đỡ.</p>
+<p>Ra sức tìm tung tích của vàng.</p>
+<p>Sở Hoàng đích thân đỡ nàng dậy.</p>
+<p>Trịnh trọng vỗ vai nàng:</p>
+<p>“Tiểu Cửu, hợp ý trẫm nhất!”</p>
+<p>“?”</p>
+<p>Tim Sở Ly giật thót.</p>
+<p>Mỗi lần phụ hoàng nói câu này...</p>
+<p>Nàng đều có dự cảm chẳng lành.</p>
+<p>Quả nhiên.</p>
+<p>Sở Hoàng nói:</p>
+<p>“Từ khi Nhiếp Chính Vương hồi kinh, hành sự ngông cuồng, tùy ý làm bậy, không ai dám can gián.”</p>
+<p>“Chỉ có Tiểu Cửu không sợ cường quyền.”</p>
+<p>“Tự tay đánh cho mỹ nhân hắn tặng một trận.”</p>
+<p>“Đã giúp trẫm trút được cơn giận.”</p>
+<p>“Trẫm nhân cơ hội đó lấy cớ hắn dâng mỹ nhân mê hoặc hoàng tử để trách phạt hắn.”</p>
+<p>“Tiếp theo, hắn nhất định sẽ yên phận một thời gian.”</p>
+<p>Hai mắt Sở Ly tối sầm.</p>
+<p>Suýt nữa không phân biệt nổi đông tây nam bắc.</p>
+<p>Nàng đánh Noãn Ngọc là vì Nhiếp Chính Vương đánh nàng.</p>
+<p>Chỉ đơn giản muốn trả đũa cho hả giận.</p>
+<p>Thế mà phụ hoàng lại lấy chuyện đó để phạt Nhiếp Chính Vương.</p>
+<p>Chẳng phải tương đương với việc nàng đắc tội hắn sao?</p>
+<p>Ngồi không trong nhà.</p>
+<p>Vạ từ trên trời rơi xuống.</p>
+<p>Sở Hoàng vô cùng vui vẻ.</p>
+<p>Đối với tiểu nhi tử này hết sức hài lòng.</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Mặc dù con văn không thành, võ không nên.”</p>
+<p>“Không hiểu chính sự như các hoàng huynh.”</p>
+<p>“Lại nhát gan, ăn nhiều, thấp bé.”</p>
+<p>“Nhưng con lại là đứa con mà trẫm yêu thích nhất.”</p>
+<p>Sở Ly:</p>
+<p>“...”</p>
+<p>Đây là đang khen nàng sao?</p>
+<p>Nhận được một thỏi vàng nhỏ làm phần thưởng.</p>
+<p>Mới qua một đêm.</p>
+<p>Thỏi vàng còn chưa kịp ủ ấm.</p>
+<p>Đã nhận được tin:</p>
+<p>Nhiếp Chính Vương vào cung.</p>
+<p>Hơn nữa còn đang đi thẳng tới Chiêu Lan điện.</p>
+<p>Trời đất ơi!</p>
+<p>Chẳng lẽ Nhiếp Chính Vương cho rằng nàng cấu kết với phụ hoàng để đối phó hắn?</p>
+<p>Nàng tuyệt đối không có ý đó!</p>
+<p>Trời đất chứng giám!</p>
+<p>“Chủ tử.”</p>
+<p>“Còn một lát nữa Nhiếp Chính Vương sẽ tới.”</p>
+<p>“Chúng ta có mở cửa điện không?”</p>
+<p>Cẩu Bát hỏi.</p>
+<p>Không mở!</p>
+<p>Nhiếp Chính Vương tới tìm phiền phức.</p>
+<p>Nàng sao có kết cục tốt được?</p>
+<p>Nhưng nếu hắn xông vào...</p>
+<p>Chẳng phải sẽ bắt được nàng tại trận sao?</p>
+<p>Sở Ly cất kỹ thỏi vàng nhỏ.</p>
+<p>Lập tức nói:</p>
+<p>“Đóng chặt cửa điện.”</p>
+<p>“Cố thủ được bao lâu thì cố.”</p>
+<p>“Ta tới cung Thái hậu tránh đầu sóng ngọn gió trước.”</p>
+<p>Nói xong.</p>
+<p>Lập tức trèo tường.</p>
+<p>“Chủ tử!”</p>
+<p>“Thương thế của ngài vừa mới khỏi, cẩn thận ngã...”</p>
+<p>“Mau tới tiền điện canh giữ!”</p>
+<p>“Không cần lo cho ta!”</p>
+<p>“Vâng.”</p>
+<p>Sở Ly đạp lên hòn đá.</p>
+<p>Mượn lực từ tường.</p>
+<p>Nhờ có võ công nên dễ dàng trèo lên bức tường cao hơn ba mét.</p>
+<p>“Leo tường làm gì?”</p>
+<p>Ai?!</p>
+<p>Sở Ly quay đầu nhìn.</p>
+<p>Bất ngờ thấy Nhiếp Chính Vương đang đứng dưới chân tường.</p>
+<p>Ngẩng đầu nhìn nàng.</p>
+<p>Xuất hiện đột ngột như quỷ mị.</p>
+<p>Dọa nàng trượt chân.</p>
+<p>Ngã ngửa xuống dưới.</p>
+<p>“A!”</p>
+<p>Lần này xong đời rồi.</p>
+<p>Cái mông vừa mới dưỡng lành.</p>
+<p>Nếu ngã từ trên cao xuống.</p>
+<p>Chỉ sợ lại phải nằm sấp trên giường thêm mười ngày nửa tháng.</p>
+<p>Đúng là khắc tinh của nàng!</p>
+<p>Sở Ly nhắm mắt.</p>
+<p>Thở dài một tiếng.</p>
+<p>Chuẩn bị nhận mệnh.</p>
+<p>Nhưng ngay giây tiếp theo.</p>
+<p>Cơ thể bỗng chìm xuống.</p>
+<p>Một đôi cánh tay mạnh mẽ hữu lực đã đỡ lấy nàng.</p>
+<p>Ơ?</p>
+<p>Mở mắt nhìn.</p>
+<p>Nàng phát hiện mình đang nằm trong lòng Nhiếp Chính Vương.</p>
+<p>Theo tư thế bế ngang kiểu công chúa.</p>
+<p>Mà theo phản xạ tự nhiên của cơ thể.</p>
+<p>Hai tay nàng còn đang ôm cổ hắn.</p>
+<p>Nàng ngẩng đầu nhìn lên.</p>
+<p>Dáng người nhỏ nhắn.</p>
+<p>Hắn cúi đầu nhìn xuống.</p>
+<p>Hai lọn tóc đen rủ bên má khẽ lay động.</p>
+<p>Càng làm nổi bật vẻ lạnh lùng ngông cuồng nơi hàng mày.</p>
+<p>Tiết đầu thu.</p>
+<p>Gió nhẹ thoảng qua.</p>
+<p>Hương hoa quế từ cành cây bay tới, thấm vào lòng người.</p>
+<p>Vài bông hoa vàng nhạt rơi xuống vai nam nhân.</p>
+<p>Khoảnh khắc ấy.</p>
+<p>Giữa hai người yên tĩnh đến mức có thể nghe rõ tiếng hít thở của đối phương.</p>
+<p>Đẹp như một bức họa. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_6.html" class="btn">‹ Trước</a>
             <a href="chuong_8.html" class="btn">Sau ›</a>
         </div>
@@ -335,15 +343,11 @@ Giữa hai người yên tĩnh đến mức có thể nghe rõ tiếng hít th�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -355,11 +359,11 @@ Giữa hai người yên tĩnh đến mức có thể nghe rõ tiếng hít th�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

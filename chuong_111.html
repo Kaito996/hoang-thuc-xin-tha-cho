@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 111</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,243 +62,252 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 111</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_110.html" class="btn">‹ Trước</a>
             <a href="chuong_112.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 111: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 111: Con trai ngốc nhà địa chủ
-“Không phải ta.” Sở Dạ Ly phủ nhận. 
-“Chúng ta là cùng một kiểu người, không phải sao? Tiểu Cửu, ngươi là người duy nhất quan tâm ta. Ngoài ngươi ra, ta chẳng còn thứ gì khác muốn có.”
-Sở Ly khẽ cười:
-“Trước đây, ta cũng từng nghĩ như vậy. Ta cho rằng chúng ta là cùng một loại người. Nhưng hiện thực nói cho ta biết… chúng ta không cùng một con đường.”
-“Sau khi hồi cung, huynh nhanh chóng lôi kéo thế lực, thủ đoạn thuần thục. Nếu không chuẩn bị từ trước, làm sao có thể chu toàn đến vậy? Thứ huynh muốn… là quyền lực.”
-Mà trừ khử Nhiếp Chính Vương, lấy lòng Hoàng thượng, chính là cách khiến Hoàng thượng vui lòng nhất.
-Nghĩ tới đây…
-E rằng Hoàng thượng đã vô cùng trọng dụng và tín nhiệm hắn rồi.
-Sở Dạ Ly trầm giọng:
-“Tiểu Cửu, chúng ta là người cùng đường. Xin hãy tin ta, ta có nỗi khổ riêng, nhưng tuyệt đối sẽ không hại ngươi.”
-“Ta không biết nên tin ai… cũng không biết mình nên làm gì.”
-Sở Ly lắc đầu, lùi về sau mấy bước, cười tự giễu:
-“Ta không nhìn thấu được tất cả các người, cũng không thích nơi này.”
-“Ai cũng có thể đâm sau lưng ta.”
-“Những gương mặt tươi cười, những dáng vẻ lấy lòng, những lời nịnh nọt ấy… thật ra đều giấu dao.”
-“Ta ghét nơi này.”
-Là nàng quá ngây thơ.
-Hoàng cung vàng son lộng lẫy này…
-Thật khiến người ta ngạt thở.
-Thật bẩn thỉu.
-“Ngũ hoàng huynh, ta không có ý trách huynh.”
-“Huynh theo đuổi thứ mình muốn, đó là tự do của huynh.”
-Là nàng sai rồi.
-Nàng không nên tin bất kỳ ai.
-Nàng không thích nghi được với nơi này.
-Cũng không muốn ở lại nơi này.
-“Tiểu Cửu!”
-Sở Dạ Ly lăn xe lăn đuổi theo, nhìn bóng lưng Sở Ly tập tễnh nhưng vẫn chạy rất nhanh, thế nào cũng không đuổi kịp.
-“Tiểu Cửu!”
-Đừng gọi nàng nữa.
-Gọi nàng làm gì chứ?
-Nàng không tranh không giành.
-Thế mà lại trở thành quân cờ để ai cũng có thể lợi dụng.
-Bây giờ…
-Nàng đã có nhận thức vô cùng rõ ràng về chính mình.
-“Cửu đệ!”
-“Đừng làm phiền ta.”
-“Cửu đệ, là ta đây!”
-Trên con đường dài, Sở Ngạo Thiên vác một thứ có hai cái bánh xe, chẳng biết là vật gì, vừa thở hồng hộc vừa chạy tới.
-“Bát hoàng huynh, huynh mang cái gì vậy?”
-Sở Ngạo Thiên lau mồ hôi trên trán.
-“Ngươi tưởng mấy ngày nay ta suốt ngày chạy ra ngoài thật sự là đi chơi à?”
-“Thật ra ta tới Tây phố, kiếm cho ngươi một chiếc siêu xe lăn phiên bản nâng cấp!”
-“Siêu xe lăn?”
-“Nhìn này.”
-Sở Ngạo Thiên đặt món đồ nối liền bằng hai bánh xe xuống đất.
-Thế nhưng…
-Chỗ nối giữa hai bánh xe lại chẳng hề có chỗ ngồi.
-“Bát hoàng huynh, xe lăn này sao không có chỗ ngồi?”
-“Đừng vội, để ta từ từ giải thích.”
-Sở Ngạo Thiên hăng hái nói:
-“Cái này không phải để ngồi bằng mông.”
-“Mà là để đặt hai chân bị thương lên trên.”
-Vừa loay hoay điều chỉnh, hắn vừa giải thích:
-“Sau khi đặt hai chân lên, cặp bánh xe này sẽ thay thế hai chân ngươi, lăn cực nhanh.”
-“Sau đó chống hai tay xuống đất.”
-“Tay ngươi bò nhanh cỡ nào, bánh xe sẽ lăn nhanh cỡ đó.”
-“Biết đâu còn chạy như bay ấy chứ!”
-“Có phải rất lợi hại không?”
-“Có phải trâu bò hơn xe lăn truyền thống nhiều không?”
-Sở Ly: “?”
-Ý là…
-Nàng là chó sao?
-Hai tay bò phía trước.
-Hai bánh xe lăn phía sau.
-“Cửu đệ, mau thử đi!”
-“… Thôi khỏi.”
-“Chân đệ đã có thể vịn tường đi chậm rồi. Đa tạ Bát hoàng huynh đã nhọc lòng.”
-“Khách sáo gì chứ?”
-“Chiếc siêu xe lăn này ta đặc biệt làm riêng cho ngươi.”
-“À, chắc ngươi chưa biết dùng.”
-“Để ta làm mẫu.”
-Sở Ngạo Thiên xắn tay áo lên, đặt hai chân mình lên chiếc “xe lăn”, cúi người chống hai tay xuống đất.
-Rồi…
-Bò!
-Hai tay cọ cọ cọ trên mặt đất.
-Hai bánh xe phía sau lăn vù vù.
-Cả người hắn lao vút về phía trước.
-Bò bò bò!
-Vù vù vù!
-“Cửu đệ, nhìn xem ta bò nhanh chưa!”
-“Siêu xe lăn này có phải lợi hại không?”
-“Ngươi cưỡi nó rồi thì chẳng cần lo chân cẳng không dùng được nữa.”
-“Từ cửa Đông bò đến cửa Tây, mười dặm chỉ tốn một cái màn thầu!”
-Sở Ly há miệng, muốn nói lại thôi.
-“…”
-Vốn dĩ tâm trạng nàng đang rất nặng nề.
-Cẩu Bát cũng trợn tròn mắt.
-“Điện hạ… cái này…”
-“Chúng ta mau đi thôi.”
-Đúng lúc tan triều.
-Các đại thần đều phải đi qua con đường dài này.
-Sở Ly vội vàng rời đi.
-Các đại thần tốp năm tốp ba bước ra, vừa hay nhìn thấy Bát hoàng tử đang… vặn vẹo bò trên mặt đất.
-Nếu là trẻ con đi xe trượt thì còn dễ hiểu.
-Đằng này…
-Hắn dùng cả tứ chi mà bò.
-Y như chó…
-Các đại thần ai nấy đều mở to mắt, nhưng chẳng ai dám lên tiếng.
-Chỉ có thể giả vờ như không nhìn thấy, bình thản đi ngang qua.
-Thế nhưng trong lòng mỗi người đều không ngừng lắc đầu.
-Haiz…
-Đúng là thằng con ngốc nhà địa chủ.
-May mà biết đầu thai, sinh vào hoàng gia.
-Nếu sinh trong gia đình bình thường…
-Chắc đã bị vứt lên núi cho sói ăn từ lâu rồi.
-⸻
-Thọ Khang cung.
-Khi Sở Ly đến, Thái hậu đang tụng kinh.
-Nàng đợi gần nửa canh giờ, đến khi lão nhân gia đọc xong quyển kinh ấy mới chậm rãi đứng dậy.
-Sở Ly bước tới đỡ bà.
-Thái hậu cười đến không khép miệng được.
-“Bà cháu chúng ta, một người già, một kẻ tàn, dìu nhau thế này, trông thật có mấy phần buồn cười.”
-Đúng là già yếu bệnh tật, chẳng thiếu thứ gì.
-Sở Ly cười nói:
-“Hoàng tổ mẫu đâu có già. Tinh thần người còn tốt như vậy, nhất định sẽ sống đến một trăm hai mươi tuổi!”
-“Đứa nhỏ này, chỉ giỏi nói bừa.”
-“Nếu vậy chẳng phải ai gia thành lão quái vật rồi sao?”
-Thái hậu cười ha hả ngồi xuống.
-Người già vốn thích đám tiểu bối quây quần bên cạnh, cười cười nói nói, hưởng niềm vui con cháu.
-Bà sai ma ma chuẩn bị điểm tâm và trà sữa mà Sở Ly thích.
-Sở Ly đứng phía sau bóp vai cho bà, kể vài chuyện thú vị, chọc Thái hậu cười không ngớt.
-Đợi bầu không khí vừa đủ, nàng mới giả như vô tình mở lời:
-“Hoàng tổ mẫu đã biết Nhiếp Chính Vương hồi kinh chưa?”
-Thái hậu hơi ngạc nhiên.
-“Đứa nhỏ này… đến dò hỏi ai gia sao?”
-Chuyện Nhiếp Chính Vương bị giam vào thiên lao, sáng nay bà đã biết rồi.
-“Tôn nhi không dám. Chỉ là Nhiếp Chính Vương vì tôn nhi nên mới hồi kinh. Nay ngài ấy bị hạ ngục, trong lòng tôn nhi rất bất an.”
-Thái hậu khẽ vỗ lên mu bàn tay nàng.
-“Con là đứa trẻ tốt.”
-“Hoàng thúc con tuy ngoài lạnh trong cứng, nhưng thật lòng rất thương con.”
-“Con lo cho nó cũng là điều nên làm.”
-“Nhưng Hoàng đế làm như vậy, tự nhiên cũng có nỗi khổ và tính toán của mình.”
-“Vì luật pháp Đại Sở, vì sự yên ổn của xã tắc, Hoàng đế không thể không làm vậy.”
-“Nhưng Hoàng thúc đâu có làm chuyện gì sai.”
-“Hắn kháng chỉ, âm thầm hồi kinh, đó chính là chuyện sai.”
-“Nhưng…”
-“Tiểu Cửu.”
-“Con tính tình đơn thuần, rất dễ bị Nhiếp Chính Vương lợi dụng.”
-“Nếu lần này con cảm thấy hắn vô tội, lần sau hắn sẽ mượn danh nghĩa của con để làm chuyện bất chính.”
-“Đến lúc đó… mọi chuyện sẽ quá muộn.”
-Sở Ly ngơ ngác nhìn bà.
-Đến cả Hoàng tổ mẫu…
-Cũng cho rằng nhất định phải nghiêm trị Nhiếp Chính Vương.
-Nàng bỗng hỏi:
-“Phụ hoàng và Hoàng thúc là huynh đệ cùng mẹ sinh ra.”
-“Lẽ nào người cũng không tin chính đệ đệ ruột của mình sao?”
-Thái hậu trầm giọng:
-“Tin.”
-“Nhưng Hoàng đế là quân vương.”
-“Trong lòng luôn mang giang sơn và lê dân bách tính.”
-“Vì cơ nghiệp muôn đời của Đại Sở, người không thể không xử trí chính đệ đệ ruột của mình.”
-“Người đau khổ nhất… chẳng phải chính là Hoàng đế sao?”
-Sở Ly nhất thời ngây người.
-Lý lẽ…
-Có thể nói như vậy sao?
-Lẽ nào năm xưa hại Sở Đệ Trì đoạn tử tuyệt tôn…
-Cũng là vì giang sơn?
-Nhưng lúc ấy hắn còn nhỏ như vậy.
-Hoàn toàn không có uy hiếp gì.
-Chẳng phải hắn rất vô tội sao?
-Lời của Thái hậu…
-Không khỏi quá gượng ép rồi.
-“Nếu Hoàng thúc thật sự có lòng bất chính, xử trí ngài ấy thì có lý có cứ.”
-“Nhưng bao năm nay, nếu không có ngài ấy trấn thủ Nam Cương, Nam Man đã sớm đánh vào Đại Sở, công thành chiếm đất.”
-“Rõ ràng ngài ấy không hề sai.”
-Thái hậu sao lại không hiểu ý Sở Ly?
-Sinh ra trong hoàng thất…
-Rất nhiều chuyện không thể chỉ dùng đúng sai để phân định.
-Có những đạo lý…
-Vốn dĩ không giảng cho thông được.
-“Tiểu Cửu.”
-“Con chỉ cần biết rằng…”
-“Những gì phụ hoàng con làm, đều là vì giang sơn và lê dân bách tính.”
-“Nhưng những gì Hoàng thúc làm cũng là vì giang sơn và bách tính. Đối xử với ngài ấy như vậy… chẳng phải quá oan uổng sao?”
-“Vì Đại Sở…”
-“Có oan một mình hắn, cũng không tính là oan.” Ẩn bớt</p>
+            <p>Chương 111: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 111: Con trai ngốc nhà địa chủ</p>
+<p>“Không phải ta.” Sở Dạ Ly phủ nhận.</p>
+<p>“Chúng ta là cùng một kiểu người, không phải sao? Tiểu Cửu, ngươi là người duy nhất quan tâm ta. Ngoài ngươi ra, ta chẳng còn thứ gì khác muốn có.”</p>
+<p>Sở Ly khẽ cười:</p>
+<p>“Trước đây, ta cũng từng nghĩ như vậy. Ta cho rằng chúng ta là cùng một loại người. Nhưng hiện thực nói cho ta biết… chúng ta không cùng một con đường.”</p>
+<p>“Sau khi hồi cung, huynh nhanh chóng lôi kéo thế lực, thủ đoạn thuần thục. Nếu không chuẩn bị từ trước, làm sao có thể chu toàn đến vậy? Thứ huynh muốn… là quyền lực.”</p>
+<p>Mà trừ khử Nhiếp Chính Vương, lấy lòng Hoàng thượng, chính là cách khiến Hoàng thượng vui lòng nhất.</p>
+<p>Nghĩ tới đây…</p>
+<p>E rằng Hoàng thượng đã vô cùng trọng dụng và tín nhiệm hắn rồi.</p>
+<p>Sở Dạ Ly trầm giọng:</p>
+<p>“Tiểu Cửu, chúng ta là người cùng đường. Xin hãy tin ta, ta có nỗi khổ riêng, nhưng tuyệt đối sẽ không hại ngươi.”</p>
+<p>“Ta không biết nên tin ai… cũng không biết mình nên làm gì.”</p>
+<p>Sở Ly lắc đầu, lùi về sau mấy bước, cười tự giễu:</p>
+<p>“Ta không nhìn thấu được tất cả các người, cũng không thích nơi này.”</p>
+<p>“Ai cũng có thể đâm sau lưng ta.”</p>
+<p>“Những gương mặt tươi cười, những dáng vẻ lấy lòng, những lời nịnh nọt ấy… thật ra đều giấu dao.”</p>
+<p>“Ta ghét nơi này.”</p>
+<p>Là nàng quá ngây thơ.</p>
+<p>Hoàng cung vàng son lộng lẫy này…</p>
+<p>Thật khiến người ta ngạt thở.</p>
+<p>Thật bẩn thỉu.</p>
+<p>“Ngũ hoàng huynh, ta không có ý trách huynh.”</p>
+<p>“Huynh theo đuổi thứ mình muốn, đó là tự do của huynh.”</p>
+<p>Là nàng sai rồi.</p>
+<p>Nàng không nên tin bất kỳ ai.</p>
+<p>Nàng không thích nghi được với nơi này.</p>
+<p>Cũng không muốn ở lại nơi này.</p>
+<p>“Tiểu Cửu!”</p>
+<p>Sở Dạ Ly lăn xe lăn đuổi theo, nhìn bóng lưng Sở Ly tập tễnh nhưng vẫn chạy rất nhanh, thế nào cũng không đuổi kịp.</p>
+<p>“Tiểu Cửu!”</p>
+<p>Đừng gọi nàng nữa.</p>
+<p>Gọi nàng làm gì chứ?</p>
+<p>Nàng không tranh không giành.</p>
+<p>Thế mà lại trở thành quân cờ để ai cũng có thể lợi dụng.</p>
+<p>Bây giờ…</p>
+<p>Nàng đã có nhận thức vô cùng rõ ràng về chính mình.</p>
+<p>“Cửu đệ!”</p>
+<p>“Đừng làm phiền ta.”</p>
+<p>“Cửu đệ, là ta đây!”</p>
+<p>Trên con đường dài, Sở Ngạo Thiên vác một thứ có hai cái bánh xe, chẳng biết là vật gì, vừa thở hồng hộc vừa chạy tới.</p>
+<p>“Bát hoàng huynh, huynh mang cái gì vậy?”</p>
+<p>Sở Ngạo Thiên lau mồ hôi trên trán.</p>
+<p>“Ngươi tưởng mấy ngày nay ta suốt ngày chạy ra ngoài thật sự là đi chơi à?”</p>
+<p>“Thật ra ta tới Tây phố, kiếm cho ngươi một chiếc siêu xe lăn phiên bản nâng cấp!”</p>
+<p>“Siêu xe lăn?”</p>
+<p>“Nhìn này.”</p>
+<p>Sở Ngạo Thiên đặt món đồ nối liền bằng hai bánh xe xuống đất.</p>
+<p>Thế nhưng…</p>
+<p>Chỗ nối giữa hai bánh xe lại chẳng hề có chỗ ngồi.</p>
+<p>“Bát hoàng huynh, xe lăn này sao không có chỗ ngồi?”</p>
+<p>“Đừng vội, để ta từ từ giải thích.”</p>
+<p>Sở Ngạo Thiên hăng hái nói:</p>
+<p>“Cái này không phải để ngồi bằng mông.”</p>
+<p>“Mà là để đặt hai chân bị thương lên trên.”</p>
+<p>Vừa loay hoay điều chỉnh, hắn vừa giải thích:</p>
+<p>“Sau khi đặt hai chân lên, cặp bánh xe này sẽ thay thế hai chân ngươi, lăn cực nhanh.”</p>
+<p>“Sau đó chống hai tay xuống đất.”</p>
+<p>“Tay ngươi bò nhanh cỡ nào, bánh xe sẽ lăn nhanh cỡ đó.”</p>
+<p>“Biết đâu còn chạy như bay ấy chứ!”</p>
+<p>“Có phải rất lợi hại không?”</p>
+<p>“Có phải trâu bò hơn xe lăn truyền thống nhiều không?”</p>
+<p>Sở Ly: “?”</p>
+<p>Ý là…</p>
+<p>Nàng là chó sao?</p>
+<p>Hai tay bò phía trước.</p>
+<p>Hai bánh xe lăn phía sau.</p>
+<p>“Cửu đệ, mau thử đi!”</p>
+<p>“… Thôi khỏi.”</p>
+<p>“Chân đệ đã có thể vịn tường đi chậm rồi. Đa tạ Bát hoàng huynh đã nhọc lòng.”</p>
+<p>“Khách sáo gì chứ?”</p>
+<p>“Chiếc siêu xe lăn này ta đặc biệt làm riêng cho ngươi.”</p>
+<p>“À, chắc ngươi chưa biết dùng.”</p>
+<p>“Để ta làm mẫu.”</p>
+<p>Sở Ngạo Thiên xắn tay áo lên, đặt hai chân mình lên chiếc “xe lăn”, cúi người chống hai tay xuống đất.</p>
+<p>Rồi…</p>
+<p>Bò!</p>
+<p>Hai tay cọ cọ cọ trên mặt đất.</p>
+<p>Hai bánh xe phía sau lăn vù vù.</p>
+<p>Cả người hắn lao vút về phía trước.</p>
+<p>Bò bò bò!</p>
+<p>Vù vù vù!</p>
+<p>“Cửu đệ, nhìn xem ta bò nhanh chưa!”</p>
+<p>“Siêu xe lăn này có phải lợi hại không?”</p>
+<p>“Ngươi cưỡi nó rồi thì chẳng cần lo chân cẳng không dùng được nữa.”</p>
+<p>“Từ cửa Đông bò đến cửa Tây, mười dặm chỉ tốn một cái màn thầu!”</p>
+<p>Sở Ly há miệng, muốn nói lại thôi.</p>
+<p>“…”</p>
+<p>Vốn dĩ tâm trạng nàng đang rất nặng nề.</p>
+<p>Cẩu Bát cũng trợn tròn mắt.</p>
+<p>“Điện hạ… cái này…”</p>
+<p>“Chúng ta mau đi thôi.”</p>
+<p>Đúng lúc tan triều.</p>
+<p>Các đại thần đều phải đi qua con đường dài này.</p>
+<p>Sở Ly vội vàng rời đi.</p>
+<p>Các đại thần tốp năm tốp ba bước ra, vừa hay nhìn thấy Bát hoàng tử đang… vặn vẹo bò trên mặt đất.</p>
+<p>Nếu là trẻ con đi xe trượt thì còn dễ hiểu.</p>
+<p>Đằng này…</p>
+<p>Hắn dùng cả tứ chi mà bò.</p>
+<p>Y như chó…</p>
+<p>Các đại thần ai nấy đều mở to mắt, nhưng chẳng ai dám lên tiếng.</p>
+<p>Chỉ có thể giả vờ như không nhìn thấy, bình thản đi ngang qua.</p>
+<p>Thế nhưng trong lòng mỗi người đều không ngừng lắc đầu.</p>
+<p>Haiz…</p>
+<p>Đúng là thằng con ngốc nhà địa chủ.</p>
+<p>May mà biết đầu thai, sinh vào hoàng gia.</p>
+<p>Nếu sinh trong gia đình bình thường…</p>
+<p>Chắc đã bị vứt lên núi cho sói ăn từ lâu rồi.</p>
+<p>⸻</p>
+<p>Thọ Khang cung.</p>
+<p>Khi Sở Ly đến, Thái hậu đang tụng kinh.</p>
+<p>Nàng đợi gần nửa canh giờ, đến khi lão nhân gia đọc xong quyển kinh ấy mới chậm rãi đứng dậy.</p>
+<p>Sở Ly bước tới đỡ bà.</p>
+<p>Thái hậu cười đến không khép miệng được.</p>
+<p>“Bà cháu chúng ta, một người già, một kẻ tàn, dìu nhau thế này, trông thật có mấy phần buồn cười.”</p>
+<p>Đúng là già yếu bệnh tật, chẳng thiếu thứ gì.</p>
+<p>Sở Ly cười nói:</p>
+<p>“Hoàng tổ mẫu đâu có già. Tinh thần người còn tốt như vậy, nhất định sẽ sống đến một trăm hai mươi tuổi!”</p>
+<p>“Đứa nhỏ này, chỉ giỏi nói bừa.”</p>
+<p>“Nếu vậy chẳng phải ai gia thành lão quái vật rồi sao?”</p>
+<p>Thái hậu cười ha hả ngồi xuống.</p>
+<p>Người già vốn thích đám tiểu bối quây quần bên cạnh, cười cười nói nói, hưởng niềm vui con cháu.</p>
+<p>Bà sai ma ma chuẩn bị điểm tâm và trà sữa mà Sở Ly thích.</p>
+<p>Sở Ly đứng phía sau bóp vai cho bà, kể vài chuyện thú vị, chọc Thái hậu cười không ngớt.</p>
+<p>Đợi bầu không khí vừa đủ, nàng mới giả như vô tình mở lời:</p>
+<p>“Hoàng tổ mẫu đã biết Nhiếp Chính Vương hồi kinh chưa?”</p>
+<p>Thái hậu hơi ngạc nhiên.</p>
+<p>“Đứa nhỏ này… đến dò hỏi ai gia sao?”</p>
+<p>Chuyện Nhiếp Chính Vương bị giam vào thiên lao, sáng nay bà đã biết rồi.</p>
+<p>“Tôn nhi không dám. Chỉ là Nhiếp Chính Vương vì tôn nhi nên mới hồi kinh. Nay ngài ấy bị hạ ngục, trong lòng tôn nhi rất bất an.”</p>
+<p>Thái hậu khẽ vỗ lên mu bàn tay nàng.</p>
+<p>“Con là đứa trẻ tốt.”</p>
+<p>“Hoàng thúc con tuy ngoài lạnh trong cứng, nhưng thật lòng rất thương con.”</p>
+<p>“Con lo cho nó cũng là điều nên làm.”</p>
+<p>“Nhưng Hoàng đế làm như vậy, tự nhiên cũng có nỗi khổ và tính toán của mình.”</p>
+<p>“Vì luật pháp Đại Sở, vì sự yên ổn của xã tắc, Hoàng đế không thể không làm vậy.”</p>
+<p>“Nhưng Hoàng thúc đâu có làm chuyện gì sai.”</p>
+<p>“Hắn kháng chỉ, âm thầm hồi kinh, đó chính là chuyện sai.”</p>
+<p>“Nhưng…”</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Con tính tình đơn thuần, rất dễ bị Nhiếp Chính Vương lợi dụng.”</p>
+<p>“Nếu lần này con cảm thấy hắn vô tội, lần sau hắn sẽ mượn danh nghĩa của con để làm chuyện bất chính.”</p>
+<p>“Đến lúc đó… mọi chuyện sẽ quá muộn.”</p>
+<p>Sở Ly ngơ ngác nhìn bà.</p>
+<p>Đến cả Hoàng tổ mẫu…</p>
+<p>Cũng cho rằng nhất định phải nghiêm trị Nhiếp Chính Vương.</p>
+<p>Nàng bỗng hỏi:</p>
+<p>“Phụ hoàng và Hoàng thúc là huynh đệ cùng mẹ sinh ra.”</p>
+<p>“Lẽ nào người cũng không tin chính đệ đệ ruột của mình sao?”</p>
+<p>Thái hậu trầm giọng:</p>
+<p>“Tin.”</p>
+<p>“Nhưng Hoàng đế là quân vương.”</p>
+<p>“Trong lòng luôn mang giang sơn và lê dân bách tính.”</p>
+<p>“Vì cơ nghiệp muôn đời của Đại Sở, người không thể không xử trí chính đệ đệ ruột của mình.”</p>
+<p>“Người đau khổ nhất… chẳng phải chính là Hoàng đế sao?”</p>
+<p>Sở Ly nhất thời ngây người.</p>
+<p>Lý lẽ…</p>
+<p>Có thể nói như vậy sao?</p>
+<p>Lẽ nào năm xưa hại Sở Đệ Trì đoạn tử tuyệt tôn…</p>
+<p>Cũng là vì giang sơn?</p>
+<p>Nhưng lúc ấy hắn còn nhỏ như vậy.</p>
+<p>Hoàn toàn không có uy hiếp gì.</p>
+<p>Chẳng phải hắn rất vô tội sao?</p>
+<p>Lời của Thái hậu…</p>
+<p>Không khỏi quá gượng ép rồi.</p>
+<p>“Nếu Hoàng thúc thật sự có lòng bất chính, xử trí ngài ấy thì có lý có cứ.”</p>
+<p>“Nhưng bao năm nay, nếu không có ngài ấy trấn thủ Nam Cương, Nam Man đã sớm đánh vào Đại Sở, công thành chiếm đất.”</p>
+<p>“Rõ ràng ngài ấy không hề sai.”</p>
+<p>Thái hậu sao lại không hiểu ý Sở Ly?</p>
+<p>Sinh ra trong hoàng thất…</p>
+<p>Rất nhiều chuyện không thể chỉ dùng đúng sai để phân định.</p>
+<p>Có những đạo lý…</p>
+<p>Vốn dĩ không giảng cho thông được.</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Con chỉ cần biết rằng…”</p>
+<p>“Những gì phụ hoàng con làm, đều là vì giang sơn và lê dân bách tính.”</p>
+<p>“Nhưng những gì Hoàng thúc làm cũng là vì giang sơn và bách tính. Đối xử với ngài ấy như vậy… chẳng phải quá oan uổng sao?”</p>
+<p>“Vì Đại Sở…”</p>
+<p>“Có oan một mình hắn, cũng không tính là oan.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_110.html" class="btn">‹ Trước</a>
             <a href="chuong_112.html" class="btn">Sau ›</a>
         </div>
@@ -307,15 +315,11 @@ Vốn dĩ không giảng cho thông được.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -327,11 +331,11 @@ Vốn dĩ không giảng cho thông được.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

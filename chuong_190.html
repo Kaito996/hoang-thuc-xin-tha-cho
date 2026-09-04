@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 190</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,199 +62,207 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 190</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_189.html" class="btn">‹ Trước</a>
             <a href="chuong_191.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 190: Nước mắt là trân châu, càng khóc
-càng giống heo
-
-Sự thật chứng minh rằng, người sinh ra dung mạo đẹp đẽ, đến
-cả một góc vạt áo cũng đều mang theo hương thơm.
-Khi Tần Mục Tuyết tỉnh lại, ngửi thấy nơi đầu ngón tay còn
-vương mùi hương thanh lãnh, thuần túy thuộc về nam nhân kia.
-Đến lúc ấy, nàng mới kích động nhào vào lòng Sở Ly, òa khóc nức
-nở:
-“A Ly ca ca, ta cứ ngỡ huynh đã chết rồi, ta thật sự không phải
-đang nằm mơ chứ?”
-Nàng đưa tay sờ lên ngực nàng ấy.
-Vừa mềm, vừa ấm.
-Không phải mộng!
-“Huynh thật sự còn sống!”
-“Rốt cuộc đây là chuyện gì? Khi đó chính mắt ta nhìn thấy huynh
-được hạ táng, còn đến trước mộ của huynh... Chẳng lẽ đúng như
-tên gọi, ly miêu có chín cái mạng?”
-Đôi mắt nàng đỏ hoe, kích động đến mức nói năng lộn xộn,
-trước sau chẳng còn trật tự.
-Sở Ly nắm lấy vạt áo nàng, lau nước mắt cho nàng:
-“Khóc cái gì chứ? Ta đây chẳng phải vẫn bình yên hay sao?”
-“Sao huynh lại ở Giang Nam?”
-Tần Mục Tuyết nắm chặt hai tay nàng, sợ rằng chỉ
-cần buông ra là nàng sẽ biến mất, ngay cả chớp mắt cũng không
-dám, chỉ sợ tất cả chỉ là một giấc mộng.
-“Ta đến bái sư học võ, muốn báo thù cho huynh, nào ngờ lại gặp
-được huynh ở nơi này. Huynh còn sống, vì sao không đến tìm
-bọn ta? Ca ca ta khóc đến mù cả mắt rồi. Ta phải mau đem tin
-này báo cho ca ca.”
-“Mục Tuyết...”
-“Ta lập tức viết thư!”
-Sở Ly hé miệng, khẽ thở dài.
-Ở Giang Nam, người quen thực sự quá nhiều.
-Sớm biết vậy, nàng đã tìm một vùng thôn dã hẻo lánh, nơi chim
-còn chẳng buồn đậu mà ở cho xong.
-“Mục Tuyết, chuyện này nói ra thì dài, nhưng hiện giờ ta mai
-danh ẩn tích, chỉ muốn sống những ngày tháng yên ổn, không
-muốn phô trương.”
-Tần Mục Tuyết hiểu ý:
-“Ta chỉ nói với một mình ca ca ta thôi, được không? A Ly ca ca,
-ca ta hiện đang trấn thủ nơi thành trì giáp giới Mạc Hoài Châu,
-cùng quân Nam Man giằng co. Nếu chiến sự bùng nổ, lỡ như
-huynh ấy có mệnh hệ gì... Huynh ấy chết rồi thì ngay cả mặt
-huynh lần cuối cũng không được gặp...”
-Hoàng thúc, xin tha cho. Cửu hoàng tử là nữ nhi
-Khóe mắt vừa đỏ lên, nàng đã muốn khóc:
-“Ca ca ta... ca ca ta thật đáng thương. Huynh ấy một lòng muốn
-báo thù cho huynh, lao ra chiến trường. Chẳng bao lâu nữa sẽ
-khai chiến rồi! Trước lúc chết, chẳng lẽ ngay cả tâm nguyện cuối
-cùng cũng không thể được thành toàn sao!”
-“...”
-Lời đã nói đến mức ấy, Sở Ly còn có thể cự tuyệt sao?
-“Vậy... vậy thì cứ nói với Mục Vũ đi. Nhưng ngoài huynh ấy ra,
-tuyệt đối không được để bất cứ ai khác biết.”
-Tần Mục Tuyết lập tức đổi khóc thành cười, ngay cả một giọt
-nước mắt cũng chẳng rơi thêm, nhanh như chớp viết xong mật
-thư, sai người đưa tới tiền tuyến.
-Nước mắt là trân châu, càng khóc càng giống heo.
-Một nữ nhân kiên cường tuyệt đối không thể rơi lệ.
-Từ tiền tuyến về Giang Nam, ngựa phi ngày đêm không nghỉ, chỉ
-mất một ngày một đêm là tới.
-Chậm nhất là ngày kia, Tần Mục Vũ sẽ đến.
-Vui quá!
-Đúng lúc ấy, Lục Vân Sơ sai người chuẩn bị xong điểm tâm, bưng
-vào phòng. Tần Mục Tuyết lập tức đỏ hoe khóe mắt, đôi mắt
-đẫm lệ mơ màng nhìn sang:
-“Đêm qua, nếu không nhờ vị này...”
-“Đây là Nhị sư huynh của ta, họ Lục.”
-“Nếu không nhờ Lục sư huynh ra tay cứu giúp, ta ắt đã rơi vào
-tay tên dâm tặc hái hoa kia. Đại ân như thế, không có gì báo đáp,
-chỉ nguyện lấy thân báo đáp.”
-Sở Ly: “?”
-Có phải chuyện này... hơi nhanh quá rồi không?
-Chẳng phải nàng vẫn luôn nói đã thích nàng suốt tám chín năm
-sao?
-Trong lòng Tần Mục Tuyết thầm suy tính:
-Sư huynh của A Ly ca ca, tất nhiên phải là người trầm ổn, phẩm
-hạnh đoan chính.
-A Ly ca ca là nữ tử, không thể làm thê tử của nàng, vậy thì nàng
-sẽ làm tẩu tẩu của A Ly ca ca.
-Lục Vân Sơ hơi bất ngờ, theo bản năng nhìn sang Sở Ly:
-“Ta là cô nhi.”
-“Nếu Lục sư huynh không chê, phụ mẫu của ta cũng chính là phụ
-mẫu của huynh.”
-“Ta nghèo rớt mồng tơi, hai tay trắng.”
-“Của hồi môn của ta rất hậu, nửa đời sau chẳng cần lo nghĩ.”
-“Ta không nơi ở cố định, lấy tứ hải làm nhà.”
-“Gả gà theo gà, gả chó theo chó.”
-“... Ta không thích nữ nhân.”
-“Ta có thể nữ phẫn nam trang, báo đáp ân tình
-của Lục sư huynh.”
-Mới chỉ là lần đầu gặp mặt, Lục Vân Sơ vốn không có hảo cảm gì
-với Tần Mục Tuyết. Thế nhưng sau mấy câu đối đáp, lại cảm thấy
-nàng thẳng thắn, thú vị, hoàn toàn khác biệt với những thiên kim
-thế gia khuê các, câu nệ lễ nghi, cứng nhắc khuôn phép.
-Đến mức khiến hắn có chút đỏ mặt.
-Tần Mục Tuyết có hảo cảm với hắn, say mê dung nhan tuấn mỹ
-của hắn. Lại thêm xuất thân từ phủ Tướng quân, tính tình từ nhỏ
-đã sảng khoái, miệng lưỡi cũng chẳng biết giữ gìn.
-Lục sư huynh không thích nàng?
-Không sao.
-Nàng rất biết quấn người.
-Nàng đã quấn lấy A Ly ca ca gần mười năm rồi, chẳng lẽ còn sợ
-không quấn nổi Lục sư huynh sao?
-Lục Vân Sơ đành đưa ánh mắt cầu cứu nhìn sang Sở Ly.
-Sở Ly đưa tay sờ chóp mũi, giả như không nhìn thấy, dời ánh
-mắt đi:
-“À... tên dâm tặc hái hoa kia đâu rồi?”
-“Ta đã áp giải hắn đến quan phủ.”
-Lục Vân Sơ đáp:
-“Kẻ này gian dâm cướp bóc, hung tàn độc ác, đã
-gây ra bảy vụ án. Chuyến này ta xuống núi, chính là vì việc ấy.”
-“Lục sư huynh võ nghệ cao cường, xuất thủ quả quyết. Đáng tiếc
-ta thân kiều thể nhược, đến một con kiến cũng chẳng dám giẫm
-chết...”
-Tần Mục Tuyết nắm chiếc khăn tay nhỏ, tha thiết nhìn hắn.
-“Tần cô nương quá lời. Thấy chuyện bất bình thì rút đao tương
-trợ. Đổi lại là bất kỳ ai gặp phải, cũng tuyệt đối sẽ không khoanh
-tay đứng nhìn.”
-“Đúng vậy, thế mà chuyện này lại vừa khéo để Lục sư huynh gặp
-được. Đây quả thật là duyên phận do trời định.”
-Sở Ly đột nhiên cảm thấy mình không nên ở trong phòng.
-Nàng nên ở ngoài phòng mới phải.
-Nàng đưa tay sờ cái đầu trọc lốc của mình, chuẩn bị đi ra ngoài thì Tần Mục Tuyết vội vàng kéo nàng lại:
-“A Ly ca ca, huynh định đi đâu?”
-Nàng sợ chỉ cần chớp mắt một cái, người sẽ lại biến mất.
-Trước khi ca ca đến Giang Nam, nàng nhất định phải một tấc cũng không rời mà canh... bảo vệ A Ly ca ca.
-“Ta ra ngoài hít thở chút không khí, muội cứ trò chuyện với Nhị sư huynh của ta đi.”
-“Không sao đâu, A Ly ca ca. Lục sư huynh không
-phải đến quấy rầy chúng ta, huynh ấy là đến gia nhập chúng ta.
-Đúng không, Lục sư huynh?”
-Mí mắt Lục Vân Sơ giật mạnh.
-Bao năm nay hắn đều ở trên núi bái sư học nghệ, hầu hạ sư phụ, chưa từng tiếp xúc với nữ tử, huống chi là một cô nương hoạt bát, nhảy nhót như Tần Mục Tuyết.
-Nhưng chẳng hiểu vì sao, hắn lại có một loại ảo giác rằng... mình sắp không khống chế nổi cục diện.</p>
+            <p>Chương 190: Nước mắt là trân châu, càng khóc</p>
+<p>càng giống heo</p>
+<p>Sự thật chứng minh rằng, người sinh ra dung mạo đẹp đẽ, đến</p>
+<p>cả một góc vạt áo cũng đều mang theo hương thơm.</p>
+<p>Khi Tần Mục Tuyết tỉnh lại, ngửi thấy nơi đầu ngón tay còn</p>
+<p>vương mùi hương thanh lãnh, thuần túy thuộc về nam nhân kia.</p>
+<p>Đến lúc ấy, nàng mới kích động nhào vào lòng Sở Ly, òa khóc nức</p>
+<p>nở:</p>
+<p>“A Ly ca ca, ta cứ ngỡ huynh đã chết rồi, ta thật sự không phải</p>
+<p>đang nằm mơ chứ?”</p>
+<p>Nàng đưa tay sờ lên ngực nàng ấy.</p>
+<p>Vừa mềm, vừa ấm.</p>
+<p>Không phải mộng!</p>
+<p>“Huynh thật sự còn sống!”</p>
+<p>“Rốt cuộc đây là chuyện gì? Khi đó chính mắt ta nhìn thấy huynh</p>
+<p>được hạ táng, còn đến trước mộ của huynh... Chẳng lẽ đúng như</p>
+<p>tên gọi, ly miêu có chín cái mạng?”</p>
+<p>Đôi mắt nàng đỏ hoe, kích động đến mức nói năng lộn xộn,</p>
+<p>trước sau chẳng còn trật tự.</p>
+<p>Sở Ly nắm lấy vạt áo nàng, lau nước mắt cho nàng:</p>
+<p>“Khóc cái gì chứ? Ta đây chẳng phải vẫn bình yên hay sao?”</p>
+<p>“Sao huynh lại ở Giang Nam?”</p>
+<p>Tần Mục Tuyết nắm chặt hai tay nàng, sợ rằng chỉ</p>
+<p>cần buông ra là nàng sẽ biến mất, ngay cả chớp mắt cũng không</p>
+<p>dám, chỉ sợ tất cả chỉ là một giấc mộng.</p>
+<p>“Ta đến bái sư học võ, muốn báo thù cho huynh, nào ngờ lại gặp</p>
+<p>được huynh ở nơi này. Huynh còn sống, vì sao không đến tìm</p>
+<p>bọn ta? Ca ca ta khóc đến mù cả mắt rồi. Ta phải mau đem tin</p>
+<p>này báo cho ca ca.”</p>
+<p>“Mục Tuyết...”</p>
+<p>“Ta lập tức viết thư!”</p>
+<p>Sở Ly hé miệng, khẽ thở dài.</p>
+<p>Ở Giang Nam, người quen thực sự quá nhiều.</p>
+<p>Sớm biết vậy, nàng đã tìm một vùng thôn dã hẻo lánh, nơi chim</p>
+<p>còn chẳng buồn đậu mà ở cho xong.</p>
+<p>“Mục Tuyết, chuyện này nói ra thì dài, nhưng hiện giờ ta mai</p>
+<p>danh ẩn tích, chỉ muốn sống những ngày tháng yên ổn, không</p>
+<p>muốn phô trương.”</p>
+<p>Tần Mục Tuyết hiểu ý:</p>
+<p>“Ta chỉ nói với một mình ca ca ta thôi, được không? A Ly ca ca,</p>
+<p>ca ta hiện đang trấn thủ nơi thành trì giáp giới Mạc Hoài Châu,</p>
+<p>cùng quân Nam Man giằng co. Nếu chiến sự bùng nổ, lỡ như</p>
+<p>huynh ấy có mệnh hệ gì... Huynh ấy chết rồi thì ngay cả mặt</p>
+<p>huynh lần cuối cũng không được gặp...”</p>
+<p>Hoàng thúc, xin tha cho. Cửu hoàng tử là nữ nhi</p>
+<p>Khóe mắt vừa đỏ lên, nàng đã muốn khóc:</p>
+<p>“Ca ca ta... ca ca ta thật đáng thương. Huynh ấy một lòng muốn</p>
+<p>báo thù cho huynh, lao ra chiến trường. Chẳng bao lâu nữa sẽ</p>
+<p>khai chiến rồi! Trước lúc chết, chẳng lẽ ngay cả tâm nguyện cuối</p>
+<p>cùng cũng không thể được thành toàn sao!”</p>
+<p>“...”</p>
+<p>Lời đã nói đến mức ấy, Sở Ly còn có thể cự tuyệt sao?</p>
+<p>“Vậy... vậy thì cứ nói với Mục Vũ đi. Nhưng ngoài huynh ấy ra,</p>
+<p>tuyệt đối không được để bất cứ ai khác biết.”</p>
+<p>Tần Mục Tuyết lập tức đổi khóc thành cười, ngay cả một giọt</p>
+<p>nước mắt cũng chẳng rơi thêm, nhanh như chớp viết xong mật</p>
+<p>thư, sai người đưa tới tiền tuyến.</p>
+<p>Nước mắt là trân châu, càng khóc càng giống heo.</p>
+<p>Một nữ nhân kiên cường tuyệt đối không thể rơi lệ.</p>
+<p>Từ tiền tuyến về Giang Nam, ngựa phi ngày đêm không nghỉ, chỉ</p>
+<p>mất một ngày một đêm là tới.</p>
+<p>Chậm nhất là ngày kia, Tần Mục Vũ sẽ đến.</p>
+<p>Vui quá!</p>
+<p>Đúng lúc ấy, Lục Vân Sơ sai người chuẩn bị xong điểm tâm, bưng</p>
+<p>vào phòng. Tần Mục Tuyết lập tức đỏ hoe khóe mắt, đôi mắt</p>
+<p>đẫm lệ mơ màng nhìn sang:</p>
+<p>“Đêm qua, nếu không nhờ vị này...”</p>
+<p>“Đây là Nhị sư huynh của ta, họ Lục.”</p>
+<p>“Nếu không nhờ Lục sư huynh ra tay cứu giúp, ta ắt đã rơi vào</p>
+<p>tay tên dâm tặc hái hoa kia. Đại ân như thế, không có gì báo đáp,</p>
+<p>chỉ nguyện lấy thân báo đáp.”</p>
+<p>Sở Ly: “?”</p>
+<p>Có phải chuyện này... hơi nhanh quá rồi không?</p>
+<p>Chẳng phải nàng vẫn luôn nói đã thích nàng suốt tám chín năm</p>
+<p>sao?</p>
+<p>Trong lòng Tần Mục Tuyết thầm suy tính:</p>
+<p>Sư huynh của A Ly ca ca, tất nhiên phải là người trầm ổn, phẩm</p>
+<p>hạnh đoan chính.</p>
+<p>A Ly ca ca là nữ tử, không thể làm thê tử của nàng, vậy thì nàng</p>
+<p>sẽ làm tẩu tẩu của A Ly ca ca.</p>
+<p>Lục Vân Sơ hơi bất ngờ, theo bản năng nhìn sang Sở Ly:</p>
+<p>“Ta là cô nhi.”</p>
+<p>“Nếu Lục sư huynh không chê, phụ mẫu của ta cũng chính là phụ</p>
+<p>mẫu của huynh.”</p>
+<p>“Ta nghèo rớt mồng tơi, hai tay trắng.”</p>
+<p>“Của hồi môn của ta rất hậu, nửa đời sau chẳng cần lo nghĩ.”</p>
+<p>“Ta không nơi ở cố định, lấy tứ hải làm nhà.”</p>
+<p>“Gả gà theo gà, gả chó theo chó.”</p>
+<p>“... Ta không thích nữ nhân.”</p>
+<p>“Ta có thể nữ phẫn nam trang, báo đáp ân tình</p>
+<p>của Lục sư huynh.”</p>
+<p>Mới chỉ là lần đầu gặp mặt, Lục Vân Sơ vốn không có hảo cảm gì</p>
+<p>với Tần Mục Tuyết. Thế nhưng sau mấy câu đối đáp, lại cảm thấy</p>
+<p>nàng thẳng thắn, thú vị, hoàn toàn khác biệt với những thiên kim</p>
+<p>thế gia khuê các, câu nệ lễ nghi, cứng nhắc khuôn phép.</p>
+<p>Đến mức khiến hắn có chút đỏ mặt.</p>
+<p>Tần Mục Tuyết có hảo cảm với hắn, say mê dung nhan tuấn mỹ</p>
+<p>của hắn. Lại thêm xuất thân từ phủ Tướng quân, tính tình từ nhỏ</p>
+<p>đã sảng khoái, miệng lưỡi cũng chẳng biết giữ gìn.</p>
+<p>Lục sư huynh không thích nàng?</p>
+<p>Không sao.</p>
+<p>Nàng rất biết quấn người.</p>
+<p>Nàng đã quấn lấy A Ly ca ca gần mười năm rồi, chẳng lẽ còn sợ</p>
+<p>không quấn nổi Lục sư huynh sao?</p>
+<p>Lục Vân Sơ đành đưa ánh mắt cầu cứu nhìn sang Sở Ly.</p>
+<p>Sở Ly đưa tay sờ chóp mũi, giả như không nhìn thấy, dời ánh</p>
+<p>mắt đi:</p>
+<p>“À... tên dâm tặc hái hoa kia đâu rồi?”</p>
+<p>“Ta đã áp giải hắn đến quan phủ.”</p>
+<p>Lục Vân Sơ đáp:</p>
+<p>“Kẻ này gian dâm cướp bóc, hung tàn độc ác, đã</p>
+<p>gây ra bảy vụ án. Chuyến này ta xuống núi, chính là vì việc ấy.”</p>
+<p>“Lục sư huynh võ nghệ cao cường, xuất thủ quả quyết. Đáng tiếc</p>
+<p>ta thân kiều thể nhược, đến một con kiến cũng chẳng dám giẫm</p>
+<p>chết...”</p>
+<p>Tần Mục Tuyết nắm chiếc khăn tay nhỏ, tha thiết nhìn hắn.</p>
+<p>“Tần cô nương quá lời. Thấy chuyện bất bình thì rút đao tương</p>
+<p>trợ. Đổi lại là bất kỳ ai gặp phải, cũng tuyệt đối sẽ không khoanh</p>
+<p>tay đứng nhìn.”</p>
+<p>“Đúng vậy, thế mà chuyện này lại vừa khéo để Lục sư huynh gặp</p>
+<p>được. Đây quả thật là duyên phận do trời định.”</p>
+<p>Sở Ly đột nhiên cảm thấy mình không nên ở trong phòng.</p>
+<p>Nàng nên ở ngoài phòng mới phải.</p>
+<p>Nàng đưa tay sờ cái đầu trọc lốc của mình, chuẩn bị đi ra ngoài thì Tần Mục Tuyết vội vàng kéo nàng lại:</p>
+<p>“A Ly ca ca, huynh định đi đâu?”</p>
+<p>Nàng sợ chỉ cần chớp mắt một cái, người sẽ lại biến mất.</p>
+<p>Trước khi ca ca đến Giang Nam, nàng nhất định phải một tấc cũng không rời mà canh... bảo vệ A Ly ca ca.</p>
+<p>“Ta ra ngoài hít thở chút không khí, muội cứ trò chuyện với Nhị sư huynh của ta đi.”</p>
+<p>“Không sao đâu, A Ly ca ca. Lục sư huynh không</p>
+<p>phải đến quấy rầy chúng ta, huynh ấy là đến gia nhập chúng ta.</p>
+<p>Đúng không, Lục sư huynh?”</p>
+<p>Mí mắt Lục Vân Sơ giật mạnh.</p>
+<p>Bao năm nay hắn đều ở trên núi bái sư học nghệ, hầu hạ sư phụ, chưa từng tiếp xúc với nữ tử, huống chi là một cô nương hoạt bát, nhảy nhót như Tần Mục Tuyết.</p>
+<p>Nhưng chẳng hiểu vì sao, hắn lại có một loại ảo giác rằng... mình sắp không khống chế nổi cục diện.</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_189.html" class="btn">‹ Trước</a>
             <a href="chuong_191.html" class="btn">Sau ›</a>
         </div>
@@ -263,15 +270,11 @@ Nhưng chẳng hiểu vì sao, hắn lại có một loại ảo giác rằng...
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -283,11 +286,11 @@ Nhưng chẳng hiểu vì sao, hắn lại có một loại ảo giác rằng...
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

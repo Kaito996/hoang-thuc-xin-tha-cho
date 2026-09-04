@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 153</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,182 +62,191 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 153</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_152.html" class="btn">‹ Trước</a>
             <a href="chuong_154.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 153: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 153: Nàng và Tần Thiếu tướng quân là tình cảm nam nữ?
-Sở Ly nhất thời không đoán ra ý hắn, cân nhắc một chút mới mở miệng:
-“Bình thường?”
-Giọng nam nhân càng trầm xuống:
-“Chỉ là bình thường?”
-Ý ngoài lời chính là, ngoài đùi của hắn ra, nàng còn từng nhìn đùi của người khác?
-“Vậy đùi của ai đẹp hơn?”
-“Á…”
-Câu hỏi đột ngột này khiến Sở Ly có chút ngây người.
-Hai người bọn họ lúc này vẫn còn treo trên cây, trong hoàn cảnh như vậy mà bàn chuyện này… thật sự thích hợp sao?
-Huống hồ, ai rảnh rỗi đi nhìn chằm chằm đùi người khác?
-Tuy nàng từng nhìn qua của Tần Mục Vũ.
-Nhưng đó cũng là chuyện hồi còn nhỏ!
-Còn có Bát hoàng huynh nữa.
-Khi còn bé, Bát hoàng huynh ba tuổi rồi vẫn còn đái dầm, bị mẫu phi đánh đến mức cởi truồng chạy khắp nơi. Hai bắp đùi trắng trẻo mũm mĩm như hai khúc ngó sen, vừa trắng vừa béo, thịt núng nính.
-Nhưng vẫn không đẹp bằng của Sở Đệ Trì.
-Đùi hắn trắng, săn chắc. Cơ bắp căng chặt, thấp thoáng gân xanh nổi lên, mạch máu lưu động cũng nhìn rõ mồn một, ẩn chứa sức bộc phát không thể xem thường.
-Giống hệt một con báo săn mạnh mẽ.
-“Ta hỏi nàng đấy, của ai đẹp hơn? Chẳng lẽ nàng còn từng nhìn đùi của Tần Thiếu tướng quân?”
-“Không có!”
-Sở Ly đáp quá nhanh, ngược lại càng có cảm giác giấu đầu hở đuôi.
-Ngay sau đó, nàng liền cảm thấy ánh mắt sắc bén như chim ưng của nam nhân đang dán chặt lên đỉnh đầu mình, như thể muốn lật cả thiên linh cái của nàng lên.
-“Sở Ly.”
-Hai chữ ấy vừa nặng nề vừa lạnh lẽo.
-“Nàng và Tần Thiếu tướng quân là tình cảm nam nữ?”
-Hô hấp Sở Ly khẽ nghẹn lại.
-Chỉ cảm thấy tên mình được thốt ra từ miệng hắn, giống như đang mài dao, khiến sống lưng nàng căng cứng.
-“Ta với Tần Mục Vũ chỉ là bằng hữu.”
-“Vậy còn với Sở Dạ Ly là tình cảm nam nữ?”
-Sở Ly lập tức phản bác:
-“Ta với Sở Dạ Ly cũng chỉ là bằng hữu.”
-“Vậy tức là với Tần Mục Vũ là tình cảm nam nữ?”
-Hắn đang chơi trò líu lưỡi sao?
-Sở Ly hít sâu một hơi.
-“Ta với Tần Mục Vũ và Sở Dạ Ly đều chỉ là bằng hữu.”
-Sở Đệ Trì truy hỏi:
-“Vậy với ta là tình cảm nam nữ?”
-Sở Ly: “…”
-Nàng có cảm giác mình vừa rơi vào hố.
-Chuyện này quan trọng lắm sao?
-Nàng chẳng có tình cảm với bất kỳ ai.
-Nàng chỉ muốn ôm số vàng tiêu mấy đời không hết, xuống Giang Nam mua một căn trạch viện, sống những ngày trêu chim, uống rượu, ngủ nướng.
-“Đã không có tình cảm nam nữ thì đừng kéo quần của ta. Sự trong sạch của ta chỉ dành cho thê tử tương lai.”
-“Hả?”
-Đây chẳng phải là đang biến tướng cầu thân sao?
-Ông trời ơi.
-Hoặc là đầu óc hắn có vấn đề, hoặc là nàng hiểu sai.
-Nhưng lúc này nếu không túm quần hắn thì nàng sẽ rơi xuống.
-Mà nàng rơi xuống thì cả hai đều xong đời.
-“Cứ kéo đấy, cứ kéo đấy! Ta cứ kéo thì sao nào?”
-Có bản lĩnh thì một cước đá nàng xuống đi.
-Khóe môi mỏng của Sở Đệ Trì khẽ nhếch lên, một tia ý cười thoáng vụt qua.
-Đúng lúc ấy, từ doanh trại cổ thuật phía không xa truyền đến tiếng động:
-“Có từng nhìn thấy người khả nghi… Chúng ta phụng mệnh Trưởng công chúa điện hạ… truy bắt trọng phạm… Vương sư gia…”
-Đám vệ binh truy bắt đang bàn giao với chủ tướng của doanh trại.
-Vương sư gia vuốt râu nói:
-“Ta sẽ phái người giúp các ngươi tìm quanh đây. Có điều doanh trại này nằm ở nơi cực kỳ bí mật, e rằng trọng phạm các ngươi truy bắt không ở chỗ này.”
-“Đa tạ Vương sư gia!”
-Vương sư gia lấy từ bên hông ra một chiếc trống nhỏ, lắc nhẹ.
-“Tùng… tùng…”
-Sau hai tiếng trống, những “binh sĩ” đang đứng im như tượng gỗ, lạnh lẽo chẳng khác nào quan tài kia dần dần có thần sắc trong mắt, kéo lê đôi chân cứng đờ, bước vào rừng.
-Bộ dạng ngây dại ấy chẳng khác gì cương thi biết đi.
-Đám vệ binh nhìn thấy, da đầu đều tê dại.
-Đây chính là đội quân át chủ bài mà Thái tử bí mật nghiên cứu?
-Nhìn quả thật có vài phần đáng sợ.
-Nhưng nếu đội quân này ra chiến trường, còn lo gì không đánh hạ nổi Nam Cương?
-Đám vệ binh nhanh chóng dắt chó săn đi tìm ở nơi khác, còn hai mươi “binh sĩ” thì tản ra khắp khu rừng, hỗ trợ lùng sục.
-Sở Ly ôm chặt thân cây, lúc này mới buông cạp quần hắn ra, hạ giọng nói:
-“Bọn chúng dùng cổ thuật luyện binh. Những người bị luyện thành này sống chẳng ra sống, chết chẳng ra chết, chẳng khác gì tử sĩ. Nếu không ngăn cản, để Nam Man thành công, việc đầu tiên bọn chúng làm chắc chắn sẽ là xâm lược Đại Sở.”
-Đến khi ấy chiến hỏa nổi lên khắp nơi, dân chúng lầm than.
-Nếu có thể bóp chết âm mưu ấy ngay từ đầu…
-Sở Đệ Trì một tay kéo lại quần.
-“Dao đâm xuyên đầu còn chưa chắc giết được chúng. Ta đoán doanh trại này ít nhất cũng có hai nghìn người, căn bản không phải hai chúng ta có thể ngăn cản.”
-Cho dù hắn dẫn quân tới, cũng chưa chắc đã tiêu diệt nổi.
-Huống hồ, nơi này ẩn sâu trong núi rừng, địa thế hiểm trở, kín đáo, là thiên nhiên che chở, lại còn là địa bàn của Nam Man.
-Bọn họ căn bản không thể ngăn cản kế hoạch dùng cổ thuật dưỡng binh của Nam Man.
-Sở Ly quan sát doanh trại, hỏi:
-“Cái lều cắm cờ vàng kia là nơi nào?”
-Sở Đệ Trì nhìn theo.
-“Đó là doanh trướng của phó tướng.”
-“Vậy còn chỗ dựng cái giá kia?”
-“Ở Đại Sở, đó thường là vọng gác. Nhưng ở Nam Man, bình thường bọn chúng dùng để…”
-Sở Đệ Trì lần lượt giảng giải cho nàng những kiến thức chuyên môn về doanh trại quân đội nơi chiến địa.
-Sở Ly trước đây chưa từng ra chiến trường, nhưng năng lực học hỏi cực nhanh, chỉ trong nửa khắc đã hiểu rõ toàn bộ.
-Nàng nói:
-“Đốt đi.”
-Sở Đệ Trì không tỏ ý kiến, chỉ nói:
-“Tiểu Cửu, nàng nhìn chiến hào bên kia xem. Trên mỗi chiến hào đều chất đầy bao cát nhô lên. Đó là cát vớt từ đáy nước lên, có tác dụng phòng hỏa.”
-Trong quân doanh, để đề phòng địch dùng hỏa công hoặc thiêu lương thảo, những tướng lĩnh giỏi đều sẽ chuẩn bị biện pháp chống cháy.
-“Chúng ta không đốt cả doanh trại.”
-Sở Ly lắc đầu, giơ tay chỉ về phía trước.
-“Ngài nhìn kìa. Chủ tướng ở trong doanh trướng kia, mà trong quân doanh, mỗi binh sĩ đều đứng ngay ngắn, khoảng cách giữa từng người cũng rất đều. Chỉ có binh sĩ ở cánh phải doanh trại là chen chúc bất thường.”
-“Ta đoán đám binh sĩ bên cánh phải vừa mới được ‘chế tạo’ xong, còn chưa kịp phân bố vị trí nên mới tụ lại ở đó. Lều luyện cổ chắc chắn nằm trong mấy chiếc lều phía cánh phải. Chúng ta không diệt nổi đội quân này, vậy thì đốt sạch cổ trùng của bọn chúng.”
-Như vậy, kế hoạch của chúng sẽ bị phá hỏng, tiến độ cũng sẽ chậm đi rất nhiều.
-Chân mày Sở Đệ Trì khẽ nhướng lên, trong mắt hiện lên vẻ tán thưởng.
-“Được.”
-Hắn đảo mắt nhìn quanh, thấy một tên cổ binh đi ngang dưới gốc cây, đôi mắt khẽ nheo lại, lập tức tung người nhảy xuống.
-Tên cổ binh còn chưa kịp phản ứng, hắn đã rút trường kiếm bên hông đối phương, một kiếm chém bay đầu.
-“Phập!”
-Máu văng tung tóe, đầu người rơi xuống đất.
-Một con sâu đen đang uốn éo bò ra từ chiếc cổ bị chặt đứt.
-Sở Ly nhìn đến mức suýt nôn.
-Sở Đệ Trì liên tiếp hạ gục hai tên cổ binh, đoạt lấy cung tên, giương cung bắn thẳng vào giá đỡ lửa cách đó mấy trượng.
-Rầm!
-Giá gỗ đổ sập, chậu than bắn tung, tia lửa văng khắp nơi, lập tức bén vào lều trại rồi bùng cháy dữ dội…
-“Cháy rồi!”
-“Tướng quân! Sư gia! Không hay rồi! Cánh phải bốc cháy!”
-“Mau bảo vệ cổ trùng!”
-“Không ổn! Lửa quá lớn, cổ trùng đều bị thiêu rồi… Khụ… khụ…”
-Vương sư gia vội vã chạy tới cánh phải, nhìn những chiếc lều đang cháy ngùn ngụt, sốt ruột giậm chân, nhưng đã không còn cách nào cứu vãn.
-Đúng lúc ấy, ông ta bỗng chú ý đến một mũi tên cắm sâu xuống đất cạnh giá lửa.
-Ông ta sải bước tới, rút mũi tên lên.
-Mũi tên này cắm sâu xuống đất đến năm phần!
-Phải có nội lực mạnh đến mức nào mới bắn ra được một mũi tên như vậy?
-Đúng lúc đó, Vương sư gia bỗng biến sắc.
-“Không xong!”
-“Trọng phạm mà Trưởng công chúa truy bắt… chắc chắn đang ở ngay gần đây!” Ẩn bớt</p>
+            <p>Chương 153: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 153: Nàng và Tần Thiếu tướng quân là tình cảm nam nữ?</p>
+<p>Sở Ly nhất thời không đoán ra ý hắn, cân nhắc một chút mới mở miệng:</p>
+<p>“Bình thường?”</p>
+<p>Giọng nam nhân càng trầm xuống:</p>
+<p>“Chỉ là bình thường?”</p>
+<p>Ý ngoài lời chính là, ngoài đùi của hắn ra, nàng còn từng nhìn đùi của người khác?</p>
+<p>“Vậy đùi của ai đẹp hơn?”</p>
+<p>“Á…”</p>
+<p>Câu hỏi đột ngột này khiến Sở Ly có chút ngây người.</p>
+<p>Hai người bọn họ lúc này vẫn còn treo trên cây, trong hoàn cảnh như vậy mà bàn chuyện này… thật sự thích hợp sao?</p>
+<p>Huống hồ, ai rảnh rỗi đi nhìn chằm chằm đùi người khác?</p>
+<p>Tuy nàng từng nhìn qua của Tần Mục Vũ.</p>
+<p>Nhưng đó cũng là chuyện hồi còn nhỏ!</p>
+<p>Còn có Bát hoàng huynh nữa.</p>
+<p>Khi còn bé, Bát hoàng huynh ba tuổi rồi vẫn còn đái dầm, bị mẫu phi đánh đến mức cởi truồng chạy khắp nơi. Hai bắp đùi trắng trẻo mũm mĩm như hai khúc ngó sen, vừa trắng vừa béo, thịt núng nính.</p>
+<p>Nhưng vẫn không đẹp bằng của Sở Đệ Trì.</p>
+<p>Đùi hắn trắng, săn chắc. Cơ bắp căng chặt, thấp thoáng gân xanh nổi lên, mạch máu lưu động cũng nhìn rõ mồn một, ẩn chứa sức bộc phát không thể xem thường.</p>
+<p>Giống hệt một con báo săn mạnh mẽ.</p>
+<p>“Ta hỏi nàng đấy, của ai đẹp hơn? Chẳng lẽ nàng còn từng nhìn đùi của Tần Thiếu tướng quân?”</p>
+<p>“Không có!”</p>
+<p>Sở Ly đáp quá nhanh, ngược lại càng có cảm giác giấu đầu hở đuôi.</p>
+<p>Ngay sau đó, nàng liền cảm thấy ánh mắt sắc bén như chim ưng của nam nhân đang dán chặt lên đỉnh đầu mình, như thể muốn lật cả thiên linh cái của nàng lên.</p>
+<p>“Sở Ly.”</p>
+<p>Hai chữ ấy vừa nặng nề vừa lạnh lẽo.</p>
+<p>“Nàng và Tần Thiếu tướng quân là tình cảm nam nữ?”</p>
+<p>Hô hấp Sở Ly khẽ nghẹn lại.</p>
+<p>Chỉ cảm thấy tên mình được thốt ra từ miệng hắn, giống như đang mài dao, khiến sống lưng nàng căng cứng.</p>
+<p>“Ta với Tần Mục Vũ chỉ là bằng hữu.”</p>
+<p>“Vậy còn với Sở Dạ Ly là tình cảm nam nữ?”</p>
+<p>Sở Ly lập tức phản bác:</p>
+<p>“Ta với Sở Dạ Ly cũng chỉ là bằng hữu.”</p>
+<p>“Vậy tức là với Tần Mục Vũ là tình cảm nam nữ?”</p>
+<p>Hắn đang chơi trò líu lưỡi sao?</p>
+<p>Sở Ly hít sâu một hơi.</p>
+<p>“Ta với Tần Mục Vũ và Sở Dạ Ly đều chỉ là bằng hữu.”</p>
+<p>Sở Đệ Trì truy hỏi:</p>
+<p>“Vậy với ta là tình cảm nam nữ?”</p>
+<p>Sở Ly: “…”</p>
+<p>Nàng có cảm giác mình vừa rơi vào hố.</p>
+<p>Chuyện này quan trọng lắm sao?</p>
+<p>Nàng chẳng có tình cảm với bất kỳ ai.</p>
+<p>Nàng chỉ muốn ôm số vàng tiêu mấy đời không hết, xuống Giang Nam mua một căn trạch viện, sống những ngày trêu chim, uống rượu, ngủ nướng.</p>
+<p>“Đã không có tình cảm nam nữ thì đừng kéo quần của ta. Sự trong sạch của ta chỉ dành cho thê tử tương lai.”</p>
+<p>“Hả?”</p>
+<p>Đây chẳng phải là đang biến tướng cầu thân sao?</p>
+<p>Ông trời ơi.</p>
+<p>Hoặc là đầu óc hắn có vấn đề, hoặc là nàng hiểu sai.</p>
+<p>Nhưng lúc này nếu không túm quần hắn thì nàng sẽ rơi xuống.</p>
+<p>Mà nàng rơi xuống thì cả hai đều xong đời.</p>
+<p>“Cứ kéo đấy, cứ kéo đấy! Ta cứ kéo thì sao nào?”</p>
+<p>Có bản lĩnh thì một cước đá nàng xuống đi.</p>
+<p>Khóe môi mỏng của Sở Đệ Trì khẽ nhếch lên, một tia ý cười thoáng vụt qua.</p>
+<p>Đúng lúc ấy, từ doanh trại cổ thuật phía không xa truyền đến tiếng động:</p>
+<p>“Có từng nhìn thấy người khả nghi… Chúng ta phụng mệnh Trưởng công chúa điện hạ… truy bắt trọng phạm… Vương sư gia…”</p>
+<p>Đám vệ binh truy bắt đang bàn giao với chủ tướng của doanh trại.</p>
+<p>Vương sư gia vuốt râu nói:</p>
+<p>“Ta sẽ phái người giúp các ngươi tìm quanh đây. Có điều doanh trại này nằm ở nơi cực kỳ bí mật, e rằng trọng phạm các ngươi truy bắt không ở chỗ này.”</p>
+<p>“Đa tạ Vương sư gia!”</p>
+<p>Vương sư gia lấy từ bên hông ra một chiếc trống nhỏ, lắc nhẹ.</p>
+<p>“Tùng… tùng…”</p>
+<p>Sau hai tiếng trống, những “binh sĩ” đang đứng im như tượng gỗ, lạnh lẽo chẳng khác nào quan tài kia dần dần có thần sắc trong mắt, kéo lê đôi chân cứng đờ, bước vào rừng.</p>
+<p>Bộ dạng ngây dại ấy chẳng khác gì cương thi biết đi.</p>
+<p>Đám vệ binh nhìn thấy, da đầu đều tê dại.</p>
+<p>Đây chính là đội quân át chủ bài mà Thái tử bí mật nghiên cứu?</p>
+<p>Nhìn quả thật có vài phần đáng sợ.</p>
+<p>Nhưng nếu đội quân này ra chiến trường, còn lo gì không đánh hạ nổi Nam Cương?</p>
+<p>Đám vệ binh nhanh chóng dắt chó săn đi tìm ở nơi khác, còn hai mươi “binh sĩ” thì tản ra khắp khu rừng, hỗ trợ lùng sục.</p>
+<p>Sở Ly ôm chặt thân cây, lúc này mới buông cạp quần hắn ra, hạ giọng nói:</p>
+<p>“Bọn chúng dùng cổ thuật luyện binh. Những người bị luyện thành này sống chẳng ra sống, chết chẳng ra chết, chẳng khác gì tử sĩ. Nếu không ngăn cản, để Nam Man thành công, việc đầu tiên bọn chúng làm chắc chắn sẽ là xâm lược Đại Sở.”</p>
+<p>Đến khi ấy chiến hỏa nổi lên khắp nơi, dân chúng lầm than.</p>
+<p>Nếu có thể bóp chết âm mưu ấy ngay từ đầu…</p>
+<p>Sở Đệ Trì một tay kéo lại quần.</p>
+<p>“Dao đâm xuyên đầu còn chưa chắc giết được chúng. Ta đoán doanh trại này ít nhất cũng có hai nghìn người, căn bản không phải hai chúng ta có thể ngăn cản.”</p>
+<p>Cho dù hắn dẫn quân tới, cũng chưa chắc đã tiêu diệt nổi.</p>
+<p>Huống hồ, nơi này ẩn sâu trong núi rừng, địa thế hiểm trở, kín đáo, là thiên nhiên che chở, lại còn là địa bàn của Nam Man.</p>
+<p>Bọn họ căn bản không thể ngăn cản kế hoạch dùng cổ thuật dưỡng binh của Nam Man.</p>
+<p>Sở Ly quan sát doanh trại, hỏi:</p>
+<p>“Cái lều cắm cờ vàng kia là nơi nào?”</p>
+<p>Sở Đệ Trì nhìn theo.</p>
+<p>“Đó là doanh trướng của phó tướng.”</p>
+<p>“Vậy còn chỗ dựng cái giá kia?”</p>
+<p>“Ở Đại Sở, đó thường là vọng gác. Nhưng ở Nam Man, bình thường bọn chúng dùng để…”</p>
+<p>Sở Đệ Trì lần lượt giảng giải cho nàng những kiến thức chuyên môn về doanh trại quân đội nơi chiến địa.</p>
+<p>Sở Ly trước đây chưa từng ra chiến trường, nhưng năng lực học hỏi cực nhanh, chỉ trong nửa khắc đã hiểu rõ toàn bộ.</p>
+<p>Nàng nói:</p>
+<p>“Đốt đi.”</p>
+<p>Sở Đệ Trì không tỏ ý kiến, chỉ nói:</p>
+<p>“Tiểu Cửu, nàng nhìn chiến hào bên kia xem. Trên mỗi chiến hào đều chất đầy bao cát nhô lên. Đó là cát vớt từ đáy nước lên, có tác dụng phòng hỏa.”</p>
+<p>Trong quân doanh, để đề phòng địch dùng hỏa công hoặc thiêu lương thảo, những tướng lĩnh giỏi đều sẽ chuẩn bị biện pháp chống cháy.</p>
+<p>“Chúng ta không đốt cả doanh trại.”</p>
+<p>Sở Ly lắc đầu, giơ tay chỉ về phía trước.</p>
+<p>“Ngài nhìn kìa. Chủ tướng ở trong doanh trướng kia, mà trong quân doanh, mỗi binh sĩ đều đứng ngay ngắn, khoảng cách giữa từng người cũng rất đều. Chỉ có binh sĩ ở cánh phải doanh trại là chen chúc bất thường.”</p>
+<p>“Ta đoán đám binh sĩ bên cánh phải vừa mới được ‘chế tạo’ xong, còn chưa kịp phân bố vị trí nên mới tụ lại ở đó. Lều luyện cổ chắc chắn nằm trong mấy chiếc lều phía cánh phải. Chúng ta không diệt nổi đội quân này, vậy thì đốt sạch cổ trùng của bọn chúng.”</p>
+<p>Như vậy, kế hoạch của chúng sẽ bị phá hỏng, tiến độ cũng sẽ chậm đi rất nhiều.</p>
+<p>Chân mày Sở Đệ Trì khẽ nhướng lên, trong mắt hiện lên vẻ tán thưởng.</p>
+<p>“Được.”</p>
+<p>Hắn đảo mắt nhìn quanh, thấy một tên cổ binh đi ngang dưới gốc cây, đôi mắt khẽ nheo lại, lập tức tung người nhảy xuống.</p>
+<p>Tên cổ binh còn chưa kịp phản ứng, hắn đã rút trường kiếm bên hông đối phương, một kiếm chém bay đầu.</p>
+<p>“Phập!”</p>
+<p>Máu văng tung tóe, đầu người rơi xuống đất.</p>
+<p>Một con sâu đen đang uốn éo bò ra từ chiếc cổ bị chặt đứt.</p>
+<p>Sở Ly nhìn đến mức suýt nôn.</p>
+<p>Sở Đệ Trì liên tiếp hạ gục hai tên cổ binh, đoạt lấy cung tên, giương cung bắn thẳng vào giá đỡ lửa cách đó mấy trượng.</p>
+<p>Rầm!</p>
+<p>Giá gỗ đổ sập, chậu than bắn tung, tia lửa văng khắp nơi, lập tức bén vào lều trại rồi bùng cháy dữ dội…</p>
+<p>“Cháy rồi!”</p>
+<p>“Tướng quân! Sư gia! Không hay rồi! Cánh phải bốc cháy!”</p>
+<p>“Mau bảo vệ cổ trùng!”</p>
+<p>“Không ổn! Lửa quá lớn, cổ trùng đều bị thiêu rồi… Khụ… khụ…”</p>
+<p>Vương sư gia vội vã chạy tới cánh phải, nhìn những chiếc lều đang cháy ngùn ngụt, sốt ruột giậm chân, nhưng đã không còn cách nào cứu vãn.</p>
+<p>Đúng lúc ấy, ông ta bỗng chú ý đến một mũi tên cắm sâu xuống đất cạnh giá lửa.</p>
+<p>Ông ta sải bước tới, rút mũi tên lên.</p>
+<p>Mũi tên này cắm sâu xuống đất đến năm phần!</p>
+<p>Phải có nội lực mạnh đến mức nào mới bắn ra được một mũi tên như vậy?</p>
+<p>Đúng lúc đó, Vương sư gia bỗng biến sắc.</p>
+<p>“Không xong!”</p>
+<p>“Trọng phạm mà Trưởng công chúa truy bắt… chắc chắn đang ở ngay gần đây!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_152.html" class="btn">‹ Trước</a>
             <a href="chuong_154.html" class="btn">Sau ›</a>
         </div>
@@ -246,15 +254,11 @@ Phải có nội lực mạnh đến mức nào mới bắn ra được một m�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -266,11 +270,11 @@ Phải có nội lực mạnh đến mức nào mới bắn ra được một m�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

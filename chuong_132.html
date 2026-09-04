@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 132</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,267 +62,276 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 132</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_131.html" class="btn">‹ Trước</a>
             <a href="chuong_133.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 132: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 132: Chính Miệng Nàng Từng Nói Rằng Rất Thích Hắn
-“Ngươi nói cái gì?!”
-Sao có thể như vậy được?
-A Ly chẳng phải đang ở trong hoàng cung sao?
-Do Sở Hoàng bại liệt, Tân Đế còn chưa chính thức đăng cơ, các thế lực đều đang như hổ rình mồi, lại thêm việc Tân Đế táng thân trong biển lửa… quá nhiều chuyện chồng chất. Vì muốn ổn định xã tắc, Tiêu Dạ Hành vẫn luôn đè nén tin tức Tân Đế đã chết.
-Để tránh thiên hạ đại loạn.
-Mà lúc ấy, Tần Mục Vũ đã xuất chinh.
-Nam Cương cách Đế Đô ngàn dặm.
-Bởi vậy, hắn hoàn toàn không biết tin Tân Đế đã chết.
-Vì sao chỉ trong mấy ngày ngắn ngủi…
-A Ly lại chạy đến đại doanh Nam Man?
-“Vương Hằng, ngươi chắc chắn mình không nhìn nhầm?”
-Vương Hằng quỳ một gối xuống đất:
-“Thiếu tướng quân, thuộc hạ thường xuyên thấy ngài cùng Tân Đế ra vào, đã sớm ghi nhớ dung mạo của ‘ngài ấy’, sao có thể nhìn nhầm được?”
-Tần Mục Vũ chống bàn đứng bật dậy.
-Không thể nào!
-Chuyện này…
-Ắt hẳn có nguyên do.
-“Người đâu!”
-An tướng quân lập tức ngăn cản:
-“Tần thiếu tướng quân xin hãy bình tĩnh, trước hết điều tra kỹ việc này, chớ để trúng kế.”
-Theo ông thấy…
-Việc Tân Đế xuất hiện trong đại doanh Nam Man còn ly kỳ chẳng khác nào mặt trời mọc từ phía Tây.
-“Ta không thể khoanh tay đứng nhìn. Nếu thật sự là Tân Đế, ta nhất định phải nghĩ cách điều tra rõ chân tướng, cứu nàng thoát thân.”
-Ánh mắt Tần Mục Vũ kiên định.
-“Người đâu!”
-⸻
-Trên bình nguyên, vó ngựa tung hoành.
-Phóng khoáng, tự tại.
-Sở Ly cưỡi ngựa đuổi theo thỏ rừng, chạy một vòng thật lớn.
-Suốt quãng đường này nàng thực sự bị gò bó đến phát ngột ngạt.
-Mãi đến chạng vạng.
-Nàng mới xách theo bốn con thỏ rừng lông xám, trở về doanh trại.
-Đám tướng sĩ Nam Man tò mò nhìn nàng.
-Nhìn thiếu niên tuấn tú, trắng trẻo đến từ Đại Sở.
-Sở Ly tìm một đống lửa đang cháy rực, xách thỏ đi tới.
-“Tối nay thêm món nhé?”
-Có tám binh sĩ đang nấu cơm bên đống lửa.
-Bọn họ nhìn sang, không giấu nổi vẻ hiếu kỳ.
-“Ngươi là gì của Đông Lăng điện hạ?”
-“Ta tên… Tiểu Sở, là bằng hữu của huynh ấy.”
-“Ồ, ra vậy.”
-Một thiếu niên vóc người không cao, trông tuổi tác cũng xấp xỉ Sở Ly bước tới.
-“Để ta nướng thỏ giúp ngươi.”
-Động tác của hắn vô cùng thuần thục.
-Lột da.
-Moi nội tạng.
-Rửa sạch bằng nước.
-Động tác nhanh gọn, liền mạch, hoàn thành trong một hơi.
-Sở Ly kinh ngạc nhìn hắn.
-Thật nhanh nhẹn!
-Tên tiểu tốt đặt con thỏ lên giá nướng.
-Thấy Sở Ly cứ nhìn mình chằm chằm.
-Thiếu niên vốn đã có dung mạo thanh tú, làn da mịn màng, khác hẳn đám đàn ông thô ráp quanh năm ở trong quân.
-Không khỏi đỏ mặt.
-“Tiểu Sở công tử… ngài… ngài nhìn ta làm gì?”
-“Ta chỉ hơi kinh ngạc vì ngươi xử lý thỏ thuần thục như vậy. Hơn nữa ta còn nghe nói…”
-Tên tiểu tốt hiếu kỳ:
-“Nghe nói cái gì?”
-Nghe nói…
-Người Nam Man trời sinh thô bạo, hung hãn.
-Phần lớn không được tiếp nhận giáo dục bài bản.
-Làm người hung ác.
-Lại còn giỏi dùng cổ trùng hiểm độc.
-Mà nuôi cổ…
-Lại càng tàn nhẫn.
-Lột da người.
-Rút máu người.
-Bóc cả thiên linh cái.
-Đều là chuyện thường tình.
-Nhưng những lời ấy…
-Nói ra lúc này dường như không thích hợp.
-Sở Ly cười cười.
-“Ta nghe nói Nam Man và Đại Sở đã tranh chấp hơn mười năm. Những năm qua, chẳng lẽ các ngươi vẫn luôn đóng quân ở đây, chưa từng rời đi?”
-“Đúng vậy.”
-Tên tiểu tốt gật đầu.
-“Hơn một trăm năm trước, Nam Cương vốn là lãnh thổ của chúng ta.”
-“Chúng ta nhất định phải đoạt lại.”
-Sở Ly nghe vậy, thầm thở dài.
-Thiên hạ rộng lớn.
-Mảnh đất này nuôi dưỡng vô số sinh linh.
-Nó vốn thuộc về tự nhiên.
-Sao có thể nói là thuộc về riêng một người?
-Nếu tính như vậy…
-Từ cổ chí kim mấy nghìn năm.
-Mảnh đất này chẳng phải đã có vô số chủ nhân rồi sao?
-Tranh qua đoạt lại.
-Đời đời không dứt.
-“Năm nay ngươi bao nhiêu tuổi?”
-“Ta tên Ô Sơn, năm nay mười bốn.”
-Hả?
-Mới mười bốn?
-Rõ ràng trông hắn bằng tuổi nàng.
-Gió cát và máu tanh nơi chiến trường thúc ép con người trưởng thành.
-Khiến một thiếu niên mười bốn tuổi nhìn như mười bảy, mười tám.
-Lúc Sở Ly mười bốn tuổi…
-Ngày nào cũng trốn cung, cúp học, chạy khắp nơi.
-Bị Khương Thái phó mắng đến mức không ngóc đầu lên nổi.
-Không hiểu sao…
-Trong lòng nàng bỗng thấy không dễ chịu.
-Liền ngồi xuống bên cạnh, trò chuyện với Ô Sơn.
-Nhắc đến những chuyện thú vị trong quân doanh.
-Ô Sơn cười đến không khép nổi miệng.
-Sở Ly thầm nghĩ.
-Bao năm nay…
-Chiến sự Nam Cương mãi chưa yên.
-Đều là vì Sở Dạ Ly âm thầm châm ngòi.
-Nếu không có hắn.
-E rằng Nam Cương đã sớm bình định.
-Cũng sẽ không còn chiến tranh loạn lạc.
-Những đứa trẻ bằng tuổi Ô Sơn…
-Cũng chẳng cần phải đến nơi này bán mạng.
-Sở Dạ Ly bàn xong việc riêng với Vệ tướng quân, liền đến tìm Sở Ly.
-Chỉ thấy nàng đang cùng mấy tên lính ngồi bệt trên đất.
-Khoanh chân.
-Vừa ăn thịt thỏ nướng.
-Vừa cười nói rôm rả.
-“Tiểu Cửu.”
-Hắn vừa xuất hiện.
-Đám binh sĩ lập tức cung kính.
-“Đông Lăng điện hạ.”
-“Tiểu Cửu, lều của muội ở bên kia, ta đưa muội qua.”
-“Đợi lát nữa buồn ngủ, muội sẽ tự qua.”
-Sở Ly đáp.
-“Vậy chúng ta cùng ăn tối?”
-“Muội ăn xong rồi.”
-Sở Dạ Ly nói liền mấy câu.
-Đều không đổi được sắc mặt hòa nhã của Sở Ly.
-Nhưng vừa thấy hắn đi.
-Nàng lại tiếp tục cười nói vui vẻ với mấy tên tiểu tốt.
-Nửa tháng trời ngồi trên xe ngựa.
-Ngày nào mở mắt cũng phải đối diện Sở Dạ Ly.
-Thật sự khiến Sở Ly nghẹn đến phát điên.
-Một khi đã mở lời.
-Liền không dừng lại được.
-“…Có một lần, nước trà vừa mới pha xong, nóng khủng khiếp.”
-“Ta uống một ngụm rồi phun trở lại.”
-“Kết quả phụ… à không, cha ta không biết.”
-“Ông ấy cầm lên, ung dung uống từng ngụm.”
-Mấy tên tiểu tốt vội hỏi:
-“Sau đó thì sao?”
-“Ngươi có nói cho ông ấy biết không?”
-“Sao ta dám nói?”
-“Ta sợ ông ấy đánh ta.”
-“Thế là ông ấy vừa thổi vừa thong thả… uống sạch nước miếng của ta.”
-“Ha ha ha ha!”
-Cả đám cười đến chảy cả nước mắt.
-Sở Ly lại nói:
-“Còn có một lần mới thật sự buồn cười.”
-“Hôm đó đang dự yến tiệc.”
-“Ta ăn hỏng bụng.”
-“Có một mỹ nhân đang hiến vũ, lấy lòng cha ta.”
-“Kết quả bụng ta cứ réo ùng ục, liên tục đánh rắm.”
-Nàng cắn một miếng thịt thỏ.
-Nhai nhóp nhép.
-“Lúc đó ta còn nhỏ, rất sĩ diện.”
-“Liền nhân lúc nhạc công tấu nhạc mà từng chút từng chút đánh rắm theo nhịp, định che giấu đi.”
-“Kết quả cha ta chịu hết nổi.”
-“Bảo ta nếu có rắm thì thả một hơi cho xong.”
-“Đừng có đánh theo tiết tấu nữa.”
-“Ha ha ha!”
-“Ha ha ha ha!”
-Một đám người cười đến ngả nghiêng.
-Có lẽ vì bầu không khí quá vui vẻ.
-Xung quanh còn có không ít binh sĩ kéo tới.
-Cùng nhau trò chuyện.
-Sở Dạ Ly đứng cách đó không xa.
-Nhìn thiếu niên cười rạng rỡ.
-Ánh lửa bập bùng phản chiếu đôi mắt nàng lấp lánh.
-Tựa như vạn trượng quang mang.
-Mang theo sức hút mãnh liệt.
-Khiến mọi người đều bất giác muốn đến gần.
-Nàng từ trước đến nay vẫn luôn là một cô gái rạng rỡ như thế.
-Bất kỳ ai đến gần nàng.
-Đều sẽ vô thức bị nàng lây nhiễm.
-Muốn tiến lại gần hơn.
-Thế nhưng…
-Nàng chưa bao giờ cho hắn sắc mặt tốt.
-Nói chưa quá ba câu.
-Liền bắt đầu lạnh mặt, nổi giận.
-Rõ ràng khi còn nhỏ…
-Chính miệng nàng từng nói rất thích hắn…
-“Chủ tử.”
-A Ngọc bước tới.
-“Người bên dưới vừa báo.”
-“Trong doanh trại Nam Cương có một đội binh sĩ nhân lúc đêm tối xuất động.”
-“Ước chừng khoảng sáu trăm người.”
-Sở Dạ Ly thu hồi ánh mắt.
-“Ồ?”
-Sáu trăm người.
-Hắn chỉ đưa Sở Ly ra bình nguyên săn bắn, chạy một vòng.
-Không ngờ…
-Tốc độ của Tần thiếu tướng quân còn nhanh hơn dự liệu.
-“Chủ tử.”
-“Chúng ta nên ứng phó thế nào?”
-“Tần thiếu tướng quân rốt cuộc vẫn còn quá trẻ.”
-“Thiếu kinh nghiệm.”
-“Không giữ được bình tĩnh.”
-Hắn xoay người.
-Sải bước rời đi.
-Ống tay áo tung bay phần phật.
-“Dắt ngựa của ta tới!” Ẩn bớt</p>
+            <p>Chương 132: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 132: Chính Miệng Nàng Từng Nói Rằng Rất Thích Hắn</p>
+<p>“Ngươi nói cái gì?!”</p>
+<p>Sao có thể như vậy được?</p>
+<p>A Ly chẳng phải đang ở trong hoàng cung sao?</p>
+<p>Do Sở Hoàng bại liệt, Tân Đế còn chưa chính thức đăng cơ, các thế lực đều đang như hổ rình mồi, lại thêm việc Tân Đế táng thân trong biển lửa… quá nhiều chuyện chồng chất. Vì muốn ổn định xã tắc, Tiêu Dạ Hành vẫn luôn đè nén tin tức Tân Đế đã chết.</p>
+<p>Để tránh thiên hạ đại loạn.</p>
+<p>Mà lúc ấy, Tần Mục Vũ đã xuất chinh.</p>
+<p>Nam Cương cách Đế Đô ngàn dặm.</p>
+<p>Bởi vậy, hắn hoàn toàn không biết tin Tân Đế đã chết.</p>
+<p>Vì sao chỉ trong mấy ngày ngắn ngủi…</p>
+<p>A Ly lại chạy đến đại doanh Nam Man?</p>
+<p>“Vương Hằng, ngươi chắc chắn mình không nhìn nhầm?”</p>
+<p>Vương Hằng quỳ một gối xuống đất:</p>
+<p>“Thiếu tướng quân, thuộc hạ thường xuyên thấy ngài cùng Tân Đế ra vào, đã sớm ghi nhớ dung mạo của ‘ngài ấy’, sao có thể nhìn nhầm được?”</p>
+<p>Tần Mục Vũ chống bàn đứng bật dậy.</p>
+<p>Không thể nào!</p>
+<p>Chuyện này…</p>
+<p>Ắt hẳn có nguyên do.</p>
+<p>“Người đâu!”</p>
+<p>An tướng quân lập tức ngăn cản:</p>
+<p>“Tần thiếu tướng quân xin hãy bình tĩnh, trước hết điều tra kỹ việc này, chớ để trúng kế.”</p>
+<p>Theo ông thấy…</p>
+<p>Việc Tân Đế xuất hiện trong đại doanh Nam Man còn ly kỳ chẳng khác nào mặt trời mọc từ phía Tây.</p>
+<p>“Ta không thể khoanh tay đứng nhìn. Nếu thật sự là Tân Đế, ta nhất định phải nghĩ cách điều tra rõ chân tướng, cứu nàng thoát thân.”</p>
+<p>Ánh mắt Tần Mục Vũ kiên định.</p>
+<p>“Người đâu!”</p>
+<p>⸻</p>
+<p>Trên bình nguyên, vó ngựa tung hoành.</p>
+<p>Phóng khoáng, tự tại.</p>
+<p>Sở Ly cưỡi ngựa đuổi theo thỏ rừng, chạy một vòng thật lớn.</p>
+<p>Suốt quãng đường này nàng thực sự bị gò bó đến phát ngột ngạt.</p>
+<p>Mãi đến chạng vạng.</p>
+<p>Nàng mới xách theo bốn con thỏ rừng lông xám, trở về doanh trại.</p>
+<p>Đám tướng sĩ Nam Man tò mò nhìn nàng.</p>
+<p>Nhìn thiếu niên tuấn tú, trắng trẻo đến từ Đại Sở.</p>
+<p>Sở Ly tìm một đống lửa đang cháy rực, xách thỏ đi tới.</p>
+<p>“Tối nay thêm món nhé?”</p>
+<p>Có tám binh sĩ đang nấu cơm bên đống lửa.</p>
+<p>Bọn họ nhìn sang, không giấu nổi vẻ hiếu kỳ.</p>
+<p>“Ngươi là gì của Đông Lăng điện hạ?”</p>
+<p>“Ta tên… Tiểu Sở, là bằng hữu của huynh ấy.”</p>
+<p>“Ồ, ra vậy.”</p>
+<p>Một thiếu niên vóc người không cao, trông tuổi tác cũng xấp xỉ Sở Ly bước tới.</p>
+<p>“Để ta nướng thỏ giúp ngươi.”</p>
+<p>Động tác của hắn vô cùng thuần thục.</p>
+<p>Lột da.</p>
+<p>Moi nội tạng.</p>
+<p>Rửa sạch bằng nước.</p>
+<p>Động tác nhanh gọn, liền mạch, hoàn thành trong một hơi.</p>
+<p>Sở Ly kinh ngạc nhìn hắn.</p>
+<p>Thật nhanh nhẹn!</p>
+<p>Tên tiểu tốt đặt con thỏ lên giá nướng.</p>
+<p>Thấy Sở Ly cứ nhìn mình chằm chằm.</p>
+<p>Thiếu niên vốn đã có dung mạo thanh tú, làn da mịn màng, khác hẳn đám đàn ông thô ráp quanh năm ở trong quân.</p>
+<p>Không khỏi đỏ mặt.</p>
+<p>“Tiểu Sở công tử… ngài… ngài nhìn ta làm gì?”</p>
+<p>“Ta chỉ hơi kinh ngạc vì ngươi xử lý thỏ thuần thục như vậy. Hơn nữa ta còn nghe nói…”</p>
+<p>Tên tiểu tốt hiếu kỳ:</p>
+<p>“Nghe nói cái gì?”</p>
+<p>Nghe nói…</p>
+<p>Người Nam Man trời sinh thô bạo, hung hãn.</p>
+<p>Phần lớn không được tiếp nhận giáo dục bài bản.</p>
+<p>Làm người hung ác.</p>
+<p>Lại còn giỏi dùng cổ trùng hiểm độc.</p>
+<p>Mà nuôi cổ…</p>
+<p>Lại càng tàn nhẫn.</p>
+<p>Lột da người.</p>
+<p>Rút máu người.</p>
+<p>Bóc cả thiên linh cái.</p>
+<p>Đều là chuyện thường tình.</p>
+<p>Nhưng những lời ấy…</p>
+<p>Nói ra lúc này dường như không thích hợp.</p>
+<p>Sở Ly cười cười.</p>
+<p>“Ta nghe nói Nam Man và Đại Sở đã tranh chấp hơn mười năm. Những năm qua, chẳng lẽ các ngươi vẫn luôn đóng quân ở đây, chưa từng rời đi?”</p>
+<p>“Đúng vậy.”</p>
+<p>Tên tiểu tốt gật đầu.</p>
+<p>“Hơn một trăm năm trước, Nam Cương vốn là lãnh thổ của chúng ta.”</p>
+<p>“Chúng ta nhất định phải đoạt lại.”</p>
+<p>Sở Ly nghe vậy, thầm thở dài.</p>
+<p>Thiên hạ rộng lớn.</p>
+<p>Mảnh đất này nuôi dưỡng vô số sinh linh.</p>
+<p>Nó vốn thuộc về tự nhiên.</p>
+<p>Sao có thể nói là thuộc về riêng một người?</p>
+<p>Nếu tính như vậy…</p>
+<p>Từ cổ chí kim mấy nghìn năm.</p>
+<p>Mảnh đất này chẳng phải đã có vô số chủ nhân rồi sao?</p>
+<p>Tranh qua đoạt lại.</p>
+<p>Đời đời không dứt.</p>
+<p>“Năm nay ngươi bao nhiêu tuổi?”</p>
+<p>“Ta tên Ô Sơn, năm nay mười bốn.”</p>
+<p>Hả?</p>
+<p>Mới mười bốn?</p>
+<p>Rõ ràng trông hắn bằng tuổi nàng.</p>
+<p>Gió cát và máu tanh nơi chiến trường thúc ép con người trưởng thành.</p>
+<p>Khiến một thiếu niên mười bốn tuổi nhìn như mười bảy, mười tám.</p>
+<p>Lúc Sở Ly mười bốn tuổi…</p>
+<p>Ngày nào cũng trốn cung, cúp học, chạy khắp nơi.</p>
+<p>Bị Khương Thái phó mắng đến mức không ngóc đầu lên nổi.</p>
+<p>Không hiểu sao…</p>
+<p>Trong lòng nàng bỗng thấy không dễ chịu.</p>
+<p>Liền ngồi xuống bên cạnh, trò chuyện với Ô Sơn.</p>
+<p>Nhắc đến những chuyện thú vị trong quân doanh.</p>
+<p>Ô Sơn cười đến không khép nổi miệng.</p>
+<p>Sở Ly thầm nghĩ.</p>
+<p>Bao năm nay…</p>
+<p>Chiến sự Nam Cương mãi chưa yên.</p>
+<p>Đều là vì Sở Dạ Ly âm thầm châm ngòi.</p>
+<p>Nếu không có hắn.</p>
+<p>E rằng Nam Cương đã sớm bình định.</p>
+<p>Cũng sẽ không còn chiến tranh loạn lạc.</p>
+<p>Những đứa trẻ bằng tuổi Ô Sơn…</p>
+<p>Cũng chẳng cần phải đến nơi này bán mạng.</p>
+<p>Sở Dạ Ly bàn xong việc riêng với Vệ tướng quân, liền đến tìm Sở Ly.</p>
+<p>Chỉ thấy nàng đang cùng mấy tên lính ngồi bệt trên đất.</p>
+<p>Khoanh chân.</p>
+<p>Vừa ăn thịt thỏ nướng.</p>
+<p>Vừa cười nói rôm rả.</p>
+<p>“Tiểu Cửu.”</p>
+<p>Hắn vừa xuất hiện.</p>
+<p>Đám binh sĩ lập tức cung kính.</p>
+<p>“Đông Lăng điện hạ.”</p>
+<p>“Tiểu Cửu, lều của muội ở bên kia, ta đưa muội qua.”</p>
+<p>“Đợi lát nữa buồn ngủ, muội sẽ tự qua.”</p>
+<p>Sở Ly đáp.</p>
+<p>“Vậy chúng ta cùng ăn tối?”</p>
+<p>“Muội ăn xong rồi.”</p>
+<p>Sở Dạ Ly nói liền mấy câu.</p>
+<p>Đều không đổi được sắc mặt hòa nhã của Sở Ly.</p>
+<p>Nhưng vừa thấy hắn đi.</p>
+<p>Nàng lại tiếp tục cười nói vui vẻ với mấy tên tiểu tốt.</p>
+<p>Nửa tháng trời ngồi trên xe ngựa.</p>
+<p>Ngày nào mở mắt cũng phải đối diện Sở Dạ Ly.</p>
+<p>Thật sự khiến Sở Ly nghẹn đến phát điên.</p>
+<p>Một khi đã mở lời.</p>
+<p>Liền không dừng lại được.</p>
+<p>“…Có một lần, nước trà vừa mới pha xong, nóng khủng khiếp.”</p>
+<p>“Ta uống một ngụm rồi phun trở lại.”</p>
+<p>“Kết quả phụ… à không, cha ta không biết.”</p>
+<p>“Ông ấy cầm lên, ung dung uống từng ngụm.”</p>
+<p>Mấy tên tiểu tốt vội hỏi:</p>
+<p>“Sau đó thì sao?”</p>
+<p>“Ngươi có nói cho ông ấy biết không?”</p>
+<p>“Sao ta dám nói?”</p>
+<p>“Ta sợ ông ấy đánh ta.”</p>
+<p>“Thế là ông ấy vừa thổi vừa thong thả… uống sạch nước miếng của ta.”</p>
+<p>“Ha ha ha ha!”</p>
+<p>Cả đám cười đến chảy cả nước mắt.</p>
+<p>Sở Ly lại nói:</p>
+<p>“Còn có một lần mới thật sự buồn cười.”</p>
+<p>“Hôm đó đang dự yến tiệc.”</p>
+<p>“Ta ăn hỏng bụng.”</p>
+<p>“Có một mỹ nhân đang hiến vũ, lấy lòng cha ta.”</p>
+<p>“Kết quả bụng ta cứ réo ùng ục, liên tục đánh rắm.”</p>
+<p>Nàng cắn một miếng thịt thỏ.</p>
+<p>Nhai nhóp nhép.</p>
+<p>“Lúc đó ta còn nhỏ, rất sĩ diện.”</p>
+<p>“Liền nhân lúc nhạc công tấu nhạc mà từng chút từng chút đánh rắm theo nhịp, định che giấu đi.”</p>
+<p>“Kết quả cha ta chịu hết nổi.”</p>
+<p>“Bảo ta nếu có rắm thì thả một hơi cho xong.”</p>
+<p>“Đừng có đánh theo tiết tấu nữa.”</p>
+<p>“Ha ha ha!”</p>
+<p>“Ha ha ha ha!”</p>
+<p>Một đám người cười đến ngả nghiêng.</p>
+<p>Có lẽ vì bầu không khí quá vui vẻ.</p>
+<p>Xung quanh còn có không ít binh sĩ kéo tới.</p>
+<p>Cùng nhau trò chuyện.</p>
+<p>Sở Dạ Ly đứng cách đó không xa.</p>
+<p>Nhìn thiếu niên cười rạng rỡ.</p>
+<p>Ánh lửa bập bùng phản chiếu đôi mắt nàng lấp lánh.</p>
+<p>Tựa như vạn trượng quang mang.</p>
+<p>Mang theo sức hút mãnh liệt.</p>
+<p>Khiến mọi người đều bất giác muốn đến gần.</p>
+<p>Nàng từ trước đến nay vẫn luôn là một cô gái rạng rỡ như thế.</p>
+<p>Bất kỳ ai đến gần nàng.</p>
+<p>Đều sẽ vô thức bị nàng lây nhiễm.</p>
+<p>Muốn tiến lại gần hơn.</p>
+<p>Thế nhưng…</p>
+<p>Nàng chưa bao giờ cho hắn sắc mặt tốt.</p>
+<p>Nói chưa quá ba câu.</p>
+<p>Liền bắt đầu lạnh mặt, nổi giận.</p>
+<p>Rõ ràng khi còn nhỏ…</p>
+<p>Chính miệng nàng từng nói rất thích hắn…</p>
+<p>“Chủ tử.”</p>
+<p>A Ngọc bước tới.</p>
+<p>“Người bên dưới vừa báo.”</p>
+<p>“Trong doanh trại Nam Cương có một đội binh sĩ nhân lúc đêm tối xuất động.”</p>
+<p>“Ước chừng khoảng sáu trăm người.”</p>
+<p>Sở Dạ Ly thu hồi ánh mắt.</p>
+<p>“Ồ?”</p>
+<p>Sáu trăm người.</p>
+<p>Hắn chỉ đưa Sở Ly ra bình nguyên săn bắn, chạy một vòng.</p>
+<p>Không ngờ…</p>
+<p>Tốc độ của Tần thiếu tướng quân còn nhanh hơn dự liệu.</p>
+<p>“Chủ tử.”</p>
+<p>“Chúng ta nên ứng phó thế nào?”</p>
+<p>“Tần thiếu tướng quân rốt cuộc vẫn còn quá trẻ.”</p>
+<p>“Thiếu kinh nghiệm.”</p>
+<p>“Không giữ được bình tĩnh.”</p>
+<p>Hắn xoay người.</p>
+<p>Sải bước rời đi.</p>
+<p>Ống tay áo tung bay phần phật.</p>
+<p>“Dắt ngựa của ta tới!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_131.html" class="btn">‹ Trước</a>
             <a href="chuong_133.html" class="btn">Sau ›</a>
         </div>
@@ -331,15 +339,11 @@ Sải bước rời đi.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -351,11 +355,11 @@ Sải bước rời đi.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

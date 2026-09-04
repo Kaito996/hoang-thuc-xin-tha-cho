@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 46</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,191 +62,200 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 46</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_45.html" class="btn">‹ Trước</a>
             <a href="chuong_47.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 46: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 46: Không xong rồi, Cửu hoàng tử biến mất
-“Ồ? Ngươi lại không gấp nữa rồi. Xem ra, sống chết của Tần Thiếu tướng quân đối với ngươi mà nói, cũng chẳng quan trọng đến thế.”
-Hắn buông tay, Sở Ly nặng nề rơi trở lại giường.
-“Ưm—”
-Cú ngã khiến nàng suýt thì ngất đi.
-“Hoàng thúc nhất định phải làm đến mức này sao!”
-Nàng phẫn nộ trừng mắt nhìn hắn.
-Cố ý trêu đùa nàng, vui lắm sao?
-“Ngươi muốn thứ gì mà chẳng có, chẳng qua chỉ là chuyện trong tầm tay, cớ gì cứ phải chòng chọc nhắm vào ta? Chẳng lẽ không thấy làm vậy là trái đạo đức, trái luân thường ư?”
-“Đạo đức?”
-Người đàn ông nhếch môi cười lạnh: “Đạo đức chỉ dùng để trói buộc kẻ có đạo đức. Bản vương nếu có thứ đó, đã chết từ mấy trăm lần trước rồi.”
-“Ngay cả chút thành ý này cũng không có, còn muốn từ tay bản vương lấy đồ? Ngươi chưa đủ tư cách.”
-Hắn phất tay áo rời đi.
-“Hoàng thúc!”
-Sở Ly vội vàng xuống giường, bước chân hư phù đuổi theo: “Xin hoàng thúc tha cho Tần Mục Vũ!”
-“Hoàng thúc!”
-Ngay cả hoàng đế còn không dám xé mặt với hắn, nếu hắn nhất quyết không giơ tay, Tần Mục Vũ quả thật là chết chắc.
-Phủ tướng quân rốt cuộc cũng chỉ là võ tướng, còn Tĩnh hoàng quý phi của Quốc công phủ lại là người gối bên long sàng của hoàng đế.
-Thấy người đàn ông sắp rời đi, trong lòng Sở Ly cuống lên, đầu gối mềm nhũn, quỳ sụp xuống đất.
-“Xin hoàng thúc khai ân!”
-Sở Đệ Trì khựng bước, một lát sau quay đầu nhìn lại, thấy Sở Ly quỳ trên đất, thân thể vốn đã gầy yếu, lại bị mưa dầm, càng thêm mỏng manh. Bản thân nàng chật vật chẳng khác gì một con chó rơi xuống nước, vậy mà trong lòng chỉ một mực lo nghĩ cho người khác.
-Trong tim nàng, Tần Mục Vũ lại quan trọng đến thế ư?
-Hắn lạnh lùng thu ánh mắt lại, đáy mắt sát khí lạnh lẽo không chút ấm áp: “Kinh Ảnh.”
-Ngoài cửa, Kinh Ảnh dẫn hai cung nữ bưng khay tiến vào, nhanh chóng bày cơm canh lên bàn.
-“Ăn đi, ăn xong bản vương sẽ đưa cho ngươi.”
-Sở Ly sững sờ.
-Hắn muốn làm gì?
-Ba món một canh trên bàn trông như vừa nấu xong, đều là món gia thường, còn bốc hơi nóng.
-“Còn không qua đây?”
-Sở Ly do dự mấy nhịp thở, lúc này mới chống tay xuống đất, nhịn cơn đau quặn trong dạ dày, miễn cưỡng đứng dậy: “Hoàng thúc, ta không đói.”
-Sở Đệ Trì phất tay áo ngồi xuống, đầu ngón tay tùy ý đặt trên miệng chén, khép mắt nghe mưa, dáng vẻ trầm tĩnh như tự thành một thế giới riêng.
-Sở Ly đứng một lúc không được đáp lại, đành bước tới, cầm bát đũa, nhấp một miếng nhỏ.
-Cả ngày chưa ăn gì, đói quá hóa ra lại chẳng thấy khó chịu, đến khi môi chạm cơm nóng canh nóng, mới phát hiện đã đói đến mức trước ngực dính sau lưng.
-Nàng bắt đầu ăn từng miếng lớn.
-Ăn ngấu nghiến.
-Bỗng nhiên—
-“Trong thức ăn có độc.”
-Sở Ly chấn động mạnh, phát hiện không biết từ lúc nào người đàn ông đã nhìn chằm chằm nàng, ánh mắt u lãnh như tôi độc, khiến nàng run tay làm rơi cả đũa.
-“Giải dược và chứng cứ, chỉ được chọn một, ngươi muốn cái nào?”
-Cứu mình, hay cứu Tần Mục Vũ?
-Sở Ly chậm rãi siết chặt đũa.
-Nàng không phải huyết mạch hoàng gia, vốn không nên sống trong cung. Nếu không có nàng, mẫu phi chẳng cần ngày ngày nơm nớp lo sợ, nàng cũng không phải đêm đêm trằn trọc, lo lắng liên lụy gia tộc.
-Nếu không có nàng, Tần Mục Vũ cũng chẳng bị vạ lây.
-Nàng nhai thức ăn trong miệng, cố nuốt xuống, rồi lại xúc thêm một miếng lớn.
-Sắc mắt Sở Đệ Trì hoàn toàn lạnh băng: “Đã thích, vậy thì ăn hết đi, một hạt cơm cũng không được thừa.”
-Khóe mắt Sở Ly hơi đỏ, nhưng nàng cố gắng nhẫn nhịn, thức ăn ngon như nhai sáp mà nhét cả vào miệng, nuốt hết xuống.
-“Khụ!”
-“Thử nôn ra xem?”
-Sở Ly nắm chặt bát, ăn từng ngụm lớn, ăn từng ngụm lớn, bốn đĩa cơm canh nhét đầy bụng, gần như trào đến cổ họng, sắc mặt ửng lên một màu hồng bất thường, cuối cùng cũng vét sạch miếng cuối cùng.
-“Ta… ăn xong rồi… hoàng thúc xin giữ lời.”
-Sở Đệ Trì cười lạnh một tiếng, từ trong tay áo rút ra một phong thư, ném lên bàn.
-Sở Ly như bắt được báu vật, lập tức chộp lấy, đứng dậy định chạy ra ngoài thì phía sau vang lên giọng nói âm lãnh của người đàn ông:
-“Đừng quên đêm mai, bản vương đợi ngươi ở Thủy Tạ San Hô.”
-Bước chân nàng khựng lại, rồi ngay sau đó đội mưa lớn chạy đi, rất nhanh biến mất trong màn đêm.
-Bang bang!
-Tiếng gõ cửa phủ tướng quân vang lên. Chẳng mấy chốc, tiểu tư gác cổng che ô chạy ra: “Khuya thế này là ai… Cửu hoàng tử? Ngài mau vào trong!”
-Cả nhà họ Tần đều chưa ngủ, trong nhà xảy ra đại sự, ai nấy ăn ngủ không yên.
-Tần tướng quân lập tức ra đón: “Cửu hoàng tử sao lại tới đây? Cũng không che ô. Người đâu, mau chuẩn bị nước nóng cho Cửu hoàng tử tắm rửa, rồi nấu một bát canh gừng.”
-“Ta không sao.”
-Sở Ly lấy phong thư vẫn luôn giấu trong ngực, bảo vệ cẩn thận, đưa ra.
-“Xin Tần tướng quân xem qua vật này.”
-Tần tướng quân nghi hoặc nhận lấy, vừa nhìn nội dung bên trong liền không khỏi bật thốt: “Cái này!”
-Trong thư ghi rõ hành tung nửa tháng gần đây của Lương di nương trong Quốc công phủ, cùng việc bà ta từng tới chợ đen mua một loại độc dược đặc biệt.
-Người uống phải độc này, chỉ cần trên người xuất hiện vết thương, liền không thể cầm máu, dù chỉ là vết thương không chí mạng, cũng có thể khiến máu chảy cạn mà chết.
-“Thì ra là vậy! Thì ra là bà ta!”
-Chính Lương di nương này đã mưu hại Phương Hải Dương.
-Lương di nương có một thứ tử, chỉ nhỏ hơn Phương Hải Dương một tuổi. Nếu đích trưởng tử duy nhất của Quốc công phủ gặp chuyện, liền có thể để thứ tử này kế vị.
-Vì tiền đồ của con trai, bà ta mưu hại Phương Hải Dương. Đúng lúc Tần Mục Vũ lại phát sinh tranh chấp với Phương Hải Dương, vô cớ gánh lấy cái oan này.
-Tần tướng quân kích động không thôi, nặng nề quỳ sụp xuống:
-“Đại ân của Cửu hoàng tử, cứu mạng khuyển tử, mạt tướng suốt đời khắc cốt ghi tâm!”
-Tâm trạng treo lơ lửng suốt cả ngày của Sở Ly cuối cùng cũng buông xuống, loạng choạng ngã ngồi lên ghế: “Có cứu là tốt rồi… tốt rồi…”
-“Cửu hoàng tử!”
-Sở Ly ngất đi.
-Khi tỉnh lại, đã là ngày hôm sau, nàng đang ở Chiêu Lan điện của mình, bên tai nghe thấy giọng một nữ tử:
-“Có phải là thuốc tốt nhất không? Chứng phong hàn choáng váng của Cửu hoàng tử, hôm nay nhất định phải khỏi… bộ y phục này mang đi xông hương, dùng trầm hương gỗ ô…”
-Sở Ly chậm rãi mở mắt, thấy Noãn Ngọc đang tất bật.
-Nàng là do chính tay Nhiếp chính vương đưa về Chiêu Lan điện.
-“Cửu hoàng tử tỉnh rồi?”
-Noãn Ngọc mừng rỡ, bước nhanh tới: “Tỉnh là tốt rồi. Ngự y nói, tỉnh lại là không sao nữa. Đêm qua mưa lớn, may mà thân thể ngài không quá nghiêm trọng.”
-Sở Ly thần sắc bình thản: “Cẩu Bát đâu?”
-“Cẩu công công đi xông hương cho y phục của ngài rồi. Còn túi hương này, tối nay Cửu hoàng tử cũng nên đeo.”
-Noãn Ngọc hai tay nâng chiếc túi hương màu lam băng.
-“Dù tua rua bị kéo hỏng, nhưng tay nghề thêu của Ôn phi nương nương tinh xảo, đường kim mũi chỉ chặt chẽ, dù hỏng rồi cũng vẫn là vật thượng hạng.”
-Chính là túi hương đêm yến tiệc khánh công.
-Ánh mắt Sở Ly trầm xuống, ngồi dậy: “Chuyện của ta, còn chưa tới lượt ngươi lo. Huống chi, bây giờ vẫn chưa tới tối.”
-“Ra ngoài!”
-Noãn Ngọc cúi mình thi lễ, ra đứng chờ ngoài cửa.
-Chẳng mấy chốc, Cẩu Bát đi vào.
-“Chủ tử.”
-“Bên Thiên Lao có động tĩnh gì không?” Sở Ly lập tức hỏi.
-Cẩu Bát tiến đến trước giường: “Có. Nghe nói cái chết của Phương Hải Dương đã kéo theo chuyện nhà trong Quốc công phủ, hình như là tranh đấu giữa đích tử và thứ tử. Đại Lý Tự đang điều tra lại vụ án này. Theo ý tứ bên Ngự thư phòng, Tần Thiếu tướng quân hẳn là rất nhanh sẽ được thả.”
-Sở Ly cuối cùng cũng yên tâm.
-“Chủ tử, người nên lo cho bản thân mình. Lúc người trở về, sốt nóng toàn thân, suýt nữa dọa chết nô tài. May mà Nhiếp chính vương nhân từ, đưa tới thuốc tốt của Thần Y Cốc.”
-Nếu không, e rằng chủ tử bây giờ vẫn còn sốt.
-Sở Ly nghe vậy, trên mặt không chút cảm xúc: “Bây giờ là canh giờ nào rồi?”
-“Giờ Thân. Người hôn mê quá lâu, còn hơn một canh giờ nữa là trời tối.”
-Sở Ly nhìn ra ngoài cửa sổ, sắc trời u ám, trong lòng chất chứa một màn sương mù nặng nề, xám xịt, ngay cả ánh mắt cũng trở nên ảm đạm.
-Xuống giường, vừa bước ra ngoài đã thấy Noãn Ngọc đứng chờ ở cửa.
-“Cửu hoàng tử muốn làm gì, cứ phân phó nô tỳ.”
-“Ta đi Ngọc Đường cung, ăn tối cùng mẫu phi.”
-“Nô tỳ theo cùng ngài.”
-“Ngươi không cần nhìn chằm chằm ta. Ta chỉ ăn bữa cơm rồi về, không chạy được đâu.”
-Nụ cười Noãn Ngọc hơi khựng lại: “Cửu hoàng tử nói quá lời, nô tỳ kinh sợ.”
-“Cẩu Bát, ngươi theo ta.”
-Chủ tớ hai người cùng đi, Noãn Ngọc theo phía sau. Đợi Cửu hoàng tử vào Ngọc Đường cung, nàng liền đứng chờ ngoài cổng cung.
-Ôn phi hơi bất ngờ: “Ly nhi, hôm nay sao lại nhớ tới bồi mẫu phi dùng bữa tối?”
-Sở Ly nhìn gương mặt xinh đẹp, mặn mà của bà.
-Dù là dưỡng mẫu, những năm qua bà chưa từng bạc đãi nàng. Ngay cả Ôn gia cũng đối với nàng chu toàn mọi bề. Cho dù nàng ngày thường ham chơi, gây ra họa lớn đến đâu, Ôn gia cũng sẽ che chở cho nàng.
-“Ly nhi?”
-Ôn phi bước tới: “Con nghĩ gì thế, sao lại nhìn mẫu phi như vậy?”
-Sở Ly thu ánh mắt lại: “Con nhớ mẫu phi.”
-Ôn phi cười đến không khép được miệng, ngay cả Lý cô cô bên cạnh cũng cười hiền từ, vội vàng sai người dọn bữa.
-“Mẫu phi, dạ dày người không tốt, bớt ăn cay… Buổi tối đừng ăn canh sệt này, khó tiêu… Mẫu phi…”
-Ngoài Ngọc Đường cung.
-Noãn Ngọc kiên nhẫn chờ đợi, nhưng đợi hơn một canh giờ, trời đã tối dần, đèn nến leo lét, vẫn không thấy Cửu hoàng tử đi ra.
-Ăn một bữa cơm mà lâu đến vậy sao?
-Nàng không khỏi nghi ngờ, lại đợi thêm một khắc, vẫn không thấy Cửu hoàng tử, liền lập tức đi vào, hỏi một cung nữ đang chăm sóc vườn hoa:
-“Cửu hoàng tử còn đang dùng bữa với Ôn phi nương nương sao?”
-Cung nữ nghi hoặc ngẩng đầu: “Cửu hoàng tử nửa canh giờ trước đã về rồi mà.”
-Sao có thể?
-Nàng một bước không rời canh giữ ngoài cổng cung, căn bản không thấy Cửu hoàng tử. Chẳng lẽ…
-Noãn Ngọc nhận ra điều gì đó, lập tức chạy về Chiêu Lan điện, nhưng cung nữ thái giám ở Chiêu Lan điện nói rằng Cửu hoàng tử đã đi Ngọc Đường cung, vẫn chưa trở lại.
-Tìm khắp một vòng, không thấy tung tích.
-Cửu hoàng tử biến mất rồi!
-Trọng Phong nhận được tin, lập tức chạy tới Thủy Tạ San Hô.
-“Chủ tử, không xong rồi, Cửu hoàng tử không thấy đâu!” Ẩn bớt</p>
+            <p>Chương 46: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 46: Không xong rồi, Cửu hoàng tử biến mất</p>
+<p>“Ồ? Ngươi lại không gấp nữa rồi. Xem ra, sống chết của Tần Thiếu tướng quân đối với ngươi mà nói, cũng chẳng quan trọng đến thế.”</p>
+<p>Hắn buông tay, Sở Ly nặng nề rơi trở lại giường.</p>
+<p>“Ưm—”</p>
+<p>Cú ngã khiến nàng suýt thì ngất đi.</p>
+<p>“Hoàng thúc nhất định phải làm đến mức này sao!”</p>
+<p>Nàng phẫn nộ trừng mắt nhìn hắn.</p>
+<p>Cố ý trêu đùa nàng, vui lắm sao?</p>
+<p>“Ngươi muốn thứ gì mà chẳng có, chẳng qua chỉ là chuyện trong tầm tay, cớ gì cứ phải chòng chọc nhắm vào ta? Chẳng lẽ không thấy làm vậy là trái đạo đức, trái luân thường ư?”</p>
+<p>“Đạo đức?”</p>
+<p>Người đàn ông nhếch môi cười lạnh: “Đạo đức chỉ dùng để trói buộc kẻ có đạo đức. Bản vương nếu có thứ đó, đã chết từ mấy trăm lần trước rồi.”</p>
+<p>“Ngay cả chút thành ý này cũng không có, còn muốn từ tay bản vương lấy đồ? Ngươi chưa đủ tư cách.”</p>
+<p>Hắn phất tay áo rời đi.</p>
+<p>“Hoàng thúc!”</p>
+<p>Sở Ly vội vàng xuống giường, bước chân hư phù đuổi theo: “Xin hoàng thúc tha cho Tần Mục Vũ!”</p>
+<p>“Hoàng thúc!”</p>
+<p>Ngay cả hoàng đế còn không dám xé mặt với hắn, nếu hắn nhất quyết không giơ tay, Tần Mục Vũ quả thật là chết chắc.</p>
+<p>Phủ tướng quân rốt cuộc cũng chỉ là võ tướng, còn Tĩnh hoàng quý phi của Quốc công phủ lại là người gối bên long sàng của hoàng đế.</p>
+<p>Thấy người đàn ông sắp rời đi, trong lòng Sở Ly cuống lên, đầu gối mềm nhũn, quỳ sụp xuống đất.</p>
+<p>“Xin hoàng thúc khai ân!”</p>
+<p>Sở Đệ Trì khựng bước, một lát sau quay đầu nhìn lại, thấy Sở Ly quỳ trên đất, thân thể vốn đã gầy yếu, lại bị mưa dầm, càng thêm mỏng manh. Bản thân nàng chật vật chẳng khác gì một con chó rơi xuống nước, vậy mà trong lòng chỉ một mực lo nghĩ cho người khác.</p>
+<p>Trong tim nàng, Tần Mục Vũ lại quan trọng đến thế ư?</p>
+<p>Hắn lạnh lùng thu ánh mắt lại, đáy mắt sát khí lạnh lẽo không chút ấm áp: “Kinh Ảnh.”</p>
+<p>Ngoài cửa, Kinh Ảnh dẫn hai cung nữ bưng khay tiến vào, nhanh chóng bày cơm canh lên bàn.</p>
+<p>“Ăn đi, ăn xong bản vương sẽ đưa cho ngươi.”</p>
+<p>Sở Ly sững sờ.</p>
+<p>Hắn muốn làm gì?</p>
+<p>Ba món một canh trên bàn trông như vừa nấu xong, đều là món gia thường, còn bốc hơi nóng.</p>
+<p>“Còn không qua đây?”</p>
+<p>Sở Ly do dự mấy nhịp thở, lúc này mới chống tay xuống đất, nhịn cơn đau quặn trong dạ dày, miễn cưỡng đứng dậy: “Hoàng thúc, ta không đói.”</p>
+<p>Sở Đệ Trì phất tay áo ngồi xuống, đầu ngón tay tùy ý đặt trên miệng chén, khép mắt nghe mưa, dáng vẻ trầm tĩnh như tự thành một thế giới riêng.</p>
+<p>Sở Ly đứng một lúc không được đáp lại, đành bước tới, cầm bát đũa, nhấp một miếng nhỏ.</p>
+<p>Cả ngày chưa ăn gì, đói quá hóa ra lại chẳng thấy khó chịu, đến khi môi chạm cơm nóng canh nóng, mới phát hiện đã đói đến mức trước ngực dính sau lưng.</p>
+<p>Nàng bắt đầu ăn từng miếng lớn.</p>
+<p>Ăn ngấu nghiến.</p>
+<p>Bỗng nhiên—</p>
+<p>“Trong thức ăn có độc.”</p>
+<p>Sở Ly chấn động mạnh, phát hiện không biết từ lúc nào người đàn ông đã nhìn chằm chằm nàng, ánh mắt u lãnh như tôi độc, khiến nàng run tay làm rơi cả đũa.</p>
+<p>“Giải dược và chứng cứ, chỉ được chọn một, ngươi muốn cái nào?”</p>
+<p>Cứu mình, hay cứu Tần Mục Vũ?</p>
+<p>Sở Ly chậm rãi siết chặt đũa.</p>
+<p>Nàng không phải huyết mạch hoàng gia, vốn không nên sống trong cung. Nếu không có nàng, mẫu phi chẳng cần ngày ngày nơm nớp lo sợ, nàng cũng không phải đêm đêm trằn trọc, lo lắng liên lụy gia tộc.</p>
+<p>Nếu không có nàng, Tần Mục Vũ cũng chẳng bị vạ lây.</p>
+<p>Nàng nhai thức ăn trong miệng, cố nuốt xuống, rồi lại xúc thêm một miếng lớn.</p>
+<p>Sắc mắt Sở Đệ Trì hoàn toàn lạnh băng: “Đã thích, vậy thì ăn hết đi, một hạt cơm cũng không được thừa.”</p>
+<p>Khóe mắt Sở Ly hơi đỏ, nhưng nàng cố gắng nhẫn nhịn, thức ăn ngon như nhai sáp mà nhét cả vào miệng, nuốt hết xuống.</p>
+<p>“Khụ!”</p>
+<p>“Thử nôn ra xem?”</p>
+<p>Sở Ly nắm chặt bát, ăn từng ngụm lớn, ăn từng ngụm lớn, bốn đĩa cơm canh nhét đầy bụng, gần như trào đến cổ họng, sắc mặt ửng lên một màu hồng bất thường, cuối cùng cũng vét sạch miếng cuối cùng.</p>
+<p>“Ta… ăn xong rồi… hoàng thúc xin giữ lời.”</p>
+<p>Sở Đệ Trì cười lạnh một tiếng, từ trong tay áo rút ra một phong thư, ném lên bàn.</p>
+<p>Sở Ly như bắt được báu vật, lập tức chộp lấy, đứng dậy định chạy ra ngoài thì phía sau vang lên giọng nói âm lãnh của người đàn ông:</p>
+<p>“Đừng quên đêm mai, bản vương đợi ngươi ở Thủy Tạ San Hô.”</p>
+<p>Bước chân nàng khựng lại, rồi ngay sau đó đội mưa lớn chạy đi, rất nhanh biến mất trong màn đêm.</p>
+<p>Bang bang!</p>
+<p>Tiếng gõ cửa phủ tướng quân vang lên. Chẳng mấy chốc, tiểu tư gác cổng che ô chạy ra: “Khuya thế này là ai… Cửu hoàng tử? Ngài mau vào trong!”</p>
+<p>Cả nhà họ Tần đều chưa ngủ, trong nhà xảy ra đại sự, ai nấy ăn ngủ không yên.</p>
+<p>Tần tướng quân lập tức ra đón: “Cửu hoàng tử sao lại tới đây? Cũng không che ô. Người đâu, mau chuẩn bị nước nóng cho Cửu hoàng tử tắm rửa, rồi nấu một bát canh gừng.”</p>
+<p>“Ta không sao.”</p>
+<p>Sở Ly lấy phong thư vẫn luôn giấu trong ngực, bảo vệ cẩn thận, đưa ra.</p>
+<p>“Xin Tần tướng quân xem qua vật này.”</p>
+<p>Tần tướng quân nghi hoặc nhận lấy, vừa nhìn nội dung bên trong liền không khỏi bật thốt: “Cái này!”</p>
+<p>Trong thư ghi rõ hành tung nửa tháng gần đây của Lương di nương trong Quốc công phủ, cùng việc bà ta từng tới chợ đen mua một loại độc dược đặc biệt.</p>
+<p>Người uống phải độc này, chỉ cần trên người xuất hiện vết thương, liền không thể cầm máu, dù chỉ là vết thương không chí mạng, cũng có thể khiến máu chảy cạn mà chết.</p>
+<p>“Thì ra là vậy! Thì ra là bà ta!”</p>
+<p>Chính Lương di nương này đã mưu hại Phương Hải Dương.</p>
+<p>Lương di nương có một thứ tử, chỉ nhỏ hơn Phương Hải Dương một tuổi. Nếu đích trưởng tử duy nhất của Quốc công phủ gặp chuyện, liền có thể để thứ tử này kế vị.</p>
+<p>Vì tiền đồ của con trai, bà ta mưu hại Phương Hải Dương. Đúng lúc Tần Mục Vũ lại phát sinh tranh chấp với Phương Hải Dương, vô cớ gánh lấy cái oan này.</p>
+<p>Tần tướng quân kích động không thôi, nặng nề quỳ sụp xuống:</p>
+<p>“Đại ân của Cửu hoàng tử, cứu mạng khuyển tử, mạt tướng suốt đời khắc cốt ghi tâm!”</p>
+<p>Tâm trạng treo lơ lửng suốt cả ngày của Sở Ly cuối cùng cũng buông xuống, loạng choạng ngã ngồi lên ghế: “Có cứu là tốt rồi… tốt rồi…”</p>
+<p>“Cửu hoàng tử!”</p>
+<p>Sở Ly ngất đi.</p>
+<p>Khi tỉnh lại, đã là ngày hôm sau, nàng đang ở Chiêu Lan điện của mình, bên tai nghe thấy giọng một nữ tử:</p>
+<p>“Có phải là thuốc tốt nhất không? Chứng phong hàn choáng váng của Cửu hoàng tử, hôm nay nhất định phải khỏi… bộ y phục này mang đi xông hương, dùng trầm hương gỗ ô…”</p>
+<p>Sở Ly chậm rãi mở mắt, thấy Noãn Ngọc đang tất bật.</p>
+<p>Nàng là do chính tay Nhiếp chính vương đưa về Chiêu Lan điện.</p>
+<p>“Cửu hoàng tử tỉnh rồi?”</p>
+<p>Noãn Ngọc mừng rỡ, bước nhanh tới: “Tỉnh là tốt rồi. Ngự y nói, tỉnh lại là không sao nữa. Đêm qua mưa lớn, may mà thân thể ngài không quá nghiêm trọng.”</p>
+<p>Sở Ly thần sắc bình thản: “Cẩu Bát đâu?”</p>
+<p>“Cẩu công công đi xông hương cho y phục của ngài rồi. Còn túi hương này, tối nay Cửu hoàng tử cũng nên đeo.”</p>
+<p>Noãn Ngọc hai tay nâng chiếc túi hương màu lam băng.</p>
+<p>“Dù tua rua bị kéo hỏng, nhưng tay nghề thêu của Ôn phi nương nương tinh xảo, đường kim mũi chỉ chặt chẽ, dù hỏng rồi cũng vẫn là vật thượng hạng.”</p>
+<p>Chính là túi hương đêm yến tiệc khánh công.</p>
+<p>Ánh mắt Sở Ly trầm xuống, ngồi dậy: “Chuyện của ta, còn chưa tới lượt ngươi lo. Huống chi, bây giờ vẫn chưa tới tối.”</p>
+<p>“Ra ngoài!”</p>
+<p>Noãn Ngọc cúi mình thi lễ, ra đứng chờ ngoài cửa.</p>
+<p>Chẳng mấy chốc, Cẩu Bát đi vào.</p>
+<p>“Chủ tử.”</p>
+<p>“Bên Thiên Lao có động tĩnh gì không?” Sở Ly lập tức hỏi.</p>
+<p>Cẩu Bát tiến đến trước giường: “Có. Nghe nói cái chết của Phương Hải Dương đã kéo theo chuyện nhà trong Quốc công phủ, hình như là tranh đấu giữa đích tử và thứ tử. Đại Lý Tự đang điều tra lại vụ án này. Theo ý tứ bên Ngự thư phòng, Tần Thiếu tướng quân hẳn là rất nhanh sẽ được thả.”</p>
+<p>Sở Ly cuối cùng cũng yên tâm.</p>
+<p>“Chủ tử, người nên lo cho bản thân mình. Lúc người trở về, sốt nóng toàn thân, suýt nữa dọa chết nô tài. May mà Nhiếp chính vương nhân từ, đưa tới thuốc tốt của Thần Y Cốc.”</p>
+<p>Nếu không, e rằng chủ tử bây giờ vẫn còn sốt.</p>
+<p>Sở Ly nghe vậy, trên mặt không chút cảm xúc: “Bây giờ là canh giờ nào rồi?”</p>
+<p>“Giờ Thân. Người hôn mê quá lâu, còn hơn một canh giờ nữa là trời tối.”</p>
+<p>Sở Ly nhìn ra ngoài cửa sổ, sắc trời u ám, trong lòng chất chứa một màn sương mù nặng nề, xám xịt, ngay cả ánh mắt cũng trở nên ảm đạm.</p>
+<p>Xuống giường, vừa bước ra ngoài đã thấy Noãn Ngọc đứng chờ ở cửa.</p>
+<p>“Cửu hoàng tử muốn làm gì, cứ phân phó nô tỳ.”</p>
+<p>“Ta đi Ngọc Đường cung, ăn tối cùng mẫu phi.”</p>
+<p>“Nô tỳ theo cùng ngài.”</p>
+<p>“Ngươi không cần nhìn chằm chằm ta. Ta chỉ ăn bữa cơm rồi về, không chạy được đâu.”</p>
+<p>Nụ cười Noãn Ngọc hơi khựng lại: “Cửu hoàng tử nói quá lời, nô tỳ kinh sợ.”</p>
+<p>“Cẩu Bát, ngươi theo ta.”</p>
+<p>Chủ tớ hai người cùng đi, Noãn Ngọc theo phía sau. Đợi Cửu hoàng tử vào Ngọc Đường cung, nàng liền đứng chờ ngoài cổng cung.</p>
+<p>Ôn phi hơi bất ngờ: “Ly nhi, hôm nay sao lại nhớ tới bồi mẫu phi dùng bữa tối?”</p>
+<p>Sở Ly nhìn gương mặt xinh đẹp, mặn mà của bà.</p>
+<p>Dù là dưỡng mẫu, những năm qua bà chưa từng bạc đãi nàng. Ngay cả Ôn gia cũng đối với nàng chu toàn mọi bề. Cho dù nàng ngày thường ham chơi, gây ra họa lớn đến đâu, Ôn gia cũng sẽ che chở cho nàng.</p>
+<p>“Ly nhi?”</p>
+<p>Ôn phi bước tới: “Con nghĩ gì thế, sao lại nhìn mẫu phi như vậy?”</p>
+<p>Sở Ly thu ánh mắt lại: “Con nhớ mẫu phi.”</p>
+<p>Ôn phi cười đến không khép được miệng, ngay cả Lý cô cô bên cạnh cũng cười hiền từ, vội vàng sai người dọn bữa.</p>
+<p>“Mẫu phi, dạ dày người không tốt, bớt ăn cay… Buổi tối đừng ăn canh sệt này, khó tiêu… Mẫu phi…”</p>
+<p>Ngoài Ngọc Đường cung.</p>
+<p>Noãn Ngọc kiên nhẫn chờ đợi, nhưng đợi hơn một canh giờ, trời đã tối dần, đèn nến leo lét, vẫn không thấy Cửu hoàng tử đi ra.</p>
+<p>Ăn một bữa cơm mà lâu đến vậy sao?</p>
+<p>Nàng không khỏi nghi ngờ, lại đợi thêm một khắc, vẫn không thấy Cửu hoàng tử, liền lập tức đi vào, hỏi một cung nữ đang chăm sóc vườn hoa:</p>
+<p>“Cửu hoàng tử còn đang dùng bữa với Ôn phi nương nương sao?”</p>
+<p>Cung nữ nghi hoặc ngẩng đầu: “Cửu hoàng tử nửa canh giờ trước đã về rồi mà.”</p>
+<p>Sao có thể?</p>
+<p>Nàng một bước không rời canh giữ ngoài cổng cung, căn bản không thấy Cửu hoàng tử. Chẳng lẽ…</p>
+<p>Noãn Ngọc nhận ra điều gì đó, lập tức chạy về Chiêu Lan điện, nhưng cung nữ thái giám ở Chiêu Lan điện nói rằng Cửu hoàng tử đã đi Ngọc Đường cung, vẫn chưa trở lại.</p>
+<p>Tìm khắp một vòng, không thấy tung tích.</p>
+<p>Cửu hoàng tử biến mất rồi!</p>
+<p>Trọng Phong nhận được tin, lập tức chạy tới Thủy Tạ San Hô.</p>
+<p>“Chủ tử, không xong rồi, Cửu hoàng tử không thấy đâu!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_45.html" class="btn">‹ Trước</a>
             <a href="chuong_47.html" class="btn">Sau ›</a>
         </div>
@@ -255,15 +263,11 @@ Trọng Phong nhận được tin, lập tức chạy tới Thủy Tạ San Hô.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -275,11 +279,11 @@ Trọng Phong nhận được tin, lập tức chạy tới Thủy Tạ San Hô.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

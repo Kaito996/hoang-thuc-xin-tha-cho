@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 246</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,163 +62,172 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 246</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_245.html" class="btn">‹ Trước</a>
             <a href="chuong_247.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 246: Nàng không còn dễ lừa như trước nữa
-“Ta chỉ giữ giúp nàng thôi, có cướp của nàng đâu, nhìn bộ dạng keo kiệt của nàng kìa.”
-“Ta là trẻ con sao, mà cần người giữ giúp?”
-Sở Ly cuộn thanh nhuyễn kiếm lại, cất vào trong tay áo.
-Sở Đệ Trì híp mắt.
-Hắn cảm thấy nàng không còn dễ lừa như trước nữa.
-Ăn một lần thiệt, khôn thêm một chút.
-Sở Ly lanh lợi lắm.
-“Haizz, bữa tối vẫn chưa ăn no.”
-Sở Đệ Trì xoa bụng.
-“Tạ lão tướng quân ăn uống thanh đạm, món nào cũng nhạt, chẳng có chút dầu mỡ nào. Ta vẫn còn đói. Hay là chúng ta cùng về San Hô Thủy Tạ…”
-“Ta không có ở đó, tỳ nữ cũng không chuẩn bị bữa tối. Ta đi cùng người đến tửu lâu dùng bữa.”
-“Chẳng lẽ nàng không muốn gặp Nhàn Vương nữa sao?”
-“Vậy huynh ấy đâu?”
-Đến cái bóng nàng còn chưa thấy.
-“Hiện giờ hắn đang đọc sách. Chờ làm xong bài tập, tự nhiên sẽ đến.”
-“?”
-Ha!
-Ha!
-Sở Ly cứ như vừa nghe được chuyện cười lớn nhất thiên hạ.
-Sở Ngạo Thiên đang đọc sách?
-Chi bằng bảo với nàng rằng mặt trăng hình vuông, mặt trời mọc đằng tây còn đáng tin hơn.
-Chuyện cười lạnh này chẳng buồn cười chút nào.
-Xe ngựa tiến vào Đế Đô phồn hoa. Lúc này trời đã tối, đèn hoa mới lên, người qua kẻ lại, vô cùng náo nhiệt.
-Nhưng bên ngoài vách xe bỗng truyền đến ba tiếng gõ, một nhẹ hai nặng.
-Cốc, cốc cốc!
-Nụ cười nơi khóe môi Sở Đệ Trì lập tức biến mất, khí tức quanh thân mắt thường cũng có thể nhận ra đã trở nên lạnh lẽo.
-Sở Ly nghiêm mặt.
-“Hoàng thúc, đây là ý gì?”
-“Đây là ám hiệu truyền tin của ám vệ. Bên ngoài hiện đang có người theo dõi xe ngựa của chúng ta.”
-Sở Ly vén một góc rèm cửa sổ.
-Rất nhanh, giữa dòng người qua lại, nàng đã nhìn thấy một bóng người có phần quen mắt.
-Khóe môi nàng khẽ nhếch.
-“Ta đại khái đã biết đối phương muốn làm gì.”
-Mới trở về Đế Đô chưa được hai ngày, đã có kẻ không nhịn nổi mà ra tay.
-May mà nàng cũng không phải người sợ phiền phức.
-“Ồ?”
-Đuôi mày nam nhân khẽ nhướng lên. Thấy ý cười đầy hứng thú trong mắt nàng, hắn khẽ vỗ lên vòng eo nhỏ của nàng.
-“Đi chơi đi, ta chờ nàng trên xe.”
-“Được.”
-Có hoàng thúc ở đây, trời cũng không lật nổi.
-Sở Ly vén rèm xe, khom người nhảy xuống, đáp đất vững vàng.
-Cách đó không xa, một nam nhân cúi thấp đầu, ánh mắt chớp động…
-Hắn giả vờ dạo phố, chậm rãi tiến lại gần Sở Ly.
-Cố ý va vào nàng.
-“A! Xin lỗi, ta không cố ý… Cửu hoàng tử!”
-Nam nhân lớn tiếng hô lên, như thể vô cùng kinh ngạc.
-“Cửu hoàng tử, sao lại là người? Trời ơi! Cửu hoàng tử, sao người lại là nữ tử!”
-Cái gì!
-Nếu chỉ là va phải người, chẳng ai buồn để ý.
-Nhưng vừa nghe thấy câu “Cửu hoàng tử là nữ nhi”, lập tức khơi dậy lòng hiếu kỳ của già trẻ nam nữ. Người đi đường xung quanh đều đồng loạt quay đầu nhìn sang.
-Đâu?
-Cửu hoàng tử ở đâu?
-Sở Ly nghi hoặc nhìn người trước mặt.
-“Ngươi là…”
-“Ta là Vương Hằng, con trai độc nhất của Lang trung Bộ Binh. Trước đây chúng ta thường cùng nhau vui chơi, năm ngoái còn cùng tham dự Thu Nhật Yến. Cửu hoàng tử, sao người lại giả vờ không quen biết ta?”
-Vương Hằng cố tình nói bằng giọng cực lớn, đủ để toàn bộ bách tính xung quanh đều nghe thấy.
-“À! Ta hiểu rồi! Chắc chắn là người lo chuyện nữ giả nam trang, cướp đoạt hoàng vị là tội khi quân, nên mới giả vờ không nhận ra ta!”
-“Người yên tâm đi! Bí mật này ta sẽ không nói cho người khác biết!”
-Toàn bộ bách tính đều trợn tròn mắt.
-Nữ tử dung mạo tuyệt mỹ, mặc váy tay áo rộng này…
-Lại chính là Cửu hoàng tử đương triều?
-Cửu hoàng tử chẳng phải đã táng thân trong biển lửa, bị thiêu chết tại Chiêu Lan điện của mình rồi sao?
-Sao nàng vẫn còn sống?
-Lại còn là nữ tử?
-Chẳng lẽ đúng như người này nói, nàng cố ý nữ giả nam trang để đoạt ngôi?
-Nếu thật là như vậy…
-Thì đó chính là đại tội tru di cửu tộc, đủ để cả nhà họ Ôn bị xét nhà chém sạch!
-Mày Sở Ly hơi nhíu lại, giọng mang theo vài phần tức giận.
-“Cái gì mà Cửu hoàng tử? Ta vốn không quen biết ngươi. Ngươi dám ngay trước mặt bao nhiêu người mạo phạm ta, vu hãm ta. Đại Sở còn có vương pháp hay không?”
-Vương Hằng âm thầm cười lạnh.
-Cứ giả vờ đi.
-Tiếp tục giả vờ đi.
-Cửu hoàng tử lớn lên tại Đế Đô. Người từng gặp nàng nhiều vô số kể. Chỉ cần là cố nhân năm xưa nhìn thấy nàng, liếc mắt một cái là có thể nhận ra thân phận.
-“Thật xin lỗi, Cửu hoàng tử, ta không nên nói!”
-Vương Hằng hoảng hốt bịt miệng.
-“Năm đó người được Nhiếp Chính Vương giúp đỡ, cố ý giả chết. Một kẻ mưu quyền đoạt vị, một kẻ ve sầu thoát xác. Ta thật không nên nói ra… Trời ơi! Nhiếp Chính Vương sẽ không giết ta để diệt khẩu chứ!”
-Bách tính lập tức náo loạn như một nồi nước sôi.
-Ông trời!
-Hiện nay Đại Sở quả thật là Nhiếp Chính Vương nắm quyền.
-Chẳng lẽ Cửu hoàng tử thật sự nữ giả nam trang, lại còn cấu kết cùng Nhiếp Chính Vương để mưu đồ quyền vị?
-“Làm càn!”
-Sở Ly quát lớn.
-“Một đứa con của Lang trung nho nhỏ mà cũng dám mạo phạm ta!”
-Nàng phất tay áo, chỉ thẳng vào Vương Hằng.
-“Nếu ta là Cửu hoàng tử, ta sẽ tự tháo đầu mình xuống cho ngươi đá như quả cầu!”
-Vương Hằng cười lạnh.
-Cuống rồi.
-Ngươi cuống rồi.
-Đến cả giọng nói cũng lớn hơn.
-Bị ta nói trúng rồi chứ gì!
-Ha ha ha!
-Ánh mắt hắn khẽ đảo, lập tức quỳ sụp xuống đất, khóc lóc.
-“Cửu hoàng tử thân phận tôn quý. Tiểu nhân trước đây đã gặp người không biết bao nhiêu lần, sao có thể nhận nhầm được?”
-“Nếu tiểu nhân nhận lầm, nguyện ngay tại chỗ tự vẫn để tạ tội!”
-“Chính ngươi nói đấy nhé? Tự vẫn tạ tội?”
-“Đúng!”
-Vương Hằng rút thanh chủy thủ giấu trong tay áo ra.
-“Ta, Vương Hằng, nói được làm được. Chỉ là Cửu hoàng tử… ngươi dám nhận hay không?” Ẩn bớt</p>
+            <p>Chương 246: Nàng không còn dễ lừa như trước nữa</p>
+<p>“Ta chỉ giữ giúp nàng thôi, có cướp của nàng đâu, nhìn bộ dạng keo kiệt của nàng kìa.”</p>
+<p>“Ta là trẻ con sao, mà cần người giữ giúp?”</p>
+<p>Sở Ly cuộn thanh nhuyễn kiếm lại, cất vào trong tay áo.</p>
+<p>Sở Đệ Trì híp mắt.</p>
+<p>Hắn cảm thấy nàng không còn dễ lừa như trước nữa.</p>
+<p>Ăn một lần thiệt, khôn thêm một chút.</p>
+<p>Sở Ly lanh lợi lắm.</p>
+<p>“Haizz, bữa tối vẫn chưa ăn no.”</p>
+<p>Sở Đệ Trì xoa bụng.</p>
+<p>“Tạ lão tướng quân ăn uống thanh đạm, món nào cũng nhạt, chẳng có chút dầu mỡ nào. Ta vẫn còn đói. Hay là chúng ta cùng về San Hô Thủy Tạ…”</p>
+<p>“Ta không có ở đó, tỳ nữ cũng không chuẩn bị bữa tối. Ta đi cùng người đến tửu lâu dùng bữa.”</p>
+<p>“Chẳng lẽ nàng không muốn gặp Nhàn Vương nữa sao?”</p>
+<p>“Vậy huynh ấy đâu?”</p>
+<p>Đến cái bóng nàng còn chưa thấy.</p>
+<p>“Hiện giờ hắn đang đọc sách. Chờ làm xong bài tập, tự nhiên sẽ đến.”</p>
+<p>“?”</p>
+<p>Ha!</p>
+<p>Ha!</p>
+<p>Sở Ly cứ như vừa nghe được chuyện cười lớn nhất thiên hạ.</p>
+<p>Sở Ngạo Thiên đang đọc sách?</p>
+<p>Chi bằng bảo với nàng rằng mặt trăng hình vuông, mặt trời mọc đằng tây còn đáng tin hơn.</p>
+<p>Chuyện cười lạnh này chẳng buồn cười chút nào.</p>
+<p>Xe ngựa tiến vào Đế Đô phồn hoa. Lúc này trời đã tối, đèn hoa mới lên, người qua kẻ lại, vô cùng náo nhiệt.</p>
+<p>Nhưng bên ngoài vách xe bỗng truyền đến ba tiếng gõ, một nhẹ hai nặng.</p>
+<p>Cốc, cốc cốc!</p>
+<p>Nụ cười nơi khóe môi Sở Đệ Trì lập tức biến mất, khí tức quanh thân mắt thường cũng có thể nhận ra đã trở nên lạnh lẽo.</p>
+<p>Sở Ly nghiêm mặt.</p>
+<p>“Hoàng thúc, đây là ý gì?”</p>
+<p>“Đây là ám hiệu truyền tin của ám vệ. Bên ngoài hiện đang có người theo dõi xe ngựa của chúng ta.”</p>
+<p>Sở Ly vén một góc rèm cửa sổ.</p>
+<p>Rất nhanh, giữa dòng người qua lại, nàng đã nhìn thấy một bóng người có phần quen mắt.</p>
+<p>Khóe môi nàng khẽ nhếch.</p>
+<p>“Ta đại khái đã biết đối phương muốn làm gì.”</p>
+<p>Mới trở về Đế Đô chưa được hai ngày, đã có kẻ không nhịn nổi mà ra tay.</p>
+<p>May mà nàng cũng không phải người sợ phiền phức.</p>
+<p>“Ồ?”</p>
+<p>Đuôi mày nam nhân khẽ nhướng lên. Thấy ý cười đầy hứng thú trong mắt nàng, hắn khẽ vỗ lên vòng eo nhỏ của nàng.</p>
+<p>“Đi chơi đi, ta chờ nàng trên xe.”</p>
+<p>“Được.”</p>
+<p>Có hoàng thúc ở đây, trời cũng không lật nổi.</p>
+<p>Sở Ly vén rèm xe, khom người nhảy xuống, đáp đất vững vàng.</p>
+<p>Cách đó không xa, một nam nhân cúi thấp đầu, ánh mắt chớp động…</p>
+<p>Hắn giả vờ dạo phố, chậm rãi tiến lại gần Sở Ly.</p>
+<p>Cố ý va vào nàng.</p>
+<p>“A! Xin lỗi, ta không cố ý… Cửu hoàng tử!”</p>
+<p>Nam nhân lớn tiếng hô lên, như thể vô cùng kinh ngạc.</p>
+<p>“Cửu hoàng tử, sao lại là người? Trời ơi! Cửu hoàng tử, sao người lại là nữ tử!”</p>
+<p>Cái gì!</p>
+<p>Nếu chỉ là va phải người, chẳng ai buồn để ý.</p>
+<p>Nhưng vừa nghe thấy câu “Cửu hoàng tử là nữ nhi”, lập tức khơi dậy lòng hiếu kỳ của già trẻ nam nữ. Người đi đường xung quanh đều đồng loạt quay đầu nhìn sang.</p>
+<p>Đâu?</p>
+<p>Cửu hoàng tử ở đâu?</p>
+<p>Sở Ly nghi hoặc nhìn người trước mặt.</p>
+<p>“Ngươi là…”</p>
+<p>“Ta là Vương Hằng, con trai độc nhất của Lang trung Bộ Binh. Trước đây chúng ta thường cùng nhau vui chơi, năm ngoái còn cùng tham dự Thu Nhật Yến. Cửu hoàng tử, sao người lại giả vờ không quen biết ta?”</p>
+<p>Vương Hằng cố tình nói bằng giọng cực lớn, đủ để toàn bộ bách tính xung quanh đều nghe thấy.</p>
+<p>“À! Ta hiểu rồi! Chắc chắn là người lo chuyện nữ giả nam trang, cướp đoạt hoàng vị là tội khi quân, nên mới giả vờ không nhận ra ta!”</p>
+<p>“Người yên tâm đi! Bí mật này ta sẽ không nói cho người khác biết!”</p>
+<p>Toàn bộ bách tính đều trợn tròn mắt.</p>
+<p>Nữ tử dung mạo tuyệt mỹ, mặc váy tay áo rộng này…</p>
+<p>Lại chính là Cửu hoàng tử đương triều?</p>
+<p>Cửu hoàng tử chẳng phải đã táng thân trong biển lửa, bị thiêu chết tại Chiêu Lan điện của mình rồi sao?</p>
+<p>Sao nàng vẫn còn sống?</p>
+<p>Lại còn là nữ tử?</p>
+<p>Chẳng lẽ đúng như người này nói, nàng cố ý nữ giả nam trang để đoạt ngôi?</p>
+<p>Nếu thật là như vậy…</p>
+<p>Thì đó chính là đại tội tru di cửu tộc, đủ để cả nhà họ Ôn bị xét nhà chém sạch!</p>
+<p>Mày Sở Ly hơi nhíu lại, giọng mang theo vài phần tức giận.</p>
+<p>“Cái gì mà Cửu hoàng tử? Ta vốn không quen biết ngươi. Ngươi dám ngay trước mặt bao nhiêu người mạo phạm ta, vu hãm ta. Đại Sở còn có vương pháp hay không?”</p>
+<p>Vương Hằng âm thầm cười lạnh.</p>
+<p>Cứ giả vờ đi.</p>
+<p>Tiếp tục giả vờ đi.</p>
+<p>Cửu hoàng tử lớn lên tại Đế Đô. Người từng gặp nàng nhiều vô số kể. Chỉ cần là cố nhân năm xưa nhìn thấy nàng, liếc mắt một cái là có thể nhận ra thân phận.</p>
+<p>“Thật xin lỗi, Cửu hoàng tử, ta không nên nói!”</p>
+<p>Vương Hằng hoảng hốt bịt miệng.</p>
+<p>“Năm đó người được Nhiếp Chính Vương giúp đỡ, cố ý giả chết. Một kẻ mưu quyền đoạt vị, một kẻ ve sầu thoát xác. Ta thật không nên nói ra… Trời ơi! Nhiếp Chính Vương sẽ không giết ta để diệt khẩu chứ!”</p>
+<p>Bách tính lập tức náo loạn như một nồi nước sôi.</p>
+<p>Ông trời!</p>
+<p>Hiện nay Đại Sở quả thật là Nhiếp Chính Vương nắm quyền.</p>
+<p>Chẳng lẽ Cửu hoàng tử thật sự nữ giả nam trang, lại còn cấu kết cùng Nhiếp Chính Vương để mưu đồ quyền vị?</p>
+<p>“Làm càn!”</p>
+<p>Sở Ly quát lớn.</p>
+<p>“Một đứa con của Lang trung nho nhỏ mà cũng dám mạo phạm ta!”</p>
+<p>Nàng phất tay áo, chỉ thẳng vào Vương Hằng.</p>
+<p>“Nếu ta là Cửu hoàng tử, ta sẽ tự tháo đầu mình xuống cho ngươi đá như quả cầu!”</p>
+<p>Vương Hằng cười lạnh.</p>
+<p>Cuống rồi.</p>
+<p>Ngươi cuống rồi.</p>
+<p>Đến cả giọng nói cũng lớn hơn.</p>
+<p>Bị ta nói trúng rồi chứ gì!</p>
+<p>Ha ha ha!</p>
+<p>Ánh mắt hắn khẽ đảo, lập tức quỳ sụp xuống đất, khóc lóc.</p>
+<p>“Cửu hoàng tử thân phận tôn quý. Tiểu nhân trước đây đã gặp người không biết bao nhiêu lần, sao có thể nhận nhầm được?”</p>
+<p>“Nếu tiểu nhân nhận lầm, nguyện ngay tại chỗ tự vẫn để tạ tội!”</p>
+<p>“Chính ngươi nói đấy nhé? Tự vẫn tạ tội?”</p>
+<p>“Đúng!”</p>
+<p>Vương Hằng rút thanh chủy thủ giấu trong tay áo ra.</p>
+<p>“Ta, Vương Hằng, nói được làm được. Chỉ là Cửu hoàng tử… ngươi dám nhận hay không?” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_245.html" class="btn">‹ Trước</a>
             <a href="chuong_247.html" class="btn">Sau ›</a>
         </div>
@@ -227,15 +235,11 @@ Vương Hằng rút thanh chủy thủ giấu trong tay áo ra.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -247,11 +251,11 @@ Vương Hằng rút thanh chủy thủ giấu trong tay áo ra.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

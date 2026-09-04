@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 192</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,154 +62,163 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 192</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_191.html" class="btn">‹ Trước</a>
             <a href="chuong_193.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 192: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 192: Ân tình chỉ lướt qua trong đầu, A Ly mới là người ở trong tim
-Giang Nam.
-“Lục sư huynh, ăn tôm đi.”
-“Tần cô nương khách khí, ta…”
-“A Ly ca ca cũng ăn.” Tần Mục Tuyết quay đầu, bóc cho Lục Vân Sơ một con, lại bóc cho Sở Ly năm con.
-Lục Vân Sơ khẽ nâng đũa, nhìn bát của mình, rồi lại nhìn sang bát của Sở Ly.
-Sở Ly cắn hai miếng, cười nói:
-“Đã nhiều ngày không gặp, tay nghề của muội lại tiến bộ rồi.”
-Lục Vân Sơ hơi kinh ngạc:
-“Tần cô nương tinh thông trù nghệ?”
-Quả thật nhìn không ra.
-“Đúng vậy. Trước kia A Ly ca ca thường trốn học, chạy đến phủ Tướng quân chơi với ta. Bọn ta lén lút cùng nhau vui đùa, đến lúc bụng đói thì ta nấu cơm cho A Ly ca ca ăn.”
-Tần Mục Tuyết cười với Sở Ly, để lộ hai hàng răng trắng tinh.
-“Lục sư huynh, huynh ăn nhiều một chút… Khoan đã, A Ly ca ca không ăn rau mùi, hai người đổi bát đi.”
-Lục Vân Sơ: Ta cũng không ăn rau mùi!
-Sở Ly cầm đũa, ăn như gió cuốn mây tan:
-“Lát nữa ăn xong ta phải ra ngoài một chuyến. Ta đã bàn xong chuyện mua nhà với Trương viên ngoại rồi, vẫn còn vài việc cần hoàn tất.”
-“Ta đi cùng huynh.”
-“Được.”
-Ăn xong, hai người tay trong tay, thân thiết như tỷ muội, cùng nhau ra ngoài.
-Lục Vân Sơ đi phía sau, hé miệng muốn nói gì đó, nhưng không thành lời. Lúc đi ngang qua hồ nước, hắn bèn soi bóng mình trên mặt nước.
-Mũ đã buộc ngay ngắn.
-Y phục chỉnh tề.
-Khóe miệng cũng chẳng dính dầu mỡ.
-Trên mặt càng không có vết bẩn.
-Hắn đưa tay sờ lên mặt mình, không biết đang nghĩ gì. Sơ Nhất ở bên cạnh thấy vậy tưởng hắn có chuyện, liền bước nhanh tới:
-“Lục công tử, ngài không khỏe sao?”
-“Có chút… À, không, không có gì! Ta cũng đang định đi cùng hai người họ.”
-Nói xong liền cất bước đuổi theo.
-Sơ Nhất có chút không hiểu ra sao.
-Trên đường.
-Người xe tấp nập, phồn hoa vô cùng.
-Sở Ly đổi hai thỏi kim vàng nhỏ lấy ngân phiếu, rồi đến trà lâu gặp Trương viên ngoại.
-Trương viên ngoại là một phú thương bản địa ở Giang Nam, kinh doanh châu báu, gia sản phong hậu, dưới danh nghĩa có đến tám tòa trạch viện. Trong đó, căn Lâm Hồ Tiểu Trúc bán cho Sở Ly chính là một trong số ấy.
-Đếm tiền.
-“Trương viên ngoại cứ kiểm lại đi.”
-Trương viên ngoại nhận xấp ngân phiếu dày cộp, nhìn cũng chẳng nhìn, đã đưa luôn cho tên tiểu tư bên cạnh:
-“Dung mạo của Sơ cô nương tựa tiên tử, hẳn là người băng thanh ngọc khiết, tất nhiên sẽ không thiếu của ta một đồng.”
-“Sau này còn mong được qua lại nhiều hơn với Sơ cô nương.”
-Sở Ly mỉm cười:
-“Đều cùng sống ở Giang Nam, lại còn là hàng xóm gần nhau, đó là chuyện tất nhiên.”
-“Ha ha ha, tốt!”
-Trương viên ngoại hào sảng phất tay:
-“Đây là bánh hoa hồng nổi danh nhất thành Giang Nam. Sơ cô nương nhất định phải mang một ít về nếm thử.”
-“Nhất định, nhất định.”
-Hai người cười nói hòa nhã, mọi thứ chỉ là hình thức xã giao. Sau nửa khắc hàn huyên đơn giản, Sở Ly một tay xách bánh hoa hồng, một tay cầm chìa khóa, bước ra khỏi trà lâu.
-Bên ngoài, Tần Mục Tuyết lập tức chạy tới:
-“A Ly ca ca xong việc rồi sao?”
-Nếu còn chưa xong, e rằng mặt Sở Ly cười đến cứng đờ mất.
-“Xong cả rồi. Chỉ chờ chọn ngày lành để dọn vào ở thôi. Căn Lâm Hồ Tiểu Trúc ấy là một nơi rất đẹp, chắc chắn muội cũng sẽ thích.”
-Đôi mắt Tần Mục Tuyết sáng rực.
-Lâm Hồ Tiểu Trúc!
-Nàng với A Ly ca ca, còn có đại ca, Lục sư huynh, bốn người cùng sống chung một nhà. Cuộc sống như vậy quả thật quá viên mãn!
-A Ly ca ca biết săn bắn.
-Đại ca biết nướng thịt.
-Nàng thì yếu đuối, chẳng thể tự lo cho mình, còn Lục sư huynh sẽ bảo vệ nàng.
-Lục sư huynh là cô nhi, nhất định rất thích một gia đình mỹ mãn, con cháu đầy đàn. Nàng có thể sinh cho Lục sư huynh một đống hài tử.
-Chỉ nghĩ thôi đã thấy kích động, nàng ôm lấy cánh tay Sở Ly, dính sát lấy nàng:
-“A Ly ca ca~”
-“Làm gì vậy? Đây còn đang ở giữa phố, có chuyện gì về rồi hãy nói.”
-“Huynh cầm gì trong tay thế?”
-“Đặc sản Giang Nam, bánh hoa hồng.”
-“Muội muốn huynh đút cho muội.”
-“…”
-Tần Mục Tuyết bám lấy nàng từng bước không rời. Trước khi đại ca đến Giang Nam, nàng nhất định phải trông chừng Sở Ly, đến chớp mắt cũng không dám.
-Cho dù đi nhà xí cũng phải theo.
-Tuyệt đối không thể để lạc mất Sở Ly thêm lần nào nữa!
-Sở Ly đau cả đầu.
-Trên người như treo thêm một món trang sức cỡ lớn, muốn gỡ cũng không gỡ nổi, chỉ có thể kéo theo nàng mà đi. Nhưng đúng lúc ấy, nàng cực kỳ nhạy bén cảm nhận được một ánh mắt sắc lạnh.
-Nàng nghiêng đầu nhìn sang.
-Người qua kẻ lại tấp nập, không có gì khác thường.
-Lẽ nào là ảo giác?
-Nàng khẽ nhíu mày, đảo mắt nhìn một vòng, rồi dừng trên người Lục Vân Sơ, kẻ đang có chút thất thần.
-“Nhị sư huynh?”
-“Nhị sư huynh!”
-“Hả?” Lục Vân Sơ chợt hoàn hồn.
-“Vừa rồi hình như có người nhìn chằm chằm vào ta. Không biết có phải ta đa nghi hay không, nhưng mấy ngày tới vẫn nên cẩn thận thì hơn.”
-“Tiểu Cửu không cần lo lắng. Có ta ở đây, không ai có thể làm tổn thương muội dù chỉ một sợi tóc.”
-Sở Ly khẽ đáp một tiếng, tiếp tục khoác tay Tần Mục Tuyết đi phía trước.
-Ánh mắt Lục Vân Sơ vẫn dõi theo bóng hai người, trong lòng có chút mờ mịt.
-Lẽ nào sự yêu thích của Tần cô nương dành cho hắn ngắn ngủi đến vậy?
-Hay những lời nàng từng nói trước đây chỉ là xã giao, chứ chẳng phải thật lòng?
-Sao hắn lại nghĩ nhiều đến thế?
-Tần cô nương quả nhiên là một nữ tử hào sảng, thẳng thắn, dứt khoát.
-Ân tình chỉ lướt qua trong đầu, A Ly mới là người ở trong tim.
-Hai ngày trôi qua, trong mắt nàng chỉ còn có A Ly ca ca của nàng.
-Ba người cùng trở về khách điếm.
-Nhưng không ai hay biết, phía sau gốc đại thụ cuối con phố, một thân ảnh âm trầm lặng lẽ bước ra.
-Đôi mắt lạnh lẽo, u tối chăm chú nhìn theo hướng ba người rời đi, nơi đáy mắt thoáng hiện một tia tính toán sâu xa. Ẩn bớt</p>
+            <p>Chương 192: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 192: Ân tình chỉ lướt qua trong đầu, A Ly mới là người ở trong tim</p>
+<p>Giang Nam.</p>
+<p>“Lục sư huynh, ăn tôm đi.”</p>
+<p>“Tần cô nương khách khí, ta…”</p>
+<p>“A Ly ca ca cũng ăn.” Tần Mục Tuyết quay đầu, bóc cho Lục Vân Sơ một con, lại bóc cho Sở Ly năm con.</p>
+<p>Lục Vân Sơ khẽ nâng đũa, nhìn bát của mình, rồi lại nhìn sang bát của Sở Ly.</p>
+<p>Sở Ly cắn hai miếng, cười nói:</p>
+<p>“Đã nhiều ngày không gặp, tay nghề của muội lại tiến bộ rồi.”</p>
+<p>Lục Vân Sơ hơi kinh ngạc:</p>
+<p>“Tần cô nương tinh thông trù nghệ?”</p>
+<p>Quả thật nhìn không ra.</p>
+<p>“Đúng vậy. Trước kia A Ly ca ca thường trốn học, chạy đến phủ Tướng quân chơi với ta. Bọn ta lén lút cùng nhau vui đùa, đến lúc bụng đói thì ta nấu cơm cho A Ly ca ca ăn.”</p>
+<p>Tần Mục Tuyết cười với Sở Ly, để lộ hai hàng răng trắng tinh.</p>
+<p>“Lục sư huynh, huynh ăn nhiều một chút… Khoan đã, A Ly ca ca không ăn rau mùi, hai người đổi bát đi.”</p>
+<p>Lục Vân Sơ: Ta cũng không ăn rau mùi!</p>
+<p>Sở Ly cầm đũa, ăn như gió cuốn mây tan:</p>
+<p>“Lát nữa ăn xong ta phải ra ngoài một chuyến. Ta đã bàn xong chuyện mua nhà với Trương viên ngoại rồi, vẫn còn vài việc cần hoàn tất.”</p>
+<p>“Ta đi cùng huynh.”</p>
+<p>“Được.”</p>
+<p>Ăn xong, hai người tay trong tay, thân thiết như tỷ muội, cùng nhau ra ngoài.</p>
+<p>Lục Vân Sơ đi phía sau, hé miệng muốn nói gì đó, nhưng không thành lời. Lúc đi ngang qua hồ nước, hắn bèn soi bóng mình trên mặt nước.</p>
+<p>Mũ đã buộc ngay ngắn.</p>
+<p>Y phục chỉnh tề.</p>
+<p>Khóe miệng cũng chẳng dính dầu mỡ.</p>
+<p>Trên mặt càng không có vết bẩn.</p>
+<p>Hắn đưa tay sờ lên mặt mình, không biết đang nghĩ gì. Sơ Nhất ở bên cạnh thấy vậy tưởng hắn có chuyện, liền bước nhanh tới:</p>
+<p>“Lục công tử, ngài không khỏe sao?”</p>
+<p>“Có chút… À, không, không có gì! Ta cũng đang định đi cùng hai người họ.”</p>
+<p>Nói xong liền cất bước đuổi theo.</p>
+<p>Sơ Nhất có chút không hiểu ra sao.</p>
+<p>Trên đường.</p>
+<p>Người xe tấp nập, phồn hoa vô cùng.</p>
+<p>Sở Ly đổi hai thỏi kim vàng nhỏ lấy ngân phiếu, rồi đến trà lâu gặp Trương viên ngoại.</p>
+<p>Trương viên ngoại là một phú thương bản địa ở Giang Nam, kinh doanh châu báu, gia sản phong hậu, dưới danh nghĩa có đến tám tòa trạch viện. Trong đó, căn Lâm Hồ Tiểu Trúc bán cho Sở Ly chính là một trong số ấy.</p>
+<p>Đếm tiền.</p>
+<p>“Trương viên ngoại cứ kiểm lại đi.”</p>
+<p>Trương viên ngoại nhận xấp ngân phiếu dày cộp, nhìn cũng chẳng nhìn, đã đưa luôn cho tên tiểu tư bên cạnh:</p>
+<p>“Dung mạo của Sơ cô nương tựa tiên tử, hẳn là người băng thanh ngọc khiết, tất nhiên sẽ không thiếu của ta một đồng.”</p>
+<p>“Sau này còn mong được qua lại nhiều hơn với Sơ cô nương.”</p>
+<p>Sở Ly mỉm cười:</p>
+<p>“Đều cùng sống ở Giang Nam, lại còn là hàng xóm gần nhau, đó là chuyện tất nhiên.”</p>
+<p>“Ha ha ha, tốt!”</p>
+<p>Trương viên ngoại hào sảng phất tay:</p>
+<p>“Đây là bánh hoa hồng nổi danh nhất thành Giang Nam. Sơ cô nương nhất định phải mang một ít về nếm thử.”</p>
+<p>“Nhất định, nhất định.”</p>
+<p>Hai người cười nói hòa nhã, mọi thứ chỉ là hình thức xã giao. Sau nửa khắc hàn huyên đơn giản, Sở Ly một tay xách bánh hoa hồng, một tay cầm chìa khóa, bước ra khỏi trà lâu.</p>
+<p>Bên ngoài, Tần Mục Tuyết lập tức chạy tới:</p>
+<p>“A Ly ca ca xong việc rồi sao?”</p>
+<p>Nếu còn chưa xong, e rằng mặt Sở Ly cười đến cứng đờ mất.</p>
+<p>“Xong cả rồi. Chỉ chờ chọn ngày lành để dọn vào ở thôi. Căn Lâm Hồ Tiểu Trúc ấy là một nơi rất đẹp, chắc chắn muội cũng sẽ thích.”</p>
+<p>Đôi mắt Tần Mục Tuyết sáng rực.</p>
+<p>Lâm Hồ Tiểu Trúc!</p>
+<p>Nàng với A Ly ca ca, còn có đại ca, Lục sư huynh, bốn người cùng sống chung một nhà. Cuộc sống như vậy quả thật quá viên mãn!</p>
+<p>A Ly ca ca biết săn bắn.</p>
+<p>Đại ca biết nướng thịt.</p>
+<p>Nàng thì yếu đuối, chẳng thể tự lo cho mình, còn Lục sư huynh sẽ bảo vệ nàng.</p>
+<p>Lục sư huynh là cô nhi, nhất định rất thích một gia đình mỹ mãn, con cháu đầy đàn. Nàng có thể sinh cho Lục sư huynh một đống hài tử.</p>
+<p>Chỉ nghĩ thôi đã thấy kích động, nàng ôm lấy cánh tay Sở Ly, dính sát lấy nàng:</p>
+<p>“A Ly ca ca~”</p>
+<p>“Làm gì vậy? Đây còn đang ở giữa phố, có chuyện gì về rồi hãy nói.”</p>
+<p>“Huynh cầm gì trong tay thế?”</p>
+<p>“Đặc sản Giang Nam, bánh hoa hồng.”</p>
+<p>“Muội muốn huynh đút cho muội.”</p>
+<p>“…”</p>
+<p>Tần Mục Tuyết bám lấy nàng từng bước không rời. Trước khi đại ca đến Giang Nam, nàng nhất định phải trông chừng Sở Ly, đến chớp mắt cũng không dám.</p>
+<p>Cho dù đi nhà xí cũng phải theo.</p>
+<p>Tuyệt đối không thể để lạc mất Sở Ly thêm lần nào nữa!</p>
+<p>Sở Ly đau cả đầu.</p>
+<p>Trên người như treo thêm một món trang sức cỡ lớn, muốn gỡ cũng không gỡ nổi, chỉ có thể kéo theo nàng mà đi. Nhưng đúng lúc ấy, nàng cực kỳ nhạy bén cảm nhận được một ánh mắt sắc lạnh.</p>
+<p>Nàng nghiêng đầu nhìn sang.</p>
+<p>Người qua kẻ lại tấp nập, không có gì khác thường.</p>
+<p>Lẽ nào là ảo giác?</p>
+<p>Nàng khẽ nhíu mày, đảo mắt nhìn một vòng, rồi dừng trên người Lục Vân Sơ, kẻ đang có chút thất thần.</p>
+<p>“Nhị sư huynh?”</p>
+<p>“Nhị sư huynh!”</p>
+<p>“Hả?” Lục Vân Sơ chợt hoàn hồn.</p>
+<p>“Vừa rồi hình như có người nhìn chằm chằm vào ta. Không biết có phải ta đa nghi hay không, nhưng mấy ngày tới vẫn nên cẩn thận thì hơn.”</p>
+<p>“Tiểu Cửu không cần lo lắng. Có ta ở đây, không ai có thể làm tổn thương muội dù chỉ một sợi tóc.”</p>
+<p>Sở Ly khẽ đáp một tiếng, tiếp tục khoác tay Tần Mục Tuyết đi phía trước.</p>
+<p>Ánh mắt Lục Vân Sơ vẫn dõi theo bóng hai người, trong lòng có chút mờ mịt.</p>
+<p>Lẽ nào sự yêu thích của Tần cô nương dành cho hắn ngắn ngủi đến vậy?</p>
+<p>Hay những lời nàng từng nói trước đây chỉ là xã giao, chứ chẳng phải thật lòng?</p>
+<p>Sao hắn lại nghĩ nhiều đến thế?</p>
+<p>Tần cô nương quả nhiên là một nữ tử hào sảng, thẳng thắn, dứt khoát.</p>
+<p>Ân tình chỉ lướt qua trong đầu, A Ly mới là người ở trong tim.</p>
+<p>Hai ngày trôi qua, trong mắt nàng chỉ còn có A Ly ca ca của nàng.</p>
+<p>Ba người cùng trở về khách điếm.</p>
+<p>Nhưng không ai hay biết, phía sau gốc đại thụ cuối con phố, một thân ảnh âm trầm lặng lẽ bước ra.</p>
+<p>Đôi mắt lạnh lẽo, u tối chăm chú nhìn theo hướng ba người rời đi, nơi đáy mắt thoáng hiện một tia tính toán sâu xa. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_191.html" class="btn">‹ Trước</a>
             <a href="chuong_193.html" class="btn">Sau ›</a>
         </div>
@@ -218,15 +226,11 @@ Nhưng không ai hay biết, phía sau gốc đại thụ cuối con phố, mộ
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -238,11 +242,11 @@ Nhưng không ai hay biết, phía sau gốc đại thụ cuối con phố, mộ
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

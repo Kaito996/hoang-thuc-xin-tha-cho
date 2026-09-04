@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 319</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,204 +62,213 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 319</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_318.html" class="btn">‹ Trước</a>
             <a href="chuong_321.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 319: Công lao tòng long
-Ánh ban mai đầu tiên của buổi sớm mang theo chút hơi ấm, mùi máu tanh dường như hòa lẫn vào không khí, nồng đậm bao trùm khắp bầu trời hoàng thành.
-Toàn đế đô lòng người hoang mang.
-Trong hoàng cung, nơi mắt nhìn tới càng là một mảnh tan hoang.
-Thi thể chất thành núi, máu chảy thành sông…
-Bi thương đến cực điểm, không nỡ nhìn thẳng.
-Đây là lần đầu tiên Sở Ly chán ghét chiến tranh đến vậy, căm hận sự tranh đoạt quyền bính, càng cảm nhận sâu sắc cuộc sống bình ổn, an cư lạc nghiệp đáng quý biết bao.
-Sở Đệ Trì đau lòng khẽ vuốt giữa chân mày nàng.
-“Đi nghỉ một lát đi, nơi này đã có ta.”
-Trong tình cảnh thế này, Sở Ly sao có thể ngủ được?
-Nàng liếm đôi môi khô khốc, giọng nói yếu ớt:
-“Chàng cứ bận việc đi, ta đến tìm Bát hoàng huynh.”
-“Được.”
-Sở Đệ Trì cùng Tiêu Dạ Hành ở lại thu dọn chiến trường. Những công việc hậu chiến còn rườm rà, phức tạp hơn cả trận chiến vừa rồi.
-Sở Ly xách thanh kiếm đẫm máu. Vốn dĩ nhuyễn kiếm nổi danh bởi sự nhẹ nhàng linh hoạt, lúc này lại phủ đầy máu tươi dính nhớp, nặng tựa ngàn cân.
-Nàng nhìn về phía không xa.
-“Mục Tuyết.”
-“A Ly ca ca!”
-Tần Mục Tuyết vội vàng chạy tới, đỡ lấy cánh tay mềm nhũn của nàng.
-“Huynh bị thương rồi sao? Có chỗ nào bị thương không?”
-“Ta không sao.”
-“Huynh đừng gạt ta!”
-Toàn thân nàng đều là máu.
-Nhưng trong bọn họ, ai mà chẳng chật vật như vậy?
-Giết đến đỏ cả mắt, nhiệt huyết dâng trào, đã chẳng còn phân biệt được đâu là vết thương của mình, đâu là máu của kẻ địch. Trước ranh giới sinh tử, thậm chí còn quên cả đau đớn.
-Đôi mắt Sở Ly đầy vẻ vui mừng, nàng siết chặt tay Tần Mục Tuyết, nhìn sang Lục Vân Sơ rồi lại nhìn Tần Mục Vũ.
-Mọi người đều bình an.
-Thật tốt.
-Thật sự quá tốt!
-“Mục Vũ, sao huynh lại đột nhiên từ Nam Cương trở về, còn mang theo… Thiết Huyết Vệ của Nam Man?”
-Chuyện này nói ra thì rất dài.
-Ánh mắt Tần Mục Vũ hơi tối lại.
-“Bảy ngày trước, ta nhận được tin vương quyền Nam Man thay đổi. Thác Bạt Minh Nguyệt đã đánh vào Nam Cương, dồn chúng ta đến đường cùng. Khi ấy, ta còn tưởng mục tiêu của nàng là Nam Cương, nhưng hóa ra nàng chỉ đi ngang qua đó, đích đến thật sự là đế đô Đại Sở.”
-“Sau khi nàng dẫn quân rời đi, hai ngày sau ta triệu tập Thiết Huyết Vệ của Ân Vương, rồi lập tức đuổi theo trở về.”
-Nhắc đến Ân Vương…
-Trong mắt hắn hiện lên vẻ u ám khó nói thành lời.
-Sở Ly hơi kinh ngạc.
-“Giao tình giữa huynh và Ân Vương… lại sâu đến mức khiến ngài ấy phản quốc sao?”
-Thần sắc Tần Mục Vũ khẽ chấn động.
-Phản quốc…
-Khi hai chữ ấy vang lên, hắn mới nhận ra sức nặng của nó.
-Đúng vậy.
-Là phản quốc.
-Khoảnh khắc Ân Vương liều chết giao Thiết Huyết Vệ cho hắn, cũng chính là lúc ngài bày tỏ lập trường của mình.
-Nhưng từ khi nào…
-Giao tình giữa họ lại trở nên sâu đậm như thế?
-Trong vô thanh vô tức, tình nghĩa ấy từng chút từng chút một kết thành, đến chính hắn cũng chưa từng nhận ra…
-“Mục Vũ?”
-“A Ly ca ca, huynh đừng hỏi nữa.”
-Tần Mục Tuyết kéo nàng sang một bên, hạ thấp giọng.
-“Ân Vương… đã chết rồi.”
-Sở Ly khựng người.
-Chết rồi?
-Xem ra, trong khoảng thời gian này đã xảy ra rất nhiều chuyện mà nàng không hề hay biết.
-“Mục Tuyết, muội và Mục Vũ hãy thu xếp nghỉ ngơi cho tốt. Đêm nay mọi người đều đã vất vả rồi. Ta đi tìm Hoàng thượng trước.”
-“Nhị sư huynh, ta đi trước.”
-Lục Vân Sơ gật đầu.
-“Được.”
-Đại Thành điện.
-Cửa điện đóng chặt.
-Tất cả mọi người đều đỏ hoe hai mắt, thức trắng suốt đêm, thần kinh căng cứng lắng nghe tiếng chém giết bên ngoài. Ai nấy đều bi thương và tuyệt vọng.
-Tiếng bước chân vang lên.
-Bộp!
-Bộp… bộp…
-“Đến rồi!”
-“Chúng ta… sẽ chết sao?”
-“Địch quân đã đánh vào rồi sao?”
-Các phi tần và cung nhân nắm chặt tay nhau, mắt đỏ hoe ngấn lệ. Tiếng bước chân chậm rãi tiến đến chẳng khác nào tiếng đếm ngược của lệ quỷ đến đòi mạng, từng bước từng bước như đâm thẳng vào tim họ.
-Cửa điện được đẩy mở.
-Két——
-“A!”
-“Tha mạng!”
-“Ta không muốn chết! Ta không muốn chết!”
-Ngoài đại điện rộng lớn, một thân ảnh mảnh khảnh giẫm lên vết máu mà bước tới. Mỗi bước chân đều để lại một dấu chân đỏ thẫm. Giữa hàng mày đầy vẻ mệt mỏi nhưng vẫn cố chống đỡ, nàng ngẩng đầu nhìn người trên long tọa.
-“Bát hoàng huynh, mọi chuyện đều kết thúc rồi.”
-“Cửu muội!”
-Sở Ngạo Thiên không còn kìm nén được nữa, lao xuống ôm chặt lấy nàng.
-Trải qua sinh tử, tình nghĩa huynh muội giữa họ không còn giống thuở nhỏ ngây thơ vô tư nữa.
-Nhưng lại càng thêm bền chặt, vững chắc không gì phá nổi.
-“Không sao rồi… chúng ta đều còn sống… chúng ta đã sống sót.”
-Giang sơn vẫn còn.
-Dẫu khắp nơi đều tan hoang, nhưng mái nhà của bọn họ… đã giữ được rồi!
-Sở Ngạo Thiên nghẹn ngào.
-“Cửu muội… Khương Thái phó chết rồi. Thầy đã đỡ cho ta một kiếm, cứ thế chết ngay trong lòng ta…”
-Chuyện này…
-Sẽ trở thành nỗi đau mà cả đời hắn không thể vượt qua.
-Sống mũi Sở Ly cay xè.
-Lão sư…
-Đó là một người ôn hòa, nhân hậu, tận tâm và hết lòng với trách nhiệm, xứng đáng với hai chữ lương sư.
-Cả đời ngài dốc cạn tâm huyết, tận trung tận hiếu.
-“Người chết không thể sống lại… truyền báo cho gia quyến của ngài ấy vào cung thu liệm di thể, phong thưởng hậu hĩnh, an táng trọng thể.”
-“Vâng.”
-Sở Ngạo Thiên lau nước mắt, nắm tay Sở Ly đi vào hậu điện, bế thi thể đã lạnh ngắt của Khương Thái phó đặt lên giường.
-Hắn sai người chuẩn bị nước, tự tay lau sạch máu, thay cho ngài bộ y phục sạch sẽ.
-Sở Ly đứng ngoài cửa nhìn cảnh ấy, hốc mắt nóng lên. Nàng quay lưng đi, lặng lẽ lau một giọt lệ.
-“Hoàng thượng!”
-Ngoài cửa, ám vệ đến báo.
-“Viên Thị lang đã bị bắt.”
-Trong mắt Sở Ngạo Thiên lóe lên sát ý. Hắn siết chặt chiếc khăn trong tay, dùng chút dịu dàng cuối cùng mặc chỉnh tề y phục cho Khương Thái phó, rồi mới lạnh lùng đứng dậy.
-“Áp giải vào!”
-“Tuân lệnh.”
-Ám vệ giữ chặt Viên Thị lang.
-“Quỳ xuống!”
-Cả cánh tay phải của hắn đã bị trường kiếm đâm xuyên, hoàn toàn phế bỏ, buông thõng bên người lắc lư. Tóc tai rối bù, dáng vẻ vô cùng chật vật.
-Hắn loạng choạng ngã sấp xuống đất, đụng trúng vết thương, đau đến kêu thảm.
-Sở Ngạo Thiên xông lên, đá mạnh một cước.
-“A!”
-Lại thêm một cước nữa.
-“A!”
-“Tha mạng! Hoàng thượng tha mạng!”
-Hai cú đá khiến cánh tay vốn đã bị đâm thủng của Viên Thị lang rách toạc thêm, một đoạn xương trắng hếu lộ ra ngoài, đau đến mức gần như ngất lịm.
-“Đồ gian thần!”
-“Đồ phản tặc!”
-Sở Ngạo Thiên giận dữ giẫm lên cánh tay hắn, dùng sức nghiền mạnh.
-“Thế này đã đau rồi sao? Lúc ngươi hạ sát thủ, đáng lẽ phải sớm nghĩ đến ngày hôm nay! Trẫm sẽ lột da ngươi, rút gân ngươi, nghiền xương ngươi thành tro!”
-“A… a…!”
-Viên Thị lang gào thét đến khản cả giọng.
-“Bát hoàng huynh.”
-Sở Ly bước lên.
-“Huynh hãy bình tĩnh trước. Hắn dám phản bội, phía sau tất nhiên có người sai khiến.”
-Sở Ngạo Thiên quát lớn:
-“Nói! Là ai sai khiến ngươi?”
-Viên Thị lang đau đến giọng nói run rẩy.
-“Là… Đông Lăng Thái tử… là hắn…”
-“Trẫm biết ngay là Sở Dạ Ly!”
-Nhưng Sở Ly lại nheo mắt, đáy mắt hiện lên vài phần suy tư, đột nhiên lên tiếng:
-“Ngươi chưa nói thật.”
-Toàn thân Viên Thị lang run lên.
-“Ta… ta nói thật! Chính Đông Lăng Thái tử sai khiến ta, tất cả đều là lệnh của hắn! Xin Hoàng thượng tha mạng!”
-Sở Ly nói:
-“Sở Dạ Ly sẽ không giết Bát hoàng huynh, nhưng nhát kiếm của ngươi lại nhằm thẳng chỗ hiểm.”
-“Nếu Sở Dạ Ly thật sự muốn giết Bát hoàng huynh, thì lúc giao chiến đêm nay đã không chỉ sai người bắt huynh ấy đơn giản như vậy.”
-“Hắn hoàn toàn có thể trực tiếp lấy mạng Bát hoàng huynh, cần gì phải vòng vo sai một Viên Thị lang ra tay?”
-“Nói! Rốt cuộc là ai sai khiến ngươi?”
-“Thật sự là Đông Lăng Thái tử…”
-“Người đâu! Chặt hết tứ chi hắn, làm thành nhân trệ!”
-“Ta nói! Ta nói!”
-“Là Tiêu Dao Vương điểm hóa ta! Chính Tiêu Dao Vương nói Đại Sở sắp mất rồi. Ai giết được Hoàng thượng sẽ lập nên công lao tòng long, được phong tước khai quốc công thần. Ta nhất thời bị công danh lợi lộc che mờ tâm trí nên mới làm ra chuyện này!”
-Viên Thị lang vừa kinh hãi vừa đau đớn, bật khóc thảm thiết.
-“Ta nói đều là thật! Ta đã khai hết rồi! Xin tha cho ta một mạng… tha cho ta một mạng đi!” Ẩn bớt</p>
+            <p>Chương 319: Công lao tòng long</p>
+<p>Ánh ban mai đầu tiên của buổi sớm mang theo chút hơi ấm, mùi máu tanh dường như hòa lẫn vào không khí, nồng đậm bao trùm khắp bầu trời hoàng thành.</p>
+<p>Toàn đế đô lòng người hoang mang.</p>
+<p>Trong hoàng cung, nơi mắt nhìn tới càng là một mảnh tan hoang.</p>
+<p>Thi thể chất thành núi, máu chảy thành sông…</p>
+<p>Bi thương đến cực điểm, không nỡ nhìn thẳng.</p>
+<p>Đây là lần đầu tiên Sở Ly chán ghét chiến tranh đến vậy, căm hận sự tranh đoạt quyền bính, càng cảm nhận sâu sắc cuộc sống bình ổn, an cư lạc nghiệp đáng quý biết bao.</p>
+<p>Sở Đệ Trì đau lòng khẽ vuốt giữa chân mày nàng.</p>
+<p>“Đi nghỉ một lát đi, nơi này đã có ta.”</p>
+<p>Trong tình cảnh thế này, Sở Ly sao có thể ngủ được?</p>
+<p>Nàng liếm đôi môi khô khốc, giọng nói yếu ớt:</p>
+<p>“Chàng cứ bận việc đi, ta đến tìm Bát hoàng huynh.”</p>
+<p>“Được.”</p>
+<p>Sở Đệ Trì cùng Tiêu Dạ Hành ở lại thu dọn chiến trường. Những công việc hậu chiến còn rườm rà, phức tạp hơn cả trận chiến vừa rồi.</p>
+<p>Sở Ly xách thanh kiếm đẫm máu. Vốn dĩ nhuyễn kiếm nổi danh bởi sự nhẹ nhàng linh hoạt, lúc này lại phủ đầy máu tươi dính nhớp, nặng tựa ngàn cân.</p>
+<p>Nàng nhìn về phía không xa.</p>
+<p>“Mục Tuyết.”</p>
+<p>“A Ly ca ca!”</p>
+<p>Tần Mục Tuyết vội vàng chạy tới, đỡ lấy cánh tay mềm nhũn của nàng.</p>
+<p>“Huynh bị thương rồi sao? Có chỗ nào bị thương không?”</p>
+<p>“Ta không sao.”</p>
+<p>“Huynh đừng gạt ta!”</p>
+<p>Toàn thân nàng đều là máu.</p>
+<p>Nhưng trong bọn họ, ai mà chẳng chật vật như vậy?</p>
+<p>Giết đến đỏ cả mắt, nhiệt huyết dâng trào, đã chẳng còn phân biệt được đâu là vết thương của mình, đâu là máu của kẻ địch. Trước ranh giới sinh tử, thậm chí còn quên cả đau đớn.</p>
+<p>Đôi mắt Sở Ly đầy vẻ vui mừng, nàng siết chặt tay Tần Mục Tuyết, nhìn sang Lục Vân Sơ rồi lại nhìn Tần Mục Vũ.</p>
+<p>Mọi người đều bình an.</p>
+<p>Thật tốt.</p>
+<p>Thật sự quá tốt!</p>
+<p>“Mục Vũ, sao huynh lại đột nhiên từ Nam Cương trở về, còn mang theo… Thiết Huyết Vệ của Nam Man?”</p>
+<p>Chuyện này nói ra thì rất dài.</p>
+<p>Ánh mắt Tần Mục Vũ hơi tối lại.</p>
+<p>“Bảy ngày trước, ta nhận được tin vương quyền Nam Man thay đổi. Thác Bạt Minh Nguyệt đã đánh vào Nam Cương, dồn chúng ta đến đường cùng. Khi ấy, ta còn tưởng mục tiêu của nàng là Nam Cương, nhưng hóa ra nàng chỉ đi ngang qua đó, đích đến thật sự là đế đô Đại Sở.”</p>
+<p>“Sau khi nàng dẫn quân rời đi, hai ngày sau ta triệu tập Thiết Huyết Vệ của Ân Vương, rồi lập tức đuổi theo trở về.”</p>
+<p>Nhắc đến Ân Vương…</p>
+<p>Trong mắt hắn hiện lên vẻ u ám khó nói thành lời.</p>
+<p>Sở Ly hơi kinh ngạc.</p>
+<p>“Giao tình giữa huynh và Ân Vương… lại sâu đến mức khiến ngài ấy phản quốc sao?”</p>
+<p>Thần sắc Tần Mục Vũ khẽ chấn động.</p>
+<p>Phản quốc…</p>
+<p>Khi hai chữ ấy vang lên, hắn mới nhận ra sức nặng của nó.</p>
+<p>Đúng vậy.</p>
+<p>Là phản quốc.</p>
+<p>Khoảnh khắc Ân Vương liều chết giao Thiết Huyết Vệ cho hắn, cũng chính là lúc ngài bày tỏ lập trường của mình.</p>
+<p>Nhưng từ khi nào…</p>
+<p>Giao tình giữa họ lại trở nên sâu đậm như thế?</p>
+<p>Trong vô thanh vô tức, tình nghĩa ấy từng chút từng chút một kết thành, đến chính hắn cũng chưa từng nhận ra…</p>
+<p>“Mục Vũ?”</p>
+<p>“A Ly ca ca, huynh đừng hỏi nữa.”</p>
+<p>Tần Mục Tuyết kéo nàng sang một bên, hạ thấp giọng.</p>
+<p>“Ân Vương… đã chết rồi.”</p>
+<p>Sở Ly khựng người.</p>
+<p>Chết rồi?</p>
+<p>Xem ra, trong khoảng thời gian này đã xảy ra rất nhiều chuyện mà nàng không hề hay biết.</p>
+<p>“Mục Tuyết, muội và Mục Vũ hãy thu xếp nghỉ ngơi cho tốt. Đêm nay mọi người đều đã vất vả rồi. Ta đi tìm Hoàng thượng trước.”</p>
+<p>“Nhị sư huynh, ta đi trước.”</p>
+<p>Lục Vân Sơ gật đầu.</p>
+<p>“Được.”</p>
+<p>Đại Thành điện.</p>
+<p>Cửa điện đóng chặt.</p>
+<p>Tất cả mọi người đều đỏ hoe hai mắt, thức trắng suốt đêm, thần kinh căng cứng lắng nghe tiếng chém giết bên ngoài. Ai nấy đều bi thương và tuyệt vọng.</p>
+<p>Tiếng bước chân vang lên.</p>
+<p>Bộp!</p>
+<p>Bộp… bộp…</p>
+<p>“Đến rồi!”</p>
+<p>“Chúng ta… sẽ chết sao?”</p>
+<p>“Địch quân đã đánh vào rồi sao?”</p>
+<p>Các phi tần và cung nhân nắm chặt tay nhau, mắt đỏ hoe ngấn lệ. Tiếng bước chân chậm rãi tiến đến chẳng khác nào tiếng đếm ngược của lệ quỷ đến đòi mạng, từng bước từng bước như đâm thẳng vào tim họ.</p>
+<p>Cửa điện được đẩy mở.</p>
+<p>Két——</p>
+<p>“A!”</p>
+<p>“Tha mạng!”</p>
+<p>“Ta không muốn chết! Ta không muốn chết!”</p>
+<p>Ngoài đại điện rộng lớn, một thân ảnh mảnh khảnh giẫm lên vết máu mà bước tới. Mỗi bước chân đều để lại một dấu chân đỏ thẫm. Giữa hàng mày đầy vẻ mệt mỏi nhưng vẫn cố chống đỡ, nàng ngẩng đầu nhìn người trên long tọa.</p>
+<p>“Bát hoàng huynh, mọi chuyện đều kết thúc rồi.”</p>
+<p>“Cửu muội!”</p>
+<p>Sở Ngạo Thiên không còn kìm nén được nữa, lao xuống ôm chặt lấy nàng.</p>
+<p>Trải qua sinh tử, tình nghĩa huynh muội giữa họ không còn giống thuở nhỏ ngây thơ vô tư nữa.</p>
+<p>Nhưng lại càng thêm bền chặt, vững chắc không gì phá nổi.</p>
+<p>“Không sao rồi… chúng ta đều còn sống… chúng ta đã sống sót.”</p>
+<p>Giang sơn vẫn còn.</p>
+<p>Dẫu khắp nơi đều tan hoang, nhưng mái nhà của bọn họ… đã giữ được rồi!</p>
+<p>Sở Ngạo Thiên nghẹn ngào.</p>
+<p>“Cửu muội… Khương Thái phó chết rồi. Thầy đã đỡ cho ta một kiếm, cứ thế chết ngay trong lòng ta…”</p>
+<p>Chuyện này…</p>
+<p>Sẽ trở thành nỗi đau mà cả đời hắn không thể vượt qua.</p>
+<p>Sống mũi Sở Ly cay xè.</p>
+<p>Lão sư…</p>
+<p>Đó là một người ôn hòa, nhân hậu, tận tâm và hết lòng với trách nhiệm, xứng đáng với hai chữ lương sư.</p>
+<p>Cả đời ngài dốc cạn tâm huyết, tận trung tận hiếu.</p>
+<p>“Người chết không thể sống lại… truyền báo cho gia quyến của ngài ấy vào cung thu liệm di thể, phong thưởng hậu hĩnh, an táng trọng thể.”</p>
+<p>“Vâng.”</p>
+<p>Sở Ngạo Thiên lau nước mắt, nắm tay Sở Ly đi vào hậu điện, bế thi thể đã lạnh ngắt của Khương Thái phó đặt lên giường.</p>
+<p>Hắn sai người chuẩn bị nước, tự tay lau sạch máu, thay cho ngài bộ y phục sạch sẽ.</p>
+<p>Sở Ly đứng ngoài cửa nhìn cảnh ấy, hốc mắt nóng lên. Nàng quay lưng đi, lặng lẽ lau một giọt lệ.</p>
+<p>“Hoàng thượng!”</p>
+<p>Ngoài cửa, ám vệ đến báo.</p>
+<p>“Viên Thị lang đã bị bắt.”</p>
+<p>Trong mắt Sở Ngạo Thiên lóe lên sát ý. Hắn siết chặt chiếc khăn trong tay, dùng chút dịu dàng cuối cùng mặc chỉnh tề y phục cho Khương Thái phó, rồi mới lạnh lùng đứng dậy.</p>
+<p>“Áp giải vào!”</p>
+<p>“Tuân lệnh.”</p>
+<p>Ám vệ giữ chặt Viên Thị lang.</p>
+<p>“Quỳ xuống!”</p>
+<p>Cả cánh tay phải của hắn đã bị trường kiếm đâm xuyên, hoàn toàn phế bỏ, buông thõng bên người lắc lư. Tóc tai rối bù, dáng vẻ vô cùng chật vật.</p>
+<p>Hắn loạng choạng ngã sấp xuống đất, đụng trúng vết thương, đau đến kêu thảm.</p>
+<p>Sở Ngạo Thiên xông lên, đá mạnh một cước.</p>
+<p>“A!”</p>
+<p>Lại thêm một cước nữa.</p>
+<p>“A!”</p>
+<p>“Tha mạng! Hoàng thượng tha mạng!”</p>
+<p>Hai cú đá khiến cánh tay vốn đã bị đâm thủng của Viên Thị lang rách toạc thêm, một đoạn xương trắng hếu lộ ra ngoài, đau đến mức gần như ngất lịm.</p>
+<p>“Đồ gian thần!”</p>
+<p>“Đồ phản tặc!”</p>
+<p>Sở Ngạo Thiên giận dữ giẫm lên cánh tay hắn, dùng sức nghiền mạnh.</p>
+<p>“Thế này đã đau rồi sao? Lúc ngươi hạ sát thủ, đáng lẽ phải sớm nghĩ đến ngày hôm nay! Trẫm sẽ lột da ngươi, rút gân ngươi, nghiền xương ngươi thành tro!”</p>
+<p>“A… a…!”</p>
+<p>Viên Thị lang gào thét đến khản cả giọng.</p>
+<p>“Bát hoàng huynh.”</p>
+<p>Sở Ly bước lên.</p>
+<p>“Huynh hãy bình tĩnh trước. Hắn dám phản bội, phía sau tất nhiên có người sai khiến.”</p>
+<p>Sở Ngạo Thiên quát lớn:</p>
+<p>“Nói! Là ai sai khiến ngươi?”</p>
+<p>Viên Thị lang đau đến giọng nói run rẩy.</p>
+<p>“Là… Đông Lăng Thái tử… là hắn…”</p>
+<p>“Trẫm biết ngay là Sở Dạ Ly!”</p>
+<p>Nhưng Sở Ly lại nheo mắt, đáy mắt hiện lên vài phần suy tư, đột nhiên lên tiếng:</p>
+<p>“Ngươi chưa nói thật.”</p>
+<p>Toàn thân Viên Thị lang run lên.</p>
+<p>“Ta… ta nói thật! Chính Đông Lăng Thái tử sai khiến ta, tất cả đều là lệnh của hắn! Xin Hoàng thượng tha mạng!”</p>
+<p>Sở Ly nói:</p>
+<p>“Sở Dạ Ly sẽ không giết Bát hoàng huynh, nhưng nhát kiếm của ngươi lại nhằm thẳng chỗ hiểm.”</p>
+<p>“Nếu Sở Dạ Ly thật sự muốn giết Bát hoàng huynh, thì lúc giao chiến đêm nay đã không chỉ sai người bắt huynh ấy đơn giản như vậy.”</p>
+<p>“Hắn hoàn toàn có thể trực tiếp lấy mạng Bát hoàng huynh, cần gì phải vòng vo sai một Viên Thị lang ra tay?”</p>
+<p>“Nói! Rốt cuộc là ai sai khiến ngươi?”</p>
+<p>“Thật sự là Đông Lăng Thái tử…”</p>
+<p>“Người đâu! Chặt hết tứ chi hắn, làm thành nhân trệ!”</p>
+<p>“Ta nói! Ta nói!”</p>
+<p>“Là Tiêu Dao Vương điểm hóa ta! Chính Tiêu Dao Vương nói Đại Sở sắp mất rồi. Ai giết được Hoàng thượng sẽ lập nên công lao tòng long, được phong tước khai quốc công thần. Ta nhất thời bị công danh lợi lộc che mờ tâm trí nên mới làm ra chuyện này!”</p>
+<p>Viên Thị lang vừa kinh hãi vừa đau đớn, bật khóc thảm thiết.</p>
+<p>“Ta nói đều là thật! Ta đã khai hết rồi! Xin tha cho ta một mạng… tha cho ta một mạng đi!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_318.html" class="btn">‹ Trước</a>
             <a href="chuong_321.html" class="btn">Sau ›</a>
         </div>
@@ -268,15 +276,11 @@ Viên Thị lang vừa kinh hãi vừa đau đớn, bật khóc thảm thiết.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -288,11 +292,11 @@ Viên Thị lang vừa kinh hãi vừa đau đớn, bật khóc thảm thiết.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

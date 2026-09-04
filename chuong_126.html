@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 126</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,158 +62,167 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 126</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_125.html" class="btn">‹ Trước</a>
             <a href="chuong_127.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 126: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 126: Thi Cốt Chưa Lạnh
-Sở Ly đã chết.
-Sở Đệ Trì không sao chấp nhận nổi sự thật ấy, hôn mê suốt ba ngày liền. Mà chỉ trong vỏn vẹn ba ngày ngắn ngủi ấy, Đế Đô đã long trời lở đất.
-Sở Hoàng bại liệt, Tân Đế băng hà, Đại Hoàng tử phóng hỏa, vô số sự việc chồng chéo liên lụy. Trong lúc nhất thời, văn võ bá quan chẳng khác nào ruồi mất đầu, không người dẫn dắt, ai nấy đều rối loạn, mất hết phương hướng.
-Đúng lúc ấy, Nhị Hoàng tử đứng ra, cho rằng mình là trưởng tử, lẽ ra phải danh chính ngôn thuận kế vị.
-Tam Hoàng tử đương nhiên cũng chẳng chịu khoanh tay đứng nhìn.
-Thất Hoàng tử rời Hoàng gia học uyển, tham gia vào cuộc tranh đoạt quyền vị.
-Lục Hoàng tử vì muốn báo thù, trút giận thay Đại Hoàng tử, tự nhiên cũng dốc toàn lực tranh đoạt ngôi vị. Chỉ cần đoạt được trữ vị, hắn liền có thể giữ Đại Hoàng tử ở lại Đế Đô.
-Trong chốc lát, cục diện hỗn loạn tứ bề.
-Để cướp lấy quyền lực, mỗi vị Hoàng tử đều dốc hết toàn lực, huy động toàn bộ thế lực trong tay, liều chết đánh một trận.
-Chỉ có Bát Hoàng tử ngày ngày quỳ trước Chiêu Lan điện, khóc đến khản cả giọng:
-“Cửu đệ!”
-“Hu hu oa oa… Cửu đệ, sao đệ nói đi là đi? Đệ còn trẻ như vậy! Ông trời thật chẳng có mắt! Hóa ra làm Hoàng đế mới là chuyện nguy hiểm nhất thiên hạ. Dù có đem ngôi Hoàng đế tặng cho ta, ta cũng không làm!”
-“Cửu đệ!”
-Hắn khóc đến tan nát cõi lòng, trà chẳng buồn uống, cơm chẳng buồn ăn.
-Hân phi nhìn con trai đau khổ, lòng cũng quặn thắt. Lại nhìn Ôn phi chịu đả kích nặng nề, không còn chút phong thái huy hoàng năm xưa, trong lòng bà nhất thời chẳng rõ là tư vị gì.
-Hơn mười năm qua, bà cùng Ôn phi tranh đấu gay gắt, từ lâu đã thành một loại thói quen.
-Khi chưa có con, tranh ân sủng của Hoàng thượng.
-Có con rồi, lại so bì con cái.
-Giờ đây, Cửu Hoàng tử đã chết, Ôn phi suy sụp, Sở Hoàng cũng bại liệt, bà mới phát hiện, bản thân chẳng hề hận Ôn phi, thậm chí cũng không chán ghét nàng, ngược lại còn thấy nàng quá đỗi đáng thương.
-Con cái là khúc ruột từ thân mẫu mà rơi xuống.
-Thiên hạ này, chuyện đau đớn nhất, chẳng gì hơn người đầu bạc tiễn kẻ đầu xanh.
-Nghĩ đến đó, bà cũng không khỏi rơi vài giọt lệ.
-Cửu Hoàng tử tuổi còn nhỏ, còn trẻ đến vậy, thậm chí còn chưa cưới vợ sinh con, đã yểu mệnh nơi đây, thật khiến người thương xót.
-Sau khi Tân Đế qua đời, các thế lực tranh đoạt lẫn nhau, sự bạc tình của hoàng thất vào khoảnh khắc này được phơi bày đến cực hạn.
-Không một ai quan tâm đến tình nghĩa huynh đệ.
-Điều duy nhất bọn họ để tâm, chính là chiếc long ỷ cửu ngũ chí tôn kia.
-Bọn họ ủng hộ Hoàng tử mình theo phò, dốc sức tranh đoạt, thậm chí có người còn chĩa mũi nhọn về phía Nhiếp chính vương cùng Ôn gia:
-“Nhiếp chính vương không có chiếu triệu mà tự ý hồi đô, tất có mưu đồ bất chính!”
-“Nhiếp chính vương kháng chỉ hồi kinh trước, lại qua lại thân thiết với Cửu Hoàng tử. Thần vô cùng hoài nghi việc Hoàng thượng bại liệt có quan hệ không thể tách rời với Cửu Hoàng tử!”
-“Ôn gia khó thoát khỏi liên can!”
-“Theo ý thần, Ôn phi nương nương không nên tiếp tục chấp chưởng hậu cung. Bà ta cùng Cửu Hoàng tử đều ôm lòng bất chính, đáng phải xử tử!”
-Ôn phi nổi giận.
-Lúc Ly nhi còn sống, đám người này cúi đầu khom lưng, cung kính hết mực, nịnh nọt như chó.
-Nay Ly nhi vừa đi, thi cốt còn chưa lạnh, từng kẻ từng kẻ đã đê tiện đến mức này!
-Hân phi lên tiếng:
-“Tân Đế thi cốt chưa lạnh, các ngươi đã hắt nước bẩn lên người Tân Đế. Đế vị của ngài là do chính Hoàng thượng hạ chỉ, đích thân xác lập. Ý các ngươi là… truyền vị thánh chỉ cũng là giả sao?”
-Sở Ngạo Thiên vừa lau nước mắt vừa mắng:
-“Đám khốn kiếp các ngươi!”
-Thi cốt của Cửu đệ còn đang quàn trong Ngọc Đường cung, chưa kịp hạ táng, đám người này đã hận không thể xé xác Cửu đệ ra, chia nhau quyền lực.
-Thật ghê tởm!
-Đúng lúc ấy, Ôn phi đột nhiên nhớ ra một chuyện quan trọng:
-“Mấy ngày trước, Tân Đế từng soạn mấy đạo mật chỉ, cất trong Ngọc Đường cung. Xin năm vị Nội các Các lão đích thân tuyên chỉ!”
-Bà chìm trong đau thương quá lâu, mãi đến giờ mới nhớ ra việc này.
-Tần Các lão vành mắt đỏ hoe, khẽ thở dài:
-“Xin Ôn phi nương nương mang ra đi. Chúng thần nhất định sẽ tận tâm tận lực hoàn thành tâm nguyện của Tân Đế.”
-Ôn phi giơ tay:
-“Cô cô Lý.”
-Chẳng mấy chốc, Cô cô Lý bưng tới một chiếc hộp gấm. Bên ngoài hộp còn có giấy niêm phong, nhằm bảo đảm tính bí mật của vật chứa bên trong.
-Tần Các lão nhận lấy hộp gấm, mở ra trước mặt mọi người.
-Bên trong đặt bốn đạo mật chỉ.
-“Mật chỉ của Tân Đế!”
-Tất cả mọi người đồng loạt quỳ xuống nghe chỉ.
-Tần Các lão lấy ra một đạo, cất cao giọng đọc:
-“Trẫm tự biết bản thân không có tài trị quốc, khó gánh trọng trách. Vì lê dân bách tính, đặc biệt thiện nhượng hoàng vị cho Nhiếp chính vương, không được sai sót!”
-Mọi người đồng loạt biến sắc.
-“Cái gì?!”
-“Thiện nhượng hoàng vị cho Nhiếp chính vương?”
-“Khi Tân Đế còn sống, vậy mà đã viết sẵn loại thánh chỉ này? Chẳng lẽ ngài chết oan? Hay là… trận đại hỏa ở Chiêu Lan điện có liên quan đến Nhiếp chính vương…”
-Một thuyết âm mưu khổng lồ dần dần hình thành.
-Nhiếp chính vương vì đoạt quyền, trước ép Tân Đế viết hạ đạo thánh chỉ này, sau lại phóng hỏa thiêu chết Tân Đế, từ đó đoạt lấy đại quyền vào tay.
-Ôn phi lau nước mắt.
-Tuy trong lòng đau đớn vô cùng, nhưng bà vẫn nhớ tới lời dặn dò vô cùng trịnh trọng của Sở Ly lúc sinh tiền.
-Sau này, bất kể thời cuộc biến đổi thế nào, nhất định phải dốc toàn lực ủng hộ Nhiếp chính vương!
-Bà quỳ xuống đất trong nước mắt, nói:
-“Đây là bút tích đích thân Ly nhi viết. Từ sau khi chấp chính, Ly nhi đối với chính vụ chỗ nào cũng không thông hiểu, lực bất tòng tâm, khó lòng chống đỡ, bởi vậy mới thiện nhượng đế vị cho Nhiếp chính vương.”
-“Bổn cung cùng Ôn gia, xin cẩn tuân ý chỉ của Tân Đế!”
-Ôn gia là kẻ đầu tiên quy thuận.
-Ngay sau đó cũng có bảy, tám vị quan lĩnh chỉ quy thuận. Thế nhưng, đại đa số vẫn ôm thái độ không cam lòng.
-Cho dù Ôn phi nương nương đứng về phía Nhiếp chính vương, bọn họ vẫn không chịu phục, chất vấn:
-“Đạo mật chỉ này… lại viết bằng bạch thoại? Từ xưa đến nay, có vị Hoàng đế nào dùng lời lẽ bình dân để viết thánh chỉ?”
-Mật chỉ này nhất định là giả!
-Khương Thái phó vừa lau nước mắt vừa đáp:
-“Trương đại nhân, Cửu Hoàng tử học vấn không cao, có thể viết rõ ràng thánh chỉ như vậy đã rất khá rồi.”
-“…”
-Cửu Hoàng tử… không có văn hóa.
-Tần Các lão lại cầm lên đạo mật chỉ thứ hai.
-Bên trên ghi việc điều động ba vị võ tướng của Ôn gia, cùng ý chỉ che chở Ôn gia.
-Đạo mật chỉ thứ ba là để bảo hộ Ôn phi, cùng sự an bài đối với Tướng quân phủ.
-Đạo mật chỉ thứ tư là dành cho Bát Hoàng tử.
-Tần Các lão đọc:
-“Trẫm cùng Bát Hoàng huynh từ nhỏ thân như thủ túc. Nghĩ Bát Hoàng huynh tâm tính thuần hậu, phẩm đức đoan chính, đặc biệt sắc phong làm Nhàn Vương, ban Tây Vân, La Lan, Thanh Hà thành làm phong địa, hưởng bổng lộc nghìn vàng, thế tập năm đời. Các đời quân vương về sau không được lấy bất cứ lý do gì thu hồi phong địa cùng tước hiệu, không được sai sót.”
-Sở Ngạo Thiên trợn tròn hai mắt, không dám tin.
-Cửu đệ…
-Cửu đệ vậy mà sắc phong hắn làm Nhàn Vương.
-Trong lòng Cửu đệ… lại luôn nhớ đến hắn như vậy!
-“Cửu đệ!”
-Sở Ngạo Thiên nước mắt như mưa, bật dậy lao thẳng về phía Ngọc Đường cung, quyết phải ôm lấy thi cốt của Cửu đệ, tự tay an táng.
-Tần Các lão vội nhắc:
-“Bát… à không, Nhàn Vương điện hạ, thánh chỉ…”
-“Thánh chỉ của ta… không! Cửu đệ! Thánh chỉ… Cửu đệ… Thánh chỉ…” Sở Ngạo Thiên lắc đầu qua trái rồi lại qua phải, lúc chạy sang trái, lúc lại quay sang phải, cái đầu lắc như trống bỏi.
-Cuối cùng, hắn vẫn mặc kệ cái thánh chỉ chết tiệt kia, vừa khóc vừa chạy vào Ngọc Đường cung:
-“Cửu đệ!” Ẩn bớt</p>
+            <p>Chương 126: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 126: Thi Cốt Chưa Lạnh</p>
+<p>Sở Ly đã chết.</p>
+<p>Sở Đệ Trì không sao chấp nhận nổi sự thật ấy, hôn mê suốt ba ngày liền. Mà chỉ trong vỏn vẹn ba ngày ngắn ngủi ấy, Đế Đô đã long trời lở đất.</p>
+<p>Sở Hoàng bại liệt, Tân Đế băng hà, Đại Hoàng tử phóng hỏa, vô số sự việc chồng chéo liên lụy. Trong lúc nhất thời, văn võ bá quan chẳng khác nào ruồi mất đầu, không người dẫn dắt, ai nấy đều rối loạn, mất hết phương hướng.</p>
+<p>Đúng lúc ấy, Nhị Hoàng tử đứng ra, cho rằng mình là trưởng tử, lẽ ra phải danh chính ngôn thuận kế vị.</p>
+<p>Tam Hoàng tử đương nhiên cũng chẳng chịu khoanh tay đứng nhìn.</p>
+<p>Thất Hoàng tử rời Hoàng gia học uyển, tham gia vào cuộc tranh đoạt quyền vị.</p>
+<p>Lục Hoàng tử vì muốn báo thù, trút giận thay Đại Hoàng tử, tự nhiên cũng dốc toàn lực tranh đoạt ngôi vị. Chỉ cần đoạt được trữ vị, hắn liền có thể giữ Đại Hoàng tử ở lại Đế Đô.</p>
+<p>Trong chốc lát, cục diện hỗn loạn tứ bề.</p>
+<p>Để cướp lấy quyền lực, mỗi vị Hoàng tử đều dốc hết toàn lực, huy động toàn bộ thế lực trong tay, liều chết đánh một trận.</p>
+<p>Chỉ có Bát Hoàng tử ngày ngày quỳ trước Chiêu Lan điện, khóc đến khản cả giọng:</p>
+<p>“Cửu đệ!”</p>
+<p>“Hu hu oa oa… Cửu đệ, sao đệ nói đi là đi? Đệ còn trẻ như vậy! Ông trời thật chẳng có mắt! Hóa ra làm Hoàng đế mới là chuyện nguy hiểm nhất thiên hạ. Dù có đem ngôi Hoàng đế tặng cho ta, ta cũng không làm!”</p>
+<p>“Cửu đệ!”</p>
+<p>Hắn khóc đến tan nát cõi lòng, trà chẳng buồn uống, cơm chẳng buồn ăn.</p>
+<p>Hân phi nhìn con trai đau khổ, lòng cũng quặn thắt. Lại nhìn Ôn phi chịu đả kích nặng nề, không còn chút phong thái huy hoàng năm xưa, trong lòng bà nhất thời chẳng rõ là tư vị gì.</p>
+<p>Hơn mười năm qua, bà cùng Ôn phi tranh đấu gay gắt, từ lâu đã thành một loại thói quen.</p>
+<p>Khi chưa có con, tranh ân sủng của Hoàng thượng.</p>
+<p>Có con rồi, lại so bì con cái.</p>
+<p>Giờ đây, Cửu Hoàng tử đã chết, Ôn phi suy sụp, Sở Hoàng cũng bại liệt, bà mới phát hiện, bản thân chẳng hề hận Ôn phi, thậm chí cũng không chán ghét nàng, ngược lại còn thấy nàng quá đỗi đáng thương.</p>
+<p>Con cái là khúc ruột từ thân mẫu mà rơi xuống.</p>
+<p>Thiên hạ này, chuyện đau đớn nhất, chẳng gì hơn người đầu bạc tiễn kẻ đầu xanh.</p>
+<p>Nghĩ đến đó, bà cũng không khỏi rơi vài giọt lệ.</p>
+<p>Cửu Hoàng tử tuổi còn nhỏ, còn trẻ đến vậy, thậm chí còn chưa cưới vợ sinh con, đã yểu mệnh nơi đây, thật khiến người thương xót.</p>
+<p>Sau khi Tân Đế qua đời, các thế lực tranh đoạt lẫn nhau, sự bạc tình của hoàng thất vào khoảnh khắc này được phơi bày đến cực hạn.</p>
+<p>Không một ai quan tâm đến tình nghĩa huynh đệ.</p>
+<p>Điều duy nhất bọn họ để tâm, chính là chiếc long ỷ cửu ngũ chí tôn kia.</p>
+<p>Bọn họ ủng hộ Hoàng tử mình theo phò, dốc sức tranh đoạt, thậm chí có người còn chĩa mũi nhọn về phía Nhiếp chính vương cùng Ôn gia:</p>
+<p>“Nhiếp chính vương không có chiếu triệu mà tự ý hồi đô, tất có mưu đồ bất chính!”</p>
+<p>“Nhiếp chính vương kháng chỉ hồi kinh trước, lại qua lại thân thiết với Cửu Hoàng tử. Thần vô cùng hoài nghi việc Hoàng thượng bại liệt có quan hệ không thể tách rời với Cửu Hoàng tử!”</p>
+<p>“Ôn gia khó thoát khỏi liên can!”</p>
+<p>“Theo ý thần, Ôn phi nương nương không nên tiếp tục chấp chưởng hậu cung. Bà ta cùng Cửu Hoàng tử đều ôm lòng bất chính, đáng phải xử tử!”</p>
+<p>Ôn phi nổi giận.</p>
+<p>Lúc Ly nhi còn sống, đám người này cúi đầu khom lưng, cung kính hết mực, nịnh nọt như chó.</p>
+<p>Nay Ly nhi vừa đi, thi cốt còn chưa lạnh, từng kẻ từng kẻ đã đê tiện đến mức này!</p>
+<p>Hân phi lên tiếng:</p>
+<p>“Tân Đế thi cốt chưa lạnh, các ngươi đã hắt nước bẩn lên người Tân Đế. Đế vị của ngài là do chính Hoàng thượng hạ chỉ, đích thân xác lập. Ý các ngươi là… truyền vị thánh chỉ cũng là giả sao?”</p>
+<p>Sở Ngạo Thiên vừa lau nước mắt vừa mắng:</p>
+<p>“Đám khốn kiếp các ngươi!”</p>
+<p>Thi cốt của Cửu đệ còn đang quàn trong Ngọc Đường cung, chưa kịp hạ táng, đám người này đã hận không thể xé xác Cửu đệ ra, chia nhau quyền lực.</p>
+<p>Thật ghê tởm!</p>
+<p>Đúng lúc ấy, Ôn phi đột nhiên nhớ ra một chuyện quan trọng:</p>
+<p>“Mấy ngày trước, Tân Đế từng soạn mấy đạo mật chỉ, cất trong Ngọc Đường cung. Xin năm vị Nội các Các lão đích thân tuyên chỉ!”</p>
+<p>Bà chìm trong đau thương quá lâu, mãi đến giờ mới nhớ ra việc này.</p>
+<p>Tần Các lão vành mắt đỏ hoe, khẽ thở dài:</p>
+<p>“Xin Ôn phi nương nương mang ra đi. Chúng thần nhất định sẽ tận tâm tận lực hoàn thành tâm nguyện của Tân Đế.”</p>
+<p>Ôn phi giơ tay:</p>
+<p>“Cô cô Lý.”</p>
+<p>Chẳng mấy chốc, Cô cô Lý bưng tới một chiếc hộp gấm. Bên ngoài hộp còn có giấy niêm phong, nhằm bảo đảm tính bí mật của vật chứa bên trong.</p>
+<p>Tần Các lão nhận lấy hộp gấm, mở ra trước mặt mọi người.</p>
+<p>Bên trong đặt bốn đạo mật chỉ.</p>
+<p>“Mật chỉ của Tân Đế!”</p>
+<p>Tất cả mọi người đồng loạt quỳ xuống nghe chỉ.</p>
+<p>Tần Các lão lấy ra một đạo, cất cao giọng đọc:</p>
+<p>“Trẫm tự biết bản thân không có tài trị quốc, khó gánh trọng trách. Vì lê dân bách tính, đặc biệt thiện nhượng hoàng vị cho Nhiếp chính vương, không được sai sót!”</p>
+<p>Mọi người đồng loạt biến sắc.</p>
+<p>“Cái gì?!”</p>
+<p>“Thiện nhượng hoàng vị cho Nhiếp chính vương?”</p>
+<p>“Khi Tân Đế còn sống, vậy mà đã viết sẵn loại thánh chỉ này? Chẳng lẽ ngài chết oan? Hay là… trận đại hỏa ở Chiêu Lan điện có liên quan đến Nhiếp chính vương…”</p>
+<p>Một thuyết âm mưu khổng lồ dần dần hình thành.</p>
+<p>Nhiếp chính vương vì đoạt quyền, trước ép Tân Đế viết hạ đạo thánh chỉ này, sau lại phóng hỏa thiêu chết Tân Đế, từ đó đoạt lấy đại quyền vào tay.</p>
+<p>Ôn phi lau nước mắt.</p>
+<p>Tuy trong lòng đau đớn vô cùng, nhưng bà vẫn nhớ tới lời dặn dò vô cùng trịnh trọng của Sở Ly lúc sinh tiền.</p>
+<p>Sau này, bất kể thời cuộc biến đổi thế nào, nhất định phải dốc toàn lực ủng hộ Nhiếp chính vương!</p>
+<p>Bà quỳ xuống đất trong nước mắt, nói:</p>
+<p>“Đây là bút tích đích thân Ly nhi viết. Từ sau khi chấp chính, Ly nhi đối với chính vụ chỗ nào cũng không thông hiểu, lực bất tòng tâm, khó lòng chống đỡ, bởi vậy mới thiện nhượng đế vị cho Nhiếp chính vương.”</p>
+<p>“Bổn cung cùng Ôn gia, xin cẩn tuân ý chỉ của Tân Đế!”</p>
+<p>Ôn gia là kẻ đầu tiên quy thuận.</p>
+<p>Ngay sau đó cũng có bảy, tám vị quan lĩnh chỉ quy thuận. Thế nhưng, đại đa số vẫn ôm thái độ không cam lòng.</p>
+<p>Cho dù Ôn phi nương nương đứng về phía Nhiếp chính vương, bọn họ vẫn không chịu phục, chất vấn:</p>
+<p>“Đạo mật chỉ này… lại viết bằng bạch thoại? Từ xưa đến nay, có vị Hoàng đế nào dùng lời lẽ bình dân để viết thánh chỉ?”</p>
+<p>Mật chỉ này nhất định là giả!</p>
+<p>Khương Thái phó vừa lau nước mắt vừa đáp:</p>
+<p>“Trương đại nhân, Cửu Hoàng tử học vấn không cao, có thể viết rõ ràng thánh chỉ như vậy đã rất khá rồi.”</p>
+<p>“…”</p>
+<p>Cửu Hoàng tử… không có văn hóa.</p>
+<p>Tần Các lão lại cầm lên đạo mật chỉ thứ hai.</p>
+<p>Bên trên ghi việc điều động ba vị võ tướng của Ôn gia, cùng ý chỉ che chở Ôn gia.</p>
+<p>Đạo mật chỉ thứ ba là để bảo hộ Ôn phi, cùng sự an bài đối với Tướng quân phủ.</p>
+<p>Đạo mật chỉ thứ tư là dành cho Bát Hoàng tử.</p>
+<p>Tần Các lão đọc:</p>
+<p>“Trẫm cùng Bát Hoàng huynh từ nhỏ thân như thủ túc. Nghĩ Bát Hoàng huynh tâm tính thuần hậu, phẩm đức đoan chính, đặc biệt sắc phong làm Nhàn Vương, ban Tây Vân, La Lan, Thanh Hà thành làm phong địa, hưởng bổng lộc nghìn vàng, thế tập năm đời. Các đời quân vương về sau không được lấy bất cứ lý do gì thu hồi phong địa cùng tước hiệu, không được sai sót.”</p>
+<p>Sở Ngạo Thiên trợn tròn hai mắt, không dám tin.</p>
+<p>Cửu đệ…</p>
+<p>Cửu đệ vậy mà sắc phong hắn làm Nhàn Vương.</p>
+<p>Trong lòng Cửu đệ… lại luôn nhớ đến hắn như vậy!</p>
+<p>“Cửu đệ!”</p>
+<p>Sở Ngạo Thiên nước mắt như mưa, bật dậy lao thẳng về phía Ngọc Đường cung, quyết phải ôm lấy thi cốt của Cửu đệ, tự tay an táng.</p>
+<p>Tần Các lão vội nhắc:</p>
+<p>“Bát… à không, Nhàn Vương điện hạ, thánh chỉ…”</p>
+<p>“Thánh chỉ của ta… không! Cửu đệ! Thánh chỉ… Cửu đệ… Thánh chỉ…” Sở Ngạo Thiên lắc đầu qua trái rồi lại qua phải, lúc chạy sang trái, lúc lại quay sang phải, cái đầu lắc như trống bỏi.</p>
+<p>Cuối cùng, hắn vẫn mặc kệ cái thánh chỉ chết tiệt kia, vừa khóc vừa chạy vào Ngọc Đường cung:</p>
+<p>“Cửu đệ!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_125.html" class="btn">‹ Trước</a>
             <a href="chuong_127.html" class="btn">Sau ›</a>
         </div>
@@ -222,15 +230,11 @@ Cuối cùng, hắn vẫn mặc kệ cái thánh chỉ chết tiệt kia, vừa 
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -242,11 +246,11 @@ Cuối cùng, hắn vẫn mặc kệ cái thánh chỉ chết tiệt kia, vừa 
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

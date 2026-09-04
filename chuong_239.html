@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 239</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,160 +62,169 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 239</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_238.html" class="btn">‹ Trước</a>
             <a href="chuong_240.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 239: Da mặt ngươi mỏng, nhất định không làm nổi chuyện này
-San Hô Thủy Tạ.
-Tư uyển rộng lớn xa hoa, còn hơn cả Lâm Hồ Tiểu Trúc ở Giang Nam gấp năm lần. Hơn nữa, xung quanh đều đã dời sạch hàng xóm, cảnh trí thanh u, không còn những chuyện thị phi láng giềng. 
-Trên mảnh đất tấc đất tấc vàng của Đế đô, giá trị của tòa tư uyển này cao đến mức người thường căn bản không dám tưởng tượng.
-“Kinh Ảnh, Trọng Phong, giúp Tạ tiểu thư chuyển đồ.”
-Sở Đệ Trì xuống ngựa.
-“Đều cẩn thận một chút, đừng để va đập hỏng mất.”
-“Tuân lệnh!”
-Trọng Phong tháo bội kiếm bên hông sang một bên, sải bước đến cạnh xe ngựa. Vừa đưa tay ra, hắn đã thấy một thị nữ thân hình mảnh mai vác bổng một chiếc rương gỗ lớn nặng trịch lên vai, vững vàng bước thẳng vào San Hô Thủy Tạ.
-Hắn trợn tròn mắt.
-Cái đó phải nặng đến mức nào?
-Ít nhất cũng năm mươi cân chứ?
-Vậy mà nàng ta lại một mình vác đi?
-“Lợi hại chứ?”
-Kinh Ảnh ghé sát thì thầm.
-“Nghe nói lần trước ở Giang Nam gặp hỏa hoạn, chính nàng ấy cầm dao phay bổ cửa sổ, cứu Tạ tiểu thư đó.”
-“Tên là Sơ Nhất.”
-“Là người rất được việc.”
-Ánh mắt kinh ngạc của Trọng Phong đuổi theo bóng nàng.
-Quả thật là một người rất được việc.
-Chuyển đồ thôi.
-Mọi người lần lượt khuân vác hành lý, còn Sở Đệ Trì thì dẫn Sở Ly vào Lan Đình Hiên, đưa nàng đến chỗ ở.
-“Tiểu Cửu, nàng ở đây.”
-“Ta nhớ... đây chẳng phải là sương phòng của người sao?”
-“Cho nàng mượn ở vài ngày.”
-Vậy hắn đúng là hào phóng thật.
-“Nếu còn thiếu thứ gì, cứ việc nói với ta.”
-“Đa tạ Hoàng thúc.”
-Qua hơn nửa canh giờ, Lan Đình Hiên vốn mang tông màu lạnh đã được lấp đầy bởi đủ loại vật dụng của nữ tử. Bàn trang điểm, tủ y phục, gấm vóc lụa là, châu báu trang sức, ngay cả rèm cửa cũng được thay bằng màu hồng tường vi. Cả San Hô Thủy Tạ như được thay da đổi thịt, tràn đầy sinh khí.
-Trong ao có Quy sư thúc.
-Trên cành hải đường treo chiếc lồng của Bạch Vũ Anh Vũ.
-Sở Đệ Trì vô cùng hài lòng nhìn cảnh tượng ấy, khẽ nheo mắt.
-Không tệ.
-“Chủ tử, Nhàn Vương điện hạ đã đến.”
-Ngoài viện, Kinh Ảnh bẩm báo.
-Sở Ly hơi ngạc nhiên.
-Bát hoàng huynh!
-“Đường xa xe ngựa mệt nhọc, lại còn nhiều đồ phải sắp xếp. Tiểu Cửu, nàng cứ nghỉ ngơi cho tốt trước. Đợi thân phận của nàng được định xong, ta sẽ sắp xếp để hai người gặp mặt.”
-Sở Ly biết hắn còn có công vụ phải xử lý, liền gật đầu đáp ứng.
-Sở Đệ Trì nhanh chóng rời đi.
-Ngoài đại môn.
-Sở Ngạo Thiên ngồi xe ngựa đến, trong mũi không ngừng hừ hừ đầy ấm ức.
-“Hoàng thúc, người ta đợi người ở Đông thành môn suốt hai canh giờ, sao Hoàng thúc lại từ Tây thành môn trở về mà cũng không báo cho con một tiếng.”
-Làm hại hắn chờ uổng.
-“Chẳng phải bản vương đã sai người đi báo cho ngươi rồi sao? Nếu không, ngươi sao có thể chỉ chờ hai canh giờ?”
-Chuyện này...
-Hình như cũng có lý.
-Hoàng thúc anh minh!
-Sở Đệ Trì lên xe ngựa.
-“Tình hình hiện tại thế nào?”
-Sở Ngạo Thiên bảo thị vệ đánh xe về hoàng cung, nghiêm túc nói chính sự:
-“Nội ưu ngoại hoạn!”
-“Ngũ hoàng huynh ở Mạc Hoài châu tự lập làm vương, còn quân Nam Man cũng đóng quân tại đó. Trên triều đình, các hoàng huynh đều bắt nạt con, chẳng ai chịu nghe lời con, đặc biệt là Lục hoàng huynh!”
-“Huynh ấy mắng con là đồ phế vật, không xứng thống lĩnh bọn họ, càng không xứng dẫn dắt văn võ bá quan, còn nói…”
-“Bản vương đã trở về, bản vương muốn xem thử còn kẻ nào dám càn rỡ!”
-Lục hoàng tử, Sở Dực!
-Rất tốt.
-Chính hắn là kẻ đứng sau chống lưng cho Tri phủ Giang Nam, cấu kết với Đại hoàng tử Sở Uyên Trì, thậm chí còn phái người mưu đồ hủy hoại sự trong sạch của Sở Ly.
-Vậy thì bắt đầu từ hắn trước!
-Sở Ngạo Thiên há to miệng.
-“Không phải đâu, Hoàng thúc…”
-Điều hắn muốn nói là...
-Lục hoàng huynh mắng rất đúng.
-Hắn đúng là một tên phế vật!
-“Lần này hồi kinh, bản vương có mang về cho ngươi một món quà. Đó sẽ là thứ khiến ngươi kinh hỉ nhất, yêu thích nhất trong cả đời.”
-Hai mắt Sở Ngạo Thiên sáng lên.
-“Là gì vậy?”
-“Đợi ngươi học thông suốt Trị Quốc Sách, bản vương sẽ nói cho ngươi biết.”
-“A…”
-Hoàng thúc không phải đang lừa hắn đấy chứ?
-Sở Ngạo Thiên có chút không tin.
-Hắn nghi ngờ nhìn Hoàng thúc, đang định lên tiếng chất vấn vài câu thì lại thấy đôi mày kiếm của Hoàng thúc khẽ trầm xuống đầy uy nghiêm, sống lưng lập tức căng thẳng.
-Học!
-Lập tức học!
-Hoàng thúc là trưởng bối, sao có thể lừa gạt hậu bối được chứ!
-Bên phía San Hô Thủy Tạ.
-Kinh Ảnh và Trọng Phong đã giúp chuyển toàn bộ đồ đạc xong xuôi. Vì chỉ ở nhờ, Sở Ly không tiện động vào những vật dụng vốn có của Sở Đệ Trì, bèn giữ Trọng Phong lại, nhờ hắn sắp xếp chỗ ở cho sáu thị nữ, đồng thời giảng qua các quy củ.
-Trọng Phong vui vẻ nhận lời.
-“Các ngươi ở dãy sương phòng phía tây, tiện hầu hạ Tạ tiểu thư trong sinh hoạt hằng ngày... bên này là phòng bếp... nơi kia là thư phòng của Nhiếp Chính Vương, còn mật thất bên kia thì không được đến. Những nơi khác đều có thể tùy ý đi lại... hoa viên ở phía này...”
-“Đa tạ Trọng Phong đại nhân.”
-Sáu người lần lượt ghi nhớ.
-Trọng Phong gật đầu, nhìn thấy Sơ Nhất xắn tay áo đi ngang qua. Dáng vẻ nàng vẫn trầm ổn như cũ, đến cả vạt áo bị rách một mảng cũng không hề hay biết.
-Có lẽ là lúc trước khuân rương, vác đồ, vô ý bị móc rách.
-Hắn lui khỏi Lan Đình Hiên, nói với Kinh Ảnh đang chờ bên ngoài:
-“Chiếu theo kiểu y phục của thị nữ Nhiếp Chính Vương phủ, mua sáu bộ mới mang đến.”
-Kinh Ảnh hơi ngạc nhiên.
-“Chuyện này chẳng phải không đến lượt chúng ta bận tâm sao?”
-“Dù sao Tạ tiểu thư cũng đang ở San Hô Thủy Tạ, đây là địa bàn của chủ tử. Ăn mặc đồng bộ, chỉnh tề thì mới không làm mất thể diện của chủ tử.”
-Kinh Ảnh lập tức trầm ngâm.
-“Không ngờ ngươi lại cẩn thận như vậy, nói cũng có vài phần đạo lý. Ta đi mua ngay.”
-“Mua xong thì đưa cho ta, ta mang đi.”
-“Hả? Tại sao? Chẳng phải là ta mua sao?”
-Trọng Phong nghiêm mặt đáp:
-“Bạc của chúng ta đâu phải gió lớn thổi tới. Ta mang y phục qua, tiện thể tìm Tạ tiểu thư thanh toán lại tiền luôn. Da mặt ngươi mỏng, nhất định ngại làm chuyện như vậy.”
-Kinh Ảnh vỗ trán.
-“Đúng! Ta là người sĩ diện, vẫn là ngươi đi đưa thì thích hợp hơn.” Ẩn bớt</p>
+            <p>Chương 239: Da mặt ngươi mỏng, nhất định không làm nổi chuyện này</p>
+<p>San Hô Thủy Tạ.</p>
+<p>Tư uyển rộng lớn xa hoa, còn hơn cả Lâm Hồ Tiểu Trúc ở Giang Nam gấp năm lần. Hơn nữa, xung quanh đều đã dời sạch hàng xóm, cảnh trí thanh u, không còn những chuyện thị phi láng giềng.</p>
+<p>Trên mảnh đất tấc đất tấc vàng của Đế đô, giá trị của tòa tư uyển này cao đến mức người thường căn bản không dám tưởng tượng.</p>
+<p>“Kinh Ảnh, Trọng Phong, giúp Tạ tiểu thư chuyển đồ.”</p>
+<p>Sở Đệ Trì xuống ngựa.</p>
+<p>“Đều cẩn thận một chút, đừng để va đập hỏng mất.”</p>
+<p>“Tuân lệnh!”</p>
+<p>Trọng Phong tháo bội kiếm bên hông sang một bên, sải bước đến cạnh xe ngựa. Vừa đưa tay ra, hắn đã thấy một thị nữ thân hình mảnh mai vác bổng một chiếc rương gỗ lớn nặng trịch lên vai, vững vàng bước thẳng vào San Hô Thủy Tạ.</p>
+<p>Hắn trợn tròn mắt.</p>
+<p>Cái đó phải nặng đến mức nào?</p>
+<p>Ít nhất cũng năm mươi cân chứ?</p>
+<p>Vậy mà nàng ta lại một mình vác đi?</p>
+<p>“Lợi hại chứ?”</p>
+<p>Kinh Ảnh ghé sát thì thầm.</p>
+<p>“Nghe nói lần trước ở Giang Nam gặp hỏa hoạn, chính nàng ấy cầm dao phay bổ cửa sổ, cứu Tạ tiểu thư đó.”</p>
+<p>“Tên là Sơ Nhất.”</p>
+<p>“Là người rất được việc.”</p>
+<p>Ánh mắt kinh ngạc của Trọng Phong đuổi theo bóng nàng.</p>
+<p>Quả thật là một người rất được việc.</p>
+<p>Chuyển đồ thôi.</p>
+<p>Mọi người lần lượt khuân vác hành lý, còn Sở Đệ Trì thì dẫn Sở Ly vào Lan Đình Hiên, đưa nàng đến chỗ ở.</p>
+<p>“Tiểu Cửu, nàng ở đây.”</p>
+<p>“Ta nhớ... đây chẳng phải là sương phòng của người sao?”</p>
+<p>“Cho nàng mượn ở vài ngày.”</p>
+<p>Vậy hắn đúng là hào phóng thật.</p>
+<p>“Nếu còn thiếu thứ gì, cứ việc nói với ta.”</p>
+<p>“Đa tạ Hoàng thúc.”</p>
+<p>Qua hơn nửa canh giờ, Lan Đình Hiên vốn mang tông màu lạnh đã được lấp đầy bởi đủ loại vật dụng của nữ tử. Bàn trang điểm, tủ y phục, gấm vóc lụa là, châu báu trang sức, ngay cả rèm cửa cũng được thay bằng màu hồng tường vi. Cả San Hô Thủy Tạ như được thay da đổi thịt, tràn đầy sinh khí.</p>
+<p>Trong ao có Quy sư thúc.</p>
+<p>Trên cành hải đường treo chiếc lồng của Bạch Vũ Anh Vũ.</p>
+<p>Sở Đệ Trì vô cùng hài lòng nhìn cảnh tượng ấy, khẽ nheo mắt.</p>
+<p>Không tệ.</p>
+<p>“Chủ tử, Nhàn Vương điện hạ đã đến.”</p>
+<p>Ngoài viện, Kinh Ảnh bẩm báo.</p>
+<p>Sở Ly hơi ngạc nhiên.</p>
+<p>Bát hoàng huynh!</p>
+<p>“Đường xa xe ngựa mệt nhọc, lại còn nhiều đồ phải sắp xếp. Tiểu Cửu, nàng cứ nghỉ ngơi cho tốt trước. Đợi thân phận của nàng được định xong, ta sẽ sắp xếp để hai người gặp mặt.”</p>
+<p>Sở Ly biết hắn còn có công vụ phải xử lý, liền gật đầu đáp ứng.</p>
+<p>Sở Đệ Trì nhanh chóng rời đi.</p>
+<p>Ngoài đại môn.</p>
+<p>Sở Ngạo Thiên ngồi xe ngựa đến, trong mũi không ngừng hừ hừ đầy ấm ức.</p>
+<p>“Hoàng thúc, người ta đợi người ở Đông thành môn suốt hai canh giờ, sao Hoàng thúc lại từ Tây thành môn trở về mà cũng không báo cho con một tiếng.”</p>
+<p>Làm hại hắn chờ uổng.</p>
+<p>“Chẳng phải bản vương đã sai người đi báo cho ngươi rồi sao? Nếu không, ngươi sao có thể chỉ chờ hai canh giờ?”</p>
+<p>Chuyện này...</p>
+<p>Hình như cũng có lý.</p>
+<p>Hoàng thúc anh minh!</p>
+<p>Sở Đệ Trì lên xe ngựa.</p>
+<p>“Tình hình hiện tại thế nào?”</p>
+<p>Sở Ngạo Thiên bảo thị vệ đánh xe về hoàng cung, nghiêm túc nói chính sự:</p>
+<p>“Nội ưu ngoại hoạn!”</p>
+<p>“Ngũ hoàng huynh ở Mạc Hoài châu tự lập làm vương, còn quân Nam Man cũng đóng quân tại đó. Trên triều đình, các hoàng huynh đều bắt nạt con, chẳng ai chịu nghe lời con, đặc biệt là Lục hoàng huynh!”</p>
+<p>“Huynh ấy mắng con là đồ phế vật, không xứng thống lĩnh bọn họ, càng không xứng dẫn dắt văn võ bá quan, còn nói…”</p>
+<p>“Bản vương đã trở về, bản vương muốn xem thử còn kẻ nào dám càn rỡ!”</p>
+<p>Lục hoàng tử, Sở Dực!</p>
+<p>Rất tốt.</p>
+<p>Chính hắn là kẻ đứng sau chống lưng cho Tri phủ Giang Nam, cấu kết với Đại hoàng tử Sở Uyên Trì, thậm chí còn phái người mưu đồ hủy hoại sự trong sạch của Sở Ly.</p>
+<p>Vậy thì bắt đầu từ hắn trước!</p>
+<p>Sở Ngạo Thiên há to miệng.</p>
+<p>“Không phải đâu, Hoàng thúc…”</p>
+<p>Điều hắn muốn nói là...</p>
+<p>Lục hoàng huynh mắng rất đúng.</p>
+<p>Hắn đúng là một tên phế vật!</p>
+<p>“Lần này hồi kinh, bản vương có mang về cho ngươi một món quà. Đó sẽ là thứ khiến ngươi kinh hỉ nhất, yêu thích nhất trong cả đời.”</p>
+<p>Hai mắt Sở Ngạo Thiên sáng lên.</p>
+<p>“Là gì vậy?”</p>
+<p>“Đợi ngươi học thông suốt Trị Quốc Sách, bản vương sẽ nói cho ngươi biết.”</p>
+<p>“A…”</p>
+<p>Hoàng thúc không phải đang lừa hắn đấy chứ?</p>
+<p>Sở Ngạo Thiên có chút không tin.</p>
+<p>Hắn nghi ngờ nhìn Hoàng thúc, đang định lên tiếng chất vấn vài câu thì lại thấy đôi mày kiếm của Hoàng thúc khẽ trầm xuống đầy uy nghiêm, sống lưng lập tức căng thẳng.</p>
+<p>Học!</p>
+<p>Lập tức học!</p>
+<p>Hoàng thúc là trưởng bối, sao có thể lừa gạt hậu bối được chứ!</p>
+<p>Bên phía San Hô Thủy Tạ.</p>
+<p>Kinh Ảnh và Trọng Phong đã giúp chuyển toàn bộ đồ đạc xong xuôi. Vì chỉ ở nhờ, Sở Ly không tiện động vào những vật dụng vốn có của Sở Đệ Trì, bèn giữ Trọng Phong lại, nhờ hắn sắp xếp chỗ ở cho sáu thị nữ, đồng thời giảng qua các quy củ.</p>
+<p>Trọng Phong vui vẻ nhận lời.</p>
+<p>“Các ngươi ở dãy sương phòng phía tây, tiện hầu hạ Tạ tiểu thư trong sinh hoạt hằng ngày... bên này là phòng bếp... nơi kia là thư phòng của Nhiếp Chính Vương, còn mật thất bên kia thì không được đến. Những nơi khác đều có thể tùy ý đi lại... hoa viên ở phía này...”</p>
+<p>“Đa tạ Trọng Phong đại nhân.”</p>
+<p>Sáu người lần lượt ghi nhớ.</p>
+<p>Trọng Phong gật đầu, nhìn thấy Sơ Nhất xắn tay áo đi ngang qua. Dáng vẻ nàng vẫn trầm ổn như cũ, đến cả vạt áo bị rách một mảng cũng không hề hay biết.</p>
+<p>Có lẽ là lúc trước khuân rương, vác đồ, vô ý bị móc rách.</p>
+<p>Hắn lui khỏi Lan Đình Hiên, nói với Kinh Ảnh đang chờ bên ngoài:</p>
+<p>“Chiếu theo kiểu y phục của thị nữ Nhiếp Chính Vương phủ, mua sáu bộ mới mang đến.”</p>
+<p>Kinh Ảnh hơi ngạc nhiên.</p>
+<p>“Chuyện này chẳng phải không đến lượt chúng ta bận tâm sao?”</p>
+<p>“Dù sao Tạ tiểu thư cũng đang ở San Hô Thủy Tạ, đây là địa bàn của chủ tử. Ăn mặc đồng bộ, chỉnh tề thì mới không làm mất thể diện của chủ tử.”</p>
+<p>Kinh Ảnh lập tức trầm ngâm.</p>
+<p>“Không ngờ ngươi lại cẩn thận như vậy, nói cũng có vài phần đạo lý. Ta đi mua ngay.”</p>
+<p>“Mua xong thì đưa cho ta, ta mang đi.”</p>
+<p>“Hả? Tại sao? Chẳng phải là ta mua sao?”</p>
+<p>Trọng Phong nghiêm mặt đáp:</p>
+<p>“Bạc của chúng ta đâu phải gió lớn thổi tới. Ta mang y phục qua, tiện thể tìm Tạ tiểu thư thanh toán lại tiền luôn. Da mặt ngươi mỏng, nhất định ngại làm chuyện như vậy.”</p>
+<p>Kinh Ảnh vỗ trán.</p>
+<p>“Đúng! Ta là người sĩ diện, vẫn là ngươi đi đưa thì thích hợp hơn.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_238.html" class="btn">‹ Trước</a>
             <a href="chuong_240.html" class="btn">Sau ›</a>
         </div>
@@ -224,15 +232,11 @@ Kinh Ảnh vỗ trán.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -244,11 +248,11 @@ Kinh Ảnh vỗ trán.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

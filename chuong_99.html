@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 99</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,466 +62,475 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 99</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_98.html" class="btn">‹ Trước</a>
             <a href="chuong_100.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 99: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 99: Hai lần trước, ngài đều lừa bổn vương?
-Hắn đến để cầu tình.
-Đại hoàng tử và Lục hoàng tử cùng một mẹ sinh ra, Lục hoàng tử gặp chuyện, người sốt ruột nhất đương nhiên là Sở Uyên Trì.
-Chỉ là…
-Sở Ly kinh ngạc hỏi:
-“Đại hoàng huynh nói vậy là có ý gì? Sao đệ nghe không hiểu?”
-Sở Uyên Trì nhìn thiếu niên trước mặt.
-Vẫn như thường ngày, mày mắt ôn hòa, dung mạo tuấn mỹ, tính tình nhu thuận, dáng vẻ không tranh không giành, tựa như chẳng có chút nóng nảy nào.
-Nhưng những việc hắn làm ra lại khiến y vô cùng bất ngờ.
-Bao nhiêu năm nay thản nhiên đạm bạc…
-Chẳng lẽ đều là giả vờ?
-“Cửu đệ…”
-“Đại hoàng huynh, đệ biết huynh lo lắng cho Lục hoàng huynh, nhưng chuyện của huynh ấy quả thực không liên quan gì đến đệ.”
-Sở Ly vô tội giang hai tay.
-Bên cạnh, Cẩu Bát lập tức làm chứng:
-“Đại hoàng tử điện hạ, chủ tử nhà nô tài quả thật đã bắt tay giảng hòa với Lục hoàng tử, còn cung cung kính kính tiễn ngài ấy ra ngoài. Có phải trong chuyện này có hiểu lầm gì không?”
-“Nếu Đại hoàng tử chưa điều tra rõ ràng đã đến chất vấn chủ tử nhà nô tài, làm lạnh đi một phen thiện ý của chủ tử, sau này nếu lại xảy ra chuyện gì, e rằng chủ tử sẽ không còn dễ nói chuyện như vậy nữa.”
-Sở Uyên Trì mím môi.
-Chẳng lẽ không phải Sở Ly?
-Là người khác?
-Nhìn dáng vẻ đạm nhã như cúc của Sở Ly, y càng mím chặt đôi môi hơn.
-“Là ta quá nóng vội rồi. Cửu đệ, đừng để trong lòng.”
-“Không sao, Cẩu Bát, tiễn Đại hoàng tử.”
-“Vâng.”
-Sở Uyên Trì rời khỏi Chiêu Lan điện, ngoái đầu nhìn lại một lần, siết chặt lòng bàn tay hơi cong lại, gọi ám vệ tới, lệnh cho hắn điều tra kỹ.
-Không tra thì thôi.
-Vừa tra, lại phát hiện lúc Lục hoàng tử xuất cung từng gặp Nhị hoàng tử, hai người còn nói chuyện rất lâu.
-Trong lòng y dấy lên nghi hoặc.
-Nếu không phải Sở Ly tố giác với phụ hoàng…
-Lẽ nào…
-Là Nhị hoàng tử?
-—
-Chớp mắt đã đến ngày cử hành đại lễ Trùng Dương.
-Năm nay do Sở Ly chủ trì.
-Từ sớm nàng đã sắp xếp ổn thỏa mọi quy trình, dẫn theo hoàng thất cùng các đại thần từ tam phẩm trở lên đến hoàng lăng tế bái liệt tổ liệt tông.
-Cao tăng tụng kinh.
-Ni cô hộ pháp.
-Cài đầy cành thù du.
-Dâng rượu cúc tế lễ…
-Một chuỗi nghi thức dài dằng dặc, tất cả đều được nàng sắp xếp chu toàn cẩn thận.
-Các đại thần nhìn thấy đều âm thầm gật đầu, nhỏ giọng bàn tán:
-“Cửu hoàng tử lần đầu chủ trì đại lễ lớn như vậy mà lại làm chu toàn đến thế, thật sự vượt ngoài dự liệu của chúng ta.”
-“Cửu hoàng tử là người tâm tư cẩn trọng, trầm ổn, rất tốt.”
-“Đúng vậy…”
-Sở Hoàng bước lên bậc thềm cao, dâng hương tế tổ tiên.
-Nghi thức vừa dài vừa tẻ nhạt.
-Sở Đệ Trì đứng cách đó không xa, nhìn Sở Ly bận rộn không ngừng.
-Đối diện với trường hợp lớn như vậy, nàng qua lại chỉ huy, suy tính chu toàn, không kiêu không nịnh, cũng chẳng hề luống cuống.
-Trong mắt hắn hiện lên vẻ hài lòng.
-Giống như đang thưởng thức một tác phẩm nghệ thuật hoàn mỹ.
-Một tác phẩm nghệ thuật…
-Chỉ thuộc về riêng hắn.
-Suốt cả ngày.
-Cuối cùng cũng kết thúc.
-Xong rồi!
-Đêm xuống.
-Sở Ly cuối cùng cũng trút bỏ hết mệt mỏi, ngâm mình trong thùng nước tắm, thống thống khoái khoái tắm một trận.
-Việc triều chính quả thực quá mệt.
-Mọi chi tiết đều phải xử lý cẩn thận, nếu không sẽ bị người khác nắm lấy nhược điểm rồi vô hạn phóng đại.
-Ở chốn triều đình…
-Quả thật như đi trên băng mỏng.
-Cảm giác nơm nớp lo sợ, cẩn trọng từng bước này…
-Rốt cuộc nàng cũng đã nếm trải.
-“Xem chủ tử mệt kìa. Nếu việc thế này đến thêm vài lần nữa, e là sẽ khóc trời gọi đất mất.”
-Cẩu Bát xách thùng nước, đổ thêm nước nóng vào bồn.
-Sở Ly mệt đến mức mắt cũng chẳng mở nổi, tựa vào thành thùng, mơ màng muốn ngủ.
-“A Di Đà Phật, xin trời cao phù hộ, đừng giày vò ta nữa. Ta thật sự không muốn chủ trì mấy việc này thêm lần nào.”
-Cẩu Bát không nhịn được cười.
-“Hoàng thượng coi trọng người đấy. Hôm nay trước mặt bá quan văn võ, Hoàng thượng còn khen ngợi người.”
-Sở Ly chỉ muốn nằm yên hưởng thụ mà thôi.
-Có lẽ quá trình nằm yên sẽ rất gian nan.
-Nhưng chỉ cần cắn răng kiên trì…
-Sớm muộn gì cũng sẽ sống được cuộc đời mình mong muốn.
-“Ngươi lui xuống đi, tối nay không cần hầu hạ.”
-“Vâng.”
-Sở Ly duỗi người.
-Hơi nước ấm hun đỏ hai gò má.
-Ý thức mơ mơ màng màng.
-Không biết từ lúc nào…
-Nàng đã ngủ thiếp đi.
-Đến khi một đôi bàn tay hơi lạnh đặt lên eo nàng…
-Nàng đột nhiên tỉnh lại.
-Toàn thân giật thót.
-Mở mắt ra, liền nhìn thấy một bóng người lạnh lùng nghiêm nghị nhuốm màu đêm tối, xuất hiện bên cạnh mình một cách cực kỳ không đúng lúc.
-Nàng sợ hãi lặn cả người xuống nước.
-“Ngươi… ngươi sao lại ở…”
-Sở Đệ Trì thu lại đôi tay còn đẫm nước.
-“Nàng ngủ rồi. Nước đã lạnh.”
-Hắn vốn định bế nàng lên.
-Không ngờ vừa chạm vào nàng thì nàng đã tỉnh.
-Lúc này Sở Ly mới phát hiện thân thể mình đang ngâm trong nước lạnh.
-Ngoài cửa sổ.
-Đêm đã khuya.
-E rằng nàng đã ngủ ít nhất hơn một canh rưỡi.
-Nàng khẽ cắn môi dưới, hai tay cảnh giác che trước ngực.
-“Ta… tự mình đứng dậy.”
-“Ừ.”
-Đợi vài nhịp thở.
-Sao hắn vẫn đứng nguyên tại chỗ?
-“Hoàng thúc, ta phải mặc y phục rồi, xin ngài tránh mặt.”
-“Xa lạ như vậy sao?”
-Tuy nói thế.
-Nhưng Sở Đệ Trì cũng không cố ý làm khó nàng.
-Ngâm nước lạnh quá lâu sẽ hỏng mất thân thể.
-Thấy hắn đi ra gian ngoài, bị bình phong che khuất.
-Xác định tầm mắt đã hoàn toàn bị ngăn cách.
-Sở Ly mới vội vàng đứng dậy khỏi thùng tắm, bước ra ngoài.
-Nào ngờ…
-Sở Đệ Trì đứng bên ngoài.
-Ánh nến mờ tối vừa khéo hắt bóng Sở Ly lên bình phong.
-Đôi chân thon dài.
-Vòng eo mảnh khảnh.
-Đường cong uyển chuyển…
-Tất cả đều hiện rõ trên bình phong.
-Thu trọn vào đáy mắt nam nhân.
-Không sót một thứ gì.
-Ánh mắt hắn càng thêm sâu.
-Lại thấy nàng luống cuống ôm lấy y phục, vội vàng chỉnh trang bản thân.
-Chỉ hơn mười nhịp thở.
-Liền thấy nàng đội mái tóc rối như ổ gà chạy ra ngoài.
-Ánh mắt hắn hạ xuống.
-Là một đôi chân ngọc tròn đầy.
-Chân trần chạy trên mặt đất.
-Hắn bước về phía nàng.
-Trong lòng nàng căng thẳng, theo bản năng lùi lại.
-“Hoàng thúc, muộn thế này rồi, sao ngài lại ở… A!”
-Đột nhiên bị bế ngang người.
-Theo phản xạ bản năng, nàng lập tức ôm lấy cổ nam nhân, tránh để mình ngã xuống.
-Hắn vững vàng bế nàng.
-Đi đến giường.
-“Đương nhiên là vì nhớ nàng.”
-Đặt nàng lên giường.
-Hai cánh tay chống hai bên người nàng.
-Một nụ hôn nóng lòng không đợi nổi in xuống đôi môi phấn nộn.
-“Hoàng thúc… ưm!”
-Nàng nghiêng đầu né tránh.
-“Ta rất buồn ngủ… hôm nay đã mệt lắm rồi.”
-Sở Đệ Trì khẽ nâng cằm nàng.
-Nụ hôn dịu dàng dần dần trở nên sâu hơn.
-Cũng dần trở nên bá đạo.
-“Cứ nằm yên là được, không cần nàng động.”
-“Không… không được… ta… ta không tiện.”
-Sở Ly quay đầu né tránh, hai tay chống lên ngực hắn.
-“Hoàng thúc, ta thật sự không tiện!”
-“Không tiện chỗ nào?”
-“Ta… ta đến nguyệt sự rồi.”
-“?”
-Động tác của Sở Đệ Trì khựng lại.
-Hắn hơi ngẩng đầu lên.
-Khi hai người tách môi, nơi khóe môi còn kéo theo một sợi tơ bạc ám muội.
-Hơi thở nóng rực quấn lấy nhau.
-“Chẳng phải trước đó nàng vừa mới có sao?”
-Giọng hắn khàn thấp.
-Dục niệm khó nén.
-Giống như mãnh thú vừa thoát khỏi lồng.
-Sắp không kìm được nữa.
-Sở Ly nắm chặt y phục trước ngực.
-“Lần trước là lần trước, lần này là lần này. Ta thật sự đến nguyệt sự rồi.”
-Sở Đệ Trì bóp lấy gò má nàng.
-Giọng nói lạnh xuống.
-“Nàng coi bổn vương dễ lừa như vậy sao?”
-Lần trước nữa…
-Vì chuyện này mà hắn buông tha nàng.
-Lần trước…
-Cũng vì chuyện này.
-Hôm nay…
-Lại lấy cái cớ ấy ra qua loa với hắn.
-Thật đúng là cầm lông gà làm lệnh tiễn.
-Hiệu nghiệm đến vậy sao?
-Sở Ly trừng mắt nhìn hắn.
-“Ta nói đều là thật.”
-“Thật hay giả, bổn vương thử một chút là biết.”
-“Không… ưm!”
-Nàng vặn vẹo thân thể.
-Sức lực nhỏ bé như con cá chạch.
-Sao có thể là đối thủ của nam nhân?
-Hắn từng bước công thành chiếm đất.
-Chỉ là…
-Đến thời khắc cuối cùng.
-Khi nhìn thấy một vệt đỏ nhạt.
-Động tác của hắn bỗng khựng mạnh.
-Ánh mắt lúc ấy…
-Hận không thể nuốt sống Sở Ly.
-“Hai lần trước…
-Nàng đều lừa bổn vương?”
-Sở Ly co người lại.
-Ra sức giấu kín bản thân.
-“Lừa… lừa ngài cái gì?”
-Nam nhân nghiến răng ken két.
-“Nữ tử bình thường một tháng chỉ có nguyệt sự một lần.”
-“Nàng một tháng có đến ba lần.”
-“Chỉ có lần này là thật.”
-“Vậy chẳng phải chứng tỏ hai lần trước…
-Đều là nói dối sao?”
-Được.
-Rất được.
-Chính vì hắn quá tin nàng…
-Mới liên tiếp bị nàng lừa đến hai lần!
-Sở Ly chột dạ.
-Nhưng rất nhanh đã ngẩng cao cổ, hiên ngang chính nghĩa nói:
-“Ta không lừa ngài. Thể chất mỗi người khác nhau, nguyệt sự của ta vốn luôn rối loạn. Một tháng đến ba lần là chuyện bình thường.”
-Sở Đệ Trì cười dữ tợn.
-“Một tháng ba lần, mỗi lần bảy ngày.”
-“Sở Ly.”
-“Một tháng từ đầu tháng đến cuối tháng nàng đều có nguyệt sự.”
-“Nàng coi mình là túi máu sao?”
-“Hay là quái vật bất tử?”
-Sở Ly nghẹn họng.
-Hai lần trước…
-Quả thật là nàng nói dối.
-Nhưng…
-Thì đã sao?
-Chỉ cần nàng không thừa nhận…
-Hắn làm gì được nàng?
-Nàng nhất quyết không nhận.
-Đúng lúc thời kỳ đặc biệt.
-Sở Đệ Trì không làm gì được nàng.
-Nhưng dáng vẻ có chỗ dựa nên chẳng sợ ấy của nàng thực sự khiến hắn chướng mắt.
-Trong cơn tức giận.
-Hắn ép nàng xuống giường.
-Hung hăng hôn nàng một trận.
-Hôn đến mức nàng gần như không thở nổi.
-Hai gò má đỏ bừng.
-Đôi mắt ngấn nước.
-Hung hăng bắt nạt nàng một hồi.
-Trong lòng hắn lúc này mới dễ chịu hơn nhiều.
-Hắn vòng tay ôm lấy chiếc eo nhỏ của nàng.
-Kéo chăn đắp lên cả hai.
-Sở Ly chợt nhận ra điều gì, kinh ngạc hỏi:
-“Ngài định ngủ ở đây?”
-Hắn ôm eo nàng.
-Đôi chân dài mạnh mẽ kẹp lấy chân nàng.
-Giống như đang ôm một chiếc gối ôm hình người cỡ lớn.
-“Có gì không được?”
-“Nhưng ta đang có nguyệt sự, không thể…”
-Không thể đáp ứng hắn.
-Mà mỗi lần hắn tìm nàng…
-Chẳng phải đều vì chuyện đó sao?
-Sở Đệ Trì tựa cằm lên đỉnh đầu nàng, khẽ cọ cọ.
-Điều chỉnh sang một tư thế thoải mái.
-“Bụng có đau không?”
-Sở Ly ngẩn người.
-Hắn…
-Đang quan tâm nàng?
-Sao hắn lại quan tâm nàng?
-“Bổn vương hỏi nàng, ngủ rồi sao?”
-“Chưa…”
-Nàng khẽ cắn môi.
-Có chút không quen khi dựa vào lòng hắn.
-Hít thở mùi ô mộc trầm hương trên người hắn.
-Chỉ cảm thấy thanh lãnh mà bá đạo.
-“Không đau.”
-“Vết thương trên tay khá hơn chưa?”
-“Đã đóng vảy rồi, cũng không còn đau nữa.”
-“Chuyện của Lục hoàng tử, nàng làm rất tốt.”
-Cằm hắn khẽ cọ mái tóc mềm mại của nàng.
-Mùi u lan đặc trưng trên người nàng khiến hắn khó hiểu mà cảm thấy yên bình.
-“Không trực tiếp vạch trần hắn, mà mượn tay Nhị hoàng tử khiến bọn họ nghi kỵ lẫn nhau, tự sinh nội chiến.”
-“Hiện giờ Đại hoàng tử đã bắt đầu đề phòng Nhị hoàng tử.”
-Nhiều năm nay.
-Đại hoàng tử, Nhị hoàng tử và Lục hoàng tử luôn cùng một trận tuyến.
-Tiến cùng tiến.
-Lùi cùng lùi.
-Bây giờ nội chiến đã nổi lên.
-Thực lực suy yếu.
-Sau đó chỉ cần từng người đánh bại, căn bản không còn tạo thành uy hiếp.
-Sở Ly mím môi.
-Thật ra…
-Nàng vốn không có ý nhằm vào phe Đại hoàng tử.
-Hôm đó.
-Nàng thật sự không muốn so đo với Lục hoàng tử.
-Kết quả…
-Bọn họ tự đấu đá nội bộ.
-Việc đó đâu có liên quan đến nàng.
-“Tiếp theo… kéo Đại hoàng tử xuống.”
-Giọng nam nhân trầm thấp vang lên trong căn phòng tối tăm yên tĩnh.
-Khiến trái tim Sở Ly dần dần lạnh đi.
-Chuyện của Lục hoàng tử vừa kết thúc.
-Giờ…
-Đến lượt Đại hoàng tử.
-Mục đích của hắn không hề che giấu.
-Nàng…
-Là quân cờ hữu dụng nhất trong tay hắn.
-Sở Ly khẽ nói:
-“Đại hoàng huynh xưa nay ôn hậu nhân thiện, kết giao khắp nơi.”
-“Nàng rất thông minh.”
-“Biết phải ra tay từ nơi một người coi trọng nhất.”
-“Hắn càng ngụy trang hoàn mỹ bao nhiêu, càng phải xé bỏ chiếc mặt nạ ấy, mới có thể cho hắn một kích trí mạng.”
-Hắn hôn lên giữa trán nàng.
-Rất hài lòng mà khen ngợi nàng.
-Sở Ly khựng lại.
-“Ý ta là…”
-“Đại hoàng tử xưa nay ôn hậu nhân thiện, bất kể với bách tính hay quan viên đều rất tốt.”
-“Hoàng thúc… có thể tha cho huynh ấy không?”
-Sở Đệ Trì khựng lại.
-“Nàng đang cầu tình cho hắn?”
-Sở Ly chỉ là…
-Đã nghĩ đến đứa bé Sở Hoằng Diễm.
-Dù nàng không thích sự đen tối và tranh đấu trong hoàng thất.
-Nhưng mỗi lần nhớ đến dáng vẻ đứa bé quấn lấy nàng.
-Giọng non nớt gọi nàng:
-“Cửu hoàng thúc.”
-Trái tim nàng lại mềm đi không rõ vì sao.
-Tam hoàng tử bị nghi ngờ.
-Tứ hoàng tử bị đày ra biên cương.
-Ngũ hoàng tử tàn phế.
-Lục hoàng tử bị cấm túc.
-Thất hoàng tử bị giam lỏng.
-Nàng và Bát hoàng tử thì là hai kẻ vô chí chỉ biết ăn.
-Hiện giờ.
-Nhị hoàng tử cũng đã bị nghi kỵ.
-Trong số các hoàng tử…
-Chỉ còn lại Đại hoàng tử.
-Một khi Đại hoàng tử xảy ra chuyện.
-Dã tâm của Sở Đệ Trì sẽ hoàn toàn bại lộ.
-Chín vị hoàng tử…
-Lẽ nào hắn thật sự không định tha cho một ai?
-Hắn…
-Hận hoàng thất đến vậy sao?
-“Ta không cầu tình cho bất kỳ ai.”
-“Chỉ là nói sự thật.”
-“Đại hoàng huynh đối đãi mọi người ôn hòa nhân hậu, bách tính vô cùng yêu mến huynh ấy.”
-“Ta làm vậy cũng là vì bách tính.”
-Hoàng thất không thể loạn.
-Hoàng thất loạn.
-Xã tắc bất ổn.
-Lòng dân dao động.
-Mỗi lần triều đại thay đổi.
-Người chịu khổ chịu thiệt…
-Cuối cùng vẫn chỉ là lê dân bách tính.
-Sở Đệ Trì khẽ cười.
-“Xem ra…”
-“Thứ Đại hoàng tử lấy làm kiêu ngạo nhất.”
-“Chính là thanh danh ôn hậu nhân từ ấy.”
-“Nhưng…”
-“Hắn thật sự là một người ôn hậu nhân từ sao?”
-Trong giọng nói lạnh nhạt ấy.
-Lại mang theo vài phần mỉa mai.
-Rõ ràng còn ẩn chứa một tầng ý khác.
-Nhưng Sở Ly không hiểu.
-Trong ấn tượng của nàng.
-Đại hoàng tử quả thật là một người ôn hòa.
-Nàng thường xuyên đến phủ Đại hoàng tử chơi.
-Đại hoàng tử phi cũng vô cùng dịu dàng, lương thiện.
-Sở Đệ Trì không tiếp tục chủ đề này nữa.
-Ôm nàng đi ngủ.
-Sở Ly nằm trong lòng hắn.
-Toàn thân đều thấy không quen.
-Nàng dịch người.
-Lại xoay mình.
-Lại đổi tư thế.
-Đổi đến mấy lần.
-Vẫn không thể quen với việc yên bình nằm cạnh hắn như thế.
-Hắn đúng là đang hành hạ nàng.
-Muốn giết hay muốn chém…
-Cũng chẳng cho nàng một sự thống khoái.
-Nàng sẽ giống như các hoàng tử khác.
-Chỉ cần tạo thành uy hiếp với hắn.
-Sẽ bị nhổ bỏ.
-Nhưng nếu nàng ngồi chờ chết.
-Bó tay chịu trói.
-Thì chỉ có thể để hắn tùy ý sai khiến.
-Đường sống của nàng…
-Rốt cuộc ở nơi nào?
-Nghĩ ngợi miên man.
-Không biết từ lúc nào đã ngủ thiếp đi.
-Lúc tỉnh dậy.
-Mặt trời đã lên cao ba sào.
-Sở Đệ Trì từ lâu đã không còn ở đó.
-“Cẩu Bát!”
-“Chủ tử, người tỉnh rồi!”
-Ngoài cửa.
-Cẩu Bát chạy vội vào.
-“Mấy giờ rồi?”
-“Cuối giờ Tỵ.”
-Sở Ly vội vàng ngồi dậy.
-“Chẳng mấy chốc nữa là đến giờ Ngọ rồi. Sao không gọi ta?”
-Chết tiệt!
-Có Sở Đệ Trì ở bên cạnh.
-Sao nàng lại ngủ say như vậy?
-Chắc chắn là vì hôm qua bận rộn với đại lễ Trùng Dương.
-Mệt quá rồi.
-Cẩu Bát luống cuống hầu hạ nàng thay y phục.
-Lúng túng nói:
-“Trước đây chủ tử cũng thường ngủ đến khi mặt trời lên cao mà…”
-“Còn dám cãi?”
-“Nô tài biết sai.”
-Trong lòng Cẩu Bát tủi thân.
-Nhưng không dám nói.
-“Chủ tử.”
-“Ninh Quý nhân cầu kiến.”
-“Chỉ là Ôn phi nương nương biết người còn đang nghỉ ngơi nên bảo bà ấy chờ bên ngoài, không được quấy rầy.”
-Ninh Quý nhân là mẫu phi của Đại hoàng tử và Lục hoàng tử.
-Xuất thân không cao.
-Không có thế lực mẫu tộc chống lưng.
-Dù sinh được hai vị hoàng tử.
-Địa vị trong hậu cung vẫn không cao.
-“Đợi bao lâu rồi?”
-“Đã hơn một canh giờ.”
-Sở Ly đau đầu.
-Thật sự đau đầu! Ẩn bớt</p>
+            <p>Chương 99: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 99: Hai lần trước, ngài đều lừa bổn vương?</p>
+<p>Hắn đến để cầu tình.</p>
+<p>Đại hoàng tử và Lục hoàng tử cùng một mẹ sinh ra, Lục hoàng tử gặp chuyện, người sốt ruột nhất đương nhiên là Sở Uyên Trì.</p>
+<p>Chỉ là…</p>
+<p>Sở Ly kinh ngạc hỏi:</p>
+<p>“Đại hoàng huynh nói vậy là có ý gì? Sao đệ nghe không hiểu?”</p>
+<p>Sở Uyên Trì nhìn thiếu niên trước mặt.</p>
+<p>Vẫn như thường ngày, mày mắt ôn hòa, dung mạo tuấn mỹ, tính tình nhu thuận, dáng vẻ không tranh không giành, tựa như chẳng có chút nóng nảy nào.</p>
+<p>Nhưng những việc hắn làm ra lại khiến y vô cùng bất ngờ.</p>
+<p>Bao nhiêu năm nay thản nhiên đạm bạc…</p>
+<p>Chẳng lẽ đều là giả vờ?</p>
+<p>“Cửu đệ…”</p>
+<p>“Đại hoàng huynh, đệ biết huynh lo lắng cho Lục hoàng huynh, nhưng chuyện của huynh ấy quả thực không liên quan gì đến đệ.”</p>
+<p>Sở Ly vô tội giang hai tay.</p>
+<p>Bên cạnh, Cẩu Bát lập tức làm chứng:</p>
+<p>“Đại hoàng tử điện hạ, chủ tử nhà nô tài quả thật đã bắt tay giảng hòa với Lục hoàng tử, còn cung cung kính kính tiễn ngài ấy ra ngoài. Có phải trong chuyện này có hiểu lầm gì không?”</p>
+<p>“Nếu Đại hoàng tử chưa điều tra rõ ràng đã đến chất vấn chủ tử nhà nô tài, làm lạnh đi một phen thiện ý của chủ tử, sau này nếu lại xảy ra chuyện gì, e rằng chủ tử sẽ không còn dễ nói chuyện như vậy nữa.”</p>
+<p>Sở Uyên Trì mím môi.</p>
+<p>Chẳng lẽ không phải Sở Ly?</p>
+<p>Là người khác?</p>
+<p>Nhìn dáng vẻ đạm nhã như cúc của Sở Ly, y càng mím chặt đôi môi hơn.</p>
+<p>“Là ta quá nóng vội rồi. Cửu đệ, đừng để trong lòng.”</p>
+<p>“Không sao, Cẩu Bát, tiễn Đại hoàng tử.”</p>
+<p>“Vâng.”</p>
+<p>Sở Uyên Trì rời khỏi Chiêu Lan điện, ngoái đầu nhìn lại một lần, siết chặt lòng bàn tay hơi cong lại, gọi ám vệ tới, lệnh cho hắn điều tra kỹ.</p>
+<p>Không tra thì thôi.</p>
+<p>Vừa tra, lại phát hiện lúc Lục hoàng tử xuất cung từng gặp Nhị hoàng tử, hai người còn nói chuyện rất lâu.</p>
+<p>Trong lòng y dấy lên nghi hoặc.</p>
+<p>Nếu không phải Sở Ly tố giác với phụ hoàng…</p>
+<p>Lẽ nào…</p>
+<p>Là Nhị hoàng tử?</p>
+<p>—</p>
+<p>Chớp mắt đã đến ngày cử hành đại lễ Trùng Dương.</p>
+<p>Năm nay do Sở Ly chủ trì.</p>
+<p>Từ sớm nàng đã sắp xếp ổn thỏa mọi quy trình, dẫn theo hoàng thất cùng các đại thần từ tam phẩm trở lên đến hoàng lăng tế bái liệt tổ liệt tông.</p>
+<p>Cao tăng tụng kinh.</p>
+<p>Ni cô hộ pháp.</p>
+<p>Cài đầy cành thù du.</p>
+<p>Dâng rượu cúc tế lễ…</p>
+<p>Một chuỗi nghi thức dài dằng dặc, tất cả đều được nàng sắp xếp chu toàn cẩn thận.</p>
+<p>Các đại thần nhìn thấy đều âm thầm gật đầu, nhỏ giọng bàn tán:</p>
+<p>“Cửu hoàng tử lần đầu chủ trì đại lễ lớn như vậy mà lại làm chu toàn đến thế, thật sự vượt ngoài dự liệu của chúng ta.”</p>
+<p>“Cửu hoàng tử là người tâm tư cẩn trọng, trầm ổn, rất tốt.”</p>
+<p>“Đúng vậy…”</p>
+<p>Sở Hoàng bước lên bậc thềm cao, dâng hương tế tổ tiên.</p>
+<p>Nghi thức vừa dài vừa tẻ nhạt.</p>
+<p>Sở Đệ Trì đứng cách đó không xa, nhìn Sở Ly bận rộn không ngừng.</p>
+<p>Đối diện với trường hợp lớn như vậy, nàng qua lại chỉ huy, suy tính chu toàn, không kiêu không nịnh, cũng chẳng hề luống cuống.</p>
+<p>Trong mắt hắn hiện lên vẻ hài lòng.</p>
+<p>Giống như đang thưởng thức một tác phẩm nghệ thuật hoàn mỹ.</p>
+<p>Một tác phẩm nghệ thuật…</p>
+<p>Chỉ thuộc về riêng hắn.</p>
+<p>Suốt cả ngày.</p>
+<p>Cuối cùng cũng kết thúc.</p>
+<p>Xong rồi!</p>
+<p>Đêm xuống.</p>
+<p>Sở Ly cuối cùng cũng trút bỏ hết mệt mỏi, ngâm mình trong thùng nước tắm, thống thống khoái khoái tắm một trận.</p>
+<p>Việc triều chính quả thực quá mệt.</p>
+<p>Mọi chi tiết đều phải xử lý cẩn thận, nếu không sẽ bị người khác nắm lấy nhược điểm rồi vô hạn phóng đại.</p>
+<p>Ở chốn triều đình…</p>
+<p>Quả thật như đi trên băng mỏng.</p>
+<p>Cảm giác nơm nớp lo sợ, cẩn trọng từng bước này…</p>
+<p>Rốt cuộc nàng cũng đã nếm trải.</p>
+<p>“Xem chủ tử mệt kìa. Nếu việc thế này đến thêm vài lần nữa, e là sẽ khóc trời gọi đất mất.”</p>
+<p>Cẩu Bát xách thùng nước, đổ thêm nước nóng vào bồn.</p>
+<p>Sở Ly mệt đến mức mắt cũng chẳng mở nổi, tựa vào thành thùng, mơ màng muốn ngủ.</p>
+<p>“A Di Đà Phật, xin trời cao phù hộ, đừng giày vò ta nữa. Ta thật sự không muốn chủ trì mấy việc này thêm lần nào.”</p>
+<p>Cẩu Bát không nhịn được cười.</p>
+<p>“Hoàng thượng coi trọng người đấy. Hôm nay trước mặt bá quan văn võ, Hoàng thượng còn khen ngợi người.”</p>
+<p>Sở Ly chỉ muốn nằm yên hưởng thụ mà thôi.</p>
+<p>Có lẽ quá trình nằm yên sẽ rất gian nan.</p>
+<p>Nhưng chỉ cần cắn răng kiên trì…</p>
+<p>Sớm muộn gì cũng sẽ sống được cuộc đời mình mong muốn.</p>
+<p>“Ngươi lui xuống đi, tối nay không cần hầu hạ.”</p>
+<p>“Vâng.”</p>
+<p>Sở Ly duỗi người.</p>
+<p>Hơi nước ấm hun đỏ hai gò má.</p>
+<p>Ý thức mơ mơ màng màng.</p>
+<p>Không biết từ lúc nào…</p>
+<p>Nàng đã ngủ thiếp đi.</p>
+<p>Đến khi một đôi bàn tay hơi lạnh đặt lên eo nàng…</p>
+<p>Nàng đột nhiên tỉnh lại.</p>
+<p>Toàn thân giật thót.</p>
+<p>Mở mắt ra, liền nhìn thấy một bóng người lạnh lùng nghiêm nghị nhuốm màu đêm tối, xuất hiện bên cạnh mình một cách cực kỳ không đúng lúc.</p>
+<p>Nàng sợ hãi lặn cả người xuống nước.</p>
+<p>“Ngươi… ngươi sao lại ở…”</p>
+<p>Sở Đệ Trì thu lại đôi tay còn đẫm nước.</p>
+<p>“Nàng ngủ rồi. Nước đã lạnh.”</p>
+<p>Hắn vốn định bế nàng lên.</p>
+<p>Không ngờ vừa chạm vào nàng thì nàng đã tỉnh.</p>
+<p>Lúc này Sở Ly mới phát hiện thân thể mình đang ngâm trong nước lạnh.</p>
+<p>Ngoài cửa sổ.</p>
+<p>Đêm đã khuya.</p>
+<p>E rằng nàng đã ngủ ít nhất hơn một canh rưỡi.</p>
+<p>Nàng khẽ cắn môi dưới, hai tay cảnh giác che trước ngực.</p>
+<p>“Ta… tự mình đứng dậy.”</p>
+<p>“Ừ.”</p>
+<p>Đợi vài nhịp thở.</p>
+<p>Sao hắn vẫn đứng nguyên tại chỗ?</p>
+<p>“Hoàng thúc, ta phải mặc y phục rồi, xin ngài tránh mặt.”</p>
+<p>“Xa lạ như vậy sao?”</p>
+<p>Tuy nói thế.</p>
+<p>Nhưng Sở Đệ Trì cũng không cố ý làm khó nàng.</p>
+<p>Ngâm nước lạnh quá lâu sẽ hỏng mất thân thể.</p>
+<p>Thấy hắn đi ra gian ngoài, bị bình phong che khuất.</p>
+<p>Xác định tầm mắt đã hoàn toàn bị ngăn cách.</p>
+<p>Sở Ly mới vội vàng đứng dậy khỏi thùng tắm, bước ra ngoài.</p>
+<p>Nào ngờ…</p>
+<p>Sở Đệ Trì đứng bên ngoài.</p>
+<p>Ánh nến mờ tối vừa khéo hắt bóng Sở Ly lên bình phong.</p>
+<p>Đôi chân thon dài.</p>
+<p>Vòng eo mảnh khảnh.</p>
+<p>Đường cong uyển chuyển…</p>
+<p>Tất cả đều hiện rõ trên bình phong.</p>
+<p>Thu trọn vào đáy mắt nam nhân.</p>
+<p>Không sót một thứ gì.</p>
+<p>Ánh mắt hắn càng thêm sâu.</p>
+<p>Lại thấy nàng luống cuống ôm lấy y phục, vội vàng chỉnh trang bản thân.</p>
+<p>Chỉ hơn mười nhịp thở.</p>
+<p>Liền thấy nàng đội mái tóc rối như ổ gà chạy ra ngoài.</p>
+<p>Ánh mắt hắn hạ xuống.</p>
+<p>Là một đôi chân ngọc tròn đầy.</p>
+<p>Chân trần chạy trên mặt đất.</p>
+<p>Hắn bước về phía nàng.</p>
+<p>Trong lòng nàng căng thẳng, theo bản năng lùi lại.</p>
+<p>“Hoàng thúc, muộn thế này rồi, sao ngài lại ở… A!”</p>
+<p>Đột nhiên bị bế ngang người.</p>
+<p>Theo phản xạ bản năng, nàng lập tức ôm lấy cổ nam nhân, tránh để mình ngã xuống.</p>
+<p>Hắn vững vàng bế nàng.</p>
+<p>Đi đến giường.</p>
+<p>“Đương nhiên là vì nhớ nàng.”</p>
+<p>Đặt nàng lên giường.</p>
+<p>Hai cánh tay chống hai bên người nàng.</p>
+<p>Một nụ hôn nóng lòng không đợi nổi in xuống đôi môi phấn nộn.</p>
+<p>“Hoàng thúc… ưm!”</p>
+<p>Nàng nghiêng đầu né tránh.</p>
+<p>“Ta rất buồn ngủ… hôm nay đã mệt lắm rồi.”</p>
+<p>Sở Đệ Trì khẽ nâng cằm nàng.</p>
+<p>Nụ hôn dịu dàng dần dần trở nên sâu hơn.</p>
+<p>Cũng dần trở nên bá đạo.</p>
+<p>“Cứ nằm yên là được, không cần nàng động.”</p>
+<p>“Không… không được… ta… ta không tiện.”</p>
+<p>Sở Ly quay đầu né tránh, hai tay chống lên ngực hắn.</p>
+<p>“Hoàng thúc, ta thật sự không tiện!”</p>
+<p>“Không tiện chỗ nào?”</p>
+<p>“Ta… ta đến nguyệt sự rồi.”</p>
+<p>“?”</p>
+<p>Động tác của Sở Đệ Trì khựng lại.</p>
+<p>Hắn hơi ngẩng đầu lên.</p>
+<p>Khi hai người tách môi, nơi khóe môi còn kéo theo một sợi tơ bạc ám muội.</p>
+<p>Hơi thở nóng rực quấn lấy nhau.</p>
+<p>“Chẳng phải trước đó nàng vừa mới có sao?”</p>
+<p>Giọng hắn khàn thấp.</p>
+<p>Dục niệm khó nén.</p>
+<p>Giống như mãnh thú vừa thoát khỏi lồng.</p>
+<p>Sắp không kìm được nữa.</p>
+<p>Sở Ly nắm chặt y phục trước ngực.</p>
+<p>“Lần trước là lần trước, lần này là lần này. Ta thật sự đến nguyệt sự rồi.”</p>
+<p>Sở Đệ Trì bóp lấy gò má nàng.</p>
+<p>Giọng nói lạnh xuống.</p>
+<p>“Nàng coi bổn vương dễ lừa như vậy sao?”</p>
+<p>Lần trước nữa…</p>
+<p>Vì chuyện này mà hắn buông tha nàng.</p>
+<p>Lần trước…</p>
+<p>Cũng vì chuyện này.</p>
+<p>Hôm nay…</p>
+<p>Lại lấy cái cớ ấy ra qua loa với hắn.</p>
+<p>Thật đúng là cầm lông gà làm lệnh tiễn.</p>
+<p>Hiệu nghiệm đến vậy sao?</p>
+<p>Sở Ly trừng mắt nhìn hắn.</p>
+<p>“Ta nói đều là thật.”</p>
+<p>“Thật hay giả, bổn vương thử một chút là biết.”</p>
+<p>“Không… ưm!”</p>
+<p>Nàng vặn vẹo thân thể.</p>
+<p>Sức lực nhỏ bé như con cá chạch.</p>
+<p>Sao có thể là đối thủ của nam nhân?</p>
+<p>Hắn từng bước công thành chiếm đất.</p>
+<p>Chỉ là…</p>
+<p>Đến thời khắc cuối cùng.</p>
+<p>Khi nhìn thấy một vệt đỏ nhạt.</p>
+<p>Động tác của hắn bỗng khựng mạnh.</p>
+<p>Ánh mắt lúc ấy…</p>
+<p>Hận không thể nuốt sống Sở Ly.</p>
+<p>“Hai lần trước…</p>
+<p>Nàng đều lừa bổn vương?”</p>
+<p>Sở Ly co người lại.</p>
+<p>Ra sức giấu kín bản thân.</p>
+<p>“Lừa… lừa ngài cái gì?”</p>
+<p>Nam nhân nghiến răng ken két.</p>
+<p>“Nữ tử bình thường một tháng chỉ có nguyệt sự một lần.”</p>
+<p>“Nàng một tháng có đến ba lần.”</p>
+<p>“Chỉ có lần này là thật.”</p>
+<p>“Vậy chẳng phải chứng tỏ hai lần trước…</p>
+<p>Đều là nói dối sao?”</p>
+<p>Được.</p>
+<p>Rất được.</p>
+<p>Chính vì hắn quá tin nàng…</p>
+<p>Mới liên tiếp bị nàng lừa đến hai lần!</p>
+<p>Sở Ly chột dạ.</p>
+<p>Nhưng rất nhanh đã ngẩng cao cổ, hiên ngang chính nghĩa nói:</p>
+<p>“Ta không lừa ngài. Thể chất mỗi người khác nhau, nguyệt sự của ta vốn luôn rối loạn. Một tháng đến ba lần là chuyện bình thường.”</p>
+<p>Sở Đệ Trì cười dữ tợn.</p>
+<p>“Một tháng ba lần, mỗi lần bảy ngày.”</p>
+<p>“Sở Ly.”</p>
+<p>“Một tháng từ đầu tháng đến cuối tháng nàng đều có nguyệt sự.”</p>
+<p>“Nàng coi mình là túi máu sao?”</p>
+<p>“Hay là quái vật bất tử?”</p>
+<p>Sở Ly nghẹn họng.</p>
+<p>Hai lần trước…</p>
+<p>Quả thật là nàng nói dối.</p>
+<p>Nhưng…</p>
+<p>Thì đã sao?</p>
+<p>Chỉ cần nàng không thừa nhận…</p>
+<p>Hắn làm gì được nàng?</p>
+<p>Nàng nhất quyết không nhận.</p>
+<p>Đúng lúc thời kỳ đặc biệt.</p>
+<p>Sở Đệ Trì không làm gì được nàng.</p>
+<p>Nhưng dáng vẻ có chỗ dựa nên chẳng sợ ấy của nàng thực sự khiến hắn chướng mắt.</p>
+<p>Trong cơn tức giận.</p>
+<p>Hắn ép nàng xuống giường.</p>
+<p>Hung hăng hôn nàng một trận.</p>
+<p>Hôn đến mức nàng gần như không thở nổi.</p>
+<p>Hai gò má đỏ bừng.</p>
+<p>Đôi mắt ngấn nước.</p>
+<p>Hung hăng bắt nạt nàng một hồi.</p>
+<p>Trong lòng hắn lúc này mới dễ chịu hơn nhiều.</p>
+<p>Hắn vòng tay ôm lấy chiếc eo nhỏ của nàng.</p>
+<p>Kéo chăn đắp lên cả hai.</p>
+<p>Sở Ly chợt nhận ra điều gì, kinh ngạc hỏi:</p>
+<p>“Ngài định ngủ ở đây?”</p>
+<p>Hắn ôm eo nàng.</p>
+<p>Đôi chân dài mạnh mẽ kẹp lấy chân nàng.</p>
+<p>Giống như đang ôm một chiếc gối ôm hình người cỡ lớn.</p>
+<p>“Có gì không được?”</p>
+<p>“Nhưng ta đang có nguyệt sự, không thể…”</p>
+<p>Không thể đáp ứng hắn.</p>
+<p>Mà mỗi lần hắn tìm nàng…</p>
+<p>Chẳng phải đều vì chuyện đó sao?</p>
+<p>Sở Đệ Trì tựa cằm lên đỉnh đầu nàng, khẽ cọ cọ.</p>
+<p>Điều chỉnh sang một tư thế thoải mái.</p>
+<p>“Bụng có đau không?”</p>
+<p>Sở Ly ngẩn người.</p>
+<p>Hắn…</p>
+<p>Đang quan tâm nàng?</p>
+<p>Sao hắn lại quan tâm nàng?</p>
+<p>“Bổn vương hỏi nàng, ngủ rồi sao?”</p>
+<p>“Chưa…”</p>
+<p>Nàng khẽ cắn môi.</p>
+<p>Có chút không quen khi dựa vào lòng hắn.</p>
+<p>Hít thở mùi ô mộc trầm hương trên người hắn.</p>
+<p>Chỉ cảm thấy thanh lãnh mà bá đạo.</p>
+<p>“Không đau.”</p>
+<p>“Vết thương trên tay khá hơn chưa?”</p>
+<p>“Đã đóng vảy rồi, cũng không còn đau nữa.”</p>
+<p>“Chuyện của Lục hoàng tử, nàng làm rất tốt.”</p>
+<p>Cằm hắn khẽ cọ mái tóc mềm mại của nàng.</p>
+<p>Mùi u lan đặc trưng trên người nàng khiến hắn khó hiểu mà cảm thấy yên bình.</p>
+<p>“Không trực tiếp vạch trần hắn, mà mượn tay Nhị hoàng tử khiến bọn họ nghi kỵ lẫn nhau, tự sinh nội chiến.”</p>
+<p>“Hiện giờ Đại hoàng tử đã bắt đầu đề phòng Nhị hoàng tử.”</p>
+<p>Nhiều năm nay.</p>
+<p>Đại hoàng tử, Nhị hoàng tử và Lục hoàng tử luôn cùng một trận tuyến.</p>
+<p>Tiến cùng tiến.</p>
+<p>Lùi cùng lùi.</p>
+<p>Bây giờ nội chiến đã nổi lên.</p>
+<p>Thực lực suy yếu.</p>
+<p>Sau đó chỉ cần từng người đánh bại, căn bản không còn tạo thành uy hiếp.</p>
+<p>Sở Ly mím môi.</p>
+<p>Thật ra…</p>
+<p>Nàng vốn không có ý nhằm vào phe Đại hoàng tử.</p>
+<p>Hôm đó.</p>
+<p>Nàng thật sự không muốn so đo với Lục hoàng tử.</p>
+<p>Kết quả…</p>
+<p>Bọn họ tự đấu đá nội bộ.</p>
+<p>Việc đó đâu có liên quan đến nàng.</p>
+<p>“Tiếp theo… kéo Đại hoàng tử xuống.”</p>
+<p>Giọng nam nhân trầm thấp vang lên trong căn phòng tối tăm yên tĩnh.</p>
+<p>Khiến trái tim Sở Ly dần dần lạnh đi.</p>
+<p>Chuyện của Lục hoàng tử vừa kết thúc.</p>
+<p>Giờ…</p>
+<p>Đến lượt Đại hoàng tử.</p>
+<p>Mục đích của hắn không hề che giấu.</p>
+<p>Nàng…</p>
+<p>Là quân cờ hữu dụng nhất trong tay hắn.</p>
+<p>Sở Ly khẽ nói:</p>
+<p>“Đại hoàng huynh xưa nay ôn hậu nhân thiện, kết giao khắp nơi.”</p>
+<p>“Nàng rất thông minh.”</p>
+<p>“Biết phải ra tay từ nơi một người coi trọng nhất.”</p>
+<p>“Hắn càng ngụy trang hoàn mỹ bao nhiêu, càng phải xé bỏ chiếc mặt nạ ấy, mới có thể cho hắn một kích trí mạng.”</p>
+<p>Hắn hôn lên giữa trán nàng.</p>
+<p>Rất hài lòng mà khen ngợi nàng.</p>
+<p>Sở Ly khựng lại.</p>
+<p>“Ý ta là…”</p>
+<p>“Đại hoàng tử xưa nay ôn hậu nhân thiện, bất kể với bách tính hay quan viên đều rất tốt.”</p>
+<p>“Hoàng thúc… có thể tha cho huynh ấy không?”</p>
+<p>Sở Đệ Trì khựng lại.</p>
+<p>“Nàng đang cầu tình cho hắn?”</p>
+<p>Sở Ly chỉ là…</p>
+<p>Đã nghĩ đến đứa bé Sở Hoằng Diễm.</p>
+<p>Dù nàng không thích sự đen tối và tranh đấu trong hoàng thất.</p>
+<p>Nhưng mỗi lần nhớ đến dáng vẻ đứa bé quấn lấy nàng.</p>
+<p>Giọng non nớt gọi nàng:</p>
+<p>“Cửu hoàng thúc.”</p>
+<p>Trái tim nàng lại mềm đi không rõ vì sao.</p>
+<p>Tam hoàng tử bị nghi ngờ.</p>
+<p>Tứ hoàng tử bị đày ra biên cương.</p>
+<p>Ngũ hoàng tử tàn phế.</p>
+<p>Lục hoàng tử bị cấm túc.</p>
+<p>Thất hoàng tử bị giam lỏng.</p>
+<p>Nàng và Bát hoàng tử thì là hai kẻ vô chí chỉ biết ăn.</p>
+<p>Hiện giờ.</p>
+<p>Nhị hoàng tử cũng đã bị nghi kỵ.</p>
+<p>Trong số các hoàng tử…</p>
+<p>Chỉ còn lại Đại hoàng tử.</p>
+<p>Một khi Đại hoàng tử xảy ra chuyện.</p>
+<p>Dã tâm của Sở Đệ Trì sẽ hoàn toàn bại lộ.</p>
+<p>Chín vị hoàng tử…</p>
+<p>Lẽ nào hắn thật sự không định tha cho một ai?</p>
+<p>Hắn…</p>
+<p>Hận hoàng thất đến vậy sao?</p>
+<p>“Ta không cầu tình cho bất kỳ ai.”</p>
+<p>“Chỉ là nói sự thật.”</p>
+<p>“Đại hoàng huynh đối đãi mọi người ôn hòa nhân hậu, bách tính vô cùng yêu mến huynh ấy.”</p>
+<p>“Ta làm vậy cũng là vì bách tính.”</p>
+<p>Hoàng thất không thể loạn.</p>
+<p>Hoàng thất loạn.</p>
+<p>Xã tắc bất ổn.</p>
+<p>Lòng dân dao động.</p>
+<p>Mỗi lần triều đại thay đổi.</p>
+<p>Người chịu khổ chịu thiệt…</p>
+<p>Cuối cùng vẫn chỉ là lê dân bách tính.</p>
+<p>Sở Đệ Trì khẽ cười.</p>
+<p>“Xem ra…”</p>
+<p>“Thứ Đại hoàng tử lấy làm kiêu ngạo nhất.”</p>
+<p>“Chính là thanh danh ôn hậu nhân từ ấy.”</p>
+<p>“Nhưng…”</p>
+<p>“Hắn thật sự là một người ôn hậu nhân từ sao?”</p>
+<p>Trong giọng nói lạnh nhạt ấy.</p>
+<p>Lại mang theo vài phần mỉa mai.</p>
+<p>Rõ ràng còn ẩn chứa một tầng ý khác.</p>
+<p>Nhưng Sở Ly không hiểu.</p>
+<p>Trong ấn tượng của nàng.</p>
+<p>Đại hoàng tử quả thật là một người ôn hòa.</p>
+<p>Nàng thường xuyên đến phủ Đại hoàng tử chơi.</p>
+<p>Đại hoàng tử phi cũng vô cùng dịu dàng, lương thiện.</p>
+<p>Sở Đệ Trì không tiếp tục chủ đề này nữa.</p>
+<p>Ôm nàng đi ngủ.</p>
+<p>Sở Ly nằm trong lòng hắn.</p>
+<p>Toàn thân đều thấy không quen.</p>
+<p>Nàng dịch người.</p>
+<p>Lại xoay mình.</p>
+<p>Lại đổi tư thế.</p>
+<p>Đổi đến mấy lần.</p>
+<p>Vẫn không thể quen với việc yên bình nằm cạnh hắn như thế.</p>
+<p>Hắn đúng là đang hành hạ nàng.</p>
+<p>Muốn giết hay muốn chém…</p>
+<p>Cũng chẳng cho nàng một sự thống khoái.</p>
+<p>Nàng sẽ giống như các hoàng tử khác.</p>
+<p>Chỉ cần tạo thành uy hiếp với hắn.</p>
+<p>Sẽ bị nhổ bỏ.</p>
+<p>Nhưng nếu nàng ngồi chờ chết.</p>
+<p>Bó tay chịu trói.</p>
+<p>Thì chỉ có thể để hắn tùy ý sai khiến.</p>
+<p>Đường sống của nàng…</p>
+<p>Rốt cuộc ở nơi nào?</p>
+<p>Nghĩ ngợi miên man.</p>
+<p>Không biết từ lúc nào đã ngủ thiếp đi.</p>
+<p>Lúc tỉnh dậy.</p>
+<p>Mặt trời đã lên cao ba sào.</p>
+<p>Sở Đệ Trì từ lâu đã không còn ở đó.</p>
+<p>“Cẩu Bát!”</p>
+<p>“Chủ tử, người tỉnh rồi!”</p>
+<p>Ngoài cửa.</p>
+<p>Cẩu Bát chạy vội vào.</p>
+<p>“Mấy giờ rồi?”</p>
+<p>“Cuối giờ Tỵ.”</p>
+<p>Sở Ly vội vàng ngồi dậy.</p>
+<p>“Chẳng mấy chốc nữa là đến giờ Ngọ rồi. Sao không gọi ta?”</p>
+<p>Chết tiệt!</p>
+<p>Có Sở Đệ Trì ở bên cạnh.</p>
+<p>Sao nàng lại ngủ say như vậy?</p>
+<p>Chắc chắn là vì hôm qua bận rộn với đại lễ Trùng Dương.</p>
+<p>Mệt quá rồi.</p>
+<p>Cẩu Bát luống cuống hầu hạ nàng thay y phục.</p>
+<p>Lúng túng nói:</p>
+<p>“Trước đây chủ tử cũng thường ngủ đến khi mặt trời lên cao mà…”</p>
+<p>“Còn dám cãi?”</p>
+<p>“Nô tài biết sai.”</p>
+<p>Trong lòng Cẩu Bát tủi thân.</p>
+<p>Nhưng không dám nói.</p>
+<p>“Chủ tử.”</p>
+<p>“Ninh Quý nhân cầu kiến.”</p>
+<p>“Chỉ là Ôn phi nương nương biết người còn đang nghỉ ngơi nên bảo bà ấy chờ bên ngoài, không được quấy rầy.”</p>
+<p>Ninh Quý nhân là mẫu phi của Đại hoàng tử và Lục hoàng tử.</p>
+<p>Xuất thân không cao.</p>
+<p>Không có thế lực mẫu tộc chống lưng.</p>
+<p>Dù sinh được hai vị hoàng tử.</p>
+<p>Địa vị trong hậu cung vẫn không cao.</p>
+<p>“Đợi bao lâu rồi?”</p>
+<p>“Đã hơn một canh giờ.”</p>
+<p>Sở Ly đau đầu.</p>
+<p>Thật sự đau đầu! Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_98.html" class="btn">‹ Trước</a>
             <a href="chuong_100.html" class="btn">Sau ›</a>
         </div>
@@ -530,15 +538,11 @@ Thật sự đau đầu! Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -550,11 +554,11 @@ Thật sự đau đầu! Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 26</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,205 +62,214 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 26</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_25.html" class="btn">‹ Trước</a>
             <a href="chuong_27.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 26: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 26: [Ta cùng Hoàng thúc đồng tâm đồng đức]
-Sở Đệ Trì nâng chén rượu trong tay, khẽ nhếch môi cười:
-“Tiễn thuật của Cửu hoàng tử quả thực không tệ.”
-Lời này chẳng khác nào đổ thêm dầu vào lửa.
-Hai mắt Sở Cảnh Lân đỏ ngầu, vừa nhục nhã vừa phẫn nộ nhìn về phía Sở Ly.
-Rõ ràng con gấu nâu ấy là do hắn săn được!
-Ngoài miệng Sở Ly khiêm nhường, nhưng những việc nàng làm lại chẳng khác nào liên tiếp tát vào mặt hắn, khiến hắn không còn đường lui.
-Từ nhỏ đến lớn, hắn đã từng chịu qua nỗi nhục nào như thế?
-Bách quan đều thấp thỏm bất an.
-Sở Ly bị đẩy lên đầu sóng ngọn gió, lúc này dù có giải thích thế nào cũng vô ích. Nàng lập tức quỳ xuống:
-“Phụ hoàng, nhi thần ngu độn, đến giờ mới biết cây Hi Mộc Lưu Kim Cung này quả là chí bảo. Bất kỳ ai sở hữu nó cũng chẳng khác nào hổ mọc thêm cánh.”
-“Nếu không phải Thất hoàng huynh cho nhi thần mượn thưởng ngoạn, nhi thần tuyệt đối không thể bắn ra được một tiễn ấy.”
-Ý trong lời nói chính là: cây cung này quá mức tinh xảo tuyệt luân, hoàn toàn không liên quan gì tới bản thân nàng.
-Sở Hoàng nhìn nàng, nhất thời không lên tiếng.
-Đúng lúc ấy, một tên Ngự Lâm quân vội vàng chạy tới:
-“Khởi bẩm Hoàng thượng, đã tra rõ. Trong số con mồi có mấy con lợn rừng con bị bắn chết, con lợn rừng kia hẳn là vì báo thù cho đàn con mà tới.”
-Sở Hoàng mở miệng:
-“Thưởng!”
-“Thất hoàng tử đoạt được đầu trù, đáng được trọng thưởng. Cửu hoàng tử cứu giá có công, ban thưởng một hộp tiểu kim điều.”
-Nói xong, Sở Hoàng liếc nhìn Nhiếp Chính Vương đang ngồi phía dưới.
-Mũi tên vàng còn dính máu bị ném xuống đất, hắn xoay người rời đi.
-Mọi người đồng loạt quỳ xuống:
-“Hoàng thượng anh minh!”
-Sở Cảnh Lân hung hăng khoét Sở Ly một cái nhìn lạnh lẽo.
-Hắn sẽ không dễ dàng tha cho “hắn”.
-Tuyệt đối không!
-Thu săn kết thúc.
-Buổi tối sẽ mở yến tiệc lửa trại bên bờ sông, đem con mồi nướng lên, mọi người ngồi ngay trên đất, uống rượu ăn thịt, ca múa vui vẻ để tưởng nhớ những năm tháng gian khổ thuở khai quốc. Số con mồi còn lại sẽ được ban thưởng cho các đại thần.
-Đêm xuống.
-Lửa trại bập bùng.
-Ai nấy đều bận rộn với việc của mình.
-Nhưng giữa đám đông lại tồn tại một đề tài không ai dám công khai nhắc tới — đó chính là ngôi vị đầu trù của Thất hoàng tử, vốn không danh chính ngôn thuận.
-Tuy Cửu hoàng tử khiêm nhường, không tranh công đoạt danh, nhưng mũi tên cứu giá trong khoảnh khắc ngàn cân treo sợi tóc kia, mọi người còn chưa kịp phản ứng thì “hắn” đã một tiễn xuyên yết hầu, bắn chết lợn rừng.
-Còn đầu trù chân chính của cuộc thu săn năm nay là ai...
-Mọi người đều tự hiểu trong lòng, nhưng tuyệt đối không ai dám nói thêm nửa lời.
-Bên hồ dưới chân núi.
-Mặt nước dưới ánh trăng lấp lánh gợn sóng.
-Gió đêm mát mẻ nhẹ nhàng thổi qua, làm vài sợi tóc bên má Sở Ly khẽ lay động.
-Nàng một mình tìm tới nơi thanh tĩnh, nhìn mặt hồ, xoa xoa hai bên má đã đau nhức từ lâu, cả người gần như tê dại.
-“Haiz...”
-Rốt cuộc là tên khốn nào hại nàng?
-Lúc đó nàng đang ngắm nghía Hi Mộc Lưu Kim Cung, cảm thán trước hoa văn điêu khắc tinh mỹ cùng chất liệu thượng hạng của nó.
-Ngay cả dây cung cũng sắc bén như kiếm.
-Nàng chưa từng thấy cây cung nào tốt đến vậy.
-Không nhịn được liền kéo thử dây cung.
-Ai ngờ lại bị người ta âm thầm dùng nội lực đẩy một chưởng.
-Thế là mũi tên bay đi.
-Cũng khiến nàng trở thành mục tiêu của mọi người.
-Những ngày tháng sau này, e rằng sẽ chẳng còn được yên ổn nữa.
-Từ nhỏ đến lớn, nàng luôn hành sự khiêm nhường, không tranh không đoạt, tránh né mọi phiền phức, cẩn thận sinh tồn giữa hoàng thất bề ngoài hòa thuận nhưng thực chất đao quang kiếm ảnh.
-Không ngờ cuối cùng vẫn không được như ý.
-“Rốt cuộc là tên chó chết nào hãm hại ta?”
-“Chẳng lẽ là lão già đáng ghét kia?”
-Nàng đang trầm tư suy nghĩ.
-“Lão già đáng ghét nào?”
-“Chính là Sở Đệ...”
-Sở Ly vừa xoa má vừa quay đầu lại.
-Nhìn thấy bóng người mặc huyền y cao quý phía sau, nàng giật nảy mình.
-“Hoàng thúc!”
-Sở Đệ Trì chắp tay sau lưng bước tới:
-“Là ai?”
-Sở Ly há miệng.
-Lập tức câm nín.
-Nàng nghi ngờ chính là hắn.
-Dù sao người này từ trước đến nay chẳng có ý tốt gì, chỉ sợ thiên hạ chưa đủ loạn.
-Biết đâu chính là muốn mượn tay nàng gây nên nội đấu trong hoàng thất.
-Nhưng nàng nào dám nói thẳng trước mặt hắn?
-“Không... không có gì.”
-Sở Đệ Trì nhìn nàng:
-“Tiễn thuật tốt như vậy, chắc hẳn đã được chân truyền từ ba vị cữu cữu của ngươi. Vì sao vẫn luôn che giấu, không để người khác biết?”
-Sở Ly âm thầm nghiến răng.
-Không để ai biết còn bị Thất hoàng tử ghi hận.
-Nếu để người khác biết, sau này còn mong có ngày bình yên sao?
-“Hoàng thúc quá khen, chất nhi không dám nhận.”
-“Ngươi xứng đáng nhận.”
-Hắn nhàn nhạt nói:
-“Vốn dĩ năm nay bản vương cùng Đại hoàng tử và Tam hoàng tử đồng hạng nhất, là để nể mặt Hoàng đế.”
-“Ngươi vừa ra tay, khiến bản vương rơi xuống hạng hai.”
-“Xem ra những năm sau mỗi kỳ thu săn, bản vương cũng phải nể mặt Cửu hoàng tử ngươi vài phần rồi.”
-Sở Ly sợ hãi.
-Đây đâu phải lời khen?
-Ngay cả Hoàng thượng cũng không muốn dễ dàng đắc tội Nhiếp Chính Vương.
-Một tiểu bối như nàng sao dám nhận?
-Trên trán nàng lấm tấm mồ hôi lạnh:
-“Hoàng thúc nói quá lời. Thất hoàng huynh tiễn thuật tuyệt luân, chất nhi còn phải học hỏi huynh ấy nhiều.”
-“Đâu có, vẫn là Cửu hoàng tử được quân tâm ưu ái hơn, khiến bản vương phải nhìn bằng con mắt khác.”
-Sở Ly vội xua tay:
-“Không dám!”
-“Cửu hoàng tử tài năng xuất chúng, cứu giá có công, khiến Hoàng đế nở mày nở mặt. Không giống bản vương, dưới gối không có nhi nữ, chỉ biết hâm mộ mà thôi.”
-Mấy câu nói khó dò hỉ nộ ấy của Sở Đệ Trì suýt nữa khiến Sở Ly bật khóc.
-Nhiếp Chính Vương và Hoàng thượng vốn bất hòa.
-Mỗi năm thu săn đều minh thương ám tiễn.
-Nàng cứu giá có công, chẳng những tát vào mặt Thất hoàng tử, mà còn giáng một cái tát lên mặt Nhiếp Chính Vương.
-Ban đầu Sở Ly còn nghi ngờ chính Sở Đệ Trì hãm hại mình.
-Nhưng hiện tại xem ra, dường như không phải hắn.
-Vậy rốt cuộc là ai?
-Thật đáng ghét!
-Sở Ly gần như nghiến nát răng bạc:
-“Nói ra e rằng Hoàng thúc không tin, chất nhi là bị gian nhân hãm hại!”
-“Khi con lợn rừng kia lao ra, có một tên khốn âm thầm dùng nội lực đẩy ta một chưởng. Nếu không, ta nào dám cướp danh tiếng của Hoàng thúc?”
-Ánh mắt Sở Đệ Trì thoáng chốc lạnh đi.
-Tên khốn?
-“Cái tên trời đánh ấy chắc chắn không muốn thấy hoàng thất hòa thuận, cố ý gây chia rẽ. Nếu để ta bắt được hắn, nhất định sẽ...”
-“Nhất định sẽ thế nào?”
-Sở Ly siết chặt hai nắm tay, khớp ngón tay kêu răng rắc:
-“Lột da hắn! Rút gân hắn! Vặn đầu hắn xuống đá như quả cầu!”
-“Sau đó vo hắn thành một cục, bọc cám lại rồi quăng vào chảo dầu chiên vàng hai mặt!”
-“Vớt ra xong nhổ một bãi nước bọt, cuối cùng giẫm một cước nghiền nát!”
-Sở Đệ Trì bình tĩnh đến lạ:
-“Cửu hoàng tử thật có thủ đoạn.”
-Sở Ly theo bản năng lùi nửa bước:
-“Trừng trị gian nhân, chất nhi đương nhiên cùng Hoàng thúc đồng tâm đồng đức.”
-Sở Đệ Trì tiến thêm một bước:
-“Vậy ngươi đã tìm được người đó chưa?”
-Sở Ly ngửa người ra sau:
-“Ta... ta vẫn đang tìm.”
-“Hay là ngươi bịa chuyện?”
-“Hoàng thúc, những lời ta nói đều là thật!”
-“Thật sao?”
-“Ta nhất định sẽ lôi tên súc sinh ấy ra!”
-Sở Đệ Trì lại tiến thêm một bước.
-Thân hình cao lớn gần một trượng chín như hòa vào màn đêm, khí thế nặng nề đè ép xuống.
-“Súc sinh?”
-“Là... là tạp mao!”
-Sở Ly sợ hắn không tin, vội vàng khẳng định:
-“Hắn chính là một con vật! Ta nhất định sẽ tự tay giết hắn! Xin Hoàng thúc tin tưởng chất nhi... Hoàng thúc...”
-Ánh mắt hắn nhìn nàng bỗng trở nên âm u đến đáng sợ.
-Tựa như ẩn giấu vô số lưỡi đao, muốn lăng trì nàng ngay tại chỗ.
-Nàng run rẩy lùi lại:
-“Hoàng... Hoàng thúc... sao người lại nhìn ta như vậy... ta... a!”
-Lùi mấy bước, không cẩn thận giẫm hụt.
-Cả người ngã khỏi bãi cỏ ướt bên hồ, rơi thẳng xuống nước.
-Ùm!
-Nước bắn tung tóe.
-Đồng tử nàng co rút dữ dội, thân thể quẫy đạp, hoàn toàn không biết bơi.
-“Cứu... khụ khụ... cứu mạng...”
-Ục ục ục...
-Hai tay điên cuồng đập nước.
-Nước hồ lạnh buốt gần như muốn nuốt chửng nàng.
-“Hoàng thúc... khụ khụ... khụ...” Ẩn bớt</p>
+            <p>Chương 26: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 26: [Ta cùng Hoàng thúc đồng tâm đồng đức]</p>
+<p>Sở Đệ Trì nâng chén rượu trong tay, khẽ nhếch môi cười:</p>
+<p>“Tiễn thuật của Cửu hoàng tử quả thực không tệ.”</p>
+<p>Lời này chẳng khác nào đổ thêm dầu vào lửa.</p>
+<p>Hai mắt Sở Cảnh Lân đỏ ngầu, vừa nhục nhã vừa phẫn nộ nhìn về phía Sở Ly.</p>
+<p>Rõ ràng con gấu nâu ấy là do hắn săn được!</p>
+<p>Ngoài miệng Sở Ly khiêm nhường, nhưng những việc nàng làm lại chẳng khác nào liên tiếp tát vào mặt hắn, khiến hắn không còn đường lui.</p>
+<p>Từ nhỏ đến lớn, hắn đã từng chịu qua nỗi nhục nào như thế?</p>
+<p>Bách quan đều thấp thỏm bất an.</p>
+<p>Sở Ly bị đẩy lên đầu sóng ngọn gió, lúc này dù có giải thích thế nào cũng vô ích. Nàng lập tức quỳ xuống:</p>
+<p>“Phụ hoàng, nhi thần ngu độn, đến giờ mới biết cây Hi Mộc Lưu Kim Cung này quả là chí bảo. Bất kỳ ai sở hữu nó cũng chẳng khác nào hổ mọc thêm cánh.”</p>
+<p>“Nếu không phải Thất hoàng huynh cho nhi thần mượn thưởng ngoạn, nhi thần tuyệt đối không thể bắn ra được một tiễn ấy.”</p>
+<p>Ý trong lời nói chính là: cây cung này quá mức tinh xảo tuyệt luân, hoàn toàn không liên quan gì tới bản thân nàng.</p>
+<p>Sở Hoàng nhìn nàng, nhất thời không lên tiếng.</p>
+<p>Đúng lúc ấy, một tên Ngự Lâm quân vội vàng chạy tới:</p>
+<p>“Khởi bẩm Hoàng thượng, đã tra rõ. Trong số con mồi có mấy con lợn rừng con bị bắn chết, con lợn rừng kia hẳn là vì báo thù cho đàn con mà tới.”</p>
+<p>Sở Hoàng mở miệng:</p>
+<p>“Thưởng!”</p>
+<p>“Thất hoàng tử đoạt được đầu trù, đáng được trọng thưởng. Cửu hoàng tử cứu giá có công, ban thưởng một hộp tiểu kim điều.”</p>
+<p>Nói xong, Sở Hoàng liếc nhìn Nhiếp Chính Vương đang ngồi phía dưới.</p>
+<p>Mũi tên vàng còn dính máu bị ném xuống đất, hắn xoay người rời đi.</p>
+<p>Mọi người đồng loạt quỳ xuống:</p>
+<p>“Hoàng thượng anh minh!”</p>
+<p>Sở Cảnh Lân hung hăng khoét Sở Ly một cái nhìn lạnh lẽo.</p>
+<p>Hắn sẽ không dễ dàng tha cho “hắn”.</p>
+<p>Tuyệt đối không!</p>
+<p>Thu săn kết thúc.</p>
+<p>Buổi tối sẽ mở yến tiệc lửa trại bên bờ sông, đem con mồi nướng lên, mọi người ngồi ngay trên đất, uống rượu ăn thịt, ca múa vui vẻ để tưởng nhớ những năm tháng gian khổ thuở khai quốc. Số con mồi còn lại sẽ được ban thưởng cho các đại thần.</p>
+<p>Đêm xuống.</p>
+<p>Lửa trại bập bùng.</p>
+<p>Ai nấy đều bận rộn với việc của mình.</p>
+<p>Nhưng giữa đám đông lại tồn tại một đề tài không ai dám công khai nhắc tới — đó chính là ngôi vị đầu trù của Thất hoàng tử, vốn không danh chính ngôn thuận.</p>
+<p>Tuy Cửu hoàng tử khiêm nhường, không tranh công đoạt danh, nhưng mũi tên cứu giá trong khoảnh khắc ngàn cân treo sợi tóc kia, mọi người còn chưa kịp phản ứng thì “hắn” đã một tiễn xuyên yết hầu, bắn chết lợn rừng.</p>
+<p>Còn đầu trù chân chính của cuộc thu săn năm nay là ai...</p>
+<p>Mọi người đều tự hiểu trong lòng, nhưng tuyệt đối không ai dám nói thêm nửa lời.</p>
+<p>Bên hồ dưới chân núi.</p>
+<p>Mặt nước dưới ánh trăng lấp lánh gợn sóng.</p>
+<p>Gió đêm mát mẻ nhẹ nhàng thổi qua, làm vài sợi tóc bên má Sở Ly khẽ lay động.</p>
+<p>Nàng một mình tìm tới nơi thanh tĩnh, nhìn mặt hồ, xoa xoa hai bên má đã đau nhức từ lâu, cả người gần như tê dại.</p>
+<p>“Haiz...”</p>
+<p>Rốt cuộc là tên khốn nào hại nàng?</p>
+<p>Lúc đó nàng đang ngắm nghía Hi Mộc Lưu Kim Cung, cảm thán trước hoa văn điêu khắc tinh mỹ cùng chất liệu thượng hạng của nó.</p>
+<p>Ngay cả dây cung cũng sắc bén như kiếm.</p>
+<p>Nàng chưa từng thấy cây cung nào tốt đến vậy.</p>
+<p>Không nhịn được liền kéo thử dây cung.</p>
+<p>Ai ngờ lại bị người ta âm thầm dùng nội lực đẩy một chưởng.</p>
+<p>Thế là mũi tên bay đi.</p>
+<p>Cũng khiến nàng trở thành mục tiêu của mọi người.</p>
+<p>Những ngày tháng sau này, e rằng sẽ chẳng còn được yên ổn nữa.</p>
+<p>Từ nhỏ đến lớn, nàng luôn hành sự khiêm nhường, không tranh không đoạt, tránh né mọi phiền phức, cẩn thận sinh tồn giữa hoàng thất bề ngoài hòa thuận nhưng thực chất đao quang kiếm ảnh.</p>
+<p>Không ngờ cuối cùng vẫn không được như ý.</p>
+<p>“Rốt cuộc là tên chó chết nào hãm hại ta?”</p>
+<p>“Chẳng lẽ là lão già đáng ghét kia?”</p>
+<p>Nàng đang trầm tư suy nghĩ.</p>
+<p>“Lão già đáng ghét nào?”</p>
+<p>“Chính là Sở Đệ...”</p>
+<p>Sở Ly vừa xoa má vừa quay đầu lại.</p>
+<p>Nhìn thấy bóng người mặc huyền y cao quý phía sau, nàng giật nảy mình.</p>
+<p>“Hoàng thúc!”</p>
+<p>Sở Đệ Trì chắp tay sau lưng bước tới:</p>
+<p>“Là ai?”</p>
+<p>Sở Ly há miệng.</p>
+<p>Lập tức câm nín.</p>
+<p>Nàng nghi ngờ chính là hắn.</p>
+<p>Dù sao người này từ trước đến nay chẳng có ý tốt gì, chỉ sợ thiên hạ chưa đủ loạn.</p>
+<p>Biết đâu chính là muốn mượn tay nàng gây nên nội đấu trong hoàng thất.</p>
+<p>Nhưng nàng nào dám nói thẳng trước mặt hắn?</p>
+<p>“Không... không có gì.”</p>
+<p>Sở Đệ Trì nhìn nàng:</p>
+<p>“Tiễn thuật tốt như vậy, chắc hẳn đã được chân truyền từ ba vị cữu cữu của ngươi. Vì sao vẫn luôn che giấu, không để người khác biết?”</p>
+<p>Sở Ly âm thầm nghiến răng.</p>
+<p>Không để ai biết còn bị Thất hoàng tử ghi hận.</p>
+<p>Nếu để người khác biết, sau này còn mong có ngày bình yên sao?</p>
+<p>“Hoàng thúc quá khen, chất nhi không dám nhận.”</p>
+<p>“Ngươi xứng đáng nhận.”</p>
+<p>Hắn nhàn nhạt nói:</p>
+<p>“Vốn dĩ năm nay bản vương cùng Đại hoàng tử và Tam hoàng tử đồng hạng nhất, là để nể mặt Hoàng đế.”</p>
+<p>“Ngươi vừa ra tay, khiến bản vương rơi xuống hạng hai.”</p>
+<p>“Xem ra những năm sau mỗi kỳ thu săn, bản vương cũng phải nể mặt Cửu hoàng tử ngươi vài phần rồi.”</p>
+<p>Sở Ly sợ hãi.</p>
+<p>Đây đâu phải lời khen?</p>
+<p>Ngay cả Hoàng thượng cũng không muốn dễ dàng đắc tội Nhiếp Chính Vương.</p>
+<p>Một tiểu bối như nàng sao dám nhận?</p>
+<p>Trên trán nàng lấm tấm mồ hôi lạnh:</p>
+<p>“Hoàng thúc nói quá lời. Thất hoàng huynh tiễn thuật tuyệt luân, chất nhi còn phải học hỏi huynh ấy nhiều.”</p>
+<p>“Đâu có, vẫn là Cửu hoàng tử được quân tâm ưu ái hơn, khiến bản vương phải nhìn bằng con mắt khác.”</p>
+<p>Sở Ly vội xua tay:</p>
+<p>“Không dám!”</p>
+<p>“Cửu hoàng tử tài năng xuất chúng, cứu giá có công, khiến Hoàng đế nở mày nở mặt. Không giống bản vương, dưới gối không có nhi nữ, chỉ biết hâm mộ mà thôi.”</p>
+<p>Mấy câu nói khó dò hỉ nộ ấy của Sở Đệ Trì suýt nữa khiến Sở Ly bật khóc.</p>
+<p>Nhiếp Chính Vương và Hoàng thượng vốn bất hòa.</p>
+<p>Mỗi năm thu săn đều minh thương ám tiễn.</p>
+<p>Nàng cứu giá có công, chẳng những tát vào mặt Thất hoàng tử, mà còn giáng một cái tát lên mặt Nhiếp Chính Vương.</p>
+<p>Ban đầu Sở Ly còn nghi ngờ chính Sở Đệ Trì hãm hại mình.</p>
+<p>Nhưng hiện tại xem ra, dường như không phải hắn.</p>
+<p>Vậy rốt cuộc là ai?</p>
+<p>Thật đáng ghét!</p>
+<p>Sở Ly gần như nghiến nát răng bạc:</p>
+<p>“Nói ra e rằng Hoàng thúc không tin, chất nhi là bị gian nhân hãm hại!”</p>
+<p>“Khi con lợn rừng kia lao ra, có một tên khốn âm thầm dùng nội lực đẩy ta một chưởng. Nếu không, ta nào dám cướp danh tiếng của Hoàng thúc?”</p>
+<p>Ánh mắt Sở Đệ Trì thoáng chốc lạnh đi.</p>
+<p>Tên khốn?</p>
+<p>“Cái tên trời đánh ấy chắc chắn không muốn thấy hoàng thất hòa thuận, cố ý gây chia rẽ. Nếu để ta bắt được hắn, nhất định sẽ...”</p>
+<p>“Nhất định sẽ thế nào?”</p>
+<p>Sở Ly siết chặt hai nắm tay, khớp ngón tay kêu răng rắc:</p>
+<p>“Lột da hắn! Rút gân hắn! Vặn đầu hắn xuống đá như quả cầu!”</p>
+<p>“Sau đó vo hắn thành một cục, bọc cám lại rồi quăng vào chảo dầu chiên vàng hai mặt!”</p>
+<p>“Vớt ra xong nhổ một bãi nước bọt, cuối cùng giẫm một cước nghiền nát!”</p>
+<p>Sở Đệ Trì bình tĩnh đến lạ:</p>
+<p>“Cửu hoàng tử thật có thủ đoạn.”</p>
+<p>Sở Ly theo bản năng lùi nửa bước:</p>
+<p>“Trừng trị gian nhân, chất nhi đương nhiên cùng Hoàng thúc đồng tâm đồng đức.”</p>
+<p>Sở Đệ Trì tiến thêm một bước:</p>
+<p>“Vậy ngươi đã tìm được người đó chưa?”</p>
+<p>Sở Ly ngửa người ra sau:</p>
+<p>“Ta... ta vẫn đang tìm.”</p>
+<p>“Hay là ngươi bịa chuyện?”</p>
+<p>“Hoàng thúc, những lời ta nói đều là thật!”</p>
+<p>“Thật sao?”</p>
+<p>“Ta nhất định sẽ lôi tên súc sinh ấy ra!”</p>
+<p>Sở Đệ Trì lại tiến thêm một bước.</p>
+<p>Thân hình cao lớn gần một trượng chín như hòa vào màn đêm, khí thế nặng nề đè ép xuống.</p>
+<p>“Súc sinh?”</p>
+<p>“Là... là tạp mao!”</p>
+<p>Sở Ly sợ hắn không tin, vội vàng khẳng định:</p>
+<p>“Hắn chính là một con vật! Ta nhất định sẽ tự tay giết hắn! Xin Hoàng thúc tin tưởng chất nhi... Hoàng thúc...”</p>
+<p>Ánh mắt hắn nhìn nàng bỗng trở nên âm u đến đáng sợ.</p>
+<p>Tựa như ẩn giấu vô số lưỡi đao, muốn lăng trì nàng ngay tại chỗ.</p>
+<p>Nàng run rẩy lùi lại:</p>
+<p>“Hoàng... Hoàng thúc... sao người lại nhìn ta như vậy... ta... a!”</p>
+<p>Lùi mấy bước, không cẩn thận giẫm hụt.</p>
+<p>Cả người ngã khỏi bãi cỏ ướt bên hồ, rơi thẳng xuống nước.</p>
+<p>Ùm!</p>
+<p>Nước bắn tung tóe.</p>
+<p>Đồng tử nàng co rút dữ dội, thân thể quẫy đạp, hoàn toàn không biết bơi.</p>
+<p>“Cứu... khụ khụ... cứu mạng...”</p>
+<p>Ục ục ục...</p>
+<p>Hai tay điên cuồng đập nước.</p>
+<p>Nước hồ lạnh buốt gần như muốn nuốt chửng nàng.</p>
+<p>“Hoàng thúc... khụ khụ... khụ...” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_25.html" class="btn">‹ Trước</a>
             <a href="chuong_27.html" class="btn">Sau ›</a>
         </div>
@@ -269,15 +277,11 @@ Nước hồ lạnh buốt gần như muốn nuốt chửng nàng.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -289,11 +293,11 @@ Nước hồ lạnh buốt gần như muốn nuốt chửng nàng.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

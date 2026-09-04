@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 20</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,235 +62,244 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 20</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_19.html" class="btn">‹ Trước</a>
             <a href="chuong_22.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 20: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 20: [Ba người thành hổ, chín người ba hổ]
-Ngủ cùng Hoàng đế quả thực là chuyện hệ trọng bậc nhất.
-Trong hậu cung, nữ nhân nào chẳng vắt óc tìm cách tranh sủng, mong được quân vương ban mưa móc?
-Sáng hôm sau.
-Sở Ly gói một hộp điểm tâm tinh xảo từ Ngự Thư phòng, xuất cung tới phủ Đại Hoàng tử.
-Đại Hoàng tử phi bị sơn phỉ vây khốn suốt hai ngày một đêm, chuyện này nói ra cũng là điều mất mặt đối với hoàng thất.
-Ngoài những võ tướng tham gia cứu viện cùng người trong hoàng tộc, dân chúng bên ngoài hoàn toàn không biết nội tình.
-Nàng tới thăm Đại Hoàng tẩu và tiểu chất tử.
-Vừa bước vào hậu viện đã nghe thấy mấy vị thiếp thất đang thì thầm bàn tán:
-— Hoàng tử phi hôm trước cả đêm không về phủ, hôm qua điện hạ mới dẫn người đi cứu. Chẳng phải có nghĩa là Hoàng tử phi đã ở riêng với đám sơn phỉ suốt một đêm sao?
-— Sơn phỉ đều là đám nam nhân thô lỗ hung hãn. Hoàng tử phi lại dung mạo mỹ lệ, tính tình ôn nhu, chỉ sợ là...
-— Chuyện này gần như đã là sự thật rõ rành rành rồi. Vậy mà Hoàng tử phi vẫn như người không có việc gì. Sáng nay còn dẫn tiểu công tử ra chính sảnh dùng bữa.
-— Nhà mẹ đẻ nàng toàn là văn nhân, ai cũng bảo văn nhân cốt cách thanh cao. Không ngờ nàng lại mặt dày đến thế. Nếu là ta, e rằng đã tự vẫn từ lâu rồi.
-— Chuyện này tỷ không biết rồi. Người ta đã sinh cho điện hạ đích trưởng tử, thân phận và tiền đồ còn rộng mở lắm.
-Đại Hoàng tử phi Liễu Sương xuất thân từ Liễu gia.
-Liễu gia nhiều đời theo văn.
-Phụ thân là Ngự sử, thường hầu cận bên cạnh Hoàng thượng.
-Mẫu thân là ái nữ của Lễ bộ Thị lang.
-Xuất thân danh môn vọng tộc.
-Bởi vậy từ nhỏ nàng đã ôn nhu như nước, tựa một nghiên mực thượng hạng, hương thơm thanh nhã, yên hòa.
-Nhưng tính tình quá hiền lành như vậy lại khó lòng trấn áp được đám trắc phi, thiếp thất và hạ nhân trong phủ.
-Đại Hoàng tử là trưởng tử của Hoàng đế.
-Tuy là thứ xuất nhưng được Hoàng đế và nhiều lão thần ký thác kỳ vọng.
-Bởi vậy hậu viện có tới chín vị thê thiếp.
-Ba người thành hổ.
-Chín người thành ba con hổ.
-Tin đồn truyền từ người này sang người khác.
-Dần dần, cả phủ Đại Hoàng tử đều mặc nhiên cho rằng:
-Đại Hoàng tử phi bị sơn phỉ bắt đi suốt một đêm.
-Nàng chắc chắn đã thất thân!
-Một nữ nhân thất tiết, sao còn xứng làm Đại Hoàng tử phi?
-Nghe thấy những lời ấy, Sở Ly cố ý dậm chân thật mạnh.
-Mấy vị thiếp thất và nha hoàn giật bắn mình, vội quay đầu:
-— Cửu... tham kiến Cửu Hoàng tử!
-Sở Ly không có râu, mày mắt thanh tú, nụ cười ôn hòa:
-— Mấy vị thứ tẩu tẩu, ta đã đi tới đây một lúc rồi, sao còn giật mình như thế?
-— Chẳng lẽ vừa rồi đang ở sau lưng người khác mà nhai lưỡi thị phi, nên trong lòng chột dạ?
-Mấy người nghẹn họng.
-Cửu Hoàng tử rõ ràng đang ám chỉ các nàng là đám phụ nhân lắm điều.
-Nhưng Cửu Hoàng tử là hoàng tử được Thánh thượng sủng ái nhất.
-Mẫu phi nàng là Ôn phi.
-Ôn gia lại là công thần bình định loạn triều trước.
-Mấy vị cữu cữu đều là võ tướng.
-Mấy vị cữu mẫu cũng chẳng phải hạng khuê các yếu đuối.
-Ngoại tổ mẫu lại là ái nữ của một phú thương lừng danh.
-Bối cảnh như vậy, ai dám đắc tội?
-Sở Ly cười nói:
-— Bởi vậy mới thấy, nếu nói là sự thật thì sao phải sợ người khác nghe thấy?
-— Trừ phi cố ý bôi đen thị phi, đảo lộn trắng đen, mới có cảm giác chột dạ.
-— Các vị thứ tẩu tẩu thấy có đúng không?
-Cửu Hoàng tử đã lên tiếng dạy dỗ.
-Các nàng nào dám cãi lại?
-Ai nấy sắc mặt trắng bệch, miễn cưỡng cười:
-— Cửu Hoàng tử nói rất phải.
-Sở Ly liếc nhìn các nàng một cái.
-Không nói thêm gì nữa, đi thẳng vào hậu viện.
-Trước khi tới đây, quản gia đã báo trước.
-Tuy ngoại nam không được tùy tiện vào nội trạch, nhưng Cửu Hoàng tử là người trong hoàng tộc.
-Lại vừa mới quá tuổi thúc phát, vẫn còn nhỏ tuổi.
-Mọi lễ nghi đều chu toàn.
-Lan Đình các
-— Cửu Hoàng thúc!
-Tiểu Sở Hoằng Diễm ba tuổi nhìn thấy Sở Ly liền vui vẻ lao tới.
-Tóc trái đào xõa trên vai, dài vừa quá vai một chút, quệt đầy mặt Sở Ly.
-Tiểu gia hỏa ôm lấy nàng, vừa hôn vừa cọ.
-Hôn đến mức mặt nàng đầy nước miếng.
-Liễu Sương vội bế con trở lại:
-— Diễm nhi, không được vô lễ!
-Sở Hoằng Diễm mặt mũm mĩm như búp bê sứ, đáng yêu vô cùng:
-— Cửu Hoàng thúc thơm thơm mềm mềm giống mẫu phi.
-— Không giống phụ vương.
-— Mặt phụ vương toàn râu ria cứng ngắc, đâm mặt Diễm nhi đau lắm.
-Liễu Sương vội vàng nói:
-— Cửu đệ, Diễm nhi còn nhỏ, trẻ con nói năng không biết kiêng dè.
-Dùng hai chữ thơm và mềm để hình dung nam nhân vốn là lời xúc phạm.
-Nhưng Cửu Hoàng tử chỉ là tuổi còn nhỏ.
-Đợi thêm vài năm nữa trưởng thành, chắc chắn cũng sẽ cao lớn dũng mãnh như các vị hoàng tử khác, trở thành lương đống của Đại Sở.
-Sở Ly bật cười.
-Nàng véo nhẹ gò má mềm mại của tiểu chất tử.
-Rồi đưa hộp điểm tâm mang từ trong cung ra cho nha hoàn bên cạnh.
-— Quế hoa nhuyễn cao con thích nhất đấy, mang đi ăn đi.
-Thúy Vũ cười dẫn tiểu công tử tới bàn thấp bên kia.
-Liễu Sương mời Sở Ly ngồi xuống, dâng trà tiếp đãi chu đáo.
-Nhưng Sở Ly nhận ra dưới mắt nàng có quầng thâm nhàn nhạt.
-Tinh thần rõ ràng không được tốt.
-Chắc hẳn cũng đang bị những lời đồn đãi quấy nhiễu.
-Thực ra sau khi biết thân phận Đại Hoàng tử phi, đám sơn phỉ hiểu rằng mình đã phạm trọng tội nên không dám làm chuyện quá đáng.
-Bọn họ chỉ là những người bị quan huyện địa phương áp bức đến đường cùng.
-Chịu đủ oan khuất bất công nên mới bị ép lên núi làm giặc.
-Ai cũng có cha mẹ, có thê tử nhi nữ.
-Không phải hạng cùng hung cực ác.
-Thế nhưng lời đồn có thể giết người.
-Ngày nào cũng nghe những lời ấy, trong lòng Liễu Sương khó tránh khỏi sinh ra vết gai.
-Sở Ly lên tiếng:
-— Đại Hoàng huynh vì lo lắng cho Đại Hoàng tẩu, dù phải liều mạng cũng quyết cứu người trở về.
-— Tấm chân tình ấy khiến không biết bao người phải ngưỡng mộ.
-— Trên đường tới đây, ta nghe không ít lời chua ngoa.
-— Tiết trời đầu thu oi bức, nghe mấy lời chua chát ấy lại thấy khai vị vô cùng.
-Liễu Sương lập tức bật cười.
-Lời này vừa nhắc rõ Đại Hoàng tử và Đại Hoàng tử phi phu thê đồng tâm.
-Nếu còn ai tung tin đồn thất thiệt, Đại Hoàng tử chắc chắn sẽ không bỏ qua.
-Lại ngầm chỉ đám thiếp thất kia vì ghen ghét được sủng ái nên mới cố ý đặt điều.
-— Để Cửu đệ chê cười rồi.
-Sở Ly lắc đầu:
-— Chỉ là ta không hiểu.
-— Hôm đó trên đường hồi kinh, chẳng phải tẩu tẩu đi cùng Ôn Chỉ Tịch sao?
-— Vì sao lại đột nhiên bị sơn phỉ bắt đi?
-Nhắc tới chuyện hôm ấy, sắc mặt Liễu Sương hơi tái đi:
-— Hôm đó gần tối, trời mưa rất lớn.
-— Bánh xe đụng phải đá khiến xe ngựa lật nghiêng.
-— Chúng ta bị hất văng ra ngoài.
-— Sau đó đột nhiên xuất hiện một đám nam nhân mặc áo tơi.
-— Ôn tiểu thư bị đánh ngất.
-— Còn ta bị bắt đi.
-— Những chuyện sau đó thì ta không biết nữa.
-— Hạ nhân báo rằng Đại Lý tự đang điều tra.
-— Nhưng đám sơn phỉ chỉ nói vì mưa quá lớn, hoa mắt nhìn nhầm.
-— Chúng chỉ thấy một mình ta, không nhìn thấy Ôn tiểu thư.
-Nếu là cướp tiền hoặc cướp sắc.
-Không thể nào chỉ bắt Đại Hoàng tử phi mà bỏ qua Ôn Chỉ Tịch.
-Điều đó chứng tỏ.
-Đám sơn phỉ là nhắm thẳng vào Đại Hoàng tử phi.
-Nếu Đại Hoàng tử phi bị làm nhục.
-Đại Hoàng tử sẽ mất hết thể diện.
-Mang theo vết nhơ ấy, hắn sẽ đánh mất lòng dân cùng sự ủng hộ của triều thần.
-Con đường tranh đoạt ngôi vị cũng coi như chấm dứt.
-Bất kể kẻ chủ mưu là ai.
-Chỉ cần bớt đi một đối thủ tranh ngôi, các hoàng tử còn lại đều được lợi.
-Đối phương không dám động tới Ôn Chỉ Tịch.
-Chỉ có một khả năng:
-Không muốn đắc tội Ôn gia.
-Ôn gia nhiều đời là võ tướng.
-Nữ quyến lại kinh thương.
-Vừa có quyền, vừa có tiền.
-Lại còn có một Cửu Hoàng tử.
-Theo tính tình của Nhiếp Chính Vương.
-Muốn đối phó ai thì trực tiếp ra tay.
-Hà tất phải vòng vo như vậy?
-Nếu chuyện này không phải do hắn làm...
-Vậy rốt cuộc là ai?
-Chính sảnh
-— Đại ca, tra tới đâu rồi?
-Lục Hoàng tử quan tâm hỏi.
-Sở Uyên Trì mím môi, lắc đầu:
-— Đại Lý tự vẫn đang điều tra.
-Lục Hoàng tử tức giận:
-— Theo đệ thấy, nhất định là Nhiếp Chính Vương làm!
-— Hôm đó hắn cũng có mặt ở Thiên Linh tự.
-— Còn hại Cửu đệ ngã ngựa.
-— Dã tâm của hắn rõ như ban ngày.
-— Hắn muốn từng người từng người loại bỏ chúng ta, để tự mình lên làm Hoàng đế!
-— Đại ca tuyệt đối không thể bỏ qua cho hắn!
-Lục Hoàng tử và Đại Hoàng tử cùng một mẫu phi sinh ra.
-Năm nay mới mười chín tuổi.
-Tính tình thẳng thắn, nói chuyện cũng rất nóng nảy.
-Sở Uyên Trì bình thản nói:
-— Tiểu Lục, những lời này sau này đừng tùy tiện nói ra bên ngoài.
-— Không có chứng cứ.
-— Cẩn thận vách có tai.
-Lục Hoàng tử không phục:
-— Dựa vào cái gì phải sợ hắn?
-— Theo đệ thấy, đây rõ ràng là lỗi của phụ hoàng!
-— Vì sao người lại để Nhiếp Chính Vương phát triển đến mức cánh cứng lông đầy như hôm nay?
-— Nếu sớm giải quyết mối họa ấy, thì đã không...
-— Tiểu Lục!
-Sở Uyên Trì đột nhiên quát lớn.
-Giọng nói nghiêm khắc hiếm thấy.
-— Phụ hoàng và Nhiếp Chính Vương là huynh đệ ruột.
-— Chẳng lẽ sau này nếu ta may mắn đăng cơ...
-— Cũng phải trừ khử đệ hay sao? Ẩn bớt</p>
+            <p>Chương 20: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 20: [Ba người thành hổ, chín người ba hổ]</p>
+<p>Ngủ cùng Hoàng đế quả thực là chuyện hệ trọng bậc nhất.</p>
+<p>Trong hậu cung, nữ nhân nào chẳng vắt óc tìm cách tranh sủng, mong được quân vương ban mưa móc?</p>
+<p>Sáng hôm sau.</p>
+<p>Sở Ly gói một hộp điểm tâm tinh xảo từ Ngự Thư phòng, xuất cung tới phủ Đại Hoàng tử.</p>
+<p>Đại Hoàng tử phi bị sơn phỉ vây khốn suốt hai ngày một đêm, chuyện này nói ra cũng là điều mất mặt đối với hoàng thất.</p>
+<p>Ngoài những võ tướng tham gia cứu viện cùng người trong hoàng tộc, dân chúng bên ngoài hoàn toàn không biết nội tình.</p>
+<p>Nàng tới thăm Đại Hoàng tẩu và tiểu chất tử.</p>
+<p>Vừa bước vào hậu viện đã nghe thấy mấy vị thiếp thất đang thì thầm bàn tán:</p>
+<p>— Hoàng tử phi hôm trước cả đêm không về phủ, hôm qua điện hạ mới dẫn người đi cứu. Chẳng phải có nghĩa là Hoàng tử phi đã ở riêng với đám sơn phỉ suốt một đêm sao?</p>
+<p>— Sơn phỉ đều là đám nam nhân thô lỗ hung hãn. Hoàng tử phi lại dung mạo mỹ lệ, tính tình ôn nhu, chỉ sợ là...</p>
+<p>— Chuyện này gần như đã là sự thật rõ rành rành rồi. Vậy mà Hoàng tử phi vẫn như người không có việc gì. Sáng nay còn dẫn tiểu công tử ra chính sảnh dùng bữa.</p>
+<p>— Nhà mẹ đẻ nàng toàn là văn nhân, ai cũng bảo văn nhân cốt cách thanh cao. Không ngờ nàng lại mặt dày đến thế. Nếu là ta, e rằng đã tự vẫn từ lâu rồi.</p>
+<p>— Chuyện này tỷ không biết rồi. Người ta đã sinh cho điện hạ đích trưởng tử, thân phận và tiền đồ còn rộng mở lắm.</p>
+<p>Đại Hoàng tử phi Liễu Sương xuất thân từ Liễu gia.</p>
+<p>Liễu gia nhiều đời theo văn.</p>
+<p>Phụ thân là Ngự sử, thường hầu cận bên cạnh Hoàng thượng.</p>
+<p>Mẫu thân là ái nữ của Lễ bộ Thị lang.</p>
+<p>Xuất thân danh môn vọng tộc.</p>
+<p>Bởi vậy từ nhỏ nàng đã ôn nhu như nước, tựa một nghiên mực thượng hạng, hương thơm thanh nhã, yên hòa.</p>
+<p>Nhưng tính tình quá hiền lành như vậy lại khó lòng trấn áp được đám trắc phi, thiếp thất và hạ nhân trong phủ.</p>
+<p>Đại Hoàng tử là trưởng tử của Hoàng đế.</p>
+<p>Tuy là thứ xuất nhưng được Hoàng đế và nhiều lão thần ký thác kỳ vọng.</p>
+<p>Bởi vậy hậu viện có tới chín vị thê thiếp.</p>
+<p>Ba người thành hổ.</p>
+<p>Chín người thành ba con hổ.</p>
+<p>Tin đồn truyền từ người này sang người khác.</p>
+<p>Dần dần, cả phủ Đại Hoàng tử đều mặc nhiên cho rằng:</p>
+<p>Đại Hoàng tử phi bị sơn phỉ bắt đi suốt một đêm.</p>
+<p>Nàng chắc chắn đã thất thân!</p>
+<p>Một nữ nhân thất tiết, sao còn xứng làm Đại Hoàng tử phi?</p>
+<p>Nghe thấy những lời ấy, Sở Ly cố ý dậm chân thật mạnh.</p>
+<p>Mấy vị thiếp thất và nha hoàn giật bắn mình, vội quay đầu:</p>
+<p>— Cửu... tham kiến Cửu Hoàng tử!</p>
+<p>Sở Ly không có râu, mày mắt thanh tú, nụ cười ôn hòa:</p>
+<p>— Mấy vị thứ tẩu tẩu, ta đã đi tới đây một lúc rồi, sao còn giật mình như thế?</p>
+<p>— Chẳng lẽ vừa rồi đang ở sau lưng người khác mà nhai lưỡi thị phi, nên trong lòng chột dạ?</p>
+<p>Mấy người nghẹn họng.</p>
+<p>Cửu Hoàng tử rõ ràng đang ám chỉ các nàng là đám phụ nhân lắm điều.</p>
+<p>Nhưng Cửu Hoàng tử là hoàng tử được Thánh thượng sủng ái nhất.</p>
+<p>Mẫu phi nàng là Ôn phi.</p>
+<p>Ôn gia lại là công thần bình định loạn triều trước.</p>
+<p>Mấy vị cữu cữu đều là võ tướng.</p>
+<p>Mấy vị cữu mẫu cũng chẳng phải hạng khuê các yếu đuối.</p>
+<p>Ngoại tổ mẫu lại là ái nữ của một phú thương lừng danh.</p>
+<p>Bối cảnh như vậy, ai dám đắc tội?</p>
+<p>Sở Ly cười nói:</p>
+<p>— Bởi vậy mới thấy, nếu nói là sự thật thì sao phải sợ người khác nghe thấy?</p>
+<p>— Trừ phi cố ý bôi đen thị phi, đảo lộn trắng đen, mới có cảm giác chột dạ.</p>
+<p>— Các vị thứ tẩu tẩu thấy có đúng không?</p>
+<p>Cửu Hoàng tử đã lên tiếng dạy dỗ.</p>
+<p>Các nàng nào dám cãi lại?</p>
+<p>Ai nấy sắc mặt trắng bệch, miễn cưỡng cười:</p>
+<p>— Cửu Hoàng tử nói rất phải.</p>
+<p>Sở Ly liếc nhìn các nàng một cái.</p>
+<p>Không nói thêm gì nữa, đi thẳng vào hậu viện.</p>
+<p>Trước khi tới đây, quản gia đã báo trước.</p>
+<p>Tuy ngoại nam không được tùy tiện vào nội trạch, nhưng Cửu Hoàng tử là người trong hoàng tộc.</p>
+<p>Lại vừa mới quá tuổi thúc phát, vẫn còn nhỏ tuổi.</p>
+<p>Mọi lễ nghi đều chu toàn.</p>
+<p>Lan Đình các</p>
+<p>— Cửu Hoàng thúc!</p>
+<p>Tiểu Sở Hoằng Diễm ba tuổi nhìn thấy Sở Ly liền vui vẻ lao tới.</p>
+<p>Tóc trái đào xõa trên vai, dài vừa quá vai một chút, quệt đầy mặt Sở Ly.</p>
+<p>Tiểu gia hỏa ôm lấy nàng, vừa hôn vừa cọ.</p>
+<p>Hôn đến mức mặt nàng đầy nước miếng.</p>
+<p>Liễu Sương vội bế con trở lại:</p>
+<p>— Diễm nhi, không được vô lễ!</p>
+<p>Sở Hoằng Diễm mặt mũm mĩm như búp bê sứ, đáng yêu vô cùng:</p>
+<p>— Cửu Hoàng thúc thơm thơm mềm mềm giống mẫu phi.</p>
+<p>— Không giống phụ vương.</p>
+<p>— Mặt phụ vương toàn râu ria cứng ngắc, đâm mặt Diễm nhi đau lắm.</p>
+<p>Liễu Sương vội vàng nói:</p>
+<p>— Cửu đệ, Diễm nhi còn nhỏ, trẻ con nói năng không biết kiêng dè.</p>
+<p>Dùng hai chữ thơm và mềm để hình dung nam nhân vốn là lời xúc phạm.</p>
+<p>Nhưng Cửu Hoàng tử chỉ là tuổi còn nhỏ.</p>
+<p>Đợi thêm vài năm nữa trưởng thành, chắc chắn cũng sẽ cao lớn dũng mãnh như các vị hoàng tử khác, trở thành lương đống của Đại Sở.</p>
+<p>Sở Ly bật cười.</p>
+<p>Nàng véo nhẹ gò má mềm mại của tiểu chất tử.</p>
+<p>Rồi đưa hộp điểm tâm mang từ trong cung ra cho nha hoàn bên cạnh.</p>
+<p>— Quế hoa nhuyễn cao con thích nhất đấy, mang đi ăn đi.</p>
+<p>Thúy Vũ cười dẫn tiểu công tử tới bàn thấp bên kia.</p>
+<p>Liễu Sương mời Sở Ly ngồi xuống, dâng trà tiếp đãi chu đáo.</p>
+<p>Nhưng Sở Ly nhận ra dưới mắt nàng có quầng thâm nhàn nhạt.</p>
+<p>Tinh thần rõ ràng không được tốt.</p>
+<p>Chắc hẳn cũng đang bị những lời đồn đãi quấy nhiễu.</p>
+<p>Thực ra sau khi biết thân phận Đại Hoàng tử phi, đám sơn phỉ hiểu rằng mình đã phạm trọng tội nên không dám làm chuyện quá đáng.</p>
+<p>Bọn họ chỉ là những người bị quan huyện địa phương áp bức đến đường cùng.</p>
+<p>Chịu đủ oan khuất bất công nên mới bị ép lên núi làm giặc.</p>
+<p>Ai cũng có cha mẹ, có thê tử nhi nữ.</p>
+<p>Không phải hạng cùng hung cực ác.</p>
+<p>Thế nhưng lời đồn có thể giết người.</p>
+<p>Ngày nào cũng nghe những lời ấy, trong lòng Liễu Sương khó tránh khỏi sinh ra vết gai.</p>
+<p>Sở Ly lên tiếng:</p>
+<p>— Đại Hoàng huynh vì lo lắng cho Đại Hoàng tẩu, dù phải liều mạng cũng quyết cứu người trở về.</p>
+<p>— Tấm chân tình ấy khiến không biết bao người phải ngưỡng mộ.</p>
+<p>— Trên đường tới đây, ta nghe không ít lời chua ngoa.</p>
+<p>— Tiết trời đầu thu oi bức, nghe mấy lời chua chát ấy lại thấy khai vị vô cùng.</p>
+<p>Liễu Sương lập tức bật cười.</p>
+<p>Lời này vừa nhắc rõ Đại Hoàng tử và Đại Hoàng tử phi phu thê đồng tâm.</p>
+<p>Nếu còn ai tung tin đồn thất thiệt, Đại Hoàng tử chắc chắn sẽ không bỏ qua.</p>
+<p>Lại ngầm chỉ đám thiếp thất kia vì ghen ghét được sủng ái nên mới cố ý đặt điều.</p>
+<p>— Để Cửu đệ chê cười rồi.</p>
+<p>Sở Ly lắc đầu:</p>
+<p>— Chỉ là ta không hiểu.</p>
+<p>— Hôm đó trên đường hồi kinh, chẳng phải tẩu tẩu đi cùng Ôn Chỉ Tịch sao?</p>
+<p>— Vì sao lại đột nhiên bị sơn phỉ bắt đi?</p>
+<p>Nhắc tới chuyện hôm ấy, sắc mặt Liễu Sương hơi tái đi:</p>
+<p>— Hôm đó gần tối, trời mưa rất lớn.</p>
+<p>— Bánh xe đụng phải đá khiến xe ngựa lật nghiêng.</p>
+<p>— Chúng ta bị hất văng ra ngoài.</p>
+<p>— Sau đó đột nhiên xuất hiện một đám nam nhân mặc áo tơi.</p>
+<p>— Ôn tiểu thư bị đánh ngất.</p>
+<p>— Còn ta bị bắt đi.</p>
+<p>— Những chuyện sau đó thì ta không biết nữa.</p>
+<p>— Hạ nhân báo rằng Đại Lý tự đang điều tra.</p>
+<p>— Nhưng đám sơn phỉ chỉ nói vì mưa quá lớn, hoa mắt nhìn nhầm.</p>
+<p>— Chúng chỉ thấy một mình ta, không nhìn thấy Ôn tiểu thư.</p>
+<p>Nếu là cướp tiền hoặc cướp sắc.</p>
+<p>Không thể nào chỉ bắt Đại Hoàng tử phi mà bỏ qua Ôn Chỉ Tịch.</p>
+<p>Điều đó chứng tỏ.</p>
+<p>Đám sơn phỉ là nhắm thẳng vào Đại Hoàng tử phi.</p>
+<p>Nếu Đại Hoàng tử phi bị làm nhục.</p>
+<p>Đại Hoàng tử sẽ mất hết thể diện.</p>
+<p>Mang theo vết nhơ ấy, hắn sẽ đánh mất lòng dân cùng sự ủng hộ của triều thần.</p>
+<p>Con đường tranh đoạt ngôi vị cũng coi như chấm dứt.</p>
+<p>Bất kể kẻ chủ mưu là ai.</p>
+<p>Chỉ cần bớt đi một đối thủ tranh ngôi, các hoàng tử còn lại đều được lợi.</p>
+<p>Đối phương không dám động tới Ôn Chỉ Tịch.</p>
+<p>Chỉ có một khả năng:</p>
+<p>Không muốn đắc tội Ôn gia.</p>
+<p>Ôn gia nhiều đời là võ tướng.</p>
+<p>Nữ quyến lại kinh thương.</p>
+<p>Vừa có quyền, vừa có tiền.</p>
+<p>Lại còn có một Cửu Hoàng tử.</p>
+<p>Theo tính tình của Nhiếp Chính Vương.</p>
+<p>Muốn đối phó ai thì trực tiếp ra tay.</p>
+<p>Hà tất phải vòng vo như vậy?</p>
+<p>Nếu chuyện này không phải do hắn làm...</p>
+<p>Vậy rốt cuộc là ai?</p>
+<p>Chính sảnh</p>
+<p>— Đại ca, tra tới đâu rồi?</p>
+<p>Lục Hoàng tử quan tâm hỏi.</p>
+<p>Sở Uyên Trì mím môi, lắc đầu:</p>
+<p>— Đại Lý tự vẫn đang điều tra.</p>
+<p>Lục Hoàng tử tức giận:</p>
+<p>— Theo đệ thấy, nhất định là Nhiếp Chính Vương làm!</p>
+<p>— Hôm đó hắn cũng có mặt ở Thiên Linh tự.</p>
+<p>— Còn hại Cửu đệ ngã ngựa.</p>
+<p>— Dã tâm của hắn rõ như ban ngày.</p>
+<p>— Hắn muốn từng người từng người loại bỏ chúng ta, để tự mình lên làm Hoàng đế!</p>
+<p>— Đại ca tuyệt đối không thể bỏ qua cho hắn!</p>
+<p>Lục Hoàng tử và Đại Hoàng tử cùng một mẫu phi sinh ra.</p>
+<p>Năm nay mới mười chín tuổi.</p>
+<p>Tính tình thẳng thắn, nói chuyện cũng rất nóng nảy.</p>
+<p>Sở Uyên Trì bình thản nói:</p>
+<p>— Tiểu Lục, những lời này sau này đừng tùy tiện nói ra bên ngoài.</p>
+<p>— Không có chứng cứ.</p>
+<p>— Cẩn thận vách có tai.</p>
+<p>Lục Hoàng tử không phục:</p>
+<p>— Dựa vào cái gì phải sợ hắn?</p>
+<p>— Theo đệ thấy, đây rõ ràng là lỗi của phụ hoàng!</p>
+<p>— Vì sao người lại để Nhiếp Chính Vương phát triển đến mức cánh cứng lông đầy như hôm nay?</p>
+<p>— Nếu sớm giải quyết mối họa ấy, thì đã không...</p>
+<p>— Tiểu Lục!</p>
+<p>Sở Uyên Trì đột nhiên quát lớn.</p>
+<p>Giọng nói nghiêm khắc hiếm thấy.</p>
+<p>— Phụ hoàng và Nhiếp Chính Vương là huynh đệ ruột.</p>
+<p>— Chẳng lẽ sau này nếu ta may mắn đăng cơ...</p>
+<p>— Cũng phải trừ khử đệ hay sao? Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_19.html" class="btn">‹ Trước</a>
             <a href="chuong_22.html" class="btn">Sau ›</a>
         </div>
@@ -299,15 +307,11 @@ Giọng nói nghiêm khắc hiếm thấy.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -319,11 +323,11 @@ Giọng nói nghiêm khắc hiếm thấy.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

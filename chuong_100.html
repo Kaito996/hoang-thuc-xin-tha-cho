@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 100</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,274 +62,283 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 100</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_99.html" class="btn">‹ Trước</a>
             <a href="chuong_101.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 100: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 100: Đời này nàng e rằng sẽ không bao giờ có con
-Để một vị phi tần như Ninh Quý nhân phải chờ một vãn bối như nàng, bỏ qua địa vị cao thấp thì Ninh Quý nhân dù sao cũng là trưởng bối của nàng.
-Nếu chuyện này truyền ra ngoài, e rằng thiên hạ lại bàn tán nàng kiêu căng ngang ngược.
-Sở Ly nhanh chóng thay y phục.
-“Bảo Ninh Quý nhân đến chính điện trước, ta sẽ tới ngay.”
-“Vâng.”
-Sai người chuẩn bị trà nước xong, Sở Ly mới vội vã sang chính điện. Vừa ngồi xuống, nàng đã thấy một nữ nhân ăn mặc giản dị, dung mạo ôn nhu tĩnh lặng bước vào.
-“Cửu hoàng tử.”
-Khi Ninh Quý nhân bước vào, thần sắc có phần câu nệ, hai tay hơi co lại đặt trước người, dường như muốn hành lễ, nhưng lại không biết nên hành lễ thế nào.
-Theo quy củ, thật ra bà không cần hành lễ với Cửu hoàng tử.
-Xét về thân phận, bà cũng chẳng cao quý hơn Cửu hoàng tử, lại còn có việc cầu xin, nên tình cảnh vô cùng khó xử.
-Sở Ly bước tới, đưa tay đỡ hờ bà đứng dậy.
-“Để Ninh Quý nhân phải chờ lâu rồi. Đám nô tài bên dưới không kịp bẩm báo, làm lỡ mất nhiều thời gian. Quay về ta nhất định sẽ nghiêm trị bọn chúng.”
-“Không sao, không sao!”
-Ninh Quý nhân vội xua hai tay, ngồi xuống, thần sắc cũng thả lỏng hơn đôi chút.
-“Hôm qua lễ tế Trùng Dương, Cửu hoàng tử bận rộn suốt cả ngày, mệt mỏi cũng là lẽ thường. Là ta mạo muội đến quấy rầy.”
-Đó là một người phụ nữ vô cùng ôn hòa.
-Xuất thân không cao, dưới gối lại có hai vị hoàng tử. Thân phận như vậy không thể nghi ngờ là khiến người khác đố kỵ, đặc biệt là những phi tần địa vị cao hơn, gia thế tốt hơn, nhưng dưới gối lại không có con nối dõi.
-Trong hoàn cảnh ấy, bà vẫn không tranh không đoạt suốt hơn hai mươi năm, chưa từng phát sinh tranh chấp với bất kỳ ai, giao hảo với khắp nơi.
-Phẩm hạnh của Đại hoàng tử cũng giống hệt bà.
-Sở Ly biết bà đến vì chuyện gì.
-“Người đâu, dâng trà.”
-Ninh Quý nhân siết chặt hai tay, bao nhiêu lời đến bên miệng rồi lại không biết nên mở lời thế nào.
-Lưỡng lự không quyết.
-Sở Ly lên tiếng:
-“Chuyện của Lục hoàng huynh, ta rất bất ngờ, cũng rất lấy làm tiếc.”
-Hốc mắt Ninh Quý nhân lập tức đỏ hoe.
-“Là lỗi của Lục hoàng tử.”
-“Nó lòng dạ bất chính, có lỗi trước, theo lý đáng bị phạt. Tần thiếp trong lòng không dám có nửa phần oán trách. Nhưng thân là mẫu thân, lo lắng cho con mình, mong Cửu hoàng tử có thể cảm thông.”
-Bà cầm khăn tay lau đi khóe mắt ướt lệ.
-Sở Ly khẽ thở dài.
-“Nỗi khổ tâm của Ninh Quý nhân, mẫu phi của ta cũng vậy.”
-Nuôi con trăm tuổi, lo chín mươi chín năm.
-“Phụ hoàng chỉ phạt cấm túc ba tháng. Nghĩ đến khi hết hạn, người cũng sẽ tha thứ cho huynh ấy.”
-“Tần thiếp hôm nay đến đây không phải để cầu Cửu hoàng tử khai ân, xin Cửu hoàng tử đừng hiểu lầm.”
-Bà vội vàng giải thích.
-“Tần thiếp đến thay Lục hoàng tử nhận lỗi xin lỗi, lại tự tay làm một ít điểm tâm cùng kẹo sữa mà ngài thích ăn, mong ngài nhận lấy.”
-Bà giơ tay.
-“Thủy Tụ.”
-Cung nữ Thủy Tụ xách hộp thức ăn bước nhanh tới, bày mấy đĩa điểm tâm tinh xảo lên bàn.
-Món nào cũng được làm vô cùng đẹp mắt, tỏa ra hương thơm ngọt ngào, đậm đà mà không hề ngấy, chỉ nhìn thôi cũng khiến người ta thèm thuồng.
-Ninh Quý nhân khéo tay, tài nấu nướng càng xuất sắc.
-Trước đây, bà thường thích làm chút điểm tâm, canh chè mang tặng Sở Ly, tặng Bát hoàng tử, tặng tất cả mọi người.
-Bà luôn dùng cách ôn hòa như thế để kết giao với mọi người.
-Sở Ly lặng lẽ thở dài.
-Nếu bà đến cầu xin cho Lục hoàng tử, nàng còn dễ mở miệng từ chối.
-Nhưng hết lần này đến lần khác, bà lại đến nhận lỗi, còn mang theo điểm tâm, thái độ vô cùng thành khẩn, khiến nàng chẳng biết phải nói sao.
-Ninh Quý nhân cũng không ngồi lâu, hàn huyên một lát rồi đứng dậy cáo từ.
-Cẩu Bát tiễn bà ra ngoài. Nghĩ đến bài học lần trước, hắn cẩn thận hỏi:
-“Chủ tử, số điểm tâm trên bàn này… có cần mời ngự y đến kiểm tra không?”
-“Không cần.”
-Những món điểm tâm này không có độc.
-Nếu Ninh Quý nhân muốn giở trò trong điểm tâm thì cũng chưa ngu xuẩn đến mức làm rõ ràng như vậy. Hơn nữa, Lục hoàng tử chỉ bị cấm túc, bà không cần thiết phải đầu độc nàng.
-Mấy ngày gần đây, nàng nghe nói Đại hoàng tử đã bắt đầu nghi ngờ Nhị hoàng tử. Hai huynh đệ ngoài mặt hòa thuận, nhưng thực chất đã sinh lòng ly gián.
-Mục đích của nàng đã đạt được.
-“Dù Lục hoàng tử từng hại ta, nhưng Ninh Quý nhân quả thật là một người mẹ tốt, Đại hoàng tử cũng là người hiền hòa. Đợi thêm nửa tháng nữa, chuyện này lắng xuống, ta sẽ tìm cơ hội cầu tình với Hoàng thượng.”
-Cẩu Bát không khỏi thở dài.
-“Chủ tử thật nhân hậu.”
-Lục hoàng tử hạ độc nàng, vậy mà nàng vẫn lựa chọn tha thứ.
-“Ta chỉ nể mặt Đại hoàng tử, Ninh Quý nhân và cả Sở Hoằng Diễm. Đứa bé ấy thật sự vừa nhỏ lại vừa đáng yêu.”
-Cẩu Bát bật cười.
-“Chủ tử từ trước đến nay luôn thích trẻ con. Sau này tự mình sinh…”
-Lời vừa ra khỏi miệng, hắn lập tức khựng lại.
-Ý thức mình lỡ lời, hắn vội vàng ngậm miệng, nuốt hết những lời còn lại vào bụng, cúi đầu đi ra ngoài làm việc.
-Sở Ly chỉ cười nhạt, cũng không để trong lòng.
-Con của nàng sao?
-Đời này của nàng… e rằng sẽ không bao giờ có con.
-⸻
-Hiện thực đã dạy cho Sở Ly một bài học.
-Vốn dĩ nàng định chờ nửa tháng nữa, đợi sóng gió lắng xuống rồi sẽ cầu tình với Hoàng thượng, thả Lục hoàng tử ra.
-Không ngờ mới chỉ ba ngày, nàng đã nhận được tin từ Ôn phi.
-“Biểu muội của con… e rằng sắp thành thân với Đại hoàng tử rồi.”
-Nghe vậy, Sở Ly nhất thời chưa kịp phản ứng.
-Thần sắc Ôn phi khó nói thành lời.
-“Hôm qua Binh bộ Thượng thư gả nữ nhi. Ôn Nhã đến dự tiệc, không hiểu sao lại uống say. Khi tìm được con bé thì… nó đã nằm chung một giường với Đại hoàng tử…”
-À.
-Là Ôn Nhã.
-Nàng còn tưởng là Ôn Chỉ Tịch, làm nàng lo hụt một phen.
-Sở Ly thản nhiên hỏi:
-“Phụ hoàng nói thế nào?”
-“Đại hoàng tử chắc sẽ dâng tấu xin chỉ tứ hôn, chỉ là tạm thời vẫn chưa có tin.”
-“Bên Ôn Nhã thì sao?”
-“Tam cữu mẫu con nói, con bé cứ khóc mãi, chẳng nói rõ đầu đuôi, chỉ bảo mình uống chút rượu rồi say, chuyện gì cũng không nhớ.”
-Sở Ly cười khẩy.
-Say rượu, đi nhầm phòng, rồi vô tình phát sinh quan hệ.
-Thủ đoạn thấp kém như vậy, lừa trẻ lên ba còn khó.
-Đại hoàng tử trước nay luôn khắc chế giữ lễ, sao có thể nhân lúc Ôn Nhã say mà chiếm tiện nghi của nàng ta?
-Huống hồ Đại hoàng tử cũng chẳng dễ gì say rượu.
-Cho dù cả hai cùng say, thì trong phủ Binh bộ Thượng thư đang mở tiệc, có biết bao hạ nhân hầu hạ theo sát, làm sao hai người lại có thể cùng lên một chiếc giường?
-Ấy vậy mà dưới vô số điều “không thể”, chuyện hoang đường ấy vẫn xảy ra.
-Nàng bất giác nhớ đến lời Sở Đệ Trì nói hôm đó.
-“Điều mà Đại hoàng tử lấy làm kiêu ngạo nhất chính là thanh danh ôn hòa nhân hậu.”
-“Nhưng… hắn thật sự là người ôn hòa nhân hậu sao?”
-Nghĩ đến câu trả lời của chính mình khi ấy…
-Đến giờ nàng mới hiểu ánh mắt Sở Đệ Trì nhìn mình khi đó châm chọc biết bao, như đang nhìn một kẻ ngốc.
-Nàng đúng là kẻ ngốc.
-Nàng vậy mà bị vẻ ngoài ôn hòa nhân thiện, đạm bạc danh lợi của Đại hoàng huynh lừa suốt bao nhiêu năm.
-“Ha.”
-Sở Ly khẽ cong môi.
-Nàng còn từng định vài hôm nữa sẽ cầu tình cho Lục hoàng tử.
-Giờ xem ra, đúng là nàng lo chuyện bao đồng.
-Đại hoàng tử cưới Ôn Nhã, từ đó có ràng buộc với Ôn gia, cũng tạo nên sự kiềm chế lẫn nhau. Đây rõ ràng là muốn cưỡng ép kéo Ôn gia về phía mình.
-Sau này nếu sinh thêm một trai một gái, Ôn gia vì đứa ngoại tôn ấy mà ít nhiều cũng sẽ nâng đỡ Đại hoàng tử.
-Tâm cơ thật sâu!
-Nàng đúng là đã xem thường hắn!
-Ôn phi ngồi trên ghế quý phi, phe phẩy chiếc khăn thêu hoa.
-“Haizz, lúc Tam cữu mẫu con sai người báo tin cho ta, ta cũng trở tay không kịp, hoảng loạn vô cùng. Không ai ngờ lại xảy ra chuyện như vậy. Hơn nữa Ôn gia chúng ta trước nay chưa từng dính líu với phe Đại hoàng tử. Giờ thì muốn phủi sạch cũng chẳng được nữa.”
-“Có gì mà không phủi sạch được?”
-Sở Ly lạnh giọng.
-“Ôn Nhã chẳng qua chỉ là thứ nữ.”
-“Nhưng nó dù sao cũng là con ruột của Tam cữu con. Tam cữu con không có con trai, dưới gối chỉ có hai đứa con gái.”
-Sở Ly thấy lòng bực bội.
-Chuyện này là do Đại hoàng tử tính kế, nhưng nàng không tin Ôn Nhã hoàn toàn vô tội.
-“Mẫu phi cứ yên tâm trước, xem phụ hoàng nói thế nào đã.”
-Nàng phải xuất cung một chuyến.
-Nàng đến Ôn phủ.
-Vừa tới hậu viện đã nghe thấy tiếng nữ tử khóc nức nở, tiếng nức nở nghẹn ngào khiến người ta nghe mà không nỡ trách cứ.
-Tiếng quở trách của Ôn Chỉ Tịch thì chưa từng ngừng.
-“Phủ Binh bộ Thượng thư lớn như vậy mà muội cũng có thể đi thẳng lên giường được. Ôn Nhã, rốt cuộc muội có dụng tâm gì?”
-“Thể diện Ôn gia sắp bị muội làm mất sạch rồi!”
-“Ta sao lại có đứa muội muội như muội chứ!”
-Ôn Nhã ôm lấy chính mình, khóc đến hai mắt đỏ bừng, gần như sắp khóc mù.
-Mai di nương quỳ dưới đất, khóc lóc không thôi.
-“Ngàn sai vạn sai đều là lỗi của Nhã nhi. Phu nhân bớt giận, đại tiểu thư bớt giận!”
-Tam phu nhân Ôn gia mặt lạnh như băng, sắc mặt vô cùng khó coi.
-Trong đại tộc Ôn gia, trước nay chưa từng có tiền lệ nữ tử chưa thành thân đã thất thân.
-Bên ngoài ai cũng nói hai người say rượu nên vô tình xảy ra chuyện.
-Nhưng sau lưng người ta sẽ bàn tán thế nào?
-Tiểu thư Ôn gia không biết giữ mình, mặt dày vô sỉ…
-Đủ mọi lời khó nghe đều có thể nói ra.
-Tam phu nhân Ôn gia mất sạch thể diện.
-Ôn Nhã nức nở:
-“Mẫu thân, đại tỷ, con thật sự không biết vì sao lại thành ra như vậy. Hôm ấy con uống quá nhiều rượu, hoàn toàn không biết chuyện gì xảy ra. Đến lúc tỉnh lại thì đã nằm chung với Đại hoàng tử…”
-Hu hu…
-Nàng cũng oan uổng mà.
-“Nếu đã vậy, chi bằng muội lập tức vào cung, bẩm rõ mọi chuyện với Hoàng thượng. Người nhất định sẽ sai người điều tra. Đến lúc ấy trả lại trong sạch cho muội, sau này cũng không ảnh hưởng đến việc xuất giá. Thế nào?”
-Ngoài viện, Sở Ly sải bước tiến vào.
-“Cửu hoàng tử.”
-“Bái kiến Cửu hoàng tử.”
-Đám hạ nhân đồng loạt hành lễ.
-Nàng phất tay cho họ lui xuống rồi bước vào phòng, nhìn Ôn Nhã đang khóc đến đỏ bừng cả khuôn mặt.
-“Đề nghị của ta, muội thấy thế nào?”
-Ôn Nhã sững người.
-“Chuyện này…”
-Dù nàng ta và Đại hoàng tử thật sự chưa có quan hệ vợ chồng, nhưng hôm ấy hai người nằm chung một giường, rất nhiều người đều tận mắt nhìn thấy.
-Thân thể nàng vẫn còn trong sạch, nhưng danh tiết đã bị hủy.
-Sở Ly nói:
-“Ôn Nhã, muội hẳn phải biết lập trường của Ôn gia. Không tham dự cuộc tranh đoạt ngôi vị Thái tử, không ủng hộ bất kỳ hoàng tử nào. Nếu muội gả cho Đại hoàng tử thì chính là kéo Ôn gia xuống nước.”
-Sắc mặt Ôn Nhã cứng đờ.
-Nàng biết Ôn gia không đứng về phe ai.
-Nhưng…
-Xưa nay tranh đoạt ngôi vị Thái tử, có ai thật sự giữ được trung lập?
-Ôn gia có ba vị võ tướng, thực lực hùng hậu như vậy, cớ sao không ủng hộ Đại hoàng tử?
-Hiện giờ các hoàng tử thì bị giáng tội, kẻ thì bị cấm túc, chỉ có Đại hoàng tử là người có cơ hội đăng cơ lớn nhất.
-Chỉ cần Ôn gia dốc sức giúp đỡ Đại hoàng tử, ngày sau hắn lên ngôi, Ôn gia sẽ trở thành bậc khai quốc công thần, còn thân phận của nàng cũng chỉ đứng dưới Đại hoàng tử phi.
-Đại hoàng tử phi trở thành Hoàng hậu, vậy nàng ít nhất cũng sẽ là Hoàng quý phi, chẳng phải sao?
-Một tương lai tươi đẹp như thế, vì sao mẫu thân và biểu huynh không chịu nghĩ tới?
-Ôn Nhã khẽ cắn môi dưới, nhỏ giọng:
-“Muội biết biểu huynh lo lắng điều gì. Nhưng hôm qua rất nhiều người đều thấy muội ở cùng Đại hoàng tử. Nếu muội không gả cho ngài ấy, sau này sẽ chẳng có nam nhân nào chịu cưới muội.”
-“Ta sẽ để Hoàng thượng đứng ra chứng minh muội vẫn còn trong sạch.”
-Ôn Nhã nghe vậy lập tức cuống lên.
-“Muội chỉ là một thứ nữ thân phận thấp kém, nào dám làm phiền Hoàng thượng?”
-“Hơn nữa, Đại hoàng tử nói hôm nay sẽ xin phụ hoàng ban chỉ, lấy thân phận Trắc phi đón muội vào phủ. Ôn Nhã thân phận hèn mọn, không dám kháng lệnh Đại hoàng tử.”
-Nói đi nói lại, nàng ta chỉ muốn gả.
-Ngoài mặt thì khóc lóc nói mình vô tội, nhưng trong lòng lại quyết không gả ai ngoài Đại hoàng tử.
-Sở Ly đã nhìn thấu bản chất của nàng ta. Còn phải nhìn nàng ta tiếp tục giả vờ, nàng chỉ hận không thể tự chọc mù hai mắt mình để khỏi phải chứng kiến cảnh này.
-“Trước kia chẳng phải muội thích Thất hoàng tử sao?”
-Ôn Nhã giải thích:
-“Khi ấy muội còn nhỏ không hiểu chuyện. Thất hoàng tử lòng dạ bất chính, là muội tin lầm người.”
-Sở Ly lạnh mặt.
-“Sau đó chẳng phải muội lại thích Bát hoàng tử sao? Cách đây không lâu còn nói muốn lấy thân báo đáp, nhất quyết phải gả cho huynh ấy.”
-Ôn Nhã đỏ mặt.
-“Khi… khi ấy… muội chỉ nói bừa…”
-“Nhưng sau đó chẳng phải muội lại ở bên Lục hoàng tử sao?”
-“Không có!”
-Ôn Nhã lập tức phủ nhận.
-Hôm ấy Lục hoàng tử lấy lòng nàng, quả thật nàng từng có hảo cảm với hắn, cũng từng nghĩ đến việc tiến thêm một bước.
-Nhưng chưa bao lâu sau, Lục hoàng tử đã bị Hoàng thượng hạ lệnh cấm túc.
-Để tránh bị liên lụy, nàng lập tức cắt đứt quan hệ với hắn.
-Giờ đây…
-Nàng muốn gả cho Đại hoàng tử.
-Lần này, nàng là nghiêm túc!
-Nàng đã suy nghĩ rất kỹ.
-Nàng muốn mang theo thế lực của Ôn gia gả vào phủ Đại hoàng tử, dốc sức giúp đỡ hắn đăng cơ.
-Đến ngày sau bước lên ngôi vị Hoàng quý phi chí tôn, Mai di nương cũng không cần tiếp tục cúi đầu làm một thiếp thất thân phận thấp kém nữa.
-Đợi nàng trở thành Hoàng quý phi, nàng sẽ xin chỉ buộc phụ thân hưu mẫu thân, nâng Mai di nương lên làm chính thất.
-Đến lúc ấy, nàng vừa là đích nữ, vừa là Hoàng quý phi, vinh quang vô hạn.
-Chỉ cần nghĩ thôi cũng khiến nàng không kìm nổi kích động trong lòng.
-Biểu huynh không thể ngăn cản nàng!
-Nếu biểu huynh không cho nàng gả cho Đại hoàng tử, vậy tức là biểu huynh cũng thèm muốn thế lực của Ôn gia, muốn sau này Ôn gia phò tá “hắn” tranh đoạt ngôi vị Thái tử.
-Hừ!
-Biểu huynh là hoàng tử, sao có thể không có dã tâm?
-Biểu huynh muốn chiếm lấy thế lực của Ôn gia, hy sinh hạnh phúc của nàng.
-Nàng tuyệt đối sẽ không tha thứ cho “hắn”!
-Sở Ly nói:
-“Vì Ôn gia, cũng vì đại cục, ta, Ôn phi, Tam cữu mẫu, Chỉ Tịch… tất cả mọi người đều không đồng ý muội gả cho Đại hoàng tử. Chúng ta là người một nhà, tự nhiên sẽ không hại muội. Muội nhất định phải suy nghĩ cẩn thận.”
-Ôn Nhã siết chặt hai tay.
-Nàng càng không hại chính mình.
-Nàng biết phải làm thế nào mới là tốt nhất cho bản thân.
-“Đa tạ biểu huynh quan tâm. Ôn Nhã xin ghi nhớ trong lòng, cảm kích vô cùng. Hơn nữa…”
-“Đại hoàng tử đoan chính giữ lễ, ôn hòa nhân hậu. Muội… thật lòng thích ngài ấy.”
-Nói như vậy tức là nàng nhất quyết phải gả.
-Ôn Chỉ Tịch tính tình nóng nảy, còn định nói thêm gì đó, nhưng bị Tam phu nhân Ôn gia kéo lại, lắc đầu.
-Tam phu nhân Ôn gia đã hoàn toàn thất vọng.
-Không khuyên nữa.
-Sau này ra sao, đều là số mệnh của chính nàng ta.
-Sở Ly thản nhiên nói:
-“Đã là lựa chọn của muội, vậy ta chúc muội hạnh phúc.”
-Ngày sau, khi Đại hoàng tử chẳng còn gì trong tay, hy vọng nàng vẫn có thể giữ được phần “chân tình” này. Ẩn bớt</p>
+            <p>Chương 100: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 100: Đời này nàng e rằng sẽ không bao giờ có con</p>
+<p>Để một vị phi tần như Ninh Quý nhân phải chờ một vãn bối như nàng, bỏ qua địa vị cao thấp thì Ninh Quý nhân dù sao cũng là trưởng bối của nàng.</p>
+<p>Nếu chuyện này truyền ra ngoài, e rằng thiên hạ lại bàn tán nàng kiêu căng ngang ngược.</p>
+<p>Sở Ly nhanh chóng thay y phục.</p>
+<p>“Bảo Ninh Quý nhân đến chính điện trước, ta sẽ tới ngay.”</p>
+<p>“Vâng.”</p>
+<p>Sai người chuẩn bị trà nước xong, Sở Ly mới vội vã sang chính điện. Vừa ngồi xuống, nàng đã thấy một nữ nhân ăn mặc giản dị, dung mạo ôn nhu tĩnh lặng bước vào.</p>
+<p>“Cửu hoàng tử.”</p>
+<p>Khi Ninh Quý nhân bước vào, thần sắc có phần câu nệ, hai tay hơi co lại đặt trước người, dường như muốn hành lễ, nhưng lại không biết nên hành lễ thế nào.</p>
+<p>Theo quy củ, thật ra bà không cần hành lễ với Cửu hoàng tử.</p>
+<p>Xét về thân phận, bà cũng chẳng cao quý hơn Cửu hoàng tử, lại còn có việc cầu xin, nên tình cảnh vô cùng khó xử.</p>
+<p>Sở Ly bước tới, đưa tay đỡ hờ bà đứng dậy.</p>
+<p>“Để Ninh Quý nhân phải chờ lâu rồi. Đám nô tài bên dưới không kịp bẩm báo, làm lỡ mất nhiều thời gian. Quay về ta nhất định sẽ nghiêm trị bọn chúng.”</p>
+<p>“Không sao, không sao!”</p>
+<p>Ninh Quý nhân vội xua hai tay, ngồi xuống, thần sắc cũng thả lỏng hơn đôi chút.</p>
+<p>“Hôm qua lễ tế Trùng Dương, Cửu hoàng tử bận rộn suốt cả ngày, mệt mỏi cũng là lẽ thường. Là ta mạo muội đến quấy rầy.”</p>
+<p>Đó là một người phụ nữ vô cùng ôn hòa.</p>
+<p>Xuất thân không cao, dưới gối lại có hai vị hoàng tử. Thân phận như vậy không thể nghi ngờ là khiến người khác đố kỵ, đặc biệt là những phi tần địa vị cao hơn, gia thế tốt hơn, nhưng dưới gối lại không có con nối dõi.</p>
+<p>Trong hoàn cảnh ấy, bà vẫn không tranh không đoạt suốt hơn hai mươi năm, chưa từng phát sinh tranh chấp với bất kỳ ai, giao hảo với khắp nơi.</p>
+<p>Phẩm hạnh của Đại hoàng tử cũng giống hệt bà.</p>
+<p>Sở Ly biết bà đến vì chuyện gì.</p>
+<p>“Người đâu, dâng trà.”</p>
+<p>Ninh Quý nhân siết chặt hai tay, bao nhiêu lời đến bên miệng rồi lại không biết nên mở lời thế nào.</p>
+<p>Lưỡng lự không quyết.</p>
+<p>Sở Ly lên tiếng:</p>
+<p>“Chuyện của Lục hoàng huynh, ta rất bất ngờ, cũng rất lấy làm tiếc.”</p>
+<p>Hốc mắt Ninh Quý nhân lập tức đỏ hoe.</p>
+<p>“Là lỗi của Lục hoàng tử.”</p>
+<p>“Nó lòng dạ bất chính, có lỗi trước, theo lý đáng bị phạt. Tần thiếp trong lòng không dám có nửa phần oán trách. Nhưng thân là mẫu thân, lo lắng cho con mình, mong Cửu hoàng tử có thể cảm thông.”</p>
+<p>Bà cầm khăn tay lau đi khóe mắt ướt lệ.</p>
+<p>Sở Ly khẽ thở dài.</p>
+<p>“Nỗi khổ tâm của Ninh Quý nhân, mẫu phi của ta cũng vậy.”</p>
+<p>Nuôi con trăm tuổi, lo chín mươi chín năm.</p>
+<p>“Phụ hoàng chỉ phạt cấm túc ba tháng. Nghĩ đến khi hết hạn, người cũng sẽ tha thứ cho huynh ấy.”</p>
+<p>“Tần thiếp hôm nay đến đây không phải để cầu Cửu hoàng tử khai ân, xin Cửu hoàng tử đừng hiểu lầm.”</p>
+<p>Bà vội vàng giải thích.</p>
+<p>“Tần thiếp đến thay Lục hoàng tử nhận lỗi xin lỗi, lại tự tay làm một ít điểm tâm cùng kẹo sữa mà ngài thích ăn, mong ngài nhận lấy.”</p>
+<p>Bà giơ tay.</p>
+<p>“Thủy Tụ.”</p>
+<p>Cung nữ Thủy Tụ xách hộp thức ăn bước nhanh tới, bày mấy đĩa điểm tâm tinh xảo lên bàn.</p>
+<p>Món nào cũng được làm vô cùng đẹp mắt, tỏa ra hương thơm ngọt ngào, đậm đà mà không hề ngấy, chỉ nhìn thôi cũng khiến người ta thèm thuồng.</p>
+<p>Ninh Quý nhân khéo tay, tài nấu nướng càng xuất sắc.</p>
+<p>Trước đây, bà thường thích làm chút điểm tâm, canh chè mang tặng Sở Ly, tặng Bát hoàng tử, tặng tất cả mọi người.</p>
+<p>Bà luôn dùng cách ôn hòa như thế để kết giao với mọi người.</p>
+<p>Sở Ly lặng lẽ thở dài.</p>
+<p>Nếu bà đến cầu xin cho Lục hoàng tử, nàng còn dễ mở miệng từ chối.</p>
+<p>Nhưng hết lần này đến lần khác, bà lại đến nhận lỗi, còn mang theo điểm tâm, thái độ vô cùng thành khẩn, khiến nàng chẳng biết phải nói sao.</p>
+<p>Ninh Quý nhân cũng không ngồi lâu, hàn huyên một lát rồi đứng dậy cáo từ.</p>
+<p>Cẩu Bát tiễn bà ra ngoài. Nghĩ đến bài học lần trước, hắn cẩn thận hỏi:</p>
+<p>“Chủ tử, số điểm tâm trên bàn này… có cần mời ngự y đến kiểm tra không?”</p>
+<p>“Không cần.”</p>
+<p>Những món điểm tâm này không có độc.</p>
+<p>Nếu Ninh Quý nhân muốn giở trò trong điểm tâm thì cũng chưa ngu xuẩn đến mức làm rõ ràng như vậy. Hơn nữa, Lục hoàng tử chỉ bị cấm túc, bà không cần thiết phải đầu độc nàng.</p>
+<p>Mấy ngày gần đây, nàng nghe nói Đại hoàng tử đã bắt đầu nghi ngờ Nhị hoàng tử. Hai huynh đệ ngoài mặt hòa thuận, nhưng thực chất đã sinh lòng ly gián.</p>
+<p>Mục đích của nàng đã đạt được.</p>
+<p>“Dù Lục hoàng tử từng hại ta, nhưng Ninh Quý nhân quả thật là một người mẹ tốt, Đại hoàng tử cũng là người hiền hòa. Đợi thêm nửa tháng nữa, chuyện này lắng xuống, ta sẽ tìm cơ hội cầu tình với Hoàng thượng.”</p>
+<p>Cẩu Bát không khỏi thở dài.</p>
+<p>“Chủ tử thật nhân hậu.”</p>
+<p>Lục hoàng tử hạ độc nàng, vậy mà nàng vẫn lựa chọn tha thứ.</p>
+<p>“Ta chỉ nể mặt Đại hoàng tử, Ninh Quý nhân và cả Sở Hoằng Diễm. Đứa bé ấy thật sự vừa nhỏ lại vừa đáng yêu.”</p>
+<p>Cẩu Bát bật cười.</p>
+<p>“Chủ tử từ trước đến nay luôn thích trẻ con. Sau này tự mình sinh…”</p>
+<p>Lời vừa ra khỏi miệng, hắn lập tức khựng lại.</p>
+<p>Ý thức mình lỡ lời, hắn vội vàng ngậm miệng, nuốt hết những lời còn lại vào bụng, cúi đầu đi ra ngoài làm việc.</p>
+<p>Sở Ly chỉ cười nhạt, cũng không để trong lòng.</p>
+<p>Con của nàng sao?</p>
+<p>Đời này của nàng… e rằng sẽ không bao giờ có con.</p>
+<p>⸻</p>
+<p>Hiện thực đã dạy cho Sở Ly một bài học.</p>
+<p>Vốn dĩ nàng định chờ nửa tháng nữa, đợi sóng gió lắng xuống rồi sẽ cầu tình với Hoàng thượng, thả Lục hoàng tử ra.</p>
+<p>Không ngờ mới chỉ ba ngày, nàng đã nhận được tin từ Ôn phi.</p>
+<p>“Biểu muội của con… e rằng sắp thành thân với Đại hoàng tử rồi.”</p>
+<p>Nghe vậy, Sở Ly nhất thời chưa kịp phản ứng.</p>
+<p>Thần sắc Ôn phi khó nói thành lời.</p>
+<p>“Hôm qua Binh bộ Thượng thư gả nữ nhi. Ôn Nhã đến dự tiệc, không hiểu sao lại uống say. Khi tìm được con bé thì… nó đã nằm chung một giường với Đại hoàng tử…”</p>
+<p>À.</p>
+<p>Là Ôn Nhã.</p>
+<p>Nàng còn tưởng là Ôn Chỉ Tịch, làm nàng lo hụt một phen.</p>
+<p>Sở Ly thản nhiên hỏi:</p>
+<p>“Phụ hoàng nói thế nào?”</p>
+<p>“Đại hoàng tử chắc sẽ dâng tấu xin chỉ tứ hôn, chỉ là tạm thời vẫn chưa có tin.”</p>
+<p>“Bên Ôn Nhã thì sao?”</p>
+<p>“Tam cữu mẫu con nói, con bé cứ khóc mãi, chẳng nói rõ đầu đuôi, chỉ bảo mình uống chút rượu rồi say, chuyện gì cũng không nhớ.”</p>
+<p>Sở Ly cười khẩy.</p>
+<p>Say rượu, đi nhầm phòng, rồi vô tình phát sinh quan hệ.</p>
+<p>Thủ đoạn thấp kém như vậy, lừa trẻ lên ba còn khó.</p>
+<p>Đại hoàng tử trước nay luôn khắc chế giữ lễ, sao có thể nhân lúc Ôn Nhã say mà chiếm tiện nghi của nàng ta?</p>
+<p>Huống hồ Đại hoàng tử cũng chẳng dễ gì say rượu.</p>
+<p>Cho dù cả hai cùng say, thì trong phủ Binh bộ Thượng thư đang mở tiệc, có biết bao hạ nhân hầu hạ theo sát, làm sao hai người lại có thể cùng lên một chiếc giường?</p>
+<p>Ấy vậy mà dưới vô số điều “không thể”, chuyện hoang đường ấy vẫn xảy ra.</p>
+<p>Nàng bất giác nhớ đến lời Sở Đệ Trì nói hôm đó.</p>
+<p>“Điều mà Đại hoàng tử lấy làm kiêu ngạo nhất chính là thanh danh ôn hòa nhân hậu.”</p>
+<p>“Nhưng… hắn thật sự là người ôn hòa nhân hậu sao?”</p>
+<p>Nghĩ đến câu trả lời của chính mình khi ấy…</p>
+<p>Đến giờ nàng mới hiểu ánh mắt Sở Đệ Trì nhìn mình khi đó châm chọc biết bao, như đang nhìn một kẻ ngốc.</p>
+<p>Nàng đúng là kẻ ngốc.</p>
+<p>Nàng vậy mà bị vẻ ngoài ôn hòa nhân thiện, đạm bạc danh lợi của Đại hoàng huynh lừa suốt bao nhiêu năm.</p>
+<p>“Ha.”</p>
+<p>Sở Ly khẽ cong môi.</p>
+<p>Nàng còn từng định vài hôm nữa sẽ cầu tình cho Lục hoàng tử.</p>
+<p>Giờ xem ra, đúng là nàng lo chuyện bao đồng.</p>
+<p>Đại hoàng tử cưới Ôn Nhã, từ đó có ràng buộc với Ôn gia, cũng tạo nên sự kiềm chế lẫn nhau. Đây rõ ràng là muốn cưỡng ép kéo Ôn gia về phía mình.</p>
+<p>Sau này nếu sinh thêm một trai một gái, Ôn gia vì đứa ngoại tôn ấy mà ít nhiều cũng sẽ nâng đỡ Đại hoàng tử.</p>
+<p>Tâm cơ thật sâu!</p>
+<p>Nàng đúng là đã xem thường hắn!</p>
+<p>Ôn phi ngồi trên ghế quý phi, phe phẩy chiếc khăn thêu hoa.</p>
+<p>“Haizz, lúc Tam cữu mẫu con sai người báo tin cho ta, ta cũng trở tay không kịp, hoảng loạn vô cùng. Không ai ngờ lại xảy ra chuyện như vậy. Hơn nữa Ôn gia chúng ta trước nay chưa từng dính líu với phe Đại hoàng tử. Giờ thì muốn phủi sạch cũng chẳng được nữa.”</p>
+<p>“Có gì mà không phủi sạch được?”</p>
+<p>Sở Ly lạnh giọng.</p>
+<p>“Ôn Nhã chẳng qua chỉ là thứ nữ.”</p>
+<p>“Nhưng nó dù sao cũng là con ruột của Tam cữu con. Tam cữu con không có con trai, dưới gối chỉ có hai đứa con gái.”</p>
+<p>Sở Ly thấy lòng bực bội.</p>
+<p>Chuyện này là do Đại hoàng tử tính kế, nhưng nàng không tin Ôn Nhã hoàn toàn vô tội.</p>
+<p>“Mẫu phi cứ yên tâm trước, xem phụ hoàng nói thế nào đã.”</p>
+<p>Nàng phải xuất cung một chuyến.</p>
+<p>Nàng đến Ôn phủ.</p>
+<p>Vừa tới hậu viện đã nghe thấy tiếng nữ tử khóc nức nở, tiếng nức nở nghẹn ngào khiến người ta nghe mà không nỡ trách cứ.</p>
+<p>Tiếng quở trách của Ôn Chỉ Tịch thì chưa từng ngừng.</p>
+<p>“Phủ Binh bộ Thượng thư lớn như vậy mà muội cũng có thể đi thẳng lên giường được. Ôn Nhã, rốt cuộc muội có dụng tâm gì?”</p>
+<p>“Thể diện Ôn gia sắp bị muội làm mất sạch rồi!”</p>
+<p>“Ta sao lại có đứa muội muội như muội chứ!”</p>
+<p>Ôn Nhã ôm lấy chính mình, khóc đến hai mắt đỏ bừng, gần như sắp khóc mù.</p>
+<p>Mai di nương quỳ dưới đất, khóc lóc không thôi.</p>
+<p>“Ngàn sai vạn sai đều là lỗi của Nhã nhi. Phu nhân bớt giận, đại tiểu thư bớt giận!”</p>
+<p>Tam phu nhân Ôn gia mặt lạnh như băng, sắc mặt vô cùng khó coi.</p>
+<p>Trong đại tộc Ôn gia, trước nay chưa từng có tiền lệ nữ tử chưa thành thân đã thất thân.</p>
+<p>Bên ngoài ai cũng nói hai người say rượu nên vô tình xảy ra chuyện.</p>
+<p>Nhưng sau lưng người ta sẽ bàn tán thế nào?</p>
+<p>Tiểu thư Ôn gia không biết giữ mình, mặt dày vô sỉ…</p>
+<p>Đủ mọi lời khó nghe đều có thể nói ra.</p>
+<p>Tam phu nhân Ôn gia mất sạch thể diện.</p>
+<p>Ôn Nhã nức nở:</p>
+<p>“Mẫu thân, đại tỷ, con thật sự không biết vì sao lại thành ra như vậy. Hôm ấy con uống quá nhiều rượu, hoàn toàn không biết chuyện gì xảy ra. Đến lúc tỉnh lại thì đã nằm chung với Đại hoàng tử…”</p>
+<p>Hu hu…</p>
+<p>Nàng cũng oan uổng mà.</p>
+<p>“Nếu đã vậy, chi bằng muội lập tức vào cung, bẩm rõ mọi chuyện với Hoàng thượng. Người nhất định sẽ sai người điều tra. Đến lúc ấy trả lại trong sạch cho muội, sau này cũng không ảnh hưởng đến việc xuất giá. Thế nào?”</p>
+<p>Ngoài viện, Sở Ly sải bước tiến vào.</p>
+<p>“Cửu hoàng tử.”</p>
+<p>“Bái kiến Cửu hoàng tử.”</p>
+<p>Đám hạ nhân đồng loạt hành lễ.</p>
+<p>Nàng phất tay cho họ lui xuống rồi bước vào phòng, nhìn Ôn Nhã đang khóc đến đỏ bừng cả khuôn mặt.</p>
+<p>“Đề nghị của ta, muội thấy thế nào?”</p>
+<p>Ôn Nhã sững người.</p>
+<p>“Chuyện này…”</p>
+<p>Dù nàng ta và Đại hoàng tử thật sự chưa có quan hệ vợ chồng, nhưng hôm ấy hai người nằm chung một giường, rất nhiều người đều tận mắt nhìn thấy.</p>
+<p>Thân thể nàng vẫn còn trong sạch, nhưng danh tiết đã bị hủy.</p>
+<p>Sở Ly nói:</p>
+<p>“Ôn Nhã, muội hẳn phải biết lập trường của Ôn gia. Không tham dự cuộc tranh đoạt ngôi vị Thái tử, không ủng hộ bất kỳ hoàng tử nào. Nếu muội gả cho Đại hoàng tử thì chính là kéo Ôn gia xuống nước.”</p>
+<p>Sắc mặt Ôn Nhã cứng đờ.</p>
+<p>Nàng biết Ôn gia không đứng về phe ai.</p>
+<p>Nhưng…</p>
+<p>Xưa nay tranh đoạt ngôi vị Thái tử, có ai thật sự giữ được trung lập?</p>
+<p>Ôn gia có ba vị võ tướng, thực lực hùng hậu như vậy, cớ sao không ủng hộ Đại hoàng tử?</p>
+<p>Hiện giờ các hoàng tử thì bị giáng tội, kẻ thì bị cấm túc, chỉ có Đại hoàng tử là người có cơ hội đăng cơ lớn nhất.</p>
+<p>Chỉ cần Ôn gia dốc sức giúp đỡ Đại hoàng tử, ngày sau hắn lên ngôi, Ôn gia sẽ trở thành bậc khai quốc công thần, còn thân phận của nàng cũng chỉ đứng dưới Đại hoàng tử phi.</p>
+<p>Đại hoàng tử phi trở thành Hoàng hậu, vậy nàng ít nhất cũng sẽ là Hoàng quý phi, chẳng phải sao?</p>
+<p>Một tương lai tươi đẹp như thế, vì sao mẫu thân và biểu huynh không chịu nghĩ tới?</p>
+<p>Ôn Nhã khẽ cắn môi dưới, nhỏ giọng:</p>
+<p>“Muội biết biểu huynh lo lắng điều gì. Nhưng hôm qua rất nhiều người đều thấy muội ở cùng Đại hoàng tử. Nếu muội không gả cho ngài ấy, sau này sẽ chẳng có nam nhân nào chịu cưới muội.”</p>
+<p>“Ta sẽ để Hoàng thượng đứng ra chứng minh muội vẫn còn trong sạch.”</p>
+<p>Ôn Nhã nghe vậy lập tức cuống lên.</p>
+<p>“Muội chỉ là một thứ nữ thân phận thấp kém, nào dám làm phiền Hoàng thượng?”</p>
+<p>“Hơn nữa, Đại hoàng tử nói hôm nay sẽ xin phụ hoàng ban chỉ, lấy thân phận Trắc phi đón muội vào phủ. Ôn Nhã thân phận hèn mọn, không dám kháng lệnh Đại hoàng tử.”</p>
+<p>Nói đi nói lại, nàng ta chỉ muốn gả.</p>
+<p>Ngoài mặt thì khóc lóc nói mình vô tội, nhưng trong lòng lại quyết không gả ai ngoài Đại hoàng tử.</p>
+<p>Sở Ly đã nhìn thấu bản chất của nàng ta. Còn phải nhìn nàng ta tiếp tục giả vờ, nàng chỉ hận không thể tự chọc mù hai mắt mình để khỏi phải chứng kiến cảnh này.</p>
+<p>“Trước kia chẳng phải muội thích Thất hoàng tử sao?”</p>
+<p>Ôn Nhã giải thích:</p>
+<p>“Khi ấy muội còn nhỏ không hiểu chuyện. Thất hoàng tử lòng dạ bất chính, là muội tin lầm người.”</p>
+<p>Sở Ly lạnh mặt.</p>
+<p>“Sau đó chẳng phải muội lại thích Bát hoàng tử sao? Cách đây không lâu còn nói muốn lấy thân báo đáp, nhất quyết phải gả cho huynh ấy.”</p>
+<p>Ôn Nhã đỏ mặt.</p>
+<p>“Khi… khi ấy… muội chỉ nói bừa…”</p>
+<p>“Nhưng sau đó chẳng phải muội lại ở bên Lục hoàng tử sao?”</p>
+<p>“Không có!”</p>
+<p>Ôn Nhã lập tức phủ nhận.</p>
+<p>Hôm ấy Lục hoàng tử lấy lòng nàng, quả thật nàng từng có hảo cảm với hắn, cũng từng nghĩ đến việc tiến thêm một bước.</p>
+<p>Nhưng chưa bao lâu sau, Lục hoàng tử đã bị Hoàng thượng hạ lệnh cấm túc.</p>
+<p>Để tránh bị liên lụy, nàng lập tức cắt đứt quan hệ với hắn.</p>
+<p>Giờ đây…</p>
+<p>Nàng muốn gả cho Đại hoàng tử.</p>
+<p>Lần này, nàng là nghiêm túc!</p>
+<p>Nàng đã suy nghĩ rất kỹ.</p>
+<p>Nàng muốn mang theo thế lực của Ôn gia gả vào phủ Đại hoàng tử, dốc sức giúp đỡ hắn đăng cơ.</p>
+<p>Đến ngày sau bước lên ngôi vị Hoàng quý phi chí tôn, Mai di nương cũng không cần tiếp tục cúi đầu làm một thiếp thất thân phận thấp kém nữa.</p>
+<p>Đợi nàng trở thành Hoàng quý phi, nàng sẽ xin chỉ buộc phụ thân hưu mẫu thân, nâng Mai di nương lên làm chính thất.</p>
+<p>Đến lúc ấy, nàng vừa là đích nữ, vừa là Hoàng quý phi, vinh quang vô hạn.</p>
+<p>Chỉ cần nghĩ thôi cũng khiến nàng không kìm nổi kích động trong lòng.</p>
+<p>Biểu huynh không thể ngăn cản nàng!</p>
+<p>Nếu biểu huynh không cho nàng gả cho Đại hoàng tử, vậy tức là biểu huynh cũng thèm muốn thế lực của Ôn gia, muốn sau này Ôn gia phò tá “hắn” tranh đoạt ngôi vị Thái tử.</p>
+<p>Hừ!</p>
+<p>Biểu huynh là hoàng tử, sao có thể không có dã tâm?</p>
+<p>Biểu huynh muốn chiếm lấy thế lực của Ôn gia, hy sinh hạnh phúc của nàng.</p>
+<p>Nàng tuyệt đối sẽ không tha thứ cho “hắn”!</p>
+<p>Sở Ly nói:</p>
+<p>“Vì Ôn gia, cũng vì đại cục, ta, Ôn phi, Tam cữu mẫu, Chỉ Tịch… tất cả mọi người đều không đồng ý muội gả cho Đại hoàng tử. Chúng ta là người một nhà, tự nhiên sẽ không hại muội. Muội nhất định phải suy nghĩ cẩn thận.”</p>
+<p>Ôn Nhã siết chặt hai tay.</p>
+<p>Nàng càng không hại chính mình.</p>
+<p>Nàng biết phải làm thế nào mới là tốt nhất cho bản thân.</p>
+<p>“Đa tạ biểu huynh quan tâm. Ôn Nhã xin ghi nhớ trong lòng, cảm kích vô cùng. Hơn nữa…”</p>
+<p>“Đại hoàng tử đoan chính giữ lễ, ôn hòa nhân hậu. Muội… thật lòng thích ngài ấy.”</p>
+<p>Nói như vậy tức là nàng nhất quyết phải gả.</p>
+<p>Ôn Chỉ Tịch tính tình nóng nảy, còn định nói thêm gì đó, nhưng bị Tam phu nhân Ôn gia kéo lại, lắc đầu.</p>
+<p>Tam phu nhân Ôn gia đã hoàn toàn thất vọng.</p>
+<p>Không khuyên nữa.</p>
+<p>Sau này ra sao, đều là số mệnh của chính nàng ta.</p>
+<p>Sở Ly thản nhiên nói:</p>
+<p>“Đã là lựa chọn của muội, vậy ta chúc muội hạnh phúc.”</p>
+<p>Ngày sau, khi Đại hoàng tử chẳng còn gì trong tay, hy vọng nàng vẫn có thể giữ được phần “chân tình” này. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_99.html" class="btn">‹ Trước</a>
             <a href="chuong_101.html" class="btn">Sau ›</a>
         </div>
@@ -338,15 +346,11 @@ Ngày sau, khi Đại hoàng tử chẳng còn gì trong tay, hy vọng nàng v�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -358,11 +362,11 @@ Ngày sau, khi Đại hoàng tử chẳng còn gì trong tay, hy vọng nàng v�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

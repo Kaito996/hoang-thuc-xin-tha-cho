@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 316</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,151 +62,160 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 316</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_315.html" class="btn">‹ Trước</a>
             <a href="chuong_317.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 316: Sở Ngạo Thiên, ngôi hoàng vị này, ngươi phải ngồi cho vững!
-Hốc mắt Sở Ngạo Thiên nóng lên, nơi sống mũi chua xót đến mức không sao kìm nén nổi.
-Tiêu Đô đốc đã trở về, cũng có nghĩa là Hoàng thúc đã trở về!
-Hắn có chỗ dựa rồi!
-“Tiêu Đô đốc, Khương Thái phó chết rồi! Ông ấy chết rồi!”
-Sở Ngạo Thiên gào khóc thất thanh:
-“Ta không bảo vệ được ông ấy!”
-“Ta thật vô dụng!”
-Tiêu Dạ Hành xoay người xuống ngựa:
-“Trước sự tồn vong của quốc gia, đêm nay, người chết đâu chỉ có một mình Khương Thái phó. Chỉ khi thắng được trận chiến này, sự hy sinh của bọn họ mới không trở thành vô ích!”
-Sở Ngạo Thiên không sao kiềm chế được.
-Hắn hối hận!
-Hối hận vô cùng!
-Ngày trước, giá như hắn ngoan ngoãn hơn một chút.
-Nhìn lại những ký ức đã qua, hắn chưa từng có một lần khiến Khương Thái phó được yên lòng.
-Thế nhưng, dù hắn bướng bỉnh, ngoan cố đến vậy, Khương Thái phó vẫn chưa từng từ bỏ hắn, vẫn luôn kiên nhẫn dạy dỗ.
-Ông là một vị lương sư.
-Nhưng hắn lại vĩnh viễn đánh mất cơ hội báo đáp ông.
-Viên Thị lang kinh hãi:
-“Không ngờ các ngươi lại trở về nhanh đến thế! Sao có thể như vậy được?”
-Tiêu Dạ Hành lạnh lùng liếc sang:
-“Nghịch thần loạn đảng, đêm nay chính là ngày chết của ngươi!”
-Viên Thị lang lập tức lùi lại:
-“Người đâu!”
-Tiếng quát vừa dứt, gần trăm tên Nam Manh binh xông tới, bao vây Tiêu Dạ Hành, còn Viên Thị lang thì cầm kiếm lao về phía Sở Ngạo Thiên.
-Chớp mắt, Tiêu Dạ Hành vận nội lực, phi thân vọt lên, giẫm lên vai bọn chúng, liên tiếp mấy lần tung người đã đáp xuống trước mặt Sở Ngạo Thiên, tung một cước đá văng Viên Thị lang.
-“Tiêu Đô đốc!”
-Sở Ngạo Thiên túm lấy tay áo hắn:
-“Ngươi trở về thật đúng lúc, nhưng ta không phải là một vị hoàng đế tốt... Ta đã khiến Đại Sở trở nên rối tinh rối mù...”
-“Không phải lỗi của ngươi.”
-Tiêu Dạ Hành nghiêng đầu nhìn hắn, thấy hắn nước mắt nước mũi giàn giụa, vai run lên từng hồi, liền lấy khăn gấm trong tay áo ra.
-“Ngươi là một vị minh quân nhân hậu.”
-Từ xưa đến nay, nào có vị quân vương nào thập toàn thập mỹ?
-Có nhân quân, có bạo quân, có hôn quân, có dâm quân.
-Hắn đã làm rất tốt rồi.
-“Nhưng Khương Thái phó chết rồi, ông ấy vì cứu ta mà chết ngay trước mặt ta, là ta phụ lòng ông ấy... Từ nhỏ đến lớn, ta chưa từng khiến ông ấy hài lòng, vậy mà ông ấy lại vì cứu ta... Ta... ta...”
-Hắn nghẹn ngào đến không thành tiếng.
-“Không chỉ hắn, các ngươi đều phải chết!”
-Tiếng quát của Viên Thị lang chen ngang.
-Hơn trăm tên địch binh xông vào.
-Tiêu Dạ Hành không kịp nhiều lời, trở tay đẩy Sở Ngạo Thiên ra phía sau, cầm kiếm giao chiến với đám người kia.
-Máu tươi tung tóe.
-Đám gia quyến ôm chặt đầu, co rúm trong góc, không ngừng thét chói tai.
-Vô số thân ảnh hỗn loạn đánh giết thành một đoàn.
-Viên Thị lang cầm kiếm lao thẳng về phía Sở Ngạo Thiên:
-“Giao ngọc tỷ ra!”
-Tiêu Dạ Hành nâng trường kiếm, vung tay ném mạnh.
-Phập!
-“A!”
-Trường kiếm xuyên thủng cánh tay Viên Thị lang, lực quán tính khổng lồ kéo hắn văng ra ngoài, cả người bị ghim chặt lên cây cột.
-“A!”
-Đau!
-Cánh tay của hắn!
-Tiêu Dạ Hành trở tay đoạt lấy một thanh kiếm khác, vừa chém giết vừa tiến gần Sở Ngạo Thiên:
-“Ngọc tỷ đâu?”
-“Vẫn luôn cất trên người ta.”
-“Vậy thì giữ cho kỹ!”
-Phập!
-Một kiếm đâm tới, rồi rút ra, máu tươi bắn tung tóe, nhuộm đỏ nửa gương mặt Tiêu Dạ Hành. Hắn đá văng thi thể dưới chân, lại nghênh đón mấy thanh trường kiếm sắc bén, giao chiến cùng bọn chúng.
-Có người ngã xuống.
-Nhưng người xông vào lại càng nhiều.
-Địch binh cuồn cuộn không dứt.
-Trên người hai người đều đã nhuộm đầy máu.
-Sở Ngạo Thiên đã kiệt sức:
-“Tiêu Đô đốc, chẳng phải các ngươi đang ở Mạc Hoài châu sao? Sao có thể trở về Đế đô nhanh như vậy? Nói thật với ta đi, lần này hồi đô, các ngươi mang theo bao nhiêu binh?”
-Ánh mắt Tiêu Dạ Hành khẽ dao động.
-Tiếng tù và giữa màn đêm quả thực đã cổ vũ sĩ khí.
-Nhưng trên thực tế...
-Đại quân hành quân đông đảo, tốc độ chậm chạp, cần tiêu tốn rất nhiều thời gian. Hắn cùng Nhiếp Chính vương đã phi tốc trở về, chỉ mang theo một vạn kỵ binh.
-Mà quân địch đông gấp năm lần bọn họ!
-“Ngươi không cần bận tâm.”
-“Ngươi nói thật cho ta!”
-Tiêu Dạ Hành vung kiếm quét lui đám địch binh hai bên, che chở Sở Ngạo Thiên kín kẽ, vừa đánh vừa lui vào Đại Thành điện.
-“Việc giết địch cứ giao cho ta, những chuyện khác, ngươi không cần bận tâm.”
-Một kiếm đâm chết hai tên địch binh, giẫm lên mặt đất đẫm máu, hắn nắm lấy vai Sở Ngạo Thiên, ném thẳng người lên chiếc long ỷ dát vàng lộng lẫy, biểu tượng của quyền lực cùng dục vọng.
-Vị trí ấy...
-Đã cướp đi biết bao sinh mạng.
-Đã hủy hoại biết bao tất cả.
-Ngôi vị ấy được dựng nên trên thi hài chất cao hơn núi!
-Tiêu Dạ Hành dứt khoát xoay người, bước xuống bậc thềm, lấy sức một người chặn đứng mấy chục tên địch binh, một đường từ dưới đại điện giết đến tận cửa điện.
-Khắp mặt đất đỏ rực máu tươi, chói mắt vô cùng!
-Ngoài điện, cung thành càng vang dậy tiếng gào thét, khói lửa ngút trời.
-Hắn xoay người, nắm lấy hai cánh cửa đại điện nặng nề, chậm rãi khép lại.
-“Tiêu Đô đốc!”
-Cửa điện khép kín, ngăn cách trong ngoài.
-Mọi cuộc chém giết ngập trời phía sau lưng đều do một mình hắn gánh lấy.
-“Sở Ngạo Thiên, ngôi hoàng vị này, ngươi phải ngồi cho vững!” Ẩn bớt</p>
+            <p>Chương 316: Sở Ngạo Thiên, ngôi hoàng vị này, ngươi phải ngồi cho vững!</p>
+<p>Hốc mắt Sở Ngạo Thiên nóng lên, nơi sống mũi chua xót đến mức không sao kìm nén nổi.</p>
+<p>Tiêu Đô đốc đã trở về, cũng có nghĩa là Hoàng thúc đã trở về!</p>
+<p>Hắn có chỗ dựa rồi!</p>
+<p>“Tiêu Đô đốc, Khương Thái phó chết rồi! Ông ấy chết rồi!”</p>
+<p>Sở Ngạo Thiên gào khóc thất thanh:</p>
+<p>“Ta không bảo vệ được ông ấy!”</p>
+<p>“Ta thật vô dụng!”</p>
+<p>Tiêu Dạ Hành xoay người xuống ngựa:</p>
+<p>“Trước sự tồn vong của quốc gia, đêm nay, người chết đâu chỉ có một mình Khương Thái phó. Chỉ khi thắng được trận chiến này, sự hy sinh của bọn họ mới không trở thành vô ích!”</p>
+<p>Sở Ngạo Thiên không sao kiềm chế được.</p>
+<p>Hắn hối hận!</p>
+<p>Hối hận vô cùng!</p>
+<p>Ngày trước, giá như hắn ngoan ngoãn hơn một chút.</p>
+<p>Nhìn lại những ký ức đã qua, hắn chưa từng có một lần khiến Khương Thái phó được yên lòng.</p>
+<p>Thế nhưng, dù hắn bướng bỉnh, ngoan cố đến vậy, Khương Thái phó vẫn chưa từng từ bỏ hắn, vẫn luôn kiên nhẫn dạy dỗ.</p>
+<p>Ông là một vị lương sư.</p>
+<p>Nhưng hắn lại vĩnh viễn đánh mất cơ hội báo đáp ông.</p>
+<p>Viên Thị lang kinh hãi:</p>
+<p>“Không ngờ các ngươi lại trở về nhanh đến thế! Sao có thể như vậy được?”</p>
+<p>Tiêu Dạ Hành lạnh lùng liếc sang:</p>
+<p>“Nghịch thần loạn đảng, đêm nay chính là ngày chết của ngươi!”</p>
+<p>Viên Thị lang lập tức lùi lại:</p>
+<p>“Người đâu!”</p>
+<p>Tiếng quát vừa dứt, gần trăm tên Nam Manh binh xông tới, bao vây Tiêu Dạ Hành, còn Viên Thị lang thì cầm kiếm lao về phía Sở Ngạo Thiên.</p>
+<p>Chớp mắt, Tiêu Dạ Hành vận nội lực, phi thân vọt lên, giẫm lên vai bọn chúng, liên tiếp mấy lần tung người đã đáp xuống trước mặt Sở Ngạo Thiên, tung một cước đá văng Viên Thị lang.</p>
+<p>“Tiêu Đô đốc!”</p>
+<p>Sở Ngạo Thiên túm lấy tay áo hắn:</p>
+<p>“Ngươi trở về thật đúng lúc, nhưng ta không phải là một vị hoàng đế tốt... Ta đã khiến Đại Sở trở nên rối tinh rối mù...”</p>
+<p>“Không phải lỗi của ngươi.”</p>
+<p>Tiêu Dạ Hành nghiêng đầu nhìn hắn, thấy hắn nước mắt nước mũi giàn giụa, vai run lên từng hồi, liền lấy khăn gấm trong tay áo ra.</p>
+<p>“Ngươi là một vị minh quân nhân hậu.”</p>
+<p>Từ xưa đến nay, nào có vị quân vương nào thập toàn thập mỹ?</p>
+<p>Có nhân quân, có bạo quân, có hôn quân, có dâm quân.</p>
+<p>Hắn đã làm rất tốt rồi.</p>
+<p>“Nhưng Khương Thái phó chết rồi, ông ấy vì cứu ta mà chết ngay trước mặt ta, là ta phụ lòng ông ấy... Từ nhỏ đến lớn, ta chưa từng khiến ông ấy hài lòng, vậy mà ông ấy lại vì cứu ta... Ta... ta...”</p>
+<p>Hắn nghẹn ngào đến không thành tiếng.</p>
+<p>“Không chỉ hắn, các ngươi đều phải chết!”</p>
+<p>Tiếng quát của Viên Thị lang chen ngang.</p>
+<p>Hơn trăm tên địch binh xông vào.</p>
+<p>Tiêu Dạ Hành không kịp nhiều lời, trở tay đẩy Sở Ngạo Thiên ra phía sau, cầm kiếm giao chiến với đám người kia.</p>
+<p>Máu tươi tung tóe.</p>
+<p>Đám gia quyến ôm chặt đầu, co rúm trong góc, không ngừng thét chói tai.</p>
+<p>Vô số thân ảnh hỗn loạn đánh giết thành một đoàn.</p>
+<p>Viên Thị lang cầm kiếm lao thẳng về phía Sở Ngạo Thiên:</p>
+<p>“Giao ngọc tỷ ra!”</p>
+<p>Tiêu Dạ Hành nâng trường kiếm, vung tay ném mạnh.</p>
+<p>Phập!</p>
+<p>“A!”</p>
+<p>Trường kiếm xuyên thủng cánh tay Viên Thị lang, lực quán tính khổng lồ kéo hắn văng ra ngoài, cả người bị ghim chặt lên cây cột.</p>
+<p>“A!”</p>
+<p>Đau!</p>
+<p>Cánh tay của hắn!</p>
+<p>Tiêu Dạ Hành trở tay đoạt lấy một thanh kiếm khác, vừa chém giết vừa tiến gần Sở Ngạo Thiên:</p>
+<p>“Ngọc tỷ đâu?”</p>
+<p>“Vẫn luôn cất trên người ta.”</p>
+<p>“Vậy thì giữ cho kỹ!”</p>
+<p>Phập!</p>
+<p>Một kiếm đâm tới, rồi rút ra, máu tươi bắn tung tóe, nhuộm đỏ nửa gương mặt Tiêu Dạ Hành. Hắn đá văng thi thể dưới chân, lại nghênh đón mấy thanh trường kiếm sắc bén, giao chiến cùng bọn chúng.</p>
+<p>Có người ngã xuống.</p>
+<p>Nhưng người xông vào lại càng nhiều.</p>
+<p>Địch binh cuồn cuộn không dứt.</p>
+<p>Trên người hai người đều đã nhuộm đầy máu.</p>
+<p>Sở Ngạo Thiên đã kiệt sức:</p>
+<p>“Tiêu Đô đốc, chẳng phải các ngươi đang ở Mạc Hoài châu sao? Sao có thể trở về Đế đô nhanh như vậy? Nói thật với ta đi, lần này hồi đô, các ngươi mang theo bao nhiêu binh?”</p>
+<p>Ánh mắt Tiêu Dạ Hành khẽ dao động.</p>
+<p>Tiếng tù và giữa màn đêm quả thực đã cổ vũ sĩ khí.</p>
+<p>Nhưng trên thực tế...</p>
+<p>Đại quân hành quân đông đảo, tốc độ chậm chạp, cần tiêu tốn rất nhiều thời gian. Hắn cùng Nhiếp Chính vương đã phi tốc trở về, chỉ mang theo một vạn kỵ binh.</p>
+<p>Mà quân địch đông gấp năm lần bọn họ!</p>
+<p>“Ngươi không cần bận tâm.”</p>
+<p>“Ngươi nói thật cho ta!”</p>
+<p>Tiêu Dạ Hành vung kiếm quét lui đám địch binh hai bên, che chở Sở Ngạo Thiên kín kẽ, vừa đánh vừa lui vào Đại Thành điện.</p>
+<p>“Việc giết địch cứ giao cho ta, những chuyện khác, ngươi không cần bận tâm.”</p>
+<p>Một kiếm đâm chết hai tên địch binh, giẫm lên mặt đất đẫm máu, hắn nắm lấy vai Sở Ngạo Thiên, ném thẳng người lên chiếc long ỷ dát vàng lộng lẫy, biểu tượng của quyền lực cùng dục vọng.</p>
+<p>Vị trí ấy...</p>
+<p>Đã cướp đi biết bao sinh mạng.</p>
+<p>Đã hủy hoại biết bao tất cả.</p>
+<p>Ngôi vị ấy được dựng nên trên thi hài chất cao hơn núi!</p>
+<p>Tiêu Dạ Hành dứt khoát xoay người, bước xuống bậc thềm, lấy sức một người chặn đứng mấy chục tên địch binh, một đường từ dưới đại điện giết đến tận cửa điện.</p>
+<p>Khắp mặt đất đỏ rực máu tươi, chói mắt vô cùng!</p>
+<p>Ngoài điện, cung thành càng vang dậy tiếng gào thét, khói lửa ngút trời.</p>
+<p>Hắn xoay người, nắm lấy hai cánh cửa đại điện nặng nề, chậm rãi khép lại.</p>
+<p>“Tiêu Đô đốc!”</p>
+<p>Cửa điện khép kín, ngăn cách trong ngoài.</p>
+<p>Mọi cuộc chém giết ngập trời phía sau lưng đều do một mình hắn gánh lấy.</p>
+<p>“Sở Ngạo Thiên, ngôi hoàng vị này, ngươi phải ngồi cho vững!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_315.html" class="btn">‹ Trước</a>
             <a href="chuong_317.html" class="btn">Sau ›</a>
         </div>
@@ -215,15 +223,11 @@ Mọi cuộc chém giết ngập trời phía sau lưng đều do một mình h�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -235,11 +239,11 @@ Mọi cuộc chém giết ngập trời phía sau lưng đều do một mình h�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

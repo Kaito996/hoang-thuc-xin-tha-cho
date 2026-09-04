@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 149</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,215 +62,224 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 149</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_148.html" class="btn">‹ Trước</a>
             <a href="chuong_150.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 149: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 149: Tiểu Cửu, Sở Dạ Ly không phải người tốt
-Rất nhanh, chủ nhà đã thu dọn xong đống ngói vỡ và bàn ghế ngổn ngang, cũng vừa đến giờ, nắp quan tài được đậy kín, chuẩn bị khởi linh.
-Đinh được đóng lên quan tài.
-“Khởi linh!”
-Tám đại hán vừa khiêng quan tài, sắc mặt đồng loạt khẽ biến.
-Sao… nặng thế!
-Nặng đến mức như trong một cỗ quan tài lại nằm… ba người vậy.
-Lẽ nào…
-Người chết khi còn sống có điều gì oán hận, nên mới làm mái ngói sụp xuống để cảnh báo?
-Vong hồn hiển linh rồi?
-Tám người không dám nghĩ nhiều, chỉ đành dốc hết sức, khiêng cỗ quan tài nặng trĩu, theo đoàn đưa tang vừa khóc linh vừa lên núi.
-Thế nhưng đến cổng thành thì bị chặn lại.
-“Có lệnh từ trên, bất cứ ai cũng không được xuất thành!”
-Đám vệ binh giương trường thương, chặn ngang đường.
-Chủ nhà là một nam nhân trung niên, đôi mắt đỏ hoe vì khóc, nghẹn ngào nói:
-“Đại nhân, tẩu tẩu ta số khổ, mất sớm, nhưng thi thể không thể cứ để mãi như vậy! Nếu không sớm nhập thổ an táng, chẳng những thi thể sẽ hư thối, mà người sống như chúng ta cũng chẳng thể yên lòng.”
-“Xin đại nhân khai ân!”
-Những người thân khoác áo tang cũng sụt sùi khóc theo.
-Tên vệ binh lạnh mặt:
-“Đây là mệnh lệnh cấp trên, ta không có quyền mở cổng thành. Nếu để phạm nhân chạy thoát, các ngươi đều không gánh nổi trách nhiệm!”
-“Đại nhân! Xin người!”
-Chủ nhà quỳ xuống khẩn cầu.
-Cảnh tượng vừa khóc lóc vừa tranh cãi lập tức thu hút không ít bách tính đứng xem.
-Nhà ai mà chẳng có lúc làm tang sự?
-Nếu thân nhân qua đời mà còn không được an táng, ai lại không động lòng trắc ẩn?
-Mọi người nhỏ giọng bàn tán:
-“Quy củ là chết, con người mới là sống…”
-“Cổ nhân vẫn nói, người chết là quan trọng nhất…”
-Đúng lúc ấy, Thác Bạt Minh Nguyệt sải bước tới. Sau khi biết rõ sự tình, nàng phân phó:
-“Kiểm tra đoàn đưa tang một lượt rồi cho xuất thành.”
-Chủ nhà cảm kích đến rơi nước mắt.
-Đoàn đưa tang đều là người thân, hơn hai mươi người, rất nhanh đã kiểm tra xong, không phát hiện điều gì bất thường.
-Ngay lúc chuẩn bị mở cổng thành.
-“Khoan đã.”
-Một giọng nam lạnh lẽo vang lên.
-Bên trong quan tài.
-Tim Sở Ly chợt thắt lại, vừa nghe đã nhận ra đó là giọng của Sở Dạ Ly.
-Huynh ấy tới rồi.
-Không hiểu sao nàng bỗng căng thẳng, hai tay siết chặt khuỷu tay Sở Đệ Trì hơn vài phần.
-“Dạ Ly ca ca, theo quy củ của tổ tiên, người chết là quan trọng nhất, phải để người chết được nhập thổ vi an.” Thác Bạt Minh Nguyệt nói.
-“Mở quan tài.”
-Cái gì?!
-Mọi người đều chấn động.
-Sở Dạ Ly nhìn cỗ quan tài đen sì kia, nói:
-“Mở ra, kiểm tra xong rồi hãy xuất thành.”
-Sắc mặt chủ nhà trắng bệch:
-“Nhưng… nắp quan tài đã đóng đinh rồi.”
-“Vậy thì cạy ra.”
-Điều này… quá xui xẻo!
-Đóng đinh nghĩa là vong hồn đã yên nghỉ trong quan tài. Nếu giữa thanh thiên bạch nhật, lại ngay ngoài đường lớn mà cạy nắp…
-Chuyện này…
-Xưa nay nào có quy củ như vậy?
-“Đại nhân, chuyện này…”
-“Chỉ nhìn một cái mà thôi.”
-Chủ nhà kinh hoảng tột độ, nào dám mạo phạm người chết, quỳ dưới đất vừa khóc vừa cầu xin.
-Thác Bạt Minh Nguyệt suy nghĩ một lúc, bèn chọn cách dung hòa, chỉ vào một tên vệ binh:
-“Ngươi đi theo đoàn đưa tang lên núi, tận mắt nhìn quan tài được hạ táng, rồi canh giữ hai canh giờ, sau đó trở về phục mệnh.”
-“Rõ!”
-Tên vệ binh lĩnh mệnh.
-Như vậy vừa tránh được việc mở quan tài trước mặt mọi người, vừa giải được nghi ngờ trong lòng Sở Dạ Ly. Đoàn đưa tang lúc này mới thuận lợi xuất thành.
-Trong quan tài.
-Sở Ly khẽ thở phào:
-“Cuối cùng cũng ra được rồi.”
-“Nếu còn chưa ra, nàng sắp bóp tím cánh tay ta mất.”
-“Hả?!”
-Sở Ly vội vàng buông tay.
-Vừa rồi quá căng thẳng, nàng không để ý mình vẫn luôn bóp hắn. Bảo sao… bóp mãi mà vẫn có độ đàn hồi, đúng là rất giải tỏa.
-Sở Đệ Trì khẽ thở dài:
-“Tiểu Cửu có khuynh hướng bạo lực, ta thật lo sau này trên giường nàng cũng đánh ta… Á!”
-Sở Ly trợn mắt, thuận tay đấm một quyền vào eo hắn.
-Quan tài bất ngờ rung lên.
-Tám đại hán khiêng quan tài sợ đến sống lưng lạnh toát.
-Họ không biết là quan tài rung thật hay do đường núi gập ghềnh khiến quan tài lắc lư, nhưng trong lòng càng lúc càng thấy rợn người.
-“Lát nữa chúng ta ra ngoài bằng cách nào?”
-“Đừng lo. Quan tài của dân thường đều là loại mỏng, giòn chẳng khác gì giấy. Chỉ cần dùng nội lực chấn một cái là mở được. Chỉ là… Tiểu Cửu, chúng ta thế này có tính là đồng huyệt cộng miên không?”
-“Ta còn trẻ, ai muốn cùng ngươi đồng huyệt cộng miên?”
-“Ta nói trăm năm sau.”
-“Trăm năm sau cũng không.”
-Không gian tối đen chật hẹp, giơ tay chẳng thấy năm ngón, cũng không nhìn rõ mặt đối phương.
-Sau mấy câu nói, xung quanh lại chìm vào tĩnh lặng.
-Chỉ còn hơi thở nóng bỏng của hai người phả lên mặt nhau, vô hình đan xen.
-Rất nhanh.
-Quan tài được đặt xuống đất.
-Chuẩn bị hạ táng.
-Đến lúc rồi.
-“Ôm chặt ta.”
-Một tay Sở Đệ Trì ôm lấy vòng eo nàng, tay còn lại tụ nội lực ngày càng hùng hậu, đánh mạnh lên nắp quan tài.
-Ầm!!
-Một tiếng nổ vang trời.
-Nắp quan tài bay vọt lên không trung, văng xa mấy trượng.
-Đám người hoảng sợ ngã dúi dụi xuống đất.
-“Trương gia tẩu tẩu… xác chết vùng dậy rồi!”
-“Trời ơi! Trương gia tẩu tẩu chết oan quá! Trương nhị đệ, chuyện ngươi lén tư thông với tẩu tẩu sau lưng đại ca đừng giấu nữa!”
-Chỉ có tên vệ binh nhận ra có điều không ổn, lập tức rút kiếm lao tới, nhưng vừa xông lên đã bị chưởng lực hất văng mấy trượng, ngất xỉu tại chỗ.
-Sở Đệ Trì ôm Sở Ly phi thân mà lên, nhẹ nhàng đáp xuống đất.
-Mọi người tròn mắt.
-Hai người sống?
-Không phải xác chết vùng dậy?
-Sở Ly ngoái đầu nhìn cỗ quan tài đã vỡ tan tành, thi thể người phụ nhân cũng rơi ra ngoài. Nàng thật lòng áy náy, lấy từ trong ngực ra một thỏi vàng nhỏ, nói:
-“Các vị… thay một cỗ quan tài khác rồi chôn lại đi.”
-Á…
-Chuyện này…
-Chủ nhà run rẩy nhận lấy thỏi vàng.
-Thay một cỗ quan tài khác?
-Ý là… muốn chôn luôn ông ấy sao?
-Sở Đệ Trì ôm Sở Ly định rời đi, chợt quay đầu hỏi:
-“Các ngươi sẽ tiết lộ tung tích của chúng ta chứ?”
-Mọi người lập tức lắc đầu như trống bỏi.
-Nam nhân này chỉ bằng một chưởng đã đánh vỡ quan tài, rõ ràng là cao thủ võ lâm.
-Đám dân thường như bọn họ nào dám dây vào loại sát tinh này?
-“Ta không tin.”
-“Nhắm mắt lại mà thề.”
-Mọi người ngoan ngoãn nhắm mắt.
-Ngay sau đó, Sở Đệ Trì phất một chưởng nội lực như dời non lấp biển, đánh tất cả ngã chổng vó, hôn mê bất tỉnh, lúc ấy mới yên tâm ôm Sở Ly nghênh ngang rời đi.
-Cuối cùng cũng thuận lợi xuất thành!
-Sở Ly còn chưa kịp vui quá ba hơi thở thì lại lo lắng cho an nguy của Tần Mục Vũ.
-Nỗi ưu sầu còn chưa kéo dài nửa khắc, phía sau đã vang lên tiếng vó ngựa dồn dập.
-“Bên kia!”
-“Đuổi!”
-Là một đội kỵ binh.
-Hành tung của bọn họ đã bị phát hiện!
-Sở Đệ Trì trầm giọng:
-“Chúng ta chạy vào núi.”
-Ngựa vào núi thì không thể chạy nhanh.
-Huống chi địa thế Nam Man núi non trùng điệp, kéo dài bất tận.
-Hắn nắm tay Sở Ly, vạch bụi gai cỏ dại, mở ra một con đường gập ghềnh.
-Sở Ly vừa chạy theo vừa nói:
-“Bọn họ đuổi cũng nhanh quá rồi!”
-“Là vì Sở Dạ Ly đa nghi.”
-Người đó rất thông minh, tâm tư cũng cực kỳ kín kẽ.
-Bất kỳ ai ra vào thành, hắn đều nghi ngờ.
-Nếu không có chút tâm cơ ấy, hắn cũng chẳng thể sống đến ngày hôm nay.
-“Tiểu Cửu, Sở Dạ Ly không phải người tốt.”
-Sở Ly hơi chần chừ.
-Thật ra, từ sau khi rời cung, tuy Sở Dạ Ly luôn giữ nàng bên cạnh, nhưng chưa từng làm tổn thương nàng.
-Những gì nàng muốn, muốn ăn, muốn làm, chỉ cần không rời khỏi hắn, hắn đều đáp ứng.
-Con người vốn không ai hoàn mỹ.
-Ở vài phương diện, hắn có lẽ cố chấp cực đoan.
-Nhưng ở vài phương diện khác… hắn thật sự rất tốt.
-Tiếng vó ngựa phía sau vẫn đuổi gấp.
-Nhưng rừng núi càng lúc càng sâu, ngựa không thể chạy nhanh, đám kỵ binh chỉ đành xuống ngựa.
-“Dắt chó săn tới, mau đuổi!”
-“Nhanh!”
-“Gâu! Gâu!”
-Khứu giác của chó săn cực kỳ nhạy bén, chỉ cần ngửi được khí tức trên người đối phương là có thể truy đuổi suốt trăm dặm.
-Hôm nay, bọn họ khó lòng thoát thân!
-“Gâu! Gâu!”
-“Tiểu Cửu, Sở Dạ Ly còn thả chó cắn nàng rồi, hắn thật sự không phải người tốt.”
-Sở Ly lập tức gật đầu:
-“Ngươi nói rất đúng!” Ẩn bớt</p>
+            <p>Chương 149: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 149: Tiểu Cửu, Sở Dạ Ly không phải người tốt</p>
+<p>Rất nhanh, chủ nhà đã thu dọn xong đống ngói vỡ và bàn ghế ngổn ngang, cũng vừa đến giờ, nắp quan tài được đậy kín, chuẩn bị khởi linh.</p>
+<p>Đinh được đóng lên quan tài.</p>
+<p>“Khởi linh!”</p>
+<p>Tám đại hán vừa khiêng quan tài, sắc mặt đồng loạt khẽ biến.</p>
+<p>Sao… nặng thế!</p>
+<p>Nặng đến mức như trong một cỗ quan tài lại nằm… ba người vậy.</p>
+<p>Lẽ nào…</p>
+<p>Người chết khi còn sống có điều gì oán hận, nên mới làm mái ngói sụp xuống để cảnh báo?</p>
+<p>Vong hồn hiển linh rồi?</p>
+<p>Tám người không dám nghĩ nhiều, chỉ đành dốc hết sức, khiêng cỗ quan tài nặng trĩu, theo đoàn đưa tang vừa khóc linh vừa lên núi.</p>
+<p>Thế nhưng đến cổng thành thì bị chặn lại.</p>
+<p>“Có lệnh từ trên, bất cứ ai cũng không được xuất thành!”</p>
+<p>Đám vệ binh giương trường thương, chặn ngang đường.</p>
+<p>Chủ nhà là một nam nhân trung niên, đôi mắt đỏ hoe vì khóc, nghẹn ngào nói:</p>
+<p>“Đại nhân, tẩu tẩu ta số khổ, mất sớm, nhưng thi thể không thể cứ để mãi như vậy! Nếu không sớm nhập thổ an táng, chẳng những thi thể sẽ hư thối, mà người sống như chúng ta cũng chẳng thể yên lòng.”</p>
+<p>“Xin đại nhân khai ân!”</p>
+<p>Những người thân khoác áo tang cũng sụt sùi khóc theo.</p>
+<p>Tên vệ binh lạnh mặt:</p>
+<p>“Đây là mệnh lệnh cấp trên, ta không có quyền mở cổng thành. Nếu để phạm nhân chạy thoát, các ngươi đều không gánh nổi trách nhiệm!”</p>
+<p>“Đại nhân! Xin người!”</p>
+<p>Chủ nhà quỳ xuống khẩn cầu.</p>
+<p>Cảnh tượng vừa khóc lóc vừa tranh cãi lập tức thu hút không ít bách tính đứng xem.</p>
+<p>Nhà ai mà chẳng có lúc làm tang sự?</p>
+<p>Nếu thân nhân qua đời mà còn không được an táng, ai lại không động lòng trắc ẩn?</p>
+<p>Mọi người nhỏ giọng bàn tán:</p>
+<p>“Quy củ là chết, con người mới là sống…”</p>
+<p>“Cổ nhân vẫn nói, người chết là quan trọng nhất…”</p>
+<p>Đúng lúc ấy, Thác Bạt Minh Nguyệt sải bước tới. Sau khi biết rõ sự tình, nàng phân phó:</p>
+<p>“Kiểm tra đoàn đưa tang một lượt rồi cho xuất thành.”</p>
+<p>Chủ nhà cảm kích đến rơi nước mắt.</p>
+<p>Đoàn đưa tang đều là người thân, hơn hai mươi người, rất nhanh đã kiểm tra xong, không phát hiện điều gì bất thường.</p>
+<p>Ngay lúc chuẩn bị mở cổng thành.</p>
+<p>“Khoan đã.”</p>
+<p>Một giọng nam lạnh lẽo vang lên.</p>
+<p>Bên trong quan tài.</p>
+<p>Tim Sở Ly chợt thắt lại, vừa nghe đã nhận ra đó là giọng của Sở Dạ Ly.</p>
+<p>Huynh ấy tới rồi.</p>
+<p>Không hiểu sao nàng bỗng căng thẳng, hai tay siết chặt khuỷu tay Sở Đệ Trì hơn vài phần.</p>
+<p>“Dạ Ly ca ca, theo quy củ của tổ tiên, người chết là quan trọng nhất, phải để người chết được nhập thổ vi an.” Thác Bạt Minh Nguyệt nói.</p>
+<p>“Mở quan tài.”</p>
+<p>Cái gì?!</p>
+<p>Mọi người đều chấn động.</p>
+<p>Sở Dạ Ly nhìn cỗ quan tài đen sì kia, nói:</p>
+<p>“Mở ra, kiểm tra xong rồi hãy xuất thành.”</p>
+<p>Sắc mặt chủ nhà trắng bệch:</p>
+<p>“Nhưng… nắp quan tài đã đóng đinh rồi.”</p>
+<p>“Vậy thì cạy ra.”</p>
+<p>Điều này… quá xui xẻo!</p>
+<p>Đóng đinh nghĩa là vong hồn đã yên nghỉ trong quan tài. Nếu giữa thanh thiên bạch nhật, lại ngay ngoài đường lớn mà cạy nắp…</p>
+<p>Chuyện này…</p>
+<p>Xưa nay nào có quy củ như vậy?</p>
+<p>“Đại nhân, chuyện này…”</p>
+<p>“Chỉ nhìn một cái mà thôi.”</p>
+<p>Chủ nhà kinh hoảng tột độ, nào dám mạo phạm người chết, quỳ dưới đất vừa khóc vừa cầu xin.</p>
+<p>Thác Bạt Minh Nguyệt suy nghĩ một lúc, bèn chọn cách dung hòa, chỉ vào một tên vệ binh:</p>
+<p>“Ngươi đi theo đoàn đưa tang lên núi, tận mắt nhìn quan tài được hạ táng, rồi canh giữ hai canh giờ, sau đó trở về phục mệnh.”</p>
+<p>“Rõ!”</p>
+<p>Tên vệ binh lĩnh mệnh.</p>
+<p>Như vậy vừa tránh được việc mở quan tài trước mặt mọi người, vừa giải được nghi ngờ trong lòng Sở Dạ Ly. Đoàn đưa tang lúc này mới thuận lợi xuất thành.</p>
+<p>Trong quan tài.</p>
+<p>Sở Ly khẽ thở phào:</p>
+<p>“Cuối cùng cũng ra được rồi.”</p>
+<p>“Nếu còn chưa ra, nàng sắp bóp tím cánh tay ta mất.”</p>
+<p>“Hả?!”</p>
+<p>Sở Ly vội vàng buông tay.</p>
+<p>Vừa rồi quá căng thẳng, nàng không để ý mình vẫn luôn bóp hắn. Bảo sao… bóp mãi mà vẫn có độ đàn hồi, đúng là rất giải tỏa.</p>
+<p>Sở Đệ Trì khẽ thở dài:</p>
+<p>“Tiểu Cửu có khuynh hướng bạo lực, ta thật lo sau này trên giường nàng cũng đánh ta… Á!”</p>
+<p>Sở Ly trợn mắt, thuận tay đấm một quyền vào eo hắn.</p>
+<p>Quan tài bất ngờ rung lên.</p>
+<p>Tám đại hán khiêng quan tài sợ đến sống lưng lạnh toát.</p>
+<p>Họ không biết là quan tài rung thật hay do đường núi gập ghềnh khiến quan tài lắc lư, nhưng trong lòng càng lúc càng thấy rợn người.</p>
+<p>“Lát nữa chúng ta ra ngoài bằng cách nào?”</p>
+<p>“Đừng lo. Quan tài của dân thường đều là loại mỏng, giòn chẳng khác gì giấy. Chỉ cần dùng nội lực chấn một cái là mở được. Chỉ là… Tiểu Cửu, chúng ta thế này có tính là đồng huyệt cộng miên không?”</p>
+<p>“Ta còn trẻ, ai muốn cùng ngươi đồng huyệt cộng miên?”</p>
+<p>“Ta nói trăm năm sau.”</p>
+<p>“Trăm năm sau cũng không.”</p>
+<p>Không gian tối đen chật hẹp, giơ tay chẳng thấy năm ngón, cũng không nhìn rõ mặt đối phương.</p>
+<p>Sau mấy câu nói, xung quanh lại chìm vào tĩnh lặng.</p>
+<p>Chỉ còn hơi thở nóng bỏng của hai người phả lên mặt nhau, vô hình đan xen.</p>
+<p>Rất nhanh.</p>
+<p>Quan tài được đặt xuống đất.</p>
+<p>Chuẩn bị hạ táng.</p>
+<p>Đến lúc rồi.</p>
+<p>“Ôm chặt ta.”</p>
+<p>Một tay Sở Đệ Trì ôm lấy vòng eo nàng, tay còn lại tụ nội lực ngày càng hùng hậu, đánh mạnh lên nắp quan tài.</p>
+<p>Ầm!!</p>
+<p>Một tiếng nổ vang trời.</p>
+<p>Nắp quan tài bay vọt lên không trung, văng xa mấy trượng.</p>
+<p>Đám người hoảng sợ ngã dúi dụi xuống đất.</p>
+<p>“Trương gia tẩu tẩu… xác chết vùng dậy rồi!”</p>
+<p>“Trời ơi! Trương gia tẩu tẩu chết oan quá! Trương nhị đệ, chuyện ngươi lén tư thông với tẩu tẩu sau lưng đại ca đừng giấu nữa!”</p>
+<p>Chỉ có tên vệ binh nhận ra có điều không ổn, lập tức rút kiếm lao tới, nhưng vừa xông lên đã bị chưởng lực hất văng mấy trượng, ngất xỉu tại chỗ.</p>
+<p>Sở Đệ Trì ôm Sở Ly phi thân mà lên, nhẹ nhàng đáp xuống đất.</p>
+<p>Mọi người tròn mắt.</p>
+<p>Hai người sống?</p>
+<p>Không phải xác chết vùng dậy?</p>
+<p>Sở Ly ngoái đầu nhìn cỗ quan tài đã vỡ tan tành, thi thể người phụ nhân cũng rơi ra ngoài. Nàng thật lòng áy náy, lấy từ trong ngực ra một thỏi vàng nhỏ, nói:</p>
+<p>“Các vị… thay một cỗ quan tài khác rồi chôn lại đi.”</p>
+<p>Á…</p>
+<p>Chuyện này…</p>
+<p>Chủ nhà run rẩy nhận lấy thỏi vàng.</p>
+<p>Thay một cỗ quan tài khác?</p>
+<p>Ý là… muốn chôn luôn ông ấy sao?</p>
+<p>Sở Đệ Trì ôm Sở Ly định rời đi, chợt quay đầu hỏi:</p>
+<p>“Các ngươi sẽ tiết lộ tung tích của chúng ta chứ?”</p>
+<p>Mọi người lập tức lắc đầu như trống bỏi.</p>
+<p>Nam nhân này chỉ bằng một chưởng đã đánh vỡ quan tài, rõ ràng là cao thủ võ lâm.</p>
+<p>Đám dân thường như bọn họ nào dám dây vào loại sát tinh này?</p>
+<p>“Ta không tin.”</p>
+<p>“Nhắm mắt lại mà thề.”</p>
+<p>Mọi người ngoan ngoãn nhắm mắt.</p>
+<p>Ngay sau đó, Sở Đệ Trì phất một chưởng nội lực như dời non lấp biển, đánh tất cả ngã chổng vó, hôn mê bất tỉnh, lúc ấy mới yên tâm ôm Sở Ly nghênh ngang rời đi.</p>
+<p>Cuối cùng cũng thuận lợi xuất thành!</p>
+<p>Sở Ly còn chưa kịp vui quá ba hơi thở thì lại lo lắng cho an nguy của Tần Mục Vũ.</p>
+<p>Nỗi ưu sầu còn chưa kéo dài nửa khắc, phía sau đã vang lên tiếng vó ngựa dồn dập.</p>
+<p>“Bên kia!”</p>
+<p>“Đuổi!”</p>
+<p>Là một đội kỵ binh.</p>
+<p>Hành tung của bọn họ đã bị phát hiện!</p>
+<p>Sở Đệ Trì trầm giọng:</p>
+<p>“Chúng ta chạy vào núi.”</p>
+<p>Ngựa vào núi thì không thể chạy nhanh.</p>
+<p>Huống chi địa thế Nam Man núi non trùng điệp, kéo dài bất tận.</p>
+<p>Hắn nắm tay Sở Ly, vạch bụi gai cỏ dại, mở ra một con đường gập ghềnh.</p>
+<p>Sở Ly vừa chạy theo vừa nói:</p>
+<p>“Bọn họ đuổi cũng nhanh quá rồi!”</p>
+<p>“Là vì Sở Dạ Ly đa nghi.”</p>
+<p>Người đó rất thông minh, tâm tư cũng cực kỳ kín kẽ.</p>
+<p>Bất kỳ ai ra vào thành, hắn đều nghi ngờ.</p>
+<p>Nếu không có chút tâm cơ ấy, hắn cũng chẳng thể sống đến ngày hôm nay.</p>
+<p>“Tiểu Cửu, Sở Dạ Ly không phải người tốt.”</p>
+<p>Sở Ly hơi chần chừ.</p>
+<p>Thật ra, từ sau khi rời cung, tuy Sở Dạ Ly luôn giữ nàng bên cạnh, nhưng chưa từng làm tổn thương nàng.</p>
+<p>Những gì nàng muốn, muốn ăn, muốn làm, chỉ cần không rời khỏi hắn, hắn đều đáp ứng.</p>
+<p>Con người vốn không ai hoàn mỹ.</p>
+<p>Ở vài phương diện, hắn có lẽ cố chấp cực đoan.</p>
+<p>Nhưng ở vài phương diện khác… hắn thật sự rất tốt.</p>
+<p>Tiếng vó ngựa phía sau vẫn đuổi gấp.</p>
+<p>Nhưng rừng núi càng lúc càng sâu, ngựa không thể chạy nhanh, đám kỵ binh chỉ đành xuống ngựa.</p>
+<p>“Dắt chó săn tới, mau đuổi!”</p>
+<p>“Nhanh!”</p>
+<p>“Gâu! Gâu!”</p>
+<p>Khứu giác của chó săn cực kỳ nhạy bén, chỉ cần ngửi được khí tức trên người đối phương là có thể truy đuổi suốt trăm dặm.</p>
+<p>Hôm nay, bọn họ khó lòng thoát thân!</p>
+<p>“Gâu! Gâu!”</p>
+<p>“Tiểu Cửu, Sở Dạ Ly còn thả chó cắn nàng rồi, hắn thật sự không phải người tốt.”</p>
+<p>Sở Ly lập tức gật đầu:</p>
+<p>“Ngươi nói rất đúng!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_148.html" class="btn">‹ Trước</a>
             <a href="chuong_150.html" class="btn">Sau ›</a>
         </div>
@@ -279,15 +287,11 @@ Sở Ly lập tức gật đầu:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -299,11 +303,11 @@ Sở Ly lập tức gật đầu:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

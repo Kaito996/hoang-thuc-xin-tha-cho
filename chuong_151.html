@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 151</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,196 +62,205 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 151</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_150.html" class="btn">‹ Trước</a>
             <a href="chuong_152.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 151: Hoàng thúc, ngươi cảm thấy khá hơn chưa?
-Hắn sốt rồi.
-Thân thể nóng bỏng vô cùng, áp sát trước ngực nàng, hơi ấm truyền sang, xua tan giá lạnh của màn đêm.
-Hơi thở của hai người quấn quýt giao hòa.
-Thật ra, nàng không quá thích làm chuyện như vậy. Tựa như bóng ma từng lưu lại trong lòng, mỗi lần nhắc đến đều chẳng phải ký ức tốt đẹp gì.
-“Tiểu Cửu…”
-Giọng hắn khàn đặc, ở giữa ranh giới nửa tỉnh nửa mê, mười ngón tay đan chặt lấy tay nàng.
-“Vì sao… vì sao… nàng giết ta… cũng giết người  ấy… người ấy vô tội…”
-Hắn đang nói gì vậy?
-Sao nàng nghe không hiểu?
-Có lẽ chỉ là mê sảng do sốt cao, không thể tin là thật.
-Mà cũng chẳng cho nàng chút thời gian suy nghĩ, hai người cùng nhau chìm đắm.
-—
-“A!”
-Sáng sớm, một tiếng thét kinh hãi xé tan sự tĩnh lặng của núi rừng.
-Sở Ly giật mình tỉnh giấc, vội quấn chặt ngoại bào của Sở Đệ Trì, ngẩng đầu nhìn người đàn ông trung niên bất ngờ xuất hiện.
-“Ma quỷ… ma quỷ! Các ngươi…”
-Người đàn ông trung niên đội đấu lạp, khoác áo choàng may bằng da thú, trên vai đeo một cây cung, nhìn dáng vẻ hẳn là thợ săn sống gần đây.
-“Các ngươi… vậy mà lại ở đây…”
-Tư thông?
-Hay là vụng trộm?
-Cô nam quả nữ.
-Giữa rừng sâu núi thẳm.
-Mức độ kinh hãi này quả thật chẳng kém gì gặp quỷ.
-Sở Ly rất nhanh đã bình tĩnh lại, đưa tay sờ trán Sở Đệ Trì, thấy đã không còn nóng nữa, lúc này mới nhìn người thợ săn, nói:
-“Chúng ta lạc vào trong núi, vô ý bị mất phương hướng. Nếu đại thúc có thể dẫn chúng ta ra ngoài, tất có hậu tạ.”
-Người thợ săn hoảng hốt lùi lại.
-“Các ngươi không phải người… nhất định không phải người!”
-“Đại thúc…”
-“Ma quỷ!”
-Thợ săn xoay người bỏ chạy.
-Ngọn núi này từ trước đến nay vẫn quỷ dị kỳ quái. Trong thôn đã có mấy thợ săn vào núi rồi không ra được. Nếu không phải chó săn của hắn bị lạc, hắn vào đây tìm, cũng sẽ không vô tình lạc vào ngọn núi này.
-Hắn còn chưa muốn chết!
-Sở Ly ngơ ngác không hiểu.
-Một đại nam nhân, vậy mà lại bị dọa đến mức ấy, chẳng lẽ nàng đáng sợ lắm sao?
-Có điều, dựa theo hướng người thợ săn bỏ chạy, nhìn dấu vết cỏ dại và bụi gai bị giẫm đạp, hẳn có thể tìm được đường ra.
-“Hoàng thúc, tỉnh lại.”
-“Hoàng thúc?”
-Gọi mấy tiếng liền vẫn không có kết quả.
-Việc cấp bách nhất bây giờ là để Sở Đệ Trì nhanh chóng hồi phục. Một nữ tử yếu ớt như nàng, căn bản không cõng nổi hắn.
-Nàng rút chủy thủ luôn mang theo bên người hắn, đi vào rừng, định tìm chút quả dại để ăn.
-Từ chiều hôm qua đến giờ chưa có hạt cơm nào vào bụng, đã đói đến mức bụng dính lưng.
-Sở Ly đi sâu vào rừng chừng hơn mười trượng, sợ lạc đường nên không dám đi quá xa, chỉ quanh quẩn một vòng nhỏ, mơ hồ phát hiện một hiện tượng kỳ lạ.
-Trong khu rừng này…
-Hình như không nhìn thấy động vật.
-Đến một con chim cũng không có.
-Yên tĩnh đến mức quỷ dị.
-Thông thường những khu rừng sâu thế này đều có vô số loài sinh vật, lớn thì lợn rừng, gấu, hươu; nhỏ thì thỏ, chim, rắn. Nhưng nơi đây lại tĩnh lặng lạ thường.
-Sột soạt—
-Đột nhiên, bụi cỏ phía trước vang lên tiếng động.
-Sở Ly cảnh giác siết chặt chủy thủ, nhìn chằm chằm về phía đó.
-Sột soạt—
-Lá cỏ lay động, âm thanh càng lúc càng gần, càng lúc càng lớn…
-Một người đàn ông bỗng bước ra.
-Nhưng đó là một người đàn ông trông khá kỳ quái.
-Môi hắn tím đen, tựa như bị đông cứng, đôi mắt đục ngầu không có tiêu điểm, mặc giáp da màu đen, bên hông đeo trường kiếm, trông chẳng khác gì một binh sĩ.
-Giữa rừng sâu núi thẳm, đột nhiên gặp phải một người như vậy, quả thực khiến người ta nổi cả da gà.
-“Ngươi là ai?”
-Nghe thấy tiếng nói, đôi mắt xanh tím âm u của nam nhân đảo hai vòng, như đang tìm phương hướng, rất nhanh đã dừng lại trên người Sở Ly.
-Hắn nhìn nàng chằm chằm.
-Đôi mắt ấy giống hệt mắt cá chết đã ngâm nước nửa tháng.
-Hắn cất bước, đi thẳng về phía Sở Ly.
-“Đứng lại!”
-Sở Ly căng cứng lưng, trong lòng thầm kêu không ổn.
-“Nếu còn tiến lên nữa, đừng trách ta không khách khí!”
-Nam nhân lê chân, sải bước tới, giơ hai tay ra…
-Phập!
-Sở Ly cũng chẳng khách khí, một đao đâm thẳng vào cánh tay hắn để cảnh cáo.
-Điều khiến nàng kinh ngạc là nam nhân đến tiếng rên cũng không phát ra, hai tay trực tiếp bóp chặt cổ nàng.
-“Ưm!”
-Nàng lập tức rút chủy thủ, đâm mạnh vào bụng hắn.
-Thế nhưng…
-Đâm!
-Đâm!
-Đâm!
-Liên tiếp ba nhát, nam nhân vẫn như một cái xác chết, siết cổ nàng thật chặt, đôi mắt cá chết gần như lồi cả ra ngoài.
-Đây là thứ quỷ quái gì?
-Sao giết không chết?
-Sở Ly rút dao ra, đang chuẩn bị đâm thẳng vào tim hắn thì năm ngón tay với bộ móng dài của hắn đột nhiên chọc về phía cổ nàng.
-Ầm!
-Ngay trong khoảnh khắc ngàn cân treo sợi tóc, một luồng nội lực hùng hậu đánh văng người kia ra xa mấy trượng.
-“Hoàng thúc!”
-Sở Đệ Trì tới rồi.
-Hắn bước nhanh tới trước, đưa tay kéo Sở Ly dậy, đoạt lấy chủy thủ trong tay nàng rồi phóng đi.
-Máu tươi tung tóe.
-Chủy thủ xuyên thẳng qua đầu nam nhân, ghim hắn lên thân cây, vậy mà tay chân hắn vẫn còn co giật từng hồi…
-Sở Ly nhìn cảnh tượng ấy, không khỏi rùng mình.
-“Hoàng thúc, người này hình như không giết chết được.”
-Đầu cũng đã bị xuyên thủng, thân thể vẫn còn cử động.
-Sở Đệ Trì ôm lấy eo nàng, lùi xa thêm vài bước.
-“Trong cơ thể hắn có cổ trùng khống chế.”
-“Vu cổ chi thuật của Nam Man?”
-“Đúng vậy.”
-Sở Ly từng nghe Sở Hoàng nhắc qua, cũng từng nghe không ít lời đồn nơi dân gian rằng vu cổ chi thuật đặc hữu của Nam Man có thể cải tử hồi sinh, sinh cơ bạch cốt, còn có đủ loại công hiệu thần kỳ.
-Ví như tình cổ.
-Người trúng tình cổ, dù hai người vốn chẳng yêu nhau cũng có thể tương thân tương ái.
-Lại có tử mẫu cổ, nghe nói có thể khiến người khác ngoan ngoãn nghe lời.
-Còn có sinh tử cổ, nghe nói có thể khiến người chết sống lại.
-Đủ loại cổ trùng…
-Đây là lần đầu tiên Sở Ly tận mắt chứng kiến.
-Cổ trùng có thể thao túng thân thể con người, khiến một người không biết đau, không sợ chảy máu, giết cũng không chết.
-Thế này còn là người sao?
-“Nửa tháng trước, Tần thiếu tướng quân từng gửi mật báo về kinh thành, nói đã phát hiện hiện tượng này.”
-Sở Đệ Trì nói:
-“Nam Man đang âm thầm luyện chế loại cổ trùng này, gieo vào cơ thể binh sĩ để tăng cường chiến lực, đạt tới hiệu quả lấy một địch mười. Bọn chúng không sợ chết, không biết đau, còn luôn giữ được thể lực sung mãn nhất, có thể phát huy tác dụng cực lớn trên chiến trường.”
-Nếu để đội quân hoạt tử nhân này ra trận, đừng nói công đánh Nam Cương, e rằng cả Đại Sở cũng sẽ bị bọn chúng nuốt trọn.
-Dã tâm của Nam Man quả thật không nhỏ!
-Sở Ly nói:
-“Chẳng trách lúc nãy người thợ săn kia vừa thấy chúng ta đã hoảng sợ, bỏ chạy thục mạng. Trong ngọn núi này nhất định cất giấu bí mật.”
-Tên binh sĩ này đã chạy ra ngoài, vậy doanh trại luyện chế tà cổ hẳn ở ngay gần đây.
-“Gâu! Gâu!”
-Giữa núi rừng, tiếng chó săn sủa vang vọng trong khu rừng tĩnh lặng, truyền đi rất xa.
-Sở Ly cảnh giác nhìn về phía ấy.
-“Bọn chúng vẫn đang truy bắt chúng ta!”
-Bọn chúng tới rồi!
-Đàn chó săn lại lần nữa tìm đến.
-“Nơi này không thể ở lại nữa, chúng ta phải đi ngay. Hoàng thúc, ngươi cảm thấy bây giờ khá hơn chưa?”
-“Ra được một thân mồ hôi, đã dễ chịu hơn nhiều. Tiểu Cửu, may mà có nàng.”
-Nếu không nhờ nàng giúp đỡ, cùng hắn… vận động một phen, hắn cũng không thể hạ sốt nhanh như vậy.
-Sở Ly loạng choạng suýt ngã, không muốn tiếp tục đề tài này nữa, cắn răng nói:
-“Chúng ta chạy về hướng này!”
-Sở Đệ Trì nói:
-“Cởi quần áo của nàng ra.”
-“Cái gì?”
-“Nàng ở cạnh Sở Dạ Ly lâu như vậy, trên người đã nhiễm mùi của hắn, chó săn quen thuộc nhất chính là mùi ấy. Cởi hết y phục của nàng ra, mặc đồ của ta.”
-“Chuyện này…”
-“Muốn chạy thoát, không còn cách nào khác.”
-“Ta sợ ngươi nhìn lén.”
-“Bổn vương cần phải nhìn lén sao?”
-Đôi mắt nam nhân đen như hắc diệu thạch, thâm trầm như mắt chim ưng, dường như có thể nhìn thấu mọi thứ, hoàn toàn không có ý né tránh.
-Hắn không cần nhìn lén.
-Hắn nhìn thẳng. Ẩn bớt</p>
+            <p>Chương 151: Hoàng thúc, ngươi cảm thấy khá hơn chưa?</p>
+<p>Hắn sốt rồi.</p>
+<p>Thân thể nóng bỏng vô cùng, áp sát trước ngực nàng, hơi ấm truyền sang, xua tan giá lạnh của màn đêm.</p>
+<p>Hơi thở của hai người quấn quýt giao hòa.</p>
+<p>Thật ra, nàng không quá thích làm chuyện như vậy. Tựa như bóng ma từng lưu lại trong lòng, mỗi lần nhắc đến đều chẳng phải ký ức tốt đẹp gì.</p>
+<p>“Tiểu Cửu…”</p>
+<p>Giọng hắn khàn đặc, ở giữa ranh giới nửa tỉnh nửa mê, mười ngón tay đan chặt lấy tay nàng.</p>
+<p>“Vì sao… vì sao… nàng giết ta… cũng giết người  ấy… người ấy vô tội…”</p>
+<p>Hắn đang nói gì vậy?</p>
+<p>Sao nàng nghe không hiểu?</p>
+<p>Có lẽ chỉ là mê sảng do sốt cao, không thể tin là thật.</p>
+<p>Mà cũng chẳng cho nàng chút thời gian suy nghĩ, hai người cùng nhau chìm đắm.</p>
+<p>—</p>
+<p>“A!”</p>
+<p>Sáng sớm, một tiếng thét kinh hãi xé tan sự tĩnh lặng của núi rừng.</p>
+<p>Sở Ly giật mình tỉnh giấc, vội quấn chặt ngoại bào của Sở Đệ Trì, ngẩng đầu nhìn người đàn ông trung niên bất ngờ xuất hiện.</p>
+<p>“Ma quỷ… ma quỷ! Các ngươi…”</p>
+<p>Người đàn ông trung niên đội đấu lạp, khoác áo choàng may bằng da thú, trên vai đeo một cây cung, nhìn dáng vẻ hẳn là thợ săn sống gần đây.</p>
+<p>“Các ngươi… vậy mà lại ở đây…”</p>
+<p>Tư thông?</p>
+<p>Hay là vụng trộm?</p>
+<p>Cô nam quả nữ.</p>
+<p>Giữa rừng sâu núi thẳm.</p>
+<p>Mức độ kinh hãi này quả thật chẳng kém gì gặp quỷ.</p>
+<p>Sở Ly rất nhanh đã bình tĩnh lại, đưa tay sờ trán Sở Đệ Trì, thấy đã không còn nóng nữa, lúc này mới nhìn người thợ săn, nói:</p>
+<p>“Chúng ta lạc vào trong núi, vô ý bị mất phương hướng. Nếu đại thúc có thể dẫn chúng ta ra ngoài, tất có hậu tạ.”</p>
+<p>Người thợ săn hoảng hốt lùi lại.</p>
+<p>“Các ngươi không phải người… nhất định không phải người!”</p>
+<p>“Đại thúc…”</p>
+<p>“Ma quỷ!”</p>
+<p>Thợ săn xoay người bỏ chạy.</p>
+<p>Ngọn núi này từ trước đến nay vẫn quỷ dị kỳ quái. Trong thôn đã có mấy thợ săn vào núi rồi không ra được. Nếu không phải chó săn của hắn bị lạc, hắn vào đây tìm, cũng sẽ không vô tình lạc vào ngọn núi này.</p>
+<p>Hắn còn chưa muốn chết!</p>
+<p>Sở Ly ngơ ngác không hiểu.</p>
+<p>Một đại nam nhân, vậy mà lại bị dọa đến mức ấy, chẳng lẽ nàng đáng sợ lắm sao?</p>
+<p>Có điều, dựa theo hướng người thợ săn bỏ chạy, nhìn dấu vết cỏ dại và bụi gai bị giẫm đạp, hẳn có thể tìm được đường ra.</p>
+<p>“Hoàng thúc, tỉnh lại.”</p>
+<p>“Hoàng thúc?”</p>
+<p>Gọi mấy tiếng liền vẫn không có kết quả.</p>
+<p>Việc cấp bách nhất bây giờ là để Sở Đệ Trì nhanh chóng hồi phục. Một nữ tử yếu ớt như nàng, căn bản không cõng nổi hắn.</p>
+<p>Nàng rút chủy thủ luôn mang theo bên người hắn, đi vào rừng, định tìm chút quả dại để ăn.</p>
+<p>Từ chiều hôm qua đến giờ chưa có hạt cơm nào vào bụng, đã đói đến mức bụng dính lưng.</p>
+<p>Sở Ly đi sâu vào rừng chừng hơn mười trượng, sợ lạc đường nên không dám đi quá xa, chỉ quanh quẩn một vòng nhỏ, mơ hồ phát hiện một hiện tượng kỳ lạ.</p>
+<p>Trong khu rừng này…</p>
+<p>Hình như không nhìn thấy động vật.</p>
+<p>Đến một con chim cũng không có.</p>
+<p>Yên tĩnh đến mức quỷ dị.</p>
+<p>Thông thường những khu rừng sâu thế này đều có vô số loài sinh vật, lớn thì lợn rừng, gấu, hươu; nhỏ thì thỏ, chim, rắn. Nhưng nơi đây lại tĩnh lặng lạ thường.</p>
+<p>Sột soạt—</p>
+<p>Đột nhiên, bụi cỏ phía trước vang lên tiếng động.</p>
+<p>Sở Ly cảnh giác siết chặt chủy thủ, nhìn chằm chằm về phía đó.</p>
+<p>Sột soạt—</p>
+<p>Lá cỏ lay động, âm thanh càng lúc càng gần, càng lúc càng lớn…</p>
+<p>Một người đàn ông bỗng bước ra.</p>
+<p>Nhưng đó là một người đàn ông trông khá kỳ quái.</p>
+<p>Môi hắn tím đen, tựa như bị đông cứng, đôi mắt đục ngầu không có tiêu điểm, mặc giáp da màu đen, bên hông đeo trường kiếm, trông chẳng khác gì một binh sĩ.</p>
+<p>Giữa rừng sâu núi thẳm, đột nhiên gặp phải một người như vậy, quả thực khiến người ta nổi cả da gà.</p>
+<p>“Ngươi là ai?”</p>
+<p>Nghe thấy tiếng nói, đôi mắt xanh tím âm u của nam nhân đảo hai vòng, như đang tìm phương hướng, rất nhanh đã dừng lại trên người Sở Ly.</p>
+<p>Hắn nhìn nàng chằm chằm.</p>
+<p>Đôi mắt ấy giống hệt mắt cá chết đã ngâm nước nửa tháng.</p>
+<p>Hắn cất bước, đi thẳng về phía Sở Ly.</p>
+<p>“Đứng lại!”</p>
+<p>Sở Ly căng cứng lưng, trong lòng thầm kêu không ổn.</p>
+<p>“Nếu còn tiến lên nữa, đừng trách ta không khách khí!”</p>
+<p>Nam nhân lê chân, sải bước tới, giơ hai tay ra…</p>
+<p>Phập!</p>
+<p>Sở Ly cũng chẳng khách khí, một đao đâm thẳng vào cánh tay hắn để cảnh cáo.</p>
+<p>Điều khiến nàng kinh ngạc là nam nhân đến tiếng rên cũng không phát ra, hai tay trực tiếp bóp chặt cổ nàng.</p>
+<p>“Ưm!”</p>
+<p>Nàng lập tức rút chủy thủ, đâm mạnh vào bụng hắn.</p>
+<p>Thế nhưng…</p>
+<p>Đâm!</p>
+<p>Đâm!</p>
+<p>Đâm!</p>
+<p>Liên tiếp ba nhát, nam nhân vẫn như một cái xác chết, siết cổ nàng thật chặt, đôi mắt cá chết gần như lồi cả ra ngoài.</p>
+<p>Đây là thứ quỷ quái gì?</p>
+<p>Sao giết không chết?</p>
+<p>Sở Ly rút dao ra, đang chuẩn bị đâm thẳng vào tim hắn thì năm ngón tay với bộ móng dài của hắn đột nhiên chọc về phía cổ nàng.</p>
+<p>Ầm!</p>
+<p>Ngay trong khoảnh khắc ngàn cân treo sợi tóc, một luồng nội lực hùng hậu đánh văng người kia ra xa mấy trượng.</p>
+<p>“Hoàng thúc!”</p>
+<p>Sở Đệ Trì tới rồi.</p>
+<p>Hắn bước nhanh tới trước, đưa tay kéo Sở Ly dậy, đoạt lấy chủy thủ trong tay nàng rồi phóng đi.</p>
+<p>Máu tươi tung tóe.</p>
+<p>Chủy thủ xuyên thẳng qua đầu nam nhân, ghim hắn lên thân cây, vậy mà tay chân hắn vẫn còn co giật từng hồi…</p>
+<p>Sở Ly nhìn cảnh tượng ấy, không khỏi rùng mình.</p>
+<p>“Hoàng thúc, người này hình như không giết chết được.”</p>
+<p>Đầu cũng đã bị xuyên thủng, thân thể vẫn còn cử động.</p>
+<p>Sở Đệ Trì ôm lấy eo nàng, lùi xa thêm vài bước.</p>
+<p>“Trong cơ thể hắn có cổ trùng khống chế.”</p>
+<p>“Vu cổ chi thuật của Nam Man?”</p>
+<p>“Đúng vậy.”</p>
+<p>Sở Ly từng nghe Sở Hoàng nhắc qua, cũng từng nghe không ít lời đồn nơi dân gian rằng vu cổ chi thuật đặc hữu của Nam Man có thể cải tử hồi sinh, sinh cơ bạch cốt, còn có đủ loại công hiệu thần kỳ.</p>
+<p>Ví như tình cổ.</p>
+<p>Người trúng tình cổ, dù hai người vốn chẳng yêu nhau cũng có thể tương thân tương ái.</p>
+<p>Lại có tử mẫu cổ, nghe nói có thể khiến người khác ngoan ngoãn nghe lời.</p>
+<p>Còn có sinh tử cổ, nghe nói có thể khiến người chết sống lại.</p>
+<p>Đủ loại cổ trùng…</p>
+<p>Đây là lần đầu tiên Sở Ly tận mắt chứng kiến.</p>
+<p>Cổ trùng có thể thao túng thân thể con người, khiến một người không biết đau, không sợ chảy máu, giết cũng không chết.</p>
+<p>Thế này còn là người sao?</p>
+<p>“Nửa tháng trước, Tần thiếu tướng quân từng gửi mật báo về kinh thành, nói đã phát hiện hiện tượng này.”</p>
+<p>Sở Đệ Trì nói:</p>
+<p>“Nam Man đang âm thầm luyện chế loại cổ trùng này, gieo vào cơ thể binh sĩ để tăng cường chiến lực, đạt tới hiệu quả lấy một địch mười. Bọn chúng không sợ chết, không biết đau, còn luôn giữ được thể lực sung mãn nhất, có thể phát huy tác dụng cực lớn trên chiến trường.”</p>
+<p>Nếu để đội quân hoạt tử nhân này ra trận, đừng nói công đánh Nam Cương, e rằng cả Đại Sở cũng sẽ bị bọn chúng nuốt trọn.</p>
+<p>Dã tâm của Nam Man quả thật không nhỏ!</p>
+<p>Sở Ly nói:</p>
+<p>“Chẳng trách lúc nãy người thợ săn kia vừa thấy chúng ta đã hoảng sợ, bỏ chạy thục mạng. Trong ngọn núi này nhất định cất giấu bí mật.”</p>
+<p>Tên binh sĩ này đã chạy ra ngoài, vậy doanh trại luyện chế tà cổ hẳn ở ngay gần đây.</p>
+<p>“Gâu! Gâu!”</p>
+<p>Giữa núi rừng, tiếng chó săn sủa vang vọng trong khu rừng tĩnh lặng, truyền đi rất xa.</p>
+<p>Sở Ly cảnh giác nhìn về phía ấy.</p>
+<p>“Bọn chúng vẫn đang truy bắt chúng ta!”</p>
+<p>Bọn chúng tới rồi!</p>
+<p>Đàn chó săn lại lần nữa tìm đến.</p>
+<p>“Nơi này không thể ở lại nữa, chúng ta phải đi ngay. Hoàng thúc, ngươi cảm thấy bây giờ khá hơn chưa?”</p>
+<p>“Ra được một thân mồ hôi, đã dễ chịu hơn nhiều. Tiểu Cửu, may mà có nàng.”</p>
+<p>Nếu không nhờ nàng giúp đỡ, cùng hắn… vận động một phen, hắn cũng không thể hạ sốt nhanh như vậy.</p>
+<p>Sở Ly loạng choạng suýt ngã, không muốn tiếp tục đề tài này nữa, cắn răng nói:</p>
+<p>“Chúng ta chạy về hướng này!”</p>
+<p>Sở Đệ Trì nói:</p>
+<p>“Cởi quần áo của nàng ra.”</p>
+<p>“Cái gì?”</p>
+<p>“Nàng ở cạnh Sở Dạ Ly lâu như vậy, trên người đã nhiễm mùi của hắn, chó săn quen thuộc nhất chính là mùi ấy. Cởi hết y phục của nàng ra, mặc đồ của ta.”</p>
+<p>“Chuyện này…”</p>
+<p>“Muốn chạy thoát, không còn cách nào khác.”</p>
+<p>“Ta sợ ngươi nhìn lén.”</p>
+<p>“Bổn vương cần phải nhìn lén sao?”</p>
+<p>Đôi mắt nam nhân đen như hắc diệu thạch, thâm trầm như mắt chim ưng, dường như có thể nhìn thấu mọi thứ, hoàn toàn không có ý né tránh.</p>
+<p>Hắn không cần nhìn lén.</p>
+<p>Hắn nhìn thẳng. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_150.html" class="btn">‹ Trước</a>
             <a href="chuong_152.html" class="btn">Sau ›</a>
         </div>
@@ -260,15 +268,11 @@ Hắn nhìn thẳng. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -280,11 +284,11 @@ Hắn nhìn thẳng. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

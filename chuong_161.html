@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 161</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,301 +62,192 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 161</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_160.html" class="btn">‹ Trước</a>
             <a href="chuong_162.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 161: Tiểu Sở công tử không thấy đâu nữa
-
-Sở Ly lộ vẻ có phần khó xử.
-
-Hướng Nguyệt lạnh giọng:
-
-“Tiểu Sở công tử định làm chuyện gì không thể để người khác biết sao?”
-
-Mấy lời ngon ngọt của nàng, lừa được Đông Lăng điện hạ, nhưng không lừa nổi Trưởng công chúa.
-
-Đôi mắt Trưởng công chúa sáng như đuốc.
-
-Sở Ly nói:
-
-“Không phải, chỉ là nhìn thấy ngươi, không khỏi nhớ đến Trưởng công chúa, nhớ đến mối quan hệ giữa nàng ấy và Ngũ ca.”
-
-“Cho nên, ngươi ghen tị?”
-
-Hướng Nguyệt hiểu ra, không khỏi đắc ý:
-
-“Chính công chúa nhà ta đã chữa khỏi đôi chân cho Đông Lăng điện hạ. Công chúa đối với Đông Lăng điện hạ có ân tái sinh.”
-
-Cho dù Tiểu Sở công tử có giở trò từ giữa, Đông Lăng điện hạ cũng sẽ không quên ân tình của công chúa.
-
-Dựa vào thân phận cao quý của công chúa, sau này nhất định sẽ cùng Đông Lăng điện hạ kết thành giai ngẫu.
-
-Khóe môi Sở Ly thoáng vẻ chua xót:
-
-“Quan hệ của bọn họ thật tốt.”
-
-“Đó là đương nhiên. Những năm qua, công chúa vẫn luôn bí mật đến Sở quốc, âm thầm gặp gỡ qua lại với Đông Lăng điện hạ, giao tình giữa hai người còn sâu đậm hơn ngươi tưởng tượng.”
-
-Hướng Nguyệt liền kể ra vài chuyện.
-
-Đều là những chuyện Sở Ly chưa từng nghe qua.
-
-Nhất thời tò mò, nàng nghe đến say mê, hai người vừa đi trên phố vừa trò chuyện.
-
-Thỉnh thoảng lại vang lên giọng đầy kinh ngạc của Sở Ly:
-
-“Thật sao… lại còn như vậy… trời ạ… Ngũ ca chưa từng kể với ta… chẳng lẽ Ngũ ca coi ta là người ngoài sao… không ngờ công chúa lại đối tốt với Ngũ ca đến thế.”
-
-Hướng Nguyệt khẽ ngẩng cằm, gương mặt đầy vẻ rạng rỡ đắc ý.
-
-“Cho nên, tốt nhất ngươi nên dập tắt tâm tư với Đông Lăng điện hạ đi.”
-
-Suốt dọc đường, Sở Ly biết thêm được rất nhiều chuyện.
-
-Vì Sở Dạ Ly, Trưởng công chúa đã bỏ ra nhiều hơn nàng tưởng tượng rất nhiều.
-
-Nhưng vì sao Sở Dạ Ly lại không thích nàng ấy?
-
-Sở Ly không hiểu.
-
-Dẫu có là một tảng đá, ôm ấp nhiều năm như vậy cũng phải được sưởi ấm.
-
-Trên đường phố, người qua kẻ lại, náo nhiệt vô cùng, Vương đô về đêm càng thêm ca múa thái bình, phồn hoa huyên náo.
-
-Sở Ly vừa suy nghĩ, không cẩn thận va phải một người.
-
-Người kia mặt mày hung dữ, túm lấy cổ tay nàng, mắng nàng mắt mù, mắng nàng không có mắt, không biết nhìn đường, còn nói nàng làm bẩn bộ y phục mới của hắn, bắt nàng phải bồi thường.
-
-Sở Ly xin lỗi, nhưng vô ích.
-
-Tên nam nhân mắt hí hung hăng ép người:
-
-“Đụng vào ta còn muốn đi? Hôm nay không bồi mười lượng bạc, ta chặt tay ngươi!”
-
-Ra ngoài, Sở Ly nào có mang theo bạc?
-
-Ba thỏi kim nhỏ cũng đã tiêu hết từ lâu.
-
-Nàng chỉ đành đưa ánh mắt cầu cứu sang Hướng Nguyệt:
-
-“Hướng Nguyệt, ngươi có mang bạc không?”
-
-Vốn dĩ Hướng Nguyệt đã không thích Sở Ly, nhìn nàng không vừa mắt. Giờ thấy nàng gặp rắc rối, Hướng Nguyệt còn chưa kịp vui mừng xem trò hay, sao có thể giúp nàng giải vây?
-
-Trưởng công chúa chỉ bảo nàng trông chừng Tiểu Sở công tử, chỉ là trông chừng mà thôi.
-
-Chỉ cần Tiểu Sở công tử không chạy mất, mặc kệ nàng gãy tay gãy chân hay gặp chuyện gì khác, chỉ cần người còn ở đây, coi như nàng đã hoàn thành nhiệm vụ.
-
-“Hướng Nguyệt!”
-
-Hướng Nguyệt đảo mắt, chắp hai tay sau lưng, như thể chẳng nghe thấy gì, quay người đi sang một bên.
-
-“Hướng Nguyệt!”
-
-Ai gọi nàng vậy?
-
-Sao nàng chẳng nghe thấy?
-
-Có ai gọi nàng sao?
-
-Hướng Nguyệt khe khẽ ngân nga hai câu hát, cố ý khiến Sở Ly bẽ mặt, còn mình chỉ cần đứng một bên xem kịch là được.
-
-Trong lòng nàng vô cùng hả dạ, cảm thấy đã trút được cơn tức. Đợi vài giây, quay đầu nhìn lại, cả người nàng lập tức chết sững.
-
-Người đâu rồi!
-
-Người vừa rồi còn đang cãi cọ ở đây đâu mất rồi?
-
-Không chỉ Sở Ly biến mất, ngay cả tên nam nhân mắt hí kia cũng không thấy tăm hơi!
-
-Hỏng rồi!
-
-Trúng kế!
-
-Hướng Nguyệt hoàn hồn, vội vàng gọi về phía bóng tối:
-
-“Hướng Úc!”
-
-Chẳng mấy chốc, một nam nhân hiện thân.
-
-Hắn và Hướng Nguyệt đều là nô bộc của Trưởng công chúa, nhưng Hướng Úc là ám vệ, võ công cao cường, từ trước đến nay vẫn luôn thay Trưởng công chúa xử lý đủ loại việc hệ trọng.
-
-“Tiểu Sở công tử không thấy đâu rồi, mau đi tìm!”
-
-Hướng Úc gật đầu.
-
-Thân hình hắn lóe lên, lập tức chọn một hướng lao đi. Có lẽ vì quá sốt ruột nên sơ suất, vừa mới lao khỏi đám đông đã bị người ta bất ngờ nện mạnh vào sau gáy.
-
-“Ưm!”
-
-Lúc tỉnh lại, phát hiện hai tay hai chân đều bị trói chặt, ném trong một con hẻm tối.
-
-Bên cạnh có mấy nam nhân xa lạ, còn có Tiểu Sở công tử.
-
-“Các ngươi…”
-
-Hướng Úc không thể cử động tay chân.
-
-Độc Nhãn Long trong Bát Đại Kim Cương nói:
-
-“Không ngờ ám vệ bên cạnh Trưởng công chúa lại dễ bắt như vậy. Nếu cứ theo đà này, ta bắt cóc luôn Trưởng công chúa, sinh với nàng một đứa con, chẳng phải cũng dễ như trở bàn tay sao?”
-
-Hướng Úc tức đến cực điểm:
-
-“To gan!”
-
-Dám bôi nhọ Trưởng công chúa!
-
-Tên Mắt Hí tát hắn một cái:
-
-“Đã thành tù nhân rồi còn dám lên mặt. Tiểu Sở công tử, người này xử lý thế nào?”
-
-Sở Ly bước lên trước, có điều muốn hỏi hắn:
-
-“Ta muốn biết, vu sư bên cạnh Trưởng công chúa là ai?”
-
-Ở Nam Man, tất cả những người hầu hạ hoàng thất, tinh thông vu cổ chi thuật đều được gọi là vu sư.
-
-Chức trách của vu sư chính là chế cổ, luyện cổ, dưỡng cổ. Đám cổ binh tà ác kia cũng do vu sư tạo ra.
-
-Hướng Úc lạnh lùng nhìn nàng, ngậm chặt miệng, không nói một lời.
-
-“Hãy nói cho ta biết, đừng ép ta động thủ.”
-
-Hướng Úc lạnh giọng:
-
-“Muốn biết thì sao không đi hỏi Hướng Nguyệt?”
-
-Sở Ly nói:
-
-“Hướng Nguyệt biết được gì? Tính tình nàng ta thô lỗ, làm việc hấp tấp. Tuy trung thành tuyệt đối, nhưng không tiếp xúc được chuyện quan trọng.”
-
-Cũng giống như người bên cạnh Sở Đệ Trì.
-
-Hạ nhân hầu hạ hắn là một nhóm.
-
-Người làm việc cho hắn lại là một nhóm khác.
-
-Đám nha hoàn, hạ nhân làm việc nặng sao có thể cùng một tầng với Trọng Phong và Kinh Ảnh?
-
-Đồng lý.
-
-Hướng Nguyệt và Hướng Úc cũng là hai nhóm người khác nhau.
-
-Hướng Nguyệt phụ trách chăm lo ăn ở sinh hoạt cho Trưởng công chúa.
-
-Còn Hướng Úc là ám vệ, võ công cao cường, chuyên thay Trưởng công chúa xử lý công việc, biết được nhiều hơn Hướng Nguyệt rất nhiều. Vì thế nàng mới cố ý dụ hắn xuất hiện.
-
-“Ta tuyệt đối sẽ không phản bội Trưởng công chúa. Ngươi chết tâm đi. Dù có lấy mạng ta, ta cũng quyết không mở miệng!”
-
-Nói xong, Hướng Úc ngẩng cổ, nhắm chặt hai mắt, không nói thêm lời nào.
-
-Sở Ly cười:
-
-“Ta không phải người hiếu sát, cũng không thích giết người. So với giết người, còn sống thú vị hơn nhiều.”
-
-“Độc Nhãn Long.”
-
-Độc Nhãn Long lên tiếng đáp, lấy từ trong tay áo ra một ống trúc nhỏ.
-
-“Từ khi đến Nam Man, ta đã rất hứng thú với vu cổ chi thuật của các ngươi. Nghe nói ở Nam Man, ngay cả trẻ con trong mỗi nhà cũng biết hạ cổ.”
-
-Thật sự thần kỳ như vậy sao?
-
-Sở Ly nhận lấy ống trúc nhỏ, cảm thán:
-
-“Con cổ trùng trong tay ta gọi là Thật Thoại Cổ. Chỉ cần gieo nó vào cơ thể, nó sẽ khống chế đầu óc ngươi, khiến ngươi chỉ có thể nói thật. Không biết có thần kỳ như lời đồn hay không?”
-
-Toàn thân Hướng Úc chấn động, hoảng hốt nhìn chằm chằm vào chiếc ống trúc nhỏ, lập tức định cắn lưỡi tự vẫn.
-
-Độc Nhãn Long nhanh mắt lẹ tay, một chưởng bổ vào cổ họng hắn, ngăn cản hành động ấy.
-
-“Giữ chặt hắn!”
-
-Sở Ly mở nắp ống trúc, định nhét cổ trùng vào người hắn.
-
-Hướng Úc giãy giụa. Thấy không còn đường thoát, hắn kinh hãi nói:
-
-“Ngươi muốn biết gì, ta nói! Ta nói!”
-
-Ở Nam Man quả thật có loại Thật Thoại Cổ này.
-
-Một khi trúng cổ, hắn sẽ để lộ càng nhiều bí mật của Trưởng công chúa hơn!
-
-Sở Ly thu tay lại:
-
-“Nếu sớm phối hợp như vậy, ta đâu cần phí thêm công sức? Nói đi, vu sư bên cạnh Trưởng công chúa là ai?”
-
-Hướng Úc bị ép, chỉ đành cắn răng đáp:
-
-“Tất cả vu sư hầu hạ hoàng thất đều làm việc tại Ty Cổ Cục. Trong đó có một vị vu sư họ Cừu, chính là người làm việc cho Trưởng công chúa.”
-
-“Lời ngươi nói là thật chứ?”
-
-“Không dám có nửa lời giả dối.”
-
-Sở Ly nhìn vẻ mặt kiên định của hắn, quả thực rất giống đang nói thật.
-
-“Đợi ta đến Ty Cổ Cục dò xét một chuyến. Nếu lời ngươi nói là thật, ta sẽ thả ngươi. Còn nếu là giả…”
-
-Độc Nhãn Long giáng một chưởng vào gáy hắn, đánh ngất xỉu.
-
-“Nếu là giả, ta sẽ bán ngươi vào kỹ viện nam!”</p>
+            <p>Chương 161: Tiểu Sở công tử không thấy đâu nữa</p>
+<p>Sở Ly lộ vẻ có phần khó xử.</p>
+<p>Hướng Nguyệt lạnh giọng:</p>
+<p>“Tiểu Sở công tử định làm chuyện gì không thể để người khác biết sao?”</p>
+<p>Mấy lời ngon ngọt của nàng, lừa được Đông Lăng điện hạ, nhưng không lừa nổi Trưởng công chúa.</p>
+<p>Đôi mắt Trưởng công chúa sáng như đuốc.</p>
+<p>Sở Ly nói:</p>
+<p>“Không phải, chỉ là nhìn thấy ngươi, không khỏi nhớ đến Trưởng công chúa, nhớ đến mối quan hệ giữa nàng ấy và Ngũ ca.”</p>
+<p>“Cho nên, ngươi ghen tị?”</p>
+<p>Hướng Nguyệt hiểu ra, không khỏi đắc ý:</p>
+<p>“Chính công chúa nhà ta đã chữa khỏi đôi chân cho Đông Lăng điện hạ. Công chúa đối với Đông Lăng điện hạ có ân tái sinh.”</p>
+<p>Cho dù Tiểu Sở công tử có giở trò từ giữa, Đông Lăng điện hạ cũng sẽ không quên ân tình của công chúa.</p>
+<p>Dựa vào thân phận cao quý của công chúa, sau này nhất định sẽ cùng Đông Lăng điện hạ kết thành giai ngẫu.</p>
+<p>Khóe môi Sở Ly thoáng vẻ chua xót:</p>
+<p>“Quan hệ của bọn họ thật tốt.”</p>
+<p>“Đó là đương nhiên. Những năm qua, công chúa vẫn luôn bí mật đến Sở quốc, âm thầm gặp gỡ qua lại với Đông Lăng điện hạ, giao tình giữa hai người còn sâu đậm hơn ngươi tưởng tượng.”</p>
+<p>Hướng Nguyệt liền kể ra vài chuyện.</p>
+<p>Đều là những chuyện Sở Ly chưa từng nghe qua.</p>
+<p>Nhất thời tò mò, nàng nghe đến say mê, hai người vừa đi trên phố vừa trò chuyện.</p>
+<p>Thỉnh thoảng lại vang lên giọng đầy kinh ngạc của Sở Ly:</p>
+<p>“Thật sao… lại còn như vậy… trời ạ… Ngũ ca chưa từng kể với ta… chẳng lẽ Ngũ ca coi ta là người ngoài sao… không ngờ công chúa lại đối tốt với Ngũ ca đến thế.”</p>
+<p>Hướng Nguyệt khẽ ngẩng cằm, gương mặt đầy vẻ rạng rỡ đắc ý.</p>
+<p>“Cho nên, tốt nhất ngươi nên dập tắt tâm tư với Đông Lăng điện hạ đi.”</p>
+<p>Suốt dọc đường, Sở Ly biết thêm được rất nhiều chuyện.</p>
+<p>Vì Sở Dạ Ly, Trưởng công chúa đã bỏ ra nhiều hơn nàng tưởng tượng rất nhiều.</p>
+<p>Nhưng vì sao Sở Dạ Ly lại không thích nàng ấy?</p>
+<p>Sở Ly không hiểu.</p>
+<p>Dẫu có là một tảng đá, ôm ấp nhiều năm như vậy cũng phải được sưởi ấm.</p>
+<p>Trên đường phố, người qua kẻ lại, náo nhiệt vô cùng, Vương đô về đêm càng thêm ca múa thái bình, phồn hoa huyên náo.</p>
+<p>Sở Ly vừa suy nghĩ, không cẩn thận va phải một người.</p>
+<p>Người kia mặt mày hung dữ, túm lấy cổ tay nàng, mắng nàng mắt mù, mắng nàng không có mắt, không biết nhìn đường, còn nói nàng làm bẩn bộ y phục mới của hắn, bắt nàng phải bồi thường.</p>
+<p>Sở Ly xin lỗi, nhưng vô ích.</p>
+<p>Tên nam nhân mắt hí hung hăng ép người:</p>
+<p>“Đụng vào ta còn muốn đi? Hôm nay không bồi mười lượng bạc, ta chặt tay ngươi!”</p>
+<p>Ra ngoài, Sở Ly nào có mang theo bạc?</p>
+<p>Ba thỏi kim nhỏ cũng đã tiêu hết từ lâu.</p>
+<p>Nàng chỉ đành đưa ánh mắt cầu cứu sang Hướng Nguyệt:</p>
+<p>“Hướng Nguyệt, ngươi có mang bạc không?”</p>
+<p>Vốn dĩ Hướng Nguyệt đã không thích Sở Ly, nhìn nàng không vừa mắt. Giờ thấy nàng gặp rắc rối, Hướng Nguyệt còn chưa kịp vui mừng xem trò hay, sao có thể giúp nàng giải vây?</p>
+<p>Trưởng công chúa chỉ bảo nàng trông chừng Tiểu Sở công tử, chỉ là trông chừng mà thôi.</p>
+<p>Chỉ cần Tiểu Sở công tử không chạy mất, mặc kệ nàng gãy tay gãy chân hay gặp chuyện gì khác, chỉ cần người còn ở đây, coi như nàng đã hoàn thành nhiệm vụ.</p>
+<p>“Hướng Nguyệt!”</p>
+<p>Hướng Nguyệt đảo mắt, chắp hai tay sau lưng, như thể chẳng nghe thấy gì, quay người đi sang một bên.</p>
+<p>“Hướng Nguyệt!”</p>
+<p>Ai gọi nàng vậy?</p>
+<p>Sao nàng chẳng nghe thấy?</p>
+<p>Có ai gọi nàng sao?</p>
+<p>Hướng Nguyệt khe khẽ ngân nga hai câu hát, cố ý khiến Sở Ly bẽ mặt, còn mình chỉ cần đứng một bên xem kịch là được.</p>
+<p>Trong lòng nàng vô cùng hả dạ, cảm thấy đã trút được cơn tức. Đợi vài giây, quay đầu nhìn lại, cả người nàng lập tức chết sững.</p>
+<p>Người đâu rồi!</p>
+<p>Người vừa rồi còn đang cãi cọ ở đây đâu mất rồi?</p>
+<p>Không chỉ Sở Ly biến mất, ngay cả tên nam nhân mắt hí kia cũng không thấy tăm hơi!</p>
+<p>Hỏng rồi!</p>
+<p>Trúng kế!</p>
+<p>Hướng Nguyệt hoàn hồn, vội vàng gọi về phía bóng tối:</p>
+<p>“Hướng Úc!”</p>
+<p>Chẳng mấy chốc, một nam nhân hiện thân.</p>
+<p>Hắn và Hướng Nguyệt đều là nô bộc của Trưởng công chúa, nhưng Hướng Úc là ám vệ, võ công cao cường, từ trước đến nay vẫn luôn thay Trưởng công chúa xử lý đủ loại việc hệ trọng.</p>
+<p>“Tiểu Sở công tử không thấy đâu rồi, mau đi tìm!”</p>
+<p>Hướng Úc gật đầu.</p>
+<p>Thân hình hắn lóe lên, lập tức chọn một hướng lao đi. Có lẽ vì quá sốt ruột nên sơ suất, vừa mới lao khỏi đám đông đã bị người ta bất ngờ nện mạnh vào sau gáy.</p>
+<p>“Ưm!”</p>
+<p>Lúc tỉnh lại, phát hiện hai tay hai chân đều bị trói chặt, ném trong một con hẻm tối.</p>
+<p>Bên cạnh có mấy nam nhân xa lạ, còn có Tiểu Sở công tử.</p>
+<p>“Các ngươi…”</p>
+<p>Hướng Úc không thể cử động tay chân.</p>
+<p>Độc Nhãn Long trong Bát Đại Kim Cương nói:</p>
+<p>“Không ngờ ám vệ bên cạnh Trưởng công chúa lại dễ bắt như vậy. Nếu cứ theo đà này, ta bắt cóc luôn Trưởng công chúa, sinh với nàng một đứa con, chẳng phải cũng dễ như trở bàn tay sao?”</p>
+<p>Hướng Úc tức đến cực điểm:</p>
+<p>“To gan!”</p>
+<p>Dám bôi nhọ Trưởng công chúa!</p>
+<p>Tên Mắt Hí tát hắn một cái:</p>
+<p>“Đã thành tù nhân rồi còn dám lên mặt. Tiểu Sở công tử, người này xử lý thế nào?”</p>
+<p>Sở Ly bước lên trước, có điều muốn hỏi hắn:</p>
+<p>“Ta muốn biết, vu sư bên cạnh Trưởng công chúa là ai?”</p>
+<p>Ở Nam Man, tất cả những người hầu hạ hoàng thất, tinh thông vu cổ chi thuật đều được gọi là vu sư.</p>
+<p>Chức trách của vu sư chính là chế cổ, luyện cổ, dưỡng cổ. Đám cổ binh tà ác kia cũng do vu sư tạo ra.</p>
+<p>Hướng Úc lạnh lùng nhìn nàng, ngậm chặt miệng, không nói một lời.</p>
+<p>“Hãy nói cho ta biết, đừng ép ta động thủ.”</p>
+<p>Hướng Úc lạnh giọng:</p>
+<p>“Muốn biết thì sao không đi hỏi Hướng Nguyệt?”</p>
+<p>Sở Ly nói:</p>
+<p>“Hướng Nguyệt biết được gì? Tính tình nàng ta thô lỗ, làm việc hấp tấp. Tuy trung thành tuyệt đối, nhưng không tiếp xúc được chuyện quan trọng.”</p>
+<p>Cũng giống như người bên cạnh Sở Đệ Trì.</p>
+<p>Hạ nhân hầu hạ hắn là một nhóm.</p>
+<p>Người làm việc cho hắn lại là một nhóm khác.</p>
+<p>Đám nha hoàn, hạ nhân làm việc nặng sao có thể cùng một tầng với Trọng Phong và Kinh Ảnh?</p>
+<p>Đồng lý.</p>
+<p>Hướng Nguyệt và Hướng Úc cũng là hai nhóm người khác nhau.</p>
+<p>Hướng Nguyệt phụ trách chăm lo ăn ở sinh hoạt cho Trưởng công chúa.</p>
+<p>Còn Hướng Úc là ám vệ, võ công cao cường, chuyên thay Trưởng công chúa xử lý công việc, biết được nhiều hơn Hướng Nguyệt rất nhiều. Vì thế nàng mới cố ý dụ hắn xuất hiện.</p>
+<p>“Ta tuyệt đối sẽ không phản bội Trưởng công chúa. Ngươi chết tâm đi. Dù có lấy mạng ta, ta cũng quyết không mở miệng!”</p>
+<p>Nói xong, Hướng Úc ngẩng cổ, nhắm chặt hai mắt, không nói thêm lời nào.</p>
+<p>Sở Ly cười:</p>
+<p>“Ta không phải người hiếu sát, cũng không thích giết người. So với giết người, còn sống thú vị hơn nhiều.”</p>
+<p>“Độc Nhãn Long.”</p>
+<p>Độc Nhãn Long lên tiếng đáp, lấy từ trong tay áo ra một ống trúc nhỏ.</p>
+<p>“Từ khi đến Nam Man, ta đã rất hứng thú với vu cổ chi thuật của các ngươi. Nghe nói ở Nam Man, ngay cả trẻ con trong mỗi nhà cũng biết hạ cổ.”</p>
+<p>Thật sự thần kỳ như vậy sao?</p>
+<p>Sở Ly nhận lấy ống trúc nhỏ, cảm thán:</p>
+<p>“Con cổ trùng trong tay ta gọi là Thật Thoại Cổ. Chỉ cần gieo nó vào cơ thể, nó sẽ khống chế đầu óc ngươi, khiến ngươi chỉ có thể nói thật. Không biết có thần kỳ như lời đồn hay không?”</p>
+<p>Toàn thân Hướng Úc chấn động, hoảng hốt nhìn chằm chằm vào chiếc ống trúc nhỏ, lập tức định cắn lưỡi tự vẫn.</p>
+<p>Độc Nhãn Long nhanh mắt lẹ tay, một chưởng bổ vào cổ họng hắn, ngăn cản hành động ấy.</p>
+<p>“Giữ chặt hắn!”</p>
+<p>Sở Ly mở nắp ống trúc, định nhét cổ trùng vào người hắn.</p>
+<p>Hướng Úc giãy giụa. Thấy không còn đường thoát, hắn kinh hãi nói:</p>
+<p>“Ngươi muốn biết gì, ta nói! Ta nói!”</p>
+<p>Ở Nam Man quả thật có loại Thật Thoại Cổ này.</p>
+<p>Một khi trúng cổ, hắn sẽ để lộ càng nhiều bí mật của Trưởng công chúa hơn!</p>
+<p>Sở Ly thu tay lại:</p>
+<p>“Nếu sớm phối hợp như vậy, ta đâu cần phí thêm công sức? Nói đi, vu sư bên cạnh Trưởng công chúa là ai?”</p>
+<p>Hướng Úc bị ép, chỉ đành cắn răng đáp:</p>
+<p>“Tất cả vu sư hầu hạ hoàng thất đều làm việc tại Ty Cổ Cục. Trong đó có một vị vu sư họ Cừu, chính là người làm việc cho Trưởng công chúa.”</p>
+<p>“Lời ngươi nói là thật chứ?”</p>
+<p>“Không dám có nửa lời giả dối.”</p>
+<p>Sở Ly nhìn vẻ mặt kiên định của hắn, quả thực rất giống đang nói thật.</p>
+<p>“Đợi ta đến Ty Cổ Cục dò xét một chuyến. Nếu lời ngươi nói là thật, ta sẽ thả ngươi. Còn nếu là giả…”</p>
+<p>Độc Nhãn Long giáng một chưởng vào gáy hắn, đánh ngất xỉu.</p>
+<p>“Nếu là giả, ta sẽ bán ngươi vào kỹ viện nam!”</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_160.html" class="btn">‹ Trước</a>
             <a href="chuong_162.html" class="btn">Sau ›</a>
         </div>
@@ -365,15 +255,11 @@ Sở Ly nhìn vẻ mặt kiên định của hắn, quả thực rất giống �
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -385,11 +271,11 @@ Sở Ly nhìn vẻ mặt kiên định của hắn, quả thực rất giống �
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

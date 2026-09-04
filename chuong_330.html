@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 330</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,235 +62,244 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 330</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_329.html" class="btn">‹ Trước</a>
             <a href="chuong_331.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 330: Thật thông minh, thưởng một lần
-Trong Vương phủ.
-Lý quản gia đến bẩm báo:
-“Chủ mẫu, người đoán không sai. Sau khi nha hoàn kia bị đuổi ra khỏi phủ, quả nhiên đã gặp Minh Hoa Quận chúa!”
-Sở Ly bưng bát, ung dung uống canh cá diếc hầm đậu phụ bổ dưỡng.
-“Ta biết rồi.”
-Tên Sở Minh Hoa này giống như một con ong.
-Lúc đốt người thì chẳng đau chẳng ngứa.
-Nhưng cứ vo ve bên tai mãi, thật sự rất phiền.
-Nàng thong thả uống hết bát canh, đặt bát xuống.
-“Đến lúc rồi.”
-Lý quản gia bước lên.
-“Lão nô múc thêm cho người một bát nữa.”
-“Ta nói không phải bát canh.”
-—
-Buổi sáng, Sơ Nhất thu dọn xong hành lý, đến Nhiếp Chính Vương phủ nhận việc.
-Về phần vì sao nàng đến muộn như vậy…
-Bởi vì nàng mang theo con vẹt, mang theo Quy sư thúc, lại còn đem tất cả y phục, trang sức mà trước đây Nhiếp Chính Vương mua cho tiểu thư, những món tiểu thư yêu thích, cẩn thận thu dọn rồi chuyển hết sang Nhiếp Chính Vương phủ.
-Từ trước đến nay, nàng luôn chu đáo như vậy.
-Gần trưa.
-Sở Ly dẫn theo Sơ Nhất cùng ra ngoài.
-“Sơ Nhất, ngươi mau truyền tin cho Tần Thiếu tướng quân, nói rằng Nhiếp Chính Vương chuẩn bị thanh trừng triều đình. Chỉ những quan viên nhận được mật ngữ mới không bị thanh trừng, còn những người khác sẽ bị chém sạch.”
-Sơ Nhất lớn tiếng đáp:
-“Vâng! Nô tỳ đi ngay!”
-“Sau đó ghé qua phủ họ Ôn một chuyến.”
-“Nô tỳ hiểu rồi.”
-Sở Ly nhìn về con phố dài phía xa, lẩm bẩm:
-“Đợi thanh trừng triều đình, quét sạch gian thần xong… Tiêu Dao Vương? Minh Hoa Quận chúa?”
-“Ha!”
-“Có tư cách gì đấu với ta?”
-Nàng bước lên xe ngựa.
-“Tiến cung.”
-Ở cách đó không xa.
-Sở Minh Hoa bước ra, thần sắc hơi trầm xuống.
-“Nhiếp Chính Vương muốn thanh trừng triều đình?”
-“Sao ta chưa từng nghe phụ vương nhắc đến?”
-Nha hoàn tâm phúc Xuân Hiểu đứng bên cạnh nói:
-“Quận chúa, chuyện quan trọng như vậy chắc chắn phải bí mật tiến hành. Nếu ai cũng biết, chẳng phải sẽ chuẩn bị đề phòng từ trước sao?”
-Sở Minh Hoa sa sầm mặt.
-Nhiếp Chính Vương muốn bí mật thanh trừng quan viên, diệt trừ phe đối lập?
-Chẳng phải là muốn chặt hết cánh tay của phụ vương sao?
-Đáng chết!
-Nàng còn đang định tính kế Tạ Vãn Nguyệt.
-Không ngờ Nhiếp Chính Vương lại định ra tay với phụ vương.
-“Không được.”
-Nàng trầm giọng.
-“Ta và phụ vương vinh nhục cùng hưởng.”
-“Tuyệt đối không thể trơ mắt nhìn người bị che mắt.”
-“Xuân Hiểu, lập tức sai người bí mật đi báo cho Trương đại nhân Bộ Binh, Vương đại nhân Bộ Hộ, Lý đại nhân Bộ Hình… bảo bọn họ nhất định phải cẩn thận, đề phòng Nhiếp Chính Vương thanh quân trắc.”
-Xuân Hiểu lập tức chạy đi.
-Mấy vị đại thần nhận được tin này, ai nấy đều trầm mặt.
-“Nhiếp Chính Vương muốn thanh quân trắc?”
-“Chỉ những quan viên nhận được mật ngữ mới an toàn? Nhưng chúng ta căn bản không biết chuyện này…”
-“Chẳng lẽ Nhiếp Chính Vương đã biết chúng ta là người của Tiêu Dao Vương, muốn âm thầm trừ khử?”
-Biết làm sao bây giờ!
-Lúc này, bọn họ đâu còn ngồi yên nổi?
-Trong lúc cấp bách, từng người hẹn nhau, lặng lẽ đến nơi ở của Tiêu Dao Vương.
-Khi ấy.
-Tiêu Dao Vương đang đứng trêu chim.
-Nghe hạ nhân bẩm báo có một lúc bốn vị quan đến cầu kiến, thần sắc ông lập tức nghiêm lại.
-“Các ngươi đến đây làm gì!”
-“Hiện nay đúng lúc nhạy cảm, cung biến vừa mới kết thúc, triều đình đang trong thời kỳ căng thẳng. Các ngươi còn dám đến tìm bổn vương, không sợ bại lộ thân phận sao?”
-Trương đại nhân Bộ Binh lập tức nói:
-“Vương gia bớt giận. Nếu không phải có chuyện trọng đại, chúng thần cũng không dám mạo muội tìm đến. Thực sự là tình thế cấp bách, bất đắc dĩ mới phải làm vậy.”
-Tiêu Dao Vương đặt lồng chim xuống, sai hạ nhân lui ra ngoài canh gác.
-Đóng cửa lại.
-Sau khi xác nhận xung quanh tuyệt đối an toàn, ông mới hỏi:
-“Đã xảy ra chuyện gì?”
-Lý đại nhân Bộ Hình vội bước lên.
-“Nhiếp Chính Vương muốn thanh quân trắc. Quan viên nhận được tin thì an toàn, còn người không nhận được tin sẽ bị thanh trừng!”
-Vương đại nhân Bộ Hộ sốt ruột nói:
-“Vương gia! Chúng thần đều không nhận được tin!”
-“Nhiếp Chính Vương muốn thanh trừng chúng thần!”
-Tiêu Dao Vương đập mạnh xuống bàn.
-“Toàn lời bậy bạ!”
-Ông cũng có tai mắt trong cung.
-Sao lại không nhận được tin tức này?
-“Thân phận của các ngươi đều được che giấu.”
-“Cho dù Nhiếp Chính Vương muốn thanh quân trắc thì làm sao biết các ngươi là người của bổn vương hay của Hoàng thượng?”
-Mấy người nghe vậy, lập tức bình tĩnh lại.
-Đúng vậy!
-Bọn họ đâu có bại lộ thân phận.
-Nhiếp Chính Vương cũng không biết bọn họ trung thành với Tiêu Dao Vương.
-Nếu vậy…
-Bọn họ còn cuống cuồng cái gì?
-“Ngược lại là các ngươi!”
-“Nghe gió đã tưởng mưa, còn to gan chạy đến phủ của bổn vương!”
-Trương đại nhân Bộ Binh chắp tay nói:
-“Xin Vương gia bớt giận.”
-“Chỉ vì tin tức này là do chính Minh Hoa Quận chúa báo cho chúng thần.”
-“Chúng thần không dám không tin.”
-“Cái gì!”
-Là Minh Hoa nói?
-Từ khi nào Minh Hoa lại hiểu chuyện triều chính như vậy?
-“Ngay cả bổn vương còn chưa nhận được tin thanh quân trắc, sao Minh Hoa lại biết…”
-Đột nhiên nghĩ tới điều gì.
-Sắc mặt Tiêu Dao Vương đại biến.
-“Hỏng rồi!”
-Ông bật dậy.
-“Sở Minh Hoa đâu?”
-“Phụ vương, con về rồi!”
-Ngoài cửa vang lên tiếng cười vui vẻ của nữ tử.
-Sở Minh Hoa xách một bộ trang sức mới mua, tâm trạng rất tốt bước vào.
-Nhưng vừa vào phòng đã cảm thấy bầu không khí vô cùng nặng nề.
-Tiêu Dao Vương trầm mắt nhìn nàng.
-“Minh Hoa.”
-“Con nghe tin Nhiếp Chính Vương thanh quân trắc từ đâu?”
-Sở Minh Hoa cười nói:
-“Hôm nay gần trưa, Tạ Vãn Nguyệt ra ngoài, chính tai con nghe nàng ta nói.”
-“Nàng ta là người đầu gối tay ấp của Nhiếp Chính Vương.”
-“Lời nàng ta nói đương nhiên đáng tin.”
-“Con…”
-“Phụ vương định khen con sao?”
-“Thật ra đây vốn là điều Minh Hoa nên làm.”
-“Con…”
-“Minh Hoa chỉ muốn chia sẻ gánh nặng với phụ vương… A!”
-Chát!
-Một cái tát nặng nề giáng xuống.
-Đánh Sở Minh Hoa ngã nhào xuống đất.
-Ngay cả cây trâm trên đầu cũng rơi xuống.
-Trên đời này…
-Kẻ không thể tin nhất…
-Chính là Nhiếp Chính Vương!
-Tạ Vãn Nguyệt gần mực thì đen, ở cạnh Nhiếp Chính Vương lâu như vậy, nhất định đã học được thủ đoạn cùng tâm cơ của hắn.
-Lời nàng nói.
-Một chữ cũng không thể tin!
-“Phụ… phụ vương…”
-“Trúng kế rồi!”
-“Đều trúng kế rồi!”
-“Sở Minh Hoa!”
-“Con muốn hủy cả bổn vương!”
-“Đồ nghiệt chướng!”
-—
-Cùng lúc đó.
-Từng tin tức được truyền đến tai Sở Ly nhanh nhất.
-Trong điện Lâm Hoa.
-Sở Ly cầm bút, lần lượt ghi từng cái tên xuống.
-“Trương đại nhân Bộ Binh…”
-“Lý đại nhân Bộ Hình…”
-“Vương đại nhân Bộ Hộ…”
-…
-Thì ra…
-Những người này đều là phe cánh của Tiêu Dao Vương.
-Giấu thật kỹ.
-Đáng tiếc…
-Sở Minh Hoa không giữ được bình tĩnh.
-Bị nàng dùng kế lừa mà tự lộ hết.
-Sở Đệ Trì xử lý xong chính sự, lập tức đến điện Lâm Hoa.
-“Tiểu Cửu.”
-“Nàng sai người tìm ta?”
-“Hoàng thúc, chàng xem danh sách này.”
-Sở Ly đặt bút xuống, đưa cho hắn.
-Sở Đệ Trì liếc nhìn sơ qua.
-Trên đó có chín cái tên.
-Đầu ngón tay chỉ vào một người.
-“Trương đại nhân Bộ Binh này từng lập đại công.”
-“Ta khá có ấn tượng.”
-“Là một người trung nghĩa.”
-Sở Ly khẽ cong khóe môi, chậm rãi lắc đầu.
-“Hắn là người của Tiêu Dao Vương.”
-“Ý nàng là…”
-“Hôm nay ta cố ý lừa Sở Minh Hoa, nói rằng chàng sắp thanh quân trắc.”
-“Nàng ta lo thế lực của Tiêu Dao Vương sẽ bị bao vây tiêu diệt.”
-“Cho nên đã sai người báo tin trước cho những tâm phúc quan trọng.”
-“Chín người này…”
-“Đều là những kẻ đã được nàng ta báo tin.”
-Đôi mắt đen của Sở Đệ Trì khẽ nheo lại.
-Đầu ngón tay hất lên.
-Tờ danh sách lập tức bị ném sang một bên.
-“Thật thông minh.”
-“Thưởng một lần.” Ẩn bớt</p>
+            <p>Chương 330: Thật thông minh, thưởng một lần</p>
+<p>Trong Vương phủ.</p>
+<p>Lý quản gia đến bẩm báo:</p>
+<p>“Chủ mẫu, người đoán không sai. Sau khi nha hoàn kia bị đuổi ra khỏi phủ, quả nhiên đã gặp Minh Hoa Quận chúa!”</p>
+<p>Sở Ly bưng bát, ung dung uống canh cá diếc hầm đậu phụ bổ dưỡng.</p>
+<p>“Ta biết rồi.”</p>
+<p>Tên Sở Minh Hoa này giống như một con ong.</p>
+<p>Lúc đốt người thì chẳng đau chẳng ngứa.</p>
+<p>Nhưng cứ vo ve bên tai mãi, thật sự rất phiền.</p>
+<p>Nàng thong thả uống hết bát canh, đặt bát xuống.</p>
+<p>“Đến lúc rồi.”</p>
+<p>Lý quản gia bước lên.</p>
+<p>“Lão nô múc thêm cho người một bát nữa.”</p>
+<p>“Ta nói không phải bát canh.”</p>
+<p>—</p>
+<p>Buổi sáng, Sơ Nhất thu dọn xong hành lý, đến Nhiếp Chính Vương phủ nhận việc.</p>
+<p>Về phần vì sao nàng đến muộn như vậy…</p>
+<p>Bởi vì nàng mang theo con vẹt, mang theo Quy sư thúc, lại còn đem tất cả y phục, trang sức mà trước đây Nhiếp Chính Vương mua cho tiểu thư, những món tiểu thư yêu thích, cẩn thận thu dọn rồi chuyển hết sang Nhiếp Chính Vương phủ.</p>
+<p>Từ trước đến nay, nàng luôn chu đáo như vậy.</p>
+<p>Gần trưa.</p>
+<p>Sở Ly dẫn theo Sơ Nhất cùng ra ngoài.</p>
+<p>“Sơ Nhất, ngươi mau truyền tin cho Tần Thiếu tướng quân, nói rằng Nhiếp Chính Vương chuẩn bị thanh trừng triều đình. Chỉ những quan viên nhận được mật ngữ mới không bị thanh trừng, còn những người khác sẽ bị chém sạch.”</p>
+<p>Sơ Nhất lớn tiếng đáp:</p>
+<p>“Vâng! Nô tỳ đi ngay!”</p>
+<p>“Sau đó ghé qua phủ họ Ôn một chuyến.”</p>
+<p>“Nô tỳ hiểu rồi.”</p>
+<p>Sở Ly nhìn về con phố dài phía xa, lẩm bẩm:</p>
+<p>“Đợi thanh trừng triều đình, quét sạch gian thần xong… Tiêu Dao Vương? Minh Hoa Quận chúa?”</p>
+<p>“Ha!”</p>
+<p>“Có tư cách gì đấu với ta?”</p>
+<p>Nàng bước lên xe ngựa.</p>
+<p>“Tiến cung.”</p>
+<p>Ở cách đó không xa.</p>
+<p>Sở Minh Hoa bước ra, thần sắc hơi trầm xuống.</p>
+<p>“Nhiếp Chính Vương muốn thanh trừng triều đình?”</p>
+<p>“Sao ta chưa từng nghe phụ vương nhắc đến?”</p>
+<p>Nha hoàn tâm phúc Xuân Hiểu đứng bên cạnh nói:</p>
+<p>“Quận chúa, chuyện quan trọng như vậy chắc chắn phải bí mật tiến hành. Nếu ai cũng biết, chẳng phải sẽ chuẩn bị đề phòng từ trước sao?”</p>
+<p>Sở Minh Hoa sa sầm mặt.</p>
+<p>Nhiếp Chính Vương muốn bí mật thanh trừng quan viên, diệt trừ phe đối lập?</p>
+<p>Chẳng phải là muốn chặt hết cánh tay của phụ vương sao?</p>
+<p>Đáng chết!</p>
+<p>Nàng còn đang định tính kế Tạ Vãn Nguyệt.</p>
+<p>Không ngờ Nhiếp Chính Vương lại định ra tay với phụ vương.</p>
+<p>“Không được.”</p>
+<p>Nàng trầm giọng.</p>
+<p>“Ta và phụ vương vinh nhục cùng hưởng.”</p>
+<p>“Tuyệt đối không thể trơ mắt nhìn người bị che mắt.”</p>
+<p>“Xuân Hiểu, lập tức sai người bí mật đi báo cho Trương đại nhân Bộ Binh, Vương đại nhân Bộ Hộ, Lý đại nhân Bộ Hình… bảo bọn họ nhất định phải cẩn thận, đề phòng Nhiếp Chính Vương thanh quân trắc.”</p>
+<p>Xuân Hiểu lập tức chạy đi.</p>
+<p>Mấy vị đại thần nhận được tin này, ai nấy đều trầm mặt.</p>
+<p>“Nhiếp Chính Vương muốn thanh quân trắc?”</p>
+<p>“Chỉ những quan viên nhận được mật ngữ mới an toàn? Nhưng chúng ta căn bản không biết chuyện này…”</p>
+<p>“Chẳng lẽ Nhiếp Chính Vương đã biết chúng ta là người của Tiêu Dao Vương, muốn âm thầm trừ khử?”</p>
+<p>Biết làm sao bây giờ!</p>
+<p>Lúc này, bọn họ đâu còn ngồi yên nổi?</p>
+<p>Trong lúc cấp bách, từng người hẹn nhau, lặng lẽ đến nơi ở của Tiêu Dao Vương.</p>
+<p>Khi ấy.</p>
+<p>Tiêu Dao Vương đang đứng trêu chim.</p>
+<p>Nghe hạ nhân bẩm báo có một lúc bốn vị quan đến cầu kiến, thần sắc ông lập tức nghiêm lại.</p>
+<p>“Các ngươi đến đây làm gì!”</p>
+<p>“Hiện nay đúng lúc nhạy cảm, cung biến vừa mới kết thúc, triều đình đang trong thời kỳ căng thẳng. Các ngươi còn dám đến tìm bổn vương, không sợ bại lộ thân phận sao?”</p>
+<p>Trương đại nhân Bộ Binh lập tức nói:</p>
+<p>“Vương gia bớt giận. Nếu không phải có chuyện trọng đại, chúng thần cũng không dám mạo muội tìm đến. Thực sự là tình thế cấp bách, bất đắc dĩ mới phải làm vậy.”</p>
+<p>Tiêu Dao Vương đặt lồng chim xuống, sai hạ nhân lui ra ngoài canh gác.</p>
+<p>Đóng cửa lại.</p>
+<p>Sau khi xác nhận xung quanh tuyệt đối an toàn, ông mới hỏi:</p>
+<p>“Đã xảy ra chuyện gì?”</p>
+<p>Lý đại nhân Bộ Hình vội bước lên.</p>
+<p>“Nhiếp Chính Vương muốn thanh quân trắc. Quan viên nhận được tin thì an toàn, còn người không nhận được tin sẽ bị thanh trừng!”</p>
+<p>Vương đại nhân Bộ Hộ sốt ruột nói:</p>
+<p>“Vương gia! Chúng thần đều không nhận được tin!”</p>
+<p>“Nhiếp Chính Vương muốn thanh trừng chúng thần!”</p>
+<p>Tiêu Dao Vương đập mạnh xuống bàn.</p>
+<p>“Toàn lời bậy bạ!”</p>
+<p>Ông cũng có tai mắt trong cung.</p>
+<p>Sao lại không nhận được tin tức này?</p>
+<p>“Thân phận của các ngươi đều được che giấu.”</p>
+<p>“Cho dù Nhiếp Chính Vương muốn thanh quân trắc thì làm sao biết các ngươi là người của bổn vương hay của Hoàng thượng?”</p>
+<p>Mấy người nghe vậy, lập tức bình tĩnh lại.</p>
+<p>Đúng vậy!</p>
+<p>Bọn họ đâu có bại lộ thân phận.</p>
+<p>Nhiếp Chính Vương cũng không biết bọn họ trung thành với Tiêu Dao Vương.</p>
+<p>Nếu vậy…</p>
+<p>Bọn họ còn cuống cuồng cái gì?</p>
+<p>“Ngược lại là các ngươi!”</p>
+<p>“Nghe gió đã tưởng mưa, còn to gan chạy đến phủ của bổn vương!”</p>
+<p>Trương đại nhân Bộ Binh chắp tay nói:</p>
+<p>“Xin Vương gia bớt giận.”</p>
+<p>“Chỉ vì tin tức này là do chính Minh Hoa Quận chúa báo cho chúng thần.”</p>
+<p>“Chúng thần không dám không tin.”</p>
+<p>“Cái gì!”</p>
+<p>Là Minh Hoa nói?</p>
+<p>Từ khi nào Minh Hoa lại hiểu chuyện triều chính như vậy?</p>
+<p>“Ngay cả bổn vương còn chưa nhận được tin thanh quân trắc, sao Minh Hoa lại biết…”</p>
+<p>Đột nhiên nghĩ tới điều gì.</p>
+<p>Sắc mặt Tiêu Dao Vương đại biến.</p>
+<p>“Hỏng rồi!”</p>
+<p>Ông bật dậy.</p>
+<p>“Sở Minh Hoa đâu?”</p>
+<p>“Phụ vương, con về rồi!”</p>
+<p>Ngoài cửa vang lên tiếng cười vui vẻ của nữ tử.</p>
+<p>Sở Minh Hoa xách một bộ trang sức mới mua, tâm trạng rất tốt bước vào.</p>
+<p>Nhưng vừa vào phòng đã cảm thấy bầu không khí vô cùng nặng nề.</p>
+<p>Tiêu Dao Vương trầm mắt nhìn nàng.</p>
+<p>“Minh Hoa.”</p>
+<p>“Con nghe tin Nhiếp Chính Vương thanh quân trắc từ đâu?”</p>
+<p>Sở Minh Hoa cười nói:</p>
+<p>“Hôm nay gần trưa, Tạ Vãn Nguyệt ra ngoài, chính tai con nghe nàng ta nói.”</p>
+<p>“Nàng ta là người đầu gối tay ấp của Nhiếp Chính Vương.”</p>
+<p>“Lời nàng ta nói đương nhiên đáng tin.”</p>
+<p>“Con…”</p>
+<p>“Phụ vương định khen con sao?”</p>
+<p>“Thật ra đây vốn là điều Minh Hoa nên làm.”</p>
+<p>“Con…”</p>
+<p>“Minh Hoa chỉ muốn chia sẻ gánh nặng với phụ vương… A!”</p>
+<p>Chát!</p>
+<p>Một cái tát nặng nề giáng xuống.</p>
+<p>Đánh Sở Minh Hoa ngã nhào xuống đất.</p>
+<p>Ngay cả cây trâm trên đầu cũng rơi xuống.</p>
+<p>Trên đời này…</p>
+<p>Kẻ không thể tin nhất…</p>
+<p>Chính là Nhiếp Chính Vương!</p>
+<p>Tạ Vãn Nguyệt gần mực thì đen, ở cạnh Nhiếp Chính Vương lâu như vậy, nhất định đã học được thủ đoạn cùng tâm cơ của hắn.</p>
+<p>Lời nàng nói.</p>
+<p>Một chữ cũng không thể tin!</p>
+<p>“Phụ… phụ vương…”</p>
+<p>“Trúng kế rồi!”</p>
+<p>“Đều trúng kế rồi!”</p>
+<p>“Sở Minh Hoa!”</p>
+<p>“Con muốn hủy cả bổn vương!”</p>
+<p>“Đồ nghiệt chướng!”</p>
+<p>—</p>
+<p>Cùng lúc đó.</p>
+<p>Từng tin tức được truyền đến tai Sở Ly nhanh nhất.</p>
+<p>Trong điện Lâm Hoa.</p>
+<p>Sở Ly cầm bút, lần lượt ghi từng cái tên xuống.</p>
+<p>“Trương đại nhân Bộ Binh…”</p>
+<p>“Lý đại nhân Bộ Hình…”</p>
+<p>“Vương đại nhân Bộ Hộ…”</p>
+<p>…</p>
+<p>Thì ra…</p>
+<p>Những người này đều là phe cánh của Tiêu Dao Vương.</p>
+<p>Giấu thật kỹ.</p>
+<p>Đáng tiếc…</p>
+<p>Sở Minh Hoa không giữ được bình tĩnh.</p>
+<p>Bị nàng dùng kế lừa mà tự lộ hết.</p>
+<p>Sở Đệ Trì xử lý xong chính sự, lập tức đến điện Lâm Hoa.</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Nàng sai người tìm ta?”</p>
+<p>“Hoàng thúc, chàng xem danh sách này.”</p>
+<p>Sở Ly đặt bút xuống, đưa cho hắn.</p>
+<p>Sở Đệ Trì liếc nhìn sơ qua.</p>
+<p>Trên đó có chín cái tên.</p>
+<p>Đầu ngón tay chỉ vào một người.</p>
+<p>“Trương đại nhân Bộ Binh này từng lập đại công.”</p>
+<p>“Ta khá có ấn tượng.”</p>
+<p>“Là một người trung nghĩa.”</p>
+<p>Sở Ly khẽ cong khóe môi, chậm rãi lắc đầu.</p>
+<p>“Hắn là người của Tiêu Dao Vương.”</p>
+<p>“Ý nàng là…”</p>
+<p>“Hôm nay ta cố ý lừa Sở Minh Hoa, nói rằng chàng sắp thanh quân trắc.”</p>
+<p>“Nàng ta lo thế lực của Tiêu Dao Vương sẽ bị bao vây tiêu diệt.”</p>
+<p>“Cho nên đã sai người báo tin trước cho những tâm phúc quan trọng.”</p>
+<p>“Chín người này…”</p>
+<p>“Đều là những kẻ đã được nàng ta báo tin.”</p>
+<p>Đôi mắt đen của Sở Đệ Trì khẽ nheo lại.</p>
+<p>Đầu ngón tay hất lên.</p>
+<p>Tờ danh sách lập tức bị ném sang một bên.</p>
+<p>“Thật thông minh.”</p>
+<p>“Thưởng một lần.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_329.html" class="btn">‹ Trước</a>
             <a href="chuong_331.html" class="btn">Sau ›</a>
         </div>
@@ -299,15 +307,11 @@ Tờ danh sách lập tức bị ném sang một bên.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -319,11 +323,11 @@ Tờ danh sách lập tức bị ném sang một bên.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

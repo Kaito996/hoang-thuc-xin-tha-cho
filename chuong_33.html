@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 33</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,191 +62,200 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 33</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_32.html" class="btn">‹ Trước</a>
             <a href="chuong_34.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 33: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 33: [Hoàng thúc, sau này ta không dám nữa]
-Hắn ở phía sau.
-Hắn không nói gì.
-Nhưng Sở Ly lúc này không còn tâm trí đâu mà suy nghĩ, thân thể khó chịu đến cực điểm. Đúng lúc bàn tay ấy đặt xuống, nội lực cuồn cuộn trong cơ thể nàng lại bị cưỡng ép áp chế xuống.
-Nàng vội vàng ổn định hô hấp, cố gắng điều tức.
-Cuối cùng.
-Sau khi tất cả dần lắng xuống, toàn thân nàng như bị rút sạch sức lực, mềm nhũn ngã vào một lồng ngực cứng như tường.
-Nàng quá mệt, đến cả nâng tay cũng không nổi.
-“Ngươi… khi nào thì võ công lại luyện đến mức lợi hại như vậy?”
-Lén lút luyện sao?
-“Còn không nói với ta… hắt xì!”
-Giải được dược lực, hàn khí từ băng sàng lập tức trở nên cực kỳ đáng sợ. Lạnh buốt tràn vào cơ thể khiến Sở Ly vừa giải nhiệt lại lập tức run lên vì lạnh.
-Lạnh quá…
-Hắn ôm nàng.
-Một tay xuyên qua dưới nách, giữ lấy vòng eo mảnh khảnh, nhẹ nhàng nhấc lên, kéo vào trong lòng.
-Lưng nàng áp sát ngực hắn.
-Hơi ấm từ người hắn khiến Sở Ly vô thức dựa gần hơn:
-“Lạnh quá… trên người ngươi… dễ chịu quá…”
-Gương mặt nàng đỏ bừng, vô thức cọ nhẹ.
-Một bàn tay khác đặt lên chiếc cổ mảnh trắng của nàng, chậm rãi vuốt xuống.
-Đầu ngón tay thô ráp như đá mài, đi đến đâu khiến nàng run lên đến đó.
-“Ưm…”
-Bàn tay lạnh lạnh, ma sát nhẹ nhàng nắm lấy vai nàng, lướt qua xương quai xanh, chạm vào đôi môi nhợt nhạt.
-Đôi môi vì suy yếu mà trắng bệch, khô nứt.
-Nhưng… Tần Mục Vũ khi nào lại như vậy?
-Từ nhỏ Sở Ly cùng Tần Mục Vũ lớn lên, như huynh đệ thân thiết, cùng ăn cùng chơi, leo cây bắt cá, làm đủ trò nghịch ngợm.
-Nói thẳng ra… hai người gần như lớn lên “mặc chung một cái quần”.
-Nhưng đột nhiên người lại ôm nàng, còn sờ mặt nàng… có phải hơi…
-Không đúng?
-“Ngươi… a!”
-Ngón tay hắn đột nhiên siết mạnh, ép khóe môi nàng lên răng nanh, lập tức rách da chảy máu.
-Sở Ly đau đến quay đầu lại.
-Nhưng thứ nàng nhìn thấy lại là một gương mặt lạnh như băng.
-“Hoàng thúc!”
-Trong khoảnh khắc, như gặp quỷ.
-Nàng đẩy hắn ra, ngã trở lại hàn băng sàng.
-Nhớ lại vừa rồi… so với hàn khí trên giường, lưng nàng còn lạnh hơn.
-Là hắn!
-Nàng vẫn tưởng là Tần Mục Vũ!
-“Sao… sao lại là ngươi…”
-Sở Đệ Trì đứng trước hàn băng sàng, hàn khí bốc lên mờ mịt. Trong mắt hắn như phủ một tầng sương lạnh, nhìn nàng như chim sợ cành cong:
-“Không phải bản vương thì là ai?”
-“Ngươi tưởng là ai?”
-Trong mật thất vốn không có người thứ ba.
-Sở Ly đầu óc choáng váng, hàn khí xâm nhập khiến nàng càng thêm mê muội. Nàng gắng gượng muốn bò xuống giường, lại bị hắn phất tay đánh ngược trở lại.
-“Á!”
-Một cú này khiến nàng suýt ngất.
-“Hoàng thúc… ta, ta phải hồi cung.”
-Sở Đệ Trì cúi nhìn nàng.
-Nàng co mình trên băng sàng, hai tay nắm chặt vạt áo trước ngực, ánh mắt hoảng loạn như gặp kẻ săn mồi.
-“Bây giờ mới biết gọi hoàng thúc?”
-Không phải trước kia còn dám gọi thẳng tên hắn sao?
-“Ta…”
-Sở Ly nghẹn lời:
-“Ta sai rồi… hoàng thúc, ta sau này không dám chống đối ngài nữa, xin ngài đại nhân đại lượng, đừng chấp ta.”
-“Cửu hoàng tử quên rồi sao? Bản vương cũng chỉ lớn hơn ngươi vài tuổi, chưa tính là trưởng bối gì cả.”
-Sở Ly suýt nữa nghẹn khóc.
-Sở Đệ Trì bước tới, nàng lập tức hoảng loạn lùi lại.
-“Không… a!”
-“Không phải trước kia không sợ bản vương sao?”
-Hắn túm cổ áo nàng nhấc lên như xách một con gà con.
-Gương mặt nàng trắng bệch, môi bị rách còn vương máu đỏ.
-Sở Đệ Trì nhìn vệt đỏ ấy, ánh mắt trầm xuống.
-Nếu vừa rồi là Tần Mục Vũ…
-Bọn họ vốn định làm gì?
-Hắn bóp cằm nàng.
-“Ưm!”
-“Ngươi thật không ngoan.”
-Nàng bị ép ngẩng đầu, hô hấp khó khăn:
-“Không… không dám…”
-“Ngươi có biết lừa bản vương là hậu quả gì không?”
-Giọng hắn bình thản, không giận không vui, càng khiến người ta sợ hãi.
-“Ta không có… không lừa hoàng thúc…”
-“Vậy sao?”
-Hắn cúi xuống, hít lấy mùi hương trên cổ nàng.
-Hương lan quen thuộc, giống hệt ký ức của hắn.
-Hắn như thú săn trong đêm, đột nhiên cắn lên cổ nàng.
-“Á…”
-Nàng ngửa đầu, toàn thân run lên.
-“Hoàng… hoàng thúc… ta phải hồi cung… ta còn phải đến học uyển… còn phải đọc sách… ta…”
-“Sở Ly.”
-Hắn khẽ gọi.
-Thấy khóe mắt nàng đỏ ướt, hắn nói chậm rãi:
-“Khóc cái gì, bản vương lại không ăn ngươi.”
-“Sau này… còn nhiều ngày để ngươi khóc.”
-“Giấu cho kỹ cái đuôi nhỏ của ngươi.”
-Hắn kéo nàng vào lòng, ghé sát tai:
-“Bản vương chờ ngươi… tự mình đưa tới.”
-Sau đó
-Sở Ly như vừa mơ một giấc.
-Trong mơ nàng nóng đến mơ hồ, có một người đàn ông xông vào, từng lần từng lần gọi “Sở Ly”, như ma chú khiến nàng không thoát ra được.
-Hơi thở lạnh lẽo của hắn bao trùm toàn bộ ý thức, ép chặt giữa môi răng, khiến nàng khó thở.
-Rồi dần mất ý thức…
-Khi tỉnh lại, nàng bật dậy, đụng ngã luôn Tần Mục Vũ đang bưng thuốc.
-“Rầm!”
-“A Ly, ngươi không sao chứ?”
-Tần Mục Vũ không quan tâm tay bị bỏng thuốc, vội đỡ nàng.
-Sở Ly toàn thân mồ hôi lạnh, thở dốc, vô thức nhìn quanh.
-Đây là một gian phòng sạch sẽ trong phủ tướng quân.
-Nàng đang nằm trên giường.
-“Đây là…”
-“Đây là phủ tướng quân, phòng phụ trong viện của muội muội ta.”
-Tần Mục Vũ vốn định đưa nàng vào viện mình, nhưng…
-Khi quay lại mật thất, hắn thấy nàng ngã dưới đất. Lúc bế nàng lên, lại thấy áo nàng trễ xuống, lộ ra một góc… băng vải buộc ngực.
-Khoảnh khắc ấy như sét đánh ngang tai.
-Từ nhỏ lớn lên cùng nhau, hắn không ngờ nàng lại là…
-Sở Ly đầu óc hỗn loạn, như vừa mơ vừa thật, không phân rõ thực hư.
-“Ta làm sao tới đây?”
-“Ta về mật thất thì ngươi đã ngất, còn sốt cao. Ta gọi xe ngựa đưa ngươi về.”
-“Còn Nhiếp Chính Vương? Hắn có tới không?”
-Tần Mục Vũ lắc đầu:
-“Không có. Khi ta chở lương ra ngoài thành, ta thấy hắn đang ở khu nạn dân, đến lúc ta về vẫn ở đó.”
-Hắn dừng một chút:
-“Hoàng thượng sai hắn cứu trợ nạn dân, hắn không thể rời đi.”
-Sở Ly cúi đầu, ánh mắt mơ hồ.
-Thật sao?
-Là nàng… mơ một giấc mộng?
-Hay tất cả chỉ là ảo giác?
-Tần Mục Vũ nhìn nàng, sắc mặt phức tạp, rồi nói:
-“Ngươi vừa hạ sốt, nghỉ ngơi đi, ta đi sắc thuốc lại.”
-Hắn xoay người rời đi.
-Sở Ly ngồi trên giường, tay vô thức sờ cổ, sờ mặt, rồi chạm môi.
-“suýt…”
-Cảm giác đau rõ ràng.
-Khóe môi nàng… sao lại rách?
-Thật sự… chỉ là mơ thôi sao? Ẩn bớt</p>
+            <p>Chương 33: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 33: [Hoàng thúc, sau này ta không dám nữa]</p>
+<p>Hắn ở phía sau.</p>
+<p>Hắn không nói gì.</p>
+<p>Nhưng Sở Ly lúc này không còn tâm trí đâu mà suy nghĩ, thân thể khó chịu đến cực điểm. Đúng lúc bàn tay ấy đặt xuống, nội lực cuồn cuộn trong cơ thể nàng lại bị cưỡng ép áp chế xuống.</p>
+<p>Nàng vội vàng ổn định hô hấp, cố gắng điều tức.</p>
+<p>Cuối cùng.</p>
+<p>Sau khi tất cả dần lắng xuống, toàn thân nàng như bị rút sạch sức lực, mềm nhũn ngã vào một lồng ngực cứng như tường.</p>
+<p>Nàng quá mệt, đến cả nâng tay cũng không nổi.</p>
+<p>“Ngươi… khi nào thì võ công lại luyện đến mức lợi hại như vậy?”</p>
+<p>Lén lút luyện sao?</p>
+<p>“Còn không nói với ta… hắt xì!”</p>
+<p>Giải được dược lực, hàn khí từ băng sàng lập tức trở nên cực kỳ đáng sợ. Lạnh buốt tràn vào cơ thể khiến Sở Ly vừa giải nhiệt lại lập tức run lên vì lạnh.</p>
+<p>Lạnh quá…</p>
+<p>Hắn ôm nàng.</p>
+<p>Một tay xuyên qua dưới nách, giữ lấy vòng eo mảnh khảnh, nhẹ nhàng nhấc lên, kéo vào trong lòng.</p>
+<p>Lưng nàng áp sát ngực hắn.</p>
+<p>Hơi ấm từ người hắn khiến Sở Ly vô thức dựa gần hơn:</p>
+<p>“Lạnh quá… trên người ngươi… dễ chịu quá…”</p>
+<p>Gương mặt nàng đỏ bừng, vô thức cọ nhẹ.</p>
+<p>Một bàn tay khác đặt lên chiếc cổ mảnh trắng của nàng, chậm rãi vuốt xuống.</p>
+<p>Đầu ngón tay thô ráp như đá mài, đi đến đâu khiến nàng run lên đến đó.</p>
+<p>“Ưm…”</p>
+<p>Bàn tay lạnh lạnh, ma sát nhẹ nhàng nắm lấy vai nàng, lướt qua xương quai xanh, chạm vào đôi môi nhợt nhạt.</p>
+<p>Đôi môi vì suy yếu mà trắng bệch, khô nứt.</p>
+<p>Nhưng… Tần Mục Vũ khi nào lại như vậy?</p>
+<p>Từ nhỏ Sở Ly cùng Tần Mục Vũ lớn lên, như huynh đệ thân thiết, cùng ăn cùng chơi, leo cây bắt cá, làm đủ trò nghịch ngợm.</p>
+<p>Nói thẳng ra… hai người gần như lớn lên “mặc chung một cái quần”.</p>
+<p>Nhưng đột nhiên người lại ôm nàng, còn sờ mặt nàng… có phải hơi…</p>
+<p>Không đúng?</p>
+<p>“Ngươi… a!”</p>
+<p>Ngón tay hắn đột nhiên siết mạnh, ép khóe môi nàng lên răng nanh, lập tức rách da chảy máu.</p>
+<p>Sở Ly đau đến quay đầu lại.</p>
+<p>Nhưng thứ nàng nhìn thấy lại là một gương mặt lạnh như băng.</p>
+<p>“Hoàng thúc!”</p>
+<p>Trong khoảnh khắc, như gặp quỷ.</p>
+<p>Nàng đẩy hắn ra, ngã trở lại hàn băng sàng.</p>
+<p>Nhớ lại vừa rồi… so với hàn khí trên giường, lưng nàng còn lạnh hơn.</p>
+<p>Là hắn!</p>
+<p>Nàng vẫn tưởng là Tần Mục Vũ!</p>
+<p>“Sao… sao lại là ngươi…”</p>
+<p>Sở Đệ Trì đứng trước hàn băng sàng, hàn khí bốc lên mờ mịt. Trong mắt hắn như phủ một tầng sương lạnh, nhìn nàng như chim sợ cành cong:</p>
+<p>“Không phải bản vương thì là ai?”</p>
+<p>“Ngươi tưởng là ai?”</p>
+<p>Trong mật thất vốn không có người thứ ba.</p>
+<p>Sở Ly đầu óc choáng váng, hàn khí xâm nhập khiến nàng càng thêm mê muội. Nàng gắng gượng muốn bò xuống giường, lại bị hắn phất tay đánh ngược trở lại.</p>
+<p>“Á!”</p>
+<p>Một cú này khiến nàng suýt ngất.</p>
+<p>“Hoàng thúc… ta, ta phải hồi cung.”</p>
+<p>Sở Đệ Trì cúi nhìn nàng.</p>
+<p>Nàng co mình trên băng sàng, hai tay nắm chặt vạt áo trước ngực, ánh mắt hoảng loạn như gặp kẻ săn mồi.</p>
+<p>“Bây giờ mới biết gọi hoàng thúc?”</p>
+<p>Không phải trước kia còn dám gọi thẳng tên hắn sao?</p>
+<p>“Ta…”</p>
+<p>Sở Ly nghẹn lời:</p>
+<p>“Ta sai rồi… hoàng thúc, ta sau này không dám chống đối ngài nữa, xin ngài đại nhân đại lượng, đừng chấp ta.”</p>
+<p>“Cửu hoàng tử quên rồi sao? Bản vương cũng chỉ lớn hơn ngươi vài tuổi, chưa tính là trưởng bối gì cả.”</p>
+<p>Sở Ly suýt nữa nghẹn khóc.</p>
+<p>Sở Đệ Trì bước tới, nàng lập tức hoảng loạn lùi lại.</p>
+<p>“Không… a!”</p>
+<p>“Không phải trước kia không sợ bản vương sao?”</p>
+<p>Hắn túm cổ áo nàng nhấc lên như xách một con gà con.</p>
+<p>Gương mặt nàng trắng bệch, môi bị rách còn vương máu đỏ.</p>
+<p>Sở Đệ Trì nhìn vệt đỏ ấy, ánh mắt trầm xuống.</p>
+<p>Nếu vừa rồi là Tần Mục Vũ…</p>
+<p>Bọn họ vốn định làm gì?</p>
+<p>Hắn bóp cằm nàng.</p>
+<p>“Ưm!”</p>
+<p>“Ngươi thật không ngoan.”</p>
+<p>Nàng bị ép ngẩng đầu, hô hấp khó khăn:</p>
+<p>“Không… không dám…”</p>
+<p>“Ngươi có biết lừa bản vương là hậu quả gì không?”</p>
+<p>Giọng hắn bình thản, không giận không vui, càng khiến người ta sợ hãi.</p>
+<p>“Ta không có… không lừa hoàng thúc…”</p>
+<p>“Vậy sao?”</p>
+<p>Hắn cúi xuống, hít lấy mùi hương trên cổ nàng.</p>
+<p>Hương lan quen thuộc, giống hệt ký ức của hắn.</p>
+<p>Hắn như thú săn trong đêm, đột nhiên cắn lên cổ nàng.</p>
+<p>“Á…”</p>
+<p>Nàng ngửa đầu, toàn thân run lên.</p>
+<p>“Hoàng… hoàng thúc… ta phải hồi cung… ta còn phải đến học uyển… còn phải đọc sách… ta…”</p>
+<p>“Sở Ly.”</p>
+<p>Hắn khẽ gọi.</p>
+<p>Thấy khóe mắt nàng đỏ ướt, hắn nói chậm rãi:</p>
+<p>“Khóc cái gì, bản vương lại không ăn ngươi.”</p>
+<p>“Sau này… còn nhiều ngày để ngươi khóc.”</p>
+<p>“Giấu cho kỹ cái đuôi nhỏ của ngươi.”</p>
+<p>Hắn kéo nàng vào lòng, ghé sát tai:</p>
+<p>“Bản vương chờ ngươi… tự mình đưa tới.”</p>
+<p>Sau đó</p>
+<p>Sở Ly như vừa mơ một giấc.</p>
+<p>Trong mơ nàng nóng đến mơ hồ, có một người đàn ông xông vào, từng lần từng lần gọi “Sở Ly”, như ma chú khiến nàng không thoát ra được.</p>
+<p>Hơi thở lạnh lẽo của hắn bao trùm toàn bộ ý thức, ép chặt giữa môi răng, khiến nàng khó thở.</p>
+<p>Rồi dần mất ý thức…</p>
+<p>Khi tỉnh lại, nàng bật dậy, đụng ngã luôn Tần Mục Vũ đang bưng thuốc.</p>
+<p>“Rầm!”</p>
+<p>“A Ly, ngươi không sao chứ?”</p>
+<p>Tần Mục Vũ không quan tâm tay bị bỏng thuốc, vội đỡ nàng.</p>
+<p>Sở Ly toàn thân mồ hôi lạnh, thở dốc, vô thức nhìn quanh.</p>
+<p>Đây là một gian phòng sạch sẽ trong phủ tướng quân.</p>
+<p>Nàng đang nằm trên giường.</p>
+<p>“Đây là…”</p>
+<p>“Đây là phủ tướng quân, phòng phụ trong viện của muội muội ta.”</p>
+<p>Tần Mục Vũ vốn định đưa nàng vào viện mình, nhưng…</p>
+<p>Khi quay lại mật thất, hắn thấy nàng ngã dưới đất. Lúc bế nàng lên, lại thấy áo nàng trễ xuống, lộ ra một góc… băng vải buộc ngực.</p>
+<p>Khoảnh khắc ấy như sét đánh ngang tai.</p>
+<p>Từ nhỏ lớn lên cùng nhau, hắn không ngờ nàng lại là…</p>
+<p>Sở Ly đầu óc hỗn loạn, như vừa mơ vừa thật, không phân rõ thực hư.</p>
+<p>“Ta làm sao tới đây?”</p>
+<p>“Ta về mật thất thì ngươi đã ngất, còn sốt cao. Ta gọi xe ngựa đưa ngươi về.”</p>
+<p>“Còn Nhiếp Chính Vương? Hắn có tới không?”</p>
+<p>Tần Mục Vũ lắc đầu:</p>
+<p>“Không có. Khi ta chở lương ra ngoài thành, ta thấy hắn đang ở khu nạn dân, đến lúc ta về vẫn ở đó.”</p>
+<p>Hắn dừng một chút:</p>
+<p>“Hoàng thượng sai hắn cứu trợ nạn dân, hắn không thể rời đi.”</p>
+<p>Sở Ly cúi đầu, ánh mắt mơ hồ.</p>
+<p>Thật sao?</p>
+<p>Là nàng… mơ một giấc mộng?</p>
+<p>Hay tất cả chỉ là ảo giác?</p>
+<p>Tần Mục Vũ nhìn nàng, sắc mặt phức tạp, rồi nói:</p>
+<p>“Ngươi vừa hạ sốt, nghỉ ngơi đi, ta đi sắc thuốc lại.”</p>
+<p>Hắn xoay người rời đi.</p>
+<p>Sở Ly ngồi trên giường, tay vô thức sờ cổ, sờ mặt, rồi chạm môi.</p>
+<p>“suýt…”</p>
+<p>Cảm giác đau rõ ràng.</p>
+<p>Khóe môi nàng… sao lại rách?</p>
+<p>Thật sự… chỉ là mơ thôi sao? Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_32.html" class="btn">‹ Trước</a>
             <a href="chuong_34.html" class="btn">Sau ›</a>
         </div>
@@ -255,15 +263,11 @@ Thật sự… chỉ là mơ thôi sao? Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -275,11 +279,11 @@ Thật sự… chỉ là mơ thôi sao? Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 179</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,333 +62,208 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 179</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_178.html" class="btn">‹ Trước</a>
             <a href="chuong_180.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 179: Bát hoàng huynh thật sự quá đáng thương
-
-Trong lúc xoa dịu mệt mỏi vì mấy ngày bôn ba đường dài, Sở Ly vẫn không quên lời căn dặn của sư phụ: phải cần kiệm chăm chỉ, không kiêu không nóng, tránh xa rượu sắc.
-
-Nàng luôn ghi nhớ trong lòng.
-
-Cần kiệm vốn là mỹ đức mà ai cũng nên khắc cốt ghi tâm!
-
-Nhưng con người trước hết phải có một nơi an thân lập mệnh.
-
-Vì vậy, sau khi ăn no uống đủ, nàng đành bất đắc dĩ bỏ ra một khoản tiền lớn, mua một tòa nhà ba tầng có sân vườn, nằm sát dòng thủy đạo Giang Nam.
-
-Có nhà rồi thì phải có người quét dọn, trải giường, nấu cơm, thế là nàng lại bất đắc dĩ đến chỗ nha bà chọn mấy tỳ nữ vừa mắt.
-
-Hai người chuyên nấu ăn.
-
-Hai người chuyên bóp vai, rửa chân cho nàng.
-
-Hai người quét dọn, làm việc vặt.
-
-Lại bất đắc dĩ nuôi thêm một con chó đen lớn để giữ nhà.
-
-Khôi phục thân phận nữ nhi rồi, y phục cũ đều không mặc được nữa, nàng lại bất đắc dĩ mua mười hai bộ nữ trang, từ trong ra ngoài, từ đầu đến chân, kể cả trang sức cài tóc.
-
-Bận rộn suốt ba ngày, tiêu mất một thỏi tiểu kim, cuối cùng cũng an ổn.
-
-Giờ thì có thể bắt đầu cuộc sống cần kiệm, chân chất rồi.
-
-“Quy sư thúc, chào buổi sáng.”
-
-Trong sân có một ao nước. Sở Ly đặc biệt sai tỳ nữ xây một bậc đá nhỏ giữa ao, dựng thêm một căn nhà gỗ nho nhỏ. Quy sư thúc đang nằm trên tảng bạch ngọc tròn nhẵn, phơi mai dưới nắng.
-
-“Gâu gâu!”
-
-“Suỵt, Đại Hắc, đừng làm ồn Quy sư thúc luyện công.”
-
-“Tiểu thư, dùng bữa sáng thôi!”
-
-Hai tỳ nữ xắn tay áo bước ra khỏi nhà bếp, bưng thức ăn nóng hổi đặt lên chiếc bàn thấp giữa sân.
-
-Sở Ly rất thích khoảng sân này.
-
-Giữa sân trồng một cây phong lớn, dưới gốc lát đầy đá cuội bằng phẳng, đặt một bộ bàn đá. Tối đến kê thêm một chiếc ghế nằm, vừa hóng mát vừa ngắm trăng thì còn gì bằng.
-
-Bên trái là ao nước róc rách.
-
-Bên phải là tiểu hoa viên.
-
-Đại Hắc nằm dưới chân nàng, đuôi vẫy lia lịa, đôi mắt đen láy chăm chăm nhìn chủ nhân gặm xương, nước dãi chảy ròng.
-
-Bữa sáng rất đạm bạc.
-
-Một con gà luộc chặt.
-
-Một bát cháo thịt hầm cua và tôm.
-
-Hai đĩa dưa muối nhỏ.
-
-Vì trước đó Sở Ly đã dặn, nàng muốn sống giản dị, cần kiệm chăm chỉ. Chỉ có tu thân dưỡng tính mới có thể giống sư phụ, siêu nhiên thoát tục, tiên phong đạo cốt.
-
-Đám tỳ nữ ghi nhớ kỹ: mỗi bữa ăn của tiểu thư tuyệt đối không được vượt quá ba món.
-
-“Sơ Lục, tối nay ta muốn ăn giò heo hầm đậu nành, cá bọc vịt đặc sản Giang Nam và tôm Minh Thái Cực.”
-
-Sở Ly vừa gặm đùi gà vừa nói.
-
-Có sáu tỳ nữ, nàng cũng lười đặt tên.
-
-Đều theo họ của nàng.
-
-Sơ Nhất, Sơ Nhị.
-
-Sơ Tam, Sơ Tứ.
-
-Sơ Ngũ, Sơ Lục.
-
-Đơn giản lại dễ nhớ.
-
-Tỳ nữ đứng hầu bên cạnh khom người, lễ phép đáp:
-
-“Tiểu thư, nô tỳ là Sơ Tam.”
-
-“…”
-
-Sở Ly lúc nào cũng gọi nhầm.
-
-Dù sao họ mới đến được hai ngày, gương mặt ai cũng còn lạ. Nhưng tất cả đều đã ký khế bán thân, tính mạng đều nằm trong tay nàng, cũng chẳng lo họ sinh lòng khác.
-
-“Sơ Ngũ, hôm nay ngươi cho chó ăn chưa?”
-
-“Cho rồi ạ, tiểu thư, nô tỳ là Sơ Nhị.”
-
-“Vậy sao nó vẫn chảy nước dãi nhìn ta thế… À, ta hiểu rồi, nhất định là tay nghề của Sơ Tam quá ngon.”
-
-Sở Ly ăn no căng bụng, xoa chiếc bụng tròn vo, còn không quên liếm khóe môi.
-
-“Tiểu thư, uống một chén trà sữa bò cho dễ tiêu.”
-
-“Không được đâu, uống cái này sẽ béo.”
-
-“Tiểu thư là người luyện võ. Nô tỳ nghe cha nói, người luyện võ vận động nhiều, tiêu hao lớn. Thân hình tiểu thư lại mảnh mai như vậy, phải bồi bổ mới được.”
-
-“Ngươi nói cũng có lý.”
-
-Sở Ly ném khúc xương cho Đại Hắc, lại uống thêm một chén trà sữa bò. Đầu óc bắt đầu lâng lâng, cơn buồn ngủ kéo đến.
-
-Nàng sai hai tỳ nữ khiêng ghế nằm đặt cạnh ao, dặn:
-
-“Nếu không có việc gì thì lui cả đi. Ta phải bắt đầu luyện công, không được quấy rầy.”
-
-“Vâng.”
-
-Sáu người nhanh chóng thu dọn rồi lui khỏi sân.
-
-Ra ngoài, họ khe khẽ bàn tán:
-
-“Tiểu thư là thiên kim nhà nào, ra ngoài trải nghiệm cuộc sống sao?”
-
-“Tiểu thư võ công cao cường, lại có nhiều vàng bạc, vừa xinh đẹp vừa oai phong. Ta từng nghe nói có vài tiểu thư khuê các không muốn lấy người nhà sắp đặt nên lén bỏ nhà đi, rồi gặp được ý trung nhân…”
-
-“Chẳng phải là câu chuyện lần trước tiên sinh Lâm kể sao?”
-
-“Ôi chao, tỷ tỷ Sơ Nhất cũng thích nghe tiên sinh Lâm kể chuyện à?”
-
-“Đúng thế, lần trước tiên sinh Lâm kể đến…”
-
-Mấy tiểu nha đầu ríu rít trò chuyện.
-
-Sở Ly không nghe thấy.
-
-Lúc này nàng đang nghiêng người nằm trên ghế, chống đầu bằng khuỷu tay, nghiêm túc quan sát Quy sư thúc.
-
-Muốn luyện Quy Tức Công thì phải quan sát thật kỹ nhịp thở và cử động của rùa, từ từ điều chỉnh hơi thở của mình, chậm rãi đạt đến cùng một tần suất với nó.
-
-Hít vào.
-
-Thở ra.
-
-Hít vào…
-
-Thở ra…
-
-Hít vào…
-
-…
-
-Khò!
-
-Khò——
-
-Sở Ly dạng chân, nước dãi chảy dài, mắt trợn trắng, ngủ say như chết.
-
-Trong lúc đó, Sơ Nhất có vào một lần. Thấy tiểu thư đã ngủ, nàng rón rén lấy một tấm chăn mỏng đắp lên người Sở Ly.
-
-Trong lòng không khỏi cảm thán.
-
-Tiểu thư luyện công thật vất vả!
-
-Sáng sớm đã dậy luyện công, tối lại thức đến khuya mới về. Đôi vai nhỏ bé ấy lại gánh vác bao nhiêu trọng trách, thật kiên cường biết bao!
-
-Vùng sông nước Giang Nam, tiếng nói mềm mại như ca, gió thổi qua lá phong xào xạc. Ánh mặt trời len qua kẽ lá, loang lổ rơi trên người Sở Ly.
-
-Nàng đắp chăn, tựa như đang nằm giữa tầng mây, ngủ ngon lành.
-
-Một giấc đến tận giữa trưa.
-
-Sở Ly ghi nhớ lời dạy của sư phụ, phải sống chân chất, cần kiệm chăm chỉ, nên xắn tay áo làm việc trong tiểu hoa viên của mình.
-
-“Nho này ngon thật.”
-
-“Vừa ngọt vừa chát, khai vị ghê.”
-
-Trong tiểu hoa viên dựng một giàn nho, từng chùm quả tím mọng treo lủng lẳng giữa muôn hoa, giống hệt chốn đào nguyên u tĩnh.
-
-Sở Ly vừa tỉa lá úa, vừa hái nho ăn ngay tại chỗ.
-
-Nàng thích tòa nhà này không chỉ vì vị trí đẹp, mà còn vì khoảng sân này.
-
-“Sơ Nhất, nhớ mỗi ngày tưới nước, bón phân đầy đủ. Sang năm mới kết được những chùm nho to và ngọt hơn.”
-
-Sơ Nhất ghi nhớ.
-
-“Sơ Nhị, lát nữa hái hết số nho chín, ép thành nước, rồi cho thêm mấy cục đá lạnh mang đến cho ta.”
-
-Sơ Nhị ghi nhớ.
-
-“Sơ Tam, dọn sạch bùn dưới ao, rồi thả cá trắm đen, cá mè, cá trắm cỏ và cá diếc.”
-
-Sơ Tam ngẩn người.
-
-“Tiểu thư không nuôi cá chép gấm sao?”
-
-Trong phủ của nhà giàu chẳng phải đều nuôi cá chép gấm để ngắm sao?
-
-Còn mấy loại cá trắm, cá mè này đều là thực phẩm.
-
-Sở Ly lắc đầu.
-
-“Sư phụ dạy ta, làm người phải chân đạp thực địa, cần kiệm chăm chỉ, phú quý không quên gốc, bần tiện không đổi chí.”
-
-Nàng không thích mấy thứ hình thức đó.
-
-Cứ nuôi cá trắm, cá mè, cá trắm cỏ với cá diếc.
-
-Không đói thì ngắm.
-
-Đói thì vớt lên ăn.
-
-“Nô tỳ sẽ đi mua cá giống ngay.”
-
-Sơ Tam thầm tán thưởng.
-
-Tiểu thư đúng là một người chân chất, giản dị, không hề có dáng vẻ tiểu thư khuê các.
-
-“Sơ Tứ, ngươi giúp ta… Sơ Ngũ, ngươi phụ trách… Sơ Lục…”
-
-Sau khi dặn dò xong, Sở Ly hái một chùm nho lớn, ngồi lên ghế dài vừa ăn vừa lau mồ hôi.
-
-“Làm việc cả buổi chiều, mệt chết ta rồi.”
-
-Cuộc sống một mình hoàn toàn khác với trong hoàng cung.
-
-Nhưng chính sự mới mẻ ấy lại khiến nàng vô cùng thích thú.
-
-Ở đây không cần giữ quy củ.
-
-Không cần lo bị hãm hại.
-
-Muốn làm gì thì làm.
-
-Đó là tự do.
-
-Là sự tự do không còn bị nhốt trong bức tường cung cấm.
-
-Nếu Bát hoàng huynh biết được, chắc chắn sẽ ghen tị với nàng chết mất.
-
-Đột nhiên nhớ đến Sở Ngạo Thiên…
-
-Sống mũi Sở Ly cay xè.
-
-Bát hoàng huynh vốn ham chơi hiếu động. Từ nhỏ hai người đã cùng nhau lớn lên, cùng nhau vui đùa.
-
-Giờ đây, nàng được tự do tự tại.
-
-Còn Bát hoàng huynh chỉ có thể mãi mãi ở trong hoàng cung, đối mặt với quyền mưu tranh đấu, minh tranh ám đấu, tứ bề thọ địch, tiến thoái lưỡng nan.
-
-Ngay cả lúc ngủ cũng không dám ngủ quá say.
-
-Cả đời huynh ấy sẽ bị giam trong bức tường cung cấm.
-
-Không thể rời khỏi Đế Đô.
-
-Cũng không thể đến Giang Nam.
-
-Lại càng không thể sống cuộc đời như nàng.
-
-Nhớ đến những ngày hai người cùng nhau nghịch ngợm, ăn uống, vui chơi…
-
-Trong lòng Sở Ly chợt dâng lên nỗi bi thương.
-
-“Tiểu thư, giò heo hầm đậu nành chín rồi!”
-
-Sở Ly vừa ăn bữa tối, vừa nghĩ đến hoàn cảnh của Sở Ngạo Thiên lúc này, trong lòng không khỏi đau xót, nước mắt lưng tròng gặm liền hai miếng giò heo.
-
-May mà nàng đã được giải thoát rồi.
-
-Bát hoàng huynh thật sự quá đáng thương.
-
-Thật sự quá đáng thương!</p>
+            <p>Chương 179: Bát hoàng huynh thật sự quá đáng thương</p>
+<p>Trong lúc xoa dịu mệt mỏi vì mấy ngày bôn ba đường dài, Sở Ly vẫn không quên lời căn dặn của sư phụ: phải cần kiệm chăm chỉ, không kiêu không nóng, tránh xa rượu sắc.</p>
+<p>Nàng luôn ghi nhớ trong lòng.</p>
+<p>Cần kiệm vốn là mỹ đức mà ai cũng nên khắc cốt ghi tâm!</p>
+<p>Nhưng con người trước hết phải có một nơi an thân lập mệnh.</p>
+<p>Vì vậy, sau khi ăn no uống đủ, nàng đành bất đắc dĩ bỏ ra một khoản tiền lớn, mua một tòa nhà ba tầng có sân vườn, nằm sát dòng thủy đạo Giang Nam.</p>
+<p>Có nhà rồi thì phải có người quét dọn, trải giường, nấu cơm, thế là nàng lại bất đắc dĩ đến chỗ nha bà chọn mấy tỳ nữ vừa mắt.</p>
+<p>Hai người chuyên nấu ăn.</p>
+<p>Hai người chuyên bóp vai, rửa chân cho nàng.</p>
+<p>Hai người quét dọn, làm việc vặt.</p>
+<p>Lại bất đắc dĩ nuôi thêm một con chó đen lớn để giữ nhà.</p>
+<p>Khôi phục thân phận nữ nhi rồi, y phục cũ đều không mặc được nữa, nàng lại bất đắc dĩ mua mười hai bộ nữ trang, từ trong ra ngoài, từ đầu đến chân, kể cả trang sức cài tóc.</p>
+<p>Bận rộn suốt ba ngày, tiêu mất một thỏi tiểu kim, cuối cùng cũng an ổn.</p>
+<p>Giờ thì có thể bắt đầu cuộc sống cần kiệm, chân chất rồi.</p>
+<p>“Quy sư thúc, chào buổi sáng.”</p>
+<p>Trong sân có một ao nước. Sở Ly đặc biệt sai tỳ nữ xây một bậc đá nhỏ giữa ao, dựng thêm một căn nhà gỗ nho nhỏ. Quy sư thúc đang nằm trên tảng bạch ngọc tròn nhẵn, phơi mai dưới nắng.</p>
+<p>“Gâu gâu!”</p>
+<p>“Suỵt, Đại Hắc, đừng làm ồn Quy sư thúc luyện công.”</p>
+<p>“Tiểu thư, dùng bữa sáng thôi!”</p>
+<p>Hai tỳ nữ xắn tay áo bước ra khỏi nhà bếp, bưng thức ăn nóng hổi đặt lên chiếc bàn thấp giữa sân.</p>
+<p>Sở Ly rất thích khoảng sân này.</p>
+<p>Giữa sân trồng một cây phong lớn, dưới gốc lát đầy đá cuội bằng phẳng, đặt một bộ bàn đá. Tối đến kê thêm một chiếc ghế nằm, vừa hóng mát vừa ngắm trăng thì còn gì bằng.</p>
+<p>Bên trái là ao nước róc rách.</p>
+<p>Bên phải là tiểu hoa viên.</p>
+<p>Đại Hắc nằm dưới chân nàng, đuôi vẫy lia lịa, đôi mắt đen láy chăm chăm nhìn chủ nhân gặm xương, nước dãi chảy ròng.</p>
+<p>Bữa sáng rất đạm bạc.</p>
+<p>Một con gà luộc chặt.</p>
+<p>Một bát cháo thịt hầm cua và tôm.</p>
+<p>Hai đĩa dưa muối nhỏ.</p>
+<p>Vì trước đó Sở Ly đã dặn, nàng muốn sống giản dị, cần kiệm chăm chỉ. Chỉ có tu thân dưỡng tính mới có thể giống sư phụ, siêu nhiên thoát tục, tiên phong đạo cốt.</p>
+<p>Đám tỳ nữ ghi nhớ kỹ: mỗi bữa ăn của tiểu thư tuyệt đối không được vượt quá ba món.</p>
+<p>“Sơ Lục, tối nay ta muốn ăn giò heo hầm đậu nành, cá bọc vịt đặc sản Giang Nam và tôm Minh Thái Cực.”</p>
+<p>Sở Ly vừa gặm đùi gà vừa nói.</p>
+<p>Có sáu tỳ nữ, nàng cũng lười đặt tên.</p>
+<p>Đều theo họ của nàng.</p>
+<p>Sơ Nhất, Sơ Nhị.</p>
+<p>Sơ Tam, Sơ Tứ.</p>
+<p>Sơ Ngũ, Sơ Lục.</p>
+<p>Đơn giản lại dễ nhớ.</p>
+<p>Tỳ nữ đứng hầu bên cạnh khom người, lễ phép đáp:</p>
+<p>“Tiểu thư, nô tỳ là Sơ Tam.”</p>
+<p>“…”</p>
+<p>Sở Ly lúc nào cũng gọi nhầm.</p>
+<p>Dù sao họ mới đến được hai ngày, gương mặt ai cũng còn lạ. Nhưng tất cả đều đã ký khế bán thân, tính mạng đều nằm trong tay nàng, cũng chẳng lo họ sinh lòng khác.</p>
+<p>“Sơ Ngũ, hôm nay ngươi cho chó ăn chưa?”</p>
+<p>“Cho rồi ạ, tiểu thư, nô tỳ là Sơ Nhị.”</p>
+<p>“Vậy sao nó vẫn chảy nước dãi nhìn ta thế… À, ta hiểu rồi, nhất định là tay nghề của Sơ Tam quá ngon.”</p>
+<p>Sở Ly ăn no căng bụng, xoa chiếc bụng tròn vo, còn không quên liếm khóe môi.</p>
+<p>“Tiểu thư, uống một chén trà sữa bò cho dễ tiêu.”</p>
+<p>“Không được đâu, uống cái này sẽ béo.”</p>
+<p>“Tiểu thư là người luyện võ. Nô tỳ nghe cha nói, người luyện võ vận động nhiều, tiêu hao lớn. Thân hình tiểu thư lại mảnh mai như vậy, phải bồi bổ mới được.”</p>
+<p>“Ngươi nói cũng có lý.”</p>
+<p>Sở Ly ném khúc xương cho Đại Hắc, lại uống thêm một chén trà sữa bò. Đầu óc bắt đầu lâng lâng, cơn buồn ngủ kéo đến.</p>
+<p>Nàng sai hai tỳ nữ khiêng ghế nằm đặt cạnh ao, dặn:</p>
+<p>“Nếu không có việc gì thì lui cả đi. Ta phải bắt đầu luyện công, không được quấy rầy.”</p>
+<p>“Vâng.”</p>
+<p>Sáu người nhanh chóng thu dọn rồi lui khỏi sân.</p>
+<p>Ra ngoài, họ khe khẽ bàn tán:</p>
+<p>“Tiểu thư là thiên kim nhà nào, ra ngoài trải nghiệm cuộc sống sao?”</p>
+<p>“Tiểu thư võ công cao cường, lại có nhiều vàng bạc, vừa xinh đẹp vừa oai phong. Ta từng nghe nói có vài tiểu thư khuê các không muốn lấy người nhà sắp đặt nên lén bỏ nhà đi, rồi gặp được ý trung nhân…”</p>
+<p>“Chẳng phải là câu chuyện lần trước tiên sinh Lâm kể sao?”</p>
+<p>“Ôi chao, tỷ tỷ Sơ Nhất cũng thích nghe tiên sinh Lâm kể chuyện à?”</p>
+<p>“Đúng thế, lần trước tiên sinh Lâm kể đến…”</p>
+<p>Mấy tiểu nha đầu ríu rít trò chuyện.</p>
+<p>Sở Ly không nghe thấy.</p>
+<p>Lúc này nàng đang nghiêng người nằm trên ghế, chống đầu bằng khuỷu tay, nghiêm túc quan sát Quy sư thúc.</p>
+<p>Muốn luyện Quy Tức Công thì phải quan sát thật kỹ nhịp thở và cử động của rùa, từ từ điều chỉnh hơi thở của mình, chậm rãi đạt đến cùng một tần suất với nó.</p>
+<p>Hít vào.</p>
+<p>Thở ra.</p>
+<p>Hít vào…</p>
+<p>Thở ra…</p>
+<p>Hít vào…</p>
+<p>…</p>
+<p>Khò!</p>
+<p>Khò——</p>
+<p>Sở Ly dạng chân, nước dãi chảy dài, mắt trợn trắng, ngủ say như chết.</p>
+<p>Trong lúc đó, Sơ Nhất có vào một lần. Thấy tiểu thư đã ngủ, nàng rón rén lấy một tấm chăn mỏng đắp lên người Sở Ly.</p>
+<p>Trong lòng không khỏi cảm thán.</p>
+<p>Tiểu thư luyện công thật vất vả!</p>
+<p>Sáng sớm đã dậy luyện công, tối lại thức đến khuya mới về. Đôi vai nhỏ bé ấy lại gánh vác bao nhiêu trọng trách, thật kiên cường biết bao!</p>
+<p>Vùng sông nước Giang Nam, tiếng nói mềm mại như ca, gió thổi qua lá phong xào xạc. Ánh mặt trời len qua kẽ lá, loang lổ rơi trên người Sở Ly.</p>
+<p>Nàng đắp chăn, tựa như đang nằm giữa tầng mây, ngủ ngon lành.</p>
+<p>Một giấc đến tận giữa trưa.</p>
+<p>Sở Ly ghi nhớ lời dạy của sư phụ, phải sống chân chất, cần kiệm chăm chỉ, nên xắn tay áo làm việc trong tiểu hoa viên của mình.</p>
+<p>“Nho này ngon thật.”</p>
+<p>“Vừa ngọt vừa chát, khai vị ghê.”</p>
+<p>Trong tiểu hoa viên dựng một giàn nho, từng chùm quả tím mọng treo lủng lẳng giữa muôn hoa, giống hệt chốn đào nguyên u tĩnh.</p>
+<p>Sở Ly vừa tỉa lá úa, vừa hái nho ăn ngay tại chỗ.</p>
+<p>Nàng thích tòa nhà này không chỉ vì vị trí đẹp, mà còn vì khoảng sân này.</p>
+<p>“Sơ Nhất, nhớ mỗi ngày tưới nước, bón phân đầy đủ. Sang năm mới kết được những chùm nho to và ngọt hơn.”</p>
+<p>Sơ Nhất ghi nhớ.</p>
+<p>“Sơ Nhị, lát nữa hái hết số nho chín, ép thành nước, rồi cho thêm mấy cục đá lạnh mang đến cho ta.”</p>
+<p>Sơ Nhị ghi nhớ.</p>
+<p>“Sơ Tam, dọn sạch bùn dưới ao, rồi thả cá trắm đen, cá mè, cá trắm cỏ và cá diếc.”</p>
+<p>Sơ Tam ngẩn người.</p>
+<p>“Tiểu thư không nuôi cá chép gấm sao?”</p>
+<p>Trong phủ của nhà giàu chẳng phải đều nuôi cá chép gấm để ngắm sao?</p>
+<p>Còn mấy loại cá trắm, cá mè này đều là thực phẩm.</p>
+<p>Sở Ly lắc đầu.</p>
+<p>“Sư phụ dạy ta, làm người phải chân đạp thực địa, cần kiệm chăm chỉ, phú quý không quên gốc, bần tiện không đổi chí.”</p>
+<p>Nàng không thích mấy thứ hình thức đó.</p>
+<p>Cứ nuôi cá trắm, cá mè, cá trắm cỏ với cá diếc.</p>
+<p>Không đói thì ngắm.</p>
+<p>Đói thì vớt lên ăn.</p>
+<p>“Nô tỳ sẽ đi mua cá giống ngay.”</p>
+<p>Sơ Tam thầm tán thưởng.</p>
+<p>Tiểu thư đúng là một người chân chất, giản dị, không hề có dáng vẻ tiểu thư khuê các.</p>
+<p>“Sơ Tứ, ngươi giúp ta… Sơ Ngũ, ngươi phụ trách… Sơ Lục…”</p>
+<p>Sau khi dặn dò xong, Sở Ly hái một chùm nho lớn, ngồi lên ghế dài vừa ăn vừa lau mồ hôi.</p>
+<p>“Làm việc cả buổi chiều, mệt chết ta rồi.”</p>
+<p>Cuộc sống một mình hoàn toàn khác với trong hoàng cung.</p>
+<p>Nhưng chính sự mới mẻ ấy lại khiến nàng vô cùng thích thú.</p>
+<p>Ở đây không cần giữ quy củ.</p>
+<p>Không cần lo bị hãm hại.</p>
+<p>Muốn làm gì thì làm.</p>
+<p>Đó là tự do.</p>
+<p>Là sự tự do không còn bị nhốt trong bức tường cung cấm.</p>
+<p>Nếu Bát hoàng huynh biết được, chắc chắn sẽ ghen tị với nàng chết mất.</p>
+<p>Đột nhiên nhớ đến Sở Ngạo Thiên…</p>
+<p>Sống mũi Sở Ly cay xè.</p>
+<p>Bát hoàng huynh vốn ham chơi hiếu động. Từ nhỏ hai người đã cùng nhau lớn lên, cùng nhau vui đùa.</p>
+<p>Giờ đây, nàng được tự do tự tại.</p>
+<p>Còn Bát hoàng huynh chỉ có thể mãi mãi ở trong hoàng cung, đối mặt với quyền mưu tranh đấu, minh tranh ám đấu, tứ bề thọ địch, tiến thoái lưỡng nan.</p>
+<p>Ngay cả lúc ngủ cũng không dám ngủ quá say.</p>
+<p>Cả đời huynh ấy sẽ bị giam trong bức tường cung cấm.</p>
+<p>Không thể rời khỏi Đế Đô.</p>
+<p>Cũng không thể đến Giang Nam.</p>
+<p>Lại càng không thể sống cuộc đời như nàng.</p>
+<p>Nhớ đến những ngày hai người cùng nhau nghịch ngợm, ăn uống, vui chơi…</p>
+<p>Trong lòng Sở Ly chợt dâng lên nỗi bi thương.</p>
+<p>“Tiểu thư, giò heo hầm đậu nành chín rồi!”</p>
+<p>Sở Ly vừa ăn bữa tối, vừa nghĩ đến hoàn cảnh của Sở Ngạo Thiên lúc này, trong lòng không khỏi đau xót, nước mắt lưng tròng gặm liền hai miếng giò heo.</p>
+<p>May mà nàng đã được giải thoát rồi.</p>
+<p>Bát hoàng huynh thật sự quá đáng thương.</p>
+<p>Thật sự quá đáng thương!</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_178.html" class="btn">‹ Trước</a>
             <a href="chuong_180.html" class="btn">Sau ›</a>
         </div>
@@ -397,15 +271,11 @@ Thật sự quá đáng thương!</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -417,11 +287,11 @@ Thật sự quá đáng thương!</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

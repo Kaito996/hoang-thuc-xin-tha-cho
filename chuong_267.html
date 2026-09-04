@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 267</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,433 +62,442 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 267</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_266.html" class="btn">‹ Trước</a>
             <a href="chuong_268.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 267: Heo kêu từ đâu ra?
-Nhàn Vương đăng cơ, đại cục đã định.
-Còn về phần Nhàn Vương…
-Là bị khiêng trở về tẩm điện.
-Lúc này, Sở Ly đang xách kiếm ngồi trên bậc thềm, xử lý công việc trong tay, chợt nhìn thấy hai tên thái giám khiêng Nhàn Vương đi qua, lòng không khỏi siết chặt:
-“Huynh ấy đây là…”
-“Vui quá hóa buồn.”
-Sở Đệ Trì bước nhanh theo sau, dặn dò thái giám khiêng người vào trong, cẩn thận hầu hạ.
-“Đoạt được hoàng vị, mừng quá đỗi, vui đến ngất đi.”
-Sở Ly chợt hiểu ra.
-Thì ra là vậy.
-Trước đây sao nàng không nhìn ra Bát hoàng huynh còn có khí phách như thế?
-Nhưng cũng tốt.
-Bát hoàng huynh đăng cơ, còn tốt hơn Đại hoàng huynh, Nhị hoàng huynh, Tam hoàng huynh… tất cả bọn họ cộng lại. Chỉ có Bát hoàng huynh mới là người mình hoàn toàn có thể tin tưởng.
-“Tiểu Cửu.”
-Sở Đệ Trì đi tới.
-“Bên nàng tiến triển thế nào rồi?”
-Sở Ly dùng mũi kiếm chỉ về phía một vị ngự y:
-“Trần ngự y, người của Nhị hoàng tử.”
-Trần ngự y sợ đến mức quỳ rạp dưới đất, run lẩy bẩy, mặt trắng bệch như giấy.
-“Qua bảy ngày theo dõi, hễ ai từng tiếp xúc qua với Nhị hoàng tử đều bị lôi ra điều tra từng người một. Ta phát hiện trong phủ Nhị hoàng tử có một dược phòng, lần theo đầu mối mới tra được đến Trần ngự y.”
-“Đã tìm được giải dược, cứu tỉnh Nhàn Vương.”
-Nhàn Vương kịp thời tỉnh lại, chạy đến Đại Thành điện cứu nguy.
-Nếu không, suýt nữa đã để Nhị hoàng tử đạt được mục đích.
-Sở Đệ Trì nheo mắt, nhìn Trần ngự y đang quỳ dưới đất, cười khẩy:
-“Nhị hoàng tử quả thật tính toán sâu xa. Chỉ cần Nhàn Vương chết, sẽ đến lượt hắn đăng cơ.”
-Hai năm nay, Sở Ly cũng đã chứng kiến quá nhiều cảnh huynh đệ tranh đấu, cốt nhục tương tàn, nên phản ứng lúc này đã bình tĩnh hơn nhiều.
-“Chuyện của Nhị hoàng tử, Hoàng thúc định xử lý thế nào?”
-Sở Đệ Trì trầm ngâm:
-“Nếu giết hắn, e rằng sẽ khiến Nhàn Vương mang tiếng xấu; nếu giơ cao đánh khẽ, lại quá hời cho hắn; nhưng giáng làm thứ dân, bản vương vẫn chưa nuốt trôi cơn giận này.”
-Dù sao Nhị hoàng tử cũng mang họ Sở.
-Bên ngoài có biết bao ánh mắt đang dõi theo hoàng thất, xử lý không khéo rất dễ phản tác dụng.
-Đại hoàng tử đã bị biếm làm thứ dân, Lục hoàng tử bị giam vào Tông Nhân phủ, nếu lại xử trí Nhị hoàng tử, bên ngoài tất sẽ sinh lòng suy đoán.
-Ánh mắt Sở Ly khẽ chuyển, một tia tinh quái lóe lên:
-“Hay là… chúng ta dọa hắn một phen?”
-“Ồ?”
-Sở Ly bước đến gần, ghé sát tai hắn thì thầm mấy câu.
-Khóe mày nam nhân khẽ nhướng, đáy mắt dần dần hiện lên ý cười sâu thẳm. Hắn nhìn dáng vẻ hớn hở của nàng:
-“Nàng đúng là hư đến tận xương.”
-Sở Ly che miệng cười khẽ.
-Nam nhân thấy vậy, ánh mắt càng thêm sâu, yết hầu khẽ chuyển động đầy kín đáo:
-“Tiểu…”
-Vừa mở miệng, bên trong tẩm điện bỗng truyền ra một tràng âm thanh kỳ quái:
-“Ngỗng… ngỗng ngỗng…”
-“?”
-Hai người đồng thời quay đầu nhìn về phía trong phòng.
-Âm thanh gì vậy?
-“Ngỗng… ngỗng ngỗng…”
-“Heo nhà ai kêu thế?”
-Sở Ly nghi hoặc, bước nhanh lên bậc thềm, vừa đẩy cửa ra đã thấy Sở Ngạo Thiên ngồi trên giường, hai chân đạp loạn, hai tay dang ra, khóc đến nước mũi nước mắt tèm lem:
-“Ngỗng ngỗng!”
-Vai run bần bật, khóc như sắp đứt hơi:
-“Ngỗng ngỗng ngỗng!”
-Sở Ly kinh ngạc:
-“Bát hoàng huynh sao lại khóc?”
-“Đó là mừng quá mà khóc.”
-“Nhưng bộ dạng huynh ấy trông…”
-“Tiểu Cửu, hắn vui quá nên nhất thời chưa kịp phản ứng. Nghĩ xem, quyền lực chí tôn thiên hạ nay nằm trong tay, chuyện vẻ vang rạng rỡ tông môn như vậy, không khóc một trận thì sao phát tiết được?”
-Sở Đệ Trì vòng tay ôm lấy cổ nàng, xoay người định đưa nàng đi.
-Sở Ly cong mông, còn cố ngoái đầu nhìn lại:
-“Nhưng ta thấy Bát hoàng huynh hình như…”
-“Được rồi, đừng lo cho hắn nữa. Đây là chuyện tranh quyền giữa nam nhân, nàng không hiểu đâu. Ta sẽ đổi người khác vào khuyên hắn.”
-Sở Đệ Trì ôm nàng đi xuống bậc thềm, giơ tay búng một cái:
-“Tiêu Dạ Hành!”
-Nhưng Sở Ly vẫn cảm thấy… Bát hoàng huynh trông thật sự rất đau khổ?
-Không đợi nàng quay đầu nhìn thêm lần nữa, đã bị nam nhân mạnh mẽ kéo đi.
-“Chẳng phải nói sẽ đi xử lý Nhị hoàng tử sao? Còn đứng đây làm gì cho mất thời gian.”
-“Cũng phải.”
-Nàng vỗ trán một cái.
-“Đi!”
-Tiêu Dạ Hành nhìn bóng lưng hai người tiêu sái rời đi, sắc mặt mang theo vài phần ý vị sâu xa.
-Chậc.
-Từ sau khi có nữ nhân, huynh đệ càng ngày càng chẳng còn quan trọng nữa.
-Những ngày trước đây cùng nhau vây lò nấu trà, ngắm hoa dưới mưa, e rằng chỉ có thể trở thành hồi ức.
-Hắn đá ngã Trần ngự y bên cạnh, lạnh giọng quát:
-“Còn ngây ra đó làm gì? Chưa áp giải hắn xuống? Đứng đây chờ ăn cơm trưa sao?”
-Hai tên ngự lâm quân lập tức tiến lên, nhanh nhẹn áp giải người đi.
-“Tha mạng! Tha mạng! Tiêu Đô đốc… Hoàng thượng…”
-“Ồn ào.”
-Tiêu Dạ Hành phất tay áo, đẩy cửa bước vào, nhìn Tân hoàng còn đang kêu “ngỗng ngỗng”, thái dương đau nhức.
-Ngôi vị mà người khác tranh đến đầu rơi máu chảy, đưa tận tay hắn, vậy mà hắn lại đau lòng thành ra thế này.
-Nhưng cũng chính bởi tấm lòng chân thành chất phác ấy, căn cơ ngay thẳng, chỉ cần thêm người tận tâm chỉ dạy, phụ tá cẩn thận, mới là điều khiến Sở Đệ Trì yên tâm nhất.
-Chỉ là… ủy khuất cho hắn rồi.
-“Hoàng thượng.”
-Tiêu Dạ Hành thở dài, vào phòng đóng cửa.
-“Ngỗng… ngỗng ngỗng…”
-Đả kích như sét đánh ngang đầu, khiến Sở Ngạo Thiên nhất thời không thể hoàn hồn.
-“Đừng khóc nữa. Đường đường là một nước chi quân, còn ra thể thống gì?”
-“Ngỗng ngỗng ngỗng!”
-Tiêu Dạ Hành đi đến trước giường nhìn hắn:
-“Ngươi có biết vì sao Nhiếp Chính Vương chỉ nhắm vào ngươi không? Vì ngươi quá ngoan, không biết phản kháng. Nay ngươi đã nắm quyền lực chí tôn thiên hạ, trên vạn người, đương nhiên cũng bao gồm cả Nhiếp Chính Vương. Vậy còn sợ hắn làm gì?”
-Sở Ngạo Thiên vừa nấc vừa run vai.
-Tuy lời hắn nghe cũng có lý, nhưng…
-“Tiêu Đô đốc… ngỗng… ta không tin ngươi nữa… ngươi với Hoàng thúc hợp nhau lừa ta… ngỗng ngỗng!”
-“Ta lừa ngươi?”
-Tiêu Dạ Hành khựng lại.
-“Ta vốn tưởng rằng, chúng ta mới là những người có thể đồng cảm với nhau.”
-Sắc mặt hắn tối đi, ủ rũ ngồi xuống bên mép giường.
-“Làm thần tử, sống chết từ trước đến nay chưa từng do mình quyết định. Nhưng dù sao ngươi cũng là Vương gia, còn hơn ta nhiều. 
-Mạng này của ta… từ khi nào mới từng sống vì chính mình?”
-Sở Ngạo Thiên vừa sụt sùi vừa lấy mu bàn tay lau khóe mắt:
-“Ý… ý ngươi là gì?”
-“Hoàng thượng, chỉ khi có đủ quyền lực, lời nói mới có trọng lượng. Nếu không, cũng chỉ là một viên gạch trong tay người khác, cần chỗ nào thì dời đến chỗ đó.”
-“Ừm ừm.”
-Đúng vậy.
-Tiêu Dạ Hành nói:
-“Nhiếp Chính Vương dám áp chế ngươi, chẳng phải vì hắn là trưởng bối của ngươi sao?”
-“Ừm ừm.”
-Không sai.
-“Nếu ngươi cũng có một vị trưởng bối có thể áp chế được hắn, có người ấy chống lưng, sau này còn sợ hắn bắt nạt ngươi nữa sao?”
-“Ừm ừm.”
-Lời này quả có đạo lý.
-“Nhưng phụ hoàng nằm liệt giường đã lâu, Thái hậu không hỏi việc triều chính. Nhìn khắp Đại Sở, hình như Hoàng thúc là lớn nhất…”
-Tiêu Dạ Hành xua tay.
-“Không hẳn.”
-Sở Ngạo Thiên không khỏi hỏi:
-“Giải thích thế nào?”
-“Xa tận chân trời, gần ngay trước mắt.”
-Hắn thần thần bí bí chỉ ra ngoài cửa, hạ giọng:
-“Nếu Tạ tiểu thư trở thành Tiểu thẩm thẩm của ngươi, còn sợ nàng không trị nổi Nhiếp Chính Vương sao?”
-Sở Ngạo Thiên trừng mắt.
-“Không được! Không được!”
-Hắn với Cửu đệ lớn lên cùng nhau từ nhỏ, Cửu đệ còn nhỏ hơn hắn nửa tháng.
-Bảo hắn gọi Sở Ly là Tiểu thẩm thẩm…
-Thật sự hắn không mở miệng nổi.
-“Hoàng thượng, phải nhìn xa một chút. Rốt cuộc là ngày nào cũng bị Hoàng thúc bắt nạt, hay ôm đùi Tạ tiểu thư để nàng giúp ngươi hả giận? Ngươi phải nghĩ kỹ, đây là chuyện cả đời. Chẳng lẽ cơn tức trong lòng ấy, ngươi định nuốt cả đời sao?”
-“Á… cái này…”
-Cái này…
-Phải làm sao đây!
-Chỉ vừa nghĩ đến thôi, Sở Ngạo Thiên đã thấy tối sầm trước mắt, chẳng nhìn thấy tương lai.
-Ông trời ơi!
-Vì sao Hoàng thúc không tự mình đăng cơ?
-Hắn thật sự không muốn làm Hoàng đế!
-________________________________________
-Mạc Hoài Châu.
-Trong phủ châu.
-Tiểu hoa viên phong cảnh tuyệt đẹp, ánh nắng không nóng không lạnh, vô cùng dễ chịu. Một nữ tử vận nam trang, tóc búi cao, đang cầm đôi đũa bạc ăn cá.
-Sở Dạ Ly chống cằm, lười biếng nhìn nàng. Nét dịu dàng giữa chân mày như một con mèo vừa tỉnh ngủ, phơi mình dưới nắng, lười nhác mà mãn nguyện.
-Khi nữ tử vừa đặt đũa xuống, hắn lên tiếng:
-“Nàng ấy không ăn đuôi cá.”
-Nữ tử khựng lại nửa nhịp, chuyển sang gắp món khác.
-“Hành lá cũng không thích. Ăn thì ăn miếng lớn chút, đừng yểu điệu như nữ nhân.”
-So với các khuê nữ kinh thành yên tĩnh, hiền lương, ôn nhu, giữ lễ, nàng giống như một cánh chim vừa sổ lồng, chưa từng chịu bất kỳ ràng buộc nào, rực rỡ như minh châu. Dù giữa biển người mênh mông, cũng có thể liếc mắt là nhận ra.
-“Dạ Ly ca ca.”
-Đầu hành lang bên kia, Thác Bạt Minh Nguyệt chậm rãi bước tới.
-“Linh Lan, ngươi lui xuống trước.”
-Nữ tử tên Linh Lan đứng dậy, hành lễ rồi lui đi. Động tác cứng nhắc lạnh lùng, trên mặt cũng không có lấy một tia cảm xúc.
-“Thật vô vị.”
-Sở Dạ Ly cười nhạt.
-Thác Bạt Minh Nguyệt mỉm cười:
-“Dạ Ly ca ca đừng vội. Dù sao cũng chỉ là cách giải khuây. Muốn tìm niềm vui thật sự, ta vừa biết được một tin rất thú vị.”
-Nàng lấy phong thư trong ngực ra đưa cho hắn.
-Sở Dạ Ly mở thư, chỉ nhìn lướt qua một cái đã nói:
-“Chuyện này ta đã biết.”
-Trong thư viết về việc Đại Sở tôn Nhàn Vương lên ngôi Tân đế.
-“Điều thú vị không nằm ở đó.”
-Thác Bạt Minh Nguyệt cất giọng mềm mại đầy hàm ý.
-“Mà là… Sở Ly vẫn còn sống.”
-Sở Dạ Ly đột nhiên ngẩng đầu.
-“Sở Ly hiện nay mang tên Tạ Vãn Nguyệt, đổi thân phận, xuất hiện bên cạnh Nhiếp Chính Vương Đại Sở. Nhưng dung mạo nàng lại giống hệt Cửu hoàng tử đã chết. Dạ Ly ca ca không thấy hiếu kỳ sao?”
-Sở Ly còn sống?
-Sao có thể!
-Khi đó…
-Chính mắt hắn đã nhìn thấy nàng…
-Nàng đã chết rồi.
-Chỉ trong hai nhịp thở, vô số hình ảnh lóe lên trong đầu. Tâm trí rối loạn đến mức không thể suy nghĩ bình thường. Hắn bật dậy, hai tay chống lên mặt bàn, đáy mắt đầy vẻ cố chấp.
-“Tiểu Cửu… Người đâu!”
-________________________________________
-Bên kia.
-Nhị hoàng tử rời khỏi hoàng cung, trên đường hồi phủ, cả người vẫn thất thần.
-Nhàn Vương còn sống?
-Nhàn Vương đã đăng cơ.
-Vậy còn hắn…
-Hắn là cái gì?
-Bao năm nay hắn nhẫn nhịn cúi đầu, đến cuối cùng chẳng khác nào giỏ tre múc nước, công dã tràng.
-Hắn không cam lòng!
-Thật sự không cam lòng!
-“A!”
-Một quyền hung hăng nện vào tường.
-“Vì sao! Vì sao tên phế vật Nhàn Vương đó có thể làm Hoàng đế, còn ta thì không? Rõ ràng ta mới là trưởng tử của phụ hoàng!”
-“Vì sao!”
-Rầm! Rầm! Rầm!
-Mắt hắn đỏ ngầu, liên tiếp nện bảy tám quyền cũng không trút hết cơn giận trong lòng.
-Đúng lúc vô tình quay đầu, hắn nhìn thấy cuối con phố có hai người đang đi tới.
-Hai… người che mặt bằng khăn đen.
-Tim hắn chợt trầm xuống.
-Che mặt… hắc y…
-Ngay sau đó, chỉ thấy hai người đồng thời vung tay, hai thanh nhuyễn kiếm đồng loạt sáng loáng.
-Sắc mặt hắn đại biến.
-Con phố này ngoài hắn ra không còn ai.
-Bọn chúng nhắm vào hắn!
-Nhị hoàng tử quay đầu bỏ chạy.
-“Chạy đi đâu!”
-Hai hắc y nhân quát lớn, lập tức đuổi theo.
-“Chịu chết đi!”
-Nhị hoàng tử vừa chạy được hơn mười bước đã bị một đạo chưởng phong lạnh lẽo quét ngã xuống đất, lăn liền ba vòng. Chưa kịp bò dậy, trường kiếm đã chém thẳng xuống đầu.
-“Làm càn!”
-Hắn vội vàng né tránh.
-“Ta là Nhị hoàng tử đương triều. Bọn cẩu tặc có mắt không tròng các ngươi có biết xúc phạm hoàng thất sẽ có kết cục gì không?”
-“Giết chính là ngươi, Nhị hoàng tử!”
-Sở Ly che mặt quát lớn, cổ tay xoay kiếm, chém liên tiếp mấy nhát, dọa Nhị hoàng tử tay không tấc sắt cắm đầu bỏ chạy.
-Sở Đệ Trì dùng khinh công nhảy lên tường, đuổi theo mấy bước rồi đá hắn lăn xuống.
-“A!”
-“Xem ngươi chạy đi đâu!”
-Sở Ly sát ý bừng bừng, hung hăng ném trường kiếm đi.
-Vút!
-Nhị hoàng tử hoảng hốt tách hai chân. Thanh kiếm cắm phập ngay chính giữa hai chân hắn, chỉ cách… một tấc.
-Mồ hôi lạnh lập tức túa ra.
-“To… to gan… các ngươi… dám…”
-Hắn rút kiếm định phản kích.
-Đúng lúc ấy, Sở Ly không chút vội vàng rút Lục Hợp nhuyễn kiếm của mình, quấn lấy thanh kiếm trong tay hắn như độc xà quấn mồi, vung tay giật mạnh.
-Choang!
-Trường kiếm gãy lìa, chỉ còn lại một đoạn ngắn nơi chuôi.
-Nhị hoàng tử ngơ ngác cầm chuôi kiếm trơ trụi, nhìn hai hắc y nhân sát khí ngút trời, cuối cùng cũng hiểu võ công của bọn họ cao đến mức nào. Hàn ý lập tức lan khắp toàn thân.
-“Ai… là ai phái các ngươi tới?”
-Sở Ly từng bước ép sát:
-“Ngươi muốn lấy mạng ai, thì người đó sẽ muốn lấy mạng ngươi. Mọi chuyện đều có nhân quả. Trong lòng ngươi chẳng lẽ không tự biết sao?”
-Nhàn Vương!
-Là Nhàn Vương phái họ tới!
-Hắn không thể chết.
-Hắn là hoàng tử, còn trẻ như vậy, còn hưởng vinh hoa phú quý vô tận, tuyệt đối không thể chết uổng như thế.
-Nhị hoàng tử hung hăng ném chuôi kiếm, quay đầu cắm cổ bỏ chạy.
-Hai người phía sau tiếp tục truy đuổi.
-Nhị hoàng tử liều mạng chạy.
-Chạy!
-Hai chân sắp gãy đến nơi rồi, sao vẫn không cắt đuôi được bọn chúng?
-Mệt chết hắn!
-Đôi chân rã rời vô tình vấp một cái. Vừa loạng choạng một bước, phía sau đã vang lên giọng nói như lệ quỷ đòi mạng:
-“Ta sắp đuổi kịp ngươi rồi~”
-Sở Ly cầm kiếm chọc vào mông hắn.
-“A a a!”
-Nhị hoàng tử nào dám dừng lại nửa khắc, dốc hết sức mà chạy.
-“Ta lại sắp đuổi kịp rồi.”
-“Ta tới đây~ Hôm nay mạng ngươi tận rồi~”
-Nhị hoàng tử chạy đến mặt đỏ bừng, gân xanh nổi đầy, hô hấp khó khăn, đầu óc trống rỗng, cảm giác cả người sắp thăng thiên.
-Nhưng hắn không dám dừng.
-Hắn hại Nhàn Vương suýt mất mạng, Nhàn Vương chắc chắn sẽ giết hắn để hả giận.
-Nhưng vì sao hai sát thủ kia chạy nhanh đến vậy?
-Bọn họ không biết mệt sao?
-Nhị hoàng tử chỉ dám cắm đầu chạy, không dám ngoái lại.
-Cho nên hắn không hề nhìn thấy cảnh tượng phía sau…
-Sở Đệ Trì ôm Sở Ly trong lòng, khinh công như đạp tuyết, dưới chân sinh phong, nhanh như tên bắn, ung dung bám sát phía sau Nhị hoàng tử.
-Lúc nhanh, lúc chậm.
-Sở Ly cầm hai thanh kiếm, không ngừng chọc mông hắn.
-“Đuổi kịp rồi… chạy mau… mau chạy… đuổi kịp rồi… ha ha ha!”
-Nàng chống thắt lưng, nằm gọn trong vòng tay nam nhân, giống hệt như đang cưỡi một con tuấn mã.
-“Đuổi kịp rồi! Xem ngươi chạy đi đâu!”
-Chọc chọc chọc!
-Nàng cười tà ác đến mức trên đầu như mọc thêm hai chiếc sừng nhọn của tiểu ác ma…
-Khinh công đúng là vô địch!
-Nàng quyết định rồi.
-Từ hôm nay trở đi, nàng cũng phải học khinh công.
-Nhị hoàng tử gần như thở không nổi, hất tung bàn ghế quầy hàng trên phố để tranh thủ vài giây ngắn ngủi, rồi cắm đầu lao vào một tòa phủ đệ.
-“Cứu mạng!”
-“Tiêu… Tiêu Dao Hoàng thúc… cứu… cứu…”
-Rầm!
-Quá sức, hắn cắm đầu ngã gục xuống đất.
-Tên tiểu tư giữ cổng thấy vậy, vội vàng chạy vào bẩm báo.
-Rất nhanh, Tiêu Dao Vương bước ra.
-“Nhị hoàng tử? Ngươi làm sao vậy?”
-“Ta… Tiêu Dao Hoàng thúc… cứu… có… có người… muốn giết ta… ta…”
-Nhị hoàng tử thở hổn hển như trâu, không nói nổi một câu hoàn chỉnh.
-Tiêu Dao Vương lập tức nói:
-“Mau đỡ hắn vào, mang trà tới!”
-Hai chén trà lớn đổ xuống bụng, nghỉ ngơi gần nửa khắc, Nhị hoàng tử mới lau mồ hôi đầy đầu, cuống quýt nắm lấy tay Tiêu Dao Vương:
-“Tiêu Dao Hoàng thúc cứu ta! Nhất định phải cứu ta! Nhàn Vương… Hoàng thượng muốn giết ta!”
-Tiêu Dao Vương kinh hãi:
-“Ngươi nói gì vậy? Hoàng thượng từ nhỏ ôn hòa, sao có thể tàn sát thủ túc?”
-Nhị hoàng tử biết mình gây đại họa, dứt khoát không giấu nữa.
-“Vì Lục hoàng tử hạ độc Hoàng thượng, còn ta giấu giải dược, muốn lấy mạng hắn. Cho nên hắn muốn giết ta.”
-Hơn nữa còn nhất định phải giết.
-Trước đây cùng là hoàng tử, hắn đương nhiên không sợ Nhàn Vương.
-Nhưng nay Nhàn Vương đã đăng cơ làm đế, muốn giữ mạng, hắn chỉ còn con đường cầu Tiêu Dao Vương.
-“Ngươi… các ngươi sao có thể hạ độc Hoàng thượng… hồ đồ! Hồ đồ!”
-Tiêu Dao Vương vỗ mu bàn tay hắn, giọng đầy tiếc rèn sắt không thành thép.
-“Bản vương còn thắc mắc vì sao gần đây Nhiếp Chính Vương thanh toán Lục hoàng tử. Thì ra là vì chuyện này.”
-Nhị hoàng tử siết chặt tay ông.
-“Ta không cam lòng! Tiêu Dao Hoàng thúc, cùng là người hoàng thất, ai mà không có lòng tranh ngôi? Ai chẳng muốn quân lâm thiên hạ? Chẳng lẽ Hoàng thúc thật sự buông bỏ được?”
-“Theo vai vế, theo tư lịch, Hoàng thúc chẳng phải cũng có tư cách đăng cơ xưng đế sao?”
-Sau khi Sở Hoàng bại liệt, Tiêu Dao Vương chính là người lớn tuổi nhất.
-Nhị hoàng tử cười nói:
-“Hoàng thúc nói đùa rồi. Bản vương đã được phong Tiêu Dao Vương, sống nơi đất phong nhiều năm, nào có tâm tư xưng vương xưng đế?”
-“Hoàng thúc!”
-Nhị hoàng tử gần như rỉ máu từng lời.
-“Lẽ nào Hoàng thúc thật sự cam tâm nhìn Sở Ngạo Thiên làm Hoàng đế? Hắn chỉ là tên phế vật bụng rỗng chữ nghĩa, là con rối trong tay Nhiếp Chính Vương! Nhiếp Chính Vương dã tâm lang sói, ngôi vị kia vốn phải là của Hoàng thúc mới đúng!”
-“Chỉ cần Tiêu Dao Hoàng thúc không chê, trong tay chất nhi có nhược điểm của Nhiếp Chính Vương, bảo đảm có thể kéo hắn xuống ngựa…”
-________________________________________
-Bên ngoài.
-Sở Ly nằm bò trên đầu tường, hai tay chống cằm, nhìn về phía cổng phủ.
-“Đã chạy vào gần hai khắc rồi, sao còn chưa ra?”
-“Chẳng lẽ bị dọa ngốc, không dám ra nữa?”
-Vừa nói, cọng cỏ đuôi chó ngậm trong miệng cứ lắc qua lắc lại, quét vào trán Sở Đệ Trì.
-Ngứa ngáy.
-Sở Đệ Trì gãi đầu, ngẩng lên nhìn nàng.
-“Leo cao thế còn không xuống.”
-“Leo cao nhìn xa.”
-Sở Ly chống cằm, gãi gãi mông, chẳng biết moi đâu ra một viên kẹo mạch nha bỏ vào miệng.
-“Hắn chắc là ham sống sợ chết, tạm thời không dám ra.”
-Hừ!
-Tham sống sợ chết mà còn dám hại người.
-“Dọa cũng dọa rồi, mắng cũng mắng rồi, đánh cũng đánh rồi. Chúng ta về cung trước. Nay Nhàn Vương đã thuận lợi đăng cơ, nàng cũng nên đi thăm Mẫu phi.”
-“Người nói phải.”
-Sở Ly nheo mắt cười.
-“Còn không xuống?”
-Sở Đệ Trì đứng dưới chân tường, dang rộng hai tay.
-Rõ ràng tuổi Tỵ, vậy mà cứ thích leo trèo như khỉ.
-Sở Ly chống người đứng dậy, eo thon khẽ bật, nhảy phắt xuống ngồi trên cổ Sở Đệ Trì.
-Sắc mặt nam nhân tối sầm.
-“Làm gì?”
-“Chẳng phải về cung sao?”
-“Xuống! Còn ra thể thống gì!”
-“Không!”
-Sở Ly kẹp chặt hai chân, ôm cổ hắn, vững vàng cưỡi trên đầu hắn. 
-Mặc cho hắn lắc mấy lần, nàng vẫn không chịu buông.
-Chẳng khác gì đấu ngưu.
-“Sở Ly!”
-“Ta không xuống!”
-“Lát nữa dân chúng đi ngang qua, mặt mũi bản vương biết để đâu?”
-“Dù sao ta cũng không xuống!”
-Được.
-Được lắm.
-Nàng cứ nhớ đó.
-Bây giờ nàng cưỡi ta.
-Đêm nay ta cưỡi nàng.
-Phong thủy luân chuyển, trời xanh tha ai bao giờ.
-Về đến hoàng cung, Sở Ly chạy đến mức khuôn mặt đỏ bừng, vừa tới đã thấy Hân phi đi vào tẩm điện của Sở Ngạo Thiên, nắm lấy tay hắn, nước mắt trào ra.
-“Nhi tử!”
-“Nhi tử! Con thật có tiền đồ! Con là niềm tự hào của mẫu phi! Mẫu phi cứ ngỡ mình đang nằm mộng, mau để mẫu phi đánh con một cái xem có đau không.”
-Bà cầm lấy chén trà.
-Sở Ngạo Thiên vội vàng xua tay.
-“Mẫu phi, cái này… e là đau thật!”
-“Nhi tử!”
-Hân phi ôm chầm lấy hắn, khóc mãi không thôi.
-“Ngạo Thiên, con quá xuất sắc.”
-“Con giỏi quá!”
-“Con là đứa trẻ ưu tú nhất thiên hạ!”
-Một tràng khen ngợi khiến Sở Ngạo Thiên có phần luống cuống.
-“Mẫu phi, con đâu tốt như người nói… con…”
-“Ngạo Thiên, con quân lâm thiên hạ, đăng đỉnh chí tôn, sao lại không ưu tú? Đừng xem nhẹ bản thân. Trời sinh ta tất có chỗ dùng, đây chính là nơi con phát huy tài năng. Sau này nhất định phải mang lòng nhân thiện, làm một vị minh quân!”
-“Mẫu phi, con không được… thật sự không được…”
-“Con phải tin vào chính mình. Chẳng lẽ con không muốn trở thành chỗ dựa của mẫu phi sao? Ngạo Thiên, con quá xuất sắc rồi! Con là người lợi hại nhất! Con quả đúng là học trò xuất sắc nhất của Khương Thái phó!”
-Sở Ngạo Thiên luống cuống xua tay.
-“Mẫu phi, con thật sự không làm nổi… con vốn không có tài trị quốc… con… con… À đúng rồi! Khương Thái phó cũng từng khen con như vậy!”
-Một câu nói quét sạch tự ti, khiến hắn bỗng tìm thấy chính mình.
-Sở Ly đứng ngoài điện, nhìn Bát hoàng huynh ở cùng mẫu phi, cũng bắt đầu nhớ Ôn phi, định đi hậu cung.
-Không ngờ Tiêu Dao Hoàng thúc lại đến.
-“Tham kiến Tiêu Dao Vương gia.”
-Tiêu Dao Vương nhìn thấy nàng, mắt lập tức đỏ hoe.
-“Tiểu Cửu…”
-Sở Ly khựng lại.
-“Tiêu Dao Vương gia e là nhận nhầm người rồi.”
-“Nhị hoàng tử đã nói cho ta biết rồi, Tiểu Cửu.”
-Hắn nói, chỉ cần công bố chuyện Nhiếp Chính Vương cấu kết với Cửu hoàng tử, nữ cải nam trang, mưu đoạt hoàng vị, nhất định sẽ kéo Nhiếp Chính Vương xuống ngựa.
-Nhưng sau khi biết chuyện, việc đầu tiên ông làm là lập tức vào cung, đem toàn bộ kế hoạch của Nhị hoàng tử nói ra.
-“Nhị hoàng tử muốn liên thủ với ta xưng đế, nhưng ta vốn không có chí làm quân vương. Tiểu Cửu, con hiểu bản vương mà. Cả đời ta chỉ mong bình yên, không cầu danh lợi.”
-Khóe môi Sở Ly khẽ mím.
-Từ khi nàng có ký ức, Tiêu Dao Vương vẫn luôn thanh tâm quả dục, đạm bạc danh lợi, chưa từng tham dự vào tranh đấu quyền mưu.
-Nàng không khẳng định, cũng không phủ nhận.
-“Thấy con vẫn bình an, trong lòng ta rất vui.”
-Tiêu Dao Vương xúc động ôm lấy nàng.
-“Hài tử ngoan.”
-Không những chưa chết, còn trở thành nữ tử.
-Thảo nào…
-Lại trở thành nỗi vương vấn của Đông Lăng Thái tử.
-“Con yên tâm, chuyện này ta sẽ không nói cho người khác biết. Chỉ là Nhị hoàng tử ôm hận với con, vẫn luôn nhắm vào con. Sau này con phải cẩn thận hơn.”
-Tiêu Dao Vương đầy từ ái vỗ vai nàng, đôi mắt hoe đỏ nhìn nàng rất lâu, nói với nàng rất nhiều điều.
-Đến khi xoay người rời đi, ông lau đi giọt lệ nơi khóe mắt, bình tĩnh nói:
-“Người đâu.”
-“Thả bồ câu đưa thư hồi âm cho Đông Lăng Thái tử. Nửa tháng sau, ta sẽ đưa Sở Ly đến…” Ẩn bớt</p>
+            <p>Chương 267: Heo kêu từ đâu ra?</p>
+<p>Nhàn Vương đăng cơ, đại cục đã định.</p>
+<p>Còn về phần Nhàn Vương…</p>
+<p>Là bị khiêng trở về tẩm điện.</p>
+<p>Lúc này, Sở Ly đang xách kiếm ngồi trên bậc thềm, xử lý công việc trong tay, chợt nhìn thấy hai tên thái giám khiêng Nhàn Vương đi qua, lòng không khỏi siết chặt:</p>
+<p>“Huynh ấy đây là…”</p>
+<p>“Vui quá hóa buồn.”</p>
+<p>Sở Đệ Trì bước nhanh theo sau, dặn dò thái giám khiêng người vào trong, cẩn thận hầu hạ.</p>
+<p>“Đoạt được hoàng vị, mừng quá đỗi, vui đến ngất đi.”</p>
+<p>Sở Ly chợt hiểu ra.</p>
+<p>Thì ra là vậy.</p>
+<p>Trước đây sao nàng không nhìn ra Bát hoàng huynh còn có khí phách như thế?</p>
+<p>Nhưng cũng tốt.</p>
+<p>Bát hoàng huynh đăng cơ, còn tốt hơn Đại hoàng huynh, Nhị hoàng huynh, Tam hoàng huynh… tất cả bọn họ cộng lại. Chỉ có Bát hoàng huynh mới là người mình hoàn toàn có thể tin tưởng.</p>
+<p>“Tiểu Cửu.”</p>
+<p>Sở Đệ Trì đi tới.</p>
+<p>“Bên nàng tiến triển thế nào rồi?”</p>
+<p>Sở Ly dùng mũi kiếm chỉ về phía một vị ngự y:</p>
+<p>“Trần ngự y, người của Nhị hoàng tử.”</p>
+<p>Trần ngự y sợ đến mức quỳ rạp dưới đất, run lẩy bẩy, mặt trắng bệch như giấy.</p>
+<p>“Qua bảy ngày theo dõi, hễ ai từng tiếp xúc qua với Nhị hoàng tử đều bị lôi ra điều tra từng người một. Ta phát hiện trong phủ Nhị hoàng tử có một dược phòng, lần theo đầu mối mới tra được đến Trần ngự y.”</p>
+<p>“Đã tìm được giải dược, cứu tỉnh Nhàn Vương.”</p>
+<p>Nhàn Vương kịp thời tỉnh lại, chạy đến Đại Thành điện cứu nguy.</p>
+<p>Nếu không, suýt nữa đã để Nhị hoàng tử đạt được mục đích.</p>
+<p>Sở Đệ Trì nheo mắt, nhìn Trần ngự y đang quỳ dưới đất, cười khẩy:</p>
+<p>“Nhị hoàng tử quả thật tính toán sâu xa. Chỉ cần Nhàn Vương chết, sẽ đến lượt hắn đăng cơ.”</p>
+<p>Hai năm nay, Sở Ly cũng đã chứng kiến quá nhiều cảnh huynh đệ tranh đấu, cốt nhục tương tàn, nên phản ứng lúc này đã bình tĩnh hơn nhiều.</p>
+<p>“Chuyện của Nhị hoàng tử, Hoàng thúc định xử lý thế nào?”</p>
+<p>Sở Đệ Trì trầm ngâm:</p>
+<p>“Nếu giết hắn, e rằng sẽ khiến Nhàn Vương mang tiếng xấu; nếu giơ cao đánh khẽ, lại quá hời cho hắn; nhưng giáng làm thứ dân, bản vương vẫn chưa nuốt trôi cơn giận này.”</p>
+<p>Dù sao Nhị hoàng tử cũng mang họ Sở.</p>
+<p>Bên ngoài có biết bao ánh mắt đang dõi theo hoàng thất, xử lý không khéo rất dễ phản tác dụng.</p>
+<p>Đại hoàng tử đã bị biếm làm thứ dân, Lục hoàng tử bị giam vào Tông Nhân phủ, nếu lại xử trí Nhị hoàng tử, bên ngoài tất sẽ sinh lòng suy đoán.</p>
+<p>Ánh mắt Sở Ly khẽ chuyển, một tia tinh quái lóe lên:</p>
+<p>“Hay là… chúng ta dọa hắn một phen?”</p>
+<p>“Ồ?”</p>
+<p>Sở Ly bước đến gần, ghé sát tai hắn thì thầm mấy câu.</p>
+<p>Khóe mày nam nhân khẽ nhướng, đáy mắt dần dần hiện lên ý cười sâu thẳm. Hắn nhìn dáng vẻ hớn hở của nàng:</p>
+<p>“Nàng đúng là hư đến tận xương.”</p>
+<p>Sở Ly che miệng cười khẽ.</p>
+<p>Nam nhân thấy vậy, ánh mắt càng thêm sâu, yết hầu khẽ chuyển động đầy kín đáo:</p>
+<p>“Tiểu…”</p>
+<p>Vừa mở miệng, bên trong tẩm điện bỗng truyền ra một tràng âm thanh kỳ quái:</p>
+<p>“Ngỗng… ngỗng ngỗng…”</p>
+<p>“?”</p>
+<p>Hai người đồng thời quay đầu nhìn về phía trong phòng.</p>
+<p>Âm thanh gì vậy?</p>
+<p>“Ngỗng… ngỗng ngỗng…”</p>
+<p>“Heo nhà ai kêu thế?”</p>
+<p>Sở Ly nghi hoặc, bước nhanh lên bậc thềm, vừa đẩy cửa ra đã thấy Sở Ngạo Thiên ngồi trên giường, hai chân đạp loạn, hai tay dang ra, khóc đến nước mũi nước mắt tèm lem:</p>
+<p>“Ngỗng ngỗng!”</p>
+<p>Vai run bần bật, khóc như sắp đứt hơi:</p>
+<p>“Ngỗng ngỗng ngỗng!”</p>
+<p>Sở Ly kinh ngạc:</p>
+<p>“Bát hoàng huynh sao lại khóc?”</p>
+<p>“Đó là mừng quá mà khóc.”</p>
+<p>“Nhưng bộ dạng huynh ấy trông…”</p>
+<p>“Tiểu Cửu, hắn vui quá nên nhất thời chưa kịp phản ứng. Nghĩ xem, quyền lực chí tôn thiên hạ nay nằm trong tay, chuyện vẻ vang rạng rỡ tông môn như vậy, không khóc một trận thì sao phát tiết được?”</p>
+<p>Sở Đệ Trì vòng tay ôm lấy cổ nàng, xoay người định đưa nàng đi.</p>
+<p>Sở Ly cong mông, còn cố ngoái đầu nhìn lại:</p>
+<p>“Nhưng ta thấy Bát hoàng huynh hình như…”</p>
+<p>“Được rồi, đừng lo cho hắn nữa. Đây là chuyện tranh quyền giữa nam nhân, nàng không hiểu đâu. Ta sẽ đổi người khác vào khuyên hắn.”</p>
+<p>Sở Đệ Trì ôm nàng đi xuống bậc thềm, giơ tay búng một cái:</p>
+<p>“Tiêu Dạ Hành!”</p>
+<p>Nhưng Sở Ly vẫn cảm thấy… Bát hoàng huynh trông thật sự rất đau khổ?</p>
+<p>Không đợi nàng quay đầu nhìn thêm lần nữa, đã bị nam nhân mạnh mẽ kéo đi.</p>
+<p>“Chẳng phải nói sẽ đi xử lý Nhị hoàng tử sao? Còn đứng đây làm gì cho mất thời gian.”</p>
+<p>“Cũng phải.”</p>
+<p>Nàng vỗ trán một cái.</p>
+<p>“Đi!”</p>
+<p>Tiêu Dạ Hành nhìn bóng lưng hai người tiêu sái rời đi, sắc mặt mang theo vài phần ý vị sâu xa.</p>
+<p>Chậc.</p>
+<p>Từ sau khi có nữ nhân, huynh đệ càng ngày càng chẳng còn quan trọng nữa.</p>
+<p>Những ngày trước đây cùng nhau vây lò nấu trà, ngắm hoa dưới mưa, e rằng chỉ có thể trở thành hồi ức.</p>
+<p>Hắn đá ngã Trần ngự y bên cạnh, lạnh giọng quát:</p>
+<p>“Còn ngây ra đó làm gì? Chưa áp giải hắn xuống? Đứng đây chờ ăn cơm trưa sao?”</p>
+<p>Hai tên ngự lâm quân lập tức tiến lên, nhanh nhẹn áp giải người đi.</p>
+<p>“Tha mạng! Tha mạng! Tiêu Đô đốc… Hoàng thượng…”</p>
+<p>“Ồn ào.”</p>
+<p>Tiêu Dạ Hành phất tay áo, đẩy cửa bước vào, nhìn Tân hoàng còn đang kêu “ngỗng ngỗng”, thái dương đau nhức.</p>
+<p>Ngôi vị mà người khác tranh đến đầu rơi máu chảy, đưa tận tay hắn, vậy mà hắn lại đau lòng thành ra thế này.</p>
+<p>Nhưng cũng chính bởi tấm lòng chân thành chất phác ấy, căn cơ ngay thẳng, chỉ cần thêm người tận tâm chỉ dạy, phụ tá cẩn thận, mới là điều khiến Sở Đệ Trì yên tâm nhất.</p>
+<p>Chỉ là… ủy khuất cho hắn rồi.</p>
+<p>“Hoàng thượng.”</p>
+<p>Tiêu Dạ Hành thở dài, vào phòng đóng cửa.</p>
+<p>“Ngỗng… ngỗng ngỗng…”</p>
+<p>Đả kích như sét đánh ngang đầu, khiến Sở Ngạo Thiên nhất thời không thể hoàn hồn.</p>
+<p>“Đừng khóc nữa. Đường đường là một nước chi quân, còn ra thể thống gì?”</p>
+<p>“Ngỗng ngỗng ngỗng!”</p>
+<p>Tiêu Dạ Hành đi đến trước giường nhìn hắn:</p>
+<p>“Ngươi có biết vì sao Nhiếp Chính Vương chỉ nhắm vào ngươi không? Vì ngươi quá ngoan, không biết phản kháng. Nay ngươi đã nắm quyền lực chí tôn thiên hạ, trên vạn người, đương nhiên cũng bao gồm cả Nhiếp Chính Vương. Vậy còn sợ hắn làm gì?”</p>
+<p>Sở Ngạo Thiên vừa nấc vừa run vai.</p>
+<p>Tuy lời hắn nghe cũng có lý, nhưng…</p>
+<p>“Tiêu Đô đốc… ngỗng… ta không tin ngươi nữa… ngươi với Hoàng thúc hợp nhau lừa ta… ngỗng ngỗng!”</p>
+<p>“Ta lừa ngươi?”</p>
+<p>Tiêu Dạ Hành khựng lại.</p>
+<p>“Ta vốn tưởng rằng, chúng ta mới là những người có thể đồng cảm với nhau.”</p>
+<p>Sắc mặt hắn tối đi, ủ rũ ngồi xuống bên mép giường.</p>
+<p>“Làm thần tử, sống chết từ trước đến nay chưa từng do mình quyết định. Nhưng dù sao ngươi cũng là Vương gia, còn hơn ta nhiều.</p>
+<p>Mạng này của ta… từ khi nào mới từng sống vì chính mình?”</p>
+<p>Sở Ngạo Thiên vừa sụt sùi vừa lấy mu bàn tay lau khóe mắt:</p>
+<p>“Ý… ý ngươi là gì?”</p>
+<p>“Hoàng thượng, chỉ khi có đủ quyền lực, lời nói mới có trọng lượng. Nếu không, cũng chỉ là một viên gạch trong tay người khác, cần chỗ nào thì dời đến chỗ đó.”</p>
+<p>“Ừm ừm.”</p>
+<p>Đúng vậy.</p>
+<p>Tiêu Dạ Hành nói:</p>
+<p>“Nhiếp Chính Vương dám áp chế ngươi, chẳng phải vì hắn là trưởng bối của ngươi sao?”</p>
+<p>“Ừm ừm.”</p>
+<p>Không sai.</p>
+<p>“Nếu ngươi cũng có một vị trưởng bối có thể áp chế được hắn, có người ấy chống lưng, sau này còn sợ hắn bắt nạt ngươi nữa sao?”</p>
+<p>“Ừm ừm.”</p>
+<p>Lời này quả có đạo lý.</p>
+<p>“Nhưng phụ hoàng nằm liệt giường đã lâu, Thái hậu không hỏi việc triều chính. Nhìn khắp Đại Sở, hình như Hoàng thúc là lớn nhất…”</p>
+<p>Tiêu Dạ Hành xua tay.</p>
+<p>“Không hẳn.”</p>
+<p>Sở Ngạo Thiên không khỏi hỏi:</p>
+<p>“Giải thích thế nào?”</p>
+<p>“Xa tận chân trời, gần ngay trước mắt.”</p>
+<p>Hắn thần thần bí bí chỉ ra ngoài cửa, hạ giọng:</p>
+<p>“Nếu Tạ tiểu thư trở thành Tiểu thẩm thẩm của ngươi, còn sợ nàng không trị nổi Nhiếp Chính Vương sao?”</p>
+<p>Sở Ngạo Thiên trừng mắt.</p>
+<p>“Không được! Không được!”</p>
+<p>Hắn với Cửu đệ lớn lên cùng nhau từ nhỏ, Cửu đệ còn nhỏ hơn hắn nửa tháng.</p>
+<p>Bảo hắn gọi Sở Ly là Tiểu thẩm thẩm…</p>
+<p>Thật sự hắn không mở miệng nổi.</p>
+<p>“Hoàng thượng, phải nhìn xa một chút. Rốt cuộc là ngày nào cũng bị Hoàng thúc bắt nạt, hay ôm đùi Tạ tiểu thư để nàng giúp ngươi hả giận? Ngươi phải nghĩ kỹ, đây là chuyện cả đời. Chẳng lẽ cơn tức trong lòng ấy, ngươi định nuốt cả đời sao?”</p>
+<p>“Á… cái này…”</p>
+<p>Cái này…</p>
+<p>Phải làm sao đây!</p>
+<p>Chỉ vừa nghĩ đến thôi, Sở Ngạo Thiên đã thấy tối sầm trước mắt, chẳng nhìn thấy tương lai.</p>
+<p>Ông trời ơi!</p>
+<p>Vì sao Hoàng thúc không tự mình đăng cơ?</p>
+<p>Hắn thật sự không muốn làm Hoàng đế!</p>
+<p>________________________________________</p>
+<p>Mạc Hoài Châu.</p>
+<p>Trong phủ châu.</p>
+<p>Tiểu hoa viên phong cảnh tuyệt đẹp, ánh nắng không nóng không lạnh, vô cùng dễ chịu. Một nữ tử vận nam trang, tóc búi cao, đang cầm đôi đũa bạc ăn cá.</p>
+<p>Sở Dạ Ly chống cằm, lười biếng nhìn nàng. Nét dịu dàng giữa chân mày như một con mèo vừa tỉnh ngủ, phơi mình dưới nắng, lười nhác mà mãn nguyện.</p>
+<p>Khi nữ tử vừa đặt đũa xuống, hắn lên tiếng:</p>
+<p>“Nàng ấy không ăn đuôi cá.”</p>
+<p>Nữ tử khựng lại nửa nhịp, chuyển sang gắp món khác.</p>
+<p>“Hành lá cũng không thích. Ăn thì ăn miếng lớn chút, đừng yểu điệu như nữ nhân.”</p>
+<p>So với các khuê nữ kinh thành yên tĩnh, hiền lương, ôn nhu, giữ lễ, nàng giống như một cánh chim vừa sổ lồng, chưa từng chịu bất kỳ ràng buộc nào, rực rỡ như minh châu. Dù giữa biển người mênh mông, cũng có thể liếc mắt là nhận ra.</p>
+<p>“Dạ Ly ca ca.”</p>
+<p>Đầu hành lang bên kia, Thác Bạt Minh Nguyệt chậm rãi bước tới.</p>
+<p>“Linh Lan, ngươi lui xuống trước.”</p>
+<p>Nữ tử tên Linh Lan đứng dậy, hành lễ rồi lui đi. Động tác cứng nhắc lạnh lùng, trên mặt cũng không có lấy một tia cảm xúc.</p>
+<p>“Thật vô vị.”</p>
+<p>Sở Dạ Ly cười nhạt.</p>
+<p>Thác Bạt Minh Nguyệt mỉm cười:</p>
+<p>“Dạ Ly ca ca đừng vội. Dù sao cũng chỉ là cách giải khuây. Muốn tìm niềm vui thật sự, ta vừa biết được một tin rất thú vị.”</p>
+<p>Nàng lấy phong thư trong ngực ra đưa cho hắn.</p>
+<p>Sở Dạ Ly mở thư, chỉ nhìn lướt qua một cái đã nói:</p>
+<p>“Chuyện này ta đã biết.”</p>
+<p>Trong thư viết về việc Đại Sở tôn Nhàn Vương lên ngôi Tân đế.</p>
+<p>“Điều thú vị không nằm ở đó.”</p>
+<p>Thác Bạt Minh Nguyệt cất giọng mềm mại đầy hàm ý.</p>
+<p>“Mà là… Sở Ly vẫn còn sống.”</p>
+<p>Sở Dạ Ly đột nhiên ngẩng đầu.</p>
+<p>“Sở Ly hiện nay mang tên Tạ Vãn Nguyệt, đổi thân phận, xuất hiện bên cạnh Nhiếp Chính Vương Đại Sở. Nhưng dung mạo nàng lại giống hệt Cửu hoàng tử đã chết. Dạ Ly ca ca không thấy hiếu kỳ sao?”</p>
+<p>Sở Ly còn sống?</p>
+<p>Sao có thể!</p>
+<p>Khi đó…</p>
+<p>Chính mắt hắn đã nhìn thấy nàng…</p>
+<p>Nàng đã chết rồi.</p>
+<p>Chỉ trong hai nhịp thở, vô số hình ảnh lóe lên trong đầu. Tâm trí rối loạn đến mức không thể suy nghĩ bình thường. Hắn bật dậy, hai tay chống lên mặt bàn, đáy mắt đầy vẻ cố chấp.</p>
+<p>“Tiểu Cửu… Người đâu!”</p>
+<p>________________________________________</p>
+<p>Bên kia.</p>
+<p>Nhị hoàng tử rời khỏi hoàng cung, trên đường hồi phủ, cả người vẫn thất thần.</p>
+<p>Nhàn Vương còn sống?</p>
+<p>Nhàn Vương đã đăng cơ.</p>
+<p>Vậy còn hắn…</p>
+<p>Hắn là cái gì?</p>
+<p>Bao năm nay hắn nhẫn nhịn cúi đầu, đến cuối cùng chẳng khác nào giỏ tre múc nước, công dã tràng.</p>
+<p>Hắn không cam lòng!</p>
+<p>Thật sự không cam lòng!</p>
+<p>“A!”</p>
+<p>Một quyền hung hăng nện vào tường.</p>
+<p>“Vì sao! Vì sao tên phế vật Nhàn Vương đó có thể làm Hoàng đế, còn ta thì không? Rõ ràng ta mới là trưởng tử của phụ hoàng!”</p>
+<p>“Vì sao!”</p>
+<p>Rầm! Rầm! Rầm!</p>
+<p>Mắt hắn đỏ ngầu, liên tiếp nện bảy tám quyền cũng không trút hết cơn giận trong lòng.</p>
+<p>Đúng lúc vô tình quay đầu, hắn nhìn thấy cuối con phố có hai người đang đi tới.</p>
+<p>Hai… người che mặt bằng khăn đen.</p>
+<p>Tim hắn chợt trầm xuống.</p>
+<p>Che mặt… hắc y…</p>
+<p>Ngay sau đó, chỉ thấy hai người đồng thời vung tay, hai thanh nhuyễn kiếm đồng loạt sáng loáng.</p>
+<p>Sắc mặt hắn đại biến.</p>
+<p>Con phố này ngoài hắn ra không còn ai.</p>
+<p>Bọn chúng nhắm vào hắn!</p>
+<p>Nhị hoàng tử quay đầu bỏ chạy.</p>
+<p>“Chạy đi đâu!”</p>
+<p>Hai hắc y nhân quát lớn, lập tức đuổi theo.</p>
+<p>“Chịu chết đi!”</p>
+<p>Nhị hoàng tử vừa chạy được hơn mười bước đã bị một đạo chưởng phong lạnh lẽo quét ngã xuống đất, lăn liền ba vòng. Chưa kịp bò dậy, trường kiếm đã chém thẳng xuống đầu.</p>
+<p>“Làm càn!”</p>
+<p>Hắn vội vàng né tránh.</p>
+<p>“Ta là Nhị hoàng tử đương triều. Bọn cẩu tặc có mắt không tròng các ngươi có biết xúc phạm hoàng thất sẽ có kết cục gì không?”</p>
+<p>“Giết chính là ngươi, Nhị hoàng tử!”</p>
+<p>Sở Ly che mặt quát lớn, cổ tay xoay kiếm, chém liên tiếp mấy nhát, dọa Nhị hoàng tử tay không tấc sắt cắm đầu bỏ chạy.</p>
+<p>Sở Đệ Trì dùng khinh công nhảy lên tường, đuổi theo mấy bước rồi đá hắn lăn xuống.</p>
+<p>“A!”</p>
+<p>“Xem ngươi chạy đi đâu!”</p>
+<p>Sở Ly sát ý bừng bừng, hung hăng ném trường kiếm đi.</p>
+<p>Vút!</p>
+<p>Nhị hoàng tử hoảng hốt tách hai chân. Thanh kiếm cắm phập ngay chính giữa hai chân hắn, chỉ cách… một tấc.</p>
+<p>Mồ hôi lạnh lập tức túa ra.</p>
+<p>“To… to gan… các ngươi… dám…”</p>
+<p>Hắn rút kiếm định phản kích.</p>
+<p>Đúng lúc ấy, Sở Ly không chút vội vàng rút Lục Hợp nhuyễn kiếm của mình, quấn lấy thanh kiếm trong tay hắn như độc xà quấn mồi, vung tay giật mạnh.</p>
+<p>Choang!</p>
+<p>Trường kiếm gãy lìa, chỉ còn lại một đoạn ngắn nơi chuôi.</p>
+<p>Nhị hoàng tử ngơ ngác cầm chuôi kiếm trơ trụi, nhìn hai hắc y nhân sát khí ngút trời, cuối cùng cũng hiểu võ công của bọn họ cao đến mức nào. Hàn ý lập tức lan khắp toàn thân.</p>
+<p>“Ai… là ai phái các ngươi tới?”</p>
+<p>Sở Ly từng bước ép sát:</p>
+<p>“Ngươi muốn lấy mạng ai, thì người đó sẽ muốn lấy mạng ngươi. Mọi chuyện đều có nhân quả. Trong lòng ngươi chẳng lẽ không tự biết sao?”</p>
+<p>Nhàn Vương!</p>
+<p>Là Nhàn Vương phái họ tới!</p>
+<p>Hắn không thể chết.</p>
+<p>Hắn là hoàng tử, còn trẻ như vậy, còn hưởng vinh hoa phú quý vô tận, tuyệt đối không thể chết uổng như thế.</p>
+<p>Nhị hoàng tử hung hăng ném chuôi kiếm, quay đầu cắm cổ bỏ chạy.</p>
+<p>Hai người phía sau tiếp tục truy đuổi.</p>
+<p>Nhị hoàng tử liều mạng chạy.</p>
+<p>Chạy!</p>
+<p>Hai chân sắp gãy đến nơi rồi, sao vẫn không cắt đuôi được bọn chúng?</p>
+<p>Mệt chết hắn!</p>
+<p>Đôi chân rã rời vô tình vấp một cái. Vừa loạng choạng một bước, phía sau đã vang lên giọng nói như lệ quỷ đòi mạng:</p>
+<p>“Ta sắp đuổi kịp ngươi rồi~”</p>
+<p>Sở Ly cầm kiếm chọc vào mông hắn.</p>
+<p>“A a a!”</p>
+<p>Nhị hoàng tử nào dám dừng lại nửa khắc, dốc hết sức mà chạy.</p>
+<p>“Ta lại sắp đuổi kịp rồi.”</p>
+<p>“Ta tới đây~ Hôm nay mạng ngươi tận rồi~”</p>
+<p>Nhị hoàng tử chạy đến mặt đỏ bừng, gân xanh nổi đầy, hô hấp khó khăn, đầu óc trống rỗng, cảm giác cả người sắp thăng thiên.</p>
+<p>Nhưng hắn không dám dừng.</p>
+<p>Hắn hại Nhàn Vương suýt mất mạng, Nhàn Vương chắc chắn sẽ giết hắn để hả giận.</p>
+<p>Nhưng vì sao hai sát thủ kia chạy nhanh đến vậy?</p>
+<p>Bọn họ không biết mệt sao?</p>
+<p>Nhị hoàng tử chỉ dám cắm đầu chạy, không dám ngoái lại.</p>
+<p>Cho nên hắn không hề nhìn thấy cảnh tượng phía sau…</p>
+<p>Sở Đệ Trì ôm Sở Ly trong lòng, khinh công như đạp tuyết, dưới chân sinh phong, nhanh như tên bắn, ung dung bám sát phía sau Nhị hoàng tử.</p>
+<p>Lúc nhanh, lúc chậm.</p>
+<p>Sở Ly cầm hai thanh kiếm, không ngừng chọc mông hắn.</p>
+<p>“Đuổi kịp rồi… chạy mau… mau chạy… đuổi kịp rồi… ha ha ha!”</p>
+<p>Nàng chống thắt lưng, nằm gọn trong vòng tay nam nhân, giống hệt như đang cưỡi một con tuấn mã.</p>
+<p>“Đuổi kịp rồi! Xem ngươi chạy đi đâu!”</p>
+<p>Chọc chọc chọc!</p>
+<p>Nàng cười tà ác đến mức trên đầu như mọc thêm hai chiếc sừng nhọn của tiểu ác ma…</p>
+<p>Khinh công đúng là vô địch!</p>
+<p>Nàng quyết định rồi.</p>
+<p>Từ hôm nay trở đi, nàng cũng phải học khinh công.</p>
+<p>Nhị hoàng tử gần như thở không nổi, hất tung bàn ghế quầy hàng trên phố để tranh thủ vài giây ngắn ngủi, rồi cắm đầu lao vào một tòa phủ đệ.</p>
+<p>“Cứu mạng!”</p>
+<p>“Tiêu… Tiêu Dao Hoàng thúc… cứu… cứu…”</p>
+<p>Rầm!</p>
+<p>Quá sức, hắn cắm đầu ngã gục xuống đất.</p>
+<p>Tên tiểu tư giữ cổng thấy vậy, vội vàng chạy vào bẩm báo.</p>
+<p>Rất nhanh, Tiêu Dao Vương bước ra.</p>
+<p>“Nhị hoàng tử? Ngươi làm sao vậy?”</p>
+<p>“Ta… Tiêu Dao Hoàng thúc… cứu… có… có người… muốn giết ta… ta…”</p>
+<p>Nhị hoàng tử thở hổn hển như trâu, không nói nổi một câu hoàn chỉnh.</p>
+<p>Tiêu Dao Vương lập tức nói:</p>
+<p>“Mau đỡ hắn vào, mang trà tới!”</p>
+<p>Hai chén trà lớn đổ xuống bụng, nghỉ ngơi gần nửa khắc, Nhị hoàng tử mới lau mồ hôi đầy đầu, cuống quýt nắm lấy tay Tiêu Dao Vương:</p>
+<p>“Tiêu Dao Hoàng thúc cứu ta! Nhất định phải cứu ta! Nhàn Vương… Hoàng thượng muốn giết ta!”</p>
+<p>Tiêu Dao Vương kinh hãi:</p>
+<p>“Ngươi nói gì vậy? Hoàng thượng từ nhỏ ôn hòa, sao có thể tàn sát thủ túc?”</p>
+<p>Nhị hoàng tử biết mình gây đại họa, dứt khoát không giấu nữa.</p>
+<p>“Vì Lục hoàng tử hạ độc Hoàng thượng, còn ta giấu giải dược, muốn lấy mạng hắn. Cho nên hắn muốn giết ta.”</p>
+<p>Hơn nữa còn nhất định phải giết.</p>
+<p>Trước đây cùng là hoàng tử, hắn đương nhiên không sợ Nhàn Vương.</p>
+<p>Nhưng nay Nhàn Vương đã đăng cơ làm đế, muốn giữ mạng, hắn chỉ còn con đường cầu Tiêu Dao Vương.</p>
+<p>“Ngươi… các ngươi sao có thể hạ độc Hoàng thượng… hồ đồ! Hồ đồ!”</p>
+<p>Tiêu Dao Vương vỗ mu bàn tay hắn, giọng đầy tiếc rèn sắt không thành thép.</p>
+<p>“Bản vương còn thắc mắc vì sao gần đây Nhiếp Chính Vương thanh toán Lục hoàng tử. Thì ra là vì chuyện này.”</p>
+<p>Nhị hoàng tử siết chặt tay ông.</p>
+<p>“Ta không cam lòng! Tiêu Dao Hoàng thúc, cùng là người hoàng thất, ai mà không có lòng tranh ngôi? Ai chẳng muốn quân lâm thiên hạ? Chẳng lẽ Hoàng thúc thật sự buông bỏ được?”</p>
+<p>“Theo vai vế, theo tư lịch, Hoàng thúc chẳng phải cũng có tư cách đăng cơ xưng đế sao?”</p>
+<p>Sau khi Sở Hoàng bại liệt, Tiêu Dao Vương chính là người lớn tuổi nhất.</p>
+<p>Nhị hoàng tử cười nói:</p>
+<p>“Hoàng thúc nói đùa rồi. Bản vương đã được phong Tiêu Dao Vương, sống nơi đất phong nhiều năm, nào có tâm tư xưng vương xưng đế?”</p>
+<p>“Hoàng thúc!”</p>
+<p>Nhị hoàng tử gần như rỉ máu từng lời.</p>
+<p>“Lẽ nào Hoàng thúc thật sự cam tâm nhìn Sở Ngạo Thiên làm Hoàng đế? Hắn chỉ là tên phế vật bụng rỗng chữ nghĩa, là con rối trong tay Nhiếp Chính Vương! Nhiếp Chính Vương dã tâm lang sói, ngôi vị kia vốn phải là của Hoàng thúc mới đúng!”</p>
+<p>“Chỉ cần Tiêu Dao Hoàng thúc không chê, trong tay chất nhi có nhược điểm của Nhiếp Chính Vương, bảo đảm có thể kéo hắn xuống ngựa…”</p>
+<p>________________________________________</p>
+<p>Bên ngoài.</p>
+<p>Sở Ly nằm bò trên đầu tường, hai tay chống cằm, nhìn về phía cổng phủ.</p>
+<p>“Đã chạy vào gần hai khắc rồi, sao còn chưa ra?”</p>
+<p>“Chẳng lẽ bị dọa ngốc, không dám ra nữa?”</p>
+<p>Vừa nói, cọng cỏ đuôi chó ngậm trong miệng cứ lắc qua lắc lại, quét vào trán Sở Đệ Trì.</p>
+<p>Ngứa ngáy.</p>
+<p>Sở Đệ Trì gãi đầu, ngẩng lên nhìn nàng.</p>
+<p>“Leo cao thế còn không xuống.”</p>
+<p>“Leo cao nhìn xa.”</p>
+<p>Sở Ly chống cằm, gãi gãi mông, chẳng biết moi đâu ra một viên kẹo mạch nha bỏ vào miệng.</p>
+<p>“Hắn chắc là ham sống sợ chết, tạm thời không dám ra.”</p>
+<p>Hừ!</p>
+<p>Tham sống sợ chết mà còn dám hại người.</p>
+<p>“Dọa cũng dọa rồi, mắng cũng mắng rồi, đánh cũng đánh rồi. Chúng ta về cung trước. Nay Nhàn Vương đã thuận lợi đăng cơ, nàng cũng nên đi thăm Mẫu phi.”</p>
+<p>“Người nói phải.”</p>
+<p>Sở Ly nheo mắt cười.</p>
+<p>“Còn không xuống?”</p>
+<p>Sở Đệ Trì đứng dưới chân tường, dang rộng hai tay.</p>
+<p>Rõ ràng tuổi Tỵ, vậy mà cứ thích leo trèo như khỉ.</p>
+<p>Sở Ly chống người đứng dậy, eo thon khẽ bật, nhảy phắt xuống ngồi trên cổ Sở Đệ Trì.</p>
+<p>Sắc mặt nam nhân tối sầm.</p>
+<p>“Làm gì?”</p>
+<p>“Chẳng phải về cung sao?”</p>
+<p>“Xuống! Còn ra thể thống gì!”</p>
+<p>“Không!”</p>
+<p>Sở Ly kẹp chặt hai chân, ôm cổ hắn, vững vàng cưỡi trên đầu hắn.</p>
+<p>Mặc cho hắn lắc mấy lần, nàng vẫn không chịu buông.</p>
+<p>Chẳng khác gì đấu ngưu.</p>
+<p>“Sở Ly!”</p>
+<p>“Ta không xuống!”</p>
+<p>“Lát nữa dân chúng đi ngang qua, mặt mũi bản vương biết để đâu?”</p>
+<p>“Dù sao ta cũng không xuống!”</p>
+<p>Được.</p>
+<p>Được lắm.</p>
+<p>Nàng cứ nhớ đó.</p>
+<p>Bây giờ nàng cưỡi ta.</p>
+<p>Đêm nay ta cưỡi nàng.</p>
+<p>Phong thủy luân chuyển, trời xanh tha ai bao giờ.</p>
+<p>Về đến hoàng cung, Sở Ly chạy đến mức khuôn mặt đỏ bừng, vừa tới đã thấy Hân phi đi vào tẩm điện của Sở Ngạo Thiên, nắm lấy tay hắn, nước mắt trào ra.</p>
+<p>“Nhi tử!”</p>
+<p>“Nhi tử! Con thật có tiền đồ! Con là niềm tự hào của mẫu phi! Mẫu phi cứ ngỡ mình đang nằm mộng, mau để mẫu phi đánh con một cái xem có đau không.”</p>
+<p>Bà cầm lấy chén trà.</p>
+<p>Sở Ngạo Thiên vội vàng xua tay.</p>
+<p>“Mẫu phi, cái này… e là đau thật!”</p>
+<p>“Nhi tử!”</p>
+<p>Hân phi ôm chầm lấy hắn, khóc mãi không thôi.</p>
+<p>“Ngạo Thiên, con quá xuất sắc.”</p>
+<p>“Con giỏi quá!”</p>
+<p>“Con là đứa trẻ ưu tú nhất thiên hạ!”</p>
+<p>Một tràng khen ngợi khiến Sở Ngạo Thiên có phần luống cuống.</p>
+<p>“Mẫu phi, con đâu tốt như người nói… con…”</p>
+<p>“Ngạo Thiên, con quân lâm thiên hạ, đăng đỉnh chí tôn, sao lại không ưu tú? Đừng xem nhẹ bản thân. Trời sinh ta tất có chỗ dùng, đây chính là nơi con phát huy tài năng. Sau này nhất định phải mang lòng nhân thiện, làm một vị minh quân!”</p>
+<p>“Mẫu phi, con không được… thật sự không được…”</p>
+<p>“Con phải tin vào chính mình. Chẳng lẽ con không muốn trở thành chỗ dựa của mẫu phi sao? Ngạo Thiên, con quá xuất sắc rồi! Con là người lợi hại nhất! Con quả đúng là học trò xuất sắc nhất của Khương Thái phó!”</p>
+<p>Sở Ngạo Thiên luống cuống xua tay.</p>
+<p>“Mẫu phi, con thật sự không làm nổi… con vốn không có tài trị quốc… con… con… À đúng rồi! Khương Thái phó cũng từng khen con như vậy!”</p>
+<p>Một câu nói quét sạch tự ti, khiến hắn bỗng tìm thấy chính mình.</p>
+<p>Sở Ly đứng ngoài điện, nhìn Bát hoàng huynh ở cùng mẫu phi, cũng bắt đầu nhớ Ôn phi, định đi hậu cung.</p>
+<p>Không ngờ Tiêu Dao Hoàng thúc lại đến.</p>
+<p>“Tham kiến Tiêu Dao Vương gia.”</p>
+<p>Tiêu Dao Vương nhìn thấy nàng, mắt lập tức đỏ hoe.</p>
+<p>“Tiểu Cửu…”</p>
+<p>Sở Ly khựng lại.</p>
+<p>“Tiêu Dao Vương gia e là nhận nhầm người rồi.”</p>
+<p>“Nhị hoàng tử đã nói cho ta biết rồi, Tiểu Cửu.”</p>
+<p>Hắn nói, chỉ cần công bố chuyện Nhiếp Chính Vương cấu kết với Cửu hoàng tử, nữ cải nam trang, mưu đoạt hoàng vị, nhất định sẽ kéo Nhiếp Chính Vương xuống ngựa.</p>
+<p>Nhưng sau khi biết chuyện, việc đầu tiên ông làm là lập tức vào cung, đem toàn bộ kế hoạch của Nhị hoàng tử nói ra.</p>
+<p>“Nhị hoàng tử muốn liên thủ với ta xưng đế, nhưng ta vốn không có chí làm quân vương. Tiểu Cửu, con hiểu bản vương mà. Cả đời ta chỉ mong bình yên, không cầu danh lợi.”</p>
+<p>Khóe môi Sở Ly khẽ mím.</p>
+<p>Từ khi nàng có ký ức, Tiêu Dao Vương vẫn luôn thanh tâm quả dục, đạm bạc danh lợi, chưa từng tham dự vào tranh đấu quyền mưu.</p>
+<p>Nàng không khẳng định, cũng không phủ nhận.</p>
+<p>“Thấy con vẫn bình an, trong lòng ta rất vui.”</p>
+<p>Tiêu Dao Vương xúc động ôm lấy nàng.</p>
+<p>“Hài tử ngoan.”</p>
+<p>Không những chưa chết, còn trở thành nữ tử.</p>
+<p>Thảo nào…</p>
+<p>Lại trở thành nỗi vương vấn của Đông Lăng Thái tử.</p>
+<p>“Con yên tâm, chuyện này ta sẽ không nói cho người khác biết. Chỉ là Nhị hoàng tử ôm hận với con, vẫn luôn nhắm vào con. Sau này con phải cẩn thận hơn.”</p>
+<p>Tiêu Dao Vương đầy từ ái vỗ vai nàng, đôi mắt hoe đỏ nhìn nàng rất lâu, nói với nàng rất nhiều điều.</p>
+<p>Đến khi xoay người rời đi, ông lau đi giọt lệ nơi khóe mắt, bình tĩnh nói:</p>
+<p>“Người đâu.”</p>
+<p>“Thả bồ câu đưa thư hồi âm cho Đông Lăng Thái tử. Nửa tháng sau, ta sẽ đưa Sở Ly đến…” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_266.html" class="btn">‹ Trước</a>
             <a href="chuong_268.html" class="btn">Sau ›</a>
         </div>
@@ -497,15 +505,11 @@ Tiêu Dao Vương đầy từ ái vỗ vai nàng, đôi mắt hoe đỏ nhìn n�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -517,11 +521,11 @@ Tiêu Dao Vương đầy từ ái vỗ vai nàng, đôi mắt hoe đỏ nhìn n�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

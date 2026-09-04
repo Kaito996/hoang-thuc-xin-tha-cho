@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 173</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,203 +62,212 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 173</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_172.html" class="btn">‹ Trước</a>
             <a href="chuong_174.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 173: Sao đệ lại chết nữa rồi, Cửu đệ
-Sở Ly được an táng trên núi Thanh Dương ngoài thành Đế Đô.
-Đó là một nơi có phong thủy cực tốt, địa thế cao ráo, có thể thu trọn hơn nửa tòa Đế Đô vào tầm mắt, lại đón mặt trời mọc lặn mỗi ngày, vừa tránh xa sự mục nát cùng ồn ào của thế tục, vừa có thể lặng lẽ ngắm nhìn nhân gian tất bật, vội vã.
-Từ lúc hồi kinh, cho đến khi hạ táng, dựng xong bia mộ, Sở Đệ Trì chưa từng đến nhìn nàng lấy một lần.
-Trở về Đế Đô.
-Hắn liền ở lì trong Lâm Hoa điện, ngồi bất động suốt mấy canh giờ.
-Nhiếp Chính Vương hồi triều, người vui mừng nhất chính là Sở Ngạo Thiên:
-“Hoàng thúc cuối cùng cũng trở về rồi!”
-Tốt quá!
-Một đống cục diện rối ren này, rốt cuộc cũng không cần đè lên vai hắn nữa.
-Hắn vui mừng đến mức tay múa chân reo, chạy thẳng tới Lâm Hoa điện để bàn giao chính sự, lại bị Tiêu Dạ Hành chặn giữa đường.
-“Đừng đến quấy rầy Nhiếp Chính Vương.”
-“Tại sao?”
-“Dễ ăn đòn.”
-“Hả?”
-Sở Ngạo Thiên nghe chẳng hiểu.
-Là ý gì?
-“Hoàng thúc đã trở về, đương nhiên ta phải giao trả đống rắc rối này cho người. Chẳng lẽ người không muốn quản sao? Trước khi Cửu đệ rời đi, còn đích thân viết mật chỉ, giao Đại Sở cho người.”
-Tiêu Dạ Hành khẽ thở dài.
-Đúng là tạo hóa trêu ngươi.
-Hắn kéo Nhàn Vương sang một bên, ghé tai nói nhỏ mấy câu.
-Sở Ngạo Thiên đột nhiên trợn to hai mắt, chỉ hai giây sau, nước mắt đã dâng đầy hốc mắt:
-“Ngươi… ngươi nói Cửu… Cửu đệ…”
-Tất cả mọi người đều cho rằng Sở Ly đã sớm chết trong trận hỏa hoạn ấy, càng không còn tâm trí để thương xuân bi thu. Ai nấy đều bôn ba tranh quyền đoạt vị, bận đến mức không ngơi tay.
-Giờ đây, Nhiếp Chính Vương hồi triều, mông còn chưa kịp ngồi nóng ghế, bọn họ đã không kìm được mà đồng loạt phát khó:
-“Nhiếp Chính Vương sao có thể chắp tay nhường Nam Cương cùng ba châu hai mươi tám thành đất Mạc Hoài cho Nam Man? Đây quả thực là chuyện chưa từng có!”
-“Quốc lực Nam Man vốn không bằng Đại Sở, vậy mà ngài lại tự ý quyết định, cắt đi một phần ba lãnh thổ Đại Sở!”
-“Ngài làm như vậy là muốn khiến Đại Sở diệt quốc sao!”
-Tam hoàng tử Sở Tây Lăng lớn tiếng chất vấn:
-“Nghe nói, Hoàng thúc vì một nữ nhân mà nhượng đất. Hồng nhan họa thủy như thế, làm loạn giang sơn, chúng ta sao còn dám giao Đại Sở cho ngài cai trị?”
-“Đúng vậy!”
-“Tam hoàng tử nói rất có lý!”
-Nhiếp Chính Vương thật quá hồ đồ!
-Để hắn đăng cơ, chẳng khác nào một vị hôn quân khiến quốc gia diệt vong!
-Lục hoàng tử càng phẫn nộ:
-“Hoàng thúc bỏ mặc giang sơn, bỏ mặc lê dân, bỏ mặc chúng ta, chúng ta không thừa nhận một người cầm quyền như vậy!”
-Thất hoàng tử Sở Cảnh Lân nghiêm giọng quát:
-“Xin ngài thoái vị!”
-Chúng nhân đồng lòng, quyết tâm kéo Nhiếp Chính Vương khỏi vị trí cầm quyền.
-Cho dù có di chiếu của tân đế thì đã sao?
-Nhiếp Chính Vương đã khiến lòng người phẫn nộ!
-Một người cầm quyền không được lòng dân, không được thần tử ủng hộ, thì vị trí ấy vốn không thể ngồi vững!
-Chư vị hoàng tử cùng văn võ bá quan đồng loạt quỳ xuống, đồng thanh hô lớn:
-“Thỉnh Nhiếp Chính Vương thoái vị, nhường hiền!”
-Sở Ngạo Thiên chỉ thẳng vào bọn họ, giận dữ quát:
-“Các người làm gì vậy!”
-Hắn là người duy nhất đại diện cho thế lực ủng hộ Nhiếp Chính Vương.
-“Tân đế có chỉ, giao triều chính cho Nhiếp Chính Vương. Tân đế lại là thái tử do phụ hoàng đích thân sắc lập. Các người đây là tụ chúng tạo phản sao!”
-Sở Cảnh Lân nói:
-“Bát đệ, chúng ta cũng là vì đại cục.”
-Sở Ngạo Thiên đáp:
-“Nhiếp Chính Vương dùng Nam Cương cùng đất Mạc Hoài đổi lấy năm mươi năm hòa bình với Nam Man.”
-“Đại Sở ta quốc phú binh cường, chỉ có nước yếu mới dùng cách cắt đất bồi thường để cầu hòa. Nhiếp Chính Vương làm vậy, rõ ràng là đang làm nhục quốc gia!”
-“Thỉnh Nhiếp Chính Vương thoái vị nhường hiền!”
-Sở Ngạo Thiên tức đến nhảy dựng:
-“Các… các người!”
-Một mình hắn, chỉ có một cái miệng, sao cãi nổi hơn trăm cái miệng đang hùng hổ kia?
-Mỗi người nhổ một bãi nước bọt cũng đủ nhấn chìm hắn.
-Phản rồi!
-Ép cung rồi!
-Đây là muốn lật cả trời sao!
-Quần thần phẫn nộ, đại điện như sắp sụp đổ.
-Trong Đại Thành điện, tất cả mọi người tranh cãi đến mức tưởng như muốn hất tung cả mái điện.
-Chỉ riêng Sở Đệ Trì vẫn lặng như cõi chết, ngồi trên long ỷ, đôi mắt sâu như hàn đàm lạnh lùng nhìn xuống phía dưới, ánh mắt băng lãnh tựa như đang nhìn một đám người chết.
-Kinh Ảnh không khỏi lo lắng.
-Kể từ khi từ Nam Cương hồi kinh, chủ tử chưa từng mở miệng nói một lời.
-Chẳng lẽ… sắp xảy ra đại sự?
-“Trọng Phong, ngươi nói…”
-Trọng Phong giơ tay, ra hiệu hắn im lặng.
-Đừng nói.
-Chủ tử tự có quyết định.
-Bạch Cẩm Y đứng cùng Tiêu Dạ Hành. Là đại phu nhiều năm, chỉ nhìn sắc trắng bệch nơi đáy mắt Sở Đệ Trì cũng đủ biết, lúc này hắn chẳng khác nào nỏ mạnh hết đà, chỉ đang miễn cưỡng chống đỡ, e rằng bất cứ lúc nào cũng có thể ngã xuống.
-Sở Ly chết rồi.
-Cùng một nỗi đau, hắn phải gánh chịu hai lần.
-Lần nàng táng thân trong biển lửa, hắn đau đớn, điên cuồng đến mức nào, bọn họ đều tận mắt chứng kiến.
-Còn lần này…
-Mọi người vẫn cãi đến long trời lở đất, ai nấy trợn mắt, khí thế hùng hổ, nhất quyết buộc Nhiếp Chính Vương lập tức thoái vị.
-Thoái vị!
-Cuối cùng, Sở Đệ Trì phất tay đứng dậy, huyết tính trong cốt tủy bùng lên sát ý, như một trận mưa tên vô hình sắp hủy diệt tất cả.
-Đúng lúc ấy, một bàn tay đặt lên vai hắn.
-“Đây là nhà của nàng.”
-Tiêu Dạ Hành ngăn hắn lại.
-“Cũng là giang sơn của nàng.”
-Ánh mắt Sở Đệ Trì khẽ lay động.
-Giữa biển sát ý cuồn cuộn, cuối cùng cũng hiện lên một tia lý trí.
-Nhà của nàng…
-Lúc này, hắn mới nhớ đến lời dặn dò trước khi nàng rời đi.
-Nàng giao tất cả cho hắn, mới có thể yên lòng.
-Nếu hắn hủy đi tất cả, chẳng khác nào phụ lòng nàng.
-Nhưng mà…
-Tiểu Cửu à.
-Nàng buông tay mà đi, lại để một mình hắn cô độc ngồi trên chiếc ghế lạnh lẽo này, nhìn giang sơn lạnh lẽo, đối diện với tất cả hỗn loạn.
-Thật tàn nhẫn.
-Hắn chậm rãi buông hai tay, sát ý tan biến, nhìn đám người đông nghịt trước mặt, nhàn nhạt lên tiếng:
-“Bản vương có thể thoái vị.”
-“Nhưng theo quy củ, để xã tắc ổn định, phải đợi chọn được tân đế, bản vương mới có thể thiện nhượng ngôi vị.”
-“Không biết theo ý chư vị đại nhân, vị hoàng tử nào có thể đảm đương trọng trách?”
-Tiếng tranh cãi dần dần lắng xuống.
-Vốn tưởng phải tốn rất nhiều công sức mới ép được Nhiếp Chính Vương thoái vị.
-Không ngờ hắn lại đáp ứng dứt khoát như vậy.
-Nhưng tiếp theo mới là nan đề thật sự.
-Hoàng vị chỉ có một.
-Người tranh đoạt lại có ba vị: Tam hoàng tử, Lục hoàng tử và Thất hoàng tử.
-Bọn họ nhìn nhau.
-Những tia lửa vô hình bắt đầu lan tràn trong Đại Thành điện, quỷ quyệt âm thầm cuộn chảy.
-Đương nhiên nên tôn Tam hoàng tử!
-Trong số các hoàng tử, Tam hoàng tử lớn tuổi nhất, thông tuệ, trầm ổn, có tài trị quốc, là người thích hợp nhất.
-Một bộ phận quan viên lại cho rằng:
-Nên ủng hộ Lục hoàng tử!
-Lục hoàng tử là bào đệ của Đại hoàng tử, từ nhỏ đã học đạo trị quốc, có đại cục quan, mới là lựa chọn tốt nhất!
-Một bộ phận khác thì dốc toàn lực ủng hộ Thất hoàng tử.
-Thất hoàng tử có mẫu tộc giàu mạnh, lại được Tĩnh Quý phi cùng Phương gia phò tá, mới có thể quản lý tốt nước Sở!
-Ánh mắt bọn họ giao nhau.
-Một trận tranh cãi kịch liệt chỉ chực bùng nổ…
-Chỉ là…
-Những chuyện ấy đã chẳng còn liên quan gì đến Sở Đệ Trì.
-Một lời gièm pha, hai quả đào giết ba tráng sĩ.
-Cứ để bọn chúng chó cắn chó đi.
-—
-Sở Ngạo Thiên thoát khỏi cuộc tranh cãi kịch liệt kia, lập tức sai người chuẩn bị ngựa, xuất cung, dùng tốc độ nhanh nhất chạy tới núi Thanh Dương.
-Khi nhìn thấy ngôi mộ mới đắp.
-Trước mắt hắn tối sầm, suýt nữa ngất lịm.
-“Cửu đệ…”
-Lần táng thân trong biển lửa, tim hắn đã đau một lần.
-Giờ đây…
-Lại thêm một lần khoét tim.
-Hắn ngậm nước mắt lao tới.
-Tần Mục Vũ dẫn theo Tần Mục Tuyết đã ở đó đốt vàng mã từ trước, hai người đều đỏ hoe mắt.
-Tần Mục Tuyết quỳ ngồi dưới đất, giọng khàn khàn mà bình tĩnh:
-“Đợi qua thất đầu của A Ly ca ca, muội sẽ xuống Giang Nam. Lâm Thất thúc thúc đang ở Giang Nam, muội muốn bái người làm sư phụ, chính thức học võ.”
-Tần Mục Vũ đưa đôi mắt sưng đỏ nhìn nàng:
-“Mục Tuyết, huynh phải tòng quân, chưa thể phụng dưỡng mẫu thân dưới gối, đã là bất hiếu. Muội không thể rời đi nữa.”
-“Ca, hiếu tâm của con cái chưa bao giờ nằm ở ngày ngày kề cận. Huynh chờ muội hai năm. Hai năm sau, đợi muội học thành xuất sư, muội sẽ cùng huynh ra chiến trường, báo thù cho A Ly ca ca.”
-Nàng đã quyết định rồi.
-“Mục Tuyết, huynh nói cho muội biết tin A Ly qua đời, là vì huynh biết muội có thể…”
-“Cửu đệ!”
-Hai huynh muội đột nhiên bị một người xô bật sang hai bên.
-Một bóng người lao vút tới, hai tay ôm chặt tấm bia mộ, hai chân cũng quặp lấy bia, vừa khóc vừa treo cả người lên đó:
-“Cửu đệ! Hu hu hu oa—— Sao đệ lại chết nữa rồi, Cửu đệ!” Ẩn bớt</p>
+            <p>Chương 173: Sao đệ lại chết nữa rồi, Cửu đệ</p>
+<p>Sở Ly được an táng trên núi Thanh Dương ngoài thành Đế Đô.</p>
+<p>Đó là một nơi có phong thủy cực tốt, địa thế cao ráo, có thể thu trọn hơn nửa tòa Đế Đô vào tầm mắt, lại đón mặt trời mọc lặn mỗi ngày, vừa tránh xa sự mục nát cùng ồn ào của thế tục, vừa có thể lặng lẽ ngắm nhìn nhân gian tất bật, vội vã.</p>
+<p>Từ lúc hồi kinh, cho đến khi hạ táng, dựng xong bia mộ, Sở Đệ Trì chưa từng đến nhìn nàng lấy một lần.</p>
+<p>Trở về Đế Đô.</p>
+<p>Hắn liền ở lì trong Lâm Hoa điện, ngồi bất động suốt mấy canh giờ.</p>
+<p>Nhiếp Chính Vương hồi triều, người vui mừng nhất chính là Sở Ngạo Thiên:</p>
+<p>“Hoàng thúc cuối cùng cũng trở về rồi!”</p>
+<p>Tốt quá!</p>
+<p>Một đống cục diện rối ren này, rốt cuộc cũng không cần đè lên vai hắn nữa.</p>
+<p>Hắn vui mừng đến mức tay múa chân reo, chạy thẳng tới Lâm Hoa điện để bàn giao chính sự, lại bị Tiêu Dạ Hành chặn giữa đường.</p>
+<p>“Đừng đến quấy rầy Nhiếp Chính Vương.”</p>
+<p>“Tại sao?”</p>
+<p>“Dễ ăn đòn.”</p>
+<p>“Hả?”</p>
+<p>Sở Ngạo Thiên nghe chẳng hiểu.</p>
+<p>Là ý gì?</p>
+<p>“Hoàng thúc đã trở về, đương nhiên ta phải giao trả đống rắc rối này cho người. Chẳng lẽ người không muốn quản sao? Trước khi Cửu đệ rời đi, còn đích thân viết mật chỉ, giao Đại Sở cho người.”</p>
+<p>Tiêu Dạ Hành khẽ thở dài.</p>
+<p>Đúng là tạo hóa trêu ngươi.</p>
+<p>Hắn kéo Nhàn Vương sang một bên, ghé tai nói nhỏ mấy câu.</p>
+<p>Sở Ngạo Thiên đột nhiên trợn to hai mắt, chỉ hai giây sau, nước mắt đã dâng đầy hốc mắt:</p>
+<p>“Ngươi… ngươi nói Cửu… Cửu đệ…”</p>
+<p>Tất cả mọi người đều cho rằng Sở Ly đã sớm chết trong trận hỏa hoạn ấy, càng không còn tâm trí để thương xuân bi thu. Ai nấy đều bôn ba tranh quyền đoạt vị, bận đến mức không ngơi tay.</p>
+<p>Giờ đây, Nhiếp Chính Vương hồi triều, mông còn chưa kịp ngồi nóng ghế, bọn họ đã không kìm được mà đồng loạt phát khó:</p>
+<p>“Nhiếp Chính Vương sao có thể chắp tay nhường Nam Cương cùng ba châu hai mươi tám thành đất Mạc Hoài cho Nam Man? Đây quả thực là chuyện chưa từng có!”</p>
+<p>“Quốc lực Nam Man vốn không bằng Đại Sở, vậy mà ngài lại tự ý quyết định, cắt đi một phần ba lãnh thổ Đại Sở!”</p>
+<p>“Ngài làm như vậy là muốn khiến Đại Sở diệt quốc sao!”</p>
+<p>Tam hoàng tử Sở Tây Lăng lớn tiếng chất vấn:</p>
+<p>“Nghe nói, Hoàng thúc vì một nữ nhân mà nhượng đất. Hồng nhan họa thủy như thế, làm loạn giang sơn, chúng ta sao còn dám giao Đại Sở cho ngài cai trị?”</p>
+<p>“Đúng vậy!”</p>
+<p>“Tam hoàng tử nói rất có lý!”</p>
+<p>Nhiếp Chính Vương thật quá hồ đồ!</p>
+<p>Để hắn đăng cơ, chẳng khác nào một vị hôn quân khiến quốc gia diệt vong!</p>
+<p>Lục hoàng tử càng phẫn nộ:</p>
+<p>“Hoàng thúc bỏ mặc giang sơn, bỏ mặc lê dân, bỏ mặc chúng ta, chúng ta không thừa nhận một người cầm quyền như vậy!”</p>
+<p>Thất hoàng tử Sở Cảnh Lân nghiêm giọng quát:</p>
+<p>“Xin ngài thoái vị!”</p>
+<p>Chúng nhân đồng lòng, quyết tâm kéo Nhiếp Chính Vương khỏi vị trí cầm quyền.</p>
+<p>Cho dù có di chiếu của tân đế thì đã sao?</p>
+<p>Nhiếp Chính Vương đã khiến lòng người phẫn nộ!</p>
+<p>Một người cầm quyền không được lòng dân, không được thần tử ủng hộ, thì vị trí ấy vốn không thể ngồi vững!</p>
+<p>Chư vị hoàng tử cùng văn võ bá quan đồng loạt quỳ xuống, đồng thanh hô lớn:</p>
+<p>“Thỉnh Nhiếp Chính Vương thoái vị, nhường hiền!”</p>
+<p>Sở Ngạo Thiên chỉ thẳng vào bọn họ, giận dữ quát:</p>
+<p>“Các người làm gì vậy!”</p>
+<p>Hắn là người duy nhất đại diện cho thế lực ủng hộ Nhiếp Chính Vương.</p>
+<p>“Tân đế có chỉ, giao triều chính cho Nhiếp Chính Vương. Tân đế lại là thái tử do phụ hoàng đích thân sắc lập. Các người đây là tụ chúng tạo phản sao!”</p>
+<p>Sở Cảnh Lân nói:</p>
+<p>“Bát đệ, chúng ta cũng là vì đại cục.”</p>
+<p>Sở Ngạo Thiên đáp:</p>
+<p>“Nhiếp Chính Vương dùng Nam Cương cùng đất Mạc Hoài đổi lấy năm mươi năm hòa bình với Nam Man.”</p>
+<p>“Đại Sở ta quốc phú binh cường, chỉ có nước yếu mới dùng cách cắt đất bồi thường để cầu hòa. Nhiếp Chính Vương làm vậy, rõ ràng là đang làm nhục quốc gia!”</p>
+<p>“Thỉnh Nhiếp Chính Vương thoái vị nhường hiền!”</p>
+<p>Sở Ngạo Thiên tức đến nhảy dựng:</p>
+<p>“Các… các người!”</p>
+<p>Một mình hắn, chỉ có một cái miệng, sao cãi nổi hơn trăm cái miệng đang hùng hổ kia?</p>
+<p>Mỗi người nhổ một bãi nước bọt cũng đủ nhấn chìm hắn.</p>
+<p>Phản rồi!</p>
+<p>Ép cung rồi!</p>
+<p>Đây là muốn lật cả trời sao!</p>
+<p>Quần thần phẫn nộ, đại điện như sắp sụp đổ.</p>
+<p>Trong Đại Thành điện, tất cả mọi người tranh cãi đến mức tưởng như muốn hất tung cả mái điện.</p>
+<p>Chỉ riêng Sở Đệ Trì vẫn lặng như cõi chết, ngồi trên long ỷ, đôi mắt sâu như hàn đàm lạnh lùng nhìn xuống phía dưới, ánh mắt băng lãnh tựa như đang nhìn một đám người chết.</p>
+<p>Kinh Ảnh không khỏi lo lắng.</p>
+<p>Kể từ khi từ Nam Cương hồi kinh, chủ tử chưa từng mở miệng nói một lời.</p>
+<p>Chẳng lẽ… sắp xảy ra đại sự?</p>
+<p>“Trọng Phong, ngươi nói…”</p>
+<p>Trọng Phong giơ tay, ra hiệu hắn im lặng.</p>
+<p>Đừng nói.</p>
+<p>Chủ tử tự có quyết định.</p>
+<p>Bạch Cẩm Y đứng cùng Tiêu Dạ Hành. Là đại phu nhiều năm, chỉ nhìn sắc trắng bệch nơi đáy mắt Sở Đệ Trì cũng đủ biết, lúc này hắn chẳng khác nào nỏ mạnh hết đà, chỉ đang miễn cưỡng chống đỡ, e rằng bất cứ lúc nào cũng có thể ngã xuống.</p>
+<p>Sở Ly chết rồi.</p>
+<p>Cùng một nỗi đau, hắn phải gánh chịu hai lần.</p>
+<p>Lần nàng táng thân trong biển lửa, hắn đau đớn, điên cuồng đến mức nào, bọn họ đều tận mắt chứng kiến.</p>
+<p>Còn lần này…</p>
+<p>Mọi người vẫn cãi đến long trời lở đất, ai nấy trợn mắt, khí thế hùng hổ, nhất quyết buộc Nhiếp Chính Vương lập tức thoái vị.</p>
+<p>Thoái vị!</p>
+<p>Cuối cùng, Sở Đệ Trì phất tay đứng dậy, huyết tính trong cốt tủy bùng lên sát ý, như một trận mưa tên vô hình sắp hủy diệt tất cả.</p>
+<p>Đúng lúc ấy, một bàn tay đặt lên vai hắn.</p>
+<p>“Đây là nhà của nàng.”</p>
+<p>Tiêu Dạ Hành ngăn hắn lại.</p>
+<p>“Cũng là giang sơn của nàng.”</p>
+<p>Ánh mắt Sở Đệ Trì khẽ lay động.</p>
+<p>Giữa biển sát ý cuồn cuộn, cuối cùng cũng hiện lên một tia lý trí.</p>
+<p>Nhà của nàng…</p>
+<p>Lúc này, hắn mới nhớ đến lời dặn dò trước khi nàng rời đi.</p>
+<p>Nàng giao tất cả cho hắn, mới có thể yên lòng.</p>
+<p>Nếu hắn hủy đi tất cả, chẳng khác nào phụ lòng nàng.</p>
+<p>Nhưng mà…</p>
+<p>Tiểu Cửu à.</p>
+<p>Nàng buông tay mà đi, lại để một mình hắn cô độc ngồi trên chiếc ghế lạnh lẽo này, nhìn giang sơn lạnh lẽo, đối diện với tất cả hỗn loạn.</p>
+<p>Thật tàn nhẫn.</p>
+<p>Hắn chậm rãi buông hai tay, sát ý tan biến, nhìn đám người đông nghịt trước mặt, nhàn nhạt lên tiếng:</p>
+<p>“Bản vương có thể thoái vị.”</p>
+<p>“Nhưng theo quy củ, để xã tắc ổn định, phải đợi chọn được tân đế, bản vương mới có thể thiện nhượng ngôi vị.”</p>
+<p>“Không biết theo ý chư vị đại nhân, vị hoàng tử nào có thể đảm đương trọng trách?”</p>
+<p>Tiếng tranh cãi dần dần lắng xuống.</p>
+<p>Vốn tưởng phải tốn rất nhiều công sức mới ép được Nhiếp Chính Vương thoái vị.</p>
+<p>Không ngờ hắn lại đáp ứng dứt khoát như vậy.</p>
+<p>Nhưng tiếp theo mới là nan đề thật sự.</p>
+<p>Hoàng vị chỉ có một.</p>
+<p>Người tranh đoạt lại có ba vị: Tam hoàng tử, Lục hoàng tử và Thất hoàng tử.</p>
+<p>Bọn họ nhìn nhau.</p>
+<p>Những tia lửa vô hình bắt đầu lan tràn trong Đại Thành điện, quỷ quyệt âm thầm cuộn chảy.</p>
+<p>Đương nhiên nên tôn Tam hoàng tử!</p>
+<p>Trong số các hoàng tử, Tam hoàng tử lớn tuổi nhất, thông tuệ, trầm ổn, có tài trị quốc, là người thích hợp nhất.</p>
+<p>Một bộ phận quan viên lại cho rằng:</p>
+<p>Nên ủng hộ Lục hoàng tử!</p>
+<p>Lục hoàng tử là bào đệ của Đại hoàng tử, từ nhỏ đã học đạo trị quốc, có đại cục quan, mới là lựa chọn tốt nhất!</p>
+<p>Một bộ phận khác thì dốc toàn lực ủng hộ Thất hoàng tử.</p>
+<p>Thất hoàng tử có mẫu tộc giàu mạnh, lại được Tĩnh Quý phi cùng Phương gia phò tá, mới có thể quản lý tốt nước Sở!</p>
+<p>Ánh mắt bọn họ giao nhau.</p>
+<p>Một trận tranh cãi kịch liệt chỉ chực bùng nổ…</p>
+<p>Chỉ là…</p>
+<p>Những chuyện ấy đã chẳng còn liên quan gì đến Sở Đệ Trì.</p>
+<p>Một lời gièm pha, hai quả đào giết ba tráng sĩ.</p>
+<p>Cứ để bọn chúng chó cắn chó đi.</p>
+<p>—</p>
+<p>Sở Ngạo Thiên thoát khỏi cuộc tranh cãi kịch liệt kia, lập tức sai người chuẩn bị ngựa, xuất cung, dùng tốc độ nhanh nhất chạy tới núi Thanh Dương.</p>
+<p>Khi nhìn thấy ngôi mộ mới đắp.</p>
+<p>Trước mắt hắn tối sầm, suýt nữa ngất lịm.</p>
+<p>“Cửu đệ…”</p>
+<p>Lần táng thân trong biển lửa, tim hắn đã đau một lần.</p>
+<p>Giờ đây…</p>
+<p>Lại thêm một lần khoét tim.</p>
+<p>Hắn ngậm nước mắt lao tới.</p>
+<p>Tần Mục Vũ dẫn theo Tần Mục Tuyết đã ở đó đốt vàng mã từ trước, hai người đều đỏ hoe mắt.</p>
+<p>Tần Mục Tuyết quỳ ngồi dưới đất, giọng khàn khàn mà bình tĩnh:</p>
+<p>“Đợi qua thất đầu của A Ly ca ca, muội sẽ xuống Giang Nam. Lâm Thất thúc thúc đang ở Giang Nam, muội muốn bái người làm sư phụ, chính thức học võ.”</p>
+<p>Tần Mục Vũ đưa đôi mắt sưng đỏ nhìn nàng:</p>
+<p>“Mục Tuyết, huynh phải tòng quân, chưa thể phụng dưỡng mẫu thân dưới gối, đã là bất hiếu. Muội không thể rời đi nữa.”</p>
+<p>“Ca, hiếu tâm của con cái chưa bao giờ nằm ở ngày ngày kề cận. Huynh chờ muội hai năm. Hai năm sau, đợi muội học thành xuất sư, muội sẽ cùng huynh ra chiến trường, báo thù cho A Ly ca ca.”</p>
+<p>Nàng đã quyết định rồi.</p>
+<p>“Mục Tuyết, huynh nói cho muội biết tin A Ly qua đời, là vì huynh biết muội có thể…”</p>
+<p>“Cửu đệ!”</p>
+<p>Hai huynh muội đột nhiên bị một người xô bật sang hai bên.</p>
+<p>Một bóng người lao vút tới, hai tay ôm chặt tấm bia mộ, hai chân cũng quặp lấy bia, vừa khóc vừa treo cả người lên đó:</p>
+<p>“Cửu đệ! Hu hu hu oa—— Sao đệ lại chết nữa rồi, Cửu đệ!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_172.html" class="btn">‹ Trước</a>
             <a href="chuong_174.html" class="btn">Sau ›</a>
         </div>
@@ -267,15 +275,11 @@ Một bóng người lao vút tới, hai tay ôm chặt tấm bia mộ, hai châ
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -287,11 +291,11 @@ Một bóng người lao vút tới, hai tay ôm chặt tấm bia mộ, hai châ
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

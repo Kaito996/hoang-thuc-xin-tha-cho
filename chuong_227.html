@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 227</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,155 +62,164 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 227</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_226.html" class="btn">‹ Trước</a>
             <a href="chuong_228.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 227: Chẳng lẽ Sở Đệ Trì biết thuật biến sắc sao
-Mưa gấp kéo đến vào buổi chiều muộn.
-Lúc hoàng hôn buông xuống, mặt hồ rộng lớn lấp lánh ánh bạc, đẹp đến nao lòng. Sở Đệ Trì ôm thân thể mềm mại trong lòng, tắm rửa sạch sẽ cho nàng xong mới trở về sương phòng.
-Nàng đã ngủ rồi.
-Làn da trắng như sứ phơn phớt ráng hồng, đôi mắt khép hờ, hàng mi cong vút thanh tú, đôi môi phấn khẽ hé, hô hấp đều đặn. Vừa chạm vào giường, nàng đã ôm chăn ngủ say.
-Nhìn người trong lòng, vị trí nơi trái tim nam nhân được lấp đầy đến căng tràn.
-Thỏa mãn vô cùng.
-Hắn cúi cằm cọ nhẹ lên đỉnh đầu nàng.
-“Tiểu Cửu…”
-Những năm qua, vì đứng vững gót chân, vì báo thù, mãi đến khi Sở Hoàng ngã xuống, hắn mới tìm được ý nghĩa của sinh mệnh.
-Đời người ngắn ngủi, được cùng người mình yêu thương tương tri, tương thủ, cùng nhau sẻ chia hỷ nộ ai lạc, cùng trải qua những thăng trầm, đối mặt mọi gian nan hiểm trở, bước đi trên con đường chỉ thuộc về hai người.
-Ôm nàng ngủ một lúc, hắn mới đứng dậy đi ra ngoài.
-Đêm xuống.
-Hồ Tâm đảo yên bình đến lạ. Ánh nến bập bùng soi sáng sương phòng, càng thêm tĩnh lặng, ấm áp.
-Trong cơn mê man, Sở Ly dường như ngửi thấy một mùi hương rất thơm.
-Hồ tiêu?
-Mùi thịt nướng?
-Nàng khẽ hít hít mũi, mơ màng xoay người, từ dưới chăn chui ra nửa cái đầu, liền nhìn thấy một bóng lưng đang bận rộn bên bàn.
-Sở Đệ Trì đang chuẩn bị bữa tối.
-Vừa nhìn thấy hắn, nàng lập tức tỉnh táo, mặt liền sa sầm, kéo chăn trùm kín đầu.
-“Tiểu Cửu, ăn tối thôi.”
-Nam nhân xắn nửa ống tay áo, bày biện bát đĩa.
-Trên bàn là một bàn thức ăn vô cùng phong phú: thịt nướng ướp gia vị, gà ăn mày, thịt thỏ thái hạt lựu cùng cơm trắng hấp với mè thơm.
-Nhìn thì cầu kỳ, nhưng kỳ thực các món đều đã được chuẩn bị sẵn từ trước, chỉ cần chế biến sơ qua là có thể dùng.
-Tiêu Dạ Hành quả thật có lòng.
-Sở Đệ Trì đặt đũa xuống, quay đầu nhìn về phía chiếc giường, nơi có một cục chăn phồng lên nho nhỏ.
-“Tiểu Cửu?”
-“Vẫn chưa tỉnh ngủ sao?”
-Sở Ly cuộn mình thành một khối, trùm kín đầu, co chân, nhắm chặt mắt.
-Đừng gọi ta.
-Ta không nghe thấy.
-Không ăn.
-Không đói.
-Không dậy.
-“Không ăn chút gì, e rằng không chịu nổi đến sáng mai đâu.”
-Bây giờ lại nhỏ nhẹ ôn tồn với nàng, cũng chẳng biết trước đó kẻ hung hăng kia là ai nữa.
-Chẳng lẽ Sở Đệ Trì biết thuật biến sắc sao?
-Sở Ly cười lạnh.
-Sở Đệ Trì gọi mấy tiếng vẫn không nhận được hồi đáp, đành đặt đũa xuống, đi tới chiếc tủ bên cạnh, lấy hòm thuốc ra thay thuốc và băng bó lại vết thương trên cánh tay.
-Tiếng động rất khẽ, xen lẫn vài tiếng rên trầm thấp của nam nhân…
-Trong sương phòng hoàn toàn yên tĩnh.
-Yên tĩnh.
-Góc chăn khẽ hé ra một khe nhỏ…
-Sở Ly nhìn thấy hắn đang thay thuốc, còn hừ hừ mấy tiếng, nụ cười lạnh trên môi càng sâu hơn.
-Chỉ chút thương tích ấy mà cũng rên rỉ!
-Rõ ràng là cố ý.
-Từ nay về sau, nàng tuyệt đối sẽ không mắc lừa nữa!
-Nàng đã hoàn toàn nhìn rõ hắn rồi!
-Ọc ọc—
-Bụng trống rỗng, đói đến mức có chút khó chịu. Làm việc hao tổn thể lực như vậy vốn là tiêu hao sức lực nhất.
-Nhưng nàng sẽ đi ăn sao?
-Không.
-Nàng, Sở Ly, không ăn của bố thí.
-Hôm nay, cho dù có chết đói, có đói đến ngất xỉu, nàng cũng tuyệt đối không ăn một miếng đồ của Sở Đệ Trì!
-Sở Ly siết chặt góc chăn, nhắm mắt ngủ, mặc cho thức ăn thơm đến đâu, mặc cho hắn gây ra động tĩnh gì, nàng cũng bịt tai như không nghe thấy, cứ như vẫn còn ngủ say.
-Sở Đệ Trì quấn xong băng vải, nhìn về phía giường:
-“Tiểu Cửu, ta có chuyện muốn nói với nàng.”
-“Trước hết hãy dậy ăn chút gì lót dạ. Nàng không biết yêu quý thân thể mình, người bị phạt chỉ có thể là ta.”
-Không có hồi đáp.
-“Tiểu Cửu?”
-Trên giường, đáp lại hắn chỉ có một khối chăn phồng lên cùng nửa sau cái đầu đen nhánh, ngoài ra chẳng còn gì khác.
-Hắn gọi thêm mấy tiếng, cuối cùng chỉ đành thấp giọng lẩm bẩm:
-“Nếu Tiểu Cửu vẫn chưa tỉnh ngủ, vậy ta ra bờ hồ câu cá vậy. Bằng không sáng mai sẽ chẳng còn gì để ăn. Chỉ là không có cần câu, cũng chẳng biết phải câu hai ba canh giờ mới có thể câu được…”
-Vừa lẩm bẩm tính toán, vừa mở cửa bước ra ngoài.
-Tiếng bước chân dần dần đi xa, cho đến khi hoàn toàn biến mất.
-Hắn đi rồi?
-Thật sự đi rồi sao?
-Sở Ly dựng tai lắng nghe thật lâu, xác định bên ngoài quả thực không còn chút động tĩnh nào, lúc ấy mới chậm rãi kéo chăn xuống.
-Hắn đi câu cá rồi, mà câu cá vốn là việc tốn thời gian nhất, ít thì một hai canh giờ, nhiều thì bảy tám canh giờ, trong thời gian ngắn chắc chắn sẽ không trở lại.
-Nàng đói lắm rồi.
-Giận thì vẫn giận, nhưng giận là giận Sở Đệ Trì, đâu cần tự hành hạ thân thể mình.
-Nàng phải ăn cho thật no!
-Xuống giường, ngay khi hai chân vừa chạm đất, đầu gối đã mềm nhũn, suýt nữa ngã nhào.
-“A…”
-Đứng cũng không vững.
-Hai chân như bị tháo rời, run bần bật như sàng trấu, ngọn lửa giận trong lòng lại bốc cao thêm ba phần.
-Đợi trở về Giang Nam, nàng sẽ thu dọn hành lý bỏ trốn ngay trong đêm!
-Sở Ly vịn mép giường, nghỉ ngơi rất lâu mới lê từng bước tới bên bàn. Mùi thịt nướng rắc hồ tiêu thơm nức khiến ngón trỏ khẽ động, nàng liếm khóe môi rồi xé lấy một chiếc đùi gà.
-Gà ăn mày được nướng vàng ruộm, ngoài giòn trong mềm, lớp da vàng óng bóng mỡ.
-Cắn một miếng.
-Thơm quá!
-Cả món thịt nướng này nữa, đã được ướp gia vị từ trước, lại nướng trên than hồng, mang theo cảm giác thư thái như đang dã ngoại nơi đồng quê, quây quần bên đống lửa nướng thịt.
-Lại ăn thêm một miếng cơm trắng.
-Oa!
-Trên cơm còn rắc mè thơm, hấp đến tơi xốp, hương thơm lưu luyến nơi môi răng.
-Không ngờ chỉ một bát cơm trắng cũng có thể hấp ngon đến vậy.
-Món này gắp hai miếng, món kia cắn hai miếng, lại uống thêm một chén nước ấm.
-Thoải mái!
-Trong phòng, tiếng động khe khẽ sột soạt vang lên.
-Ngoài phòng, nam nhân đáng lẽ đang câu cá lại nhàn nhã ngồi trong nhã viên lát đầy sỏi cuội, nhấp trà mát, khóe môi khẽ cong, lắng nghe tiếng sột soạt vọng ra từ bên trong.
-Hệt như một con sóc nhỏ đang lén gặm thức ăn. Ẩn bớt</p>
+            <p>Chương 227: Chẳng lẽ Sở Đệ Trì biết thuật biến sắc sao</p>
+<p>Mưa gấp kéo đến vào buổi chiều muộn.</p>
+<p>Lúc hoàng hôn buông xuống, mặt hồ rộng lớn lấp lánh ánh bạc, đẹp đến nao lòng. Sở Đệ Trì ôm thân thể mềm mại trong lòng, tắm rửa sạch sẽ cho nàng xong mới trở về sương phòng.</p>
+<p>Nàng đã ngủ rồi.</p>
+<p>Làn da trắng như sứ phơn phớt ráng hồng, đôi mắt khép hờ, hàng mi cong vút thanh tú, đôi môi phấn khẽ hé, hô hấp đều đặn. Vừa chạm vào giường, nàng đã ôm chăn ngủ say.</p>
+<p>Nhìn người trong lòng, vị trí nơi trái tim nam nhân được lấp đầy đến căng tràn.</p>
+<p>Thỏa mãn vô cùng.</p>
+<p>Hắn cúi cằm cọ nhẹ lên đỉnh đầu nàng.</p>
+<p>“Tiểu Cửu…”</p>
+<p>Những năm qua, vì đứng vững gót chân, vì báo thù, mãi đến khi Sở Hoàng ngã xuống, hắn mới tìm được ý nghĩa của sinh mệnh.</p>
+<p>Đời người ngắn ngủi, được cùng người mình yêu thương tương tri, tương thủ, cùng nhau sẻ chia hỷ nộ ai lạc, cùng trải qua những thăng trầm, đối mặt mọi gian nan hiểm trở, bước đi trên con đường chỉ thuộc về hai người.</p>
+<p>Ôm nàng ngủ một lúc, hắn mới đứng dậy đi ra ngoài.</p>
+<p>Đêm xuống.</p>
+<p>Hồ Tâm đảo yên bình đến lạ. Ánh nến bập bùng soi sáng sương phòng, càng thêm tĩnh lặng, ấm áp.</p>
+<p>Trong cơn mê man, Sở Ly dường như ngửi thấy một mùi hương rất thơm.</p>
+<p>Hồ tiêu?</p>
+<p>Mùi thịt nướng?</p>
+<p>Nàng khẽ hít hít mũi, mơ màng xoay người, từ dưới chăn chui ra nửa cái đầu, liền nhìn thấy một bóng lưng đang bận rộn bên bàn.</p>
+<p>Sở Đệ Trì đang chuẩn bị bữa tối.</p>
+<p>Vừa nhìn thấy hắn, nàng lập tức tỉnh táo, mặt liền sa sầm, kéo chăn trùm kín đầu.</p>
+<p>“Tiểu Cửu, ăn tối thôi.”</p>
+<p>Nam nhân xắn nửa ống tay áo, bày biện bát đĩa.</p>
+<p>Trên bàn là một bàn thức ăn vô cùng phong phú: thịt nướng ướp gia vị, gà ăn mày, thịt thỏ thái hạt lựu cùng cơm trắng hấp với mè thơm.</p>
+<p>Nhìn thì cầu kỳ, nhưng kỳ thực các món đều đã được chuẩn bị sẵn từ trước, chỉ cần chế biến sơ qua là có thể dùng.</p>
+<p>Tiêu Dạ Hành quả thật có lòng.</p>
+<p>Sở Đệ Trì đặt đũa xuống, quay đầu nhìn về phía chiếc giường, nơi có một cục chăn phồng lên nho nhỏ.</p>
+<p>“Tiểu Cửu?”</p>
+<p>“Vẫn chưa tỉnh ngủ sao?”</p>
+<p>Sở Ly cuộn mình thành một khối, trùm kín đầu, co chân, nhắm chặt mắt.</p>
+<p>Đừng gọi ta.</p>
+<p>Ta không nghe thấy.</p>
+<p>Không ăn.</p>
+<p>Không đói.</p>
+<p>Không dậy.</p>
+<p>“Không ăn chút gì, e rằng không chịu nổi đến sáng mai đâu.”</p>
+<p>Bây giờ lại nhỏ nhẹ ôn tồn với nàng, cũng chẳng biết trước đó kẻ hung hăng kia là ai nữa.</p>
+<p>Chẳng lẽ Sở Đệ Trì biết thuật biến sắc sao?</p>
+<p>Sở Ly cười lạnh.</p>
+<p>Sở Đệ Trì gọi mấy tiếng vẫn không nhận được hồi đáp, đành đặt đũa xuống, đi tới chiếc tủ bên cạnh, lấy hòm thuốc ra thay thuốc và băng bó lại vết thương trên cánh tay.</p>
+<p>Tiếng động rất khẽ, xen lẫn vài tiếng rên trầm thấp của nam nhân…</p>
+<p>Trong sương phòng hoàn toàn yên tĩnh.</p>
+<p>Yên tĩnh.</p>
+<p>Góc chăn khẽ hé ra một khe nhỏ…</p>
+<p>Sở Ly nhìn thấy hắn đang thay thuốc, còn hừ hừ mấy tiếng, nụ cười lạnh trên môi càng sâu hơn.</p>
+<p>Chỉ chút thương tích ấy mà cũng rên rỉ!</p>
+<p>Rõ ràng là cố ý.</p>
+<p>Từ nay về sau, nàng tuyệt đối sẽ không mắc lừa nữa!</p>
+<p>Nàng đã hoàn toàn nhìn rõ hắn rồi!</p>
+<p>Ọc ọc—</p>
+<p>Bụng trống rỗng, đói đến mức có chút khó chịu. Làm việc hao tổn thể lực như vậy vốn là tiêu hao sức lực nhất.</p>
+<p>Nhưng nàng sẽ đi ăn sao?</p>
+<p>Không.</p>
+<p>Nàng, Sở Ly, không ăn của bố thí.</p>
+<p>Hôm nay, cho dù có chết đói, có đói đến ngất xỉu, nàng cũng tuyệt đối không ăn một miếng đồ của Sở Đệ Trì!</p>
+<p>Sở Ly siết chặt góc chăn, nhắm mắt ngủ, mặc cho thức ăn thơm đến đâu, mặc cho hắn gây ra động tĩnh gì, nàng cũng bịt tai như không nghe thấy, cứ như vẫn còn ngủ say.</p>
+<p>Sở Đệ Trì quấn xong băng vải, nhìn về phía giường:</p>
+<p>“Tiểu Cửu, ta có chuyện muốn nói với nàng.”</p>
+<p>“Trước hết hãy dậy ăn chút gì lót dạ. Nàng không biết yêu quý thân thể mình, người bị phạt chỉ có thể là ta.”</p>
+<p>Không có hồi đáp.</p>
+<p>“Tiểu Cửu?”</p>
+<p>Trên giường, đáp lại hắn chỉ có một khối chăn phồng lên cùng nửa sau cái đầu đen nhánh, ngoài ra chẳng còn gì khác.</p>
+<p>Hắn gọi thêm mấy tiếng, cuối cùng chỉ đành thấp giọng lẩm bẩm:</p>
+<p>“Nếu Tiểu Cửu vẫn chưa tỉnh ngủ, vậy ta ra bờ hồ câu cá vậy. Bằng không sáng mai sẽ chẳng còn gì để ăn. Chỉ là không có cần câu, cũng chẳng biết phải câu hai ba canh giờ mới có thể câu được…”</p>
+<p>Vừa lẩm bẩm tính toán, vừa mở cửa bước ra ngoài.</p>
+<p>Tiếng bước chân dần dần đi xa, cho đến khi hoàn toàn biến mất.</p>
+<p>Hắn đi rồi?</p>
+<p>Thật sự đi rồi sao?</p>
+<p>Sở Ly dựng tai lắng nghe thật lâu, xác định bên ngoài quả thực không còn chút động tĩnh nào, lúc ấy mới chậm rãi kéo chăn xuống.</p>
+<p>Hắn đi câu cá rồi, mà câu cá vốn là việc tốn thời gian nhất, ít thì một hai canh giờ, nhiều thì bảy tám canh giờ, trong thời gian ngắn chắc chắn sẽ không trở lại.</p>
+<p>Nàng đói lắm rồi.</p>
+<p>Giận thì vẫn giận, nhưng giận là giận Sở Đệ Trì, đâu cần tự hành hạ thân thể mình.</p>
+<p>Nàng phải ăn cho thật no!</p>
+<p>Xuống giường, ngay khi hai chân vừa chạm đất, đầu gối đã mềm nhũn, suýt nữa ngã nhào.</p>
+<p>“A…”</p>
+<p>Đứng cũng không vững.</p>
+<p>Hai chân như bị tháo rời, run bần bật như sàng trấu, ngọn lửa giận trong lòng lại bốc cao thêm ba phần.</p>
+<p>Đợi trở về Giang Nam, nàng sẽ thu dọn hành lý bỏ trốn ngay trong đêm!</p>
+<p>Sở Ly vịn mép giường, nghỉ ngơi rất lâu mới lê từng bước tới bên bàn. Mùi thịt nướng rắc hồ tiêu thơm nức khiến ngón trỏ khẽ động, nàng liếm khóe môi rồi xé lấy một chiếc đùi gà.</p>
+<p>Gà ăn mày được nướng vàng ruộm, ngoài giòn trong mềm, lớp da vàng óng bóng mỡ.</p>
+<p>Cắn một miếng.</p>
+<p>Thơm quá!</p>
+<p>Cả món thịt nướng này nữa, đã được ướp gia vị từ trước, lại nướng trên than hồng, mang theo cảm giác thư thái như đang dã ngoại nơi đồng quê, quây quần bên đống lửa nướng thịt.</p>
+<p>Lại ăn thêm một miếng cơm trắng.</p>
+<p>Oa!</p>
+<p>Trên cơm còn rắc mè thơm, hấp đến tơi xốp, hương thơm lưu luyến nơi môi răng.</p>
+<p>Không ngờ chỉ một bát cơm trắng cũng có thể hấp ngon đến vậy.</p>
+<p>Món này gắp hai miếng, món kia cắn hai miếng, lại uống thêm một chén nước ấm.</p>
+<p>Thoải mái!</p>
+<p>Trong phòng, tiếng động khe khẽ sột soạt vang lên.</p>
+<p>Ngoài phòng, nam nhân đáng lẽ đang câu cá lại nhàn nhã ngồi trong nhã viên lát đầy sỏi cuội, nhấp trà mát, khóe môi khẽ cong, lắng nghe tiếng sột soạt vọng ra từ bên trong.</p>
+<p>Hệt như một con sóc nhỏ đang lén gặm thức ăn. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_226.html" class="btn">‹ Trước</a>
             <a href="chuong_228.html" class="btn">Sau ›</a>
         </div>
@@ -219,15 +227,11 @@ Hệt như một con sóc nhỏ đang lén gặm thức ăn. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -239,11 +243,11 @@ Hệt như một con sóc nhỏ đang lén gặm thức ăn. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

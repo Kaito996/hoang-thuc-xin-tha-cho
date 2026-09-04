@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 135</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,201 +62,210 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 135</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_134.html" class="btn">‹ Trước</a>
             <a href="chuong_136.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 135: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 135:  Sở Ly đau lòng như thể uống phải rượu giả
-Sở Dạ Ly bưng cơm canh đến, vén rèm bước vào lều.
-Sở Ly đang ôm một bụng tức ngồi trên chiếc sạp nhỏ. Hắn vốn tưởng phải dỗ dành một phen, nào ngờ nàng xắn tay áo lên, lon ton chạy tới ăn cơm.
-“Đói lắm rồi phải không?”
-Khóe mày khóe mắt hắn đều ngập ý cười, rót cho nàng một chén nước: “Ăn chậm thôi.”
-“Ăn xong, huynh sẽ dẫn ta đi gặp Tần Mục Vũ chứ?” Nàng nhồm nhoàm nhai, má phồng lên, giọng lúng búng hỏi.
-Hắn khựng lại.
-Đặt chén nước xuống bên cạnh tay nàng: “Ăn cơm trước đã.”
-“Huynh đã hứa với ta.”
-“Muội nhớ hắn đến vậy sao?”
-“Đúng.”
-“…”
-Sở Dạ Ly suýt nữa nghẹn một hơi không thở nổi.
-Nàng không nhìn ra hắn đang tức giận sao?
-Có phải dù hắn tức đến mức treo cổ, nàng cũng chỉ tưởng hắn đang đu xà, đung đưa chơi?
-“Tiểu Cửu, chuyện ta đã hứa với muội, tự nhiên sẽ làm. Nhưng khi ở cùng ta, có thể đừng nhắc đến người khác được không?”
-“Vậy huynh có đồng ý thả Tần Mục Vũ đi không?”
-“Chuyện này do Vệ tướng quân quyết định, ta không làm chủ được.”
-Được.
-Vậy khỏi cần nói nữa.
-Sở Ly cúi đầu cắm cúi ăn cơm, nhất thời không nói thêm gì, hì hục ăn đến mức trán cũng lấm tấm mồ hôi.
-Nam Man nóng hơn Đại Sở.
-Sở Dạ Ly rất thích nhìn dáng vẻ nàng ăn cơm, hệt như một con mèo ham ăn.
-“Ta đã sai người mua một bộ y phục sạch sẽ. Lát nữa sẽ cho người mang thùng tắm đến, để muội tắm rửa. Điều kiện trong quân doanh không thể so với hoàng cung, muội đành chịu thiệt một chút.”
-Sở Ly hỏi:
-“Cho ta tắm, vậy Tần Mục Vũ đã được tắm chưa?”
-Toàn thân hắn đầy máu, còn chẳng biết bị thương nặng đến mức nào.
-Sở Dạ Ly mím môi: “Muội nghỉ ngơi trước đi.”
-“Cho ta nghỉ ngơi, vậy Tần Mục Vũ đã được nghỉ chưa?”
-“Muội cứ yên tâm.”
-“Bảo ta yên tâm, vậy Tần Mục Vũ có thể yên tâm được sao?”
-Hắn bị giam giữ, thân hãm địch doanh, sống chết chưa rõ, bảo nàng làm sao yên tâm?
-Sở Ly liên tiếp hỏi vặn mấy câu. Đến khi phát hiện Sở Dạ Ly không đáp nữa, tim nàng chợt “thịch” một cái, theo bản năng ngẩng đầu nhìn.
-Chỉ thấy hắn đang dùng đôi mắt đen sâu thẳm nhìn nàng.
-Đáy mắt ấy sâu không thấy đáy, lạnh lẽo đến rợn người.
-Trong lòng nàng thầm kêu: Không ổn!
-Nàng cãi hắn như vậy, lỡ hắn mất kiên nhẫn, chẳng phải sẽ đánh nàng chứ?
-Người ở dưới mái hiên, không thể không cúi đầu.
-Thôi thì đừng cứng đầu quá nữa.
-Nàng cắn đầu đũa, đang định tìm cách nói vòng vo một chút, thì Sở Dạ Ly đã đứng dậy:
-“Ta đi dặn người chuẩn bị nước nóng cho muội tắm.”
-Hắn vén rèm, bước ra ngoài.
-Nào ngờ hắn vừa đi, Sở Ly cũng lập tức đi theo.
-Nàng đi một vòng quanh doanh trại, không tìm thấy chỗ giam Tần Mục Vũ, nhưng dựa vào cách bố trí phòng thủ dày đặc, rất nhanh đã xác định được một nơi canh giữ nghiêm ngặt.
-Bên cạnh mấy đống lửa cháy rực, nàng nhìn thấy Tần Mục Vũ bị trói vào cột.
-Hai tay bị trói, toàn thân đẫm máu, chỉ có thể cúi đầu đứng đó, trông tình trạng vô cùng tệ.
-“Mục Vũ!”
-Tim nàng thắt lại, vừa định bước tới thì đã bị binh sĩ chặn đường.
-“Ngươi là ai?”
-“Ta là… bằng hữu của Đông Lăng điện hạ, đến thăm tù binh.”
-Tên lính cau mày, ánh mắt sắc lạnh đánh giá nàng, lạnh giọng nói:
-“Người này là trọng phạm do Vệ tướng quân đích thân hạ lệnh canh giữ. Bất kỳ ai cũng không được đến gần.”
-“Ta phụng mệnh Đông Lăng điện hạ.”
-“Vậy cũng không được!”
-Sở Ly cất bước, cố xông tới.
-Tên lính lập tức rút kiếm.
-Keng!
-Không khí bỗng trở nên căng như dây đàn.
-Ánh mắt Sở Ly lạnh đi, trở tay rút thanh kiếm bên hông một tên lính khác, chém thẳng vào thanh kiếm đối phương.
-Tên lính quát lạnh:
-“Đúng là phản rồi!”
-Hắn vung kiếm, lập tức giao thủ với Sở Ly.
-Hai người giao đấu.
-Đao kiếm va chạm tóe lửa.
-Thân hình Sở Ly nhỏ nhắn, động tác nhanh nhẹn vô cùng, lại được sư phụ đích thân truyền dạy võ công, nàng luôn rất tự tin vào thực lực của mình.
-Dù hai mươi người cùng xông lên cũng chưa chắc là đối thủ của nàng.
-Hai phút sau…
-Nàng bị đánh ngã xuống đất.
-Trời đất!
-Sao nàng lại đến cả một tên lính quèn cũng đánh không lại?
-Không thể nào!
-Sư phụ từng nói, nàng đã lĩnh hội chân truyền của người, trò giỏi hơn thầy, còn lợi hại hơn cả mấy vị sư huynh.
-Một chưởng là đánh đại sư huynh bay xa mười trượng.
-Một cú quét chân là đá nhị sư huynh rơi thẳng xuống ao.
-Vận nội lực là đánh tam sư huynh đầy miệng tìm răng.
-Ba vị cữu cữu hợp sức cũng không đánh lại nàng.
-Vậy rốt cuộc là có chuyện gì?
-Sở Ly nhanh nhẹn bật dậy, chỉ thấy tên lính kia cầm kiếm bổ thẳng xuống đầu nàng.
-“Dừng tay!”
-Một tiếng quát lớn vang lên.
-“Đây là đạo đãi khách của Vệ tướng quân sao?”
-Sở Dạ Ly chạy đến, nội lực chấn văng thanh kiếm, đánh lui tên lính mấy bước.
-“Tiểu Cửu, muội không sao chứ?”
-Sở Ly buồn đến mức như uống phải rượu giả.
-Bởi vì…
-Binh lính Nam Man thật sự quá mạnh.
-Đến cả nàng, một tuyệt thế cao thủ, cũng đánh không lại.
-Nếu đội quân mạnh như vậy tràn qua Nam Cương, chẳng phải chẳng mấy chốc sẽ nuốt chửng cả Đại Sở sao?
-Đại Sở nguy rồi!
-Vệ tướng quân ánh mắt lạnh lẽo.
-Đông Lăng điện hạ là thượng khách của Nam Man, là quý khách được Trưởng công chúa đích thân căn dặn phải kính trọng, vị Tiểu Sở công tử này đương nhiên cũng phải được tiếp đãi chu đáo.
-Tên lính kia vội vàng tố cáo:
-“Tướng quân, vừa rồi Tiểu Sở công tử định…”
-“Khốn kiếp!”
-Vệ tướng quân giơ tay tát liền hai cái.
-“Cút đi lĩnh hai mươi quân côn!”
-Tên lính ôm mặt, giận mà không dám nói, chỉ cúi đầu lui xuống.
-“Tiểu Cửu, muội thế nào rồi?”
-“Tần Mục Vũ!”
-Sở Ly hất tay Sở Dạ Ly ra, lập tức chạy tới, nâng khuôn mặt gần như đã hôn mê của thiếu niên lên, lo lắng gọi:
-“Mục Vũ, huynh sao rồi? Người huynh toàn là máu…”
-“A Ly…”
-Đôi mắt thiếu niên nửa mở nửa khép, hơi thở mong manh:
-“Đừng lo… số máu này… đều là của địch nhân… ta không bị thương…”
-Bọn chúng đã ép hắn uống Nhuyễn Cốt Tán.
-Toàn thân hắn mềm nhũn vô lực, ngay cả đầu cũng không ngẩng nổi, đến mở mắt cũng vô cùng khó khăn.
-Hắn không còn chút sức lực nào.
-“Mục Vũ, chẳng phải huynh đang trấn thủ Nam Cương sao? Đang yên đang lành, sao lại bị người Nam Man bắt được?”
-“Ta dò được tung tích của muội… lo muội gặp nguy hiểm… nên muốn đến cứu muội…”
-“Đồ ngốc!”
-Đúng là một tên đại ngốc!
-“Ta vẫn bình yên, huynh đến cứu ta làm gì! Ta lớn thế này rồi, tự biết bảo vệ mình. Nếu huynh có mệnh hệ gì, ta biết ăn nói với Mục Tuyết thế nào đây!”
-Sở Ly ôm lấy đầu hắn, hai mắt đỏ hoe.
-“Chúng ta nhất định sẽ trốn được. Ta sẽ nghĩ cách. Mục Vũ, huynh chờ ta.”
-Tần Mục Vũ cố sức nhìn nàng, miễn cưỡng nở một nụ cười:
-“A Ly… ta không sao… muội… hãy cẩn thận… bất cứ việc gì… cũng phải lấy sự an nguy của bản thân làm trọng… ta không đáng ngại…”
-Hắn là nam nhân.
-Không sợ sống chết.
-Nhưng trong lòng hắn, nàng mãi mãi chỉ là một cô nương nhỏ cần được che chở.
-Sở Ly ôm lấy hắn, khóc không thành tiếng.
-Nơi đất khách quê người, giữa địch doanh trùng điệp, chỉ khi hai người tựa sát vào nhau, họ mới có thể cảm nhận được chút cảm giác an toàn.
-Ở nơi này, người duy nhất nàng có thể tin tưởng chỉ có hắn.
-Nhưng thiên quân vạn mã, phòng thủ tầng tầng, lại thêm Tần Mục Vũ đã trúng Nhuyễn Cốt Tán. Muốn chạy trốn, trước tiên phải tìm cách giải được Nhuyễn Cốt Tán.
-Quân y!
-Chỗ quân y chắc chắn có thuốc!
-Sở Dạ Ly đứng cách đó không xa, nhìn hai người ôm chặt lấy nhau bên ánh lửa, đồng bệnh tương liên, trong lòng dâng lên một nỗi chua xót khó tả.
-Không nói rõ được là cảm giác gì.
-Chỉ thấy rất khó chịu.
-“Điện hạ, Trưởng công chúa đến!”
-Sở Dạ Ly khẽ cau mày.
-Ngay sau đó, tiếng vó ngựa xé toạc màn đêm truyền đến.
-Hắn quay đầu nhìn lại, chỉ thấy một nữ tử vận hồng y đang thúc ngựa phi tới. Dung nhan rực rỡ như ánh mặt trời.
-“Dạ Ly ca ca!”
-Nàng chính là Trưởng công chúa Nam Man, hòn ngọc quý trên tay Nam Man Vương — Thác Bạt Minh Nguyệt.
-Nàng vui mừng nhảy xuống ngựa:
-“Muội nhận được cấp báo từ sớm rằng huynh đã đến Nam Man, liền lập tức phi ngựa suốt đường đến quân doanh ngay!” Ẩn bớt</p>
+            <p>Chương 135: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 135:  Sở Ly đau lòng như thể uống phải rượu giả</p>
+<p>Sở Dạ Ly bưng cơm canh đến, vén rèm bước vào lều.</p>
+<p>Sở Ly đang ôm một bụng tức ngồi trên chiếc sạp nhỏ. Hắn vốn tưởng phải dỗ dành một phen, nào ngờ nàng xắn tay áo lên, lon ton chạy tới ăn cơm.</p>
+<p>“Đói lắm rồi phải không?”</p>
+<p>Khóe mày khóe mắt hắn đều ngập ý cười, rót cho nàng một chén nước: “Ăn chậm thôi.”</p>
+<p>“Ăn xong, huynh sẽ dẫn ta đi gặp Tần Mục Vũ chứ?” Nàng nhồm nhoàm nhai, má phồng lên, giọng lúng búng hỏi.</p>
+<p>Hắn khựng lại.</p>
+<p>Đặt chén nước xuống bên cạnh tay nàng: “Ăn cơm trước đã.”</p>
+<p>“Huynh đã hứa với ta.”</p>
+<p>“Muội nhớ hắn đến vậy sao?”</p>
+<p>“Đúng.”</p>
+<p>“…”</p>
+<p>Sở Dạ Ly suýt nữa nghẹn một hơi không thở nổi.</p>
+<p>Nàng không nhìn ra hắn đang tức giận sao?</p>
+<p>Có phải dù hắn tức đến mức treo cổ, nàng cũng chỉ tưởng hắn đang đu xà, đung đưa chơi?</p>
+<p>“Tiểu Cửu, chuyện ta đã hứa với muội, tự nhiên sẽ làm. Nhưng khi ở cùng ta, có thể đừng nhắc đến người khác được không?”</p>
+<p>“Vậy huynh có đồng ý thả Tần Mục Vũ đi không?”</p>
+<p>“Chuyện này do Vệ tướng quân quyết định, ta không làm chủ được.”</p>
+<p>Được.</p>
+<p>Vậy khỏi cần nói nữa.</p>
+<p>Sở Ly cúi đầu cắm cúi ăn cơm, nhất thời không nói thêm gì, hì hục ăn đến mức trán cũng lấm tấm mồ hôi.</p>
+<p>Nam Man nóng hơn Đại Sở.</p>
+<p>Sở Dạ Ly rất thích nhìn dáng vẻ nàng ăn cơm, hệt như một con mèo ham ăn.</p>
+<p>“Ta đã sai người mua một bộ y phục sạch sẽ. Lát nữa sẽ cho người mang thùng tắm đến, để muội tắm rửa. Điều kiện trong quân doanh không thể so với hoàng cung, muội đành chịu thiệt một chút.”</p>
+<p>Sở Ly hỏi:</p>
+<p>“Cho ta tắm, vậy Tần Mục Vũ đã được tắm chưa?”</p>
+<p>Toàn thân hắn đầy máu, còn chẳng biết bị thương nặng đến mức nào.</p>
+<p>Sở Dạ Ly mím môi: “Muội nghỉ ngơi trước đi.”</p>
+<p>“Cho ta nghỉ ngơi, vậy Tần Mục Vũ đã được nghỉ chưa?”</p>
+<p>“Muội cứ yên tâm.”</p>
+<p>“Bảo ta yên tâm, vậy Tần Mục Vũ có thể yên tâm được sao?”</p>
+<p>Hắn bị giam giữ, thân hãm địch doanh, sống chết chưa rõ, bảo nàng làm sao yên tâm?</p>
+<p>Sở Ly liên tiếp hỏi vặn mấy câu. Đến khi phát hiện Sở Dạ Ly không đáp nữa, tim nàng chợt “thịch” một cái, theo bản năng ngẩng đầu nhìn.</p>
+<p>Chỉ thấy hắn đang dùng đôi mắt đen sâu thẳm nhìn nàng.</p>
+<p>Đáy mắt ấy sâu không thấy đáy, lạnh lẽo đến rợn người.</p>
+<p>Trong lòng nàng thầm kêu: Không ổn!</p>
+<p>Nàng cãi hắn như vậy, lỡ hắn mất kiên nhẫn, chẳng phải sẽ đánh nàng chứ?</p>
+<p>Người ở dưới mái hiên, không thể không cúi đầu.</p>
+<p>Thôi thì đừng cứng đầu quá nữa.</p>
+<p>Nàng cắn đầu đũa, đang định tìm cách nói vòng vo một chút, thì Sở Dạ Ly đã đứng dậy:</p>
+<p>“Ta đi dặn người chuẩn bị nước nóng cho muội tắm.”</p>
+<p>Hắn vén rèm, bước ra ngoài.</p>
+<p>Nào ngờ hắn vừa đi, Sở Ly cũng lập tức đi theo.</p>
+<p>Nàng đi một vòng quanh doanh trại, không tìm thấy chỗ giam Tần Mục Vũ, nhưng dựa vào cách bố trí phòng thủ dày đặc, rất nhanh đã xác định được một nơi canh giữ nghiêm ngặt.</p>
+<p>Bên cạnh mấy đống lửa cháy rực, nàng nhìn thấy Tần Mục Vũ bị trói vào cột.</p>
+<p>Hai tay bị trói, toàn thân đẫm máu, chỉ có thể cúi đầu đứng đó, trông tình trạng vô cùng tệ.</p>
+<p>“Mục Vũ!”</p>
+<p>Tim nàng thắt lại, vừa định bước tới thì đã bị binh sĩ chặn đường.</p>
+<p>“Ngươi là ai?”</p>
+<p>“Ta là… bằng hữu của Đông Lăng điện hạ, đến thăm tù binh.”</p>
+<p>Tên lính cau mày, ánh mắt sắc lạnh đánh giá nàng, lạnh giọng nói:</p>
+<p>“Người này là trọng phạm do Vệ tướng quân đích thân hạ lệnh canh giữ. Bất kỳ ai cũng không được đến gần.”</p>
+<p>“Ta phụng mệnh Đông Lăng điện hạ.”</p>
+<p>“Vậy cũng không được!”</p>
+<p>Sở Ly cất bước, cố xông tới.</p>
+<p>Tên lính lập tức rút kiếm.</p>
+<p>Keng!</p>
+<p>Không khí bỗng trở nên căng như dây đàn.</p>
+<p>Ánh mắt Sở Ly lạnh đi, trở tay rút thanh kiếm bên hông một tên lính khác, chém thẳng vào thanh kiếm đối phương.</p>
+<p>Tên lính quát lạnh:</p>
+<p>“Đúng là phản rồi!”</p>
+<p>Hắn vung kiếm, lập tức giao thủ với Sở Ly.</p>
+<p>Hai người giao đấu.</p>
+<p>Đao kiếm va chạm tóe lửa.</p>
+<p>Thân hình Sở Ly nhỏ nhắn, động tác nhanh nhẹn vô cùng, lại được sư phụ đích thân truyền dạy võ công, nàng luôn rất tự tin vào thực lực của mình.</p>
+<p>Dù hai mươi người cùng xông lên cũng chưa chắc là đối thủ của nàng.</p>
+<p>Hai phút sau…</p>
+<p>Nàng bị đánh ngã xuống đất.</p>
+<p>Trời đất!</p>
+<p>Sao nàng lại đến cả một tên lính quèn cũng đánh không lại?</p>
+<p>Không thể nào!</p>
+<p>Sư phụ từng nói, nàng đã lĩnh hội chân truyền của người, trò giỏi hơn thầy, còn lợi hại hơn cả mấy vị sư huynh.</p>
+<p>Một chưởng là đánh đại sư huynh bay xa mười trượng.</p>
+<p>Một cú quét chân là đá nhị sư huynh rơi thẳng xuống ao.</p>
+<p>Vận nội lực là đánh tam sư huynh đầy miệng tìm răng.</p>
+<p>Ba vị cữu cữu hợp sức cũng không đánh lại nàng.</p>
+<p>Vậy rốt cuộc là có chuyện gì?</p>
+<p>Sở Ly nhanh nhẹn bật dậy, chỉ thấy tên lính kia cầm kiếm bổ thẳng xuống đầu nàng.</p>
+<p>“Dừng tay!”</p>
+<p>Một tiếng quát lớn vang lên.</p>
+<p>“Đây là đạo đãi khách của Vệ tướng quân sao?”</p>
+<p>Sở Dạ Ly chạy đến, nội lực chấn văng thanh kiếm, đánh lui tên lính mấy bước.</p>
+<p>“Tiểu Cửu, muội không sao chứ?”</p>
+<p>Sở Ly buồn đến mức như uống phải rượu giả.</p>
+<p>Bởi vì…</p>
+<p>Binh lính Nam Man thật sự quá mạnh.</p>
+<p>Đến cả nàng, một tuyệt thế cao thủ, cũng đánh không lại.</p>
+<p>Nếu đội quân mạnh như vậy tràn qua Nam Cương, chẳng phải chẳng mấy chốc sẽ nuốt chửng cả Đại Sở sao?</p>
+<p>Đại Sở nguy rồi!</p>
+<p>Vệ tướng quân ánh mắt lạnh lẽo.</p>
+<p>Đông Lăng điện hạ là thượng khách của Nam Man, là quý khách được Trưởng công chúa đích thân căn dặn phải kính trọng, vị Tiểu Sở công tử này đương nhiên cũng phải được tiếp đãi chu đáo.</p>
+<p>Tên lính kia vội vàng tố cáo:</p>
+<p>“Tướng quân, vừa rồi Tiểu Sở công tử định…”</p>
+<p>“Khốn kiếp!”</p>
+<p>Vệ tướng quân giơ tay tát liền hai cái.</p>
+<p>“Cút đi lĩnh hai mươi quân côn!”</p>
+<p>Tên lính ôm mặt, giận mà không dám nói, chỉ cúi đầu lui xuống.</p>
+<p>“Tiểu Cửu, muội thế nào rồi?”</p>
+<p>“Tần Mục Vũ!”</p>
+<p>Sở Ly hất tay Sở Dạ Ly ra, lập tức chạy tới, nâng khuôn mặt gần như đã hôn mê của thiếu niên lên, lo lắng gọi:</p>
+<p>“Mục Vũ, huynh sao rồi? Người huynh toàn là máu…”</p>
+<p>“A Ly…”</p>
+<p>Đôi mắt thiếu niên nửa mở nửa khép, hơi thở mong manh:</p>
+<p>“Đừng lo… số máu này… đều là của địch nhân… ta không bị thương…”</p>
+<p>Bọn chúng đã ép hắn uống Nhuyễn Cốt Tán.</p>
+<p>Toàn thân hắn mềm nhũn vô lực, ngay cả đầu cũng không ngẩng nổi, đến mở mắt cũng vô cùng khó khăn.</p>
+<p>Hắn không còn chút sức lực nào.</p>
+<p>“Mục Vũ, chẳng phải huynh đang trấn thủ Nam Cương sao? Đang yên đang lành, sao lại bị người Nam Man bắt được?”</p>
+<p>“Ta dò được tung tích của muội… lo muội gặp nguy hiểm… nên muốn đến cứu muội…”</p>
+<p>“Đồ ngốc!”</p>
+<p>Đúng là một tên đại ngốc!</p>
+<p>“Ta vẫn bình yên, huynh đến cứu ta làm gì! Ta lớn thế này rồi, tự biết bảo vệ mình. Nếu huynh có mệnh hệ gì, ta biết ăn nói với Mục Tuyết thế nào đây!”</p>
+<p>Sở Ly ôm lấy đầu hắn, hai mắt đỏ hoe.</p>
+<p>“Chúng ta nhất định sẽ trốn được. Ta sẽ nghĩ cách. Mục Vũ, huynh chờ ta.”</p>
+<p>Tần Mục Vũ cố sức nhìn nàng, miễn cưỡng nở một nụ cười:</p>
+<p>“A Ly… ta không sao… muội… hãy cẩn thận… bất cứ việc gì… cũng phải lấy sự an nguy của bản thân làm trọng… ta không đáng ngại…”</p>
+<p>Hắn là nam nhân.</p>
+<p>Không sợ sống chết.</p>
+<p>Nhưng trong lòng hắn, nàng mãi mãi chỉ là một cô nương nhỏ cần được che chở.</p>
+<p>Sở Ly ôm lấy hắn, khóc không thành tiếng.</p>
+<p>Nơi đất khách quê người, giữa địch doanh trùng điệp, chỉ khi hai người tựa sát vào nhau, họ mới có thể cảm nhận được chút cảm giác an toàn.</p>
+<p>Ở nơi này, người duy nhất nàng có thể tin tưởng chỉ có hắn.</p>
+<p>Nhưng thiên quân vạn mã, phòng thủ tầng tầng, lại thêm Tần Mục Vũ đã trúng Nhuyễn Cốt Tán. Muốn chạy trốn, trước tiên phải tìm cách giải được Nhuyễn Cốt Tán.</p>
+<p>Quân y!</p>
+<p>Chỗ quân y chắc chắn có thuốc!</p>
+<p>Sở Dạ Ly đứng cách đó không xa, nhìn hai người ôm chặt lấy nhau bên ánh lửa, đồng bệnh tương liên, trong lòng dâng lên một nỗi chua xót khó tả.</p>
+<p>Không nói rõ được là cảm giác gì.</p>
+<p>Chỉ thấy rất khó chịu.</p>
+<p>“Điện hạ, Trưởng công chúa đến!”</p>
+<p>Sở Dạ Ly khẽ cau mày.</p>
+<p>Ngay sau đó, tiếng vó ngựa xé toạc màn đêm truyền đến.</p>
+<p>Hắn quay đầu nhìn lại, chỉ thấy một nữ tử vận hồng y đang thúc ngựa phi tới. Dung nhan rực rỡ như ánh mặt trời.</p>
+<p>“Dạ Ly ca ca!”</p>
+<p>Nàng chính là Trưởng công chúa Nam Man, hòn ngọc quý trên tay Nam Man Vương — Thác Bạt Minh Nguyệt.</p>
+<p>Nàng vui mừng nhảy xuống ngựa:</p>
+<p>“Muội nhận được cấp báo từ sớm rằng huynh đã đến Nam Man, liền lập tức phi ngựa suốt đường đến quân doanh ngay!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_134.html" class="btn">‹ Trước</a>
             <a href="chuong_136.html" class="btn">Sau ›</a>
         </div>
@@ -265,15 +273,11 @@ Nàng vui mừng nhảy xuống ngựa:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -285,11 +289,11 @@ Nàng vui mừng nhảy xuống ngựa:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

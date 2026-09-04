@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 96</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,184 +62,193 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 96</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_95.html" class="btn">‹ Trước</a>
             <a href="chuong_97.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 96: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 96: Dốc hết thảy, cũng chỉ đủ báo đáp một phần vạn
-Thanh Phong Cư.
-“Chủ tử, hoàng thượng vậy mà lại phá lệ giao cho Cửu hoàng tử chủ trì đại lễ Trùng Dương năm nay. Phải biết rằng trước nay Cửu hoàng tử chưa từng can dự triều chính. Ngài xem chuyện này…”
-A Ngọc khom lưng, cẩn thận quan sát sắc mặt của nam nhân ngồi trên xe lăn.
-Thế nhưng, nam nhân vẫn chậm rãi pha trà, nụ cười ôn nhu không đổi:
-“Tiểu Cửu còn nhỏ, cũng nên rèn luyện một phen.”
-A Ngọc nhíu mày:
-“Hoàng thượng từ trước đến nay vẫn thiên vị ấu tử. Nô tài chỉ lo một khi đã mở ra tiền lệ này, sau này e rằng sẽ càng lúc càng khó thu vãn.”
-“Gấp cái gì?”
-Sở Dạ Ly nhấp một ngụm trà thơm, khẽ cười:
-“Trời có sập xuống thì cũng có kẻ cao chống đỡ. Thân tàn phế như ta, quản được nhiều chuyện như vậy sao?”
-Hắn sốt ruột làm gì?
-Tự khắc sẽ có người còn sốt ruột hơn hắn.
-⸻
-Thượng thư bộ Lễ họ Lý cùng Sở Ly bàn bạc quy trình đại lễ Trùng Dương, trình bày chương trình và các nghi lễ. Không ngờ Cửu hoàng tử đối đáp trôi chảy, thậm chí còn bổ sung thêm những kiến giải của mình, khiến mọi việc càng thêm chu toàn.
-Ông kinh ngạc vô cùng.
-Cửu hoàng tử vậy mà lại có tầm suy nghĩ như thế!
-Trước đây…
-Là ông đã xem thường Cửu hoàng tử rồi!
-Bàn bạc xong xuôi, Lý Thượng thư cáo lui trước. Sở Ngạo Thiên phanh rộng vạt áo, nghênh ngang bước vào:
-“Cửu đệ!”
-Sở Ly đang thay thuốc.
-“Vết thương trên tay đệ sao vẫn chưa lành?”
-Sở Ngạo Thiên nhìn mà thấy rợn người.
-Vết cắt do dao gây ra vừa dài vừa ngay ngắn, nay lại đỏ ửng, da thịt hơi lật ra ngoài, lộ cả tia máu, trông thật ghê người.
-Sở Ly nói:
-“Có lẽ mấy ngày nay quấn băng kín quá, không được thông thoáng nên hơi viêm rồi.”
-Nàng quay đầu dặn Cẩu Bát:
-“Hôm nay chỉ quấn hai vòng băng là được.”
-“Vâng, chủ tử.”
-Chỉ là một vết thương nhỏ, lại không ở vị trí chí mạng, Sở Ly cũng không để trong lòng.
-“Bát hoàng huynh sao hôm nay lại rảnh rỗi sang đây? Mẫu phi huynh chẳng phải không cho huynh chơi với ta sao?”
-Sở Ngạo Thiên há miệng:
-“Ừm…”
-Chuyện này thì…
-“Nếu mẫu phi hỏi, ta sẽ bảo là đệ chủ động tìm ta chơi.”
-“?”
-Bán đứng nàng?
-“Ôi chao Cửu đệ, trong cung này chỉ còn hai huynh đệ ta chưa được ban phủ xuất cung. Nếu đệ không chơi với ta, ta nhất định sẽ chán chết mất.”
-Sở Ngạo Thiên thở dài.
-“Huống hồ đệ còn được phụ hoàng trọng dụng rồi, thật khiến ta sốt ruột muốn chết.”
-Như vậy, hắn sẽ trở thành hoàng tử vô dụng nhất hoàng thất.
-Có điều…
-Thì đã sao chứ?
-Đội sổ cũng là hạng nhất.
-Sở Ngạo Thiên bỗng nhiên thông suốt, mặt mày tươi cười:
-“Nghe nói Trùng Dương phải mua rất nhiều thù du với rượu cúc. Đi, chúng ta xuất cung dạo phố đi?”
-Sở Ly cũng đã bị giam trong cung mấy ngày.
-Không nhịn nổi nữa rồi.
-Nhờ có Nhiếp Chính Vương chỉ dạy, chỉ trong vỏn vẹn hai ngày nàng đã nắm được việc đại lễ Trùng Dương.
-Mà hắn…
-Quả thật là đang nghiêm túc dạy nàng.
-“Đợi ta thay bộ y phục đã.”
-“Được.”
-Hai khắc sau, hai huynh đệ đã có mặt trên phố.
-Cả hai đều mặc cẩm bào, phe phẩy chiết phiến, dung mạo tuấn mỹ sóng vai bước đi giữa đường. Phong thái tôn quý ấy khiến không ít cô nương liên tục ngoái đầu nhìn theo.
-Thế nhưng Sở Ly biết…
-Các nàng đều đang nhìn Sở Ngạo Thiên.
-Bởi vì nàng quá thấp.
-Đại Sở dùng võ lực mà giành thiên hạ, vì thế cả nước đều sùng thượng võ đạo. Các cô nương cũng thích những nam nhân cao lớn, anh dũng.
-Vóc dáng như nàng chẳng khác nào một con ngựa non còn chưa trưởng thành. Tuy dung mạo đẹp mắt, nhưng chỉ để ngắm chứ chẳng có tác dụng gì, hoàn toàn có thể xem như không tồn tại.
-Sở Ly xoa xoa mặt, bước vào một tửu phường.
-Chủ quán tươi cười đón khách:
-“Công tử, muốn mua rượu sao?”
-Trùng Dương sắp đến, Sở Ly định mua ít rượu cúc mang về cho mẫu phi.
-Sở Ngạo Thiên đứng ngoài cửa. Dù có bao nhiêu cô nương nhìn hắn, hắn cũng chẳng để tâm, trong lòng chỉ nôn nóng muốn sang Tây Nhai chơi.
-Con dế và gà chọi mua ở Tây Nhai lần trước, hắn thích vô cùng.
-Nơi đó còn có biết bao món đồ kỳ lạ hiếm thấy. Chỉ nghĩ thôi đã thấy không chờ nổi nữa.
-“Cửu đệ, xong chưa?”
-Hắn giục một tiếng.
-Sở Ly đang nếm rượu:
-“Đợi một chút… Chủ quán, loại này được ủ bao lâu rồi?”
-Một lúc sau, Sở Ngạo Thiên lại thúc giục:
-“Cửu đệ, mua xong chưa?”
-“Đợi thêm chút nữa.”
-Mua có ít rượu thôi mà sao lâu thế?
-Sở Ngạo Thiên không hiểu.
-Trên phố, Ôn Nhã đang cùng hai vị tiểu thư thứ xuất khác dạo chơi. Vô tình liếc mắt, nàng lập tức nhìn thấy Sở Ngạo Thiên, bước chân liền khựng lại.
-Bát hoàng tử!
-Lần trước, nàng bị gia pháp, nếu không nhờ Bát hoàng tử cầu tình giúp, thương thế của nàng sao có thể hồi phục nhanh như vậy?
-Sau một tháng tĩnh dưỡng, nàng mới có thể sớm ra ngoài dạo phố.
-Ân tình này…
-Nàng vẫn luôn ghi nhớ trong lòng.
-Ôn Nhã khẽ cắn môi dưới, nói với hai người bạn:
-“Tiểu Liễu, Tiểu Uyển, ta còn có chút việc, hai người cứ đi dạo trước đi.”
-“Được.”
-Hai người không hỏi nhiều, cùng nhau rời đi.
-Ôn Nhã bước về phía tửu phường, nhìn Bát hoàng tử đang đứng trên bậc thềm nhảy lên nhảy xuống, tiến đến hành lễ:
-“Thần nữ bái kiến Bát hoàng tử điện hạ.”
-Sở Ngạo Thiên ngẩng đầu.
-Nàng là…
-À~~
-Nhớ ra rồi.
-“Ôn tiểu thư.”
-Ôn Nhã mừng rỡ:
-“Bát hoàng tử còn nhớ thần nữ sao?”
-Quả nhiên…
-Ngài ấy thích nàng!
-Vì thân phận thứ xuất, nàng chưa từng vào cung dự yến, cũng chưa từng tham dự những buổi tụ họp của giới quyền quý ở kinh thành. Rất nhiều dịp trang trọng đều không cho phép con cái thứ xuất tham dự, bởi vậy trong Ôn gia, cảm giác tồn tại của nàng vốn rất thấp.
-Không ngờ…
-Bát hoàng tử lại để nàng trong lòng.
-Sở Ngạo Thiên nói:
-“Nàng là biểu muội của Sở Ly, đương nhiên ta nhớ. Lần trước chúng ta đã gặp nhau ở Ôn gia.”
-Ôn Nhã vui vẻ nói:
-“Hôm ấy Bát hoàng tử ra tay cứu giúp, thần nữ vẫn luôn ghi nhớ ân tình của ngài, chỉ mong một ngày nào đó có thể báo đáp. Không ngờ nhanh như vậy đã lại gặp nhau. Hôm ấy, ngài quả thực đã cứu mạng thần nữ. Ôn Nhã cảm kích khôn xiết, e rằng chỉ có dốc hết thảy mọi thứ của mình, mới có thể báo đáp được một phần vạn ân tình ấy.”
-Trong lòng Sở Ngạo Thiên chỉ nghĩ đến chuyện sang Tây Nhai chơi, chỉ nghe Ôn Nhã thao thao bất tuyệt một tràng:
-“Ba la ba la, ba la ba la… dốc hết thảy.”
-Hắn ngẩn người mất một lúc:
-“Hả?”
-Lời nàng nói…
-Sao hắn cứ thấy có gì đó không đúng?
-Nói một hồi…
-Hình như càng lúc càng lệch rồi.
-Báo đáp hắn ân tình gì chứ?
-Sở Ngạo Thiên nghĩ mãi không ra, gãi gãi đầu, hướng vào trong tửu phường gọi lớn:
-“Cửu đệ! Mau ra đây! Biểu muội của đệ bảo muốn dốc hết thảy vì ta. Ta phải làm sao bây giờ?”
-Sắc mặt Ôn Nhã lập tức đại biến.
-Lúc này nàng mới chú ý tới Sở Ly đang ở trong tửu phường.
-Biểu huynh sao cũng ở đây?! Ẩn bớt</p>
+            <p>Chương 96: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 96: Dốc hết thảy, cũng chỉ đủ báo đáp một phần vạn</p>
+<p>Thanh Phong Cư.</p>
+<p>“Chủ tử, hoàng thượng vậy mà lại phá lệ giao cho Cửu hoàng tử chủ trì đại lễ Trùng Dương năm nay. Phải biết rằng trước nay Cửu hoàng tử chưa từng can dự triều chính. Ngài xem chuyện này…”</p>
+<p>A Ngọc khom lưng, cẩn thận quan sát sắc mặt của nam nhân ngồi trên xe lăn.</p>
+<p>Thế nhưng, nam nhân vẫn chậm rãi pha trà, nụ cười ôn nhu không đổi:</p>
+<p>“Tiểu Cửu còn nhỏ, cũng nên rèn luyện một phen.”</p>
+<p>A Ngọc nhíu mày:</p>
+<p>“Hoàng thượng từ trước đến nay vẫn thiên vị ấu tử. Nô tài chỉ lo một khi đã mở ra tiền lệ này, sau này e rằng sẽ càng lúc càng khó thu vãn.”</p>
+<p>“Gấp cái gì?”</p>
+<p>Sở Dạ Ly nhấp một ngụm trà thơm, khẽ cười:</p>
+<p>“Trời có sập xuống thì cũng có kẻ cao chống đỡ. Thân tàn phế như ta, quản được nhiều chuyện như vậy sao?”</p>
+<p>Hắn sốt ruột làm gì?</p>
+<p>Tự khắc sẽ có người còn sốt ruột hơn hắn.</p>
+<p>⸻</p>
+<p>Thượng thư bộ Lễ họ Lý cùng Sở Ly bàn bạc quy trình đại lễ Trùng Dương, trình bày chương trình và các nghi lễ. Không ngờ Cửu hoàng tử đối đáp trôi chảy, thậm chí còn bổ sung thêm những kiến giải của mình, khiến mọi việc càng thêm chu toàn.</p>
+<p>Ông kinh ngạc vô cùng.</p>
+<p>Cửu hoàng tử vậy mà lại có tầm suy nghĩ như thế!</p>
+<p>Trước đây…</p>
+<p>Là ông đã xem thường Cửu hoàng tử rồi!</p>
+<p>Bàn bạc xong xuôi, Lý Thượng thư cáo lui trước. Sở Ngạo Thiên phanh rộng vạt áo, nghênh ngang bước vào:</p>
+<p>“Cửu đệ!”</p>
+<p>Sở Ly đang thay thuốc.</p>
+<p>“Vết thương trên tay đệ sao vẫn chưa lành?”</p>
+<p>Sở Ngạo Thiên nhìn mà thấy rợn người.</p>
+<p>Vết cắt do dao gây ra vừa dài vừa ngay ngắn, nay lại đỏ ửng, da thịt hơi lật ra ngoài, lộ cả tia máu, trông thật ghê người.</p>
+<p>Sở Ly nói:</p>
+<p>“Có lẽ mấy ngày nay quấn băng kín quá, không được thông thoáng nên hơi viêm rồi.”</p>
+<p>Nàng quay đầu dặn Cẩu Bát:</p>
+<p>“Hôm nay chỉ quấn hai vòng băng là được.”</p>
+<p>“Vâng, chủ tử.”</p>
+<p>Chỉ là một vết thương nhỏ, lại không ở vị trí chí mạng, Sở Ly cũng không để trong lòng.</p>
+<p>“Bát hoàng huynh sao hôm nay lại rảnh rỗi sang đây? Mẫu phi huynh chẳng phải không cho huynh chơi với ta sao?”</p>
+<p>Sở Ngạo Thiên há miệng:</p>
+<p>“Ừm…”</p>
+<p>Chuyện này thì…</p>
+<p>“Nếu mẫu phi hỏi, ta sẽ bảo là đệ chủ động tìm ta chơi.”</p>
+<p>“?”</p>
+<p>Bán đứng nàng?</p>
+<p>“Ôi chao Cửu đệ, trong cung này chỉ còn hai huynh đệ ta chưa được ban phủ xuất cung. Nếu đệ không chơi với ta, ta nhất định sẽ chán chết mất.”</p>
+<p>Sở Ngạo Thiên thở dài.</p>
+<p>“Huống hồ đệ còn được phụ hoàng trọng dụng rồi, thật khiến ta sốt ruột muốn chết.”</p>
+<p>Như vậy, hắn sẽ trở thành hoàng tử vô dụng nhất hoàng thất.</p>
+<p>Có điều…</p>
+<p>Thì đã sao chứ?</p>
+<p>Đội sổ cũng là hạng nhất.</p>
+<p>Sở Ngạo Thiên bỗng nhiên thông suốt, mặt mày tươi cười:</p>
+<p>“Nghe nói Trùng Dương phải mua rất nhiều thù du với rượu cúc. Đi, chúng ta xuất cung dạo phố đi?”</p>
+<p>Sở Ly cũng đã bị giam trong cung mấy ngày.</p>
+<p>Không nhịn nổi nữa rồi.</p>
+<p>Nhờ có Nhiếp Chính Vương chỉ dạy, chỉ trong vỏn vẹn hai ngày nàng đã nắm được việc đại lễ Trùng Dương.</p>
+<p>Mà hắn…</p>
+<p>Quả thật là đang nghiêm túc dạy nàng.</p>
+<p>“Đợi ta thay bộ y phục đã.”</p>
+<p>“Được.”</p>
+<p>Hai khắc sau, hai huynh đệ đã có mặt trên phố.</p>
+<p>Cả hai đều mặc cẩm bào, phe phẩy chiết phiến, dung mạo tuấn mỹ sóng vai bước đi giữa đường. Phong thái tôn quý ấy khiến không ít cô nương liên tục ngoái đầu nhìn theo.</p>
+<p>Thế nhưng Sở Ly biết…</p>
+<p>Các nàng đều đang nhìn Sở Ngạo Thiên.</p>
+<p>Bởi vì nàng quá thấp.</p>
+<p>Đại Sở dùng võ lực mà giành thiên hạ, vì thế cả nước đều sùng thượng võ đạo. Các cô nương cũng thích những nam nhân cao lớn, anh dũng.</p>
+<p>Vóc dáng như nàng chẳng khác nào một con ngựa non còn chưa trưởng thành. Tuy dung mạo đẹp mắt, nhưng chỉ để ngắm chứ chẳng có tác dụng gì, hoàn toàn có thể xem như không tồn tại.</p>
+<p>Sở Ly xoa xoa mặt, bước vào một tửu phường.</p>
+<p>Chủ quán tươi cười đón khách:</p>
+<p>“Công tử, muốn mua rượu sao?”</p>
+<p>Trùng Dương sắp đến, Sở Ly định mua ít rượu cúc mang về cho mẫu phi.</p>
+<p>Sở Ngạo Thiên đứng ngoài cửa. Dù có bao nhiêu cô nương nhìn hắn, hắn cũng chẳng để tâm, trong lòng chỉ nôn nóng muốn sang Tây Nhai chơi.</p>
+<p>Con dế và gà chọi mua ở Tây Nhai lần trước, hắn thích vô cùng.</p>
+<p>Nơi đó còn có biết bao món đồ kỳ lạ hiếm thấy. Chỉ nghĩ thôi đã thấy không chờ nổi nữa.</p>
+<p>“Cửu đệ, xong chưa?”</p>
+<p>Hắn giục một tiếng.</p>
+<p>Sở Ly đang nếm rượu:</p>
+<p>“Đợi một chút… Chủ quán, loại này được ủ bao lâu rồi?”</p>
+<p>Một lúc sau, Sở Ngạo Thiên lại thúc giục:</p>
+<p>“Cửu đệ, mua xong chưa?”</p>
+<p>“Đợi thêm chút nữa.”</p>
+<p>Mua có ít rượu thôi mà sao lâu thế?</p>
+<p>Sở Ngạo Thiên không hiểu.</p>
+<p>Trên phố, Ôn Nhã đang cùng hai vị tiểu thư thứ xuất khác dạo chơi. Vô tình liếc mắt, nàng lập tức nhìn thấy Sở Ngạo Thiên, bước chân liền khựng lại.</p>
+<p>Bát hoàng tử!</p>
+<p>Lần trước, nàng bị gia pháp, nếu không nhờ Bát hoàng tử cầu tình giúp, thương thế của nàng sao có thể hồi phục nhanh như vậy?</p>
+<p>Sau một tháng tĩnh dưỡng, nàng mới có thể sớm ra ngoài dạo phố.</p>
+<p>Ân tình này…</p>
+<p>Nàng vẫn luôn ghi nhớ trong lòng.</p>
+<p>Ôn Nhã khẽ cắn môi dưới, nói với hai người bạn:</p>
+<p>“Tiểu Liễu, Tiểu Uyển, ta còn có chút việc, hai người cứ đi dạo trước đi.”</p>
+<p>“Được.”</p>
+<p>Hai người không hỏi nhiều, cùng nhau rời đi.</p>
+<p>Ôn Nhã bước về phía tửu phường, nhìn Bát hoàng tử đang đứng trên bậc thềm nhảy lên nhảy xuống, tiến đến hành lễ:</p>
+<p>“Thần nữ bái kiến Bát hoàng tử điện hạ.”</p>
+<p>Sở Ngạo Thiên ngẩng đầu.</p>
+<p>Nàng là…</p>
+<p>À~~</p>
+<p>Nhớ ra rồi.</p>
+<p>“Ôn tiểu thư.”</p>
+<p>Ôn Nhã mừng rỡ:</p>
+<p>“Bát hoàng tử còn nhớ thần nữ sao?”</p>
+<p>Quả nhiên…</p>
+<p>Ngài ấy thích nàng!</p>
+<p>Vì thân phận thứ xuất, nàng chưa từng vào cung dự yến, cũng chưa từng tham dự những buổi tụ họp của giới quyền quý ở kinh thành. Rất nhiều dịp trang trọng đều không cho phép con cái thứ xuất tham dự, bởi vậy trong Ôn gia, cảm giác tồn tại của nàng vốn rất thấp.</p>
+<p>Không ngờ…</p>
+<p>Bát hoàng tử lại để nàng trong lòng.</p>
+<p>Sở Ngạo Thiên nói:</p>
+<p>“Nàng là biểu muội của Sở Ly, đương nhiên ta nhớ. Lần trước chúng ta đã gặp nhau ở Ôn gia.”</p>
+<p>Ôn Nhã vui vẻ nói:</p>
+<p>“Hôm ấy Bát hoàng tử ra tay cứu giúp, thần nữ vẫn luôn ghi nhớ ân tình của ngài, chỉ mong một ngày nào đó có thể báo đáp. Không ngờ nhanh như vậy đã lại gặp nhau. Hôm ấy, ngài quả thực đã cứu mạng thần nữ. Ôn Nhã cảm kích khôn xiết, e rằng chỉ có dốc hết thảy mọi thứ của mình, mới có thể báo đáp được một phần vạn ân tình ấy.”</p>
+<p>Trong lòng Sở Ngạo Thiên chỉ nghĩ đến chuyện sang Tây Nhai chơi, chỉ nghe Ôn Nhã thao thao bất tuyệt một tràng:</p>
+<p>“Ba la ba la, ba la ba la… dốc hết thảy.”</p>
+<p>Hắn ngẩn người mất một lúc:</p>
+<p>“Hả?”</p>
+<p>Lời nàng nói…</p>
+<p>Sao hắn cứ thấy có gì đó không đúng?</p>
+<p>Nói một hồi…</p>
+<p>Hình như càng lúc càng lệch rồi.</p>
+<p>Báo đáp hắn ân tình gì chứ?</p>
+<p>Sở Ngạo Thiên nghĩ mãi không ra, gãi gãi đầu, hướng vào trong tửu phường gọi lớn:</p>
+<p>“Cửu đệ! Mau ra đây! Biểu muội của đệ bảo muốn dốc hết thảy vì ta. Ta phải làm sao bây giờ?”</p>
+<p>Sắc mặt Ôn Nhã lập tức đại biến.</p>
+<p>Lúc này nàng mới chú ý tới Sở Ly đang ở trong tửu phường.</p>
+<p>Biểu huynh sao cũng ở đây?! Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_95.html" class="btn">‹ Trước</a>
             <a href="chuong_97.html" class="btn">Sau ›</a>
         </div>
@@ -248,15 +256,11 @@ Biểu huynh sao cũng ở đây?! Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -268,11 +272,11 @@ Biểu huynh sao cũng ở đây?! Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

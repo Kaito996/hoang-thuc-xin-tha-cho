@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 294</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,195 +62,204 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 294</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_293.html" class="btn">‹ Trước</a>
             <a href="chuong_295.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 294: Nàng cứ về đi, không cần quản sống chết của ta
-Sở Đệ Trì thản nhiên nói:
-“Vừa sáng sớm đã được xem một vở kịch, hát đúng vào tâm khảm của bổn vương, bổn vương đang ban thưởng thật hậu cho Tôn tri phủ đây.”
-Tôn tri phủ kinh hoảng.
-Đều sắp bị cách chức rồi, thế này mà cũng gọi là ban thưởng sao?
-Ông trời ơi!
-Quay đầu liền giáng một cái tát thật mạnh lên mặt Tôn Ngọc Tuyết:
-“Nghịch nữ! Rốt cuộc ngươi đã làm chuyện gì, còn không mau dập đầu tạ tội với Nhiếp Chính Vương!”
-Tôn Ngọc Tuyết ôm mặt, nước mắt lả chả rơi xuống.
-Từ nhỏ đến lớn, đây là lần đầu tiên phụ thân đánh nàng.
-Nhưng nàng căn bản đâu có làm sai điều gì!
-Nàng chỉ thấy Nhiếp Chính Vương cùng Tạ Vãn Nguyệt cãi nhau, muốn nhân cơ hội chen vào mà thôi, nàng sai ở đâu chứ?
-“Cha, nữ nhi không biết mình sai ở đâu, có lẽ... là Nhiếp Chính Vương bất mãn với Tạ tiểu thư, nên trút giận lên chúng ta.”
-Đúng!
-Nhất định là như vậy.
-Nàng lập tức nghĩ ra nguyên nhân.
-Nhiếp Chính Vương tận mắt thấy Tạ Vãn Nguyệt ở cùng biểu ca, trong lòng nổi giận, không tiện phát tiết lên Tạ Vãn Nguyệt, nên mới trút hết lên bọn họ.
-“Bổn vương khi nào bất mãn với Tạ tiểu thư?”
-“Đêm qua, chính mắt Tuyết Nhi thấy hai người cãi nhau...”
-“Ồ? Tôn tiểu thư tuổi còn nhỏ mà đã biết âm thầm dò xét chuyện riêng của bổn vương rồi sao?”
-“Ta...”
-Sở Đệ Trì lạnh lùng nhìn nàng:
-“Bổn vương khi nào xảy ra tranh chấp với Tạ tiểu thư?”
-Hắn nhìn sang Sở Ly:
-“Chúng ta có cãi nhau sao?”
-Sở Ly đón lấy ánh mắt hắn.
-Bốn mắt giao nhau, trong mắt đều ánh lên những điều chỉ hai người mới hiểu.
-Đó là sự ăn ý độc hữu được tạo nên sau khi cùng nhau sống, cùng nhau trải qua biết bao thăng trầm.
-Dù có cãi vã, dù có chút mâu thuẫn nhỏ, cũng không đến lượt một kẻ ngoài cuộc xen vào.
-Đó chính là cảm giác an toàn mà Sở Đệ Trì dành cho Sở Ly.
-Bất luận khi nào, bất luận ở đâu, bất luận vui buồn hờn giận, hắn đều có thể kiềm chế cảm xúc của mình, tuyệt không làm bất cứ chuyện gì có lỗi với nàng.
-Sở Ly vén lọn tóc mai bên tai:
-“Không có.”
-Bọn họ chưa từng cãi nhau.
-Thỉnh thoảng có chút gợn sóng nho nhỏ, cũng không đến lượt một người ngoài như Tôn Ngọc Tuyết bàn tán.
-Tình cảm đã được tôi luyện qua bao thế sự, lắng đọng thành chân tình, há có thể vì một lần cãi vã nhỏ mà phủ nhận?
-Rốt cuộc Tôn Ngọc Tuyết vẫn còn quá trẻ.
-Đã quá xem nhẹ tình yêu của Sở Đệ Trì dành cho Sở Ly, cũng quá xem nhẹ sự tín nhiệm của Sở Ly dành cho Sở Đệ Trì.
-“Tôn tiểu thư đã nghe rõ chưa? Bổn vương và Tạ tiểu thư chưa từng cãi nhau, từ trước đến nay vẫn luôn rất tốt. Ngươi lại ở sau lưng sinh sự, quấy nhiễu công vụ của bổn vương. Không biết quy củ, không hiểu chừng mực, nữ bất giáo, phụ chi quá.”
-Sở Đệ Trì nhạt giọng:
-“Người đâu, lập tức cách chức Tôn tri phủ, tra xét nghiêm minh, không được sai sót!”
-Toàn thân Tôn tri phủ run lên, mềm nhũn ngồi bệt xuống đất.
-Xong rồi!
-Cả đời tâm huyết, tiền đồ, gia nghiệp, mấy chục năm cố gắng... từ nay tan thành mây khói.
-Tôn Ngọc Tuyết cũng bị dọa đến ngây người.
-Vì sao?
-Vì sao lại nghiêm trọng đến vậy?
-Việc nàng làm đâu phải phạm pháp, cũng chẳng gây ra sóng gió gì, cớ sao lại bị phạt nặng như thế?
-“Nghịch nữ!”
-“Đồ nghịch nữ phá gia bại sản này!”
-Tôn tri phủ lại giáng một cái tát, hận không thể đánh chết nàng ngay tại chỗ mới hả được cơn giận trong lòng.
-Tôn Ngọc Tuyết ôm mặt khóc lớn:
-“Cha, nữ nhi oan uổng! Nữ nhi chẳng làm gì cả, thật sự oan uổng mà!”
-Tạ Vãn Nguyệt!
-Nhất định là Tạ Vãn Nguyệt xúi giục!
-Nàng đỏ bừng hai mắt vì căm hận, định lao về phía Sở Ly, nhưng Kinh Ảnh và Trọng Phong đã nhanh chân tiến lên, khống chế hai cha con, cưỡng ép áp giải đi.
-“Oan uổng... thả ta ra... ta oan uổng mà...”
-Tiếng kêu ngày một xa dần.
-Sở Ly đưa tay day nhẹ vành tai, vẻ mặt vô cùng bình tĩnh, như chợt nhớ ra điều gì, quay sang nhìn Liễu Thắng Nam bên cạnh:
-“Vừa rồi ngươi nói muốn cưới ta, sính lễ là bao nhiêu ấy nhỉ?”
-Hai chân Liễu Thắng Nam mềm nhũn, đứng cũng không vững:
-“Tạ... Tạ tiểu thư, thảo dân không dám! Là... là Tôn Ngọc Tuyết, chính nàng bảo thảo dân tới! Nàng nói phụ mẫu cô nương đều đã mất, cô khổ không nơi nương tựa, một mình cô quạnh, khuê phòng lạnh lẽo, bảo thảo dân đến an ủi cô nương. Tất cả đều là Tôn Ngọc Tuyết xúi giục!”
-Trời ơi!
-Cữu cữu đã bị cách chức tra xét rồi, ngàn vạn lần đừng liên lụy đến hắn!
-Đây là chuyện gì vậy!
-Biết trước thế này, hắn đã chẳng tham sắc đẹp.
-Đều do Tôn Ngọc Tuyết hại!
-Sở Ly nhìn hắn:
-“Nếu không cưới ta, vậy ngươi còn đứng đây làm gì?”
-“Á! Vâng, vâng! Cút! Thảo dân cút ngay!”
-Mau cút.
-Bò dậy mà cút.
-Vội vàng chạy mất dạng.
-Ánh mắt lạnh lẽo của Sở Đệ Trì lướt theo, giây lát sau mới thu hồi, bước về phía Sở Ly.
-Thế nhưng bốn mắt nhìn nhau, nhất thời chẳng ai nói gì.
-Giữa hai người bỗng trở nên yên tĩnh.
-Sở Ly khẽ siết đầu ngón tay, hồi lâu mới chần chừ lên tiếng:
-“Đêm qua...”
-“Nếu nàng đã quan tâm ta như vậy, thì ta không chấp nàng nữa. Chuyện tối qua cứ coi như xong.”
-“Hả?”
-“Đêm qua ta ở thư phòng đọc binh thư suốt một đêm, đã dùng bữa tối, đắp chăn cẩn thận, không bị nhiễm lạnh, ngủ cũng rất ngon. Nàng cứ yên tâm.”
-Sở Ly mím môi.
-Thực ra nàng đâu thật sự giận hắn.
-Chỉ là nàng đã quên mất một đoạn ký ức, khiến trong lòng cứ nặng nề, mãi không yên.
-Ở lại nơi này, nàng cũng chẳng giúp được gì.
-“Ta định trở về Đế đô.”
-Sở Đệ Trì bước lên:
-“Nàng muốn về?”
-“Thuộc hạ đã điều tra ra, kẻ ám sát ta đêm đó là do Minh Hoa Quận chúa sai tới. Nàng ta mang dã tâm khó lường, Bát hoàng huynh ở Đế đô chỉ có một mình, ta lo huynh ấy ứng phó không nổi.”
-“Nàng đi rồi, vậy còn ta?”
-“Chiến sự không thể kết thúc trong chốc lát. Chàng ở đây nắm giữ đại cục, ta trở về trợ giúp Bát hoàng huynh, tránh để có kẻ nhân cơ hội gây loạn triều đình.”
-Nàng định bỏ hắn lại sao?
-Được.
-Rất được.
-“Nàng cứ về đi, không cần quản sống chết của ta.”
-“Cáo từ.”
-“?”
-Hắn tung một cước đá văng chậu hoa lên tận trời!
-—
-“Không phải trẫm không phê, mà yêu cầu của các khanh thật sự quá đáng!”
-Bốp!
-Trong Ngự thư phòng vang lên một tiếng động giòn tan.
-Sở Ngạo Thiên ném mạnh tấu chương lên bàn, nhìn mấy vị quan đang quỳ dưới đất, tức giận chỉ tay:
-“Chiến sự đang cấp bách, quốc khố hiện giờ trống rỗng, trẫm lấy đâu ra ba mươi vạn lượng bạc cho các khanh!”
-Lục Tả tướng quỳ ở vị trí đầu tiên, hơi cúi đầu, thần thái vẫn không kiêu không nịnh:
-“Hoàng thượng, đây đều là khoản chi cấp thiết. Đại chiến đang diễn ra, cần tiền để trợ cấp gia quyến của các tướng sĩ trận vong. Chỉ khi thể hiện được thành ý của Đại Sở, vạn ngàn nam nhi mới cam lòng tòng quân, ra chiến trường bảo vệ quốc gia.”
-Sở Ngạo Thiên nổi giận:
-“Quốc khố trống rỗng, chẳng lẽ trẫm biến bạc ra cho các khanh sao?”
-“Đó là việc của Hoàng thượng.”
-“Ngươi!”
-“Quốc khố đã cạn, Hoàng thượng cứ nghĩ cách. Thần chỉ biết, nếu không an ủi thỏa đáng gia quyến các tướng sĩ trận vong, e rằng bách tính sẽ có lời dị nghị với Người.”
-Bên cạnh, một vị quan khác chắp tay:
-“Mua dược liệu, bổ sung cho tiền tuyến, cần mười vạn lượng bạc, kính xin Hoàng thượng chuẩn tấu.”
-Lại một vị quan nữa:
-“Hoàng thượng, Binh bộ cần hai mươi vạn lượng bạc...”
-Phê.
-Phê.
-Phê.
-Hay là bảo hắn trèo lên cây hái lá bán lấy tiền đi?
-Nhiều bạc như vậy, thật coi hắn có thể vô duyên vô cớ biến ra được sao?
-Sở Ngạo Thiên tức đến mức lật cả bàn!
-Đùa thôi.
-Hoàng thúc còn ở tiền tuyến.
-Nếu hắn không giữ vững triều cục, thì cục diện sẽ thật sự sụp đổ.
-Hắn trầm mặt nói:
-“Các khanh lui cả đi. Truyền Hộ bộ Thượng thư vào gặp, trẫm sẽ cùng Hộ bộ thương nghị.”
-“Tuân chỉ.”
-Mọi người hành lễ cáo lui.
-Vừa bước ra khỏi Ngự thư phòng, vành mắt Sở Ngạo Thiên liền đỏ hoe, túm lấy tay áo Khương Thái phó mà khóc:
-“Lão sư! Hoàng thúc không có ở đây, bọn họ đều bắt nạt con!”
-“Rõ ràng Hộ bộ mới là nơi quản tiền, thế mà ai nấy đều ép con. Đừng tưởng con không biết, tất cả đều là Lục Tả tướng đứng sau giật dây!” Ẩn bớt</p>
+            <p>Chương 294: Nàng cứ về đi, không cần quản sống chết của ta</p>
+<p>Sở Đệ Trì thản nhiên nói:</p>
+<p>“Vừa sáng sớm đã được xem một vở kịch, hát đúng vào tâm khảm của bổn vương, bổn vương đang ban thưởng thật hậu cho Tôn tri phủ đây.”</p>
+<p>Tôn tri phủ kinh hoảng.</p>
+<p>Đều sắp bị cách chức rồi, thế này mà cũng gọi là ban thưởng sao?</p>
+<p>Ông trời ơi!</p>
+<p>Quay đầu liền giáng một cái tát thật mạnh lên mặt Tôn Ngọc Tuyết:</p>
+<p>“Nghịch nữ! Rốt cuộc ngươi đã làm chuyện gì, còn không mau dập đầu tạ tội với Nhiếp Chính Vương!”</p>
+<p>Tôn Ngọc Tuyết ôm mặt, nước mắt lả chả rơi xuống.</p>
+<p>Từ nhỏ đến lớn, đây là lần đầu tiên phụ thân đánh nàng.</p>
+<p>Nhưng nàng căn bản đâu có làm sai điều gì!</p>
+<p>Nàng chỉ thấy Nhiếp Chính Vương cùng Tạ Vãn Nguyệt cãi nhau, muốn nhân cơ hội chen vào mà thôi, nàng sai ở đâu chứ?</p>
+<p>“Cha, nữ nhi không biết mình sai ở đâu, có lẽ... là Nhiếp Chính Vương bất mãn với Tạ tiểu thư, nên trút giận lên chúng ta.”</p>
+<p>Đúng!</p>
+<p>Nhất định là như vậy.</p>
+<p>Nàng lập tức nghĩ ra nguyên nhân.</p>
+<p>Nhiếp Chính Vương tận mắt thấy Tạ Vãn Nguyệt ở cùng biểu ca, trong lòng nổi giận, không tiện phát tiết lên Tạ Vãn Nguyệt, nên mới trút hết lên bọn họ.</p>
+<p>“Bổn vương khi nào bất mãn với Tạ tiểu thư?”</p>
+<p>“Đêm qua, chính mắt Tuyết Nhi thấy hai người cãi nhau...”</p>
+<p>“Ồ? Tôn tiểu thư tuổi còn nhỏ mà đã biết âm thầm dò xét chuyện riêng của bổn vương rồi sao?”</p>
+<p>“Ta...”</p>
+<p>Sở Đệ Trì lạnh lùng nhìn nàng:</p>
+<p>“Bổn vương khi nào xảy ra tranh chấp với Tạ tiểu thư?”</p>
+<p>Hắn nhìn sang Sở Ly:</p>
+<p>“Chúng ta có cãi nhau sao?”</p>
+<p>Sở Ly đón lấy ánh mắt hắn.</p>
+<p>Bốn mắt giao nhau, trong mắt đều ánh lên những điều chỉ hai người mới hiểu.</p>
+<p>Đó là sự ăn ý độc hữu được tạo nên sau khi cùng nhau sống, cùng nhau trải qua biết bao thăng trầm.</p>
+<p>Dù có cãi vã, dù có chút mâu thuẫn nhỏ, cũng không đến lượt một kẻ ngoài cuộc xen vào.</p>
+<p>Đó chính là cảm giác an toàn mà Sở Đệ Trì dành cho Sở Ly.</p>
+<p>Bất luận khi nào, bất luận ở đâu, bất luận vui buồn hờn giận, hắn đều có thể kiềm chế cảm xúc của mình, tuyệt không làm bất cứ chuyện gì có lỗi với nàng.</p>
+<p>Sở Ly vén lọn tóc mai bên tai:</p>
+<p>“Không có.”</p>
+<p>Bọn họ chưa từng cãi nhau.</p>
+<p>Thỉnh thoảng có chút gợn sóng nho nhỏ, cũng không đến lượt một người ngoài như Tôn Ngọc Tuyết bàn tán.</p>
+<p>Tình cảm đã được tôi luyện qua bao thế sự, lắng đọng thành chân tình, há có thể vì một lần cãi vã nhỏ mà phủ nhận?</p>
+<p>Rốt cuộc Tôn Ngọc Tuyết vẫn còn quá trẻ.</p>
+<p>Đã quá xem nhẹ tình yêu của Sở Đệ Trì dành cho Sở Ly, cũng quá xem nhẹ sự tín nhiệm của Sở Ly dành cho Sở Đệ Trì.</p>
+<p>“Tôn tiểu thư đã nghe rõ chưa? Bổn vương và Tạ tiểu thư chưa từng cãi nhau, từ trước đến nay vẫn luôn rất tốt. Ngươi lại ở sau lưng sinh sự, quấy nhiễu công vụ của bổn vương. Không biết quy củ, không hiểu chừng mực, nữ bất giáo, phụ chi quá.”</p>
+<p>Sở Đệ Trì nhạt giọng:</p>
+<p>“Người đâu, lập tức cách chức Tôn tri phủ, tra xét nghiêm minh, không được sai sót!”</p>
+<p>Toàn thân Tôn tri phủ run lên, mềm nhũn ngồi bệt xuống đất.</p>
+<p>Xong rồi!</p>
+<p>Cả đời tâm huyết, tiền đồ, gia nghiệp, mấy chục năm cố gắng... từ nay tan thành mây khói.</p>
+<p>Tôn Ngọc Tuyết cũng bị dọa đến ngây người.</p>
+<p>Vì sao?</p>
+<p>Vì sao lại nghiêm trọng đến vậy?</p>
+<p>Việc nàng làm đâu phải phạm pháp, cũng chẳng gây ra sóng gió gì, cớ sao lại bị phạt nặng như thế?</p>
+<p>“Nghịch nữ!”</p>
+<p>“Đồ nghịch nữ phá gia bại sản này!”</p>
+<p>Tôn tri phủ lại giáng một cái tát, hận không thể đánh chết nàng ngay tại chỗ mới hả được cơn giận trong lòng.</p>
+<p>Tôn Ngọc Tuyết ôm mặt khóc lớn:</p>
+<p>“Cha, nữ nhi oan uổng! Nữ nhi chẳng làm gì cả, thật sự oan uổng mà!”</p>
+<p>Tạ Vãn Nguyệt!</p>
+<p>Nhất định là Tạ Vãn Nguyệt xúi giục!</p>
+<p>Nàng đỏ bừng hai mắt vì căm hận, định lao về phía Sở Ly, nhưng Kinh Ảnh và Trọng Phong đã nhanh chân tiến lên, khống chế hai cha con, cưỡng ép áp giải đi.</p>
+<p>“Oan uổng... thả ta ra... ta oan uổng mà...”</p>
+<p>Tiếng kêu ngày một xa dần.</p>
+<p>Sở Ly đưa tay day nhẹ vành tai, vẻ mặt vô cùng bình tĩnh, như chợt nhớ ra điều gì, quay sang nhìn Liễu Thắng Nam bên cạnh:</p>
+<p>“Vừa rồi ngươi nói muốn cưới ta, sính lễ là bao nhiêu ấy nhỉ?”</p>
+<p>Hai chân Liễu Thắng Nam mềm nhũn, đứng cũng không vững:</p>
+<p>“Tạ... Tạ tiểu thư, thảo dân không dám! Là... là Tôn Ngọc Tuyết, chính nàng bảo thảo dân tới! Nàng nói phụ mẫu cô nương đều đã mất, cô khổ không nơi nương tựa, một mình cô quạnh, khuê phòng lạnh lẽo, bảo thảo dân đến an ủi cô nương. Tất cả đều là Tôn Ngọc Tuyết xúi giục!”</p>
+<p>Trời ơi!</p>
+<p>Cữu cữu đã bị cách chức tra xét rồi, ngàn vạn lần đừng liên lụy đến hắn!</p>
+<p>Đây là chuyện gì vậy!</p>
+<p>Biết trước thế này, hắn đã chẳng tham sắc đẹp.</p>
+<p>Đều do Tôn Ngọc Tuyết hại!</p>
+<p>Sở Ly nhìn hắn:</p>
+<p>“Nếu không cưới ta, vậy ngươi còn đứng đây làm gì?”</p>
+<p>“Á! Vâng, vâng! Cút! Thảo dân cút ngay!”</p>
+<p>Mau cút.</p>
+<p>Bò dậy mà cút.</p>
+<p>Vội vàng chạy mất dạng.</p>
+<p>Ánh mắt lạnh lẽo của Sở Đệ Trì lướt theo, giây lát sau mới thu hồi, bước về phía Sở Ly.</p>
+<p>Thế nhưng bốn mắt nhìn nhau, nhất thời chẳng ai nói gì.</p>
+<p>Giữa hai người bỗng trở nên yên tĩnh.</p>
+<p>Sở Ly khẽ siết đầu ngón tay, hồi lâu mới chần chừ lên tiếng:</p>
+<p>“Đêm qua...”</p>
+<p>“Nếu nàng đã quan tâm ta như vậy, thì ta không chấp nàng nữa. Chuyện tối qua cứ coi như xong.”</p>
+<p>“Hả?”</p>
+<p>“Đêm qua ta ở thư phòng đọc binh thư suốt một đêm, đã dùng bữa tối, đắp chăn cẩn thận, không bị nhiễm lạnh, ngủ cũng rất ngon. Nàng cứ yên tâm.”</p>
+<p>Sở Ly mím môi.</p>
+<p>Thực ra nàng đâu thật sự giận hắn.</p>
+<p>Chỉ là nàng đã quên mất một đoạn ký ức, khiến trong lòng cứ nặng nề, mãi không yên.</p>
+<p>Ở lại nơi này, nàng cũng chẳng giúp được gì.</p>
+<p>“Ta định trở về Đế đô.”</p>
+<p>Sở Đệ Trì bước lên:</p>
+<p>“Nàng muốn về?”</p>
+<p>“Thuộc hạ đã điều tra ra, kẻ ám sát ta đêm đó là do Minh Hoa Quận chúa sai tới. Nàng ta mang dã tâm khó lường, Bát hoàng huynh ở Đế đô chỉ có một mình, ta lo huynh ấy ứng phó không nổi.”</p>
+<p>“Nàng đi rồi, vậy còn ta?”</p>
+<p>“Chiến sự không thể kết thúc trong chốc lát. Chàng ở đây nắm giữ đại cục, ta trở về trợ giúp Bát hoàng huynh, tránh để có kẻ nhân cơ hội gây loạn triều đình.”</p>
+<p>Nàng định bỏ hắn lại sao?</p>
+<p>Được.</p>
+<p>Rất được.</p>
+<p>“Nàng cứ về đi, không cần quản sống chết của ta.”</p>
+<p>“Cáo từ.”</p>
+<p>“?”</p>
+<p>Hắn tung một cước đá văng chậu hoa lên tận trời!</p>
+<p>—</p>
+<p>“Không phải trẫm không phê, mà yêu cầu của các khanh thật sự quá đáng!”</p>
+<p>Bốp!</p>
+<p>Trong Ngự thư phòng vang lên một tiếng động giòn tan.</p>
+<p>Sở Ngạo Thiên ném mạnh tấu chương lên bàn, nhìn mấy vị quan đang quỳ dưới đất, tức giận chỉ tay:</p>
+<p>“Chiến sự đang cấp bách, quốc khố hiện giờ trống rỗng, trẫm lấy đâu ra ba mươi vạn lượng bạc cho các khanh!”</p>
+<p>Lục Tả tướng quỳ ở vị trí đầu tiên, hơi cúi đầu, thần thái vẫn không kiêu không nịnh:</p>
+<p>“Hoàng thượng, đây đều là khoản chi cấp thiết. Đại chiến đang diễn ra, cần tiền để trợ cấp gia quyến của các tướng sĩ trận vong. Chỉ khi thể hiện được thành ý của Đại Sở, vạn ngàn nam nhi mới cam lòng tòng quân, ra chiến trường bảo vệ quốc gia.”</p>
+<p>Sở Ngạo Thiên nổi giận:</p>
+<p>“Quốc khố trống rỗng, chẳng lẽ trẫm biến bạc ra cho các khanh sao?”</p>
+<p>“Đó là việc của Hoàng thượng.”</p>
+<p>“Ngươi!”</p>
+<p>“Quốc khố đã cạn, Hoàng thượng cứ nghĩ cách. Thần chỉ biết, nếu không an ủi thỏa đáng gia quyến các tướng sĩ trận vong, e rằng bách tính sẽ có lời dị nghị với Người.”</p>
+<p>Bên cạnh, một vị quan khác chắp tay:</p>
+<p>“Mua dược liệu, bổ sung cho tiền tuyến, cần mười vạn lượng bạc, kính xin Hoàng thượng chuẩn tấu.”</p>
+<p>Lại một vị quan nữa:</p>
+<p>“Hoàng thượng, Binh bộ cần hai mươi vạn lượng bạc...”</p>
+<p>Phê.</p>
+<p>Phê.</p>
+<p>Phê.</p>
+<p>Hay là bảo hắn trèo lên cây hái lá bán lấy tiền đi?</p>
+<p>Nhiều bạc như vậy, thật coi hắn có thể vô duyên vô cớ biến ra được sao?</p>
+<p>Sở Ngạo Thiên tức đến mức lật cả bàn!</p>
+<p>Đùa thôi.</p>
+<p>Hoàng thúc còn ở tiền tuyến.</p>
+<p>Nếu hắn không giữ vững triều cục, thì cục diện sẽ thật sự sụp đổ.</p>
+<p>Hắn trầm mặt nói:</p>
+<p>“Các khanh lui cả đi. Truyền Hộ bộ Thượng thư vào gặp, trẫm sẽ cùng Hộ bộ thương nghị.”</p>
+<p>“Tuân chỉ.”</p>
+<p>Mọi người hành lễ cáo lui.</p>
+<p>Vừa bước ra khỏi Ngự thư phòng, vành mắt Sở Ngạo Thiên liền đỏ hoe, túm lấy tay áo Khương Thái phó mà khóc:</p>
+<p>“Lão sư! Hoàng thúc không có ở đây, bọn họ đều bắt nạt con!”</p>
+<p>“Rõ ràng Hộ bộ mới là nơi quản tiền, thế mà ai nấy đều ép con. Đừng tưởng con không biết, tất cả đều là Lục Tả tướng đứng sau giật dây!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_293.html" class="btn">‹ Trước</a>
             <a href="chuong_295.html" class="btn">Sau ›</a>
         </div>
@@ -259,15 +267,11 @@ Vừa bước ra khỏi Ngự thư phòng, vành mắt Sở Ngạo Thiên liền
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -279,11 +283,11 @@ Vừa bước ra khỏi Ngự thư phòng, vành mắt Sở Ngạo Thiên liền
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

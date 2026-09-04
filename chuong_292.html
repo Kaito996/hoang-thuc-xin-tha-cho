@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 292</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,153 +62,162 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 292</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_291.html" class="btn">‹ Trước</a>
             <a href="chuong_293.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 292: Ngươi đừng buồn
-Mây đen kéo đến, mưa rơi lất phất, gió lạnh hiu hiu. Hai người rõ ràng đứng rất gần, nhưng dường như lại bị kéo cách nhau rất xa...
-Sở Ly thân thể có chút cứng ngắc:
-“Hoàng thúc, ta đã nói rồi, ta chỉ là ngủ không ngon. Hỉ nộ ai lạc vốn là cảm xúc bình thường mà ai cũng có. Người... người cứ đi làm việc của mình trước đi.”
-Nàng đẩy ngực hắn ra, chui khỏi vòng tay, cúi người nhặt nhuyễn kiếm trên mặt đất rồi chạy vào sương phòng.
-Sở Đệ Trì một mình đứng dưới gốc cây, thân hình cao lớn chìm trong màn đêm mờ mịt, khí tức lãnh túc âm trầm, khiến bất cứ ai cũng không dám đến gần.
-Đúng lúc ấy, một màn này vừa hay lọt vào mắt Tôn Ngọc Tuyết ở cách đó không xa.
-Bọn họ...
-Đây là... cãi nhau rồi sao?
-—
-Đêm ấy, Sở Ly ngủ không yên. Trong lồng ngực nặng nề khó chịu, đủ mọi chuyện vụn vặt đè nén trong lòng, tâm tư như tơ tằm rối rắm, hỗn loạn đến mức không tìm được đầu mối.
-Mà hắn...
-Vẫn chưa trở về.
-Đã sang canh ba rồi, hắn vẫn chưa hồi phòng.
-Muộn như vậy, không thể nào còn đang xử lý công vụ.
-Hắn đã đi đâu?
-Sở Ly trằn trọc mãi không ngủ được. Mãi đến khi trời tờ mờ sáng, nàng mới mơ màng chợp mắt một lát.
-Sáng hôm sau.
-Nàng dậy rất sớm, Tôn Ngọc Tuyết cũng đến rất sớm:
-“Vãn Nguyệt tỷ tỷ!”
-Tiểu cô nương chạy vào, hoạt bát vui tươi, ngây thơ vô tà.
-Sở Ly rửa mặt, tinh thần khá hơn đôi chút rồi mới bước tới:
-“Tôn tiểu thư.”
-“Tỷ tỷ cứ gọi ta là Ngọc Tuyết là được. Ngọc Tuyết là độc nữ trong nhà, từ nhỏ đã hâm mộ những người có nhiều tỷ muội, nằm mộng cũng muốn có một vị tỷ tỷ.”
-Nàng cười tươi, chạy đến khoác lấy cánh tay Sở Ly:
-“Từ lần đầu gặp Vãn Nguyệt tỷ tỷ, ta đã cảm thấy vô cùng thân thiết. Đây này, ta đặc biệt đến rủ tỷ cùng đi tiền sảnh dùng bữa.”
-Sở Ly mỉm cười nhạt:
-“Mấy ngày nay đã làm phiền nhiều rồi.”
-“Tỷ tỷ nói gì vậy chứ? Ta thích tỷ còn không kịp.”
-Tôn Ngọc Tuyết khoác tay Sở Ly, cùng nhau đi đến tiền sảnh.
-Đám tỳ nữ đang bày biện thức ăn. Chỉ là, Sở Ly đưa mắt nhìn một vòng, vẫn không thấy bóng dáng Sở Đệ Trì.
-“Sáng sớm nay, ta thấy Nhiếp Chính Vương đã ra khỏi phủ rồi, hình như có việc gì đó.” Tôn Ngọc Tuyết cầm muỗng uống cháo.
-“Ồ.”
-Thì ra là vậy.
-Sở Ly cũng không nghĩ nhiều nữa.
-“Vãn Nguyệt tỷ tỷ ôn hòa nhã nhặn, dễ gần, khiến ta nhớ đến mẫu thân. Mẫu thân ta cũng là một nữ tử dịu dàng xinh đẹp như vậy, phụ thân đối đãi với người vô cùng tốt.”
-Sở Ly cười:
-“Nhìn là biết.”
-Phụ mẫu ân ái, mới có thể nuôi dạy ra một Tôn Ngọc Tuyết hoạt bát, tự tin như vậy.
-Tôn Ngọc Tuyết cắn muỗng, giọng nói mềm mại:
-“Phụ thân cả đời chưa từng nạp thiếp, chỉ có một mình mẫu thân. Ngày thường, bất kể mẫu thân nói gì, làm gì, phụ thân cũng chưa từng lắc đầu phản đối, càng chưa từng nặng lời với người.”
-“Dù mẫu thân có làm sai chuyện gì, phụ thân cũng không nổi giận.”
-Đôi mắt nàng sáng lấp lánh:
-“Mẫu thân nói điều này gọi là... ừm... gọi là chân tâm tương ái, cử án tề mi.”
-Sở Ly nhấp một ngụm cháo, trên mặt vẫn treo nụ cười nhàn nhạt, không vội không chậm, vừa không tỏ ra xa cách, cũng không quá hứng thú với đề tài này.
-Nhưng Tôn Ngọc Tuyết vẫn thao thao bất tuyệt:
-“Người ôn nhu như Vãn Nguyệt tỷ tỷ, sau này nhất định cũng sẽ gặp được một nam nhân bao dung tỷ vô hạn, sủng ái tỷ, nuông chiều tỷ, đến một câu nặng lời cũng không nỡ nói.”
-Sở Ly nhàn nhạt liếc nàng một cái.
-Đêm qua, nàng vừa mới xảy ra chút bất hòa với Sở Đệ Trì.
-Ý nàng ta là... Sở Đệ Trì không yêu nàng?
-Sở Ly thu hồi ánh mắt, cầm một cái bánh bao lên ăn.
-Tôn Ngọc Tuyết vẫn cười vui nói rất nhiều, nhưng nói mãi lại thấy phản ứng của Sở Ly quá đỗi bình thản, trên mặt không hề lộ chút vui buồn.
-Nàng đã châm ngòi đến vậy rồi mà đối phương vẫn chẳng có phản ứng gì?
-Đêm qua rõ ràng nàng ta và Nhiếp Chính Vương dường như đã cãi nhau, vậy mà vẫn trầm ổn đến thế...
-Bọn họ không gây gổ lớn hơn, thì nàng lấy đâu ra cơ hội thừa hư nhi nhập?
-Tôn Ngọc Tuyết giấu kín tâm tư, ra vẻ hiểu chuyện:
-“Vãn Nguyệt tỷ tỷ, tối qua hình như ta thấy tỷ và Nhiếp Chính Vương xảy ra chút bất hòa.”
-Sở Ly cắn một miếng bánh bao:
-“Có một chút.”
-“Tỷ đừng buồn!”
-Tôn Ngọc Tuyết đặt tay lên mu bàn tay nàng.
-“Tỷ tỷ người đẹp tâm thiện, ta rất thích tỷ, huống chi là nam nhân? Dù không có Nhiếp Chính Vương, sau này cũng sẽ có rất nhiều nam tử ưu tú nguyện ý dỗ tỷ cười vui.”
-Sở Ly vẫn bình thản ăn bánh bao:
-“Tan hợp đều là duyên phận, ta cũng không buồn lắm.”
-“Thật sao? Vãn Nguyệt tỷ tỷ, chẳng lẽ tỷ không thích Nhiếp Chính Vương?”
-“Bình thường thôi. Nếu nói người ta thích nhất, thì vẫn là chính mình.”
-Thật vậy sao?
-Vậy thì quá tốt!
-Khắp Đại Sở ai ai cũng biết, Nhiếp Chính Vương chưa từng cưới chính thê hay thiếp thất, chưa từng có nữ nhân nào có thể đến gần hắn. Tạ Vãn Nguyệt sao có thể trở thành ngoại lệ duy nhất được?
-Nàng ta chẳng qua cũng chỉ là một đóa hoa nhỏ giữa muôn ngàn nữ nhân mà thôi.
-Người nam nhân nàng ta không chinh phục được, chưa chắc Tôn Ngọc Tuyết nàng cũng không làm được.
-“Ta có một vị biểu ca, năm nay vừa tròn hai mươi, văn nhã nho nhã, hơn nữa tuổi còn trẻ đã đỗ Cử nhân, sau này tiền đồ tất sẽ vô lượng. Nếu có thể làm Cử nhân phu nhân của huynh ấy, còn chẳng biết sẽ được hưởng bao nhiêu phúc đâu!”
-Tôn Ngọc Tuyết vừa ngây thơ hồn nhiên nói xong, ngoài sảnh liền vang lên tiếng bước chân:
-“Liễu công tử, mời.”
-Một lát sau, Liễu Thắng Nam bước vào.
-“Biểu ca? Đúng là nhắc Tào Tháo, Tào Tháo tới. Hôm nay sao huynh lại rảnh đến đây?”
-Liễu Thắng Nam đáp:
-“Ta đến tìm cữu cữu có việc... Vị này là...”
-Khi nhìn thấy Sở Ly, hai mắt hắn gần như đứng tròng.
-Tôn Ngọc Tuyết nói:
-“Huynh cứ ngồi đi, để ta giới thiệu. Đây là Tạ Vãn Nguyệt, Tạ tiểu thư.”
-Họ Tạ?
-Ở thành Thiên Thủy, dường như chưa từng nghe nói có quan viên hay thương hộ lớn nào mang họ Tạ.
-Có lẽ xuất thân từ một gia đình nhỏ.
-Thật không ngờ, một tiểu môn tiểu hộ lại có thể dưỡng dục ra một mỹ nhân như vậy.
-Sở Ly thong thả ăn xong miếng bánh bao cuối cùng, nhàn nhạt nói:
-“Đa tạ Tôn tiểu thư đã chu toàn thay ta, ta thật không có gì báo đáp.”
-Tôn Ngọc Tuyết lập tức xua hai tay, đôi mắt trong veo vô cùng:
-“Không phiền đâu, không phiền đâu. Vãn Nguyệt tỷ tỷ sao lại nói là không có gì báo đáp chứ? Ta giới thiệu biểu ca của ta cho tỷ, tỷ giới thiệu Nhiếp Chính Vương cho ta, chúng ta trao đổi công bằng mà.” Ẩn bớt</p>
+            <p>Chương 292: Ngươi đừng buồn</p>
+<p>Mây đen kéo đến, mưa rơi lất phất, gió lạnh hiu hiu. Hai người rõ ràng đứng rất gần, nhưng dường như lại bị kéo cách nhau rất xa...</p>
+<p>Sở Ly thân thể có chút cứng ngắc:</p>
+<p>“Hoàng thúc, ta đã nói rồi, ta chỉ là ngủ không ngon. Hỉ nộ ai lạc vốn là cảm xúc bình thường mà ai cũng có. Người... người cứ đi làm việc của mình trước đi.”</p>
+<p>Nàng đẩy ngực hắn ra, chui khỏi vòng tay, cúi người nhặt nhuyễn kiếm trên mặt đất rồi chạy vào sương phòng.</p>
+<p>Sở Đệ Trì một mình đứng dưới gốc cây, thân hình cao lớn chìm trong màn đêm mờ mịt, khí tức lãnh túc âm trầm, khiến bất cứ ai cũng không dám đến gần.</p>
+<p>Đúng lúc ấy, một màn này vừa hay lọt vào mắt Tôn Ngọc Tuyết ở cách đó không xa.</p>
+<p>Bọn họ...</p>
+<p>Đây là... cãi nhau rồi sao?</p>
+<p>—</p>
+<p>Đêm ấy, Sở Ly ngủ không yên. Trong lồng ngực nặng nề khó chịu, đủ mọi chuyện vụn vặt đè nén trong lòng, tâm tư như tơ tằm rối rắm, hỗn loạn đến mức không tìm được đầu mối.</p>
+<p>Mà hắn...</p>
+<p>Vẫn chưa trở về.</p>
+<p>Đã sang canh ba rồi, hắn vẫn chưa hồi phòng.</p>
+<p>Muộn như vậy, không thể nào còn đang xử lý công vụ.</p>
+<p>Hắn đã đi đâu?</p>
+<p>Sở Ly trằn trọc mãi không ngủ được. Mãi đến khi trời tờ mờ sáng, nàng mới mơ màng chợp mắt một lát.</p>
+<p>Sáng hôm sau.</p>
+<p>Nàng dậy rất sớm, Tôn Ngọc Tuyết cũng đến rất sớm:</p>
+<p>“Vãn Nguyệt tỷ tỷ!”</p>
+<p>Tiểu cô nương chạy vào, hoạt bát vui tươi, ngây thơ vô tà.</p>
+<p>Sở Ly rửa mặt, tinh thần khá hơn đôi chút rồi mới bước tới:</p>
+<p>“Tôn tiểu thư.”</p>
+<p>“Tỷ tỷ cứ gọi ta là Ngọc Tuyết là được. Ngọc Tuyết là độc nữ trong nhà, từ nhỏ đã hâm mộ những người có nhiều tỷ muội, nằm mộng cũng muốn có một vị tỷ tỷ.”</p>
+<p>Nàng cười tươi, chạy đến khoác lấy cánh tay Sở Ly:</p>
+<p>“Từ lần đầu gặp Vãn Nguyệt tỷ tỷ, ta đã cảm thấy vô cùng thân thiết. Đây này, ta đặc biệt đến rủ tỷ cùng đi tiền sảnh dùng bữa.”</p>
+<p>Sở Ly mỉm cười nhạt:</p>
+<p>“Mấy ngày nay đã làm phiền nhiều rồi.”</p>
+<p>“Tỷ tỷ nói gì vậy chứ? Ta thích tỷ còn không kịp.”</p>
+<p>Tôn Ngọc Tuyết khoác tay Sở Ly, cùng nhau đi đến tiền sảnh.</p>
+<p>Đám tỳ nữ đang bày biện thức ăn. Chỉ là, Sở Ly đưa mắt nhìn một vòng, vẫn không thấy bóng dáng Sở Đệ Trì.</p>
+<p>“Sáng sớm nay, ta thấy Nhiếp Chính Vương đã ra khỏi phủ rồi, hình như có việc gì đó.” Tôn Ngọc Tuyết cầm muỗng uống cháo.</p>
+<p>“Ồ.”</p>
+<p>Thì ra là vậy.</p>
+<p>Sở Ly cũng không nghĩ nhiều nữa.</p>
+<p>“Vãn Nguyệt tỷ tỷ ôn hòa nhã nhặn, dễ gần, khiến ta nhớ đến mẫu thân. Mẫu thân ta cũng là một nữ tử dịu dàng xinh đẹp như vậy, phụ thân đối đãi với người vô cùng tốt.”</p>
+<p>Sở Ly cười:</p>
+<p>“Nhìn là biết.”</p>
+<p>Phụ mẫu ân ái, mới có thể nuôi dạy ra một Tôn Ngọc Tuyết hoạt bát, tự tin như vậy.</p>
+<p>Tôn Ngọc Tuyết cắn muỗng, giọng nói mềm mại:</p>
+<p>“Phụ thân cả đời chưa từng nạp thiếp, chỉ có một mình mẫu thân. Ngày thường, bất kể mẫu thân nói gì, làm gì, phụ thân cũng chưa từng lắc đầu phản đối, càng chưa từng nặng lời với người.”</p>
+<p>“Dù mẫu thân có làm sai chuyện gì, phụ thân cũng không nổi giận.”</p>
+<p>Đôi mắt nàng sáng lấp lánh:</p>
+<p>“Mẫu thân nói điều này gọi là... ừm... gọi là chân tâm tương ái, cử án tề mi.”</p>
+<p>Sở Ly nhấp một ngụm cháo, trên mặt vẫn treo nụ cười nhàn nhạt, không vội không chậm, vừa không tỏ ra xa cách, cũng không quá hứng thú với đề tài này.</p>
+<p>Nhưng Tôn Ngọc Tuyết vẫn thao thao bất tuyệt:</p>
+<p>“Người ôn nhu như Vãn Nguyệt tỷ tỷ, sau này nhất định cũng sẽ gặp được một nam nhân bao dung tỷ vô hạn, sủng ái tỷ, nuông chiều tỷ, đến một câu nặng lời cũng không nỡ nói.”</p>
+<p>Sở Ly nhàn nhạt liếc nàng một cái.</p>
+<p>Đêm qua, nàng vừa mới xảy ra chút bất hòa với Sở Đệ Trì.</p>
+<p>Ý nàng ta là... Sở Đệ Trì không yêu nàng?</p>
+<p>Sở Ly thu hồi ánh mắt, cầm một cái bánh bao lên ăn.</p>
+<p>Tôn Ngọc Tuyết vẫn cười vui nói rất nhiều, nhưng nói mãi lại thấy phản ứng của Sở Ly quá đỗi bình thản, trên mặt không hề lộ chút vui buồn.</p>
+<p>Nàng đã châm ngòi đến vậy rồi mà đối phương vẫn chẳng có phản ứng gì?</p>
+<p>Đêm qua rõ ràng nàng ta và Nhiếp Chính Vương dường như đã cãi nhau, vậy mà vẫn trầm ổn đến thế...</p>
+<p>Bọn họ không gây gổ lớn hơn, thì nàng lấy đâu ra cơ hội thừa hư nhi nhập?</p>
+<p>Tôn Ngọc Tuyết giấu kín tâm tư, ra vẻ hiểu chuyện:</p>
+<p>“Vãn Nguyệt tỷ tỷ, tối qua hình như ta thấy tỷ và Nhiếp Chính Vương xảy ra chút bất hòa.”</p>
+<p>Sở Ly cắn một miếng bánh bao:</p>
+<p>“Có một chút.”</p>
+<p>“Tỷ đừng buồn!”</p>
+<p>Tôn Ngọc Tuyết đặt tay lên mu bàn tay nàng.</p>
+<p>“Tỷ tỷ người đẹp tâm thiện, ta rất thích tỷ, huống chi là nam nhân? Dù không có Nhiếp Chính Vương, sau này cũng sẽ có rất nhiều nam tử ưu tú nguyện ý dỗ tỷ cười vui.”</p>
+<p>Sở Ly vẫn bình thản ăn bánh bao:</p>
+<p>“Tan hợp đều là duyên phận, ta cũng không buồn lắm.”</p>
+<p>“Thật sao? Vãn Nguyệt tỷ tỷ, chẳng lẽ tỷ không thích Nhiếp Chính Vương?”</p>
+<p>“Bình thường thôi. Nếu nói người ta thích nhất, thì vẫn là chính mình.”</p>
+<p>Thật vậy sao?</p>
+<p>Vậy thì quá tốt!</p>
+<p>Khắp Đại Sở ai ai cũng biết, Nhiếp Chính Vương chưa từng cưới chính thê hay thiếp thất, chưa từng có nữ nhân nào có thể đến gần hắn. Tạ Vãn Nguyệt sao có thể trở thành ngoại lệ duy nhất được?</p>
+<p>Nàng ta chẳng qua cũng chỉ là một đóa hoa nhỏ giữa muôn ngàn nữ nhân mà thôi.</p>
+<p>Người nam nhân nàng ta không chinh phục được, chưa chắc Tôn Ngọc Tuyết nàng cũng không làm được.</p>
+<p>“Ta có một vị biểu ca, năm nay vừa tròn hai mươi, văn nhã nho nhã, hơn nữa tuổi còn trẻ đã đỗ Cử nhân, sau này tiền đồ tất sẽ vô lượng. Nếu có thể làm Cử nhân phu nhân của huynh ấy, còn chẳng biết sẽ được hưởng bao nhiêu phúc đâu!”</p>
+<p>Tôn Ngọc Tuyết vừa ngây thơ hồn nhiên nói xong, ngoài sảnh liền vang lên tiếng bước chân:</p>
+<p>“Liễu công tử, mời.”</p>
+<p>Một lát sau, Liễu Thắng Nam bước vào.</p>
+<p>“Biểu ca? Đúng là nhắc Tào Tháo, Tào Tháo tới. Hôm nay sao huynh lại rảnh đến đây?”</p>
+<p>Liễu Thắng Nam đáp:</p>
+<p>“Ta đến tìm cữu cữu có việc... Vị này là...”</p>
+<p>Khi nhìn thấy Sở Ly, hai mắt hắn gần như đứng tròng.</p>
+<p>Tôn Ngọc Tuyết nói:</p>
+<p>“Huynh cứ ngồi đi, để ta giới thiệu. Đây là Tạ Vãn Nguyệt, Tạ tiểu thư.”</p>
+<p>Họ Tạ?</p>
+<p>Ở thành Thiên Thủy, dường như chưa từng nghe nói có quan viên hay thương hộ lớn nào mang họ Tạ.</p>
+<p>Có lẽ xuất thân từ một gia đình nhỏ.</p>
+<p>Thật không ngờ, một tiểu môn tiểu hộ lại có thể dưỡng dục ra một mỹ nhân như vậy.</p>
+<p>Sở Ly thong thả ăn xong miếng bánh bao cuối cùng, nhàn nhạt nói:</p>
+<p>“Đa tạ Tôn tiểu thư đã chu toàn thay ta, ta thật không có gì báo đáp.”</p>
+<p>Tôn Ngọc Tuyết lập tức xua hai tay, đôi mắt trong veo vô cùng:</p>
+<p>“Không phiền đâu, không phiền đâu. Vãn Nguyệt tỷ tỷ sao lại nói là không có gì báo đáp chứ? Ta giới thiệu biểu ca của ta cho tỷ, tỷ giới thiệu Nhiếp Chính Vương cho ta, chúng ta trao đổi công bằng mà.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_291.html" class="btn">‹ Trước</a>
             <a href="chuong_293.html" class="btn">Sau ›</a>
         </div>
@@ -217,15 +225,11 @@ Tôn Ngọc Tuyết lập tức xua hai tay, đôi mắt trong veo vô cùng:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -237,11 +241,11 @@ Tôn Ngọc Tuyết lập tức xua hai tay, đôi mắt trong veo vô cùng:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

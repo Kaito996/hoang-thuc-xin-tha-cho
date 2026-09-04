@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 64</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,255 +62,264 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 64</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_63.html" class="btn">‹ Trước</a>
             <a href="chuong_65.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 64: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 64: Chết ở bên ngoài, bổn vương càng được yên tâm
-Kinh Ảnh mồ hôi lạnh ướt đẫm sống lưng, như giẫm trên băng mỏng:
-“Cửu hoàng tử, mời ngài…”
-“Đa tạ.”
-Sở Ly khẽ đưa tay vuốt dải lụa trắng che mắt, dưới sự dìu đỡ của cung nữ, sống lưng thẳng tắp, rời khỏi Dao Hoa Đài.
-Ực…
-Bạch Cẩm Y nuốt mạnh một ngụm nước bọt, nhìn nam nhân nửa bên mặt đầy máu, gương mặt góc cạnh như đao gọt, âm lệ đến cực điểm.
-“A… A Trì… Ta… ta băng bó cho ngươi nhé… Vết thương này e là phải khâu mấy mũi…”
-Trời đất ơi!
-Ai mà ngờ được, tiểu điệt tử mấy ngày trước còn bị A Trì giày vò đến mức sốt cao nằm liệt giường, yếu ớt không chịu nổi…
-Thì ra lại là một con mèo hoang nhỏ.
-Nhìn vết thương này…
-E là nàng thật sự muốn đánh chết người.
-Ít nhiều cũng mang theo tư oán cá nhân!
-Sở Đệ Trì vẫn ngồi nguyên tại chỗ.
-Đáy mắt đen đặc như độc xà đoạt hồn.
-Đột nhiên…
-Hắn lại bật cười một tiếng.
-Điên rồi?
-A Trì điên rồi?
-Hay đầu bị đập hỏng rồi?
-“Chủ tử.”
-Không bao lâu sau, Kinh Ảnh quay trở lại.
-“Cửu hoàng tử rời khỏi Nhiếp Chính Vương phủ nhưng không hồi cung. Nhìn phương hướng, dường như đang đi về phía phủ Binh bộ Thị lang.”
-Tiêu Dạ Hành nâng chén trà, nhấp một ngụm.
-“Dương Thị lang của Binh bộ là người được Phương Quốc Công âm thầm đề bạt. Tuổi tuy không lớn, nhưng thủ đoạn chẳng hề nhỏ, lại vô cùng tàn nhẫn.”
-“Nàng đơn độc tới đó… chẳng khác nào tự tìm đường chết.”
-Sở Đệ Trì lạnh nhạt nói:
-“Chết ở bên ngoài, bổn vương càng được yên tâm.”
-⸻
-Phượng Nghi cung.
-Cung nữ run run trở về.
-Lúc quỳ xuống bẩm báo, nàng vẫn còn kinh hồn chưa định.
-Hoàng hậu nhìn nàng.
-“Ý ngươi là… Nhiếp Chính Vương không uống rượu do bổn cung ban?”
-Cung nữ không dám đắc tội bên nào, chỉ đành cẩn trọng đáp lời theo cách trung dung nhất:
-“Nhiếp Chính Vương không chịu uống, kháng chỉ bất tuân. Cửu hoàng tử cãi với ngài ấy vài câu, sau đó dùng bầu rượu đập vỡ đầu ngài ấy.”
-Hoàng hậu cau mày.
-“Chẳng phải nói Nhiếp Chính Vương đã lao vào biển lửa cứu Cửu hoàng tử sao? Chẳng lẽ quan hệ giữa bọn họ không tốt?”
-Cung nữ đáp:
-“Nô tỳ thấy hai người giương cung bạt kiếm, giống như cừu nhân vậy, làm sao có thể tốt được?”
-“Người là mẫu hậu của Cửu hoàng tử, Cửu hoàng tử đương nhiên đứng về phía người.”
-Chân mày Hoàng hậu vẫn không giãn ra.
-Cửu hoàng tử vậy mà lại đập bị thương Nhiếp Chính Vương.
-Còn tưởng quan hệ giữa hai người thân thiết đến mức nào.
-Thôi vậy.
-Sau này lại tìm cơ hội khác.
-“Lui xuống đi.”
-“Vâng.”
-Cung nữ âm thầm thở phào nhẹ nhõm, như được đại xá.
-Trường Bội tiến lên, hơi cúi người nói:
-“Nương nương, nghĩ lại thì Nhiếp Chính Vương đối tốt với Cửu hoàng tử, chẳng qua chỉ là trưởng bối thương yêu vãn bối mà thôi.”
-“Người như hắn, làm sao có thể thân cận với người hoàng thất?”
-Hoàng hậu chậm rãi nói:
-“Chính vì là loại người như vậy, không tìm được nhược điểm, cũng chẳng tìm thấy điểm yếu… nên mới khó đối phó.”
-Những năm gần đây.
-Hoàng thượng chậm chạp chưa lập Thái tử.
-Trong lòng mọi người đều ngầm có chung một nhận định:
-Ai có thể thay Hoàng thượng trừ bỏ Nhiếp Chính Vương - mối họa trong tim này…
-Người đó sẽ có tư cách kế vị Đông cung.
-Khắp hoàng thất.
-Ngoại trừ Sở Ly.
-Không một ai không muốn giết chết Nhiếp Chính Vương.
-Trường Bội nói:
-“Nô tỳ nghe nói, trước đây không lâu, ban đêm Nhiếp Chính Vương từng ôm một nữ tử trở về thành.”
-“Nương nương không bằng bắt đầu điều tra từ điểm này.”
-Xưa nay anh hùng khó qua ải mỹ nhân.
-Chỉ cần tìm được nữ tử ấy…
-Còn sợ không trừ được Nhiếp Chính Vương sao?
-Hoàng hậu gật đầu.
-“Quả thực. Phái người theo dõi Nhiếp Chính Vương phủ kỹ hơn.”
-“Vâng.”
-⸻
-Ngoài Phượng Nghi cung.
-Cung nữ kia lui ra ngoài.
-Hai chân mềm nhũn vì sợ hãi.
-Đi một chuyến tới Nhiếp Chính Vương phủ, suýt chút nữa đã mất mạng.
-“Xuân Hương tỷ tỷ, sắc mặt tỷ sao kém thế?”
-Một tiểu cung nữ cùng nàng đi Nội Vụ phủ lĩnh đồ hỏi.
-Xuân Hương thở dài, lắc đầu, không tiện nói nhiều.
-“Không phải tỷ cùng Cửu hoàng tử xuất cung sao? Sao lại không cùng ‘ngài ấy’ trở về?”
-Xuân Hương đáp:
-“Đáng lẽ phải cùng hồi cung.”
-“Nhưng Cửu hoàng tử đột nhiên nói muốn tới phủ Binh bộ Thị lang.”
-“Nơi như vậy đâu phải ta có thể đi theo?”
-“Cho nên ta đành trở về trước.”
-“À… thì ra là vậy.”
-Hai người vừa trò chuyện vừa đi về phía Nội Vụ phủ.
-Nhưng tin tức ấy lại được một tiểu thái giám truyền tới tai Sở Cảnh Lân.
-“Ngươi nói cái gì?!”
-Sở Cảnh Lân lập tức ngồi không yên.
-Cửu hoàng tử đột nhiên tới phủ Binh bộ Thị lang?
-Đang yên đang lành…
-Vì sao?
-Chẳng lẽ…
-Chuyện ban ngày hắn cùng Dương Thị lang bí mật mưu tính đã bị Sở Ly biết?
-Nếu để phụ hoàng biết được…
-Tên Sở Ly đáng chết này!
-Ban ngày mình đã tha cho ‘hắn’ một mạng.
-Không ngờ ‘hắn’ còn dám chủ động tới tìm chết!
-⸻
-Lúc này.
-Phủ Binh bộ Thị lang.
-Cửu hoàng tử đột ngột ghé thăm.
-Trong lòng Dương Thị lang kinh hãi.
-Dương An thị cũng vô cùng bất ngờ.
-Tóm lại…
-Sở Ly chỉ vừa ngồi xuống.
-Vợ chồng hai người đều thấp thỏm bất an.
-Hai mắt Sở Ly vẫn buộc dải lụa mỏng, tựa như chẳng nhìn thấy gì, chỉ chậm rãi nói:
-“Bệnh tình của Dương tiểu công tử đã khá hơn chưa?”
-Dương An thị trước tiên nhìn sang Dương Thị lang.
-Sau đó mới dám cẩn thận đáp:
-“Đa tạ Cửu hoàng tử quan tâm. Kỳ nhi chỉ nhiễm phong hàn, uống thuốc xong đã khỏi rồi.”
-Trong lòng Dương Thị lang càng thêm bất an.
-Cửu hoàng tử đột nhiên tới phủ…
-Không thể nào chỉ vì một đứa trẻ được.
-Huống chi…
-Ban ngày lúc hắn cùng Thất hoàng tử bí mật thương nghị…
-Lại bị Cửu hoàng tử bắt gặp.
-Càng nghĩ…
-Trong lòng càng bất ổn.
-Sở Ly nói:
-“Ta rất thích trẻ con.”
-“Hả?”
-“Trong hoàng thất, ta là nhỏ tuổi nhất.”
-“Các vị hoàng huynh đều lớn hơn ta.”
-“Khó lắm mới gặp được trẻ nhỏ, khó tránh khỏi yêu thích không buông.”
-Dương Thị lang lập tức nói:
-“Kỳ nhi được Cửu hoàng tử nhớ đến, là phúc phận của nó.”
-“Hạ quan lập tức đi bế Kỳ nhi tới.”
-“Được.”
-Dương Thị lang đi ra ngoài.
-Đúng lúc ấy.
-Quản gia bước nhanh tới, hạ thấp giọng.
-“Đại nhân, Thất hoàng tử tới rồi.”
-“Hít…”
-Đêm nay rốt cuộc là xảy ra chuyện gì?
-Chẳng lẽ…
-Thất hoàng tử nghe được tin tức nên mới vội vàng chạy tới?
-Vậy…
-Rốt cuộc Cửu hoàng tử đến đây để làm gì?
-Dương Thị lang hoàn toàn không đoán ra được.
-Hắn sai một bà vú đi bế Kỳ nhi.
-Còn mình thì vội vàng đi gặp Thất hoàng tử.
-Thế nhưng chưa tới nửa khắc.
-Bà vú kia đã mặt đầy lo lắng chạy vào phòng tiếp khách.
-“Phu nhân!”
-“Không hay rồi!”
-“Tiểu thiếu gia dường như phát bệnh, đang khóc ầm ĩ, không chịu để bọn nô tỳ bế!”
-Sắc mặt Dương An thị lập tức thay đổi.
-“Đang yên đang lành, sao lại phát bệnh nữa?”
-“Lão nô không biết.”
-Sở Ly cất tiếng:
-“Dương phu nhân cứ đi xem trước đi.”
-“Ta ngồi đây một lát là được.”
-Trong mắt Dương An thị tràn đầy áy náy.
-Thật sự quá thất lễ.
-Nhưng trong lòng nhớ con trai.
-Nàng hành lễ xong liền vội vàng chạy ra ngoài.
-Không ngờ vừa bước vào viện…
-Đã nhìn thấy Dương Thị lang đứng đó chờ từ sớm.
-“Phu quân?”
-Dương Thị lang quay người lại.
-“Nàng nghĩ cách lừa Cửu hoàng tử tới phòng của nàng.”
-Đồng tử Dương An thị lập tức mở to.
-“Cái… cái gì?”
-“Cửu hoàng tử đột nhiên tới phủ, chắc chắn là kẻ đến không có ý tốt.”
-“Ban ngày lại bắt gặp ta mật đàm với Thất hoàng tử.”
-“Thay vì để lại mối họa ngầm, ngày ngày nơm nớp lo sợ…”
-“Chi bằng nắm quyền chủ động trong tay.”
-“Chỉ có hy sinh nàng… mới giữ được tiền đồ làm quan của ta.”
-Dương Thị lang trầm giọng.
-Hắn muốn Dương An thị đi quyến rũ Cửu hoàng tử.
-Nắm được nhược điểm của Cửu hoàng tử.
-Nếu có thể nhân cơ hội…
-Trừ khử luôn Cửu hoàng tử.
-Thì càng tốt hơn.
-Dương An thị sợ đến trắng bệch cả mặt.
-“Nhưng… nhưng thiếp là thê tử của chàng… là mẫu thân của Kỳ nhi…”
-“Nếu ta xảy ra chuyện.”
-“Nàng cho rằng nàng và Kỳ nhi sẽ có kết cục tốt sao?”
-“Bảo Liên.”
-“Cho dù nàng không nghĩ cho ta… thì cũng nên nghĩ cho Kỳ nhi.”
-“Chẳng lẽ nàng muốn sau này nó lớn lên, có một người phụ thân là tội thần?”
-“Nhưng… lỡ sau này Kỳ nhi lớn lên, biết được thiếp từng làm loại chuyện này…”
-“Bảo Liên.”
-Dương Thị lang nắm lấy hai vai nàng, dịu giọng an ủi:
-“Nàng yên tâm.”
-“Ta sẽ không chê bỏ nàng.” Ẩn bớt</p>
+            <p>Chương 64: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 64: Chết ở bên ngoài, bổn vương càng được yên tâm</p>
+<p>Kinh Ảnh mồ hôi lạnh ướt đẫm sống lưng, như giẫm trên băng mỏng:</p>
+<p>“Cửu hoàng tử, mời ngài…”</p>
+<p>“Đa tạ.”</p>
+<p>Sở Ly khẽ đưa tay vuốt dải lụa trắng che mắt, dưới sự dìu đỡ của cung nữ, sống lưng thẳng tắp, rời khỏi Dao Hoa Đài.</p>
+<p>Ực…</p>
+<p>Bạch Cẩm Y nuốt mạnh một ngụm nước bọt, nhìn nam nhân nửa bên mặt đầy máu, gương mặt góc cạnh như đao gọt, âm lệ đến cực điểm.</p>
+<p>“A… A Trì… Ta… ta băng bó cho ngươi nhé… Vết thương này e là phải khâu mấy mũi…”</p>
+<p>Trời đất ơi!</p>
+<p>Ai mà ngờ được, tiểu điệt tử mấy ngày trước còn bị A Trì giày vò đến mức sốt cao nằm liệt giường, yếu ớt không chịu nổi…</p>
+<p>Thì ra lại là một con mèo hoang nhỏ.</p>
+<p>Nhìn vết thương này…</p>
+<p>E là nàng thật sự muốn đánh chết người.</p>
+<p>Ít nhiều cũng mang theo tư oán cá nhân!</p>
+<p>Sở Đệ Trì vẫn ngồi nguyên tại chỗ.</p>
+<p>Đáy mắt đen đặc như độc xà đoạt hồn.</p>
+<p>Đột nhiên…</p>
+<p>Hắn lại bật cười một tiếng.</p>
+<p>Điên rồi?</p>
+<p>A Trì điên rồi?</p>
+<p>Hay đầu bị đập hỏng rồi?</p>
+<p>“Chủ tử.”</p>
+<p>Không bao lâu sau, Kinh Ảnh quay trở lại.</p>
+<p>“Cửu hoàng tử rời khỏi Nhiếp Chính Vương phủ nhưng không hồi cung. Nhìn phương hướng, dường như đang đi về phía phủ Binh bộ Thị lang.”</p>
+<p>Tiêu Dạ Hành nâng chén trà, nhấp một ngụm.</p>
+<p>“Dương Thị lang của Binh bộ là người được Phương Quốc Công âm thầm đề bạt. Tuổi tuy không lớn, nhưng thủ đoạn chẳng hề nhỏ, lại vô cùng tàn nhẫn.”</p>
+<p>“Nàng đơn độc tới đó… chẳng khác nào tự tìm đường chết.”</p>
+<p>Sở Đệ Trì lạnh nhạt nói:</p>
+<p>“Chết ở bên ngoài, bổn vương càng được yên tâm.”</p>
+<p>⸻</p>
+<p>Phượng Nghi cung.</p>
+<p>Cung nữ run run trở về.</p>
+<p>Lúc quỳ xuống bẩm báo, nàng vẫn còn kinh hồn chưa định.</p>
+<p>Hoàng hậu nhìn nàng.</p>
+<p>“Ý ngươi là… Nhiếp Chính Vương không uống rượu do bổn cung ban?”</p>
+<p>Cung nữ không dám đắc tội bên nào, chỉ đành cẩn trọng đáp lời theo cách trung dung nhất:</p>
+<p>“Nhiếp Chính Vương không chịu uống, kháng chỉ bất tuân. Cửu hoàng tử cãi với ngài ấy vài câu, sau đó dùng bầu rượu đập vỡ đầu ngài ấy.”</p>
+<p>Hoàng hậu cau mày.</p>
+<p>“Chẳng phải nói Nhiếp Chính Vương đã lao vào biển lửa cứu Cửu hoàng tử sao? Chẳng lẽ quan hệ giữa bọn họ không tốt?”</p>
+<p>Cung nữ đáp:</p>
+<p>“Nô tỳ thấy hai người giương cung bạt kiếm, giống như cừu nhân vậy, làm sao có thể tốt được?”</p>
+<p>“Người là mẫu hậu của Cửu hoàng tử, Cửu hoàng tử đương nhiên đứng về phía người.”</p>
+<p>Chân mày Hoàng hậu vẫn không giãn ra.</p>
+<p>Cửu hoàng tử vậy mà lại đập bị thương Nhiếp Chính Vương.</p>
+<p>Còn tưởng quan hệ giữa hai người thân thiết đến mức nào.</p>
+<p>Thôi vậy.</p>
+<p>Sau này lại tìm cơ hội khác.</p>
+<p>“Lui xuống đi.”</p>
+<p>“Vâng.”</p>
+<p>Cung nữ âm thầm thở phào nhẹ nhõm, như được đại xá.</p>
+<p>Trường Bội tiến lên, hơi cúi người nói:</p>
+<p>“Nương nương, nghĩ lại thì Nhiếp Chính Vương đối tốt với Cửu hoàng tử, chẳng qua chỉ là trưởng bối thương yêu vãn bối mà thôi.”</p>
+<p>“Người như hắn, làm sao có thể thân cận với người hoàng thất?”</p>
+<p>Hoàng hậu chậm rãi nói:</p>
+<p>“Chính vì là loại người như vậy, không tìm được nhược điểm, cũng chẳng tìm thấy điểm yếu… nên mới khó đối phó.”</p>
+<p>Những năm gần đây.</p>
+<p>Hoàng thượng chậm chạp chưa lập Thái tử.</p>
+<p>Trong lòng mọi người đều ngầm có chung một nhận định:</p>
+<p>Ai có thể thay Hoàng thượng trừ bỏ Nhiếp Chính Vương - mối họa trong tim này…</p>
+<p>Người đó sẽ có tư cách kế vị Đông cung.</p>
+<p>Khắp hoàng thất.</p>
+<p>Ngoại trừ Sở Ly.</p>
+<p>Không một ai không muốn giết chết Nhiếp Chính Vương.</p>
+<p>Trường Bội nói:</p>
+<p>“Nô tỳ nghe nói, trước đây không lâu, ban đêm Nhiếp Chính Vương từng ôm một nữ tử trở về thành.”</p>
+<p>“Nương nương không bằng bắt đầu điều tra từ điểm này.”</p>
+<p>Xưa nay anh hùng khó qua ải mỹ nhân.</p>
+<p>Chỉ cần tìm được nữ tử ấy…</p>
+<p>Còn sợ không trừ được Nhiếp Chính Vương sao?</p>
+<p>Hoàng hậu gật đầu.</p>
+<p>“Quả thực. Phái người theo dõi Nhiếp Chính Vương phủ kỹ hơn.”</p>
+<p>“Vâng.”</p>
+<p>⸻</p>
+<p>Ngoài Phượng Nghi cung.</p>
+<p>Cung nữ kia lui ra ngoài.</p>
+<p>Hai chân mềm nhũn vì sợ hãi.</p>
+<p>Đi một chuyến tới Nhiếp Chính Vương phủ, suýt chút nữa đã mất mạng.</p>
+<p>“Xuân Hương tỷ tỷ, sắc mặt tỷ sao kém thế?”</p>
+<p>Một tiểu cung nữ cùng nàng đi Nội Vụ phủ lĩnh đồ hỏi.</p>
+<p>Xuân Hương thở dài, lắc đầu, không tiện nói nhiều.</p>
+<p>“Không phải tỷ cùng Cửu hoàng tử xuất cung sao? Sao lại không cùng ‘ngài ấy’ trở về?”</p>
+<p>Xuân Hương đáp:</p>
+<p>“Đáng lẽ phải cùng hồi cung.”</p>
+<p>“Nhưng Cửu hoàng tử đột nhiên nói muốn tới phủ Binh bộ Thị lang.”</p>
+<p>“Nơi như vậy đâu phải ta có thể đi theo?”</p>
+<p>“Cho nên ta đành trở về trước.”</p>
+<p>“À… thì ra là vậy.”</p>
+<p>Hai người vừa trò chuyện vừa đi về phía Nội Vụ phủ.</p>
+<p>Nhưng tin tức ấy lại được một tiểu thái giám truyền tới tai Sở Cảnh Lân.</p>
+<p>“Ngươi nói cái gì?!”</p>
+<p>Sở Cảnh Lân lập tức ngồi không yên.</p>
+<p>Cửu hoàng tử đột nhiên tới phủ Binh bộ Thị lang?</p>
+<p>Đang yên đang lành…</p>
+<p>Vì sao?</p>
+<p>Chẳng lẽ…</p>
+<p>Chuyện ban ngày hắn cùng Dương Thị lang bí mật mưu tính đã bị Sở Ly biết?</p>
+<p>Nếu để phụ hoàng biết được…</p>
+<p>Tên Sở Ly đáng chết này!</p>
+<p>Ban ngày mình đã tha cho ‘hắn’ một mạng.</p>
+<p>Không ngờ ‘hắn’ còn dám chủ động tới tìm chết!</p>
+<p>⸻</p>
+<p>Lúc này.</p>
+<p>Phủ Binh bộ Thị lang.</p>
+<p>Cửu hoàng tử đột ngột ghé thăm.</p>
+<p>Trong lòng Dương Thị lang kinh hãi.</p>
+<p>Dương An thị cũng vô cùng bất ngờ.</p>
+<p>Tóm lại…</p>
+<p>Sở Ly chỉ vừa ngồi xuống.</p>
+<p>Vợ chồng hai người đều thấp thỏm bất an.</p>
+<p>Hai mắt Sở Ly vẫn buộc dải lụa mỏng, tựa như chẳng nhìn thấy gì, chỉ chậm rãi nói:</p>
+<p>“Bệnh tình của Dương tiểu công tử đã khá hơn chưa?”</p>
+<p>Dương An thị trước tiên nhìn sang Dương Thị lang.</p>
+<p>Sau đó mới dám cẩn thận đáp:</p>
+<p>“Đa tạ Cửu hoàng tử quan tâm. Kỳ nhi chỉ nhiễm phong hàn, uống thuốc xong đã khỏi rồi.”</p>
+<p>Trong lòng Dương Thị lang càng thêm bất an.</p>
+<p>Cửu hoàng tử đột nhiên tới phủ…</p>
+<p>Không thể nào chỉ vì một đứa trẻ được.</p>
+<p>Huống chi…</p>
+<p>Ban ngày lúc hắn cùng Thất hoàng tử bí mật thương nghị…</p>
+<p>Lại bị Cửu hoàng tử bắt gặp.</p>
+<p>Càng nghĩ…</p>
+<p>Trong lòng càng bất ổn.</p>
+<p>Sở Ly nói:</p>
+<p>“Ta rất thích trẻ con.”</p>
+<p>“Hả?”</p>
+<p>“Trong hoàng thất, ta là nhỏ tuổi nhất.”</p>
+<p>“Các vị hoàng huynh đều lớn hơn ta.”</p>
+<p>“Khó lắm mới gặp được trẻ nhỏ, khó tránh khỏi yêu thích không buông.”</p>
+<p>Dương Thị lang lập tức nói:</p>
+<p>“Kỳ nhi được Cửu hoàng tử nhớ đến, là phúc phận của nó.”</p>
+<p>“Hạ quan lập tức đi bế Kỳ nhi tới.”</p>
+<p>“Được.”</p>
+<p>Dương Thị lang đi ra ngoài.</p>
+<p>Đúng lúc ấy.</p>
+<p>Quản gia bước nhanh tới, hạ thấp giọng.</p>
+<p>“Đại nhân, Thất hoàng tử tới rồi.”</p>
+<p>“Hít…”</p>
+<p>Đêm nay rốt cuộc là xảy ra chuyện gì?</p>
+<p>Chẳng lẽ…</p>
+<p>Thất hoàng tử nghe được tin tức nên mới vội vàng chạy tới?</p>
+<p>Vậy…</p>
+<p>Rốt cuộc Cửu hoàng tử đến đây để làm gì?</p>
+<p>Dương Thị lang hoàn toàn không đoán ra được.</p>
+<p>Hắn sai một bà vú đi bế Kỳ nhi.</p>
+<p>Còn mình thì vội vàng đi gặp Thất hoàng tử.</p>
+<p>Thế nhưng chưa tới nửa khắc.</p>
+<p>Bà vú kia đã mặt đầy lo lắng chạy vào phòng tiếp khách.</p>
+<p>“Phu nhân!”</p>
+<p>“Không hay rồi!”</p>
+<p>“Tiểu thiếu gia dường như phát bệnh, đang khóc ầm ĩ, không chịu để bọn nô tỳ bế!”</p>
+<p>Sắc mặt Dương An thị lập tức thay đổi.</p>
+<p>“Đang yên đang lành, sao lại phát bệnh nữa?”</p>
+<p>“Lão nô không biết.”</p>
+<p>Sở Ly cất tiếng:</p>
+<p>“Dương phu nhân cứ đi xem trước đi.”</p>
+<p>“Ta ngồi đây một lát là được.”</p>
+<p>Trong mắt Dương An thị tràn đầy áy náy.</p>
+<p>Thật sự quá thất lễ.</p>
+<p>Nhưng trong lòng nhớ con trai.</p>
+<p>Nàng hành lễ xong liền vội vàng chạy ra ngoài.</p>
+<p>Không ngờ vừa bước vào viện…</p>
+<p>Đã nhìn thấy Dương Thị lang đứng đó chờ từ sớm.</p>
+<p>“Phu quân?”</p>
+<p>Dương Thị lang quay người lại.</p>
+<p>“Nàng nghĩ cách lừa Cửu hoàng tử tới phòng của nàng.”</p>
+<p>Đồng tử Dương An thị lập tức mở to.</p>
+<p>“Cái… cái gì?”</p>
+<p>“Cửu hoàng tử đột nhiên tới phủ, chắc chắn là kẻ đến không có ý tốt.”</p>
+<p>“Ban ngày lại bắt gặp ta mật đàm với Thất hoàng tử.”</p>
+<p>“Thay vì để lại mối họa ngầm, ngày ngày nơm nớp lo sợ…”</p>
+<p>“Chi bằng nắm quyền chủ động trong tay.”</p>
+<p>“Chỉ có hy sinh nàng… mới giữ được tiền đồ làm quan của ta.”</p>
+<p>Dương Thị lang trầm giọng.</p>
+<p>Hắn muốn Dương An thị đi quyến rũ Cửu hoàng tử.</p>
+<p>Nắm được nhược điểm của Cửu hoàng tử.</p>
+<p>Nếu có thể nhân cơ hội…</p>
+<p>Trừ khử luôn Cửu hoàng tử.</p>
+<p>Thì càng tốt hơn.</p>
+<p>Dương An thị sợ đến trắng bệch cả mặt.</p>
+<p>“Nhưng… nhưng thiếp là thê tử của chàng… là mẫu thân của Kỳ nhi…”</p>
+<p>“Nếu ta xảy ra chuyện.”</p>
+<p>“Nàng cho rằng nàng và Kỳ nhi sẽ có kết cục tốt sao?”</p>
+<p>“Bảo Liên.”</p>
+<p>“Cho dù nàng không nghĩ cho ta… thì cũng nên nghĩ cho Kỳ nhi.”</p>
+<p>“Chẳng lẽ nàng muốn sau này nó lớn lên, có một người phụ thân là tội thần?”</p>
+<p>“Nhưng… lỡ sau này Kỳ nhi lớn lên, biết được thiếp từng làm loại chuyện này…”</p>
+<p>“Bảo Liên.”</p>
+<p>Dương Thị lang nắm lấy hai vai nàng, dịu giọng an ủi:</p>
+<p>“Nàng yên tâm.”</p>
+<p>“Ta sẽ không chê bỏ nàng.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_63.html" class="btn">‹ Trước</a>
             <a href="chuong_65.html" class="btn">Sau ›</a>
         </div>
@@ -319,15 +327,11 @@ Dương Thị lang nắm lấy hai vai nàng, dịu giọng an ủi:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -339,11 +343,11 @@ Dương Thị lang nắm lấy hai vai nàng, dịu giọng an ủi:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

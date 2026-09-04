@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 250</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,240 +62,169 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 250</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_249.html" class="btn">‹ Trước</a>
             <a href="chuong_251.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 250: Tiền khó kiếm, cứt khó nuốt
-
-Xe ngựa xuyên qua sự huyên náo nơi phố thị, chậm rãi hướng về San Hô Thủy Tạ tĩnh lặng như mặt nước. Rời xa tiếng ồn ào, không khí bốn bề cũng trở nên yên tĩnh hơn rất nhiều.
-
-Một bàn tay to lớn, dày rộng nhẹ nhàng phủ lên mu bàn tay nàng.
-
-Sở Ly khẽ cụp mắt.
-“Tiểu Cửu.” Sở Đệ Trì ôn hòa nói: “Nếu nàng sợ, tối nay ta sẽ ở lại cùng…”
-
-“Ta không sợ!”
-
-Trên gương mặt trắng như ngọc của nữ tử chỉ có sự kiên định.
-
-Lúc thân phận bị phơi bày trước bàn dân thiên hạ, khi có biết bao người vây xem, nàng quả thực đã có một thoáng căng thẳng. Nhưng nếu đã chọn con đường này, thì không nên lùi bước.
-
-Nàng muốn quang minh chính đại, ngẩng cao đầu mà sống!
-
-“Hoàng thúc, đa tạ người đã chỉ cho ta con đường phải đi. Nếu không, có lẽ đến giờ ta vẫn còn trốn ở thành Giang Nam, nhìn Lý tri phủ diễu võ giương oai.”
-
-Sở Đệ Trì: “…Ừ.”
-
-Thật ra nàng không cần phải mạnh mẽ như vậy.
-Yếu đuối một chút cũng được, chí ít hãy cho hắn một cơ hội.
-
-“Chính người đã khiến ta hiểu rằng, nhân sinh có rất nhiều lựa chọn. Trốn tránh là điều hèn nhát nhất. Ta muốn đứng dưới ánh mặt trời, đoàn tụ cùng thân nhân và bằng hữu của mình.”
-
-Sở Ly nghiêm túc tổng kết lại:
-“Lục hoàng tử đã phát hiện ra ta, sự tồn tại của ta chẳng bao lâu nữa sẽ truyền khắp nơi. Trước lúc ấy, ta sẽ cố gắng chuẩn bị chu toàn mọi thứ.”
-
-Ngoài xe ngựa, Kinh Ảnh bẩm:
-
-“Chủ tử, đã đến San Hô Thủy Tạ.”
-
-“Đa tạ hoàng thúc đã đưa ta về.”
-
-Sở Ly nhảy xuống xe, cất bước chạy thẳng lên bậc thềm, đầu cũng không ngoảnh lại.
-
-Sở Đệ Trì hé miệng:
-“Tiểu Cửu.”
-
-Hắn vén rèm xe, vốn định xuống xe, nào ngờ nàng quay người bỏ đi ngay, dường như hoàn toàn không có ý mời hắn vào, khiến động tác của hắn khựng lại giữa chừng.
-
-Sở Ly quay đầu:
-
-“Có chuyện gì sao?”
-
-Sở Đệ Trì mím môi, khẽ tặc lưỡi:
-
-“Chẳng lẽ nàng không có gì muốn nói với ta sao?”
-Sở Ly suy nghĩ một lát rồi đáp:
-
-“Đêm lạnh, hoàng thúc trên đường về nhớ cẩn thận.”
-
-Dứt lời, nàng liền đi vào trong. Toàn bộ tâm trí đều dồn vào việc suy tính kế tiếp phải bố trí cục diện thế nào, ứng phó ra sao, khi thân phận hoàn toàn bị công khai thì nên an thân lập mệnh bằng cách nào.
-
-Nàng không còn thời gian để phân tâm nữa.
-Mỗi bước tiếp theo đều vô cùng quan trọng.
-
-Hoàng thúc phải đối phó với nội ưu ngoại hoạn của Đại Sở, đã đủ bận rộn rồi. Chỉ khi nàng tự bảo vệ tốt bản thân, mới không trở thành gánh nặng của hắn.
-
-Theo sự hiểu biết về Lục hoàng tử suốt bao năm qua, chuyện tối nay, hắn nhất định sẽ trả thù…
-
-“Sơ Nhất, mau đến nghị sự với ta!”
-“Sơ Nhị, đóng cửa lại.”
-Rầm—
-Đại môn khép chặt.
-
-Biểu cảm trên mặt Sở Đệ Trì lúc này quả thực không được tốt lắm, mà sự trầm mặc ấy lại càng có vẻ bình yên đến lạ.
-
-Kế hoạch ban đầu là:
-
-Đưa nàng về Đế Đô, đêm nào cũng ôm nàng, ngày nào cũng được ngắm tiểu kiều kiều, vừa đẹp mắt vừa có thể giấu người đẹp trong nhà vàng.
-
-Nhưng nhìn khí thế nàng xắn tay áo là lao vào làm ngay, cứ như muốn một mình đánh năm người.
-Vậy còn hắn thì sao?
-
-Hắn mím môi, hỏi Kinh Ảnh:
-
-“San Hô Thủy Tạ tuy đã cho Tạ tiểu thư mượn ở, nhưng suy cho cùng vẫn là tư uyển của bổn vương. Bổn vương không mời mà đến, cũng hợp tình hợp lý chứ?”
-
-Kinh Ảnh lắc đầu quầy quậy:
-“Sao được chứ, chủ tử! Người quên rồi sao? Hôm kia trước mặt mọi người, người đã đích thân hứa sẽ không tự tiện bước vào nửa bước…”
-
-Vút!
-
-Rèm xe bỗng bị buông mạnh xuống.
-
-Góc rèm quất thẳng vào mặt Kinh Ảnh, đau như dao cắt.
-
-Sao vậy? Sao vậy?
-
-Hắn nói sai chỗ nào rồi?
-
-Đang yên đang lành, sao chủ tử lại nổi giận?
-Tiền khó kiếm, cứt khó nuốt, thời buổi này làm ám vệ đúng là chẳng dễ.
-
-—
-
-Hoàng cung.
-Nếu nói chức vị còn khó làm hơn cả ám vệ, vậy chắc chắn chính là Vương gia.
-
-Đặc biệt là Nhàn Vương.
-
-Sở Ngạo Thiên ôm sách, vẫn đang học 《Trị Quốc Sách》, Khương Thái phó tuổi đã cao, vậy mà vẫn ở bên chỉ dạy hắn.
-
-“Lão sư, đã rất khuya rồi, người hãy về nghỉ trước đi.”
-
-Khương Thái phó lắc đầu, đôi mắt đục mờ đầy vẻ vui mừng nhìn hắn:
-
-“Nhàn Vương điện hạ có tiền đồ, hạ quan trong lòng vui mừng. Đã vui thì chẳng thấy buồn ngủ nữa.”
-
-Sở Ngạo Thiên khẽ thở dài.
-
-Suốt khoảng thời gian này, đến cả mắt hắn cũng đã thâm quầng, hốc mắt hõm sâu, huống hồ là vị lão sư đã lớn tuổi.
-
-“Biệt Cửu, múc một bát canh ô kê hầm nhân sâm dưỡng thần mà mẫu phi nấu, dâng cho lão sư.”
-
-“Hạ quan đa tạ Nhàn Vương điện hạ ban thưởng.”
-Khương Thái phó chắp tay, nhận lấy bát canh từ tay tiểu thái giám, lại lần nữa tạ ân, rồi mới uống mấy ngụm.
-
-Không ngờ canh sâm vừa xuống bụng, bụng đã lập tức kêu ùng ục.
-
-Đau!
-
-Canh sâm này…
-
-“Nhàn Vương điện hạ, nếu người đọc sách mệt mỏi, muốn nghỉ ngơi, chỉ cần nói với hạ quan một tiếng là được, hà tất… hà tất…”
-
-Ông đau đớn ôm bụng, vội vàng hành lễ rồi chạy thẳng ra ngoài tìm nhà xí.
-
-Miệng Sở Ngạo Thiên há hốc:
-“…”
-
-Đã gần một tháng rồi, trù nghệ của mẫu phi vẫn chưa tiến bộ sao?
-
-May mà hắn chưa uống.
-
-Hù chết hắn rồi.
-
-Lại tránh được một kiếp.
-
-“Mau, mau mang đi đổ hết! Nếu người bên cung mẫu phi hỏi, thì cứ nói bổn vương đã uống sạch rồi!”
-
-Biệt Cửu bưng chiếc thố sứ lên, lập tức mang đi đổ.
-
-Đúng lúc ấy, một tiểu thái giám lạ mặt chạy vào điện, hơi cúi đầu, ánh mắt âm trầm, thấp giọng bẩm báo một tin tức…
-
-Sở Ngạo Thiên bật dậy, quyển sách trên tay rơi xuống đất.
-
-“Ngươi nói cái gì… thật sao… trong thành đều đang truyền tin ấy?”
-
-Hắn luống cuống hất đổ nghiên mực và bút lông, vòng qua án thư, cắm đầu chạy ra ngoài.
-
-Cửu đệ còn sống?
-
-Sao có thể!
-
-Lẽ nào…
-
-Khi ấy hoàng thúc nhất quyết đi Giang Nam, chính là vì Cửu đệ?
-
-Cửu đệ!
-
-Tâm Sở Ngạo Thiên rối như tơ vò, kích động đến mức hai tay run rẩy không ngừng, lảo đảo chạy về phía cổng cung. Lần đầu tiên lấy thân phận Nhàn Vương phá bỏ quy củ cấm đi lại ban đêm trong hoàng cung, cưỡng ép ra lệnh cho Ngự Lâm quân mở cửa thả hắn xuất cung.
-
-Cửu đệ đang ở bên ngoài!
-
-Hắn phải đi tìm Cửu đệ!
-
-Sở Ngạo Thiên vừa ra khỏi hoàng cung, mới chạy được nửa con phố thì bất ngờ bị người ta đánh mạnh một cái vào sau gáy, ngất lịm xuống đất.
-
-“Ư…”
-
-Một bóng người mặc y phục sẫm màu hòa vào màn đêm, chậm rãi bước ra, khóe môi cong lên thành một nụ cười âm trầm, lạnh lẽo.
-
-“Đi báo cho Tạ tiểu thư, nói rằng Nhàn Vương gặp nạn, tính mạng ngàn cân treo sợi tóc, bảo nàng mau đến gặp hắn lần cuối.”</p>
+            <p>Chương 250: Tiền khó kiếm, cứt khó nuốt</p>
+<p>Xe ngựa xuyên qua sự huyên náo nơi phố thị, chậm rãi hướng về San Hô Thủy Tạ tĩnh lặng như mặt nước. Rời xa tiếng ồn ào, không khí bốn bề cũng trở nên yên tĩnh hơn rất nhiều.</p>
+<p>Một bàn tay to lớn, dày rộng nhẹ nhàng phủ lên mu bàn tay nàng.</p>
+<p>Sở Ly khẽ cụp mắt.</p>
+<p>“Tiểu Cửu.” Sở Đệ Trì ôn hòa nói: “Nếu nàng sợ, tối nay ta sẽ ở lại cùng…”</p>
+<p>“Ta không sợ!”</p>
+<p>Trên gương mặt trắng như ngọc của nữ tử chỉ có sự kiên định.</p>
+<p>Lúc thân phận bị phơi bày trước bàn dân thiên hạ, khi có biết bao người vây xem, nàng quả thực đã có một thoáng căng thẳng. Nhưng nếu đã chọn con đường này, thì không nên lùi bước.</p>
+<p>Nàng muốn quang minh chính đại, ngẩng cao đầu mà sống!</p>
+<p>“Hoàng thúc, đa tạ người đã chỉ cho ta con đường phải đi. Nếu không, có lẽ đến giờ ta vẫn còn trốn ở thành Giang Nam, nhìn Lý tri phủ diễu võ giương oai.”</p>
+<p>Sở Đệ Trì: “…Ừ.”</p>
+<p>Thật ra nàng không cần phải mạnh mẽ như vậy.</p>
+<p>Yếu đuối một chút cũng được, chí ít hãy cho hắn một cơ hội.</p>
+<p>“Chính người đã khiến ta hiểu rằng, nhân sinh có rất nhiều lựa chọn. Trốn tránh là điều hèn nhát nhất. Ta muốn đứng dưới ánh mặt trời, đoàn tụ cùng thân nhân và bằng hữu của mình.”</p>
+<p>Sở Ly nghiêm túc tổng kết lại:</p>
+<p>“Lục hoàng tử đã phát hiện ra ta, sự tồn tại của ta chẳng bao lâu nữa sẽ truyền khắp nơi. Trước lúc ấy, ta sẽ cố gắng chuẩn bị chu toàn mọi thứ.”</p>
+<p>Ngoài xe ngựa, Kinh Ảnh bẩm:</p>
+<p>“Chủ tử, đã đến San Hô Thủy Tạ.”</p>
+<p>“Đa tạ hoàng thúc đã đưa ta về.”</p>
+<p>Sở Ly nhảy xuống xe, cất bước chạy thẳng lên bậc thềm, đầu cũng không ngoảnh lại.</p>
+<p>Sở Đệ Trì hé miệng:</p>
+<p>“Tiểu Cửu.”</p>
+<p>Hắn vén rèm xe, vốn định xuống xe, nào ngờ nàng quay người bỏ đi ngay, dường như hoàn toàn không có ý mời hắn vào, khiến động tác của hắn khựng lại giữa chừng.</p>
+<p>Sở Ly quay đầu:</p>
+<p>“Có chuyện gì sao?”</p>
+<p>Sở Đệ Trì mím môi, khẽ tặc lưỡi:</p>
+<p>“Chẳng lẽ nàng không có gì muốn nói với ta sao?”</p>
+<p>Sở Ly suy nghĩ một lát rồi đáp:</p>
+<p>“Đêm lạnh, hoàng thúc trên đường về nhớ cẩn thận.”</p>
+<p>Dứt lời, nàng liền đi vào trong. Toàn bộ tâm trí đều dồn vào việc suy tính kế tiếp phải bố trí cục diện thế nào, ứng phó ra sao, khi thân phận hoàn toàn bị công khai thì nên an thân lập mệnh bằng cách nào.</p>
+<p>Nàng không còn thời gian để phân tâm nữa.</p>
+<p>Mỗi bước tiếp theo đều vô cùng quan trọng.</p>
+<p>Hoàng thúc phải đối phó với nội ưu ngoại hoạn của Đại Sở, đã đủ bận rộn rồi. Chỉ khi nàng tự bảo vệ tốt bản thân, mới không trở thành gánh nặng của hắn.</p>
+<p>Theo sự hiểu biết về Lục hoàng tử suốt bao năm qua, chuyện tối nay, hắn nhất định sẽ trả thù…</p>
+<p>“Sơ Nhất, mau đến nghị sự với ta!”</p>
+<p>“Sơ Nhị, đóng cửa lại.”</p>
+<p>Rầm—</p>
+<p>Đại môn khép chặt.</p>
+<p>Biểu cảm trên mặt Sở Đệ Trì lúc này quả thực không được tốt lắm, mà sự trầm mặc ấy lại càng có vẻ bình yên đến lạ.</p>
+<p>Kế hoạch ban đầu là:</p>
+<p>Đưa nàng về Đế Đô, đêm nào cũng ôm nàng, ngày nào cũng được ngắm tiểu kiều kiều, vừa đẹp mắt vừa có thể giấu người đẹp trong nhà vàng.</p>
+<p>Nhưng nhìn khí thế nàng xắn tay áo là lao vào làm ngay, cứ như muốn một mình đánh năm người.</p>
+<p>Vậy còn hắn thì sao?</p>
+<p>Hắn mím môi, hỏi Kinh Ảnh:</p>
+<p>“San Hô Thủy Tạ tuy đã cho Tạ tiểu thư mượn ở, nhưng suy cho cùng vẫn là tư uyển của bổn vương. Bổn vương không mời mà đến, cũng hợp tình hợp lý chứ?”</p>
+<p>Kinh Ảnh lắc đầu quầy quậy:</p>
+<p>“Sao được chứ, chủ tử! Người quên rồi sao? Hôm kia trước mặt mọi người, người đã đích thân hứa sẽ không tự tiện bước vào nửa bước…”</p>
+<p>Vút!</p>
+<p>Rèm xe bỗng bị buông mạnh xuống.</p>
+<p>Góc rèm quất thẳng vào mặt Kinh Ảnh, đau như dao cắt.</p>
+<p>Sao vậy? Sao vậy?</p>
+<p>Hắn nói sai chỗ nào rồi?</p>
+<p>Đang yên đang lành, sao chủ tử lại nổi giận?</p>
+<p>Tiền khó kiếm, cứt khó nuốt, thời buổi này làm ám vệ đúng là chẳng dễ.</p>
+<p>—</p>
+<p>Hoàng cung.</p>
+<p>Nếu nói chức vị còn khó làm hơn cả ám vệ, vậy chắc chắn chính là Vương gia.</p>
+<p>Đặc biệt là Nhàn Vương.</p>
+<p>Sở Ngạo Thiên ôm sách, vẫn đang học 《Trị Quốc Sách》, Khương Thái phó tuổi đã cao, vậy mà vẫn ở bên chỉ dạy hắn.</p>
+<p>“Lão sư, đã rất khuya rồi, người hãy về nghỉ trước đi.”</p>
+<p>Khương Thái phó lắc đầu, đôi mắt đục mờ đầy vẻ vui mừng nhìn hắn:</p>
+<p>“Nhàn Vương điện hạ có tiền đồ, hạ quan trong lòng vui mừng. Đã vui thì chẳng thấy buồn ngủ nữa.”</p>
+<p>Sở Ngạo Thiên khẽ thở dài.</p>
+<p>Suốt khoảng thời gian này, đến cả mắt hắn cũng đã thâm quầng, hốc mắt hõm sâu, huống hồ là vị lão sư đã lớn tuổi.</p>
+<p>“Biệt Cửu, múc một bát canh ô kê hầm nhân sâm dưỡng thần mà mẫu phi nấu, dâng cho lão sư.”</p>
+<p>“Hạ quan đa tạ Nhàn Vương điện hạ ban thưởng.”</p>
+<p>Khương Thái phó chắp tay, nhận lấy bát canh từ tay tiểu thái giám, lại lần nữa tạ ân, rồi mới uống mấy ngụm.</p>
+<p>Không ngờ canh sâm vừa xuống bụng, bụng đã lập tức kêu ùng ục.</p>
+<p>Đau!</p>
+<p>Canh sâm này…</p>
+<p>“Nhàn Vương điện hạ, nếu người đọc sách mệt mỏi, muốn nghỉ ngơi, chỉ cần nói với hạ quan một tiếng là được, hà tất… hà tất…”</p>
+<p>Ông đau đớn ôm bụng, vội vàng hành lễ rồi chạy thẳng ra ngoài tìm nhà xí.</p>
+<p>Miệng Sở Ngạo Thiên há hốc:</p>
+<p>“…”</p>
+<p>Đã gần một tháng rồi, trù nghệ của mẫu phi vẫn chưa tiến bộ sao?</p>
+<p>May mà hắn chưa uống.</p>
+<p>Hù chết hắn rồi.</p>
+<p>Lại tránh được một kiếp.</p>
+<p>“Mau, mau mang đi đổ hết! Nếu người bên cung mẫu phi hỏi, thì cứ nói bổn vương đã uống sạch rồi!”</p>
+<p>Biệt Cửu bưng chiếc thố sứ lên, lập tức mang đi đổ.</p>
+<p>Đúng lúc ấy, một tiểu thái giám lạ mặt chạy vào điện, hơi cúi đầu, ánh mắt âm trầm, thấp giọng bẩm báo một tin tức…</p>
+<p>Sở Ngạo Thiên bật dậy, quyển sách trên tay rơi xuống đất.</p>
+<p>“Ngươi nói cái gì… thật sao… trong thành đều đang truyền tin ấy?”</p>
+<p>Hắn luống cuống hất đổ nghiên mực và bút lông, vòng qua án thư, cắm đầu chạy ra ngoài.</p>
+<p>Cửu đệ còn sống?</p>
+<p>Sao có thể!</p>
+<p>Lẽ nào…</p>
+<p>Khi ấy hoàng thúc nhất quyết đi Giang Nam, chính là vì Cửu đệ?</p>
+<p>Cửu đệ!</p>
+<p>Tâm Sở Ngạo Thiên rối như tơ vò, kích động đến mức hai tay run rẩy không ngừng, lảo đảo chạy về phía cổng cung. Lần đầu tiên lấy thân phận Nhàn Vương phá bỏ quy củ cấm đi lại ban đêm trong hoàng cung, cưỡng ép ra lệnh cho Ngự Lâm quân mở cửa thả hắn xuất cung.</p>
+<p>Cửu đệ đang ở bên ngoài!</p>
+<p>Hắn phải đi tìm Cửu đệ!</p>
+<p>Sở Ngạo Thiên vừa ra khỏi hoàng cung, mới chạy được nửa con phố thì bất ngờ bị người ta đánh mạnh một cái vào sau gáy, ngất lịm xuống đất.</p>
+<p>“Ư…”</p>
+<p>Một bóng người mặc y phục sẫm màu hòa vào màn đêm, chậm rãi bước ra, khóe môi cong lên thành một nụ cười âm trầm, lạnh lẽo.</p>
+<p>“Đi báo cho Tạ tiểu thư, nói rằng Nhàn Vương gặp nạn, tính mạng ngàn cân treo sợi tóc, bảo nàng mau đến gặp hắn lần cuối.”</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_249.html" class="btn">‹ Trước</a>
             <a href="chuong_251.html" class="btn">Sau ›</a>
         </div>
@@ -304,15 +232,11 @@ Một bóng người mặc y phục sẫm màu hòa vào màn đêm, chậm rãi
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -324,11 +248,11 @@ Một bóng người mặc y phục sẫm màu hòa vào màn đêm, chậm rãi
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

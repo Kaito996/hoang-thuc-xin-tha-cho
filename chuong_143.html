@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 143</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,206 +62,215 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 143</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_142.html" class="btn">‹ Trước</a>
             <a href="chuong_144.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 143: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 143: Tần Mục Vũ – tên mặt trắng kia, dỗ dành Sở Ly đến xoay vòng vòng
-“Tiểu Cửu.”
-“Ừm?”
-“Đừng tin lời Sở Đệ Trì. Nếu nàng đi theo hắn, nhất định sẽ bị hắn đưa hồi cung. Chẳng phải nàng không thích cuộc sống như vậy sao?”
-Năm đó, nàng giả chết thoát thân, ấy chính là sự lựa chọn của nàng.
-Nếu bây giờ quay về, chẳng phải lại trở về chiếc lồng son kia?
-Sở Ly khẽ cúi đầu.
-Nàng không phải muốn hồi cung, điều nàng mong muốn… là một cuộc sống không bị trói buộc.
-Là tự do.
-“Ở bên ta, ta sẽ không ép muội làm điều mình không vui. Muội muốn đi đâu chơi, ta sẽ cùng muội đi đó; muội muốn làm gì, ta đều chiều theo muội, được không?”
-Ở bên hắn, chẳng khác nào từ một chiếc lồng bước sang một chiếc lồng khác, có gì khác biệt?
-Sở Ly không đáp.
-“Muội muốn về nhà, ta muốn phục quốc. Nhà vẫn là ngôi nhà trước kia, chỉ là quốc hiệu đổi khác mà thôi. Chờ qua khoảng thời gian này, muội lại có thể sống như trước.”
-Sở Ly vẫn im lặng.
-“Có muốn gặp Tần Thiếu tướng quân không?”
-Nàng lập tức ngẩng đầu.
-Sở Dạ Ly khẽ thở dài. Hắn nói bao nhiêu lời, vậy mà còn không bằng một câu “Tần Thiếu tướng quân”, nhưng lại chẳng thể nổi giận.
-“Để ta thay thuốc xong, sẽ đưa muội đi.”
-Hắn quỳ một gối trước giường, đặt bàn chân nhỏ của nàng lên đầu gối mình, cẩn thận bôi thuốc.
-Giữa hai người hiếm hoi mới có được bầu không khí yên hòa như thế.
-Hắn rất thích sự yên hòa này.
-Trong đầu bỗng lóe lên một ý niệm: nếu nàng có thể mãi ngoan ngoãn ở bên hắn thì tốt biết bao. Gãy chân rồi, nàng sẽ chỉ có thể ở cạnh hắn.
-Nhưng ngay sau đó, hắn liền cảm thấy ý nghĩ ấy thật hoang đường.
-Sao hắn có thể nghĩ như vậy?
-Nếu nàng không còn tung tăng nhảy nhót, leo trèo chạy khắp nơi nữa, vậy sẽ không còn là Sở Ly.
-Một khắc sau, Sở Dạ Ly giữ đúng lời hứa, đưa Sở Ly đến gặp Tần Mục Vũ.
-Lúc này, Tần Mục Vũ bị trói trên cọc gỗ, tay chân đều đeo xiềng xích, sợi xích to nặng nếu không có chìa khóa thì tuyệt đối không thể mở ra.
-“Mục Vũ!”
-Vừa nhìn thấy hắn, cảm xúc của Sở Ly lập tức dao động.
-Sao có thể dùng loại xiềng to như vậy để khóa hắn!
-Lại còn khóa cả cổ.
-Chỉ có buộc chó mới khóa cổ.
-Đây quả thực là sỉ nhục người khác!
-“A Ly, ta không sao.”
-Y phục Tần Mục Vũ rách nát, thần sắc mệt mỏi. Tuy đã thành tù nhân, nhưng may là trên người không có ngoại thương gì.
-“Không lâu trước, ta nghe binh sĩ tuần tra nói Vệ tướng quân đã chết, nghi là người Đại Sở bí mật ám sát, nên bọn họ mới dùng xích sắt khóa cổ ta để trút giận và làm nhục.”
-Vệ tướng quân sao lại đột nhiên chết?
-Sở Ly vô cùng kinh ngạc.
-“Nếu thật sự là người Đại Sở lẻn vào doanh Nam Man giết Vệ tướng quân, vì sao không tiện thể cứu chúng ta luôn?”
-Mà chỉ giết một vị tướng.
-Chuyện này không hợp lý.
-Hơn nữa, nhìn thế nào cũng không giống thủ bút của Sở Đệ Trì.
-Tần Mục Vũ phản ứng cực nhanh, hạ thấp giọng:
-“Ý muội là… trong doanh Nam Man có nội gián?”
-Sở Ly ghé sát tai hắn:
-“Ta không biết là có mật thám hay là nội bộ bất hòa, nhưng chắc chắn không phải Sở Đệ Trì làm. Người đó hành sự từ trước đến nay ngang ngược, khinh thường dùng thủ đoạn ám sát thế này. Ta nghi hung thủ là kẻ khác, cố ý giá họa cho Sở Đệ Trì.”
-Tần Mục Vũ nhìn nghiêng gương mặt nàng, ánh mắt trở nên sâu thẳm.
-Nhắc đến Nhiếp Chính Vương, giọng nàng vô cùng chắc chắn, từng câu từng chữ đều đầy sức nặng.
-Nàng rất hiểu hắn, cũng rất tin hắn sao?
-Trước đây, nàng chưa từng nói như vậy.
-Khóe môi hắn khẽ cong lên đầy chua xót.
-“A Ly…”
-“Mục Vũ, huynh đừng lo. Chúng ta đều là con tin có giá trị. Dù Sở Đệ Trì không đến cứu, ta cũng đã để lại hậu thủ.”
-Hôm đó, nàng thả ba con chim ưng đi, không phải để báo tin cho Sở Đệ Trì, mà là…
-Hai người ghé sát nhau thì thầm bàn bạc.
-Sở Dạ Ly đứng cách đó không xa, nhìn hai người kề sát đến mức gần như tai chạm tai, nhỏ giọng nói chuyện.
-Quá gần.
-Cho dù nội lực hắn thâm hậu, ngũ cảm nhạy bén, cũng không nghe được họ đang nói gì.
-Nàng đề phòng hắn đến thế.
-Nhìn cảnh ấy, trong lòng hắn rất không dễ chịu.
-Rất muốn bước lên tách hai người ra.
-Tên mặt trắng Tần Mục Vũ kia, càng nhìn càng chướng mắt. Đường đường là Thiếu tướng quân, vậy mà lại trắng trẻo thư sinh, tuổi còn trẻ đã dỗ dành Sở Ly đến xoay vòng vòng, chắc chắn chẳng có ý tốt.
-Tiểu Cửu sao lại thích kiểu người như vậy?
-Rốt cuộc thích hắn ở điểm nào?
-Thích hắn da trắng, người gầy, một quyền là có thể bị đánh bay hai mươi trượng?
-Nếu hắn thật sự động thủ, lại sợ Sở Ly nổi giận; nhưng nếu không động thủ, ngày nào cũng phải nhìn hai người đồng tâm đồng ý. Đặc biệt trong hoàn cảnh thế này, cùng trải gian nguy, cùng chịu hoạn nạn, dường như họ lại càng coi trọng nhau hơn.
-Lúc trước…
-Có phải hắn không nên bắt sống Tần Mục Vũ?
-Hình như hắn đã tự chuốc lấy một phiền phức lớn…
-Đau đầu.
-—
-Hôm sau.
-Thác Bạt Minh Nguyệt đem biến cố trong quân trình báo Nam Man Vương.
-Sở Dạ Ly cho rằng, khả năng rất lớn là Nhiếp Chính Vương Đại Sở sẽ không dễ dàng dâng Nam Cương bằng hai tay.
-Trong vòng mười lăm ngày này, nhất định sẽ có biến.
-Để bảo đảm an toàn, tốt nhất nên đưa con tin rời đi, tránh bị tập kích hoặc bị người cứu mất.
-Thác Bạt Minh Nguyệt thấy có lý, liền đồng ý.
-Ngày thứ ba.
-Vết thương ở chân Sở Ly đã đóng vảy, đi lại vẫn hơi tập tễnh, nhưng hôm nay nàng vẫn ngoan cường sống thêm một ngày.
-Thân tàn chí kiên.
-Sở Dạ Ly sai người chuẩn bị xe ngựa và hành lý, bước vào doanh trướng:
-“Tiểu Cửu, chúng ta đến Vương đô Nam Man chơi vài ngày, chắc muội sẽ thích.”
-Sở Ly ngồi bên mép giường, khó hiểu hỏi:
-“Vì sao đột nhiên phải đến Vương đô Nam Man?”
-Quân doanh ở biên cảnh, cách Đại Sở rất gần.
-Mà Vương đô lại nằm ở trung tâm Nam Man. Nếu thân phận “Sở Đế” của nàng bại lộ, đến đường chạy cũng không có.
-“Ngày ngày ở quân doanh, màn trời chiếu đất, hoàn cảnh cũng không tốt, không thích hợp ở lâu.”
-“Thế còn Tần Mục Vũ?”
-Sở Dạ Ly mím môi, dường như đã đoán trước nàng sẽ hỏi.
-“Cũng đưa đi cùng.”
-“Vậy còn xiềng xích trên người huynh ấy?”
-Sở Dạ Ly bước tới:
-“Muội không thích như vậy, ta sẽ nói với Trưởng công chúa một tiếng, tháo xiềng cho hắn, được không?”
-Nghe vậy, sắc mặt Sở Ly mới dịu đi đôi chút.
-“Giờ thì vui rồi chứ?”
-Sở Ly mím môi:
-“Ta chỉ thấy chiến tù còn có giá trị lợi dụng, không nên ngược đãi hắn mà thôi.”
-“Tiểu Cửu nói rất đúng.”
-Nam nhân khẽ cười, ngồi xuống bên cạnh nàng.
-“Nếu đã tháo xiềng cho hắn, vậy đám thuốc này cũng không cần nữa.”
-Cánh tay dài thò xuống dưới gối, lập tức lấy ra một nắm lớn các loại dược khác nhau.
-Thần sắc Sở Ly lập tức căng thẳng.
-Đây đều là mấy ngày nay nàng nhân lúc chữa chân, cố ý tiếp cận quân y để âm thầm tích góp.
-Nàng còn định dùng số thuốc này giải Nhuyễn Cốt Tán cho Tần Mục Vũ.
-“Trả lại cho ta!”
-Hắn giơ tay lên cao.
-“Nếu thân thể không khỏe, cứ tìm quân y lấy thuốc, hoặc nói với ta. Đừng tự ý dùng thuốc lung tung. Lỡ làm hỏng thân thể, ta sẽ đau lòng.”
-“Ngũ huynh!”
-“Tiểu Cửu ngoan, chuẩn bị đi. Nửa canh giờ nữa chúng ta lên đường.”
-Hắn xoa đầu nàng, đứng dậy ra khỏi doanh trướng, ném cả nắm thuốc vào đống lửa.
-Lửa bùng lên, thiêu sạch đến không còn một mảnh vụn.
-“Chủ tử, mọi thứ đã chuẩn bị xong.”
-A Ngọc bước tới.
-“Chỉ là phía Nhiếp Chính Vương…”
-“Không cần giấu hành tung, cứ để hắn biết.”
-“Vâng.”
-Xiềng xích trên người Tần Mục Vũ được tháo bỏ.
-Nhưng hắn đã trúng Nhuyễn Cốt Tán, toàn thân vô lực, ngay cả cầm kiếm cũng không nổi. Cho dù không còn xiềng xích hay gông cùm, với thể lực hiện tại, chỉ cần một đứa trẻ năm tuổi cũng có thể đá ngã hắn.
-Cùng lúc đó.
-Quân doanh Nam Cương.
-Thám tử trở về báo tin, Tần Thiếu tướng quân cùng Tân Đế đã bị đưa rời quân doanh, hướng về Vương đô Nam Man.
-Sở Đệ Trì vừa nghe liền lập tức nói:
-“Bảo An tướng quân trấn thủ Nam Cương, bản vương đích thân đến Vương đô Nam Man một chuyến.”
-“Chủ tử, không thể!”
-Đây rõ ràng là một cái bẫy.
-Kinh Ảnh nói:
-“Ngũ hoàng tử cố ý thả tin, dụ ngài tiến vào Vương đô Nam Man. Một khi đi sâu vào đó, sẽ hoàn toàn thoát khỏi phạm vi khống chế của chúng ta. Nếu xảy ra chuyện…”
-Chỉ e sẽ nguy hiểm đến tính mạng.
-“Tiểu Cửu ở đó. Nếu bản vương không đi, chẳng phải phụ lòng một phen dụng tâm của Sở Dạ Ly sao?”
-Trọng Phong nói:
-“Nếu ngài rời đi, Đại Sở phải làm sao? Sáng nay kinh thành truyền cấp báo, Tam hoàng tử đã mời Tiêu Dao Hoàng thúc từ đất phong trở về, nhân lúc ngài không ở kinh muốn đoạt quyền; Tĩnh Quý phi và Phương gia cũng nhân cơ hội nâng đỡ Thất hoàng tử.”
-Đây mới thực sự là nội ưu ngoại hoạn.
-Nếu chủ tử xảy ra bất trắc, Đại Sở sẽ hoàn toàn đại loạn!
-Sở Đệ Trì phất mạnh tay lên bàn:
-“Một lũ tạp toái.”
-Chiến sự Nam Cương còn chưa yên, lão Hoàng đế vẫn chưa chết, Tân Đế cũng vẫn còn, hắn – Nhiếp Chính Vương – cũng chưa chết chưa mù, vậy mà bọn chúng đã vội vàng tranh đoạt quyền lực.
-“Bảo Tiêu Dạ Hành trông chừng lão Hoàng đế. Chỉ cần lão Hoàng đế vẫn nằm liệt, không thể hạ chỉ, thì dù bọn chúng có đoạt quyền, cũng danh bất chính, ngôn bất thuận.”
-“Lại bảo Bát hoàng tử Nhàn Vương ở bên hỗ trợ.”
-Trọng Phong nói:
-“Nhàn Vương điện hạ e rằng không có tài trị quốc, làm sao áp chế nổi Tam hoàng tử lão gian cự hoạt và Thất hoàng tử được mẫu tộc quyền thế ngập trời chống lưng?”
-“Bảo hắn, không áp được cũng phải áp, không giữ được cũng phải giữ. Nếu không chờ bản vương hồi kinh, bản vương sẽ tước phong hiệu Nhàn Vương của hắn, rồi ném hắn đi quét chuồng ngựa.” Ẩn bớt</p>
+            <p>Chương 143: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 143: Tần Mục Vũ – tên mặt trắng kia, dỗ dành Sở Ly đến xoay vòng vòng</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Ừm?”</p>
+<p>“Đừng tin lời Sở Đệ Trì. Nếu nàng đi theo hắn, nhất định sẽ bị hắn đưa hồi cung. Chẳng phải nàng không thích cuộc sống như vậy sao?”</p>
+<p>Năm đó, nàng giả chết thoát thân, ấy chính là sự lựa chọn của nàng.</p>
+<p>Nếu bây giờ quay về, chẳng phải lại trở về chiếc lồng son kia?</p>
+<p>Sở Ly khẽ cúi đầu.</p>
+<p>Nàng không phải muốn hồi cung, điều nàng mong muốn… là một cuộc sống không bị trói buộc.</p>
+<p>Là tự do.</p>
+<p>“Ở bên ta, ta sẽ không ép muội làm điều mình không vui. Muội muốn đi đâu chơi, ta sẽ cùng muội đi đó; muội muốn làm gì, ta đều chiều theo muội, được không?”</p>
+<p>Ở bên hắn, chẳng khác nào từ một chiếc lồng bước sang một chiếc lồng khác, có gì khác biệt?</p>
+<p>Sở Ly không đáp.</p>
+<p>“Muội muốn về nhà, ta muốn phục quốc. Nhà vẫn là ngôi nhà trước kia, chỉ là quốc hiệu đổi khác mà thôi. Chờ qua khoảng thời gian này, muội lại có thể sống như trước.”</p>
+<p>Sở Ly vẫn im lặng.</p>
+<p>“Có muốn gặp Tần Thiếu tướng quân không?”</p>
+<p>Nàng lập tức ngẩng đầu.</p>
+<p>Sở Dạ Ly khẽ thở dài. Hắn nói bao nhiêu lời, vậy mà còn không bằng một câu “Tần Thiếu tướng quân”, nhưng lại chẳng thể nổi giận.</p>
+<p>“Để ta thay thuốc xong, sẽ đưa muội đi.”</p>
+<p>Hắn quỳ một gối trước giường, đặt bàn chân nhỏ của nàng lên đầu gối mình, cẩn thận bôi thuốc.</p>
+<p>Giữa hai người hiếm hoi mới có được bầu không khí yên hòa như thế.</p>
+<p>Hắn rất thích sự yên hòa này.</p>
+<p>Trong đầu bỗng lóe lên một ý niệm: nếu nàng có thể mãi ngoan ngoãn ở bên hắn thì tốt biết bao. Gãy chân rồi, nàng sẽ chỉ có thể ở cạnh hắn.</p>
+<p>Nhưng ngay sau đó, hắn liền cảm thấy ý nghĩ ấy thật hoang đường.</p>
+<p>Sao hắn có thể nghĩ như vậy?</p>
+<p>Nếu nàng không còn tung tăng nhảy nhót, leo trèo chạy khắp nơi nữa, vậy sẽ không còn là Sở Ly.</p>
+<p>Một khắc sau, Sở Dạ Ly giữ đúng lời hứa, đưa Sở Ly đến gặp Tần Mục Vũ.</p>
+<p>Lúc này, Tần Mục Vũ bị trói trên cọc gỗ, tay chân đều đeo xiềng xích, sợi xích to nặng nếu không có chìa khóa thì tuyệt đối không thể mở ra.</p>
+<p>“Mục Vũ!”</p>
+<p>Vừa nhìn thấy hắn, cảm xúc của Sở Ly lập tức dao động.</p>
+<p>Sao có thể dùng loại xiềng to như vậy để khóa hắn!</p>
+<p>Lại còn khóa cả cổ.</p>
+<p>Chỉ có buộc chó mới khóa cổ.</p>
+<p>Đây quả thực là sỉ nhục người khác!</p>
+<p>“A Ly, ta không sao.”</p>
+<p>Y phục Tần Mục Vũ rách nát, thần sắc mệt mỏi. Tuy đã thành tù nhân, nhưng may là trên người không có ngoại thương gì.</p>
+<p>“Không lâu trước, ta nghe binh sĩ tuần tra nói Vệ tướng quân đã chết, nghi là người Đại Sở bí mật ám sát, nên bọn họ mới dùng xích sắt khóa cổ ta để trút giận và làm nhục.”</p>
+<p>Vệ tướng quân sao lại đột nhiên chết?</p>
+<p>Sở Ly vô cùng kinh ngạc.</p>
+<p>“Nếu thật sự là người Đại Sở lẻn vào doanh Nam Man giết Vệ tướng quân, vì sao không tiện thể cứu chúng ta luôn?”</p>
+<p>Mà chỉ giết một vị tướng.</p>
+<p>Chuyện này không hợp lý.</p>
+<p>Hơn nữa, nhìn thế nào cũng không giống thủ bút của Sở Đệ Trì.</p>
+<p>Tần Mục Vũ phản ứng cực nhanh, hạ thấp giọng:</p>
+<p>“Ý muội là… trong doanh Nam Man có nội gián?”</p>
+<p>Sở Ly ghé sát tai hắn:</p>
+<p>“Ta không biết là có mật thám hay là nội bộ bất hòa, nhưng chắc chắn không phải Sở Đệ Trì làm. Người đó hành sự từ trước đến nay ngang ngược, khinh thường dùng thủ đoạn ám sát thế này. Ta nghi hung thủ là kẻ khác, cố ý giá họa cho Sở Đệ Trì.”</p>
+<p>Tần Mục Vũ nhìn nghiêng gương mặt nàng, ánh mắt trở nên sâu thẳm.</p>
+<p>Nhắc đến Nhiếp Chính Vương, giọng nàng vô cùng chắc chắn, từng câu từng chữ đều đầy sức nặng.</p>
+<p>Nàng rất hiểu hắn, cũng rất tin hắn sao?</p>
+<p>Trước đây, nàng chưa từng nói như vậy.</p>
+<p>Khóe môi hắn khẽ cong lên đầy chua xót.</p>
+<p>“A Ly…”</p>
+<p>“Mục Vũ, huynh đừng lo. Chúng ta đều là con tin có giá trị. Dù Sở Đệ Trì không đến cứu, ta cũng đã để lại hậu thủ.”</p>
+<p>Hôm đó, nàng thả ba con chim ưng đi, không phải để báo tin cho Sở Đệ Trì, mà là…</p>
+<p>Hai người ghé sát nhau thì thầm bàn bạc.</p>
+<p>Sở Dạ Ly đứng cách đó không xa, nhìn hai người kề sát đến mức gần như tai chạm tai, nhỏ giọng nói chuyện.</p>
+<p>Quá gần.</p>
+<p>Cho dù nội lực hắn thâm hậu, ngũ cảm nhạy bén, cũng không nghe được họ đang nói gì.</p>
+<p>Nàng đề phòng hắn đến thế.</p>
+<p>Nhìn cảnh ấy, trong lòng hắn rất không dễ chịu.</p>
+<p>Rất muốn bước lên tách hai người ra.</p>
+<p>Tên mặt trắng Tần Mục Vũ kia, càng nhìn càng chướng mắt. Đường đường là Thiếu tướng quân, vậy mà lại trắng trẻo thư sinh, tuổi còn trẻ đã dỗ dành Sở Ly đến xoay vòng vòng, chắc chắn chẳng có ý tốt.</p>
+<p>Tiểu Cửu sao lại thích kiểu người như vậy?</p>
+<p>Rốt cuộc thích hắn ở điểm nào?</p>
+<p>Thích hắn da trắng, người gầy, một quyền là có thể bị đánh bay hai mươi trượng?</p>
+<p>Nếu hắn thật sự động thủ, lại sợ Sở Ly nổi giận; nhưng nếu không động thủ, ngày nào cũng phải nhìn hai người đồng tâm đồng ý. Đặc biệt trong hoàn cảnh thế này, cùng trải gian nguy, cùng chịu hoạn nạn, dường như họ lại càng coi trọng nhau hơn.</p>
+<p>Lúc trước…</p>
+<p>Có phải hắn không nên bắt sống Tần Mục Vũ?</p>
+<p>Hình như hắn đã tự chuốc lấy một phiền phức lớn…</p>
+<p>Đau đầu.</p>
+<p>—</p>
+<p>Hôm sau.</p>
+<p>Thác Bạt Minh Nguyệt đem biến cố trong quân trình báo Nam Man Vương.</p>
+<p>Sở Dạ Ly cho rằng, khả năng rất lớn là Nhiếp Chính Vương Đại Sở sẽ không dễ dàng dâng Nam Cương bằng hai tay.</p>
+<p>Trong vòng mười lăm ngày này, nhất định sẽ có biến.</p>
+<p>Để bảo đảm an toàn, tốt nhất nên đưa con tin rời đi, tránh bị tập kích hoặc bị người cứu mất.</p>
+<p>Thác Bạt Minh Nguyệt thấy có lý, liền đồng ý.</p>
+<p>Ngày thứ ba.</p>
+<p>Vết thương ở chân Sở Ly đã đóng vảy, đi lại vẫn hơi tập tễnh, nhưng hôm nay nàng vẫn ngoan cường sống thêm một ngày.</p>
+<p>Thân tàn chí kiên.</p>
+<p>Sở Dạ Ly sai người chuẩn bị xe ngựa và hành lý, bước vào doanh trướng:</p>
+<p>“Tiểu Cửu, chúng ta đến Vương đô Nam Man chơi vài ngày, chắc muội sẽ thích.”</p>
+<p>Sở Ly ngồi bên mép giường, khó hiểu hỏi:</p>
+<p>“Vì sao đột nhiên phải đến Vương đô Nam Man?”</p>
+<p>Quân doanh ở biên cảnh, cách Đại Sở rất gần.</p>
+<p>Mà Vương đô lại nằm ở trung tâm Nam Man. Nếu thân phận “Sở Đế” của nàng bại lộ, đến đường chạy cũng không có.</p>
+<p>“Ngày ngày ở quân doanh, màn trời chiếu đất, hoàn cảnh cũng không tốt, không thích hợp ở lâu.”</p>
+<p>“Thế còn Tần Mục Vũ?”</p>
+<p>Sở Dạ Ly mím môi, dường như đã đoán trước nàng sẽ hỏi.</p>
+<p>“Cũng đưa đi cùng.”</p>
+<p>“Vậy còn xiềng xích trên người huynh ấy?”</p>
+<p>Sở Dạ Ly bước tới:</p>
+<p>“Muội không thích như vậy, ta sẽ nói với Trưởng công chúa một tiếng, tháo xiềng cho hắn, được không?”</p>
+<p>Nghe vậy, sắc mặt Sở Ly mới dịu đi đôi chút.</p>
+<p>“Giờ thì vui rồi chứ?”</p>
+<p>Sở Ly mím môi:</p>
+<p>“Ta chỉ thấy chiến tù còn có giá trị lợi dụng, không nên ngược đãi hắn mà thôi.”</p>
+<p>“Tiểu Cửu nói rất đúng.”</p>
+<p>Nam nhân khẽ cười, ngồi xuống bên cạnh nàng.</p>
+<p>“Nếu đã tháo xiềng cho hắn, vậy đám thuốc này cũng không cần nữa.”</p>
+<p>Cánh tay dài thò xuống dưới gối, lập tức lấy ra một nắm lớn các loại dược khác nhau.</p>
+<p>Thần sắc Sở Ly lập tức căng thẳng.</p>
+<p>Đây đều là mấy ngày nay nàng nhân lúc chữa chân, cố ý tiếp cận quân y để âm thầm tích góp.</p>
+<p>Nàng còn định dùng số thuốc này giải Nhuyễn Cốt Tán cho Tần Mục Vũ.</p>
+<p>“Trả lại cho ta!”</p>
+<p>Hắn giơ tay lên cao.</p>
+<p>“Nếu thân thể không khỏe, cứ tìm quân y lấy thuốc, hoặc nói với ta. Đừng tự ý dùng thuốc lung tung. Lỡ làm hỏng thân thể, ta sẽ đau lòng.”</p>
+<p>“Ngũ huynh!”</p>
+<p>“Tiểu Cửu ngoan, chuẩn bị đi. Nửa canh giờ nữa chúng ta lên đường.”</p>
+<p>Hắn xoa đầu nàng, đứng dậy ra khỏi doanh trướng, ném cả nắm thuốc vào đống lửa.</p>
+<p>Lửa bùng lên, thiêu sạch đến không còn một mảnh vụn.</p>
+<p>“Chủ tử, mọi thứ đã chuẩn bị xong.”</p>
+<p>A Ngọc bước tới.</p>
+<p>“Chỉ là phía Nhiếp Chính Vương…”</p>
+<p>“Không cần giấu hành tung, cứ để hắn biết.”</p>
+<p>“Vâng.”</p>
+<p>Xiềng xích trên người Tần Mục Vũ được tháo bỏ.</p>
+<p>Nhưng hắn đã trúng Nhuyễn Cốt Tán, toàn thân vô lực, ngay cả cầm kiếm cũng không nổi. Cho dù không còn xiềng xích hay gông cùm, với thể lực hiện tại, chỉ cần một đứa trẻ năm tuổi cũng có thể đá ngã hắn.</p>
+<p>Cùng lúc đó.</p>
+<p>Quân doanh Nam Cương.</p>
+<p>Thám tử trở về báo tin, Tần Thiếu tướng quân cùng Tân Đế đã bị đưa rời quân doanh, hướng về Vương đô Nam Man.</p>
+<p>Sở Đệ Trì vừa nghe liền lập tức nói:</p>
+<p>“Bảo An tướng quân trấn thủ Nam Cương, bản vương đích thân đến Vương đô Nam Man một chuyến.”</p>
+<p>“Chủ tử, không thể!”</p>
+<p>Đây rõ ràng là một cái bẫy.</p>
+<p>Kinh Ảnh nói:</p>
+<p>“Ngũ hoàng tử cố ý thả tin, dụ ngài tiến vào Vương đô Nam Man. Một khi đi sâu vào đó, sẽ hoàn toàn thoát khỏi phạm vi khống chế của chúng ta. Nếu xảy ra chuyện…”</p>
+<p>Chỉ e sẽ nguy hiểm đến tính mạng.</p>
+<p>“Tiểu Cửu ở đó. Nếu bản vương không đi, chẳng phải phụ lòng một phen dụng tâm của Sở Dạ Ly sao?”</p>
+<p>Trọng Phong nói:</p>
+<p>“Nếu ngài rời đi, Đại Sở phải làm sao? Sáng nay kinh thành truyền cấp báo, Tam hoàng tử đã mời Tiêu Dao Hoàng thúc từ đất phong trở về, nhân lúc ngài không ở kinh muốn đoạt quyền; Tĩnh Quý phi và Phương gia cũng nhân cơ hội nâng đỡ Thất hoàng tử.”</p>
+<p>Đây mới thực sự là nội ưu ngoại hoạn.</p>
+<p>Nếu chủ tử xảy ra bất trắc, Đại Sở sẽ hoàn toàn đại loạn!</p>
+<p>Sở Đệ Trì phất mạnh tay lên bàn:</p>
+<p>“Một lũ tạp toái.”</p>
+<p>Chiến sự Nam Cương còn chưa yên, lão Hoàng đế vẫn chưa chết, Tân Đế cũng vẫn còn, hắn – Nhiếp Chính Vương – cũng chưa chết chưa mù, vậy mà bọn chúng đã vội vàng tranh đoạt quyền lực.</p>
+<p>“Bảo Tiêu Dạ Hành trông chừng lão Hoàng đế. Chỉ cần lão Hoàng đế vẫn nằm liệt, không thể hạ chỉ, thì dù bọn chúng có đoạt quyền, cũng danh bất chính, ngôn bất thuận.”</p>
+<p>“Lại bảo Bát hoàng tử Nhàn Vương ở bên hỗ trợ.”</p>
+<p>Trọng Phong nói:</p>
+<p>“Nhàn Vương điện hạ e rằng không có tài trị quốc, làm sao áp chế nổi Tam hoàng tử lão gian cự hoạt và Thất hoàng tử được mẫu tộc quyền thế ngập trời chống lưng?”</p>
+<p>“Bảo hắn, không áp được cũng phải áp, không giữ được cũng phải giữ. Nếu không chờ bản vương hồi kinh, bản vương sẽ tước phong hiệu Nhàn Vương của hắn, rồi ném hắn đi quét chuồng ngựa.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_142.html" class="btn">‹ Trước</a>
             <a href="chuong_144.html" class="btn">Sau ›</a>
         </div>
@@ -270,15 +278,11 @@ Trọng Phong nói:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -290,11 +294,11 @@ Trọng Phong nói:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 217</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,157 +62,166 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 217</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_216.html" class="btn">‹ Trước</a>
             <a href="chuong_218.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 217: A Trì, ngươi nhất định phải chống đỡ!
-Bên ngoài.
-Sở Ly dẫn theo Sở Hoằng Diễm, thần sắc đầy lo lắng, đi đi lại lại không yên.
-Sao đúng lúc mấu chốt, Tiêu Dạ Hành, Bạch Cẩm Y và mọi người đều không có mặt?
-Cũng may Sở Uyên Trì chỉ đến một mình. Nếu hắn còn mang theo ám vệ hoặc sát thủ… hậu quả thật không dám nghĩ tới.
-Nàng sốt ruột đi qua đi lại mấy vòng, mãi đến khi ngoài viện truyền đến tiếng bước chân gấp gáp.
-“A Ly ca ca!”
-“Mục Tuyết!”
-Sở Ly chạy nhanh lên đón. Tần Mục Tuyết đến rồi, Tiêu Dạ Hành và mọi người cũng đều đã trở về.
-“Mọi người đi đâu vậy?”
-“Từ sáng đến giờ Nhiếp Chính Vương vẫn luôn điều tra án. Bên nha phủ, bên phía bách tính, còn rất nhiều nơi cần sắp xếp, ta đi theo xem thử.”
-Sở Ly trầm giọng:
-“Nhiếp Chính Vương bị thương rồi!”
-Tiêu Dạ Hành kinh hãi:
-“Ngươi nói gì?”
-“Vừa rồi mọi người đều không có mặt. Sở Uyên Trì chắc chắn đã lợi dụng sơ hở này, xách kiếm xông vào, đâm bị thương hắn.”
-“Cái thứ to gan lớn mật đó, đúng là muốn tìm chết sao!”
-Tiêu Dạ Hành lập tức biến sắc, kéo Bạch Cẩm Y, sải bước chạy vào đại sảnh.
-Vừa vội vã chạy, vừa lớn tiếng tự trách:
-“Đều tại ta sơ suất, không ngờ tới chuyện này!”
-Bạch Cẩm Y nói:
-“Sở Uyên Trì đã có lòng hại người, sao ngươi với ta có thể phòng được?”
-Hai người vội vàng đi vào trong.
-Tần Mục Vũ nhìn cảnh ấy, đôi mày càng nhíu chặt, trong lòng đã cảm thấy có điều không ổn.
-Bọn họ vừa rời đi…
-Lập tức xảy ra chuyện?
-Nhiếp Chính Vương chinh chiến sa trường, võ nghệ cao cường, lại luôn cảnh giác, sao có thể bị Sở Uyên Trì làm bị thương?
-Nhưng nhìn dáng vẻ sốt sắng của A Ly, bao nhiêu nghi hoặc dâng đến cổ họng, cuối cùng hắn vẫn lặng lẽ nuốt xuống.
-Cứ xem tình hình trước đã.
-Nhiếp Chính Vương được dìu ra ngoài.
-Hắn bị thương ở tay.
-Bị thương ở tay…
-Sao bước chân còn loạng choạng thế?
-Hắn ngất rồi?
-Trên kiếm có độc?
-Tần Mục Vũ chỉ đứng nhìn chưa đến nửa khắc, đã thấy cả đám người vây kín quanh Nhiếp Chính Vương. Người lo lắng nhất không ai khác ngoài Sở Ly, sốt ruột đến mức như chẳng còn phân biệt nổi đông tây nam bắc. Hắn hé miệng định nói, nhưng bao nhiêu suy đoán càng không tiện mở lời.
-Không đúng!
-“Tiêu Dạ Hành!”
-Phía bên kia, Tiêu Dạ Hành quay đầu nhìn hắn.
-“Ngươi gọi ta là gì?”
-“Có phải ngươi cố ý không?”
-“Ý ngươi là sao?”
-Tần Mục Vũ lạnh mặt, sải bước đến.
-“Ngươi cố tình gọi tất cả chúng ta đi, chính là để tạo cơ hội cho Nhiếp Chính Vương ở riêng với A Ly, để hắn có dịp thể hiện!”
-Một lời trúng ngay trọng tâm.
-Gương mặt cương nghị của Tiêu Dạ Hành vẫn đầy vẻ chính trực, thẳng thắn, quang minh lỗi lạc, hào sảng rộng mở. Hắn bình thản hỏi ngược lại:
-“Nếu là ngươi, ngươi có đem Cửu Hoàng tử đặt vào chỗ nguy hiểm, chỉ để đạt được mục đích của mình không?”
-Thần sắc Tần Mục Vũ khựng lại.
-Không.
-Hắn sẽ không.
-Hắn không nỡ để A Ly phải chịu dù chỉ nửa phần nguy hiểm.
-“Hơn nữa, chẳng lẽ ta có bản lĩnh biết trước tương lai, biết đúng vào giờ này Sở Uyên Trì sẽ cầm kiếm đến hành thích?”
-“Ta và Nhiếp Chính Vương cùng nhau lớn lên, vào sinh ra tử. Tình nghĩa giữa chúng ta không hề thua kém tình cảm giữa ngươi và Cửu Hoàng tử. Hãy đặt mình vào vị trí của người khác mà suy nghĩ cho kỹ.”
-Dáng vẻ nghĩa chính từ nghiêm của Tiêu Dạ Hành khiến người khác hoàn toàn không thể nảy sinh nửa phần hoài nghi.
-Chẳng lẽ…
-Là hắn hiểu lầm cữu cữu rồi?
-Hậu viện ven hồ của Lâm Hồ Tiểu Trúc phong cảnh thanh nhã, tầm nhìn rộng mở, khí hậu ôn hòa.
-Bạch Cẩm Y cuống quýt dìu lấy Sở Đệ Trì.
-“A Trì! Ngươi phải chống đỡ! Nhất định phải chống đỡ!”
-Sở Ly không hiểu y thuật, nhưng chỉ nghe những lời ấy thôi đã cảm nhận được mức độ nghiêm trọng của tình hình, vội vàng hỏi:
-“Hắn chỉ bị thương ở tay, lẽ nào còn nguy hiểm đến tính mạng sao?”
-Bạch Cẩm Y nghiêm giọng đáp:
-“Cửu Hoàng tử không biết, trên thanh kiếm ấy có độc… Thôi vậy! Ngài ra ngoài trước đi, đừng quấy rầy ta chữa trị cho hắn.”
-“Ta ở lại giúp ngươi.”
-“Không cần. Ngài ra ngoài chờ trước, khi nào xong ta sẽ báo.”
-“Nhưng… nhưng mà…”
-Sở Ly giơ hai bàn tay dính đầy máu, sốt ruột đến mức chân tay luống cuống, đi cũng không được, ở lại cũng không xong. Cuối cùng vẫn bị Bạch Cẩm Y đẩy ra ngoài.
-Cạch.
-Cánh cửa khép lại.
-Tầm nhìn hoàn toàn bị ngăn cách.
-Không nhìn thấy gì, trái lại càng khiến lòng người hoảng hốt.
-“Hoàng thúc…”
-Sở Ly vịn lên cánh cửa đóng kín. Đến cả một khe hở cũng không có để nhìn vào. Trong lòng nàng hoàn toàn không có chút chắc chắn nào.
-Nghĩ đến khoảnh khắc Sở Uyên Trì vung kiếm đâm tới, Sở Đệ Trì đã không chút do dự che chắn cho nàng trước tiên, trong lòng nàng càng thêm khó chịu.
-Rốt cuộc…
-Đó là một loại tình cảm gì?
-Ban đầu…
-Là hận.
-Hạt giống nảy mầm từ trong hận ý ấy, lại dần dần lớn lên ngoài tầm kiểm soát qua từng lần ở cạnh nhau, đến chính nàng cũng không còn phân biệt nổi.
-Con người…
-Vốn là loài sinh vật có tình cảm phức tạp.
-Nàng vịn cửa, chậm rãi trượt người xuống, ngồi xổm dưới đất, co người thành một đoàn.
-Huynh muội nhà họ Tần chạy tới.
-“A Ly ca ca, huynh đừng quá lo. Bạch công tử y thuật cao minh, Nhiếp Chính Vương nhất định sẽ không sao đâu.”
-Sở Ly khẽ tự trách:
-“Hắn bị thương là vì bảo vệ ta. Nếu không phải vì ta, với võ công của hắn, Sở Uyên Trì căn bản không thể làm hắn bị thương.”
-Tần Mục Vũ khẽ mím môi.
-Có lẽ…
-Là hắn quá đa nghi, đã diễn giải quá mức hành động của Nhiếp Chính Vương.
-Hóa ra…
-Nhiếp Chính Vương chỉ vì bảo vệ A Ly.
-Thật ra, hắn không nên hoài nghi tình cảm của Nhiếp Chính Vương dành cho A Ly. Ngay từ khi ở Nam Cương, lúc Nhiếp Chính Vương sẵn sàng dùng một phần ba giang sơn Đại Sở để đổi lấy thi thể của A Ly, hắn đã nên buông tay…
-Thành toàn cho bọn họ. Ẩn bớt</p>
+            <p>Chương 217: A Trì, ngươi nhất định phải chống đỡ!</p>
+<p>Bên ngoài.</p>
+<p>Sở Ly dẫn theo Sở Hoằng Diễm, thần sắc đầy lo lắng, đi đi lại lại không yên.</p>
+<p>Sao đúng lúc mấu chốt, Tiêu Dạ Hành, Bạch Cẩm Y và mọi người đều không có mặt?</p>
+<p>Cũng may Sở Uyên Trì chỉ đến một mình. Nếu hắn còn mang theo ám vệ hoặc sát thủ… hậu quả thật không dám nghĩ tới.</p>
+<p>Nàng sốt ruột đi qua đi lại mấy vòng, mãi đến khi ngoài viện truyền đến tiếng bước chân gấp gáp.</p>
+<p>“A Ly ca ca!”</p>
+<p>“Mục Tuyết!”</p>
+<p>Sở Ly chạy nhanh lên đón. Tần Mục Tuyết đến rồi, Tiêu Dạ Hành và mọi người cũng đều đã trở về.</p>
+<p>“Mọi người đi đâu vậy?”</p>
+<p>“Từ sáng đến giờ Nhiếp Chính Vương vẫn luôn điều tra án. Bên nha phủ, bên phía bách tính, còn rất nhiều nơi cần sắp xếp, ta đi theo xem thử.”</p>
+<p>Sở Ly trầm giọng:</p>
+<p>“Nhiếp Chính Vương bị thương rồi!”</p>
+<p>Tiêu Dạ Hành kinh hãi:</p>
+<p>“Ngươi nói gì?”</p>
+<p>“Vừa rồi mọi người đều không có mặt. Sở Uyên Trì chắc chắn đã lợi dụng sơ hở này, xách kiếm xông vào, đâm bị thương hắn.”</p>
+<p>“Cái thứ to gan lớn mật đó, đúng là muốn tìm chết sao!”</p>
+<p>Tiêu Dạ Hành lập tức biến sắc, kéo Bạch Cẩm Y, sải bước chạy vào đại sảnh.</p>
+<p>Vừa vội vã chạy, vừa lớn tiếng tự trách:</p>
+<p>“Đều tại ta sơ suất, không ngờ tới chuyện này!”</p>
+<p>Bạch Cẩm Y nói:</p>
+<p>“Sở Uyên Trì đã có lòng hại người, sao ngươi với ta có thể phòng được?”</p>
+<p>Hai người vội vàng đi vào trong.</p>
+<p>Tần Mục Vũ nhìn cảnh ấy, đôi mày càng nhíu chặt, trong lòng đã cảm thấy có điều không ổn.</p>
+<p>Bọn họ vừa rời đi…</p>
+<p>Lập tức xảy ra chuyện?</p>
+<p>Nhiếp Chính Vương chinh chiến sa trường, võ nghệ cao cường, lại luôn cảnh giác, sao có thể bị Sở Uyên Trì làm bị thương?</p>
+<p>Nhưng nhìn dáng vẻ sốt sắng của A Ly, bao nhiêu nghi hoặc dâng đến cổ họng, cuối cùng hắn vẫn lặng lẽ nuốt xuống.</p>
+<p>Cứ xem tình hình trước đã.</p>
+<p>Nhiếp Chính Vương được dìu ra ngoài.</p>
+<p>Hắn bị thương ở tay.</p>
+<p>Bị thương ở tay…</p>
+<p>Sao bước chân còn loạng choạng thế?</p>
+<p>Hắn ngất rồi?</p>
+<p>Trên kiếm có độc?</p>
+<p>Tần Mục Vũ chỉ đứng nhìn chưa đến nửa khắc, đã thấy cả đám người vây kín quanh Nhiếp Chính Vương. Người lo lắng nhất không ai khác ngoài Sở Ly, sốt ruột đến mức như chẳng còn phân biệt nổi đông tây nam bắc. Hắn hé miệng định nói, nhưng bao nhiêu suy đoán càng không tiện mở lời.</p>
+<p>Không đúng!</p>
+<p>“Tiêu Dạ Hành!”</p>
+<p>Phía bên kia, Tiêu Dạ Hành quay đầu nhìn hắn.</p>
+<p>“Ngươi gọi ta là gì?”</p>
+<p>“Có phải ngươi cố ý không?”</p>
+<p>“Ý ngươi là sao?”</p>
+<p>Tần Mục Vũ lạnh mặt, sải bước đến.</p>
+<p>“Ngươi cố tình gọi tất cả chúng ta đi, chính là để tạo cơ hội cho Nhiếp Chính Vương ở riêng với A Ly, để hắn có dịp thể hiện!”</p>
+<p>Một lời trúng ngay trọng tâm.</p>
+<p>Gương mặt cương nghị của Tiêu Dạ Hành vẫn đầy vẻ chính trực, thẳng thắn, quang minh lỗi lạc, hào sảng rộng mở. Hắn bình thản hỏi ngược lại:</p>
+<p>“Nếu là ngươi, ngươi có đem Cửu Hoàng tử đặt vào chỗ nguy hiểm, chỉ để đạt được mục đích của mình không?”</p>
+<p>Thần sắc Tần Mục Vũ khựng lại.</p>
+<p>Không.</p>
+<p>Hắn sẽ không.</p>
+<p>Hắn không nỡ để A Ly phải chịu dù chỉ nửa phần nguy hiểm.</p>
+<p>“Hơn nữa, chẳng lẽ ta có bản lĩnh biết trước tương lai, biết đúng vào giờ này Sở Uyên Trì sẽ cầm kiếm đến hành thích?”</p>
+<p>“Ta và Nhiếp Chính Vương cùng nhau lớn lên, vào sinh ra tử. Tình nghĩa giữa chúng ta không hề thua kém tình cảm giữa ngươi và Cửu Hoàng tử. Hãy đặt mình vào vị trí của người khác mà suy nghĩ cho kỹ.”</p>
+<p>Dáng vẻ nghĩa chính từ nghiêm của Tiêu Dạ Hành khiến người khác hoàn toàn không thể nảy sinh nửa phần hoài nghi.</p>
+<p>Chẳng lẽ…</p>
+<p>Là hắn hiểu lầm cữu cữu rồi?</p>
+<p>Hậu viện ven hồ của Lâm Hồ Tiểu Trúc phong cảnh thanh nhã, tầm nhìn rộng mở, khí hậu ôn hòa.</p>
+<p>Bạch Cẩm Y cuống quýt dìu lấy Sở Đệ Trì.</p>
+<p>“A Trì! Ngươi phải chống đỡ! Nhất định phải chống đỡ!”</p>
+<p>Sở Ly không hiểu y thuật, nhưng chỉ nghe những lời ấy thôi đã cảm nhận được mức độ nghiêm trọng của tình hình, vội vàng hỏi:</p>
+<p>“Hắn chỉ bị thương ở tay, lẽ nào còn nguy hiểm đến tính mạng sao?”</p>
+<p>Bạch Cẩm Y nghiêm giọng đáp:</p>
+<p>“Cửu Hoàng tử không biết, trên thanh kiếm ấy có độc… Thôi vậy! Ngài ra ngoài trước đi, đừng quấy rầy ta chữa trị cho hắn.”</p>
+<p>“Ta ở lại giúp ngươi.”</p>
+<p>“Không cần. Ngài ra ngoài chờ trước, khi nào xong ta sẽ báo.”</p>
+<p>“Nhưng… nhưng mà…”</p>
+<p>Sở Ly giơ hai bàn tay dính đầy máu, sốt ruột đến mức chân tay luống cuống, đi cũng không được, ở lại cũng không xong. Cuối cùng vẫn bị Bạch Cẩm Y đẩy ra ngoài.</p>
+<p>Cạch.</p>
+<p>Cánh cửa khép lại.</p>
+<p>Tầm nhìn hoàn toàn bị ngăn cách.</p>
+<p>Không nhìn thấy gì, trái lại càng khiến lòng người hoảng hốt.</p>
+<p>“Hoàng thúc…”</p>
+<p>Sở Ly vịn lên cánh cửa đóng kín. Đến cả một khe hở cũng không có để nhìn vào. Trong lòng nàng hoàn toàn không có chút chắc chắn nào.</p>
+<p>Nghĩ đến khoảnh khắc Sở Uyên Trì vung kiếm đâm tới, Sở Đệ Trì đã không chút do dự che chắn cho nàng trước tiên, trong lòng nàng càng thêm khó chịu.</p>
+<p>Rốt cuộc…</p>
+<p>Đó là một loại tình cảm gì?</p>
+<p>Ban đầu…</p>
+<p>Là hận.</p>
+<p>Hạt giống nảy mầm từ trong hận ý ấy, lại dần dần lớn lên ngoài tầm kiểm soát qua từng lần ở cạnh nhau, đến chính nàng cũng không còn phân biệt nổi.</p>
+<p>Con người…</p>
+<p>Vốn là loài sinh vật có tình cảm phức tạp.</p>
+<p>Nàng vịn cửa, chậm rãi trượt người xuống, ngồi xổm dưới đất, co người thành một đoàn.</p>
+<p>Huynh muội nhà họ Tần chạy tới.</p>
+<p>“A Ly ca ca, huynh đừng quá lo. Bạch công tử y thuật cao minh, Nhiếp Chính Vương nhất định sẽ không sao đâu.”</p>
+<p>Sở Ly khẽ tự trách:</p>
+<p>“Hắn bị thương là vì bảo vệ ta. Nếu không phải vì ta, với võ công của hắn, Sở Uyên Trì căn bản không thể làm hắn bị thương.”</p>
+<p>Tần Mục Vũ khẽ mím môi.</p>
+<p>Có lẽ…</p>
+<p>Là hắn quá đa nghi, đã diễn giải quá mức hành động của Nhiếp Chính Vương.</p>
+<p>Hóa ra…</p>
+<p>Nhiếp Chính Vương chỉ vì bảo vệ A Ly.</p>
+<p>Thật ra, hắn không nên hoài nghi tình cảm của Nhiếp Chính Vương dành cho A Ly. Ngay từ khi ở Nam Cương, lúc Nhiếp Chính Vương sẵn sàng dùng một phần ba giang sơn Đại Sở để đổi lấy thi thể của A Ly, hắn đã nên buông tay…</p>
+<p>Thành toàn cho bọn họ. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_216.html" class="btn">‹ Trước</a>
             <a href="chuong_218.html" class="btn">Sau ›</a>
         </div>
@@ -221,15 +229,11 @@ Thành toàn cho bọn họ. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -241,11 +245,11 @@ Thành toàn cho bọn họ. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 118</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,129 +62,138 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 118</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_117.html" class="btn">‹ Trước</a>
             <a href="chuong_119.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 118: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 118: Đế đô đổi chủ
-Đổi thay rồi.
-Chỉ trong một ngày ngắn ngủi, tựa như đột nhiên bước vào giữa mùa đông giá rét, lạnh đến mức gò má đau buốt.
-Sở Ly đứng trên bậc thềm, đón gió lạnh thật lâu.
-Giữa ngày đông rét mướt ấy, nàng lặng lẽ hồi tưởng từng chuyện đã qua.
-Nàng không cho phép bất kỳ ai quấy rầy.
-Chỉ lặng im đứng đó.
-Hoàng thượng đã bị liệt.
-Là do chính tay nàng gây nên.
-Có hối hận không?
-Chính nàng cũng không biết.
-Con người vốn là sinh vật có tình cảm phức tạp.
-Nghĩ đến những năm qua, phụ hoàng từng đối xử rất tốt với nàng, nàng có chút hối hận.
-Nhưng nhớ đến những lúc phụ hoàng lạnh lùng vô tình, nàng lại không hối hận.
-Vậy rốt cuộc là hối hận…
-Hay không hối hận?
-Ngay cả chính nàng cũng không phân rõ.
-Nàng đứng rất lâu… rất lâu…
-Cho đến khi màn đêm tan đi, ánh bình minh vừa hé rạng, mới chậm rãi nhấc đôi chân đã cứng đờ.
-Cả người lạnh buốt như rơi xuống hầm băng.
-Vừa cử động, suýt nữa ngã xuống.
-“Chủ tử!”
-Nàng gạt tay Cẩu Bát ra, chống vào cây cột:
-“Ta đi thăm phụ hoàng.”
-“Bẩm Cửu hoàng tử, Ôn tiểu thư cầu kiến, nói là có việc vô cùng quan trọng!” Đúng lúc ấy, ngoài điện, một tiểu thái giám vào bẩm báo.
-Chẳng lẽ Ôn gia xảy ra chuyện?
-“Mời người tới thiên điện của Chiêu Lan điện!”
-Sở Ly lập tức chạy tới, nhưng khi bước vào thiên điện, người ngồi bên trong lại là Ôn Nhã.
-Bước chân nàng khựng lại.
-Còn tưởng là Ôn Chỉ Tịch…
-“Biểu huynh!”
-Ôn Nhã vừa nhìn thấy nàng liền vui mừng bước tới.
-Tháng trước, nàng ta đã thành thân với Đại hoàng tử, hiện giờ là Trắc phi của Đại hoàng tử. Chỉ vì là Trắc phi nên hôn sự được tổ chức khá kín đáo.
-“Muội sao lại tới đây?”
-Sở Ly ngồi xuống, xoa bóp đôi chân lạnh cứng, tê dại.
-Xem ra sau này nàng phải dặn dò người bên dưới cho kỹ, đừng tùy tiện gọi “Ôn tiểu thư” nữa.
-Tam phòng Ôn gia chỉ có duy nhất một vị đích nữ là Ôn tiểu thư.
-Niềm hưng phấn trong mắt Ôn Nhã không giấu nổi:
-“Ôn Nhã đến để chúc mừng biểu huynh! Chúc mừng biểu huynh chẳng bao lâu nữa sẽ đăng cơ. Nhưng cũng biết biểu huynh hiện đang cô lập, không có người giúp đỡ, nên đặc biệt đến trợ giúp biểu huynh!”
-Sở Ly vừa xoa đầu gối vừa thản nhiên hỏi:
-“Muội định giúp ta thế nào?”
-Ôn Nhã vui vẻ đáp:
-“Biểu huynh chi bằng phong Đại hoàng tử làm Nhiếp chính vương, để Đại hoàng tử phụ tá huynh. Đại hoàng tử có tài trị quốc, lại là huynh đệ ruột của huynh, có hắn trợ giúp, chẳng phải sẽ được việc gấp đôi mà công sức chỉ bằng một nửa sao?”
-Sở Ly hơi khựng lại, ngẩng đầu hỏi:
-“Một quốc gia sao có thể có hai vị Nhiếp chính vương?”
-“Việc ấy muội đã nghĩ kỹ rồi.”
-“Biểu huynh chỉ cần tìm một cái cớ, xử lý Nhiếp chính vương, sau đó lập chính huynh trưởng của mình làm Nhiếp chính vương mới là kế sách ổn thỏa.”
-“Tục ngữ có câu: Một triều thiên tử một triều thần. Nay quyền lực đã thay đổi, Nhiếp chính vương tất sẽ sinh lòng bất thần, biểu huynh tuyệt đối không thể nuôi hổ gây họa.”
-Ôn Nhã nghiêm túc sắp xếp:
-“Nhưng Đại hoàng tử thì khác. Chàng là người đầu gối tay ấp của muội, lại là huynh trưởng của biểu huynh, chúng ta là người một nhà thân thiết. Chàng nhất định sẽ giúp biểu huynh quản lý giang sơn xã tắc, như vậy biểu huynh cũng không cần phải bận tâm nữa.”
-“Những lời muội nói thật đúng ý ta.”
-Sở Ly gật đầu.
-“So với vị hoàng thúc là Nhiếp chính vương, quả thật quan hệ giữa ta và Đại hoàng huynh thân thiết hơn nhiều.”
-Ôn Nhã mừng rỡ.
-Biểu huynh đồng ý rồi?
-Tốt quá!
-Nàng biết mà, biểu huynh vốn nhân hậu, còn nàng lại là Trắc phi của Đại hoàng tử, biểu huynh sao có thể từ chối?
-Chỉ cần trước tiên mưu được chức vị Nhiếp chính vương cho Đại hoàng tử, với mưu trí của Đại hoàng tử, sau này còn sợ không leo lên địa vị cao hơn, không nắm được đại quyền sao?
-Mà nàng cũng sẽ lập được đại công, được Đại hoàng tử coi trọng, vợ chồng ân ái, sau này sinh thêm một trai một gái, địa vị tất sẽ áp sát Đại hoàng tử phi.
-Chỉ nghĩ đến thôi, nàng đã không chờ đợi nổi nữa.
-Sở Ly bình tĩnh nhìn nàng:
-“Có điều…”
-Ôn Nhã vui vẻ ngồi thẳng người:
-“Có điều gì? Biểu huynh cứ nói.” Ẩn bớt</p>
+            <p>Chương 118: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 118: Đế đô đổi chủ</p>
+<p>Đổi thay rồi.</p>
+<p>Chỉ trong một ngày ngắn ngủi, tựa như đột nhiên bước vào giữa mùa đông giá rét, lạnh đến mức gò má đau buốt.</p>
+<p>Sở Ly đứng trên bậc thềm, đón gió lạnh thật lâu.</p>
+<p>Giữa ngày đông rét mướt ấy, nàng lặng lẽ hồi tưởng từng chuyện đã qua.</p>
+<p>Nàng không cho phép bất kỳ ai quấy rầy.</p>
+<p>Chỉ lặng im đứng đó.</p>
+<p>Hoàng thượng đã bị liệt.</p>
+<p>Là do chính tay nàng gây nên.</p>
+<p>Có hối hận không?</p>
+<p>Chính nàng cũng không biết.</p>
+<p>Con người vốn là sinh vật có tình cảm phức tạp.</p>
+<p>Nghĩ đến những năm qua, phụ hoàng từng đối xử rất tốt với nàng, nàng có chút hối hận.</p>
+<p>Nhưng nhớ đến những lúc phụ hoàng lạnh lùng vô tình, nàng lại không hối hận.</p>
+<p>Vậy rốt cuộc là hối hận…</p>
+<p>Hay không hối hận?</p>
+<p>Ngay cả chính nàng cũng không phân rõ.</p>
+<p>Nàng đứng rất lâu… rất lâu…</p>
+<p>Cho đến khi màn đêm tan đi, ánh bình minh vừa hé rạng, mới chậm rãi nhấc đôi chân đã cứng đờ.</p>
+<p>Cả người lạnh buốt như rơi xuống hầm băng.</p>
+<p>Vừa cử động, suýt nữa ngã xuống.</p>
+<p>“Chủ tử!”</p>
+<p>Nàng gạt tay Cẩu Bát ra, chống vào cây cột:</p>
+<p>“Ta đi thăm phụ hoàng.”</p>
+<p>“Bẩm Cửu hoàng tử, Ôn tiểu thư cầu kiến, nói là có việc vô cùng quan trọng!” Đúng lúc ấy, ngoài điện, một tiểu thái giám vào bẩm báo.</p>
+<p>Chẳng lẽ Ôn gia xảy ra chuyện?</p>
+<p>“Mời người tới thiên điện của Chiêu Lan điện!”</p>
+<p>Sở Ly lập tức chạy tới, nhưng khi bước vào thiên điện, người ngồi bên trong lại là Ôn Nhã.</p>
+<p>Bước chân nàng khựng lại.</p>
+<p>Còn tưởng là Ôn Chỉ Tịch…</p>
+<p>“Biểu huynh!”</p>
+<p>Ôn Nhã vừa nhìn thấy nàng liền vui mừng bước tới.</p>
+<p>Tháng trước, nàng ta đã thành thân với Đại hoàng tử, hiện giờ là Trắc phi của Đại hoàng tử. Chỉ vì là Trắc phi nên hôn sự được tổ chức khá kín đáo.</p>
+<p>“Muội sao lại tới đây?”</p>
+<p>Sở Ly ngồi xuống, xoa bóp đôi chân lạnh cứng, tê dại.</p>
+<p>Xem ra sau này nàng phải dặn dò người bên dưới cho kỹ, đừng tùy tiện gọi “Ôn tiểu thư” nữa.</p>
+<p>Tam phòng Ôn gia chỉ có duy nhất một vị đích nữ là Ôn tiểu thư.</p>
+<p>Niềm hưng phấn trong mắt Ôn Nhã không giấu nổi:</p>
+<p>“Ôn Nhã đến để chúc mừng biểu huynh! Chúc mừng biểu huynh chẳng bao lâu nữa sẽ đăng cơ. Nhưng cũng biết biểu huynh hiện đang cô lập, không có người giúp đỡ, nên đặc biệt đến trợ giúp biểu huynh!”</p>
+<p>Sở Ly vừa xoa đầu gối vừa thản nhiên hỏi:</p>
+<p>“Muội định giúp ta thế nào?”</p>
+<p>Ôn Nhã vui vẻ đáp:</p>
+<p>“Biểu huynh chi bằng phong Đại hoàng tử làm Nhiếp chính vương, để Đại hoàng tử phụ tá huynh. Đại hoàng tử có tài trị quốc, lại là huynh đệ ruột của huynh, có hắn trợ giúp, chẳng phải sẽ được việc gấp đôi mà công sức chỉ bằng một nửa sao?”</p>
+<p>Sở Ly hơi khựng lại, ngẩng đầu hỏi:</p>
+<p>“Một quốc gia sao có thể có hai vị Nhiếp chính vương?”</p>
+<p>“Việc ấy muội đã nghĩ kỹ rồi.”</p>
+<p>“Biểu huynh chỉ cần tìm một cái cớ, xử lý Nhiếp chính vương, sau đó lập chính huynh trưởng của mình làm Nhiếp chính vương mới là kế sách ổn thỏa.”</p>
+<p>“Tục ngữ có câu: Một triều thiên tử một triều thần. Nay quyền lực đã thay đổi, Nhiếp chính vương tất sẽ sinh lòng bất thần, biểu huynh tuyệt đối không thể nuôi hổ gây họa.”</p>
+<p>Ôn Nhã nghiêm túc sắp xếp:</p>
+<p>“Nhưng Đại hoàng tử thì khác. Chàng là người đầu gối tay ấp của muội, lại là huynh trưởng của biểu huynh, chúng ta là người một nhà thân thiết. Chàng nhất định sẽ giúp biểu huynh quản lý giang sơn xã tắc, như vậy biểu huynh cũng không cần phải bận tâm nữa.”</p>
+<p>“Những lời muội nói thật đúng ý ta.”</p>
+<p>Sở Ly gật đầu.</p>
+<p>“So với vị hoàng thúc là Nhiếp chính vương, quả thật quan hệ giữa ta và Đại hoàng huynh thân thiết hơn nhiều.”</p>
+<p>Ôn Nhã mừng rỡ.</p>
+<p>Biểu huynh đồng ý rồi?</p>
+<p>Tốt quá!</p>
+<p>Nàng biết mà, biểu huynh vốn nhân hậu, còn nàng lại là Trắc phi của Đại hoàng tử, biểu huynh sao có thể từ chối?</p>
+<p>Chỉ cần trước tiên mưu được chức vị Nhiếp chính vương cho Đại hoàng tử, với mưu trí của Đại hoàng tử, sau này còn sợ không leo lên địa vị cao hơn, không nắm được đại quyền sao?</p>
+<p>Mà nàng cũng sẽ lập được đại công, được Đại hoàng tử coi trọng, vợ chồng ân ái, sau này sinh thêm một trai một gái, địa vị tất sẽ áp sát Đại hoàng tử phi.</p>
+<p>Chỉ nghĩ đến thôi, nàng đã không chờ đợi nổi nữa.</p>
+<p>Sở Ly bình tĩnh nhìn nàng:</p>
+<p>“Có điều…”</p>
+<p>Ôn Nhã vui vẻ ngồi thẳng người:</p>
+<p>“Có điều gì? Biểu huynh cứ nói.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_117.html" class="btn">‹ Trước</a>
             <a href="chuong_119.html" class="btn">Sau ›</a>
         </div>
@@ -193,15 +201,11 @@ Sở Ly bình tĩnh nhìn nàng:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -213,11 +217,11 @@ Sở Ly bình tĩnh nhìn nàng:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

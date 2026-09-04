@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 90</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,226 +62,235 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 90</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_89.html" class="btn">‹ Trước</a>
             <a href="chuong_91.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 90: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 90: Nàng suýt nữa đã phải gánh tội thay
-Sáng hôm sau.
-Trên triều sớm, quần thần đang nghị sự, Tam hoàng tử bỗng nhiên ngất lịm ngay giữa điện, khiến đám đại thần đều hoảng hốt.
-“Tam hoàng tử điện hạ!”
-“Mau truyền ngự y!”
-“Nhìn sắc mặt Tam hoàng tử, e là vì Tam hoàng tử phi đột ngột qua đời, điện hạ không thể nguôi ngoai, đả kích quá lớn…”
-Ai.
-Thật đáng thương.
-Sở Hoàng lập tức truyền ngự y, chỉ bảo các đại thần dâng tấu chương lên, rồi tuyên bố bãi triều, vội vàng đến thiên điện thăm hỏi tình hình của Sở Tây Lăng.
-Lục hoàng tử nhíu mày:
-“Chỉ chết một nữ nhân mà thôi, thiên hạ thứ không thiếu nhất chính là nữ nhân.”
-“Hà tất phải đa sầu đa cảm đến vậy?”
-“Lục đệ!”
-Sở Uyên Trì trầm giọng quát, thần sắc nghiêm nghị áp chế hắn.
-“Nói những lời như thế, nếu để người khác nghe thấy, chỉ chuốc lấy thị phi.”
-“Đại hoàng huynh…”
-Lục hoàng tử định cãi, nhưng lời đến bên miệng lại nhịn xuống.
-“Vâng, đệ biết rồi.”
-Hắn bất mãn lẩm bẩm:
-“Đệ chỉ cảm thấy hắn giả vờ thành ra như vậy là để cho ai xem? Cố ý khiến mọi người thương hại thôi…”
-Sở Uyên Trì nói:
-“Tam hoàng tử phi hôm qua vừa mất, còn chưa hạ táng. Sau khi xuất cung, đệ đến thắp cho nàng hai nén nhang.”
-“Biết rồi.”
-Lục hoàng tử lẩm bẩm vài tiếng, ngoan ngoãn nghe lời mà đi.
-Nhị hoàng tử bước tới, hạ thấp giọng đến mức chỉ hai người nghe được:
-“Theo ý Đại hoàng huynh, chuyện này là do ai làm?”
-Đại Lý Tự tuy vẫn đang điều tra, nhưng nhất thời vẫn chưa có tiến triển.
-Mọi người đều cảm thấy cái chết của Tam hoàng tử phi đầy kỳ hoặc, nhưng phần nhiều vẫn là thương xót Tam hoàng tử, cảm thấy hắn vừa xui xẻo, vừa đáng thương.
-Sở Uyên Trì mày mắt ôn hòa, nhưng ánh nhìn lại thấu triệt, trầm ổn:
-“Ai thu được lợi ích lớn nhất, kẻ đó chính là hung thủ.”
-—
-Sở Ly nghe tin Sở Tây Lăng ngất xỉu trên triều sớm, trong lòng vô cùng phức tạp.
-Trong ấn tượng của nàng, Tam hoàng huynh là một người ôn hòa, tinh thông lục nghệ, thông tuệ vô song, thực lực xuất chúng, nhưng lại vô cùng khiêm nhường, kín đáo, lễ độ.
-Nhưng sau một đêm lắng lại, nàng bắt đầu hoài nghi nhận thức của chính mình.
-Khi đến thiên điện, nàng chỉ thấy một vị ngự y xách hòm thuốc bước ra.
-“Trương ngự y.”
-“Hạ quan bái kiến Cửu hoàng tử.”
-Trương ngự y nhận ra người tới, vội vàng hành lễ.
-Sở Ly giơ tay.
-“Nghe nói Tam hoàng huynh ngất xỉu trên triều sớm, không biết tình hình hiện giờ thế nào?”
-Trương ngự y đáp:
-“Hạ quan vừa châm cứu cho Tam hoàng tử. Điện hạ bi thương quá độ, từ hôm qua đến nay chưa từng uống một giọt nước, thân thể suy nhược, vì thế mới hôn mê.”
-Nói đến đây, ngay cả ông cũng không khỏi thở dài.
-Một hôn lễ vốn đang tốt đẹp…
-Lại biến thành tang lễ.
-Ai.
-“Ta biết rồi, ngươi lui xuống đi.”
-“Vâng, hạ quan cáo lui.”
-Sở Ly đi đến ngoài cửa.
-Hai tiểu thái giám đang định vào bẩm báo thì nàng giơ tay ngăn lại, định tự mình đi vào.
-Đúng lúc ấy, bên trong truyền ra tiếng nói.
-“Đứa nhỏ này, hà tất phải làm khổ thân mình như vậy?”
-“Phụ hoàng, nhi thần quá nặng tình nhi nữ, hổ thẹn với sự dạy dỗ của người.”
-“Người không phải cỏ cây, ai mà vô tình? Con có tình có nghĩa với Lục Mộng Điệp, đó mới là phản ứng mà một người bình thường nên có.”
-Sở Tây Lăng tựa trên tiểu tháp, sắc mặt trắng bệch, đôi môi mỏng bong cả da, cả người tiều tụy vô cùng.
-Sở Hoàng nhìn thấy, trong lòng tất nhiên đau xót.
-Thuở còn trẻ, ông cầm kiếm chinh chiến, sát phạt quyết đoán, lật đổ tiền triều. Rốt cuộc đã giết bao nhiêu người, đến chính ông cũng không đếm nổi.
-Nay tuổi tác đã cao.
-Lòng dạ lại càng lúc càng mềm.
-Càng lúc càng coi trọng tình thân.
-Tiền triều chính vì nội bộ bất hòa mà diệt vong.
-“Tam hoàng tử phi mất quá đột ngột, trẫm biết trong lòng con đau khổ. Sau này, nếu con còn có nữ tử mình yêu thích, bất kể là ai, bất kể thân phận thế nào, trẫm đều sẽ ban hôn cho con.”
-Sở Ly đứng ngoài nghe rõ từng chữ.
-Có được lời hứa của Hoàng thượng.
-Vậy sau này, nếu hắn cầu cưới đích nữ của Tả tướng, e rằng cũng chẳng còn ai dị nghị.
-Thậm chí…
-Hắn còn có thể dùng lời hứa này để cầu cưới một nữ tử có thân phận cao quý hơn, càng có lợi cho địa vị của mình.
-Dùng cái chết của một thứ nữ…
-Đổi lấy một lời hứa của Hoàng thượng.
-Quá đáng giá.
-Sở Tây Lăng nói:
-“Nhi thần vô dụng, không muốn tái thú nữa.”
-“Đừng nói lời ngốc nghếch. Năm xưa khi trẫm bằng tuổi con, con đã có thể chạy nhảy đầy sân rồi. Mau chóng vực dậy tinh thần cho trẫm. Chẳng bao lâu nữa là Trùng Dương tiết, năm nay lễ tế tổ Trùng Dương, trẫm giao cho con chủ trì.”
-Sở Ly lùi lại mấy bước.
-Những lời tiếp theo, nàng đã không còn muốn nghe nữa.
-Lễ tế tổ Trùng Dương là đại sự trọng yếu.
-Theo lẽ thường, việc ấy vốn phải do Thái tử chủ trì.
-Nhưng vì Hoàng thượng chưa lập Thái tử, nên chín vị hoàng tử mỗi năm thay phiên nhau đảm trách.
-Năm ngoái là Ngũ hoàng tử.
-Năm nay đáng lẽ phải đến lượt Lục hoàng tử.
-Chỉ vì một câu nói của Hoàng thượng…
-Lại đổi thành Tam hoàng tử.
-Hắn…
-Quả thực đã dùng cái chết của một thứ nữ để đổi lấy biết bao lợi ích.
-Hắn…
-Khác hẳn với hình tượng trong ký ức của nàng.
-Lục Mộng Điệp…
-Biết bao vô tội.
-Dù nàng không quen biết người ấy, nhưng hôm qua chỉ trò chuyện đôi câu cũng đủ cảm nhận được sự ôn nhu hiền thục.
-Đáng lẽ hôm qua phải là ngày đại hỉ.
-Là khởi đầu của hạnh phúc.
-Không ngờ…
-Lại trở thành một quân cờ bị người lợi dụng.
-Đến cả nàng…
-Cũng bị cuốn vào âm mưu ấy.
-Nàng…
-Suýt nữa đã phải gánh tội thay.
-Sở Ly thất thần đứng ngoài điện.
-Không biết đã đứng bao lâu.
-Sở Tây Lăng từ trong bước ra.
-“Cửu đệ?”
-Thấy nàng, hắn có phần kinh ngạc.
-“Sao đệ lại ở đây?”
-Sở Ly hoàn hồn.
-Ngước mắt nhìn.
-Nam nhân trước mặt thần sắc mệt mỏi, giữa mày phủ đầy vẻ bi thương, toàn thân đều là nỗi đau mất thê tử ngay trong ngày tân hôn.
-Dáng vẻ ấy…
-Thật khiến người ta không nỡ nói lời nặng.
-Nhưng lòng Sở Ly…
-Lạnh buốt.
-Nếu tất cả đều là diễn…
-Thì người này đáng sợ đến nhường nào?
-“Tam hoàng huynh… xin nén bi thương.”
-Sở Tây Lăng khẽ cụp mắt, giọng nói cũng khàn đi.
-“Là ta không có phúc, không thể cùng Mộng Điệp bạch đầu giai lão.”
-Sự bất mãn trong lòng Sở Ly gần như không thể kìm nén.
-Ban đầu nàng định coi như không có gì mà rời đi.
-Nhưng nhìn bộ dạng ấy của hắn, cuối cùng vẫn không nhịn được, lạnh giọng nói:
-“Rốt cuộc là Tam hoàng huynh không có phúc… hay là quá có phúc… e rằng trong lòng huynh tự rõ!”
-Dứt lời.
-Nàng phất tay áo, lạnh lùng rời đi.
-Ánh mắt Sở Tây Lăng nhìn theo nàng lập tức trở nên thâm trầm.
-Ý vị ẩn giấu nơi đáy mắt sâu như vực thẳm, khiến người khác nhìn không thấu, đoán không ra.
-‘Hắn’ nói như vậy…
-Là có ý gì?
-Lẽ nào…
-‘Hắn’ đã biết điều gì?
-—
-Sở Ly xuất cung.
-Không hiểu vì sao, trong lòng nàng lại có chút mờ mịt.
-Kẻ vô tội…
-Đều có thể trở thành một quân cờ trong tay người khác.
-Bao gồm cả nàng.
-Đôi khi…
-Không tranh, không đoạt…
-Thật sự có thể toàn thân thoái lui sao?
-Nhưng nếu tranh rồi, đoạt rồi…
-Rốt cuộc đâu mới là đường lui của nàng?
-Nàng một mình bước trên phố dài.
-Mải mê suy nghĩ, đến mức thất thần.
-Vô tình va phải một người mà cũng chẳng hay biết.
-Người nam nhân ấy sau khi va vai với nàng liền lướt qua.
-Hắn chợt dừng chân.
-Quay đầu nhìn bóng dáng Sở Ly đang cúi đầu.
-Trong mắt lướt qua một tia hung lệ.
-Bàn tay khẽ vung.
-Từ trong tay áo rút ra một thanh chủy thủ.
-Đâm thẳng vào giữa lưng nàng!
-Trong khoảnh khắc.
-Một bàn tay bất ngờ nắm lấy cổ tay Sở Ly, kéo nàng lao về phía trước hai bước.
-“Ưm!”
-Nàng đâm sầm vào một lồng ngực rắn chắc, lạnh lẽo.
-Đồng thời.
-Một tiếng kêu thảm vang lên.
-Tên nam nhân kia bị đá văng ra xa.
-Thanh chủy thủ phát ra một tiếng “choang”, lạnh lẽo rơi xuống đất, âm thanh thanh thúy mà rét buốt.
-Giọng nói trầm thấp của nam nhân vang lên bên tai nàng:
-“Đi đường mà thất thần đến vậy… là đang nhớ bổn vương sao?”
-—————————
-Nay tôi ra đủ 10 chương như đã hứa cho mấy bồ rồi nhé, tôi đi xỉu đây 
- Ẩn bớt</p>
+            <p>Chương 90: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 90: Nàng suýt nữa đã phải gánh tội thay</p>
+<p>Sáng hôm sau.</p>
+<p>Trên triều sớm, quần thần đang nghị sự, Tam hoàng tử bỗng nhiên ngất lịm ngay giữa điện, khiến đám đại thần đều hoảng hốt.</p>
+<p>“Tam hoàng tử điện hạ!”</p>
+<p>“Mau truyền ngự y!”</p>
+<p>“Nhìn sắc mặt Tam hoàng tử, e là vì Tam hoàng tử phi đột ngột qua đời, điện hạ không thể nguôi ngoai, đả kích quá lớn…”</p>
+<p>Ai.</p>
+<p>Thật đáng thương.</p>
+<p>Sở Hoàng lập tức truyền ngự y, chỉ bảo các đại thần dâng tấu chương lên, rồi tuyên bố bãi triều, vội vàng đến thiên điện thăm hỏi tình hình của Sở Tây Lăng.</p>
+<p>Lục hoàng tử nhíu mày:</p>
+<p>“Chỉ chết một nữ nhân mà thôi, thiên hạ thứ không thiếu nhất chính là nữ nhân.”</p>
+<p>“Hà tất phải đa sầu đa cảm đến vậy?”</p>
+<p>“Lục đệ!”</p>
+<p>Sở Uyên Trì trầm giọng quát, thần sắc nghiêm nghị áp chế hắn.</p>
+<p>“Nói những lời như thế, nếu để người khác nghe thấy, chỉ chuốc lấy thị phi.”</p>
+<p>“Đại hoàng huynh…”</p>
+<p>Lục hoàng tử định cãi, nhưng lời đến bên miệng lại nhịn xuống.</p>
+<p>“Vâng, đệ biết rồi.”</p>
+<p>Hắn bất mãn lẩm bẩm:</p>
+<p>“Đệ chỉ cảm thấy hắn giả vờ thành ra như vậy là để cho ai xem? Cố ý khiến mọi người thương hại thôi…”</p>
+<p>Sở Uyên Trì nói:</p>
+<p>“Tam hoàng tử phi hôm qua vừa mất, còn chưa hạ táng. Sau khi xuất cung, đệ đến thắp cho nàng hai nén nhang.”</p>
+<p>“Biết rồi.”</p>
+<p>Lục hoàng tử lẩm bẩm vài tiếng, ngoan ngoãn nghe lời mà đi.</p>
+<p>Nhị hoàng tử bước tới, hạ thấp giọng đến mức chỉ hai người nghe được:</p>
+<p>“Theo ý Đại hoàng huynh, chuyện này là do ai làm?”</p>
+<p>Đại Lý Tự tuy vẫn đang điều tra, nhưng nhất thời vẫn chưa có tiến triển.</p>
+<p>Mọi người đều cảm thấy cái chết của Tam hoàng tử phi đầy kỳ hoặc, nhưng phần nhiều vẫn là thương xót Tam hoàng tử, cảm thấy hắn vừa xui xẻo, vừa đáng thương.</p>
+<p>Sở Uyên Trì mày mắt ôn hòa, nhưng ánh nhìn lại thấu triệt, trầm ổn:</p>
+<p>“Ai thu được lợi ích lớn nhất, kẻ đó chính là hung thủ.”</p>
+<p>—</p>
+<p>Sở Ly nghe tin Sở Tây Lăng ngất xỉu trên triều sớm, trong lòng vô cùng phức tạp.</p>
+<p>Trong ấn tượng của nàng, Tam hoàng huynh là một người ôn hòa, tinh thông lục nghệ, thông tuệ vô song, thực lực xuất chúng, nhưng lại vô cùng khiêm nhường, kín đáo, lễ độ.</p>
+<p>Nhưng sau một đêm lắng lại, nàng bắt đầu hoài nghi nhận thức của chính mình.</p>
+<p>Khi đến thiên điện, nàng chỉ thấy một vị ngự y xách hòm thuốc bước ra.</p>
+<p>“Trương ngự y.”</p>
+<p>“Hạ quan bái kiến Cửu hoàng tử.”</p>
+<p>Trương ngự y nhận ra người tới, vội vàng hành lễ.</p>
+<p>Sở Ly giơ tay.</p>
+<p>“Nghe nói Tam hoàng huynh ngất xỉu trên triều sớm, không biết tình hình hiện giờ thế nào?”</p>
+<p>Trương ngự y đáp:</p>
+<p>“Hạ quan vừa châm cứu cho Tam hoàng tử. Điện hạ bi thương quá độ, từ hôm qua đến nay chưa từng uống một giọt nước, thân thể suy nhược, vì thế mới hôn mê.”</p>
+<p>Nói đến đây, ngay cả ông cũng không khỏi thở dài.</p>
+<p>Một hôn lễ vốn đang tốt đẹp…</p>
+<p>Lại biến thành tang lễ.</p>
+<p>Ai.</p>
+<p>“Ta biết rồi, ngươi lui xuống đi.”</p>
+<p>“Vâng, hạ quan cáo lui.”</p>
+<p>Sở Ly đi đến ngoài cửa.</p>
+<p>Hai tiểu thái giám đang định vào bẩm báo thì nàng giơ tay ngăn lại, định tự mình đi vào.</p>
+<p>Đúng lúc ấy, bên trong truyền ra tiếng nói.</p>
+<p>“Đứa nhỏ này, hà tất phải làm khổ thân mình như vậy?”</p>
+<p>“Phụ hoàng, nhi thần quá nặng tình nhi nữ, hổ thẹn với sự dạy dỗ của người.”</p>
+<p>“Người không phải cỏ cây, ai mà vô tình? Con có tình có nghĩa với Lục Mộng Điệp, đó mới là phản ứng mà một người bình thường nên có.”</p>
+<p>Sở Tây Lăng tựa trên tiểu tháp, sắc mặt trắng bệch, đôi môi mỏng bong cả da, cả người tiều tụy vô cùng.</p>
+<p>Sở Hoàng nhìn thấy, trong lòng tất nhiên đau xót.</p>
+<p>Thuở còn trẻ, ông cầm kiếm chinh chiến, sát phạt quyết đoán, lật đổ tiền triều. Rốt cuộc đã giết bao nhiêu người, đến chính ông cũng không đếm nổi.</p>
+<p>Nay tuổi tác đã cao.</p>
+<p>Lòng dạ lại càng lúc càng mềm.</p>
+<p>Càng lúc càng coi trọng tình thân.</p>
+<p>Tiền triều chính vì nội bộ bất hòa mà diệt vong.</p>
+<p>“Tam hoàng tử phi mất quá đột ngột, trẫm biết trong lòng con đau khổ. Sau này, nếu con còn có nữ tử mình yêu thích, bất kể là ai, bất kể thân phận thế nào, trẫm đều sẽ ban hôn cho con.”</p>
+<p>Sở Ly đứng ngoài nghe rõ từng chữ.</p>
+<p>Có được lời hứa của Hoàng thượng.</p>
+<p>Vậy sau này, nếu hắn cầu cưới đích nữ của Tả tướng, e rằng cũng chẳng còn ai dị nghị.</p>
+<p>Thậm chí…</p>
+<p>Hắn còn có thể dùng lời hứa này để cầu cưới một nữ tử có thân phận cao quý hơn, càng có lợi cho địa vị của mình.</p>
+<p>Dùng cái chết của một thứ nữ…</p>
+<p>Đổi lấy một lời hứa của Hoàng thượng.</p>
+<p>Quá đáng giá.</p>
+<p>Sở Tây Lăng nói:</p>
+<p>“Nhi thần vô dụng, không muốn tái thú nữa.”</p>
+<p>“Đừng nói lời ngốc nghếch. Năm xưa khi trẫm bằng tuổi con, con đã có thể chạy nhảy đầy sân rồi. Mau chóng vực dậy tinh thần cho trẫm. Chẳng bao lâu nữa là Trùng Dương tiết, năm nay lễ tế tổ Trùng Dương, trẫm giao cho con chủ trì.”</p>
+<p>Sở Ly lùi lại mấy bước.</p>
+<p>Những lời tiếp theo, nàng đã không còn muốn nghe nữa.</p>
+<p>Lễ tế tổ Trùng Dương là đại sự trọng yếu.</p>
+<p>Theo lẽ thường, việc ấy vốn phải do Thái tử chủ trì.</p>
+<p>Nhưng vì Hoàng thượng chưa lập Thái tử, nên chín vị hoàng tử mỗi năm thay phiên nhau đảm trách.</p>
+<p>Năm ngoái là Ngũ hoàng tử.</p>
+<p>Năm nay đáng lẽ phải đến lượt Lục hoàng tử.</p>
+<p>Chỉ vì một câu nói của Hoàng thượng…</p>
+<p>Lại đổi thành Tam hoàng tử.</p>
+<p>Hắn…</p>
+<p>Quả thực đã dùng cái chết của một thứ nữ để đổi lấy biết bao lợi ích.</p>
+<p>Hắn…</p>
+<p>Khác hẳn với hình tượng trong ký ức của nàng.</p>
+<p>Lục Mộng Điệp…</p>
+<p>Biết bao vô tội.</p>
+<p>Dù nàng không quen biết người ấy, nhưng hôm qua chỉ trò chuyện đôi câu cũng đủ cảm nhận được sự ôn nhu hiền thục.</p>
+<p>Đáng lẽ hôm qua phải là ngày đại hỉ.</p>
+<p>Là khởi đầu của hạnh phúc.</p>
+<p>Không ngờ…</p>
+<p>Lại trở thành một quân cờ bị người lợi dụng.</p>
+<p>Đến cả nàng…</p>
+<p>Cũng bị cuốn vào âm mưu ấy.</p>
+<p>Nàng…</p>
+<p>Suýt nữa đã phải gánh tội thay.</p>
+<p>Sở Ly thất thần đứng ngoài điện.</p>
+<p>Không biết đã đứng bao lâu.</p>
+<p>Sở Tây Lăng từ trong bước ra.</p>
+<p>“Cửu đệ?”</p>
+<p>Thấy nàng, hắn có phần kinh ngạc.</p>
+<p>“Sao đệ lại ở đây?”</p>
+<p>Sở Ly hoàn hồn.</p>
+<p>Ngước mắt nhìn.</p>
+<p>Nam nhân trước mặt thần sắc mệt mỏi, giữa mày phủ đầy vẻ bi thương, toàn thân đều là nỗi đau mất thê tử ngay trong ngày tân hôn.</p>
+<p>Dáng vẻ ấy…</p>
+<p>Thật khiến người ta không nỡ nói lời nặng.</p>
+<p>Nhưng lòng Sở Ly…</p>
+<p>Lạnh buốt.</p>
+<p>Nếu tất cả đều là diễn…</p>
+<p>Thì người này đáng sợ đến nhường nào?</p>
+<p>“Tam hoàng huynh… xin nén bi thương.”</p>
+<p>Sở Tây Lăng khẽ cụp mắt, giọng nói cũng khàn đi.</p>
+<p>“Là ta không có phúc, không thể cùng Mộng Điệp bạch đầu giai lão.”</p>
+<p>Sự bất mãn trong lòng Sở Ly gần như không thể kìm nén.</p>
+<p>Ban đầu nàng định coi như không có gì mà rời đi.</p>
+<p>Nhưng nhìn bộ dạng ấy của hắn, cuối cùng vẫn không nhịn được, lạnh giọng nói:</p>
+<p>“Rốt cuộc là Tam hoàng huynh không có phúc… hay là quá có phúc… e rằng trong lòng huynh tự rõ!”</p>
+<p>Dứt lời.</p>
+<p>Nàng phất tay áo, lạnh lùng rời đi.</p>
+<p>Ánh mắt Sở Tây Lăng nhìn theo nàng lập tức trở nên thâm trầm.</p>
+<p>Ý vị ẩn giấu nơi đáy mắt sâu như vực thẳm, khiến người khác nhìn không thấu, đoán không ra.</p>
+<p>‘Hắn’ nói như vậy…</p>
+<p>Là có ý gì?</p>
+<p>Lẽ nào…</p>
+<p>‘Hắn’ đã biết điều gì?</p>
+<p>—</p>
+<p>Sở Ly xuất cung.</p>
+<p>Không hiểu vì sao, trong lòng nàng lại có chút mờ mịt.</p>
+<p>Kẻ vô tội…</p>
+<p>Đều có thể trở thành một quân cờ trong tay người khác.</p>
+<p>Bao gồm cả nàng.</p>
+<p>Đôi khi…</p>
+<p>Không tranh, không đoạt…</p>
+<p>Thật sự có thể toàn thân thoái lui sao?</p>
+<p>Nhưng nếu tranh rồi, đoạt rồi…</p>
+<p>Rốt cuộc đâu mới là đường lui của nàng?</p>
+<p>Nàng một mình bước trên phố dài.</p>
+<p>Mải mê suy nghĩ, đến mức thất thần.</p>
+<p>Vô tình va phải một người mà cũng chẳng hay biết.</p>
+<p>Người nam nhân ấy sau khi va vai với nàng liền lướt qua.</p>
+<p>Hắn chợt dừng chân.</p>
+<p>Quay đầu nhìn bóng dáng Sở Ly đang cúi đầu.</p>
+<p>Trong mắt lướt qua một tia hung lệ.</p>
+<p>Bàn tay khẽ vung.</p>
+<p>Từ trong tay áo rút ra một thanh chủy thủ.</p>
+<p>Đâm thẳng vào giữa lưng nàng!</p>
+<p>Trong khoảnh khắc.</p>
+<p>Một bàn tay bất ngờ nắm lấy cổ tay Sở Ly, kéo nàng lao về phía trước hai bước.</p>
+<p>“Ưm!”</p>
+<p>Nàng đâm sầm vào một lồng ngực rắn chắc, lạnh lẽo.</p>
+<p>Đồng thời.</p>
+<p>Một tiếng kêu thảm vang lên.</p>
+<p>Tên nam nhân kia bị đá văng ra xa.</p>
+<p>Thanh chủy thủ phát ra một tiếng “choang”, lạnh lẽo rơi xuống đất, âm thanh thanh thúy mà rét buốt.</p>
+<p>Giọng nói trầm thấp của nam nhân vang lên bên tai nàng:</p>
+<p>“Đi đường mà thất thần đến vậy… là đang nhớ bổn vương sao?”</p>
+<p>—————————</p>
+<p>Nay tôi ra đủ 10 chương như đã hứa cho mấy bồ rồi nhé, tôi đi xỉu đây</p>
+<p>Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_89.html" class="btn">‹ Trước</a>
             <a href="chuong_91.html" class="btn">Sau ›</a>
         </div>
@@ -290,15 +298,11 @@ Nay tôi ra đủ 10 chương như đã hứa cho mấy bồ rồi nhé, tôi đ
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -310,11 +314,11 @@ Nay tôi ra đủ 10 chương như đã hứa cho mấy bồ rồi nhé, tôi đ
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

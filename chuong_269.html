@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 269</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,174 +62,183 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 269</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_268.html" class="btn">‹ Trước</a>
             <a href="chuong_270.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 269: Tiểu Cửu, lại đây
-“?”
-Lúc chưa gọi thành lời thì cảm thấy vô cùng khó mở miệng, nhưng sau khi gọi được một tiếng, dường như cổ họng lập tức thông suốt.
-Cũng không khó như trong tưởng tượng.
-“Thẩm thẩm!”
-Sở Ngạo Thiên đập mạnh lên bàn:
-“Ta biết nàng và Hoàng thúc có quan hệ như thế nào, cũng biết sau này hai người nhất định sẽ thành thân. Nhưng, thẩm thẩm, nàng nhất định phải nhớ, chúng ta lớn lên cùng nhau từ nhỏ, là người thân thiết nhất thiên hạ!”
-Hắn nhất định phải ôm chặt đùi Sở Ly.
-Có Sở Ly ở đây, sau này Hoàng thúc đừng hòng bắt nạt hắn nữa.
-Sở Ly há miệng, lần này đến lượt nàng cứng họng, không nói nên lời.
-Hiện giờ nàng vẫn chưa nghĩ đến chuyện thành thân.
-Chỉ là…
-Nghe ý Hoàng thúc, sau này còn muốn nhận con trai của Bát hoàng huynh làm con thừa tự, nuôi dưới gối. Nếu Bát hoàng huynh biết Hoàng thúc đang định cướp con mình…
-Sở Ly đưa tay lau giọt mồ hôi vốn chẳng hề tồn tại trên trán, giọng hơi chột dạ:
-“Bát hoàng huynh, huynh cứ yên tâm, chúng ta là bằng hữu tốt nhất thiên hạ. Bất kể khi nào, ta cũng sẽ đứng về phía huynh.”
-Có được câu nói này, Sở Ngạo Thiên mới yên tâm.
-Đêm nay có thể ngủ ngon rồi.
-Kết quả trong mộng lại thấy con trai mình bị cướp mất.
-Hắn giật mình tỉnh dậy:
-“Con trai ta đâu rồi! Người đâu, mau tới đây, con trai ta không thấy nữa… Khoan, không cần, hình như ta còn chưa có con trai.”
-Hôm sau, trời trong nắng đẹp.
-Từ sớm, Ôn phi đã sai người chuẩn bị nguyên bảo vàng mã, hoa quả, hương nến cùng túi phúc. Sở Ly đi cùng bà đến Thiên Linh tự dâng hương.
-Xe ngựa chậm rãi lăn bánh, Kinh Ảnh phụ trách đánh xe theo lệnh của Sở Đệ Trì, bảo hộ suốt dọc đường.
-“Ông trời có mắt, mới để Ly nhi của ta đại nạn không chết, còn có thể đi đến ngày hôm nay. Ta nhất định phải tạ ơn Bồ Tát.”
-“Mẫu phi, trong túi phúc của người có bao nhiêu ngân phiếu vậy?”
-“Năm trăm lượng.”
-“Nhiều quá!”
-“Dâng lên Bồ Tát thì không nhiều. Có nhiều bạc hơn nữa cũng không quý bằng con.”
-Ôn phi hiền từ nắm lấy tay nàng, vén một góc rèm xe nhìn phong cảnh lùi dần phía sau. Chẳng mấy chốc đã đến chân núi Thiên Linh tự.
-“Ly nhi, con biết không? Thật ra mẫu phi rất thích nơi này.”
-Sở Ly đáp:
-“Con biết. Mẫu phi hiền hòa lương thiện, quanh năm đều đến đây dâng hương lễ Phật, bái Bồ Tát. Bất kể con bệnh hay khó chịu chỗ nào, người cũng thích cầu Bồ Tát phù hộ cho con.”
-Theo nàng thì đây chính là mê tín.
-Cầu Bồ Tát không bằng cầu chính mình.
-Nhưng người ở tuổi mẫu phi đều tin những điều ấy.
-Ôn phi nhìn nàng, nụ cười mang theo vài phần phức tạp.
-Bởi vì…
-Mười bảy năm trước, con chính là được nhặt dưới chân núi Thiên Linh tự…
-Năm ấy, bà sinh non Cửu hoàng tử. Đứa bé từ nhỏ đã yếu ớt nhiều bệnh, nên bà thường xuyên đến đây dâng hương lễ Phật.
-Mãi đến khi Cửu hoàng tử hơn ba tháng tuổi, sốt cao không lui, cuối cùng tắt thở ngay trong lòng bà. Lúc ấy, bà tuyệt vọng đến mức muốn nhảy xuống vực đi theo con, lại bất ngờ phát hiện một nữ anh nhi được bọc trong tã lót, bị bỏ lại giữa bụi cỏ.
-Đứa bé khi ấy cũng trạc tuổi Cửu hoàng tử.
-Mới sinh chưa lâu, nhỏ bé như vậy, trời thì lạnh đến thấu xương, khuôn mặt đỏ bừng vì rét, miệng oe oe khóc khiến tim bà mềm nhũn.
-Thế là bà mang đứa bé về, thay thế Cửu hoàng tử đã mất mà nuôi nấng.
-Chớp mắt một cái, đã mười bảy năm trôi qua.
-“Ly nhi, con lớn thật rồi.”
-Bà thích đến Thiên Linh tự, vì Phật Tổ đã ban cho bà một đứa con gái, nối tiếp đoạn duyên mẫu nữ giữa hai người.
-Sở Ly lắc đầu:
-“Mẫu phi, chúng ta đến rồi!”
-Nàng nhảy xuống xe ngựa.
-Lúc thì xách giỏ, lúc thì dìu Ôn phi, cùng bà leo từng bậc đá lên núi. Nàng chạy khỏe như bay, da dẻ rắn chắc, ngược lại Ôn phi đã mệt đến thở hổn hển.
-Cuối cùng cũng lên đến đỉnh núi.
-Ôn phi chuyển chiếc giỏ sang tay khác:
-“Ly nhi, mẫu phi vào trong dâng hương trước, con cứ đi chơi một lát.”
-“Vâng.”
-Thiên Linh tự là quốc tự của Đại Sở, danh tiếng lâu đời, lịch sử lâu dài, là ngôi chùa nổi tiếng bậc nhất cả nước. Hằng ngày có vô số bá tánh từ xa tìm đến cầu phúc, hương khói chưa từng ngớt.
-Sở Ly nhặt một chiếc lá phong còn xanh, chậm rãi bước vào chùa.
-Bá tánh ra vào cười nói, tiểu sa di quét lá rơi, các vị cao tăng gõ chuông ngân vang, tiếng chuông kéo dài xa xăm…
-Khói lửa nhân gian, cũng chỉ đến thế mà thôi.
-Sở Ly xoay chiếc lá phong giữa đầu ngón tay, vô tình ngoảnh đầu, liền trông thấy một bóng dáng quen thuộc.
-“Quy Nhất đại sư.”
-“Tạ thí chủ.”
-Quy Nhất đại sư cũng nhìn thấy nàng, mỉm cười bước tới. Vết bỏng trên gương mặt vốn vô cùng đáng sợ, nhưng ở nơi thanh tịnh linh thiêng như Thiên Linh tự, cả người ông lại toát lên vẻ hiền hòa, dễ gần.
-“Hôm nay Tạ thí chủ sao lại có thời gian đến Thiên Linh tự?”
-“Đưa mẫu thân đến.”
-Gần đây vì chuyện Nhàn Vương trúng độc nên nàng quả thực quá bận.
-“Không biết nghĩa phụ của ta dạo này thế nào?”
-“Tạ thí chủ cứ yên tâm. Cách một ngày ta lại xuống núi một lần. Ông ấy mỗi ngày đều làm việc, nấu cơm, nuôi gà vịt, sống rất tốt.”
-Dù nghe vậy, Sở Ly vẫn quyết định sẽ chọn một ngày đến thăm.
-Ít nhất mỗi tháng bốn lần.
-Sở Ly cùng Quy Nhất đại sư sóng vai đi dưới hành lang, nhìn bá tánh dâng hương cầu phúc, khói hương lượn lờ.
-Quy Nhất đại sư nghiêng đầu nói:
-“Tạ thí chủ dường như đang có tâm sự.”
-“Ta?”
-“Ấn đường của thí chủ hơi ám đen, có dấu hiệu kiếp nạn chưa dứt. Mà vị trí ấy là cung phu thê, ám chỉ người trước mắt thí chủ không phải chính duyên.”
-Sở Ly chợt dừng bước.
-Ý gì?
-Không phải chính duyên, lẽ nào là nghiệt duyên?
-Ông đang nói đến Sở Đệ Trì?
-“Quy Nhất đại sư còn biết xem tướng sao?”
-“A Di Đà Phật.”
-Quy Nhất đại sư chắp tay.
-“Bần tăng đã sớm không còn hỏi chuyện hồng trần. Lời vừa rồi đã là nhiều lời, chỉ coi như một câu nói đùa, mong Tạ thí chủ chớ để trong lòng.”
-Lời đã nói ra như nước đổ đi, gợn sóng đã lan, sao có thể coi như chưa từng nghe?
-Quy Nhất đại sư đã rời đi, nhưng sóng gợn trong lòng Sở Ly vẫn mãi chưa lắng xuống.
-Rốt cuộc ông muốn nói điều gì?
-Người trước mắt không phải lương duyên?
-Nàng và Sở Đệ Trì sẽ không có kết quả sao?
-“Ly nhi? Ly nhi?”
-“Dạ?”
-Sở Ly hoàn hồn, lúc này mới thấy Ôn phi đã từ trong điện đi ra.
-“Con đang nghĩ gì vậy? Mẫu phi gọi con mấy tiếng rồi mà con chẳng nghe.”
-“Không có gì. Mẫu phi xong rồi sao?”
-“Ừ, chúng ta xuống chân núi ăn một bát mì rồi hãy hồi cung. Quán mì dưới chân núi ấy, mẫu phi đã ăn suốt mười bảy năm rồi.”
-“Mười bảy năm? Chẳng phải bằng tuổi con sao?”
-Ôn phi chỉ cười mà không đáp, cùng nàng xuống núi.
-Ăn xong, Kinh Ảnh đánh xe trước đưa Ôn phi hồi cung, sau đó đưa Sở Ly về San Hô Thủy Tạ.
-“Tạ tiểu thư, đến rồi.”
-“Làm phiền.”
-Sở Ly vén rèm xe, vừa đặt chân xuống đất, liền nhìn thấy trước mặt mình là…
-Nhiếp Chính Vương phủ.
-Nàng khẽ ngẩn người:
-“Sao lại đến đây?”
-Kinh Ảnh cười nói:
-“Đây là lệnh của chủ tử. Tạ tiểu thư, mời.”
-Trong lòng Sở Ly thoáng nghi hoặc. Do dự một lát, nàng bước lên bậc thềm.
-Vừa đến cửa, cánh cổng đồng nặng nề đồng loạt mở rộng sang hai bên.
-“Cung nghênh Tạ tiểu thư!”
-Đám hạ nhân xếp thành hai hàng dài, quỳ kín cả lối đi.
-Ở cuối hàng người ấy, nam nhân khoác trường bào tím đang lười biếng đứng trên bậc thềm. Tay phải chắp sau lưng, tay trái giơ lên cầm một vật gì đó, tùy ý xoay xoay trong tay.
-“Tiểu Cửu, lại đây.” Ẩn bớt</p>
+            <p>Chương 269: Tiểu Cửu, lại đây</p>
+<p>“?”</p>
+<p>Lúc chưa gọi thành lời thì cảm thấy vô cùng khó mở miệng, nhưng sau khi gọi được một tiếng, dường như cổ họng lập tức thông suốt.</p>
+<p>Cũng không khó như trong tưởng tượng.</p>
+<p>“Thẩm thẩm!”</p>
+<p>Sở Ngạo Thiên đập mạnh lên bàn:</p>
+<p>“Ta biết nàng và Hoàng thúc có quan hệ như thế nào, cũng biết sau này hai người nhất định sẽ thành thân. Nhưng, thẩm thẩm, nàng nhất định phải nhớ, chúng ta lớn lên cùng nhau từ nhỏ, là người thân thiết nhất thiên hạ!”</p>
+<p>Hắn nhất định phải ôm chặt đùi Sở Ly.</p>
+<p>Có Sở Ly ở đây, sau này Hoàng thúc đừng hòng bắt nạt hắn nữa.</p>
+<p>Sở Ly há miệng, lần này đến lượt nàng cứng họng, không nói nên lời.</p>
+<p>Hiện giờ nàng vẫn chưa nghĩ đến chuyện thành thân.</p>
+<p>Chỉ là…</p>
+<p>Nghe ý Hoàng thúc, sau này còn muốn nhận con trai của Bát hoàng huynh làm con thừa tự, nuôi dưới gối. Nếu Bát hoàng huynh biết Hoàng thúc đang định cướp con mình…</p>
+<p>Sở Ly đưa tay lau giọt mồ hôi vốn chẳng hề tồn tại trên trán, giọng hơi chột dạ:</p>
+<p>“Bát hoàng huynh, huynh cứ yên tâm, chúng ta là bằng hữu tốt nhất thiên hạ. Bất kể khi nào, ta cũng sẽ đứng về phía huynh.”</p>
+<p>Có được câu nói này, Sở Ngạo Thiên mới yên tâm.</p>
+<p>Đêm nay có thể ngủ ngon rồi.</p>
+<p>Kết quả trong mộng lại thấy con trai mình bị cướp mất.</p>
+<p>Hắn giật mình tỉnh dậy:</p>
+<p>“Con trai ta đâu rồi! Người đâu, mau tới đây, con trai ta không thấy nữa… Khoan, không cần, hình như ta còn chưa có con trai.”</p>
+<p>Hôm sau, trời trong nắng đẹp.</p>
+<p>Từ sớm, Ôn phi đã sai người chuẩn bị nguyên bảo vàng mã, hoa quả, hương nến cùng túi phúc. Sở Ly đi cùng bà đến Thiên Linh tự dâng hương.</p>
+<p>Xe ngựa chậm rãi lăn bánh, Kinh Ảnh phụ trách đánh xe theo lệnh của Sở Đệ Trì, bảo hộ suốt dọc đường.</p>
+<p>“Ông trời có mắt, mới để Ly nhi của ta đại nạn không chết, còn có thể đi đến ngày hôm nay. Ta nhất định phải tạ ơn Bồ Tát.”</p>
+<p>“Mẫu phi, trong túi phúc của người có bao nhiêu ngân phiếu vậy?”</p>
+<p>“Năm trăm lượng.”</p>
+<p>“Nhiều quá!”</p>
+<p>“Dâng lên Bồ Tát thì không nhiều. Có nhiều bạc hơn nữa cũng không quý bằng con.”</p>
+<p>Ôn phi hiền từ nắm lấy tay nàng, vén một góc rèm xe nhìn phong cảnh lùi dần phía sau. Chẳng mấy chốc đã đến chân núi Thiên Linh tự.</p>
+<p>“Ly nhi, con biết không? Thật ra mẫu phi rất thích nơi này.”</p>
+<p>Sở Ly đáp:</p>
+<p>“Con biết. Mẫu phi hiền hòa lương thiện, quanh năm đều đến đây dâng hương lễ Phật, bái Bồ Tát. Bất kể con bệnh hay khó chịu chỗ nào, người cũng thích cầu Bồ Tát phù hộ cho con.”</p>
+<p>Theo nàng thì đây chính là mê tín.</p>
+<p>Cầu Bồ Tát không bằng cầu chính mình.</p>
+<p>Nhưng người ở tuổi mẫu phi đều tin những điều ấy.</p>
+<p>Ôn phi nhìn nàng, nụ cười mang theo vài phần phức tạp.</p>
+<p>Bởi vì…</p>
+<p>Mười bảy năm trước, con chính là được nhặt dưới chân núi Thiên Linh tự…</p>
+<p>Năm ấy, bà sinh non Cửu hoàng tử. Đứa bé từ nhỏ đã yếu ớt nhiều bệnh, nên bà thường xuyên đến đây dâng hương lễ Phật.</p>
+<p>Mãi đến khi Cửu hoàng tử hơn ba tháng tuổi, sốt cao không lui, cuối cùng tắt thở ngay trong lòng bà. Lúc ấy, bà tuyệt vọng đến mức muốn nhảy xuống vực đi theo con, lại bất ngờ phát hiện một nữ anh nhi được bọc trong tã lót, bị bỏ lại giữa bụi cỏ.</p>
+<p>Đứa bé khi ấy cũng trạc tuổi Cửu hoàng tử.</p>
+<p>Mới sinh chưa lâu, nhỏ bé như vậy, trời thì lạnh đến thấu xương, khuôn mặt đỏ bừng vì rét, miệng oe oe khóc khiến tim bà mềm nhũn.</p>
+<p>Thế là bà mang đứa bé về, thay thế Cửu hoàng tử đã mất mà nuôi nấng.</p>
+<p>Chớp mắt một cái, đã mười bảy năm trôi qua.</p>
+<p>“Ly nhi, con lớn thật rồi.”</p>
+<p>Bà thích đến Thiên Linh tự, vì Phật Tổ đã ban cho bà một đứa con gái, nối tiếp đoạn duyên mẫu nữ giữa hai người.</p>
+<p>Sở Ly lắc đầu:</p>
+<p>“Mẫu phi, chúng ta đến rồi!”</p>
+<p>Nàng nhảy xuống xe ngựa.</p>
+<p>Lúc thì xách giỏ, lúc thì dìu Ôn phi, cùng bà leo từng bậc đá lên núi. Nàng chạy khỏe như bay, da dẻ rắn chắc, ngược lại Ôn phi đã mệt đến thở hổn hển.</p>
+<p>Cuối cùng cũng lên đến đỉnh núi.</p>
+<p>Ôn phi chuyển chiếc giỏ sang tay khác:</p>
+<p>“Ly nhi, mẫu phi vào trong dâng hương trước, con cứ đi chơi một lát.”</p>
+<p>“Vâng.”</p>
+<p>Thiên Linh tự là quốc tự của Đại Sở, danh tiếng lâu đời, lịch sử lâu dài, là ngôi chùa nổi tiếng bậc nhất cả nước. Hằng ngày có vô số bá tánh từ xa tìm đến cầu phúc, hương khói chưa từng ngớt.</p>
+<p>Sở Ly nhặt một chiếc lá phong còn xanh, chậm rãi bước vào chùa.</p>
+<p>Bá tánh ra vào cười nói, tiểu sa di quét lá rơi, các vị cao tăng gõ chuông ngân vang, tiếng chuông kéo dài xa xăm…</p>
+<p>Khói lửa nhân gian, cũng chỉ đến thế mà thôi.</p>
+<p>Sở Ly xoay chiếc lá phong giữa đầu ngón tay, vô tình ngoảnh đầu, liền trông thấy một bóng dáng quen thuộc.</p>
+<p>“Quy Nhất đại sư.”</p>
+<p>“Tạ thí chủ.”</p>
+<p>Quy Nhất đại sư cũng nhìn thấy nàng, mỉm cười bước tới. Vết bỏng trên gương mặt vốn vô cùng đáng sợ, nhưng ở nơi thanh tịnh linh thiêng như Thiên Linh tự, cả người ông lại toát lên vẻ hiền hòa, dễ gần.</p>
+<p>“Hôm nay Tạ thí chủ sao lại có thời gian đến Thiên Linh tự?”</p>
+<p>“Đưa mẫu thân đến.”</p>
+<p>Gần đây vì chuyện Nhàn Vương trúng độc nên nàng quả thực quá bận.</p>
+<p>“Không biết nghĩa phụ của ta dạo này thế nào?”</p>
+<p>“Tạ thí chủ cứ yên tâm. Cách một ngày ta lại xuống núi một lần. Ông ấy mỗi ngày đều làm việc, nấu cơm, nuôi gà vịt, sống rất tốt.”</p>
+<p>Dù nghe vậy, Sở Ly vẫn quyết định sẽ chọn một ngày đến thăm.</p>
+<p>Ít nhất mỗi tháng bốn lần.</p>
+<p>Sở Ly cùng Quy Nhất đại sư sóng vai đi dưới hành lang, nhìn bá tánh dâng hương cầu phúc, khói hương lượn lờ.</p>
+<p>Quy Nhất đại sư nghiêng đầu nói:</p>
+<p>“Tạ thí chủ dường như đang có tâm sự.”</p>
+<p>“Ta?”</p>
+<p>“Ấn đường của thí chủ hơi ám đen, có dấu hiệu kiếp nạn chưa dứt. Mà vị trí ấy là cung phu thê, ám chỉ người trước mắt thí chủ không phải chính duyên.”</p>
+<p>Sở Ly chợt dừng bước.</p>
+<p>Ý gì?</p>
+<p>Không phải chính duyên, lẽ nào là nghiệt duyên?</p>
+<p>Ông đang nói đến Sở Đệ Trì?</p>
+<p>“Quy Nhất đại sư còn biết xem tướng sao?”</p>
+<p>“A Di Đà Phật.”</p>
+<p>Quy Nhất đại sư chắp tay.</p>
+<p>“Bần tăng đã sớm không còn hỏi chuyện hồng trần. Lời vừa rồi đã là nhiều lời, chỉ coi như một câu nói đùa, mong Tạ thí chủ chớ để trong lòng.”</p>
+<p>Lời đã nói ra như nước đổ đi, gợn sóng đã lan, sao có thể coi như chưa từng nghe?</p>
+<p>Quy Nhất đại sư đã rời đi, nhưng sóng gợn trong lòng Sở Ly vẫn mãi chưa lắng xuống.</p>
+<p>Rốt cuộc ông muốn nói điều gì?</p>
+<p>Người trước mắt không phải lương duyên?</p>
+<p>Nàng và Sở Đệ Trì sẽ không có kết quả sao?</p>
+<p>“Ly nhi? Ly nhi?”</p>
+<p>“Dạ?”</p>
+<p>Sở Ly hoàn hồn, lúc này mới thấy Ôn phi đã từ trong điện đi ra.</p>
+<p>“Con đang nghĩ gì vậy? Mẫu phi gọi con mấy tiếng rồi mà con chẳng nghe.”</p>
+<p>“Không có gì. Mẫu phi xong rồi sao?”</p>
+<p>“Ừ, chúng ta xuống chân núi ăn một bát mì rồi hãy hồi cung. Quán mì dưới chân núi ấy, mẫu phi đã ăn suốt mười bảy năm rồi.”</p>
+<p>“Mười bảy năm? Chẳng phải bằng tuổi con sao?”</p>
+<p>Ôn phi chỉ cười mà không đáp, cùng nàng xuống núi.</p>
+<p>Ăn xong, Kinh Ảnh đánh xe trước đưa Ôn phi hồi cung, sau đó đưa Sở Ly về San Hô Thủy Tạ.</p>
+<p>“Tạ tiểu thư, đến rồi.”</p>
+<p>“Làm phiền.”</p>
+<p>Sở Ly vén rèm xe, vừa đặt chân xuống đất, liền nhìn thấy trước mặt mình là…</p>
+<p>Nhiếp Chính Vương phủ.</p>
+<p>Nàng khẽ ngẩn người:</p>
+<p>“Sao lại đến đây?”</p>
+<p>Kinh Ảnh cười nói:</p>
+<p>“Đây là lệnh của chủ tử. Tạ tiểu thư, mời.”</p>
+<p>Trong lòng Sở Ly thoáng nghi hoặc. Do dự một lát, nàng bước lên bậc thềm.</p>
+<p>Vừa đến cửa, cánh cổng đồng nặng nề đồng loạt mở rộng sang hai bên.</p>
+<p>“Cung nghênh Tạ tiểu thư!”</p>
+<p>Đám hạ nhân xếp thành hai hàng dài, quỳ kín cả lối đi.</p>
+<p>Ở cuối hàng người ấy, nam nhân khoác trường bào tím đang lười biếng đứng trên bậc thềm. Tay phải chắp sau lưng, tay trái giơ lên cầm một vật gì đó, tùy ý xoay xoay trong tay.</p>
+<p>“Tiểu Cửu, lại đây.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_268.html" class="btn">‹ Trước</a>
             <a href="chuong_270.html" class="btn">Sau ›</a>
         </div>
@@ -238,15 +246,11 @@ Vừa đến cửa, cánh cổng đồng nặng nề đồng loạt mở rộng 
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -258,11 +262,11 @@ Vừa đến cửa, cánh cổng đồng nặng nề đồng loạt mở rộng 
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

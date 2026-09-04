@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 39</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,184 +62,193 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 39</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_38.html" class="btn">‹ Trước</a>
             <a href="chuong_40.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 39: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 39: Cửu hoàng tử ở gần bổn vương, để bổn vương tự tay đánh
-Thân hình Sở Ly mẫn tiệp nghiêng sang một bên, hiểm hiểm tránh được đòn.
-“Thất hoàng huynh.”
-“Ngươi còn dám tránh?”
-Sở Cảnh Lân trở tay vung tới, chụp lấy vai nàng, hung hăng đập nàng vào tường cung:
-“Ngươi đã làm gì tại yến Thu Nhật, lại khiến Phương Hải Dương mất ngôi thế tử?!”
-Phương Hải Dương là đích trưởng tử của cậu.
-Quốc công phủ thất thế, Tĩnh Hoàng Quý Phi tất sẽ bị liên lụy, mà hắn cũng không tránh khỏi.
-Sở Ly chau mày:
-“Huynh hỏi ta làm gì? Nếu ta có bản sự ấy, còn để huynh bắt được sao?”
-“Chuyện ở yến Thu Nhật ta đã nghe qua rồi. Nhiếp chính vương vì bao che cho ngươi mới trừng trị Phương Hải Dương. Sở Ly, ngươi ở thu săn giành mất phong quang của ta, nể tình huynh đệ ta không chấp, nào ngờ ngươi lại ngông cuồng đến mức thò tay vào cả Quốc công phủ!”
-Quốc công phủ là ngoại thích của mẫu phi hắn,
-là nhà cậu ruột của hắn.
-Sở Cảnh Lân vung nắm đấm:
-“Không chịu an phận làm phế vật của ngươi, ta liền đánh ngươi thành phế vật!”
-Sở Ly ôm chặt thắt lưng hắn, tránh khỏi yếu hại của quyền đó, lạnh giọng nói:
-“Chuyện của Phương thế tử không liên quan đến ta. Là hắn tự mình giữa thanh thiên bạch nhật cởi áo, làm nhơ nhuốc thanh danh các vị quý nữ thế gia.”
-“Không thể nào! Phương biểu huynh thân phận thế tử, sao có thể làm ra chuyện dâm loạn vô đạo ấy!”
-Sở Cảnh Lân dùng lực thúc gối,
-“Chính là ngươi hại hắn!”
-“Ưm!”
-“Cũng như ngày thu săn kia, công lao cứu giá? Hừ, Sở Ly, ngươi lập đại công thật đấy! Thiên hạ đều sai, chỉ mình ngươi là đúng. Ngươi tưởng ta không nhìn thấu bộ mặt của ngươi sao?!”
-“Thất hoàng huynh xin tự trọng… ưm! Nếu còn như vậy, ta sẽ hoàn thủ!”
-“Chỉ bằng mấy chiêu mèo ba chân của ngươi, cũng dám hoàn thủ?”
-Sở Cảnh Lân nắm hai vai nàng, lại định thúc gối đánh vào bụng. Ánh mắt Sở Ly chợt lạnh, đột nhiên dồn sức xông ra, cắn mạnh vào bên hông hắn.
-“A!”
-Nàng ngoạm trúng thịt mềm bên hông, nghiến răng cắn xé.
-“A! Sở Ly! Ngươi chơi thủ đoạn âm hiểm—”
-Đàn ông đánh nhau, nào có chuyện dùng miệng cắn?
-Sở Cảnh Lân tát mạnh một cái lên mặt nàng.
-Sở Ly chộp tóc hắn, kéo mạnh, tay kia túm thịt mềm ở đùi hắn, xoắn một vòng trăm tám mươi độ.
-Vừa xoắn, vừa giẫm, vừa cắn, vừa cấu.
-Sở Cảnh Lân đau đến nhảy dựng, một thân võ nghệ học được trước những thủ đoạn như đàn bà chanh chua này, hoàn toàn không có đất dụng võ.
-“Ngươi là tên điên! Sở Ly, ngươi còn là nam nhân không? Ta sẽ bóp chết ngươi!”
-Đau đến méo cả miệng.
-Hai người quấn chặt lấy nhau, lăn xuống đất, xé kéo đánh đấm, bất phân thắng bại.
-Trên trường nhai, cung nữ thái giám đi ngang thấy vậy, hồn vía bay sạch, vội vã chạy đi bẩm báo.
-“Bẩm nương nương!”
-“Nương nương, không xong rồi!”
-Tĩnh Hoàng Quý Phi vừa nhận mật báo khẩn, hay tin cháu ruột Phương Hải Dương bị Nhiếp chính vương tước bỏ thế tử vị. Bà đang dẫn người định đi chặn Trường Bội cô cô, thì thấy một tiểu thái giám hoảng loạn chạy tới.
-Huệ Lan cô cô tiến lên nửa bước, quát:
-“Chuyện gì mà hớt hải như vậy? Cẩn thận va phải nương nương, giữ lấy cái đầu của ngươi!”
-Tiểu thái giám quỳ sụp xuống đất:
-“Nương nương, Thất hoàng tử và Cửu hoàng tử đánh nhau ngoài trường nhai, chọc giận hoàng thượng, đã bị dẫn tới Ngự thư phòng xử trí rồi!”
-Sắc mặt Tĩnh Hoàng Quý Phi trầm xuống, nhưng thân cư địa vị cao, bà vẫn trấn định:
-“Nguyên do vì sao?”
-“Nô tài không rõ, chỉ thấy Thất hoàng tử đánh Cửu hoàng tử đến chảy máu mũi đầm đìa, dọc đường toàn là máu, thực khiến người ta kinh hãi!”
-Tĩnh Hoàng Quý Phi lập tức nói:
-“Đi Ngự thư phòng.”
-Huệ Lan cô cô nói:
-“Nương nương, chúng ta không đi chặn Trường Bội sao? Nếu để Trường Bội hồi bẩm hoàng hậu, tiền đồ của Phương thế tử e là hủy rồi.”
-Phương Hải Dương là cháu, Thất hoàng tử là con.
-Nặng nhẹ thế nào, còn cần suy nghĩ sao?
-Cửu hoàng tử tuy văn bất thành, võ bất tựu, là phế vật, nhưng được hoàng thượng thiên sủng. Nay lại công khai ẩu đả, tổn hại hoàng gia thể diện, hoàng thượng tất sẽ trọng phạt Thất hoàng tử.
-“Đi Ngự thư phòng!”
-“Tuân mệnh.”
-Một đoàn người vội vã đến Ngự thư phòng, lại bị Phúc công công chặn ngoài cửa:
-“Thỉnh an Hoàng Quý Phi nương nương.”
-Là người ngự tiền, không đợi Tĩnh Hoàng Quý Phi mở lời, hắn đã nói:
-“Nương nương, hoàng thượng đang xử lý chính sự, lại có Ngự sử, Thị lang cùng mấy vị đại thần khẩn cấp cầu kiến, e là không rảnh gặp nương nương.”
-Huệ Lan cô cô nói:
-“Phiền công công vào thông bẩm một tiếng.”
-Phúc công công khẽ khom lưng:
-“Nương nương nóng ruột, nô tài hiểu. Nhưng nương nương không ngại nghĩ kỹ, Thất hoàng tử và Cửu hoàng tử đánh nhau, suy cho cùng chỉ là huynh đệ bất hòa. Ngay cả dân gian huynh đệ cũng có lúc xung đột, tiểu phạt một phen là xong. Nhưng nương nương một khi vào trong, Ôn phi nương nương có thể khoanh tay đứng nhìn sao?”
-“Mẫu gia của nương nương là Quốc công, Ôn gia mấy vị tướng quân lại là cánh tay đắc lực của hoàng thượng. Nếu đem chuyện làm lớn, khiến hoàng thượng khó xử, vậy thì không thể không trọng phạt Thất hoàng tử.”
-Tĩnh Hoàng Quý Phi trầm mặc, nhìn cánh cửa Ngự thư phòng đóng chặt.
-Không chỉ vậy, bà cũng không thể thay Phương Hải Dương cầu tình.
-Phương Hải Dương bị phế thế tử, Quốc công phủ bị tổn thương, địa vị của bà trong cung cũng sẽ dao động.
-Nhưng lúc này vì bảo toàn Thất hoàng tử, đành phải bỏ Phương Hải Dương.
-Trong Ngự thư phòng.
-Sáu vị đại thần run rẩy đứng một bên, đầu hơi cúi, sắc mặt bất an. Nổi bật nhất chính là hai vị hoàng tử đứng giữa.
-Một người đầu tóc bù xù, y phục xộc xệch, tức tối ngoảnh đầu sang phải.
-Một người máu mũi dính đầy cằm, cổ và cổ áo, trông vô cùng nghiêm trọng, nắm chặt nắm tay, đầu nghiêng sang trái.
-Mấy vị đại thần trong lòng không ngừng than:
-Dưới chân thiên tử, hoàng tử lại ẩu đả, còn thể thống gì?
-Thân là hoàng tử, sao có thể như phường lưu manh chợ búa, đánh mất thân phận?
-Sở Hoàng mặt trầm như nước, nghiêm giọng:
-“Sở Cảnh Lân, ngươi là huynh trưởng, sao có thể đánh đệ đệ?”
-“Phụ hoàng, ‘hắn’ cũng đâu có buông tha cho nhi thần!” Eo, lưng, đùi Sở Cảnh Lân đau dữ dội, những chỗ không nhìn thấy e đã bầm tím cả.
-Hắn đánh Sở Ly, nhiều lắm chỉ khiến nàng chảy máu mũi.
-Nhưng Sở Ly đánh hắn, lại không hề nương tay.
-“Còn dám cãi!” Sở Hoàng đập bàn. “Ngươi nhìn xem ngươi đã đánh Tiểu Cửu ra sao rồi? Chảy nhiều máu như vậy! Còn ngươi, ngoài rụng mấy sợi tóc, áo quần xộc xệch, còn có thương tích gì?”
-Sở Cảnh Lân trợn mắt.
-Sao có thể nói như vậy?
-Hắn toàn thân đều là thương, chỉ là không ở chỗ lộ ra mà thôi.
-Nhưng hắn cũng không thể ở nơi trang nghiêm như Ngự thư phòng mà công khai cởi áo.
-“Phụ hoàng thiên vị! Chúng ta đều động thủ, sao người chỉ mắng một mình nhi thần?”
-Sở Ly lau vệt máu mũi, cố nén choáng váng, miễn cưỡng nói:
-“Phụ hoàng, nhi thần và Thất hoàng huynh chỉ là tiểu đả tiểu náo, không đáng ngại. Hơn nữa Thất hoàng huynh đã hạ thủ lưu tình, nếu không thì nhi thần đã sớm mất mạng rồi.”
-“Phụ hoàng, ‘hắn’ nói bậy! Chỉ chảy chút máu mũi thôi, sao chết người được? Nam nhân nào mà chẳng chảy máu?”
-Trước mắt Sở Ly chao đảo, lảo đảo ba bốn bước, trợn mắt ngã xuống đất.
-Sáu vị đại thần: “……”
-Sở Cảnh Lân: “……”
-“Hoàng huynh quả nhiên thiên vị.”
-Bên ngoài, một thân ảnh lãnh đạm thong thả bước vào:
-“Nếu cứ thiên vị kẻ nhỏ tuổi, mà đánh mất công bằng, lâu ngày chỉ khiến lòng người sinh oán.”
-Lưng Sở Ly cứng đờ. Nàng thấy trước mắt xuất hiện đôi hắc hài viền chỉ vàng. Trường bào màu huyền mặc của nam nhân lướt qua gương mặt nàng, sắc lạnh như lưỡi đao mỏng, khiến tim nàng thắt lại.
-Nàng vội vàng bò dậy.
-Sở Đệ Trì hành lễ, phất tay áo ngồi xuống:
-“Ồ, Cửu hoàng tử không thuốc mà khỏi rồi.”
-Sở Ly: “……”
-Sở Hoàng nhìn hắn:
-“Hai đứa nhỏ làm trò cười, lại khiến hoàng đệ phải đi một chuyến. Theo ý ngươi, nên trách phạt thế nào?”
-Sở Đệ Trì liếc hai người một cái:
-“Dẫu sao cũng là hai đứa trẻ, lại là gia sự, không cần thượng cương thượng tuyến. Để tỏ công bằng mà vẫn nghiêm trị, chi bằng mỗi người đánh tay hai mươi cái, cho nhớ lâu.”
-Sở Hoàng thấy thỏa đáng:
-“Phúc công công, lấy giới xích.”
-“Cửu hoàng tử ở gần bổn vương, để bổn vương tự tay đánh.”
-“??”
-Vì sao?
-Chỉ vì đứng gần hắn, đưa tay là với tới được, liền muốn tự tay đánh nàng?
-Hắn là người tập võ, một giới xích đánh xuống, chẳng phải đánh gãy tay nàng sao?
-Sở Ly lập tức quỳ xuống:
-“Phụ hoàng, nhi thần không muốn!”
-Sở Cảnh Lân cười trên nỗi đau người khác:
-“Hoàng thúc anh minh! Đa tạ hoàng thúc làm chủ!”
-Phúc công công đã lấy giới xích tới.
-Sở Đệ Trì giơ tay nhận lấy, liếc Sở Ly mặt mày lem luốc như cà chua nát, ý cười không chạm đến đáy mắt:
-“Tiểu Cửu à, đưa tay ra. Người phạm lỗi, thì nên chịu phạt.” Ẩn bớt</p>
+            <p>Chương 39: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 39: Cửu hoàng tử ở gần bổn vương, để bổn vương tự tay đánh</p>
+<p>Thân hình Sở Ly mẫn tiệp nghiêng sang một bên, hiểm hiểm tránh được đòn.</p>
+<p>“Thất hoàng huynh.”</p>
+<p>“Ngươi còn dám tránh?”</p>
+<p>Sở Cảnh Lân trở tay vung tới, chụp lấy vai nàng, hung hăng đập nàng vào tường cung:</p>
+<p>“Ngươi đã làm gì tại yến Thu Nhật, lại khiến Phương Hải Dương mất ngôi thế tử?!”</p>
+<p>Phương Hải Dương là đích trưởng tử của cậu.</p>
+<p>Quốc công phủ thất thế, Tĩnh Hoàng Quý Phi tất sẽ bị liên lụy, mà hắn cũng không tránh khỏi.</p>
+<p>Sở Ly chau mày:</p>
+<p>“Huynh hỏi ta làm gì? Nếu ta có bản sự ấy, còn để huynh bắt được sao?”</p>
+<p>“Chuyện ở yến Thu Nhật ta đã nghe qua rồi. Nhiếp chính vương vì bao che cho ngươi mới trừng trị Phương Hải Dương. Sở Ly, ngươi ở thu săn giành mất phong quang của ta, nể tình huynh đệ ta không chấp, nào ngờ ngươi lại ngông cuồng đến mức thò tay vào cả Quốc công phủ!”</p>
+<p>Quốc công phủ là ngoại thích của mẫu phi hắn,</p>
+<p>là nhà cậu ruột của hắn.</p>
+<p>Sở Cảnh Lân vung nắm đấm:</p>
+<p>“Không chịu an phận làm phế vật của ngươi, ta liền đánh ngươi thành phế vật!”</p>
+<p>Sở Ly ôm chặt thắt lưng hắn, tránh khỏi yếu hại của quyền đó, lạnh giọng nói:</p>
+<p>“Chuyện của Phương thế tử không liên quan đến ta. Là hắn tự mình giữa thanh thiên bạch nhật cởi áo, làm nhơ nhuốc thanh danh các vị quý nữ thế gia.”</p>
+<p>“Không thể nào! Phương biểu huynh thân phận thế tử, sao có thể làm ra chuyện dâm loạn vô đạo ấy!”</p>
+<p>Sở Cảnh Lân dùng lực thúc gối,</p>
+<p>“Chính là ngươi hại hắn!”</p>
+<p>“Ưm!”</p>
+<p>“Cũng như ngày thu săn kia, công lao cứu giá? Hừ, Sở Ly, ngươi lập đại công thật đấy! Thiên hạ đều sai, chỉ mình ngươi là đúng. Ngươi tưởng ta không nhìn thấu bộ mặt của ngươi sao?!”</p>
+<p>“Thất hoàng huynh xin tự trọng… ưm! Nếu còn như vậy, ta sẽ hoàn thủ!”</p>
+<p>“Chỉ bằng mấy chiêu mèo ba chân của ngươi, cũng dám hoàn thủ?”</p>
+<p>Sở Cảnh Lân nắm hai vai nàng, lại định thúc gối đánh vào bụng. Ánh mắt Sở Ly chợt lạnh, đột nhiên dồn sức xông ra, cắn mạnh vào bên hông hắn.</p>
+<p>“A!”</p>
+<p>Nàng ngoạm trúng thịt mềm bên hông, nghiến răng cắn xé.</p>
+<p>“A! Sở Ly! Ngươi chơi thủ đoạn âm hiểm—”</p>
+<p>Đàn ông đánh nhau, nào có chuyện dùng miệng cắn?</p>
+<p>Sở Cảnh Lân tát mạnh một cái lên mặt nàng.</p>
+<p>Sở Ly chộp tóc hắn, kéo mạnh, tay kia túm thịt mềm ở đùi hắn, xoắn một vòng trăm tám mươi độ.</p>
+<p>Vừa xoắn, vừa giẫm, vừa cắn, vừa cấu.</p>
+<p>Sở Cảnh Lân đau đến nhảy dựng, một thân võ nghệ học được trước những thủ đoạn như đàn bà chanh chua này, hoàn toàn không có đất dụng võ.</p>
+<p>“Ngươi là tên điên! Sở Ly, ngươi còn là nam nhân không? Ta sẽ bóp chết ngươi!”</p>
+<p>Đau đến méo cả miệng.</p>
+<p>Hai người quấn chặt lấy nhau, lăn xuống đất, xé kéo đánh đấm, bất phân thắng bại.</p>
+<p>Trên trường nhai, cung nữ thái giám đi ngang thấy vậy, hồn vía bay sạch, vội vã chạy đi bẩm báo.</p>
+<p>“Bẩm nương nương!”</p>
+<p>“Nương nương, không xong rồi!”</p>
+<p>Tĩnh Hoàng Quý Phi vừa nhận mật báo khẩn, hay tin cháu ruột Phương Hải Dương bị Nhiếp chính vương tước bỏ thế tử vị. Bà đang dẫn người định đi chặn Trường Bội cô cô, thì thấy một tiểu thái giám hoảng loạn chạy tới.</p>
+<p>Huệ Lan cô cô tiến lên nửa bước, quát:</p>
+<p>“Chuyện gì mà hớt hải như vậy? Cẩn thận va phải nương nương, giữ lấy cái đầu của ngươi!”</p>
+<p>Tiểu thái giám quỳ sụp xuống đất:</p>
+<p>“Nương nương, Thất hoàng tử và Cửu hoàng tử đánh nhau ngoài trường nhai, chọc giận hoàng thượng, đã bị dẫn tới Ngự thư phòng xử trí rồi!”</p>
+<p>Sắc mặt Tĩnh Hoàng Quý Phi trầm xuống, nhưng thân cư địa vị cao, bà vẫn trấn định:</p>
+<p>“Nguyên do vì sao?”</p>
+<p>“Nô tài không rõ, chỉ thấy Thất hoàng tử đánh Cửu hoàng tử đến chảy máu mũi đầm đìa, dọc đường toàn là máu, thực khiến người ta kinh hãi!”</p>
+<p>Tĩnh Hoàng Quý Phi lập tức nói:</p>
+<p>“Đi Ngự thư phòng.”</p>
+<p>Huệ Lan cô cô nói:</p>
+<p>“Nương nương, chúng ta không đi chặn Trường Bội sao? Nếu để Trường Bội hồi bẩm hoàng hậu, tiền đồ của Phương thế tử e là hủy rồi.”</p>
+<p>Phương Hải Dương là cháu, Thất hoàng tử là con.</p>
+<p>Nặng nhẹ thế nào, còn cần suy nghĩ sao?</p>
+<p>Cửu hoàng tử tuy văn bất thành, võ bất tựu, là phế vật, nhưng được hoàng thượng thiên sủng. Nay lại công khai ẩu đả, tổn hại hoàng gia thể diện, hoàng thượng tất sẽ trọng phạt Thất hoàng tử.</p>
+<p>“Đi Ngự thư phòng!”</p>
+<p>“Tuân mệnh.”</p>
+<p>Một đoàn người vội vã đến Ngự thư phòng, lại bị Phúc công công chặn ngoài cửa:</p>
+<p>“Thỉnh an Hoàng Quý Phi nương nương.”</p>
+<p>Là người ngự tiền, không đợi Tĩnh Hoàng Quý Phi mở lời, hắn đã nói:</p>
+<p>“Nương nương, hoàng thượng đang xử lý chính sự, lại có Ngự sử, Thị lang cùng mấy vị đại thần khẩn cấp cầu kiến, e là không rảnh gặp nương nương.”</p>
+<p>Huệ Lan cô cô nói:</p>
+<p>“Phiền công công vào thông bẩm một tiếng.”</p>
+<p>Phúc công công khẽ khom lưng:</p>
+<p>“Nương nương nóng ruột, nô tài hiểu. Nhưng nương nương không ngại nghĩ kỹ, Thất hoàng tử và Cửu hoàng tử đánh nhau, suy cho cùng chỉ là huynh đệ bất hòa. Ngay cả dân gian huynh đệ cũng có lúc xung đột, tiểu phạt một phen là xong. Nhưng nương nương một khi vào trong, Ôn phi nương nương có thể khoanh tay đứng nhìn sao?”</p>
+<p>“Mẫu gia của nương nương là Quốc công, Ôn gia mấy vị tướng quân lại là cánh tay đắc lực của hoàng thượng. Nếu đem chuyện làm lớn, khiến hoàng thượng khó xử, vậy thì không thể không trọng phạt Thất hoàng tử.”</p>
+<p>Tĩnh Hoàng Quý Phi trầm mặc, nhìn cánh cửa Ngự thư phòng đóng chặt.</p>
+<p>Không chỉ vậy, bà cũng không thể thay Phương Hải Dương cầu tình.</p>
+<p>Phương Hải Dương bị phế thế tử, Quốc công phủ bị tổn thương, địa vị của bà trong cung cũng sẽ dao động.</p>
+<p>Nhưng lúc này vì bảo toàn Thất hoàng tử, đành phải bỏ Phương Hải Dương.</p>
+<p>Trong Ngự thư phòng.</p>
+<p>Sáu vị đại thần run rẩy đứng một bên, đầu hơi cúi, sắc mặt bất an. Nổi bật nhất chính là hai vị hoàng tử đứng giữa.</p>
+<p>Một người đầu tóc bù xù, y phục xộc xệch, tức tối ngoảnh đầu sang phải.</p>
+<p>Một người máu mũi dính đầy cằm, cổ và cổ áo, trông vô cùng nghiêm trọng, nắm chặt nắm tay, đầu nghiêng sang trái.</p>
+<p>Mấy vị đại thần trong lòng không ngừng than:</p>
+<p>Dưới chân thiên tử, hoàng tử lại ẩu đả, còn thể thống gì?</p>
+<p>Thân là hoàng tử, sao có thể như phường lưu manh chợ búa, đánh mất thân phận?</p>
+<p>Sở Hoàng mặt trầm như nước, nghiêm giọng:</p>
+<p>“Sở Cảnh Lân, ngươi là huynh trưởng, sao có thể đánh đệ đệ?”</p>
+<p>“Phụ hoàng, ‘hắn’ cũng đâu có buông tha cho nhi thần!” Eo, lưng, đùi Sở Cảnh Lân đau dữ dội, những chỗ không nhìn thấy e đã bầm tím cả.</p>
+<p>Hắn đánh Sở Ly, nhiều lắm chỉ khiến nàng chảy máu mũi.</p>
+<p>Nhưng Sở Ly đánh hắn, lại không hề nương tay.</p>
+<p>“Còn dám cãi!” Sở Hoàng đập bàn. “Ngươi nhìn xem ngươi đã đánh Tiểu Cửu ra sao rồi? Chảy nhiều máu như vậy! Còn ngươi, ngoài rụng mấy sợi tóc, áo quần xộc xệch, còn có thương tích gì?”</p>
+<p>Sở Cảnh Lân trợn mắt.</p>
+<p>Sao có thể nói như vậy?</p>
+<p>Hắn toàn thân đều là thương, chỉ là không ở chỗ lộ ra mà thôi.</p>
+<p>Nhưng hắn cũng không thể ở nơi trang nghiêm như Ngự thư phòng mà công khai cởi áo.</p>
+<p>“Phụ hoàng thiên vị! Chúng ta đều động thủ, sao người chỉ mắng một mình nhi thần?”</p>
+<p>Sở Ly lau vệt máu mũi, cố nén choáng váng, miễn cưỡng nói:</p>
+<p>“Phụ hoàng, nhi thần và Thất hoàng huynh chỉ là tiểu đả tiểu náo, không đáng ngại. Hơn nữa Thất hoàng huynh đã hạ thủ lưu tình, nếu không thì nhi thần đã sớm mất mạng rồi.”</p>
+<p>“Phụ hoàng, ‘hắn’ nói bậy! Chỉ chảy chút máu mũi thôi, sao chết người được? Nam nhân nào mà chẳng chảy máu?”</p>
+<p>Trước mắt Sở Ly chao đảo, lảo đảo ba bốn bước, trợn mắt ngã xuống đất.</p>
+<p>Sáu vị đại thần: “……”</p>
+<p>Sở Cảnh Lân: “……”</p>
+<p>“Hoàng huynh quả nhiên thiên vị.”</p>
+<p>Bên ngoài, một thân ảnh lãnh đạm thong thả bước vào:</p>
+<p>“Nếu cứ thiên vị kẻ nhỏ tuổi, mà đánh mất công bằng, lâu ngày chỉ khiến lòng người sinh oán.”</p>
+<p>Lưng Sở Ly cứng đờ. Nàng thấy trước mắt xuất hiện đôi hắc hài viền chỉ vàng. Trường bào màu huyền mặc của nam nhân lướt qua gương mặt nàng, sắc lạnh như lưỡi đao mỏng, khiến tim nàng thắt lại.</p>
+<p>Nàng vội vàng bò dậy.</p>
+<p>Sở Đệ Trì hành lễ, phất tay áo ngồi xuống:</p>
+<p>“Ồ, Cửu hoàng tử không thuốc mà khỏi rồi.”</p>
+<p>Sở Ly: “……”</p>
+<p>Sở Hoàng nhìn hắn:</p>
+<p>“Hai đứa nhỏ làm trò cười, lại khiến hoàng đệ phải đi một chuyến. Theo ý ngươi, nên trách phạt thế nào?”</p>
+<p>Sở Đệ Trì liếc hai người một cái:</p>
+<p>“Dẫu sao cũng là hai đứa trẻ, lại là gia sự, không cần thượng cương thượng tuyến. Để tỏ công bằng mà vẫn nghiêm trị, chi bằng mỗi người đánh tay hai mươi cái, cho nhớ lâu.”</p>
+<p>Sở Hoàng thấy thỏa đáng:</p>
+<p>“Phúc công công, lấy giới xích.”</p>
+<p>“Cửu hoàng tử ở gần bổn vương, để bổn vương tự tay đánh.”</p>
+<p>“??”</p>
+<p>Vì sao?</p>
+<p>Chỉ vì đứng gần hắn, đưa tay là với tới được, liền muốn tự tay đánh nàng?</p>
+<p>Hắn là người tập võ, một giới xích đánh xuống, chẳng phải đánh gãy tay nàng sao?</p>
+<p>Sở Ly lập tức quỳ xuống:</p>
+<p>“Phụ hoàng, nhi thần không muốn!”</p>
+<p>Sở Cảnh Lân cười trên nỗi đau người khác:</p>
+<p>“Hoàng thúc anh minh! Đa tạ hoàng thúc làm chủ!”</p>
+<p>Phúc công công đã lấy giới xích tới.</p>
+<p>Sở Đệ Trì giơ tay nhận lấy, liếc Sở Ly mặt mày lem luốc như cà chua nát, ý cười không chạm đến đáy mắt:</p>
+<p>“Tiểu Cửu à, đưa tay ra. Người phạm lỗi, thì nên chịu phạt.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_38.html" class="btn">‹ Trước</a>
             <a href="chuong_40.html" class="btn">Sau ›</a>
         </div>
@@ -248,15 +256,11 @@ Sở Đệ Trì giơ tay nhận lấy, liếc Sở Ly mặt mày lem luốc như
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -268,11 +272,11 @@ Sở Đệ Trì giơ tay nhận lấy, liếc Sở Ly mặt mày lem luốc như
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

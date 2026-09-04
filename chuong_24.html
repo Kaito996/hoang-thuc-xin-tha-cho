@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 24</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,159 +62,168 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 24</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_23.html" class="btn">‹ Trước</a>
             <a href="chuong_25.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 24: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 24: [Bổn vương thân là trưởng bối, há lại tranh cao thấp với vãn bối]
-Một tiễn xuyên thủng yết hầu!
-Thân thể con gấu nâu chấn động dữ dội, tiếng gầm rú lập tức biến thành những tràng thở dốc khò khè. Nó lảo đảo mấy bước rồi ầm ầm ngã xuống đất, máu tươi tuôn ra như suối.
-Sở Cảnh Lân mở bừng hai mắt, thấy thời cơ đã tới, lập tức rút thanh chủy thủ buộc sát bên ống quần, hung hăng đâm thẳng vào tim con gấu nâu!
-Loài súc sinh đáng chết này!
-Hắn lao tới đâm liên tiếp ba dao, máu nhuộm khắp người.
-Cùng lúc đó, mấy tên thị vệ quanh vùng nghe tiếng hô hoán liền đuổi tới nơi. Vừa nhìn qua, chúng đã thấy Thất hoàng tử đơn thương độc mã ngồi trên mình con gấu xám nặng tới bốn trăm cân, toàn thân đẫm máu nhưng dũng mãnh vô song, ai nấy đều lộ vẻ kinh ngạc tột cùng.
-Gấu xám tính tình hung tợn, vóc dáng hộ pháp, lại biết ăn thịt người, chẳng khác nào loài mãnh thú như sư hổ. Người thường nếu gặp phải e là mười phần chết cả mười, vậy mà lại bị Thất hoàng tử một tay bắt sống!
-"Thất hoàng tử săn được một con gấu xám!"
-"Thất hoàng tử săn được một con gấu xám!"
-Ánh tịch dương buổi hoàng hôn buông xuống hoàng gia săn trường. Cuộc thu liệp rầm rộ như lửa như hoa sắp sửa đến hồi kết thúc, thú săn được chất thành đống tại khu vực của mỗi người, khiến lòng người không khỏi sục sôi.
-"Đại hoàng tử săn được nhiều thế kia!"
-"Tam hoàng tử cũng chẳng kém cạnh là bao."
-"Kìa xem, Nhiếp chính vương săn được cũng không ít!"
-Văn vũ bách quan bàn tán xôn xao như triều dâng. Dưới ánh hoàng hôn, đã chẳng rõ là do ánh mặt trời thiêu đốt hay do huyết khí trong người đang cuộn trào, ai nấy đều lau mồ hôi, đàm luận sôi nổi.
-Một ngôn quan của Ngự sử đài quỳ gối tâu rằng:
-"Bệ hạ, xin hãy nhìn số thú săn của Tần Thiếu tướng quân, có đến hơn mười lăm con. Bản quan nửa tháng trước vừa thăng lên võ tướng ngũ phẩm, thần xin chúc mừng Bệ hạ lại có thêm một đấng lương tướng!"
-Binh bộ Thượng thư cũng bước ra:
-"Bệ hạ, xem tình hình này, thu hoạch năm nay cao hơn năm ngoái không chỉ một gấp đôi. Thương thiên phù hộ Đại Sở, sản sinh ra nhiều bậc năng nhân lương tướng, đây quả là hồng phúc của Đại Sở, cũng là công lao của Bệ hạ."
-Lời này lọt tai, nhưng Sở hoàng xua tay cười nói:
-"Đại Sở của trẫm cũng là Đại Sở của chúng ái khanh, của muôn dân trăm họ, tất cả mọi người đều có công lao!"
-U u ——
-Thị vệ thổi vang tù và, thanh âm vang vọng khắp núi đồi, tuyên cáo cuộc thu liệp chính thức kết thúc.
-Chúng nhân thúc ngựa nối đuôi nhau ra khỏi cánh rừng.
-Có người hớn hở ra mặt, xem chừng chiến tích vô cùng khả quan; có người lại nhíu chặt đôi mày; có kẻ lại tụ năm tụ ba bàn tán điều gì đó.
-Thần mã Tương Dạ do Sở Đệ Trì cưỡi đón lấy ánh hoàng hôn, bộ lông bóng loáng như huyết, không nghi ngờ gì chính là tiêu điểm hiển hách nhất trong đám đông.
-"Nhiếp chính vương điện hạ thu hoạch phước phần, thành tích bất phỉ." Có quan viên chắp tay bái nghênh.
-"Xem ra lần này ngài lại danh liệt tiền mâu rồi."
-"Kỵ xạ thuật của ngài tại Đại Sở nếu xưng thứ hai thì e là không ai dám xưng thứ nhất."
-Lời này vừa thốt ra, bầu không khí xung quanh bỗng chốc ngưng đọng, không ít người biến sắc.
-Bởi hoàng thượng vẫn đang ngự tọa bên trên.
-Ngôi vị thứ nhất của Đại Sở, chỉ có thể thuộc về đấng quân vương.
-Sở Đệ Trì giơ cây cung vương máu lên ném cho tùy thị, "Chư vị đại nhân quá khen, bản vương chỉ là tùy hứng luyện tay chút thôi, lẽ nào lại đi tranh cao thấp với đám tiểu bối trẻ tuổi?"
-Vị đại nhân kia chợt nhận ra mình lỡ lời, suýt nữa tự cắn đứt lưỡi, bèn cười trừ tạ lỗi:
-"Phải, Nhiếp chính vương nhĩ đề mệnh diện, quả là tấm gương sáng cho đám tiểu bối noi theo."
-Nói ra cũng lạ, Nhiếp chính vương năm nay bất quá mới chừng hai mươi ba, hai mươi tư tuổi, Đại hoàng tử cũng xấp xỉ tuổi ngài, nhưng khí trường trầm ổn tích tụ từ trăm trận sa trường cùng quyền thế hô phong hoán vũ của ngài đủ để áp chế tất cả. Quan viên trong triều đều bái phục kính cẩn, tuyệt không một ai dám dựa vào tuổi tác mà khinh thị ngài.
-Sở hoàng đưa mắt nhìn sang, cười như không có chuyện gì:
-"Hoàng đệ đã vấtvả cả ngày, mau lại đây ngồi."
-"Thần đệ lĩnh mệnh, đa tạ Hoàng huynh."
-Ngự lâm quân nhanh chóng kiểm đếm thú săn của từng người, rồi lớn tiếng thông báo ngay tại chỗ:
-"Dương Thế tử săn được bảy con, Trương Tiểu quận vương săn được chín con…… Đại hoàng tử săn được hai mươi thật con!"
-Chúng nhân lập tức ồ lên kinh ngạc:
-"Nhiều như vậy, gấp tận ba lần Trương Tiểu quận vương cơ đấy."
-"Năm ngoái Tam hoàng tử đoạt đầu sầu cũng chỉ săn được hai mươi hai con."
-"Xem ra đầu sầu năm nay định sẵn thuộc về Đại hoàng tử rồi!"
-Lục hoàng tử dắt ngựa, kiêu hãnh vẫy tay về phía Sở Uyên Trì, "Đại ca, huynh cừ khôi quá! Năm nay huynh chắc chắn giành ngôi đầu."
-Sở Uyên Trì nét mặt ôn hòa, trầm giọng quở trách: "Mini Lục, còn chưa kiểm đếm xong, thận ngôn."
-Rất nhanh sau đó, Ngự lâm quân lại cất tiếng thông báo:
-"Tam hoàng tử săn được hai mươi bảy con!"
-Chúng nhân lại một phen kinh ngạc.
-Thú săn của Tam hoàng tử vậy mà lại ngang bằng với Đại hoàng tử!
-Trận này phân định thắng thua, xếp hạng trước sau thế nào đây?
-"Không ngờ đệ không ngừng tay săn bắn suốt cả ngày trời mới miễn cưỡng tề danh cùng Đại hoàng huynh. Kỵ xạ thuật của Đại hoàng huynh, tam đệ thật lòng bội phục." Người vừa nói là Tam hoàng tử, người mặc một bộ kỵ xạ phục sắc tím, tóc đen búi cao, gương mặt trắng trẻo tuấn mỹ thập phần ôn hòa, bình dị tựa như một vị huynh trưởng nhà bên, không hề mang chút vương gia giá tử nào.
-Sở Uyên Trì nhìn về phía hắn, nói:
-"Tam đệ tiễn thuật tuyệt luân, lời vừa rồi quá khiêm nhường rồi."
-Hai anh em nhìn nhau mỉm cười, tính tình đều ôn hòa lương thiện như nhau, trông chẳng khác nào một cặp đồng bào huynh đệ tình thâm nghĩa trọng.
-Thế nhưng, một tiếng thông báo tiếp theo lại đẩy bầu không khí lên đến cao trào:
-"Nhiếp chính vương săn được hai mươi bảy con!"
-Đến đây.
-Việc kiểm đếm chính thức kết thúc.
-Số thú săn nhiều nhất là hai mươi bảy con, nhưng lại có tới ba người đồng hạng. Mà vị trí đầu sầu chỉ có một, cây cung Hy Mộc Lưu Kim Cung cũng chỉ có một cây, biết phân chia thế nào cho phải?
-Các quan viên cẩn trọng quan sát sắc mặt Hoàng thượng, bầu không khí rơi vào thế cương cục.
-Cho dù có lập ra ba vị đầu sầu, thì bất luận thưởng cây cung báu này cho ai cũng đều vạch trần sự thiên vị của Hoàng thượng, thậm chí còn gây ra sóng gió chốn triều đường.
-Hoàng thượng đến nay vẫn chưa lập Thái tử, rốt cuộc tâm ý ngài thuộc về Đại hoàng tử hay Tam hoàng tử?
-Chuyện này quả là nan giải.
-Sở Đệ Trì cạn một chén rượu, thong thả nói: "Một năm trở lại đây, kỵ xạ thuật của Đại hoàng tử và Tam hoàng tử tiến bộ vượt bậc, bản vương đều nhìn thấy rõ, trong lòng vô cùng hân hoan."
-"Bản vương thân là trưởng bối, quyết không tham dự vào cuộc tranh giành đầu sầu này, tự nguyện rút lui. Chỉ là, ngôi đầu chỉ có một, không biết hai huynh đệ các ngươi định phân chia thế nào?"
-Sống lưng chúng thần tử chợt lạnh toát.
-Ý tứ trong lời này của Nhiếp chính vương, chẳng phải là đang ám chỉ ngôi đầu này là do ngài khiêm nhường nhường lại thì mới đến lượt hai vị hoàng tử hay sao?
-Nếu ngài thực sự muốn tranh, dựa vào thực lực của ngài, số thú săn sớm đã vượt xa con số hai mươi bảy.
-Lời nói này vô hình trung đang khiêu chiến quân uy.
-Đến cả thiên hạ này, ngôi hoàng vị này, cũng là do ngài chắp tay nhường lại thì mới đến lượt vị Hoàng đế đương triều……
-Sở Uyên Trì há lại không hiểu thâm ý của Nhiếp chính vương?
-Hắn và Tam hoàng tử hôm nay tranh ngôi đầu, ngày mai sẽ tranh trữ vị, tương lai sẽ là tranh đoạt cả thiên hạ.
-Một khi hắn nhượng bộ, Tam hoàng tử đoạt được cung báu, nhận được sự thiên vị của Hoàng thượng, không ít thần tử trong triều nghe ngóng được phong thanh chắc chắn sẽ âm thầm chuyển sang ủng hộ Tam hoàng tử.
-Còn nếu quyết không nhường, thì cả hắn, Tam hoàng tử lẫn Hoàng thượng đều sẽ rơi vào thế tiến thoái lưỡng nan.
-Đây nào phải là một cuộc thu liệp? Rõ ràng là Nhiếp chính vương đang mượn tay họ để khiêu khích Sở hoàng, bằng không, số thú săn của Nhiếp chính vương sao có thể không nhiều không thiếu, vừa vặn đúng hai mươi bảy con?
-Lục hoàng tử hạ thấp giọng: "Đại ca, không thể nhường……"
-Phía bên kia, Tứ hoàng tử cũng nhìn về phía Tam hoàng tử, khẽ lắc đầu ra hiệu không được nhượng bộ.
-Một trận thu liệp đã vạch rõ trận doanh của các vị hoàng tử một cách rành rọt.
-Đại hoàng tử, Nhị hoàng tử và Lục hoàng tử chung một phái.
-Tam hoàng tử và Tứ hoàng tử thuộc một phe.
-Giữa lúc bầu không khí đang căng như dây đàn, Tam hoàng tử Sở Tây Lăng tiến lên một bước, chắp tay tâu: "Phụ hoàng, nhi thần là phận làm đệ, nguyện nhường ngôi đầu lại cho Đại hoàng huynh. Huynh đệ chúng nhi thần thân như một thể, nguyện vĩnh viễn tận trung vì Phụ hoàng, quyết không sinh hiềm khích."
-Vừa mở lời đã nột tả được tấm lòng thản đãng, khí độ hào phóng của mình.
-Sở Uyên Trì lập tức tiếp lời: "Phụ hoàng, nhi thần là trưởng tử của người, lý ứng phải chu toàn mọi sự, thiện nhượng cho các đệ đệ, nhi thần tự nguyện rút lui."
-Sở Đệ Trì rót thêm một chén rượu, tiếp tục châm dầu vào lửa:
-"Bản vương đã nói hai đứa điệt nhi này rất hiểu chuyện mà. Hoàng huynh quả thực dạy con có phương, thương tổn lòng đứa nào cũng thật không nỡ, hay là cái danh đầu sầu này cứ chia đôi cho công bằng?"
-Sắc mặt Sở hoàng vẫn như thường, nhưng bàn tay giấu trong tay áo đã âm thầm siết chặt.
-Thiên hạ không thể có hai vua.
-Ngôi đầu, tất nhiên chỉ có thể thuộc về một người.
-Hôm nay nếu mở ra tiền lệ này, ngày sau khi Nhiếp chính vương đoạt lấy một nửa giang sơn thì lão cũng sẽ có lý do chính đáng để nói như vậy.
-Sự khiêu khích bức người này của Nhiếp chính vương, chỉ suýt chút nữa là tuốt gươm chém thẳng vào mặt lão mà thôi.
-Chính ngay lúc này, từ phía bìa rừng bỗng vang lên tiếng hét khản đặc của thị vệ:
-"Thất hoàng tử…… Thất hoàng tử săn được một con gấu xám!" Ẩn bớt</p>
+            <p>Chương 24: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 24: [Bổn vương thân là trưởng bối, há lại tranh cao thấp với vãn bối]</p>
+<p>Một tiễn xuyên thủng yết hầu!</p>
+<p>Thân thể con gấu nâu chấn động dữ dội, tiếng gầm rú lập tức biến thành những tràng thở dốc khò khè. Nó lảo đảo mấy bước rồi ầm ầm ngã xuống đất, máu tươi tuôn ra như suối.</p>
+<p>Sở Cảnh Lân mở bừng hai mắt, thấy thời cơ đã tới, lập tức rút thanh chủy thủ buộc sát bên ống quần, hung hăng đâm thẳng vào tim con gấu nâu!</p>
+<p>Loài súc sinh đáng chết này!</p>
+<p>Hắn lao tới đâm liên tiếp ba dao, máu nhuộm khắp người.</p>
+<p>Cùng lúc đó, mấy tên thị vệ quanh vùng nghe tiếng hô hoán liền đuổi tới nơi. Vừa nhìn qua, chúng đã thấy Thất hoàng tử đơn thương độc mã ngồi trên mình con gấu xám nặng tới bốn trăm cân, toàn thân đẫm máu nhưng dũng mãnh vô song, ai nấy đều lộ vẻ kinh ngạc tột cùng.</p>
+<p>Gấu xám tính tình hung tợn, vóc dáng hộ pháp, lại biết ăn thịt người, chẳng khác nào loài mãnh thú như sư hổ. Người thường nếu gặp phải e là mười phần chết cả mười, vậy mà lại bị Thất hoàng tử một tay bắt sống!</p>
+<p>"Thất hoàng tử săn được một con gấu xám!"</p>
+<p>"Thất hoàng tử săn được một con gấu xám!"</p>
+<p>Ánh tịch dương buổi hoàng hôn buông xuống hoàng gia săn trường. Cuộc thu liệp rầm rộ như lửa như hoa sắp sửa đến hồi kết thúc, thú săn được chất thành đống tại khu vực của mỗi người, khiến lòng người không khỏi sục sôi.</p>
+<p>"Đại hoàng tử săn được nhiều thế kia!"</p>
+<p>"Tam hoàng tử cũng chẳng kém cạnh là bao."</p>
+<p>"Kìa xem, Nhiếp chính vương săn được cũng không ít!"</p>
+<p>Văn vũ bách quan bàn tán xôn xao như triều dâng. Dưới ánh hoàng hôn, đã chẳng rõ là do ánh mặt trời thiêu đốt hay do huyết khí trong người đang cuộn trào, ai nấy đều lau mồ hôi, đàm luận sôi nổi.</p>
+<p>Một ngôn quan của Ngự sử đài quỳ gối tâu rằng:</p>
+<p>"Bệ hạ, xin hãy nhìn số thú săn của Tần Thiếu tướng quân, có đến hơn mười lăm con. Bản quan nửa tháng trước vừa thăng lên võ tướng ngũ phẩm, thần xin chúc mừng Bệ hạ lại có thêm một đấng lương tướng!"</p>
+<p>Binh bộ Thượng thư cũng bước ra:</p>
+<p>"Bệ hạ, xem tình hình này, thu hoạch năm nay cao hơn năm ngoái không chỉ một gấp đôi. Thương thiên phù hộ Đại Sở, sản sinh ra nhiều bậc năng nhân lương tướng, đây quả là hồng phúc của Đại Sở, cũng là công lao của Bệ hạ."</p>
+<p>Lời này lọt tai, nhưng Sở hoàng xua tay cười nói:</p>
+<p>"Đại Sở của trẫm cũng là Đại Sở của chúng ái khanh, của muôn dân trăm họ, tất cả mọi người đều có công lao!"</p>
+<p>U u ——</p>
+<p>Thị vệ thổi vang tù và, thanh âm vang vọng khắp núi đồi, tuyên cáo cuộc thu liệp chính thức kết thúc.</p>
+<p>Chúng nhân thúc ngựa nối đuôi nhau ra khỏi cánh rừng.</p>
+<p>Có người hớn hở ra mặt, xem chừng chiến tích vô cùng khả quan; có người lại nhíu chặt đôi mày; có kẻ lại tụ năm tụ ba bàn tán điều gì đó.</p>
+<p>Thần mã Tương Dạ do Sở Đệ Trì cưỡi đón lấy ánh hoàng hôn, bộ lông bóng loáng như huyết, không nghi ngờ gì chính là tiêu điểm hiển hách nhất trong đám đông.</p>
+<p>"Nhiếp chính vương điện hạ thu hoạch phước phần, thành tích bất phỉ." Có quan viên chắp tay bái nghênh.</p>
+<p>"Xem ra lần này ngài lại danh liệt tiền mâu rồi."</p>
+<p>"Kỵ xạ thuật của ngài tại Đại Sở nếu xưng thứ hai thì e là không ai dám xưng thứ nhất."</p>
+<p>Lời này vừa thốt ra, bầu không khí xung quanh bỗng chốc ngưng đọng, không ít người biến sắc.</p>
+<p>Bởi hoàng thượng vẫn đang ngự tọa bên trên.</p>
+<p>Ngôi vị thứ nhất của Đại Sở, chỉ có thể thuộc về đấng quân vương.</p>
+<p>Sở Đệ Trì giơ cây cung vương máu lên ném cho tùy thị, "Chư vị đại nhân quá khen, bản vương chỉ là tùy hứng luyện tay chút thôi, lẽ nào lại đi tranh cao thấp với đám tiểu bối trẻ tuổi?"</p>
+<p>Vị đại nhân kia chợt nhận ra mình lỡ lời, suýt nữa tự cắn đứt lưỡi, bèn cười trừ tạ lỗi:</p>
+<p>"Phải, Nhiếp chính vương nhĩ đề mệnh diện, quả là tấm gương sáng cho đám tiểu bối noi theo."</p>
+<p>Nói ra cũng lạ, Nhiếp chính vương năm nay bất quá mới chừng hai mươi ba, hai mươi tư tuổi, Đại hoàng tử cũng xấp xỉ tuổi ngài, nhưng khí trường trầm ổn tích tụ từ trăm trận sa trường cùng quyền thế hô phong hoán vũ của ngài đủ để áp chế tất cả. Quan viên trong triều đều bái phục kính cẩn, tuyệt không một ai dám dựa vào tuổi tác mà khinh thị ngài.</p>
+<p>Sở hoàng đưa mắt nhìn sang, cười như không có chuyện gì:</p>
+<p>"Hoàng đệ đã vấtvả cả ngày, mau lại đây ngồi."</p>
+<p>"Thần đệ lĩnh mệnh, đa tạ Hoàng huynh."</p>
+<p>Ngự lâm quân nhanh chóng kiểm đếm thú săn của từng người, rồi lớn tiếng thông báo ngay tại chỗ:</p>
+<p>"Dương Thế tử săn được bảy con, Trương Tiểu quận vương săn được chín con…… Đại hoàng tử săn được hai mươi thật con!"</p>
+<p>Chúng nhân lập tức ồ lên kinh ngạc:</p>
+<p>"Nhiều như vậy, gấp tận ba lần Trương Tiểu quận vương cơ đấy."</p>
+<p>"Năm ngoái Tam hoàng tử đoạt đầu sầu cũng chỉ săn được hai mươi hai con."</p>
+<p>"Xem ra đầu sầu năm nay định sẵn thuộc về Đại hoàng tử rồi!"</p>
+<p>Lục hoàng tử dắt ngựa, kiêu hãnh vẫy tay về phía Sở Uyên Trì, "Đại ca, huynh cừ khôi quá! Năm nay huynh chắc chắn giành ngôi đầu."</p>
+<p>Sở Uyên Trì nét mặt ôn hòa, trầm giọng quở trách: "Mini Lục, còn chưa kiểm đếm xong, thận ngôn."</p>
+<p>Rất nhanh sau đó, Ngự lâm quân lại cất tiếng thông báo:</p>
+<p>"Tam hoàng tử săn được hai mươi bảy con!"</p>
+<p>Chúng nhân lại một phen kinh ngạc.</p>
+<p>Thú săn của Tam hoàng tử vậy mà lại ngang bằng với Đại hoàng tử!</p>
+<p>Trận này phân định thắng thua, xếp hạng trước sau thế nào đây?</p>
+<p>"Không ngờ đệ không ngừng tay săn bắn suốt cả ngày trời mới miễn cưỡng tề danh cùng Đại hoàng huynh. Kỵ xạ thuật của Đại hoàng huynh, tam đệ thật lòng bội phục." Người vừa nói là Tam hoàng tử, người mặc một bộ kỵ xạ phục sắc tím, tóc đen búi cao, gương mặt trắng trẻo tuấn mỹ thập phần ôn hòa, bình dị tựa như một vị huynh trưởng nhà bên, không hề mang chút vương gia giá tử nào.</p>
+<p>Sở Uyên Trì nhìn về phía hắn, nói:</p>
+<p>"Tam đệ tiễn thuật tuyệt luân, lời vừa rồi quá khiêm nhường rồi."</p>
+<p>Hai anh em nhìn nhau mỉm cười, tính tình đều ôn hòa lương thiện như nhau, trông chẳng khác nào một cặp đồng bào huynh đệ tình thâm nghĩa trọng.</p>
+<p>Thế nhưng, một tiếng thông báo tiếp theo lại đẩy bầu không khí lên đến cao trào:</p>
+<p>"Nhiếp chính vương săn được hai mươi bảy con!"</p>
+<p>Đến đây.</p>
+<p>Việc kiểm đếm chính thức kết thúc.</p>
+<p>Số thú săn nhiều nhất là hai mươi bảy con, nhưng lại có tới ba người đồng hạng. Mà vị trí đầu sầu chỉ có một, cây cung Hy Mộc Lưu Kim Cung cũng chỉ có một cây, biết phân chia thế nào cho phải?</p>
+<p>Các quan viên cẩn trọng quan sát sắc mặt Hoàng thượng, bầu không khí rơi vào thế cương cục.</p>
+<p>Cho dù có lập ra ba vị đầu sầu, thì bất luận thưởng cây cung báu này cho ai cũng đều vạch trần sự thiên vị của Hoàng thượng, thậm chí còn gây ra sóng gió chốn triều đường.</p>
+<p>Hoàng thượng đến nay vẫn chưa lập Thái tử, rốt cuộc tâm ý ngài thuộc về Đại hoàng tử hay Tam hoàng tử?</p>
+<p>Chuyện này quả là nan giải.</p>
+<p>Sở Đệ Trì cạn một chén rượu, thong thả nói: "Một năm trở lại đây, kỵ xạ thuật của Đại hoàng tử và Tam hoàng tử tiến bộ vượt bậc, bản vương đều nhìn thấy rõ, trong lòng vô cùng hân hoan."</p>
+<p>"Bản vương thân là trưởng bối, quyết không tham dự vào cuộc tranh giành đầu sầu này, tự nguyện rút lui. Chỉ là, ngôi đầu chỉ có một, không biết hai huynh đệ các ngươi định phân chia thế nào?"</p>
+<p>Sống lưng chúng thần tử chợt lạnh toát.</p>
+<p>Ý tứ trong lời này của Nhiếp chính vương, chẳng phải là đang ám chỉ ngôi đầu này là do ngài khiêm nhường nhường lại thì mới đến lượt hai vị hoàng tử hay sao?</p>
+<p>Nếu ngài thực sự muốn tranh, dựa vào thực lực của ngài, số thú săn sớm đã vượt xa con số hai mươi bảy.</p>
+<p>Lời nói này vô hình trung đang khiêu chiến quân uy.</p>
+<p>Đến cả thiên hạ này, ngôi hoàng vị này, cũng là do ngài chắp tay nhường lại thì mới đến lượt vị Hoàng đế đương triều……</p>
+<p>Sở Uyên Trì há lại không hiểu thâm ý của Nhiếp chính vương?</p>
+<p>Hắn và Tam hoàng tử hôm nay tranh ngôi đầu, ngày mai sẽ tranh trữ vị, tương lai sẽ là tranh đoạt cả thiên hạ.</p>
+<p>Một khi hắn nhượng bộ, Tam hoàng tử đoạt được cung báu, nhận được sự thiên vị của Hoàng thượng, không ít thần tử trong triều nghe ngóng được phong thanh chắc chắn sẽ âm thầm chuyển sang ủng hộ Tam hoàng tử.</p>
+<p>Còn nếu quyết không nhường, thì cả hắn, Tam hoàng tử lẫn Hoàng thượng đều sẽ rơi vào thế tiến thoái lưỡng nan.</p>
+<p>Đây nào phải là một cuộc thu liệp? Rõ ràng là Nhiếp chính vương đang mượn tay họ để khiêu khích Sở hoàng, bằng không, số thú săn của Nhiếp chính vương sao có thể không nhiều không thiếu, vừa vặn đúng hai mươi bảy con?</p>
+<p>Lục hoàng tử hạ thấp giọng: "Đại ca, không thể nhường……"</p>
+<p>Phía bên kia, Tứ hoàng tử cũng nhìn về phía Tam hoàng tử, khẽ lắc đầu ra hiệu không được nhượng bộ.</p>
+<p>Một trận thu liệp đã vạch rõ trận doanh của các vị hoàng tử một cách rành rọt.</p>
+<p>Đại hoàng tử, Nhị hoàng tử và Lục hoàng tử chung một phái.</p>
+<p>Tam hoàng tử và Tứ hoàng tử thuộc một phe.</p>
+<p>Giữa lúc bầu không khí đang căng như dây đàn, Tam hoàng tử Sở Tây Lăng tiến lên một bước, chắp tay tâu: "Phụ hoàng, nhi thần là phận làm đệ, nguyện nhường ngôi đầu lại cho Đại hoàng huynh. Huynh đệ chúng nhi thần thân như một thể, nguyện vĩnh viễn tận trung vì Phụ hoàng, quyết không sinh hiềm khích."</p>
+<p>Vừa mở lời đã nột tả được tấm lòng thản đãng, khí độ hào phóng của mình.</p>
+<p>Sở Uyên Trì lập tức tiếp lời: "Phụ hoàng, nhi thần là trưởng tử của người, lý ứng phải chu toàn mọi sự, thiện nhượng cho các đệ đệ, nhi thần tự nguyện rút lui."</p>
+<p>Sở Đệ Trì rót thêm một chén rượu, tiếp tục châm dầu vào lửa:</p>
+<p>"Bản vương đã nói hai đứa điệt nhi này rất hiểu chuyện mà. Hoàng huynh quả thực dạy con có phương, thương tổn lòng đứa nào cũng thật không nỡ, hay là cái danh đầu sầu này cứ chia đôi cho công bằng?"</p>
+<p>Sắc mặt Sở hoàng vẫn như thường, nhưng bàn tay giấu trong tay áo đã âm thầm siết chặt.</p>
+<p>Thiên hạ không thể có hai vua.</p>
+<p>Ngôi đầu, tất nhiên chỉ có thể thuộc về một người.</p>
+<p>Hôm nay nếu mở ra tiền lệ này, ngày sau khi Nhiếp chính vương đoạt lấy một nửa giang sơn thì lão cũng sẽ có lý do chính đáng để nói như vậy.</p>
+<p>Sự khiêu khích bức người này của Nhiếp chính vương, chỉ suýt chút nữa là tuốt gươm chém thẳng vào mặt lão mà thôi.</p>
+<p>Chính ngay lúc này, từ phía bìa rừng bỗng vang lên tiếng hét khản đặc của thị vệ:</p>
+<p>"Thất hoàng tử…… Thất hoàng tử săn được một con gấu xám!" Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_23.html" class="btn">‹ Trước</a>
             <a href="chuong_25.html" class="btn">Sau ›</a>
         </div>
@@ -223,15 +231,11 @@ Chính ngay lúc này, từ phía bìa rừng bỗng vang lên tiếng hét kh�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -243,11 +247,11 @@ Chính ngay lúc này, từ phía bìa rừng bỗng vang lên tiếng hét kh�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

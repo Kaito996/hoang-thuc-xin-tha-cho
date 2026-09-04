@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 327</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,202 +62,211 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 327</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_326.html" class="btn">‹ Trước</a>
             <a href="chuong_328.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 327: Rốt cuộc khi còn nhỏ nàng đã làm gì?
-“Thưa Tạ lão tướng quân, Quy Nhất đại sư đến bái phỏng ngài.”
-Ngoài cửa, Sơ Nhất vào bẩm báo.
-Tạ Ân Hồng vui vẻ vẫy tay:
-“Mau mời vào.”
-Chẳng bao lâu sau, Quy Nhất đại sư mang theo cả thân hàn khí bước vào trong phòng, lúc này mới cảm thấy ấm áp hơn đôi chút. Sơ Nhị lập tức bưng một chén trà nóng tới trước mặt ông.
-“Mời ngồi.”
-“Đa tạ.”
-Quy Nhất đại sư nâng chén trà bằng hai tay, nhìn một phòng đầy người, mỉm cười hiền hòa:
-“Lão nạp vốn chỉ định đến xin một chén nước, không ngờ hôm nay lại gặp nhiều quý nhân như vậy.”
-Mấy ngày nay, Ôn phi đã quen với sự xuất hiện của Quy Nhất đại sư.
-Từ khi Tạ Ân Hồng ẩn cư tại đây, Quy Nhất đại sư thường xuyên đến ngồi chơi, giao tình giữa hai người rất tốt, thường cùng nhau uống trà, đánh cờ, giết thời gian.
-Đừng nhìn gương mặt ông bị bỏng đến mức xấu xí đáng sợ, nhưng lời nói ôn hòa, phong thái nho nhã, là một người vô cùng dễ gần.
-Tạ Ân Hồng cười sang sảng:
-“Quy Nhất, ngươi đến đúng lúc lắm, ta đang có một chuyện muốn nhờ ngươi.”
-Quy Nhất đại sư chắp hai tay:
-“Giữa ngươi và ta, còn nói gì đến chữ phiền? Cứ nói đi.”
-Tạ Ân Hồng nói:
-“Là thế này, nghĩa nữ của ta và Nhiếp Chính Vương sắp đính thân, mong ngươi giúp xem một ngày hoàng đạo.”
-“Chuyện nhỏ.”
-Quy Nhất đại sư nhìn hai người:
-“Xin hãy cho lão nạp biết sinh thần bát tự của hai vị.”
-Sở Đệ Trì nói trước.
-Thần sắc Ôn phi thoáng có phần kín đáo.
-Ly nhi không phải do bà sinh ra, bà cũng không biết thời khắc sinh cụ thể, chỉ có thể nói đại khái một khoảng thời gian.
-Quy Nhất đại sư bấm đốt ngón tay, trầm ngâm tính toán một hồi.
-Một lúc lâu sau mới mở mắt:
-“Nếu trước năm mới thì ngày hai mươi mốt tháng Chạp là cát nhật. Còn nếu sau năm mới thì phải đợi đến cuối tháng Hai.”
-Sở Đệ Trì nói:
-“Cuối tháng Hai quá lâu, vậy định vào ngày hai mươi mốt tháng Chạp.”
-Hiện giờ mới giữa tháng Mười, vẫn còn hai tháng, đủ để chuẩn bị.
-Ôn phi mỉm cười gật đầu:
-“Được, được. Hai tháng này vừa hay ta và Hân tỷ tỷ có thể gấp rút may xong giá y.”
-Sở Ly không nhịn được hỏi:
-“Mẫu phi, con nghe nói dân gian khi xuất giá, giá y đều do chính tân nương tự tay may. Hay là để con tự thêu?”
-Sắc mặt Ôn phi và Hân phi đồng thời biến đổi, ngay cả mấy nha hoàn đứng hầu bên cạnh cũng cứng đờ cả mặt.
-Để nàng tự may…
-Lần trước, nàng cắt liền ba cây vải, cuối cùng mới làm ra được một cái túi thơm.
-Trên túi thơm còn thêu một con vịt xiêu xiêu vẹo vẹo, thật sự chẳng thể nhìn nổi.
-Nếu đem tay nghề ấy thêu lên giá y…
-Chẳng phải sẽ trở thành trò cười của cả kinh thành sao?
-Ôn phi vội nói:
-“Vẫn để ta làm thì hơn. Ta ở chỗ Tạ lão tướng quân cũng phải tìm chút việc để làm, nếu không suốt ngày nhàn rỗi thì sao chịu nổi?”
-Hân phi liên tục phụ họa:
-“Đúng, đúng!”
-Sở Ly còn định nói thêm điều gì, ngoài cửa, Sơ Tam xắn tay áo bước tới:
-“Tiểu thư, bữa trưa đã chuẩn bị xong.”
-Ôn phi lập tức chuyển chủ đề:
-“Đi, đi dùng bữa.”
-Hân phi cũng nói:
-“Đúng, đúng!”
-Đến bàn cơm, Sở Ly không nhắc lại chuyện giá y nữa.
-Ngược lại, Ôn phi và Hân phi vô cùng nhiệt tình gắp thức ăn cho Tạ Ân Hồng.
-Tạ Ân Hồng liên tục xua tay, bưng bát sang bên trái:
-“Đa tạ Hân phi nương nương có lòng, nhưng lão hủ thật sự ăn không nổi nhiều như vậy.”
-Bộp!
-Trong bát chợt nặng hẳn xuống.
-Ôn phi ngồi bên trái nhân cơ hội múc cho ông một muôi lớn gà hầm nhân sâm.
-“Tạ lão tướng quân, đừng khách sáo. Ly nhi nói chân cẳng ông không tốt, đầu gối thường đau đến mức không xuống giường được. Canh nhân sâm này bổ dưỡng nhất.”
-Tạ Ân Hồng vội bưng bát sang bên phải.
-“Ôn phi nương nương, lão hủ thật sự ăn không nổi…”
-Bộp!
-Bát lại nặng thêm.
-Hân phi ở bên phải cầm muôi cơm, xúc cho ông một ụ cơm thật lớn.
-Tạ Ân Hồng hai tay giơ bát cao quá đầu:
-“Lão hủ thật sự không cần nữa!”
-Bộp!
-Bát lại nặng thêm một lần nữa.
-Sở Ly đứng dậy gắp thức ăn cho ông:
-“Nghĩa phụ, ăn nhiều một chút, cường thân kiện thể, sống đến một trăm tuổi!”
-Tạ Ân Hồng nhìn cái bát chất đầy như núi trước mặt:
-“…”
-Mấy nha hoàn đứng bên cạnh cười đến không khép nổi miệng.
-Sau bữa cơm.
-Tạ Ân Hồng no đến mức nằm ngửa cả tay chân.
-Triều cục vẫn chưa ổn định, Sở Ly lấy cớ may giá y để Ôn phi và Hân phi tiếp tục ở lại chỗ nghĩa phụ, đồng thời phái người âm thầm bảo vệ.
-Chỉ cần chuyện của Sở Dạ Ly còn chưa có kết quả, Đại Sở bất cứ lúc nào cũng có thể lại rơi vào đại loạn.
-Sở Đệ Trì sai Kinh Ảnh và Trọng Phong dỡ toàn bộ lễ vật trên xe xuống.
-Sở Ly đứng trên bậc thềm, xoa cái bụng vừa ăn no, cảm nhận sự bình yên trước mắt, khóe môi bất giác cong lên.
-Có lẽ…
-Đây chính là hình dáng cụ thể của hạnh phúc.
-Điều khiến con người cảm thấy viên mãn, chẳng qua cũng chỉ là người thân quây quần, ánh đèn ấm áp, có tri kỷ bầu bạn, có vài bằng hữu đồng hành.
-Khoảnh khắc này…
-Thật sự vô cùng mãn nguyện.
-“Tạ tiểu thư.”
-Sở Ly nghiêng đầu, nụ cười trên môi nhạt đi đôi chút.
-“Quy Nhất đại sư.”
-“Chúc mừng Tạ tiểu thư sắp thành thân.”
-Nghe vậy, Sở Ly lại nhớ đến lời ông từng nói.
-“Lúc ở Thiên Linh tự, đại sư từng nói với ta rằng… ngài ấy không phải lương duyên của ta.”
-Quy Nhất đại sư hơi chần chừ:
-“Tạ tiểu thư không cần quá để tâm đến lời của lão nạp. Lão nạp chỉ căn cứ vào những gì tận mắt nhìn thấy mà nói thật, tin hay không đều tùy ở người.”
-“Huống hồ… người này quả thật không phải lương duyên của cô nương. Giữa hai người tồn tại một huyết án không thể vượt qua. Đến khi chuyện ấy bộc phát, tất cả những gì có trước đó đều sẽ tan thành mây khói.”
-Sắc mặt Sở Ly trầm xuống, đầu ngón tay vô thức siết chặt.
-Đột nhiên nàng nhớ đến giấc mộng đã nhiều lần quấn lấy mình.
-Trúc ma ma…
-Linh vị trong Nhiếp Chính Vương phủ…
-Rốt cuộc…
-Khi còn nhỏ nàng đã làm chuyện gì?
-Trong lòng hơi rối loạn, nhưng trên mặt vẫn không lộ chút dấu vết nào, chỉ bình thản cười nói:
-“Đa tạ đại sư chỉ điểm. Ta và Nhiếp Chính Vương lưỡng tình tương duyệt, tâm ý tương thông, nhất định sẽ không đi đến bước ấy.”
-“Vậy xem ra là lão nạp lo nghĩ quá nhiều.”
-“A Di Đà Phật.”
-Quy Nhất đại sư chắp tay, khẽ cúi đầu thi lễ rồi cáo từ rời đi.
-Ngoài sân, Trọng Phong và Kinh Ảnh đang liên tục khuân lễ vật vào trong, mấy nha hoàn cũng giúp một tay.
-“Cẩn thận… đừng va chạm… nhẹ tay thôi…”
-Sơ Nhất ôm một hộp lễ, lúc xoay người không cẩn thận va phải Trọng Phong.
-Trọng Phong nhanh mắt lẹ tay đỡ lấy eo nàng một cái.
-Sơ Nhất đứng vững liền lập tức lùi ra hai ba bước, nói lời cảm tạ rồi vội vàng ôm hộp đi vào trong.
-Khoảng hai khắc sau, toàn bộ lễ vật đều đã được chuyển xuống xe.
-“Tiểu Cửu.”
-Sở Đệ Trì bước nhanh tới.
-“Tiểu Bát tìm ta có việc gấp cần bàn. Chúng ta vào từ biệt mẫu phi rồi nên hồi cung thôi.”
-Sở Ly hơi nghi hoặc:
-“Chàng về trước đi. Ta muốn ở lại trò chuyện với mẫu phi thêm một lát, muộn chút sẽ trở về.”
-Sở Đệ Trì gật đầu:
-“Ta để Trọng Phong ở lại.”
-Trọng Phong làm việc trầm ổn hơn, để hắn hộ tống nàng hồi kinh sau thì hắn mới yên tâm.
-Còn hắn dẫn Kinh Ảnh hồi cung.
-Việc này khiến Kinh Ảnh âm thầm đắc ý một phen.
-Chủ tử mang hắn theo, không mang Trọng Phong.
-Xem ra trong lòng chủ tử, năng lực của hắn vượt xa Trọng Phong.
-Quả nhiên chủ tử vẫn coi trọng hắn hơn.
-Sơ Nhất bước tới, liếc nhìn Trọng Phong đang đứng chờ trong sân, rồi đi thẳng đến bên cạnh Sở Ly.
-“Tiểu thư, nô tỳ muốn theo người về đế đô, hầu hạ bên cạnh.”
-Sở Ly nghiêng đầu:
-“Muội không muốn ở lại đây sao?”
-“Đã có Sơ Nhị, Sơ Tam và bốn người còn lại ở đây rồi. Nhưng bên cạnh tiểu thư lại không có ai, nô tỳ không yên tâm.”
-Huống hồ trong sáu người, chỉ có nàng biết võ công, có thể bảo vệ tiểu thư tốt hơn.
-“Được, theo ý muội.”
-“Đa tạ tiểu thư!”
-Sở Ly một mình đi dạo trong rừng trúc, hít thở làn gió mát, trong đầu không ngừng nghĩ đến lời Quy Nhất đại sư, cùng giấc mộng liên quan đến Trúc Ma ma
-Nàng hơi cúi đầu, tâm sự nặng trĩu.
-Không biết đã đi bao lâu, cũng không biết đã đi đến nơi nào.
-Bỗng nghe thấy phía trước vang lên một tràng tiếng bước chân xào xạc rất rõ ràng.
-Nàng lập tức cảnh giác ngẩng đầu nhìn lại.
-Chỉ thấy cách đó không xa, phía sau rừng trúc um tùm, một bóng người chậm rãi bước ra.
-“Sao lại là ngươi?” Ẩn bớt</p>
+            <p>Chương 327: Rốt cuộc khi còn nhỏ nàng đã làm gì?</p>
+<p>“Thưa Tạ lão tướng quân, Quy Nhất đại sư đến bái phỏng ngài.”</p>
+<p>Ngoài cửa, Sơ Nhất vào bẩm báo.</p>
+<p>Tạ Ân Hồng vui vẻ vẫy tay:</p>
+<p>“Mau mời vào.”</p>
+<p>Chẳng bao lâu sau, Quy Nhất đại sư mang theo cả thân hàn khí bước vào trong phòng, lúc này mới cảm thấy ấm áp hơn đôi chút. Sơ Nhị lập tức bưng một chén trà nóng tới trước mặt ông.</p>
+<p>“Mời ngồi.”</p>
+<p>“Đa tạ.”</p>
+<p>Quy Nhất đại sư nâng chén trà bằng hai tay, nhìn một phòng đầy người, mỉm cười hiền hòa:</p>
+<p>“Lão nạp vốn chỉ định đến xin một chén nước, không ngờ hôm nay lại gặp nhiều quý nhân như vậy.”</p>
+<p>Mấy ngày nay, Ôn phi đã quen với sự xuất hiện của Quy Nhất đại sư.</p>
+<p>Từ khi Tạ Ân Hồng ẩn cư tại đây, Quy Nhất đại sư thường xuyên đến ngồi chơi, giao tình giữa hai người rất tốt, thường cùng nhau uống trà, đánh cờ, giết thời gian.</p>
+<p>Đừng nhìn gương mặt ông bị bỏng đến mức xấu xí đáng sợ, nhưng lời nói ôn hòa, phong thái nho nhã, là một người vô cùng dễ gần.</p>
+<p>Tạ Ân Hồng cười sang sảng:</p>
+<p>“Quy Nhất, ngươi đến đúng lúc lắm, ta đang có một chuyện muốn nhờ ngươi.”</p>
+<p>Quy Nhất đại sư chắp hai tay:</p>
+<p>“Giữa ngươi và ta, còn nói gì đến chữ phiền? Cứ nói đi.”</p>
+<p>Tạ Ân Hồng nói:</p>
+<p>“Là thế này, nghĩa nữ của ta và Nhiếp Chính Vương sắp đính thân, mong ngươi giúp xem một ngày hoàng đạo.”</p>
+<p>“Chuyện nhỏ.”</p>
+<p>Quy Nhất đại sư nhìn hai người:</p>
+<p>“Xin hãy cho lão nạp biết sinh thần bát tự của hai vị.”</p>
+<p>Sở Đệ Trì nói trước.</p>
+<p>Thần sắc Ôn phi thoáng có phần kín đáo.</p>
+<p>Ly nhi không phải do bà sinh ra, bà cũng không biết thời khắc sinh cụ thể, chỉ có thể nói đại khái một khoảng thời gian.</p>
+<p>Quy Nhất đại sư bấm đốt ngón tay, trầm ngâm tính toán một hồi.</p>
+<p>Một lúc lâu sau mới mở mắt:</p>
+<p>“Nếu trước năm mới thì ngày hai mươi mốt tháng Chạp là cát nhật. Còn nếu sau năm mới thì phải đợi đến cuối tháng Hai.”</p>
+<p>Sở Đệ Trì nói:</p>
+<p>“Cuối tháng Hai quá lâu, vậy định vào ngày hai mươi mốt tháng Chạp.”</p>
+<p>Hiện giờ mới giữa tháng Mười, vẫn còn hai tháng, đủ để chuẩn bị.</p>
+<p>Ôn phi mỉm cười gật đầu:</p>
+<p>“Được, được. Hai tháng này vừa hay ta và Hân tỷ tỷ có thể gấp rút may xong giá y.”</p>
+<p>Sở Ly không nhịn được hỏi:</p>
+<p>“Mẫu phi, con nghe nói dân gian khi xuất giá, giá y đều do chính tân nương tự tay may. Hay là để con tự thêu?”</p>
+<p>Sắc mặt Ôn phi và Hân phi đồng thời biến đổi, ngay cả mấy nha hoàn đứng hầu bên cạnh cũng cứng đờ cả mặt.</p>
+<p>Để nàng tự may…</p>
+<p>Lần trước, nàng cắt liền ba cây vải, cuối cùng mới làm ra được một cái túi thơm.</p>
+<p>Trên túi thơm còn thêu một con vịt xiêu xiêu vẹo vẹo, thật sự chẳng thể nhìn nổi.</p>
+<p>Nếu đem tay nghề ấy thêu lên giá y…</p>
+<p>Chẳng phải sẽ trở thành trò cười của cả kinh thành sao?</p>
+<p>Ôn phi vội nói:</p>
+<p>“Vẫn để ta làm thì hơn. Ta ở chỗ Tạ lão tướng quân cũng phải tìm chút việc để làm, nếu không suốt ngày nhàn rỗi thì sao chịu nổi?”</p>
+<p>Hân phi liên tục phụ họa:</p>
+<p>“Đúng, đúng!”</p>
+<p>Sở Ly còn định nói thêm điều gì, ngoài cửa, Sơ Tam xắn tay áo bước tới:</p>
+<p>“Tiểu thư, bữa trưa đã chuẩn bị xong.”</p>
+<p>Ôn phi lập tức chuyển chủ đề:</p>
+<p>“Đi, đi dùng bữa.”</p>
+<p>Hân phi cũng nói:</p>
+<p>“Đúng, đúng!”</p>
+<p>Đến bàn cơm, Sở Ly không nhắc lại chuyện giá y nữa.</p>
+<p>Ngược lại, Ôn phi và Hân phi vô cùng nhiệt tình gắp thức ăn cho Tạ Ân Hồng.</p>
+<p>Tạ Ân Hồng liên tục xua tay, bưng bát sang bên trái:</p>
+<p>“Đa tạ Hân phi nương nương có lòng, nhưng lão hủ thật sự ăn không nổi nhiều như vậy.”</p>
+<p>Bộp!</p>
+<p>Trong bát chợt nặng hẳn xuống.</p>
+<p>Ôn phi ngồi bên trái nhân cơ hội múc cho ông một muôi lớn gà hầm nhân sâm.</p>
+<p>“Tạ lão tướng quân, đừng khách sáo. Ly nhi nói chân cẳng ông không tốt, đầu gối thường đau đến mức không xuống giường được. Canh nhân sâm này bổ dưỡng nhất.”</p>
+<p>Tạ Ân Hồng vội bưng bát sang bên phải.</p>
+<p>“Ôn phi nương nương, lão hủ thật sự ăn không nổi…”</p>
+<p>Bộp!</p>
+<p>Bát lại nặng thêm.</p>
+<p>Hân phi ở bên phải cầm muôi cơm, xúc cho ông một ụ cơm thật lớn.</p>
+<p>Tạ Ân Hồng hai tay giơ bát cao quá đầu:</p>
+<p>“Lão hủ thật sự không cần nữa!”</p>
+<p>Bộp!</p>
+<p>Bát lại nặng thêm một lần nữa.</p>
+<p>Sở Ly đứng dậy gắp thức ăn cho ông:</p>
+<p>“Nghĩa phụ, ăn nhiều một chút, cường thân kiện thể, sống đến một trăm tuổi!”</p>
+<p>Tạ Ân Hồng nhìn cái bát chất đầy như núi trước mặt:</p>
+<p>“…”</p>
+<p>Mấy nha hoàn đứng bên cạnh cười đến không khép nổi miệng.</p>
+<p>Sau bữa cơm.</p>
+<p>Tạ Ân Hồng no đến mức nằm ngửa cả tay chân.</p>
+<p>Triều cục vẫn chưa ổn định, Sở Ly lấy cớ may giá y để Ôn phi và Hân phi tiếp tục ở lại chỗ nghĩa phụ, đồng thời phái người âm thầm bảo vệ.</p>
+<p>Chỉ cần chuyện của Sở Dạ Ly còn chưa có kết quả, Đại Sở bất cứ lúc nào cũng có thể lại rơi vào đại loạn.</p>
+<p>Sở Đệ Trì sai Kinh Ảnh và Trọng Phong dỡ toàn bộ lễ vật trên xe xuống.</p>
+<p>Sở Ly đứng trên bậc thềm, xoa cái bụng vừa ăn no, cảm nhận sự bình yên trước mắt, khóe môi bất giác cong lên.</p>
+<p>Có lẽ…</p>
+<p>Đây chính là hình dáng cụ thể của hạnh phúc.</p>
+<p>Điều khiến con người cảm thấy viên mãn, chẳng qua cũng chỉ là người thân quây quần, ánh đèn ấm áp, có tri kỷ bầu bạn, có vài bằng hữu đồng hành.</p>
+<p>Khoảnh khắc này…</p>
+<p>Thật sự vô cùng mãn nguyện.</p>
+<p>“Tạ tiểu thư.”</p>
+<p>Sở Ly nghiêng đầu, nụ cười trên môi nhạt đi đôi chút.</p>
+<p>“Quy Nhất đại sư.”</p>
+<p>“Chúc mừng Tạ tiểu thư sắp thành thân.”</p>
+<p>Nghe vậy, Sở Ly lại nhớ đến lời ông từng nói.</p>
+<p>“Lúc ở Thiên Linh tự, đại sư từng nói với ta rằng… ngài ấy không phải lương duyên của ta.”</p>
+<p>Quy Nhất đại sư hơi chần chừ:</p>
+<p>“Tạ tiểu thư không cần quá để tâm đến lời của lão nạp. Lão nạp chỉ căn cứ vào những gì tận mắt nhìn thấy mà nói thật, tin hay không đều tùy ở người.”</p>
+<p>“Huống hồ… người này quả thật không phải lương duyên của cô nương. Giữa hai người tồn tại một huyết án không thể vượt qua. Đến khi chuyện ấy bộc phát, tất cả những gì có trước đó đều sẽ tan thành mây khói.”</p>
+<p>Sắc mặt Sở Ly trầm xuống, đầu ngón tay vô thức siết chặt.</p>
+<p>Đột nhiên nàng nhớ đến giấc mộng đã nhiều lần quấn lấy mình.</p>
+<p>Trúc ma ma…</p>
+<p>Linh vị trong Nhiếp Chính Vương phủ…</p>
+<p>Rốt cuộc…</p>
+<p>Khi còn nhỏ nàng đã làm chuyện gì?</p>
+<p>Trong lòng hơi rối loạn, nhưng trên mặt vẫn không lộ chút dấu vết nào, chỉ bình thản cười nói:</p>
+<p>“Đa tạ đại sư chỉ điểm. Ta và Nhiếp Chính Vương lưỡng tình tương duyệt, tâm ý tương thông, nhất định sẽ không đi đến bước ấy.”</p>
+<p>“Vậy xem ra là lão nạp lo nghĩ quá nhiều.”</p>
+<p>“A Di Đà Phật.”</p>
+<p>Quy Nhất đại sư chắp tay, khẽ cúi đầu thi lễ rồi cáo từ rời đi.</p>
+<p>Ngoài sân, Trọng Phong và Kinh Ảnh đang liên tục khuân lễ vật vào trong, mấy nha hoàn cũng giúp một tay.</p>
+<p>“Cẩn thận… đừng va chạm… nhẹ tay thôi…”</p>
+<p>Sơ Nhất ôm một hộp lễ, lúc xoay người không cẩn thận va phải Trọng Phong.</p>
+<p>Trọng Phong nhanh mắt lẹ tay đỡ lấy eo nàng một cái.</p>
+<p>Sơ Nhất đứng vững liền lập tức lùi ra hai ba bước, nói lời cảm tạ rồi vội vàng ôm hộp đi vào trong.</p>
+<p>Khoảng hai khắc sau, toàn bộ lễ vật đều đã được chuyển xuống xe.</p>
+<p>“Tiểu Cửu.”</p>
+<p>Sở Đệ Trì bước nhanh tới.</p>
+<p>“Tiểu Bát tìm ta có việc gấp cần bàn. Chúng ta vào từ biệt mẫu phi rồi nên hồi cung thôi.”</p>
+<p>Sở Ly hơi nghi hoặc:</p>
+<p>“Chàng về trước đi. Ta muốn ở lại trò chuyện với mẫu phi thêm một lát, muộn chút sẽ trở về.”</p>
+<p>Sở Đệ Trì gật đầu:</p>
+<p>“Ta để Trọng Phong ở lại.”</p>
+<p>Trọng Phong làm việc trầm ổn hơn, để hắn hộ tống nàng hồi kinh sau thì hắn mới yên tâm.</p>
+<p>Còn hắn dẫn Kinh Ảnh hồi cung.</p>
+<p>Việc này khiến Kinh Ảnh âm thầm đắc ý một phen.</p>
+<p>Chủ tử mang hắn theo, không mang Trọng Phong.</p>
+<p>Xem ra trong lòng chủ tử, năng lực của hắn vượt xa Trọng Phong.</p>
+<p>Quả nhiên chủ tử vẫn coi trọng hắn hơn.</p>
+<p>Sơ Nhất bước tới, liếc nhìn Trọng Phong đang đứng chờ trong sân, rồi đi thẳng đến bên cạnh Sở Ly.</p>
+<p>“Tiểu thư, nô tỳ muốn theo người về đế đô, hầu hạ bên cạnh.”</p>
+<p>Sở Ly nghiêng đầu:</p>
+<p>“Muội không muốn ở lại đây sao?”</p>
+<p>“Đã có Sơ Nhị, Sơ Tam và bốn người còn lại ở đây rồi. Nhưng bên cạnh tiểu thư lại không có ai, nô tỳ không yên tâm.”</p>
+<p>Huống hồ trong sáu người, chỉ có nàng biết võ công, có thể bảo vệ tiểu thư tốt hơn.</p>
+<p>“Được, theo ý muội.”</p>
+<p>“Đa tạ tiểu thư!”</p>
+<p>Sở Ly một mình đi dạo trong rừng trúc, hít thở làn gió mát, trong đầu không ngừng nghĩ đến lời Quy Nhất đại sư, cùng giấc mộng liên quan đến Trúc Ma ma</p>
+<p>Nàng hơi cúi đầu, tâm sự nặng trĩu.</p>
+<p>Không biết đã đi bao lâu, cũng không biết đã đi đến nơi nào.</p>
+<p>Bỗng nghe thấy phía trước vang lên một tràng tiếng bước chân xào xạc rất rõ ràng.</p>
+<p>Nàng lập tức cảnh giác ngẩng đầu nhìn lại.</p>
+<p>Chỉ thấy cách đó không xa, phía sau rừng trúc um tùm, một bóng người chậm rãi bước ra.</p>
+<p>“Sao lại là ngươi?” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_326.html" class="btn">‹ Trước</a>
             <a href="chuong_328.html" class="btn">Sau ›</a>
         </div>
@@ -266,15 +274,11 @@ Chỉ thấy cách đó không xa, phía sau rừng trúc um tùm, một bóng n
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -286,11 +290,11 @@ Chỉ thấy cách đó không xa, phía sau rừng trúc um tùm, một bóng n
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

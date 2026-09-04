@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 220</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,161 +62,165 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 220</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_219.html" class="btn">‹ Trước</a>
             <a href="chuong_221.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 220: Tiểu bảo bối trong lòng
-
-Sở Ly đang ngồi bên bàn múc cháo thuốc, đợi nguội bớt là có thể uống. Đang bận rộn, nàng bỗng cảm nhận được một ánh mắt u trầm đang dõi theo mình...
-Nàng ngẩng đầu nhìn quanh.
-Bất chợt chạm phải đôi mắt mang ý cười ôn hòa của nam nhân.
-Trong lòng nàng thoáng nghi hoặc.
-Vừa rồi là ai đang nhìn nàng?
-Hay chỉ là ảo giác?
-Rõ ràng Nhiếp Chính Vương đang mỉm cười.
-"Có chuyện gì sao?"
-Thấy nàng cứ nhìn mình, nam nhân nghi hoặc nghiêng đầu. Gương mặt lạnh lùng cương nghị ấy lúc này lại giống hệt một con sư tử lớn hiền hòa vô hại.
-Sở Ly gãi đầu:
-"Ta cảm thấy có người đang nhìn chằm chằm vào ta."
-"Nơi này chỉ có nàng và ta. Có phải gần đây xảy ra quá nhiều chuyện, khiến nàng như chim sợ cành cong nên mới có cảm giác ấy?"
-Lời này cũng có lý.
-Kể từ khi đến Giang Nam, gặp Sở Uyên Trì, nàng chưa từng có lấy một ngày bình yên.
-
-"Cháo nguội rồi, Nhiếp Chính Vương, dùng đi."
-
-Trong cháo có thêm dược liệu cùng ninh, rất có ích cho việc hồi phục vết thương.
-
-Sở Ly bưng bát, quỳ ngồi trên nhuyễn tháp. Sở Đệ Trì dùng cánh tay không bị thương cầm lấy thìa, từng muỗng từng muỗng đưa vào miệng.
-
-"Ta chợt nhớ, Nhàn Vương ghét nhất là uống cháo."
-"Tại sao?"
-"Từ sau khi nàng rời đi, mẫu phi của hắn ngày nào cũng hầm canh, nấu cháo, suốt ngày bắt hắn ăn mấy thứ nước nước này. Hắn ăn đến phát sợ, có mấy lần còn trốn sang Lâm Hoa Điện của ta."
-"Phụt!"
-Sở Ly không nhịn được bật cười.
-"Hân phi nương nương tình mẫu tử quá dạt dào, chỉ khổ Bát hoàng huynh."
-"Đúng vậy."
-Ngài múc một thìa cháo, ánh mắt sâu thẳm nhìn nàng.
-"Hiện giờ Nhàn Vương bận lắm. Trọng trách Đại Sở đều đè lên vai hắn. Một mình hắn phải đối mặt với triều đình, xã tắc cùng đám quyền thần, hoàng tử lòng lang dạ sói kia. Cũng chẳng biết ngày nào sẽ bị người khác tính kế..."
-Hắn nhất định sẽ bị tính kế!
-Nghĩ đến đây, Sở Ly không khỏi sốt ruột.
-Từ nhỏ nàng đã lớn lên cùng Sở Ngạo Thiên, tính tình hắn thế nào, nàng hiểu rõ hơn ai hết. Hắn làm sao đấu nổi đám lão hồ ly ấy?
-Nàng để Bát hoàng huynh làm Nhàn Vương, vốn chỉ mong hắn tránh xa vòng xoáy triều đình, giống như Tiêu Dao Hoàng thúc, bình an vô ưu sống hết một đời.
-Không ngờ lại khéo quá hóa vụng...
-Bát hoàng huynh chắc chắn hận nàng chết mất.
-Sở Đệ Trì như chợt nhớ ra điều gì, liền lấy từ dưới gối ra một quyển sách bìa xanh.
-"Đây là thứ Nhàn Vương đốt cho nàng."
-Sở Ly nghi hoặc nhận lấy.
-"Đốt cho ta?"
-Nàng cúi đầu nhìn kỹ.
-《Thứ Nữ Phù Dao, Sủng Quán Kinh Hoa》
-Mặt nàng lập tức nóng bừng, vội vàng lật úp quyển sách xuống.
-Nàng thích đọc thoại bản. Chuyện riêng tư này lại bị Nhiếp Chính Vương biết được, chẳng khác nào làm chuyện xấu rồi bị bắt quả tang...
-Một người nghiêm túc như hắn, rốt cuộc làm sao có thể mặt không đổi sắc lấy ra một quyển thoại bản nhi nữ tình trường như vậy?
-"Tiểu Cửu."
-"Hả?"
-"Ta sẽ mua hết những quyển thoại bản hay nhất của Đại Sở tặng nàng. Lại sai người đi tìm Nam Dương tiên sinh. Nghe nói thoại bản do người này viết được các khuê các nữ tử yêu thích nhất. Ta sẽ mời ông ấy về, ngày ngày viết cho nàng đọc."
-Mặt Sở Ly càng đỏ hơn.
-Nóng bừng đến mức như muốn bốc khói.
-"Ta sẽ xây riêng cho nàng một tòa Tàng Thư Lâu."
-"Không cần, không cần!"
-Sở Ly liên tục xua tay.
-Người khác xây tàng thư lâu là để cất Tứ Thư Ngũ Kinh, điển tịch văn hóa, trân bản quý hiếm.
-Còn nàng lại cất toàn thoại bản thì còn ra thể thống gì?
-Nói ra chẳng phải sẽ bị người ta cười chết sao?
-"Cần."
-Sở Đệ Trì nắm lấy tay nàng.
-"Nàng thích nuôi vẹt, ta sẽ xây thêm cho nàng một đình đài thủy tạ, có non có nước, bên trong nuôi những con vẹt và rùa mà nàng yêu thích."
-"Đó là Quy sư thúc của ta."
-"Nếu đã là sư thúc của nàng, ta càng phải hậu đãi."
-Việc gì ngài cũng thuận theo ý nàng.
-Sở Ly khẽ cắn môi dưới, cúi đầu nhìn bàn tay đang được ngài nắm lấy. Đầu ngón tay thon dài mạnh mẽ, lòng ngón tay mát lạnh, hơi thở quen thuộc từ người hắn từng chút từng chút bao phủ lấy nàng...
-Giữa hai hàng mày Sở Đệ Trì vẫn mang ý cười, nhưng nơi đáy mắt lại cất giấu một tia u ám ngày càng sâu hơn.
-Ngài chăm chú nhìn gương mặt nghiêng khẽ cúi của nàng.
-Đôi mày lá liễu thanh tú, hàng mi cong dài tựa cánh quạ, đôi môi nhỏ hồng nhuận...
-Yết hầu khẽ lăn một cái đầy kín đáo.
-"Nhiếp Chính Vương!"
-Nàng bỗng ngẩng đầu.
-Vẻ u tối trên mặt nam nhân lập tức tan biến, nụ cười ôn hòa như gió xuân.
-"Ừ?"
-"Chúng ta ra ngoài dạo đi. Chẳng phải ngài muốn ngắm Giang Nam thành sao? Vừa hay ngài đang bị thương, cũng nên nhân dịp nghỉ ngơi."
-"Được."
-"Vậy ta đi thay y phục."
-Dứt lời, nàng lập tức quay người chạy ra ngoài, chỉ cảm thấy bàn tay vừa được hắn nắm qua vẫn nóng ran.
-Không thể tiếp tục ở chung một phòng với hắn nữa.
-Nàng có cảm giác, mọi chuyện sau này càng lúc càng vượt khỏi tầm khống chế.
-Sở Đệ Trì lười biếng đứng dậy, khoác cẩm bào lên người, liếc nhìn cánh tay phải bị thương.
-Cũng chẳng phải trọng thương gì, cùng lắm chỉ như bị kiến cắn một cái.
-Lúc này ngài mới bước ra ngoài.
-"Chủ tử."
-Trọng Phong chờ sẵn ngoài cửa, hai tay cung kính dâng lên một vật.
-"Địa chỉ và chìa khóa."
-Khóe mày nam nhân khẽ nhướng.
-"Không cần ai theo nữa."
-"Vâng."
-Bên kia, Sở Ly thay y phục chỉnh tề, đến gọi Sở Đệ Trì thì nhìn thấy Trọng Phong vừa đưa cho ngài thứ gì đó.
-"Là công vụ sao?"
-Sở Đệ Trì liếc Trọng Phong một cái. Trọng Phong lập tức cúi đầu lui xuống.
-"Không phải việc gì quan trọng, vài ngày nữa xử lý cũng được. Chúng ta cứ ra ngoài dạo trước."
-"Nhiếp Chính Vương, nếu ngài bận thì không cần miễn cưỡng dành thời gian đi cùng ta. Thật ra ta đưa ngài ra ngoài cũng chỉ mong ngài đang bị thương có thể thư giãn một chút, nghỉ ngơi một chút, đừng quá liều mạng."
-"Ta biết rồi, ta tự có chừng mực."
-Sở Đệ Trì mỉm cười, dịu dàng xoa đầu nàng.
-"Đi thôi."
-Tiểu bảo bối trong lòng ta.</p>
+            <p>Chương 220: Tiểu bảo bối trong lòng</p>
+<p>Sở Ly đang ngồi bên bàn múc cháo thuốc, đợi nguội bớt là có thể uống. Đang bận rộn, nàng bỗng cảm nhận được một ánh mắt u trầm đang dõi theo mình...</p>
+<p>Nàng ngẩng đầu nhìn quanh.</p>
+<p>Bất chợt chạm phải đôi mắt mang ý cười ôn hòa của nam nhân.</p>
+<p>Trong lòng nàng thoáng nghi hoặc.</p>
+<p>Vừa rồi là ai đang nhìn nàng?</p>
+<p>Hay chỉ là ảo giác?</p>
+<p>Rõ ràng Nhiếp Chính Vương đang mỉm cười.</p>
+<p>"Có chuyện gì sao?"</p>
+<p>Thấy nàng cứ nhìn mình, nam nhân nghi hoặc nghiêng đầu. Gương mặt lạnh lùng cương nghị ấy lúc này lại giống hệt một con sư tử lớn hiền hòa vô hại.</p>
+<p>Sở Ly gãi đầu:</p>
+<p>"Ta cảm thấy có người đang nhìn chằm chằm vào ta."</p>
+<p>"Nơi này chỉ có nàng và ta. Có phải gần đây xảy ra quá nhiều chuyện, khiến nàng như chim sợ cành cong nên mới có cảm giác ấy?"</p>
+<p>Lời này cũng có lý.</p>
+<p>Kể từ khi đến Giang Nam, gặp Sở Uyên Trì, nàng chưa từng có lấy một ngày bình yên.</p>
+<p>"Cháo nguội rồi, Nhiếp Chính Vương, dùng đi."</p>
+<p>Trong cháo có thêm dược liệu cùng ninh, rất có ích cho việc hồi phục vết thương.</p>
+<p>Sở Ly bưng bát, quỳ ngồi trên nhuyễn tháp. Sở Đệ Trì dùng cánh tay không bị thương cầm lấy thìa, từng muỗng từng muỗng đưa vào miệng.</p>
+<p>"Ta chợt nhớ, Nhàn Vương ghét nhất là uống cháo."</p>
+<p>"Tại sao?"</p>
+<p>"Từ sau khi nàng rời đi, mẫu phi của hắn ngày nào cũng hầm canh, nấu cháo, suốt ngày bắt hắn ăn mấy thứ nước nước này. Hắn ăn đến phát sợ, có mấy lần còn trốn sang Lâm Hoa Điện của ta."</p>
+<p>"Phụt!"</p>
+<p>Sở Ly không nhịn được bật cười.</p>
+<p>"Hân phi nương nương tình mẫu tử quá dạt dào, chỉ khổ Bát hoàng huynh."</p>
+<p>"Đúng vậy."</p>
+<p>Ngài múc một thìa cháo, ánh mắt sâu thẳm nhìn nàng.</p>
+<p>"Hiện giờ Nhàn Vương bận lắm. Trọng trách Đại Sở đều đè lên vai hắn. Một mình hắn phải đối mặt với triều đình, xã tắc cùng đám quyền thần, hoàng tử lòng lang dạ sói kia. Cũng chẳng biết ngày nào sẽ bị người khác tính kế..."</p>
+<p>Hắn nhất định sẽ bị tính kế!</p>
+<p>Nghĩ đến đây, Sở Ly không khỏi sốt ruột.</p>
+<p>Từ nhỏ nàng đã lớn lên cùng Sở Ngạo Thiên, tính tình hắn thế nào, nàng hiểu rõ hơn ai hết. Hắn làm sao đấu nổi đám lão hồ ly ấy?</p>
+<p>Nàng để Bát hoàng huynh làm Nhàn Vương, vốn chỉ mong hắn tránh xa vòng xoáy triều đình, giống như Tiêu Dao Hoàng thúc, bình an vô ưu sống hết một đời.</p>
+<p>Không ngờ lại khéo quá hóa vụng...</p>
+<p>Bát hoàng huynh chắc chắn hận nàng chết mất.</p>
+<p>Sở Đệ Trì như chợt nhớ ra điều gì, liền lấy từ dưới gối ra một quyển sách bìa xanh.</p>
+<p>"Đây là thứ Nhàn Vương đốt cho nàng."</p>
+<p>Sở Ly nghi hoặc nhận lấy.</p>
+<p>"Đốt cho ta?"</p>
+<p>Nàng cúi đầu nhìn kỹ.</p>
+<p>《Thứ Nữ Phù Dao, Sủng Quán Kinh Hoa》</p>
+<p>Mặt nàng lập tức nóng bừng, vội vàng lật úp quyển sách xuống.</p>
+<p>Nàng thích đọc thoại bản. Chuyện riêng tư này lại bị Nhiếp Chính Vương biết được, chẳng khác nào làm chuyện xấu rồi bị bắt quả tang...</p>
+<p>Một người nghiêm túc như hắn, rốt cuộc làm sao có thể mặt không đổi sắc lấy ra một quyển thoại bản nhi nữ tình trường như vậy?</p>
+<p>"Tiểu Cửu."</p>
+<p>"Hả?"</p>
+<p>"Ta sẽ mua hết những quyển thoại bản hay nhất của Đại Sở tặng nàng. Lại sai người đi tìm Nam Dương tiên sinh. Nghe nói thoại bản do người này viết được các khuê các nữ tử yêu thích nhất. Ta sẽ mời ông ấy về, ngày ngày viết cho nàng đọc."</p>
+<p>Mặt Sở Ly càng đỏ hơn.</p>
+<p>Nóng bừng đến mức như muốn bốc khói.</p>
+<p>"Ta sẽ xây riêng cho nàng một tòa Tàng Thư Lâu."</p>
+<p>"Không cần, không cần!"</p>
+<p>Sở Ly liên tục xua tay.</p>
+<p>Người khác xây tàng thư lâu là để cất Tứ Thư Ngũ Kinh, điển tịch văn hóa, trân bản quý hiếm.</p>
+<p>Còn nàng lại cất toàn thoại bản thì còn ra thể thống gì?</p>
+<p>Nói ra chẳng phải sẽ bị người ta cười chết sao?</p>
+<p>"Cần."</p>
+<p>Sở Đệ Trì nắm lấy tay nàng.</p>
+<p>"Nàng thích nuôi vẹt, ta sẽ xây thêm cho nàng một đình đài thủy tạ, có non có nước, bên trong nuôi những con vẹt và rùa mà nàng yêu thích."</p>
+<p>"Đó là Quy sư thúc của ta."</p>
+<p>"Nếu đã là sư thúc của nàng, ta càng phải hậu đãi."</p>
+<p>Việc gì ngài cũng thuận theo ý nàng.</p>
+<p>Sở Ly khẽ cắn môi dưới, cúi đầu nhìn bàn tay đang được ngài nắm lấy. Đầu ngón tay thon dài mạnh mẽ, lòng ngón tay mát lạnh, hơi thở quen thuộc từ người hắn từng chút từng chút bao phủ lấy nàng...</p>
+<p>Giữa hai hàng mày Sở Đệ Trì vẫn mang ý cười, nhưng nơi đáy mắt lại cất giấu một tia u ám ngày càng sâu hơn.</p>
+<p>Ngài chăm chú nhìn gương mặt nghiêng khẽ cúi của nàng.</p>
+<p>Đôi mày lá liễu thanh tú, hàng mi cong dài tựa cánh quạ, đôi môi nhỏ hồng nhuận...</p>
+<p>Yết hầu khẽ lăn một cái đầy kín đáo.</p>
+<p>"Nhiếp Chính Vương!"</p>
+<p>Nàng bỗng ngẩng đầu.</p>
+<p>Vẻ u tối trên mặt nam nhân lập tức tan biến, nụ cười ôn hòa như gió xuân.</p>
+<p>"Ừ?"</p>
+<p>"Chúng ta ra ngoài dạo đi. Chẳng phải ngài muốn ngắm Giang Nam thành sao? Vừa hay ngài đang bị thương, cũng nên nhân dịp nghỉ ngơi."</p>
+<p>"Được."</p>
+<p>"Vậy ta đi thay y phục."</p>
+<p>Dứt lời, nàng lập tức quay người chạy ra ngoài, chỉ cảm thấy bàn tay vừa được hắn nắm qua vẫn nóng ran.</p>
+<p>Không thể tiếp tục ở chung một phòng với hắn nữa.</p>
+<p>Nàng có cảm giác, mọi chuyện sau này càng lúc càng vượt khỏi tầm khống chế.</p>
+<p>Sở Đệ Trì lười biếng đứng dậy, khoác cẩm bào lên người, liếc nhìn cánh tay phải bị thương.</p>
+<p>Cũng chẳng phải trọng thương gì, cùng lắm chỉ như bị kiến cắn một cái.</p>
+<p>Lúc này ngài mới bước ra ngoài.</p>
+<p>"Chủ tử."</p>
+<p>Trọng Phong chờ sẵn ngoài cửa, hai tay cung kính dâng lên một vật.</p>
+<p>"Địa chỉ và chìa khóa."</p>
+<p>Khóe mày nam nhân khẽ nhướng.</p>
+<p>"Không cần ai theo nữa."</p>
+<p>"Vâng."</p>
+<p>Bên kia, Sở Ly thay y phục chỉnh tề, đến gọi Sở Đệ Trì thì nhìn thấy Trọng Phong vừa đưa cho ngài thứ gì đó.</p>
+<p>"Là công vụ sao?"</p>
+<p>Sở Đệ Trì liếc Trọng Phong một cái. Trọng Phong lập tức cúi đầu lui xuống.</p>
+<p>"Không phải việc gì quan trọng, vài ngày nữa xử lý cũng được. Chúng ta cứ ra ngoài dạo trước."</p>
+<p>"Nhiếp Chính Vương, nếu ngài bận thì không cần miễn cưỡng dành thời gian đi cùng ta. Thật ra ta đưa ngài ra ngoài cũng chỉ mong ngài đang bị thương có thể thư giãn một chút, nghỉ ngơi một chút, đừng quá liều mạng."</p>
+<p>"Ta biết rồi, ta tự có chừng mực."</p>
+<p>Sở Đệ Trì mỉm cười, dịu dàng xoa đầu nàng.</p>
+<p>"Đi thôi."</p>
+<p>Tiểu bảo bối trong lòng ta.</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_219.html" class="btn">‹ Trước</a>
             <a href="chuong_221.html" class="btn">Sau ›</a>
         </div>
@@ -225,15 +228,11 @@ Tiểu bảo bối trong lòng ta.</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -245,11 +244,11 @@ Tiểu bảo bối trong lòng ta.</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

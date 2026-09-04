@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 11</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,258 +62,267 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 11</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_10.html" class="btn">‹ Trước</a>
             <a href="chuong_12.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 11: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 11: [Cửu Hoàng Tử Mất Tích]
-Sở Hoằng Diễm là nhi tử của Đại Hoàng tử phi cùng Đại Hoàng tử, năm nay mới ba tuổi, lại đang lâm bệnh, chính là độ tuổi không thể rời mẫu thân.
-— Đại hoàng tẩu.
-Nhị Hoàng tử phi kéo tay nàng lại:
-— Mưa lớn như vậy, đường xuống núi lại bị cây đổ chắn ngang, vừa trơn vừa nguy hiểm. Nếu chẳng may tỷ ngã hay bị thương thì biết làm sao?
-— Muội biết tỷ sốt ruột, nhưng bên cạnh Hoằng Diễm có nhũ mẫu và hạ nhân chăm sóc. Chi bằng kiên nhẫn đợi thêm một lúc.
-Ôn Chỉ Tịch cũng khuyên:
-— Phải đó, Đại Hoàng tử phi, càng nóng vội càng dễ sinh loạn.
-Bên ngoài mưa như trút nước.
-Bầu trời âm u đen kịt.
-Nước mưa đập xuống mặt đất, bắn tung tóe cao đến hai ba tấc.
-Cho dù che ô bước ra ngoài, chẳng mấy chốc cũng sẽ ướt sũng.
-Rất nhiều bá tánh đến bái Phật đều bị mắc kẹt trong chùa, chỉ có thể chờ mưa tạnh rồi mới xuống núi.
-Đại Hoàng tử phi không ngừng nhìn ra ngoài, thần sắc bất an:
-— Không biết Hoằng Diễm đã uống thuốc chưa?
-— Điện hạ bận việc, ta lại không ở trong phủ...
-— Đều tại ta, hôm nay đáng lẽ không nên ra ngoài.
-Nhị Hoàng tử phi khẽ chuyển ánh mắt, nắm lấy tay nàng:
-— Đại hoàng tẩu, chúng ta đến thiền phòng ngồi một lát đi.
-— Ngửi hương khói Phật môn cũng giúp tĩnh tâm hơn.
-— Dù có sốt ruột cũng không thắng nổi ông trời muốn đổ mưa.
-Ôn Chỉ Tịch nói:
-— Thần nữ dìu người đi nghỉ ngơi.
-— Đợi mưa nhỏ lại, có thể xuống núi, tự nhiên sẽ có người đến báo.
-— Nhưng mà...
-— Đại hoàng tẩu cứ nghe muội một lời.
-— Tỷ nhớ Hoằng Diễm, chẳng lẽ muội lại không nhớ hai đứa con thứ trong phủ sao?
-Vừa nói, Nhị Hoàng tử phi vừa đỡ nàng đi về phía thiền phòng phía sau tự viện.
-Thiền phòng vốn là nơi dành cho khách nghỉ chân.
-Người ít, yên tĩnh.
-Lại thêm tiếng mưa rơi ào ào che lấp mọi âm thanh.
-Dù có nói chuyện cũng khó nghe rõ.
-Vừa bước vào thiền phòng.
-Nhị Hoàng tử phi liền nói:
-— Thúy Vũ, còn không mau đi lấy áo khoác cho chủ tử nhà ngươi.
-— Kẻo nhiễm phong hàn.
-— Vâng.
-Tỳ nữ thân cận của Đại Hoàng tử phi khom người hành lễ rồi lập tức đội mưa chạy ra xe ngựa lấy áo.
-— Chỉ Tịch, phiền muội ra ngoài quan sát mưa giúp ta.
-— Nếu mưa nhỏ đi, lập tức báo cho chúng ta biết.
-— Vâng.
-Ôn Chỉ Tịch quay người đi ra.
-Nhị Hoàng tử phi kéo Đại Hoàng tử phi ngồi xuống:
-— Đại hoàng tẩu, trên người tỷ bị nước mưa bắn vào rồi.
-— Thiền phòng đơn sơ, đến một chiếc khăn cũng không có.
-— Muội đi tìm trụ trì xin một cái.
-Đại Hoàng tử phi giữ tay nàng lại:
-— Không cần đâu, không đáng ngại.
-— Sao có thể như vậy?
-— Từ sau khi tỷ sinh Hoằng Diễm ba năm trước, thân thể vẫn chưa điều dưỡng tốt.
-— Nếu cảm lạnh, chẳng phải là lỗi của muội sao?
-Nói xong, Nhị Hoàng tử phi đứng dậy đi ra ngoài.
-Khi đóng cửa lại, nhìn bóng dáng cô độc bên trong thiền phòng, ánh mắt nàng dần trở nên sâu thẳm.
-Ở hành lang phía xa.
-Một nam nhân ăn mặc như tiểu tư, vận bố y, đã đợi sẵn từ lâu.
-Hắn ghé đầu lại, hạ thấp giọng:
-— Nhiếp Chính Vương cũng đang bị mắc mưa ở thiền phòng phía sau.
-— Mọi thứ đã chuẩn bị xong chưa?
-— Chủ tử cứ yên tâm.
-— Hai tên kia thân cường lực tráng, nhất định Đại Hoàng tử phi không chạy thoát.
-— Mưa lớn thế này, dù có kêu rách cổ cũng chẳng ai nghe thấy.
-Nếu Đại Hoàng tử phi xảy ra chuyện.
-Mà Nhiếp Chính Vương cũng có mặt tại Thiên Linh Tự.
-Người đầu tiên bị nghi ngờ chắc chắn là hắn.
-Đại hoàng tẩu, đừng trách muội lòng dạ độc ác.
-Muốn triệt để diệt trừ Nhiếp Chính Vương.
-Ắt phải có người hy sinh.
-Mưa quá lớn.
-Sở Ly đương nhiên cũng bị mắc kẹt trong chùa.
-Nàng đang ngồi cùng đám bá tánh tránh mưa.
-— Cơn mưa này thật lớn.
-— Phải đó, chẳng biết đến bao giờ mới tạnh.
-— Haiz, lúc ra ngoài ta quên thu đậu que đang phơi trong sân...
-Đang ngồi nhàn nhã trò chuyện.
-Bỗng nàng nhìn thấy Ôn Chỉ Tịch đứng một mình bên kia.
-Bên cạnh chỉ có một tỳ nữ.
-Nàng liền bước tới:
-— Không phải muội đi cùng Đại Hoàng tử phi sao?
-Ôn Chỉ Tịch hành lễ:
-— Biểu huynh.
-— Đại Hoàng tử phi lo lắng cho tiểu thế tử.
-— Nhưng cây đổ chắn đường nên người rất sốt ruột.
-— Muội ra đây xem thời tiết, chỉ mong mưa mau nhỏ lại để người có thể sớm hồi phủ.
-— Hoằng Diễm vẫn còn bệnh mà.
-Nhắc đến Sở Hoằng Diễm.
-Sở Ly không khỏi mềm lòng.
-Đứa bé trắng trẻo mập mạp ấy vừa đáng yêu vừa lanh lợi.
-Trước đây có hai lần vào cung.
-Tiểu gia hỏa vừa mới biết đi, cứ lạch bạch chạy theo sau nàng gọi:
-"Hoàng thúc!"
-"Cửu hoàng thúc!"
-— Đại hoàng tẩu hiện ở đâu?
-— Trong thiền phòng phía sau.
-— Ta đi xem thử.
-Sau khi hỏi rõ vị trí.
-Sở Ly gõ cửa bước vào.
-Quả nhiên chỉ thấy Đại Hoàng tử phi đang một mình trong phòng, phủi nước mưa bám trên y phục.
-— Cửu đệ, mau vào tránh mưa.
-— Đại hoàng tẩu đang muốn về phủ chăm sóc Hoằng Diễm phải không?
-— Ta biết một con đường nhỏ xuống núi.
-Đại Hoàng tử phi lập tức vui mừng:
-— Thật sao?
-Người quyền quý lên núi lễ Phật thường đi theo đại lộ rộng rãi, xe ngựa hay kiệu đều có thể qua lại.
-Ngoài ra còn có đường bậc thang dành cho người đi bộ.
-Riêng phía sau tự viện còn có một lối nhỏ.
-Đó là đường các tăng nhân thường dùng để xuống núi gánh nước, mua đồ.
-Sở Ly từng đến đây nhiều lần.
-Lại thích chạy khắp nơi nên vừa khéo biết con đường ấy.
-— Chỉ là đường nhỏ toàn bậc đá.
-— Xe ngựa không thể đi được, chỉ có thể tự đi bộ xuống núi.
-— Chỉ cần xuống núi nhanh hơn là được.
-— Ta không ngại đi bộ!
-Trong lòng nàng lúc này chỉ nhớ đến nhi tử.
-— Được.
-Sở Ly gọi Ôn Chỉ Tịch đi cùng.
-Nhưng lại không thấy Nhị Hoàng tử phi đâu.
-Người vừa rồi còn ở cạnh, chớp mắt đã chẳng biết đi nơi nào.
-Trong chùa đông người như vậy.
-Muốn tìm cũng phải mất không ít thời gian.
-Mà Đại Hoàng tử phi thì sốt ruột đến mức không đợi nổi.
-Cuối cùng nàng để Thúy Vũ ở lại trong chùa chờ.
-Còn mình cùng Ôn Chỉ Tịch theo Sở Ly xuống núi trước.
-Đến chân núi.
-Hai người thuê một cỗ xe ngựa trở về kinh thành.
-Riêng Sở Ly vẫn ở lại.
-Chuỗi Phật châu của Thái hậu còn chưa lấy được.
-Nàng phải chờ Nhiếp Chính Vương cùng hồi kinh.
-Chỉ là mưa quá lớn.
-Không biết đến khi nào mới dừng.
-Ầm!
-Tiếng sấm liên hồi.
-Màn mưa mịt mù.
-Trong khung cảnh u ám ấy.
-Hai bóng người lén lút men theo phía sau tự viện, hướng về thiền phòng mà đi.
-Đẩy cửa bước vào.
-Lại vồ hụt.
-Người đâu?
-Chẳng phải nói ở trong căn thiền phòng này sao?
-Hai người nhìn nhau.
-— Chẳng lẽ tìm nhầm phòng?
-— Đi xung quanh tìm thử.
-— Đã nhận bạc rồi thì hôm nay nhất định phải hoàn thành "sai sự" này.
-— Đi.
-Một gian thiền phòng khác.
-Đàn hương nhè nhẹ lan tỏa.
-Trước bức họa Phật Tổ đặt một hộp gấm bằng gỗ đàn hương.
-Bên trong chính là chuỗi Phật châu đã được cao tăng khai quang.
-Từng hạt trầm ổn, cổ kính.
-Sở Đệ Trì ngồi bên bàn.
-Vừa uống trà nhạt vừa nghe tiếng mưa.
-Đột nhiên.
-Cửa phòng bị đẩy mạnh.
-Hai nam nhân mắt láo liên xông vào.
-Một kẻ kéo vạt áo.
-Một kẻ đang định cởi đai lưng.
-Nhưng vừa nhìn thấy người trong phòng.
-Cả hai lập tức tái mặt.
-— Chúng tôi... vào nhầm thiền phòng.
-— Công tử đừng trách.
-Sở Đệ Trì lạnh nhạt lên tiếng:
-— Đứng lại.
-Hai người hoảng hốt định bỏ chạy.
-Nhưng đã bị Trọng Phong tung hai chưởng đánh ngã xuống đất.
-— A!
-Sở Đệ Trì nhấp một ngụm trà.
-— Làm nghề gì?
-— Công tử...
-— Bên ngoài mưa lớn quá.
-— Chúng tôi vào tránh mưa thôi.
-— Trọng Phong.
-— Aaaa!
-Trọng Phong vừa ra tay đã trực tiếp bẻ gãy một cánh tay.
-Đau đớn khiến tên kia lập tức khai sạch:
-— Công tử tha mạng!
-— Tha mạng!
-— Chúng tôi nhận tiền của người khác.
-— Được thuê đi cưỡng bức một nữ nhân.
-— Hiện giờ đang tìm nàng ta.
-Trọng Phong nhíu mày.
-Thiên Linh Tự là quốc tự.
-Đã tồn tại hơn bốn trăm năm.
-Từng phụng sự qua nhiều triều đại quân vương.
-Rốt cuộc là kẻ nào gan lớn đến mức dám làm chuyện ô uế như vậy trong quốc tự?
-— Chủ tử.
-— Đại Hoàng tử phi và Nhị Hoàng tử phi hiện giờ cũng đang bị mắc mưa trong chùa.
-Nếu hai người họ xảy ra chuyện.
-Mà chủ tử lại cùng ở Thiên Linh Tự.
-Chỉ sợ khó tránh khỏi liên can.
-Sở Đệ Trì thần sắc vẫn bình thản:
-— Sở Ly đâu?
-Trọng Phong cúi đầu:
-— Cửu Hoàng tử...
-— Không thấy đâu nữa rồi. Ẩn bớt</p>
+            <p>Chương 11: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 11: [Cửu Hoàng Tử Mất Tích]</p>
+<p>Sở Hoằng Diễm là nhi tử của Đại Hoàng tử phi cùng Đại Hoàng tử, năm nay mới ba tuổi, lại đang lâm bệnh, chính là độ tuổi không thể rời mẫu thân.</p>
+<p>— Đại hoàng tẩu.</p>
+<p>Nhị Hoàng tử phi kéo tay nàng lại:</p>
+<p>— Mưa lớn như vậy, đường xuống núi lại bị cây đổ chắn ngang, vừa trơn vừa nguy hiểm. Nếu chẳng may tỷ ngã hay bị thương thì biết làm sao?</p>
+<p>— Muội biết tỷ sốt ruột, nhưng bên cạnh Hoằng Diễm có nhũ mẫu và hạ nhân chăm sóc. Chi bằng kiên nhẫn đợi thêm một lúc.</p>
+<p>Ôn Chỉ Tịch cũng khuyên:</p>
+<p>— Phải đó, Đại Hoàng tử phi, càng nóng vội càng dễ sinh loạn.</p>
+<p>Bên ngoài mưa như trút nước.</p>
+<p>Bầu trời âm u đen kịt.</p>
+<p>Nước mưa đập xuống mặt đất, bắn tung tóe cao đến hai ba tấc.</p>
+<p>Cho dù che ô bước ra ngoài, chẳng mấy chốc cũng sẽ ướt sũng.</p>
+<p>Rất nhiều bá tánh đến bái Phật đều bị mắc kẹt trong chùa, chỉ có thể chờ mưa tạnh rồi mới xuống núi.</p>
+<p>Đại Hoàng tử phi không ngừng nhìn ra ngoài, thần sắc bất an:</p>
+<p>— Không biết Hoằng Diễm đã uống thuốc chưa?</p>
+<p>— Điện hạ bận việc, ta lại không ở trong phủ...</p>
+<p>— Đều tại ta, hôm nay đáng lẽ không nên ra ngoài.</p>
+<p>Nhị Hoàng tử phi khẽ chuyển ánh mắt, nắm lấy tay nàng:</p>
+<p>— Đại hoàng tẩu, chúng ta đến thiền phòng ngồi một lát đi.</p>
+<p>— Ngửi hương khói Phật môn cũng giúp tĩnh tâm hơn.</p>
+<p>— Dù có sốt ruột cũng không thắng nổi ông trời muốn đổ mưa.</p>
+<p>Ôn Chỉ Tịch nói:</p>
+<p>— Thần nữ dìu người đi nghỉ ngơi.</p>
+<p>— Đợi mưa nhỏ lại, có thể xuống núi, tự nhiên sẽ có người đến báo.</p>
+<p>— Nhưng mà...</p>
+<p>— Đại hoàng tẩu cứ nghe muội một lời.</p>
+<p>— Tỷ nhớ Hoằng Diễm, chẳng lẽ muội lại không nhớ hai đứa con thứ trong phủ sao?</p>
+<p>Vừa nói, Nhị Hoàng tử phi vừa đỡ nàng đi về phía thiền phòng phía sau tự viện.</p>
+<p>Thiền phòng vốn là nơi dành cho khách nghỉ chân.</p>
+<p>Người ít, yên tĩnh.</p>
+<p>Lại thêm tiếng mưa rơi ào ào che lấp mọi âm thanh.</p>
+<p>Dù có nói chuyện cũng khó nghe rõ.</p>
+<p>Vừa bước vào thiền phòng.</p>
+<p>Nhị Hoàng tử phi liền nói:</p>
+<p>— Thúy Vũ, còn không mau đi lấy áo khoác cho chủ tử nhà ngươi.</p>
+<p>— Kẻo nhiễm phong hàn.</p>
+<p>— Vâng.</p>
+<p>Tỳ nữ thân cận của Đại Hoàng tử phi khom người hành lễ rồi lập tức đội mưa chạy ra xe ngựa lấy áo.</p>
+<p>— Chỉ Tịch, phiền muội ra ngoài quan sát mưa giúp ta.</p>
+<p>— Nếu mưa nhỏ đi, lập tức báo cho chúng ta biết.</p>
+<p>— Vâng.</p>
+<p>Ôn Chỉ Tịch quay người đi ra.</p>
+<p>Nhị Hoàng tử phi kéo Đại Hoàng tử phi ngồi xuống:</p>
+<p>— Đại hoàng tẩu, trên người tỷ bị nước mưa bắn vào rồi.</p>
+<p>— Thiền phòng đơn sơ, đến một chiếc khăn cũng không có.</p>
+<p>— Muội đi tìm trụ trì xin một cái.</p>
+<p>Đại Hoàng tử phi giữ tay nàng lại:</p>
+<p>— Không cần đâu, không đáng ngại.</p>
+<p>— Sao có thể như vậy?</p>
+<p>— Từ sau khi tỷ sinh Hoằng Diễm ba năm trước, thân thể vẫn chưa điều dưỡng tốt.</p>
+<p>— Nếu cảm lạnh, chẳng phải là lỗi của muội sao?</p>
+<p>Nói xong, Nhị Hoàng tử phi đứng dậy đi ra ngoài.</p>
+<p>Khi đóng cửa lại, nhìn bóng dáng cô độc bên trong thiền phòng, ánh mắt nàng dần trở nên sâu thẳm.</p>
+<p>Ở hành lang phía xa.</p>
+<p>Một nam nhân ăn mặc như tiểu tư, vận bố y, đã đợi sẵn từ lâu.</p>
+<p>Hắn ghé đầu lại, hạ thấp giọng:</p>
+<p>— Nhiếp Chính Vương cũng đang bị mắc mưa ở thiền phòng phía sau.</p>
+<p>— Mọi thứ đã chuẩn bị xong chưa?</p>
+<p>— Chủ tử cứ yên tâm.</p>
+<p>— Hai tên kia thân cường lực tráng, nhất định Đại Hoàng tử phi không chạy thoát.</p>
+<p>— Mưa lớn thế này, dù có kêu rách cổ cũng chẳng ai nghe thấy.</p>
+<p>Nếu Đại Hoàng tử phi xảy ra chuyện.</p>
+<p>Mà Nhiếp Chính Vương cũng có mặt tại Thiên Linh Tự.</p>
+<p>Người đầu tiên bị nghi ngờ chắc chắn là hắn.</p>
+<p>Đại hoàng tẩu, đừng trách muội lòng dạ độc ác.</p>
+<p>Muốn triệt để diệt trừ Nhiếp Chính Vương.</p>
+<p>Ắt phải có người hy sinh.</p>
+<p>Mưa quá lớn.</p>
+<p>Sở Ly đương nhiên cũng bị mắc kẹt trong chùa.</p>
+<p>Nàng đang ngồi cùng đám bá tánh tránh mưa.</p>
+<p>— Cơn mưa này thật lớn.</p>
+<p>— Phải đó, chẳng biết đến bao giờ mới tạnh.</p>
+<p>— Haiz, lúc ra ngoài ta quên thu đậu que đang phơi trong sân...</p>
+<p>Đang ngồi nhàn nhã trò chuyện.</p>
+<p>Bỗng nàng nhìn thấy Ôn Chỉ Tịch đứng một mình bên kia.</p>
+<p>Bên cạnh chỉ có một tỳ nữ.</p>
+<p>Nàng liền bước tới:</p>
+<p>— Không phải muội đi cùng Đại Hoàng tử phi sao?</p>
+<p>Ôn Chỉ Tịch hành lễ:</p>
+<p>— Biểu huynh.</p>
+<p>— Đại Hoàng tử phi lo lắng cho tiểu thế tử.</p>
+<p>— Nhưng cây đổ chắn đường nên người rất sốt ruột.</p>
+<p>— Muội ra đây xem thời tiết, chỉ mong mưa mau nhỏ lại để người có thể sớm hồi phủ.</p>
+<p>— Hoằng Diễm vẫn còn bệnh mà.</p>
+<p>Nhắc đến Sở Hoằng Diễm.</p>
+<p>Sở Ly không khỏi mềm lòng.</p>
+<p>Đứa bé trắng trẻo mập mạp ấy vừa đáng yêu vừa lanh lợi.</p>
+<p>Trước đây có hai lần vào cung.</p>
+<p>Tiểu gia hỏa vừa mới biết đi, cứ lạch bạch chạy theo sau nàng gọi:</p>
+<p>"Hoàng thúc!"</p>
+<p>"Cửu hoàng thúc!"</p>
+<p>— Đại hoàng tẩu hiện ở đâu?</p>
+<p>— Trong thiền phòng phía sau.</p>
+<p>— Ta đi xem thử.</p>
+<p>Sau khi hỏi rõ vị trí.</p>
+<p>Sở Ly gõ cửa bước vào.</p>
+<p>Quả nhiên chỉ thấy Đại Hoàng tử phi đang một mình trong phòng, phủi nước mưa bám trên y phục.</p>
+<p>— Cửu đệ, mau vào tránh mưa.</p>
+<p>— Đại hoàng tẩu đang muốn về phủ chăm sóc Hoằng Diễm phải không?</p>
+<p>— Ta biết một con đường nhỏ xuống núi.</p>
+<p>Đại Hoàng tử phi lập tức vui mừng:</p>
+<p>— Thật sao?</p>
+<p>Người quyền quý lên núi lễ Phật thường đi theo đại lộ rộng rãi, xe ngựa hay kiệu đều có thể qua lại.</p>
+<p>Ngoài ra còn có đường bậc thang dành cho người đi bộ.</p>
+<p>Riêng phía sau tự viện còn có một lối nhỏ.</p>
+<p>Đó là đường các tăng nhân thường dùng để xuống núi gánh nước, mua đồ.</p>
+<p>Sở Ly từng đến đây nhiều lần.</p>
+<p>Lại thích chạy khắp nơi nên vừa khéo biết con đường ấy.</p>
+<p>— Chỉ là đường nhỏ toàn bậc đá.</p>
+<p>— Xe ngựa không thể đi được, chỉ có thể tự đi bộ xuống núi.</p>
+<p>— Chỉ cần xuống núi nhanh hơn là được.</p>
+<p>— Ta không ngại đi bộ!</p>
+<p>Trong lòng nàng lúc này chỉ nhớ đến nhi tử.</p>
+<p>— Được.</p>
+<p>Sở Ly gọi Ôn Chỉ Tịch đi cùng.</p>
+<p>Nhưng lại không thấy Nhị Hoàng tử phi đâu.</p>
+<p>Người vừa rồi còn ở cạnh, chớp mắt đã chẳng biết đi nơi nào.</p>
+<p>Trong chùa đông người như vậy.</p>
+<p>Muốn tìm cũng phải mất không ít thời gian.</p>
+<p>Mà Đại Hoàng tử phi thì sốt ruột đến mức không đợi nổi.</p>
+<p>Cuối cùng nàng để Thúy Vũ ở lại trong chùa chờ.</p>
+<p>Còn mình cùng Ôn Chỉ Tịch theo Sở Ly xuống núi trước.</p>
+<p>Đến chân núi.</p>
+<p>Hai người thuê một cỗ xe ngựa trở về kinh thành.</p>
+<p>Riêng Sở Ly vẫn ở lại.</p>
+<p>Chuỗi Phật châu của Thái hậu còn chưa lấy được.</p>
+<p>Nàng phải chờ Nhiếp Chính Vương cùng hồi kinh.</p>
+<p>Chỉ là mưa quá lớn.</p>
+<p>Không biết đến khi nào mới dừng.</p>
+<p>Ầm!</p>
+<p>Tiếng sấm liên hồi.</p>
+<p>Màn mưa mịt mù.</p>
+<p>Trong khung cảnh u ám ấy.</p>
+<p>Hai bóng người lén lút men theo phía sau tự viện, hướng về thiền phòng mà đi.</p>
+<p>Đẩy cửa bước vào.</p>
+<p>Lại vồ hụt.</p>
+<p>Người đâu?</p>
+<p>Chẳng phải nói ở trong căn thiền phòng này sao?</p>
+<p>Hai người nhìn nhau.</p>
+<p>— Chẳng lẽ tìm nhầm phòng?</p>
+<p>— Đi xung quanh tìm thử.</p>
+<p>— Đã nhận bạc rồi thì hôm nay nhất định phải hoàn thành "sai sự" này.</p>
+<p>— Đi.</p>
+<p>Một gian thiền phòng khác.</p>
+<p>Đàn hương nhè nhẹ lan tỏa.</p>
+<p>Trước bức họa Phật Tổ đặt một hộp gấm bằng gỗ đàn hương.</p>
+<p>Bên trong chính là chuỗi Phật châu đã được cao tăng khai quang.</p>
+<p>Từng hạt trầm ổn, cổ kính.</p>
+<p>Sở Đệ Trì ngồi bên bàn.</p>
+<p>Vừa uống trà nhạt vừa nghe tiếng mưa.</p>
+<p>Đột nhiên.</p>
+<p>Cửa phòng bị đẩy mạnh.</p>
+<p>Hai nam nhân mắt láo liên xông vào.</p>
+<p>Một kẻ kéo vạt áo.</p>
+<p>Một kẻ đang định cởi đai lưng.</p>
+<p>Nhưng vừa nhìn thấy người trong phòng.</p>
+<p>Cả hai lập tức tái mặt.</p>
+<p>— Chúng tôi... vào nhầm thiền phòng.</p>
+<p>— Công tử đừng trách.</p>
+<p>Sở Đệ Trì lạnh nhạt lên tiếng:</p>
+<p>— Đứng lại.</p>
+<p>Hai người hoảng hốt định bỏ chạy.</p>
+<p>Nhưng đã bị Trọng Phong tung hai chưởng đánh ngã xuống đất.</p>
+<p>— A!</p>
+<p>Sở Đệ Trì nhấp một ngụm trà.</p>
+<p>— Làm nghề gì?</p>
+<p>— Công tử...</p>
+<p>— Bên ngoài mưa lớn quá.</p>
+<p>— Chúng tôi vào tránh mưa thôi.</p>
+<p>— Trọng Phong.</p>
+<p>— Aaaa!</p>
+<p>Trọng Phong vừa ra tay đã trực tiếp bẻ gãy một cánh tay.</p>
+<p>Đau đớn khiến tên kia lập tức khai sạch:</p>
+<p>— Công tử tha mạng!</p>
+<p>— Tha mạng!</p>
+<p>— Chúng tôi nhận tiền của người khác.</p>
+<p>— Được thuê đi cưỡng bức một nữ nhân.</p>
+<p>— Hiện giờ đang tìm nàng ta.</p>
+<p>Trọng Phong nhíu mày.</p>
+<p>Thiên Linh Tự là quốc tự.</p>
+<p>Đã tồn tại hơn bốn trăm năm.</p>
+<p>Từng phụng sự qua nhiều triều đại quân vương.</p>
+<p>Rốt cuộc là kẻ nào gan lớn đến mức dám làm chuyện ô uế như vậy trong quốc tự?</p>
+<p>— Chủ tử.</p>
+<p>— Đại Hoàng tử phi và Nhị Hoàng tử phi hiện giờ cũng đang bị mắc mưa trong chùa.</p>
+<p>Nếu hai người họ xảy ra chuyện.</p>
+<p>Mà chủ tử lại cùng ở Thiên Linh Tự.</p>
+<p>Chỉ sợ khó tránh khỏi liên can.</p>
+<p>Sở Đệ Trì thần sắc vẫn bình thản:</p>
+<p>— Sở Ly đâu?</p>
+<p>Trọng Phong cúi đầu:</p>
+<p>— Cửu Hoàng tử...</p>
+<p>— Không thấy đâu nữa rồi. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_10.html" class="btn">‹ Trước</a>
             <a href="chuong_12.html" class="btn">Sau ›</a>
         </div>
@@ -322,15 +330,11 @@ Trọng Phong cúi đầu:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -342,11 +346,11 @@ Trọng Phong cúi đầu:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

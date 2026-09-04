@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 272</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,197 +62,206 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 272</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_271.html" class="btn">‹ Trước</a>
             <a href="chuong_273.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 272: Hoặc hắn chết ta sống, hoặc ta sống hắn chết
-Tần Mục Vũ hô hấp khó nhọc, hai mắt đỏ ngầu, ngạo nghễ trừng hắn.
-Hoặc bóp chết hắn, hoặc hắn tuyệt đối không khuất phục.
-Sở Dạ Ly siết chặt hai tay:
-“Tần Mục Vũ, đừng tưởng bản cung không dám giết ngươi!”
-“Ưm!”
-Vậy thì giết hắn đi!
-Đừng nương tay!
-Bốn mắt nhìn nhau, vẻ kiêu ngạo bất khuất của Tần Mục Vũ, dáng vẻ hoàn toàn không sợ chết ấy càng khiến Sở Dạ Ly nổi giận. Hai tay hắn càng lúc càng dùng sức, gần như muốn bóp chết đối phương, nhưng đến thời khắc cuối cùng, lại bất ngờ buông tay.
-Ha.
-Ha ha ha!
-Tần Mục Vũ, ngươi chẳng qua chỉ dựa vào việc Sở Ly để tâm đến ngươi!
-Mà đúng điều ấy, lại là khát cầu mà hắn ngay cả nghĩ cũng không dám nghĩ tới.
-Sở Dạ Ly giận đến cực điểm rồi bật cười:
-“Được, được lắm, xương cốt ngươi cứng thật, rất tốt!”
-Quả thực hắn không dám giết Tần Mục Vũ.
-Nhưng cách hành hạ một người, đâu chỉ có mỗi cái chết.
-“Bản cung chuyên trị loại xương cứng!”
-“Người đâu!”
-Hai tên binh sĩ bước lên, trói chặt tay chân Tần Mục Vũ, áp giải hắn vào châu phủ, nhưng không tống vào đại lao, mà đẩy thẳng vào một gian sương phòng.
-Tần Mục Vũ thoáng ngẩn người.
-Hắn vốn tưởng sẽ bị nhốt vào ngục, chịu đủ cực hình, không ngờ…
-Két!
-Cửa bị đẩy ra.
-Hắn ngoảnh đầu lại, chỉ thấy bốn nữ tử mặc sa y mỏng tang, trước ngực trắng nõn như muốn tràn ra, mỉm cười bước tới.
-“Thiếu tướng quân thật tuấn tú~”
-“Được hầu hạ Thiếu tướng quân là phúc phận của chúng ta~”
-Đồng tử hắn co rụt.
-Trong nháy mắt đã hiểu ý đồ của Sở Dạ Ly. Theo bản năng hắn muốn rút kiếm, nhưng tay chân đều đã bị trói chặt.
-“Thiếu tướng quân…”
-“Cút!”
-Bốn nữ tử hơi kinh ngạc, chẳng những không lui, trái lại còn mềm mại như không xương tựa sát vào người hắn.
-“Người chinh chiến quanh năm huyết khí phương cương, hỏa khí cũng lớn. Không sao, chúng ta hiểu mà~”
-“Đừng chạm vào ta!”
-Tần Mục Vũ vừa đá vừa giãy giụa:
-“Cút!”
-“Thiếu tướng quân, ngài cứ thả lỏng.”
-“A~ Thiếu tướng quân~”
-Tám bàn tay của bốn nữ tử tùy ý vuốt ve khắp người hắn. Trong đầu Tần Mục Vũ trống rỗng, da đầu tê dại như rơi vào ổ rắn, nỗi hoảng sợ dâng lên từ tận đáy lòng.
-“Đừng chạm vào ta! Tránh ra… Đừng chạm vào ta…”
-—
-Đế đô.
-Ngự thư phòng.
-Chiến báo từ Mạc Hoài Châu liên tiếp được đưa về đế đô. Sở Đệ Trì liên tiếp xử lý nhiều người, giáng chức sáu người, đề bạt năm người.
-Sở Ngạo Thiên mặc long bào, đội miện quan, thân hình nhỏ bé co ro trên long ỷ rộng lớn. Hai tai nghe mà đầu óc mơ hồ, chỉ thấy từng mệnh lệnh liên tiếp được ban xuống, từng tốp người nối nhau vào rồi ra, hắn không ngừng gật đầu:
-“Đúng, đúng… đúng… Hoàng thúc nói rất đúng.”
-Sở Đệ Trì khép tấu chương lại, nhìn về phía Tiêu Dạ Hành:
-“Một tháng trước, hai mươi vạn quân Nam Man đã đóng tại Mạc Hoài Châu, nhưng mãi vẫn án binh bất động. Mấy ngày gần đây đột nhiên phát binh, nhất định còn có mục đích khác.”
-Sở Ngạo Thiên gật đầu:
-“Đúng.”
-Tiêu Dạ Hành trầm giọng phân tích:
-“Một tháng qua, Đông Lăng Thái tử bận thu phục lòng dân. Có lẽ thời cơ đã chín muồi, nên mới bắt đầu tấn công.”
-“Không.”
-Sở Đệ Trì lắc đầu.
-“Dân tâm mà Đại Sở gây dựng hơn hai mươi năm, chẳng lẽ chỉ trong một tháng hắn đã có thể thu phục? Hắn phát động tập kích, dường như vô cùng gấp gáp.”
-Sở Ngạo Thiên gật đầu:
-“Đúng.”
-Tiêu Dạ Hành nhíu mày:
-“Có thể khiến Đông Lăng Thái tử nóng vội như vậy, ngoài chuyện phục quốc, còn có nguyên nhân nào khác?”
-Sở Đệ Trì khẽ cười lạnh:
-“Chắc hẳn hắn đã biết tin Tiểu Cửu còn sống.”
-Sở Ngạo Thiên gật đầu:
-“Hoàng thúc nói rất đúng.”
-Thần sắc Tiêu Dạ Hành trở nên nặng nề:
-“Như vậy thì khó rồi. Phía sau hắn có Nam Man chống lưng. Nam Man lập quốc hơn ba trăm năm, còn Đại Sở ta mới khai quốc chưa đầy hai mươi lăm năm.”
-Giữa hai hàng mày Sở Đệ Trì sát khí bức người.
-Khó giải quyết?
-Vậy thì lật bàn, tất cả đều chết thì sẽ dễ giải quyết.
-Hắn chưa từng định để Sở Ly phải trốn trốn tránh tránh cả đời, sống trong cảnh không thể thấy ánh mặt trời.
-“Hắn còn dám nhắm chủ ý vào nàng, ta sẽ đích thân xuất chinh. Giữa ta và hắn, nhất định chỉ có một người được sống. Hoặc hắn chết ta sống, hoặc ta sống hắn chết.”
-Sở Ngạo Thiên gật đầu:
-“Đúng!”
-Ơ?
-Khoan đã!
-Không đúng!
-Đông Lăng Thái tử vì sao lại nhắm vào Cửu muội?
-Hắn vừa định hỏi thì đã thấy Hoàng thúc cùng Tiêu Đô đốc sóng vai rời đi, vội vàng đứng dậy đuổi theo:
-“Hoàng thúc, vì sao Đông Lăng Thái tử lại muốn nhắm vào thẩm thẩm?”
-Đúng lúc ấy, Khương Thái phó ôm một chồng sách bước vào, vừa hay nghe thấy câu này, giật mình kinh hãi.
-Đông Lăng Thái tử muốn giết Tạ tiểu thư?
-Đó chẳng phải là Vương phi tương lai của Nhiếp Chính Vương sao?
-Độc thật!
-Bắt giặc phải bắt vua trước.
-Nếu Tạ tiểu thư chết, Nhiếp Chính Vương chẳng phải sẽ đau khổ đến chết?
-Chiêu này của Đông Lăng Thái tử quả thật quá hiểm.
-“Hoàng thúc!”
-Còn chưa nói cho hắn biết mà đã đi mất rồi.
-Đáng ghét!
-Sở Ngạo Thiên giậm chân, chuỗi ngọc trên miện quan va vào nhau leng keng.
-“Khương Thái phó, ngài xem, Hoàng thúc coi ta là người ngoài, chuyện gì cũng không chịu nói với ta.”
-Khương Thái phó đáp:
-“Sao có thể chứ? Nhiếp Chính Vương chẳng phải đã để Hoàng thượng xem tấu chương sao? Bí mật quốc gia quan trọng như vậy, chỉ có Hoàng thượng và Nhiếp Chính Vương mới được xem. Nếu ngài là người ngoài, vậy ai mới là người trong?”
-“Thẩm thẩm là người trong.”
-“…Ừm.”
-—
-Sở Đệ Trì xử lý xong chính sự trong cung, trở về Nhiếp Chính Vương phủ thì trời đã gần tối.
-Nhìn Vương phủ rộng lớn mà lạnh lẽo, yên tĩnh. Dưới ánh nến, bầu không khí tịch mịch như bị phóng đại gấp mười lần, đến cả một viên gạch cũng lạnh ngắt.
-Nàng đi rồi?
-Cũng được…
-Nàng không chịu ở lại Nhiếp Chính Vương phủ, vậy hắn đến San Hô Thủy Tạ là được.
-Hắn vừa lùi khỏi bậc cửa, một bước cũng chẳng muốn bước vào phủ, đang định xoay người rời đi thì Lý quản gia vội vàng chạy tới:
-“Điện hạ, muộn thế này rồi, ngài còn có công vụ quan trọng sao?”
-“Ta…”
-“Ngài có thể dùng bữa rồi hãy đi được không? Tạ tiểu thư đích thân xuống bếp suốt hai canh giờ. Nếu ngài không ăn, lão nô sợ nàng sẽ buồn.”
-“Ngươi nói gì?!”
-Sở Đệ Trì kinh ngạc.
-“Nàng… nàng còn ở trong phủ?”
-Nàng chưa đi?
-Hắn sững người nửa khắc. Đến khi hoàn hồn thì lập tức sải bước chạy về chủ viện, dưới chân như có gió, trong lòng nóng rực, tựa như được thứ gì lấp đầy, từng mạch máu đều sôi sục.
-Khi nhìn thấy dưới ánh nến ấm áp, bóng dáng đang bày bát đũa kia, hắn suýt nữa đã cất tiếng gọi.
-“Hoàng thúc?”
-Nàng vừa nhìn sang thì hắn lập tức đứng ngay ngắn, hai tay chắp sau lưng, ngẩng đầu, thần sắc trầm ổn, vững như chuông đồng, đi như tùng bách.
-Nhìn phong thái tôn quý của hắn, Sở Ly không khỏi thầm nghĩ:
-Quả nhiên xuất thân võ tướng.
-Phong thái ấy đã khắc sâu vào tận xương tủy. Gương mặt này cũng thuộc hàng tuyệt đỉnh, e rằng chẳng có mấy ai sánh bằng.
-Thế mà hắn lại thích nàng.
-Cũng coi như nàng có mặt mũi.
-“Hoàng thúc, có thể dùng bữa rồi.”
-Nàng khẽ giơ đôi đũa trong tay lên.
-Sở Đệ Trì vẫn giữ vẻ tôn quý, đường nét cằm rõ ràng. Hắn hơi nâng mắt nhìn lướt qua mâm thức ăn, nhàn nhạt nói:
-“Hình thức cũng tạm được.”
-“Sơ Tam đã dạy ta rất lâu. Tuy ta làm hỏng mấy đĩa, nhưng đều đem cho ngựa ăn rồi, cũng coi như không lãng phí lương thực.”
-“Ừ.”
-Hắn chắp hai tay sau lưng, thong thả bước vào.
-“Ta còn tưởng nàng đã về San Hô Thủy Tạ rồi.”
-Sở Ly đáp:
-“Hoàng thúc bận suốt cả ngày, ta sợ người không chịu ăn uống tử tế.”
-“Vậy sao lúc ta vào phủ, cả phủ lại yên tĩnh lạnh lẽo như vậy?”
-“Vương phủ rộng thế này, ta đâu phải người thích la hét om sòm. Người còn muốn náo nhiệt thế nào nữa? Hơn nữa, chẳng phải người vốn không thích náo nhiệt sao?”
-Không phải không thích.
-Chỉ là…
-Thích có nàng ở đây.
-Cho dù Vương phủ có rộng lớn đến đâu, chỉ cần nàng ở đó, hắn cũng chẳng thấy lạnh lẽo. Đến cả một viên gạch cũng trở nên ấm áp. Ẩn bớt</p>
+            <p>Chương 272: Hoặc hắn chết ta sống, hoặc ta sống hắn chết</p>
+<p>Tần Mục Vũ hô hấp khó nhọc, hai mắt đỏ ngầu, ngạo nghễ trừng hắn.</p>
+<p>Hoặc bóp chết hắn, hoặc hắn tuyệt đối không khuất phục.</p>
+<p>Sở Dạ Ly siết chặt hai tay:</p>
+<p>“Tần Mục Vũ, đừng tưởng bản cung không dám giết ngươi!”</p>
+<p>“Ưm!”</p>
+<p>Vậy thì giết hắn đi!</p>
+<p>Đừng nương tay!</p>
+<p>Bốn mắt nhìn nhau, vẻ kiêu ngạo bất khuất của Tần Mục Vũ, dáng vẻ hoàn toàn không sợ chết ấy càng khiến Sở Dạ Ly nổi giận. Hai tay hắn càng lúc càng dùng sức, gần như muốn bóp chết đối phương, nhưng đến thời khắc cuối cùng, lại bất ngờ buông tay.</p>
+<p>Ha.</p>
+<p>Ha ha ha!</p>
+<p>Tần Mục Vũ, ngươi chẳng qua chỉ dựa vào việc Sở Ly để tâm đến ngươi!</p>
+<p>Mà đúng điều ấy, lại là khát cầu mà hắn ngay cả nghĩ cũng không dám nghĩ tới.</p>
+<p>Sở Dạ Ly giận đến cực điểm rồi bật cười:</p>
+<p>“Được, được lắm, xương cốt ngươi cứng thật, rất tốt!”</p>
+<p>Quả thực hắn không dám giết Tần Mục Vũ.</p>
+<p>Nhưng cách hành hạ một người, đâu chỉ có mỗi cái chết.</p>
+<p>“Bản cung chuyên trị loại xương cứng!”</p>
+<p>“Người đâu!”</p>
+<p>Hai tên binh sĩ bước lên, trói chặt tay chân Tần Mục Vũ, áp giải hắn vào châu phủ, nhưng không tống vào đại lao, mà đẩy thẳng vào một gian sương phòng.</p>
+<p>Tần Mục Vũ thoáng ngẩn người.</p>
+<p>Hắn vốn tưởng sẽ bị nhốt vào ngục, chịu đủ cực hình, không ngờ…</p>
+<p>Két!</p>
+<p>Cửa bị đẩy ra.</p>
+<p>Hắn ngoảnh đầu lại, chỉ thấy bốn nữ tử mặc sa y mỏng tang, trước ngực trắng nõn như muốn tràn ra, mỉm cười bước tới.</p>
+<p>“Thiếu tướng quân thật tuấn tú~”</p>
+<p>“Được hầu hạ Thiếu tướng quân là phúc phận của chúng ta~”</p>
+<p>Đồng tử hắn co rụt.</p>
+<p>Trong nháy mắt đã hiểu ý đồ của Sở Dạ Ly. Theo bản năng hắn muốn rút kiếm, nhưng tay chân đều đã bị trói chặt.</p>
+<p>“Thiếu tướng quân…”</p>
+<p>“Cút!”</p>
+<p>Bốn nữ tử hơi kinh ngạc, chẳng những không lui, trái lại còn mềm mại như không xương tựa sát vào người hắn.</p>
+<p>“Người chinh chiến quanh năm huyết khí phương cương, hỏa khí cũng lớn. Không sao, chúng ta hiểu mà~”</p>
+<p>“Đừng chạm vào ta!”</p>
+<p>Tần Mục Vũ vừa đá vừa giãy giụa:</p>
+<p>“Cút!”</p>
+<p>“Thiếu tướng quân, ngài cứ thả lỏng.”</p>
+<p>“A~ Thiếu tướng quân~”</p>
+<p>Tám bàn tay của bốn nữ tử tùy ý vuốt ve khắp người hắn. Trong đầu Tần Mục Vũ trống rỗng, da đầu tê dại như rơi vào ổ rắn, nỗi hoảng sợ dâng lên từ tận đáy lòng.</p>
+<p>“Đừng chạm vào ta! Tránh ra… Đừng chạm vào ta…”</p>
+<p>—</p>
+<p>Đế đô.</p>
+<p>Ngự thư phòng.</p>
+<p>Chiến báo từ Mạc Hoài Châu liên tiếp được đưa về đế đô. Sở Đệ Trì liên tiếp xử lý nhiều người, giáng chức sáu người, đề bạt năm người.</p>
+<p>Sở Ngạo Thiên mặc long bào, đội miện quan, thân hình nhỏ bé co ro trên long ỷ rộng lớn. Hai tai nghe mà đầu óc mơ hồ, chỉ thấy từng mệnh lệnh liên tiếp được ban xuống, từng tốp người nối nhau vào rồi ra, hắn không ngừng gật đầu:</p>
+<p>“Đúng, đúng… đúng… Hoàng thúc nói rất đúng.”</p>
+<p>Sở Đệ Trì khép tấu chương lại, nhìn về phía Tiêu Dạ Hành:</p>
+<p>“Một tháng trước, hai mươi vạn quân Nam Man đã đóng tại Mạc Hoài Châu, nhưng mãi vẫn án binh bất động. Mấy ngày gần đây đột nhiên phát binh, nhất định còn có mục đích khác.”</p>
+<p>Sở Ngạo Thiên gật đầu:</p>
+<p>“Đúng.”</p>
+<p>Tiêu Dạ Hành trầm giọng phân tích:</p>
+<p>“Một tháng qua, Đông Lăng Thái tử bận thu phục lòng dân. Có lẽ thời cơ đã chín muồi, nên mới bắt đầu tấn công.”</p>
+<p>“Không.”</p>
+<p>Sở Đệ Trì lắc đầu.</p>
+<p>“Dân tâm mà Đại Sở gây dựng hơn hai mươi năm, chẳng lẽ chỉ trong một tháng hắn đã có thể thu phục? Hắn phát động tập kích, dường như vô cùng gấp gáp.”</p>
+<p>Sở Ngạo Thiên gật đầu:</p>
+<p>“Đúng.”</p>
+<p>Tiêu Dạ Hành nhíu mày:</p>
+<p>“Có thể khiến Đông Lăng Thái tử nóng vội như vậy, ngoài chuyện phục quốc, còn có nguyên nhân nào khác?”</p>
+<p>Sở Đệ Trì khẽ cười lạnh:</p>
+<p>“Chắc hẳn hắn đã biết tin Tiểu Cửu còn sống.”</p>
+<p>Sở Ngạo Thiên gật đầu:</p>
+<p>“Hoàng thúc nói rất đúng.”</p>
+<p>Thần sắc Tiêu Dạ Hành trở nên nặng nề:</p>
+<p>“Như vậy thì khó rồi. Phía sau hắn có Nam Man chống lưng. Nam Man lập quốc hơn ba trăm năm, còn Đại Sở ta mới khai quốc chưa đầy hai mươi lăm năm.”</p>
+<p>Giữa hai hàng mày Sở Đệ Trì sát khí bức người.</p>
+<p>Khó giải quyết?</p>
+<p>Vậy thì lật bàn, tất cả đều chết thì sẽ dễ giải quyết.</p>
+<p>Hắn chưa từng định để Sở Ly phải trốn trốn tránh tránh cả đời, sống trong cảnh không thể thấy ánh mặt trời.</p>
+<p>“Hắn còn dám nhắm chủ ý vào nàng, ta sẽ đích thân xuất chinh. Giữa ta và hắn, nhất định chỉ có một người được sống. Hoặc hắn chết ta sống, hoặc ta sống hắn chết.”</p>
+<p>Sở Ngạo Thiên gật đầu:</p>
+<p>“Đúng!”</p>
+<p>Ơ?</p>
+<p>Khoan đã!</p>
+<p>Không đúng!</p>
+<p>Đông Lăng Thái tử vì sao lại nhắm vào Cửu muội?</p>
+<p>Hắn vừa định hỏi thì đã thấy Hoàng thúc cùng Tiêu Đô đốc sóng vai rời đi, vội vàng đứng dậy đuổi theo:</p>
+<p>“Hoàng thúc, vì sao Đông Lăng Thái tử lại muốn nhắm vào thẩm thẩm?”</p>
+<p>Đúng lúc ấy, Khương Thái phó ôm một chồng sách bước vào, vừa hay nghe thấy câu này, giật mình kinh hãi.</p>
+<p>Đông Lăng Thái tử muốn giết Tạ tiểu thư?</p>
+<p>Đó chẳng phải là Vương phi tương lai của Nhiếp Chính Vương sao?</p>
+<p>Độc thật!</p>
+<p>Bắt giặc phải bắt vua trước.</p>
+<p>Nếu Tạ tiểu thư chết, Nhiếp Chính Vương chẳng phải sẽ đau khổ đến chết?</p>
+<p>Chiêu này của Đông Lăng Thái tử quả thật quá hiểm.</p>
+<p>“Hoàng thúc!”</p>
+<p>Còn chưa nói cho hắn biết mà đã đi mất rồi.</p>
+<p>Đáng ghét!</p>
+<p>Sở Ngạo Thiên giậm chân, chuỗi ngọc trên miện quan va vào nhau leng keng.</p>
+<p>“Khương Thái phó, ngài xem, Hoàng thúc coi ta là người ngoài, chuyện gì cũng không chịu nói với ta.”</p>
+<p>Khương Thái phó đáp:</p>
+<p>“Sao có thể chứ? Nhiếp Chính Vương chẳng phải đã để Hoàng thượng xem tấu chương sao? Bí mật quốc gia quan trọng như vậy, chỉ có Hoàng thượng và Nhiếp Chính Vương mới được xem. Nếu ngài là người ngoài, vậy ai mới là người trong?”</p>
+<p>“Thẩm thẩm là người trong.”</p>
+<p>“…Ừm.”</p>
+<p>—</p>
+<p>Sở Đệ Trì xử lý xong chính sự trong cung, trở về Nhiếp Chính Vương phủ thì trời đã gần tối.</p>
+<p>Nhìn Vương phủ rộng lớn mà lạnh lẽo, yên tĩnh. Dưới ánh nến, bầu không khí tịch mịch như bị phóng đại gấp mười lần, đến cả một viên gạch cũng lạnh ngắt.</p>
+<p>Nàng đi rồi?</p>
+<p>Cũng được…</p>
+<p>Nàng không chịu ở lại Nhiếp Chính Vương phủ, vậy hắn đến San Hô Thủy Tạ là được.</p>
+<p>Hắn vừa lùi khỏi bậc cửa, một bước cũng chẳng muốn bước vào phủ, đang định xoay người rời đi thì Lý quản gia vội vàng chạy tới:</p>
+<p>“Điện hạ, muộn thế này rồi, ngài còn có công vụ quan trọng sao?”</p>
+<p>“Ta…”</p>
+<p>“Ngài có thể dùng bữa rồi hãy đi được không? Tạ tiểu thư đích thân xuống bếp suốt hai canh giờ. Nếu ngài không ăn, lão nô sợ nàng sẽ buồn.”</p>
+<p>“Ngươi nói gì?!”</p>
+<p>Sở Đệ Trì kinh ngạc.</p>
+<p>“Nàng… nàng còn ở trong phủ?”</p>
+<p>Nàng chưa đi?</p>
+<p>Hắn sững người nửa khắc. Đến khi hoàn hồn thì lập tức sải bước chạy về chủ viện, dưới chân như có gió, trong lòng nóng rực, tựa như được thứ gì lấp đầy, từng mạch máu đều sôi sục.</p>
+<p>Khi nhìn thấy dưới ánh nến ấm áp, bóng dáng đang bày bát đũa kia, hắn suýt nữa đã cất tiếng gọi.</p>
+<p>“Hoàng thúc?”</p>
+<p>Nàng vừa nhìn sang thì hắn lập tức đứng ngay ngắn, hai tay chắp sau lưng, ngẩng đầu, thần sắc trầm ổn, vững như chuông đồng, đi như tùng bách.</p>
+<p>Nhìn phong thái tôn quý của hắn, Sở Ly không khỏi thầm nghĩ:</p>
+<p>Quả nhiên xuất thân võ tướng.</p>
+<p>Phong thái ấy đã khắc sâu vào tận xương tủy. Gương mặt này cũng thuộc hàng tuyệt đỉnh, e rằng chẳng có mấy ai sánh bằng.</p>
+<p>Thế mà hắn lại thích nàng.</p>
+<p>Cũng coi như nàng có mặt mũi.</p>
+<p>“Hoàng thúc, có thể dùng bữa rồi.”</p>
+<p>Nàng khẽ giơ đôi đũa trong tay lên.</p>
+<p>Sở Đệ Trì vẫn giữ vẻ tôn quý, đường nét cằm rõ ràng. Hắn hơi nâng mắt nhìn lướt qua mâm thức ăn, nhàn nhạt nói:</p>
+<p>“Hình thức cũng tạm được.”</p>
+<p>“Sơ Tam đã dạy ta rất lâu. Tuy ta làm hỏng mấy đĩa, nhưng đều đem cho ngựa ăn rồi, cũng coi như không lãng phí lương thực.”</p>
+<p>“Ừ.”</p>
+<p>Hắn chắp hai tay sau lưng, thong thả bước vào.</p>
+<p>“Ta còn tưởng nàng đã về San Hô Thủy Tạ rồi.”</p>
+<p>Sở Ly đáp:</p>
+<p>“Hoàng thúc bận suốt cả ngày, ta sợ người không chịu ăn uống tử tế.”</p>
+<p>“Vậy sao lúc ta vào phủ, cả phủ lại yên tĩnh lạnh lẽo như vậy?”</p>
+<p>“Vương phủ rộng thế này, ta đâu phải người thích la hét om sòm. Người còn muốn náo nhiệt thế nào nữa? Hơn nữa, chẳng phải người vốn không thích náo nhiệt sao?”</p>
+<p>Không phải không thích.</p>
+<p>Chỉ là…</p>
+<p>Thích có nàng ở đây.</p>
+<p>Cho dù Vương phủ có rộng lớn đến đâu, chỉ cần nàng ở đó, hắn cũng chẳng thấy lạnh lẽo. Đến cả một viên gạch cũng trở nên ấm áp. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_271.html" class="btn">‹ Trước</a>
             <a href="chuong_273.html" class="btn">Sau ›</a>
         </div>
@@ -261,15 +269,11 @@ Cho dù Vương phủ có rộng lớn đến đâu, chỉ cần nàng ở đó,
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -281,11 +285,11 @@ Cho dù Vương phủ có rộng lớn đến đâu, chỉ cần nàng ở đó,
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

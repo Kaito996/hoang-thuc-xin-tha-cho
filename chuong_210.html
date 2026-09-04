@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 210</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,229 +62,167 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 210</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_209.html" class="btn">‹ Trước</a>
             <a href="chuong_211.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 210: Chỉ cần lão cha còn sống, chẳng lo không có hậu nhân
-
-Kinh Ảnh và Trọng Phong lập tức chỉnh đốn đội ngũ, để những bách tính có oan khuất bước ra, xếp thành hàng, từng người một lần lượt trình bày.
-Một nam nhân hơn ba mươi tuổi quỳ trên mặt đất, đau đớn nói:
-
-“Điện hạ, xin người làm chủ cho thảo dân! Thê tử của thảo dân bị nhi tử của Lý đại nhân làm nhục! Lý đại nhân chỉ đưa cho thảo dân năm lượng bạc, muốn dàn xếp cho xong chuyện. Thảo dân không chịu, ông ta liền sai người đến nhà quấy phá. Mẫu thân của thảo dân đã ngoài bảy mươi, tức giận đến ngã bệnh, nằm liệt giường hơn hai tháng rồi!”
-
-Sắc mắt Sở Đệ Trì dần lạnh xuống, liếc nhìn Lý Tri phủ đang quỳ một bên.
-
-Lý Tri phủ sợ đến toàn thân run rẩy:
-
-“Nhiếp… Nhiếp Chính Vương… Hạ quan…”
-Mặt hắn trắng bệch như tro, biết rằng cục diện này đã không còn cách cứu vãn.
-
-Lần này, cho dù Lục hoàng tử có đến, cũng không giữ nổi hắn.
-
-“Lý đại nhân, bản vương cho ngươi một cơ hội lấy công chuộc tội.”
-
-Nam nhân lười nhác dang hai chân, hai tay đan vào nhau.
-
-“Chính ngươi xử lý những vụ án này. Nếu xử lý tốt, bản vương sẽ tính là ngươi lấy công chuộc tội. Nếu xử lý không tốt… bản vương sẽ giết cả nhà ngươi.”
-
-Trên gương mặt trắng bệch của Lý Tri phủ lập tức hiện lên một tia hy vọng.
-
-Thật sao?
-
-Trước mặt bách tính Giang Nam, chắc hẳn Nhiếp Chính Vương sẽ không đùa giỡn với hắn.
-
-Hắn vịn bậc đá, run rẩy dập đầu:
-
-“Vâng! Hạ quan nhất định sẽ chấp pháp công minh.”
-
-“Đại… đại nhân…”
-
-Thôi Tiền Tiến run rẩy đỡ vị Tri phủ cũng đang run lẩy bẩy đứng dậy. Hai người chân mềm như lá rụng trong gió, lắc lư không ngừng.
-
-“Người đâu… mau… mau bắt tên nghịch tử Lý Thừa An đến đây!”
-
-Rất nhanh, nhi tử của Lý Tri phủ là Lý Thừa An đã bị áp giải tới.
-
-Lúc đến, dây lưng còn chưa buộc chỉnh tề, trên mặt vẫn còn in mấy dấu son môi đỏ chót, miệng còn lớn tiếng oang oang:
-
-“Cha! Cha làm gì vậy? Con đang bận xử lý chuyện hệ trọng trong chốn ôn nhu hương, không rảnh đâu.”
-
-Lý Tri phủ quát lớn:
-
-“Không rảnh thì khỏi cần rảnh nữa! Đồ hỗn trướng vô dụng! Ngươi dám giấu ta làm nhục nữ tử lương gia!”
-
-“Người đâu! Giữ chặt hắn lại! Đánh bốn mươi đại bản!”
-Hai mắt Lý Thừa An trợn trừng.
-Cái gì?
-Hắn còn chưa hiểu chuyện gì xảy ra thì đã bị hai tên quan binh đè xuống, cây đại bản to lớn nặng nề giáng xuống.
-“A!”
-Đau quá!
-“Cha! Cha làm thật… A! A!”
-Thả hắn ra!
-Đau chết mất!
-Lý Tri phủ nhìn đứa con trai độc nhất của mình, sao có thể không đau lòng?
-Nhưng vì giữ lấy cả Lý gia, giữ lấy chính mình, hắn buộc phải làm vậy.
-Chỉ cần lão cha còn sống, chẳng lo không có hậu nhân.
-Con à, đây đều là nghiệt con tự gây ra, tự mình gánh chịu đi!
-Chẳng mấy chốc, Lý Thừa An bị đánh đến toàn thân đầy máu, ngất lịm.
-
-Lý Tri phủ lại lấy hai trăm lượng bạc bồi thường cho người dân kia, còn sai người mời đại phu đến chữa bệnh cho lão mẫu của hắn.
-
-Đến lúc ấy, người dân kia mới lau nước mắt, cảm kích Nhiếp Chính Vương.
-
-Người dân thứ hai là một phụ nhân.
-
-Nàng quỳ dưới đất, vừa khóc vừa nói:
-
-“Dân phụ bái kiến Điện hạ. Điện hạ, dân phụ cùng trượng phu dựa vào gánh bán chè để mưu sinh, nhưng lại bị Trương lão bản của tửu lâu chèn ép. Hắn lén bỏ chuột chết vào nồi chè của dân phụ, lại hối lộ Lý đại nhân, để Lý đại nhân lấy cớ có chuột chết mà cưỡng ép đóng cửa quán chè của dân phụ.”
-
-“Cả nhà dân phụ từ đó mất kế sinh nhai.”
-
-“Sau đó, Trương lão bản còn muốn dùng giá chỉ bằng một nửa thị trường để cưỡng ép mua lại quán chè của dân phụ. Dân phụ không chịu bán, Lý đại nhân liền giúp hắn…”
-
-Nói đến đây, nước mắt càng tuôn không ngừng.
-Tiếng kêu oan liên tiếp vang lên.
-
-Sở Ly ngồi xổm trên bậc đá, nhìn những gương mặt thê lương ấy, trong lòng vô cùng khó chịu.
-Thế gian có âm có dương, có trắng có đen, có thiện có ác.
-
-Ánh mặt trời không thể chiếu tới mọi ngóc ngách.
-Ở những nơi không ai nhìn thấy, kiểu bắt nạt, sỉ nhục, áp bức và bất công như thế này còn nhiều vô kể.
-
-Nhưng…
-Chỉ cần Đại Sở vẫn còn tốt đẹp, bách tính sẽ còn hy vọng.
-
-Chỉ cần Nhiếp Chính Vương công chính vô tư, bách tính sẽ còn tin vào công bằng.
-
-Lý Tri phủ lập tức sai người gọi Trương lão bản đến xử lý vụ án thứ hai.
-
-Trong lúc nhất thời, tiếng khóc lóc, tiếng kêu oan, tiếng đưa ra chứng cứ…
-
-Liên tiếp không dứt.
-
-Chuyện xảy ra tại Lâm Hồ Tiểu Trúc nhanh chóng truyền khắp nơi.
-
-Bách tính khắp Giang Nam đều kéo đến xem, càng có rất nhiều người ôm oan khuất trong lòng tìm đến, mong được làm chủ.
-
-Nhìn tình hình này, e rằng không mất năm bảy ngày thì xử lý không xong.
-
-“A Ly ca ca.”
-
-Tần Mục Tuyết bước tới, trong tay ôm ba củ khoai lang nóng hổi.
-
-“Là Sơ Tam tỷ tỷ nướng đó, thơm lắm.”
-
-Sở Ly nhích mông sang bên một chút.
-
-“Để ta nếm thử.”
-
-“Nhiếp Chính Vương xử lý oan án… nhìn cũng đẹp mắt ghê.”
-
-Tần Mục Tuyết ngồi xổm bên cạnh nàng.
-
-Sở Ly cắn một miếng khoai lang.
-
-“Ta cũng thấy mới lạ. Trước đây ta từng xem Đại Lý Tự xử án, công chính nghiêm minh. Còn vị Lý đại nhân này, vừa xử án vừa khóc, cứ như đang tự hành hình chính mình vậy, nhìn thật buồn cười.”
-Chẳng bao lâu sau, Tần Mục Vũ cũng đi tới.
-
-Sở Đệ Trì vẫn chậm rãi xử lý từng vụ việc lặt vặt.
-Hắn ngồi đó, lười biếng nghiêng người, chống cằm.
-
-Thỉnh thoảng gặp phải kẻ phạm tội ngoan cố không chịu nhận, hắn chỉ cần khẽ nhấc mắt, ánh nhìn lạnh đi, đối phương lập tức run như cầy sấy.
-Bên trái là Kinh Ảnh.
-
-Bên phải là Trọng Phong.
-
-Phía sau là hàng loạt ám vệ đeo kiếm đứng ngay ngắn.
-
-Lại thêm Tiêu Dạ Hành và Bạch Cẩm Y như hai vị môn thần.
-
-Bất cứ ai nhìn thấy cũng tuyệt đối không dám ngẩng đầu nhìn thẳng.
-
-Dưới gương mặt lạnh lùng, áp bức ấy, cất giấu tâm tư mà không một ai dám đoán:
-
-Tiểu Cửu vừa rồi đã ra ngoài rồi… sao còn chưa đến?
-
-Không định tới nói với bản vương vài câu sao?
-
-Sở Đệ Trì chống cằm, lại hơi nghiêng người, đổi sang một tư thế tự nhiên hơn, quay đầu nhìn sang.
-
-Kết quả…
-
-Chỉ thấy ba người co cổ, chổng mông, ngồi xổm trên bậc đá gặm khoai lang.
-
-Sở Ly ngồi giữa.
-
-Huynh muội nhà họ Tần ngồi hai bên.
-
-Ba người hai tay ôm khoai lang, ăn đến miệng lem nhem, vừa nói vừa nhồm nhoàm, phát ra tiếng sột soạt như ba con sóc chuột.
-
-“Khoai lang này nướng bên ngoài giòn, bên trong mềm thật…”
-
-“Đúng đó đúng đó. Sơ Tam tỷ tỷ còn nói lát nữa sẽ chiên khoai tây cho bọn mình ăn.”
-
-“Ăn nhiều thế này… có khi nào đánh rắm không?”
-
-“Mục Vũ, huynh vừa đánh rắm đấy.”
-
-“… Nói bậy! Ta không có!”
-
-“Ta nhìn thấy rồi!”</p>
+            <p>Chương 210: Chỉ cần lão cha còn sống, chẳng lo không có hậu nhân</p>
+<p>Kinh Ảnh và Trọng Phong lập tức chỉnh đốn đội ngũ, để những bách tính có oan khuất bước ra, xếp thành hàng, từng người một lần lượt trình bày.</p>
+<p>Một nam nhân hơn ba mươi tuổi quỳ trên mặt đất, đau đớn nói:</p>
+<p>“Điện hạ, xin người làm chủ cho thảo dân! Thê tử của thảo dân bị nhi tử của Lý đại nhân làm nhục! Lý đại nhân chỉ đưa cho thảo dân năm lượng bạc, muốn dàn xếp cho xong chuyện. Thảo dân không chịu, ông ta liền sai người đến nhà quấy phá. Mẫu thân của thảo dân đã ngoài bảy mươi, tức giận đến ngã bệnh, nằm liệt giường hơn hai tháng rồi!”</p>
+<p>Sắc mắt Sở Đệ Trì dần lạnh xuống, liếc nhìn Lý Tri phủ đang quỳ một bên.</p>
+<p>Lý Tri phủ sợ đến toàn thân run rẩy:</p>
+<p>“Nhiếp… Nhiếp Chính Vương… Hạ quan…”</p>
+<p>Mặt hắn trắng bệch như tro, biết rằng cục diện này đã không còn cách cứu vãn.</p>
+<p>Lần này, cho dù Lục hoàng tử có đến, cũng không giữ nổi hắn.</p>
+<p>“Lý đại nhân, bản vương cho ngươi một cơ hội lấy công chuộc tội.”</p>
+<p>Nam nhân lười nhác dang hai chân, hai tay đan vào nhau.</p>
+<p>“Chính ngươi xử lý những vụ án này. Nếu xử lý tốt, bản vương sẽ tính là ngươi lấy công chuộc tội. Nếu xử lý không tốt… bản vương sẽ giết cả nhà ngươi.”</p>
+<p>Trên gương mặt trắng bệch của Lý Tri phủ lập tức hiện lên một tia hy vọng.</p>
+<p>Thật sao?</p>
+<p>Trước mặt bách tính Giang Nam, chắc hẳn Nhiếp Chính Vương sẽ không đùa giỡn với hắn.</p>
+<p>Hắn vịn bậc đá, run rẩy dập đầu:</p>
+<p>“Vâng! Hạ quan nhất định sẽ chấp pháp công minh.”</p>
+<p>“Đại… đại nhân…”</p>
+<p>Thôi Tiền Tiến run rẩy đỡ vị Tri phủ cũng đang run lẩy bẩy đứng dậy. Hai người chân mềm như lá rụng trong gió, lắc lư không ngừng.</p>
+<p>“Người đâu… mau… mau bắt tên nghịch tử Lý Thừa An đến đây!”</p>
+<p>Rất nhanh, nhi tử của Lý Tri phủ là Lý Thừa An đã bị áp giải tới.</p>
+<p>Lúc đến, dây lưng còn chưa buộc chỉnh tề, trên mặt vẫn còn in mấy dấu son môi đỏ chót, miệng còn lớn tiếng oang oang:</p>
+<p>“Cha! Cha làm gì vậy? Con đang bận xử lý chuyện hệ trọng trong chốn ôn nhu hương, không rảnh đâu.”</p>
+<p>Lý Tri phủ quát lớn:</p>
+<p>“Không rảnh thì khỏi cần rảnh nữa! Đồ hỗn trướng vô dụng! Ngươi dám giấu ta làm nhục nữ tử lương gia!”</p>
+<p>“Người đâu! Giữ chặt hắn lại! Đánh bốn mươi đại bản!”</p>
+<p>Hai mắt Lý Thừa An trợn trừng.</p>
+<p>Cái gì?</p>
+<p>Hắn còn chưa hiểu chuyện gì xảy ra thì đã bị hai tên quan binh đè xuống, cây đại bản to lớn nặng nề giáng xuống.</p>
+<p>“A!”</p>
+<p>Đau quá!</p>
+<p>“Cha! Cha làm thật… A! A!”</p>
+<p>Thả hắn ra!</p>
+<p>Đau chết mất!</p>
+<p>Lý Tri phủ nhìn đứa con trai độc nhất của mình, sao có thể không đau lòng?</p>
+<p>Nhưng vì giữ lấy cả Lý gia, giữ lấy chính mình, hắn buộc phải làm vậy.</p>
+<p>Chỉ cần lão cha còn sống, chẳng lo không có hậu nhân.</p>
+<p>Con à, đây đều là nghiệt con tự gây ra, tự mình gánh chịu đi!</p>
+<p>Chẳng mấy chốc, Lý Thừa An bị đánh đến toàn thân đầy máu, ngất lịm.</p>
+<p>Lý Tri phủ lại lấy hai trăm lượng bạc bồi thường cho người dân kia, còn sai người mời đại phu đến chữa bệnh cho lão mẫu của hắn.</p>
+<p>Đến lúc ấy, người dân kia mới lau nước mắt, cảm kích Nhiếp Chính Vương.</p>
+<p>Người dân thứ hai là một phụ nhân.</p>
+<p>Nàng quỳ dưới đất, vừa khóc vừa nói:</p>
+<p>“Dân phụ bái kiến Điện hạ. Điện hạ, dân phụ cùng trượng phu dựa vào gánh bán chè để mưu sinh, nhưng lại bị Trương lão bản của tửu lâu chèn ép. Hắn lén bỏ chuột chết vào nồi chè của dân phụ, lại hối lộ Lý đại nhân, để Lý đại nhân lấy cớ có chuột chết mà cưỡng ép đóng cửa quán chè của dân phụ.”</p>
+<p>“Cả nhà dân phụ từ đó mất kế sinh nhai.”</p>
+<p>“Sau đó, Trương lão bản còn muốn dùng giá chỉ bằng một nửa thị trường để cưỡng ép mua lại quán chè của dân phụ. Dân phụ không chịu bán, Lý đại nhân liền giúp hắn…”</p>
+<p>Nói đến đây, nước mắt càng tuôn không ngừng.</p>
+<p>Tiếng kêu oan liên tiếp vang lên.</p>
+<p>Sở Ly ngồi xổm trên bậc đá, nhìn những gương mặt thê lương ấy, trong lòng vô cùng khó chịu.</p>
+<p>Thế gian có âm có dương, có trắng có đen, có thiện có ác.</p>
+<p>Ánh mặt trời không thể chiếu tới mọi ngóc ngách.</p>
+<p>Ở những nơi không ai nhìn thấy, kiểu bắt nạt, sỉ nhục, áp bức và bất công như thế này còn nhiều vô kể.</p>
+<p>Nhưng…</p>
+<p>Chỉ cần Đại Sở vẫn còn tốt đẹp, bách tính sẽ còn hy vọng.</p>
+<p>Chỉ cần Nhiếp Chính Vương công chính vô tư, bách tính sẽ còn tin vào công bằng.</p>
+<p>Lý Tri phủ lập tức sai người gọi Trương lão bản đến xử lý vụ án thứ hai.</p>
+<p>Trong lúc nhất thời, tiếng khóc lóc, tiếng kêu oan, tiếng đưa ra chứng cứ…</p>
+<p>Liên tiếp không dứt.</p>
+<p>Chuyện xảy ra tại Lâm Hồ Tiểu Trúc nhanh chóng truyền khắp nơi.</p>
+<p>Bách tính khắp Giang Nam đều kéo đến xem, càng có rất nhiều người ôm oan khuất trong lòng tìm đến, mong được làm chủ.</p>
+<p>Nhìn tình hình này, e rằng không mất năm bảy ngày thì xử lý không xong.</p>
+<p>“A Ly ca ca.”</p>
+<p>Tần Mục Tuyết bước tới, trong tay ôm ba củ khoai lang nóng hổi.</p>
+<p>“Là Sơ Tam tỷ tỷ nướng đó, thơm lắm.”</p>
+<p>Sở Ly nhích mông sang bên một chút.</p>
+<p>“Để ta nếm thử.”</p>
+<p>“Nhiếp Chính Vương xử lý oan án… nhìn cũng đẹp mắt ghê.”</p>
+<p>Tần Mục Tuyết ngồi xổm bên cạnh nàng.</p>
+<p>Sở Ly cắn một miếng khoai lang.</p>
+<p>“Ta cũng thấy mới lạ. Trước đây ta từng xem Đại Lý Tự xử án, công chính nghiêm minh. Còn vị Lý đại nhân này, vừa xử án vừa khóc, cứ như đang tự hành hình chính mình vậy, nhìn thật buồn cười.”</p>
+<p>Chẳng bao lâu sau, Tần Mục Vũ cũng đi tới.</p>
+<p>Sở Đệ Trì vẫn chậm rãi xử lý từng vụ việc lặt vặt.</p>
+<p>Hắn ngồi đó, lười biếng nghiêng người, chống cằm.</p>
+<p>Thỉnh thoảng gặp phải kẻ phạm tội ngoan cố không chịu nhận, hắn chỉ cần khẽ nhấc mắt, ánh nhìn lạnh đi, đối phương lập tức run như cầy sấy.</p>
+<p>Bên trái là Kinh Ảnh.</p>
+<p>Bên phải là Trọng Phong.</p>
+<p>Phía sau là hàng loạt ám vệ đeo kiếm đứng ngay ngắn.</p>
+<p>Lại thêm Tiêu Dạ Hành và Bạch Cẩm Y như hai vị môn thần.</p>
+<p>Bất cứ ai nhìn thấy cũng tuyệt đối không dám ngẩng đầu nhìn thẳng.</p>
+<p>Dưới gương mặt lạnh lùng, áp bức ấy, cất giấu tâm tư mà không một ai dám đoán:</p>
+<p>Tiểu Cửu vừa rồi đã ra ngoài rồi… sao còn chưa đến?</p>
+<p>Không định tới nói với bản vương vài câu sao?</p>
+<p>Sở Đệ Trì chống cằm, lại hơi nghiêng người, đổi sang một tư thế tự nhiên hơn, quay đầu nhìn sang.</p>
+<p>Kết quả…</p>
+<p>Chỉ thấy ba người co cổ, chổng mông, ngồi xổm trên bậc đá gặm khoai lang.</p>
+<p>Sở Ly ngồi giữa.</p>
+<p>Huynh muội nhà họ Tần ngồi hai bên.</p>
+<p>Ba người hai tay ôm khoai lang, ăn đến miệng lem nhem, vừa nói vừa nhồm nhoàm, phát ra tiếng sột soạt như ba con sóc chuột.</p>
+<p>“Khoai lang này nướng bên ngoài giòn, bên trong mềm thật…”</p>
+<p>“Đúng đó đúng đó. Sơ Tam tỷ tỷ còn nói lát nữa sẽ chiên khoai tây cho bọn mình ăn.”</p>
+<p>“Ăn nhiều thế này… có khi nào đánh rắm không?”</p>
+<p>“Mục Vũ, huynh vừa đánh rắm đấy.”</p>
+<p>“… Nói bậy! Ta không có!”</p>
+<p>“Ta nhìn thấy rồi!”</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_209.html" class="btn">‹ Trước</a>
             <a href="chuong_211.html" class="btn">Sau ›</a>
         </div>
@@ -293,15 +230,11 @@ Ba người hai tay ôm khoai lang, ăn đến miệng lem nhem, vừa nói vừ
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -313,11 +246,11 @@ Ba người hai tay ôm khoai lang, ăn đến miệng lem nhem, vừa nói vừ
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

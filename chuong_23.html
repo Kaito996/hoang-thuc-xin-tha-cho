@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 23</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,282 +62,291 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 23</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_22.html" class="btn">‹ Trước</a>
             <a href="chuong_24.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 23: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 23: [Sở Ly, ngươi có phải cố ý hay không?]
-Trong rừng sâu.
-Cuộc thu săn đang diễn ra khí thế ngút trời, khắp nơi chỉ nghe tiếng tên xé gió vun vút, tiếng dã thú chạy trốn cùng tiếng thị vệ liên tiếp bẩm báo:
-— “Tần Thiếu tướng quân săn được một con hồ ly!”
-— “An Thị lang Bộ Binh săn được…”
-— “Tam Hoàng tử săn được một con hoàng kim mãng!”
-Khi thị vệ khiêng một con mãng xà màu vàng óng, to bằng bắp tay, dài đến bảy tám trượng, còn nhỏ máu tươi, kéo ra khỏi rừng, tất cả quần thần đều trợn tròn mắt.
-“Ôi chao!”
-“Con rắn lớn như vậy!”
-“Nếu bị nó cắn một phát, chẳng phải sẽ bị xé thành từng mảnh sao?”
-“Tam Hoàng tử quả nhiên dũng mãnh!”
-“Theo ta thấy, năm nay ngôi đầu thu săn e rằng lại thuộc về Tam Hoàng tử!”
-“Hay!”
-Đám văn thần tuy thân thể yếu nhược, nhưng nhìn cảnh tượng nhiệt huyết ấy, cũng cảm thấy máu trong người sôi trào, không ngừng vỗ tay reo hò.
-Lớp võ tướng trẻ tuổi đều đã vào rừng săn bắn, còn các võ tướng lớn tuổi nhìn chiến tích của hậu bối, ai nấy đều lộ vẻ hài lòng.
-Thiếu niên mạnh thì quốc gia mạnh.
-Người trẻ có tiền đồ, tương lai Đại Sở mới binh hùng mã tráng.
-Trong rừng.
-Ở khu vực bên ngoài chỉ có sơn kê, dã thỏ và những con mồi thông thường.
-Đi sâu hơn mới gặp được sơn dương, hươu rừng.
-Nghe nói ở nơi sâu nhất còn có sư tử, mãnh hổ, nhưng chưa ai từng tận mắt thấy.
-Thất Hoàng tử Sở Cảnh Lân cưỡi ngựa lao thẳng vào vùng núi sâu.
-Mấy công tử trẻ tuổi theo sau, không ngừng nịnh nọt:
-“Thất Hoàng tử cưỡi ngựa tuyệt luân, quả nhiên được chân truyền của Hoàng thượng.”
-“Năm nay Thất Hoàng tử nhất định chiến tích hiển hách!”
-Bọn họ đều là con cháu triều thần.
-Vì gia tộc, vì tiền đồ, đương nhiên muốn lấy lòng vị độc tử của Tĩnh Hoàng Quý phi.
-Sở Cảnh Lân một tay cầm cung, ngẩng đầu đầy ngạo khí:
-“Đó là điều đương nhiên.”
-“Giang sơn Đại Sở là do phụ hoàng đánh xuống. Kỵ xạ của ta lại do chính phụ hoàng dạy dỗ, sao có thể kém được?”
-“Nếu săn, thì phải săn con mồi mạnh nhất!”
-Hắn siết dây cương, hừ lạnh:
-“Năm nay, ta nhất định phải đè bẹp tên phế vật Cửu Hoàng tử kia!”
-Mấy người phía sau nhất thời câm nín.
-Năm nào thu săn, Thất Hoàng tử với Cửu Hoàng tử chẳng phải đều xếp cuối bảng sao?
-Kẻ hạng bét với kẻ hạng áp chót có khác gì nhau đâu…
-Bọn họ còn tưởng Thất Hoàng tử muốn tranh ngôi đầu.
-Nhưng nghĩ lại, từ lúc sinh ra, Thất Hoàng tử đã đứng ở đích đến mà vô số người cả đời không chạm tới được.
-Hắn chỉ cần đưa tay là có thể dễ dàng đạt được mọi thứ.
-Thế là đám người lại vội vàng cười lấy lòng:
-“Thất Hoàng tử xuất mã, tất nhiên dễ như trở bàn tay!”
-“Phong thái của Thất Hoàng tử, chúng thần vô cùng khâm phục!”
-Sở Cảnh Lân cười khẩy.
-Hắn sao lại không nhìn ra những lời nịnh nọt ấy?
-“Đừng đi theo nữa, làm kinh động con mồi của ta.”
-Nói rồi thúc ngựa đi thẳng vào sâu trong núi.
-Bên kia.
-Sở Ly cố tình tránh xa Nhiếp Chính Vương.
-Vượt qua một khu rừng rậm, nàng chợt nghe thấy giọng nói đầy mỉa mai:
-“Ta nhất định phải vượt mặt tên phế vật Cửu Hoàng tử kia!”
-Ngẩng đầu nhìn.
-Không phải chính là Thất Hoàng huynh của nàng sao?
-Nàng năm nào cũng đội sổ.
-So với nàng làm gì?
-Hạng bét cũng là hạng nhất mà.
-Năm nay chẳng lẽ Thất Hoàng tử muốn tranh vị trí đội sổ với nàng?
-Sở Ly lắc đầu.
-Định tìm một nơi thanh tĩnh ngủ một giấc, đợi thu săn gần kết thúc rồi ra ngoài.
-Đúng lúc ấy—
-“A!”
-“A——!”
-Một tiếng hét thảm vang lên.
-Ban đầu sắc nhọn, sau đó đột ngột im bặt.
-Có chuyện rồi!
-Sở Ly lập tức thúc ngựa chạy tới.
-Chỉ thấy một con gấu nâu khổng lồ đang đè lên người một thị vệ.
-Một ngoạm cắn đứt cổ đối phương.
-Nhẹ nhàng như giết gà.
-Chỉ còn tứ chi co giật trên mặt đất.
-Trên lưng ngựa.
-Sở Cảnh Lân lập tức giương cung.
-Vừa mới đặt tên lên dây.
-Con gấu đã lao tới.
-Mũi tên bắn lệch!
-Con ngựa bị dọa sợ, hí vang rồi bỏ chạy.
-Sở Cảnh Lân cố gắng giữ thăng bằng, rút thêm một mũi tên.
-Nhưng đúng lúc đó, con gấu hung hãn đâm sầm tới.
-Thân thể nặng hơn bốn trăm cân trực tiếp hất ngã chiến mã.
-Sở Cảnh Lân bị văng ra xa năm sáu trượng, lăn liền mấy vòng trên đất.
-“Gào!”
-Con gấu điên cuồng đập ngực, lao về phía hắn.
-Sở Cảnh Lân bất chấp đau đớn toàn thân, rút kiếm phản kích.
-Không ngờ da dày thịt cứng.
-Một kiếm chém xuống chẳng khác nào gãi ngứa.
-Ngược lại còn khiến nó nổi điên hơn.
-Một cú vả nữa.
-Hắn bị đánh bay ra ngoài.
-Phụt!
-Một ngụm máu tươi phun ra.
-“Người đâu… khụ… người đâu!”
-Nhưng hắn đã đi quá sâu vào núi.
-Lại đuổi hết tùy tùng đi.
-Thị vệ thì đã bị cắn chết.
-Nơi này chỉ còn lại một mình hắn.
-Nhìn con gấu lần nữa lao tới.
-Bộ răng nanh hung ác.
-Tiếng bước chân nện xuống mặt đất vang lên ầm ầm.
-Tựa như muốn xé xác hắn thành từng mảnh.
-Đúng lúc ngàn cân treo sợi tóc.
-Vút!
-Một mũi tên từ xa bắn tới.
-Sở Cảnh Lân quay đầu:
-“Sở Ly?”
-“Còn đứng ngây ra đó làm gì? Mau chạy đi!”
-Lúc này.
-Sở Ly đang trèo trên cây.
-Tán lá che khuất thân hình nàng, khiến con gấu không chú ý.
-Sở Cảnh Lân không dám chần chừ.
-Lập tức quay đầu bỏ chạy.
-Con gấu gầm lên đuổi theo.
-“Gào——!”
-Hắn chỉ cảm thấy da đầu tê dại.
-Con gấu bám sát phía sau.
-Thậm chí còn ngửi thấy mùi tanh hôi trong miệng nó.
-Khiến người ta buồn nôn.
-Hắn không dám dừng lại dù chỉ một khắc.
-Dốc hết sức bình sinh mà chạy:
-“Sở Ly! Mau bắn nó!”
-“Mau bắn chết nó đi!”
-Sở Ly rút một mũi tên.
-Không nhanh không chậm đặt lên dây cung.
-Nghĩ đến bộ dạng Sở Cảnh Lân trước đó chế giễu nàng là phế vật.
-Khóe môi nàng khẽ cong.
-“Thất Hoàng huynh đừng vội, thần đệ đang kéo cung đây.”
-Sở Cảnh Lân tức đến phát điên:
-“Phế vật! Một cây cung bình thường mà ngươi kéo lâu như vậy!”
-“Mau lên!”
-“Nó sắp đuổi kịp ta rồi!”
-Vút!
-Mũi tên bắn ra.
-Lại lệch.
-Sở Cảnh Lân giận dữ:
-“Con gấu to như vậy mà ngươi còn bắn trượt!”
-“Mắt ngươi mù rồi à?”
-“Nếu đôi mắt ấy vô dụng thì móc ra luôn đi!”
-Sở Ly vô tội đáp:
-“Thất Hoàng huynh, đừng nóng.”
-“Tiễn pháp của đệ kém, huynh cũng biết mà.”
-“Hay là huynh chạy về phía đệ đi.”
-“Dẫn con gấu lại gần một chút.”
-Sở Cảnh Lân nghiến răng chịu đau.
-Vòng một vòng lớn rồi chạy về phía nàng.
-“Mau lên!”
-Vút!
-Mũi tên thứ hai.
-Lại lệch.
-“SỞ LY!!!”
-Sở Cảnh Lân tức đến nổ phổi.
-“Ngươi có phải cố ý không?”
-“Hôm nay nếu ta xảy ra chuyện gì, mẫu phi ta tuyệt đối sẽ không tha cho ngươi!”
-Sở Ly như sắp khóc:
-“Xin lỗi! Xin lỗi!”
-“Đệ cũng muốn bắn trúng lắm!”
-“Nhưng đệ vừa căng thẳng vừa sợ hãi, tay run cả lên rồi!”
-“Phế vật!”
-Sở Cảnh Lân gào lên.
-“Ngươi đang ngồi trên cây!”
-“Ngươi sợ cái gì?”
-Người nên sợ là hắn mới đúng!
-Chỉ cần hắn dừng lại.
-Sẽ lập tức bị con gấu đè chết.
-Hai chân hắn sắp chạy thành bánh xe lửa.
-Khói cũng sắp bốc lên rồi.
-Hắn thật sự không chạy nổi nữa!
-“Thất Hoàng huynh đừng gấp, đệ sẽ cứu huynh ngay.”
-Sở Ly luống cuống giương cung.
-Sở Cảnh Lân thì người chạy phía trước.
-Hồn bay phía sau.
-“Mau lên!”
-“Mau lên đi!”
-“A!”
-“Nó sắp đuổi kịp rồi!”
-“Sở Ly a——!”
-Trong rừng vang vọng tiếng kêu thảm thiết của Sở Cảnh Lân.
-Sở Ly nắm chặt mũi tên.
-Ánh mắt trầm xuống.
-Nhìn con gấu đang phát cuồng kia.
-Gấu săn mồi vốn bắt được con mồi là kéo về ăn.
-Nhưng nó đã cắn chết một người một ngựa.
-Vậy mà vẫn truy sát Sở Cảnh Lân không buông.
-Đây không giống vì đói.
-Mà giống như...
-Muốn giết người.
-Nó đặc biệt cuồng bạo.
-Liên tục đập ngực gầm rú.
-Hai mắt đỏ ngầu.
-Như đã phát điên.
-Hung thú trong rừng sâu sao có thể vô duyên vô cớ nổi điên như vậy?
-“Sở Ly!”
-“Ngươi là đồ khốn!”
-“Rốt cuộc có được hay không?”
-“Ta chạy không nổi nữa rồi!”
-Sở Ly cao giọng:
-“Nghe nói gấu nâu không thích ăn con mồi đã chết.”
-“Nếu Thất Hoàng huynh không chạy nổi nữa, hay là nằm xuống giả chết đi.”
-“Nó sẽ không công kích huynh đâu.”
-Sở Cảnh Lân thực sự thở không nổi nữa.
-Hai chân mềm nhũn.
-Trước mắt tối sầm.
-Bịch!
-Hắn ngã xuống đất.
-Ngoan ngoãn giả chết.
-Nhưng—
-Con gấu chẳng những không dừng lại.
-Ngược lại còn càng thêm điên cuồng.
-Nó giơ cao móng vuốt sắc nhọn.
-Đâm thẳng vào cổ Sở Cảnh Lân.
-Sắc mặt Sở Ly lập tức biến đổi.
-Tên ngốc này!
-Bảo giả chết.
-Hắn thật sự giả chết luôn!
-Năm ngón tay siết chặt.
-Mũi tên dài xé gió lao đi.
-Xuyên qua một phiến lá rơi.
-Khí thế sắc bén như ngưng tụ thành thực thể giữa không trung.
-Phụt!
-Mũi tên trực tiếp xuyên thủng yết hầu con gấu! Ẩn bớt</p>
+            <p>Chương 23: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 23: [Sở Ly, ngươi có phải cố ý hay không?]</p>
+<p>Trong rừng sâu.</p>
+<p>Cuộc thu săn đang diễn ra khí thế ngút trời, khắp nơi chỉ nghe tiếng tên xé gió vun vút, tiếng dã thú chạy trốn cùng tiếng thị vệ liên tiếp bẩm báo:</p>
+<p>— “Tần Thiếu tướng quân săn được một con hồ ly!”</p>
+<p>— “An Thị lang Bộ Binh săn được…”</p>
+<p>— “Tam Hoàng tử săn được một con hoàng kim mãng!”</p>
+<p>Khi thị vệ khiêng một con mãng xà màu vàng óng, to bằng bắp tay, dài đến bảy tám trượng, còn nhỏ máu tươi, kéo ra khỏi rừng, tất cả quần thần đều trợn tròn mắt.</p>
+<p>“Ôi chao!”</p>
+<p>“Con rắn lớn như vậy!”</p>
+<p>“Nếu bị nó cắn một phát, chẳng phải sẽ bị xé thành từng mảnh sao?”</p>
+<p>“Tam Hoàng tử quả nhiên dũng mãnh!”</p>
+<p>“Theo ta thấy, năm nay ngôi đầu thu săn e rằng lại thuộc về Tam Hoàng tử!”</p>
+<p>“Hay!”</p>
+<p>Đám văn thần tuy thân thể yếu nhược, nhưng nhìn cảnh tượng nhiệt huyết ấy, cũng cảm thấy máu trong người sôi trào, không ngừng vỗ tay reo hò.</p>
+<p>Lớp võ tướng trẻ tuổi đều đã vào rừng săn bắn, còn các võ tướng lớn tuổi nhìn chiến tích của hậu bối, ai nấy đều lộ vẻ hài lòng.</p>
+<p>Thiếu niên mạnh thì quốc gia mạnh.</p>
+<p>Người trẻ có tiền đồ, tương lai Đại Sở mới binh hùng mã tráng.</p>
+<p>Trong rừng.</p>
+<p>Ở khu vực bên ngoài chỉ có sơn kê, dã thỏ và những con mồi thông thường.</p>
+<p>Đi sâu hơn mới gặp được sơn dương, hươu rừng.</p>
+<p>Nghe nói ở nơi sâu nhất còn có sư tử, mãnh hổ, nhưng chưa ai từng tận mắt thấy.</p>
+<p>Thất Hoàng tử Sở Cảnh Lân cưỡi ngựa lao thẳng vào vùng núi sâu.</p>
+<p>Mấy công tử trẻ tuổi theo sau, không ngừng nịnh nọt:</p>
+<p>“Thất Hoàng tử cưỡi ngựa tuyệt luân, quả nhiên được chân truyền của Hoàng thượng.”</p>
+<p>“Năm nay Thất Hoàng tử nhất định chiến tích hiển hách!”</p>
+<p>Bọn họ đều là con cháu triều thần.</p>
+<p>Vì gia tộc, vì tiền đồ, đương nhiên muốn lấy lòng vị độc tử của Tĩnh Hoàng Quý phi.</p>
+<p>Sở Cảnh Lân một tay cầm cung, ngẩng đầu đầy ngạo khí:</p>
+<p>“Đó là điều đương nhiên.”</p>
+<p>“Giang sơn Đại Sở là do phụ hoàng đánh xuống. Kỵ xạ của ta lại do chính phụ hoàng dạy dỗ, sao có thể kém được?”</p>
+<p>“Nếu săn, thì phải săn con mồi mạnh nhất!”</p>
+<p>Hắn siết dây cương, hừ lạnh:</p>
+<p>“Năm nay, ta nhất định phải đè bẹp tên phế vật Cửu Hoàng tử kia!”</p>
+<p>Mấy người phía sau nhất thời câm nín.</p>
+<p>Năm nào thu săn, Thất Hoàng tử với Cửu Hoàng tử chẳng phải đều xếp cuối bảng sao?</p>
+<p>Kẻ hạng bét với kẻ hạng áp chót có khác gì nhau đâu…</p>
+<p>Bọn họ còn tưởng Thất Hoàng tử muốn tranh ngôi đầu.</p>
+<p>Nhưng nghĩ lại, từ lúc sinh ra, Thất Hoàng tử đã đứng ở đích đến mà vô số người cả đời không chạm tới được.</p>
+<p>Hắn chỉ cần đưa tay là có thể dễ dàng đạt được mọi thứ.</p>
+<p>Thế là đám người lại vội vàng cười lấy lòng:</p>
+<p>“Thất Hoàng tử xuất mã, tất nhiên dễ như trở bàn tay!”</p>
+<p>“Phong thái của Thất Hoàng tử, chúng thần vô cùng khâm phục!”</p>
+<p>Sở Cảnh Lân cười khẩy.</p>
+<p>Hắn sao lại không nhìn ra những lời nịnh nọt ấy?</p>
+<p>“Đừng đi theo nữa, làm kinh động con mồi của ta.”</p>
+<p>Nói rồi thúc ngựa đi thẳng vào sâu trong núi.</p>
+<p>Bên kia.</p>
+<p>Sở Ly cố tình tránh xa Nhiếp Chính Vương.</p>
+<p>Vượt qua một khu rừng rậm, nàng chợt nghe thấy giọng nói đầy mỉa mai:</p>
+<p>“Ta nhất định phải vượt mặt tên phế vật Cửu Hoàng tử kia!”</p>
+<p>Ngẩng đầu nhìn.</p>
+<p>Không phải chính là Thất Hoàng huynh của nàng sao?</p>
+<p>Nàng năm nào cũng đội sổ.</p>
+<p>So với nàng làm gì?</p>
+<p>Hạng bét cũng là hạng nhất mà.</p>
+<p>Năm nay chẳng lẽ Thất Hoàng tử muốn tranh vị trí đội sổ với nàng?</p>
+<p>Sở Ly lắc đầu.</p>
+<p>Định tìm một nơi thanh tĩnh ngủ một giấc, đợi thu săn gần kết thúc rồi ra ngoài.</p>
+<p>Đúng lúc ấy—</p>
+<p>“A!”</p>
+<p>“A——!”</p>
+<p>Một tiếng hét thảm vang lên.</p>
+<p>Ban đầu sắc nhọn, sau đó đột ngột im bặt.</p>
+<p>Có chuyện rồi!</p>
+<p>Sở Ly lập tức thúc ngựa chạy tới.</p>
+<p>Chỉ thấy một con gấu nâu khổng lồ đang đè lên người một thị vệ.</p>
+<p>Một ngoạm cắn đứt cổ đối phương.</p>
+<p>Nhẹ nhàng như giết gà.</p>
+<p>Chỉ còn tứ chi co giật trên mặt đất.</p>
+<p>Trên lưng ngựa.</p>
+<p>Sở Cảnh Lân lập tức giương cung.</p>
+<p>Vừa mới đặt tên lên dây.</p>
+<p>Con gấu đã lao tới.</p>
+<p>Mũi tên bắn lệch!</p>
+<p>Con ngựa bị dọa sợ, hí vang rồi bỏ chạy.</p>
+<p>Sở Cảnh Lân cố gắng giữ thăng bằng, rút thêm một mũi tên.</p>
+<p>Nhưng đúng lúc đó, con gấu hung hãn đâm sầm tới.</p>
+<p>Thân thể nặng hơn bốn trăm cân trực tiếp hất ngã chiến mã.</p>
+<p>Sở Cảnh Lân bị văng ra xa năm sáu trượng, lăn liền mấy vòng trên đất.</p>
+<p>“Gào!”</p>
+<p>Con gấu điên cuồng đập ngực, lao về phía hắn.</p>
+<p>Sở Cảnh Lân bất chấp đau đớn toàn thân, rút kiếm phản kích.</p>
+<p>Không ngờ da dày thịt cứng.</p>
+<p>Một kiếm chém xuống chẳng khác nào gãi ngứa.</p>
+<p>Ngược lại còn khiến nó nổi điên hơn.</p>
+<p>Một cú vả nữa.</p>
+<p>Hắn bị đánh bay ra ngoài.</p>
+<p>Phụt!</p>
+<p>Một ngụm máu tươi phun ra.</p>
+<p>“Người đâu… khụ… người đâu!”</p>
+<p>Nhưng hắn đã đi quá sâu vào núi.</p>
+<p>Lại đuổi hết tùy tùng đi.</p>
+<p>Thị vệ thì đã bị cắn chết.</p>
+<p>Nơi này chỉ còn lại một mình hắn.</p>
+<p>Nhìn con gấu lần nữa lao tới.</p>
+<p>Bộ răng nanh hung ác.</p>
+<p>Tiếng bước chân nện xuống mặt đất vang lên ầm ầm.</p>
+<p>Tựa như muốn xé xác hắn thành từng mảnh.</p>
+<p>Đúng lúc ngàn cân treo sợi tóc.</p>
+<p>Vút!</p>
+<p>Một mũi tên từ xa bắn tới.</p>
+<p>Sở Cảnh Lân quay đầu:</p>
+<p>“Sở Ly?”</p>
+<p>“Còn đứng ngây ra đó làm gì? Mau chạy đi!”</p>
+<p>Lúc này.</p>
+<p>Sở Ly đang trèo trên cây.</p>
+<p>Tán lá che khuất thân hình nàng, khiến con gấu không chú ý.</p>
+<p>Sở Cảnh Lân không dám chần chừ.</p>
+<p>Lập tức quay đầu bỏ chạy.</p>
+<p>Con gấu gầm lên đuổi theo.</p>
+<p>“Gào——!”</p>
+<p>Hắn chỉ cảm thấy da đầu tê dại.</p>
+<p>Con gấu bám sát phía sau.</p>
+<p>Thậm chí còn ngửi thấy mùi tanh hôi trong miệng nó.</p>
+<p>Khiến người ta buồn nôn.</p>
+<p>Hắn không dám dừng lại dù chỉ một khắc.</p>
+<p>Dốc hết sức bình sinh mà chạy:</p>
+<p>“Sở Ly! Mau bắn nó!”</p>
+<p>“Mau bắn chết nó đi!”</p>
+<p>Sở Ly rút một mũi tên.</p>
+<p>Không nhanh không chậm đặt lên dây cung.</p>
+<p>Nghĩ đến bộ dạng Sở Cảnh Lân trước đó chế giễu nàng là phế vật.</p>
+<p>Khóe môi nàng khẽ cong.</p>
+<p>“Thất Hoàng huynh đừng vội, thần đệ đang kéo cung đây.”</p>
+<p>Sở Cảnh Lân tức đến phát điên:</p>
+<p>“Phế vật! Một cây cung bình thường mà ngươi kéo lâu như vậy!”</p>
+<p>“Mau lên!”</p>
+<p>“Nó sắp đuổi kịp ta rồi!”</p>
+<p>Vút!</p>
+<p>Mũi tên bắn ra.</p>
+<p>Lại lệch.</p>
+<p>Sở Cảnh Lân giận dữ:</p>
+<p>“Con gấu to như vậy mà ngươi còn bắn trượt!”</p>
+<p>“Mắt ngươi mù rồi à?”</p>
+<p>“Nếu đôi mắt ấy vô dụng thì móc ra luôn đi!”</p>
+<p>Sở Ly vô tội đáp:</p>
+<p>“Thất Hoàng huynh, đừng nóng.”</p>
+<p>“Tiễn pháp của đệ kém, huynh cũng biết mà.”</p>
+<p>“Hay là huynh chạy về phía đệ đi.”</p>
+<p>“Dẫn con gấu lại gần một chút.”</p>
+<p>Sở Cảnh Lân nghiến răng chịu đau.</p>
+<p>Vòng một vòng lớn rồi chạy về phía nàng.</p>
+<p>“Mau lên!”</p>
+<p>Vút!</p>
+<p>Mũi tên thứ hai.</p>
+<p>Lại lệch.</p>
+<p>“SỞ LY!!!”</p>
+<p>Sở Cảnh Lân tức đến nổ phổi.</p>
+<p>“Ngươi có phải cố ý không?”</p>
+<p>“Hôm nay nếu ta xảy ra chuyện gì, mẫu phi ta tuyệt đối sẽ không tha cho ngươi!”</p>
+<p>Sở Ly như sắp khóc:</p>
+<p>“Xin lỗi! Xin lỗi!”</p>
+<p>“Đệ cũng muốn bắn trúng lắm!”</p>
+<p>“Nhưng đệ vừa căng thẳng vừa sợ hãi, tay run cả lên rồi!”</p>
+<p>“Phế vật!”</p>
+<p>Sở Cảnh Lân gào lên.</p>
+<p>“Ngươi đang ngồi trên cây!”</p>
+<p>“Ngươi sợ cái gì?”</p>
+<p>Người nên sợ là hắn mới đúng!</p>
+<p>Chỉ cần hắn dừng lại.</p>
+<p>Sẽ lập tức bị con gấu đè chết.</p>
+<p>Hai chân hắn sắp chạy thành bánh xe lửa.</p>
+<p>Khói cũng sắp bốc lên rồi.</p>
+<p>Hắn thật sự không chạy nổi nữa!</p>
+<p>“Thất Hoàng huynh đừng gấp, đệ sẽ cứu huynh ngay.”</p>
+<p>Sở Ly luống cuống giương cung.</p>
+<p>Sở Cảnh Lân thì người chạy phía trước.</p>
+<p>Hồn bay phía sau.</p>
+<p>“Mau lên!”</p>
+<p>“Mau lên đi!”</p>
+<p>“A!”</p>
+<p>“Nó sắp đuổi kịp rồi!”</p>
+<p>“Sở Ly a——!”</p>
+<p>Trong rừng vang vọng tiếng kêu thảm thiết của Sở Cảnh Lân.</p>
+<p>Sở Ly nắm chặt mũi tên.</p>
+<p>Ánh mắt trầm xuống.</p>
+<p>Nhìn con gấu đang phát cuồng kia.</p>
+<p>Gấu săn mồi vốn bắt được con mồi là kéo về ăn.</p>
+<p>Nhưng nó đã cắn chết một người một ngựa.</p>
+<p>Vậy mà vẫn truy sát Sở Cảnh Lân không buông.</p>
+<p>Đây không giống vì đói.</p>
+<p>Mà giống như...</p>
+<p>Muốn giết người.</p>
+<p>Nó đặc biệt cuồng bạo.</p>
+<p>Liên tục đập ngực gầm rú.</p>
+<p>Hai mắt đỏ ngầu.</p>
+<p>Như đã phát điên.</p>
+<p>Hung thú trong rừng sâu sao có thể vô duyên vô cớ nổi điên như vậy?</p>
+<p>“Sở Ly!”</p>
+<p>“Ngươi là đồ khốn!”</p>
+<p>“Rốt cuộc có được hay không?”</p>
+<p>“Ta chạy không nổi nữa rồi!”</p>
+<p>Sở Ly cao giọng:</p>
+<p>“Nghe nói gấu nâu không thích ăn con mồi đã chết.”</p>
+<p>“Nếu Thất Hoàng huynh không chạy nổi nữa, hay là nằm xuống giả chết đi.”</p>
+<p>“Nó sẽ không công kích huynh đâu.”</p>
+<p>Sở Cảnh Lân thực sự thở không nổi nữa.</p>
+<p>Hai chân mềm nhũn.</p>
+<p>Trước mắt tối sầm.</p>
+<p>Bịch!</p>
+<p>Hắn ngã xuống đất.</p>
+<p>Ngoan ngoãn giả chết.</p>
+<p>Nhưng—</p>
+<p>Con gấu chẳng những không dừng lại.</p>
+<p>Ngược lại còn càng thêm điên cuồng.</p>
+<p>Nó giơ cao móng vuốt sắc nhọn.</p>
+<p>Đâm thẳng vào cổ Sở Cảnh Lân.</p>
+<p>Sắc mặt Sở Ly lập tức biến đổi.</p>
+<p>Tên ngốc này!</p>
+<p>Bảo giả chết.</p>
+<p>Hắn thật sự giả chết luôn!</p>
+<p>Năm ngón tay siết chặt.</p>
+<p>Mũi tên dài xé gió lao đi.</p>
+<p>Xuyên qua một phiến lá rơi.</p>
+<p>Khí thế sắc bén như ngưng tụ thành thực thể giữa không trung.</p>
+<p>Phụt!</p>
+<p>Mũi tên trực tiếp xuyên thủng yết hầu con gấu! Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_22.html" class="btn">‹ Trước</a>
             <a href="chuong_24.html" class="btn">Sau ›</a>
         </div>
@@ -346,15 +354,11 @@ Mũi tên trực tiếp xuyên thủng yết hầu con gấu! Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -366,11 +370,11 @@ Mũi tên trực tiếp xuyên thủng yết hầu con gấu! Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

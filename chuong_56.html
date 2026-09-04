@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 56</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,199 +62,208 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 56</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_55.html" class="btn">‹ Trước</a>
             <a href="chuong_57.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 56: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 56: Tần Mục Vũ ở phòng bên cạnh, ngươi muốn dẫn hắn tới đây?
-“Cứu hỏa…”
-“Mau mang nước tới…”
-“Nhanh lên…”
-Mọi âm thanh dần dần nhỏ đi, chậm rãi trở nên mơ hồ không nghe rõ nữa.
-Khi khôi phục tri giác lần nữa, Sở Ly đang nằm trên một chiếc giường mềm mại. Hai mắt đau rát như thiêu đốt, trước mắt lại là một mảnh tối đen.
-Trời tối rồi sao?
-“Người đâu… khụ!”
-Cổ họng nàng khàn đặc, nóng rát, gần như không thể phát ra tiếng.
-Đây là đâu?
-Vì sao không thắp nến?
-Nàng nhịn đau, giãy giụa muốn ngồi dậy.
-“Cửu hoàng tử cẩn thận!”
-Một tỳ nữ đột nhiên bước nhanh vào phòng. Khay thuốc trong tay bị nàng vội vàng đặt sang một bên, rồi lập tức đỡ lấy Sở Ly.
-Chỉ thiếu chút nữa là nàng đã ngã từ trên giường xuống.
-Bạch Cẩm Y theo sau bước vào. Hắn vừa xắn tay áo định tiến lên, liền nhìn thấy Sở Đệ Trì khẽ nhấc đầu ngón tay.
-Hắn hiểu ý, lập tức ngậm miệng, cùng hắn đi tới chiếc án thấp bên cửa sổ, khoanh chân ngồi xuống.
-“Đây là đâu?”
-Tỳ nữ trước tiên nhìn về phía Nhiếp Chính Vương, rồi mới đáp:
-“Đây là y quán. Nô… ta là y nữ. Cửu hoàng tử, mắt ngài bị đại hỏa làm bỏng, đã được bôi thuốc rồi, nhưng vẫn cần quấn vải thêm ba ngày nữa.”
-“Để ta đỡ ngài nằm xuống.”
-Trong lòng Sở Ly căng thẳng. Nàng chỉ cảm thấy hai mắt đau nhức dữ dội, không nhìn thấy lấy một tia sáng.
-“Ta sẽ không bị mù đấy chứ?”
-Y nữ nhìn sang Bạch Cẩm Y rồi nói:
-“Không đâu, thuốc dùng cho ngài là loại tốt nhất.”
-“Thật sao?”
-“Xin ngài yên tâm.”
-Bạch Cẩm Y thầm bật cười.
-Lúc này mới biết lo mình biến thành kẻ mù.
-Khi lao vào biển lửa, dáng vẻ nghĩa vô phản cố ấy, sao chẳng thấy sợ hãi chút nào?
-Hắn buồn cười lắc đầu, đang định trêu chọc một câu, lại liếc thấy khóe mắt âm trầm khác thường của Sở Đệ Trì. Sắc mặt ấy giống như cuồng phong cuốn mây tàn, khiến người ta kinh hãi.
-Lời đã đến bên môi, hắn lại lặng lẽ nuốt trở vào.
-Sở Ly khẽ thở phào một hơi, lần mò mép giường, cẩn thận dựa ngồi ở đầu giường.
-Nỗi đau trên người không bằng nỗi đau nơi đôi mắt.
-Khi ấy, nàng khoác một tấm chăn đã nhúng nước, bảo vệ được thân thể, nhưng lại vô ý bị luồng nhiệt nóng bỏng thiêu tổn đôi mắt.
-“Tình hình ở Tướng quân phủ thế nào rồi?”
-Y nữ đáp:
-“Đại hỏa đã được dập tắt. Nghe nói có mấy hạ nhân thiệt mạng. Đại Lý Tự đã điều tra, nói rằng lúc nấu cơm, người trong nhà bếp vô ý gây cháy, dẫn đến hỏa hoạn.”
-Cháy từ nhà bếp, sao có thể lan tới hậu viện?
-Huống hồ cho dù có cháy, cũng phải cần thời gian từ từ lan rộng. Khoảng thời gian ấy đủ để mọi người chạy thoát.
-Rõ ràng Tần Mục Vũ đã trúng mê dược, bị người ta làm cho hôn mê rồi ném vào biển lửa.
-Đối phương chuẩn bị kỹ càng như vậy, e rằng Đại Lý Tự cũng chẳng tra ra được gì.
-“Tần Thiếu tướng quân có ổn không?”
-“Cửu hoàng tử cứ yên tâm. Phu nhân, thiếu gia, tiểu thư trong Tướng quân phủ chỉ bị bỏng mà thôi, hiện giờ đều đang dưỡng thương tại y quán.”
-Sở Ly lập tức muốn đứng dậy.
-“Đỡ ta tới xem hắn.”
-“Cửu hoàng tử!”
-Y nữ lập tức nhẹ nhàng đè lên mu bàn tay nàng.
-“Mắt ngài cần tĩnh dưỡng, tốt nhất nên nhắm mắt nghỉ ngơi. Tần Thiếu tướng quân không nguy hiểm đến tính mạng. Chờ hắn tỉnh lại, hắn sẽ tới thăm ngài.”
-Nơi này là San Hô Thủy Tạ, nào phải y quán gì.
-Nàng thông minh chuyển hướng câu chuyện:
-“Nghe nói vì cứu Tần Thiếu tướng quân, Cửu hoàng tử đã bất chấp tính mạng lao vào biển lửa. Không ít bách tính tận mắt nhìn thấy, đều nói hai người là bằng hữu sinh tử.”
-Tâm tình Sở Ly hơi bình ổn lại.
-“Lúc ấy ta không nghĩ nhiều như vậy.”
-“Ngài không sợ chết sao?”
-Sợ.
-Mạng chỉ có một, ai mà không sợ?
-“Nhưng vừa nghĩ đến những điều hắn đối tốt với ta, ta lại không sợ nữa. Nếu chỉ có thể trơ mắt nhìn hắn chết ở trong đó, ngược lại ta còn sợ hơn.”
-Y nữ nghiêng đầu, khó hiểu hỏi:
-“Tốt đến mức có thể phó thác tính mạng sao?”
-“Ừm.”
-Sở Ly trả lời không hề do dự.
-“Hồi nhỏ ta đặc biệt ham chơi. Mới ba bốn tuổi đã theo Tiêu Dao Hoàng thúc ra ngoài thành chơi. Ta lăn từ trên núi xuống, gãy chân. Nếu không phải hắn cõng ta trở về, ta đã chết trong núi rồi.”
-Tiêu Dao Hoàng thúc chính là Tiêu Dao Vương đương triều, huynh đệ cùng cha khác mẹ với Sở Hoàng.
-Bởi tính tình tiêu dao tự tại, không tranh không đoạt, sau khi Sở Hoàng đăng cơ, hắn liền xin một vùng phong địa, tránh xa quyền mưu thị phi, minh triết bảo thân.
-“Lúc ấy trong núi còn có sói.”
-“Để bảo vệ ta, hắn còn bị sói cắn nữa.”
-Y nữ nói:
-“Chuyện từ lúc ba bốn tuổi mà Cửu hoàng tử vẫn nhớ rõ như vậy sao?”
-“Tuy hồi nhỏ ta từng ngã từ trên mái nhà xuống, đập đầu bị thương, nhưng riêng chuyện này thì nhớ rất rõ.”
-“Xem ra Cửu hoàng tử chẳng những mắt không tốt, ngay cả đầu óc cũng bị ngã hỏng rồi.”
-Khi giọng nam nhân bình ổn mà lạnh nhạt ấy vang lên, cả căn phòng dường như bị thanh âm của hắn chiếm cứ, khiến người ta không thể làm ngơ.
-Sắc mặt Sở Ly lập tức đại biến, hai tay siết chặt chăn, nhưng lại mờ mịt không tìm được phương hướng.
-Nàng không nhìn thấy.
-Sao hắn lại ở đây!
-Bạch Cẩm Y lập tức đứng dậy.
-“Đừng nổi giận, nàng còn đang bị thương.”
-“Ra ngoài.”
-Y nữ lui sang một bên.
-Bạch Cẩm Y dặn dò:
-“Không được khóc. Nếu không có thể sẽ bị mù.”
-Tiếng cửa đóng lại vang lên.
-Sở Ly co rúm thân thể, trốn vào góc giường.
-Mắt không nhìn thấy, các giác quan khác trên cơ thể liền bị phóng đại gấp mấy lần.
-Bất kỳ tiếng động nào cũng khiến nàng như chim sợ cành cong.
-Nơi này không phải y quán!
-Sở Đệ Trì đi về phía nàng.
-Cơ thể nàng căng cứng.
-“Ngươi… ngươi sao lại ở đây? Tần Mục Vũ đâu?”
-“Chết rồi.”
-Nàng giận dữ:
-“Ta với ngươi không oán không thù, vì sao ngươi cứ nhằm vào ta? Hình như ta chưa từng trêu chọc ngươi mà!”
-“Nếu bản vương thật sự nhằm vào ngươi, ngươi còn có thể bình yên nằm ở đây sao?”
-Sở Đệ Trì phất vạt áo, ngồi xuống mép giường.
-Khí tức lạnh lẽo nơi hắn mang theo tính xâm lược cực mạnh, khiến Sở Ly căng thẳng đến cực độ.
-“Vậy ngươi thả ta đi.”
-“Bản vương trói ngươi sao?”
-Sở Ly siết chặt hai tay, đại khái đoán được vị trí mép giường, muốn bước xuống.
-Nhưng không biết vấp phải thứ gì, cả người nhào vào lồng ngực cứng rắn lạnh lẽo của nam nhân.
-“Ưm!”
-Nàng vội vàng bò ra ngoài, tay chân luống cuống ngã nhào xuống đất.
-Chật vật đứng dậy, muốn chạy ra ngoài.
-Nhưng lại đụng ghế, va bàn, hai tay duỗi ra lần mò trong căn phòng tối tăm.
-Bị va đến đau nhức, nàng vẫn khẩn thiết muốn trốn thoát.
-Sở Đệ Trì ngồi trên giường, cầm lấy cuộn băng vải trên chiếc án thấp, từng vòng từng vòng quấn lên vết bỏng trên mu bàn tay.
-“Khi lao vào biển lửa, cũng chẳng thấy ngươi sợ đến mức này.”
-Sở Ly chật vật dò đường.
-“Tình nghĩa giữa ta và Tần Mục Vũ, dĩ nhiên không phải thứ Hoàng thúc có thể hiểu được.”
-“Thứ tình cảm thời niên thiếu của kẻ bị ngã hỏng đầu óc đó sao?”
-Giọng hắn mang theo ý châm biếm.
-Sở Ly cảm thấy vài phần nhục nhã.
-Cuộc đối thoại giữa nàng và y nữ vừa rồi, hóa ra đều bị hắn nghe thấy.
-Nhưng vậy thì đã sao?
-“Ta và Tần Mục Vũ quang minh lỗi lạc.”
-Nàng nghiêm túc nói:
-“Hoàng thúc e rằng chưa từng được ai kiên định lựa chọn. Tự nhiên sẽ không thể hiểu được loại tình nghĩa này.”
-Động tác của Sở Đệ Trì khựng lại.
-Trong đáy mắt, mây đen âm u tụ lại.
-Hắn đột nhiên giật đứt dải băng, cuốn quanh lòng bàn tay.
-“Xem ra ngươi rất chắc chắn rằng hắn sẽ kiên định lựa chọn ngươi.”
-Sở Ly nghe thấy tiếng bước chân đang tới gần.
-Nàng từng bước lùi lại.
-Đến khi đụng vào góc bàn, hai tay liền bị bàn tay lớn của nam nhân giữ chặt.
-“Ngươi muốn làm gì!”
-Nam nhân xé dải băng nhuốm máu, quấn lấy hai tay nàng, buộc lên khung cửa sổ.
-“Sở Đệ Trì…”
-Hắn bế nàng đặt ngồi lên bệ cửa sổ, hai tay bị treo cao.
-“Đã tin tưởng hắn như vậy, cho dù thất thân, chắc hẳn hắn cũng sẽ không để tâm đâu, ngươi nói xem?”
-Sở Ly dùng sức đẩy hắn ra.
-Phía sau nàng chính là cửa sổ lơ lửng trên không.
-Nàng thà ngã xuống còn hơn.
-Thế nhưng giọng nói của nam nhân lại như ma chú rót vào tai:
-“Nơi này là y quán.”
-“Tần Mục Vũ đang nằm ở phòng bên cạnh. Ngươi muốn dẫn hắn tới đây sao?” Ẩn bớt</p>
+            <p>Chương 56: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 56: Tần Mục Vũ ở phòng bên cạnh, ngươi muốn dẫn hắn tới đây?</p>
+<p>“Cứu hỏa…”</p>
+<p>“Mau mang nước tới…”</p>
+<p>“Nhanh lên…”</p>
+<p>Mọi âm thanh dần dần nhỏ đi, chậm rãi trở nên mơ hồ không nghe rõ nữa.</p>
+<p>Khi khôi phục tri giác lần nữa, Sở Ly đang nằm trên một chiếc giường mềm mại. Hai mắt đau rát như thiêu đốt, trước mắt lại là một mảnh tối đen.</p>
+<p>Trời tối rồi sao?</p>
+<p>“Người đâu… khụ!”</p>
+<p>Cổ họng nàng khàn đặc, nóng rát, gần như không thể phát ra tiếng.</p>
+<p>Đây là đâu?</p>
+<p>Vì sao không thắp nến?</p>
+<p>Nàng nhịn đau, giãy giụa muốn ngồi dậy.</p>
+<p>“Cửu hoàng tử cẩn thận!”</p>
+<p>Một tỳ nữ đột nhiên bước nhanh vào phòng. Khay thuốc trong tay bị nàng vội vàng đặt sang một bên, rồi lập tức đỡ lấy Sở Ly.</p>
+<p>Chỉ thiếu chút nữa là nàng đã ngã từ trên giường xuống.</p>
+<p>Bạch Cẩm Y theo sau bước vào. Hắn vừa xắn tay áo định tiến lên, liền nhìn thấy Sở Đệ Trì khẽ nhấc đầu ngón tay.</p>
+<p>Hắn hiểu ý, lập tức ngậm miệng, cùng hắn đi tới chiếc án thấp bên cửa sổ, khoanh chân ngồi xuống.</p>
+<p>“Đây là đâu?”</p>
+<p>Tỳ nữ trước tiên nhìn về phía Nhiếp Chính Vương, rồi mới đáp:</p>
+<p>“Đây là y quán. Nô… ta là y nữ. Cửu hoàng tử, mắt ngài bị đại hỏa làm bỏng, đã được bôi thuốc rồi, nhưng vẫn cần quấn vải thêm ba ngày nữa.”</p>
+<p>“Để ta đỡ ngài nằm xuống.”</p>
+<p>Trong lòng Sở Ly căng thẳng. Nàng chỉ cảm thấy hai mắt đau nhức dữ dội, không nhìn thấy lấy một tia sáng.</p>
+<p>“Ta sẽ không bị mù đấy chứ?”</p>
+<p>Y nữ nhìn sang Bạch Cẩm Y rồi nói:</p>
+<p>“Không đâu, thuốc dùng cho ngài là loại tốt nhất.”</p>
+<p>“Thật sao?”</p>
+<p>“Xin ngài yên tâm.”</p>
+<p>Bạch Cẩm Y thầm bật cười.</p>
+<p>Lúc này mới biết lo mình biến thành kẻ mù.</p>
+<p>Khi lao vào biển lửa, dáng vẻ nghĩa vô phản cố ấy, sao chẳng thấy sợ hãi chút nào?</p>
+<p>Hắn buồn cười lắc đầu, đang định trêu chọc một câu, lại liếc thấy khóe mắt âm trầm khác thường của Sở Đệ Trì. Sắc mặt ấy giống như cuồng phong cuốn mây tàn, khiến người ta kinh hãi.</p>
+<p>Lời đã đến bên môi, hắn lại lặng lẽ nuốt trở vào.</p>
+<p>Sở Ly khẽ thở phào một hơi, lần mò mép giường, cẩn thận dựa ngồi ở đầu giường.</p>
+<p>Nỗi đau trên người không bằng nỗi đau nơi đôi mắt.</p>
+<p>Khi ấy, nàng khoác một tấm chăn đã nhúng nước, bảo vệ được thân thể, nhưng lại vô ý bị luồng nhiệt nóng bỏng thiêu tổn đôi mắt.</p>
+<p>“Tình hình ở Tướng quân phủ thế nào rồi?”</p>
+<p>Y nữ đáp:</p>
+<p>“Đại hỏa đã được dập tắt. Nghe nói có mấy hạ nhân thiệt mạng. Đại Lý Tự đã điều tra, nói rằng lúc nấu cơm, người trong nhà bếp vô ý gây cháy, dẫn đến hỏa hoạn.”</p>
+<p>Cháy từ nhà bếp, sao có thể lan tới hậu viện?</p>
+<p>Huống hồ cho dù có cháy, cũng phải cần thời gian từ từ lan rộng. Khoảng thời gian ấy đủ để mọi người chạy thoát.</p>
+<p>Rõ ràng Tần Mục Vũ đã trúng mê dược, bị người ta làm cho hôn mê rồi ném vào biển lửa.</p>
+<p>Đối phương chuẩn bị kỹ càng như vậy, e rằng Đại Lý Tự cũng chẳng tra ra được gì.</p>
+<p>“Tần Thiếu tướng quân có ổn không?”</p>
+<p>“Cửu hoàng tử cứ yên tâm. Phu nhân, thiếu gia, tiểu thư trong Tướng quân phủ chỉ bị bỏng mà thôi, hiện giờ đều đang dưỡng thương tại y quán.”</p>
+<p>Sở Ly lập tức muốn đứng dậy.</p>
+<p>“Đỡ ta tới xem hắn.”</p>
+<p>“Cửu hoàng tử!”</p>
+<p>Y nữ lập tức nhẹ nhàng đè lên mu bàn tay nàng.</p>
+<p>“Mắt ngài cần tĩnh dưỡng, tốt nhất nên nhắm mắt nghỉ ngơi. Tần Thiếu tướng quân không nguy hiểm đến tính mạng. Chờ hắn tỉnh lại, hắn sẽ tới thăm ngài.”</p>
+<p>Nơi này là San Hô Thủy Tạ, nào phải y quán gì.</p>
+<p>Nàng thông minh chuyển hướng câu chuyện:</p>
+<p>“Nghe nói vì cứu Tần Thiếu tướng quân, Cửu hoàng tử đã bất chấp tính mạng lao vào biển lửa. Không ít bách tính tận mắt nhìn thấy, đều nói hai người là bằng hữu sinh tử.”</p>
+<p>Tâm tình Sở Ly hơi bình ổn lại.</p>
+<p>“Lúc ấy ta không nghĩ nhiều như vậy.”</p>
+<p>“Ngài không sợ chết sao?”</p>
+<p>Sợ.</p>
+<p>Mạng chỉ có một, ai mà không sợ?</p>
+<p>“Nhưng vừa nghĩ đến những điều hắn đối tốt với ta, ta lại không sợ nữa. Nếu chỉ có thể trơ mắt nhìn hắn chết ở trong đó, ngược lại ta còn sợ hơn.”</p>
+<p>Y nữ nghiêng đầu, khó hiểu hỏi:</p>
+<p>“Tốt đến mức có thể phó thác tính mạng sao?”</p>
+<p>“Ừm.”</p>
+<p>Sở Ly trả lời không hề do dự.</p>
+<p>“Hồi nhỏ ta đặc biệt ham chơi. Mới ba bốn tuổi đã theo Tiêu Dao Hoàng thúc ra ngoài thành chơi. Ta lăn từ trên núi xuống, gãy chân. Nếu không phải hắn cõng ta trở về, ta đã chết trong núi rồi.”</p>
+<p>Tiêu Dao Hoàng thúc chính là Tiêu Dao Vương đương triều, huynh đệ cùng cha khác mẹ với Sở Hoàng.</p>
+<p>Bởi tính tình tiêu dao tự tại, không tranh không đoạt, sau khi Sở Hoàng đăng cơ, hắn liền xin một vùng phong địa, tránh xa quyền mưu thị phi, minh triết bảo thân.</p>
+<p>“Lúc ấy trong núi còn có sói.”</p>
+<p>“Để bảo vệ ta, hắn còn bị sói cắn nữa.”</p>
+<p>Y nữ nói:</p>
+<p>“Chuyện từ lúc ba bốn tuổi mà Cửu hoàng tử vẫn nhớ rõ như vậy sao?”</p>
+<p>“Tuy hồi nhỏ ta từng ngã từ trên mái nhà xuống, đập đầu bị thương, nhưng riêng chuyện này thì nhớ rất rõ.”</p>
+<p>“Xem ra Cửu hoàng tử chẳng những mắt không tốt, ngay cả đầu óc cũng bị ngã hỏng rồi.”</p>
+<p>Khi giọng nam nhân bình ổn mà lạnh nhạt ấy vang lên, cả căn phòng dường như bị thanh âm của hắn chiếm cứ, khiến người ta không thể làm ngơ.</p>
+<p>Sắc mặt Sở Ly lập tức đại biến, hai tay siết chặt chăn, nhưng lại mờ mịt không tìm được phương hướng.</p>
+<p>Nàng không nhìn thấy.</p>
+<p>Sao hắn lại ở đây!</p>
+<p>Bạch Cẩm Y lập tức đứng dậy.</p>
+<p>“Đừng nổi giận, nàng còn đang bị thương.”</p>
+<p>“Ra ngoài.”</p>
+<p>Y nữ lui sang một bên.</p>
+<p>Bạch Cẩm Y dặn dò:</p>
+<p>“Không được khóc. Nếu không có thể sẽ bị mù.”</p>
+<p>Tiếng cửa đóng lại vang lên.</p>
+<p>Sở Ly co rúm thân thể, trốn vào góc giường.</p>
+<p>Mắt không nhìn thấy, các giác quan khác trên cơ thể liền bị phóng đại gấp mấy lần.</p>
+<p>Bất kỳ tiếng động nào cũng khiến nàng như chim sợ cành cong.</p>
+<p>Nơi này không phải y quán!</p>
+<p>Sở Đệ Trì đi về phía nàng.</p>
+<p>Cơ thể nàng căng cứng.</p>
+<p>“Ngươi… ngươi sao lại ở đây? Tần Mục Vũ đâu?”</p>
+<p>“Chết rồi.”</p>
+<p>Nàng giận dữ:</p>
+<p>“Ta với ngươi không oán không thù, vì sao ngươi cứ nhằm vào ta? Hình như ta chưa từng trêu chọc ngươi mà!”</p>
+<p>“Nếu bản vương thật sự nhằm vào ngươi, ngươi còn có thể bình yên nằm ở đây sao?”</p>
+<p>Sở Đệ Trì phất vạt áo, ngồi xuống mép giường.</p>
+<p>Khí tức lạnh lẽo nơi hắn mang theo tính xâm lược cực mạnh, khiến Sở Ly căng thẳng đến cực độ.</p>
+<p>“Vậy ngươi thả ta đi.”</p>
+<p>“Bản vương trói ngươi sao?”</p>
+<p>Sở Ly siết chặt hai tay, đại khái đoán được vị trí mép giường, muốn bước xuống.</p>
+<p>Nhưng không biết vấp phải thứ gì, cả người nhào vào lồng ngực cứng rắn lạnh lẽo của nam nhân.</p>
+<p>“Ưm!”</p>
+<p>Nàng vội vàng bò ra ngoài, tay chân luống cuống ngã nhào xuống đất.</p>
+<p>Chật vật đứng dậy, muốn chạy ra ngoài.</p>
+<p>Nhưng lại đụng ghế, va bàn, hai tay duỗi ra lần mò trong căn phòng tối tăm.</p>
+<p>Bị va đến đau nhức, nàng vẫn khẩn thiết muốn trốn thoát.</p>
+<p>Sở Đệ Trì ngồi trên giường, cầm lấy cuộn băng vải trên chiếc án thấp, từng vòng từng vòng quấn lên vết bỏng trên mu bàn tay.</p>
+<p>“Khi lao vào biển lửa, cũng chẳng thấy ngươi sợ đến mức này.”</p>
+<p>Sở Ly chật vật dò đường.</p>
+<p>“Tình nghĩa giữa ta và Tần Mục Vũ, dĩ nhiên không phải thứ Hoàng thúc có thể hiểu được.”</p>
+<p>“Thứ tình cảm thời niên thiếu của kẻ bị ngã hỏng đầu óc đó sao?”</p>
+<p>Giọng hắn mang theo ý châm biếm.</p>
+<p>Sở Ly cảm thấy vài phần nhục nhã.</p>
+<p>Cuộc đối thoại giữa nàng và y nữ vừa rồi, hóa ra đều bị hắn nghe thấy.</p>
+<p>Nhưng vậy thì đã sao?</p>
+<p>“Ta và Tần Mục Vũ quang minh lỗi lạc.”</p>
+<p>Nàng nghiêm túc nói:</p>
+<p>“Hoàng thúc e rằng chưa từng được ai kiên định lựa chọn. Tự nhiên sẽ không thể hiểu được loại tình nghĩa này.”</p>
+<p>Động tác của Sở Đệ Trì khựng lại.</p>
+<p>Trong đáy mắt, mây đen âm u tụ lại.</p>
+<p>Hắn đột nhiên giật đứt dải băng, cuốn quanh lòng bàn tay.</p>
+<p>“Xem ra ngươi rất chắc chắn rằng hắn sẽ kiên định lựa chọn ngươi.”</p>
+<p>Sở Ly nghe thấy tiếng bước chân đang tới gần.</p>
+<p>Nàng từng bước lùi lại.</p>
+<p>Đến khi đụng vào góc bàn, hai tay liền bị bàn tay lớn của nam nhân giữ chặt.</p>
+<p>“Ngươi muốn làm gì!”</p>
+<p>Nam nhân xé dải băng nhuốm máu, quấn lấy hai tay nàng, buộc lên khung cửa sổ.</p>
+<p>“Sở Đệ Trì…”</p>
+<p>Hắn bế nàng đặt ngồi lên bệ cửa sổ, hai tay bị treo cao.</p>
+<p>“Đã tin tưởng hắn như vậy, cho dù thất thân, chắc hẳn hắn cũng sẽ không để tâm đâu, ngươi nói xem?”</p>
+<p>Sở Ly dùng sức đẩy hắn ra.</p>
+<p>Phía sau nàng chính là cửa sổ lơ lửng trên không.</p>
+<p>Nàng thà ngã xuống còn hơn.</p>
+<p>Thế nhưng giọng nói của nam nhân lại như ma chú rót vào tai:</p>
+<p>“Nơi này là y quán.”</p>
+<p>“Tần Mục Vũ đang nằm ở phòng bên cạnh. Ngươi muốn dẫn hắn tới đây sao?” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_55.html" class="btn">‹ Trước</a>
             <a href="chuong_57.html" class="btn">Sau ›</a>
         </div>
@@ -263,15 +271,11 @@ Thế nhưng giọng nói của nam nhân lại như ma chú rót vào tai:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -283,11 +287,11 @@ Thế nhưng giọng nói của nam nhân lại như ma chú rót vào tai:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

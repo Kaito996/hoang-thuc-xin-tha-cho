@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 19</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,238 +62,247 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 19</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_18.html" class="btn">‹ Trước</a>
             <a href="chuong_20.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 19: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 19: [Hoàng thúc, lần sau ta không dám nữa]
-Dày thế này thì chép đến bao giờ!
-Sau lưng Sở Ly không ngừng túa mồ hôi:
-— Không biết Hoàng thúc khi nào cần? Hay là ta mang về Chiêu Lan điện chép, đợi chép xong sẽ sai người đưa tới cho Hoàng thúc.
-Sở Đệ Trì vê một quân cờ, đặt xuống bàn cờ.
-— Chép ngay tại đây.
-Kinh Ảnh cười xấu xa:
-— Cửu Hoàng tử, mời đi.
-Tay phải của Sở Ly vẫn còn bị thương, cầm bút vốn đã bất tiện. Cho dù có thể viết bình thường, ngồi đây ba ngày ba đêm e rằng cũng không chép hết quyển 《Địa Tạng Kinh》 này.
-Đây đâu phải bảo nàng chép kinh?
-Rõ ràng là cố ý chỉnh nàng!
-Sở Ly không còn cách nào khác, đành khoanh chân ngồi bên án thấp, dùng cánh tay “tàn phế” khó nhọc cầm bút lông, xiêu xiêu vẹo vẹo viết xuống từng chữ.
-Đau tay quá...
-Mẫu phi, mau tới cứu con!
-Bây giờ người duy nhất con có thể trông cậy vào chính là người!
-Ôm theo tia hy vọng ấy, Sở Ly cắn răng chép xong trang đầu tiên. Tay phải đã tê cứng đến gần như mất cảm giác.
-Nàng nhìn ra ngoài cửa sổ.
-Trời đã tối hẳn.
-Thế nhưng vẫn không nghe thấy tiếng thông báo:
-"Ôn phi nương nương giá lâm."
-Nàng vừa định nghỉ lấy hơi.
-Chát!
-Một quân cờ nặng nề rơi xuống bàn.
-Âm thanh giòn tan, xen lẫn vài phần lệ khí, giống như một lời cảnh cáo vô hình.
-Da đầu Sở Ly tê dại.
-Lập tức cầm bút tiếp tục chép.
-Mẫu phi sao còn chưa tới?
-Chẳng lẽ bị chuyện gì trì hoãn?
-Muộn thế này rồi, còn có việc gì quan trọng hơn tính mạng của nữ nhi người sao?
-Tay tê rồi.
-Không được nữa.
-Ngồi khoanh chân quá lâu, ngay cả chân cũng tê cứng, gần như mất hết tri giác.
-Sở Ly mặt mày nhăn nhó như trái khổ qua.
-Nàng ở đây khổ sở chép kinh, còn nam nhân đối diện lại thong dong đánh cờ, tự mình đối ẩm, uống trà nhàn nhã.
-Biết hành người như thế, sao không ra biên quan đánh trận đi?
-Một bụng toàn nước xấu!
-Tim ngươi moi ra chắc đen thui luôn quá?
-Đồ hỗn đản!
-Trong lòng Sở Ly không ngừng chửi thầm.
-Có lẽ vì nghĩ quá nhập tâm, nên dưới ngòi bút bất giác viết thành:
-"Bấy giờ Phật ở cõi Đao Lợi Thiên, vì mẹ thuyết pháp... hỗn đản."
-Vừa hạ bút xong, nàng lập tức hoàn hồn.
-Sở Ly cuống quýt lấy mực bôi đen hai chữ ấy.
-Trong lúc vội vàng, khuỷu tay lại hất trúng nghiên mực.
-Két!
-Âm thanh sắc nhọn vang lên.
-Nàng ngẩng đầu nhìn.
-Lại thấy đôi mắt đen như hắc diệu thạch của nam nhân từ đầu đến cuối vẫn đang nhìn nàng.
-— Hoàng... Hoàng thúc...
-Hắn nhìn thấy rồi?
-Hay chưa nhìn thấy?
-Sở Ly nhanh chóng ổn định tâm thần.
-— Hoàng thúc, tay ta đau quá, có thể ngày mai lại...
-Sở Đệ Trì lạnh nhạt nói:
-— Chép kinh cầu phúc cho Chiêu Nhân Hoàng Thái hậu. Ngươi vốn quen lười biếng, đánh ám vệ của bản vương thì sức lực dồi dào vô cùng.
-— Tiểu Cửu, từ khi nào ngươi từng đặt bản vương vào mắt?
-Sở Ly chỉ muốn kêu oan.
-Nàng nào dám bất kính với hắn?
-Chuyện này thật sự chỉ là một hiểu lầm tuyệt đẹp thôi!
-— Hoàng thúc, ta thật không cố ý!
-Mắt nàng đỏ hoe.
-Chỉ thiếu điều khóc ngay tại chỗ.
-Chép tiếp nữa thì tay nàng sẽ phế mất.
-Nàng mềm giọng cầu xin:
-— Xin Hoàng thúc đại nhân đại lượng, đừng so đo với ta nữa. Sau này ta không dám nữa!
-Sở Đệ Trì bình tĩnh nhìn nàng:
-— Không dám cái gì?
-— Không dám...
-Sở Ly đành trái lương tâm nói:
-— Ta biết Hoàng thúc lo lắng cho an nguy của Đại Hoàng huynh và Đại Hoàng tẩu, đặc biệt phái người đi cứu, vậy mà lại bị ta phá hỏng chuyện tốt.
-— Công lao cũng bị ta cùng Tần Mục Vũ cướp mất.
-— Bây giờ nghĩ lại thật hối hận.
-— Ta đúng là một kẻ thành sự không đủ, bại sự có thừa, chỉ biết gây rắc rối.
-Nàng túm lấy cổ áo mình, đau đớn như cắt ruột:
-— Ta còn mắt mù, làm bị thương ám vệ của người.
-— Ngàn sai vạn sai đều là lỗi của ta.
-— Hoàng thúc, lần sau ta thật sự không dám nữa!
-Kinh Ảnh hừ lạnh.
-Tưởng nhận sai là xong sao?
-Ít nhất cũng phải kéo Cửu Hoàng tử xuống đánh một trận mới hả giận.
-Khóe môi Sở Đệ Trì cong lên, nhưng ý cười không chạm tới đáy mắt:
-— Ngươi làm rất tốt.
-— Được Hoàng thượng ban thưởng, có gì sai đâu?
-— Bản vương đang thưởng ngươi, mới cho ngươi cơ hội chép kinh.
-— Ngươi nên biết quý trọng.
-— Hoàng thúc!
-Sở Ly ném bút xuống, lao tới ôm đùi hắn.
-— Hoàng thúc, Tiểu Cửu ngu dốt, học thức nông cạn, thật sự không gánh nổi phần thưởng này!
-Nàng vừa khóc vừa kể lể:
-— Sau này ta không gây rối nữa!
-— Cũng không tranh công với người nữa!
-— Xin Hoàng thúc tha cho ta lần này đi!
-Ngự y đã nói tay nàng phải dưỡng nửa tháng.
-Nếu dùng quá sức mà để lại di chứng, trở thành phế nhân...
-Nàng thà mất mặt còn hơn mất tay.
-Sở Đệ Trì cúi mắt lạnh lùng nhìn nàng:
-— Thật sao?
-— Thật! Thật hơn cả trân châu!
-Mẫu phi từng nói.
-Chỉ cần nàng đủ phế vật, Nhiếp Chính Vương sẽ không thèm nhằm vào nàng.
-Từ xưa đến nay, có mấy cường giả rảnh rỗi đi bám lấy một tên phế vật?
-Quả nhiên.
-Sở Đệ Trì đá nàng sang một bên.
-Dường như cực kỳ chán ghét dáng vẻ hèn nhát ấy.
-Đường đường là Hoàng tử mà chẳng có chút khí khái nam nhi nào.
-Nhưng trong lòng Sở Ly lại thở phào nhẹ nhõm.
-Chỉ cần thoát khỏi ma trảo của hắn.
-Cho dù phải bò ra khỏi Lâm Hoa điện, nàng cũng không thấy mất mặt.
-— Hoàng thúc nghỉ ngơi sớm.
-— Tiểu Cửu xin cáo lui.
-— Đợi chép xong Địa Tạng Kinh, ta sẽ sai người đưa tới.
-Nói xong.
-Sợ hắn đổi ý.
-Sở Ly bật dậy như lò xo.
-Nhưng vì khoanh chân hơn một canh giờ rưỡi, hai chân tê cứng.
-Vừa đứng lên đã không chống nổi.
-Cả người chúi về phía trước, đâm thẳng vào lồng ngực rắn chắc.
-Mùi bạc hà thanh lãnh quen thuộc lập tức tràn vào chóp mũi.
-Giống như sương tuyết trên đỉnh núi cao.
-Cao quý, lạnh lùng, không cho người khác đến gần.
-Vậy mà lại bị nàng chạy nhảy cả ngày, toàn thân đầy mùi mồ hôi cưỡng ép dính lên.
-Sở Ly luống cuống tay chân.
-Vùng vẫy hơn mười lần mới vội vàng lùi ra khỏi lòng hắn.
-— Hoàng thúc, vừa rồi chân ta tê...
-Tiểu kim điều!
-Do giãy giụa quá mạnh.
-Thanh vàng nhỏ vừa được Hoàng thượng ban thưởng, vốn giấu trong tay áo nàng, lại rơi tọt vào trong vạt áo bị vò nhăn của Nhiếp Chính Vương!
-Sở Đệ Trì lạnh nhạt quét mắt nhìn nàng:
-— Lỗ mãng.
-Sở Ly cắn môi.
-Cúi đầu nhận mắng.
-Nhưng khóe mắt vẫn không ngừng liếc về ngực hắn.
-Tiểu kim điều của ta!
-Không có vàng thì đời người còn ý nghĩa gì nữa?
-Không có vàng thì lấy đâu ra bạc đi nghe hí khúc, uống trà, chọi dế?
-— Còn đứng ngây ra đó làm gì?
-— Không nỡ đi?
-— Không... không phải! Ta...
-Sở Ly nghẹn họng.
-— Ta... chính là... chính là...
-Sắc mặt nàng vô cùng khó xử.
-Rất lâu sau.
-Mới run rẩy giơ một ngón tay lên.
-Cẩn thận chỉ vào ngực hắn.
-Sở Đệ Trì cúi đầu:
-— ...
-— Cầm theo tiểu kim điều của ngươi rồi cút ra ngoài!
-— Vâng! Vâng!
-Sở Ly lăn lộn bò dậy chạy mất.
-Cuối cùng cũng ra khỏi Lâm Hoa điện.
-Mồ hôi lạnh túa đầy người.
-Nhưng vẫn chẳng thấy bóng dáng Ôn phi đâu.
-Nàng tức đến nghiến răng.
-Lập tức xông thẳng tới Ngọc Đường cung hỏi tội.
-Kinh Ảnh thấp giọng nói:
-— Chủ tử, nhìn bộ dạng vô dụng của Cửu Hoàng tử, e rằng chẳng thành được khí hậu.
-— Hoàng thượng thiên vị hắn như vậy, chỉ sợ là muốn đẩy hắn ra chắn đao cho người thật sự được chọn làm Thái tử.
-Sở Đệ Trì cười lạnh:
-— Hắn không thành khí hậu?
-— Vậy ngươi chẳng phải vẫn thua trong tay hắn sao?
-Kinh Ảnh nghẹn họng.
-Lập tức cúi đầu, không dám nói thêm nửa lời.
-Ngọc Đường cung
-— Mẫu phi!
-Bên này.
-Sở Ly nghển cổ xông vào.
-Nàng đã cho người truyền tin, tám trăm dặm khẩn cấp cầu cứu.
-Vậy mà mẫu phi ngay cả bóng cũng không thấy.
-Nàng thật muốn biết rốt cuộc chuyện gì còn quan trọng hơn nàng.
-— Mẫu phi, người ra...
-— Ôi trời, Cửu Hoàng tử, người nhỏ tiếng một chút!
-Ma ma trong cung vội vàng chạy tới kéo nàng sang một bên.
-— Nương nương đang ngủ cùng Hoàng thượng đấy. Ẩn bớt</p>
+            <p>Chương 19: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 19: [Hoàng thúc, lần sau ta không dám nữa]</p>
+<p>Dày thế này thì chép đến bao giờ!</p>
+<p>Sau lưng Sở Ly không ngừng túa mồ hôi:</p>
+<p>— Không biết Hoàng thúc khi nào cần? Hay là ta mang về Chiêu Lan điện chép, đợi chép xong sẽ sai người đưa tới cho Hoàng thúc.</p>
+<p>Sở Đệ Trì vê một quân cờ, đặt xuống bàn cờ.</p>
+<p>— Chép ngay tại đây.</p>
+<p>Kinh Ảnh cười xấu xa:</p>
+<p>— Cửu Hoàng tử, mời đi.</p>
+<p>Tay phải của Sở Ly vẫn còn bị thương, cầm bút vốn đã bất tiện. Cho dù có thể viết bình thường, ngồi đây ba ngày ba đêm e rằng cũng không chép hết quyển 《Địa Tạng Kinh》 này.</p>
+<p>Đây đâu phải bảo nàng chép kinh?</p>
+<p>Rõ ràng là cố ý chỉnh nàng!</p>
+<p>Sở Ly không còn cách nào khác, đành khoanh chân ngồi bên án thấp, dùng cánh tay “tàn phế” khó nhọc cầm bút lông, xiêu xiêu vẹo vẹo viết xuống từng chữ.</p>
+<p>Đau tay quá...</p>
+<p>Mẫu phi, mau tới cứu con!</p>
+<p>Bây giờ người duy nhất con có thể trông cậy vào chính là người!</p>
+<p>Ôm theo tia hy vọng ấy, Sở Ly cắn răng chép xong trang đầu tiên. Tay phải đã tê cứng đến gần như mất cảm giác.</p>
+<p>Nàng nhìn ra ngoài cửa sổ.</p>
+<p>Trời đã tối hẳn.</p>
+<p>Thế nhưng vẫn không nghe thấy tiếng thông báo:</p>
+<p>"Ôn phi nương nương giá lâm."</p>
+<p>Nàng vừa định nghỉ lấy hơi.</p>
+<p>Chát!</p>
+<p>Một quân cờ nặng nề rơi xuống bàn.</p>
+<p>Âm thanh giòn tan, xen lẫn vài phần lệ khí, giống như một lời cảnh cáo vô hình.</p>
+<p>Da đầu Sở Ly tê dại.</p>
+<p>Lập tức cầm bút tiếp tục chép.</p>
+<p>Mẫu phi sao còn chưa tới?</p>
+<p>Chẳng lẽ bị chuyện gì trì hoãn?</p>
+<p>Muộn thế này rồi, còn có việc gì quan trọng hơn tính mạng của nữ nhi người sao?</p>
+<p>Tay tê rồi.</p>
+<p>Không được nữa.</p>
+<p>Ngồi khoanh chân quá lâu, ngay cả chân cũng tê cứng, gần như mất hết tri giác.</p>
+<p>Sở Ly mặt mày nhăn nhó như trái khổ qua.</p>
+<p>Nàng ở đây khổ sở chép kinh, còn nam nhân đối diện lại thong dong đánh cờ, tự mình đối ẩm, uống trà nhàn nhã.</p>
+<p>Biết hành người như thế, sao không ra biên quan đánh trận đi?</p>
+<p>Một bụng toàn nước xấu!</p>
+<p>Tim ngươi moi ra chắc đen thui luôn quá?</p>
+<p>Đồ hỗn đản!</p>
+<p>Trong lòng Sở Ly không ngừng chửi thầm.</p>
+<p>Có lẽ vì nghĩ quá nhập tâm, nên dưới ngòi bút bất giác viết thành:</p>
+<p>"Bấy giờ Phật ở cõi Đao Lợi Thiên, vì mẹ thuyết pháp... hỗn đản."</p>
+<p>Vừa hạ bút xong, nàng lập tức hoàn hồn.</p>
+<p>Sở Ly cuống quýt lấy mực bôi đen hai chữ ấy.</p>
+<p>Trong lúc vội vàng, khuỷu tay lại hất trúng nghiên mực.</p>
+<p>Két!</p>
+<p>Âm thanh sắc nhọn vang lên.</p>
+<p>Nàng ngẩng đầu nhìn.</p>
+<p>Lại thấy đôi mắt đen như hắc diệu thạch của nam nhân từ đầu đến cuối vẫn đang nhìn nàng.</p>
+<p>— Hoàng... Hoàng thúc...</p>
+<p>Hắn nhìn thấy rồi?</p>
+<p>Hay chưa nhìn thấy?</p>
+<p>Sở Ly nhanh chóng ổn định tâm thần.</p>
+<p>— Hoàng thúc, tay ta đau quá, có thể ngày mai lại...</p>
+<p>Sở Đệ Trì lạnh nhạt nói:</p>
+<p>— Chép kinh cầu phúc cho Chiêu Nhân Hoàng Thái hậu. Ngươi vốn quen lười biếng, đánh ám vệ của bản vương thì sức lực dồi dào vô cùng.</p>
+<p>— Tiểu Cửu, từ khi nào ngươi từng đặt bản vương vào mắt?</p>
+<p>Sở Ly chỉ muốn kêu oan.</p>
+<p>Nàng nào dám bất kính với hắn?</p>
+<p>Chuyện này thật sự chỉ là một hiểu lầm tuyệt đẹp thôi!</p>
+<p>— Hoàng thúc, ta thật không cố ý!</p>
+<p>Mắt nàng đỏ hoe.</p>
+<p>Chỉ thiếu điều khóc ngay tại chỗ.</p>
+<p>Chép tiếp nữa thì tay nàng sẽ phế mất.</p>
+<p>Nàng mềm giọng cầu xin:</p>
+<p>— Xin Hoàng thúc đại nhân đại lượng, đừng so đo với ta nữa. Sau này ta không dám nữa!</p>
+<p>Sở Đệ Trì bình tĩnh nhìn nàng:</p>
+<p>— Không dám cái gì?</p>
+<p>— Không dám...</p>
+<p>Sở Ly đành trái lương tâm nói:</p>
+<p>— Ta biết Hoàng thúc lo lắng cho an nguy của Đại Hoàng huynh và Đại Hoàng tẩu, đặc biệt phái người đi cứu, vậy mà lại bị ta phá hỏng chuyện tốt.</p>
+<p>— Công lao cũng bị ta cùng Tần Mục Vũ cướp mất.</p>
+<p>— Bây giờ nghĩ lại thật hối hận.</p>
+<p>— Ta đúng là một kẻ thành sự không đủ, bại sự có thừa, chỉ biết gây rắc rối.</p>
+<p>Nàng túm lấy cổ áo mình, đau đớn như cắt ruột:</p>
+<p>— Ta còn mắt mù, làm bị thương ám vệ của người.</p>
+<p>— Ngàn sai vạn sai đều là lỗi của ta.</p>
+<p>— Hoàng thúc, lần sau ta thật sự không dám nữa!</p>
+<p>Kinh Ảnh hừ lạnh.</p>
+<p>Tưởng nhận sai là xong sao?</p>
+<p>Ít nhất cũng phải kéo Cửu Hoàng tử xuống đánh một trận mới hả giận.</p>
+<p>Khóe môi Sở Đệ Trì cong lên, nhưng ý cười không chạm tới đáy mắt:</p>
+<p>— Ngươi làm rất tốt.</p>
+<p>— Được Hoàng thượng ban thưởng, có gì sai đâu?</p>
+<p>— Bản vương đang thưởng ngươi, mới cho ngươi cơ hội chép kinh.</p>
+<p>— Ngươi nên biết quý trọng.</p>
+<p>— Hoàng thúc!</p>
+<p>Sở Ly ném bút xuống, lao tới ôm đùi hắn.</p>
+<p>— Hoàng thúc, Tiểu Cửu ngu dốt, học thức nông cạn, thật sự không gánh nổi phần thưởng này!</p>
+<p>Nàng vừa khóc vừa kể lể:</p>
+<p>— Sau này ta không gây rối nữa!</p>
+<p>— Cũng không tranh công với người nữa!</p>
+<p>— Xin Hoàng thúc tha cho ta lần này đi!</p>
+<p>Ngự y đã nói tay nàng phải dưỡng nửa tháng.</p>
+<p>Nếu dùng quá sức mà để lại di chứng, trở thành phế nhân...</p>
+<p>Nàng thà mất mặt còn hơn mất tay.</p>
+<p>Sở Đệ Trì cúi mắt lạnh lùng nhìn nàng:</p>
+<p>— Thật sao?</p>
+<p>— Thật! Thật hơn cả trân châu!</p>
+<p>Mẫu phi từng nói.</p>
+<p>Chỉ cần nàng đủ phế vật, Nhiếp Chính Vương sẽ không thèm nhằm vào nàng.</p>
+<p>Từ xưa đến nay, có mấy cường giả rảnh rỗi đi bám lấy một tên phế vật?</p>
+<p>Quả nhiên.</p>
+<p>Sở Đệ Trì đá nàng sang một bên.</p>
+<p>Dường như cực kỳ chán ghét dáng vẻ hèn nhát ấy.</p>
+<p>Đường đường là Hoàng tử mà chẳng có chút khí khái nam nhi nào.</p>
+<p>Nhưng trong lòng Sở Ly lại thở phào nhẹ nhõm.</p>
+<p>Chỉ cần thoát khỏi ma trảo của hắn.</p>
+<p>Cho dù phải bò ra khỏi Lâm Hoa điện, nàng cũng không thấy mất mặt.</p>
+<p>— Hoàng thúc nghỉ ngơi sớm.</p>
+<p>— Tiểu Cửu xin cáo lui.</p>
+<p>— Đợi chép xong Địa Tạng Kinh, ta sẽ sai người đưa tới.</p>
+<p>Nói xong.</p>
+<p>Sợ hắn đổi ý.</p>
+<p>Sở Ly bật dậy như lò xo.</p>
+<p>Nhưng vì khoanh chân hơn một canh giờ rưỡi, hai chân tê cứng.</p>
+<p>Vừa đứng lên đã không chống nổi.</p>
+<p>Cả người chúi về phía trước, đâm thẳng vào lồng ngực rắn chắc.</p>
+<p>Mùi bạc hà thanh lãnh quen thuộc lập tức tràn vào chóp mũi.</p>
+<p>Giống như sương tuyết trên đỉnh núi cao.</p>
+<p>Cao quý, lạnh lùng, không cho người khác đến gần.</p>
+<p>Vậy mà lại bị nàng chạy nhảy cả ngày, toàn thân đầy mùi mồ hôi cưỡng ép dính lên.</p>
+<p>Sở Ly luống cuống tay chân.</p>
+<p>Vùng vẫy hơn mười lần mới vội vàng lùi ra khỏi lòng hắn.</p>
+<p>— Hoàng thúc, vừa rồi chân ta tê...</p>
+<p>Tiểu kim điều!</p>
+<p>Do giãy giụa quá mạnh.</p>
+<p>Thanh vàng nhỏ vừa được Hoàng thượng ban thưởng, vốn giấu trong tay áo nàng, lại rơi tọt vào trong vạt áo bị vò nhăn của Nhiếp Chính Vương!</p>
+<p>Sở Đệ Trì lạnh nhạt quét mắt nhìn nàng:</p>
+<p>— Lỗ mãng.</p>
+<p>Sở Ly cắn môi.</p>
+<p>Cúi đầu nhận mắng.</p>
+<p>Nhưng khóe mắt vẫn không ngừng liếc về ngực hắn.</p>
+<p>Tiểu kim điều của ta!</p>
+<p>Không có vàng thì đời người còn ý nghĩa gì nữa?</p>
+<p>Không có vàng thì lấy đâu ra bạc đi nghe hí khúc, uống trà, chọi dế?</p>
+<p>— Còn đứng ngây ra đó làm gì?</p>
+<p>— Không nỡ đi?</p>
+<p>— Không... không phải! Ta...</p>
+<p>Sở Ly nghẹn họng.</p>
+<p>— Ta... chính là... chính là...</p>
+<p>Sắc mặt nàng vô cùng khó xử.</p>
+<p>Rất lâu sau.</p>
+<p>Mới run rẩy giơ một ngón tay lên.</p>
+<p>Cẩn thận chỉ vào ngực hắn.</p>
+<p>Sở Đệ Trì cúi đầu:</p>
+<p>— ...</p>
+<p>— Cầm theo tiểu kim điều của ngươi rồi cút ra ngoài!</p>
+<p>— Vâng! Vâng!</p>
+<p>Sở Ly lăn lộn bò dậy chạy mất.</p>
+<p>Cuối cùng cũng ra khỏi Lâm Hoa điện.</p>
+<p>Mồ hôi lạnh túa đầy người.</p>
+<p>Nhưng vẫn chẳng thấy bóng dáng Ôn phi đâu.</p>
+<p>Nàng tức đến nghiến răng.</p>
+<p>Lập tức xông thẳng tới Ngọc Đường cung hỏi tội.</p>
+<p>Kinh Ảnh thấp giọng nói:</p>
+<p>— Chủ tử, nhìn bộ dạng vô dụng của Cửu Hoàng tử, e rằng chẳng thành được khí hậu.</p>
+<p>— Hoàng thượng thiên vị hắn như vậy, chỉ sợ là muốn đẩy hắn ra chắn đao cho người thật sự được chọn làm Thái tử.</p>
+<p>Sở Đệ Trì cười lạnh:</p>
+<p>— Hắn không thành khí hậu?</p>
+<p>— Vậy ngươi chẳng phải vẫn thua trong tay hắn sao?</p>
+<p>Kinh Ảnh nghẹn họng.</p>
+<p>Lập tức cúi đầu, không dám nói thêm nửa lời.</p>
+<p>Ngọc Đường cung</p>
+<p>— Mẫu phi!</p>
+<p>Bên này.</p>
+<p>Sở Ly nghển cổ xông vào.</p>
+<p>Nàng đã cho người truyền tin, tám trăm dặm khẩn cấp cầu cứu.</p>
+<p>Vậy mà mẫu phi ngay cả bóng cũng không thấy.</p>
+<p>Nàng thật muốn biết rốt cuộc chuyện gì còn quan trọng hơn nàng.</p>
+<p>— Mẫu phi, người ra...</p>
+<p>— Ôi trời, Cửu Hoàng tử, người nhỏ tiếng một chút!</p>
+<p>Ma ma trong cung vội vàng chạy tới kéo nàng sang một bên.</p>
+<p>— Nương nương đang ngủ cùng Hoàng thượng đấy. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_18.html" class="btn">‹ Trước</a>
             <a href="chuong_20.html" class="btn">Sau ›</a>
         </div>
@@ -302,15 +310,11 @@ Ma ma trong cung vội vàng chạy tới kéo nàng sang một bên.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -322,11 +326,11 @@ Ma ma trong cung vội vàng chạy tới kéo nàng sang một bên.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

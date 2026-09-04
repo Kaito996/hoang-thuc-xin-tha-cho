@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 124</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,188 +62,197 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 124</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_123.html" class="btn">‹ Trước</a>
             <a href="chuong_125.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 124: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 124: Tiểu Cửu, đừng giận
-Có lẽ mấy ngày nay thần kinh căng như dây đàn, ăn cơm xong liền cảm thấy mệt mỏi vô cùng. Tắm rửa xong, nàng định đi nghỉ sớm, nhưng vừa nhìn thấy chồng tấu chương trên bàn cao còn hơn cả người…
-Làm hoàng đế, quả thật là một nghề có độ nguy hiểm cực cao.
-Nàng đấm đấm thắt lưng, kéo đôi chân nặng trĩu bước tới, lại bị Sở Đệ Trì kéo thẳng lên giường.
-“Ngày mai xử lý cũng chưa muộn, ngủ trước đi.”
-Sở Ly đẩy hắn ra: “Rất nhiều chính sự không thể chậm trễ, ta phải xem xong càng sớm càng tốt.”
-“Nàng chịu dành một phần sự tận tâm này cho bản vương, ta cũng chẳng cần phải nhọc lòng đến vậy.”
-“?”
-Sở Ly không hiểu.
-Sở Đệ Trì khẽ thở dài, ôm lấy vòng eo nhỏ của nàng, dỗ nàng đi ngủ.
-Nàng không chịu.
-Vậy thì đành dùng cách đơn giản và nguyên thủy nhất.
-Sau khi “dỗ” nàng ngủ say, hắn thổi tắt nến, ôm nàng ngủ một lát rồi lặng lẽ ngồi dậy phê tấu chương. Đến sáng hôm sau, lúc Sở Ly tỉnh dậy, nàng kinh ngạc phát hiện toàn bộ tấu chương trên bàn đều đã được xử lý xong.
-Từng quyển một, không sót quyển nào.
-Hơn nữa còn phê rất thỏa đáng.
-Sở Ly cầm một quyển tấu chương, nhìn nét bút trên đó, tâm tư nặng trĩu.
-Các quan chỉ cần nhìn bút son trên tấu chương, dựa vào nét chữ là có thể nhận ra đó là bút tích của Nhiếp Chính Vương. Vị tân đế sắp đăng cơ như nàng… chẳng khác nào một con rối mà ai ai cũng biết.
-Nàng mệt mỏi xoa mi tâm.
-“Cẩu Bát, mài mực cho ta!”
-Nàng phải viết mấy đạo mật chỉ.
-Lúc Cẩu Bát mài mực, thần sắc có phần do dự, bộ dạng muốn nói lại thôi. Không cần đoán cũng biết là liên quan đến Nhiếp Chính Vương.
-Từ khi Sở Hoàng bị liệt, Nhiếp Chính Vương hành sự ngày càng phô trương, quang minh chính đại ra vào Chiêu Lan điện, thậm chí còn ngủ lại tại đây. Chỉ cần người không mù đều có thể đoán ra vài phần.
-Sở Ly còn chưa bước ra ngoài.
-Nếu thật sự bước ra, còn không biết những người kia sẽ nhìn nàng bằng ánh mắt thế nào.
-Chỉ cần nghĩ thôi cũng có thể hình dung ra cảnh tượng ấy.
-Sở Ly nhanh chóng viết xong mấy đạo mật chỉ, nghiêm giọng dặn:
-“Đem giao cho Ôn phi, cất giữ cẩn thận, tuyệt đối không được để bất kỳ ai biết.”
-“Vâng!”
-Cẩu Bát ôm chặt những mật chỉ vào lòng.
-Vừa ra ngoài, đúng lúc đụng phải Nhiếp Chính Vương đang đi tới. Hắn theo phản xạ ôm chặt ngực, cúi đầu chạy vụt đi.
-Sở Đệ Trì nghiêng mắt nhìn theo, như có điều suy nghĩ.
-“Hắn đi đâu?”
-Sở Ly đứng dậy.
-“Ta bảo hắn đi mời Mẫu phi, lát nữa cùng dùng bữa.”
-“Ồ.”
-Hắn không hỏi thêm.
-“Ngươi đi đâu vậy?”
-Hắn hơi bất ngờ.
-“Đây là đang chủ động quan tâm bản vương sao?”
-Sở Ly nghẹn họng, khẽ siết ngón tay. Nàng chỉ muốn chuyển đề tài, sợ hắn cứ nhìn chằm chằm Cẩu Bát nên mới thuận miệng hỏi một câu.
-“Không có.”
-Sở Đệ Trì cất bước, mỉm cười tiến về phía nàng.
-Sở Ly lùi lại.
-“Ngài đi xử lý chuyện của Tướng quân phủ đi. Đã là ý của ngài khi điều Tần Mục Vũ đến Nam Cương, vậy việc điểm binh, xuất chinh cùng mọi chuyện liên quan, ngài tự mình lo liệu.”
-Nụ cười trên mặt Sở Đệ Trì khẽ khựng lại.
-“Lo cho hắn đến vậy?”
-Sở Ly đáp:
-“Ngài nhiều năm trấn thủ Nam Cương, kinh nghiệm phong phú, hẳn sẽ không tiếc chỉ dạy. Nếu Tần Thiếu tướng quân xảy ra chuyện ở Nam Cương, ta cũng chẳng thể an tâm chấp chính.”
-Sở Đệ Trì từ từ nheo mắt.
-Đây là đang uy hiếp hắn?
-Ha!
-Đợi đến khi Tần Thiếu tướng quân rời kinh, tới Nam Cương, cách xa ngàn dặm, hắn muốn xem nàng còn có thể ngày ngày nhớ nhung hắn nữa không.
-“Có người của Binh bộ sắp xếp, hắn còn chưa đủ tư cách để bản vương phải đích thân bận tâm.”
-Sở Ly nhìn hắn.
-“Không phải ngài nói đến để phò tá ta sao? Mệnh lệnh đầu tiên của tân đế mà ngài đã không nghe, hay là chiếc long ỷ này để ngài ngồi luôn?”
-Sắc mặt Sở Đệ Trì lập tức trầm xuống.
-Ra vẻ tân đế trước mặt hắn… hóa ra chỉ vì một nam nhân!
-Được.
-Nàng giỏi lắm.
-“Lệnh của tân đế, thần tự nhiên tuân chỉ! Cứ yên tâm, thần nhất định sẽ đích thân tiễn Tần Thiếu tướng quân rời kinh!”
-Mấy câu ấy gần như được hắn nghiến răng nói ra.
-Nói xong liền phất tay áo bỏ đi.
-Đích thân nhìn hắn đi xa, Sở Ly mới đóng cửa lại, chạy tới bên tủ, lục tung mọi ngăn kéo tìm kiếm thứ gì đó.
-Chỗ này lật một chút.
-Chỗ kia tìm một chút.
-Nơi này sờ một chút.
-Nơi kia leo lên xem một chút.
-Nửa canh giờ sau, y phục trước ngực nàng phồng lên, rồi bước ra khỏi Chiêu Lan điện.
-Noãn Ngọc đứng trong sân nhìn theo, trầm ngâm suy nghĩ.
-Ngày hôm ấy, Sở Đệ Trì bận rộn ở quân doanh, còn Sở Ly cũng tranh thủ xử lý việc riêng của mình.
-Đến chiều tối, Sở Đệ Trì hồi cung, Noãn Ngọc lặng lẽ bẩm báo:
-“Chủ tử, hôm nay Cửu hoàng tử đã xuất cung một chuyến, không mang theo bất kỳ ai.”
-Ngay cả Cẩu Bát cũng không dẫn theo.
-Nhìn dáng vẻ ấy, không biết là đi làm chuyện gì.
-Sở Đệ Trì hơi dừng bước.
-“Bảo Trọng Phong đi điều tra, ngươi bình thường cũng để ý nàng nhiều hơn.”
-“Vâng.”
-Hắn bước vào Chiêu Lan điện, thấy Sở Ly đang tự mình dùng bữa tối.
-Không đợi hắn.
-Con nhóc vô lương tâm.
-“Ta bận cả ngày vì chuyện của Tần Thiếu tướng quân, nàng đến bữa cơm cũng không chờ ta?”
-Sở Ly hỏi ngược:
-“Ngài muốn ăn cơm, ai dám chậm trễ? Nhiếp Chính Vương phủ hết cơm rồi sao? Lâm Hoa điện hết cơm rồi sao? Huống hồ đây là tẩm điện của ta, ta ăn cơm tối còn phải xin phép ngài? Hay là chiếc long ỷ này để ngài ngồi luôn?”
-Sở Đệ Trì xắn tay áo, rất tự nhiên kéo ghế ngồi xuống.
-“Tân đế quá ưu ái, thần không dám nhận.”
-Đừng tưởng nàng không nghe ra ý trêu chọc trong lời hắn.
-Sở Ly nhanh chóng ăn hết bát cơm, rồi sang Dưỡng Tâm điện thăm Sở Hoàng, lại ghé thăm Ôn phi, chạy một vòng mới trở về Chiêu Lan điện.
-Đêm xuống.
-Tiếng thở dốc hòa cùng ánh nến đỏ lay động, tan vào màn đêm sâu thẳm như nước.
-Trên giường, hai người ôm chặt lấy nhau.
-Giọt mồ hôi mỏng rơi xuống bên thái dương nàng, giọng nam nhân trầm thấp:
-“Hôm nay nàng xuất cung?”
-Sở Ly xoay người, quay lưng về phía hắn.
-“Ngày nào ta chẳng xuất cung, đâu riêng hôm nay.”
-“Nhưng trước đây nàng ra ngoài phần lớn đều cùng Bát hoàng tử đi chơi. Hôm nay nàng không gọi Bát hoàng tử, cũng không đến Tướng quân phủ, càng không đến Ôn gia. Vậy nàng đi đâu?”
-Sở Ly khựng lại.
-“Ngài cho người theo dõi ta?”
-“Hiện nay thời cuộc hỗn loạn, chính quyền chưa ổn định, bản vương chỉ là lo cho nàng.”
-Sở Ly cười lạnh.
-Nói thì thật hay.
-Nhất cử nhất động của nàng hắn đều nắm rõ trong lòng bàn tay, vậy mà còn bảo là vì tốt cho nàng?
-“Nếu đã cho người theo dõi ta, ta làm gì, đi đâu, sao không hỏi thẳng thuộc hạ của ngài? Hỏi ta làm gì?”
-“Tiểu Cửu…”
-“Ta ngủ rồi!”
-Nàng kéo chăn, trùm kín nửa đầu, vùi cả người vào trong, nhắm mắt, không nói thêm lời nào.
-Sở Đệ Trì gọi nàng mấy tiếng, nàng đều không đáp.
-Hắn thật sự không cho người giám sát nàng.
-Chỉ là Noãn Ngọc tới báo hành vi của nàng có phần khác thường, hắn mới sai người đi điều tra. Dù sao nàng vốn lanh lợi tinh quái, đầy mưu mẹo, hắn cũng chỉ sợ nàng bỏ chạy.
-“Đừng giận.”
-Hắn ôm lấy nàng từ phía sau, lồng ngực áp sát không một kẽ hở vào lưng nàng.
-“Tiểu Cửu.”
-“Ngủ rồi sao?”
-“Tiểu Cửu?”
-Đáp lại hắn chỉ là cái gáy nhỏ trong bóng tối.
-Qua nhịp thở của nàng, hắn biết nàng vẫn chưa ngủ, chỉ là không muốn để ý đến hắn.
-Không hiểu vì sao, mí mắt phải của hắn giật liên hồi, trong lòng luôn dâng lên một dự cảm chẳng lành.
-Mắt trái giật là có tài, mắt phải giật là có họa.
-Hắn ôm nàng thật chặt, cảm nhận hơi ấm và thân thể mềm mại của nàng, hít lấy hương thơm nhè nhẹ trên người nàng, trong lòng mới thấy yên ổn được đôi chút.
-—————————
-Mấy ngày nay anh Trì năng suất quá nhỉ 
-. Tham lam gom hết đường rồi, chuẩn bị nhịn ngọt 
-dài dài nhé 
-——————— Ẩn bớt</p>
+            <p>Chương 124: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 124: Tiểu Cửu, đừng giận</p>
+<p>Có lẽ mấy ngày nay thần kinh căng như dây đàn, ăn cơm xong liền cảm thấy mệt mỏi vô cùng. Tắm rửa xong, nàng định đi nghỉ sớm, nhưng vừa nhìn thấy chồng tấu chương trên bàn cao còn hơn cả người…</p>
+<p>Làm hoàng đế, quả thật là một nghề có độ nguy hiểm cực cao.</p>
+<p>Nàng đấm đấm thắt lưng, kéo đôi chân nặng trĩu bước tới, lại bị Sở Đệ Trì kéo thẳng lên giường.</p>
+<p>“Ngày mai xử lý cũng chưa muộn, ngủ trước đi.”</p>
+<p>Sở Ly đẩy hắn ra: “Rất nhiều chính sự không thể chậm trễ, ta phải xem xong càng sớm càng tốt.”</p>
+<p>“Nàng chịu dành một phần sự tận tâm này cho bản vương, ta cũng chẳng cần phải nhọc lòng đến vậy.”</p>
+<p>“?”</p>
+<p>Sở Ly không hiểu.</p>
+<p>Sở Đệ Trì khẽ thở dài, ôm lấy vòng eo nhỏ của nàng, dỗ nàng đi ngủ.</p>
+<p>Nàng không chịu.</p>
+<p>Vậy thì đành dùng cách đơn giản và nguyên thủy nhất.</p>
+<p>Sau khi “dỗ” nàng ngủ say, hắn thổi tắt nến, ôm nàng ngủ một lát rồi lặng lẽ ngồi dậy phê tấu chương. Đến sáng hôm sau, lúc Sở Ly tỉnh dậy, nàng kinh ngạc phát hiện toàn bộ tấu chương trên bàn đều đã được xử lý xong.</p>
+<p>Từng quyển một, không sót quyển nào.</p>
+<p>Hơn nữa còn phê rất thỏa đáng.</p>
+<p>Sở Ly cầm một quyển tấu chương, nhìn nét bút trên đó, tâm tư nặng trĩu.</p>
+<p>Các quan chỉ cần nhìn bút son trên tấu chương, dựa vào nét chữ là có thể nhận ra đó là bút tích của Nhiếp Chính Vương. Vị tân đế sắp đăng cơ như nàng… chẳng khác nào một con rối mà ai ai cũng biết.</p>
+<p>Nàng mệt mỏi xoa mi tâm.</p>
+<p>“Cẩu Bát, mài mực cho ta!”</p>
+<p>Nàng phải viết mấy đạo mật chỉ.</p>
+<p>Lúc Cẩu Bát mài mực, thần sắc có phần do dự, bộ dạng muốn nói lại thôi. Không cần đoán cũng biết là liên quan đến Nhiếp Chính Vương.</p>
+<p>Từ khi Sở Hoàng bị liệt, Nhiếp Chính Vương hành sự ngày càng phô trương, quang minh chính đại ra vào Chiêu Lan điện, thậm chí còn ngủ lại tại đây. Chỉ cần người không mù đều có thể đoán ra vài phần.</p>
+<p>Sở Ly còn chưa bước ra ngoài.</p>
+<p>Nếu thật sự bước ra, còn không biết những người kia sẽ nhìn nàng bằng ánh mắt thế nào.</p>
+<p>Chỉ cần nghĩ thôi cũng có thể hình dung ra cảnh tượng ấy.</p>
+<p>Sở Ly nhanh chóng viết xong mấy đạo mật chỉ, nghiêm giọng dặn:</p>
+<p>“Đem giao cho Ôn phi, cất giữ cẩn thận, tuyệt đối không được để bất kỳ ai biết.”</p>
+<p>“Vâng!”</p>
+<p>Cẩu Bát ôm chặt những mật chỉ vào lòng.</p>
+<p>Vừa ra ngoài, đúng lúc đụng phải Nhiếp Chính Vương đang đi tới. Hắn theo phản xạ ôm chặt ngực, cúi đầu chạy vụt đi.</p>
+<p>Sở Đệ Trì nghiêng mắt nhìn theo, như có điều suy nghĩ.</p>
+<p>“Hắn đi đâu?”</p>
+<p>Sở Ly đứng dậy.</p>
+<p>“Ta bảo hắn đi mời Mẫu phi, lát nữa cùng dùng bữa.”</p>
+<p>“Ồ.”</p>
+<p>Hắn không hỏi thêm.</p>
+<p>“Ngươi đi đâu vậy?”</p>
+<p>Hắn hơi bất ngờ.</p>
+<p>“Đây là đang chủ động quan tâm bản vương sao?”</p>
+<p>Sở Ly nghẹn họng, khẽ siết ngón tay. Nàng chỉ muốn chuyển đề tài, sợ hắn cứ nhìn chằm chằm Cẩu Bát nên mới thuận miệng hỏi một câu.</p>
+<p>“Không có.”</p>
+<p>Sở Đệ Trì cất bước, mỉm cười tiến về phía nàng.</p>
+<p>Sở Ly lùi lại.</p>
+<p>“Ngài đi xử lý chuyện của Tướng quân phủ đi. Đã là ý của ngài khi điều Tần Mục Vũ đến Nam Cương, vậy việc điểm binh, xuất chinh cùng mọi chuyện liên quan, ngài tự mình lo liệu.”</p>
+<p>Nụ cười trên mặt Sở Đệ Trì khẽ khựng lại.</p>
+<p>“Lo cho hắn đến vậy?”</p>
+<p>Sở Ly đáp:</p>
+<p>“Ngài nhiều năm trấn thủ Nam Cương, kinh nghiệm phong phú, hẳn sẽ không tiếc chỉ dạy. Nếu Tần Thiếu tướng quân xảy ra chuyện ở Nam Cương, ta cũng chẳng thể an tâm chấp chính.”</p>
+<p>Sở Đệ Trì từ từ nheo mắt.</p>
+<p>Đây là đang uy hiếp hắn?</p>
+<p>Ha!</p>
+<p>Đợi đến khi Tần Thiếu tướng quân rời kinh, tới Nam Cương, cách xa ngàn dặm, hắn muốn xem nàng còn có thể ngày ngày nhớ nhung hắn nữa không.</p>
+<p>“Có người của Binh bộ sắp xếp, hắn còn chưa đủ tư cách để bản vương phải đích thân bận tâm.”</p>
+<p>Sở Ly nhìn hắn.</p>
+<p>“Không phải ngài nói đến để phò tá ta sao? Mệnh lệnh đầu tiên của tân đế mà ngài đã không nghe, hay là chiếc long ỷ này để ngài ngồi luôn?”</p>
+<p>Sắc mặt Sở Đệ Trì lập tức trầm xuống.</p>
+<p>Ra vẻ tân đế trước mặt hắn… hóa ra chỉ vì một nam nhân!</p>
+<p>Được.</p>
+<p>Nàng giỏi lắm.</p>
+<p>“Lệnh của tân đế, thần tự nhiên tuân chỉ! Cứ yên tâm, thần nhất định sẽ đích thân tiễn Tần Thiếu tướng quân rời kinh!”</p>
+<p>Mấy câu ấy gần như được hắn nghiến răng nói ra.</p>
+<p>Nói xong liền phất tay áo bỏ đi.</p>
+<p>Đích thân nhìn hắn đi xa, Sở Ly mới đóng cửa lại, chạy tới bên tủ, lục tung mọi ngăn kéo tìm kiếm thứ gì đó.</p>
+<p>Chỗ này lật một chút.</p>
+<p>Chỗ kia tìm một chút.</p>
+<p>Nơi này sờ một chút.</p>
+<p>Nơi kia leo lên xem một chút.</p>
+<p>Nửa canh giờ sau, y phục trước ngực nàng phồng lên, rồi bước ra khỏi Chiêu Lan điện.</p>
+<p>Noãn Ngọc đứng trong sân nhìn theo, trầm ngâm suy nghĩ.</p>
+<p>Ngày hôm ấy, Sở Đệ Trì bận rộn ở quân doanh, còn Sở Ly cũng tranh thủ xử lý việc riêng của mình.</p>
+<p>Đến chiều tối, Sở Đệ Trì hồi cung, Noãn Ngọc lặng lẽ bẩm báo:</p>
+<p>“Chủ tử, hôm nay Cửu hoàng tử đã xuất cung một chuyến, không mang theo bất kỳ ai.”</p>
+<p>Ngay cả Cẩu Bát cũng không dẫn theo.</p>
+<p>Nhìn dáng vẻ ấy, không biết là đi làm chuyện gì.</p>
+<p>Sở Đệ Trì hơi dừng bước.</p>
+<p>“Bảo Trọng Phong đi điều tra, ngươi bình thường cũng để ý nàng nhiều hơn.”</p>
+<p>“Vâng.”</p>
+<p>Hắn bước vào Chiêu Lan điện, thấy Sở Ly đang tự mình dùng bữa tối.</p>
+<p>Không đợi hắn.</p>
+<p>Con nhóc vô lương tâm.</p>
+<p>“Ta bận cả ngày vì chuyện của Tần Thiếu tướng quân, nàng đến bữa cơm cũng không chờ ta?”</p>
+<p>Sở Ly hỏi ngược:</p>
+<p>“Ngài muốn ăn cơm, ai dám chậm trễ? Nhiếp Chính Vương phủ hết cơm rồi sao? Lâm Hoa điện hết cơm rồi sao? Huống hồ đây là tẩm điện của ta, ta ăn cơm tối còn phải xin phép ngài? Hay là chiếc long ỷ này để ngài ngồi luôn?”</p>
+<p>Sở Đệ Trì xắn tay áo, rất tự nhiên kéo ghế ngồi xuống.</p>
+<p>“Tân đế quá ưu ái, thần không dám nhận.”</p>
+<p>Đừng tưởng nàng không nghe ra ý trêu chọc trong lời hắn.</p>
+<p>Sở Ly nhanh chóng ăn hết bát cơm, rồi sang Dưỡng Tâm điện thăm Sở Hoàng, lại ghé thăm Ôn phi, chạy một vòng mới trở về Chiêu Lan điện.</p>
+<p>Đêm xuống.</p>
+<p>Tiếng thở dốc hòa cùng ánh nến đỏ lay động, tan vào màn đêm sâu thẳm như nước.</p>
+<p>Trên giường, hai người ôm chặt lấy nhau.</p>
+<p>Giọt mồ hôi mỏng rơi xuống bên thái dương nàng, giọng nam nhân trầm thấp:</p>
+<p>“Hôm nay nàng xuất cung?”</p>
+<p>Sở Ly xoay người, quay lưng về phía hắn.</p>
+<p>“Ngày nào ta chẳng xuất cung, đâu riêng hôm nay.”</p>
+<p>“Nhưng trước đây nàng ra ngoài phần lớn đều cùng Bát hoàng tử đi chơi. Hôm nay nàng không gọi Bát hoàng tử, cũng không đến Tướng quân phủ, càng không đến Ôn gia. Vậy nàng đi đâu?”</p>
+<p>Sở Ly khựng lại.</p>
+<p>“Ngài cho người theo dõi ta?”</p>
+<p>“Hiện nay thời cuộc hỗn loạn, chính quyền chưa ổn định, bản vương chỉ là lo cho nàng.”</p>
+<p>Sở Ly cười lạnh.</p>
+<p>Nói thì thật hay.</p>
+<p>Nhất cử nhất động của nàng hắn đều nắm rõ trong lòng bàn tay, vậy mà còn bảo là vì tốt cho nàng?</p>
+<p>“Nếu đã cho người theo dõi ta, ta làm gì, đi đâu, sao không hỏi thẳng thuộc hạ của ngài? Hỏi ta làm gì?”</p>
+<p>“Tiểu Cửu…”</p>
+<p>“Ta ngủ rồi!”</p>
+<p>Nàng kéo chăn, trùm kín nửa đầu, vùi cả người vào trong, nhắm mắt, không nói thêm lời nào.</p>
+<p>Sở Đệ Trì gọi nàng mấy tiếng, nàng đều không đáp.</p>
+<p>Hắn thật sự không cho người giám sát nàng.</p>
+<p>Chỉ là Noãn Ngọc tới báo hành vi của nàng có phần khác thường, hắn mới sai người đi điều tra. Dù sao nàng vốn lanh lợi tinh quái, đầy mưu mẹo, hắn cũng chỉ sợ nàng bỏ chạy.</p>
+<p>“Đừng giận.”</p>
+<p>Hắn ôm lấy nàng từ phía sau, lồng ngực áp sát không một kẽ hở vào lưng nàng.</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Ngủ rồi sao?”</p>
+<p>“Tiểu Cửu?”</p>
+<p>Đáp lại hắn chỉ là cái gáy nhỏ trong bóng tối.</p>
+<p>Qua nhịp thở của nàng, hắn biết nàng vẫn chưa ngủ, chỉ là không muốn để ý đến hắn.</p>
+<p>Không hiểu vì sao, mí mắt phải của hắn giật liên hồi, trong lòng luôn dâng lên một dự cảm chẳng lành.</p>
+<p>Mắt trái giật là có tài, mắt phải giật là có họa.</p>
+<p>Hắn ôm nàng thật chặt, cảm nhận hơi ấm và thân thể mềm mại của nàng, hít lấy hương thơm nhè nhẹ trên người nàng, trong lòng mới thấy yên ổn được đôi chút.</p>
+<p>—————————</p>
+<p>Mấy ngày nay anh Trì năng suất quá nhỉ</p>
+<p>. Tham lam gom hết đường rồi, chuẩn bị nhịn ngọt</p>
+<p>dài dài nhé</p>
+<p>——————— Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_123.html" class="btn">‹ Trước</a>
             <a href="chuong_125.html" class="btn">Sau ›</a>
         </div>
@@ -252,15 +260,11 @@ dài dài nhé
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -272,11 +276,11 @@ dài dài nhé
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

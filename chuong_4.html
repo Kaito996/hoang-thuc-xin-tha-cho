@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 4</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,267 +62,276 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 4</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_3.html" class="btn">‹ Trước</a>
             <a href="chuong_5.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 4: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 4: [Chỉ trong một khoảnh khắc, nàng đã nghĩ xong mình sẽ được chôn ở đâu]
-Sở Ly thầm cảm thán trong lòng.
-Đại hoàng huynh xuất thân không cao, mẫu thân chỉ là một vị Quý nhân. Nhưng với thân phận thứ trưởng tử của Hoàng thượng, hắn đối nhân thành khẩn, xử thế ôn hòa, chu toàn mọi mặt, ngày thường cũng không ít lần chiếu cố nàng.
-“Ý tốt của Đại hoàng huynh, đệ hiểu.”
-“Hoàng thúc vừa lập chiến công, thanh danh đang lúc cực thịnh. Xin Đại hoàng huynh cẩn trọng thu liễm, đừng vì đệ mà đắc tội với ngài ấy.”
-“Vết thương của đệ không đáng ngại.”
-Sở Uyên Trì vỗ nhẹ mu bàn tay nàng, bảo nàng đừng nghĩ nhiều, mọi chuyện đã có hắn lo liệu.
-Sau vài câu hỏi han, hắn liền sang bên kia trò chuyện cùng các quan viên khác.
-Phóng mắt nhìn khắp đại điện.
-Đại hoàng huynh, Nhị hoàng huynh, Tam hoàng huynh, Tứ hoàng huynh...
-Tất cả đều đang ung dung qua lại giữa bá quan văn võ, bàn luận chính sự.
-Chỉ có Sở Ly đứng ngây ra đó.
-À, còn có Bát hoàng tử Sở Ngạo Thiên nữa.
-Hai người đứng chung một chỗ, nhàn rỗi vô sự, chẳng ai ngó ngàng tới.
-Vì thế, Sở Ngạo Thiên còn an ủi nàng:
-“Cửu đệ, đệ còn nhỏ. Qua vài năm nữa, phụ hoàng phân việc cho đệ, đệ cũng sẽ giống các vị hoàng huynh, có thể vì phụ hoàng phân ưu giải nạn.”
-Sở Ly liếc hắn một cái.
-Hắn chẳng phải cũng giống nàng sao?
-Lại còn đi an ủi nàng.
-Đồ ngốc.
-Sở Ly vểnh cái mông lên rồi bỏ đi.
-“Cửu đệ, mông đệ vểnh thật đấy... Ưm ưm!”
-Câm miệng!
-Khoảng hai khắc sau.
-Bá quan văn võ đều đã đến đủ, các vị hoàng tử cũng lần lượt an tọa.
-Hoàng thượng cùng Hoàng hậu và Hoàng Quý phi giá lâm.
-Sở Ly vừa định đứng dậy hành lễ, lại thấy Nhiếp Chính Vương đã vào điện, đi thẳng tới chỗ nàng rồi xoay người ngồi xuống.
-Chỗ ngồi của họ lại ở cạnh nhau!
-Tại sao?!
-Nhiếp Chính Vương dưới một người, trên vạn người.
-Ghế của hắn đáng lẽ phải gần quân vương nhất.
-Cho dù xếp theo thứ tự, chẳng phải tám vị hoàng huynh đều phải ngồi trước nàng sao?
-“Phụ hoàng, nhi thần đứng hàng thứ chín, vì sao chỗ ngồi lại gần như vậy?”
-Sở Hoàng đương triều là một nam nhân trung niên gần năm mươi tuổi.
-Hoàng bào màu minh hoàng khoác trên người, thân hình hơi gầy, gương mặt có chút phát phúc nhưng vẫn thấp thoáng phong thái anh tuấn thời trẻ.
-Ông nhìn sang, ôn hòa nói:
-“Tiểu Cửu thấp quá, ngồi xa thì trẫm không nhìn thấy con.”
-Sở Ly nghẹn lời.
-Thật sự cảm tạ quá đi.
-“Chư vị đều ngồi xuống đi.”
-“Đêm nay mở tiệc là để chúc mừng Nhiếp Chính Vương đại thắng trở về, thay Đại Sở ký kết hòa ước ba mươi năm.”
-“Đây là phúc của Đại Sở, cũng là phúc của lê dân bách tính.”
-Sở Hoàng dang chân ngồi xuống, nâng cao chén rượu:
-“Một vị Nhiếp Chính Vương bách chiến bách thắng!”
-“Một vị cổn cổ chi thần, Sở Đệ Trì!”
-Thanh âm hùng hồn vang vọng.
-Bá quan đồng loạt nâng chén:
-“Kính Nhiếp Chính Vương điện hạ!”
-Sở Đệ Trì mắt đen bình thản như vực sâu không gợn sóng.
-Ngón tay mạnh mẽ nâng chén bạch ngọc, ngửa đầu uống cạn.
-Sở Ly ngồi bên cạnh hắn, nhỏ bé vô cùng.
-Thân hình hắn cao gần một mét chín, vai rộng eo hẹp.
-Quanh năm chinh chiến sa trường, cả người mang theo khí tức sát phạt như đã tắm trong phong sa và máu tanh.
-Chỉ cần ngồi đó cũng đã tạo thành uy áp cực lớn.
-Mà nàng năm nay mới mười lăm tuổi, vẫn còn đang lớn.
-Vừa tròn một mét sáu.
-Ngồi cạnh hắn, chẳng khác nào một con gà con vừa gầy vừa nhỏ.
-Nhưng...
-Như vậy cũng thôi đi.
-Điều đáng nói là khi hai người ngồi ngang nhau, đầu lại cao bằng nhau.
-Bởi vì mông Sở Ly có thương tích.
-Trên ghế được kê thêm tận hai mươi phân đệm mềm.
-So sánh như vậy...
-Thật sự quá buồn cười.
-Sở Ly cúi đầu.
-Nghe mọi người chén tạc chén thù, cao giọng đàm luận.
-Nàng chỉ cảm thấy ngồi cạnh Nhiếp Chính Vương là một loại dày vò.
-Ngay cả đưa tay lấy thức ăn cũng như bị một ánh mắt sắc bén như dao găm chăm chăm nhìn chằm chằm.
-Khó chịu vô cùng.
-Như ngồi trên đống kim.
-Chỉ mong tiệc khánh công mau chóng kết thúc.
-Đang thất thần, bỗng nghe một tràng cảm thán:
-“Trên đời thật sự có loại ngọc cứng rắn đến vậy sao?”
-“Ngọc vốn giòn dễ vỡ, nó thật sự có thể giống như kiếm, cứng cỏi không gãy ư?”
-Ngọc gì?
-Sở Ly ngẩng đầu nhìn.
-Chỉ thấy một thái giám đang nâng một chiếc cẩm hộp dài.
-Trên lớp vải đen mềm mại bên trong, đặt một thanh trường kiếm màu lam biếc.
-Màu lam trong suốt không tì vết.
-Dưới ánh nến phản chiếu ra những tia sáng u ám, lấp lánh rực rỡ.
-Đẹp như bầu trời vạn dặm không mây.
-Xanh đến cực hạn.
-Thuần khiết đến cực hạn.
-Thanh kiếm này lại được làm bằng ngọc!
-Ngọc cũng có thể chế thành kiếm sao?
-Chẳng phải chỉ cần va đập một chút là sẽ vỡ sao?
-Sở Đệ Trì lười biếng tựa vào ghế.
-Hai tay thảnh thơi đặt trên tay vịn.
-“Đây là Kinh Bích Lam Ngọc mà bản vương đào được dưới lòng dãy núi cao nghìn mét tại Tây Vực trong lần Tây chinh.”
-“Tương truyền loại ngọc này cứng như thép, chém sắt như bùn.”
-“Bản vương đặc biệt sai thợ thủ công ngày đêm chế tác thành kiếm, dâng tặng hoàng huynh.”
-Sở Ly lập tức rụt tay về.
-Chỗ ngồi của hai người sát nhau, dùng chung một tay vịn.
-Hắn vừa dựa sang.
-Nàng chỉ hận không thể co mình vào góc, tránh thật xa.
-Nam nhân ngẩng mắt nhìn thẳng thiên tử đang ngồi trên long ỷ.
-Giữa đôi mày sắc bén hiện rõ vẻ ngông cuồng:
-“Thanh kiếm này không chỉ đẹp mắt mà còn có thể giết người.”
-“Hoàng huynh khi sử dụng, xin cẩn thận một chút.”
-“Đừng để lưỡi kiếm đâm thủng cả vương tọa.”
-Lời vừa dứt.
-Toàn bộ đại điện chấn động.
-Ngọc kiếm sao có thể đâm thủng hoàng vị?
-Nhiếp Chính Vương rõ ràng đang công khai khiêu khích Hoàng thượng!
-Gan lớn đến mức nào chứ?
-Đây là muốn tạo phản sao?
-Nhiều năm qua, Nhiếp Chính Vương càng đánh càng mạnh.
-Trong tay nắm giữ Hắc Giáp Vệ do chính mình huấn luyện.
-Thần cản giết thần.
-Phật cản giết Phật.
-Cho dù thật sự muốn phản, cũng chẳng có ai dám ngăn.
-Bá quan cầm chén rượu, sắc mặt cứng đờ.
-Không ai dám động đậy.
-Cung nữ, thái giám hầu hạ đều cúi đầu lui xuống.
-Ngay cả thở mạnh cũng không dám.
-Sở Ly đập bàn trong lòng.
-Mẫu phi nói quả nhiên không sai.
-Nhiếp Chính Vương thật sự có lòng bất thần!
-Bảo sao hắn dám trượng trách hoàng tử, ngang ngược không kiêng dè.
-Phụ hoàng!
-Xử lý hắn đi!
-Mau xử lý hắn!
-Không khí ngưng trọng.
-Rất lâu sau.
-Sắc mặt Sở Hoàng hơi trầm xuống.
-Các ngón tay siết chặt chén rượu.
-Nhưng rồi lại lặng lẽ buông lỏng, hóa thành nụ cười:
-“Trên đời lại có loại mỹ ngọc cứng rắn đến vậy.”
-“Trẫm cũng là lần đầu tiên nhìn thấy.”
-“Các hoàng nhi không ngại xem thử, mở mang tầm mắt.”
-Thái giám nâng cẩm hộp.
-Nhẫn nhịn mồ hôi đầy trán, lần lượt đưa tới từng bàn.
-Khom người dâng lên.
-Đại hoàng tử Sở Uyên Trì nhìn một cái:
-“Quả thật là mỹ ngọc thượng phẩm hiếm có.”
-Nhị hoàng tử nói:
-“Mỹ ngọc khó tìm, Hoàng thúc có lòng rồi.”
-Tam hoàng tử:
-“...”
-Khi cẩm hộp được đưa tới trước mặt Sở Ly.
-Nhìn gần hơn, thanh kiếm ngọc thật sự đẹp đến cực điểm.
-Nàng không nhịn được đưa đầu ngón tay khẽ chạm vào.
-Lạnh buốt nơi đầu ngón tay.
-Đúng là tuyệt phẩm!
-Rắc ——
-Thế nhưng.
-Tay còn chưa kịp rút về.
-Thanh kiếm ngọc đã gãy đôi.
-Sở Ly lập tức hóa đá.
-“Cái này...!”
-“Cửu đệ thật bản lĩnh!”
-Lục hoàng tử đứng dậy quát lớn:
-“Cái gọi là Kinh Bích Lam Ngọc của Tây Vực cũng chỉ có thế!”
-“Hoàng thúc lại coi nó là bảo vật, ha ha ha!”
-Sắc mặt Sở Ly đại biến.
-Theo bản năng nhìn sang nam nhân bên cạnh.
-Quả nhiên nhìn thấy vẻ mặt âm trầm của Sở Đệ Trì.
-Ánh mắt hắn như dao.
-Đủ sức xử trảm nàng ngay tại chỗ.
-Không phải!
-Không phải nàng!
-Nàng chỉ chạm nhẹ một cái thôi!
-Hoàn toàn không dùng sức!
-Lục hoàng tử cười lớn, hóa giải bầu không khí.
-Tể tướng cũng chắp tay cười nói:
-“Nhiếp Chính Vương chinh chiến bên ngoài đã lâu.”
-“Phong sa Tây Vực làm mờ mắt.”
-“Không phân rõ ngọc với kiếm, chắc hẳn cũng không phải cố ý.”
-Tứ hoàng tử trêu chọc:
-“Từ xưa mỹ ngọc dễ vỡ.”
-“Kinh Bích Lam Ngọc này cũng khó tránh khỏi lẽ thường.”
-“Có lẽ Hoàng thúc bị đám người Tây Vực lừa rồi.”
-Nhị hoàng tử tiếp lời:
-“Hoàng thúc bị mắc lừa.”
-“May mà Cửu đệ kịp thời ra tay.”
-“Nếu không tất cả chúng ta đều bị che mắt, thành trò cười mất.”
-Sở Ly cuống cuồng xua tay:
-“Không phải ta! Ta không có...”
-Sở Hoàng nâng chén cười lớn:
-“Tiểu Cửu, quả nhiên hợp ý trẫm nhất!”
-Không phải!
-“Phụ hoàng, nhi thần... nhi thần...”
-Xong rồi.
-Nhiếp Chính Vương công khai khiêu khích Hoàng thượng.
-Mà nàng lại khiến Nhiếp Chính Vương trở thành trò cười lớn nhất trong tiệc khánh công.
-Chẳng khác nào tát bốp bốp mấy cái vào mặt hắn.
-Sở Ly nhắm nghiền hai mắt.
-Đã cảm thấy mạng mình nguy rồi.
-Nàng nhận lấy chén rượu thái giám đưa tới.
-Vừa uống một ngụm.
-Không ngờ vị lại chua loét.
-Là giấm!
-“Phụt!”
-Trong khoảnh khắc.
-Cả đại điện xôn xao.
-Đến khi Sở Ly hoàn hồn.
-Mới phát hiện mình vừa phun đầy mặt Nhiếp Chính Vương.
-Giấm chua chảy từ đỉnh mày hắn xuống sống mũi.
-Lướt qua cằm.
-Rơi xuống vạt áo.
-Chỉ trong một khoảnh khắc.
-Nàng đã nghĩ xong sau này mình sẽ được chôn ở đâu. Ẩn bớt</p>
+            <p>Chương 4: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 4: [Chỉ trong một khoảnh khắc, nàng đã nghĩ xong mình sẽ được chôn ở đâu]</p>
+<p>Sở Ly thầm cảm thán trong lòng.</p>
+<p>Đại hoàng huynh xuất thân không cao, mẫu thân chỉ là một vị Quý nhân. Nhưng với thân phận thứ trưởng tử của Hoàng thượng, hắn đối nhân thành khẩn, xử thế ôn hòa, chu toàn mọi mặt, ngày thường cũng không ít lần chiếu cố nàng.</p>
+<p>“Ý tốt của Đại hoàng huynh, đệ hiểu.”</p>
+<p>“Hoàng thúc vừa lập chiến công, thanh danh đang lúc cực thịnh. Xin Đại hoàng huynh cẩn trọng thu liễm, đừng vì đệ mà đắc tội với ngài ấy.”</p>
+<p>“Vết thương của đệ không đáng ngại.”</p>
+<p>Sở Uyên Trì vỗ nhẹ mu bàn tay nàng, bảo nàng đừng nghĩ nhiều, mọi chuyện đã có hắn lo liệu.</p>
+<p>Sau vài câu hỏi han, hắn liền sang bên kia trò chuyện cùng các quan viên khác.</p>
+<p>Phóng mắt nhìn khắp đại điện.</p>
+<p>Đại hoàng huynh, Nhị hoàng huynh, Tam hoàng huynh, Tứ hoàng huynh...</p>
+<p>Tất cả đều đang ung dung qua lại giữa bá quan văn võ, bàn luận chính sự.</p>
+<p>Chỉ có Sở Ly đứng ngây ra đó.</p>
+<p>À, còn có Bát hoàng tử Sở Ngạo Thiên nữa.</p>
+<p>Hai người đứng chung một chỗ, nhàn rỗi vô sự, chẳng ai ngó ngàng tới.</p>
+<p>Vì thế, Sở Ngạo Thiên còn an ủi nàng:</p>
+<p>“Cửu đệ, đệ còn nhỏ. Qua vài năm nữa, phụ hoàng phân việc cho đệ, đệ cũng sẽ giống các vị hoàng huynh, có thể vì phụ hoàng phân ưu giải nạn.”</p>
+<p>Sở Ly liếc hắn một cái.</p>
+<p>Hắn chẳng phải cũng giống nàng sao?</p>
+<p>Lại còn đi an ủi nàng.</p>
+<p>Đồ ngốc.</p>
+<p>Sở Ly vểnh cái mông lên rồi bỏ đi.</p>
+<p>“Cửu đệ, mông đệ vểnh thật đấy... Ưm ưm!”</p>
+<p>Câm miệng!</p>
+<p>Khoảng hai khắc sau.</p>
+<p>Bá quan văn võ đều đã đến đủ, các vị hoàng tử cũng lần lượt an tọa.</p>
+<p>Hoàng thượng cùng Hoàng hậu và Hoàng Quý phi giá lâm.</p>
+<p>Sở Ly vừa định đứng dậy hành lễ, lại thấy Nhiếp Chính Vương đã vào điện, đi thẳng tới chỗ nàng rồi xoay người ngồi xuống.</p>
+<p>Chỗ ngồi của họ lại ở cạnh nhau!</p>
+<p>Tại sao?!</p>
+<p>Nhiếp Chính Vương dưới một người, trên vạn người.</p>
+<p>Ghế của hắn đáng lẽ phải gần quân vương nhất.</p>
+<p>Cho dù xếp theo thứ tự, chẳng phải tám vị hoàng huynh đều phải ngồi trước nàng sao?</p>
+<p>“Phụ hoàng, nhi thần đứng hàng thứ chín, vì sao chỗ ngồi lại gần như vậy?”</p>
+<p>Sở Hoàng đương triều là một nam nhân trung niên gần năm mươi tuổi.</p>
+<p>Hoàng bào màu minh hoàng khoác trên người, thân hình hơi gầy, gương mặt có chút phát phúc nhưng vẫn thấp thoáng phong thái anh tuấn thời trẻ.</p>
+<p>Ông nhìn sang, ôn hòa nói:</p>
+<p>“Tiểu Cửu thấp quá, ngồi xa thì trẫm không nhìn thấy con.”</p>
+<p>Sở Ly nghẹn lời.</p>
+<p>Thật sự cảm tạ quá đi.</p>
+<p>“Chư vị đều ngồi xuống đi.”</p>
+<p>“Đêm nay mở tiệc là để chúc mừng Nhiếp Chính Vương đại thắng trở về, thay Đại Sở ký kết hòa ước ba mươi năm.”</p>
+<p>“Đây là phúc của Đại Sở, cũng là phúc của lê dân bách tính.”</p>
+<p>Sở Hoàng dang chân ngồi xuống, nâng cao chén rượu:</p>
+<p>“Một vị Nhiếp Chính Vương bách chiến bách thắng!”</p>
+<p>“Một vị cổn cổ chi thần, Sở Đệ Trì!”</p>
+<p>Thanh âm hùng hồn vang vọng.</p>
+<p>Bá quan đồng loạt nâng chén:</p>
+<p>“Kính Nhiếp Chính Vương điện hạ!”</p>
+<p>Sở Đệ Trì mắt đen bình thản như vực sâu không gợn sóng.</p>
+<p>Ngón tay mạnh mẽ nâng chén bạch ngọc, ngửa đầu uống cạn.</p>
+<p>Sở Ly ngồi bên cạnh hắn, nhỏ bé vô cùng.</p>
+<p>Thân hình hắn cao gần một mét chín, vai rộng eo hẹp.</p>
+<p>Quanh năm chinh chiến sa trường, cả người mang theo khí tức sát phạt như đã tắm trong phong sa và máu tanh.</p>
+<p>Chỉ cần ngồi đó cũng đã tạo thành uy áp cực lớn.</p>
+<p>Mà nàng năm nay mới mười lăm tuổi, vẫn còn đang lớn.</p>
+<p>Vừa tròn một mét sáu.</p>
+<p>Ngồi cạnh hắn, chẳng khác nào một con gà con vừa gầy vừa nhỏ.</p>
+<p>Nhưng...</p>
+<p>Như vậy cũng thôi đi.</p>
+<p>Điều đáng nói là khi hai người ngồi ngang nhau, đầu lại cao bằng nhau.</p>
+<p>Bởi vì mông Sở Ly có thương tích.</p>
+<p>Trên ghế được kê thêm tận hai mươi phân đệm mềm.</p>
+<p>So sánh như vậy...</p>
+<p>Thật sự quá buồn cười.</p>
+<p>Sở Ly cúi đầu.</p>
+<p>Nghe mọi người chén tạc chén thù, cao giọng đàm luận.</p>
+<p>Nàng chỉ cảm thấy ngồi cạnh Nhiếp Chính Vương là một loại dày vò.</p>
+<p>Ngay cả đưa tay lấy thức ăn cũng như bị một ánh mắt sắc bén như dao găm chăm chăm nhìn chằm chằm.</p>
+<p>Khó chịu vô cùng.</p>
+<p>Như ngồi trên đống kim.</p>
+<p>Chỉ mong tiệc khánh công mau chóng kết thúc.</p>
+<p>Đang thất thần, bỗng nghe một tràng cảm thán:</p>
+<p>“Trên đời thật sự có loại ngọc cứng rắn đến vậy sao?”</p>
+<p>“Ngọc vốn giòn dễ vỡ, nó thật sự có thể giống như kiếm, cứng cỏi không gãy ư?”</p>
+<p>Ngọc gì?</p>
+<p>Sở Ly ngẩng đầu nhìn.</p>
+<p>Chỉ thấy một thái giám đang nâng một chiếc cẩm hộp dài.</p>
+<p>Trên lớp vải đen mềm mại bên trong, đặt một thanh trường kiếm màu lam biếc.</p>
+<p>Màu lam trong suốt không tì vết.</p>
+<p>Dưới ánh nến phản chiếu ra những tia sáng u ám, lấp lánh rực rỡ.</p>
+<p>Đẹp như bầu trời vạn dặm không mây.</p>
+<p>Xanh đến cực hạn.</p>
+<p>Thuần khiết đến cực hạn.</p>
+<p>Thanh kiếm này lại được làm bằng ngọc!</p>
+<p>Ngọc cũng có thể chế thành kiếm sao?</p>
+<p>Chẳng phải chỉ cần va đập một chút là sẽ vỡ sao?</p>
+<p>Sở Đệ Trì lười biếng tựa vào ghế.</p>
+<p>Hai tay thảnh thơi đặt trên tay vịn.</p>
+<p>“Đây là Kinh Bích Lam Ngọc mà bản vương đào được dưới lòng dãy núi cao nghìn mét tại Tây Vực trong lần Tây chinh.”</p>
+<p>“Tương truyền loại ngọc này cứng như thép, chém sắt như bùn.”</p>
+<p>“Bản vương đặc biệt sai thợ thủ công ngày đêm chế tác thành kiếm, dâng tặng hoàng huynh.”</p>
+<p>Sở Ly lập tức rụt tay về.</p>
+<p>Chỗ ngồi của hai người sát nhau, dùng chung một tay vịn.</p>
+<p>Hắn vừa dựa sang.</p>
+<p>Nàng chỉ hận không thể co mình vào góc, tránh thật xa.</p>
+<p>Nam nhân ngẩng mắt nhìn thẳng thiên tử đang ngồi trên long ỷ.</p>
+<p>Giữa đôi mày sắc bén hiện rõ vẻ ngông cuồng:</p>
+<p>“Thanh kiếm này không chỉ đẹp mắt mà còn có thể giết người.”</p>
+<p>“Hoàng huynh khi sử dụng, xin cẩn thận một chút.”</p>
+<p>“Đừng để lưỡi kiếm đâm thủng cả vương tọa.”</p>
+<p>Lời vừa dứt.</p>
+<p>Toàn bộ đại điện chấn động.</p>
+<p>Ngọc kiếm sao có thể đâm thủng hoàng vị?</p>
+<p>Nhiếp Chính Vương rõ ràng đang công khai khiêu khích Hoàng thượng!</p>
+<p>Gan lớn đến mức nào chứ?</p>
+<p>Đây là muốn tạo phản sao?</p>
+<p>Nhiều năm qua, Nhiếp Chính Vương càng đánh càng mạnh.</p>
+<p>Trong tay nắm giữ Hắc Giáp Vệ do chính mình huấn luyện.</p>
+<p>Thần cản giết thần.</p>
+<p>Phật cản giết Phật.</p>
+<p>Cho dù thật sự muốn phản, cũng chẳng có ai dám ngăn.</p>
+<p>Bá quan cầm chén rượu, sắc mặt cứng đờ.</p>
+<p>Không ai dám động đậy.</p>
+<p>Cung nữ, thái giám hầu hạ đều cúi đầu lui xuống.</p>
+<p>Ngay cả thở mạnh cũng không dám.</p>
+<p>Sở Ly đập bàn trong lòng.</p>
+<p>Mẫu phi nói quả nhiên không sai.</p>
+<p>Nhiếp Chính Vương thật sự có lòng bất thần!</p>
+<p>Bảo sao hắn dám trượng trách hoàng tử, ngang ngược không kiêng dè.</p>
+<p>Phụ hoàng!</p>
+<p>Xử lý hắn đi!</p>
+<p>Mau xử lý hắn!</p>
+<p>Không khí ngưng trọng.</p>
+<p>Rất lâu sau.</p>
+<p>Sắc mặt Sở Hoàng hơi trầm xuống.</p>
+<p>Các ngón tay siết chặt chén rượu.</p>
+<p>Nhưng rồi lại lặng lẽ buông lỏng, hóa thành nụ cười:</p>
+<p>“Trên đời lại có loại mỹ ngọc cứng rắn đến vậy.”</p>
+<p>“Trẫm cũng là lần đầu tiên nhìn thấy.”</p>
+<p>“Các hoàng nhi không ngại xem thử, mở mang tầm mắt.”</p>
+<p>Thái giám nâng cẩm hộp.</p>
+<p>Nhẫn nhịn mồ hôi đầy trán, lần lượt đưa tới từng bàn.</p>
+<p>Khom người dâng lên.</p>
+<p>Đại hoàng tử Sở Uyên Trì nhìn một cái:</p>
+<p>“Quả thật là mỹ ngọc thượng phẩm hiếm có.”</p>
+<p>Nhị hoàng tử nói:</p>
+<p>“Mỹ ngọc khó tìm, Hoàng thúc có lòng rồi.”</p>
+<p>Tam hoàng tử:</p>
+<p>“...”</p>
+<p>Khi cẩm hộp được đưa tới trước mặt Sở Ly.</p>
+<p>Nhìn gần hơn, thanh kiếm ngọc thật sự đẹp đến cực điểm.</p>
+<p>Nàng không nhịn được đưa đầu ngón tay khẽ chạm vào.</p>
+<p>Lạnh buốt nơi đầu ngón tay.</p>
+<p>Đúng là tuyệt phẩm!</p>
+<p>Rắc ——</p>
+<p>Thế nhưng.</p>
+<p>Tay còn chưa kịp rút về.</p>
+<p>Thanh kiếm ngọc đã gãy đôi.</p>
+<p>Sở Ly lập tức hóa đá.</p>
+<p>“Cái này...!”</p>
+<p>“Cửu đệ thật bản lĩnh!”</p>
+<p>Lục hoàng tử đứng dậy quát lớn:</p>
+<p>“Cái gọi là Kinh Bích Lam Ngọc của Tây Vực cũng chỉ có thế!”</p>
+<p>“Hoàng thúc lại coi nó là bảo vật, ha ha ha!”</p>
+<p>Sắc mặt Sở Ly đại biến.</p>
+<p>Theo bản năng nhìn sang nam nhân bên cạnh.</p>
+<p>Quả nhiên nhìn thấy vẻ mặt âm trầm của Sở Đệ Trì.</p>
+<p>Ánh mắt hắn như dao.</p>
+<p>Đủ sức xử trảm nàng ngay tại chỗ.</p>
+<p>Không phải!</p>
+<p>Không phải nàng!</p>
+<p>Nàng chỉ chạm nhẹ một cái thôi!</p>
+<p>Hoàn toàn không dùng sức!</p>
+<p>Lục hoàng tử cười lớn, hóa giải bầu không khí.</p>
+<p>Tể tướng cũng chắp tay cười nói:</p>
+<p>“Nhiếp Chính Vương chinh chiến bên ngoài đã lâu.”</p>
+<p>“Phong sa Tây Vực làm mờ mắt.”</p>
+<p>“Không phân rõ ngọc với kiếm, chắc hẳn cũng không phải cố ý.”</p>
+<p>Tứ hoàng tử trêu chọc:</p>
+<p>“Từ xưa mỹ ngọc dễ vỡ.”</p>
+<p>“Kinh Bích Lam Ngọc này cũng khó tránh khỏi lẽ thường.”</p>
+<p>“Có lẽ Hoàng thúc bị đám người Tây Vực lừa rồi.”</p>
+<p>Nhị hoàng tử tiếp lời:</p>
+<p>“Hoàng thúc bị mắc lừa.”</p>
+<p>“May mà Cửu đệ kịp thời ra tay.”</p>
+<p>“Nếu không tất cả chúng ta đều bị che mắt, thành trò cười mất.”</p>
+<p>Sở Ly cuống cuồng xua tay:</p>
+<p>“Không phải ta! Ta không có...”</p>
+<p>Sở Hoàng nâng chén cười lớn:</p>
+<p>“Tiểu Cửu, quả nhiên hợp ý trẫm nhất!”</p>
+<p>Không phải!</p>
+<p>“Phụ hoàng, nhi thần... nhi thần...”</p>
+<p>Xong rồi.</p>
+<p>Nhiếp Chính Vương công khai khiêu khích Hoàng thượng.</p>
+<p>Mà nàng lại khiến Nhiếp Chính Vương trở thành trò cười lớn nhất trong tiệc khánh công.</p>
+<p>Chẳng khác nào tát bốp bốp mấy cái vào mặt hắn.</p>
+<p>Sở Ly nhắm nghiền hai mắt.</p>
+<p>Đã cảm thấy mạng mình nguy rồi.</p>
+<p>Nàng nhận lấy chén rượu thái giám đưa tới.</p>
+<p>Vừa uống một ngụm.</p>
+<p>Không ngờ vị lại chua loét.</p>
+<p>Là giấm!</p>
+<p>“Phụt!”</p>
+<p>Trong khoảnh khắc.</p>
+<p>Cả đại điện xôn xao.</p>
+<p>Đến khi Sở Ly hoàn hồn.</p>
+<p>Mới phát hiện mình vừa phun đầy mặt Nhiếp Chính Vương.</p>
+<p>Giấm chua chảy từ đỉnh mày hắn xuống sống mũi.</p>
+<p>Lướt qua cằm.</p>
+<p>Rơi xuống vạt áo.</p>
+<p>Chỉ trong một khoảnh khắc.</p>
+<p>Nàng đã nghĩ xong sau này mình sẽ được chôn ở đâu. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_3.html" class="btn">‹ Trước</a>
             <a href="chuong_5.html" class="btn">Sau ›</a>
         </div>
@@ -331,15 +339,11 @@ Nàng đã nghĩ xong sau này mình sẽ được chôn ở đâu. Ẩn bớt</
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -351,11 +355,11 @@ Nàng đã nghĩ xong sau này mình sẽ được chôn ở đâu. Ẩn bớt</
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

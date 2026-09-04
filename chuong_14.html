@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 14</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,268 +62,277 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 14</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_13.html" class="btn">‹ Trước</a>
             <a href="chuong_15.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 14: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 14: [Đừng giả ngốc trước mặt Bản Vương]
-Mấy vị quan viên đưa mắt nhìn nhau, lời đã lên đến cổ họng nhưng chẳng ai dám nói ra.
-Nhiếp Chính Vương vừa khải hoàn trở về, Hoàng thượng liền lấy cớ “tiến dâng nữ nhân, dụ dỗ hoàng tử” mà cưỡng ép thu hồi binh quyền của hắn.
-Lúc này, chưa chắc Nhiếp Chính Vương đã nguyện ý ra tay cứu người.
-Cuối cùng, vị lão thần Nội Các lớn tuổi nhất thử dò hỏi:
-“Không biết Nhiếp Chính Vương điện hạ có cao kiến gì chăng?”
-Sở Đệ Trì nâng mắt:
-“Bản vương thì có cao kiến gì được?”
-Mọi người nhất thời nghẹn lời.
-“Trận chiến Tây Vực lần này, bản vương trọng thương chưa lành, cần tĩnh dưỡng một thời gian.”
-“Có chư vị văn võ bá quan vì Hoàng huynh phân ưu, thần đệ cũng yên tâm rồi.”
-Sở Đệ Trì đứng dậy, chắp tay hướng về phía Sở Hoàng đang ngồi sau long án:
-“Thần đệ cáo lui.”
-Dứt lời, hắn xoay người rời đi.
-Mấy vị đại thần há miệng định nói gì đó, cuối cùng lại nuốt ngược trở vào.
-Không ai dám nhiều lời.
-Ra khỏi Ngự Thư Phòng.
-Trong đầu Sở Đệ Trì hiện lên chiếc hương nang ở Chiêu Lan Điện.
-Dải tua rua trên đó...
-Hoàn toàn giống với dải tua rua hắn đã giật xuống từ người nữ nhân kia vào đêm khánh công yến.
-Trọng Phong đi theo phía sau:
-“Chủ tử, bây giờ xuất cung sao?”
-“Đến Chiêu Lan Điện.”
-Hắn đi thẳng vào Chiêu Lan Điện.
-Lúc này, Sở Ly đang uống thuốc.
-Nhìn thấy nam nhân xông vào, nàng cũng chẳng lấy làm bất ngờ.
-“Hoàng thúc chẳng phải đã đi rồi sao?”
-“Còn có việc gì nữa?”
-Sở Đệ Trì bước vào trong phòng.
-Ánh mắt chăm chú nhìn gương mặt trắng nõn mềm mại của nàng.
-Nàng còn nhỏ tuổi.
-Dung mạo vẫn chưa hoàn toàn trưởng thành.
-Vẻ ngoài thanh tú sạch sẽ đúng là một thiếu niên phong lưu tuấn mỹ.
-Nhưng đôi mắt sáng, hàm răng trắng ấy...
-Lại thấp thoáng vài phần nhu thái của nữ tử.
-Hắn tiến đến bên giường:
-“Hương nang là của ngươi?”
-“Hương nang nào?”
-“Đừng giả ngốc trước mặt Bản vương.”
-Vung tay một cái.
-Chiếc hương nang bị ném xuống trước mặt nàng.
-Dải tua rua rối tung lên.
-Giống hệt đêm mê loạn nơi Ngự Hoa Viên hôm ấy.
-Sở Ly cau mày nhặt lên xem.
-Bên cạnh, cung nữ Song Nhi đang hầu hạ vừa nhìn thấy đã run bắn người.
-Sở Ly lập tức quay sang:
-“Ngươi run cái gì?”
-Song Nhi hoảng sợ quỳ sụp xuống:
-“Chủ tử tha mạng!”
-“Chiếc hương nang này... là của nô tỳ!”
-Mày Sở Ly càng nhíu chặt hơn:
-“Chỉ là một chiếc hương nang thôi mà.”
-“Sao lại quỳ xuống cầu tha mạng?”
-“Hay là ngươi có chuyện gì giấu ta?”
-“Chủ tử tha mạng!”
-Song Nhi liên tục dập đầu, giọng nói nghẹn ngào:
-“Đêm khánh công yến hôm ấy, lúc nô tỳ chuẩn bị trở về Chiêu Lan Điện, đột nhiên bị người ta kéo vào bụi hoa.”
-“Hắn cưỡng ép cởi y phục của nô tỳ...”
-“Nô tỳ nhìn rõ dung mạo người đó.”
-“Là Nhiếp Chính Vương điện hạ.”
-“Nô tỳ sợ đây là tử tội, nên không dám nhắc với bất cứ ai.”
-Sắc mặt Sở Ly thoáng trở nên khó coi.
-“Hôm ấy ta còn thắc mắc vì sao không tìm thấy ngươi.”
-“Thì ra ngươi với Hoàng thúc lại... hồ đồ như vậy!”
-Xảy ra chuyện lớn thế này mà lại không nói với nàng.
-“Song Nhi!”
-“Ngươi theo hầu ta nhiều năm, luôn an phận thủ thường, tận tâm tận lực.”
-“Sao có thể phạm phải đại tội như vậy?”
-“Không phải nô tỳ cố ý!”
-“Nô tỳ nào dám vọng tưởng đến Nhiếp Chính Vương điện hạ.”
-“Nô tỳ là bị ép buộc!”
-“Xin chủ tử cùng Nhiếp Chính Vương điện hạ khai ân!”
-Song Nhi quỳ dưới đất khóc nức nở.
-Sở Ly siết chặt tay.
-Ánh mắt vừa tiếc rèn sắt không thành thép vừa bất lực đã nói lên tất cả.
-Song Nhi vẫn không ngừng thút thít.
-Sở Đệ Trì lạnh lùng nhìn cung nữ trước mặt.
-Quả thật cũng có vài phần nhan sắc.
-Nhưng vẫn chưa đẹp đến mức khiến hắn mất khống chế như đêm đó.
-“Bản vương còn chưa tra hỏi.”
-“Ngươi đã khai hết mọi chuyện.”
-“Lúc này lại không sợ tử tội nữa sao?”
-Song Nhi cứng đờ sống lưng.
-“Nô tỳ phúc bạc.”
-“Có thể hầu hạ Nhiếp Chính Vương một đêm đã là phúc phận lớn lao.”
-“Không dám cầu mong thêm điều gì.”
-Sở Đệ Trì từ trên cao nhìn xuống nàng.
-Giọng nói lạnh nhạt nhưng uy áp cực nặng:
-“Nếu đã có tâm với Bản vương.”
-“Vậy hôm sau, khi Bản vương bị vu oan làm nhục Lan Quý nhân ở Thanh Tuyết Cung...”
-“Vì sao ngươi không đứng ra chứng minh sự trong sạch cho Bản vương?”
-“Hôm đó... nô tỳ sợ lắm.”
-“Nô tỳ trốn trong phòng không dám ra ngoài.”
-“Đến khi biết chuyện ở Thanh Tuyết Cung thì điện hạ đã xuất cung rồi.”
-“Phải không?”
-Song Nhi vùi đầu thật thấp.
-Chỉ cảm thấy ánh mắt sắc bén như tên nhọn đang ghim lên lưng mình.
-Dường như muốn xuyên thủng cả thân thể.
-Lòng bàn tay nàng đã ướt đẫm mồ hôi.
-Mười ngón tay bấu chặt xuống nền đất để ngăn bản thân run rẩy.
-“Hương nang này đường thêu tinh xảo.”
-“Vải dùng là Cửu Vân Cẩm đắt giá.”
-“Chỉ e một cung nữ như ngươi không có tư cách sở hữu.”
-Song Nhi đáp:
-“Cô cô của nô tỳ là chưởng sự ở Cẩm Tú Ty.”
-“Bà dùng phần vải thừa từ y phục của các nương nương để may cho nô tỳ chiếc hương nang này, dùng để an thần.”
-“Trọng Phong.”
-Trọng Phong hiểu ý, lập tức đi xác minh.
-Sở Đệ Trì đi đến một bên ngồi xuống.
-Tay cầm chiếc hương nang xoay nhẹ.
-Ánh mắt lướt về phía Sở Ly trên giường.
-Sở Ly thần sắc bình thường.
-Song Nhi thì quỳ rạp dưới đất.
-Mồ hôi từ chóp mũi nhỏ từng giọt xuống nền.
-Đến thở mạnh cũng không dám.
-Không lâu sau, Trọng Phong trở lại:
-“Chủ tử...”
-Sau vài câu thì thầm.
-Mọi chuyện đã được xác nhận.
-Song Nhi quả thật có một vị cô cô làm việc tại Cẩm Tú Ty.
-Những cung nữ ở đó thường dùng vải vụn được các nương nương ban thưởng để may tất, khăn tay hoặc túi thơm.
-Sở Ly lên tiếng:
-“Không ngờ Hoàng thúc cùng cung nữ của ta lại có duyên phận như vậy.”
-“Nhưng Song Nhi xuất thân thấp kém.”
-“Nếu việc này truyền ra ngoài, e sẽ ảnh hưởng đến danh tiếng của Hoàng thúc.”
-“Chưa cưới vương phi đã có thông phòng.”
-“Đối với vị Hoàng thẩm tương lai cũng chẳng phải chuyện tốt đẹp gì.”
-“Hay là để ta xử lý Song Nhi giúp Hoàng thúc.”
-“Bảo đảm chuyện này sẽ không có người thứ năm biết được.”
-Ánh mắt Sở Đệ Trì đột nhiên tối sầm.
-Một tia sắc bén lóe lên.
-“Nữ nhân từng được Bản vương sủng hạnh.”
-“Bản vương tất nhiên sẽ không bạc đãi.”
-“Nếu Song Nhi đã cùng Bản vương có phu thê chi thực...”
-“Vậy Bản vương sẽ xin Hoàng thượng ban nàng cho mình.”
-“Đưa vào Nhiếp Chính Vương phủ làm thông phòng nha hoàn.”
-“Cũng để người ngoài khỏi nói Bản vương bạc tình bạc nghĩa, không chịu trách nhiệm.”
-Song Nhi mừng rỡ:
-“Nô tỳ đa tạ Nhiếp Chính Vương điện hạ!”
-Sở Ly khẽ nhíu mày.
-Mơ hồ cảm thấy có gì đó không đúng.
-Từ khi nào hắn lại quan tâm đến thanh danh của mình?
-Bao năm nay, Hoàng đế ban hôn không biết bao nhiêu lần.
-Các đại thần cũng liên tục tiến cử nữ nhi.
-Nhưng chưa từng có ai lọt vào mắt hắn.
-“Bao năm qua bên cạnh Hoàng thúc không có thê thiếp.”
-“Song Nhi tuy thân phận thấp kém nhưng được Hoàng thúc để mắt tới cũng là phúc khí của nàng.”
-“Chắc hẳn Hoàng thúc sẽ đối xử tốt với nàng?”
-Sở Đệ Trì đứng dậy:
-“Đó là điều đương nhiên.”
-Nói xong.
-Hắn nhìn Sở Ly một cái đầy thâm ý.
-“Hồi phủ.”
-Song Nhi đứng lên, nhìn Sở Ly:
-“Chủ tử...”
-Khắp Đại Sở.
-Gần như không có mấy nữ nhân không bị phong thái của Nhiếp Chính Vương mê hoặc.
-Nàng cũng không ngoại lệ.
-Có thể trở thành thông phòng của hắn.
-Đã là phúc phận ba đời tu được.
-Đa tạ chủ tử đã cho nàng cơ hội này.
-Việc chủ tử giao phó...
-Nàng tuyệt đối sẽ không để lộ nửa lời.
-Sở Ly khẽ nhắm mắt.
-Nàng biết rõ tính tình của Sở Đệ Trì.
-Nhiếp Chính Vương phủ cũng chẳng phải nơi tốt đẹp gì.
-Nhưng Song Nhi đã có tình, lại giúp nàng che giấu bí mật.
-Nàng đành thuận nước đẩy thuyền.
-“Song Nhi.”
-“Ngươi theo hầu ta chín năm, trung thành tận tụy.”
-“Ngày mai ta sẽ cho người chuẩn bị của hồi môn cùng thị nữ.”
-“Dù chỉ là thân phận thông phòng, ta cũng sẽ không để ngươi chịu thiệt.”
-Song Nhi cảm động đỏ hoe mắt:
-“Đa tạ chủ tử!”
-“Đi đi.”
-“Vâng!”
-Song Nhi theo Nhiếp Chính Vương xuất cung.
-Trong phòng lập tức trống trải.
-Nhưng cảm giác áp bức mà nam nhân kia để lại vẫn còn quanh quẩn.
-Khiến lòng người bất an.
-Sở Ly thấp thỏm nghĩ:
-Tính đa nghi của Nhiếp Chính Vương vốn cực nặng.
-Hôm nay hắn lại dễ dàng tin như vậy.
-Chuyện chiếc hương nang...
-Hẳn là đã qua rồi chứ?
-Nhiếp Chính Vương phủ
-Đêm xuống.
-Song Nhi bưng chậu nước rửa chân tới.
-Cung kính quỳ trước ghế Thái Sư.
-“Điện hạ.”
-“Nô tỳ hầu hạ ngài ngâm chân.”
-Nàng nâng đôi ủng đen của nam nhân lên, cẩn thận cởi xuống.
-Sở Đệ Trì dựa lưng vào ghế.
-Hai tay đặt trên tay vịn.
-Đầu ngón tay thong thả gõ nhịp.
-“Ngươi biết không?”
-“Năm ngoái có một tên binh sĩ báo sai quân tình.”
-“Bị Bản vương phát hiện ngay tại chỗ.”
-“Bản vương chém đầu hắn.”
-“Lột sạch da thịt.”
-“Lấy sọ làm chén rượu.”
-“Ban cho đệ đệ ruột của hắn dùng.”
-Tay Song Nhi run lên dữ dội. Ẩn bớt</p>
+            <p>Chương 14: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 14: [Đừng giả ngốc trước mặt Bản Vương]</p>
+<p>Mấy vị quan viên đưa mắt nhìn nhau, lời đã lên đến cổ họng nhưng chẳng ai dám nói ra.</p>
+<p>Nhiếp Chính Vương vừa khải hoàn trở về, Hoàng thượng liền lấy cớ “tiến dâng nữ nhân, dụ dỗ hoàng tử” mà cưỡng ép thu hồi binh quyền của hắn.</p>
+<p>Lúc này, chưa chắc Nhiếp Chính Vương đã nguyện ý ra tay cứu người.</p>
+<p>Cuối cùng, vị lão thần Nội Các lớn tuổi nhất thử dò hỏi:</p>
+<p>“Không biết Nhiếp Chính Vương điện hạ có cao kiến gì chăng?”</p>
+<p>Sở Đệ Trì nâng mắt:</p>
+<p>“Bản vương thì có cao kiến gì được?”</p>
+<p>Mọi người nhất thời nghẹn lời.</p>
+<p>“Trận chiến Tây Vực lần này, bản vương trọng thương chưa lành, cần tĩnh dưỡng một thời gian.”</p>
+<p>“Có chư vị văn võ bá quan vì Hoàng huynh phân ưu, thần đệ cũng yên tâm rồi.”</p>
+<p>Sở Đệ Trì đứng dậy, chắp tay hướng về phía Sở Hoàng đang ngồi sau long án:</p>
+<p>“Thần đệ cáo lui.”</p>
+<p>Dứt lời, hắn xoay người rời đi.</p>
+<p>Mấy vị đại thần há miệng định nói gì đó, cuối cùng lại nuốt ngược trở vào.</p>
+<p>Không ai dám nhiều lời.</p>
+<p>Ra khỏi Ngự Thư Phòng.</p>
+<p>Trong đầu Sở Đệ Trì hiện lên chiếc hương nang ở Chiêu Lan Điện.</p>
+<p>Dải tua rua trên đó...</p>
+<p>Hoàn toàn giống với dải tua rua hắn đã giật xuống từ người nữ nhân kia vào đêm khánh công yến.</p>
+<p>Trọng Phong đi theo phía sau:</p>
+<p>“Chủ tử, bây giờ xuất cung sao?”</p>
+<p>“Đến Chiêu Lan Điện.”</p>
+<p>Hắn đi thẳng vào Chiêu Lan Điện.</p>
+<p>Lúc này, Sở Ly đang uống thuốc.</p>
+<p>Nhìn thấy nam nhân xông vào, nàng cũng chẳng lấy làm bất ngờ.</p>
+<p>“Hoàng thúc chẳng phải đã đi rồi sao?”</p>
+<p>“Còn có việc gì nữa?”</p>
+<p>Sở Đệ Trì bước vào trong phòng.</p>
+<p>Ánh mắt chăm chú nhìn gương mặt trắng nõn mềm mại của nàng.</p>
+<p>Nàng còn nhỏ tuổi.</p>
+<p>Dung mạo vẫn chưa hoàn toàn trưởng thành.</p>
+<p>Vẻ ngoài thanh tú sạch sẽ đúng là một thiếu niên phong lưu tuấn mỹ.</p>
+<p>Nhưng đôi mắt sáng, hàm răng trắng ấy...</p>
+<p>Lại thấp thoáng vài phần nhu thái của nữ tử.</p>
+<p>Hắn tiến đến bên giường:</p>
+<p>“Hương nang là của ngươi?”</p>
+<p>“Hương nang nào?”</p>
+<p>“Đừng giả ngốc trước mặt Bản vương.”</p>
+<p>Vung tay một cái.</p>
+<p>Chiếc hương nang bị ném xuống trước mặt nàng.</p>
+<p>Dải tua rua rối tung lên.</p>
+<p>Giống hệt đêm mê loạn nơi Ngự Hoa Viên hôm ấy.</p>
+<p>Sở Ly cau mày nhặt lên xem.</p>
+<p>Bên cạnh, cung nữ Song Nhi đang hầu hạ vừa nhìn thấy đã run bắn người.</p>
+<p>Sở Ly lập tức quay sang:</p>
+<p>“Ngươi run cái gì?”</p>
+<p>Song Nhi hoảng sợ quỳ sụp xuống:</p>
+<p>“Chủ tử tha mạng!”</p>
+<p>“Chiếc hương nang này... là của nô tỳ!”</p>
+<p>Mày Sở Ly càng nhíu chặt hơn:</p>
+<p>“Chỉ là một chiếc hương nang thôi mà.”</p>
+<p>“Sao lại quỳ xuống cầu tha mạng?”</p>
+<p>“Hay là ngươi có chuyện gì giấu ta?”</p>
+<p>“Chủ tử tha mạng!”</p>
+<p>Song Nhi liên tục dập đầu, giọng nói nghẹn ngào:</p>
+<p>“Đêm khánh công yến hôm ấy, lúc nô tỳ chuẩn bị trở về Chiêu Lan Điện, đột nhiên bị người ta kéo vào bụi hoa.”</p>
+<p>“Hắn cưỡng ép cởi y phục của nô tỳ...”</p>
+<p>“Nô tỳ nhìn rõ dung mạo người đó.”</p>
+<p>“Là Nhiếp Chính Vương điện hạ.”</p>
+<p>“Nô tỳ sợ đây là tử tội, nên không dám nhắc với bất cứ ai.”</p>
+<p>Sắc mặt Sở Ly thoáng trở nên khó coi.</p>
+<p>“Hôm ấy ta còn thắc mắc vì sao không tìm thấy ngươi.”</p>
+<p>“Thì ra ngươi với Hoàng thúc lại... hồ đồ như vậy!”</p>
+<p>Xảy ra chuyện lớn thế này mà lại không nói với nàng.</p>
+<p>“Song Nhi!”</p>
+<p>“Ngươi theo hầu ta nhiều năm, luôn an phận thủ thường, tận tâm tận lực.”</p>
+<p>“Sao có thể phạm phải đại tội như vậy?”</p>
+<p>“Không phải nô tỳ cố ý!”</p>
+<p>“Nô tỳ nào dám vọng tưởng đến Nhiếp Chính Vương điện hạ.”</p>
+<p>“Nô tỳ là bị ép buộc!”</p>
+<p>“Xin chủ tử cùng Nhiếp Chính Vương điện hạ khai ân!”</p>
+<p>Song Nhi quỳ dưới đất khóc nức nở.</p>
+<p>Sở Ly siết chặt tay.</p>
+<p>Ánh mắt vừa tiếc rèn sắt không thành thép vừa bất lực đã nói lên tất cả.</p>
+<p>Song Nhi vẫn không ngừng thút thít.</p>
+<p>Sở Đệ Trì lạnh lùng nhìn cung nữ trước mặt.</p>
+<p>Quả thật cũng có vài phần nhan sắc.</p>
+<p>Nhưng vẫn chưa đẹp đến mức khiến hắn mất khống chế như đêm đó.</p>
+<p>“Bản vương còn chưa tra hỏi.”</p>
+<p>“Ngươi đã khai hết mọi chuyện.”</p>
+<p>“Lúc này lại không sợ tử tội nữa sao?”</p>
+<p>Song Nhi cứng đờ sống lưng.</p>
+<p>“Nô tỳ phúc bạc.”</p>
+<p>“Có thể hầu hạ Nhiếp Chính Vương một đêm đã là phúc phận lớn lao.”</p>
+<p>“Không dám cầu mong thêm điều gì.”</p>
+<p>Sở Đệ Trì từ trên cao nhìn xuống nàng.</p>
+<p>Giọng nói lạnh nhạt nhưng uy áp cực nặng:</p>
+<p>“Nếu đã có tâm với Bản vương.”</p>
+<p>“Vậy hôm sau, khi Bản vương bị vu oan làm nhục Lan Quý nhân ở Thanh Tuyết Cung...”</p>
+<p>“Vì sao ngươi không đứng ra chứng minh sự trong sạch cho Bản vương?”</p>
+<p>“Hôm đó... nô tỳ sợ lắm.”</p>
+<p>“Nô tỳ trốn trong phòng không dám ra ngoài.”</p>
+<p>“Đến khi biết chuyện ở Thanh Tuyết Cung thì điện hạ đã xuất cung rồi.”</p>
+<p>“Phải không?”</p>
+<p>Song Nhi vùi đầu thật thấp.</p>
+<p>Chỉ cảm thấy ánh mắt sắc bén như tên nhọn đang ghim lên lưng mình.</p>
+<p>Dường như muốn xuyên thủng cả thân thể.</p>
+<p>Lòng bàn tay nàng đã ướt đẫm mồ hôi.</p>
+<p>Mười ngón tay bấu chặt xuống nền đất để ngăn bản thân run rẩy.</p>
+<p>“Hương nang này đường thêu tinh xảo.”</p>
+<p>“Vải dùng là Cửu Vân Cẩm đắt giá.”</p>
+<p>“Chỉ e một cung nữ như ngươi không có tư cách sở hữu.”</p>
+<p>Song Nhi đáp:</p>
+<p>“Cô cô của nô tỳ là chưởng sự ở Cẩm Tú Ty.”</p>
+<p>“Bà dùng phần vải thừa từ y phục của các nương nương để may cho nô tỳ chiếc hương nang này, dùng để an thần.”</p>
+<p>“Trọng Phong.”</p>
+<p>Trọng Phong hiểu ý, lập tức đi xác minh.</p>
+<p>Sở Đệ Trì đi đến một bên ngồi xuống.</p>
+<p>Tay cầm chiếc hương nang xoay nhẹ.</p>
+<p>Ánh mắt lướt về phía Sở Ly trên giường.</p>
+<p>Sở Ly thần sắc bình thường.</p>
+<p>Song Nhi thì quỳ rạp dưới đất.</p>
+<p>Mồ hôi từ chóp mũi nhỏ từng giọt xuống nền.</p>
+<p>Đến thở mạnh cũng không dám.</p>
+<p>Không lâu sau, Trọng Phong trở lại:</p>
+<p>“Chủ tử...”</p>
+<p>Sau vài câu thì thầm.</p>
+<p>Mọi chuyện đã được xác nhận.</p>
+<p>Song Nhi quả thật có một vị cô cô làm việc tại Cẩm Tú Ty.</p>
+<p>Những cung nữ ở đó thường dùng vải vụn được các nương nương ban thưởng để may tất, khăn tay hoặc túi thơm.</p>
+<p>Sở Ly lên tiếng:</p>
+<p>“Không ngờ Hoàng thúc cùng cung nữ của ta lại có duyên phận như vậy.”</p>
+<p>“Nhưng Song Nhi xuất thân thấp kém.”</p>
+<p>“Nếu việc này truyền ra ngoài, e sẽ ảnh hưởng đến danh tiếng của Hoàng thúc.”</p>
+<p>“Chưa cưới vương phi đã có thông phòng.”</p>
+<p>“Đối với vị Hoàng thẩm tương lai cũng chẳng phải chuyện tốt đẹp gì.”</p>
+<p>“Hay là để ta xử lý Song Nhi giúp Hoàng thúc.”</p>
+<p>“Bảo đảm chuyện này sẽ không có người thứ năm biết được.”</p>
+<p>Ánh mắt Sở Đệ Trì đột nhiên tối sầm.</p>
+<p>Một tia sắc bén lóe lên.</p>
+<p>“Nữ nhân từng được Bản vương sủng hạnh.”</p>
+<p>“Bản vương tất nhiên sẽ không bạc đãi.”</p>
+<p>“Nếu Song Nhi đã cùng Bản vương có phu thê chi thực...”</p>
+<p>“Vậy Bản vương sẽ xin Hoàng thượng ban nàng cho mình.”</p>
+<p>“Đưa vào Nhiếp Chính Vương phủ làm thông phòng nha hoàn.”</p>
+<p>“Cũng để người ngoài khỏi nói Bản vương bạc tình bạc nghĩa, không chịu trách nhiệm.”</p>
+<p>Song Nhi mừng rỡ:</p>
+<p>“Nô tỳ đa tạ Nhiếp Chính Vương điện hạ!”</p>
+<p>Sở Ly khẽ nhíu mày.</p>
+<p>Mơ hồ cảm thấy có gì đó không đúng.</p>
+<p>Từ khi nào hắn lại quan tâm đến thanh danh của mình?</p>
+<p>Bao năm nay, Hoàng đế ban hôn không biết bao nhiêu lần.</p>
+<p>Các đại thần cũng liên tục tiến cử nữ nhi.</p>
+<p>Nhưng chưa từng có ai lọt vào mắt hắn.</p>
+<p>“Bao năm qua bên cạnh Hoàng thúc không có thê thiếp.”</p>
+<p>“Song Nhi tuy thân phận thấp kém nhưng được Hoàng thúc để mắt tới cũng là phúc khí của nàng.”</p>
+<p>“Chắc hẳn Hoàng thúc sẽ đối xử tốt với nàng?”</p>
+<p>Sở Đệ Trì đứng dậy:</p>
+<p>“Đó là điều đương nhiên.”</p>
+<p>Nói xong.</p>
+<p>Hắn nhìn Sở Ly một cái đầy thâm ý.</p>
+<p>“Hồi phủ.”</p>
+<p>Song Nhi đứng lên, nhìn Sở Ly:</p>
+<p>“Chủ tử...”</p>
+<p>Khắp Đại Sở.</p>
+<p>Gần như không có mấy nữ nhân không bị phong thái của Nhiếp Chính Vương mê hoặc.</p>
+<p>Nàng cũng không ngoại lệ.</p>
+<p>Có thể trở thành thông phòng của hắn.</p>
+<p>Đã là phúc phận ba đời tu được.</p>
+<p>Đa tạ chủ tử đã cho nàng cơ hội này.</p>
+<p>Việc chủ tử giao phó...</p>
+<p>Nàng tuyệt đối sẽ không để lộ nửa lời.</p>
+<p>Sở Ly khẽ nhắm mắt.</p>
+<p>Nàng biết rõ tính tình của Sở Đệ Trì.</p>
+<p>Nhiếp Chính Vương phủ cũng chẳng phải nơi tốt đẹp gì.</p>
+<p>Nhưng Song Nhi đã có tình, lại giúp nàng che giấu bí mật.</p>
+<p>Nàng đành thuận nước đẩy thuyền.</p>
+<p>“Song Nhi.”</p>
+<p>“Ngươi theo hầu ta chín năm, trung thành tận tụy.”</p>
+<p>“Ngày mai ta sẽ cho người chuẩn bị của hồi môn cùng thị nữ.”</p>
+<p>“Dù chỉ là thân phận thông phòng, ta cũng sẽ không để ngươi chịu thiệt.”</p>
+<p>Song Nhi cảm động đỏ hoe mắt:</p>
+<p>“Đa tạ chủ tử!”</p>
+<p>“Đi đi.”</p>
+<p>“Vâng!”</p>
+<p>Song Nhi theo Nhiếp Chính Vương xuất cung.</p>
+<p>Trong phòng lập tức trống trải.</p>
+<p>Nhưng cảm giác áp bức mà nam nhân kia để lại vẫn còn quanh quẩn.</p>
+<p>Khiến lòng người bất an.</p>
+<p>Sở Ly thấp thỏm nghĩ:</p>
+<p>Tính đa nghi của Nhiếp Chính Vương vốn cực nặng.</p>
+<p>Hôm nay hắn lại dễ dàng tin như vậy.</p>
+<p>Chuyện chiếc hương nang...</p>
+<p>Hẳn là đã qua rồi chứ?</p>
+<p>Nhiếp Chính Vương phủ</p>
+<p>Đêm xuống.</p>
+<p>Song Nhi bưng chậu nước rửa chân tới.</p>
+<p>Cung kính quỳ trước ghế Thái Sư.</p>
+<p>“Điện hạ.”</p>
+<p>“Nô tỳ hầu hạ ngài ngâm chân.”</p>
+<p>Nàng nâng đôi ủng đen của nam nhân lên, cẩn thận cởi xuống.</p>
+<p>Sở Đệ Trì dựa lưng vào ghế.</p>
+<p>Hai tay đặt trên tay vịn.</p>
+<p>Đầu ngón tay thong thả gõ nhịp.</p>
+<p>“Ngươi biết không?”</p>
+<p>“Năm ngoái có một tên binh sĩ báo sai quân tình.”</p>
+<p>“Bị Bản vương phát hiện ngay tại chỗ.”</p>
+<p>“Bản vương chém đầu hắn.”</p>
+<p>“Lột sạch da thịt.”</p>
+<p>“Lấy sọ làm chén rượu.”</p>
+<p>“Ban cho đệ đệ ruột của hắn dùng.”</p>
+<p>Tay Song Nhi run lên dữ dội. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_13.html" class="btn">‹ Trước</a>
             <a href="chuong_15.html" class="btn">Sau ›</a>
         </div>
@@ -332,15 +340,11 @@ Tay Song Nhi run lên dữ dội. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -352,11 +356,11 @@ Tay Song Nhi run lên dữ dội. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

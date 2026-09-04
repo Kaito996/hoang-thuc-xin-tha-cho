@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 9</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,317 +62,326 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 9</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_8.html" class="btn">‹ Trước</a>
             <a href="chuong_10.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 9: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 9: [Ôm chặt đùi Nhiếp Chính Vương]
-Ta không muốn!
-Dẫu từ đầu đến chân, mỗi một sợi lông tơ đều tràn đầy kháng cự, nhưng khi biết phải đến Thiên Linh Tự thay Thái hậu thỉnh Phật châu, Sở Ly chỉ có thể miễn cưỡng đi theo.
-Ra khỏi hoàng cung.
-Nơi đặt chân đến lại là một tòa San Hô Thủy Tạ thanh nhã mà xa hoa.
-Đây chính là biệt viện tư sản của Nhiếp Chính Vương tại kinh thành.
-Sở Ly đứng trước cổng, thần sắc do dự:
-— Hoàng thúc, chúng ta tới đây làm gì?
-Sở Đệ Trì lạnh nhạt đáp:
-— Không cho người chuẩn bị xa mã, ngươi định đi bộ đến Thiên Linh Tự?
-— Vào đi.
-— A!
-Sở Ly bước nhanh lên bậc thềm, nào ngờ đối phương còn chưa nhấc chân, nàng đã đâm thẳng mũi vào lưng hắn.
-Nàng lùi lại hai bước.
-Giữa nam nhân với nhau, va chạm đôi chút vốn là chuyện thường.
-Nhưng kiếm mi của Sở Đệ Trì lại khẽ nhíu.
-Lúc Sở Ly tiến sát lại gần, hắn bỗng ngửi thấy một luồng hương thơm nhàn nhạt.
-Thanh đạm như lan.
-Mơ hồ có vài phần quen thuộc.
-Tựa hồ đã từng ngửi thấy ở đâu đó, nhưng nhất thời lại không nhớ ra.
-Hắn nghiêng mắt nhìn nàng.
-Thiếu niên cúi mày thuận mắt, bộ dạng ngoan ngoãn vô hại.
-Cổ thon dài trắng nõn.
-Thân là nam tử mà môi hồng răng trắng, chẳng có lấy nửa phần phong cốt.
-Thế nhưng chính mùi u lan ấy lại khiến bụng dưới hắn nóng lên, gợi lại cảm giác hỗn loạn của đêm hôm đó.
-Giọng hắn lạnh như băng:
-— Đường rộng thế này mà cũng đâm vào bổn vương?
-— Nếu đôi mắt không dùng được, chi bằng móc bỏ đi.
-Sở Ly mím chặt môi.
-Kể từ khi rời khỏi Thọ Khang Cung, tâm tình của Nhiếp Chính Vương dường như luôn rất lạnh.
-Chạm vào là đóng băng.
-Tiến lại gần một chút, nói nhiều thêm nửa câu, cũng đủ bị đông chết.
-Rốt cuộc là ai chọc giận hắn?
-Sở Ly nhích từng bước, cẩn thận đi phía sau.
-Đây là lần đầu tiên nàng tới San Hô Thủy Tạ.
-Nơi này vậy mà còn rộng lớn hơn cả cung điện trong hoàng cung.
-Lầu các đình đài tầng tầng lớp lớp, quy củ chỉnh tề.
-Hoa quý cây lạ được cắt tỉa ngay ngắn.
-Mặt đất lát toàn đá cuội Nam Hải.
-Ngay cả cổng vòm cũng được điêu khắc bằng lam trùy thạch quý giá.
-Bước vào nội viện.
-Ao nước rộng như hồ, trong vắt sáng ngời.
-Sóng nước lấp lánh.
-Giả sơn chập chùng.
-Lầu cao thủy tạ vươn thẳng lên trời.
-Phong cảnh khắp nơi đều thu trọn vào mắt.
-Ngay cả Ngự Hoa Viên cũng không thể sánh bằng.
-— Ngươi dẫn hắn tới đây làm gì?
-Bỗng nhiên, một giọng cười ôn nhuận vang lên.
-— San Hô Thủy Tạ xa hoa như vậy, thân là võ tướng mà lại sở hữu tư sản bậc này.
-— Ngươi không sợ Hoàng thượng biết được rồi tịch biên gia sản sao?
-Trong thủy tạ.
-Gió nhẹ lướt qua.
-Người lên tiếng là một công tử áo trắng.
-Ôn nhu như ngọc.
-Phong thái nhẹ nhàng tao nhã.
-Sở Ly nhìn về phía Sở Đệ Trì:
-— Ta sẽ không nói với phụ hoàng đâu.
-Công tử áo trắng cười dịu dàng:
-— Nhưng ngoại trừ tâm phúc của Nhiếp Chính Vương, bất kỳ ai từng tới San Hô Thủy Tạ...
-— Đều phải chết nha.
-Nụ cười hắn ôn hòa vô hại.
-Nhưng lời nói ra lại độc như rắn rết.
-Người này chính là bằng hữu chí giao của Nhiếp Chính Vương, truyền nhân nhất mạch Thần Y.
-Bạch Cẩm Y.
-Sống lưng Sở Ly khẽ lạnh.
-— Cẩm Y, đừng dọa hắn.
-Bên cạnh, một nam tử áo đen trầm ổn đứng dậy.
-Mi tâm sát khí lẫm liệt.
-— Bái kiến Cửu hoàng tử.
-Sở Ly nhận ra hắn.
-Tiêu Dạ Hành.
-Mới hai mươi sáu tuổi đã nhờ mưu lược hơn người, thủ đoạn sắc bén mà ngồi lên chức vị Đô đốc Chính nhị phẩm.
-Dưới trướng thống lĩnh vạn quân.
-Trấn thủ Giang Nam.
-Là tấm gương của nam nhi Đại Sở.
-Ngay cả phụ hoàng cũng từng tán thưởng hắn là tâm phúc chi thần.
-— Tiêu Đô đốc.
-Nhìn thấy hắn, Sở Ly lập tức yên tâm hơn nhiều.
-Ngồi xuống cũng chọn ngay vị trí bên cạnh hắn.
-Sở Đệ Trì cầm chén trà lên, uống liền mấy ngụm.
-Bạch Cẩm Y cười nhạt:
-— Chẳng phải chỉ giao lại binh quyền thôi sao?
-— Có cần nổi nóng đến vậy không?
-— Hay để ta châm cho ngươi vài châm?
-Tâm phiền ý loạn của Sở Đệ Trì, vốn chẳng phải vì chuyện binh quyền.
-Hắn liếc nhìn Sở Ly đang ngồi ở góc đối diện.
-— Hoàng thượng lấy Cửu hoàng tử làm cớ, cưỡng ép thu hồi binh quyền.
-— Đây là muốn bổn vương cởi giáp quy điền, ở lại đế đô trồng rau luôn sao?
-Bạch Cẩm Y cười:
-— Cửu hoàng tử và Hoàng thượng phụ tử đồng tâm.
-— Tự nhiên đã sớm bày mưu tính kế, liên thủ đối phó ngươi.
-Sở Ly ngẩng đầu.
-Không có!
-Nàng oan uổng!
-Tiêu Dạ Hành nghiêng đầu:
-— Cửu hoàng tử từ trước tới nay hoạt bát hiếu động, đối nhân hòa nhã.
-— Không ngờ lại là kẻ ngụy trang cao minh, tâm cơ thâm trầm.
-— Người này không thể không phòng.
-Sở Ly:
-— ?
-Nói nàng như vậy ngay trước mặt nàng, thật sự thích hợp sao?
-Bạch Cẩm Y nhíu mày:
-— Hắc Giáp Vệ do A Trì đích thân huấn luyện.
-— Vậy mà lại chắp tay dâng cho người khác.
-— Làm sao nuốt trôi cục tức này?
-Tiêu Dạ Hành trầm ngâm:
-— Cướp đoạt thứ người khác yêu quý chẳng khác nào đâm dao giết người.
-— Chi bằng giết luôn Cửu hoàng tử, bọc xác trả lại cho Hoàng đế.
-— Để hắn cũng nếm thử cảm giác ấy.
-Sở Ly:
-— ??
-Khoan đã!
-Tiêu Đô đốc!
-Ngài chẳng phải tâm phúc của phụ hoàng sao?
-Sao có thể nói ra lời này?
-Hóa ra Nhiếp Chính Vương lừa nàng xuất cung.
-Mà nàng lại còn tự mình bước vào San Hô Thủy Tạ.
-Đây chẳng phải chủ động làm con tin sao?
-Bạch Cẩm Y gật đầu:
-— Cửu hoàng tử phá hủy Kinh Bích Ngọc Kiếm trong yến tiệc khánh công.
-— Có thể thấy tâm địa bất chính.
-— Nếu không sớm áp chế, ngày sau tất thành họa lớn.
-Sở Ly thật sự không hề có ý đó!
-Tiêu Dạ Hành đổi giọng:
-— Giết thì khó tránh phiền phức.
-— Hay là chặt một cánh tay.
-— Hoặc phế một chân.
-— Sống không bằng chết mới là hình phạt sâu sắc nhất.
-Giọng nói ôn hòa nhất.
-Lại thốt ra những lời lạnh lẽo nhất.
-Sở Ly ngồi không vững.
-"Phịch!"
-Ngã thẳng xuống đất.
-Mấy người này ngay trước mặt nàng mà bàn bạc cách hành hạ nàng.
-Là ma quỷ sao?
-Bọn họ không nhìn thấy nàng cũng đang ở đây à?
-Không cần kiêng kỵ chút nào sao?
-Còn Tiêu Đô đốc sao lại thành phản diện rồi?
-Bây giờ chạy có còn kịp không?
-Phụ hoàng cứu mạng!
-Bạch Cẩm Y ngạc nhiên:
-— Ồ?
-— Cửu hoàng tử sao lại ngã xuống đất thế?
-Sở Ly lập tức ôm lấy đùi Sở Đệ Trì.
-— Hoàng thúc!
-— Chuyện binh quyền, chất nhi hoàn toàn không biết.
-— Cũng chưa từng nghĩ tới việc đối nghịch với ngài.
-Tấm lòng nàng sáng như nhật nguyệt.
-Có trời đất chứng giám.
-— Chất nhi từ nhỏ ngu dốt.
-— Ngay cả phụ hoàng cũng nói chất nhi không bằng Đại hoàng huynh nhân hậu, Nhị hoàng huynh thông tuệ, Tam hoàng huynh trầm ổn, Tứ hoàng huynh đa mưu...
-— Ngay cả Bát hoàng huynh cũng thông minh hơn chất nhi.
-— Chuyện khánh công yến và binh quyền, Tiểu Cửu thật sự vô tội!
-Sở Đệ Trì lạnh nhạt nhìn nàng.
-Hoàn toàn không để nàng vào mắt.
-— Thái hậu nói, tử tự là căn cơ của quốc gia.
-— Nhưng bổn vương lại rất hiếu kỳ.
-— Nếu thiếu đi vài tử tự...
-— Giang sơn này còn vận chuyển nổi hay không?
-Sống lưng Sở Ly cứng đờ.
-Ý hắn là...
-— Nửa tháng nữa là thu săn.
-— Trong rừng săn bắn, thú dữ vô số.
-— Đao kiếm vô tình.
-— Nếu chẳng may vài vị hoàng tử bị bắn chết...
-— Cũng là chuyện hợp tình hợp lý.
-Hắn nhìn nàng.
-— Tiểu Cửu, ngươi thấy thế nào?
-Sở Ly cố gắng tìm trong mắt hắn một tia đùa cợt.
-Nhưng không có.
-Trong mắt hắn chỉ có lệ khí.
-Hắn muốn giết hoàng tử.
-Và hắn rất nghiêm túc.
-Nếu đi báo tin, tức là đắc tội Nhiếp Chính Vương.
-Nếu coi như không biết, lại là bỏ mặc tính mạng các hoàng huynh.
-Nàng bị kẹt ở giữa.
-Tiến thoái lưỡng nan.
-Tại sao phải để nàng biết chuyện này?
-Ánh mắt nàng khẽ chuyển.
-— Tiểu Cửu biết từ xưa đến nay, mạnh được yếu thua.
-— Đường hẹp gặp nhau, dũng giả thắng.
-— Thiên tư của Tiểu Cửu ngu độn.
-— Không bằng các vị hoàng huynh xuất chúng.
-— Nhưng vĩnh viễn sẽ không đối địch với Hoàng thúc.
-Về phần tám vị hoàng huynh...
-Sinh ra trong hoàng thất.
-Có ai là ngọn đèn cạn dầu đâu?
-Tay ai mà chẳng dính máu.
-Nhiếp Chính Vương muốn giết họ.
-Họ tự nhiên cũng sẽ bằng bản lĩnh của mình mà chống lại.
-Ngay cả bản thân nàng còn chưa bảo vệ nổi.
-Lấy đâu ra sức lực đi lo cho người khác?
-Huống hồ họ khác mẹ sinh ra.
-Bề ngoài huynh hữu đệ cung.
-Thực chất kết bè kết phái.
-Mỗi người đều có tâm tư riêng.
-— Chúng ta còn phải tới Thiên Linh Tự.
-— Đợi xa mã chuẩn bị xong, chất nhi sẽ chờ Hoàng thúc bên ngoài.
-Nói xong.
-Sở Ly lập tức chuồn mất.
-Nhanh đến mức chỉ sợ chậm thêm một bước, mạng nhỏ sẽ phải bỏ lại nơi này.
-Bạch Cẩm Y bật cười:
-— Chẳng phải vừa bảo không dọa hắn sao?
-— Vừa mở miệng đã đòi chặt tay phế chân.
-— Xem đứa nhỏ kia sợ đến mức chạy còn không kịp.
-Tiêu Dạ Hành cười híp mắt.
-Gương mặt lạnh lùng tuấn mỹ tràn đầy vẻ thâm hiểm.
-— Ta thấy hắn nhát gan như vậy.
-— Nếu là giả vờ, thì thủ đoạn quả thật quá cao minh.
-Bạch Cẩm Y nhìn Sở Đệ Trì:
-— Nếu không phải giả vờ...
-— Vậy là kẻ nào mượn tay hắn, mai phục sát thủ trên đường ngươi khải hoàn hồi kinh?
-— Rồi lại bày ra hàng loạt chuyện sau đó?
-Sở Đệ Trì cầm chén trà.
-Ngón tay thờ ơ vuốt nhẹ miệng chén.
-— Kẻ nào thèm muốn Hắc Giáp Vệ của bổn vương...
-— Chính là kẻ đó.
-Tiêu Dạ Hành nói:
-— Ta đã an bài xong mọi thứ.
-— Trong Hắc Giáp Vệ có nội gián.
-— Ngươi cố ý giao lại binh quyền để khiến bọn chúng lơi lỏng cảnh giác.
-— Nhân cơ hội này thanh trừ dị kỷ.
-— Ừm.
-Sở Đệ Trì khẽ cụp mắt.
-Không biết đang nghĩ gì.
-Bạch Cẩm Y nói:
-— Còn về loại độc kia...
-— Ta vẫn đang nghiên cứu.
-— Hoàng gia quả thật tâm địa độc ác đến cực điểm.
-— Chỉ vì muốn bóp chết nguy cơ tranh đoạt ngôi vị từ trong nôi.
-— Khi ngươi mới vài tháng tuổi đã cưỡng ép cho uống Thất Diệp Tử độc.
-— Đoạn tuyệt năng lực sinh dưỡng.
-— Khiến ngươi đoạn tử tuyệt tôn.
-Sở Đệ Trì bỗng lên tiếng:
-— Không cần nữa.
-— Hả?
-Bạch Cẩm Y không hiểu ý hắn.
-Những năm qua.
-Vì độc tố thời thơ ấu làm tổn hại căn cơ.
-Cho dù uống bao nhiêu linh dược.
-Sở Đệ Trì vẫn không thể hành chuyện phòng the.
-Nhưng đêm đó...
-Hôm qua.
-Hắn còn cố ý tìm một nữ tử sạch sẽ đến thử lần nữa.
-Kết quả vẫn giống như trước.
-Không hề có dục niệm.
-Có lẽ...
-Bệnh của hắn đã khỏi rồi.
-Chỉ là...
-"Dược dẫn" của hắn, chỉ có thể là nàng.
-Rốt cuộc nàng là ai? Ẩn bớt</p>
+            <p>Chương 9: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 9: [Ôm chặt đùi Nhiếp Chính Vương]</p>
+<p>Ta không muốn!</p>
+<p>Dẫu từ đầu đến chân, mỗi một sợi lông tơ đều tràn đầy kháng cự, nhưng khi biết phải đến Thiên Linh Tự thay Thái hậu thỉnh Phật châu, Sở Ly chỉ có thể miễn cưỡng đi theo.</p>
+<p>Ra khỏi hoàng cung.</p>
+<p>Nơi đặt chân đến lại là một tòa San Hô Thủy Tạ thanh nhã mà xa hoa.</p>
+<p>Đây chính là biệt viện tư sản của Nhiếp Chính Vương tại kinh thành.</p>
+<p>Sở Ly đứng trước cổng, thần sắc do dự:</p>
+<p>— Hoàng thúc, chúng ta tới đây làm gì?</p>
+<p>Sở Đệ Trì lạnh nhạt đáp:</p>
+<p>— Không cho người chuẩn bị xa mã, ngươi định đi bộ đến Thiên Linh Tự?</p>
+<p>— Vào đi.</p>
+<p>— A!</p>
+<p>Sở Ly bước nhanh lên bậc thềm, nào ngờ đối phương còn chưa nhấc chân, nàng đã đâm thẳng mũi vào lưng hắn.</p>
+<p>Nàng lùi lại hai bước.</p>
+<p>Giữa nam nhân với nhau, va chạm đôi chút vốn là chuyện thường.</p>
+<p>Nhưng kiếm mi của Sở Đệ Trì lại khẽ nhíu.</p>
+<p>Lúc Sở Ly tiến sát lại gần, hắn bỗng ngửi thấy một luồng hương thơm nhàn nhạt.</p>
+<p>Thanh đạm như lan.</p>
+<p>Mơ hồ có vài phần quen thuộc.</p>
+<p>Tựa hồ đã từng ngửi thấy ở đâu đó, nhưng nhất thời lại không nhớ ra.</p>
+<p>Hắn nghiêng mắt nhìn nàng.</p>
+<p>Thiếu niên cúi mày thuận mắt, bộ dạng ngoan ngoãn vô hại.</p>
+<p>Cổ thon dài trắng nõn.</p>
+<p>Thân là nam tử mà môi hồng răng trắng, chẳng có lấy nửa phần phong cốt.</p>
+<p>Thế nhưng chính mùi u lan ấy lại khiến bụng dưới hắn nóng lên, gợi lại cảm giác hỗn loạn của đêm hôm đó.</p>
+<p>Giọng hắn lạnh như băng:</p>
+<p>— Đường rộng thế này mà cũng đâm vào bổn vương?</p>
+<p>— Nếu đôi mắt không dùng được, chi bằng móc bỏ đi.</p>
+<p>Sở Ly mím chặt môi.</p>
+<p>Kể từ khi rời khỏi Thọ Khang Cung, tâm tình của Nhiếp Chính Vương dường như luôn rất lạnh.</p>
+<p>Chạm vào là đóng băng.</p>
+<p>Tiến lại gần một chút, nói nhiều thêm nửa câu, cũng đủ bị đông chết.</p>
+<p>Rốt cuộc là ai chọc giận hắn?</p>
+<p>Sở Ly nhích từng bước, cẩn thận đi phía sau.</p>
+<p>Đây là lần đầu tiên nàng tới San Hô Thủy Tạ.</p>
+<p>Nơi này vậy mà còn rộng lớn hơn cả cung điện trong hoàng cung.</p>
+<p>Lầu các đình đài tầng tầng lớp lớp, quy củ chỉnh tề.</p>
+<p>Hoa quý cây lạ được cắt tỉa ngay ngắn.</p>
+<p>Mặt đất lát toàn đá cuội Nam Hải.</p>
+<p>Ngay cả cổng vòm cũng được điêu khắc bằng lam trùy thạch quý giá.</p>
+<p>Bước vào nội viện.</p>
+<p>Ao nước rộng như hồ, trong vắt sáng ngời.</p>
+<p>Sóng nước lấp lánh.</p>
+<p>Giả sơn chập chùng.</p>
+<p>Lầu cao thủy tạ vươn thẳng lên trời.</p>
+<p>Phong cảnh khắp nơi đều thu trọn vào mắt.</p>
+<p>Ngay cả Ngự Hoa Viên cũng không thể sánh bằng.</p>
+<p>— Ngươi dẫn hắn tới đây làm gì?</p>
+<p>Bỗng nhiên, một giọng cười ôn nhuận vang lên.</p>
+<p>— San Hô Thủy Tạ xa hoa như vậy, thân là võ tướng mà lại sở hữu tư sản bậc này.</p>
+<p>— Ngươi không sợ Hoàng thượng biết được rồi tịch biên gia sản sao?</p>
+<p>Trong thủy tạ.</p>
+<p>Gió nhẹ lướt qua.</p>
+<p>Người lên tiếng là một công tử áo trắng.</p>
+<p>Ôn nhu như ngọc.</p>
+<p>Phong thái nhẹ nhàng tao nhã.</p>
+<p>Sở Ly nhìn về phía Sở Đệ Trì:</p>
+<p>— Ta sẽ không nói với phụ hoàng đâu.</p>
+<p>Công tử áo trắng cười dịu dàng:</p>
+<p>— Nhưng ngoại trừ tâm phúc của Nhiếp Chính Vương, bất kỳ ai từng tới San Hô Thủy Tạ...</p>
+<p>— Đều phải chết nha.</p>
+<p>Nụ cười hắn ôn hòa vô hại.</p>
+<p>Nhưng lời nói ra lại độc như rắn rết.</p>
+<p>Người này chính là bằng hữu chí giao của Nhiếp Chính Vương, truyền nhân nhất mạch Thần Y.</p>
+<p>Bạch Cẩm Y.</p>
+<p>Sống lưng Sở Ly khẽ lạnh.</p>
+<p>— Cẩm Y, đừng dọa hắn.</p>
+<p>Bên cạnh, một nam tử áo đen trầm ổn đứng dậy.</p>
+<p>Mi tâm sát khí lẫm liệt.</p>
+<p>— Bái kiến Cửu hoàng tử.</p>
+<p>Sở Ly nhận ra hắn.</p>
+<p>Tiêu Dạ Hành.</p>
+<p>Mới hai mươi sáu tuổi đã nhờ mưu lược hơn người, thủ đoạn sắc bén mà ngồi lên chức vị Đô đốc Chính nhị phẩm.</p>
+<p>Dưới trướng thống lĩnh vạn quân.</p>
+<p>Trấn thủ Giang Nam.</p>
+<p>Là tấm gương của nam nhi Đại Sở.</p>
+<p>Ngay cả phụ hoàng cũng từng tán thưởng hắn là tâm phúc chi thần.</p>
+<p>— Tiêu Đô đốc.</p>
+<p>Nhìn thấy hắn, Sở Ly lập tức yên tâm hơn nhiều.</p>
+<p>Ngồi xuống cũng chọn ngay vị trí bên cạnh hắn.</p>
+<p>Sở Đệ Trì cầm chén trà lên, uống liền mấy ngụm.</p>
+<p>Bạch Cẩm Y cười nhạt:</p>
+<p>— Chẳng phải chỉ giao lại binh quyền thôi sao?</p>
+<p>— Có cần nổi nóng đến vậy không?</p>
+<p>— Hay để ta châm cho ngươi vài châm?</p>
+<p>Tâm phiền ý loạn của Sở Đệ Trì, vốn chẳng phải vì chuyện binh quyền.</p>
+<p>Hắn liếc nhìn Sở Ly đang ngồi ở góc đối diện.</p>
+<p>— Hoàng thượng lấy Cửu hoàng tử làm cớ, cưỡng ép thu hồi binh quyền.</p>
+<p>— Đây là muốn bổn vương cởi giáp quy điền, ở lại đế đô trồng rau luôn sao?</p>
+<p>Bạch Cẩm Y cười:</p>
+<p>— Cửu hoàng tử và Hoàng thượng phụ tử đồng tâm.</p>
+<p>— Tự nhiên đã sớm bày mưu tính kế, liên thủ đối phó ngươi.</p>
+<p>Sở Ly ngẩng đầu.</p>
+<p>Không có!</p>
+<p>Nàng oan uổng!</p>
+<p>Tiêu Dạ Hành nghiêng đầu:</p>
+<p>— Cửu hoàng tử từ trước tới nay hoạt bát hiếu động, đối nhân hòa nhã.</p>
+<p>— Không ngờ lại là kẻ ngụy trang cao minh, tâm cơ thâm trầm.</p>
+<p>— Người này không thể không phòng.</p>
+<p>Sở Ly:</p>
+<p>— ?</p>
+<p>Nói nàng như vậy ngay trước mặt nàng, thật sự thích hợp sao?</p>
+<p>Bạch Cẩm Y nhíu mày:</p>
+<p>— Hắc Giáp Vệ do A Trì đích thân huấn luyện.</p>
+<p>— Vậy mà lại chắp tay dâng cho người khác.</p>
+<p>— Làm sao nuốt trôi cục tức này?</p>
+<p>Tiêu Dạ Hành trầm ngâm:</p>
+<p>— Cướp đoạt thứ người khác yêu quý chẳng khác nào đâm dao giết người.</p>
+<p>— Chi bằng giết luôn Cửu hoàng tử, bọc xác trả lại cho Hoàng đế.</p>
+<p>— Để hắn cũng nếm thử cảm giác ấy.</p>
+<p>Sở Ly:</p>
+<p>— ??</p>
+<p>Khoan đã!</p>
+<p>Tiêu Đô đốc!</p>
+<p>Ngài chẳng phải tâm phúc của phụ hoàng sao?</p>
+<p>Sao có thể nói ra lời này?</p>
+<p>Hóa ra Nhiếp Chính Vương lừa nàng xuất cung.</p>
+<p>Mà nàng lại còn tự mình bước vào San Hô Thủy Tạ.</p>
+<p>Đây chẳng phải chủ động làm con tin sao?</p>
+<p>Bạch Cẩm Y gật đầu:</p>
+<p>— Cửu hoàng tử phá hủy Kinh Bích Ngọc Kiếm trong yến tiệc khánh công.</p>
+<p>— Có thể thấy tâm địa bất chính.</p>
+<p>— Nếu không sớm áp chế, ngày sau tất thành họa lớn.</p>
+<p>Sở Ly thật sự không hề có ý đó!</p>
+<p>Tiêu Dạ Hành đổi giọng:</p>
+<p>— Giết thì khó tránh phiền phức.</p>
+<p>— Hay là chặt một cánh tay.</p>
+<p>— Hoặc phế một chân.</p>
+<p>— Sống không bằng chết mới là hình phạt sâu sắc nhất.</p>
+<p>Giọng nói ôn hòa nhất.</p>
+<p>Lại thốt ra những lời lạnh lẽo nhất.</p>
+<p>Sở Ly ngồi không vững.</p>
+<p>"Phịch!"</p>
+<p>Ngã thẳng xuống đất.</p>
+<p>Mấy người này ngay trước mặt nàng mà bàn bạc cách hành hạ nàng.</p>
+<p>Là ma quỷ sao?</p>
+<p>Bọn họ không nhìn thấy nàng cũng đang ở đây à?</p>
+<p>Không cần kiêng kỵ chút nào sao?</p>
+<p>Còn Tiêu Đô đốc sao lại thành phản diện rồi?</p>
+<p>Bây giờ chạy có còn kịp không?</p>
+<p>Phụ hoàng cứu mạng!</p>
+<p>Bạch Cẩm Y ngạc nhiên:</p>
+<p>— Ồ?</p>
+<p>— Cửu hoàng tử sao lại ngã xuống đất thế?</p>
+<p>Sở Ly lập tức ôm lấy đùi Sở Đệ Trì.</p>
+<p>— Hoàng thúc!</p>
+<p>— Chuyện binh quyền, chất nhi hoàn toàn không biết.</p>
+<p>— Cũng chưa từng nghĩ tới việc đối nghịch với ngài.</p>
+<p>Tấm lòng nàng sáng như nhật nguyệt.</p>
+<p>Có trời đất chứng giám.</p>
+<p>— Chất nhi từ nhỏ ngu dốt.</p>
+<p>— Ngay cả phụ hoàng cũng nói chất nhi không bằng Đại hoàng huynh nhân hậu, Nhị hoàng huynh thông tuệ, Tam hoàng huynh trầm ổn, Tứ hoàng huynh đa mưu...</p>
+<p>— Ngay cả Bát hoàng huynh cũng thông minh hơn chất nhi.</p>
+<p>— Chuyện khánh công yến và binh quyền, Tiểu Cửu thật sự vô tội!</p>
+<p>Sở Đệ Trì lạnh nhạt nhìn nàng.</p>
+<p>Hoàn toàn không để nàng vào mắt.</p>
+<p>— Thái hậu nói, tử tự là căn cơ của quốc gia.</p>
+<p>— Nhưng bổn vương lại rất hiếu kỳ.</p>
+<p>— Nếu thiếu đi vài tử tự...</p>
+<p>— Giang sơn này còn vận chuyển nổi hay không?</p>
+<p>Sống lưng Sở Ly cứng đờ.</p>
+<p>Ý hắn là...</p>
+<p>— Nửa tháng nữa là thu săn.</p>
+<p>— Trong rừng săn bắn, thú dữ vô số.</p>
+<p>— Đao kiếm vô tình.</p>
+<p>— Nếu chẳng may vài vị hoàng tử bị bắn chết...</p>
+<p>— Cũng là chuyện hợp tình hợp lý.</p>
+<p>Hắn nhìn nàng.</p>
+<p>— Tiểu Cửu, ngươi thấy thế nào?</p>
+<p>Sở Ly cố gắng tìm trong mắt hắn một tia đùa cợt.</p>
+<p>Nhưng không có.</p>
+<p>Trong mắt hắn chỉ có lệ khí.</p>
+<p>Hắn muốn giết hoàng tử.</p>
+<p>Và hắn rất nghiêm túc.</p>
+<p>Nếu đi báo tin, tức là đắc tội Nhiếp Chính Vương.</p>
+<p>Nếu coi như không biết, lại là bỏ mặc tính mạng các hoàng huynh.</p>
+<p>Nàng bị kẹt ở giữa.</p>
+<p>Tiến thoái lưỡng nan.</p>
+<p>Tại sao phải để nàng biết chuyện này?</p>
+<p>Ánh mắt nàng khẽ chuyển.</p>
+<p>— Tiểu Cửu biết từ xưa đến nay, mạnh được yếu thua.</p>
+<p>— Đường hẹp gặp nhau, dũng giả thắng.</p>
+<p>— Thiên tư của Tiểu Cửu ngu độn.</p>
+<p>— Không bằng các vị hoàng huynh xuất chúng.</p>
+<p>— Nhưng vĩnh viễn sẽ không đối địch với Hoàng thúc.</p>
+<p>Về phần tám vị hoàng huynh...</p>
+<p>Sinh ra trong hoàng thất.</p>
+<p>Có ai là ngọn đèn cạn dầu đâu?</p>
+<p>Tay ai mà chẳng dính máu.</p>
+<p>Nhiếp Chính Vương muốn giết họ.</p>
+<p>Họ tự nhiên cũng sẽ bằng bản lĩnh của mình mà chống lại.</p>
+<p>Ngay cả bản thân nàng còn chưa bảo vệ nổi.</p>
+<p>Lấy đâu ra sức lực đi lo cho người khác?</p>
+<p>Huống hồ họ khác mẹ sinh ra.</p>
+<p>Bề ngoài huynh hữu đệ cung.</p>
+<p>Thực chất kết bè kết phái.</p>
+<p>Mỗi người đều có tâm tư riêng.</p>
+<p>— Chúng ta còn phải tới Thiên Linh Tự.</p>
+<p>— Đợi xa mã chuẩn bị xong, chất nhi sẽ chờ Hoàng thúc bên ngoài.</p>
+<p>Nói xong.</p>
+<p>Sở Ly lập tức chuồn mất.</p>
+<p>Nhanh đến mức chỉ sợ chậm thêm một bước, mạng nhỏ sẽ phải bỏ lại nơi này.</p>
+<p>Bạch Cẩm Y bật cười:</p>
+<p>— Chẳng phải vừa bảo không dọa hắn sao?</p>
+<p>— Vừa mở miệng đã đòi chặt tay phế chân.</p>
+<p>— Xem đứa nhỏ kia sợ đến mức chạy còn không kịp.</p>
+<p>Tiêu Dạ Hành cười híp mắt.</p>
+<p>Gương mặt lạnh lùng tuấn mỹ tràn đầy vẻ thâm hiểm.</p>
+<p>— Ta thấy hắn nhát gan như vậy.</p>
+<p>— Nếu là giả vờ, thì thủ đoạn quả thật quá cao minh.</p>
+<p>Bạch Cẩm Y nhìn Sở Đệ Trì:</p>
+<p>— Nếu không phải giả vờ...</p>
+<p>— Vậy là kẻ nào mượn tay hắn, mai phục sát thủ trên đường ngươi khải hoàn hồi kinh?</p>
+<p>— Rồi lại bày ra hàng loạt chuyện sau đó?</p>
+<p>Sở Đệ Trì cầm chén trà.</p>
+<p>Ngón tay thờ ơ vuốt nhẹ miệng chén.</p>
+<p>— Kẻ nào thèm muốn Hắc Giáp Vệ của bổn vương...</p>
+<p>— Chính là kẻ đó.</p>
+<p>Tiêu Dạ Hành nói:</p>
+<p>— Ta đã an bài xong mọi thứ.</p>
+<p>— Trong Hắc Giáp Vệ có nội gián.</p>
+<p>— Ngươi cố ý giao lại binh quyền để khiến bọn chúng lơi lỏng cảnh giác.</p>
+<p>— Nhân cơ hội này thanh trừ dị kỷ.</p>
+<p>— Ừm.</p>
+<p>Sở Đệ Trì khẽ cụp mắt.</p>
+<p>Không biết đang nghĩ gì.</p>
+<p>Bạch Cẩm Y nói:</p>
+<p>— Còn về loại độc kia...</p>
+<p>— Ta vẫn đang nghiên cứu.</p>
+<p>— Hoàng gia quả thật tâm địa độc ác đến cực điểm.</p>
+<p>— Chỉ vì muốn bóp chết nguy cơ tranh đoạt ngôi vị từ trong nôi.</p>
+<p>— Khi ngươi mới vài tháng tuổi đã cưỡng ép cho uống Thất Diệp Tử độc.</p>
+<p>— Đoạn tuyệt năng lực sinh dưỡng.</p>
+<p>— Khiến ngươi đoạn tử tuyệt tôn.</p>
+<p>Sở Đệ Trì bỗng lên tiếng:</p>
+<p>— Không cần nữa.</p>
+<p>— Hả?</p>
+<p>Bạch Cẩm Y không hiểu ý hắn.</p>
+<p>Những năm qua.</p>
+<p>Vì độc tố thời thơ ấu làm tổn hại căn cơ.</p>
+<p>Cho dù uống bao nhiêu linh dược.</p>
+<p>Sở Đệ Trì vẫn không thể hành chuyện phòng the.</p>
+<p>Nhưng đêm đó...</p>
+<p>Hôm qua.</p>
+<p>Hắn còn cố ý tìm một nữ tử sạch sẽ đến thử lần nữa.</p>
+<p>Kết quả vẫn giống như trước.</p>
+<p>Không hề có dục niệm.</p>
+<p>Có lẽ...</p>
+<p>Bệnh của hắn đã khỏi rồi.</p>
+<p>Chỉ là...</p>
+<p>"Dược dẫn" của hắn, chỉ có thể là nàng.</p>
+<p>Rốt cuộc nàng là ai? Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_8.html" class="btn">‹ Trước</a>
             <a href="chuong_10.html" class="btn">Sau ›</a>
         </div>
@@ -381,15 +389,11 @@ Rốt cuộc nàng là ai? Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -401,11 +405,11 @@ Rốt cuộc nàng là ai? Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 193</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,166 +62,175 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 193</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_192.html" class="btn">‹ Trước</a>
             <a href="chuong_194.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 193: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 193: Trúng xuân dược
-Trở về khách điếm.
-Sở Ly đặt hộp bánh hoa hồng lên bàn, rồi sai mấy tỳ nữ đi chuẩn bị mua sắm đồ đạc, y phục, đồng thời chọn một ngày lành để dọn vào ở tại Lâm Hồ Tiểu Trúc.
-Tần Mục Tuyết vây quanh nàng, thỉnh thoảng lại góp vài ý kiến.
-Nhắc đến mua sắm thì đúng là sở trường của mọi nữ tử. Một phen mua đông mua tây, vậy mà chẳng có món nào bị trùng lặp.
-Mua.
-Mua nữa.
-Mua mãi.
-Líu ríu không ngớt!
-Lục Vân Sơ ngồi bên cạnh, phát hiện mình hoàn toàn không chen vào được câu chuyện, đành chán nản cầm một chiếc bánh hoa hồng lên cắn hai miếng.
-Rồi lại cắn thêm hai miếng.
-Lại cầm thêm một chiếc nữa.
-Ăn thêm một chiếc.
-Chẳng mấy chốc, hơn nửa hộp bánh đã vào bụng, nhưng trong cơ thể hắn bỗng dâng lên từng luồng nhiệt lưu cuồn cuộn.
-Nóng.
-Hắn kéo kéo cổ áo.
-Nóng…
-Cứ như đang bị đặt trên lửa nướng. Trán rịn một lớp mồ hôi mỏng, cổ họng khô khốc như sắp bốc hỏa, hai má đỏ bừng lên với tốc độ mắt thường cũng có thể thấy.
-“Khụ… nóng quá… khụ khụ!”
-Tách trà trên bàn bị hắn hất rơi xuống đất, tiếng vỡ thanh thúy lập tức khiến mấy người chú ý.
-Lúc này Sở Ly mới phát hiện hắn có gì đó không ổn.
-“Nhị sư huynh!”
-Nàng chạm vào tay hắn.
-Nóng rực!
-“Huynh…”
-Trúng xuân dược rồi!
-Nàng lớn lên trong cung, loại chuyện này đã thấy không ít. Ánh mắt lập tức đảo một vòng, dừng trên nửa hộp bánh hoa hồng còn sót lại.
-Đây là bánh do Trương viên ngoại bảo nàng gói mang về!
-“Sơ Nhất, mau đi mời đại phu!”
-“Sơ Nhị, Sơ Tam, hai người đi theo dõi Trương viên ngoại cho ta. Chỉ được âm thầm giám sát, tuyệt đối không được đánh rắn động cỏ!”
-“Được!”
-“Nóng quá…”
-Mồ hôi trên người Lục Vân Sơ tuôn như mưa, hơi thở nặng nề dồn dập, trước mắt tối sầm, cả người mềm nhũn, gần như không thể ngồi vững.
-Sở Ly đỡ lấy vai hắn, nghiến răng nói:
-“Hộp bánh này có vấn đề, vậy mà huynh còn ăn hơn nửa hộp! Huynh chẳng phải vẫn luôn tự xưng tâm tư tỉ mỉ, cẩn trọng trầm ổn sao? Sự cảnh giác của huynh đâu? Sự cẩn thận của huynh đâu?”
-Hắn rất không ổn.
-Tần Mục Tuyết lo lắng đứng bên cạnh, há miệng mấy lần rồi lại thôi.
-“A Ly ca ca… huynh ấy… sẽ không sao chứ?”
-“Ta cũng không biết!”
-Theo lẽ thường, loại dược này chỉ có thể giải bằng cách ấy. Nếu cố cưỡng ép chịu đựng, rất có khả năng khí huyết nghịch hành, bạo thể mà chết.
-Quan trọng hơn là…
-Hắn đã ăn hơn nửa hộp!
-Ăn nhiều đến thế!
-Dược lực ấy phải mạnh đến mức nào?
-Hắn muốn chết sao?
-Chẳng bao lâu sau, Sơ Nhất mời đến một vị lão đại phu đeo hòm thuốc. Lão còn chưa kịp thở lấy hơi đã vội bắt mạch.
-Vừa sờ mạch tượng, gương mặt già nua lập tức đỏ bừng.
-“Vị công tử này đã trúng loại dược ấy, hơn nữa dược lực cực mạnh. Công tử tuổi trẻ huyết khí phương cương, chỉ có… hoan hợp… mới có thể giải được.”
-“Để ta!”
-Tần Mục Tuyết lập tức giơ tay.
-Chỉ thấy hai mắt nàng sáng rực, vừa kéo đai lưng ra đã định dang chân ngồi lên người hắn.
-Lục Vân Sơ trợn tròn mắt, như gặp phải hồng thủy mãnh thú.
-“Tần cô nương, không được!”
-Nàng không thích hắn, hắn sao có thể hủy hoại thanh bạch của nàng?
-Hắn không phải loại người ấy.
-Thà vận nội lực cưỡng ép chống đỡ, mạo hiểm để kinh mạch nghịch hành, tẩu hỏa nhập ma, cũng tuyệt đối sẽ không chạm vào nàng dù chỉ một chút.
-“Được mà, được mà!”
-Tần Mục Tuyết bướng bỉnh xua tay.
-“Lục sư huynh có ơn cứu mạng với ta. Hiện giờ chính là lúc ta báo đáp. Lục sư huynh không cần khách sáo.”
-Qua hai ngày ở chung, nàng biết Lục sư huynh tính tình đạm bạc, ôn hòa khiêm quân tử, là một người chính trực đoan phương.
-Nàng biết.
-Hắn không thích nàng.
-Mới quen nhau hai ngày, làm sao có thể nảy sinh tình cảm?
-Dẫu vậy thì đã sao?
-Chỉ cần có thể giúp được hắn, cho dù phải đánh đổi thanh bạch của mình, nàng cũng cam lòng.
-“Mục Tuyết, muội nghĩ kỹ chưa?”
-Sở Ly giữ lấy cổ tay nàng, nghiêm túc nhắc nhở.
-“A Ly ca ca, muội biết huynh muốn nói gì.”
-Nữ nhi phủ Tướng quân không tái giá.
-Đây là do nàng tự nguyện.
-Lục sư huynh sẽ không cưới nàng. Nhưng dùng chuyện này để báo đáp ân tình, cũng xem như hoàn thành một tâm nguyện của nàng.
-Huống hồ…
-Lục sư huynh dung mạo tuấn mỹ, phong thái nhã nhặn.
-Nàng đâu có thiệt.
-Lục Vân Sơ không chịu, cố giữ chút lý trí cuối cùng, đẩy nàng ra, lảo đảo bước về phía lầu trên.
-“Ta… ta sẽ… đả tọa… đừng ai tới…”
-“Lục sư huynh.”
-“Tránh ra… khụ! Khụ khụ!”
-Khí huyết cuồn cuộn dâng lên, nghịch lưu tới cổ họng, hắn phun ra một ngụm máu.
-Tần Mục Tuyết ngẩn người nhìn bóng lưng loạng choạng của hắn.
-Hắn đẩy tất cả mọi người ra thật xa, thà một mình chịu đựng tất cả, cũng không chịu nhận lấy nàng.
-Lẽ nào…
-Hắn thật sự không thích nàng đến vậy?
-Nhưng đồng thời, điều đó cũng chứng minh hắn hoàn toàn khác với đám nam nhân trăng hoa, thay lòng đổi dạ. Hắn đối đãi tình cảm nghiêm túc, trước sau như một, khiến lòng nàng càng thêm rung động.
-Điều nàng cầu chỉ là giúp hắn.
-Chứ không cầu danh phận thê thiếp.
-Chỉ là giúp hắn mà thôi.
-Sau chuyện này, nàng nhất định sẽ rời đi thật xa, tuyệt đối không quấy nhiễu cuộc sống của hắn nữa, cứ xem như chưa từng xảy ra việc gì.
-Tuy nàng thích bám người, nhưng cũng là người biết phân biệt phải trái, hiểu rõ đạo lý.
-“Lục sư huynh, xin hãy để ta giúp huynh. Huynh yên tâm, ta sẽ không khiến huynh khó xử. Chỉ tiến vào thân thể, không tiến vào cuộc sống!”
-Nàng có chừng mực!
-Tần Mục Tuyết quyết tâm, cắn răng đuổi theo.
-Chẳng mấy chốc, trên lầu vang lên những tiếng rầm rầm, choang choang, như có không ít đồ vật bị xô ngã, còn có giọng nam nhân khàn đặc. Nhưng rất nhanh sau đó, thanh âm ấy dần dần mềm xuống…
-Đó là âm thanh mà Sở Ly quá đỗi quen thuộc.
-Vành tai nàng hơi đỏ lên, nhưng cũng không quá lo lắng.
-Tần Mục Tuyết đã cập kê, hơn nữa tính tình nàng vốn trưởng thành hơn những nữ tử đồng trang lứa, tự nhiên hiểu rõ mình đang làm gì.
-Sở Ly xoay người, vẫy tay gọi đại phu.
-“Kiểm tra hộp bánh hoa hồng này xem, bên trong đã bị hạ loại dược gì.”
-“Ai ở ngoài đó!”
-Ngoài cửa, Sơ Nhất bỗng trở nên cảnh giác.
-“Tiểu thư, có người!” Ẩn bớt</p>
+            <p>Chương 193: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 193: Trúng xuân dược</p>
+<p>Trở về khách điếm.</p>
+<p>Sở Ly đặt hộp bánh hoa hồng lên bàn, rồi sai mấy tỳ nữ đi chuẩn bị mua sắm đồ đạc, y phục, đồng thời chọn một ngày lành để dọn vào ở tại Lâm Hồ Tiểu Trúc.</p>
+<p>Tần Mục Tuyết vây quanh nàng, thỉnh thoảng lại góp vài ý kiến.</p>
+<p>Nhắc đến mua sắm thì đúng là sở trường của mọi nữ tử. Một phen mua đông mua tây, vậy mà chẳng có món nào bị trùng lặp.</p>
+<p>Mua.</p>
+<p>Mua nữa.</p>
+<p>Mua mãi.</p>
+<p>Líu ríu không ngớt!</p>
+<p>Lục Vân Sơ ngồi bên cạnh, phát hiện mình hoàn toàn không chen vào được câu chuyện, đành chán nản cầm một chiếc bánh hoa hồng lên cắn hai miếng.</p>
+<p>Rồi lại cắn thêm hai miếng.</p>
+<p>Lại cầm thêm một chiếc nữa.</p>
+<p>Ăn thêm một chiếc.</p>
+<p>Chẳng mấy chốc, hơn nửa hộp bánh đã vào bụng, nhưng trong cơ thể hắn bỗng dâng lên từng luồng nhiệt lưu cuồn cuộn.</p>
+<p>Nóng.</p>
+<p>Hắn kéo kéo cổ áo.</p>
+<p>Nóng…</p>
+<p>Cứ như đang bị đặt trên lửa nướng. Trán rịn một lớp mồ hôi mỏng, cổ họng khô khốc như sắp bốc hỏa, hai má đỏ bừng lên với tốc độ mắt thường cũng có thể thấy.</p>
+<p>“Khụ… nóng quá… khụ khụ!”</p>
+<p>Tách trà trên bàn bị hắn hất rơi xuống đất, tiếng vỡ thanh thúy lập tức khiến mấy người chú ý.</p>
+<p>Lúc này Sở Ly mới phát hiện hắn có gì đó không ổn.</p>
+<p>“Nhị sư huynh!”</p>
+<p>Nàng chạm vào tay hắn.</p>
+<p>Nóng rực!</p>
+<p>“Huynh…”</p>
+<p>Trúng xuân dược rồi!</p>
+<p>Nàng lớn lên trong cung, loại chuyện này đã thấy không ít. Ánh mắt lập tức đảo một vòng, dừng trên nửa hộp bánh hoa hồng còn sót lại.</p>
+<p>Đây là bánh do Trương viên ngoại bảo nàng gói mang về!</p>
+<p>“Sơ Nhất, mau đi mời đại phu!”</p>
+<p>“Sơ Nhị, Sơ Tam, hai người đi theo dõi Trương viên ngoại cho ta. Chỉ được âm thầm giám sát, tuyệt đối không được đánh rắn động cỏ!”</p>
+<p>“Được!”</p>
+<p>“Nóng quá…”</p>
+<p>Mồ hôi trên người Lục Vân Sơ tuôn như mưa, hơi thở nặng nề dồn dập, trước mắt tối sầm, cả người mềm nhũn, gần như không thể ngồi vững.</p>
+<p>Sở Ly đỡ lấy vai hắn, nghiến răng nói:</p>
+<p>“Hộp bánh này có vấn đề, vậy mà huynh còn ăn hơn nửa hộp! Huynh chẳng phải vẫn luôn tự xưng tâm tư tỉ mỉ, cẩn trọng trầm ổn sao? Sự cảnh giác của huynh đâu? Sự cẩn thận của huynh đâu?”</p>
+<p>Hắn rất không ổn.</p>
+<p>Tần Mục Tuyết lo lắng đứng bên cạnh, há miệng mấy lần rồi lại thôi.</p>
+<p>“A Ly ca ca… huynh ấy… sẽ không sao chứ?”</p>
+<p>“Ta cũng không biết!”</p>
+<p>Theo lẽ thường, loại dược này chỉ có thể giải bằng cách ấy. Nếu cố cưỡng ép chịu đựng, rất có khả năng khí huyết nghịch hành, bạo thể mà chết.</p>
+<p>Quan trọng hơn là…</p>
+<p>Hắn đã ăn hơn nửa hộp!</p>
+<p>Ăn nhiều đến thế!</p>
+<p>Dược lực ấy phải mạnh đến mức nào?</p>
+<p>Hắn muốn chết sao?</p>
+<p>Chẳng bao lâu sau, Sơ Nhất mời đến một vị lão đại phu đeo hòm thuốc. Lão còn chưa kịp thở lấy hơi đã vội bắt mạch.</p>
+<p>Vừa sờ mạch tượng, gương mặt già nua lập tức đỏ bừng.</p>
+<p>“Vị công tử này đã trúng loại dược ấy, hơn nữa dược lực cực mạnh. Công tử tuổi trẻ huyết khí phương cương, chỉ có… hoan hợp… mới có thể giải được.”</p>
+<p>“Để ta!”</p>
+<p>Tần Mục Tuyết lập tức giơ tay.</p>
+<p>Chỉ thấy hai mắt nàng sáng rực, vừa kéo đai lưng ra đã định dang chân ngồi lên người hắn.</p>
+<p>Lục Vân Sơ trợn tròn mắt, như gặp phải hồng thủy mãnh thú.</p>
+<p>“Tần cô nương, không được!”</p>
+<p>Nàng không thích hắn, hắn sao có thể hủy hoại thanh bạch của nàng?</p>
+<p>Hắn không phải loại người ấy.</p>
+<p>Thà vận nội lực cưỡng ép chống đỡ, mạo hiểm để kinh mạch nghịch hành, tẩu hỏa nhập ma, cũng tuyệt đối sẽ không chạm vào nàng dù chỉ một chút.</p>
+<p>“Được mà, được mà!”</p>
+<p>Tần Mục Tuyết bướng bỉnh xua tay.</p>
+<p>“Lục sư huynh có ơn cứu mạng với ta. Hiện giờ chính là lúc ta báo đáp. Lục sư huynh không cần khách sáo.”</p>
+<p>Qua hai ngày ở chung, nàng biết Lục sư huynh tính tình đạm bạc, ôn hòa khiêm quân tử, là một người chính trực đoan phương.</p>
+<p>Nàng biết.</p>
+<p>Hắn không thích nàng.</p>
+<p>Mới quen nhau hai ngày, làm sao có thể nảy sinh tình cảm?</p>
+<p>Dẫu vậy thì đã sao?</p>
+<p>Chỉ cần có thể giúp được hắn, cho dù phải đánh đổi thanh bạch của mình, nàng cũng cam lòng.</p>
+<p>“Mục Tuyết, muội nghĩ kỹ chưa?”</p>
+<p>Sở Ly giữ lấy cổ tay nàng, nghiêm túc nhắc nhở.</p>
+<p>“A Ly ca ca, muội biết huynh muốn nói gì.”</p>
+<p>Nữ nhi phủ Tướng quân không tái giá.</p>
+<p>Đây là do nàng tự nguyện.</p>
+<p>Lục sư huynh sẽ không cưới nàng. Nhưng dùng chuyện này để báo đáp ân tình, cũng xem như hoàn thành một tâm nguyện của nàng.</p>
+<p>Huống hồ…</p>
+<p>Lục sư huynh dung mạo tuấn mỹ, phong thái nhã nhặn.</p>
+<p>Nàng đâu có thiệt.</p>
+<p>Lục Vân Sơ không chịu, cố giữ chút lý trí cuối cùng, đẩy nàng ra, lảo đảo bước về phía lầu trên.</p>
+<p>“Ta… ta sẽ… đả tọa… đừng ai tới…”</p>
+<p>“Lục sư huynh.”</p>
+<p>“Tránh ra… khụ! Khụ khụ!”</p>
+<p>Khí huyết cuồn cuộn dâng lên, nghịch lưu tới cổ họng, hắn phun ra một ngụm máu.</p>
+<p>Tần Mục Tuyết ngẩn người nhìn bóng lưng loạng choạng của hắn.</p>
+<p>Hắn đẩy tất cả mọi người ra thật xa, thà một mình chịu đựng tất cả, cũng không chịu nhận lấy nàng.</p>
+<p>Lẽ nào…</p>
+<p>Hắn thật sự không thích nàng đến vậy?</p>
+<p>Nhưng đồng thời, điều đó cũng chứng minh hắn hoàn toàn khác với đám nam nhân trăng hoa, thay lòng đổi dạ. Hắn đối đãi tình cảm nghiêm túc, trước sau như một, khiến lòng nàng càng thêm rung động.</p>
+<p>Điều nàng cầu chỉ là giúp hắn.</p>
+<p>Chứ không cầu danh phận thê thiếp.</p>
+<p>Chỉ là giúp hắn mà thôi.</p>
+<p>Sau chuyện này, nàng nhất định sẽ rời đi thật xa, tuyệt đối không quấy nhiễu cuộc sống của hắn nữa, cứ xem như chưa từng xảy ra việc gì.</p>
+<p>Tuy nàng thích bám người, nhưng cũng là người biết phân biệt phải trái, hiểu rõ đạo lý.</p>
+<p>“Lục sư huynh, xin hãy để ta giúp huynh. Huynh yên tâm, ta sẽ không khiến huynh khó xử. Chỉ tiến vào thân thể, không tiến vào cuộc sống!”</p>
+<p>Nàng có chừng mực!</p>
+<p>Tần Mục Tuyết quyết tâm, cắn răng đuổi theo.</p>
+<p>Chẳng mấy chốc, trên lầu vang lên những tiếng rầm rầm, choang choang, như có không ít đồ vật bị xô ngã, còn có giọng nam nhân khàn đặc. Nhưng rất nhanh sau đó, thanh âm ấy dần dần mềm xuống…</p>
+<p>Đó là âm thanh mà Sở Ly quá đỗi quen thuộc.</p>
+<p>Vành tai nàng hơi đỏ lên, nhưng cũng không quá lo lắng.</p>
+<p>Tần Mục Tuyết đã cập kê, hơn nữa tính tình nàng vốn trưởng thành hơn những nữ tử đồng trang lứa, tự nhiên hiểu rõ mình đang làm gì.</p>
+<p>Sở Ly xoay người, vẫy tay gọi đại phu.</p>
+<p>“Kiểm tra hộp bánh hoa hồng này xem, bên trong đã bị hạ loại dược gì.”</p>
+<p>“Ai ở ngoài đó!”</p>
+<p>Ngoài cửa, Sơ Nhất bỗng trở nên cảnh giác.</p>
+<p>“Tiểu thư, có người!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_192.html" class="btn">‹ Trước</a>
             <a href="chuong_194.html" class="btn">Sau ›</a>
         </div>
@@ -230,15 +238,11 @@ Ngoài cửa, Sơ Nhất bỗng trở nên cảnh giác.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -250,11 +254,11 @@ Ngoài cửa, Sơ Nhất bỗng trở nên cảnh giác.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 72</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,194 +62,203 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 72</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_71.html" class="btn">‹ Trước</a>
             <a href="chuong_73.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 72: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 72: Ta với A Ly ca ca là tốt nhất thiên hạ
-Lão đại phu ngẩng đầu lên, dừng bút đang viết phương thuốc trong tay, nói:
-“Công tử, khách nhân mua loại thuốc gì là chuyện riêng của khách nhân, xin thứ cho lão phu không tiện tiết lộ.”
-Bạch Cẩm Y chỉ mỉm cười, không đáp.
-Hắn từ trong tay áo lấy ra một tờ ngân phiếu mệnh giá không nhỏ, đặt bên tay lão.
-Lão đại phu lập tức nhíu mày, thần sắc nghiêm nghị:
-“Công tử!”
-“Cổ nhân có câu: Quân tử ái tài, thủ chi hữu đạo… Không biết lão phu có thể giúp gì cho ngài?”
-—
-Biệt uyển ngoại ô.
-Trong nhà bếp.
-Sở Ly xắn tay áo, đang hầm canh. Tần Mục Tuyết ở bên cạnh phụ giúp, hai tỳ nữ thì trợn tròn mắt, cằm suýt rơi xuống đất.
-“Cửu hoàng tử biết nấu ăn?”
-“Lợi hại quá!”
-“Nô tỳ chưa từng thấy vị hoàng tử tôn quý nào lại nguyện ý chạm vào dầu mỡ nơi bếp núc.”
-Tần Mục Tuyết đã nhìn Sở Ly không biết bao nhiêu lần.
-Mỗi lần nhìn thấy nàng tất bật, nàng đều muốn nói lại thôi.
-Cửu hoàng tử thật sự đối với đại ca quá tốt.
-Đại ca không phải đoạn tụ.
-Vậy còn ‘hắn’ thì sao?
-‘Hắn’ có phải…
-“Mục Tuyết, giúp ta lấy một cái bát.”
-Sở Ly gọi.
-“Vâng.”
-Tần Mục Tuyết thất thần bước tới.
-Nước còn đọng trong bát rơi vào chảo dầu, lập tức phát ra tiếng xèo xèo, dầu nóng bắn tung tóe.
-“Cẩn thận!”
-Sở Ly vội kéo nàng ra phía sau.
-Dầu nóng bắn thẳng lên mu bàn tay nàng.
-Làn da trắng mịn lập tức hiện lên một mảng đỏ lớn.
-Tần Mục Tuyết giật mình, ôm lấy cánh tay Sở Ly, vội nhúng tay nàng vào chậu nước để hạ nhiệt.
-“A Ly ca ca, là muội vụng về cản trở huynh. Có đau không?”
-“Chỉ là vết thương nhỏ thôi. Muội không bị bỏng chứ?”
-Tần Mục Tuyết cảm động, ôm gần như nửa người Sở Ly.
-“A Ly ca ca, huynh tốt với muội quá!”
-Hu hu…
-Người A Ly ca ca thơm thơm, mềm mềm.
-Dù đang ở trong bếp, vẫn thơm vô cùng.
-Ôm thật thích.
-Sở Ly vỗ nhẹ vai nàng, cười nói:
-“Không sao rồi. Ta rưới dầu nóng lên gia vị một chút là xong ngay.”
-Tần Mục Tuyết ôm mãi không chịu buông, đôi mắt long lanh nhìn nàng.
-A Ly ca ca bảo vệ nàng.
-Lại còn tốt với nàng như vậy.
-Nhất định là thích nàng.
-A Ly ca ca sao có thể là đoạn tụ được?
-Sở Ly nhanh chóng hoàn thành những món chính.
-Việc bày món lên bàn thì giao cho hạ nhân.
-Nàng cởi tạp dề, rửa sạch hai tay.
-Thế mà Tần Mục Tuyết vẫn bám chặt trên người nàng.
-“Mục Tuyết, xuống nào.”
-“Không muốn. Muội sợ lắm~ Suýt nữa dầu bắn trúng muội rồi.”
-“Không sao nữa, chúng ta ra ngoài rồi.”
-“A Ly ca ca, lúc nãy đáng sợ thật. Huynh nghe tim muội xem có đập loạn không.”
-Ngoài sân.
-Tần Mục Vũ đang ngồi dưỡng thương, đọc sách.
-Hắn nhìn thấy hai người ôm ôm ấp ấp bước vào.
-Lại nghe một câu “đáng sợ quá”, trong lòng chợt siết lại, còn tưởng xảy ra chuyện gì.
-Kết quả hỏi ra…
-Chỉ là bị dầu bắn.
-Sắc mặt hắn trầm xuống, hiếm khi nghiêm túc:
-“Mục Tuyết, không được vô lễ với Cửu hoàng tử!”
-Sở Ly xua tay.
-“Huynh đừng mắng muội ấy.”
-Tướng quân phủ vừa trải qua biến cố lớn như vậy.
-Tần Mục Tuyết cũng vừa từ biển lửa nhặt về một mạng.
-Hiện giờ nàng có thể mở lòng, hoạt bát vui vẻ như trước, chứng tỏ không để lại khúc mắc trong lòng.
-Đó mới là điều quan trọng nhất.
-Được Sở Ly bênh vực, Tần Mục Tuyết càng mạnh dạn hơn, càng quấn quýt lấy nàng.
-“Vẫn là A Ly ca ca tốt với muội nhất.”
-Tần Mục Vũ tức đến nghẹn.
-“Muội—”
-“Được rồi, ăn cơm trước đi. Tối nay đều là món ta tự tay nấu, thử tay nghề của ta xem.”
-Sở Ly vội ngăn hai người lại, sợ họ sẽ cãi nhau.
-Mâm cơm được dọn lên.
-Tần Mục Vũ nhìn thấy.
-Vừa cảm động, lại vừa đau lòng.
-Hắn lập tức sai hạ nhân đi mua thuốc mỡ trị bỏng, cẩn thận bôi lên mu bàn tay Sở Ly.
-Chiếc bàn vuông vức.
-Ấy vậy mà Tần Mục Tuyết cứ nhất quyết chen sát bên Sở Ly ngồi.
-Tần Mục Vũ siết chặt đôi đũa.
-“Mục Tuyết, đừng quá đáng nữa. Ăn thì phải có tướng ăn, ngồi thì phải có dáng ngồi.”
-Tần Mục Tuyết quay đầu hỏi Sở Ly:
-“A Ly ca ca, muội có thể ngồi cạnh huynh không?”
-Sở Ly cười ôn hòa.
-“Tùy muội.”
-Tần Mục Tuyết lập tức ngẩng cao đầu, đầy tự tin.
-“Đại ca thấy chưa? A Ly ca ca nói được mà. Sao huynh cứ bắt bẻ muội mãi thế?”
-“Không được!”
-Tần Mục Vũ giận đến mức chỉ còn chút nhẫn nhịn.
-“Qua đây ngồi ngay!”
-“Muội không muốn. Muội với A Ly ca ca là tốt nhất thiên hạ.”
-Tần Mục Vũ chỉ cảm thấy trong đầu vang lên một tiếng ong.
-Trước mắt tối sầm.
-Đầu đau như muốn nổ tung.
-Hắn không thể tiếp tục khoanh tay đứng nhìn.
-Muội muội hắn và Cửu hoàng tử đều là nữ tử.
-Nhất định phải khiến nàng dẹp bỏ tâm tư không nên có.
-“Muội sắp cập kê rồi, sang năm có thể xuất giá. Còn không biết xấu hổ mà quấn lấy Cửu hoàng tử như vậy. Sau này còn nam nhân nào dám cưới muội?”
-Tần Mục Tuyết nghiêm túc đáp:
-“Vậy thì muội gả cho A Ly ca ca.”
-Sở Ly: “?”
-Tần Mục Vũ siết đũa đến mức gần như gãy vụn, trầm giọng nói:
-“Cửu hoàng tử tuổi còn nhỏ, phủ đệ còn chưa lập. Muội gả cho nàng, chẳng lẽ sau này định ở ngoài đầu đường?”
-Tần Mục Tuyết trợn tròn mắt, không dám tin.
-“Sao lại thế được? Muội sẽ đem toàn bộ của hồi môn mua nhà cho A Ly ca ca.”
-“?”
-Đúng là nhân tài.
-Của hồi môn là tư khố riêng, cũng là chỗ dựa cả đời của nữ tử.
-Còn chưa xuất giá mà đã định đem hết tặng người khác.
-“Muội xem mình đi. Ăn nói khinh suất, tính tình thẳng thắn. Hoàng gia không thích những phụ nhân không đủ đoan trang.”
-Tần Mục Tuyết lại càng thấy đó chỉ là chuyện nhỏ.
-“Muội là vàng sao mà phải khiến ai cũng thích? Nếu muội thật sự có sức hấp dẫn lớn như vậy, thì phụ thân đã sớm cận thủy lâu đài tiên đắc nguyệt, cưới muội trước, để muội làm kế mẫu của huynh rồi.”
-“Phụt!”
-Sở Ly phun sạch ngụm canh gà trong miệng.
-Thật sự nhịn không nổi.
-“Tần! Mục! Tuyết!”
-Tần Mục Vũ đập mạnh xuống bàn, suýt nữa bật dậy.
-“Muội thấy mình hài hước lắm sao? Muội thấy mình với Cửu hoàng tử xứng đôi lắm sao? Hai người ngồi cạnh nhau còn cao bằng nhau!”
-Thiên kim Tướng quân phủ…
-Sao có thể gả cho một nam nhân gầy yếu, thấp bé, lại còn kiều khí như vậy?
-Nói ra ngoài, thiên hạ sẽ cười cho.
-Tần Mục Tuyết ngẩng cao cổ, lớn tiếng đáp:
-“Có gì mà không xứng? Bọn muội cao bằng nhau. Tối ngủ chung, chỗ quan trọng mới dễ canh cho chuẩn!”
-“Phụt!!”
-Sở Ly phun sạch cả bát canh gà.
-Tần Mục Vũ cũng bị chọc tức đến bật dậy.
-Đôi chân bị bỏng vốn mới dưỡng được mấy ngày, tối nay chẳng khác nào đột nhiên được đả thông Nhâm Đốc nhị mạch.
-Khỏi hẳn luôn. Ẩn bớt</p>
+            <p>Chương 72: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 72: Ta với A Ly ca ca là tốt nhất thiên hạ</p>
+<p>Lão đại phu ngẩng đầu lên, dừng bút đang viết phương thuốc trong tay, nói:</p>
+<p>“Công tử, khách nhân mua loại thuốc gì là chuyện riêng của khách nhân, xin thứ cho lão phu không tiện tiết lộ.”</p>
+<p>Bạch Cẩm Y chỉ mỉm cười, không đáp.</p>
+<p>Hắn từ trong tay áo lấy ra một tờ ngân phiếu mệnh giá không nhỏ, đặt bên tay lão.</p>
+<p>Lão đại phu lập tức nhíu mày, thần sắc nghiêm nghị:</p>
+<p>“Công tử!”</p>
+<p>“Cổ nhân có câu: Quân tử ái tài, thủ chi hữu đạo… Không biết lão phu có thể giúp gì cho ngài?”</p>
+<p>—</p>
+<p>Biệt uyển ngoại ô.</p>
+<p>Trong nhà bếp.</p>
+<p>Sở Ly xắn tay áo, đang hầm canh. Tần Mục Tuyết ở bên cạnh phụ giúp, hai tỳ nữ thì trợn tròn mắt, cằm suýt rơi xuống đất.</p>
+<p>“Cửu hoàng tử biết nấu ăn?”</p>
+<p>“Lợi hại quá!”</p>
+<p>“Nô tỳ chưa từng thấy vị hoàng tử tôn quý nào lại nguyện ý chạm vào dầu mỡ nơi bếp núc.”</p>
+<p>Tần Mục Tuyết đã nhìn Sở Ly không biết bao nhiêu lần.</p>
+<p>Mỗi lần nhìn thấy nàng tất bật, nàng đều muốn nói lại thôi.</p>
+<p>Cửu hoàng tử thật sự đối với đại ca quá tốt.</p>
+<p>Đại ca không phải đoạn tụ.</p>
+<p>Vậy còn ‘hắn’ thì sao?</p>
+<p>‘Hắn’ có phải…</p>
+<p>“Mục Tuyết, giúp ta lấy một cái bát.”</p>
+<p>Sở Ly gọi.</p>
+<p>“Vâng.”</p>
+<p>Tần Mục Tuyết thất thần bước tới.</p>
+<p>Nước còn đọng trong bát rơi vào chảo dầu, lập tức phát ra tiếng xèo xèo, dầu nóng bắn tung tóe.</p>
+<p>“Cẩn thận!”</p>
+<p>Sở Ly vội kéo nàng ra phía sau.</p>
+<p>Dầu nóng bắn thẳng lên mu bàn tay nàng.</p>
+<p>Làn da trắng mịn lập tức hiện lên một mảng đỏ lớn.</p>
+<p>Tần Mục Tuyết giật mình, ôm lấy cánh tay Sở Ly, vội nhúng tay nàng vào chậu nước để hạ nhiệt.</p>
+<p>“A Ly ca ca, là muội vụng về cản trở huynh. Có đau không?”</p>
+<p>“Chỉ là vết thương nhỏ thôi. Muội không bị bỏng chứ?”</p>
+<p>Tần Mục Tuyết cảm động, ôm gần như nửa người Sở Ly.</p>
+<p>“A Ly ca ca, huynh tốt với muội quá!”</p>
+<p>Hu hu…</p>
+<p>Người A Ly ca ca thơm thơm, mềm mềm.</p>
+<p>Dù đang ở trong bếp, vẫn thơm vô cùng.</p>
+<p>Ôm thật thích.</p>
+<p>Sở Ly vỗ nhẹ vai nàng, cười nói:</p>
+<p>“Không sao rồi. Ta rưới dầu nóng lên gia vị một chút là xong ngay.”</p>
+<p>Tần Mục Tuyết ôm mãi không chịu buông, đôi mắt long lanh nhìn nàng.</p>
+<p>A Ly ca ca bảo vệ nàng.</p>
+<p>Lại còn tốt với nàng như vậy.</p>
+<p>Nhất định là thích nàng.</p>
+<p>A Ly ca ca sao có thể là đoạn tụ được?</p>
+<p>Sở Ly nhanh chóng hoàn thành những món chính.</p>
+<p>Việc bày món lên bàn thì giao cho hạ nhân.</p>
+<p>Nàng cởi tạp dề, rửa sạch hai tay.</p>
+<p>Thế mà Tần Mục Tuyết vẫn bám chặt trên người nàng.</p>
+<p>“Mục Tuyết, xuống nào.”</p>
+<p>“Không muốn. Muội sợ lắm~ Suýt nữa dầu bắn trúng muội rồi.”</p>
+<p>“Không sao nữa, chúng ta ra ngoài rồi.”</p>
+<p>“A Ly ca ca, lúc nãy đáng sợ thật. Huynh nghe tim muội xem có đập loạn không.”</p>
+<p>Ngoài sân.</p>
+<p>Tần Mục Vũ đang ngồi dưỡng thương, đọc sách.</p>
+<p>Hắn nhìn thấy hai người ôm ôm ấp ấp bước vào.</p>
+<p>Lại nghe một câu “đáng sợ quá”, trong lòng chợt siết lại, còn tưởng xảy ra chuyện gì.</p>
+<p>Kết quả hỏi ra…</p>
+<p>Chỉ là bị dầu bắn.</p>
+<p>Sắc mặt hắn trầm xuống, hiếm khi nghiêm túc:</p>
+<p>“Mục Tuyết, không được vô lễ với Cửu hoàng tử!”</p>
+<p>Sở Ly xua tay.</p>
+<p>“Huynh đừng mắng muội ấy.”</p>
+<p>Tướng quân phủ vừa trải qua biến cố lớn như vậy.</p>
+<p>Tần Mục Tuyết cũng vừa từ biển lửa nhặt về một mạng.</p>
+<p>Hiện giờ nàng có thể mở lòng, hoạt bát vui vẻ như trước, chứng tỏ không để lại khúc mắc trong lòng.</p>
+<p>Đó mới là điều quan trọng nhất.</p>
+<p>Được Sở Ly bênh vực, Tần Mục Tuyết càng mạnh dạn hơn, càng quấn quýt lấy nàng.</p>
+<p>“Vẫn là A Ly ca ca tốt với muội nhất.”</p>
+<p>Tần Mục Vũ tức đến nghẹn.</p>
+<p>“Muội—”</p>
+<p>“Được rồi, ăn cơm trước đi. Tối nay đều là món ta tự tay nấu, thử tay nghề của ta xem.”</p>
+<p>Sở Ly vội ngăn hai người lại, sợ họ sẽ cãi nhau.</p>
+<p>Mâm cơm được dọn lên.</p>
+<p>Tần Mục Vũ nhìn thấy.</p>
+<p>Vừa cảm động, lại vừa đau lòng.</p>
+<p>Hắn lập tức sai hạ nhân đi mua thuốc mỡ trị bỏng, cẩn thận bôi lên mu bàn tay Sở Ly.</p>
+<p>Chiếc bàn vuông vức.</p>
+<p>Ấy vậy mà Tần Mục Tuyết cứ nhất quyết chen sát bên Sở Ly ngồi.</p>
+<p>Tần Mục Vũ siết chặt đôi đũa.</p>
+<p>“Mục Tuyết, đừng quá đáng nữa. Ăn thì phải có tướng ăn, ngồi thì phải có dáng ngồi.”</p>
+<p>Tần Mục Tuyết quay đầu hỏi Sở Ly:</p>
+<p>“A Ly ca ca, muội có thể ngồi cạnh huynh không?”</p>
+<p>Sở Ly cười ôn hòa.</p>
+<p>“Tùy muội.”</p>
+<p>Tần Mục Tuyết lập tức ngẩng cao đầu, đầy tự tin.</p>
+<p>“Đại ca thấy chưa? A Ly ca ca nói được mà. Sao huynh cứ bắt bẻ muội mãi thế?”</p>
+<p>“Không được!”</p>
+<p>Tần Mục Vũ giận đến mức chỉ còn chút nhẫn nhịn.</p>
+<p>“Qua đây ngồi ngay!”</p>
+<p>“Muội không muốn. Muội với A Ly ca ca là tốt nhất thiên hạ.”</p>
+<p>Tần Mục Vũ chỉ cảm thấy trong đầu vang lên một tiếng ong.</p>
+<p>Trước mắt tối sầm.</p>
+<p>Đầu đau như muốn nổ tung.</p>
+<p>Hắn không thể tiếp tục khoanh tay đứng nhìn.</p>
+<p>Muội muội hắn và Cửu hoàng tử đều là nữ tử.</p>
+<p>Nhất định phải khiến nàng dẹp bỏ tâm tư không nên có.</p>
+<p>“Muội sắp cập kê rồi, sang năm có thể xuất giá. Còn không biết xấu hổ mà quấn lấy Cửu hoàng tử như vậy. Sau này còn nam nhân nào dám cưới muội?”</p>
+<p>Tần Mục Tuyết nghiêm túc đáp:</p>
+<p>“Vậy thì muội gả cho A Ly ca ca.”</p>
+<p>Sở Ly: “?”</p>
+<p>Tần Mục Vũ siết đũa đến mức gần như gãy vụn, trầm giọng nói:</p>
+<p>“Cửu hoàng tử tuổi còn nhỏ, phủ đệ còn chưa lập. Muội gả cho nàng, chẳng lẽ sau này định ở ngoài đầu đường?”</p>
+<p>Tần Mục Tuyết trợn tròn mắt, không dám tin.</p>
+<p>“Sao lại thế được? Muội sẽ đem toàn bộ của hồi môn mua nhà cho A Ly ca ca.”</p>
+<p>“?”</p>
+<p>Đúng là nhân tài.</p>
+<p>Của hồi môn là tư khố riêng, cũng là chỗ dựa cả đời của nữ tử.</p>
+<p>Còn chưa xuất giá mà đã định đem hết tặng người khác.</p>
+<p>“Muội xem mình đi. Ăn nói khinh suất, tính tình thẳng thắn. Hoàng gia không thích những phụ nhân không đủ đoan trang.”</p>
+<p>Tần Mục Tuyết lại càng thấy đó chỉ là chuyện nhỏ.</p>
+<p>“Muội là vàng sao mà phải khiến ai cũng thích? Nếu muội thật sự có sức hấp dẫn lớn như vậy, thì phụ thân đã sớm cận thủy lâu đài tiên đắc nguyệt, cưới muội trước, để muội làm kế mẫu của huynh rồi.”</p>
+<p>“Phụt!”</p>
+<p>Sở Ly phun sạch ngụm canh gà trong miệng.</p>
+<p>Thật sự nhịn không nổi.</p>
+<p>“Tần! Mục! Tuyết!”</p>
+<p>Tần Mục Vũ đập mạnh xuống bàn, suýt nữa bật dậy.</p>
+<p>“Muội thấy mình hài hước lắm sao? Muội thấy mình với Cửu hoàng tử xứng đôi lắm sao? Hai người ngồi cạnh nhau còn cao bằng nhau!”</p>
+<p>Thiên kim Tướng quân phủ…</p>
+<p>Sao có thể gả cho một nam nhân gầy yếu, thấp bé, lại còn kiều khí như vậy?</p>
+<p>Nói ra ngoài, thiên hạ sẽ cười cho.</p>
+<p>Tần Mục Tuyết ngẩng cao cổ, lớn tiếng đáp:</p>
+<p>“Có gì mà không xứng? Bọn muội cao bằng nhau. Tối ngủ chung, chỗ quan trọng mới dễ canh cho chuẩn!”</p>
+<p>“Phụt!!”</p>
+<p>Sở Ly phun sạch cả bát canh gà.</p>
+<p>Tần Mục Vũ cũng bị chọc tức đến bật dậy.</p>
+<p>Đôi chân bị bỏng vốn mới dưỡng được mấy ngày, tối nay chẳng khác nào đột nhiên được đả thông Nhâm Đốc nhị mạch.</p>
+<p>Khỏi hẳn luôn. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_71.html" class="btn">‹ Trước</a>
             <a href="chuong_73.html" class="btn">Sau ›</a>
         </div>
@@ -258,15 +266,11 @@ Khỏi hẳn luôn. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -278,11 +282,11 @@ Khỏi hẳn luôn. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

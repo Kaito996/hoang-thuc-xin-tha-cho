@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 274</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,444 +62,453 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 274</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_273.html" class="btn">‹ Trước</a>
             <a href="chuong_275.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 274: Sắp có Nhiếp Chính Vương phi rồi
-Sở Ly tỉnh giấc thì đã là một canh giờ sau.
-Sơ Nhất hầu hạ nàng rửa mặt chải đầu, Sơ Tam bày sẵn bữa sáng. Sở Ly mơ mơ màng màng súc miệng, ngồi xuống bên bàn.
-“Tiểu thư, lát nữa người vào cung chứ?”
-“Ừ.”
-Nàng bưng bát lên, vừa nhấp một ngụm cháo thì đầu óc như bỗng tỉnh táo hẳn, lập tức đổi lời:
-“Không vào cung nữa, ta muốn thêu hoa.”
-“Hả?”
-Hai người đều há hốc miệng.
-Thêu hoa?
-Tiểu thư biết thêu sao?
-Sở Ly nghiêm mặt:
-“Ừ.”
-Thêu hoa.
-Hôm qua, Hoàng thúc khen nàng ôn nhu, hiền thục, rộng lượng, có phong thái của chủ mẫu đương gia. Nữ công xuất sắc vốn là kỹ năng không thể thiếu, nàng không thể phụ kỳ vọng của Hoàng thúc.
-Ăn sáng thật nhanh.
-“Mang kim chỉ đến cho ta.”
-Sơ Tam chần chừ lên tiếng:
-“Tiểu thư, có lẽ người nên chọn gấm vóc trước, lấy thước và kéo, xác định muốn thêu vật gì, dùng màu gì, rồi mới xỏ chỉ.”
-“Ừ?”
-Là như vậy sao?
-“Đi kho chọn vài tấm gấm tốt nhất, ta thêu một cái hà bao.”
-“Vâng.”
-Sở Ly xắn tay áo, nói làm là làm, hăng hái vô cùng. Chỉ là chẳng được bao lâu, giọng sốt ruột của Sơ Tam đã vang lên liên hồi:
-“Không phải cắt như vậy!”
-“Hỏng rồi!”
-“Tiểu thư, kim không cầm như thế… ngón tay lan hoa của người sắp vểnh lên trời rồi!”
-“…”
-Nửa canh giờ sau.
-Sở Ly nhìn hình thêu trên chiếc hà bao trong tay, ngẩn người suy ngẫm.
-Sơ Nhất lén trừng Sơ Tam một cái, hạ giọng:
-“Tiểu thư thích làm gì thì cứ để người làm, chúng ta chỉ cần khen ngợi là được. Nếu khiến tiểu thư không vui, cho dù cái hà bao này có thêu nở hoa thì cũng có ích gì?”
-Sơ Tam lúc này mới hoàn hồn, cắn đầu lưỡi:
-“Nô tỳ… vừa rồi không cố ý…”
-Tiểu thư sao lại không nói gì nữa?
-Chẳng lẽ vì con vịt thêu xấu quá nên bị đả kích?
-Nữ công của tiểu thư tuy… không được tốt lắm, nhưng ít ra cũng đã thêu ra rồi.
-“Tiểu thư, người đừng buồn quá, hay để nô tỳ dạy…”
-“Ta thêu đẹp quá!”
-Sở Ly suy ngẫm xong, hai tay nâng chiếc hà bao ngắm nghía, đôi mắt sáng rực.
-“Nhìn hai con uyên ương này xem, đôi cánh này, đôi mắt này, quả thực sinh động như thật.”
-Không ngờ nàng còn có thiên phú này.
-Đã có thể làm nam nhi, cũng có thể điểm hồng trang.
-Không tệ.
-Lần đầu tự tay làm, nàng vô cùng hài lòng.
-Chẳng trách Hoàng thúc lại khen nàng như vậy, hóa ra là có mắt nhìn người.
-Sơ Tam: “?”
-“Chỉ là cái hà bao này nếu cất trong người thì chẳng phải không thể khoe tài nữ công của ta sao?”
-Nàng lại trầm ngâm một lúc, bỗng cầm kim chỉ lên.
-“Ta phải sửa lại.”
-Nàng đính thêm tua rua, may thêm dây đeo, biến chiếc hà bao mang trong người thành một chiếc hương nang đeo ngoài.
-Thế này có thể treo ở thắt lưng, đi đâu cũng mang theo.
-Hài lòng rồi.
-Sở Ly treo nó bên hông, đứng trước gương đồng ngắm trái ngắm phải, đổi mấy tư thế liền.
-Sơ Nhất và Sơ Tam bỗng im lặng một cách kỳ lạ.
-Sơ Tam khẽ hỏi:
-“Tiểu thư thật sự không đùa sao?”
-Nàng thêu…
-Là cái gì vậy?
-Sơ Nhất nghiêm túc suy nghĩ:
-“Tiểu thư thân phận tôn quý, từng học hành, được giáo dưỡng. Tư tưởng đương nhiên khác với những nô tỳ như chúng ta. Nếu ánh mắt của chúng ta giống tiểu thư, chẳng phải chúng ta cũng là thiên kim tiểu thư rồi sao?”
-Sơ Tam bừng tỉnh:
-“Nói cũng đúng.”
-Hóa ra là ánh mắt của các nàng quá tầm thường.
-Vẫn là tiểu thư cao minh!
-“Đi chuẩn bị kiệu đi, tiểu thư chắc chắn sẽ vào cung.”
-“Ngươi lại biết rồi?”
-“Lòng muốn chia sẻ của nữ nhân.”
-Rất có lý!
-Sơ Tam quay đầu chạy đi trước.
-Không ngờ vừa bước khỏi chính viện đã ngửi thấy một mùi hôi vô cùng khó chịu.
-“Ơ… mùi gì vậy?”
-Nàng bịt mũi.
-Thối quá!
-Giống như mùi vải quấn chân của bà lão, quấn vừa dày vừa dài, bị ủ cả tháng trời.
-Đúng lúc ấy, Kinh Ảnh từ phía bên kia đi tới, bước chân khựng mạnh, theo phản xạ siết chặt tay áo, giấu cái xẻng và cây chổi ra sau lưng.
-“Kinh Ảnh đại nhân?”
-Sao hắn lại ở Vương phủ?
-Chẳng phải hắn đã theo Nhiếp Chính Vương vào cung rồi sao?
-Sơ Tam tiến lên, khom người hành lễ.
-Không ngờ vừa mở miệng, luồng mùi hôi kia lập tức xộc thẳng vào miệng, lên tận mũi, như muốn xông tới thiên linh cái, khiến nàng không nhịn được:
-“Ọe… Kinh Ảnh đại nhân, ngài có ngửi thấy mùi gì… ọe… xin lỗi… ta… ọe… ta không cố ý… ọe!”
-Không chịu nổi nữa.
-Sơ Tam ôm đôi mắt cay xè, chật vật bỏ chạy.
-Kinh Ảnh đứng nguyên tại chỗ, cả người rối bời trong gió.
-Nàng vừa nhìn hắn vừa nôn.
-Nhân phẩm của hắn, hình tượng của hắn, thể diện của hắn…
-Vỡ rồi, nát hết rồi!
-Tại sao chủ tử lại bắt một ám vệ võ công cao cường như hắn đi xúc phân ngựa!
-________________________________________
-Ngự thư phòng.
-“Ngươi nói cái gì!”
-“An Bình thành thất thủ, Tần Mục Vũ bị bắt rồi!”
-Giọng Sở Ngạo Thiên kinh hãi đến mức suýt lật tung cả nóc phòng.
-Sở Đệ Trì liếc hắn:
-“Có muốn lớn tiếng hơn nữa không? Ra trước cổng Nhiếp Chính Vương phủ mà hét.”
-Sở Ngạo Thiên vội bịt miệng.
-Không dám!
-Nếu Cửu muội biết chuyện này, nhất định sẽ lo lắng cho Tần Mục Vũ.
-Nóng vội tất sinh loạn.
-Hắn lập tức hạ giọng dặn sứ giả:
-“Chuyện của Tần thiếu tướng quân tạm thời phong tỏa, không được truyền ra ngoài, lui đi.”
-“Tuân lệnh!”
-Sứ giả lui xuống.
-Tiêu Dạ Hành nói:
-“Ta sẽ đích thân đi một chuyến, lập tức xuất phát.”
-Sở Đệ Trì đáp:
-“Đây là chuyện giữa ta và Sở Dạ Ly, ngươi ở lại, ta đi.”
-“Không được. Tân hoàng vừa đăng cơ, biết bao kẻ đang rình rập gây sự. Nếu ngươi không ở Đế đô tọa trấn, ắt sẽ sinh loạn.”
-Tiêu Dạ Hành đứng dậy.
-“Dẫu sao đó cũng là cháu ruột của ta, ta không thể trơ mắt nhìn nó gặp chuyện. Nhưng ngươi nhớ kỹ, tuyệt đối đừng để Tạ tiểu thư biết. Lo lắng tất sinh loạn, cẩn thận trúng kế của Đông Lăng Thái tử.”
-Việc đã định.
-Tiêu Dạ Hành xuất chinh.
-Hắn rời cung, phi ngựa đi gấp.
-Đúng lúc ấy, kiệu của Sở Ly vừa dừng lại, nàng liền nhìn thấy bóng lưng Tiêu Dạ Hành đang phi ngựa rời đi với tốc độ cực nhanh.
-Vội như vậy, chẳng lẽ xảy ra chuyện gì?
-Nàng phủi vạt áo, cất bước vào cung.
-Ngự lâm quân canh cổng vừa định giơ tay ngăn lại thì người bên cạnh sắc mặt biến đổi, vội giữ hắn.
-“Ngươi…”
-“Đừng nói!”
-Hai người cúi đầu, nhìn vạt áo của nữ tử lướt qua trước mặt, tiến vào cung. Đợi nàng đi xa mới ngẩng đầu.
-“Vừa rồi sao ngươi ngăn ta? Sao có thể tùy tiện cho người lạ vào cung?”
-“Ngươi không muốn sống nữa à! Đó là Tạ tiểu thư!”
-“Tạ tiểu thư…”
-“Chính là vị bên cạnh Nhiếp Chính Vương!”
-Nếu lúc nãy bọn họ dám cản đường Tạ tiểu thư, để Nhiếp Chính Vương biết được, còn chẳng biết sẽ bị phạt thế nào.
-Tên Ngự lâm quân kia siết chặt tay, cắn răng:
-“Cho dù nàng là Tạ tiểu thư thì cũng không cần kiểm tra sao? Nếu nàng lợi dụng điểm này, mang nguy hiểm vào cung thì sao? Lỡ xảy ra chuyện, chẳng phải chúng ta sẽ thành tội lơ là chức trách?”
-“Đồ ngốc!”
-Người bên cạnh gõ đầu hắn.
-“Tạ tiểu thư là người của Nhiếp Chính Vương. Nếu nàng dám phản bội Nhiếp Chính Vương thì người gặp họa đầu tiên chính là nàng, nào đến lượt chúng ta lo?”
-“Mở to mắt mà nhìn. Sau này gặp Tạ tiểu thư thì cung kính một chút. Hai mươi mấy năm qua, Nhiếp Chính Vương phủ lạnh lẽo như băng, đến một nha hoàn thông phòng cũng không có. E rằng chẳng bao lâu nữa sẽ có Nhiếp Chính Vương phi rồi!”
-________________________________________
-Trong cung.
-Sở Ly quen đường quen lối đi về phía hậu cung.
-Không ngờ đến ngã rẽ trên con đường dài lại bị người gọi lại:
-“Đứng lại!”
-“Ngươi sao lại không hiểu quy củ thế? Không được đi về phía đó!”
-Sở Ly dừng bước, quay đầu nhìn sang con đường bên cạnh.
-Ở đó có rất nhiều thiên kim tuổi xuân mặc hồng đeo lục, châu ngọc đầy người. Nhìn dáng vẻ ăn diện lộng lẫy của các nàng, rõ ràng là đã chuẩn bị từ trước.
-Đây là…
-Hôm nay trong hoàng cung có ngày lễ gì đặc biệt sao?
-Sao lại có nhiều thiên kim vào cung như vậy?
-“Nói ngươi đó, tai điếc à? Không biết trả lời sao?”
-Một nha hoàn chỉ vào Sở Ly.
-Sơ Nhất vừa định mở miệng thì Sở Ly đã giơ tay ngăn lại.
-“Tiểu thư…”
-“Trông đều là nữ nhi quan lại. Tân hoàng vừa đăng cơ, long ỷ còn chưa ngồi vững, đừng gây thêm phiền cho hắn.”
-“Vâng.”
-Sơ Nhất đành nhịn.
-Nha hoàn kia nổi giận:
-“Mọi người đều vào cung để Hi phi nương nương xem mắt, ngươi bày cái giá gì? Còn không mau tới bái kiến tiểu thư nhà ta, Tần Châu Châu!”
-Xem mắt?
-Bát hoàng huynh sắp đại tuyển hậu cung?
-Sở Ly kinh ngạc.
-Sao nàng không biết chuyện này?
-“Đây là ý chỉ ban từ khi nào?”
-Tần Châu Châu khẽ nhíu mày, ánh mắt soi mói đánh giá Sở Ly.
-Trên người mặc vải chẳng có lấy một đường thêu, trên đầu chỉ cài một cây trâm ngọc trai trắng, bên hông còn đeo một chiếc hương nang xấu không chịu nổi.
-Ngoại trừ khuôn mặt đẹp ra thì chẳng có gì đáng nói.
-Đây là thiên kim nhà nào?
-Cũng xứng vào cung?
-“Hôm nay sáng sớm, ý chỉ Hoàng thượng muốn sung túc hậu cung đã truyền đến các phủ của bá quan. Chúng ta đều đến để Hi phi nương nương xem mắt. Chỉ có ngươi lòng dạ bất chính, còn muốn đi đường tắt!”
-Hai con đường này, một đường dẫn đến tiền điện, nơi các thiên kim tụ tập.
-Đường còn lại thì đi thẳng đến hậu cung.
-Cũng không tự nhìn thân phận mình, vậy mà còn muốn trực tiếp vào hậu cung!
-Muốn hối lộ Hi phi nương nương sao?
-Hừ!
-Sở Ly lại thấy kỳ quái.
-Từ nhỏ đến lớn, Bát hoàng huynh khi nào thích nữ nhân?
-Có cô nương tỏ tình với hắn, hắn cũng phải nói trước một câu:
-“Đợi chút, con dế của ta sắp thắng rồi!”
-Vậy mà giờ lại muốn mở rộng hậu cung, phong mười tám nữ nhân…
-Đây vẫn là Sở Ngạo Thiên sao?
-“Ta không đến để xem mắt tuyển cung tần, chúc các ngươi may mắn.”
-Nói xong, Sở Ly quay người định đi thì cổ tay đã bị người ta giữ chặt.
-“Đi theo sau bọn ta, không được gây chuyện, không được chạy lung tung. Loại người như ngươi cho dù vào cung cũng không lọt vào mắt Hi phi nương nương đâu. Ta khuyên ngươi đừng ôm lòng bất chính mà vọng tưởng!”
-Sở Ly nhíu mày.
-Ánh mắt dời từ cổ tay lên, nhìn vị cô nương tên Tần Châu Châu.
-“Hình như trước đây chưa từng gặp ngươi?”
-Tần Châu Châu lạnh giọng:
-“Ta là ái nữ nhỏ nhất của Tần Thiếu sư, năm nay mới mười bốn tuổi, lần đầu vào cung. Đâu phải ngươi muốn gặp là gặp được?”
-“Ta nói cho ngươi biết, phụ thân ta là đương triều Thiếu sư, mẫu thân là nữ nhi phú thương. Ta nhất định sẽ lọt vào mắt Hi phi nương nương, được tuyển làm cung tần. Còn loại người như ngươi nhiều lắm chỉ là đến cho đủ số mà thôi!”
-“Ồ.”
-Sở Ly xoay cổ tay, hất nàng ta ra.
-“Vậy chúc Tần tiểu thư may mắn.”
-“Đứng lại!”
-Tần Châu Châu nổi giận, không ngờ nàng lại dám phớt lờ mình như vậy.
-To gan!
-Từ nhỏ nàng được cưng chiều, lại là con út trong nhà, gần như muốn gió được gió, muốn mưa được mưa. Đây là lần đầu tiên mất mặt trước nhiều người như vậy.
-Đang định nổi giận thì khóe mắt chợt liếc thấy một vạt áo màu minh hoàng…
-Ánh mắt nàng xoay chuyển, lập tức bước lên chặn trước mặt Sở Ly.
-“Làm càn!”
-“Ngươi tưởng lớn hơn ta vài tuổi thì ta sẽ sợ ngươi sao?”
-“Từ nhỏ ta đã quen trừ gian giúp yếu, không sợ cường quyền. Sai là sai. Cho dù ngươi là Hoàng thượng ta cũng không sợ. Chúng ta đều là con người, sinh ra vốn bình đẳng!”
-Sở Ly: “?”
-Đề tài chuyển nhanh quá thì phải?
-Đây là đang nói gì vậy? Sao nàng nghe không hiểu?
-Tần Châu Châu lớn tiếng đầy khí phách:
-“Phụ thân từ nhỏ đã dạy ta, làm người phải giữ quy củ, biết chừng mực, không sợ… Á… Hoàng thượng!”
-Một tiếng kinh hô khiến tất cả mọi người đồng loạt quỳ xuống.
-Sở Ngạo Thiên đứng ở góc rẽ của con đường dài, phía sau là sáu tên thái giám. Trên tay hắn còn cầm một chiếc lồng tre nhỏ đựng dế, từ sớm đã thu hết cảnh tượng vừa rồi vào mắt.
-Biệt Cửu lúc này mới cất cao giọng:
-“Hoàng thượng giá lâm——”
-“Ở đây cãi nhau chuyện gì?”
-Khoác long bào lên người, hắn nghiêm mặt, hạ thấp giọng, trông cũng có vài phần uy nghi.
-Tần Châu Châu lập tức đáp:
-“Hoàng thượng, thần nữ là ái nữ của Tần Thiếu sư, tên Tần Châu Châu. Người này không giữ quy củ, định xông vào hậu cung. Thần nữ có lòng khuyên nhủ, ai ngờ nàng ta chẳng thèm để ý, ngạo mạn khó thuần. Tất cả đều là lỗi của thần nữ, đã làm kinh động Hoàng thượng!”
-Sở Ngạo Thiên cười lạnh.
-Vừa rồi giọng nàng ta đúng là rất lớn, quả thật làm hắn ồn chết đi được.
-Sở Ly khoát tay:
-“Thôi đi.”
-Chỉ là mấy cô nương trẻ tuổi, bình thường ít vào cung, không nhận ra nàng cũng là chuyện dễ hiểu.
-Tần Châu Châu quỳ dưới đất, cúi đầu cười thầm.
-Còn muốn thôi sao?
-Đâu dễ như vậy.
-Vừa rồi nàng đã xây dựng hình tượng mình thẳng thắn, dám yêu dám hận, phá bỏ sự khuôn mẫu nhàm chán của các thiên kim truyền thống.
-Hoàng thượng nhất định đã chú ý đến nàng.
-Một cô gái phóng khoáng, thú vị, sảng khoái như nàng, nam nhân nào mà chẳng thích?
-Nàng dịu dàng nói:
-“Nếu vị tỷ tỷ này đã nói bỏ qua thì thôi vậy. Xin Hoàng thượng cũng đừng truy cứu nữa. Tất cả đều là lỗi của thần nữ. Thần nữ nguyện tự xin xuất cung, không quấy rầy nữa. Cũng mong Hoàng thượng đừng trách vị tỷ tỷ này.”
-Vừa nói vừa lấy khăn lau khóe mắt.
-“Nhìn dáng vẻ của tỷ tỷ, vào cung một chuyến hẳn không dễ dàng. Thần nữ không muốn vì mình mà làm hỏng tâm trạng của tỷ ấy.”
-Bộ dạng hiểu chuyện, dịu dàng như hoa lê đẫm mưa ấy, ai nhìn mà chẳng động lòng?
-Nàng chậm rãi ngẩng đôi mắt long lanh ngấn lệ, như nai con nhìn về vị quân vương trẻ tuổi tuấn mỹ.
-Sở Ngạo Thiên vốn nổi tiếng tính tình tốt.
-“Nếu ngươi đã nói thôi thì thôi vậy.”
-Tần Châu Châu mừng rỡ trong lòng.
-Hoàng thượng thật sự nghe lời nàng!
-Hoàng thượng chắc chắn đã nhớ nàng rồi.
-“Người đâu, đưa Tần tiểu thư xuất cung.”
-Toàn thân Tần Châu Châu cứng đờ.
-“?”
-Cái gì?
-Sao lại là nàng?
-Khi nàng còn đang ngơ ngác thì hai thái giám đã bước tới.
-“Tần tiểu thư, mời.”
-“Tại sao? Ta sai ở đâu? Vì sao không phải nàng ta…”
-Tần Châu Châu chỉ sang, lại thấy quân vương cười tươi, bước đến gần Sở Ly.
-“Tạ tiểu thư, nàng muốn vào cung sao không nói với ta một tiếng? Sau này ta sẽ đặc biệt phái hai người đi theo nàng, nàng đi đâu cũng hô báo trước, để khỏi có người không nhận ra nàng, làm phiền đến sự thanh tĩnh của nàng.”
-Tạ tiểu thư!
-Thì ra nàng chính là vị Tạ tiểu thư bên cạnh Nhiếp Chính Vương!
-Sở Ly khẽ nói:
-“Ta đã bảo thôi rồi, đừng làm hỏng chuyện của ngươi.”
-“Ta đúng là nghe lời nàng. Nhưng Tần tiểu thư đã tự xin xuất cung, ta làm vậy cũng là thành toàn cho nàng ấy.”
-“Nhưng…”
-“Đừng nhưng nữa, ta có việc muốn nói với nàng.”
-Sở Ngạo Thiên vung tay, khoác luôn lên vai Sở Ly, hai người bá vai bá cổ đi mất.
-Tần Châu Châu kinh ngạc há hốc miệng, đến cả cầu xin cũng không kịp.
-Quan hệ của họ lại thân thiết đến vậy!
-“Tần tiểu thư, mời.”
-Thái giám thúc giục.
-“Ta không biết nàng ấy là Tạ tiểu thư! Ta… ta không thể xuất cung! Ta đến để Hi phi nương nương xem mắt! Ta không thể xuất cung!”
-Hoàng thượng đã hạ chỉ, hai thái giám nào cho phép nàng gây náo?
-Bọn họ cưỡng ép “đưa” nàng ra khỏi cung.
-“Buông ta ra! Buông ta! Ta muốn gặp Hi phi nương nương!”
-Các thiên kim khác nhìn thấy cảnh ấy, dư âm kinh hãi mãi không tan.
-Trong lòng đều ghi nhớ một điều:
-Tạ tiểu thư không thể đắc tội.
-Rồi dần dần biến thành:
-Tạ tiểu thư là hồng nhân bên cạnh Hoàng thượng.
-Sau nữa lại thành:
-Tạ tiểu thư là Nhiếp Chính Vương phi đã được định sẵn.
-Chỉ có điều, đó đều là chuyện về sau.
-________________________________________
-Bên này.
-Sở Ngạo Thiên khoác vai Sở Ly, đi đến chỗ không có ai, lúc này mới mạnh tay hất tay áo, bày ra dáng vẻ Hoàng đế.
-Mệt chết hắn rồi.
-“Ngươi muốn tuyển phi?”
-Sở Ly kinh ngạc như gặp quỷ.
-“Đúng vậy, ta định nạp năm mươi người.”
-“?”
-Điên rồi?
-Sở Ly đưa tay sờ trán hắn.
-“Ôi chao!”
-Sở Ngạo Thiên kéo tay nàng xuống.
-“Ta không sốt, ta nghiêm túc đấy. Hơn nữa ta muốn nàng đích thân giúp ta lo liệu. Mắt nhìn của nàng rất tốt.”
-Đúng là điên thật rồi.
-Hắn từ bao giờ lại khai khiếu như vậy?
-“Bát hoàng huynh, nói thật với ta đi. Có phải có người ép huynh không? Hay văn võ bá quan gây áp lực? Nếu huynh không muốn thì không ai ép được huynh.”
-“Không ai ép ta.”
-Sở Ngạo Thiên nói:
-“Từ xưa đến nay, vị Hoàng đế nào chẳng tam cung lục viện, thất thập nhị phi? Ta đương nhiên cũng phải như vậy. Được rồi, quyết định vậy đi. Nàng nhất định phải đích thân giúp ta lo liệu. Người ta tin tưởng nhất chính là nàng.”
-Hắn vỗ mạnh lên vai nàng.
-Một trọng trách.
-Quyết định xong!
-Việc tuyển phi bận rộn, không có hai tháng thì không xong.
-Nếu Cửu muội dồn tâm tư vào chuyện này thì sẽ không biết việc Tần thiếu tướng quân bị bắt…
-Sở Ly vẫn mơ hồ, không dám tin một người chỉ biết ăn uống vui chơi, chọi dế, bỗng nhiên lại mê nữ nhân.
-“Ngạo Thiên ca ca!”
-Phía xa, một thiếu nữ mảnh mai như cánh bướm chạy tới, tay nhấc váy, giọng nói ngọt lịm.
-“Thấy chưa? Đây chính là niềm vui khi mỹ nhân thành đàn.”
-Sở Ngạo Thiên cười ha hả, phất tay áo bước nhanh tới.
-“Minh Hoa đến rồi.”
-Thiếu nữ ấy là Minh Hoa Quận chúa, con gái của Tiêu Dao Vương.
-Nhưng không phải con ruột, mà là cô nhi của gia thần, được Tiêu Dao Vương nhận nuôi dưới gối.
-“Ngạo Thiên ca ca muốn dạo Ngự hoa viên sao không gọi Minh Hoa một tiếng? Minh Hoa cũng thích đi dạo.”
-Minh Hoa Quận chúa quấn quýt ôm lấy cánh tay Sở Ngạo Thiên, thân thể mềm mại vừa định tựa sát thì Sở Ngạo Thiên đã bất động thanh sắc rút tay ra, nhàn nhạt nói:
-“Đi thôi.”
-Hai người cùng rời đi.
-Sở Ly đứng nguyên tại chỗ, ánh mắt thâm trầm nhìn theo bóng lưng họ.
-Sơ Nhất quan sát sắc mặt nàng, cân nhắc rồi lên tiếng:
-“Tiểu thư chẳng lẽ đang có điều gì lo lắng?”
-Một lúc lâu sau, Sở Ly mới nói:
-“Thấy vị cô nương vừa rồi chứ? Đó là Minh Hoa Quận chúa của Tiêu Dao Vương phủ. Từ khi ta có ký ức đến nay, Tiêu Dao Vương vẫn luôn ở phong địa, hiếm khi về kinh. Nhưng lần này, ông ấy lại đưa cả gia quyến tới.”
-Xem ra…
-Là muốn ở hẳn Đế đô.
-Hoàn toàn trái ngược với thông lệ hơn hai mươi năm qua.
-“Còn nữa, ta tin Bát hoàng huynh thà cưới một con dế còn hơn nạp nhiều nữ nhân như vậy.”
-“Phụt——”
-Câu nói ấy khiến Sơ Nhất bật cười.
-“Cứ để ý kỹ đi.”
-“Vâng, nô tỳ nhớ rồi.”
-Sở Ly thu hồi ánh mắt, lúc này mới tiến vào hậu cung.
-Nếu nói đến việc xem mắt tuyển phi thì người bận nhất không ai khác ngoài Hi phi.
-Một mình nàng không xuể, còn gọi cả Ôn phi đến giúp.
-Hai người vừa xem tranh chân dung vừa bàn luận sôi nổi.
-“Cái này được.”
-“Cô nương này dung mạo đoan chính… nhìn là biết sinh được con trai…”
-Đang nói thì Thôi cô cô bước nhẹ tới.
-“Nương nương, Tạ tiểu thư đến rồi.”
-“Mau mời!”
-Sở Ly vừa đến, hành lễ xong, Hi phi lập tức cho lui cung nhân, chỉ giữ lại vài tâm phúc hầu hạ.
-Lúc này Ôn phi mới vui vẻ vẫy tay.
-“Ly nhi.”
-“Mẫu phi, chuyện Bát hoàng huynh tuyển phi là sao?”
-“Đến tuổi nào thì làm việc nấy, chẳng phải rất hợp tình hợp lý sao? Còn là chuyện gì được nữa?”
-Ôn phi kéo nàng ngồi xuống.
-Chỉ liếc mắt đã nhìn thấy chiếc hương nang bên hông nàng.
-Đây là cái gì?
-Xấu thế mà cũng đeo?
-Một câu “xấu quá” suýt nữa bật ra khỏi miệng.
-Ôn phi vội kịp thời thắng lại.
-Nhiếp Chính Vương phủ cũng chưa đến mức nghèo đến nỗi không mua nổi một cái hương nang.
-Chiếc hương nang này…
-Chẳng lẽ là do Nhiếp Chính Vương làm?
-Dù sao cũng là người đã sống hơn mười năm trong thâm cung, bà biết chuyện này nhất định không đơn giản.
-Bà cầm chiếc hương nang bên hông nàng lên, cười khen:
-“Chiếc hương nang này thêu thật đặc biệt tinh xảo. Nhìn chất liệu này, đường thêu này, e rằng khắp Đế đô cũng chỉ có một, không có tú nương nào bắt chước nổi.”
-Sở Ly vui mừng bất ngờ.
-“Mẫu phi thật sự nghĩ vậy sao?”
-“Đương nhiên. Chẳng lẽ mẫu phi lại lừa con?”
-Ôn phi nâng chiếc hương nang trong tay.
-“Nhìn đôi uyên ương này xem, thêu thật là… ừm… có hồn. Hi tỷ tỷ, tỷ nhìn xem.”
-Hi phi liếc một cái, sắc mặt khó diễn tả.
-Nuốt khan một cái, nể mặt Ôn phi nên nói:
-“Quả thật không tệ. Hôm nay Vãn Nguyệt ăn mặc khiêm nhã mà sang quý. Vậy mà điều đầu tiên ta nhìn thấy lại không phải dung mạo của con bé, mà là chiếc hương nang này. Đủ thấy nó thêu đẹp đến mức nào.”
-Sơ Nhất nghe vậy, thầm nghĩ:
-May mà nàng không giống Sơ Tam, cười chê tiểu thư.
-Tiểu thư thân là thiên kim, ánh mắt quả nhiên khác hẳn những phàm phu tục tử như các nàng.
-Đến cả Ôn phi nương nương và Hi phi nương nương cũng hết lời khen ngợi.
-Ôn phi hiền từ hỏi:
-“Không biết chiếc hương nang này là do ai làm? Đẹp và đặc biệt như vậy, ta cũng muốn có một cái.”
-Sở Ly vuốt chiếc hương nang, có chút ngượng ngùng nhưng đầy tự hào.
-“Là chính con thêu.”
-“?”
-Thảo nào xấu thế!
-Nếu là chính nó thêu thì bà làm mẫu thân cũng chẳng cần nể mặt nữa.
-Đúng là xấu thật!
-“Con định tặng cho Nhiếp Chính Vương.”
-Ôn phi lập tức đổi giọng.
-Thì ra là tặng cho Nhiếp Chính Vương.
-“Thảo nào đẹp như vậy. Ly nhi có lòng như thế, Nhiếp Chính Vương nhất định sẽ rất thích.”
-Bà xoa đầu nàng.
-Sở Ly vui sướng không thôi, tự tin tràn đầy.
-“Nếu mẫu phi thích, khi nào rảnh con sẽ thêu thêm cho người vài chiếc khăn tay, hà bao, khăn lụa, yếm và khăn gối.”
-“Không không, thôi khỏi!”
-Ôn phi vội xua tay.
-“Làm nữ công hại mắt lắm. Ly nhi, sau này nếu rảnh thì cứ ăn thì ăn, chơi thì chơi, muốn làm gì thì làm, không cần miễn cưỡng…”
-“Con không miễn cưỡng mà!”
-Nàng rất thích làm.
-Việc này khiến nàng vô cùng có cảm giác thành tựu.
-Sở Ly cười nói:
-“Hoàng thúc khen con ôn nhu hiền thục, có kỳ tài kinh thế, có phong phạm chủ mẫu. Con không chỉ biết nữ công mà còn biết nấu ăn. Hoàng thúc bảo rất ngon. Con còn biết quản gia, biết cho ngựa ăn, còn biết…”
-Nàng vuốt chùm tua rua trên hương nang, nghịch sợi dây đeo rồi xoay liền mấy vòng.
-Đẹp thật.
-Hi phi bỗng nhiên trầm mặc.
-Ôn phi cầm khăn tay, lau lớp mồ hôi mỏng trên trán.
-Bà còn đang thắc mắc sao Ly nhi đột nhiên lại đi học thêu thùa…
-Hóa ra là bị Nhiếp Chính Vương dỗ dành. Ẩn bớt</p>
+            <p>Chương 274: Sắp có Nhiếp Chính Vương phi rồi</p>
+<p>Sở Ly tỉnh giấc thì đã là một canh giờ sau.</p>
+<p>Sơ Nhất hầu hạ nàng rửa mặt chải đầu, Sơ Tam bày sẵn bữa sáng. Sở Ly mơ mơ màng màng súc miệng, ngồi xuống bên bàn.</p>
+<p>“Tiểu thư, lát nữa người vào cung chứ?”</p>
+<p>“Ừ.”</p>
+<p>Nàng bưng bát lên, vừa nhấp một ngụm cháo thì đầu óc như bỗng tỉnh táo hẳn, lập tức đổi lời:</p>
+<p>“Không vào cung nữa, ta muốn thêu hoa.”</p>
+<p>“Hả?”</p>
+<p>Hai người đều há hốc miệng.</p>
+<p>Thêu hoa?</p>
+<p>Tiểu thư biết thêu sao?</p>
+<p>Sở Ly nghiêm mặt:</p>
+<p>“Ừ.”</p>
+<p>Thêu hoa.</p>
+<p>Hôm qua, Hoàng thúc khen nàng ôn nhu, hiền thục, rộng lượng, có phong thái của chủ mẫu đương gia. Nữ công xuất sắc vốn là kỹ năng không thể thiếu, nàng không thể phụ kỳ vọng của Hoàng thúc.</p>
+<p>Ăn sáng thật nhanh.</p>
+<p>“Mang kim chỉ đến cho ta.”</p>
+<p>Sơ Tam chần chừ lên tiếng:</p>
+<p>“Tiểu thư, có lẽ người nên chọn gấm vóc trước, lấy thước và kéo, xác định muốn thêu vật gì, dùng màu gì, rồi mới xỏ chỉ.”</p>
+<p>“Ừ?”</p>
+<p>Là như vậy sao?</p>
+<p>“Đi kho chọn vài tấm gấm tốt nhất, ta thêu một cái hà bao.”</p>
+<p>“Vâng.”</p>
+<p>Sở Ly xắn tay áo, nói làm là làm, hăng hái vô cùng. Chỉ là chẳng được bao lâu, giọng sốt ruột của Sơ Tam đã vang lên liên hồi:</p>
+<p>“Không phải cắt như vậy!”</p>
+<p>“Hỏng rồi!”</p>
+<p>“Tiểu thư, kim không cầm như thế… ngón tay lan hoa của người sắp vểnh lên trời rồi!”</p>
+<p>“…”</p>
+<p>Nửa canh giờ sau.</p>
+<p>Sở Ly nhìn hình thêu trên chiếc hà bao trong tay, ngẩn người suy ngẫm.</p>
+<p>Sơ Nhất lén trừng Sơ Tam một cái, hạ giọng:</p>
+<p>“Tiểu thư thích làm gì thì cứ để người làm, chúng ta chỉ cần khen ngợi là được. Nếu khiến tiểu thư không vui, cho dù cái hà bao này có thêu nở hoa thì cũng có ích gì?”</p>
+<p>Sơ Tam lúc này mới hoàn hồn, cắn đầu lưỡi:</p>
+<p>“Nô tỳ… vừa rồi không cố ý…”</p>
+<p>Tiểu thư sao lại không nói gì nữa?</p>
+<p>Chẳng lẽ vì con vịt thêu xấu quá nên bị đả kích?</p>
+<p>Nữ công của tiểu thư tuy… không được tốt lắm, nhưng ít ra cũng đã thêu ra rồi.</p>
+<p>“Tiểu thư, người đừng buồn quá, hay để nô tỳ dạy…”</p>
+<p>“Ta thêu đẹp quá!”</p>
+<p>Sở Ly suy ngẫm xong, hai tay nâng chiếc hà bao ngắm nghía, đôi mắt sáng rực.</p>
+<p>“Nhìn hai con uyên ương này xem, đôi cánh này, đôi mắt này, quả thực sinh động như thật.”</p>
+<p>Không ngờ nàng còn có thiên phú này.</p>
+<p>Đã có thể làm nam nhi, cũng có thể điểm hồng trang.</p>
+<p>Không tệ.</p>
+<p>Lần đầu tự tay làm, nàng vô cùng hài lòng.</p>
+<p>Chẳng trách Hoàng thúc lại khen nàng như vậy, hóa ra là có mắt nhìn người.</p>
+<p>Sơ Tam: “?”</p>
+<p>“Chỉ là cái hà bao này nếu cất trong người thì chẳng phải không thể khoe tài nữ công của ta sao?”</p>
+<p>Nàng lại trầm ngâm một lúc, bỗng cầm kim chỉ lên.</p>
+<p>“Ta phải sửa lại.”</p>
+<p>Nàng đính thêm tua rua, may thêm dây đeo, biến chiếc hà bao mang trong người thành một chiếc hương nang đeo ngoài.</p>
+<p>Thế này có thể treo ở thắt lưng, đi đâu cũng mang theo.</p>
+<p>Hài lòng rồi.</p>
+<p>Sở Ly treo nó bên hông, đứng trước gương đồng ngắm trái ngắm phải, đổi mấy tư thế liền.</p>
+<p>Sơ Nhất và Sơ Tam bỗng im lặng một cách kỳ lạ.</p>
+<p>Sơ Tam khẽ hỏi:</p>
+<p>“Tiểu thư thật sự không đùa sao?”</p>
+<p>Nàng thêu…</p>
+<p>Là cái gì vậy?</p>
+<p>Sơ Nhất nghiêm túc suy nghĩ:</p>
+<p>“Tiểu thư thân phận tôn quý, từng học hành, được giáo dưỡng. Tư tưởng đương nhiên khác với những nô tỳ như chúng ta. Nếu ánh mắt của chúng ta giống tiểu thư, chẳng phải chúng ta cũng là thiên kim tiểu thư rồi sao?”</p>
+<p>Sơ Tam bừng tỉnh:</p>
+<p>“Nói cũng đúng.”</p>
+<p>Hóa ra là ánh mắt của các nàng quá tầm thường.</p>
+<p>Vẫn là tiểu thư cao minh!</p>
+<p>“Đi chuẩn bị kiệu đi, tiểu thư chắc chắn sẽ vào cung.”</p>
+<p>“Ngươi lại biết rồi?”</p>
+<p>“Lòng muốn chia sẻ của nữ nhân.”</p>
+<p>Rất có lý!</p>
+<p>Sơ Tam quay đầu chạy đi trước.</p>
+<p>Không ngờ vừa bước khỏi chính viện đã ngửi thấy một mùi hôi vô cùng khó chịu.</p>
+<p>“Ơ… mùi gì vậy?”</p>
+<p>Nàng bịt mũi.</p>
+<p>Thối quá!</p>
+<p>Giống như mùi vải quấn chân của bà lão, quấn vừa dày vừa dài, bị ủ cả tháng trời.</p>
+<p>Đúng lúc ấy, Kinh Ảnh từ phía bên kia đi tới, bước chân khựng mạnh, theo phản xạ siết chặt tay áo, giấu cái xẻng và cây chổi ra sau lưng.</p>
+<p>“Kinh Ảnh đại nhân?”</p>
+<p>Sao hắn lại ở Vương phủ?</p>
+<p>Chẳng phải hắn đã theo Nhiếp Chính Vương vào cung rồi sao?</p>
+<p>Sơ Tam tiến lên, khom người hành lễ.</p>
+<p>Không ngờ vừa mở miệng, luồng mùi hôi kia lập tức xộc thẳng vào miệng, lên tận mũi, như muốn xông tới thiên linh cái, khiến nàng không nhịn được:</p>
+<p>“Ọe… Kinh Ảnh đại nhân, ngài có ngửi thấy mùi gì… ọe… xin lỗi… ta… ọe… ta không cố ý… ọe!”</p>
+<p>Không chịu nổi nữa.</p>
+<p>Sơ Tam ôm đôi mắt cay xè, chật vật bỏ chạy.</p>
+<p>Kinh Ảnh đứng nguyên tại chỗ, cả người rối bời trong gió.</p>
+<p>Nàng vừa nhìn hắn vừa nôn.</p>
+<p>Nhân phẩm của hắn, hình tượng của hắn, thể diện của hắn…</p>
+<p>Vỡ rồi, nát hết rồi!</p>
+<p>Tại sao chủ tử lại bắt một ám vệ võ công cao cường như hắn đi xúc phân ngựa!</p>
+<p>________________________________________</p>
+<p>Ngự thư phòng.</p>
+<p>“Ngươi nói cái gì!”</p>
+<p>“An Bình thành thất thủ, Tần Mục Vũ bị bắt rồi!”</p>
+<p>Giọng Sở Ngạo Thiên kinh hãi đến mức suýt lật tung cả nóc phòng.</p>
+<p>Sở Đệ Trì liếc hắn:</p>
+<p>“Có muốn lớn tiếng hơn nữa không? Ra trước cổng Nhiếp Chính Vương phủ mà hét.”</p>
+<p>Sở Ngạo Thiên vội bịt miệng.</p>
+<p>Không dám!</p>
+<p>Nếu Cửu muội biết chuyện này, nhất định sẽ lo lắng cho Tần Mục Vũ.</p>
+<p>Nóng vội tất sinh loạn.</p>
+<p>Hắn lập tức hạ giọng dặn sứ giả:</p>
+<p>“Chuyện của Tần thiếu tướng quân tạm thời phong tỏa, không được truyền ra ngoài, lui đi.”</p>
+<p>“Tuân lệnh!”</p>
+<p>Sứ giả lui xuống.</p>
+<p>Tiêu Dạ Hành nói:</p>
+<p>“Ta sẽ đích thân đi một chuyến, lập tức xuất phát.”</p>
+<p>Sở Đệ Trì đáp:</p>
+<p>“Đây là chuyện giữa ta và Sở Dạ Ly, ngươi ở lại, ta đi.”</p>
+<p>“Không được. Tân hoàng vừa đăng cơ, biết bao kẻ đang rình rập gây sự. Nếu ngươi không ở Đế đô tọa trấn, ắt sẽ sinh loạn.”</p>
+<p>Tiêu Dạ Hành đứng dậy.</p>
+<p>“Dẫu sao đó cũng là cháu ruột của ta, ta không thể trơ mắt nhìn nó gặp chuyện. Nhưng ngươi nhớ kỹ, tuyệt đối đừng để Tạ tiểu thư biết. Lo lắng tất sinh loạn, cẩn thận trúng kế của Đông Lăng Thái tử.”</p>
+<p>Việc đã định.</p>
+<p>Tiêu Dạ Hành xuất chinh.</p>
+<p>Hắn rời cung, phi ngựa đi gấp.</p>
+<p>Đúng lúc ấy, kiệu của Sở Ly vừa dừng lại, nàng liền nhìn thấy bóng lưng Tiêu Dạ Hành đang phi ngựa rời đi với tốc độ cực nhanh.</p>
+<p>Vội như vậy, chẳng lẽ xảy ra chuyện gì?</p>
+<p>Nàng phủi vạt áo, cất bước vào cung.</p>
+<p>Ngự lâm quân canh cổng vừa định giơ tay ngăn lại thì người bên cạnh sắc mặt biến đổi, vội giữ hắn.</p>
+<p>“Ngươi…”</p>
+<p>“Đừng nói!”</p>
+<p>Hai người cúi đầu, nhìn vạt áo của nữ tử lướt qua trước mặt, tiến vào cung. Đợi nàng đi xa mới ngẩng đầu.</p>
+<p>“Vừa rồi sao ngươi ngăn ta? Sao có thể tùy tiện cho người lạ vào cung?”</p>
+<p>“Ngươi không muốn sống nữa à! Đó là Tạ tiểu thư!”</p>
+<p>“Tạ tiểu thư…”</p>
+<p>“Chính là vị bên cạnh Nhiếp Chính Vương!”</p>
+<p>Nếu lúc nãy bọn họ dám cản đường Tạ tiểu thư, để Nhiếp Chính Vương biết được, còn chẳng biết sẽ bị phạt thế nào.</p>
+<p>Tên Ngự lâm quân kia siết chặt tay, cắn răng:</p>
+<p>“Cho dù nàng là Tạ tiểu thư thì cũng không cần kiểm tra sao? Nếu nàng lợi dụng điểm này, mang nguy hiểm vào cung thì sao? Lỡ xảy ra chuyện, chẳng phải chúng ta sẽ thành tội lơ là chức trách?”</p>
+<p>“Đồ ngốc!”</p>
+<p>Người bên cạnh gõ đầu hắn.</p>
+<p>“Tạ tiểu thư là người của Nhiếp Chính Vương. Nếu nàng dám phản bội Nhiếp Chính Vương thì người gặp họa đầu tiên chính là nàng, nào đến lượt chúng ta lo?”</p>
+<p>“Mở to mắt mà nhìn. Sau này gặp Tạ tiểu thư thì cung kính một chút. Hai mươi mấy năm qua, Nhiếp Chính Vương phủ lạnh lẽo như băng, đến một nha hoàn thông phòng cũng không có. E rằng chẳng bao lâu nữa sẽ có Nhiếp Chính Vương phi rồi!”</p>
+<p>________________________________________</p>
+<p>Trong cung.</p>
+<p>Sở Ly quen đường quen lối đi về phía hậu cung.</p>
+<p>Không ngờ đến ngã rẽ trên con đường dài lại bị người gọi lại:</p>
+<p>“Đứng lại!”</p>
+<p>“Ngươi sao lại không hiểu quy củ thế? Không được đi về phía đó!”</p>
+<p>Sở Ly dừng bước, quay đầu nhìn sang con đường bên cạnh.</p>
+<p>Ở đó có rất nhiều thiên kim tuổi xuân mặc hồng đeo lục, châu ngọc đầy người. Nhìn dáng vẻ ăn diện lộng lẫy của các nàng, rõ ràng là đã chuẩn bị từ trước.</p>
+<p>Đây là…</p>
+<p>Hôm nay trong hoàng cung có ngày lễ gì đặc biệt sao?</p>
+<p>Sao lại có nhiều thiên kim vào cung như vậy?</p>
+<p>“Nói ngươi đó, tai điếc à? Không biết trả lời sao?”</p>
+<p>Một nha hoàn chỉ vào Sở Ly.</p>
+<p>Sơ Nhất vừa định mở miệng thì Sở Ly đã giơ tay ngăn lại.</p>
+<p>“Tiểu thư…”</p>
+<p>“Trông đều là nữ nhi quan lại. Tân hoàng vừa đăng cơ, long ỷ còn chưa ngồi vững, đừng gây thêm phiền cho hắn.”</p>
+<p>“Vâng.”</p>
+<p>Sơ Nhất đành nhịn.</p>
+<p>Nha hoàn kia nổi giận:</p>
+<p>“Mọi người đều vào cung để Hi phi nương nương xem mắt, ngươi bày cái giá gì? Còn không mau tới bái kiến tiểu thư nhà ta, Tần Châu Châu!”</p>
+<p>Xem mắt?</p>
+<p>Bát hoàng huynh sắp đại tuyển hậu cung?</p>
+<p>Sở Ly kinh ngạc.</p>
+<p>Sao nàng không biết chuyện này?</p>
+<p>“Đây là ý chỉ ban từ khi nào?”</p>
+<p>Tần Châu Châu khẽ nhíu mày, ánh mắt soi mói đánh giá Sở Ly.</p>
+<p>Trên người mặc vải chẳng có lấy một đường thêu, trên đầu chỉ cài một cây trâm ngọc trai trắng, bên hông còn đeo một chiếc hương nang xấu không chịu nổi.</p>
+<p>Ngoại trừ khuôn mặt đẹp ra thì chẳng có gì đáng nói.</p>
+<p>Đây là thiên kim nhà nào?</p>
+<p>Cũng xứng vào cung?</p>
+<p>“Hôm nay sáng sớm, ý chỉ Hoàng thượng muốn sung túc hậu cung đã truyền đến các phủ của bá quan. Chúng ta đều đến để Hi phi nương nương xem mắt. Chỉ có ngươi lòng dạ bất chính, còn muốn đi đường tắt!”</p>
+<p>Hai con đường này, một đường dẫn đến tiền điện, nơi các thiên kim tụ tập.</p>
+<p>Đường còn lại thì đi thẳng đến hậu cung.</p>
+<p>Cũng không tự nhìn thân phận mình, vậy mà còn muốn trực tiếp vào hậu cung!</p>
+<p>Muốn hối lộ Hi phi nương nương sao?</p>
+<p>Hừ!</p>
+<p>Sở Ly lại thấy kỳ quái.</p>
+<p>Từ nhỏ đến lớn, Bát hoàng huynh khi nào thích nữ nhân?</p>
+<p>Có cô nương tỏ tình với hắn, hắn cũng phải nói trước một câu:</p>
+<p>“Đợi chút, con dế của ta sắp thắng rồi!”</p>
+<p>Vậy mà giờ lại muốn mở rộng hậu cung, phong mười tám nữ nhân…</p>
+<p>Đây vẫn là Sở Ngạo Thiên sao?</p>
+<p>“Ta không đến để xem mắt tuyển cung tần, chúc các ngươi may mắn.”</p>
+<p>Nói xong, Sở Ly quay người định đi thì cổ tay đã bị người ta giữ chặt.</p>
+<p>“Đi theo sau bọn ta, không được gây chuyện, không được chạy lung tung. Loại người như ngươi cho dù vào cung cũng không lọt vào mắt Hi phi nương nương đâu. Ta khuyên ngươi đừng ôm lòng bất chính mà vọng tưởng!”</p>
+<p>Sở Ly nhíu mày.</p>
+<p>Ánh mắt dời từ cổ tay lên, nhìn vị cô nương tên Tần Châu Châu.</p>
+<p>“Hình như trước đây chưa từng gặp ngươi?”</p>
+<p>Tần Châu Châu lạnh giọng:</p>
+<p>“Ta là ái nữ nhỏ nhất của Tần Thiếu sư, năm nay mới mười bốn tuổi, lần đầu vào cung. Đâu phải ngươi muốn gặp là gặp được?”</p>
+<p>“Ta nói cho ngươi biết, phụ thân ta là đương triều Thiếu sư, mẫu thân là nữ nhi phú thương. Ta nhất định sẽ lọt vào mắt Hi phi nương nương, được tuyển làm cung tần. Còn loại người như ngươi nhiều lắm chỉ là đến cho đủ số mà thôi!”</p>
+<p>“Ồ.”</p>
+<p>Sở Ly xoay cổ tay, hất nàng ta ra.</p>
+<p>“Vậy chúc Tần tiểu thư may mắn.”</p>
+<p>“Đứng lại!”</p>
+<p>Tần Châu Châu nổi giận, không ngờ nàng lại dám phớt lờ mình như vậy.</p>
+<p>To gan!</p>
+<p>Từ nhỏ nàng được cưng chiều, lại là con út trong nhà, gần như muốn gió được gió, muốn mưa được mưa. Đây là lần đầu tiên mất mặt trước nhiều người như vậy.</p>
+<p>Đang định nổi giận thì khóe mắt chợt liếc thấy một vạt áo màu minh hoàng…</p>
+<p>Ánh mắt nàng xoay chuyển, lập tức bước lên chặn trước mặt Sở Ly.</p>
+<p>“Làm càn!”</p>
+<p>“Ngươi tưởng lớn hơn ta vài tuổi thì ta sẽ sợ ngươi sao?”</p>
+<p>“Từ nhỏ ta đã quen trừ gian giúp yếu, không sợ cường quyền. Sai là sai. Cho dù ngươi là Hoàng thượng ta cũng không sợ. Chúng ta đều là con người, sinh ra vốn bình đẳng!”</p>
+<p>Sở Ly: “?”</p>
+<p>Đề tài chuyển nhanh quá thì phải?</p>
+<p>Đây là đang nói gì vậy? Sao nàng nghe không hiểu?</p>
+<p>Tần Châu Châu lớn tiếng đầy khí phách:</p>
+<p>“Phụ thân từ nhỏ đã dạy ta, làm người phải giữ quy củ, biết chừng mực, không sợ… Á… Hoàng thượng!”</p>
+<p>Một tiếng kinh hô khiến tất cả mọi người đồng loạt quỳ xuống.</p>
+<p>Sở Ngạo Thiên đứng ở góc rẽ của con đường dài, phía sau là sáu tên thái giám. Trên tay hắn còn cầm một chiếc lồng tre nhỏ đựng dế, từ sớm đã thu hết cảnh tượng vừa rồi vào mắt.</p>
+<p>Biệt Cửu lúc này mới cất cao giọng:</p>
+<p>“Hoàng thượng giá lâm——”</p>
+<p>“Ở đây cãi nhau chuyện gì?”</p>
+<p>Khoác long bào lên người, hắn nghiêm mặt, hạ thấp giọng, trông cũng có vài phần uy nghi.</p>
+<p>Tần Châu Châu lập tức đáp:</p>
+<p>“Hoàng thượng, thần nữ là ái nữ của Tần Thiếu sư, tên Tần Châu Châu. Người này không giữ quy củ, định xông vào hậu cung. Thần nữ có lòng khuyên nhủ, ai ngờ nàng ta chẳng thèm để ý, ngạo mạn khó thuần. Tất cả đều là lỗi của thần nữ, đã làm kinh động Hoàng thượng!”</p>
+<p>Sở Ngạo Thiên cười lạnh.</p>
+<p>Vừa rồi giọng nàng ta đúng là rất lớn, quả thật làm hắn ồn chết đi được.</p>
+<p>Sở Ly khoát tay:</p>
+<p>“Thôi đi.”</p>
+<p>Chỉ là mấy cô nương trẻ tuổi, bình thường ít vào cung, không nhận ra nàng cũng là chuyện dễ hiểu.</p>
+<p>Tần Châu Châu quỳ dưới đất, cúi đầu cười thầm.</p>
+<p>Còn muốn thôi sao?</p>
+<p>Đâu dễ như vậy.</p>
+<p>Vừa rồi nàng đã xây dựng hình tượng mình thẳng thắn, dám yêu dám hận, phá bỏ sự khuôn mẫu nhàm chán của các thiên kim truyền thống.</p>
+<p>Hoàng thượng nhất định đã chú ý đến nàng.</p>
+<p>Một cô gái phóng khoáng, thú vị, sảng khoái như nàng, nam nhân nào mà chẳng thích?</p>
+<p>Nàng dịu dàng nói:</p>
+<p>“Nếu vị tỷ tỷ này đã nói bỏ qua thì thôi vậy. Xin Hoàng thượng cũng đừng truy cứu nữa. Tất cả đều là lỗi của thần nữ. Thần nữ nguyện tự xin xuất cung, không quấy rầy nữa. Cũng mong Hoàng thượng đừng trách vị tỷ tỷ này.”</p>
+<p>Vừa nói vừa lấy khăn lau khóe mắt.</p>
+<p>“Nhìn dáng vẻ của tỷ tỷ, vào cung một chuyến hẳn không dễ dàng. Thần nữ không muốn vì mình mà làm hỏng tâm trạng của tỷ ấy.”</p>
+<p>Bộ dạng hiểu chuyện, dịu dàng như hoa lê đẫm mưa ấy, ai nhìn mà chẳng động lòng?</p>
+<p>Nàng chậm rãi ngẩng đôi mắt long lanh ngấn lệ, như nai con nhìn về vị quân vương trẻ tuổi tuấn mỹ.</p>
+<p>Sở Ngạo Thiên vốn nổi tiếng tính tình tốt.</p>
+<p>“Nếu ngươi đã nói thôi thì thôi vậy.”</p>
+<p>Tần Châu Châu mừng rỡ trong lòng.</p>
+<p>Hoàng thượng thật sự nghe lời nàng!</p>
+<p>Hoàng thượng chắc chắn đã nhớ nàng rồi.</p>
+<p>“Người đâu, đưa Tần tiểu thư xuất cung.”</p>
+<p>Toàn thân Tần Châu Châu cứng đờ.</p>
+<p>“?”</p>
+<p>Cái gì?</p>
+<p>Sao lại là nàng?</p>
+<p>Khi nàng còn đang ngơ ngác thì hai thái giám đã bước tới.</p>
+<p>“Tần tiểu thư, mời.”</p>
+<p>“Tại sao? Ta sai ở đâu? Vì sao không phải nàng ta…”</p>
+<p>Tần Châu Châu chỉ sang, lại thấy quân vương cười tươi, bước đến gần Sở Ly.</p>
+<p>“Tạ tiểu thư, nàng muốn vào cung sao không nói với ta một tiếng? Sau này ta sẽ đặc biệt phái hai người đi theo nàng, nàng đi đâu cũng hô báo trước, để khỏi có người không nhận ra nàng, làm phiền đến sự thanh tĩnh của nàng.”</p>
+<p>Tạ tiểu thư!</p>
+<p>Thì ra nàng chính là vị Tạ tiểu thư bên cạnh Nhiếp Chính Vương!</p>
+<p>Sở Ly khẽ nói:</p>
+<p>“Ta đã bảo thôi rồi, đừng làm hỏng chuyện của ngươi.”</p>
+<p>“Ta đúng là nghe lời nàng. Nhưng Tần tiểu thư đã tự xin xuất cung, ta làm vậy cũng là thành toàn cho nàng ấy.”</p>
+<p>“Nhưng…”</p>
+<p>“Đừng nhưng nữa, ta có việc muốn nói với nàng.”</p>
+<p>Sở Ngạo Thiên vung tay, khoác luôn lên vai Sở Ly, hai người bá vai bá cổ đi mất.</p>
+<p>Tần Châu Châu kinh ngạc há hốc miệng, đến cả cầu xin cũng không kịp.</p>
+<p>Quan hệ của họ lại thân thiết đến vậy!</p>
+<p>“Tần tiểu thư, mời.”</p>
+<p>Thái giám thúc giục.</p>
+<p>“Ta không biết nàng ấy là Tạ tiểu thư! Ta… ta không thể xuất cung! Ta đến để Hi phi nương nương xem mắt! Ta không thể xuất cung!”</p>
+<p>Hoàng thượng đã hạ chỉ, hai thái giám nào cho phép nàng gây náo?</p>
+<p>Bọn họ cưỡng ép “đưa” nàng ra khỏi cung.</p>
+<p>“Buông ta ra! Buông ta! Ta muốn gặp Hi phi nương nương!”</p>
+<p>Các thiên kim khác nhìn thấy cảnh ấy, dư âm kinh hãi mãi không tan.</p>
+<p>Trong lòng đều ghi nhớ một điều:</p>
+<p>Tạ tiểu thư không thể đắc tội.</p>
+<p>Rồi dần dần biến thành:</p>
+<p>Tạ tiểu thư là hồng nhân bên cạnh Hoàng thượng.</p>
+<p>Sau nữa lại thành:</p>
+<p>Tạ tiểu thư là Nhiếp Chính Vương phi đã được định sẵn.</p>
+<p>Chỉ có điều, đó đều là chuyện về sau.</p>
+<p>________________________________________</p>
+<p>Bên này.</p>
+<p>Sở Ngạo Thiên khoác vai Sở Ly, đi đến chỗ không có ai, lúc này mới mạnh tay hất tay áo, bày ra dáng vẻ Hoàng đế.</p>
+<p>Mệt chết hắn rồi.</p>
+<p>“Ngươi muốn tuyển phi?”</p>
+<p>Sở Ly kinh ngạc như gặp quỷ.</p>
+<p>“Đúng vậy, ta định nạp năm mươi người.”</p>
+<p>“?”</p>
+<p>Điên rồi?</p>
+<p>Sở Ly đưa tay sờ trán hắn.</p>
+<p>“Ôi chao!”</p>
+<p>Sở Ngạo Thiên kéo tay nàng xuống.</p>
+<p>“Ta không sốt, ta nghiêm túc đấy. Hơn nữa ta muốn nàng đích thân giúp ta lo liệu. Mắt nhìn của nàng rất tốt.”</p>
+<p>Đúng là điên thật rồi.</p>
+<p>Hắn từ bao giờ lại khai khiếu như vậy?</p>
+<p>“Bát hoàng huynh, nói thật với ta đi. Có phải có người ép huynh không? Hay văn võ bá quan gây áp lực? Nếu huynh không muốn thì không ai ép được huynh.”</p>
+<p>“Không ai ép ta.”</p>
+<p>Sở Ngạo Thiên nói:</p>
+<p>“Từ xưa đến nay, vị Hoàng đế nào chẳng tam cung lục viện, thất thập nhị phi? Ta đương nhiên cũng phải như vậy. Được rồi, quyết định vậy đi. Nàng nhất định phải đích thân giúp ta lo liệu. Người ta tin tưởng nhất chính là nàng.”</p>
+<p>Hắn vỗ mạnh lên vai nàng.</p>
+<p>Một trọng trách.</p>
+<p>Quyết định xong!</p>
+<p>Việc tuyển phi bận rộn, không có hai tháng thì không xong.</p>
+<p>Nếu Cửu muội dồn tâm tư vào chuyện này thì sẽ không biết việc Tần thiếu tướng quân bị bắt…</p>
+<p>Sở Ly vẫn mơ hồ, không dám tin một người chỉ biết ăn uống vui chơi, chọi dế, bỗng nhiên lại mê nữ nhân.</p>
+<p>“Ngạo Thiên ca ca!”</p>
+<p>Phía xa, một thiếu nữ mảnh mai như cánh bướm chạy tới, tay nhấc váy, giọng nói ngọt lịm.</p>
+<p>“Thấy chưa? Đây chính là niềm vui khi mỹ nhân thành đàn.”</p>
+<p>Sở Ngạo Thiên cười ha hả, phất tay áo bước nhanh tới.</p>
+<p>“Minh Hoa đến rồi.”</p>
+<p>Thiếu nữ ấy là Minh Hoa Quận chúa, con gái của Tiêu Dao Vương.</p>
+<p>Nhưng không phải con ruột, mà là cô nhi của gia thần, được Tiêu Dao Vương nhận nuôi dưới gối.</p>
+<p>“Ngạo Thiên ca ca muốn dạo Ngự hoa viên sao không gọi Minh Hoa một tiếng? Minh Hoa cũng thích đi dạo.”</p>
+<p>Minh Hoa Quận chúa quấn quýt ôm lấy cánh tay Sở Ngạo Thiên, thân thể mềm mại vừa định tựa sát thì Sở Ngạo Thiên đã bất động thanh sắc rút tay ra, nhàn nhạt nói:</p>
+<p>“Đi thôi.”</p>
+<p>Hai người cùng rời đi.</p>
+<p>Sở Ly đứng nguyên tại chỗ, ánh mắt thâm trầm nhìn theo bóng lưng họ.</p>
+<p>Sơ Nhất quan sát sắc mặt nàng, cân nhắc rồi lên tiếng:</p>
+<p>“Tiểu thư chẳng lẽ đang có điều gì lo lắng?”</p>
+<p>Một lúc lâu sau, Sở Ly mới nói:</p>
+<p>“Thấy vị cô nương vừa rồi chứ? Đó là Minh Hoa Quận chúa của Tiêu Dao Vương phủ. Từ khi ta có ký ức đến nay, Tiêu Dao Vương vẫn luôn ở phong địa, hiếm khi về kinh. Nhưng lần này, ông ấy lại đưa cả gia quyến tới.”</p>
+<p>Xem ra…</p>
+<p>Là muốn ở hẳn Đế đô.</p>
+<p>Hoàn toàn trái ngược với thông lệ hơn hai mươi năm qua.</p>
+<p>“Còn nữa, ta tin Bát hoàng huynh thà cưới một con dế còn hơn nạp nhiều nữ nhân như vậy.”</p>
+<p>“Phụt——”</p>
+<p>Câu nói ấy khiến Sơ Nhất bật cười.</p>
+<p>“Cứ để ý kỹ đi.”</p>
+<p>“Vâng, nô tỳ nhớ rồi.”</p>
+<p>Sở Ly thu hồi ánh mắt, lúc này mới tiến vào hậu cung.</p>
+<p>Nếu nói đến việc xem mắt tuyển phi thì người bận nhất không ai khác ngoài Hi phi.</p>
+<p>Một mình nàng không xuể, còn gọi cả Ôn phi đến giúp.</p>
+<p>Hai người vừa xem tranh chân dung vừa bàn luận sôi nổi.</p>
+<p>“Cái này được.”</p>
+<p>“Cô nương này dung mạo đoan chính… nhìn là biết sinh được con trai…”</p>
+<p>Đang nói thì Thôi cô cô bước nhẹ tới.</p>
+<p>“Nương nương, Tạ tiểu thư đến rồi.”</p>
+<p>“Mau mời!”</p>
+<p>Sở Ly vừa đến, hành lễ xong, Hi phi lập tức cho lui cung nhân, chỉ giữ lại vài tâm phúc hầu hạ.</p>
+<p>Lúc này Ôn phi mới vui vẻ vẫy tay.</p>
+<p>“Ly nhi.”</p>
+<p>“Mẫu phi, chuyện Bát hoàng huynh tuyển phi là sao?”</p>
+<p>“Đến tuổi nào thì làm việc nấy, chẳng phải rất hợp tình hợp lý sao? Còn là chuyện gì được nữa?”</p>
+<p>Ôn phi kéo nàng ngồi xuống.</p>
+<p>Chỉ liếc mắt đã nhìn thấy chiếc hương nang bên hông nàng.</p>
+<p>Đây là cái gì?</p>
+<p>Xấu thế mà cũng đeo?</p>
+<p>Một câu “xấu quá” suýt nữa bật ra khỏi miệng.</p>
+<p>Ôn phi vội kịp thời thắng lại.</p>
+<p>Nhiếp Chính Vương phủ cũng chưa đến mức nghèo đến nỗi không mua nổi một cái hương nang.</p>
+<p>Chiếc hương nang này…</p>
+<p>Chẳng lẽ là do Nhiếp Chính Vương làm?</p>
+<p>Dù sao cũng là người đã sống hơn mười năm trong thâm cung, bà biết chuyện này nhất định không đơn giản.</p>
+<p>Bà cầm chiếc hương nang bên hông nàng lên, cười khen:</p>
+<p>“Chiếc hương nang này thêu thật đặc biệt tinh xảo. Nhìn chất liệu này, đường thêu này, e rằng khắp Đế đô cũng chỉ có một, không có tú nương nào bắt chước nổi.”</p>
+<p>Sở Ly vui mừng bất ngờ.</p>
+<p>“Mẫu phi thật sự nghĩ vậy sao?”</p>
+<p>“Đương nhiên. Chẳng lẽ mẫu phi lại lừa con?”</p>
+<p>Ôn phi nâng chiếc hương nang trong tay.</p>
+<p>“Nhìn đôi uyên ương này xem, thêu thật là… ừm… có hồn. Hi tỷ tỷ, tỷ nhìn xem.”</p>
+<p>Hi phi liếc một cái, sắc mặt khó diễn tả.</p>
+<p>Nuốt khan một cái, nể mặt Ôn phi nên nói:</p>
+<p>“Quả thật không tệ. Hôm nay Vãn Nguyệt ăn mặc khiêm nhã mà sang quý. Vậy mà điều đầu tiên ta nhìn thấy lại không phải dung mạo của con bé, mà là chiếc hương nang này. Đủ thấy nó thêu đẹp đến mức nào.”</p>
+<p>Sơ Nhất nghe vậy, thầm nghĩ:</p>
+<p>May mà nàng không giống Sơ Tam, cười chê tiểu thư.</p>
+<p>Tiểu thư thân là thiên kim, ánh mắt quả nhiên khác hẳn những phàm phu tục tử như các nàng.</p>
+<p>Đến cả Ôn phi nương nương và Hi phi nương nương cũng hết lời khen ngợi.</p>
+<p>Ôn phi hiền từ hỏi:</p>
+<p>“Không biết chiếc hương nang này là do ai làm? Đẹp và đặc biệt như vậy, ta cũng muốn có một cái.”</p>
+<p>Sở Ly vuốt chiếc hương nang, có chút ngượng ngùng nhưng đầy tự hào.</p>
+<p>“Là chính con thêu.”</p>
+<p>“?”</p>
+<p>Thảo nào xấu thế!</p>
+<p>Nếu là chính nó thêu thì bà làm mẫu thân cũng chẳng cần nể mặt nữa.</p>
+<p>Đúng là xấu thật!</p>
+<p>“Con định tặng cho Nhiếp Chính Vương.”</p>
+<p>Ôn phi lập tức đổi giọng.</p>
+<p>Thì ra là tặng cho Nhiếp Chính Vương.</p>
+<p>“Thảo nào đẹp như vậy. Ly nhi có lòng như thế, Nhiếp Chính Vương nhất định sẽ rất thích.”</p>
+<p>Bà xoa đầu nàng.</p>
+<p>Sở Ly vui sướng không thôi, tự tin tràn đầy.</p>
+<p>“Nếu mẫu phi thích, khi nào rảnh con sẽ thêu thêm cho người vài chiếc khăn tay, hà bao, khăn lụa, yếm và khăn gối.”</p>
+<p>“Không không, thôi khỏi!”</p>
+<p>Ôn phi vội xua tay.</p>
+<p>“Làm nữ công hại mắt lắm. Ly nhi, sau này nếu rảnh thì cứ ăn thì ăn, chơi thì chơi, muốn làm gì thì làm, không cần miễn cưỡng…”</p>
+<p>“Con không miễn cưỡng mà!”</p>
+<p>Nàng rất thích làm.</p>
+<p>Việc này khiến nàng vô cùng có cảm giác thành tựu.</p>
+<p>Sở Ly cười nói:</p>
+<p>“Hoàng thúc khen con ôn nhu hiền thục, có kỳ tài kinh thế, có phong phạm chủ mẫu. Con không chỉ biết nữ công mà còn biết nấu ăn. Hoàng thúc bảo rất ngon. Con còn biết quản gia, biết cho ngựa ăn, còn biết…”</p>
+<p>Nàng vuốt chùm tua rua trên hương nang, nghịch sợi dây đeo rồi xoay liền mấy vòng.</p>
+<p>Đẹp thật.</p>
+<p>Hi phi bỗng nhiên trầm mặc.</p>
+<p>Ôn phi cầm khăn tay, lau lớp mồ hôi mỏng trên trán.</p>
+<p>Bà còn đang thắc mắc sao Ly nhi đột nhiên lại đi học thêu thùa…</p>
+<p>Hóa ra là bị Nhiếp Chính Vương dỗ dành. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_273.html" class="btn">‹ Trước</a>
             <a href="chuong_275.html" class="btn">Sau ›</a>
         </div>
@@ -508,15 +516,11 @@ Hóa ra là bị Nhiếp Chính Vương dỗ dành. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -528,11 +532,11 @@ Hóa ra là bị Nhiếp Chính Vương dỗ dành. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

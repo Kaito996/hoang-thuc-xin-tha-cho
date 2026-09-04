@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 12</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,227 +62,236 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 12</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_11.html" class="btn">‹ Trước</a>
             <a href="chuong_13.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 12: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]
-Chương 12: [Tốt nhất Cửu Hoàng Tử nên cẩn thận với ngựa của Bổn Vương]
-Trận mưa lớn ấy kéo dài mãi đến tận chiều tối, khi mưa ngớt thì trời cũng đã sập tối.
-Dưới chân núi.
-Sở Ly đợi hơn nửa ngày vẫn không thấy Nhiếp Chính Vương hạ sơn, giờ này có muốn hồi cung cũng không kịp nữa, đành tìm một khách điếm nhỏ nghỉ tạm một đêm.
-Sáng hôm sau, trời quang mây tạnh.
-Nàng đang dùng điểm tâm thì thấy hai con tuấn mã phi nhanh xuống núi.
-"Hoàng thúc!"
-"Ở đây!"
-Sở Đệ Trì ghìm nhẹ dây cương. Chỉ thấy Sở Ly đang dựa vào cửa sổ quán ăn, thò nửa người ra ngoài, trong tay còn cầm một chiếc đùi gà, vừa vẫy vừa gọi hắn.
-Dáng vẻ tùy tính, sáng sủa ấy khiến người khác rất khó sinh lòng hoài nghi.
-Hắn thúc ngựa tiến tới:
-"Hôm qua ngươi đi đâu?"
-Sở Ly đáp:
-"Hôm qua mưa quá lớn, Đại hoàng tẩu nóng lòng hồi phủ, ta liền dẫn tẩu ấy đi theo đường nhỏ xuống núi trước."
-Mọi việc xảy ra quá gấp, nàng không kịp báo với hắn một tiếng.
-Sở Đệ Trì nhìn nàng, đôi mắt đen sâu thẳm như chứa đao phong:
-"Ngươi để Nhị hoàng tử phi một mình trên núi?"
-Sở Ly lập tức nói:
-"Hôm qua lúc xuống núi, không biết tẩu ấy đi đâu mất. Chúng ta tìm mãi không thấy, đành xuống núi trước."
-Sở Đệ Trì khẽ cười lạnh.
-Trong lòng Sở Ly chợt trầm xuống.
-Ánh mắt của hắn giống như có thể róc thịt người. Bên trong cất giấu điều gì, nàng hoàn toàn không nhìn thấu.
-Lẽ nào nàng làm sai chuyện gì?
-Hay là đã xảy ra biến cố gì?
-Nàng không biết.
-Vì sao hoàng thúc lại nhìn nàng như vậy?
-"Hoàng thúc, có chuyện gì sao?"
-Trên lưng ngựa, Trọng Phong hơi cúi đầu.
-Hôm qua, nếu không phải hai tên kia vô tình xông nhầm vào thiện phòng của chủ tử, một khi Đại hoàng tử phi hoặc Nhị hoàng tử phi xảy ra chuyện, chủ tử tất sẽ khó thoát liên can.
-Điều kỳ quái là Cửu Hoàng Tử lại rời khỏi Thiên Linh Tự giữa cơn mưa lớn.
-Bất kể trong chùa xảy ra chuyện gì, "ngài ấy" đều có thể phủi sạch quan hệ.
-Sao có thể không khiến người khác nghi ngờ?
-Sở Đệ Trì thu lại hàn mang nơi đáy mắt:
-"Ngươi mất tích, Bổn Vương lo lắng."
-"Phật châu của Thái Hậu đã lấy được rồi."
-Hắn đưa chiếc hộp gấm nhỏ cho nàng.
-Sở Ly ngậm đùi gà, lau sạch dầu mỡ trên tay rồi cẩn thận nhét hộp gấm vào ngực áo, nâng niu cất giữ.
-"Hoàng thúc có muốn dùng điểm tâm cùng ta không?"
-"Phải mau chóng hồi cung, Bổn Vương không ăn."
-Sở Đệ Trì xoay người xuống ngựa.
-"Hôm qua ngươi đi vội quá, ngựa của ngươi chưa dắt xuống núi. Hôm nay cứ cưỡi ngựa của Bổn Vương trở về."
-"Thế còn hoàng thúc?"
-"Bổn Vương cưỡi ngựa của Trọng Phong."
-Sở Ly vội vàng giải quyết bữa sáng, không dám để hắn chờ lâu.
-Nàng lau sạch miệng, nắm lấy yên ngựa, nhưng mãi vẫn không leo lên nổi.
-Chiến mã của Nhiếp Chính Vương còn cao lớn hơn cả những con ngựa khác.
-Chỉ riêng móng ngựa đã to gần bằng cánh tay nàng.
-Bộ lông đỏ thẫm như máu, chính là một con Xích Huyết bảo mã vạn người chọn một, ngày đi ngàn dặm.
-"Trọng Phong, có thể đỡ ta một tay không?"
-"..."
-Trọng Phong đưa tay.
-"Đa tạ."
-Sở Đệ Trì đứng bên cạnh, giọng nhàn nhạt như mực:
-"Ngựa của Bổn Vương không dễ điều khiển, Tiểu Cửu nên cẩn thận."
-"Không sao, ta biết cưỡi ngựa. Hôm qua cũng là cưỡi chiến mã đến đây."
-"Vậy sao?"
-Sở Ly kẹp chặt bụng ngựa, vỗ nhẹ lên mông ngựa.
-Chiến mã lập tức hí vang, hai vó trước dựng cao, suýt hất nàng xuống đất, rồi lao vút đi như một mũi tên rời cung.
-Nàng ép thấp người xuống, cố gắng giữ thăng bằng.
-Cuồng phong tạt thẳng vào mặt khiến nàng gần như không mở nổi mắt.
-Nhanh quá!
-Quá nhanh rồi!
-Nàng nắm chặt dây cương, muốn nó chậm lại, nhưng chiến mã càng lúc càng chạy điên cuồng, dường như muốn hất nàng xuống bất cứ lúc nào.
-Con ngựa này...
-Hình như đã mất khống chế!
-Tại chỗ.
-Trọng Phong nói:
-"Chủ tử nghi ngờ Cửu Hoàng Tử, nhưng nhìn bộ dạng của ngài ấy, dường như thật sự không biết gì."
-Sở Đệ Trì nhìn bóng người đã khuất xa, đôi mắt lạnh như băng, khiến người ta không sao đoán được tâm tư lúc này.
-Trọng Phong cúi đầu, không nói thêm.
-Tướng Dạ là chiến mã theo chủ tử chinh chiến sa trường, sinh tử có nhau, là một con ngựa cực kỳ kiêu ngạo và đầy huyết tính.
-Ngoài chủ tử ra, không ai có thể điều khiển được nó.
-E rằng Cửu Hoàng Tử sẽ phải chịu khổ một phen.
-Trên lưng ngựa.
-Sở Ly bị xóc đến hoa mắt chóng mặt, hai tay tê dại.
-Mấy lần nàng suýt buông dây cương.
-Dù cố gắng đến đâu cũng không khống chế nổi con ngựa.
-Tiếng gió rít bên tai.
-Tướng Dạ lao đi như cuồng phong.
-Một cú nhảy đã vượt qua con suối rộng hơn năm trượng.
-Nhịp lên xuống dữ dội ấy cuối cùng cũng khiến Sở Ly bị hất văng khỏi lưng ngựa!
-Nàng lăn liên tiếp mấy vòng trên mặt đất.
-Con ngựa cao lớn hung hãn kia không kịp dừng lại, hai vó trước giương cao, hung hăng giẫm xuống người nàng...
-Đau.
-Rất đau.
-Đó là cảm giác duy nhất của Sở Ly khi khôi phục ý thức.
-Bên tai còn vang lên vô số tiếng nói vụn vặt:
-"Đang yên đang lành sao lại ngã ngựa?"
-"Mau gọi thái y xem thử..."
-"Ly nhi..."
-"Cửu đệ..."
-Đợi đến khi Sở Ly mở được mắt, trong phòng chỉ còn lại Ôn Phi cùng hai cung nữ hầu hạ.
-"Ly nhi tỉnh rồi?"
-Ôn Phi vui mừng khôn xiết.
-Sở Ly chỉ cảm thấy toàn thân nóng rát đau đớn như bị đổ dầu ớt lên người.
-Chỉ hơi động đậy một chút cũng đau đến tận xương.
-"Đừng cử động."
-"Tay phải của con bị thương rồi, sưng lên một mảng lớn, toàn là máu bầm."
-Ôn Phi thở dài:
-"May mà trên người con mang theo Phật châu, được Phật Tổ phù hộ nên mới nhặt về được một cái mạng."
-"Con nói xem, đang yên đang lành, sao lại cố chấp đi cưỡi ngựa của Nhiếp Chính Vương?"
-Sống mũi Sở Ly chợt cay cay.
-Một nỗi tủi thân không nói thành lời dâng lên.
-Nào phải nàng muốn cưỡi ngựa của hắn?
-Rõ ràng là hắn bảo nàng cưỡi.
-Trước khi lên ngựa, hắn còn cố ý nhắc rằng con ngựa ấy khó điều khiển.
-Giờ xảy ra chuyện, hắn hoàn toàn vô can.
-Mọi lỗi lầm đều thành nàng tự chuốc lấy.
-Hắn muốn mạng nàng.
-Nhưng nàng lại không biết rốt cuộc mình đã đắc tội hắn ở đâu.
-"Mẫu phi..."
-"Đường đường là nam nhi, không được khóc."
-"Thái Hậu chỉ bảo Nhiếp Chính Vương đi Thiên Linh Tự lấy Phật châu. Chính con cứ bám theo đòi đi. Dù Hoàng thượng muốn trách phạt hắn cũng chẳng tìm được lý do."
-Cái gì?!
-Thái Hậu vốn dĩ không hề bảo nàng đi Thiên Linh Tự?
-Sở Ly suýt nữa tức đến thổ huyết.
-Hắn lừa nàng!
-Lừa nàng xuất cung rồi muốn giết nàng!
-Người này...
-Thật độc ác!
-"Được rồi, thời gian này con cứ an tâm dưỡng thương."
-"Không có việc gì thì đừng rời khỏi Chiêu Lan Điện."
-Ôn Phi tự tay đút thuốc cho nàng.
-Đúng lúc ấy, cung nữ vào báo Hoàng thượng đã tới.
-Cửu Hoàng Tử ngã ngựa trọng thương, Hoàng thượng lo Ôn Phi quá mức ưu sầu nên đặc biệt tới bầu bạn.
-Ôn Phi lập tức bỏ mặc Sở Ly.
-Bà còn sai cung nữ trang điểm một lớp "lê hoa đái vũ", rồi đi hầu giá.
-Trước khi đi còn cố gắng nặn ra hai giọt nước mắt:
-"Hoàng thượng, Ly nhi của chúng ta thật đáng thương quá~~~"
-Sở Ly thở dài.
-Sống trên đời quả thật không dễ.
-Cẩu Bát đứng hầu bên cạnh:
-"Chủ tử đừng ủ rũ nữa."
-"Người xưa nói: Đại nạn bất tử, tất hữu hậu phúc."
-Đại nạn không chết.
-Chỉ sợ phía sau còn có đại nạn lớn hơn đang chờ.
-Sở Ly khẽ nhúc nhích thân mình, nâng cánh tay phải bị thương.
-Lúc này nàng mới phát hiện bài trí trong phòng có phần khác lạ.
-"Đây không phải tẩm điện của ta?"
-Cẩu Bát đáp:
-"Đây là thiên điện của Chiêu Lan Điện."
-"Chủ tử, trận mưa hôm qua kéo dài suốt một ngày một đêm. Tẩm điện của người bị dột nước."
-"Nô tài sơ suất, sáng nay mới phát hiện."
-"Chăn đệm, y phục, tủ kệ đều đã được mang ra ngoài phơi nắng."
-"Người chỉ có thể tạm ở thiên điện."
-Đúng là họa vô đơn chí.
-Sở Ly khẽ thở dài:
-"Thôi vậy."
-Đúng lúc ấy, một tiểu thái giám bước vào bẩm báo:
-"Chủ tử, Nhiếp Chính Vương tới thăm người."
-Sống lưng Sở Ly lập tức căng thẳng.
-Nàng đã nằm liệt giường, thương tích đầy mình như thế này rồi.
-Hắn vẫn chưa chịu buông tha nàng sao?
-Đích thân tìm đến tận cửa rồi?
-Đừng quá đáng như thế chứ.
-Nàng siết chặt góc chăn:
-"Cứ nói ta hôn mê chưa tỉnh, không tiện gặp khách. Chờ ta tỉnh lại rồi tính."
-"Bổn Vương không điếc."
-Ngoài cửa, thân ảnh huyền y cao lớn đột nhiên xuất hiện.
-Thân hình thẳng tắp, rộng lớn của hắn che khuất ánh sáng ngoài cửa.
-Cả căn phòng dường như tối đi mấy phần.
-Áp lực nặng nề ập tới, khiến da đầu người ta tê dại. Ẩn bớt</p>
+            <p>Chương 12: [Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi]</p>
+<p>Chương 12: [Tốt nhất Cửu Hoàng Tử nên cẩn thận với ngựa của Bổn Vương]</p>
+<p>Trận mưa lớn ấy kéo dài mãi đến tận chiều tối, khi mưa ngớt thì trời cũng đã sập tối.</p>
+<p>Dưới chân núi.</p>
+<p>Sở Ly đợi hơn nửa ngày vẫn không thấy Nhiếp Chính Vương hạ sơn, giờ này có muốn hồi cung cũng không kịp nữa, đành tìm một khách điếm nhỏ nghỉ tạm một đêm.</p>
+<p>Sáng hôm sau, trời quang mây tạnh.</p>
+<p>Nàng đang dùng điểm tâm thì thấy hai con tuấn mã phi nhanh xuống núi.</p>
+<p>"Hoàng thúc!"</p>
+<p>"Ở đây!"</p>
+<p>Sở Đệ Trì ghìm nhẹ dây cương. Chỉ thấy Sở Ly đang dựa vào cửa sổ quán ăn, thò nửa người ra ngoài, trong tay còn cầm một chiếc đùi gà, vừa vẫy vừa gọi hắn.</p>
+<p>Dáng vẻ tùy tính, sáng sủa ấy khiến người khác rất khó sinh lòng hoài nghi.</p>
+<p>Hắn thúc ngựa tiến tới:</p>
+<p>"Hôm qua ngươi đi đâu?"</p>
+<p>Sở Ly đáp:</p>
+<p>"Hôm qua mưa quá lớn, Đại hoàng tẩu nóng lòng hồi phủ, ta liền dẫn tẩu ấy đi theo đường nhỏ xuống núi trước."</p>
+<p>Mọi việc xảy ra quá gấp, nàng không kịp báo với hắn một tiếng.</p>
+<p>Sở Đệ Trì nhìn nàng, đôi mắt đen sâu thẳm như chứa đao phong:</p>
+<p>"Ngươi để Nhị hoàng tử phi một mình trên núi?"</p>
+<p>Sở Ly lập tức nói:</p>
+<p>"Hôm qua lúc xuống núi, không biết tẩu ấy đi đâu mất. Chúng ta tìm mãi không thấy, đành xuống núi trước."</p>
+<p>Sở Đệ Trì khẽ cười lạnh.</p>
+<p>Trong lòng Sở Ly chợt trầm xuống.</p>
+<p>Ánh mắt của hắn giống như có thể róc thịt người. Bên trong cất giấu điều gì, nàng hoàn toàn không nhìn thấu.</p>
+<p>Lẽ nào nàng làm sai chuyện gì?</p>
+<p>Hay là đã xảy ra biến cố gì?</p>
+<p>Nàng không biết.</p>
+<p>Vì sao hoàng thúc lại nhìn nàng như vậy?</p>
+<p>"Hoàng thúc, có chuyện gì sao?"</p>
+<p>Trên lưng ngựa, Trọng Phong hơi cúi đầu.</p>
+<p>Hôm qua, nếu không phải hai tên kia vô tình xông nhầm vào thiện phòng của chủ tử, một khi Đại hoàng tử phi hoặc Nhị hoàng tử phi xảy ra chuyện, chủ tử tất sẽ khó thoát liên can.</p>
+<p>Điều kỳ quái là Cửu Hoàng Tử lại rời khỏi Thiên Linh Tự giữa cơn mưa lớn.</p>
+<p>Bất kể trong chùa xảy ra chuyện gì, "ngài ấy" đều có thể phủi sạch quan hệ.</p>
+<p>Sao có thể không khiến người khác nghi ngờ?</p>
+<p>Sở Đệ Trì thu lại hàn mang nơi đáy mắt:</p>
+<p>"Ngươi mất tích, Bổn Vương lo lắng."</p>
+<p>"Phật châu của Thái Hậu đã lấy được rồi."</p>
+<p>Hắn đưa chiếc hộp gấm nhỏ cho nàng.</p>
+<p>Sở Ly ngậm đùi gà, lau sạch dầu mỡ trên tay rồi cẩn thận nhét hộp gấm vào ngực áo, nâng niu cất giữ.</p>
+<p>"Hoàng thúc có muốn dùng điểm tâm cùng ta không?"</p>
+<p>"Phải mau chóng hồi cung, Bổn Vương không ăn."</p>
+<p>Sở Đệ Trì xoay người xuống ngựa.</p>
+<p>"Hôm qua ngươi đi vội quá, ngựa của ngươi chưa dắt xuống núi. Hôm nay cứ cưỡi ngựa của Bổn Vương trở về."</p>
+<p>"Thế còn hoàng thúc?"</p>
+<p>"Bổn Vương cưỡi ngựa của Trọng Phong."</p>
+<p>Sở Ly vội vàng giải quyết bữa sáng, không dám để hắn chờ lâu.</p>
+<p>Nàng lau sạch miệng, nắm lấy yên ngựa, nhưng mãi vẫn không leo lên nổi.</p>
+<p>Chiến mã của Nhiếp Chính Vương còn cao lớn hơn cả những con ngựa khác.</p>
+<p>Chỉ riêng móng ngựa đã to gần bằng cánh tay nàng.</p>
+<p>Bộ lông đỏ thẫm như máu, chính là một con Xích Huyết bảo mã vạn người chọn một, ngày đi ngàn dặm.</p>
+<p>"Trọng Phong, có thể đỡ ta một tay không?"</p>
+<p>"..."</p>
+<p>Trọng Phong đưa tay.</p>
+<p>"Đa tạ."</p>
+<p>Sở Đệ Trì đứng bên cạnh, giọng nhàn nhạt như mực:</p>
+<p>"Ngựa của Bổn Vương không dễ điều khiển, Tiểu Cửu nên cẩn thận."</p>
+<p>"Không sao, ta biết cưỡi ngựa. Hôm qua cũng là cưỡi chiến mã đến đây."</p>
+<p>"Vậy sao?"</p>
+<p>Sở Ly kẹp chặt bụng ngựa, vỗ nhẹ lên mông ngựa.</p>
+<p>Chiến mã lập tức hí vang, hai vó trước dựng cao, suýt hất nàng xuống đất, rồi lao vút đi như một mũi tên rời cung.</p>
+<p>Nàng ép thấp người xuống, cố gắng giữ thăng bằng.</p>
+<p>Cuồng phong tạt thẳng vào mặt khiến nàng gần như không mở nổi mắt.</p>
+<p>Nhanh quá!</p>
+<p>Quá nhanh rồi!</p>
+<p>Nàng nắm chặt dây cương, muốn nó chậm lại, nhưng chiến mã càng lúc càng chạy điên cuồng, dường như muốn hất nàng xuống bất cứ lúc nào.</p>
+<p>Con ngựa này...</p>
+<p>Hình như đã mất khống chế!</p>
+<p>Tại chỗ.</p>
+<p>Trọng Phong nói:</p>
+<p>"Chủ tử nghi ngờ Cửu Hoàng Tử, nhưng nhìn bộ dạng của ngài ấy, dường như thật sự không biết gì."</p>
+<p>Sở Đệ Trì nhìn bóng người đã khuất xa, đôi mắt lạnh như băng, khiến người ta không sao đoán được tâm tư lúc này.</p>
+<p>Trọng Phong cúi đầu, không nói thêm.</p>
+<p>Tướng Dạ là chiến mã theo chủ tử chinh chiến sa trường, sinh tử có nhau, là một con ngựa cực kỳ kiêu ngạo và đầy huyết tính.</p>
+<p>Ngoài chủ tử ra, không ai có thể điều khiển được nó.</p>
+<p>E rằng Cửu Hoàng Tử sẽ phải chịu khổ một phen.</p>
+<p>Trên lưng ngựa.</p>
+<p>Sở Ly bị xóc đến hoa mắt chóng mặt, hai tay tê dại.</p>
+<p>Mấy lần nàng suýt buông dây cương.</p>
+<p>Dù cố gắng đến đâu cũng không khống chế nổi con ngựa.</p>
+<p>Tiếng gió rít bên tai.</p>
+<p>Tướng Dạ lao đi như cuồng phong.</p>
+<p>Một cú nhảy đã vượt qua con suối rộng hơn năm trượng.</p>
+<p>Nhịp lên xuống dữ dội ấy cuối cùng cũng khiến Sở Ly bị hất văng khỏi lưng ngựa!</p>
+<p>Nàng lăn liên tiếp mấy vòng trên mặt đất.</p>
+<p>Con ngựa cao lớn hung hãn kia không kịp dừng lại, hai vó trước giương cao, hung hăng giẫm xuống người nàng...</p>
+<p>Đau.</p>
+<p>Rất đau.</p>
+<p>Đó là cảm giác duy nhất của Sở Ly khi khôi phục ý thức.</p>
+<p>Bên tai còn vang lên vô số tiếng nói vụn vặt:</p>
+<p>"Đang yên đang lành sao lại ngã ngựa?"</p>
+<p>"Mau gọi thái y xem thử..."</p>
+<p>"Ly nhi..."</p>
+<p>"Cửu đệ..."</p>
+<p>Đợi đến khi Sở Ly mở được mắt, trong phòng chỉ còn lại Ôn Phi cùng hai cung nữ hầu hạ.</p>
+<p>"Ly nhi tỉnh rồi?"</p>
+<p>Ôn Phi vui mừng khôn xiết.</p>
+<p>Sở Ly chỉ cảm thấy toàn thân nóng rát đau đớn như bị đổ dầu ớt lên người.</p>
+<p>Chỉ hơi động đậy một chút cũng đau đến tận xương.</p>
+<p>"Đừng cử động."</p>
+<p>"Tay phải của con bị thương rồi, sưng lên một mảng lớn, toàn là máu bầm."</p>
+<p>Ôn Phi thở dài:</p>
+<p>"May mà trên người con mang theo Phật châu, được Phật Tổ phù hộ nên mới nhặt về được một cái mạng."</p>
+<p>"Con nói xem, đang yên đang lành, sao lại cố chấp đi cưỡi ngựa của Nhiếp Chính Vương?"</p>
+<p>Sống mũi Sở Ly chợt cay cay.</p>
+<p>Một nỗi tủi thân không nói thành lời dâng lên.</p>
+<p>Nào phải nàng muốn cưỡi ngựa của hắn?</p>
+<p>Rõ ràng là hắn bảo nàng cưỡi.</p>
+<p>Trước khi lên ngựa, hắn còn cố ý nhắc rằng con ngựa ấy khó điều khiển.</p>
+<p>Giờ xảy ra chuyện, hắn hoàn toàn vô can.</p>
+<p>Mọi lỗi lầm đều thành nàng tự chuốc lấy.</p>
+<p>Hắn muốn mạng nàng.</p>
+<p>Nhưng nàng lại không biết rốt cuộc mình đã đắc tội hắn ở đâu.</p>
+<p>"Mẫu phi..."</p>
+<p>"Đường đường là nam nhi, không được khóc."</p>
+<p>"Thái Hậu chỉ bảo Nhiếp Chính Vương đi Thiên Linh Tự lấy Phật châu. Chính con cứ bám theo đòi đi. Dù Hoàng thượng muốn trách phạt hắn cũng chẳng tìm được lý do."</p>
+<p>Cái gì?!</p>
+<p>Thái Hậu vốn dĩ không hề bảo nàng đi Thiên Linh Tự?</p>
+<p>Sở Ly suýt nữa tức đến thổ huyết.</p>
+<p>Hắn lừa nàng!</p>
+<p>Lừa nàng xuất cung rồi muốn giết nàng!</p>
+<p>Người này...</p>
+<p>Thật độc ác!</p>
+<p>"Được rồi, thời gian này con cứ an tâm dưỡng thương."</p>
+<p>"Không có việc gì thì đừng rời khỏi Chiêu Lan Điện."</p>
+<p>Ôn Phi tự tay đút thuốc cho nàng.</p>
+<p>Đúng lúc ấy, cung nữ vào báo Hoàng thượng đã tới.</p>
+<p>Cửu Hoàng Tử ngã ngựa trọng thương, Hoàng thượng lo Ôn Phi quá mức ưu sầu nên đặc biệt tới bầu bạn.</p>
+<p>Ôn Phi lập tức bỏ mặc Sở Ly.</p>
+<p>Bà còn sai cung nữ trang điểm một lớp "lê hoa đái vũ", rồi đi hầu giá.</p>
+<p>Trước khi đi còn cố gắng nặn ra hai giọt nước mắt:</p>
+<p>"Hoàng thượng, Ly nhi của chúng ta thật đáng thương quá~~~"</p>
+<p>Sở Ly thở dài.</p>
+<p>Sống trên đời quả thật không dễ.</p>
+<p>Cẩu Bát đứng hầu bên cạnh:</p>
+<p>"Chủ tử đừng ủ rũ nữa."</p>
+<p>"Người xưa nói: Đại nạn bất tử, tất hữu hậu phúc."</p>
+<p>Đại nạn không chết.</p>
+<p>Chỉ sợ phía sau còn có đại nạn lớn hơn đang chờ.</p>
+<p>Sở Ly khẽ nhúc nhích thân mình, nâng cánh tay phải bị thương.</p>
+<p>Lúc này nàng mới phát hiện bài trí trong phòng có phần khác lạ.</p>
+<p>"Đây không phải tẩm điện của ta?"</p>
+<p>Cẩu Bát đáp:</p>
+<p>"Đây là thiên điện của Chiêu Lan Điện."</p>
+<p>"Chủ tử, trận mưa hôm qua kéo dài suốt một ngày một đêm. Tẩm điện của người bị dột nước."</p>
+<p>"Nô tài sơ suất, sáng nay mới phát hiện."</p>
+<p>"Chăn đệm, y phục, tủ kệ đều đã được mang ra ngoài phơi nắng."</p>
+<p>"Người chỉ có thể tạm ở thiên điện."</p>
+<p>Đúng là họa vô đơn chí.</p>
+<p>Sở Ly khẽ thở dài:</p>
+<p>"Thôi vậy."</p>
+<p>Đúng lúc ấy, một tiểu thái giám bước vào bẩm báo:</p>
+<p>"Chủ tử, Nhiếp Chính Vương tới thăm người."</p>
+<p>Sống lưng Sở Ly lập tức căng thẳng.</p>
+<p>Nàng đã nằm liệt giường, thương tích đầy mình như thế này rồi.</p>
+<p>Hắn vẫn chưa chịu buông tha nàng sao?</p>
+<p>Đích thân tìm đến tận cửa rồi?</p>
+<p>Đừng quá đáng như thế chứ.</p>
+<p>Nàng siết chặt góc chăn:</p>
+<p>"Cứ nói ta hôn mê chưa tỉnh, không tiện gặp khách. Chờ ta tỉnh lại rồi tính."</p>
+<p>"Bổn Vương không điếc."</p>
+<p>Ngoài cửa, thân ảnh huyền y cao lớn đột nhiên xuất hiện.</p>
+<p>Thân hình thẳng tắp, rộng lớn của hắn che khuất ánh sáng ngoài cửa.</p>
+<p>Cả căn phòng dường như tối đi mấy phần.</p>
+<p>Áp lực nặng nề ập tới, khiến da đầu người ta tê dại. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_11.html" class="btn">‹ Trước</a>
             <a href="chuong_13.html" class="btn">Sau ›</a>
         </div>
@@ -291,15 +299,11 @@ Cả căn phòng dường như tối đi mấy phần.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -311,11 +315,11 @@ Cả căn phòng dường như tối đi mấy phần.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

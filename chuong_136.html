@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 136</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,207 +62,216 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 136</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_135.html" class="btn">‹ Trước</a>
             <a href="chuong_137.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 136: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 136: Nhiếp Chính Vương Đại Sở đã đến Nam Cương
-Sở Dạ Ly nhìn thấy nàng, thần sắc nhàn nhạt, chỉ khẽ gật đầu xem như chào hỏi.
-“Dạ Ly ca ca, muội nhớ huynh lắm!”
-“Huynh đã lâu lắm rồi không đến!”
-“Ngày nào muội cũng ngóng trông, chờ đợi. Phụ vương còn bảo muội trông đến mòn cả mắt, cuối cùng cũng đợi được huynh đến!” Thác Bạt Minh Nguyệt ôm lấy cánh tay hắn, không hề che giấu tình ý của mình.
-Một thân hồng y, rực rỡ chói mắt.
-Nàng vốn là một nữ tử như vậy.
-“Đa tạ Công chúa nhớ mong.”
-Sở Dạ Ly bất động thanh sắc rút cánh tay ra, lùi lại nửa bước.
-Rồi đi đến trước mặt Sở Ly:
-“Tiểu Cửu, không còn sớm nữa, nên về nghỉ ngơi thôi.”
-Sở Ly còn muốn nói chuyện với Tần Mục Vũ thêm một lúc, nhưng trong lòng vẫn nhớ chuyện bỏ trốn, còn phải nghĩ cách giải Nhuyễn Cốt Tán, đành gật đầu đáp ứng.
-Nào ngờ nàng cứ như người mù mở mắt, lúc đi lại đá trúng một khúc củi trong đống lửa. Khúc củi đang cháy bắn lên, rơi đúng mu bàn chân nàng.
-“A!”
-Sức nóng bỏng rát.
-Đau đến mức nàng nhảy dựng lên, ngã phịch xuống đất. Không biết từ đâu lại bò ra một con côn trùng, cắn ngay mắt cá chân nàng một cái.
-“Thiên Túc Trùng!”
-Thác Bạt Minh Nguyệt muốn ngăn cản, nhưng đã quá muộn.
-Nam Man nổi danh với cổ thuật, khí hậu nơi đây ẩm thấp âm u, ngay cả những con sâu nhỏ bé tưởng chừng vô hại cũng mang độc tính cực mạnh.
-Nàng lập tức ra lệnh:
-“Mau gọi quân y đến! Bảo hắn mang theo Xà Đầu Thảo!”
-Sở Dạ Ly bước nhanh tới, bế ngang Sở Ly lên, vội vàng chạy về lều.
-Sở Ly chỉ muốn khóc.
-Vốn dĩ nàng định giả vờ đau bụng tiêu chảy để tìm quân y.
-Nào ngờ lại thành ra thế này.
-Mu bàn chân bị bỏng phồng rộp.
-Chỉ trong chốc lát, đến khi quân y xách hòm thuốc chạy đến, mắt cá chân nàng đã sưng vù lên thành một cục lớn.
-Con sâu bé tí tẹo ấy nhìn chẳng có gì đáng sợ, ai ngờ độc tính lại mạnh đến vậy.
-Quân y đeo hòm thuốc, vội vàng chạy vào.
-“Mau!”
-Sở Dạ Ly sốt ruột nói:
-“Mau xem đi!”
-“Điện hạ chớ nóng vội!”
-Quân y bước nhanh vào:
-“Tiểu Sở công tử bị Thiên Túc Trùng cắn, không phải vấn đề lớn.”
-Sở Ly âm thầm thở phào.
-“Vậy thì tốt.”
-Nếu thật sự tàn phế, què chân, trở thành phế nhân…
-Chi bằng chết luôn cho xong.
-“Chỉ cần dùng dao rạch một đường hình chữ thập ở mắt cá chân, nặn hết độc bên trong ra, sau đó dùng thanh gỗ nung đỏ hơ lên vết thương, rồi đắp Xà Đầu Thảo, là sẽ khỏi.”
-Sở Ly trợn tròn mắt.
-Cái gì?!
-Rạch chân nàng ra?
-Còn phải lấy thanh gỗ nung đỏ để hơ?
-“Ta không muốn!”
-Đây là lời con người nói sao?
-Thác Bạt Minh Nguyệt đứng ngoài cửa lên tiếng:
-“Chỉ có cách này thôi. Bọn ta nếu chẳng may bị Thiên Túc Trùng cắn, cũng đều chữa như vậy.”
-Quân y nói:
-“Tiểu Sở công tử, mắt cá chân của ngài đã sưng thành thế này rồi. Nếu không kịp thời lấy độc ra, độc sẽ ngấm càng lúc càng sâu, cuối cùng e rằng ngay cả cái chân này cũng không giữ nổi!”
-“A!”
-Sao nàng lại xui xẻo đến thế?
-Toàn chuyện gì đâu không!
-Sở Dạ Ly trầm giọng, lập tức quyết định:
-“Làm ngay. Càng nhanh càng tốt.”
-“Không được!”
-Sở Dạ Ly giữ chặt chân nàng, ôm lấy thân thể đang vùng vẫy của nàng.
-“Cắn tay ta đi, Tiểu Cửu. Ráng nhịn một chút, sẽ nhanh qua thôi.”
-“Không! Không!”
-Đừng giữ chặt nàng!
-Như vậy nàng càng không có cảm giác an toàn!
-Sở Ly giãy giụa như cá nằm trên thớt.
-“Buông ta ra! Ta thấy ta khỏi rồi! Ta khỏi rồi!”
-“Tiểu Cửu, kiên cường một chút.”
-“Tay ta không đau nữa rồi!”
-Nói xong mới thấy không đúng.
-“Chân ta không đau nữa… Ưm!”
-Sở Dạ Ly nhét thẳng cánh tay mình vào miệng nàng.
-Rồi ôm chặt lấy nàng.
-Nàng trơ mắt nhìn quân y cầm một con dao găm sáng loáng, hơ qua ngọn lửa.
-“A!!!”
-Giết heo rồi!
-“A!”
-Đừng mà!
-Thả ta ra!
-“Ưm! Ưm ưm!”
-“Tiểu Cửu, cắn ta đi, cắn mạnh hết sức… Ưm!”
-Sở Ly la hét, trợn mắt, giãy giụa, vặn vẹo.
-Kết quả…
-Quân y còn chưa kịp hạ dao, chính nàng đã đập mạnh trán vào tấm ván đầu giường.
-Bốp!
-Trước mắt tối sầm.
-Ngất xỉu.
-Đến khi mở mắt ra lần nữa, đầu óc nàng vẫn còn mơ màng.
-“Tỉnh rồi?”
-Ánh mắt Sở Ly còn rời rạc.
-“Ta… đầu ta nặng quá…”
-“Đừng động.”
-“Đầu nàng bị quấn hơn chục vòng băng vải. Đêm qua, nàng tự đập mình ngất luôn.”
-“Vậy chân ta…”
-“Đã xử lý xong rồi, không sao nữa.”
-Sở Dạ Ly thức trắng cả đêm trông nàng, hai mắt hơi đỏ.
-Sở Ly kinh ngạc.
-Ồ.
-Hóa ra phương pháp gây mê bằng vật lý…
-Lại hữu hiệu đến vậy.
-Ngủ một giấc tỉnh dậy, chẳng còn chuyện gì nữa.
-Chỉ là đầu hơi nặng.
-Nàng chống hai tay lên đầu, khó nhọc ngồi dậy.
-Lúc này mới phát hiện y bào Sở Dạ Ly xộc xệch, trên mặt còn có mấy vết cào đỏ au, trông nhếch nhác như vừa bị lợn húc.
-Ngay cả trên cổ…
-Cũng in hằn một dấu răng đỏ chói.
-Nàng bất giác nhớ đến bộ dạng tối qua của mình…
-“Huynh… vết thương trên cổ và trên mặt huynh…”
-Sở Dạ Ly đưa tay vuốt nhẹ, cười trầm:
-“Tiểu Cửu xuống miệng chẳng hề nương tình.”
-Sở Ly hơi ngượng.
-“Cũng đâu thể trách ta. Nếu không phải huynh đưa ta đến nơi này, ta đã chẳng bị sâu cắn. Sâu ở Đại Sở đâu có độc như vậy.”
-“Được, được.”
-“Đều là lỗi của ta.”
-Hắn cầm một túi thơm trên bàn lên.
-“Trong túi thơm này có dược liệu xua côn trùng. Nàng mang theo bên người, vừa đuổi sâu bọ, vừa phòng cổ độc.”
-Sở Ly cầm lên xem.
-“Xấu quá vậy?”
-Đường kim mũi chỉ thật xấu.
-Hoa văn cũng xấu.
-Đây là thêu con mèo sao?
-Xấu thật.
-Sở Dạ Ly mím môi:
-“Đây là… ta… ta sai người phía dưới làm. Trong quân doanh toàn là nam nhân, tay nghề có lẽ hơi kém.”
-“Thảo nào.”
-Sở Ly hiểu ra, tiện tay treo túi thơm lên đai lưng.
-Đúng lúc ấy, Thác Bạt Minh Nguyệt bước vào.
-“Dạ Ly ca ca, bữa sáng đã chuẩn bị xong.”
-Tối qua Sở Ly đã nhìn thấy nàng, nhưng vì bị thương nên không để ý kỹ.
-Giờ mới nhận ra, nữ tử này rực rỡ như ánh mặt trời, sạch sẽ, phóng khoáng, đẹp đến nao lòng.
-“Ta là Thác Bạt Minh Nguyệt, Trưởng công chúa Nam Man. Ngươi cứ gọi ta là Minh Nguyệt.”
-Nàng không hề tỏ vẻ kiêu căng.
-Sở Ly đáp:
-“Tiểu Sở.”
-“Ta biết ngươi là ai.”
-Thác Bạt Minh Nguyệt nói xong liền quay người đi ra.
-Nàng là tân đế Đại Sở.
-Cũng là người mà Dạ Ly ca ca yêu.
-Nàng biết.
-Đêm qua, Dạ Ly ca ca thức trắng đêm chăm sóc nàng ấy, còn tự tay khâu một chiếc túi thơm.
-Một đại nam nhân, đến cầm kim xỏ chỉ cũng không biết, đầu ngón trỏ bị kim đâm chi chít lỗ nhỏ.
-Thế mà lại nói là do hạ nhân may.
-Chẳng mấy chốc, hạ nhân mang đồ ăn sáng tới.
-Đồng thời cũng mang theo một tin tức ngoài dự liệu.
-“Điện hạ!”
-“Nhiếp Chính Vương Đại Sở đã đến Nam Cương!” Ẩn bớt</p>
+            <p>Chương 136: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 136: Nhiếp Chính Vương Đại Sở đã đến Nam Cương</p>
+<p>Sở Dạ Ly nhìn thấy nàng, thần sắc nhàn nhạt, chỉ khẽ gật đầu xem như chào hỏi.</p>
+<p>“Dạ Ly ca ca, muội nhớ huynh lắm!”</p>
+<p>“Huynh đã lâu lắm rồi không đến!”</p>
+<p>“Ngày nào muội cũng ngóng trông, chờ đợi. Phụ vương còn bảo muội trông đến mòn cả mắt, cuối cùng cũng đợi được huynh đến!” Thác Bạt Minh Nguyệt ôm lấy cánh tay hắn, không hề che giấu tình ý của mình.</p>
+<p>Một thân hồng y, rực rỡ chói mắt.</p>
+<p>Nàng vốn là một nữ tử như vậy.</p>
+<p>“Đa tạ Công chúa nhớ mong.”</p>
+<p>Sở Dạ Ly bất động thanh sắc rút cánh tay ra, lùi lại nửa bước.</p>
+<p>Rồi đi đến trước mặt Sở Ly:</p>
+<p>“Tiểu Cửu, không còn sớm nữa, nên về nghỉ ngơi thôi.”</p>
+<p>Sở Ly còn muốn nói chuyện với Tần Mục Vũ thêm một lúc, nhưng trong lòng vẫn nhớ chuyện bỏ trốn, còn phải nghĩ cách giải Nhuyễn Cốt Tán, đành gật đầu đáp ứng.</p>
+<p>Nào ngờ nàng cứ như người mù mở mắt, lúc đi lại đá trúng một khúc củi trong đống lửa. Khúc củi đang cháy bắn lên, rơi đúng mu bàn chân nàng.</p>
+<p>“A!”</p>
+<p>Sức nóng bỏng rát.</p>
+<p>Đau đến mức nàng nhảy dựng lên, ngã phịch xuống đất. Không biết từ đâu lại bò ra một con côn trùng, cắn ngay mắt cá chân nàng một cái.</p>
+<p>“Thiên Túc Trùng!”</p>
+<p>Thác Bạt Minh Nguyệt muốn ngăn cản, nhưng đã quá muộn.</p>
+<p>Nam Man nổi danh với cổ thuật, khí hậu nơi đây ẩm thấp âm u, ngay cả những con sâu nhỏ bé tưởng chừng vô hại cũng mang độc tính cực mạnh.</p>
+<p>Nàng lập tức ra lệnh:</p>
+<p>“Mau gọi quân y đến! Bảo hắn mang theo Xà Đầu Thảo!”</p>
+<p>Sở Dạ Ly bước nhanh tới, bế ngang Sở Ly lên, vội vàng chạy về lều.</p>
+<p>Sở Ly chỉ muốn khóc.</p>
+<p>Vốn dĩ nàng định giả vờ đau bụng tiêu chảy để tìm quân y.</p>
+<p>Nào ngờ lại thành ra thế này.</p>
+<p>Mu bàn chân bị bỏng phồng rộp.</p>
+<p>Chỉ trong chốc lát, đến khi quân y xách hòm thuốc chạy đến, mắt cá chân nàng đã sưng vù lên thành một cục lớn.</p>
+<p>Con sâu bé tí tẹo ấy nhìn chẳng có gì đáng sợ, ai ngờ độc tính lại mạnh đến vậy.</p>
+<p>Quân y đeo hòm thuốc, vội vàng chạy vào.</p>
+<p>“Mau!”</p>
+<p>Sở Dạ Ly sốt ruột nói:</p>
+<p>“Mau xem đi!”</p>
+<p>“Điện hạ chớ nóng vội!”</p>
+<p>Quân y bước nhanh vào:</p>
+<p>“Tiểu Sở công tử bị Thiên Túc Trùng cắn, không phải vấn đề lớn.”</p>
+<p>Sở Ly âm thầm thở phào.</p>
+<p>“Vậy thì tốt.”</p>
+<p>Nếu thật sự tàn phế, què chân, trở thành phế nhân…</p>
+<p>Chi bằng chết luôn cho xong.</p>
+<p>“Chỉ cần dùng dao rạch một đường hình chữ thập ở mắt cá chân, nặn hết độc bên trong ra, sau đó dùng thanh gỗ nung đỏ hơ lên vết thương, rồi đắp Xà Đầu Thảo, là sẽ khỏi.”</p>
+<p>Sở Ly trợn tròn mắt.</p>
+<p>Cái gì?!</p>
+<p>Rạch chân nàng ra?</p>
+<p>Còn phải lấy thanh gỗ nung đỏ để hơ?</p>
+<p>“Ta không muốn!”</p>
+<p>Đây là lời con người nói sao?</p>
+<p>Thác Bạt Minh Nguyệt đứng ngoài cửa lên tiếng:</p>
+<p>“Chỉ có cách này thôi. Bọn ta nếu chẳng may bị Thiên Túc Trùng cắn, cũng đều chữa như vậy.”</p>
+<p>Quân y nói:</p>
+<p>“Tiểu Sở công tử, mắt cá chân của ngài đã sưng thành thế này rồi. Nếu không kịp thời lấy độc ra, độc sẽ ngấm càng lúc càng sâu, cuối cùng e rằng ngay cả cái chân này cũng không giữ nổi!”</p>
+<p>“A!”</p>
+<p>Sao nàng lại xui xẻo đến thế?</p>
+<p>Toàn chuyện gì đâu không!</p>
+<p>Sở Dạ Ly trầm giọng, lập tức quyết định:</p>
+<p>“Làm ngay. Càng nhanh càng tốt.”</p>
+<p>“Không được!”</p>
+<p>Sở Dạ Ly giữ chặt chân nàng, ôm lấy thân thể đang vùng vẫy của nàng.</p>
+<p>“Cắn tay ta đi, Tiểu Cửu. Ráng nhịn một chút, sẽ nhanh qua thôi.”</p>
+<p>“Không! Không!”</p>
+<p>Đừng giữ chặt nàng!</p>
+<p>Như vậy nàng càng không có cảm giác an toàn!</p>
+<p>Sở Ly giãy giụa như cá nằm trên thớt.</p>
+<p>“Buông ta ra! Ta thấy ta khỏi rồi! Ta khỏi rồi!”</p>
+<p>“Tiểu Cửu, kiên cường một chút.”</p>
+<p>“Tay ta không đau nữa rồi!”</p>
+<p>Nói xong mới thấy không đúng.</p>
+<p>“Chân ta không đau nữa… Ưm!”</p>
+<p>Sở Dạ Ly nhét thẳng cánh tay mình vào miệng nàng.</p>
+<p>Rồi ôm chặt lấy nàng.</p>
+<p>Nàng trơ mắt nhìn quân y cầm một con dao găm sáng loáng, hơ qua ngọn lửa.</p>
+<p>“A!!!”</p>
+<p>Giết heo rồi!</p>
+<p>“A!”</p>
+<p>Đừng mà!</p>
+<p>Thả ta ra!</p>
+<p>“Ưm! Ưm ưm!”</p>
+<p>“Tiểu Cửu, cắn ta đi, cắn mạnh hết sức… Ưm!”</p>
+<p>Sở Ly la hét, trợn mắt, giãy giụa, vặn vẹo.</p>
+<p>Kết quả…</p>
+<p>Quân y còn chưa kịp hạ dao, chính nàng đã đập mạnh trán vào tấm ván đầu giường.</p>
+<p>Bốp!</p>
+<p>Trước mắt tối sầm.</p>
+<p>Ngất xỉu.</p>
+<p>Đến khi mở mắt ra lần nữa, đầu óc nàng vẫn còn mơ màng.</p>
+<p>“Tỉnh rồi?”</p>
+<p>Ánh mắt Sở Ly còn rời rạc.</p>
+<p>“Ta… đầu ta nặng quá…”</p>
+<p>“Đừng động.”</p>
+<p>“Đầu nàng bị quấn hơn chục vòng băng vải. Đêm qua, nàng tự đập mình ngất luôn.”</p>
+<p>“Vậy chân ta…”</p>
+<p>“Đã xử lý xong rồi, không sao nữa.”</p>
+<p>Sở Dạ Ly thức trắng cả đêm trông nàng, hai mắt hơi đỏ.</p>
+<p>Sở Ly kinh ngạc.</p>
+<p>Ồ.</p>
+<p>Hóa ra phương pháp gây mê bằng vật lý…</p>
+<p>Lại hữu hiệu đến vậy.</p>
+<p>Ngủ một giấc tỉnh dậy, chẳng còn chuyện gì nữa.</p>
+<p>Chỉ là đầu hơi nặng.</p>
+<p>Nàng chống hai tay lên đầu, khó nhọc ngồi dậy.</p>
+<p>Lúc này mới phát hiện y bào Sở Dạ Ly xộc xệch, trên mặt còn có mấy vết cào đỏ au, trông nhếch nhác như vừa bị lợn húc.</p>
+<p>Ngay cả trên cổ…</p>
+<p>Cũng in hằn một dấu răng đỏ chói.</p>
+<p>Nàng bất giác nhớ đến bộ dạng tối qua của mình…</p>
+<p>“Huynh… vết thương trên cổ và trên mặt huynh…”</p>
+<p>Sở Dạ Ly đưa tay vuốt nhẹ, cười trầm:</p>
+<p>“Tiểu Cửu xuống miệng chẳng hề nương tình.”</p>
+<p>Sở Ly hơi ngượng.</p>
+<p>“Cũng đâu thể trách ta. Nếu không phải huynh đưa ta đến nơi này, ta đã chẳng bị sâu cắn. Sâu ở Đại Sở đâu có độc như vậy.”</p>
+<p>“Được, được.”</p>
+<p>“Đều là lỗi của ta.”</p>
+<p>Hắn cầm một túi thơm trên bàn lên.</p>
+<p>“Trong túi thơm này có dược liệu xua côn trùng. Nàng mang theo bên người, vừa đuổi sâu bọ, vừa phòng cổ độc.”</p>
+<p>Sở Ly cầm lên xem.</p>
+<p>“Xấu quá vậy?”</p>
+<p>Đường kim mũi chỉ thật xấu.</p>
+<p>Hoa văn cũng xấu.</p>
+<p>Đây là thêu con mèo sao?</p>
+<p>Xấu thật.</p>
+<p>Sở Dạ Ly mím môi:</p>
+<p>“Đây là… ta… ta sai người phía dưới làm. Trong quân doanh toàn là nam nhân, tay nghề có lẽ hơi kém.”</p>
+<p>“Thảo nào.”</p>
+<p>Sở Ly hiểu ra, tiện tay treo túi thơm lên đai lưng.</p>
+<p>Đúng lúc ấy, Thác Bạt Minh Nguyệt bước vào.</p>
+<p>“Dạ Ly ca ca, bữa sáng đã chuẩn bị xong.”</p>
+<p>Tối qua Sở Ly đã nhìn thấy nàng, nhưng vì bị thương nên không để ý kỹ.</p>
+<p>Giờ mới nhận ra, nữ tử này rực rỡ như ánh mặt trời, sạch sẽ, phóng khoáng, đẹp đến nao lòng.</p>
+<p>“Ta là Thác Bạt Minh Nguyệt, Trưởng công chúa Nam Man. Ngươi cứ gọi ta là Minh Nguyệt.”</p>
+<p>Nàng không hề tỏ vẻ kiêu căng.</p>
+<p>Sở Ly đáp:</p>
+<p>“Tiểu Sở.”</p>
+<p>“Ta biết ngươi là ai.”</p>
+<p>Thác Bạt Minh Nguyệt nói xong liền quay người đi ra.</p>
+<p>Nàng là tân đế Đại Sở.</p>
+<p>Cũng là người mà Dạ Ly ca ca yêu.</p>
+<p>Nàng biết.</p>
+<p>Đêm qua, Dạ Ly ca ca thức trắng đêm chăm sóc nàng ấy, còn tự tay khâu một chiếc túi thơm.</p>
+<p>Một đại nam nhân, đến cầm kim xỏ chỉ cũng không biết, đầu ngón trỏ bị kim đâm chi chít lỗ nhỏ.</p>
+<p>Thế mà lại nói là do hạ nhân may.</p>
+<p>Chẳng mấy chốc, hạ nhân mang đồ ăn sáng tới.</p>
+<p>Đồng thời cũng mang theo một tin tức ngoài dự liệu.</p>
+<p>“Điện hạ!”</p>
+<p>“Nhiếp Chính Vương Đại Sở đã đến Nam Cương!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_135.html" class="btn">‹ Trước</a>
             <a href="chuong_137.html" class="btn">Sau ›</a>
         </div>
@@ -271,15 +279,11 @@ Chẳng mấy chốc, hạ nhân mang đồ ăn sáng tới.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -291,11 +295,11 @@ Chẳng mấy chốc, hạ nhân mang đồ ăn sáng tới.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

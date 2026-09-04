@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 324</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,181 +62,190 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 324</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_323.html" class="btn">‹ Trước</a>
             <a href="chuong_325.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 324: Bổn vương đã nói rồi, nàng không rảnh
-Bên cạnh, Biết Cửu biến sắc.
-Đưa các đại thần cùng quý khách xuất cung vốn là việc của đám thái giám bọn họ, Minh Hoa Quận chúa rõ ràng là đang hạ thấp thân phận của Tạ tiểu thư.
-Tạ tiểu thư được Nhiếp Chính Vương ưu ái, là vị Nhiếp Chính Vương phi tương lai mà khắp Đại Sở ai ai cũng biết, Minh Hoa Quận chúa sao dám làm vậy?
-Tạ tiểu thư là nô tài sao?
-Tiêu Dao Vương đưa tay chỉ nàng:
-“Con đó! Tạ tiểu thư thân phận tôn quý, đâu có rảnh đưa con xuất cung? Đừng quấy rầy nàng.”
-Lời này trực tiếp đẩy Sở Ly vào thế khó.
-Ý tại ngôn ngoại chính là nàng làm cao, cố ý lên mặt.
-Sở Minh Hoa nhìn Sở Ly đầy soi mói: “Đến cả một Quận chúa như ta cũng không mời nổi nàng, vậy còn ai mời nổi nữa? Hay là nàng căn bản không coi hoàng thất ra gì?”
-“Phụ vương, con tin Tạ tiểu thư tuyệt đối không có lòng bất thần.”
-Trong lòng Biết Cửu thấp thỏm bất an.
-Lén nhìn sắc mặt Hoàng thượng một cái… không nhìn ra hỉ nộ, chỉ thấy Hoàng thượng đang nhẹ nhàng vuốt chiếc ban chỉ hồng mã não trên ngón cái.
-Lại nhìn Tạ tiểu thư, cũng không thấy thần sắc dao động.
-Không khí nhất thời lặng ngắt.
-Tiêu Dao Vương không nói, chính là ngầm thừa nhận, vô thanh vô tức chống lưng cho Sở Minh Hoa.
-Sở Ly khẽ nhướng mày.
-Sở Minh Hoa đang cười.
-Đột nhiên, nàng cũng mỉm cười: “Có thể tiễn Quận chúa xuất cung, là vinh hạnh của ta.”
-“Vậy thì làm phiền Tạ tiểu thư.”
-“Nàng không rảnh.”
-Ngoài điện, một giọng nói lạnh nhạt xé gió truyền đến. Hai tiểu thái giám vừa mở cửa điện, tựa như mang theo hàn ý đầu đông, lạnh lẽo ập thẳng lên mặt Sở Minh Hoa.
-Sở Ly đứng dậy.
-Sao hắn lại đến?
-Sở Minh Hoa siết chặt đầu ngón tay: “Hoàng thúc, ta với Tạ tiểu thư tuổi tác tương đồng, có chung đề tài, chỉ muốn cùng nàng xuất cung, dạo phố, trò chuyện mà thôi.”
-Sở Đệ Trì bước đến bên cạnh Sở Ly, nói:
-“Bổn vương đã nói rồi, nàng không rảnh.”
-“Hoàng thúc…”
-“Bổn vương đã chuẩn bị hậu lễ, định đến bái phỏng Tạ lão tướng quân, thương nghị hôn sự với Tạ tiểu thư. Quả thực không có thời gian đưa ngươi xuất cung. Nếu Minh Hoa Quận chúa không biết đường ra khỏi cung, có thể đi theo phía sau đội ngũ mang sính lễ của bổn vương.”
-Đôi mắt Sở Minh Hoa lập tức đỏ hoe, móng tay cắm sâu vào lòng bàn tay.
-Hắn có ý gì!
-Bảo nàng đi theo sau đội ngũ hạ sính, chẳng phải coi nàng là nô tài sao?
-Hắn thật sự muốn cưới Tạ Vãn Nguyệt!
-Vì sao?
-Dựa vào cái gì?
-Rốt cuộc Tạ Vãn Nguyệt có điểm gì hơn người?
-Tiêu Dao Vương thấy tình thế như vậy, cũng không nói thêm, nắm lấy tay Sở Minh Hoa.
-“Theo bổn vương hồi phủ.”
-“Phụ vương, con không đi…”
-“Xuất cung!”
-“Phụ vương…”
-Không!
-Nàng không thể trơ mắt nhìn Nhiếp Chính Vương mang sính lễ đến Tạ gia. Nếu bọn họ thành thân, vậy nàng phải làm sao?
-Nàng cũng thích Nhiếp Chính Vương!
-Sở Minh Hoa bị Tiêu Dao Vương kéo đi, ba bước ngoái đầu một lần, vừa phẫn hận vừa không cam lòng trừng mắt nhìn Sở Ly, cuối cùng vẫn bị cưỡng ép mang đi.
-Người đi rồi, cuối cùng cũng yên tĩnh.
-Nhưng Sở Ly lại có vài phần thất vọng:
-“Tiêu Dao Vương quả nhiên rất thông minh.”
-Không thể nắm được nhược điểm của hắn.
-Sở Ngạo Thiên vỗ vai nàng:
-“Cửu muội, mưu sự tại nhân, đừng nghĩ nhiều nữa. Đúng rồi, các ngươi định khi nào thành thân? Trẫm phải chuẩn bị cho muội một phong hồng bao thật thật thật… thật lớn!”
-“Trẫm sẽ đem cả quốc khố cho muội!”
-Thực hiện lời hứa thuở nhỏ: có phúc cùng hưởng, có họa cùng gánh.
-Sở Đệ Trì nắm tay Sở Ly, dẫn nàng rời đi:
-“Cái quốc khố nợ chồng chất của ngươi, vẫn nên tự giữ lấy đi.”
-“Ta đã bắt đầu kiếm tiền rồi!”
-“Vậy thì đợi có tiền rồi hãy nói. Phúc còn chưa hưởng được, đã muốn ném cái hố nợ cho Hoàng thẩm của ngươi, coi bổn vương chết rồi sao?”
-Nói xong câu ấy, liền cùng Sở Ly rời đi.
-Hồi Nhiếp Chính Vương phủ.
-Chọn lễ vật.
-Sở Ngạo Thiên đuổi theo mấy bước, vừa tức vừa ấm ức.
-Rõ ràng hắn đang rất cố gắng kiếm tiền mà!
-Ba ngày sau, Sở Ngạo Thiên dùng cuốn “danh sách” vốn không hề tồn tại, lừa được một đám quan viên chột dạ.
-Bọn họ lặng lẽ đem toàn bộ số tài vật bất nghĩa mình thu được, nặc danh bỏ vào hòm đặt trước cửa hoàng cung.
-Tiếp đó, năm vị tần phi được sắc phong cũng lần lượt nhập chủ hậu cung.
-Các quan khác nhìn mà đỏ mắt.
-Rốt cuộc phải dùng cách gì mới có thể nhanh chóng đưa nữ nhi vào cung?
-Chỉ cần sinh được Hoàng trưởng tử, sẽ có cơ hội được lập làm Thái tử. Sau này nếu kế thừa đế vị, đó chính là chuyện làm rạng danh tổ tông.
-Gấp!
-Gấp đến phát sốt!
-Đút lót cung nhân bên cạnh Hoàng thượng đi!
-Không ít quan viên đi đường tắt, mạo hiểm mua chuộc Trương ma ma bên cạnh Hoàng thượng, cùng Tổng quản đại thái giám Biết Cửu.
-“Trong nhà hạ quan có một tiểu nữ vừa đến tuổi cập kê, ngưỡng mộ Thánh thượng đã lâu, chỉ tiếc chưa từng được diện kiến thiên nhan. Mong Biết công công lúc rảnh rỗi có thể trước mặt Hoàng thượng thay hạ quan nói tốt vài lời.”
-Một xấp ngân phiếu dày cộm được nhét vào tay áo Biết Cửu.
-Biết Cửu khẽ giữ lấy tay áo, mỉm cười đầy thâm ý.
-Bên phía Trương ma ma cũng vậy.
-“Nghe nói Trương ma ma phụ trách việc an bài các vị tần phi nhập cung, mong Trương ma ma giơ cao đánh khẽ…”
-Lại là một xấp ngân phiếu dày cộm.
-Trương ma ma mỉm cười:
-“Lý đại nhân, lão nô có thể thay ngài nói thêm vài câu, nhưng người quyết định là Hoàng thượng, lão nô cũng không dám bảo đảm…”
-“Chỉ cần Trương ma ma chịu để tâm nhắc đến, vậy là đủ rồi.”
-“Vâng.”
-Ngự thư phòng.
-Hiện nay, Hộ bộ đã thay một vị quan trẻ vừa được đề bạt chuyên phụ trách quản lý quốc khố cho Sở Ngạo Thiên.
-“Tâu Hoàng thượng, hôm qua trong hòm trước cửa cung đã thu được hơn bảy vạn lượng ngân phiếu.”
-“Hôm kia thu được…”
-Ba ngày cộng lại, tổng cộng thu được tới hai mươi hai vạn lượng bạc.
-Sở Ngạo Thiên vừa xem tấu chương vừa nói:
-“Điều toàn bộ số bạc này vào quân doanh, dùng để trợ cấp thân quyến các tướng sĩ tử trận cùng chữa trị thương binh.”
-“Tuân chỉ.”
-Biện pháp này không thể dùng lâu dài, vẫn phải mau chóng ổn định Đại Sở. Chỉ khi bách tính an cư lạc nghiệp, kinh tế mới có thể phát triển ổn định.
-Dân chúng sống khá lên rồi, mới có thể nộp thuế đầy đủ, quốc khố mới dần sung túc.
-“Hoàng thượng.”
-Biết Cửu và Trương ma ma cùng bước vào.
-Sở Ngạo Thiên ngẩng đầu:
-“Nói.”
-Hai người tiến lên, lần lượt lấy các xấp ngân phiếu trong tay áo ra.
-“Rất nhiều quan viên muốn đưa người vào hậu cung, nhưng ngài vẫn chưa gật đầu, nên họ tìm đến bọn nô tài.”
-Xấp này là của Lý đại nhân.
-Xấp này là của Vương đại nhân.
-Xấp này là của…
-Chỗ này một xấp, chỗ kia một xấp, cộng lại gần một vạn lượng!
-Sở Ngạo Thiên cầm bút son, gõ lên từng xấp ngân phiếu:
-“Lúc đại chiến, bảo bọn họ quyên góp, ai nấy đều than nghèo kể khổ. Đến khi cần đút lót người khác, lại chẳng hề tiếc tay.”
-Chỉ riêng số bạc một quan viên dùng để hối lộ cũng đủ nuôi năm trăm binh sĩ.
-Đã vậy, nếu mỗi lần nhét bạc có thể nuôi được nhiều binh như thế, sao không để bọn họ nhét thêm mấy lần?
-“Nếu bọn họ đến hỏi, các ngươi cứ nói trẫm đang định gật đầu, nhưng vẫn còn do dự, cứ nói mập mờ một chút. Lừa từng người một, kiếm thêm tiền về cho trẫm.”
-Biết Cửu và Trương ma ma nhìn nhau cười:
-“Xin Hoàng thượng yên tâm, nô tài đã hiểu!”
-Sở Ngạo Thiên khẽ thở dài.
-Làm Hoàng đế đến mức phải dùng mưu lừa tiền để nuôi quân, thật đúng là uất ức.
-Nhưng may mà đám thần tử ấy ai nấy đều cất giấu tiểu kim khố, còn giàu hơn cả vị Hoàng đế như hắn.
-Hắn nhìn sang quyển Trị Quốc Sách đặt bên cạnh.
-Đó là cuốn sách Khương Thái phó để lại cho hắn.
-Khẽ vuốt ve từng nét chữ trên đó.
-Rồi sẽ vượt qua thôi…
-“Biết Cửu, ngươi cho người truyền tin vào hậu cung, cứ nói trẫm đang phiền não vì chuyện bạc. Ai có thể giúp trẫm giải ưu, tối nay trẫm sẽ đến tẩm cung của người đó ngủ.” Ẩn bớt</p>
+            <p>Chương 324: Bổn vương đã nói rồi, nàng không rảnh</p>
+<p>Bên cạnh, Biết Cửu biến sắc.</p>
+<p>Đưa các đại thần cùng quý khách xuất cung vốn là việc của đám thái giám bọn họ, Minh Hoa Quận chúa rõ ràng là đang hạ thấp thân phận của Tạ tiểu thư.</p>
+<p>Tạ tiểu thư được Nhiếp Chính Vương ưu ái, là vị Nhiếp Chính Vương phi tương lai mà khắp Đại Sở ai ai cũng biết, Minh Hoa Quận chúa sao dám làm vậy?</p>
+<p>Tạ tiểu thư là nô tài sao?</p>
+<p>Tiêu Dao Vương đưa tay chỉ nàng:</p>
+<p>“Con đó! Tạ tiểu thư thân phận tôn quý, đâu có rảnh đưa con xuất cung? Đừng quấy rầy nàng.”</p>
+<p>Lời này trực tiếp đẩy Sở Ly vào thế khó.</p>
+<p>Ý tại ngôn ngoại chính là nàng làm cao, cố ý lên mặt.</p>
+<p>Sở Minh Hoa nhìn Sở Ly đầy soi mói: “Đến cả một Quận chúa như ta cũng không mời nổi nàng, vậy còn ai mời nổi nữa? Hay là nàng căn bản không coi hoàng thất ra gì?”</p>
+<p>“Phụ vương, con tin Tạ tiểu thư tuyệt đối không có lòng bất thần.”</p>
+<p>Trong lòng Biết Cửu thấp thỏm bất an.</p>
+<p>Lén nhìn sắc mặt Hoàng thượng một cái… không nhìn ra hỉ nộ, chỉ thấy Hoàng thượng đang nhẹ nhàng vuốt chiếc ban chỉ hồng mã não trên ngón cái.</p>
+<p>Lại nhìn Tạ tiểu thư, cũng không thấy thần sắc dao động.</p>
+<p>Không khí nhất thời lặng ngắt.</p>
+<p>Tiêu Dao Vương không nói, chính là ngầm thừa nhận, vô thanh vô tức chống lưng cho Sở Minh Hoa.</p>
+<p>Sở Ly khẽ nhướng mày.</p>
+<p>Sở Minh Hoa đang cười.</p>
+<p>Đột nhiên, nàng cũng mỉm cười: “Có thể tiễn Quận chúa xuất cung, là vinh hạnh của ta.”</p>
+<p>“Vậy thì làm phiền Tạ tiểu thư.”</p>
+<p>“Nàng không rảnh.”</p>
+<p>Ngoài điện, một giọng nói lạnh nhạt xé gió truyền đến. Hai tiểu thái giám vừa mở cửa điện, tựa như mang theo hàn ý đầu đông, lạnh lẽo ập thẳng lên mặt Sở Minh Hoa.</p>
+<p>Sở Ly đứng dậy.</p>
+<p>Sao hắn lại đến?</p>
+<p>Sở Minh Hoa siết chặt đầu ngón tay: “Hoàng thúc, ta với Tạ tiểu thư tuổi tác tương đồng, có chung đề tài, chỉ muốn cùng nàng xuất cung, dạo phố, trò chuyện mà thôi.”</p>
+<p>Sở Đệ Trì bước đến bên cạnh Sở Ly, nói:</p>
+<p>“Bổn vương đã nói rồi, nàng không rảnh.”</p>
+<p>“Hoàng thúc…”</p>
+<p>“Bổn vương đã chuẩn bị hậu lễ, định đến bái phỏng Tạ lão tướng quân, thương nghị hôn sự với Tạ tiểu thư. Quả thực không có thời gian đưa ngươi xuất cung. Nếu Minh Hoa Quận chúa không biết đường ra khỏi cung, có thể đi theo phía sau đội ngũ mang sính lễ của bổn vương.”</p>
+<p>Đôi mắt Sở Minh Hoa lập tức đỏ hoe, móng tay cắm sâu vào lòng bàn tay.</p>
+<p>Hắn có ý gì!</p>
+<p>Bảo nàng đi theo sau đội ngũ hạ sính, chẳng phải coi nàng là nô tài sao?</p>
+<p>Hắn thật sự muốn cưới Tạ Vãn Nguyệt!</p>
+<p>Vì sao?</p>
+<p>Dựa vào cái gì?</p>
+<p>Rốt cuộc Tạ Vãn Nguyệt có điểm gì hơn người?</p>
+<p>Tiêu Dao Vương thấy tình thế như vậy, cũng không nói thêm, nắm lấy tay Sở Minh Hoa.</p>
+<p>“Theo bổn vương hồi phủ.”</p>
+<p>“Phụ vương, con không đi…”</p>
+<p>“Xuất cung!”</p>
+<p>“Phụ vương…”</p>
+<p>Không!</p>
+<p>Nàng không thể trơ mắt nhìn Nhiếp Chính Vương mang sính lễ đến Tạ gia. Nếu bọn họ thành thân, vậy nàng phải làm sao?</p>
+<p>Nàng cũng thích Nhiếp Chính Vương!</p>
+<p>Sở Minh Hoa bị Tiêu Dao Vương kéo đi, ba bước ngoái đầu một lần, vừa phẫn hận vừa không cam lòng trừng mắt nhìn Sở Ly, cuối cùng vẫn bị cưỡng ép mang đi.</p>
+<p>Người đi rồi, cuối cùng cũng yên tĩnh.</p>
+<p>Nhưng Sở Ly lại có vài phần thất vọng:</p>
+<p>“Tiêu Dao Vương quả nhiên rất thông minh.”</p>
+<p>Không thể nắm được nhược điểm của hắn.</p>
+<p>Sở Ngạo Thiên vỗ vai nàng:</p>
+<p>“Cửu muội, mưu sự tại nhân, đừng nghĩ nhiều nữa. Đúng rồi, các ngươi định khi nào thành thân? Trẫm phải chuẩn bị cho muội một phong hồng bao thật thật thật… thật lớn!”</p>
+<p>“Trẫm sẽ đem cả quốc khố cho muội!”</p>
+<p>Thực hiện lời hứa thuở nhỏ: có phúc cùng hưởng, có họa cùng gánh.</p>
+<p>Sở Đệ Trì nắm tay Sở Ly, dẫn nàng rời đi:</p>
+<p>“Cái quốc khố nợ chồng chất của ngươi, vẫn nên tự giữ lấy đi.”</p>
+<p>“Ta đã bắt đầu kiếm tiền rồi!”</p>
+<p>“Vậy thì đợi có tiền rồi hãy nói. Phúc còn chưa hưởng được, đã muốn ném cái hố nợ cho Hoàng thẩm của ngươi, coi bổn vương chết rồi sao?”</p>
+<p>Nói xong câu ấy, liền cùng Sở Ly rời đi.</p>
+<p>Hồi Nhiếp Chính Vương phủ.</p>
+<p>Chọn lễ vật.</p>
+<p>Sở Ngạo Thiên đuổi theo mấy bước, vừa tức vừa ấm ức.</p>
+<p>Rõ ràng hắn đang rất cố gắng kiếm tiền mà!</p>
+<p>Ba ngày sau, Sở Ngạo Thiên dùng cuốn “danh sách” vốn không hề tồn tại, lừa được một đám quan viên chột dạ.</p>
+<p>Bọn họ lặng lẽ đem toàn bộ số tài vật bất nghĩa mình thu được, nặc danh bỏ vào hòm đặt trước cửa hoàng cung.</p>
+<p>Tiếp đó, năm vị tần phi được sắc phong cũng lần lượt nhập chủ hậu cung.</p>
+<p>Các quan khác nhìn mà đỏ mắt.</p>
+<p>Rốt cuộc phải dùng cách gì mới có thể nhanh chóng đưa nữ nhi vào cung?</p>
+<p>Chỉ cần sinh được Hoàng trưởng tử, sẽ có cơ hội được lập làm Thái tử. Sau này nếu kế thừa đế vị, đó chính là chuyện làm rạng danh tổ tông.</p>
+<p>Gấp!</p>
+<p>Gấp đến phát sốt!</p>
+<p>Đút lót cung nhân bên cạnh Hoàng thượng đi!</p>
+<p>Không ít quan viên đi đường tắt, mạo hiểm mua chuộc Trương ma ma bên cạnh Hoàng thượng, cùng Tổng quản đại thái giám Biết Cửu.</p>
+<p>“Trong nhà hạ quan có một tiểu nữ vừa đến tuổi cập kê, ngưỡng mộ Thánh thượng đã lâu, chỉ tiếc chưa từng được diện kiến thiên nhan. Mong Biết công công lúc rảnh rỗi có thể trước mặt Hoàng thượng thay hạ quan nói tốt vài lời.”</p>
+<p>Một xấp ngân phiếu dày cộm được nhét vào tay áo Biết Cửu.</p>
+<p>Biết Cửu khẽ giữ lấy tay áo, mỉm cười đầy thâm ý.</p>
+<p>Bên phía Trương ma ma cũng vậy.</p>
+<p>“Nghe nói Trương ma ma phụ trách việc an bài các vị tần phi nhập cung, mong Trương ma ma giơ cao đánh khẽ…”</p>
+<p>Lại là một xấp ngân phiếu dày cộm.</p>
+<p>Trương ma ma mỉm cười:</p>
+<p>“Lý đại nhân, lão nô có thể thay ngài nói thêm vài câu, nhưng người quyết định là Hoàng thượng, lão nô cũng không dám bảo đảm…”</p>
+<p>“Chỉ cần Trương ma ma chịu để tâm nhắc đến, vậy là đủ rồi.”</p>
+<p>“Vâng.”</p>
+<p>Ngự thư phòng.</p>
+<p>Hiện nay, Hộ bộ đã thay một vị quan trẻ vừa được đề bạt chuyên phụ trách quản lý quốc khố cho Sở Ngạo Thiên.</p>
+<p>“Tâu Hoàng thượng, hôm qua trong hòm trước cửa cung đã thu được hơn bảy vạn lượng ngân phiếu.”</p>
+<p>“Hôm kia thu được…”</p>
+<p>Ba ngày cộng lại, tổng cộng thu được tới hai mươi hai vạn lượng bạc.</p>
+<p>Sở Ngạo Thiên vừa xem tấu chương vừa nói:</p>
+<p>“Điều toàn bộ số bạc này vào quân doanh, dùng để trợ cấp thân quyến các tướng sĩ tử trận cùng chữa trị thương binh.”</p>
+<p>“Tuân chỉ.”</p>
+<p>Biện pháp này không thể dùng lâu dài, vẫn phải mau chóng ổn định Đại Sở. Chỉ khi bách tính an cư lạc nghiệp, kinh tế mới có thể phát triển ổn định.</p>
+<p>Dân chúng sống khá lên rồi, mới có thể nộp thuế đầy đủ, quốc khố mới dần sung túc.</p>
+<p>“Hoàng thượng.”</p>
+<p>Biết Cửu và Trương ma ma cùng bước vào.</p>
+<p>Sở Ngạo Thiên ngẩng đầu:</p>
+<p>“Nói.”</p>
+<p>Hai người tiến lên, lần lượt lấy các xấp ngân phiếu trong tay áo ra.</p>
+<p>“Rất nhiều quan viên muốn đưa người vào hậu cung, nhưng ngài vẫn chưa gật đầu, nên họ tìm đến bọn nô tài.”</p>
+<p>Xấp này là của Lý đại nhân.</p>
+<p>Xấp này là của Vương đại nhân.</p>
+<p>Xấp này là của…</p>
+<p>Chỗ này một xấp, chỗ kia một xấp, cộng lại gần một vạn lượng!</p>
+<p>Sở Ngạo Thiên cầm bút son, gõ lên từng xấp ngân phiếu:</p>
+<p>“Lúc đại chiến, bảo bọn họ quyên góp, ai nấy đều than nghèo kể khổ. Đến khi cần đút lót người khác, lại chẳng hề tiếc tay.”</p>
+<p>Chỉ riêng số bạc một quan viên dùng để hối lộ cũng đủ nuôi năm trăm binh sĩ.</p>
+<p>Đã vậy, nếu mỗi lần nhét bạc có thể nuôi được nhiều binh như thế, sao không để bọn họ nhét thêm mấy lần?</p>
+<p>“Nếu bọn họ đến hỏi, các ngươi cứ nói trẫm đang định gật đầu, nhưng vẫn còn do dự, cứ nói mập mờ một chút. Lừa từng người một, kiếm thêm tiền về cho trẫm.”</p>
+<p>Biết Cửu và Trương ma ma nhìn nhau cười:</p>
+<p>“Xin Hoàng thượng yên tâm, nô tài đã hiểu!”</p>
+<p>Sở Ngạo Thiên khẽ thở dài.</p>
+<p>Làm Hoàng đế đến mức phải dùng mưu lừa tiền để nuôi quân, thật đúng là uất ức.</p>
+<p>Nhưng may mà đám thần tử ấy ai nấy đều cất giấu tiểu kim khố, còn giàu hơn cả vị Hoàng đế như hắn.</p>
+<p>Hắn nhìn sang quyển Trị Quốc Sách đặt bên cạnh.</p>
+<p>Đó là cuốn sách Khương Thái phó để lại cho hắn.</p>
+<p>Khẽ vuốt ve từng nét chữ trên đó.</p>
+<p>Rồi sẽ vượt qua thôi…</p>
+<p>“Biết Cửu, ngươi cho người truyền tin vào hậu cung, cứ nói trẫm đang phiền não vì chuyện bạc. Ai có thể giúp trẫm giải ưu, tối nay trẫm sẽ đến tẩm cung của người đó ngủ.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_323.html" class="btn">‹ Trước</a>
             <a href="chuong_325.html" class="btn">Sau ›</a>
         </div>
@@ -245,15 +253,11 @@ Rồi sẽ vượt qua thôi…
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -265,11 +269,11 @@ Rồi sẽ vượt qua thôi…
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

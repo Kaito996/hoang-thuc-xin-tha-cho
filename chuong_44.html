@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 44</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,131 +62,140 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 44</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_43.html" class="btn">‹ Trước</a>
             <a href="chuong_45.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 44: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 44: Ngươi không phải là cốt nhục của hoàng đế chăng
-“Sở Đệ Trì!”
-Rầm rầm——
-“Hoàng thúc!”
-Sở Ly đập cửa, muốn gặp Sở Đệ Trì, nhưng phủ môn đóng chặt, thị vệ khuyên vài câu không được, đành đứng sang một bên.
-“Hoàng thúc!”
-Nàng muốn cứu Tần Mục Vũ, cấp bách không thể trì hoãn.
-Hắn rốt cuộc đã sai người nói gì với Tần Mục Vũ?
-Tần Mục Vũ rốt cuộc đã cản trở hắn ở đâu?
-“Hoàng thúc, ta có lời muốn hỏi ngươi… hoàng thúc… ư!”
-Trước mắt bỗng tối sầm, suýt nữa ngất đi. Một ngày chưa ăn uống, lại thêm cảm xúc kích động, thân thể đã sớm không chịu nổi.
-Sở Ly vịn cửa, thở dốc vài nhịp, rồi loạng choạng ngã xuống bậc thềm.
-Thị vệ thấy sắc mặt nàng trắng bệch, vội bước tới:
-“Cửu hoàng tử, điện hạ thật sự không có ở phủ, người vẫn nên trở về đi. Nhìn trời thế này, e rằng sắp mưa rồi.”
-Sở Ly ôm bụng, cố nhịn cơn đau quặn, nói:
-“Đi thông báo, nói ta sẽ đợi ở đây. Khi nào gặp được hắn, ta mới rời đi.”
-“Việc này… vâng.”
-Thị vệ bất đắc dĩ.
-Đêm xuống lạnh lẽo, gió rét thổi tới. Trời u ám, mưa lất phất rơi xuống rồi nhanh chóng nặng hạt.
-Rồi rất nhanh, mưa như trút nước.
-Sở Ly ngồi trên bậc đá, nửa thân người bị mưa xối ướt. Hai tay ôm chặt bụng, thân thể co lại, đau đến mức gần như không thở nổi.
-Lạnh.
-Đau.
-‘A Ly, sao ngươi lại ngồi đây một mình?’
-Một tiểu nam hài mặc áo gấm văn cổ tay hổ văn hiện ra trước mắt, đưa tay đỡ nàng dậy.
-‘Mẫu thân ta nói, ngồi đất lạnh dễ đau bụng.’
-‘A Ly, ta mang cho ngươi bánh táo đỏ.’
-‘A Ly, ta bắt thỏ cho ngươi…’
-Tầm nhìn mơ hồ rồi lại rõ. Nước mắt nóng hổi lẫn vào mưa lạnh, rất nhanh hóa thành băng giá.
-“Tần Mục Vũ…”
-Hắn là bị oan!
-Đau quá.
-Nàng ôm bụng, thở dốc từng hồi, cả người co ro trên bậc thềm như một con mèo bị bỏ rơi.
-Trong phủ Nhiếp chính vương.
-Mưa lớn trút xuống mái hiên, như chuỗi ngọc rơi dày đặc. Trong sân phủ, màn mưa mờ ảo, khiến cảnh đêm càng thêm tịch liêu.
-Bên cửa sổ, hương trà lan nhẹ.
-“Chỉ thán chuyện cũ, vốn dĩ bình thường.”
-Bạch Cẩm Y xoay chén trà thanh hoa, nhớ lại chuyện cũ, khẽ thở dài.
-Ba năm trước, Hắc Giáp vệ bị vây ở Nam Cương, tử chiến trong tuyệt cảnh. Nay ba người còn có thể ngồi cùng nhau thưởng trà nghe mưa, như đã cách một đời.
-Tiêu Dạ Hành liếc mắt:
-“Mưa lớn thế này, tiểu cháu của ngươi không chết đó chứ?”
-Ân oán bậc trưởng bối, không nên liên lụy bậc vãn bối.
-Bạch Cẩm Y nhìn hắn:
-“Ngươi đau lòng à? Ngoại sinh của ngươi còn đang ở thiên lao, sao không thấy ngươi đau lòng?”
-Tiêu Dạ Hành nhàn nhạt:
-“Ngoại sinh là ngoại sinh, ta là ta. Chết đạo hữu bất tử bần đạo.”
-Dám tự ý xông vào mật thất của hắn, còn dùng hàn băng sàng, lại ăn không biết bao nhiêu linh dược quý hiếm.
-Loại ngoại sinh này, không cần cũng được.
-Ầm!
-Một tiếng sấm xé rách bầu trời.
-Mưa hắt vào theo gió, mang theo hàn ý. Bạch Cẩm Y khẽ kéo áo.
-Chỉ thấy Sở Đệ Trì ngồi im bên cạnh, tay nâng chén trà, ánh mắt trầm như vực sâu, không thấy đáy.
-‘Xin lỗi rồi, tiểu điện hạ. Nô tài chỉ làm theo mệnh lệnh.’
-‘Sự tồn tại của ngươi, sẽ chia rẽ quyền thế Đại Sở.’
-‘Ngươi chết đi, tất cả mới yên ổn.’
-‘Lúc trong tã lót, đáng lẽ nên bóp chết ngươi.’
-Bạch Cẩm Y nói:
-“Mưa lớn quá. Thị vệ nói Cửu hoàng tử còn ở ngoài, ta ra xem…”
-Choang!
-Tiếng chén trà vỡ còn chói tai hơn cả sấm.
-Bạch Cẩm Y giật mình đứng bật dậy.
-Trà và máu nhỏ xuống từ đầu ngón tay Sở Đệ Trì. Trong mắt hắn, sát khí cuộn trào, lạnh đến mức khiến người khác kinh hãi.
-Tiêu Dạ Hành lập tức giữ lấy hắn:
-“Trời không còn sớm, đi thôi.”
-“Nhưng vết thương của hắn…”
-“Bạch Cẩm Y, đi.” Ẩn bớt</p>
+            <p>Chương 44: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 44: Ngươi không phải là cốt nhục của hoàng đế chăng</p>
+<p>“Sở Đệ Trì!”</p>
+<p>Rầm rầm——</p>
+<p>“Hoàng thúc!”</p>
+<p>Sở Ly đập cửa, muốn gặp Sở Đệ Trì, nhưng phủ môn đóng chặt, thị vệ khuyên vài câu không được, đành đứng sang một bên.</p>
+<p>“Hoàng thúc!”</p>
+<p>Nàng muốn cứu Tần Mục Vũ, cấp bách không thể trì hoãn.</p>
+<p>Hắn rốt cuộc đã sai người nói gì với Tần Mục Vũ?</p>
+<p>Tần Mục Vũ rốt cuộc đã cản trở hắn ở đâu?</p>
+<p>“Hoàng thúc, ta có lời muốn hỏi ngươi… hoàng thúc… ư!”</p>
+<p>Trước mắt bỗng tối sầm, suýt nữa ngất đi. Một ngày chưa ăn uống, lại thêm cảm xúc kích động, thân thể đã sớm không chịu nổi.</p>
+<p>Sở Ly vịn cửa, thở dốc vài nhịp, rồi loạng choạng ngã xuống bậc thềm.</p>
+<p>Thị vệ thấy sắc mặt nàng trắng bệch, vội bước tới:</p>
+<p>“Cửu hoàng tử, điện hạ thật sự không có ở phủ, người vẫn nên trở về đi. Nhìn trời thế này, e rằng sắp mưa rồi.”</p>
+<p>Sở Ly ôm bụng, cố nhịn cơn đau quặn, nói:</p>
+<p>“Đi thông báo, nói ta sẽ đợi ở đây. Khi nào gặp được hắn, ta mới rời đi.”</p>
+<p>“Việc này… vâng.”</p>
+<p>Thị vệ bất đắc dĩ.</p>
+<p>Đêm xuống lạnh lẽo, gió rét thổi tới. Trời u ám, mưa lất phất rơi xuống rồi nhanh chóng nặng hạt.</p>
+<p>Rồi rất nhanh, mưa như trút nước.</p>
+<p>Sở Ly ngồi trên bậc đá, nửa thân người bị mưa xối ướt. Hai tay ôm chặt bụng, thân thể co lại, đau đến mức gần như không thở nổi.</p>
+<p>Lạnh.</p>
+<p>Đau.</p>
+<p>‘A Ly, sao ngươi lại ngồi đây một mình?’</p>
+<p>Một tiểu nam hài mặc áo gấm văn cổ tay hổ văn hiện ra trước mắt, đưa tay đỡ nàng dậy.</p>
+<p>‘Mẫu thân ta nói, ngồi đất lạnh dễ đau bụng.’</p>
+<p>‘A Ly, ta mang cho ngươi bánh táo đỏ.’</p>
+<p>‘A Ly, ta bắt thỏ cho ngươi…’</p>
+<p>Tầm nhìn mơ hồ rồi lại rõ. Nước mắt nóng hổi lẫn vào mưa lạnh, rất nhanh hóa thành băng giá.</p>
+<p>“Tần Mục Vũ…”</p>
+<p>Hắn là bị oan!</p>
+<p>Đau quá.</p>
+<p>Nàng ôm bụng, thở dốc từng hồi, cả người co ro trên bậc thềm như một con mèo bị bỏ rơi.</p>
+<p>Trong phủ Nhiếp chính vương.</p>
+<p>Mưa lớn trút xuống mái hiên, như chuỗi ngọc rơi dày đặc. Trong sân phủ, màn mưa mờ ảo, khiến cảnh đêm càng thêm tịch liêu.</p>
+<p>Bên cửa sổ, hương trà lan nhẹ.</p>
+<p>“Chỉ thán chuyện cũ, vốn dĩ bình thường.”</p>
+<p>Bạch Cẩm Y xoay chén trà thanh hoa, nhớ lại chuyện cũ, khẽ thở dài.</p>
+<p>Ba năm trước, Hắc Giáp vệ bị vây ở Nam Cương, tử chiến trong tuyệt cảnh. Nay ba người còn có thể ngồi cùng nhau thưởng trà nghe mưa, như đã cách một đời.</p>
+<p>Tiêu Dạ Hành liếc mắt:</p>
+<p>“Mưa lớn thế này, tiểu cháu của ngươi không chết đó chứ?”</p>
+<p>Ân oán bậc trưởng bối, không nên liên lụy bậc vãn bối.</p>
+<p>Bạch Cẩm Y nhìn hắn:</p>
+<p>“Ngươi đau lòng à? Ngoại sinh của ngươi còn đang ở thiên lao, sao không thấy ngươi đau lòng?”</p>
+<p>Tiêu Dạ Hành nhàn nhạt:</p>
+<p>“Ngoại sinh là ngoại sinh, ta là ta. Chết đạo hữu bất tử bần đạo.”</p>
+<p>Dám tự ý xông vào mật thất của hắn, còn dùng hàn băng sàng, lại ăn không biết bao nhiêu linh dược quý hiếm.</p>
+<p>Loại ngoại sinh này, không cần cũng được.</p>
+<p>Ầm!</p>
+<p>Một tiếng sấm xé rách bầu trời.</p>
+<p>Mưa hắt vào theo gió, mang theo hàn ý. Bạch Cẩm Y khẽ kéo áo.</p>
+<p>Chỉ thấy Sở Đệ Trì ngồi im bên cạnh, tay nâng chén trà, ánh mắt trầm như vực sâu, không thấy đáy.</p>
+<p>‘Xin lỗi rồi, tiểu điện hạ. Nô tài chỉ làm theo mệnh lệnh.’</p>
+<p>‘Sự tồn tại của ngươi, sẽ chia rẽ quyền thế Đại Sở.’</p>
+<p>‘Ngươi chết đi, tất cả mới yên ổn.’</p>
+<p>‘Lúc trong tã lót, đáng lẽ nên bóp chết ngươi.’</p>
+<p>Bạch Cẩm Y nói:</p>
+<p>“Mưa lớn quá. Thị vệ nói Cửu hoàng tử còn ở ngoài, ta ra xem…”</p>
+<p>Choang!</p>
+<p>Tiếng chén trà vỡ còn chói tai hơn cả sấm.</p>
+<p>Bạch Cẩm Y giật mình đứng bật dậy.</p>
+<p>Trà và máu nhỏ xuống từ đầu ngón tay Sở Đệ Trì. Trong mắt hắn, sát khí cuộn trào, lạnh đến mức khiến người khác kinh hãi.</p>
+<p>Tiêu Dạ Hành lập tức giữ lấy hắn:</p>
+<p>“Trời không còn sớm, đi thôi.”</p>
+<p>“Nhưng vết thương của hắn…”</p>
+<p>“Bạch Cẩm Y, đi.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_43.html" class="btn">‹ Trước</a>
             <a href="chuong_45.html" class="btn">Sau ›</a>
         </div>
@@ -195,15 +203,11 @@ Tiêu Dạ Hành lập tức giữ lấy hắn:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -215,11 +219,11 @@ Tiêu Dạ Hành lập tức giữ lấy hắn:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

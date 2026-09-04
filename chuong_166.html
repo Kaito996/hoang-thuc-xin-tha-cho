@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 166</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,186 +62,195 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 166</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_165.html" class="btn">‹ Trước</a>
             <a href="chuong_167.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 166: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 166: Ta bảo đảm sẽ không chạy lung tung nữa
-Sở Dạ Ly xoay người định đi.
-“Ngũ ca!”
-Sở Ly vội vàng lao tới, vừa nắm được vạt áo hắn, thuận thế ôm lấy chân hắn.
-Nếu bị khóa ở đây, ngoại trừ phạm vi hai thước này, nàng chẳng thể đi đâu, cũng chẳng làm được gì.
-“Ngũ ca, ta bảo đảm sẽ không chạy lung tung nữa.”
-“Ta thề!”
-Nàng nói chắc như đinh đóng cột, chỉ thiếu điều giơ tay phải lên phát thệ.
-Sở Dạ Ly cúi đầu nhìn nàng:
-“Đứng dậy.”
-“Nếu huynh không đồng ý, ta sẽ quỳ mãi không đứng lên!”
-“Được thôi, chỉ cần nàng không chạy, tùy nàng muốn làm gì thì làm, chỉ cần nàng vui là được. Dù có quỳ ba ngày ba đêm, ta cũng mặc nàng.”
-Đôi mắt Sở Ly khẽ mở to, lập tức chống gối đứng bật dậy.
-Nàng chỉ nói đùa thôi.
-“Ngũ ca lại phải đi bận việc sao? Một mình ta ở đây, nếu muốn uống nước thì phải làm sao? Hay là huynh thả ta ra, rồi tìm vài người trông chừng ta đi?”
-Nàng giơ cổ tay lên, sợi xích bạc phát ra tiếng leng keng.
-Tuy mảnh, nhưng vô cùng chắc chắn.
-“Bọn họ không trông được nàng.”
-Sở Dạ Ly bước đến chiếc bàn bên kia, rót cho nàng một chén nước.
-Chỉ có khóa nàng lại, hắn mới yên tâm.
-Nếu không, dù có phái mấy chục người canh giữ, nàng vẫn sẽ nghĩ ra cách bỏ trốn.
-“Ngũ ca thật biết nói đùa, chẳng lẽ ta mọc cánh bay mất được sao?”
-“Nhưng nàng sẽ chạy. Hay là đánh gãy chân đi?”
-Sở Ly sặc nước, ho liền mấy tiếng, kinh hãi nhìn hắn thật lâu. Mãi đến khi xác định hắn chỉ đang nói đùa, chứ không thật sự định làm vậy, nàng mới hơi yên lòng.
-“Vậy lúc huynh không ở đây, nếu ta muốn đi nhà xí thì sao?”
-Chẳng lẽ hắn sẽ đi cùng nàng?
-Sở Dạ Ly đáp:
-“Ta sẽ phái người đến hầu hạ nàng.”
-“Nhưng trong quân doanh toàn là nam nhân, ta là nữ tử, e rằng có nhiều điều bất tiện. Hơn nữa lúc ngủ ta còn phải thay y phục, lỡ như…”
-Nàng khẽ cắn môi dưới, có vẻ khó xử.
-Sở Dạ Ly suy nghĩ một lát:
-“Ta sẽ sang chỗ công chúa, mượn một thị nữ đến.”
-“Đừng là Hướng Nguyệt! Ngũ ca, ta không thích Hướng Nguyệt!”
-Sở Dạ Ly xoa đầu nàng, không tỏ rõ thái độ:
-“Mấy ngày nay chạy đường liên tục, nàng còn chưa được nghỉ ngơi tử tế. Ngủ một lát đi.”
-Hắn cúi xuống hôn nhẹ lên giữa trán nàng, vén rèm rồi sải bước rời đi.
-Bên ngoài, vu cổ đại quân đã đến, bầu không khí trong quân doanh đặc biệt nghiêm nghị, tựa như có một mồi lửa vô hình đang dần bén cháy, đại chiến chỉ còn trong gang tấc.
-Sau khi Vệ Bàng Trung chết, Trương Bá Hổ được điều tới thay làm chủ tướng.
-“Công chúa, theo phân phó của người, mọi việc đều đã chuẩn bị thỏa đáng.”
-Trương Bá Hổ bẩm báo.
-Trong mắt Thác Bạt Minh Nguyệt bừng lên chiến ý cùng vẻ hiên ngang:
-“Hơn một trăm năm trước, Nam Cương vốn là lãnh thổ của Nam Man chúng ta, lại bị đám người Trung Nguyên đáng ghét cướp mất, chiếm làm của riêng. Bao nhiêu năm trôi qua rồi, cũng đến lúc bọn chúng phải trả Nam Cương lại cho chúng ta!”
-“Trương tướng quân, hạ chiến thư đi!”
-“Tuân lệnh, công chúa.”
-Đúng lúc ấy, Sở Dạ Ly sải bước đi tới:
-“Trước tiên án binh bất động. Báo cho Nhiếp Chính Vương biết, muốn có Sở Ly thì cứ dẫn quân tới đánh.”
-Thác Bạt Minh Nguyệt quay đầu nhìn hắn:
-“Ý của Dạ Ly ca ca là…”
-“Kẻ không giữ được bình tĩnh là kẻ dễ bị khống chế nhất.”
-Sở Dạ Ly chắp tay sau lưng bước tới.
-“Nhiếp Chính Vương muốn cứu người, tất sẽ nghĩ đối sách khẩn cấp. Chúng ta nhân lúc bọn họ còn đang bàn bạc, phát động tập kích, đánh bọn họ một đòn bất ngờ, khiến bọn họ không kịp trở tay.”
-Thác Bạt Minh Nguyệt suy nghĩ kỹ, rồi gật đầu tán thành.
-Kế này quả thực rất ổn.
-“Trương tướng quân, âm thầm truyền lệnh xuống, đêm nay giờ Tý phát động tập kích.”
-Ty Cổ Cục mất tròn sáu năm mới nghiên cứu ra được vu cổ khiến người không sống không chết, không đau không biết mệt, luyện thành một đội quân bách chiến bách thắng.
-Sáu năm tâm huyết ấy, đêm nay cuối cùng cũng đến lúc kiểm chứng thành quả!
-Trương Bá Hổ lĩnh mệnh, phất áo choàng, sải bước lui xuống.
-“Dạ Ly ca ca thật sự nỡ dùng Tiểu Sở công tử làm mồi sao?”
-Sở Dạ Ly dường như không nghe thấy, chỉ hỏi:
-“Bên cạnh nàng còn có thị nữ nào không?”
-Thác Bạt Minh Nguyệt đương nhiên hiểu ý hắn, ánh mắt khẽ tối lại:
-“Lát nữa, ta sẽ bảo Hướng Nguyệt sang hầu hạ nàng ấy.”
-Hắn hơi khựng lại:
-“Ngoài Hướng Nguyệt ra, còn thị nữ nào khác không?”
-“Hướng Nguyệt rất trung thành. Dạ Ly ca ca, thật ra huynh có thể thử tin ta một chút. Tiểu Sở công tử rất giỏi lợi dụng sự thiên vị của huynh để hạ thấp cảnh giác của huynh, nhưng ta thì sẽ không.”
-Cùng là nữ nhân, nàng đại khái đoán được tâm tư của Sở Ly.
-—
-Binh sĩ qua lại hối hả, bầu không khí càng lúc càng khẩn trương, ngưng trọng.
-Hướng Nguyệt vén rèm bước vào lều, nhìn thấy Sở Ly đang ngồi trên giường, cười híp mắt:
-“Tiểu Sở công tử, nghe nói người không thích nô tỳ hầu hạ?”
-Miệng cười mà mắt chẳng cười.
-Sở Ly lạnh lùng liếc nàng ta, xoay nửa người sang chỗ khác.
-“Sao lại là ngươi?”
-Hướng Nguyệt hừ lạnh.
-Lại định giở trò gì nữa đây?
-Đông Lăng điện hạ mềm lòng, nhưng nàng thì không!
-Chẳng phải chỉ vì nàng luôn bám sát, từng bước không rời, khiến Tiểu Sở công tử không có cơ hội bỏ trốn nên mới ghét nàng sao?
-Chắc chắn là vì nàng quá thông minh, nên Tiểu Sở công tử mới đề phòng nàng như vậy.
-Càng thế, Hướng Nguyệt càng muốn tới hầu hạ.
-Có nàng ở đây, tuyệt đối sẽ không cho Sở Ly dù chỉ một cơ hội trốn chạy!
-“Quân doanh không thể so với Vương đô, điều kiện có hạn. Nếu Tiểu Sở công tử không thích nô tỳ hầu hạ, vậy để nô tỳ gọi hai binh sĩ vào nhé?”
-Sở Ly lạnh mặt, chẳng muốn nói với nàng:
-“Ở đây không cần ngươi hầu hạ, ra ngoài đi!”
-Hướng Nguyệt cố tình không theo ý nàng.
-“Tiểu Sở công tử, người muốn uống nước không?”
-“Muốn ăn ít nho không?”
-“Muốn đi nhà xí không?”
-Sở Ly:
-“Cút ra ngoài cho ta!”
-“Hả? Người muốn chạy ra ngoài sao? Thế thì không được đâu. Nô tỳ không chỉ phải chăm sóc người, mà còn phải trông chừng cả Tần Thiếu tướng quân nữa. Chậc, nói ra cũng thật đáng thương, nghe đâu chân của Tần Thiếu tướng quân hình như đã bị đánh gãy rồi.”
-Sở Ly bật dậy:
-“Ngươi nói cái gì!”
-Nàng vừa lao được năm bước đã bị sợi xích bạc trên cổ tay giữ lại, kéo căng phát ra tiếng leng keng.
-Hướng Nguyệt đứng đó, nhếch mày đắc ý, trong lòng vô cùng hả hê.
-“Phải gọi là thảm lắm. Hắn bị đánh đến mức hộc máu không ngừng, chỉ còn thoi thóp một hơi. Có điều Nam Man chúng ta vẫn rất nhân từ, chưa bao giờ giết tù binh. Nếu không, Tần Thiếu tướng quân đã bị cắt cổ từ lâu rồi.”
-“Nhưng Tiểu Sở công tử cũng nên biết, trong quân doanh toàn là nam nhân, dương thịnh âm suy. Đám binh sĩ ấy mấy năm chẳng được gần nữ sắc, mà Tần Thiếu tướng quân lại da mịn thịt mềm như thế…”
-“Thả huynh ấy ra!”
-“Ha ha ha!”
-Sở Ly giãy mạnh, sợi xích va vào nhau chan chát.
-“Các ngươi dám làm hại huynh ấy! Các ngươi dám…”
-Nổi giận được một lúc, nàng rất nhanh đã bình tĩnh lại.
-“Ngươi đang cố ý khích ta.”
-Nụ cười trên mặt Hướng Nguyệt khựng lại.
-“Vì Ngũ ca không thích Trưởng công chúa, nên ngươi vẫn luôn chán ghét ta, căm hận ta. Bởi vậy mới cố tình dùng Tần Mục Vũ để kích động ta, muốn xem bộ dạng ta mất khống chế, nổi giận.”
-Sở Ly bình thản nói:
-“Ngũ ca biết ta để tâm đến Tần Mục Vũ, nhất định sẽ không làm hại huynh ấy. Muốn lừa ta sao? Hừ!”
-Nàng phất tay áo, ung dung ngồi trở lại giường.
-Hướng Nguyệt thu lại nụ cười.
-Quả thật, nàng cố ý nói vậy để xem Sở Ly đau khổ, mất khống chế, không ngờ Sở Ly lại thông minh đến thế.
-Nàng đã bị nhìn thấu.
-Nhưng càng như vậy, trong lòng nàng càng không cam tâm.
-Đông Lăng điện hạ vì sao không giết Tần Thiếu tướng quân?
-Nếu là nàng, nhất định sẽ chém hắn, như vậy mới hả được cơn tức này!
-“Những gì ta nói đều là thật. Tình lang của ngươi bị đánh đến nửa sống nửa chết, đáng thương biết bao. Là tù binh thì đương nhiên không còn tôn nghiêm. Sau này dù có trở về Đại Sở, cũng chỉ là một phế nhân.”
-Sở Ly ngồi vững như chuông.
-Nàng nghĩ nàng sẽ tin sao?
-Hướng Nguyệt nói khích mấy câu vẫn không thể chọc giận được nàng, ngược lại chính mình lại nổi nóng trước.
-“Ta thấy ngươi đúng là chưa thấy quan tài chưa đổ lệ. Không tận mắt nhìn thấy thì không chịu chết tâm, phải không?”
-“Được!”
-Nàng sải bước tới, quấn sợi xích bạc quanh tay ba bốn vòng.
-“Ta sẽ đưa ngươi đi xem thử, xem tình lang của ngươi bây giờ thảm đến mức nào!” Ẩn bớt</p>
+            <p>Chương 166: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 166: Ta bảo đảm sẽ không chạy lung tung nữa</p>
+<p>Sở Dạ Ly xoay người định đi.</p>
+<p>“Ngũ ca!”</p>
+<p>Sở Ly vội vàng lao tới, vừa nắm được vạt áo hắn, thuận thế ôm lấy chân hắn.</p>
+<p>Nếu bị khóa ở đây, ngoại trừ phạm vi hai thước này, nàng chẳng thể đi đâu, cũng chẳng làm được gì.</p>
+<p>“Ngũ ca, ta bảo đảm sẽ không chạy lung tung nữa.”</p>
+<p>“Ta thề!”</p>
+<p>Nàng nói chắc như đinh đóng cột, chỉ thiếu điều giơ tay phải lên phát thệ.</p>
+<p>Sở Dạ Ly cúi đầu nhìn nàng:</p>
+<p>“Đứng dậy.”</p>
+<p>“Nếu huynh không đồng ý, ta sẽ quỳ mãi không đứng lên!”</p>
+<p>“Được thôi, chỉ cần nàng không chạy, tùy nàng muốn làm gì thì làm, chỉ cần nàng vui là được. Dù có quỳ ba ngày ba đêm, ta cũng mặc nàng.”</p>
+<p>Đôi mắt Sở Ly khẽ mở to, lập tức chống gối đứng bật dậy.</p>
+<p>Nàng chỉ nói đùa thôi.</p>
+<p>“Ngũ ca lại phải đi bận việc sao? Một mình ta ở đây, nếu muốn uống nước thì phải làm sao? Hay là huynh thả ta ra, rồi tìm vài người trông chừng ta đi?”</p>
+<p>Nàng giơ cổ tay lên, sợi xích bạc phát ra tiếng leng keng.</p>
+<p>Tuy mảnh, nhưng vô cùng chắc chắn.</p>
+<p>“Bọn họ không trông được nàng.”</p>
+<p>Sở Dạ Ly bước đến chiếc bàn bên kia, rót cho nàng một chén nước.</p>
+<p>Chỉ có khóa nàng lại, hắn mới yên tâm.</p>
+<p>Nếu không, dù có phái mấy chục người canh giữ, nàng vẫn sẽ nghĩ ra cách bỏ trốn.</p>
+<p>“Ngũ ca thật biết nói đùa, chẳng lẽ ta mọc cánh bay mất được sao?”</p>
+<p>“Nhưng nàng sẽ chạy. Hay là đánh gãy chân đi?”</p>
+<p>Sở Ly sặc nước, ho liền mấy tiếng, kinh hãi nhìn hắn thật lâu. Mãi đến khi xác định hắn chỉ đang nói đùa, chứ không thật sự định làm vậy, nàng mới hơi yên lòng.</p>
+<p>“Vậy lúc huynh không ở đây, nếu ta muốn đi nhà xí thì sao?”</p>
+<p>Chẳng lẽ hắn sẽ đi cùng nàng?</p>
+<p>Sở Dạ Ly đáp:</p>
+<p>“Ta sẽ phái người đến hầu hạ nàng.”</p>
+<p>“Nhưng trong quân doanh toàn là nam nhân, ta là nữ tử, e rằng có nhiều điều bất tiện. Hơn nữa lúc ngủ ta còn phải thay y phục, lỡ như…”</p>
+<p>Nàng khẽ cắn môi dưới, có vẻ khó xử.</p>
+<p>Sở Dạ Ly suy nghĩ một lát:</p>
+<p>“Ta sẽ sang chỗ công chúa, mượn một thị nữ đến.”</p>
+<p>“Đừng là Hướng Nguyệt! Ngũ ca, ta không thích Hướng Nguyệt!”</p>
+<p>Sở Dạ Ly xoa đầu nàng, không tỏ rõ thái độ:</p>
+<p>“Mấy ngày nay chạy đường liên tục, nàng còn chưa được nghỉ ngơi tử tế. Ngủ một lát đi.”</p>
+<p>Hắn cúi xuống hôn nhẹ lên giữa trán nàng, vén rèm rồi sải bước rời đi.</p>
+<p>Bên ngoài, vu cổ đại quân đã đến, bầu không khí trong quân doanh đặc biệt nghiêm nghị, tựa như có một mồi lửa vô hình đang dần bén cháy, đại chiến chỉ còn trong gang tấc.</p>
+<p>Sau khi Vệ Bàng Trung chết, Trương Bá Hổ được điều tới thay làm chủ tướng.</p>
+<p>“Công chúa, theo phân phó của người, mọi việc đều đã chuẩn bị thỏa đáng.”</p>
+<p>Trương Bá Hổ bẩm báo.</p>
+<p>Trong mắt Thác Bạt Minh Nguyệt bừng lên chiến ý cùng vẻ hiên ngang:</p>
+<p>“Hơn một trăm năm trước, Nam Cương vốn là lãnh thổ của Nam Man chúng ta, lại bị đám người Trung Nguyên đáng ghét cướp mất, chiếm làm của riêng. Bao nhiêu năm trôi qua rồi, cũng đến lúc bọn chúng phải trả Nam Cương lại cho chúng ta!”</p>
+<p>“Trương tướng quân, hạ chiến thư đi!”</p>
+<p>“Tuân lệnh, công chúa.”</p>
+<p>Đúng lúc ấy, Sở Dạ Ly sải bước đi tới:</p>
+<p>“Trước tiên án binh bất động. Báo cho Nhiếp Chính Vương biết, muốn có Sở Ly thì cứ dẫn quân tới đánh.”</p>
+<p>Thác Bạt Minh Nguyệt quay đầu nhìn hắn:</p>
+<p>“Ý của Dạ Ly ca ca là…”</p>
+<p>“Kẻ không giữ được bình tĩnh là kẻ dễ bị khống chế nhất.”</p>
+<p>Sở Dạ Ly chắp tay sau lưng bước tới.</p>
+<p>“Nhiếp Chính Vương muốn cứu người, tất sẽ nghĩ đối sách khẩn cấp. Chúng ta nhân lúc bọn họ còn đang bàn bạc, phát động tập kích, đánh bọn họ một đòn bất ngờ, khiến bọn họ không kịp trở tay.”</p>
+<p>Thác Bạt Minh Nguyệt suy nghĩ kỹ, rồi gật đầu tán thành.</p>
+<p>Kế này quả thực rất ổn.</p>
+<p>“Trương tướng quân, âm thầm truyền lệnh xuống, đêm nay giờ Tý phát động tập kích.”</p>
+<p>Ty Cổ Cục mất tròn sáu năm mới nghiên cứu ra được vu cổ khiến người không sống không chết, không đau không biết mệt, luyện thành một đội quân bách chiến bách thắng.</p>
+<p>Sáu năm tâm huyết ấy, đêm nay cuối cùng cũng đến lúc kiểm chứng thành quả!</p>
+<p>Trương Bá Hổ lĩnh mệnh, phất áo choàng, sải bước lui xuống.</p>
+<p>“Dạ Ly ca ca thật sự nỡ dùng Tiểu Sở công tử làm mồi sao?”</p>
+<p>Sở Dạ Ly dường như không nghe thấy, chỉ hỏi:</p>
+<p>“Bên cạnh nàng còn có thị nữ nào không?”</p>
+<p>Thác Bạt Minh Nguyệt đương nhiên hiểu ý hắn, ánh mắt khẽ tối lại:</p>
+<p>“Lát nữa, ta sẽ bảo Hướng Nguyệt sang hầu hạ nàng ấy.”</p>
+<p>Hắn hơi khựng lại:</p>
+<p>“Ngoài Hướng Nguyệt ra, còn thị nữ nào khác không?”</p>
+<p>“Hướng Nguyệt rất trung thành. Dạ Ly ca ca, thật ra huynh có thể thử tin ta một chút. Tiểu Sở công tử rất giỏi lợi dụng sự thiên vị của huynh để hạ thấp cảnh giác của huynh, nhưng ta thì sẽ không.”</p>
+<p>Cùng là nữ nhân, nàng đại khái đoán được tâm tư của Sở Ly.</p>
+<p>—</p>
+<p>Binh sĩ qua lại hối hả, bầu không khí càng lúc càng khẩn trương, ngưng trọng.</p>
+<p>Hướng Nguyệt vén rèm bước vào lều, nhìn thấy Sở Ly đang ngồi trên giường, cười híp mắt:</p>
+<p>“Tiểu Sở công tử, nghe nói người không thích nô tỳ hầu hạ?”</p>
+<p>Miệng cười mà mắt chẳng cười.</p>
+<p>Sở Ly lạnh lùng liếc nàng ta, xoay nửa người sang chỗ khác.</p>
+<p>“Sao lại là ngươi?”</p>
+<p>Hướng Nguyệt hừ lạnh.</p>
+<p>Lại định giở trò gì nữa đây?</p>
+<p>Đông Lăng điện hạ mềm lòng, nhưng nàng thì không!</p>
+<p>Chẳng phải chỉ vì nàng luôn bám sát, từng bước không rời, khiến Tiểu Sở công tử không có cơ hội bỏ trốn nên mới ghét nàng sao?</p>
+<p>Chắc chắn là vì nàng quá thông minh, nên Tiểu Sở công tử mới đề phòng nàng như vậy.</p>
+<p>Càng thế, Hướng Nguyệt càng muốn tới hầu hạ.</p>
+<p>Có nàng ở đây, tuyệt đối sẽ không cho Sở Ly dù chỉ một cơ hội trốn chạy!</p>
+<p>“Quân doanh không thể so với Vương đô, điều kiện có hạn. Nếu Tiểu Sở công tử không thích nô tỳ hầu hạ, vậy để nô tỳ gọi hai binh sĩ vào nhé?”</p>
+<p>Sở Ly lạnh mặt, chẳng muốn nói với nàng:</p>
+<p>“Ở đây không cần ngươi hầu hạ, ra ngoài đi!”</p>
+<p>Hướng Nguyệt cố tình không theo ý nàng.</p>
+<p>“Tiểu Sở công tử, người muốn uống nước không?”</p>
+<p>“Muốn ăn ít nho không?”</p>
+<p>“Muốn đi nhà xí không?”</p>
+<p>Sở Ly:</p>
+<p>“Cút ra ngoài cho ta!”</p>
+<p>“Hả? Người muốn chạy ra ngoài sao? Thế thì không được đâu. Nô tỳ không chỉ phải chăm sóc người, mà còn phải trông chừng cả Tần Thiếu tướng quân nữa. Chậc, nói ra cũng thật đáng thương, nghe đâu chân của Tần Thiếu tướng quân hình như đã bị đánh gãy rồi.”</p>
+<p>Sở Ly bật dậy:</p>
+<p>“Ngươi nói cái gì!”</p>
+<p>Nàng vừa lao được năm bước đã bị sợi xích bạc trên cổ tay giữ lại, kéo căng phát ra tiếng leng keng.</p>
+<p>Hướng Nguyệt đứng đó, nhếch mày đắc ý, trong lòng vô cùng hả hê.</p>
+<p>“Phải gọi là thảm lắm. Hắn bị đánh đến mức hộc máu không ngừng, chỉ còn thoi thóp một hơi. Có điều Nam Man chúng ta vẫn rất nhân từ, chưa bao giờ giết tù binh. Nếu không, Tần Thiếu tướng quân đã bị cắt cổ từ lâu rồi.”</p>
+<p>“Nhưng Tiểu Sở công tử cũng nên biết, trong quân doanh toàn là nam nhân, dương thịnh âm suy. Đám binh sĩ ấy mấy năm chẳng được gần nữ sắc, mà Tần Thiếu tướng quân lại da mịn thịt mềm như thế…”</p>
+<p>“Thả huynh ấy ra!”</p>
+<p>“Ha ha ha!”</p>
+<p>Sở Ly giãy mạnh, sợi xích va vào nhau chan chát.</p>
+<p>“Các ngươi dám làm hại huynh ấy! Các ngươi dám…”</p>
+<p>Nổi giận được một lúc, nàng rất nhanh đã bình tĩnh lại.</p>
+<p>“Ngươi đang cố ý khích ta.”</p>
+<p>Nụ cười trên mặt Hướng Nguyệt khựng lại.</p>
+<p>“Vì Ngũ ca không thích Trưởng công chúa, nên ngươi vẫn luôn chán ghét ta, căm hận ta. Bởi vậy mới cố tình dùng Tần Mục Vũ để kích động ta, muốn xem bộ dạng ta mất khống chế, nổi giận.”</p>
+<p>Sở Ly bình thản nói:</p>
+<p>“Ngũ ca biết ta để tâm đến Tần Mục Vũ, nhất định sẽ không làm hại huynh ấy. Muốn lừa ta sao? Hừ!”</p>
+<p>Nàng phất tay áo, ung dung ngồi trở lại giường.</p>
+<p>Hướng Nguyệt thu lại nụ cười.</p>
+<p>Quả thật, nàng cố ý nói vậy để xem Sở Ly đau khổ, mất khống chế, không ngờ Sở Ly lại thông minh đến thế.</p>
+<p>Nàng đã bị nhìn thấu.</p>
+<p>Nhưng càng như vậy, trong lòng nàng càng không cam tâm.</p>
+<p>Đông Lăng điện hạ vì sao không giết Tần Thiếu tướng quân?</p>
+<p>Nếu là nàng, nhất định sẽ chém hắn, như vậy mới hả được cơn tức này!</p>
+<p>“Những gì ta nói đều là thật. Tình lang của ngươi bị đánh đến nửa sống nửa chết, đáng thương biết bao. Là tù binh thì đương nhiên không còn tôn nghiêm. Sau này dù có trở về Đại Sở, cũng chỉ là một phế nhân.”</p>
+<p>Sở Ly ngồi vững như chuông.</p>
+<p>Nàng nghĩ nàng sẽ tin sao?</p>
+<p>Hướng Nguyệt nói khích mấy câu vẫn không thể chọc giận được nàng, ngược lại chính mình lại nổi nóng trước.</p>
+<p>“Ta thấy ngươi đúng là chưa thấy quan tài chưa đổ lệ. Không tận mắt nhìn thấy thì không chịu chết tâm, phải không?”</p>
+<p>“Được!”</p>
+<p>Nàng sải bước tới, quấn sợi xích bạc quanh tay ba bốn vòng.</p>
+<p>“Ta sẽ đưa ngươi đi xem thử, xem tình lang của ngươi bây giờ thảm đến mức nào!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_165.html" class="btn">‹ Trước</a>
             <a href="chuong_167.html" class="btn">Sau ›</a>
         </div>
@@ -250,15 +258,11 @@ Nàng sải bước tới, quấn sợi xích bạc quanh tay ba bốn vòng.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -270,11 +274,11 @@ Nàng sải bước tới, quấn sợi xích bạc quanh tay ba bốn vòng.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

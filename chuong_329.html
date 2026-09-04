@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 329</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,298 +62,307 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 329</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_328.html" class="btn">‹ Trước</a>
             <a href="chuong_330.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 329: Tiểu Cửu đúng là thuộc loài cá chạch
-Sở Ly không nhịn được bật cười:
-“Đó là vì Bát hoàng huynh tin tưởng năng lực của chàng, nên mới ỷ lại vào chàng như vậy.”
-“Năng lực gì?”
-Sở Đệ Trì lập tức nắm lấy trọng điểm.
-“Nàng nói rõ cho ta nghe.”
-“Đương nhiên là năng lực trị quốc, dùng người.”
-“Còn nữa?”
-Sở Ly ngẫm nghĩ:
-“Còn có năng lực dụng binh đánh trận, trấn giữ đại cục.”
-“Còn nữa?”
-Còn nữa?
-Còn gì nữa?
-Đôi mày liễu của Sở Ly khẽ nhíu lại, nghiêm túc suy nghĩ.
-Ngoài việc khen hắn thông tuệ, trầm ổn ra…
-Còn có gì nữa?
-Nàng nghĩ rất lâu, vẫn không thốt thêm được nửa chữ.
-Sở Đệ Trì không hài lòng, bàn tay đặt sau eo nàng, dùng sức kéo nàng áp sát vào vòng eo rắn chắc của mình.
-Đột nhiên…
-Sở Ly lập tức hiểu ra, mặt đỏ bừng, vội đẩy ngực hắn.
-“Chàng làm gì vậy? Còn có hạ nhân ở đây…”
-Nàng quay đầu nhìn.
-Chỉ thấy Lý quản gia ngẩng cao đầu, cùng bốn nha hoàn như không thấy gì mà lặng lẽ rời đi.
-Sở Đệ Trì hỏi:
-“Hạ nhân ở đâu?”
-Sở Ly xoay người định đi.
-“Không còn sớm nữa, ta…”
-Nam nhân nắm lấy cổ tay mảnh khảnh của nàng.
-“Nàng vẫn chưa trả lời ta.”
-“Không có hạ nhân, được chưa?”
-“Không phải cái đó.”
-Năng lực của hắn…
-“Có lẽ dạo này quá bận, không thể cùng Tiểu Cửu thân cận cho tốt, nên mới khiến nàng quên mất năng lực của ta.”
-“Xem ra trước đây ta vẫn chưa đủ… khắc sâu.”
-Mặt Sở Ly lập tức đỏ bừng.
-Chỉ cảm thấy lòng bàn tay hắn nóng như than hồng.
-Khi nắm lấy cổ tay nàng, giống như muốn thiêu tan cả người nàng.
-Dù hai người đã thân mật không biết bao nhiêu lần.
-Nhưng mỗi lần…
-Hắn luôn có thể nghĩ ra những cách khác nhau.
-“Gần đây quá bận rồi. Chàng nên nghỉ ngơi cho tốt đi, ta đi tắm đây!”
-Nói xong liền xoay người bỏ chạy.
-Vào phòng.
-Đóng cửa.
-Tắm gội.
-Lại là một ngày bận rộn.
-Ngâm mình trong nước nóng đến mức buồn ngủ, mơ mơ màng màng, hình như nghe thấy tiếng cửa khẽ mở.
-Sở Ly lập tức tỉnh táo, chống người nhìn sang.
-“Ai?”
-Ngoài cửa im lặng.
-Có lẽ…
-Là gió.
-Nàng vịn thành thùng tắm, tựa người trở lại.
-Đột nhiên, một đôi bàn tay từ phía sau luồn qua dưới cánh tay nàng.
-“Á!”
-Hai chân nàng đạp mạnh.
-Đứng không vững.
-Tay chân quẫy loạn trong nước, bắn tung tóe khắp nơi, giống hệt một con cá chép đang vẫy đuôi.
-Đôi bàn tay to của nam nhân gần như không giữ nổi.
-“Trơn thật.”
-“Tiểu Cửu là cá chạch thành tinh sao?”
-Trơn tuột.
-Toàn là nước.
-Muốn giữ cũng không giữ được.
-Sở Ly chìm nửa người trong nước.
-“Chàng vào từ lúc nào?”
-Nam nhân giũ bàn tay ướt sũng.
-“Nàng nói muốn tắm.”
-“Chẳng phải là đang chủ động mời ta sao?”
-Hắn tháo đai lưng.
-Cởi hắc bào.
-Sở Ly bám chặt mép thùng tắm.
-“Chờ một chút, ta sắp tắm xong rồi.”
-“Chúng ta cùng tắm.”
-“Thùng tắm này quá nhỏ, không chứa nổi hai người.”
-“Không sao.”
-“Chồng lên nhau là đủ chỗ.”
-Ào!
-Trong ánh mắt kinh ngạc của Sở Ly.
-Nam nhân bước vào thùng tắm.
-Nước lập tức tràn ra ngoài, bắn tung khắp nền, từng giọt nước trong veo phản chiếu ánh nến lay động, càng thêm óng ánh.
-Hắn từ phía sau ôm lấy nàng.
-Lồng ngực áp sát vào tấm lưng nàng, không hề có một khe hở.
-Đầu lưỡi nóng bỏng khẽ lướt qua vành tai nàng.
-Trong khoảnh khắc.
-Cả người nàng như bị dòng điện chạy qua.
-Tê dại đến mức gần như không đứng vững.
-“Hoàng… Hoàng thúc…”
-Bàn tay rộng lớn của nam nhân luồn qua mái tóc nàng, nâng lấy chiếc cổ thon dài.
-“Tiểu Cửu.”
-“Nàng có biết ta thích nhất dáng vẻ đỏ mặt của nàng không?”
-“Bất kể chúng ta ở bên nhau bao lâu.”
-“Nàng vẫn luôn khiến ta không thể kìm lòng.”
-Khuôn mặt nàng đỏ bừng.
-Có lẽ…
-Là vì hơi nóng trong thùng tắm hun lên.
-“Hoàng thúc… rõ ràng là do chàng lắm trò…”
-“Vậy nàng có thích không?”
-Nàng cúi đầu.
-Khẽ ừ một tiếng.
-Nhỏ đến mức gần như không nghe thấy.
-“To hơn một chút.”
-“Không biết…”
-“Vậy ta sẽ khiến nàng thích.”
-…
-Nữ nhân vốn là nước tạo thành.
-Chiếc eo nhỏ ấy.
-Chỉ cần khẽ siết.
-Như thể sẽ gãy mất.
-Mềm mại đến mức có thể thuận theo mọi tư thế.
-Nước lạnh.
-Hai người lại chuyển lên giường.
-Qua lại mấy lần.
-Mệt đến mức thở dốc.
-“Tiểu Cửu.”
-“Bây giờ đã thích chưa?”
-Sở Ly ôm chặt chăn, chỉ để lộ nửa khuôn mặt.
-Đôi mắt phủ đầy hơi nước nhìn hắn.
-“Sáng mai chàng còn phải thượng triều.”
-“Không sợ không đủ tinh thần sao?”
-Sở Đệ Trì tựa đầu giường, vỗ vỗ cánh tay mình.
-Nàng quấn chăn quanh người.
-Lăn lăn đến bên hắn.
-“Ăn no chưa?”
-“…”
-Nàng lo hắn sáng mai không đủ tinh thần đi thượng triều.
-Kết quả…
-Hắn chẳng nghe lọt lấy một chữ.
-Nàng quấn chăn, định lăn trở lại.
-“Đừng động!”
-Giọng nam nhân đột nhiên vang lên.
-Sở Ly giật mình cứng người.
-Cứ tưởng xảy ra chuyện gì.
-Chỉ thấy hắn cúi đầu nói:
-“Sao nàng lại đặt tay lên eo ta?”
-“Hử?”
-“Còn muốn nữa?”
-“?”
-Không phải.
-Nàng chỉ định lăn một vòng.
-Vô tình chạm phải hắn thôi.
-Chẳng phải rất bình thường sao?
-“Làm nữ nhân của bổn vương.”
-“Có cầu tất ứng là điều cơ bản nhất.”
-“Được.”
-“Thành toàn cho nàng.”
-Bàn tay lớn khẽ nâng.
-Nhanh nhẹn luồn vào dưới góc chăn.
-…
-Suốt một đêm.
-Không ai ngủ.
-Đến mức chân mềm nhũn.
-Sáng sớm.
-Sở Ly mệt đến mức ngay cả cánh tay cũng không còn sức nhấc lên.
-Nàng nghe thấy tiếng Sở Đệ Trì thức dậy.
-Nhưng lười mở mắt nhìn.
-Cho đến khi…
-Choang!
-Một tiếng động giòn tan vang lên.
-“Điện hạ bớt giận! Nô tỳ không cố ý!”
-Sở Ly mở mắt.
-Chỉ thấy một nha hoàn đang quỳ dưới đất, hoảng sợ nhận lỗi.
-Trong lúc hầu hạ Sở Đệ Trì thay y phục.
-Nàng ta vô ý làm đổ giá gỗ.
-Đó vốn cũng không phải lỗi gì quá đáng.
-Chỉ có điều…
-Nàng ta nước mắt như mưa.
-Khóe mắt đẫm lệ.
-Làn da trước ngực trắng như tuyết, theo từng nhịp thở gấp mà phập phồng.
-Quỳ dưới đất, cúi đầu.
-Chiếc cổ vừa trắng vừa thon dài.
-Hai bàn tay bối rối xoắn lấy vạt áo.
-Một dáng vẻ khiến ai nhìn cũng sinh lòng thương xót.
-Sở Ly đầy hứng thú xoay người.
-Chống khuỷu tay lên đầu giường.
-Lẳng lặng nhìn cảnh ấy.
-“Đồ vô dụng.”
-Sở Đệ Trì tháo chiếc ngọc đai màu đỏ tím xuống, lùi lại nửa bước.
-“Nếu hầu hạ cũng không xong.”
-“Vậy không cần tiếp tục ở Vương phủ nữa.”
-“Người đâu!”
-Hai gã sai vặt lập tức tiến lên, giữ lấy nha hoàn.
-“Điện hạ bớt giận! Điện hạ! Nô tỳ thật sự không cố ý… Điện hạ…”
-“Mới sáng sớm đã nổi giận làm gì.”
-Sở Ly lên tiếng.
-“Đều là lỗi của nàng.”
-Sở Đệ Trì quay đầu nhìn nàng.
-Vừa oán trách vừa tức giận.
-“Nàng quản gia kiểu gì vậy?”
-“Loại mèo chó gì cũng cho vào Vương phủ.”
-“Nếu còn có lần thứ hai.”
-“Thì giải tán toàn bộ nha hoàn trong phủ.”
-“Đổi hết thành gã sai vặt.”
-Việc đó không được.
-Toàn nam nhân thì quá bất tiện.
-“Nha hoàn này đâu phải do ta đưa vào phủ.”
-Hơn nữa…
-Kẻ nào mù mắt đến mức dám ngay dưới mí mắt nàng mà quyến rũ…
-Trong lòng Sở Ly đã đoán được đại khái.
-“Được rồi.”
-“Chàng đi thượng triều trước đi.”
-“Lát nữa ta sẽ điều tra.”
-“Hừ.”
-Hắn phất tay áo bỏ đi.
-Người này…
-Lại còn hừ một tiếng nữa!
-Ngoài Vương phủ.
-Nha hoàn có ý đồ bất chính kia bị đánh mười trượng rồi ném ra ngoài.
-Toàn thân đẫm mồ hôi.
-Sắc mặt trắng bệch.
-Trông vô cùng thảm hại.
-Cách đó không xa.
-Sở Minh Hoa thấy vậy, sắc mặt lập tức sa sầm.
-“Dung mạo của ngươi cũng đâu có kém.”
-“Vậy mà Nhiếp Chính Vương vẫn đuổi ngươi ra?”
-Nha hoàn òa khóc.
-“Là nô tỳ vô dụng.”
-“Có phải Tạ Vãn Nguyệt xúi giục không?”
-“Không… không phải…”
-“Tạ tiểu thư không nói một lời.”
-“Chính Nhiếp Chính Vương nổi trận lôi đình, rồi đuổi nô tỳ ra khỏi phủ.”
-Không thể nào!
-Sở Minh Hoa không tin.
-Từ xưa đến nay.
-Có nam nhân nào mà không tam thê tứ thiếp?
-Ngay cả Hoàng thượng vốn luôn giữ mình trong sạch cũng một hơi nạp năm vị phi tần.
-Chắc chắn là Tạ Vãn Nguyệt lòng dạ hẹp hòi.
-Ghen tuông đố kỵ.
-Không cho bất kỳ nữ nhân nào đến gần Nhiếp Chính Vương.
-Sợ người khác cướp mất sủng ái của mình.
-Nam nhân…
-Đều không thích nữ nhân hay ghen.
-Đợi nàng nghĩ ra một kế sách.
-Nhất định phải để Nhiếp Chính Vương nhìn thấy bộ mặt thật của Tạ Vãn Nguyệt. Ẩn bớt</p>
+            <p>Chương 329: Tiểu Cửu đúng là thuộc loài cá chạch</p>
+<p>Sở Ly không nhịn được bật cười:</p>
+<p>“Đó là vì Bát hoàng huynh tin tưởng năng lực của chàng, nên mới ỷ lại vào chàng như vậy.”</p>
+<p>“Năng lực gì?”</p>
+<p>Sở Đệ Trì lập tức nắm lấy trọng điểm.</p>
+<p>“Nàng nói rõ cho ta nghe.”</p>
+<p>“Đương nhiên là năng lực trị quốc, dùng người.”</p>
+<p>“Còn nữa?”</p>
+<p>Sở Ly ngẫm nghĩ:</p>
+<p>“Còn có năng lực dụng binh đánh trận, trấn giữ đại cục.”</p>
+<p>“Còn nữa?”</p>
+<p>Còn nữa?</p>
+<p>Còn gì nữa?</p>
+<p>Đôi mày liễu của Sở Ly khẽ nhíu lại, nghiêm túc suy nghĩ.</p>
+<p>Ngoài việc khen hắn thông tuệ, trầm ổn ra…</p>
+<p>Còn có gì nữa?</p>
+<p>Nàng nghĩ rất lâu, vẫn không thốt thêm được nửa chữ.</p>
+<p>Sở Đệ Trì không hài lòng, bàn tay đặt sau eo nàng, dùng sức kéo nàng áp sát vào vòng eo rắn chắc của mình.</p>
+<p>Đột nhiên…</p>
+<p>Sở Ly lập tức hiểu ra, mặt đỏ bừng, vội đẩy ngực hắn.</p>
+<p>“Chàng làm gì vậy? Còn có hạ nhân ở đây…”</p>
+<p>Nàng quay đầu nhìn.</p>
+<p>Chỉ thấy Lý quản gia ngẩng cao đầu, cùng bốn nha hoàn như không thấy gì mà lặng lẽ rời đi.</p>
+<p>Sở Đệ Trì hỏi:</p>
+<p>“Hạ nhân ở đâu?”</p>
+<p>Sở Ly xoay người định đi.</p>
+<p>“Không còn sớm nữa, ta…”</p>
+<p>Nam nhân nắm lấy cổ tay mảnh khảnh của nàng.</p>
+<p>“Nàng vẫn chưa trả lời ta.”</p>
+<p>“Không có hạ nhân, được chưa?”</p>
+<p>“Không phải cái đó.”</p>
+<p>Năng lực của hắn…</p>
+<p>“Có lẽ dạo này quá bận, không thể cùng Tiểu Cửu thân cận cho tốt, nên mới khiến nàng quên mất năng lực của ta.”</p>
+<p>“Xem ra trước đây ta vẫn chưa đủ… khắc sâu.”</p>
+<p>Mặt Sở Ly lập tức đỏ bừng.</p>
+<p>Chỉ cảm thấy lòng bàn tay hắn nóng như than hồng.</p>
+<p>Khi nắm lấy cổ tay nàng, giống như muốn thiêu tan cả người nàng.</p>
+<p>Dù hai người đã thân mật không biết bao nhiêu lần.</p>
+<p>Nhưng mỗi lần…</p>
+<p>Hắn luôn có thể nghĩ ra những cách khác nhau.</p>
+<p>“Gần đây quá bận rồi. Chàng nên nghỉ ngơi cho tốt đi, ta đi tắm đây!”</p>
+<p>Nói xong liền xoay người bỏ chạy.</p>
+<p>Vào phòng.</p>
+<p>Đóng cửa.</p>
+<p>Tắm gội.</p>
+<p>Lại là một ngày bận rộn.</p>
+<p>Ngâm mình trong nước nóng đến mức buồn ngủ, mơ mơ màng màng, hình như nghe thấy tiếng cửa khẽ mở.</p>
+<p>Sở Ly lập tức tỉnh táo, chống người nhìn sang.</p>
+<p>“Ai?”</p>
+<p>Ngoài cửa im lặng.</p>
+<p>Có lẽ…</p>
+<p>Là gió.</p>
+<p>Nàng vịn thành thùng tắm, tựa người trở lại.</p>
+<p>Đột nhiên, một đôi bàn tay từ phía sau luồn qua dưới cánh tay nàng.</p>
+<p>“Á!”</p>
+<p>Hai chân nàng đạp mạnh.</p>
+<p>Đứng không vững.</p>
+<p>Tay chân quẫy loạn trong nước, bắn tung tóe khắp nơi, giống hệt một con cá chép đang vẫy đuôi.</p>
+<p>Đôi bàn tay to của nam nhân gần như không giữ nổi.</p>
+<p>“Trơn thật.”</p>
+<p>“Tiểu Cửu là cá chạch thành tinh sao?”</p>
+<p>Trơn tuột.</p>
+<p>Toàn là nước.</p>
+<p>Muốn giữ cũng không giữ được.</p>
+<p>Sở Ly chìm nửa người trong nước.</p>
+<p>“Chàng vào từ lúc nào?”</p>
+<p>Nam nhân giũ bàn tay ướt sũng.</p>
+<p>“Nàng nói muốn tắm.”</p>
+<p>“Chẳng phải là đang chủ động mời ta sao?”</p>
+<p>Hắn tháo đai lưng.</p>
+<p>Cởi hắc bào.</p>
+<p>Sở Ly bám chặt mép thùng tắm.</p>
+<p>“Chờ một chút, ta sắp tắm xong rồi.”</p>
+<p>“Chúng ta cùng tắm.”</p>
+<p>“Thùng tắm này quá nhỏ, không chứa nổi hai người.”</p>
+<p>“Không sao.”</p>
+<p>“Chồng lên nhau là đủ chỗ.”</p>
+<p>Ào!</p>
+<p>Trong ánh mắt kinh ngạc của Sở Ly.</p>
+<p>Nam nhân bước vào thùng tắm.</p>
+<p>Nước lập tức tràn ra ngoài, bắn tung khắp nền, từng giọt nước trong veo phản chiếu ánh nến lay động, càng thêm óng ánh.</p>
+<p>Hắn từ phía sau ôm lấy nàng.</p>
+<p>Lồng ngực áp sát vào tấm lưng nàng, không hề có một khe hở.</p>
+<p>Đầu lưỡi nóng bỏng khẽ lướt qua vành tai nàng.</p>
+<p>Trong khoảnh khắc.</p>
+<p>Cả người nàng như bị dòng điện chạy qua.</p>
+<p>Tê dại đến mức gần như không đứng vững.</p>
+<p>“Hoàng… Hoàng thúc…”</p>
+<p>Bàn tay rộng lớn của nam nhân luồn qua mái tóc nàng, nâng lấy chiếc cổ thon dài.</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Nàng có biết ta thích nhất dáng vẻ đỏ mặt của nàng không?”</p>
+<p>“Bất kể chúng ta ở bên nhau bao lâu.”</p>
+<p>“Nàng vẫn luôn khiến ta không thể kìm lòng.”</p>
+<p>Khuôn mặt nàng đỏ bừng.</p>
+<p>Có lẽ…</p>
+<p>Là vì hơi nóng trong thùng tắm hun lên.</p>
+<p>“Hoàng thúc… rõ ràng là do chàng lắm trò…”</p>
+<p>“Vậy nàng có thích không?”</p>
+<p>Nàng cúi đầu.</p>
+<p>Khẽ ừ một tiếng.</p>
+<p>Nhỏ đến mức gần như không nghe thấy.</p>
+<p>“To hơn một chút.”</p>
+<p>“Không biết…”</p>
+<p>“Vậy ta sẽ khiến nàng thích.”</p>
+<p>…</p>
+<p>Nữ nhân vốn là nước tạo thành.</p>
+<p>Chiếc eo nhỏ ấy.</p>
+<p>Chỉ cần khẽ siết.</p>
+<p>Như thể sẽ gãy mất.</p>
+<p>Mềm mại đến mức có thể thuận theo mọi tư thế.</p>
+<p>Nước lạnh.</p>
+<p>Hai người lại chuyển lên giường.</p>
+<p>Qua lại mấy lần.</p>
+<p>Mệt đến mức thở dốc.</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Bây giờ đã thích chưa?”</p>
+<p>Sở Ly ôm chặt chăn, chỉ để lộ nửa khuôn mặt.</p>
+<p>Đôi mắt phủ đầy hơi nước nhìn hắn.</p>
+<p>“Sáng mai chàng còn phải thượng triều.”</p>
+<p>“Không sợ không đủ tinh thần sao?”</p>
+<p>Sở Đệ Trì tựa đầu giường, vỗ vỗ cánh tay mình.</p>
+<p>Nàng quấn chăn quanh người.</p>
+<p>Lăn lăn đến bên hắn.</p>
+<p>“Ăn no chưa?”</p>
+<p>“…”</p>
+<p>Nàng lo hắn sáng mai không đủ tinh thần đi thượng triều.</p>
+<p>Kết quả…</p>
+<p>Hắn chẳng nghe lọt lấy một chữ.</p>
+<p>Nàng quấn chăn, định lăn trở lại.</p>
+<p>“Đừng động!”</p>
+<p>Giọng nam nhân đột nhiên vang lên.</p>
+<p>Sở Ly giật mình cứng người.</p>
+<p>Cứ tưởng xảy ra chuyện gì.</p>
+<p>Chỉ thấy hắn cúi đầu nói:</p>
+<p>“Sao nàng lại đặt tay lên eo ta?”</p>
+<p>“Hử?”</p>
+<p>“Còn muốn nữa?”</p>
+<p>“?”</p>
+<p>Không phải.</p>
+<p>Nàng chỉ định lăn một vòng.</p>
+<p>Vô tình chạm phải hắn thôi.</p>
+<p>Chẳng phải rất bình thường sao?</p>
+<p>“Làm nữ nhân của bổn vương.”</p>
+<p>“Có cầu tất ứng là điều cơ bản nhất.”</p>
+<p>“Được.”</p>
+<p>“Thành toàn cho nàng.”</p>
+<p>Bàn tay lớn khẽ nâng.</p>
+<p>Nhanh nhẹn luồn vào dưới góc chăn.</p>
+<p>…</p>
+<p>Suốt một đêm.</p>
+<p>Không ai ngủ.</p>
+<p>Đến mức chân mềm nhũn.</p>
+<p>Sáng sớm.</p>
+<p>Sở Ly mệt đến mức ngay cả cánh tay cũng không còn sức nhấc lên.</p>
+<p>Nàng nghe thấy tiếng Sở Đệ Trì thức dậy.</p>
+<p>Nhưng lười mở mắt nhìn.</p>
+<p>Cho đến khi…</p>
+<p>Choang!</p>
+<p>Một tiếng động giòn tan vang lên.</p>
+<p>“Điện hạ bớt giận! Nô tỳ không cố ý!”</p>
+<p>Sở Ly mở mắt.</p>
+<p>Chỉ thấy một nha hoàn đang quỳ dưới đất, hoảng sợ nhận lỗi.</p>
+<p>Trong lúc hầu hạ Sở Đệ Trì thay y phục.</p>
+<p>Nàng ta vô ý làm đổ giá gỗ.</p>
+<p>Đó vốn cũng không phải lỗi gì quá đáng.</p>
+<p>Chỉ có điều…</p>
+<p>Nàng ta nước mắt như mưa.</p>
+<p>Khóe mắt đẫm lệ.</p>
+<p>Làn da trước ngực trắng như tuyết, theo từng nhịp thở gấp mà phập phồng.</p>
+<p>Quỳ dưới đất, cúi đầu.</p>
+<p>Chiếc cổ vừa trắng vừa thon dài.</p>
+<p>Hai bàn tay bối rối xoắn lấy vạt áo.</p>
+<p>Một dáng vẻ khiến ai nhìn cũng sinh lòng thương xót.</p>
+<p>Sở Ly đầy hứng thú xoay người.</p>
+<p>Chống khuỷu tay lên đầu giường.</p>
+<p>Lẳng lặng nhìn cảnh ấy.</p>
+<p>“Đồ vô dụng.”</p>
+<p>Sở Đệ Trì tháo chiếc ngọc đai màu đỏ tím xuống, lùi lại nửa bước.</p>
+<p>“Nếu hầu hạ cũng không xong.”</p>
+<p>“Vậy không cần tiếp tục ở Vương phủ nữa.”</p>
+<p>“Người đâu!”</p>
+<p>Hai gã sai vặt lập tức tiến lên, giữ lấy nha hoàn.</p>
+<p>“Điện hạ bớt giận! Điện hạ! Nô tỳ thật sự không cố ý… Điện hạ…”</p>
+<p>“Mới sáng sớm đã nổi giận làm gì.”</p>
+<p>Sở Ly lên tiếng.</p>
+<p>“Đều là lỗi của nàng.”</p>
+<p>Sở Đệ Trì quay đầu nhìn nàng.</p>
+<p>Vừa oán trách vừa tức giận.</p>
+<p>“Nàng quản gia kiểu gì vậy?”</p>
+<p>“Loại mèo chó gì cũng cho vào Vương phủ.”</p>
+<p>“Nếu còn có lần thứ hai.”</p>
+<p>“Thì giải tán toàn bộ nha hoàn trong phủ.”</p>
+<p>“Đổi hết thành gã sai vặt.”</p>
+<p>Việc đó không được.</p>
+<p>Toàn nam nhân thì quá bất tiện.</p>
+<p>“Nha hoàn này đâu phải do ta đưa vào phủ.”</p>
+<p>Hơn nữa…</p>
+<p>Kẻ nào mù mắt đến mức dám ngay dưới mí mắt nàng mà quyến rũ…</p>
+<p>Trong lòng Sở Ly đã đoán được đại khái.</p>
+<p>“Được rồi.”</p>
+<p>“Chàng đi thượng triều trước đi.”</p>
+<p>“Lát nữa ta sẽ điều tra.”</p>
+<p>“Hừ.”</p>
+<p>Hắn phất tay áo bỏ đi.</p>
+<p>Người này…</p>
+<p>Lại còn hừ một tiếng nữa!</p>
+<p>Ngoài Vương phủ.</p>
+<p>Nha hoàn có ý đồ bất chính kia bị đánh mười trượng rồi ném ra ngoài.</p>
+<p>Toàn thân đẫm mồ hôi.</p>
+<p>Sắc mặt trắng bệch.</p>
+<p>Trông vô cùng thảm hại.</p>
+<p>Cách đó không xa.</p>
+<p>Sở Minh Hoa thấy vậy, sắc mặt lập tức sa sầm.</p>
+<p>“Dung mạo của ngươi cũng đâu có kém.”</p>
+<p>“Vậy mà Nhiếp Chính Vương vẫn đuổi ngươi ra?”</p>
+<p>Nha hoàn òa khóc.</p>
+<p>“Là nô tỳ vô dụng.”</p>
+<p>“Có phải Tạ Vãn Nguyệt xúi giục không?”</p>
+<p>“Không… không phải…”</p>
+<p>“Tạ tiểu thư không nói một lời.”</p>
+<p>“Chính Nhiếp Chính Vương nổi trận lôi đình, rồi đuổi nô tỳ ra khỏi phủ.”</p>
+<p>Không thể nào!</p>
+<p>Sở Minh Hoa không tin.</p>
+<p>Từ xưa đến nay.</p>
+<p>Có nam nhân nào mà không tam thê tứ thiếp?</p>
+<p>Ngay cả Hoàng thượng vốn luôn giữ mình trong sạch cũng một hơi nạp năm vị phi tần.</p>
+<p>Chắc chắn là Tạ Vãn Nguyệt lòng dạ hẹp hòi.</p>
+<p>Ghen tuông đố kỵ.</p>
+<p>Không cho bất kỳ nữ nhân nào đến gần Nhiếp Chính Vương.</p>
+<p>Sợ người khác cướp mất sủng ái của mình.</p>
+<p>Nam nhân…</p>
+<p>Đều không thích nữ nhân hay ghen.</p>
+<p>Đợi nàng nghĩ ra một kế sách.</p>
+<p>Nhất định phải để Nhiếp Chính Vương nhìn thấy bộ mặt thật của Tạ Vãn Nguyệt. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_328.html" class="btn">‹ Trước</a>
             <a href="chuong_330.html" class="btn">Sau ›</a>
         </div>
@@ -362,15 +370,11 @@ Nhất định phải để Nhiếp Chính Vương nhìn thấy bộ mặt thậ
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -382,11 +386,11 @@ Nhất định phải để Nhiếp Chính Vương nhìn thấy bộ mặt thậ
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

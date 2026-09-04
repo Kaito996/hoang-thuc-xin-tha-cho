@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 168</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,210 +62,219 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 168</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_167.html" class="btn">‹ Trước</a>
             <a href="chuong_169.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 168: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 168: Ta vĩnh viễn sẽ không bao giờ bỏ lại muội
-Sở Dạ Ly bế nàng lên, đặt lên giường, cẩn thận đắp chăn cho nàng.
-“Ngũ ca…”
-Ngón tay nàng khẽ móc lấy lòng bàn tay hắn, sức lực mềm nhũn. Đôi mắt nặng trĩu vẫn cố gắng chống đỡ chút lý trí cuối cùng:
-“Đừng… đừng bỏ lại muội…”
-“Ta vĩnh viễn sẽ không bao giờ bỏ lại muội, cũng giống như vĩnh viễn sẽ không làm tổn thương muội.”
-Hắn dịu dàng xoa đầu nàng, vận nội lực, phất tay dập tắt ngọn nến.
-“Ngủ ngon đi, đợi tỉnh dậy, Ngũ ca sẽ mua bánh ngọt mà muội thích nhất cho muội.”
-Hắn sải bước rời đi.
-“Chăm sóc nàng cho cẩn thận.”
-Bên ngoài doanh trướng, Hướng Nguyệt canh giữ:
-“Đông Lăng điện hạ cứ yên tâm, nô tỳ nhất định sẽ nửa bước không rời.”
-U—
-Tiếng tù và trong quân doanh vang lên, như tiếng sói tru dữ dội xé tan màn đêm tĩnh mịch. Sát khí ngút trời chính thức mở màn cho đêm nay.
-Đại chiến sắp bắt đầu.
-Sở Ly mềm nhũn nằm trên giường, cắn mạnh đầu lưỡi, nhưng vẫn không chống nổi cơn buồn ngủ mãnh liệt. Nàng chỉ đành gắng hết sức, khó nhọc lấy từ trong ngực ra một ống trúc nhỏ.
-Bên trong đựng cổ trùng.
-Đó là thứ nàng mang về từ thư phòng của Cừu Vu sư ở Ty Cổ cục.
-Đây là biện pháp duy nhất.
-Đánh cược một phen.
-Nàng không còn do dự nữa, cắn bật nút ống trúc. Một con cổ trùng màu đen chậm rãi bò ra, cắn rách đầu ngón tay nàng rồi chui vào cơ thể.
-“Ưm…”
-—
-Ầm!
-Chiến hỏa bùng nổ.
-“Tập kích!”
-“Nam Man tập kích!”
-Đùng! Đùng! Đùng!
-Binh sĩ trực đêm lập tức đánh tín hiệu báo động khẩn cấp. Tất cả mọi người đều nâng cao mười hai phần tinh thần, bất kể đang tuần tra, canh gác, nghỉ ngơi, hay đã ngủ say, đều lập tức mặc giáp chỉnh tề, dùng tốc độ nhanh nhất trở về vị trí.
-An tướng quân đội mũ trụ, sải bước lao lên tường thành.
-“Tất cả không được rối loạn! Đám tiểu nhi Nam Man vô sỉ hèn hạ, trước đây cũng từng nhiều lần tập kích. Tường thành của chúng ta cao lớn kiên cố, bọn chúng không công phá được. Cứ theo kế hoạch ứng chiến!”
-“Cung tiễn thủ!”
-Một tên binh sĩ mặt đầy hoảng hốt:
-“Nhưng… nhưng… tướng quân… bọn chúng hình như… bắn không chết…”
-“Cái gì?!”
-“Ngươi nói bậy bạ gì vậy? Con người là thân xác máu thịt, sao có thể bắn không chết? Chắc chắn là đám các ngươi ngày thường lười biếng luyện tập, bắn không trúng nên kiếm cớ!”
-“Tướng quân, ngài tự mình xem đi!”
-An tướng quân bước nhanh đến lỗ châu mai. Vừa nhìn ra ngoài, một mũi tên đã lao thẳng tới.
-“Tướng quân cẩn thận!”
-Dù tránh rất nhanh, vai ông vẫn bị trúng tên.
-Máu bắn tung tóe.
-Chỉ thấy ngoài thành, đại quân đen nghịt như thủy triều ùn ùn kéo đến. Mưa tên cắm đầy trên người bọn chúng. Có kẻ trúng tên vào bụng, có kẻ trúng cánh tay, có kẻ toàn thân chi chít như tổ ong, vậy mà vẫn chạy nhanh như bay.
-Tốc độ ấy, khí thế ấy, khỏe chẳng khác gì trâu.
-Bọn chúng khiêng thang mây.
-“Xông lên!”
-Phía xa, những cỗ nỏ xa liên tục bắn tên về phía tường thành yểm trợ.
-“Xông!”
-“Phòng thủ!”
-An tướng quân rút mạnh mũi tên trên vai, mặc kệ vết thương, quát lớn:
-“Tất cả dốc hết sức phòng thủ! Tuyệt đối không để một tên Nam Man nào leo lên tường thành của chúng ta!”
-Vút! Vút! Vút!
-Tên qua, tên lại.
-Leo thang mây, ném đá, vung trường kiếm…
-Những binh sĩ vừa leo lên tường bị đá đập rơi xuống đất. Thế nhưng chỉ vài nhịp thở sau, bọn chúng lại phát ra tiếng rắc rắc, cổ vặn vẹo, xương cốt kêu răng rắc, đầu đầy máu vẫn đứng bật dậy, tiếp tục leo thang.
-An tướng quân trợn mắt.
-“Có quỷ!”
-Đây là thứ quái quỷ gì vậy?
-Không ổn!
-Nếu đám binh lính Nam Man này giết không chết, đập cũng không chết, vậy đêm nay bọn họ làm sao giữ nổi thành?
-“Mau đi bẩm báo Nhiếp Chính Vương!”
-Sở Đệ Trì đã tới.
-“Gia cố thêm một lớp then cửa thành, dùng xích sắt lớn khóa chặt. An tướng quân, khởi động đại trảm đao trên tường thành.”
-Vừa nhìn thấy Nhiếp Chính Vương, mọi người lập tức như tìm được trụ cột, đồng thanh đáp:
-“Rõ!”
-Mấy tên binh sĩ lao lên lỗ châu mai, kéo mạnh dây xích. Một thanh đại trảm đao dài tới năm trượng từ từ được nâng lên.
-Trên tường thành, binh sĩ Nam Man điên cuồng leo thang, tranh nhau trèo lên.
-Sở Đệ Trì ước lượng khoảng cách, híp mắt.
-“Thả!”
-Bốn binh sĩ buông tay khỏi dây xích.
-Đại trảm đao khổng lồ bổ ngang xuống.
-Trong phạm vi năm trượng, toàn bộ binh sĩ đều bị chém đứt làm đôi, rơi xuống dưới.
-Phập! Phập!
-“A!”
-“Kéo!”
-Binh sĩ lập tức hợp sức kéo dây xích, nâng thanh đại trảm đao đẫm máu lên lần nữa.
-Phía xa chiến trường, màn đêm sâu thẳm như nước.
-Từng hàng nỏ xa liên tục bắn tên. Nhưng tường thành quá cao, phòng ngự quá kiên cố, lại có vô số lỗ châu mai che chắn, rất khó bắn trúng.
-Đại trảm đao từng nhát từng nhát chém xuống, khiến binh sĩ Nam Man rất khó leo lên thành.
-Thác Bạt Minh Nguyệt thấy vậy, liền thúc ngựa rút kiếm.
-“Để ta đi gặp vị Nhiếp Chính Vương Đại Sở này!”
-“Không vội.”
-“Cung!”
-Sở Dạ Ly giơ tay.
-Một tên vệ binh chạy tới dâng cung.
-Hắn rút ra một mũi ngân tiễn tinh xảo.
-Chiếc cung này được chế từ huyền thiết. Mũi tên dùng băng thiết khai thác dưới lòng núi tuyết rèn thành, sắc bén đủ để phá vạn vật.
-Hắn giương cung, khẽ nheo mắt.
-Vút!
-Trường tiễn xé gió, xuyên qua màn đêm cách trăm trượng.
-Chỉ nghe một tiếng keng giòn tan.
-Mũi tên bắn đứt dây xích.
-Đại trảm đao mất khống chế, ầm ầm rơi xuống.
-Ngay sau đó lại thêm hai mũi tên nữa.
-Ba thanh đại trảm đao đều bị phá hủy!
-“Nhiếp Chính Vương! Bây giờ chúng ta phải làm sao?”
-“Đám binh lính Nam Man này hình như giết không chết!”
-“Cố thủ!”
-“Tử thủ!”
-“Muốn bước lên tường thành, Nam Man phải giẫm lên xác chúng ta trước đã! Nếu không, chúng ta sẽ chiến đấu đến hơi thở cuối cùng!”
-Sở Đệ Trì đứng trên tường thành cao ngất, phóng tầm mắt về màn đêm đen đặc. Đôi mắt sắc bén như chim ưng dường như xuyên thấu màn đêm, chuẩn xác khóa chặt một người.
-Khóe môi Sở Dạ Ly khẽ cong lên, tiện tay ném cây cung xuống, hơi ngẩng cằm.
-Bốn mắt nhìn nhau.
-Khoảng cách trăm trượng.
-Sát ý vô hình lập tức bùng lên.
-Ánh mắt Sở Đệ Trì trầm ổn, bày mưu tính kế.
-“An tướng quân.”
-“Có mạt tướng!”
-“Đem toàn bộ hình nhân luyện binh lên tường thành. Binh sĩ truyền lệnh không được ngừng thổi tù và, nổi trống trận. Kinh Ảnh, ngươi dẫn năm trăm người vòng ra khỏi thành… Trọng Phong, ngươi dẫn năm trăm người…”
-U—
-Tiếng tù và nổi lên.
-Trống trận vang trời.
-Trên tường thành đột nhiên xuất hiện từng hàng đầu người màu đen.
-“Công chúa! Bọn chúng tăng viện rồi!”
-Một tên vệ binh cưỡi ngựa liên tục báo cáo chiến sự.
-“Bọn chúng dốc toàn quân xuất trận, e rằng sắp không giữ nổi tường thành nữa!”
-Thác Bạt Minh Nguyệt nhìn chằm chằm chiến trường phía xa.
-“Rất tốt.”
-Đội quân cổ trùng dùng làm tiên phong này không biết sợ chết, không biết đau đớn.
-Một người còn hữu dụng hơn mười người.
-Quả nhiên không uổng công Ty Cổ cục khổ tâm nghiên cứu suốt bao năm.
-“Toàn quân nghe lệnh!”
-“Dốc toàn lực công thành!”
-—
-Tiếng chém giết vang xa mấy dặm trong màn đêm. Mùi máu tanh nồng theo gió lan khắp nơi.
-Quân doanh Nam Man.
-Trong doanh trướng, Sở Ly nằm trên giường. Một con cổ trùng đen dài lướt dưới lớp da mịn nơi cổ nàng, chậm rãi bò về phía trái tim…
-Vút!
-Nàng giật mình bật dậy, vội sờ lên mặt, hai tay và cổ, dường như không có chỗ nào khác thường.
-Nhìn sắc trời bên ngoài, nàng hẳn chỉ hôn mê chưa tới nửa canh giờ.
-Tuy không biết con cổ trùng ấy có tác dụng gì, nhưng nàng không còn lựa chọn nào khác, chỉ có thể đánh cược một phen.
-Hiện giờ xem ra…
-Nàng đã cược đúng.
-Nàng không chết.
-Còn tỉnh dậy sớm hơn.
-Choang!
-“Có tiếng gì vậy?”
-Bên ngoài doanh trướng, Hướng Nguyệt cảnh giác vén rèm bước vào, chỉ thấy Sở Ly vẫn đang nằm ngủ trên giường, nhưng chiếc chén lại rơi xuống đất, vỡ thành mấy mảnh.
-Nàng lập tức sinh nghi.
-Chiếc chén sao lại rơi được?
-Tiểu Sở công tử đã uống thuốc an thần, ít nhất phải ngủ bốn canh giờ. Trong trướng lại không có ai khác, cũng chẳng có gió, vậy chiếc chén vì sao lại rơi?
-Nàng nhíu mày, bước tới, nhìn mặt bàn rồi lại nhìn Sở Ly đang ngủ say, sau đó ngồi xổm xuống nhặt những mảnh sứ vỡ.
-“Sao cái chén lại rơi… ưm!”
-Phía sau, sợi ngân liên bất ngờ siết chặt lấy cổ nàng.
-“Khụ… ngươi… khụ!”
-“Hướng Nguyệt, đắc tội rồi!” Ẩn bớt</p>
+            <p>Chương 168: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 168: Ta vĩnh viễn sẽ không bao giờ bỏ lại muội</p>
+<p>Sở Dạ Ly bế nàng lên, đặt lên giường, cẩn thận đắp chăn cho nàng.</p>
+<p>“Ngũ ca…”</p>
+<p>Ngón tay nàng khẽ móc lấy lòng bàn tay hắn, sức lực mềm nhũn. Đôi mắt nặng trĩu vẫn cố gắng chống đỡ chút lý trí cuối cùng:</p>
+<p>“Đừng… đừng bỏ lại muội…”</p>
+<p>“Ta vĩnh viễn sẽ không bao giờ bỏ lại muội, cũng giống như vĩnh viễn sẽ không làm tổn thương muội.”</p>
+<p>Hắn dịu dàng xoa đầu nàng, vận nội lực, phất tay dập tắt ngọn nến.</p>
+<p>“Ngủ ngon đi, đợi tỉnh dậy, Ngũ ca sẽ mua bánh ngọt mà muội thích nhất cho muội.”</p>
+<p>Hắn sải bước rời đi.</p>
+<p>“Chăm sóc nàng cho cẩn thận.”</p>
+<p>Bên ngoài doanh trướng, Hướng Nguyệt canh giữ:</p>
+<p>“Đông Lăng điện hạ cứ yên tâm, nô tỳ nhất định sẽ nửa bước không rời.”</p>
+<p>U—</p>
+<p>Tiếng tù và trong quân doanh vang lên, như tiếng sói tru dữ dội xé tan màn đêm tĩnh mịch. Sát khí ngút trời chính thức mở màn cho đêm nay.</p>
+<p>Đại chiến sắp bắt đầu.</p>
+<p>Sở Ly mềm nhũn nằm trên giường, cắn mạnh đầu lưỡi, nhưng vẫn không chống nổi cơn buồn ngủ mãnh liệt. Nàng chỉ đành gắng hết sức, khó nhọc lấy từ trong ngực ra một ống trúc nhỏ.</p>
+<p>Bên trong đựng cổ trùng.</p>
+<p>Đó là thứ nàng mang về từ thư phòng của Cừu Vu sư ở Ty Cổ cục.</p>
+<p>Đây là biện pháp duy nhất.</p>
+<p>Đánh cược một phen.</p>
+<p>Nàng không còn do dự nữa, cắn bật nút ống trúc. Một con cổ trùng màu đen chậm rãi bò ra, cắn rách đầu ngón tay nàng rồi chui vào cơ thể.</p>
+<p>“Ưm…”</p>
+<p>—</p>
+<p>Ầm!</p>
+<p>Chiến hỏa bùng nổ.</p>
+<p>“Tập kích!”</p>
+<p>“Nam Man tập kích!”</p>
+<p>Đùng! Đùng! Đùng!</p>
+<p>Binh sĩ trực đêm lập tức đánh tín hiệu báo động khẩn cấp. Tất cả mọi người đều nâng cao mười hai phần tinh thần, bất kể đang tuần tra, canh gác, nghỉ ngơi, hay đã ngủ say, đều lập tức mặc giáp chỉnh tề, dùng tốc độ nhanh nhất trở về vị trí.</p>
+<p>An tướng quân đội mũ trụ, sải bước lao lên tường thành.</p>
+<p>“Tất cả không được rối loạn! Đám tiểu nhi Nam Man vô sỉ hèn hạ, trước đây cũng từng nhiều lần tập kích. Tường thành của chúng ta cao lớn kiên cố, bọn chúng không công phá được. Cứ theo kế hoạch ứng chiến!”</p>
+<p>“Cung tiễn thủ!”</p>
+<p>Một tên binh sĩ mặt đầy hoảng hốt:</p>
+<p>“Nhưng… nhưng… tướng quân… bọn chúng hình như… bắn không chết…”</p>
+<p>“Cái gì?!”</p>
+<p>“Ngươi nói bậy bạ gì vậy? Con người là thân xác máu thịt, sao có thể bắn không chết? Chắc chắn là đám các ngươi ngày thường lười biếng luyện tập, bắn không trúng nên kiếm cớ!”</p>
+<p>“Tướng quân, ngài tự mình xem đi!”</p>
+<p>An tướng quân bước nhanh đến lỗ châu mai. Vừa nhìn ra ngoài, một mũi tên đã lao thẳng tới.</p>
+<p>“Tướng quân cẩn thận!”</p>
+<p>Dù tránh rất nhanh, vai ông vẫn bị trúng tên.</p>
+<p>Máu bắn tung tóe.</p>
+<p>Chỉ thấy ngoài thành, đại quân đen nghịt như thủy triều ùn ùn kéo đến. Mưa tên cắm đầy trên người bọn chúng. Có kẻ trúng tên vào bụng, có kẻ trúng cánh tay, có kẻ toàn thân chi chít như tổ ong, vậy mà vẫn chạy nhanh như bay.</p>
+<p>Tốc độ ấy, khí thế ấy, khỏe chẳng khác gì trâu.</p>
+<p>Bọn chúng khiêng thang mây.</p>
+<p>“Xông lên!”</p>
+<p>Phía xa, những cỗ nỏ xa liên tục bắn tên về phía tường thành yểm trợ.</p>
+<p>“Xông!”</p>
+<p>“Phòng thủ!”</p>
+<p>An tướng quân rút mạnh mũi tên trên vai, mặc kệ vết thương, quát lớn:</p>
+<p>“Tất cả dốc hết sức phòng thủ! Tuyệt đối không để một tên Nam Man nào leo lên tường thành của chúng ta!”</p>
+<p>Vút! Vút! Vút!</p>
+<p>Tên qua, tên lại.</p>
+<p>Leo thang mây, ném đá, vung trường kiếm…</p>
+<p>Những binh sĩ vừa leo lên tường bị đá đập rơi xuống đất. Thế nhưng chỉ vài nhịp thở sau, bọn chúng lại phát ra tiếng rắc rắc, cổ vặn vẹo, xương cốt kêu răng rắc, đầu đầy máu vẫn đứng bật dậy, tiếp tục leo thang.</p>
+<p>An tướng quân trợn mắt.</p>
+<p>“Có quỷ!”</p>
+<p>Đây là thứ quái quỷ gì vậy?</p>
+<p>Không ổn!</p>
+<p>Nếu đám binh lính Nam Man này giết không chết, đập cũng không chết, vậy đêm nay bọn họ làm sao giữ nổi thành?</p>
+<p>“Mau đi bẩm báo Nhiếp Chính Vương!”</p>
+<p>Sở Đệ Trì đã tới.</p>
+<p>“Gia cố thêm một lớp then cửa thành, dùng xích sắt lớn khóa chặt. An tướng quân, khởi động đại trảm đao trên tường thành.”</p>
+<p>Vừa nhìn thấy Nhiếp Chính Vương, mọi người lập tức như tìm được trụ cột, đồng thanh đáp:</p>
+<p>“Rõ!”</p>
+<p>Mấy tên binh sĩ lao lên lỗ châu mai, kéo mạnh dây xích. Một thanh đại trảm đao dài tới năm trượng từ từ được nâng lên.</p>
+<p>Trên tường thành, binh sĩ Nam Man điên cuồng leo thang, tranh nhau trèo lên.</p>
+<p>Sở Đệ Trì ước lượng khoảng cách, híp mắt.</p>
+<p>“Thả!”</p>
+<p>Bốn binh sĩ buông tay khỏi dây xích.</p>
+<p>Đại trảm đao khổng lồ bổ ngang xuống.</p>
+<p>Trong phạm vi năm trượng, toàn bộ binh sĩ đều bị chém đứt làm đôi, rơi xuống dưới.</p>
+<p>Phập! Phập!</p>
+<p>“A!”</p>
+<p>“Kéo!”</p>
+<p>Binh sĩ lập tức hợp sức kéo dây xích, nâng thanh đại trảm đao đẫm máu lên lần nữa.</p>
+<p>Phía xa chiến trường, màn đêm sâu thẳm như nước.</p>
+<p>Từng hàng nỏ xa liên tục bắn tên. Nhưng tường thành quá cao, phòng ngự quá kiên cố, lại có vô số lỗ châu mai che chắn, rất khó bắn trúng.</p>
+<p>Đại trảm đao từng nhát từng nhát chém xuống, khiến binh sĩ Nam Man rất khó leo lên thành.</p>
+<p>Thác Bạt Minh Nguyệt thấy vậy, liền thúc ngựa rút kiếm.</p>
+<p>“Để ta đi gặp vị Nhiếp Chính Vương Đại Sở này!”</p>
+<p>“Không vội.”</p>
+<p>“Cung!”</p>
+<p>Sở Dạ Ly giơ tay.</p>
+<p>Một tên vệ binh chạy tới dâng cung.</p>
+<p>Hắn rút ra một mũi ngân tiễn tinh xảo.</p>
+<p>Chiếc cung này được chế từ huyền thiết. Mũi tên dùng băng thiết khai thác dưới lòng núi tuyết rèn thành, sắc bén đủ để phá vạn vật.</p>
+<p>Hắn giương cung, khẽ nheo mắt.</p>
+<p>Vút!</p>
+<p>Trường tiễn xé gió, xuyên qua màn đêm cách trăm trượng.</p>
+<p>Chỉ nghe một tiếng keng giòn tan.</p>
+<p>Mũi tên bắn đứt dây xích.</p>
+<p>Đại trảm đao mất khống chế, ầm ầm rơi xuống.</p>
+<p>Ngay sau đó lại thêm hai mũi tên nữa.</p>
+<p>Ba thanh đại trảm đao đều bị phá hủy!</p>
+<p>“Nhiếp Chính Vương! Bây giờ chúng ta phải làm sao?”</p>
+<p>“Đám binh lính Nam Man này hình như giết không chết!”</p>
+<p>“Cố thủ!”</p>
+<p>“Tử thủ!”</p>
+<p>“Muốn bước lên tường thành, Nam Man phải giẫm lên xác chúng ta trước đã! Nếu không, chúng ta sẽ chiến đấu đến hơi thở cuối cùng!”</p>
+<p>Sở Đệ Trì đứng trên tường thành cao ngất, phóng tầm mắt về màn đêm đen đặc. Đôi mắt sắc bén như chim ưng dường như xuyên thấu màn đêm, chuẩn xác khóa chặt một người.</p>
+<p>Khóe môi Sở Dạ Ly khẽ cong lên, tiện tay ném cây cung xuống, hơi ngẩng cằm.</p>
+<p>Bốn mắt nhìn nhau.</p>
+<p>Khoảng cách trăm trượng.</p>
+<p>Sát ý vô hình lập tức bùng lên.</p>
+<p>Ánh mắt Sở Đệ Trì trầm ổn, bày mưu tính kế.</p>
+<p>“An tướng quân.”</p>
+<p>“Có mạt tướng!”</p>
+<p>“Đem toàn bộ hình nhân luyện binh lên tường thành. Binh sĩ truyền lệnh không được ngừng thổi tù và, nổi trống trận. Kinh Ảnh, ngươi dẫn năm trăm người vòng ra khỏi thành… Trọng Phong, ngươi dẫn năm trăm người…”</p>
+<p>U—</p>
+<p>Tiếng tù và nổi lên.</p>
+<p>Trống trận vang trời.</p>
+<p>Trên tường thành đột nhiên xuất hiện từng hàng đầu người màu đen.</p>
+<p>“Công chúa! Bọn chúng tăng viện rồi!”</p>
+<p>Một tên vệ binh cưỡi ngựa liên tục báo cáo chiến sự.</p>
+<p>“Bọn chúng dốc toàn quân xuất trận, e rằng sắp không giữ nổi tường thành nữa!”</p>
+<p>Thác Bạt Minh Nguyệt nhìn chằm chằm chiến trường phía xa.</p>
+<p>“Rất tốt.”</p>
+<p>Đội quân cổ trùng dùng làm tiên phong này không biết sợ chết, không biết đau đớn.</p>
+<p>Một người còn hữu dụng hơn mười người.</p>
+<p>Quả nhiên không uổng công Ty Cổ cục khổ tâm nghiên cứu suốt bao năm.</p>
+<p>“Toàn quân nghe lệnh!”</p>
+<p>“Dốc toàn lực công thành!”</p>
+<p>—</p>
+<p>Tiếng chém giết vang xa mấy dặm trong màn đêm. Mùi máu tanh nồng theo gió lan khắp nơi.</p>
+<p>Quân doanh Nam Man.</p>
+<p>Trong doanh trướng, Sở Ly nằm trên giường. Một con cổ trùng đen dài lướt dưới lớp da mịn nơi cổ nàng, chậm rãi bò về phía trái tim…</p>
+<p>Vút!</p>
+<p>Nàng giật mình bật dậy, vội sờ lên mặt, hai tay và cổ, dường như không có chỗ nào khác thường.</p>
+<p>Nhìn sắc trời bên ngoài, nàng hẳn chỉ hôn mê chưa tới nửa canh giờ.</p>
+<p>Tuy không biết con cổ trùng ấy có tác dụng gì, nhưng nàng không còn lựa chọn nào khác, chỉ có thể đánh cược một phen.</p>
+<p>Hiện giờ xem ra…</p>
+<p>Nàng đã cược đúng.</p>
+<p>Nàng không chết.</p>
+<p>Còn tỉnh dậy sớm hơn.</p>
+<p>Choang!</p>
+<p>“Có tiếng gì vậy?”</p>
+<p>Bên ngoài doanh trướng, Hướng Nguyệt cảnh giác vén rèm bước vào, chỉ thấy Sở Ly vẫn đang nằm ngủ trên giường, nhưng chiếc chén lại rơi xuống đất, vỡ thành mấy mảnh.</p>
+<p>Nàng lập tức sinh nghi.</p>
+<p>Chiếc chén sao lại rơi được?</p>
+<p>Tiểu Sở công tử đã uống thuốc an thần, ít nhất phải ngủ bốn canh giờ. Trong trướng lại không có ai khác, cũng chẳng có gió, vậy chiếc chén vì sao lại rơi?</p>
+<p>Nàng nhíu mày, bước tới, nhìn mặt bàn rồi lại nhìn Sở Ly đang ngủ say, sau đó ngồi xổm xuống nhặt những mảnh sứ vỡ.</p>
+<p>“Sao cái chén lại rơi… ưm!”</p>
+<p>Phía sau, sợi ngân liên bất ngờ siết chặt lấy cổ nàng.</p>
+<p>“Khụ… ngươi… khụ!”</p>
+<p>“Hướng Nguyệt, đắc tội rồi!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_167.html" class="btn">‹ Trước</a>
             <a href="chuong_169.html" class="btn">Sau ›</a>
         </div>
@@ -274,15 +282,11 @@ Phía sau, sợi ngân liên bất ngờ siết chặt lấy cổ nàng.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -294,11 +298,11 @@ Phía sau, sợi ngân liên bất ngờ siết chặt lấy cổ nàng.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

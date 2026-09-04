@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 113</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,181 +62,190 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 113</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_112.html" class="btn">‹ Trước</a>
             <a href="chuong_114.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 113: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 113: Tiểu Cửu là tiểu chất nhi mà thần đệ yêu thương nhất
-“Ngươi!” Sở Hoàng run rẩy giơ tay chỉ vào nàng. “Ngươi! Ngươi!”
-Đúng là nghịch tử!
-Vốn dĩ trong người ông đã mang bệnh cũ, mấy ngày nay vẫn luôn tĩnh dưỡng long thể, giờ bị chọc tức đến mức phun ra một ngụm máu.
-“Trẫm là già rồi, nhưng chưa chết! Chẳng lẽ ngay cả ngươi cũng không dạy dỗ nổi sao? Người đâu! Lôi nghịch tử này xuống, đánh ba mươi trượng! Đánh xong thì ném thẳng đến hành cung ngoài thành cho trẫm!”
-“Hoàng huynh hà tất phải nổi giận lớn như vậy?”
-Ngoài cửa vang lên tiếng bước chân trầm ổn.
-Sở Ly ngoảnh đầu lại.
-“Hoàng thúc?”
-Sao hắn còn chưa đi?
-Sao hắn lại xuất hiện ở đây?
-Chẳng phải đây là tự chui đầu vào chỗ chết sao!
-Sở Hoàng vừa nhìn thấy hắn đã lập tức đề phòng.
-“Hoàng huynh không cần lo lắng, thần đệ đến một mình.”
-Sở Đệ Trì giơ hai tay lên, tay áo trống không, trên người đến một con dao nhỏ cũng chẳng có.
-“Tiểu Cửu, con ra ngoài trước.”
-Sở Ly sững sờ nhìn hắn.
-“Hoàng thúc…”
-“Ngoan.”
-Chỉ vài câu ngắn ngủi đã đủ cho thấy hai người đứng cùng một chiến tuyến.
-Nàng đứng về phía hắn.
-Mà hắn cũng đứng về phía nàng.
-Bọn họ là người cùng một phe.
-Sở Ly lo lắng vô cùng.
-Nhưng chuyện giữa hai vị trưởng bối, nàng nào có tư cách xen vào?
-Đành tập tễnh chống chân bước ra khỏi tẩm điện.
-Trước khi cửa khép lại, nàng còn nghe Sở Đệ Trì nói:
-“Tiểu Cửu còn nhỏ, Hoàng huynh hà tất phải trách phạt một đứa trẻ? Trẻ con vốn chẳng hiểu gì.”
-Cánh cửa khép lại.
-Sở Ly ngồi trên bậc thềm bên ngoài, khóe mắt cay xè.
-Vừa rồi nàng suýt bị đánh ba mươi trượng, còn bị đày khỏi cung.
-Giờ Hoàng thúc lại quay về.
-Xong rồi.
-E rằng…
-Lần này thật sự xong cả rồi.
-⸻
-Trong tẩm điện.
-Khi cửa vừa khép lại, vẻ mặt cầu xin ban nãy của Sở Đệ Trì lập tức biến mất.
-Hắn phủi tay áo, sải bước ngồi xuống ghế thái sư, dáng vẻ nhàn nhã tự tại như đang trở về phủ của chính mình.
-Sở Hoàng nhìn hắn.
-“Ngươi đến để cầu tình cho Sở Ly?”
-“Hửm?”
-Sở Đệ Trì tiện tay cầm một quả quýt cống trên bàn, bóc vỏ.
-“Không.”
-“Thần đệ đến để cảnh cáo Hoàng huynh.”
-“?”
-Hắn chậm rãi bóc từng múi quýt.
-“Bao năm qua, khi thần đệ trấn thủ Nam Cương, bí mật nuôi năm vạn binh mã, còn có Hắc Giáp Vệ.”
-“Tuy binh phù đã bị Hoàng huynh thu hồi, nhưng bọn họ đều là huynh đệ từng vào sinh ra tử cùng thần đệ.”
-“Chỉ cần bổn vương ra lệnh…”
-“Dù không có binh phù, bọn họ vẫn sẽ nghe theo hiệu lệnh của thần đệ.”
-Sở Hoàng biến sắc.
-Hắn dám tự ý nuôi quân!
-“Ngươi muốn tạo phản?”
-Sở Đệ Trì bật cười.
-“Hoàng huynh bệnh đến hồ đồ rồi sao?”
-“Thần đệ cần gì phải tạo phản?”
-Hắn bỏ một múi quýt vào miệng.
-Ngọt thật.
-“Năm xưa, trước khi Tiên hoàng băng hà, từng để lại một đạo di chiếu.”
-“Đạo di chiếu ấy… e rằng chính là cái gai trong lòng Hoàng huynh nhỉ?”
-“Có lẽ… sắp khiến cơn ác mộng của Hoàng huynh trở thành sự thật rồi.”
-“Thần đệ đã tìm được đạo di chiếu thất lạc ấy.”
-“Nếu đem nó công bố trước thiên hạ…”
-Giọng Sở Đệ Trì chợt trầm xuống.
-Từng nhịp nói lên xuống như đang nắm chặt hơi thở của Sở Hoàng.
-Di chiếu…
-Hắn đã tìm được di chiếu?
-Sự chột dạ trong mắt Sở Hoàng hoàn toàn không giấu nổi.
-Tiên hoàng thiên vị, yêu thương ấu tử.
-Đến khi băng hà vẫn để lại một đạo di chiếu.
-Nội dung bên trong…
-Ắt hẳn có liên quan đến Sở Đệ Trì.
-Bao năm nay, ông phái vô số người tìm kiếm, muốn hủy nó đi.
-Thậm chí lật tung cả hoàng cung.
-Vậy mà vẫn không tìm thấy.
-Không ngờ…
-Nó lại đang ở trong tay Sở Đệ Trì!
-Nếu thật sự công bố…
-Hậu quả…
-Ông không dám nghĩ tiếp.
-“Hoàng huynh.”
-Sở Đệ Trì lại tách thêm một múi quýt, thong thả bỏ vào miệng.
-“Tiểu Cửu là tiểu chất nhi mà thần đệ yêu thương nhất.”
-“Ngài đừng bắt nạt trẻ con.”
-“Hiểu chứ?”
-Đây…
-Là giọng điệu của người đi cầu xin sao?
-Môi Sở Hoàng khẽ run.
-Ông còn muốn nói gì đó.
-Nhưng trong lòng đã nảy sinh vài phần kiêng dè…
-⸻
-Một khắc sau.
-Cửa điện mở ra.
-Sở Ly lập tức quay đầu.
-Chỉ thấy Sở Đệ Trì vịn tường, bước đi có phần loạng choạng.
-“Hoàng thúc!”
-“Tiểu Cửu?”
-“Không sao rồi.”
-Hắn khẽ vuốt gương mặt nàng, thần sắc có phần mệt mỏi, thấp giọng nói:
-“Đừng lo.”
-“Sẽ không có ai dám đánh con nữa.”
-“Cũng sẽ không đuổi con ra khỏi cung.”
-“Về Chiêu Lan điện đi.”
-“Sau này… con vẫn sẽ là Cửu hoàng tử được Hoàng thượng yêu thương nhất.”
-Tim Sở Ly thắt lại.
-“Ngươi đã làm gì?”
-Hoàng thượng lúc nãy còn giận đến mức muốn đánh chết nàng.
-Sao lại thay đổi ý định nhanh như vậy?
-Sở Đệ Trì khẽ đáp:
-“Ta đã cầu xin ngài ấy.”
-“Tiểu Cửu…”
-“Ta quỳ xuống cầu xin ngài ấy.”
-———————————
-Nhiếp chính vương này lươn khươn quá 
- Ẩn bớt</p>
+            <p>Chương 113: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 113: Tiểu Cửu là tiểu chất nhi mà thần đệ yêu thương nhất</p>
+<p>“Ngươi!” Sở Hoàng run rẩy giơ tay chỉ vào nàng. “Ngươi! Ngươi!”</p>
+<p>Đúng là nghịch tử!</p>
+<p>Vốn dĩ trong người ông đã mang bệnh cũ, mấy ngày nay vẫn luôn tĩnh dưỡng long thể, giờ bị chọc tức đến mức phun ra một ngụm máu.</p>
+<p>“Trẫm là già rồi, nhưng chưa chết! Chẳng lẽ ngay cả ngươi cũng không dạy dỗ nổi sao? Người đâu! Lôi nghịch tử này xuống, đánh ba mươi trượng! Đánh xong thì ném thẳng đến hành cung ngoài thành cho trẫm!”</p>
+<p>“Hoàng huynh hà tất phải nổi giận lớn như vậy?”</p>
+<p>Ngoài cửa vang lên tiếng bước chân trầm ổn.</p>
+<p>Sở Ly ngoảnh đầu lại.</p>
+<p>“Hoàng thúc?”</p>
+<p>Sao hắn còn chưa đi?</p>
+<p>Sao hắn lại xuất hiện ở đây?</p>
+<p>Chẳng phải đây là tự chui đầu vào chỗ chết sao!</p>
+<p>Sở Hoàng vừa nhìn thấy hắn đã lập tức đề phòng.</p>
+<p>“Hoàng huynh không cần lo lắng, thần đệ đến một mình.”</p>
+<p>Sở Đệ Trì giơ hai tay lên, tay áo trống không, trên người đến một con dao nhỏ cũng chẳng có.</p>
+<p>“Tiểu Cửu, con ra ngoài trước.”</p>
+<p>Sở Ly sững sờ nhìn hắn.</p>
+<p>“Hoàng thúc…”</p>
+<p>“Ngoan.”</p>
+<p>Chỉ vài câu ngắn ngủi đã đủ cho thấy hai người đứng cùng một chiến tuyến.</p>
+<p>Nàng đứng về phía hắn.</p>
+<p>Mà hắn cũng đứng về phía nàng.</p>
+<p>Bọn họ là người cùng một phe.</p>
+<p>Sở Ly lo lắng vô cùng.</p>
+<p>Nhưng chuyện giữa hai vị trưởng bối, nàng nào có tư cách xen vào?</p>
+<p>Đành tập tễnh chống chân bước ra khỏi tẩm điện.</p>
+<p>Trước khi cửa khép lại, nàng còn nghe Sở Đệ Trì nói:</p>
+<p>“Tiểu Cửu còn nhỏ, Hoàng huynh hà tất phải trách phạt một đứa trẻ? Trẻ con vốn chẳng hiểu gì.”</p>
+<p>Cánh cửa khép lại.</p>
+<p>Sở Ly ngồi trên bậc thềm bên ngoài, khóe mắt cay xè.</p>
+<p>Vừa rồi nàng suýt bị đánh ba mươi trượng, còn bị đày khỏi cung.</p>
+<p>Giờ Hoàng thúc lại quay về.</p>
+<p>Xong rồi.</p>
+<p>E rằng…</p>
+<p>Lần này thật sự xong cả rồi.</p>
+<p>⸻</p>
+<p>Trong tẩm điện.</p>
+<p>Khi cửa vừa khép lại, vẻ mặt cầu xin ban nãy của Sở Đệ Trì lập tức biến mất.</p>
+<p>Hắn phủi tay áo, sải bước ngồi xuống ghế thái sư, dáng vẻ nhàn nhã tự tại như đang trở về phủ của chính mình.</p>
+<p>Sở Hoàng nhìn hắn.</p>
+<p>“Ngươi đến để cầu tình cho Sở Ly?”</p>
+<p>“Hửm?”</p>
+<p>Sở Đệ Trì tiện tay cầm một quả quýt cống trên bàn, bóc vỏ.</p>
+<p>“Không.”</p>
+<p>“Thần đệ đến để cảnh cáo Hoàng huynh.”</p>
+<p>“?”</p>
+<p>Hắn chậm rãi bóc từng múi quýt.</p>
+<p>“Bao năm qua, khi thần đệ trấn thủ Nam Cương, bí mật nuôi năm vạn binh mã, còn có Hắc Giáp Vệ.”</p>
+<p>“Tuy binh phù đã bị Hoàng huynh thu hồi, nhưng bọn họ đều là huynh đệ từng vào sinh ra tử cùng thần đệ.”</p>
+<p>“Chỉ cần bổn vương ra lệnh…”</p>
+<p>“Dù không có binh phù, bọn họ vẫn sẽ nghe theo hiệu lệnh của thần đệ.”</p>
+<p>Sở Hoàng biến sắc.</p>
+<p>Hắn dám tự ý nuôi quân!</p>
+<p>“Ngươi muốn tạo phản?”</p>
+<p>Sở Đệ Trì bật cười.</p>
+<p>“Hoàng huynh bệnh đến hồ đồ rồi sao?”</p>
+<p>“Thần đệ cần gì phải tạo phản?”</p>
+<p>Hắn bỏ một múi quýt vào miệng.</p>
+<p>Ngọt thật.</p>
+<p>“Năm xưa, trước khi Tiên hoàng băng hà, từng để lại một đạo di chiếu.”</p>
+<p>“Đạo di chiếu ấy… e rằng chính là cái gai trong lòng Hoàng huynh nhỉ?”</p>
+<p>“Có lẽ… sắp khiến cơn ác mộng của Hoàng huynh trở thành sự thật rồi.”</p>
+<p>“Thần đệ đã tìm được đạo di chiếu thất lạc ấy.”</p>
+<p>“Nếu đem nó công bố trước thiên hạ…”</p>
+<p>Giọng Sở Đệ Trì chợt trầm xuống.</p>
+<p>Từng nhịp nói lên xuống như đang nắm chặt hơi thở của Sở Hoàng.</p>
+<p>Di chiếu…</p>
+<p>Hắn đã tìm được di chiếu?</p>
+<p>Sự chột dạ trong mắt Sở Hoàng hoàn toàn không giấu nổi.</p>
+<p>Tiên hoàng thiên vị, yêu thương ấu tử.</p>
+<p>Đến khi băng hà vẫn để lại một đạo di chiếu.</p>
+<p>Nội dung bên trong…</p>
+<p>Ắt hẳn có liên quan đến Sở Đệ Trì.</p>
+<p>Bao năm nay, ông phái vô số người tìm kiếm, muốn hủy nó đi.</p>
+<p>Thậm chí lật tung cả hoàng cung.</p>
+<p>Vậy mà vẫn không tìm thấy.</p>
+<p>Không ngờ…</p>
+<p>Nó lại đang ở trong tay Sở Đệ Trì!</p>
+<p>Nếu thật sự công bố…</p>
+<p>Hậu quả…</p>
+<p>Ông không dám nghĩ tiếp.</p>
+<p>“Hoàng huynh.”</p>
+<p>Sở Đệ Trì lại tách thêm một múi quýt, thong thả bỏ vào miệng.</p>
+<p>“Tiểu Cửu là tiểu chất nhi mà thần đệ yêu thương nhất.”</p>
+<p>“Ngài đừng bắt nạt trẻ con.”</p>
+<p>“Hiểu chứ?”</p>
+<p>Đây…</p>
+<p>Là giọng điệu của người đi cầu xin sao?</p>
+<p>Môi Sở Hoàng khẽ run.</p>
+<p>Ông còn muốn nói gì đó.</p>
+<p>Nhưng trong lòng đã nảy sinh vài phần kiêng dè…</p>
+<p>⸻</p>
+<p>Một khắc sau.</p>
+<p>Cửa điện mở ra.</p>
+<p>Sở Ly lập tức quay đầu.</p>
+<p>Chỉ thấy Sở Đệ Trì vịn tường, bước đi có phần loạng choạng.</p>
+<p>“Hoàng thúc!”</p>
+<p>“Tiểu Cửu?”</p>
+<p>“Không sao rồi.”</p>
+<p>Hắn khẽ vuốt gương mặt nàng, thần sắc có phần mệt mỏi, thấp giọng nói:</p>
+<p>“Đừng lo.”</p>
+<p>“Sẽ không có ai dám đánh con nữa.”</p>
+<p>“Cũng sẽ không đuổi con ra khỏi cung.”</p>
+<p>“Về Chiêu Lan điện đi.”</p>
+<p>“Sau này… con vẫn sẽ là Cửu hoàng tử được Hoàng thượng yêu thương nhất.”</p>
+<p>Tim Sở Ly thắt lại.</p>
+<p>“Ngươi đã làm gì?”</p>
+<p>Hoàng thượng lúc nãy còn giận đến mức muốn đánh chết nàng.</p>
+<p>Sao lại thay đổi ý định nhanh như vậy?</p>
+<p>Sở Đệ Trì khẽ đáp:</p>
+<p>“Ta đã cầu xin ngài ấy.”</p>
+<p>“Tiểu Cửu…”</p>
+<p>“Ta quỳ xuống cầu xin ngài ấy.”</p>
+<p>———————————</p>
+<p>Nhiếp chính vương này lươn khươn quá</p>
+<p>Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_112.html" class="btn">‹ Trước</a>
             <a href="chuong_114.html" class="btn">Sau ›</a>
         </div>
@@ -245,15 +253,11 @@ Nhiếp chính vương này lươn khươn quá
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -265,11 +269,11 @@ Nhiếp chính vương này lươn khươn quá
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 128</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,243 +62,252 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 128</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_127.html" class="btn">‹ Trước</a>
             <a href="chuong_129.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 128: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 128: Ta Có Chút Sợ, Tiểu Cửu
-Sở Ly dùng hai tay chống trước ngực hắn, kinh ngạc nhìn người nam nhân xa lạ đến cực điểm trước mắt, trong khoảnh khắc chỉ muốn tránh thật xa.
-“Ngũ ca, muội vào phòng nghỉ trước… Ưm!”
-Hắn nắm lấy tay nàng.
-“Nếu ta chỉ chớp mắt một cái, muội sẽ biến mất sao?”
-Hắn tiến sát lại gần nàng.
-“Ta có chút sợ, Tiểu Cửu.”
-“Ngũ ca, muội sẽ không đi.”
-“Muội nói dối.”
-Hắn nâng gương mặt nàng lên.
-“Dáng vẻ khi muội nói dối, ta đã thấy quá nhiều rồi.”
-Từ nhỏ đến lớn, tính tình nàng vốn hoạt bát, nói bừa càng là chuyện tiện tay nhặt ra, bịa chuyện cũng chẳng hề khó, há miệng là có thể nói.
-Câu nào là thật, câu nào là giả, hắn còn rõ hơn ai hết.
-Nàng muốn rời khỏi hắn.
-Sở Dạ Ly nhìn khuôn mặt tinh xảo của nàng. Vẫn là đôi mắt long lanh như nước ấy, ngày trước sáng tựa sao trời, bất luận khi nào nhìn thấy hắn, cũng luôn lấp lánh rạng ngời.
-Thế nhưng hôm nay…
-Trong đó chỉ còn lại sự đề phòng.
-Ánh mắt hắn chậm rãi hạ xuống.
-Dừng trên đôi môi hé mở của nàng, hồng nhuận như cánh đào đầu xuân, nhỏ nhắn, óng ánh.
-Hắn từ từ cúi đầu.
-Tiến lại gần.
-Hơi thở giao hòa.
-Khoảng cách từng chút một thu hẹp.
-“Ngũ ca!”
-Sở Ly bỗng nghiêng đầu tránh đi.
-Sở Dạ Ly như vừa tỉnh mộng, lập tức buông nàng ra.
-“Xin lỗi… Ta… không cố ý.”
-Sở Ly siết chặt bàn tay, giấu đi đầy mắt xấu hổ và tức giận.
-Đã đến nước này…
-Nàng còn có con đường nào khác sao?
-Hắn đã có thể đưa nàng ra khỏi cung, tự nhiên cũng có thể mang nàng đi thật xa, lại còn luôn theo dõi nàng. Muốn rời khỏi hắn, e rằng chẳng phải chuyện dễ dàng.
-Nể tình hơn mười năm huynh muội, nàng không muốn cùng hắn đối đầu sống chết.
-“Không sao. Chúng ta rời khỏi hoàng cung rồi liên tiếp lên đường suốt ba ngày, có lẽ Ngũ ca quá mệt thôi.”
-Nàng đẩy hắn ra, xoay người chạy vào phòng.
-Sở Dạ Ly nghiêng đầu nhìn theo, trong mắt thoáng hiện vài phần hoảng hốt.
-Mệt sao?
-Chẳng qua chỉ là một lần thử dò mà thôi.
-Nàng…
-Không thích hắn.
-Trong phòng.
-Ngoài căn phòng vuông vức này, Sở Ly chẳng thể đi đâu.
-Bởi nàng nhận ra xung quanh trang viện có không ít người mai phục, vô số ánh mắt âm thầm canh chừng trong bóng tối.
-Ngũ Hoàng huynh…
-Chỉ sợ không hề đơn giản như lời hắn nói.
-Lần xuất cung này cũng chẳng phải ngoài ý muốn.
-Có lẽ…
-Chính là hắn cố tình sắp đặt.
-Nàng hé cửa một khe nhỏ, lặng lẽ quan sát bên ngoài, nhìn thấy trong sân không ngừng có người ra vào.
-Những người ấy ăn mặc bình thường, nhưng hạ bàn vững chắc, ai nấy đều là người luyện võ.
-Bọn họ đang bẩm báo với Sở Dạ Ly điều gì đó.
-“Chủ tử, hành trình đã sắp xếp…”
-“Chủ tử…”
-Sở Dạ Ly thỉnh thoảng khẽ gật đầu, thấp giọng căn dặn. Thuộc hạ đáp lời đâu ra đấy, mọi việc đều chuẩn bị chu toàn.
-Chỉ vì khoảng cách quá xa nên Sở Ly không nghe rõ được điều gì.
-Dường như xử lý xong mọi việc, Sở Dạ Ly quay người đi về phía phòng nàng.
-Sở Ly lập tức lùi ba bước, định lên giường.
-Nhưng vừa bước được một bước liền dừng lại.
-Một nam một nữ ở riêng trong phòng…
-Giường mới là nơi nguy hiểm nhất.
-Nàng liền đổi hướng sang bàn, tiện tay cầm lấy một quyển sách.
-Đúng lúc ấy, Sở Dạ Ly đẩy cửa bước vào.
-“Tiểu Cửu?”
-Hắn khá kinh ngạc.
-“Từ khi nào muội lại thích đọc sách vậy?”
-Sở Ly mím môi.
-Đây là đang cười nàng ít học sao?
-“Những lúc rảnh rỗi, muội thích đọc sách. Đọc sách khiến lòng người bình tĩnh, học được tri thức trong sách, mở rộng tầm mắt, tăng thêm học vấn, hiểu được rất nhiều điều ngày thường không có cơ hội tiếp xúc.”
-“Nhưng… muội cầm ngược sách rồi.”
-Sở Ly cứng đờ.
-Nàng lập tức xoay ngược quyển sách lại.
-Giữa tiếng cười trầm thấp của người nam nhân, hai má nàng dần đỏ bừng.
-Nàng cứng cổ, cố giữ vẻ bình tĩnh.
-Có gì đáng cười chứ?
-Tâm tư nàng vốn chẳng đặt ở đây.
-Tất cả chỉ là ngụy trang mà thôi.
-“Tiểu Cửu thấy buồn rồi.”
-Sở Dạ Ly bước tới.
-“Hành trình tiếp theo ta đã sắp xếp ổn thỏa, có thuộc hạ lo liệu. Ta vừa hay cũng có thời gian ở cạnh muội.”
-Vậy thì không cần đâu!
-Hắn vẫn nên đi bận việc thì hơn.
-Đừng quản sống chết của nàng nữa.
-“Ọc… ọc…”
-Bụng nàng đúng lúc kêu lên.
-Tiếng cười của người nam nhân càng trầm hơn.
-Sở Ly tức đến mức gần như nghiến nát cả răng hàm.
-Cuộc sống ngoài cung này…
-Hoàn toàn khác với những gì nàng tưởng tượng!
-Kế hoạch của nàng vốn là:
-Thoát khỏi hoàng cung, mang theo khối tài sản khổng lồ tích góp bao năm, đến Giang Nam mua một căn nhà, uống trà, trồng hoa, đọc thoại bản, nghe hát, du thuyền, phơi nắng.
-Quả nhiên…
-Kế hoạch mãi mãi không theo kịp biến hóa.
-“Người đâu.”
-Sở Dạ Ly lên tiếng.
-Chẳng bao lâu sau, thuộc hạ bưng cơm canh đến.
-Các món ăn tuy không tinh xảo như ngự thiện trong cung, nhưng có cá, có tôm, đủ mặn đủ chay, tuyệt đối không hề bạc đãi Sở Ly.
-“Lại đây, dùng bữa.”
-Sở Dạ Ly kéo ghế ra.
-Rửa tay sạch sẽ xong, hắn cầm lấy một con tôm cong, thoăn thoắt bóc vỏ, đặt vào bát nàng.
-Sở Ly ôm bát.
-“Để muội tự làm.”
-“Giữa ta và muội không cần khách sáo. Ăn no bụng trước đã.”
-Hắn lại cầm thêm một con tôm.
-Sở Ly cầm đũa.
-Dù bụng rất đói, nhưng thật lâu vẫn không động tay.
-Sở Dạ Ly nhận ra điều gì đó.
-“Muội sợ ta hạ độc?”
-Ánh mắt hắn tối đi.
-Hắn cắn một miếng con tôm vừa bóc, chậm rãi nhai nuốt xuống, rồi đặt nửa con còn lại vào bát nàng.
-“Lần này yên tâm rồi chứ?”
-Yên tâm thì đúng là yên tâm.
-Chỉ là…
-Nhìn nửa con tôm đã bị cắn dở trong bát, sắc mặt Sở Ly đầy vẻ khó xử.
-Hắn…
-Quả đúng là người biết tiết kiệm lương thực.
-Tôm ăn không hết…
-Còn chia cho nàng.
-Tiết kiệm là mỹ đức.
-Nàng gắp nửa con tôm ấy lên, đưa đũa tới trước miệng hắn.
-Thần sắc Sở Dạ Ly lập tức sáng bừng.
-“Tiểu Cửu, muội đút ta?”
-“Con tôm huynh đã ăn rồi, muội không cần.”
-Nàng trả lại cho hắn.
-Tiện thể đổi luôn một đôi đũa khác.
-“…”
-Lúc này, Sở Ly mới yên tâm ăn cơm.
-Nàng thực sự đói lả.
-Mấy ngày nay vì phải nhanh chóng rời xa Đế Đô, nàng chưa từng được ngủ ngon hay ăn một bữa tử tế.
-Giờ đây nàng cắm đầu ăn lấy ăn để, ngấu nghiến chẳng khác gì một con heo con.
-Sở Dạ Ly múc một bát canh trứng hấp thịt băm, đặt bên tay nàng.
-“Ăn chậm thôi. Cơm dính cả lên miệng rồi.”
-Hắn dùng đầu ngón tay nhặt hạt cơm nơi khóe môi nàng.
-Sở Ly chỉ thấy hai người đứng quá gần.
-Nàng cúi gằm đầu, chỉ lo ăn cơm, chẳng nói thêm với hắn câu nào.
-Sau bữa cơm, nàng đi dạo trong sân.
-Trang viện này nằm ở nơi hẻo lánh ngoài thành, yên tĩnh thanh bình.
-Chủ nhân là một hộ điền nông, dưới trướng thuê hơn mười người làm việc.
-Lần này tiếp đãi bọn họ, hẳn đã nhận được khoản thù lao rất lớn, nên từ chủ nhà đến đám người làm đều ngậm miệng kín như bưng, nói năng thận trọng, làm việc rất biết điều.
-Sở Ly muốn trò chuyện với họ vài câu, nhưng ai nấy đều vội vàng tránh đi.
-Tuy vậy, nàng vẫn tranh thủ đi một vòng lớn quanh trang viện, nắm rõ địa hình nơi này, đồng thời tìm được vị trí chuồng ngựa.
-Âm thầm ghi nhớ tất cả.
-Rồi mới trở về nghỉ ngơi.
-Đêm xuống.
-Sở Ly nhẹ nhàng vén chăn, lặng lẽ xuống giường.
-Nàng cảnh giác lắng nghe mọi động tĩnh xung quanh, lần theo hướng chuồng ngựa.
-Suốt đường đi đều vô cùng thuận lợi.
-Nàng lẻn vào chuồng.
-Sáu con tuấn mã lông đỏ sẫm đứng ở đó.
-Con thì nhắm mắt ngủ.
-Con thì nhai cỏ khô, phát ra từng tiếng rào rạo, càng khiến màn đêm thêm yên bình.
-Nàng tháo dây cương.
-Nhảy lên lưng ngựa.
-“Giá!”
-Tiếng vó ngựa vang lên, lập tức xé tan màn đêm.
-“Chủ tử! Không xong rồi! Cửu Hoàng tử bỏ trốn!”
-Sở Dạ Ly nghe thấy, thần sắc vẫn bình tĩnh như thường.
-Hắn đẩy cửa sổ ra, nhìn bóng dáng thiếu niên hòa vào màn đêm, chạy càng lúc càng xa, nhưng không hề vội đuổi theo.
-Hắn đưa ngón trỏ lên môi.
-Huýt một tiếng sáo đặc biệt.
-Chẳng bao lâu sau.
-Tiếng vó ngựa vừa rời đi lại lộc cộc lộc cộc quay trở về.
-Trên lưng ngựa, Sở Ly đang ôm chặt dây cương, mặc cho nàng cố thế nào cũng không điều khiển nổi con ngựa.
-“Tiểu Cửu, vui không?”
-Sở Dạ Ly đưa tay ra.
-Con ngựa lập tức ngoan ngoãn đứng yên một cách kỳ lạ.
-Đến lúc này Sở Ly mới hiểu.
-Nàng đã cưỡi phải loại bảo mã trong truyền thuyết biết nhận chủ, thông linh tính.
-Nghe nói, ngựa được huấn luyện kỹ càng chỉ nghe lệnh chủ nhân.
-Cho dù ở cách xa mấy chục dặm, chỉ cần nghe thấy tiếng hiệu lệnh riêng của chủ, nó sẽ lập tức nhận ra phương hướng rồi chạy về.
-Nàng mím chặt môi, mặt không biểu cảm.
-“Không vui.”
-“Vậy còn không xuống?”
-Sở Ly đành xuống ngựa.
-Vừa đứng vững.
-Sở Dạ Ly bước tới.
-Mu bàn tay khẽ vuốt gương mặt nàng.
-“Quá không ngoan rồi.”
-“Đêm nay…”
-“Chúng ta ngủ cùng nhau.” Ẩn bớt</p>
+            <p>Chương 128: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 128: Ta Có Chút Sợ, Tiểu Cửu</p>
+<p>Sở Ly dùng hai tay chống trước ngực hắn, kinh ngạc nhìn người nam nhân xa lạ đến cực điểm trước mắt, trong khoảnh khắc chỉ muốn tránh thật xa.</p>
+<p>“Ngũ ca, muội vào phòng nghỉ trước… Ưm!”</p>
+<p>Hắn nắm lấy tay nàng.</p>
+<p>“Nếu ta chỉ chớp mắt một cái, muội sẽ biến mất sao?”</p>
+<p>Hắn tiến sát lại gần nàng.</p>
+<p>“Ta có chút sợ, Tiểu Cửu.”</p>
+<p>“Ngũ ca, muội sẽ không đi.”</p>
+<p>“Muội nói dối.”</p>
+<p>Hắn nâng gương mặt nàng lên.</p>
+<p>“Dáng vẻ khi muội nói dối, ta đã thấy quá nhiều rồi.”</p>
+<p>Từ nhỏ đến lớn, tính tình nàng vốn hoạt bát, nói bừa càng là chuyện tiện tay nhặt ra, bịa chuyện cũng chẳng hề khó, há miệng là có thể nói.</p>
+<p>Câu nào là thật, câu nào là giả, hắn còn rõ hơn ai hết.</p>
+<p>Nàng muốn rời khỏi hắn.</p>
+<p>Sở Dạ Ly nhìn khuôn mặt tinh xảo của nàng. Vẫn là đôi mắt long lanh như nước ấy, ngày trước sáng tựa sao trời, bất luận khi nào nhìn thấy hắn, cũng luôn lấp lánh rạng ngời.</p>
+<p>Thế nhưng hôm nay…</p>
+<p>Trong đó chỉ còn lại sự đề phòng.</p>
+<p>Ánh mắt hắn chậm rãi hạ xuống.</p>
+<p>Dừng trên đôi môi hé mở của nàng, hồng nhuận như cánh đào đầu xuân, nhỏ nhắn, óng ánh.</p>
+<p>Hắn từ từ cúi đầu.</p>
+<p>Tiến lại gần.</p>
+<p>Hơi thở giao hòa.</p>
+<p>Khoảng cách từng chút một thu hẹp.</p>
+<p>“Ngũ ca!”</p>
+<p>Sở Ly bỗng nghiêng đầu tránh đi.</p>
+<p>Sở Dạ Ly như vừa tỉnh mộng, lập tức buông nàng ra.</p>
+<p>“Xin lỗi… Ta… không cố ý.”</p>
+<p>Sở Ly siết chặt bàn tay, giấu đi đầy mắt xấu hổ và tức giận.</p>
+<p>Đã đến nước này…</p>
+<p>Nàng còn có con đường nào khác sao?</p>
+<p>Hắn đã có thể đưa nàng ra khỏi cung, tự nhiên cũng có thể mang nàng đi thật xa, lại còn luôn theo dõi nàng. Muốn rời khỏi hắn, e rằng chẳng phải chuyện dễ dàng.</p>
+<p>Nể tình hơn mười năm huynh muội, nàng không muốn cùng hắn đối đầu sống chết.</p>
+<p>“Không sao. Chúng ta rời khỏi hoàng cung rồi liên tiếp lên đường suốt ba ngày, có lẽ Ngũ ca quá mệt thôi.”</p>
+<p>Nàng đẩy hắn ra, xoay người chạy vào phòng.</p>
+<p>Sở Dạ Ly nghiêng đầu nhìn theo, trong mắt thoáng hiện vài phần hoảng hốt.</p>
+<p>Mệt sao?</p>
+<p>Chẳng qua chỉ là một lần thử dò mà thôi.</p>
+<p>Nàng…</p>
+<p>Không thích hắn.</p>
+<p>Trong phòng.</p>
+<p>Ngoài căn phòng vuông vức này, Sở Ly chẳng thể đi đâu.</p>
+<p>Bởi nàng nhận ra xung quanh trang viện có không ít người mai phục, vô số ánh mắt âm thầm canh chừng trong bóng tối.</p>
+<p>Ngũ Hoàng huynh…</p>
+<p>Chỉ sợ không hề đơn giản như lời hắn nói.</p>
+<p>Lần xuất cung này cũng chẳng phải ngoài ý muốn.</p>
+<p>Có lẽ…</p>
+<p>Chính là hắn cố tình sắp đặt.</p>
+<p>Nàng hé cửa một khe nhỏ, lặng lẽ quan sát bên ngoài, nhìn thấy trong sân không ngừng có người ra vào.</p>
+<p>Những người ấy ăn mặc bình thường, nhưng hạ bàn vững chắc, ai nấy đều là người luyện võ.</p>
+<p>Bọn họ đang bẩm báo với Sở Dạ Ly điều gì đó.</p>
+<p>“Chủ tử, hành trình đã sắp xếp…”</p>
+<p>“Chủ tử…”</p>
+<p>Sở Dạ Ly thỉnh thoảng khẽ gật đầu, thấp giọng căn dặn. Thuộc hạ đáp lời đâu ra đấy, mọi việc đều chuẩn bị chu toàn.</p>
+<p>Chỉ vì khoảng cách quá xa nên Sở Ly không nghe rõ được điều gì.</p>
+<p>Dường như xử lý xong mọi việc, Sở Dạ Ly quay người đi về phía phòng nàng.</p>
+<p>Sở Ly lập tức lùi ba bước, định lên giường.</p>
+<p>Nhưng vừa bước được một bước liền dừng lại.</p>
+<p>Một nam một nữ ở riêng trong phòng…</p>
+<p>Giường mới là nơi nguy hiểm nhất.</p>
+<p>Nàng liền đổi hướng sang bàn, tiện tay cầm lấy một quyển sách.</p>
+<p>Đúng lúc ấy, Sở Dạ Ly đẩy cửa bước vào.</p>
+<p>“Tiểu Cửu?”</p>
+<p>Hắn khá kinh ngạc.</p>
+<p>“Từ khi nào muội lại thích đọc sách vậy?”</p>
+<p>Sở Ly mím môi.</p>
+<p>Đây là đang cười nàng ít học sao?</p>
+<p>“Những lúc rảnh rỗi, muội thích đọc sách. Đọc sách khiến lòng người bình tĩnh, học được tri thức trong sách, mở rộng tầm mắt, tăng thêm học vấn, hiểu được rất nhiều điều ngày thường không có cơ hội tiếp xúc.”</p>
+<p>“Nhưng… muội cầm ngược sách rồi.”</p>
+<p>Sở Ly cứng đờ.</p>
+<p>Nàng lập tức xoay ngược quyển sách lại.</p>
+<p>Giữa tiếng cười trầm thấp của người nam nhân, hai má nàng dần đỏ bừng.</p>
+<p>Nàng cứng cổ, cố giữ vẻ bình tĩnh.</p>
+<p>Có gì đáng cười chứ?</p>
+<p>Tâm tư nàng vốn chẳng đặt ở đây.</p>
+<p>Tất cả chỉ là ngụy trang mà thôi.</p>
+<p>“Tiểu Cửu thấy buồn rồi.”</p>
+<p>Sở Dạ Ly bước tới.</p>
+<p>“Hành trình tiếp theo ta đã sắp xếp ổn thỏa, có thuộc hạ lo liệu. Ta vừa hay cũng có thời gian ở cạnh muội.”</p>
+<p>Vậy thì không cần đâu!</p>
+<p>Hắn vẫn nên đi bận việc thì hơn.</p>
+<p>Đừng quản sống chết của nàng nữa.</p>
+<p>“Ọc… ọc…”</p>
+<p>Bụng nàng đúng lúc kêu lên.</p>
+<p>Tiếng cười của người nam nhân càng trầm hơn.</p>
+<p>Sở Ly tức đến mức gần như nghiến nát cả răng hàm.</p>
+<p>Cuộc sống ngoài cung này…</p>
+<p>Hoàn toàn khác với những gì nàng tưởng tượng!</p>
+<p>Kế hoạch của nàng vốn là:</p>
+<p>Thoát khỏi hoàng cung, mang theo khối tài sản khổng lồ tích góp bao năm, đến Giang Nam mua một căn nhà, uống trà, trồng hoa, đọc thoại bản, nghe hát, du thuyền, phơi nắng.</p>
+<p>Quả nhiên…</p>
+<p>Kế hoạch mãi mãi không theo kịp biến hóa.</p>
+<p>“Người đâu.”</p>
+<p>Sở Dạ Ly lên tiếng.</p>
+<p>Chẳng bao lâu sau, thuộc hạ bưng cơm canh đến.</p>
+<p>Các món ăn tuy không tinh xảo như ngự thiện trong cung, nhưng có cá, có tôm, đủ mặn đủ chay, tuyệt đối không hề bạc đãi Sở Ly.</p>
+<p>“Lại đây, dùng bữa.”</p>
+<p>Sở Dạ Ly kéo ghế ra.</p>
+<p>Rửa tay sạch sẽ xong, hắn cầm lấy một con tôm cong, thoăn thoắt bóc vỏ, đặt vào bát nàng.</p>
+<p>Sở Ly ôm bát.</p>
+<p>“Để muội tự làm.”</p>
+<p>“Giữa ta và muội không cần khách sáo. Ăn no bụng trước đã.”</p>
+<p>Hắn lại cầm thêm một con tôm.</p>
+<p>Sở Ly cầm đũa.</p>
+<p>Dù bụng rất đói, nhưng thật lâu vẫn không động tay.</p>
+<p>Sở Dạ Ly nhận ra điều gì đó.</p>
+<p>“Muội sợ ta hạ độc?”</p>
+<p>Ánh mắt hắn tối đi.</p>
+<p>Hắn cắn một miếng con tôm vừa bóc, chậm rãi nhai nuốt xuống, rồi đặt nửa con còn lại vào bát nàng.</p>
+<p>“Lần này yên tâm rồi chứ?”</p>
+<p>Yên tâm thì đúng là yên tâm.</p>
+<p>Chỉ là…</p>
+<p>Nhìn nửa con tôm đã bị cắn dở trong bát, sắc mặt Sở Ly đầy vẻ khó xử.</p>
+<p>Hắn…</p>
+<p>Quả đúng là người biết tiết kiệm lương thực.</p>
+<p>Tôm ăn không hết…</p>
+<p>Còn chia cho nàng.</p>
+<p>Tiết kiệm là mỹ đức.</p>
+<p>Nàng gắp nửa con tôm ấy lên, đưa đũa tới trước miệng hắn.</p>
+<p>Thần sắc Sở Dạ Ly lập tức sáng bừng.</p>
+<p>“Tiểu Cửu, muội đút ta?”</p>
+<p>“Con tôm huynh đã ăn rồi, muội không cần.”</p>
+<p>Nàng trả lại cho hắn.</p>
+<p>Tiện thể đổi luôn một đôi đũa khác.</p>
+<p>“…”</p>
+<p>Lúc này, Sở Ly mới yên tâm ăn cơm.</p>
+<p>Nàng thực sự đói lả.</p>
+<p>Mấy ngày nay vì phải nhanh chóng rời xa Đế Đô, nàng chưa từng được ngủ ngon hay ăn một bữa tử tế.</p>
+<p>Giờ đây nàng cắm đầu ăn lấy ăn để, ngấu nghiến chẳng khác gì một con heo con.</p>
+<p>Sở Dạ Ly múc một bát canh trứng hấp thịt băm, đặt bên tay nàng.</p>
+<p>“Ăn chậm thôi. Cơm dính cả lên miệng rồi.”</p>
+<p>Hắn dùng đầu ngón tay nhặt hạt cơm nơi khóe môi nàng.</p>
+<p>Sở Ly chỉ thấy hai người đứng quá gần.</p>
+<p>Nàng cúi gằm đầu, chỉ lo ăn cơm, chẳng nói thêm với hắn câu nào.</p>
+<p>Sau bữa cơm, nàng đi dạo trong sân.</p>
+<p>Trang viện này nằm ở nơi hẻo lánh ngoài thành, yên tĩnh thanh bình.</p>
+<p>Chủ nhân là một hộ điền nông, dưới trướng thuê hơn mười người làm việc.</p>
+<p>Lần này tiếp đãi bọn họ, hẳn đã nhận được khoản thù lao rất lớn, nên từ chủ nhà đến đám người làm đều ngậm miệng kín như bưng, nói năng thận trọng, làm việc rất biết điều.</p>
+<p>Sở Ly muốn trò chuyện với họ vài câu, nhưng ai nấy đều vội vàng tránh đi.</p>
+<p>Tuy vậy, nàng vẫn tranh thủ đi một vòng lớn quanh trang viện, nắm rõ địa hình nơi này, đồng thời tìm được vị trí chuồng ngựa.</p>
+<p>Âm thầm ghi nhớ tất cả.</p>
+<p>Rồi mới trở về nghỉ ngơi.</p>
+<p>Đêm xuống.</p>
+<p>Sở Ly nhẹ nhàng vén chăn, lặng lẽ xuống giường.</p>
+<p>Nàng cảnh giác lắng nghe mọi động tĩnh xung quanh, lần theo hướng chuồng ngựa.</p>
+<p>Suốt đường đi đều vô cùng thuận lợi.</p>
+<p>Nàng lẻn vào chuồng.</p>
+<p>Sáu con tuấn mã lông đỏ sẫm đứng ở đó.</p>
+<p>Con thì nhắm mắt ngủ.</p>
+<p>Con thì nhai cỏ khô, phát ra từng tiếng rào rạo, càng khiến màn đêm thêm yên bình.</p>
+<p>Nàng tháo dây cương.</p>
+<p>Nhảy lên lưng ngựa.</p>
+<p>“Giá!”</p>
+<p>Tiếng vó ngựa vang lên, lập tức xé tan màn đêm.</p>
+<p>“Chủ tử! Không xong rồi! Cửu Hoàng tử bỏ trốn!”</p>
+<p>Sở Dạ Ly nghe thấy, thần sắc vẫn bình tĩnh như thường.</p>
+<p>Hắn đẩy cửa sổ ra, nhìn bóng dáng thiếu niên hòa vào màn đêm, chạy càng lúc càng xa, nhưng không hề vội đuổi theo.</p>
+<p>Hắn đưa ngón trỏ lên môi.</p>
+<p>Huýt một tiếng sáo đặc biệt.</p>
+<p>Chẳng bao lâu sau.</p>
+<p>Tiếng vó ngựa vừa rời đi lại lộc cộc lộc cộc quay trở về.</p>
+<p>Trên lưng ngựa, Sở Ly đang ôm chặt dây cương, mặc cho nàng cố thế nào cũng không điều khiển nổi con ngựa.</p>
+<p>“Tiểu Cửu, vui không?”</p>
+<p>Sở Dạ Ly đưa tay ra.</p>
+<p>Con ngựa lập tức ngoan ngoãn đứng yên một cách kỳ lạ.</p>
+<p>Đến lúc này Sở Ly mới hiểu.</p>
+<p>Nàng đã cưỡi phải loại bảo mã trong truyền thuyết biết nhận chủ, thông linh tính.</p>
+<p>Nghe nói, ngựa được huấn luyện kỹ càng chỉ nghe lệnh chủ nhân.</p>
+<p>Cho dù ở cách xa mấy chục dặm, chỉ cần nghe thấy tiếng hiệu lệnh riêng của chủ, nó sẽ lập tức nhận ra phương hướng rồi chạy về.</p>
+<p>Nàng mím chặt môi, mặt không biểu cảm.</p>
+<p>“Không vui.”</p>
+<p>“Vậy còn không xuống?”</p>
+<p>Sở Ly đành xuống ngựa.</p>
+<p>Vừa đứng vững.</p>
+<p>Sở Dạ Ly bước tới.</p>
+<p>Mu bàn tay khẽ vuốt gương mặt nàng.</p>
+<p>“Quá không ngoan rồi.”</p>
+<p>“Đêm nay…”</p>
+<p>“Chúng ta ngủ cùng nhau.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_127.html" class="btn">‹ Trước</a>
             <a href="chuong_129.html" class="btn">Sau ›</a>
         </div>
@@ -307,15 +315,11 @@ Mu bàn tay khẽ vuốt gương mặt nàng.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -327,11 +331,11 @@ Mu bàn tay khẽ vuốt gương mặt nàng.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

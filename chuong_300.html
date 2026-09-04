@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 300</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,239 +62,248 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 300</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_299.html" class="btn">‹ Trước</a>
             <a href="chuong_307.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 300: Hoàng thẩm, người...
-Nàng hiểu rõ chuyện đại hôn đến như vậy, lại biết Lục Mộng Điệp trúng độc mà chết.
-Khi ấy...
-Sở Ly có mặt.
-Kế hoạch của hắn vốn là vu oan cho Sở Ly.
-Tạ Vãn Nguyệt chính là Sở Ly!
-Mấy đôi mắt vừa kinh ngạc vừa dò xét đồng loạt rơi lên người Sở Ly. Nàng vẫn thản nhiên đứng bên án thư, giữa hàng mày quang minh lỗi lạc, mặc cho mọi người đánh giá.
-“Ta là ai, quan trọng sao?”
-“Tam Hoàng tử, hiện giờ điều chúng ta đang nói là chuyện ngươi đầu độc Tam Hoàng phi. Ngươi nhận hay không nhận?”
-Sở Tây Lăng ngơ ngẩn nhìn nàng.
-“Ngươi...”
-Rầm!
-Con ngươi Sở Ngạo Thiên đảo một vòng, lập tức quyết đoán đập mạnh xuống án thư, quát lớn:
-“Tam Hoàng tử, mưu tính của ngươi thật độc ác! Trẫm vẫn luôn coi ngươi là thân huynh đệ, không ngờ ngươi lại làm ra chuyện đầu độc chính thất kết tóc của mình!”
-“Người đâu! Lập tức bãi miễn toàn bộ chức vụ của Tam Hoàng tử trong triều, giam lỏng tại phủ Tam Hoàng tử, chờ xử trí!”
-Một tiếng lệnh vừa ban.
-Hai tên Ngự lâm quân bước vào.
-“Không phải ta làm! Ta không nhận!”
-Sở Tây Lăng quát lớn.
-“Tạ Vãn Nguyệt! Ngươi cấu kết với Nhiếp Chính vương và Đại Lý tự khanh, cùng nhau vu oan hãm hại ta! Ta không nhận!”
-Sở Ly cười như có như không nhìn hắn.
-“Không biết Tam Hoàng tử có hiểu một đạo lý hay không.”
-“Một bức tường, vốn có thể kín không kẽ hở. Nhưng chỉ cần xé ra một lỗ hổng, cho dù chỉ là một vết nứt, cũng có thể theo khe hở mà len vào, đào sâu từng bước... cho đến khi toàn bộ bức tường sụp đổ.”
-“Ngươi!”
-Bốn mắt nhìn nhau.
-Nụ cười lạnh nơi hàng mày nữ tử khiến người ta nghẹt thở.
-Đại Lý tự đã điều tra ra chuyện hắn đầu độc Tam Hoàng phi.
-Thuận theo đầu mối mà tra tiếp...
-Những chuyện hắn từng làm.
-Từng việc.
-Từng chuyện.
-Đều có thể bị lật sạch.
-Hiện giờ chưa nói...
-Chẳng qua là để chừa lại cho hắn chút thể diện.
-Muốn người không biết...
-Trừ phi mình đừng làm.
-Trong lòng hắn có quỷ.
-Sở Ngạo Thiên cất cao giọng:
-“Còn không mau dẫn hắn đi?”
-“Tam Hoàng tử, mời!”
-Hai tên Ngự lâm quân tiến lên định đưa tay.
-Sở Tây Lăng lạnh lùng hất ra.
-Đừng chạm vào hắn.
-Hắn tự đi.
-Ánh mắt âm lãnh của hắn ghim chặt lên người Sở Ly.
-Lục Mộng Điệp đã chết gần một năm.
-Tính ngàn tính vạn...
-Hắn cũng không ngờ chuyện cũ năm xưa lại bị lôi ra.
-Đến chính hắn cũng gần như quên mất chuyện này rồi.
-Tạ Vãn Nguyệt...
-Ngươi chính là Sở Ly!
-Hắn tuyệt đối sẽ không bỏ qua!
-Sở Tây Lăng mím chặt môi mỏng, cuối cùng hung hăng lườm Sở Ly một cái rồi xoay người sải bước rời đi.
-Hai tên Ngự lâm quân theo sát phía sau.
-Đến đây.
-Mối uy hiếp từ Tam Hoàng tử tạm thời được loại bỏ.
-Sở Ngạo Thiên hớn hở ra mặt.
-“Lục Mộng Điệp vừa chết, Tam Hoàng tử lập tức cưới Lục Chiêu Dương. Lục Tả tướng, ngươi là phụ thân của hai nàng ấy, không thể nào không biết nội tình! Ngươi âm thầm qua lại với Tam Hoàng tử, bí mật cấu kết, nhận hay không nhận?”
-Lục Tả tướng quỳ sụp xuống đất.
-“Hoàng thượng! Thần oan uổng! Thần oan uổng!”
-Lúc này.
-Vẻ hoảng loạn trên mặt hắn không hề giả tạo.
-Tam Hoàng tử vừa đi.
-Hắn cũng chẳng còn khí thế bức người như vừa rồi nữa.
-Sở Ngạo Thiên nhìn cảnh ấy chỉ thấy hả dạ.
-Lão già!
-Lão thất phu!
-Còn dám liên thủ với Tam Hoàng tử bắt nạt hắn.
-Để xem hắn báo thù thế nào!
-“Người đâu! Bắt Lục Tả tướng...”
-“Xin chậm đã.”
-Sở Ly giơ tay ngăn lại.
-“Lục Tả tướng là đứng đầu bách quan, là trọng thần của triều đình. Sao có thể cùng Tam Hoàng tử cấu kết làm chuyện xấu? Chắc hẳn là bị oan.”
-Sở Ngạo Thiên quay đầu.
-“Hoàng thẩm, người...”
-Sở Ly bước lên trước, khom người đỡ Lục Tả tướng đứng dậy, mỉm cười nói:
-“Lục Tả tướng tận tâm tận lực vì Đại Sở, tự nhiên chịu được điều tra. Nếu không tin, Hoàng thượng cứ phái người đi tra.”
-Sở Ngạo Thiên lập tức hiểu ý.
-Con ngươi đảo một vòng, liền nói:
-“Hiện nay trẫm bận rộn triều chính, không thể phân thân. Chờ qua đợt này, sẽ điều tra Lục Tả tướng.”
-Sở Ly mỉm cười.
-“Nếu không còn chuyện gì nữa, vậy mọi người giải tán đi.”
-Sở Ngạo Thiên phất tay.
-“Đều lui xuống.”
-“Tuân chỉ!”
-Lục Tả tướng hành lễ.
-Sau lưng hắn đã ướt đẫm mồ hôi.
-Lúc đi ra, hai chân còn hơi run rẩy.
-Hoàng thượng muốn tra hắn?
-Ngay cả Tam Hoàng tử cũng bị điều tra.
-Nếu thật sự hạ lệnh...
-Tả tướng phủ còn chịu nổi mấy lần tra xét?
-Làm quan...
-Ai mà trên tay chẳng có vài chuyện không thể để ánh sáng nhìn thấy?
-Rõ ràng bọn họ đã ép Hoàng thượng đến mức không còn đường lui, còn đang trợ giúp Tam Hoàng tử đoạt quyền.
-Vậy mà Tạ Vãn Nguyệt vừa trở về...
-Cục diện đã hoàn toàn thay đổi.
-Khác hẳn với những gì bọn họ dự liệu!
-Quần thần lần lượt lui xuống.
-Trong Ngự thư phòng chỉ còn lại hai người.
-Sở Ngạo Thiên kích động nhảy dựng lên cao ba thước, lao đến bám chặt lấy Sở Ly.
-“Cửu muội!”
-Tốt quá!
-Có Cửu muội ở đây...
-Cả người hắn đều thấy yên tâm.
-Hu hu!
-Vẫn là Cửu muội thương hắn nhất.
-Sở Ly đứng vững tấn bộ, suýt nữa bị Sở Ngạo Thiên húc ngã.
-“Có thể đứng đàng hoàng mà nói chuyện không?”
-“Ta chẳng phải vì gặp muội nên kích động quá sao?”
-“Ngồi xuống.”
-“Ồ!”
-Biết rồi!
-Sở Ngạo Thiên khép hai chân, hai tay đặt chồng lên nhau, ngoan ngoãn ngồi xuống.
-“Cửu muội, lúc nãy sao muội không cho ta trị tội Lục Tả tướng? Nếu ta hạ lệnh tịch thu gia sản, chắc chắn sẽ thu được một khoản bạc lớn để bổ sung Quốc khố.”
-Sở Ly ngồi nghiêng trên án thư, tiện tay cầm một quyển tấu chương lên xem.
-“Huynh muốn làm một vụ mua bán duy nhất...”
-“Hay muốn có tiền tài cuồn cuộn không dứt?”
-“Đương nhiên là cuồn cuộn không dứt!”
-“Nếu vậy, giết Lục Tả tướng rồi... ai sẽ tiếp tục mang bạc đến cho huynh?”
-Sở Ly nhàn nhạt nói:
-“Lúc nãy chính huynh cũng nói rồi, qua một thời gian sẽ điều tra Lục Tả tướng. Trong lòng hắn có quỷ, chắc chắn sẽ nhân khoảng thời gian này mau chóng xử lý hết những việc từng làm, những món nợ từng mắc, những nhược điểm từng để lại, vá hết mọi sơ hở.”
-“Như vậy... chẳng những không cần lo hắn tiếp tục gây sóng gió, trái lại hắn còn sẽ tận tâm tận lực làm việc cho huynh.”
-Một vị đại thần tốt như vậy...
-Không dùng thì phí.
-Sau này nếu nhìn không thuận mắt...
-Chỉ cần tìm một cái cớ.
-Xử lý là được.
-Giống như Tri phủ họ Lý ở Giang Nam.
-Đi đúng quy trình ấy.
-Muốn xử hắn...
-Cũng phải ép khô giá trị cuối cùng của hắn đã.
-Sở Ngạo Thiên nghe xong, hai mắt sáng rực, không nhịn được giơ ngón cái.
-“Cửu muội! Cách này thật hay!”
-“Cho người ta hy vọng, rồi lại khiến người ta tuyệt vọng.”
-“Đúng là không phải chuyện con người làm được!”
-“Đây là cách của Hoàng thúc.”
-“...”
-“Hoàng thúc... nghĩ thật chu toàn!”
-Sở Ly liếc hắn một cái.
-Trên đường gấp rút trở về, nàng đã nắm được quá nửa tình hình ở Đế đô.
-Nếu nàng không về kịp...
-E rằng sào huyệt cũng bị người ta đào sạch rồi.
-“Đi điều tra xem, là kẻ nào nhân danh Hoàng thất tung tin ra ngoài, nào là ép quyên góp năm nghìn lượng, nào là tăng thuế gấp ba.”
-“Lôi kẻ đó ra mới là việc quan trọng nhất.”
-“Cửu muội yên tâm! Ta lập tức sai Đại Lý tự khanh đi điều tra!”
-“Ừ.”
-“Hay là huynh cứ gọi ta là Hoàng thẩm đi.”
-“Ta nghe rất thuận tai.”
-“?”
-Lá gan ngươi lớn thật!
-Trẫm là Hoàng đế!
-Cho dù ngươi muốn làm trưởng bối của trẫm...
-Trẫm vẫn là người lớn nhất thiên hạ!
-—
-“Ngươi nói cái gì?”
-“Tạ Vãn Nguyệt trở về rồi? Còn lấy thân phận Nhiếp Chính vương phi tự xưng?”
-Trong Nhã Uyển.
-Ý thu dạt dào.
-Sở Minh Hoa đột ngột ném mạnh chén trà trong tay xuống đất.
-Choang!
-“Một lũ phế vật!”
-Đã phái nhiều sát thủ như vậy...
-Vậy mà vẫn không giết được nàng!
-Đồ vô dụng!
-Tên thị vệ quỳ dưới đất, giọng đầy hoảng sợ.
-“Quận chúa bớt giận!”
-Bảo nàng sao có thể bớt giận?
-Hiện giờ ngồi trên long ỷ vốn đã là một tên phế vật.
-Đã vậy tên phế vật ấy còn thích làm chuyện se duyên lung tung, nói gì mà muốn ban hôn cho Nhiếp Chính vương và Tạ Vãn Nguyệt.
-Tạ Vãn Nguyệt chẳng qua chỉ là nữ nhi của một võ tướng.
-Dựa vào đâu mà được làm Nhiếp Chính vương phi?
-Nàng tuyệt đối sẽ không để nàng ta được như ý!
-Tạ Vãn Nguyệt...
-Ngươi cứ chờ đó! Ẩn bớt</p>
+            <p>Chương 300: Hoàng thẩm, người...</p>
+<p>Nàng hiểu rõ chuyện đại hôn đến như vậy, lại biết Lục Mộng Điệp trúng độc mà chết.</p>
+<p>Khi ấy...</p>
+<p>Sở Ly có mặt.</p>
+<p>Kế hoạch của hắn vốn là vu oan cho Sở Ly.</p>
+<p>Tạ Vãn Nguyệt chính là Sở Ly!</p>
+<p>Mấy đôi mắt vừa kinh ngạc vừa dò xét đồng loạt rơi lên người Sở Ly. Nàng vẫn thản nhiên đứng bên án thư, giữa hàng mày quang minh lỗi lạc, mặc cho mọi người đánh giá.</p>
+<p>“Ta là ai, quan trọng sao?”</p>
+<p>“Tam Hoàng tử, hiện giờ điều chúng ta đang nói là chuyện ngươi đầu độc Tam Hoàng phi. Ngươi nhận hay không nhận?”</p>
+<p>Sở Tây Lăng ngơ ngẩn nhìn nàng.</p>
+<p>“Ngươi...”</p>
+<p>Rầm!</p>
+<p>Con ngươi Sở Ngạo Thiên đảo một vòng, lập tức quyết đoán đập mạnh xuống án thư, quát lớn:</p>
+<p>“Tam Hoàng tử, mưu tính của ngươi thật độc ác! Trẫm vẫn luôn coi ngươi là thân huynh đệ, không ngờ ngươi lại làm ra chuyện đầu độc chính thất kết tóc của mình!”</p>
+<p>“Người đâu! Lập tức bãi miễn toàn bộ chức vụ của Tam Hoàng tử trong triều, giam lỏng tại phủ Tam Hoàng tử, chờ xử trí!”</p>
+<p>Một tiếng lệnh vừa ban.</p>
+<p>Hai tên Ngự lâm quân bước vào.</p>
+<p>“Không phải ta làm! Ta không nhận!”</p>
+<p>Sở Tây Lăng quát lớn.</p>
+<p>“Tạ Vãn Nguyệt! Ngươi cấu kết với Nhiếp Chính vương và Đại Lý tự khanh, cùng nhau vu oan hãm hại ta! Ta không nhận!”</p>
+<p>Sở Ly cười như có như không nhìn hắn.</p>
+<p>“Không biết Tam Hoàng tử có hiểu một đạo lý hay không.”</p>
+<p>“Một bức tường, vốn có thể kín không kẽ hở. Nhưng chỉ cần xé ra một lỗ hổng, cho dù chỉ là một vết nứt, cũng có thể theo khe hở mà len vào, đào sâu từng bước... cho đến khi toàn bộ bức tường sụp đổ.”</p>
+<p>“Ngươi!”</p>
+<p>Bốn mắt nhìn nhau.</p>
+<p>Nụ cười lạnh nơi hàng mày nữ tử khiến người ta nghẹt thở.</p>
+<p>Đại Lý tự đã điều tra ra chuyện hắn đầu độc Tam Hoàng phi.</p>
+<p>Thuận theo đầu mối mà tra tiếp...</p>
+<p>Những chuyện hắn từng làm.</p>
+<p>Từng việc.</p>
+<p>Từng chuyện.</p>
+<p>Đều có thể bị lật sạch.</p>
+<p>Hiện giờ chưa nói...</p>
+<p>Chẳng qua là để chừa lại cho hắn chút thể diện.</p>
+<p>Muốn người không biết...</p>
+<p>Trừ phi mình đừng làm.</p>
+<p>Trong lòng hắn có quỷ.</p>
+<p>Sở Ngạo Thiên cất cao giọng:</p>
+<p>“Còn không mau dẫn hắn đi?”</p>
+<p>“Tam Hoàng tử, mời!”</p>
+<p>Hai tên Ngự lâm quân tiến lên định đưa tay.</p>
+<p>Sở Tây Lăng lạnh lùng hất ra.</p>
+<p>Đừng chạm vào hắn.</p>
+<p>Hắn tự đi.</p>
+<p>Ánh mắt âm lãnh của hắn ghim chặt lên người Sở Ly.</p>
+<p>Lục Mộng Điệp đã chết gần một năm.</p>
+<p>Tính ngàn tính vạn...</p>
+<p>Hắn cũng không ngờ chuyện cũ năm xưa lại bị lôi ra.</p>
+<p>Đến chính hắn cũng gần như quên mất chuyện này rồi.</p>
+<p>Tạ Vãn Nguyệt...</p>
+<p>Ngươi chính là Sở Ly!</p>
+<p>Hắn tuyệt đối sẽ không bỏ qua!</p>
+<p>Sở Tây Lăng mím chặt môi mỏng, cuối cùng hung hăng lườm Sở Ly một cái rồi xoay người sải bước rời đi.</p>
+<p>Hai tên Ngự lâm quân theo sát phía sau.</p>
+<p>Đến đây.</p>
+<p>Mối uy hiếp từ Tam Hoàng tử tạm thời được loại bỏ.</p>
+<p>Sở Ngạo Thiên hớn hở ra mặt.</p>
+<p>“Lục Mộng Điệp vừa chết, Tam Hoàng tử lập tức cưới Lục Chiêu Dương. Lục Tả tướng, ngươi là phụ thân của hai nàng ấy, không thể nào không biết nội tình! Ngươi âm thầm qua lại với Tam Hoàng tử, bí mật cấu kết, nhận hay không nhận?”</p>
+<p>Lục Tả tướng quỳ sụp xuống đất.</p>
+<p>“Hoàng thượng! Thần oan uổng! Thần oan uổng!”</p>
+<p>Lúc này.</p>
+<p>Vẻ hoảng loạn trên mặt hắn không hề giả tạo.</p>
+<p>Tam Hoàng tử vừa đi.</p>
+<p>Hắn cũng chẳng còn khí thế bức người như vừa rồi nữa.</p>
+<p>Sở Ngạo Thiên nhìn cảnh ấy chỉ thấy hả dạ.</p>
+<p>Lão già!</p>
+<p>Lão thất phu!</p>
+<p>Còn dám liên thủ với Tam Hoàng tử bắt nạt hắn.</p>
+<p>Để xem hắn báo thù thế nào!</p>
+<p>“Người đâu! Bắt Lục Tả tướng...”</p>
+<p>“Xin chậm đã.”</p>
+<p>Sở Ly giơ tay ngăn lại.</p>
+<p>“Lục Tả tướng là đứng đầu bách quan, là trọng thần của triều đình. Sao có thể cùng Tam Hoàng tử cấu kết làm chuyện xấu? Chắc hẳn là bị oan.”</p>
+<p>Sở Ngạo Thiên quay đầu.</p>
+<p>“Hoàng thẩm, người...”</p>
+<p>Sở Ly bước lên trước, khom người đỡ Lục Tả tướng đứng dậy, mỉm cười nói:</p>
+<p>“Lục Tả tướng tận tâm tận lực vì Đại Sở, tự nhiên chịu được điều tra. Nếu không tin, Hoàng thượng cứ phái người đi tra.”</p>
+<p>Sở Ngạo Thiên lập tức hiểu ý.</p>
+<p>Con ngươi đảo một vòng, liền nói:</p>
+<p>“Hiện nay trẫm bận rộn triều chính, không thể phân thân. Chờ qua đợt này, sẽ điều tra Lục Tả tướng.”</p>
+<p>Sở Ly mỉm cười.</p>
+<p>“Nếu không còn chuyện gì nữa, vậy mọi người giải tán đi.”</p>
+<p>Sở Ngạo Thiên phất tay.</p>
+<p>“Đều lui xuống.”</p>
+<p>“Tuân chỉ!”</p>
+<p>Lục Tả tướng hành lễ.</p>
+<p>Sau lưng hắn đã ướt đẫm mồ hôi.</p>
+<p>Lúc đi ra, hai chân còn hơi run rẩy.</p>
+<p>Hoàng thượng muốn tra hắn?</p>
+<p>Ngay cả Tam Hoàng tử cũng bị điều tra.</p>
+<p>Nếu thật sự hạ lệnh...</p>
+<p>Tả tướng phủ còn chịu nổi mấy lần tra xét?</p>
+<p>Làm quan...</p>
+<p>Ai mà trên tay chẳng có vài chuyện không thể để ánh sáng nhìn thấy?</p>
+<p>Rõ ràng bọn họ đã ép Hoàng thượng đến mức không còn đường lui, còn đang trợ giúp Tam Hoàng tử đoạt quyền.</p>
+<p>Vậy mà Tạ Vãn Nguyệt vừa trở về...</p>
+<p>Cục diện đã hoàn toàn thay đổi.</p>
+<p>Khác hẳn với những gì bọn họ dự liệu!</p>
+<p>Quần thần lần lượt lui xuống.</p>
+<p>Trong Ngự thư phòng chỉ còn lại hai người.</p>
+<p>Sở Ngạo Thiên kích động nhảy dựng lên cao ba thước, lao đến bám chặt lấy Sở Ly.</p>
+<p>“Cửu muội!”</p>
+<p>Tốt quá!</p>
+<p>Có Cửu muội ở đây...</p>
+<p>Cả người hắn đều thấy yên tâm.</p>
+<p>Hu hu!</p>
+<p>Vẫn là Cửu muội thương hắn nhất.</p>
+<p>Sở Ly đứng vững tấn bộ, suýt nữa bị Sở Ngạo Thiên húc ngã.</p>
+<p>“Có thể đứng đàng hoàng mà nói chuyện không?”</p>
+<p>“Ta chẳng phải vì gặp muội nên kích động quá sao?”</p>
+<p>“Ngồi xuống.”</p>
+<p>“Ồ!”</p>
+<p>Biết rồi!</p>
+<p>Sở Ngạo Thiên khép hai chân, hai tay đặt chồng lên nhau, ngoan ngoãn ngồi xuống.</p>
+<p>“Cửu muội, lúc nãy sao muội không cho ta trị tội Lục Tả tướng? Nếu ta hạ lệnh tịch thu gia sản, chắc chắn sẽ thu được một khoản bạc lớn để bổ sung Quốc khố.”</p>
+<p>Sở Ly ngồi nghiêng trên án thư, tiện tay cầm một quyển tấu chương lên xem.</p>
+<p>“Huynh muốn làm một vụ mua bán duy nhất...”</p>
+<p>“Hay muốn có tiền tài cuồn cuộn không dứt?”</p>
+<p>“Đương nhiên là cuồn cuộn không dứt!”</p>
+<p>“Nếu vậy, giết Lục Tả tướng rồi... ai sẽ tiếp tục mang bạc đến cho huynh?”</p>
+<p>Sở Ly nhàn nhạt nói:</p>
+<p>“Lúc nãy chính huynh cũng nói rồi, qua một thời gian sẽ điều tra Lục Tả tướng. Trong lòng hắn có quỷ, chắc chắn sẽ nhân khoảng thời gian này mau chóng xử lý hết những việc từng làm, những món nợ từng mắc, những nhược điểm từng để lại, vá hết mọi sơ hở.”</p>
+<p>“Như vậy... chẳng những không cần lo hắn tiếp tục gây sóng gió, trái lại hắn còn sẽ tận tâm tận lực làm việc cho huynh.”</p>
+<p>Một vị đại thần tốt như vậy...</p>
+<p>Không dùng thì phí.</p>
+<p>Sau này nếu nhìn không thuận mắt...</p>
+<p>Chỉ cần tìm một cái cớ.</p>
+<p>Xử lý là được.</p>
+<p>Giống như Tri phủ họ Lý ở Giang Nam.</p>
+<p>Đi đúng quy trình ấy.</p>
+<p>Muốn xử hắn...</p>
+<p>Cũng phải ép khô giá trị cuối cùng của hắn đã.</p>
+<p>Sở Ngạo Thiên nghe xong, hai mắt sáng rực, không nhịn được giơ ngón cái.</p>
+<p>“Cửu muội! Cách này thật hay!”</p>
+<p>“Cho người ta hy vọng, rồi lại khiến người ta tuyệt vọng.”</p>
+<p>“Đúng là không phải chuyện con người làm được!”</p>
+<p>“Đây là cách của Hoàng thúc.”</p>
+<p>“...”</p>
+<p>“Hoàng thúc... nghĩ thật chu toàn!”</p>
+<p>Sở Ly liếc hắn một cái.</p>
+<p>Trên đường gấp rút trở về, nàng đã nắm được quá nửa tình hình ở Đế đô.</p>
+<p>Nếu nàng không về kịp...</p>
+<p>E rằng sào huyệt cũng bị người ta đào sạch rồi.</p>
+<p>“Đi điều tra xem, là kẻ nào nhân danh Hoàng thất tung tin ra ngoài, nào là ép quyên góp năm nghìn lượng, nào là tăng thuế gấp ba.”</p>
+<p>“Lôi kẻ đó ra mới là việc quan trọng nhất.”</p>
+<p>“Cửu muội yên tâm! Ta lập tức sai Đại Lý tự khanh đi điều tra!”</p>
+<p>“Ừ.”</p>
+<p>“Hay là huynh cứ gọi ta là Hoàng thẩm đi.”</p>
+<p>“Ta nghe rất thuận tai.”</p>
+<p>“?”</p>
+<p>Lá gan ngươi lớn thật!</p>
+<p>Trẫm là Hoàng đế!</p>
+<p>Cho dù ngươi muốn làm trưởng bối của trẫm...</p>
+<p>Trẫm vẫn là người lớn nhất thiên hạ!</p>
+<p>—</p>
+<p>“Ngươi nói cái gì?”</p>
+<p>“Tạ Vãn Nguyệt trở về rồi? Còn lấy thân phận Nhiếp Chính vương phi tự xưng?”</p>
+<p>Trong Nhã Uyển.</p>
+<p>Ý thu dạt dào.</p>
+<p>Sở Minh Hoa đột ngột ném mạnh chén trà trong tay xuống đất.</p>
+<p>Choang!</p>
+<p>“Một lũ phế vật!”</p>
+<p>Đã phái nhiều sát thủ như vậy...</p>
+<p>Vậy mà vẫn không giết được nàng!</p>
+<p>Đồ vô dụng!</p>
+<p>Tên thị vệ quỳ dưới đất, giọng đầy hoảng sợ.</p>
+<p>“Quận chúa bớt giận!”</p>
+<p>Bảo nàng sao có thể bớt giận?</p>
+<p>Hiện giờ ngồi trên long ỷ vốn đã là một tên phế vật.</p>
+<p>Đã vậy tên phế vật ấy còn thích làm chuyện se duyên lung tung, nói gì mà muốn ban hôn cho Nhiếp Chính vương và Tạ Vãn Nguyệt.</p>
+<p>Tạ Vãn Nguyệt chẳng qua chỉ là nữ nhi của một võ tướng.</p>
+<p>Dựa vào đâu mà được làm Nhiếp Chính vương phi?</p>
+<p>Nàng tuyệt đối sẽ không để nàng ta được như ý!</p>
+<p>Tạ Vãn Nguyệt...</p>
+<p>Ngươi cứ chờ đó! Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_299.html" class="btn">‹ Trước</a>
             <a href="chuong_307.html" class="btn">Sau ›</a>
         </div>
@@ -303,15 +311,11 @@ Ngươi cứ chờ đó! Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -323,11 +327,11 @@ Ngươi cứ chờ đó! Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

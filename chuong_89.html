@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 89</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,536 +62,545 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 89</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_88.html" class="btn">‹ Trước</a>
             <a href="chuong_90.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 89: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 89: Thật không biết Sở Ly rốt cuộc coi trọng hắn ở điểm nào
-“Hoàng thượng giá đáo——”
-Đúng lúc ấy, một tiếng xướng báo the thé, kéo dài xuyên qua không trung.
-Mọi người lập tức tản sang hai bên, đồng loạt quỳ xuống.
-Sở Hoàng thần sắc nghiêm nghị chậm rãi bước đến.
-Sau khi đôi tân nhân bái đường xong, ngài đã khởi giá hồi cung xử lý chính vụ.
-Nào ngờ đi được nửa đường, lại bị thị vệ phủ Tam hoàng tử hớt hải mời trở về.
-Ngày đại hôn…
-Sao lại xảy ra chuyện như thế?
-Ngay dưới chân thiên tử…
-Đây chẳng phải là coi thường long uy sao?
-Mọi người nơm nớp lo sợ:
-“Tham kiến Hoàng thượng!”
-Sở Hoàng xuyên qua đám người, đi thẳng vào trong.
-Vừa nhìn thấy tân nương nằm trên mặt đất, mày kiếm lập tức nhuốm ba phần lệ sắc.
-“Ai làm?”
-Sở Hạo Nguyệt chần chừ đáp:
-“Phụ hoàng, trước khi xảy ra chuyện, Cửu đệ từng đến tân phòng. Nhi thần thật không hiểu, Cửu đệ là nam tử, sao lại đột nhiên đến tân phòng…”
-Sở Ly lên tiếng:
-“Nhi thần đến tìm Sở Hoằng Diễm. Khi ấy có rất nhiều người đều nhìn thấy.”
-Sở Tây Lăng ôm thi thể tân nương trong lòng, hai mắt đỏ hoe, thần sắc bi thống.
-Người của phe Đại hoàng tử đứng một bên, bày ra dáng vẻ việc không liên quan đến mình, chỉ đứng xem náo nhiệt.
-Tần Mục Vũ chắp tay:
-“Hoàng thượng, Cửu hoàng tử không có lý do gì để mưu hại Tam hoàng tử phi. Người từ trước đến nay đối nhân hòa thuận, chưa từng kết oán với ai.”
-Điều này…
-Ai ai cũng biết.
-Sở Hạo Nguyệt lập tức hỏi ngược lại:
-“Vậy chuyện của Thất hoàng tử, chẳng lẽ không phải do chính Cửu hoàng tử một tay thúc đẩy?”
-“Hay là do Tướng quân phủ làm?”
-Tần Mục Vũ khẽ nhíu mày.
-Tứ hoàng tử nhìn bề ngoài ôn hòa nhã nhặn.
-Nhưng lời nói lại sắc bén như đao.
-Từng câu từng chữ đều ép sát.
-Chỉ cần sơ ý một chút sẽ rơi ngay vào cạm bẫy.
-“Việc Thất hoàng tử làm, mọi người đều thấy rõ, Hoàng thượng cũng đã minh xét. Vi thần không dám vọng ngôn.”
-“Nhưng vi thần dám lấy tính mạng mình bảo đảm…”
-“Cửu hoàng tử trong sạch!”
-Sở Ly thần sắc phức tạp nhìn về phía Tần Mục Vũ.
-Tần Mục Vũ khẽ nhìn nàng, trao cho nàng một ánh mắt an tâm.
-Ánh mắt hai người giao nhau.
-Một màn ấy…
-Lọt vào một đôi mặc mâu
-(Đôi mắt của nam nhân mang vẻ lạnh lùng, thâm trầm, sâu không thấy đáy)
-Bình tĩnh.
-Lạnh lẽo.
-Hai người đứng cạnh nhau.
-Tin tưởng lẫn nhau.
-Che chở cho nhau.
-Trong mắt Sở Đệ Trì…
-Lại có vài phần buồn cười.
-Tiêu Dạ Hành hỏi:
-“Ngươi cười cái gì?”
-Hắn không đáp.
-…
-Tứ hoàng tử cùng Cửu hoàng tử, mỗi người giữ một lập trường.
-Tứ hoàng tử vốn giao hảo với Tam hoàng tử.
-Xảy ra chuyện như vậy, hắn đương nhiên là người đầu tiên đứng ra đòi công bằng.
-Mà Tần Mục Vũ lại hết lòng che chở Cửu hoàng tử.
-Hai bên lời qua tiếng lại gay gắt.
-Mọi người nghe xong…
-Đều không biết nên tin ai.
-Lời của cả hai…
-Đều có lý.
-Bọn họ tin Cửu hoàng tử.
-Nhưng cũng không thể phủ nhận sự thật rằng Cửu hoàng tử từng đến tân phòng, từng tiếp xúc với tân nương.
-Nhất thời…
-Ai nấy đều do dự.
-Không biết nên đứng về phía nào.
-Sự che chở vô điều kiện của Tần Mục Vũ rơi vào mắt Sở Ly.
-Điều nàng nhớ đến…
-Vẫn luôn là bóng lưng hắn bỏ chạy ngày hôm đó.
-Trong lòng vô cùng phức tạp.
-“Tần Thiếu tướng quân…”
-“Ngươi thật sự không cần vì ta mà…”
-“Cửu hoàng tử.”
-“Vi thần từ nhỏ đã làm bạn đọc bên cạnh người.”
-“Hiểu rõ phẩm hạnh và tính tình của người.”
-“Cho dù khắp thiên hạ đều nghi ngờ người…”
-“Cũng tuyệt đối không bao gồm vi thần.”
-Khóe môi Sở Ly khẽ động.
-“Ngươi…”
-Sở Đệ Trì lạnh lùng nhìn hai người thâm tình nghĩa trọng.
-Ý cười nơi đáy mắt cũng lạnh thêm vài phần.
-Cuối cùng mở miệng:
-“Tiêu Dạ Hành.”
-“Nhìn ngươi cũng chẳng giống kẻ ngu.”
-“Sao lại dạy ra một đứa cháu… ngu như lợn vậy?”
-Tiêu Dạ Hành: “?”
-Mắng cháu hắn thì thôi.
-Sao lại tiện thể mắng luôn cả hắn?
-Hắn suýt nữa tức đến bật cười.
-“Xảy ra án mạng.”
-“Chỉ dựa vào vài câu nói suông…”
-“Đã có thể chứng minh trong sạch?”
-“Đúng là đồ ngu.”
-Thật không biết…
-Sở Ly rốt cuộc coi trọng hắn ở điểm nào.
-Đúng lúc ấy.
-Trọng Phong bước nhanh tới, lập tức bẩm báo:
-“Chủ tử.”
-“Đã tra được rồi.”
-“Phía sau phủ có một tòa viện hoang bỏ phế.”
-“Trong giếng nước bẩn phát hiện một nữ thi.”
-“Nghĩ đến… chính là tỳ nữ mà Cửu hoàng tử vừa nhắc tới, người từng ra vào tân phòng.”
-Sở Đệ Trì giơ tay chỉ hắn:
-“Ngươi.”
-“Qua đó.”
-“Tự mình báo tin này cho Tần Thiếu tướng quân.”
-“Vâng.”
-Trọng Phong cúi đầu lĩnh mệnh, cất bước vào chính viện.
-Thấy mọi người đang cãi nhau đến không ai nhường ai, hắn mới lên tiếng:
-“Khởi bẩm Hoàng thượng.”
-“Ty chức phát hiện một nữ thi trong chiếc giếng bỏ hoang ở hậu viện.”
-Lời là nói với Hoàng thượng.
-Ánh mắt…
-Lại hướng về phía Sở Ly.
-Mọi người đều giật mình.
-Nữ thi?
-Sở Hoàng khẽ nâng tay, chỉ vào bốn thị vệ.
-“Đi xem.”
-Sở Ly nhìn thấy Trọng Phong.
-Đương nhiên biết chủ nhân đứng sau hắn chính là Nhiếp Chính Vương.
-Nàng đưa mắt tìm quanh một vòng.
-Quả nhiên nhìn thấy Sở Đệ Trì đang đứng ở ngoài cùng đám người.
-Tần Mục Vũ cũng nhìn thấy.
-Khi ánh mắt chạm nhau.
-Cách nhau hơn mười trượng.
-Hắn nhìn thấy…
-Nhiếp Chính Vương cười.
-Khóe môi mỏng khẽ cong.
-Đáy mắt đầy vẻ mỉa mai.
-Khiến cổ họng Tần Mục Vũ nghẹn lại.
-Đứng dưới ánh mắt ấy…
-Hắn bỗng có một cảm giác chật vật khó diễn tả thành lời.
-…
-Vừa rồi.
-Hắn chỉ mải một lòng tin tưởng Sở Ly.
-Lại quên mất…
-Trong trường hợp thế này.
-Chỉ riêng sự tin tưởng của một mình hắn…
-Thật quá nhỏ bé.
-Chỉ có tìm được chứng cứ xác thực.
-Mới có thể giúp Sở Ly thoát thân.
-Rất nhanh.
-Hai thị vệ khiêng một cỗ nữ thi ướt sũng đặt bên ngoài.
-Trên người phủ vải trắng.
-Sợ phạm điều kiêng kỵ.
-Không dám khiêng thẳng vào.
-Sở Hoàng trực tiếp nói:
-“Khiêng vào.”
-“Để Cửu hoàng tử xem có phải người này không.”
-“Tuân chỉ.”
-Nữ thi được khiêng vào.
-Tất cả mọi người đều kiêng dè, lùi về sau mấy bước.
-Không ít nữ quyến nhát gan còn che mũi, ngoảnh mặt sang nơi khác.
-Không dám nhìn.
-Ngày đại hôn vui mừng như vậy.
-Tân nương lại trúng độc bỏ mạng.
-Ai nấy đều thương xót Tam hoàng tử.
-Rốt cuộc là ai làm?
-Ai đang đối đầu với Tam hoàng tử?
-“Tiểu Cửu.”
-“Qua xem.”
-“Vâng, phụ hoàng.”
-Sở Ly vén một góc tấm vải trắng.
-Một khuôn mặt bị ngâm đến trắng bệch hiện ra.
-Toàn thân bốc lên mùi hôi thối từ giếng nước bẩn.
-Mùi xộc thẳng vào mũi.
-Y phục trên người ướt đẫm.
-Chính là trang phục của tỳ nữ.
-Là nàng ta.
-Chính là tỳ nữ trước đó đã vào tân phòng lấy kẹo cho bọn trẻ.
-“Đúng là người này, phụ hoàng.”
-Ngỗ tác khám nghiệm tử thi.
-Rất nhanh đã có kết luận.
-“Hoàng thượng.”
-“Trên người người này không có ngoại thương.”
-“Trong cơ thể cũng không có dấu vết trúng độc.”
-“Nguyên nhân tử vong là chết đuối.”
-“Nhìn tình hình…”
-“Là nhảy giếng tự vẫn.”
-Không ai đang yên đang lành…
-Lại tự sát.
-Trừ phi…
-Trong lòng có quỷ.
-Sở Hoàng trầm giọng:
-“Truyền người của Đại Lý tự đến.”
-“Nghiêm tra việc hôm nay.”
-Đến đây.
-Hiềm nghi của Sở Ly cuối cùng cũng được rửa sạch.
-Còn Tam hoàng tử phi chết oan…
-“An táng hậu lễ Tam hoàng tử phi…”
-“Tây Lăng.”
-“Nén bi thương.”
-Sở Tây Lăng ôm chặt nữ tử mình yêu.
-Khóc đến hai mắt đỏ thẫm.
-Bộ dạng thất hồn lạc phách ấy…
-Đến cả quỳ xuống đáp lời cũng quên mất.
-Nhìn dáng vẻ mất hồn của hắn.
-Không ít người đều cảm thấy khó chịu trong lòng.
-Than ôi…
-Ngày thành thân trọng đại như vậy.
-Lại gặp phải tai họa này.
-Tam hoàng tử…
-Thật đáng thương.
-Sở Hoàng tự mình xử lý mọi việc.
-Đợi người của Đại Lý tự tới.
-Liền giải tán toàn bộ tân khách.
-Lệnh điều tra kỹ thân phận của tỳ nữ kia.
-Mọi người đều lần lượt rời đi.
-Trước khi Sở Ly rời khỏi.
-Sở Hạo Nguyệt từng dùng ánh mắt âm trầm nhìn nàng.
-Dường như…
-Rất không cam lòng cứ thế buông tha nàng.
-Sở Ly trừng ngược lại.
-“Ngươi—”
-“Làm Tứ hoàng huynh thất vọng rồi.”
-“Đệ xin cáo từ trước.”
-Nàng không hề yếu thế.
-Người không phạm ta.
-Ta không phạm người.
-Cho dù từ trước đến nay nàng luôn hòa nhã, không tranh không đoạt.
-Nhưng cũng không phải ai cũng có thể giẫm lên nàng một cước.
-…
-Rời khỏi hậu viện.
-Sở Đệ Trì đứng ở bên ngoài.
-Dáng vẻ ung dung ấy…
-Tựa như cố ý chờ nàng.
-Bước chân Sở Ly khựng lại giây lát.
-Cuối cùng vẫn đi tới.
-“Hoàng thúc.”
-Sở Đệ Trì đưa mắt nhìn nàng.
-Từ trên xuống dưới đánh giá một lượt.
-“Không sao chứ?”
-Sở Ly mím môi.
-Hắn giúp điều tra.
-Giúp nàng thoát thân.
-Nếu không…
-Còn không biết phải tranh cãi bao lâu nữa.
-Vì sao hắn lại giúp nàng?
-Nàng hạ giọng:
-“Tỳ nữ kia hẳn là bị người sai khiến.”
-“Đáng tiếc chết không đối chứng.”
-“Không biết rốt cuộc là ai đã giết Tam hoàng tử phi.”
-“Vừa rồi…”
-“Ta thấy Tam hoàng huynh thất hồn lạc phách, khóc đến hai mắt đỏ hoe…”
-“Thật đáng thương.”
-Trong lòng nàng rất khó chịu.
-Lúc trước khi nói chuyện với Tam hoàng tử phi.
-Nàng có thể cảm nhận được…
-Đó là một nữ tử vô cùng ôn nhu.
-Giọng nói mềm mại như dòng nước róc rách.
-Nhuận vật vô thanh.
-“Đáng thương?”
-Sở Đệ Trì bỗng bật cười.
-“Sống trong hoàng gia.”
-“Chỉ thấy tuổi tác lớn lên.”
-“Chứ đầu óc thì không.”
-Ở nơi đầy rẫy minh tranh ám đấu.
-Âm mưu quỷ kế chồng chất thế này.
-Lòng thương hại…
-Là thứ vô dụng nhất.
-Sở Ly mím môi.
-Rõ ràng không đồng tình lời hắn.
-“Chẳng lẽ hoàng thúc không thấy quá tàn nhẫn sao?”
-“Hay là…”
-“Người như hoàng thúc, ở chiến trường quá lâu.”
-“Đã nhìn thấu sinh tử cùng chinh phạt.”
-“Tự nhiên không thể cảm nhận được tình cảm giữa Tam hoàng huynh và Tam hoàng tử phi.”
-Sở Đệ Trì cười lạnh:
-“Tỳ nữ kia là tự sát.”
-“Nàng thử nghĩ xem.”
-“Vì sao nàng ta lại cam tâm tình nguyện tự sát?”
-Sở Ly sống trong cung nhiều năm.
-Đã quen nhìn nữ nhân hậu cung tranh sủng.
-Đại khái cũng đoán được.
-“Hoặc là…”
-“Nàng ta có nhược điểm nằm trong tay đối phương.”
-“Không chết không được.”
-“Hoặc là…”
-“Đối phương đưa ra điều kiện đủ lớn.”
-“Lớn đến mức khiến nàng ta cam nguyện dùng mạng mình để đổi.”
-Nếu là vế trước…
-Một tỳ nữ…
-Có thể có nhược điểm gì quan trọng chứ?
-Xem ra…
-Là vế sau.
-“Chủ tử.”
-Đúng lúc ấy.
-Kinh Ảnh bước nhanh tới.
-“Thuộc hạ đã tra được nơi ở của người nhà tỳ nữ kia.”
-Sở Đệ Trì nói:
-“Đi xem?”
-Sở Ly khẽ cắn môi dưới.
-“Được.”
-Hai người xoay người.
-Sải bước ra ngoài.
-Đến khi Tần Mục Vũ chạy tới.
-Điều hắn nhìn thấy…
-Chỉ là bóng lưng hai người sóng vai rời đi.
-Hắn há miệng.
-Nhưng mãi…
-Vẫn không gọi thành tiếng…
-⸻
-Ngoại ô kinh thành.
-Một dãy nhà đất thấp bé cũ nát san sát nhau.
-Đây là nơi ở của bách tính nghèo khổ.
-Chật chội.
-Hỗn độn.
-Khắp nơi đều là hơi thở của cuộc sống.
-“Chính là phía trước, chủ tử.”
-Kinh Ảnh đưa tay chỉ.
-Sở Ly đi vào con hẻm nhỏ tối tăm chật hẹp.
-Hai bên đường chất đầy giỏ tre cũ, bàn ghế hỏng và tre nứa.
-Dừng trước một căn nhà đất cũ kỹ.
-Đúng lúc nàng định gõ cửa bước vào.
-Đột nhiên ánh mắt trở nên sắc bén.
-“Có người!”
-Phản ứng của Kinh Ảnh còn nhanh hơn một bước.
-Hắn rút kiếm.
-Đạp tung cửa xông vào.
-Giữa tiếng kinh hô cùng cảnh hỗn loạn.
-Hắn khống chế được một nam nhân bịt mặt cầm đao.
-Tên kia biết chuyện bại lộ.
-Lập tức cắn lưỡi tự tận.
-Trong chớp mắt đã tắt thở.
-Không kịp phòng bị.
-“Chủ tử!”
-“Thuộc hạ sơ suất!”
-Sở Ly kéo khăn che mặt xuống.
-Đó là một gương mặt xa lạ.
-Nhìn máu tươi tràn nơi khóe miệng.
-Nàng biết…
-Không cứu được nữa.
-Trong căn nhà thấp bé.
-Chỉ thấy một lão nhân.
-Một đôi phu thê trung niên.
-Cùng mấy đứa trẻ còn nhỏ.
-Tất cả ôm chặt lấy nhau.
-Run rẩy vì sợ hãi.
-Sở Ly đứng dậy, nói:
-“Không sao nữa rồi.”
-“Có điều…”
-“Trong lòng các ngươi hẳn cũng biết.”
-“Vì sao người này lại đến giết các ngươi chứ?”
-Đôi phu thê trung niên mặt mày trắng bệch.
-Nếu vừa rồi…
-Không có mấy người này tới cứu.
-Cả nhà bọn họ…
-Ắt đã chết sạch.
-Người phụ nữ trung niên run rẩy nói:
-“Chúng ta không quen biết người này.”
-“Nhưng…”
-“Nửa tháng trước.”
-“A Hương đột nhiên mang về hai trăm lượng ngân phiếu.”
-“Không biết…”
-“Có phải vì số bạc đó mà chuốc lấy họa sát thân hay không?”
-A Hương…
-Là nữ nhi của bọn họ.
-Là tỳ nữ trong phủ Tam hoàng tử.
-Sở Đệ Trì đứng ở cửa.
-Phủi bụi trên ống tay áo.
-Nhíu mày nói:
-“Lấy ngân phiếu ra.”
-“Vâng… vâng…”
-Bọn họ không dám nhiều lời.
-Lập tức lấy từ dưới gầm giường.
-Trong khe gạch được giấu kín từng lớp.
-Hai tờ ngân phiếu mệnh giá lớn được cất giữ cẩn thận.
-Ngân phiếu mệnh giá lớn…
-Đều có tiền trang phát hành riêng.
-Cùng ký hiệu đặc biệt.
-Sở Đệ Trì phủi lớp bụi trên tờ ngân phiếu.
-Liếc nhìn ký hiệu phía trên.
-“Chậc.”
-“Hoàng gia.”
-“Cái gì?”
-Sở Ly kinh ngạc giật lấy.
-Quả nhiên nhìn thấy ký hiệu độc quyền của hoàng gia.
-Sắc mặt lập tức trầm xuống.
-Là người của hoàng gia…
-Mua chuộc A Hương.
-Đầu độc Tam hoàng tử phi.
-Giờ sự việc bại lộ.
-Lại còn cố ý phái người tới giết cả nhà diệt khẩu.
-Đáng tiếc…
-Tên nam nhân kia đã cắn lưỡi tự sát.
-Khó mà điều tra thêm được.
-Nàng đè nén tâm trạng phức tạp trong lòng, lập tức nói:
-“A Hương đã chết.”
-“Sau khi đầu độc Tam hoàng tử phi liền nhảy giếng tự vẫn.”
-“Thi thể nàng ấy e rằng khó có thể đưa về quê nhà.”
-“Nếu các ngươi muốn giữ mạng.”
-“Tốt nhất nên nhanh chóng rời khỏi Đế Đô.”
-“Đi càng xa càng tốt.”
-Nói xong.
-Nàng đặt ngân phiếu lên bàn.
-Không nhìn vẻ mặt kinh hãi, hoảng sợ và ngơ ngác của bọn họ nữa.
-Xoay người rời đi.
-…
-Đã ra đến đầu phố.
-Trong lòng Sở Ly vẫn nặng trĩu.
-Rốt cuộc…
-Là ai làm?
-“Dẫn nàng đi xem một thứ thú vị.”
-Lời nói bất ngờ của nam nhân khiến Sở Ly ngẩn ra.
-“Thứ gì?”
-Nhìn hắn chậm rãi đi về phía đầu bên kia của con phố.
-Nàng khẽ cắn môi.
-Suy nghĩ một lát.
-Cuối cùng vẫn đi theo.
-Không ngờ…
-Hai người lại đến trước…
-Một cửa hàng bán quan tài.
-Đứng cách đó không xa.
-Có thể nhìn thấy một nữ tử dung mạo thanh tú ôn nhã, vành mắt đỏ hoe đang bước vào cửa hàng.
-Dáng vẻ lê hoa đái vũ ấy…
-Lại có sáu phần giống Tam hoàng tử phi đã chết.
-Ông chủ cửa hàng quan tài an ủi:
-“Tiểu thư xin nén bi thương…”
-Sở Ly nhìn theo, hỏi:
-“Nàng ấy là ai?”
-“Đích tỷ của Tam hoàng tử phi Lục Mộng Điệp.”
-“Lục Chiêu Dương.”
-Lục Mộng Điệp là thứ xuất.
-Hai tỷ muội cùng cha khác mẹ.
-Có vài phần giống nhau cũng là điều tự nhiên.
-Nhìn dáng vẻ Lục Chiêu Dương.
-Là đến mua quan tài và vàng mã cho thứ muội.
-“Người đưa ta đến đây làm gì?”
-Sở Đệ Trì nhàn nhạt nhìn nàng.
-“Nhìn cây ngân bộ dao hải đường song đế trên đầu nàng ta đi.”
-“Là Tam hoàng tử tặng.”
-“Cái gì?”
-Sở Ly kinh ngạc bật thốt.
-“Vật song đế vốn mang ý nghĩa cành liền cành, đồng tâm kết tóc.”
-“Tam hoàng tử đã cưới Lục Mộng Điệp làm phi.”
-“Vì sao lại tặng Lục Chiêu Dương trâm hải đường song đế?”
-Huống hồ…
-Lúc Lục Mộng Điệp chết.
-Chính mắt nàng nhìn thấy Tam hoàng tử khóc đến hồn vía đều như mất hết.
-Hắn rõ ràng…
-Yêu Lục Mộng Điệp như vậy.
-Sở Đệ Trì nói:
-“Sao nàng không thử nghĩ.”
-“Tam hoàng tử xuất thân không cao.”
-“Mẫu phi chỉ là một vị Quý nhân nho nhỏ.”
-“Nếu cưới đích nữ của đương triều Tả tướng.”
-“Quyền thế nhất thời quá lớn.”
-“Tất sẽ bị người khác chú ý.”
-“Chi bằng cưới một thứ nữ.”
-“Sau đó trừ khử nàng ta.”
-“Vừa bảo toàn nữ tử mình thật sự yêu.”
-“Lại còn có thể mượn việc này…”
-“Mưu lợi cho bản thân.”
-Sở Ly thuận theo lời hắn mà nghĩ sâu thêm.
-Sắc mặt dần thay đổi.
-Trước đó…
-Nàng vẫn luôn cảm thấy Tam hoàng huynh rất đáng thương.
-Ngày đại hôn mất thê tử.
-Đổi lại là người thường…
-Có mấy ai chịu nổi?
-Nhưng giờ nghe Sở Đệ Trì nói.
-Nàng mới thấy…
-Mình thật sự quá ngây thơ.
-Nàng vạn lần không ngờ…
-Tình yêu Tam hoàng tử dành cho Tam hoàng tử phi…
-Chỉ là giả vờ.
-Người thật sự được hắn đặt nơi đầu quả tim…
-Lại chính là vị đích trưởng nữ của đương triều Tả tướng—
-Lục Chiêu Dương. Ẩn bớt</p>
+            <p>Chương 89: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 89: Thật không biết Sở Ly rốt cuộc coi trọng hắn ở điểm nào</p>
+<p>“Hoàng thượng giá đáo——”</p>
+<p>Đúng lúc ấy, một tiếng xướng báo the thé, kéo dài xuyên qua không trung.</p>
+<p>Mọi người lập tức tản sang hai bên, đồng loạt quỳ xuống.</p>
+<p>Sở Hoàng thần sắc nghiêm nghị chậm rãi bước đến.</p>
+<p>Sau khi đôi tân nhân bái đường xong, ngài đã khởi giá hồi cung xử lý chính vụ.</p>
+<p>Nào ngờ đi được nửa đường, lại bị thị vệ phủ Tam hoàng tử hớt hải mời trở về.</p>
+<p>Ngày đại hôn…</p>
+<p>Sao lại xảy ra chuyện như thế?</p>
+<p>Ngay dưới chân thiên tử…</p>
+<p>Đây chẳng phải là coi thường long uy sao?</p>
+<p>Mọi người nơm nớp lo sợ:</p>
+<p>“Tham kiến Hoàng thượng!”</p>
+<p>Sở Hoàng xuyên qua đám người, đi thẳng vào trong.</p>
+<p>Vừa nhìn thấy tân nương nằm trên mặt đất, mày kiếm lập tức nhuốm ba phần lệ sắc.</p>
+<p>“Ai làm?”</p>
+<p>Sở Hạo Nguyệt chần chừ đáp:</p>
+<p>“Phụ hoàng, trước khi xảy ra chuyện, Cửu đệ từng đến tân phòng. Nhi thần thật không hiểu, Cửu đệ là nam tử, sao lại đột nhiên đến tân phòng…”</p>
+<p>Sở Ly lên tiếng:</p>
+<p>“Nhi thần đến tìm Sở Hoằng Diễm. Khi ấy có rất nhiều người đều nhìn thấy.”</p>
+<p>Sở Tây Lăng ôm thi thể tân nương trong lòng, hai mắt đỏ hoe, thần sắc bi thống.</p>
+<p>Người của phe Đại hoàng tử đứng một bên, bày ra dáng vẻ việc không liên quan đến mình, chỉ đứng xem náo nhiệt.</p>
+<p>Tần Mục Vũ chắp tay:</p>
+<p>“Hoàng thượng, Cửu hoàng tử không có lý do gì để mưu hại Tam hoàng tử phi. Người từ trước đến nay đối nhân hòa thuận, chưa từng kết oán với ai.”</p>
+<p>Điều này…</p>
+<p>Ai ai cũng biết.</p>
+<p>Sở Hạo Nguyệt lập tức hỏi ngược lại:</p>
+<p>“Vậy chuyện của Thất hoàng tử, chẳng lẽ không phải do chính Cửu hoàng tử một tay thúc đẩy?”</p>
+<p>“Hay là do Tướng quân phủ làm?”</p>
+<p>Tần Mục Vũ khẽ nhíu mày.</p>
+<p>Tứ hoàng tử nhìn bề ngoài ôn hòa nhã nhặn.</p>
+<p>Nhưng lời nói lại sắc bén như đao.</p>
+<p>Từng câu từng chữ đều ép sát.</p>
+<p>Chỉ cần sơ ý một chút sẽ rơi ngay vào cạm bẫy.</p>
+<p>“Việc Thất hoàng tử làm, mọi người đều thấy rõ, Hoàng thượng cũng đã minh xét. Vi thần không dám vọng ngôn.”</p>
+<p>“Nhưng vi thần dám lấy tính mạng mình bảo đảm…”</p>
+<p>“Cửu hoàng tử trong sạch!”</p>
+<p>Sở Ly thần sắc phức tạp nhìn về phía Tần Mục Vũ.</p>
+<p>Tần Mục Vũ khẽ nhìn nàng, trao cho nàng một ánh mắt an tâm.</p>
+<p>Ánh mắt hai người giao nhau.</p>
+<p>Một màn ấy…</p>
+<p>Lọt vào một đôi mặc mâu</p>
+<p>(Đôi mắt của nam nhân mang vẻ lạnh lùng, thâm trầm, sâu không thấy đáy)</p>
+<p>Bình tĩnh.</p>
+<p>Lạnh lẽo.</p>
+<p>Hai người đứng cạnh nhau.</p>
+<p>Tin tưởng lẫn nhau.</p>
+<p>Che chở cho nhau.</p>
+<p>Trong mắt Sở Đệ Trì…</p>
+<p>Lại có vài phần buồn cười.</p>
+<p>Tiêu Dạ Hành hỏi:</p>
+<p>“Ngươi cười cái gì?”</p>
+<p>Hắn không đáp.</p>
+<p>…</p>
+<p>Tứ hoàng tử cùng Cửu hoàng tử, mỗi người giữ một lập trường.</p>
+<p>Tứ hoàng tử vốn giao hảo với Tam hoàng tử.</p>
+<p>Xảy ra chuyện như vậy, hắn đương nhiên là người đầu tiên đứng ra đòi công bằng.</p>
+<p>Mà Tần Mục Vũ lại hết lòng che chở Cửu hoàng tử.</p>
+<p>Hai bên lời qua tiếng lại gay gắt.</p>
+<p>Mọi người nghe xong…</p>
+<p>Đều không biết nên tin ai.</p>
+<p>Lời của cả hai…</p>
+<p>Đều có lý.</p>
+<p>Bọn họ tin Cửu hoàng tử.</p>
+<p>Nhưng cũng không thể phủ nhận sự thật rằng Cửu hoàng tử từng đến tân phòng, từng tiếp xúc với tân nương.</p>
+<p>Nhất thời…</p>
+<p>Ai nấy đều do dự.</p>
+<p>Không biết nên đứng về phía nào.</p>
+<p>Sự che chở vô điều kiện của Tần Mục Vũ rơi vào mắt Sở Ly.</p>
+<p>Điều nàng nhớ đến…</p>
+<p>Vẫn luôn là bóng lưng hắn bỏ chạy ngày hôm đó.</p>
+<p>Trong lòng vô cùng phức tạp.</p>
+<p>“Tần Thiếu tướng quân…”</p>
+<p>“Ngươi thật sự không cần vì ta mà…”</p>
+<p>“Cửu hoàng tử.”</p>
+<p>“Vi thần từ nhỏ đã làm bạn đọc bên cạnh người.”</p>
+<p>“Hiểu rõ phẩm hạnh và tính tình của người.”</p>
+<p>“Cho dù khắp thiên hạ đều nghi ngờ người…”</p>
+<p>“Cũng tuyệt đối không bao gồm vi thần.”</p>
+<p>Khóe môi Sở Ly khẽ động.</p>
+<p>“Ngươi…”</p>
+<p>Sở Đệ Trì lạnh lùng nhìn hai người thâm tình nghĩa trọng.</p>
+<p>Ý cười nơi đáy mắt cũng lạnh thêm vài phần.</p>
+<p>Cuối cùng mở miệng:</p>
+<p>“Tiêu Dạ Hành.”</p>
+<p>“Nhìn ngươi cũng chẳng giống kẻ ngu.”</p>
+<p>“Sao lại dạy ra một đứa cháu… ngu như lợn vậy?”</p>
+<p>Tiêu Dạ Hành: “?”</p>
+<p>Mắng cháu hắn thì thôi.</p>
+<p>Sao lại tiện thể mắng luôn cả hắn?</p>
+<p>Hắn suýt nữa tức đến bật cười.</p>
+<p>“Xảy ra án mạng.”</p>
+<p>“Chỉ dựa vào vài câu nói suông…”</p>
+<p>“Đã có thể chứng minh trong sạch?”</p>
+<p>“Đúng là đồ ngu.”</p>
+<p>Thật không biết…</p>
+<p>Sở Ly rốt cuộc coi trọng hắn ở điểm nào.</p>
+<p>Đúng lúc ấy.</p>
+<p>Trọng Phong bước nhanh tới, lập tức bẩm báo:</p>
+<p>“Chủ tử.”</p>
+<p>“Đã tra được rồi.”</p>
+<p>“Phía sau phủ có một tòa viện hoang bỏ phế.”</p>
+<p>“Trong giếng nước bẩn phát hiện một nữ thi.”</p>
+<p>“Nghĩ đến… chính là tỳ nữ mà Cửu hoàng tử vừa nhắc tới, người từng ra vào tân phòng.”</p>
+<p>Sở Đệ Trì giơ tay chỉ hắn:</p>
+<p>“Ngươi.”</p>
+<p>“Qua đó.”</p>
+<p>“Tự mình báo tin này cho Tần Thiếu tướng quân.”</p>
+<p>“Vâng.”</p>
+<p>Trọng Phong cúi đầu lĩnh mệnh, cất bước vào chính viện.</p>
+<p>Thấy mọi người đang cãi nhau đến không ai nhường ai, hắn mới lên tiếng:</p>
+<p>“Khởi bẩm Hoàng thượng.”</p>
+<p>“Ty chức phát hiện một nữ thi trong chiếc giếng bỏ hoang ở hậu viện.”</p>
+<p>Lời là nói với Hoàng thượng.</p>
+<p>Ánh mắt…</p>
+<p>Lại hướng về phía Sở Ly.</p>
+<p>Mọi người đều giật mình.</p>
+<p>Nữ thi?</p>
+<p>Sở Hoàng khẽ nâng tay, chỉ vào bốn thị vệ.</p>
+<p>“Đi xem.”</p>
+<p>Sở Ly nhìn thấy Trọng Phong.</p>
+<p>Đương nhiên biết chủ nhân đứng sau hắn chính là Nhiếp Chính Vương.</p>
+<p>Nàng đưa mắt tìm quanh một vòng.</p>
+<p>Quả nhiên nhìn thấy Sở Đệ Trì đang đứng ở ngoài cùng đám người.</p>
+<p>Tần Mục Vũ cũng nhìn thấy.</p>
+<p>Khi ánh mắt chạm nhau.</p>
+<p>Cách nhau hơn mười trượng.</p>
+<p>Hắn nhìn thấy…</p>
+<p>Nhiếp Chính Vương cười.</p>
+<p>Khóe môi mỏng khẽ cong.</p>
+<p>Đáy mắt đầy vẻ mỉa mai.</p>
+<p>Khiến cổ họng Tần Mục Vũ nghẹn lại.</p>
+<p>Đứng dưới ánh mắt ấy…</p>
+<p>Hắn bỗng có một cảm giác chật vật khó diễn tả thành lời.</p>
+<p>…</p>
+<p>Vừa rồi.</p>
+<p>Hắn chỉ mải một lòng tin tưởng Sở Ly.</p>
+<p>Lại quên mất…</p>
+<p>Trong trường hợp thế này.</p>
+<p>Chỉ riêng sự tin tưởng của một mình hắn…</p>
+<p>Thật quá nhỏ bé.</p>
+<p>Chỉ có tìm được chứng cứ xác thực.</p>
+<p>Mới có thể giúp Sở Ly thoát thân.</p>
+<p>Rất nhanh.</p>
+<p>Hai thị vệ khiêng một cỗ nữ thi ướt sũng đặt bên ngoài.</p>
+<p>Trên người phủ vải trắng.</p>
+<p>Sợ phạm điều kiêng kỵ.</p>
+<p>Không dám khiêng thẳng vào.</p>
+<p>Sở Hoàng trực tiếp nói:</p>
+<p>“Khiêng vào.”</p>
+<p>“Để Cửu hoàng tử xem có phải người này không.”</p>
+<p>“Tuân chỉ.”</p>
+<p>Nữ thi được khiêng vào.</p>
+<p>Tất cả mọi người đều kiêng dè, lùi về sau mấy bước.</p>
+<p>Không ít nữ quyến nhát gan còn che mũi, ngoảnh mặt sang nơi khác.</p>
+<p>Không dám nhìn.</p>
+<p>Ngày đại hôn vui mừng như vậy.</p>
+<p>Tân nương lại trúng độc bỏ mạng.</p>
+<p>Ai nấy đều thương xót Tam hoàng tử.</p>
+<p>Rốt cuộc là ai làm?</p>
+<p>Ai đang đối đầu với Tam hoàng tử?</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Qua xem.”</p>
+<p>“Vâng, phụ hoàng.”</p>
+<p>Sở Ly vén một góc tấm vải trắng.</p>
+<p>Một khuôn mặt bị ngâm đến trắng bệch hiện ra.</p>
+<p>Toàn thân bốc lên mùi hôi thối từ giếng nước bẩn.</p>
+<p>Mùi xộc thẳng vào mũi.</p>
+<p>Y phục trên người ướt đẫm.</p>
+<p>Chính là trang phục của tỳ nữ.</p>
+<p>Là nàng ta.</p>
+<p>Chính là tỳ nữ trước đó đã vào tân phòng lấy kẹo cho bọn trẻ.</p>
+<p>“Đúng là người này, phụ hoàng.”</p>
+<p>Ngỗ tác khám nghiệm tử thi.</p>
+<p>Rất nhanh đã có kết luận.</p>
+<p>“Hoàng thượng.”</p>
+<p>“Trên người người này không có ngoại thương.”</p>
+<p>“Trong cơ thể cũng không có dấu vết trúng độc.”</p>
+<p>“Nguyên nhân tử vong là chết đuối.”</p>
+<p>“Nhìn tình hình…”</p>
+<p>“Là nhảy giếng tự vẫn.”</p>
+<p>Không ai đang yên đang lành…</p>
+<p>Lại tự sát.</p>
+<p>Trừ phi…</p>
+<p>Trong lòng có quỷ.</p>
+<p>Sở Hoàng trầm giọng:</p>
+<p>“Truyền người của Đại Lý tự đến.”</p>
+<p>“Nghiêm tra việc hôm nay.”</p>
+<p>Đến đây.</p>
+<p>Hiềm nghi của Sở Ly cuối cùng cũng được rửa sạch.</p>
+<p>Còn Tam hoàng tử phi chết oan…</p>
+<p>“An táng hậu lễ Tam hoàng tử phi…”</p>
+<p>“Tây Lăng.”</p>
+<p>“Nén bi thương.”</p>
+<p>Sở Tây Lăng ôm chặt nữ tử mình yêu.</p>
+<p>Khóc đến hai mắt đỏ thẫm.</p>
+<p>Bộ dạng thất hồn lạc phách ấy…</p>
+<p>Đến cả quỳ xuống đáp lời cũng quên mất.</p>
+<p>Nhìn dáng vẻ mất hồn của hắn.</p>
+<p>Không ít người đều cảm thấy khó chịu trong lòng.</p>
+<p>Than ôi…</p>
+<p>Ngày thành thân trọng đại như vậy.</p>
+<p>Lại gặp phải tai họa này.</p>
+<p>Tam hoàng tử…</p>
+<p>Thật đáng thương.</p>
+<p>Sở Hoàng tự mình xử lý mọi việc.</p>
+<p>Đợi người của Đại Lý tự tới.</p>
+<p>Liền giải tán toàn bộ tân khách.</p>
+<p>Lệnh điều tra kỹ thân phận của tỳ nữ kia.</p>
+<p>Mọi người đều lần lượt rời đi.</p>
+<p>Trước khi Sở Ly rời khỏi.</p>
+<p>Sở Hạo Nguyệt từng dùng ánh mắt âm trầm nhìn nàng.</p>
+<p>Dường như…</p>
+<p>Rất không cam lòng cứ thế buông tha nàng.</p>
+<p>Sở Ly trừng ngược lại.</p>
+<p>“Ngươi—”</p>
+<p>“Làm Tứ hoàng huynh thất vọng rồi.”</p>
+<p>“Đệ xin cáo từ trước.”</p>
+<p>Nàng không hề yếu thế.</p>
+<p>Người không phạm ta.</p>
+<p>Ta không phạm người.</p>
+<p>Cho dù từ trước đến nay nàng luôn hòa nhã, không tranh không đoạt.</p>
+<p>Nhưng cũng không phải ai cũng có thể giẫm lên nàng một cước.</p>
+<p>…</p>
+<p>Rời khỏi hậu viện.</p>
+<p>Sở Đệ Trì đứng ở bên ngoài.</p>
+<p>Dáng vẻ ung dung ấy…</p>
+<p>Tựa như cố ý chờ nàng.</p>
+<p>Bước chân Sở Ly khựng lại giây lát.</p>
+<p>Cuối cùng vẫn đi tới.</p>
+<p>“Hoàng thúc.”</p>
+<p>Sở Đệ Trì đưa mắt nhìn nàng.</p>
+<p>Từ trên xuống dưới đánh giá một lượt.</p>
+<p>“Không sao chứ?”</p>
+<p>Sở Ly mím môi.</p>
+<p>Hắn giúp điều tra.</p>
+<p>Giúp nàng thoát thân.</p>
+<p>Nếu không…</p>
+<p>Còn không biết phải tranh cãi bao lâu nữa.</p>
+<p>Vì sao hắn lại giúp nàng?</p>
+<p>Nàng hạ giọng:</p>
+<p>“Tỳ nữ kia hẳn là bị người sai khiến.”</p>
+<p>“Đáng tiếc chết không đối chứng.”</p>
+<p>“Không biết rốt cuộc là ai đã giết Tam hoàng tử phi.”</p>
+<p>“Vừa rồi…”</p>
+<p>“Ta thấy Tam hoàng huynh thất hồn lạc phách, khóc đến hai mắt đỏ hoe…”</p>
+<p>“Thật đáng thương.”</p>
+<p>Trong lòng nàng rất khó chịu.</p>
+<p>Lúc trước khi nói chuyện với Tam hoàng tử phi.</p>
+<p>Nàng có thể cảm nhận được…</p>
+<p>Đó là một nữ tử vô cùng ôn nhu.</p>
+<p>Giọng nói mềm mại như dòng nước róc rách.</p>
+<p>Nhuận vật vô thanh.</p>
+<p>“Đáng thương?”</p>
+<p>Sở Đệ Trì bỗng bật cười.</p>
+<p>“Sống trong hoàng gia.”</p>
+<p>“Chỉ thấy tuổi tác lớn lên.”</p>
+<p>“Chứ đầu óc thì không.”</p>
+<p>Ở nơi đầy rẫy minh tranh ám đấu.</p>
+<p>Âm mưu quỷ kế chồng chất thế này.</p>
+<p>Lòng thương hại…</p>
+<p>Là thứ vô dụng nhất.</p>
+<p>Sở Ly mím môi.</p>
+<p>Rõ ràng không đồng tình lời hắn.</p>
+<p>“Chẳng lẽ hoàng thúc không thấy quá tàn nhẫn sao?”</p>
+<p>“Hay là…”</p>
+<p>“Người như hoàng thúc, ở chiến trường quá lâu.”</p>
+<p>“Đã nhìn thấu sinh tử cùng chinh phạt.”</p>
+<p>“Tự nhiên không thể cảm nhận được tình cảm giữa Tam hoàng huynh và Tam hoàng tử phi.”</p>
+<p>Sở Đệ Trì cười lạnh:</p>
+<p>“Tỳ nữ kia là tự sát.”</p>
+<p>“Nàng thử nghĩ xem.”</p>
+<p>“Vì sao nàng ta lại cam tâm tình nguyện tự sát?”</p>
+<p>Sở Ly sống trong cung nhiều năm.</p>
+<p>Đã quen nhìn nữ nhân hậu cung tranh sủng.</p>
+<p>Đại khái cũng đoán được.</p>
+<p>“Hoặc là…”</p>
+<p>“Nàng ta có nhược điểm nằm trong tay đối phương.”</p>
+<p>“Không chết không được.”</p>
+<p>“Hoặc là…”</p>
+<p>“Đối phương đưa ra điều kiện đủ lớn.”</p>
+<p>“Lớn đến mức khiến nàng ta cam nguyện dùng mạng mình để đổi.”</p>
+<p>Nếu là vế trước…</p>
+<p>Một tỳ nữ…</p>
+<p>Có thể có nhược điểm gì quan trọng chứ?</p>
+<p>Xem ra…</p>
+<p>Là vế sau.</p>
+<p>“Chủ tử.”</p>
+<p>Đúng lúc ấy.</p>
+<p>Kinh Ảnh bước nhanh tới.</p>
+<p>“Thuộc hạ đã tra được nơi ở của người nhà tỳ nữ kia.”</p>
+<p>Sở Đệ Trì nói:</p>
+<p>“Đi xem?”</p>
+<p>Sở Ly khẽ cắn môi dưới.</p>
+<p>“Được.”</p>
+<p>Hai người xoay người.</p>
+<p>Sải bước ra ngoài.</p>
+<p>Đến khi Tần Mục Vũ chạy tới.</p>
+<p>Điều hắn nhìn thấy…</p>
+<p>Chỉ là bóng lưng hai người sóng vai rời đi.</p>
+<p>Hắn há miệng.</p>
+<p>Nhưng mãi…</p>
+<p>Vẫn không gọi thành tiếng…</p>
+<p>⸻</p>
+<p>Ngoại ô kinh thành.</p>
+<p>Một dãy nhà đất thấp bé cũ nát san sát nhau.</p>
+<p>Đây là nơi ở của bách tính nghèo khổ.</p>
+<p>Chật chội.</p>
+<p>Hỗn độn.</p>
+<p>Khắp nơi đều là hơi thở của cuộc sống.</p>
+<p>“Chính là phía trước, chủ tử.”</p>
+<p>Kinh Ảnh đưa tay chỉ.</p>
+<p>Sở Ly đi vào con hẻm nhỏ tối tăm chật hẹp.</p>
+<p>Hai bên đường chất đầy giỏ tre cũ, bàn ghế hỏng và tre nứa.</p>
+<p>Dừng trước một căn nhà đất cũ kỹ.</p>
+<p>Đúng lúc nàng định gõ cửa bước vào.</p>
+<p>Đột nhiên ánh mắt trở nên sắc bén.</p>
+<p>“Có người!”</p>
+<p>Phản ứng của Kinh Ảnh còn nhanh hơn một bước.</p>
+<p>Hắn rút kiếm.</p>
+<p>Đạp tung cửa xông vào.</p>
+<p>Giữa tiếng kinh hô cùng cảnh hỗn loạn.</p>
+<p>Hắn khống chế được một nam nhân bịt mặt cầm đao.</p>
+<p>Tên kia biết chuyện bại lộ.</p>
+<p>Lập tức cắn lưỡi tự tận.</p>
+<p>Trong chớp mắt đã tắt thở.</p>
+<p>Không kịp phòng bị.</p>
+<p>“Chủ tử!”</p>
+<p>“Thuộc hạ sơ suất!”</p>
+<p>Sở Ly kéo khăn che mặt xuống.</p>
+<p>Đó là một gương mặt xa lạ.</p>
+<p>Nhìn máu tươi tràn nơi khóe miệng.</p>
+<p>Nàng biết…</p>
+<p>Không cứu được nữa.</p>
+<p>Trong căn nhà thấp bé.</p>
+<p>Chỉ thấy một lão nhân.</p>
+<p>Một đôi phu thê trung niên.</p>
+<p>Cùng mấy đứa trẻ còn nhỏ.</p>
+<p>Tất cả ôm chặt lấy nhau.</p>
+<p>Run rẩy vì sợ hãi.</p>
+<p>Sở Ly đứng dậy, nói:</p>
+<p>“Không sao nữa rồi.”</p>
+<p>“Có điều…”</p>
+<p>“Trong lòng các ngươi hẳn cũng biết.”</p>
+<p>“Vì sao người này lại đến giết các ngươi chứ?”</p>
+<p>Đôi phu thê trung niên mặt mày trắng bệch.</p>
+<p>Nếu vừa rồi…</p>
+<p>Không có mấy người này tới cứu.</p>
+<p>Cả nhà bọn họ…</p>
+<p>Ắt đã chết sạch.</p>
+<p>Người phụ nữ trung niên run rẩy nói:</p>
+<p>“Chúng ta không quen biết người này.”</p>
+<p>“Nhưng…”</p>
+<p>“Nửa tháng trước.”</p>
+<p>“A Hương đột nhiên mang về hai trăm lượng ngân phiếu.”</p>
+<p>“Không biết…”</p>
+<p>“Có phải vì số bạc đó mà chuốc lấy họa sát thân hay không?”</p>
+<p>A Hương…</p>
+<p>Là nữ nhi của bọn họ.</p>
+<p>Là tỳ nữ trong phủ Tam hoàng tử.</p>
+<p>Sở Đệ Trì đứng ở cửa.</p>
+<p>Phủi bụi trên ống tay áo.</p>
+<p>Nhíu mày nói:</p>
+<p>“Lấy ngân phiếu ra.”</p>
+<p>“Vâng… vâng…”</p>
+<p>Bọn họ không dám nhiều lời.</p>
+<p>Lập tức lấy từ dưới gầm giường.</p>
+<p>Trong khe gạch được giấu kín từng lớp.</p>
+<p>Hai tờ ngân phiếu mệnh giá lớn được cất giữ cẩn thận.</p>
+<p>Ngân phiếu mệnh giá lớn…</p>
+<p>Đều có tiền trang phát hành riêng.</p>
+<p>Cùng ký hiệu đặc biệt.</p>
+<p>Sở Đệ Trì phủi lớp bụi trên tờ ngân phiếu.</p>
+<p>Liếc nhìn ký hiệu phía trên.</p>
+<p>“Chậc.”</p>
+<p>“Hoàng gia.”</p>
+<p>“Cái gì?”</p>
+<p>Sở Ly kinh ngạc giật lấy.</p>
+<p>Quả nhiên nhìn thấy ký hiệu độc quyền của hoàng gia.</p>
+<p>Sắc mặt lập tức trầm xuống.</p>
+<p>Là người của hoàng gia…</p>
+<p>Mua chuộc A Hương.</p>
+<p>Đầu độc Tam hoàng tử phi.</p>
+<p>Giờ sự việc bại lộ.</p>
+<p>Lại còn cố ý phái người tới giết cả nhà diệt khẩu.</p>
+<p>Đáng tiếc…</p>
+<p>Tên nam nhân kia đã cắn lưỡi tự sát.</p>
+<p>Khó mà điều tra thêm được.</p>
+<p>Nàng đè nén tâm trạng phức tạp trong lòng, lập tức nói:</p>
+<p>“A Hương đã chết.”</p>
+<p>“Sau khi đầu độc Tam hoàng tử phi liền nhảy giếng tự vẫn.”</p>
+<p>“Thi thể nàng ấy e rằng khó có thể đưa về quê nhà.”</p>
+<p>“Nếu các ngươi muốn giữ mạng.”</p>
+<p>“Tốt nhất nên nhanh chóng rời khỏi Đế Đô.”</p>
+<p>“Đi càng xa càng tốt.”</p>
+<p>Nói xong.</p>
+<p>Nàng đặt ngân phiếu lên bàn.</p>
+<p>Không nhìn vẻ mặt kinh hãi, hoảng sợ và ngơ ngác của bọn họ nữa.</p>
+<p>Xoay người rời đi.</p>
+<p>…</p>
+<p>Đã ra đến đầu phố.</p>
+<p>Trong lòng Sở Ly vẫn nặng trĩu.</p>
+<p>Rốt cuộc…</p>
+<p>Là ai làm?</p>
+<p>“Dẫn nàng đi xem một thứ thú vị.”</p>
+<p>Lời nói bất ngờ của nam nhân khiến Sở Ly ngẩn ra.</p>
+<p>“Thứ gì?”</p>
+<p>Nhìn hắn chậm rãi đi về phía đầu bên kia của con phố.</p>
+<p>Nàng khẽ cắn môi.</p>
+<p>Suy nghĩ một lát.</p>
+<p>Cuối cùng vẫn đi theo.</p>
+<p>Không ngờ…</p>
+<p>Hai người lại đến trước…</p>
+<p>Một cửa hàng bán quan tài.</p>
+<p>Đứng cách đó không xa.</p>
+<p>Có thể nhìn thấy một nữ tử dung mạo thanh tú ôn nhã, vành mắt đỏ hoe đang bước vào cửa hàng.</p>
+<p>Dáng vẻ lê hoa đái vũ ấy…</p>
+<p>Lại có sáu phần giống Tam hoàng tử phi đã chết.</p>
+<p>Ông chủ cửa hàng quan tài an ủi:</p>
+<p>“Tiểu thư xin nén bi thương…”</p>
+<p>Sở Ly nhìn theo, hỏi:</p>
+<p>“Nàng ấy là ai?”</p>
+<p>“Đích tỷ của Tam hoàng tử phi Lục Mộng Điệp.”</p>
+<p>“Lục Chiêu Dương.”</p>
+<p>Lục Mộng Điệp là thứ xuất.</p>
+<p>Hai tỷ muội cùng cha khác mẹ.</p>
+<p>Có vài phần giống nhau cũng là điều tự nhiên.</p>
+<p>Nhìn dáng vẻ Lục Chiêu Dương.</p>
+<p>Là đến mua quan tài và vàng mã cho thứ muội.</p>
+<p>“Người đưa ta đến đây làm gì?”</p>
+<p>Sở Đệ Trì nhàn nhạt nhìn nàng.</p>
+<p>“Nhìn cây ngân bộ dao hải đường song đế trên đầu nàng ta đi.”</p>
+<p>“Là Tam hoàng tử tặng.”</p>
+<p>“Cái gì?”</p>
+<p>Sở Ly kinh ngạc bật thốt.</p>
+<p>“Vật song đế vốn mang ý nghĩa cành liền cành, đồng tâm kết tóc.”</p>
+<p>“Tam hoàng tử đã cưới Lục Mộng Điệp làm phi.”</p>
+<p>“Vì sao lại tặng Lục Chiêu Dương trâm hải đường song đế?”</p>
+<p>Huống hồ…</p>
+<p>Lúc Lục Mộng Điệp chết.</p>
+<p>Chính mắt nàng nhìn thấy Tam hoàng tử khóc đến hồn vía đều như mất hết.</p>
+<p>Hắn rõ ràng…</p>
+<p>Yêu Lục Mộng Điệp như vậy.</p>
+<p>Sở Đệ Trì nói:</p>
+<p>“Sao nàng không thử nghĩ.”</p>
+<p>“Tam hoàng tử xuất thân không cao.”</p>
+<p>“Mẫu phi chỉ là một vị Quý nhân nho nhỏ.”</p>
+<p>“Nếu cưới đích nữ của đương triều Tả tướng.”</p>
+<p>“Quyền thế nhất thời quá lớn.”</p>
+<p>“Tất sẽ bị người khác chú ý.”</p>
+<p>“Chi bằng cưới một thứ nữ.”</p>
+<p>“Sau đó trừ khử nàng ta.”</p>
+<p>“Vừa bảo toàn nữ tử mình thật sự yêu.”</p>
+<p>“Lại còn có thể mượn việc này…”</p>
+<p>“Mưu lợi cho bản thân.”</p>
+<p>Sở Ly thuận theo lời hắn mà nghĩ sâu thêm.</p>
+<p>Sắc mặt dần thay đổi.</p>
+<p>Trước đó…</p>
+<p>Nàng vẫn luôn cảm thấy Tam hoàng huynh rất đáng thương.</p>
+<p>Ngày đại hôn mất thê tử.</p>
+<p>Đổi lại là người thường…</p>
+<p>Có mấy ai chịu nổi?</p>
+<p>Nhưng giờ nghe Sở Đệ Trì nói.</p>
+<p>Nàng mới thấy…</p>
+<p>Mình thật sự quá ngây thơ.</p>
+<p>Nàng vạn lần không ngờ…</p>
+<p>Tình yêu Tam hoàng tử dành cho Tam hoàng tử phi…</p>
+<p>Chỉ là giả vờ.</p>
+<p>Người thật sự được hắn đặt nơi đầu quả tim…</p>
+<p>Lại chính là vị đích trưởng nữ của đương triều Tả tướng—</p>
+<p>Lục Chiêu Dương. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_88.html" class="btn">‹ Trước</a>
             <a href="chuong_90.html" class="btn">Sau ›</a>
         </div>
@@ -600,15 +608,11 @@ Lục Chiêu Dương. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -620,11 +624,11 @@ Lục Chiêu Dương. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

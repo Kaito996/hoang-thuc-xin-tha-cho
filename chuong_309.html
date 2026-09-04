@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 309</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,198 +62,207 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 309</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_307.html" class="btn">‹ Trước</a>
             <a href="chuong_310.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 309: Lần gặp cuối cùng của đời này
-Một bữa cơm kết thúc trong bầu không khí quỷ dị.
-Toàn bộ tướng sĩ đều căng thẳng dõi theo, âm thầm suy đoán, vậy mà hai cha con kia lại nhàn nhã vô cùng, cứ như đang ở chính nhà mình. Tần Thiếu tướng quân chưa hạ lệnh động thủ, bọn họ cũng không dám vọng động.
-Sau bữa cơm, Tần Mục Vũ tiễn hai cha con rời đi.
-Tần Mục Tuyết gãi đầu:
-“Cứ thế để bọn họ đi sao?”
-Nàng thật sự không hiểu dụng ý của đại ca.
-Mời chủ soái địch đến, rượu ngon thịt ngon khoản đãi một phen, còn tự mình tiễn đi.
-Xưa nay đánh trận…
-Chưa từng thấy ai đánh như vậy.
-Lục Vân Sơ trầm giọng:
-“Theo ta thấy, đại ca và Ân Vương dường như có chút giao tình.”
-“Họ có giao tình?”
-Sao nàng không biết?
-“Đại ca và Ân Vương vốn chưa từng quen biết, dù có gặp cũng chỉ là trong cảnh giương cung bạt kiếm trên chiến trường, sao lại nảy sinh giao tình được?”
-Lục Vân Sơ chần chừ:
-“Chuyện này…”
-Ai mà hiểu nổi?
-Đồng bằng Nam Cương mênh mông bát ngát, cành lá trong rừng bị gió thu thổi xào xạc, chim chóc vỗ cánh về tổ, phong quang nơi tái ngoại rộng lớn khoáng đạt.
-Thác Bạt Mặc đang đuổi theo một con thỏ rừng, vừa chạy vừa nhảy ở phía không xa:
-“Đừng chạy!”
-“Đứng lại… Ta thấy ngươi rồi!”
-Thân hình bé nhỏ lao qua chạy lại trong rừng, còn hoạt bát hơn cả con thỏ.
-Hai thân ảnh cao lớn sóng vai mà đi, bóng người in xuống bãi cỏ, mơ hồ chồng lên nhau. Tần Mục Vũ đeo kiếm bên hông, Ân Vương chắp tay sau lưng, trường bào đỏ sẫm lướt qua thảm cỏ, phát ra tiếng sột soạt khe khẽ. Giờ khắc này, không khí đặc biệt yên bình.
-Đến bên vách núi.
-Hai người dừng chân.
-“Đi thêm năm dặm nữa là đến quân doanh Nam Man. Đưa nhi tử ngươi đi đi, ta không tiễn nữa.”
-Giọng Tần Mục Vũ lạnh nhạt.
-Ân Vương nghiêng đầu, cười trầm một tiếng:
-“Đừng mất kiên nhẫn như vậy, Tần Thiếu tướng quân. Có những cuộc chia ly sẽ là lần gặp cuối cùng của đời này, nhưng chúng ta quay đầu rồi vẫn sẽ gặp lại.”
-Tần Mục Vũ chẳng có chút kiên nhẫn:
-“Vĩnh viễn không gặp.”
-Dù có gặp…
-Cũng chỉ là trên chiến trường.
-Quốc gia và lợi ích của bọn họ, đã định sẵn đứng ở hai phía đối lập.
-Ý cười nơi khóe môi Ân Vương vẫn không giảm:
-“Rốt cuộc vẫn còn trẻ, lời nói quá tuyệt đối.”
-“Giao tình giữa ta và Ân Vương, dường như còn chưa đến mức ấy. Hôm nay từ biệt, ngày sau gặp lại chỉ có thể là cừu địch.”
-“Dù thế nào, vẫn đa tạ ngươi đã giúp ta trông hài tử mấy ngày. Chờ thêm một thời gian nữa, ta sẽ đem Nam Cương tặng cho ngươi, thế nào?”
-Tần Mục Vũ khựng lại, quay đầu nhìn hắn, trong đôi mắt lạnh lùng hiện rõ một tia kinh ngạc.
-Tặng hắn?
-Hắn lại định giở trò gì?
-“Ta muốn Nam Cương, sẽ tự mình dùng thực lực đoạt lại!”
-Ân Vương chỉ cười cười, vẫy tay gọi Thác Bạt Mặc ở phía xa:
-“A Mặc, chúng ta nên về rồi. Từ biệt thúc thúc đi.”
-Thác Bạt Mặc chạy lon ton tới, trên trán lấm tấm mồ hôi:
-“Ca… thúc thúc, con phải theo phụ vương về rồi. Chờ lần sau rảnh rỗi, con với phụ vương lại đến tìm thúc thúc chơi, được không?”
-Đương nhiên là không!
-Nhất định không được!
-Lăn càng xa càng tốt!
-Tần Mục Vũ siết chặt chuôi kiếm, nhìn gương mặt non nớt như ngọc của cậu bé. Bị đôi mắt nóng bỏng ấy nhìn chằm chằm khiến hắn có chút không được tự nhiên, chỉ đành qua loa đáp hai tiếng:
-“Ừ… ừ.”
-“Tốt quá! Cảm ơn thúc thúc!”
-Lời vừa dứt, phía xa bỗng vang lên tiếng vó ngựa phi như bay.
-“Chủ tử! Có chuyện rồi!”
-Tiêu Giác thần sắc gấp gáp lao tới. Ngựa còn chưa dừng hẳn, hắn đã phi thân xuống, lảo đảo chạy nhanh đến trước mặt Ân Vương, ghé tai thì thầm:
-“Vương đô… xảy ra binh biến, Công chúa đã đoạt đại quyền.”
-Ân Vương đột nhiên quát lớn:
-“Ngươi nói cái gì?!”
-Thác Bạt Minh Nguyệt đoạt đại quyền?
-Chẳng phải nàng vẫn luôn bị vây ở Lan thành, tiến thoái lưỡng nan sao? Vì sao lại đột nhiên xuất hiện ở Đế đô?
-“Vương tử đâu?”
-“Bị… bị nàng đích thân giết chết. Vương thượng bị giam lỏng. Tất cả quyền thần chống lại nàng… đều bị giết.”
-Chỉ trong một đêm…
-Máu nhuộm đỏ hoàng cung.
-Cửa đại điện vừa đóng lại, mọi thứ đều bị ngăn cách.
-Nhạc công vẫn tấu nhạc, ca múa thái bình, cứ như đang cử hành một đại lễ long trọng náo nhiệt…
-Hầu như toàn bộ bách tính đều cho rằng đó là yến tiệc chúc mừng Vương tử hồi triều.
-Mãi đến ba ngày sau…
-Quyền lực đổi chủ, đại cục đã định.
-Tiêu Giác hạ thấp giọng, thần sắc vô cùng gấp gáp:
-“Ân Vương phủ đã bị khống chế. Người của chúng ta đang bị thanh trừ rất nhanh. Chủ tử, lúc này chúng ta tuyệt đối không thể tiếp tục ở Nam Cương nữa. Một khi Công chúa hoàn toàn ổn định đại cục thì sẽ không kịp nữa!”
-Thần sắc Ân Vương trước nay chưa từng nghiêm trọng như vậy. Khóe môi mỏng mím chặt, khí tức quanh thân lạnh đến cực điểm.
-Hay cho Thác Bạt Minh Nguyệt!
-Cứ ngỡ nàng vẫn ở Lan thành, nào ngờ lại chơi một chiêu ve sầu thoát xác, đánh cho tất cả trở tay không kịp!
-Căn bản không ai ngờ được…
-Một vị Công chúa đã bị dồn vào tuyệt lộ, mất hết dân tâm cùng sự ủng hộ, không có viện quân, chỉ còn con đường chết…
-Lại có thể đột nhiên lật tung bàn cờ, giết sạch tất cả mọi người.
-Quả nhiên là kẻ đủ tàn nhẫn!
-“Lập tức tập kết binh lực, suốt đêm trở về Vương đô.”
-“Tuân lệnh!”
-Ân Vương xoay người, sải bước đến trước mặt Tần Mục Vũ:
-“Tần Thiếu tướng quân, A Mặc e rằng còn phải làm phiền ngươi thêm mấy ngày. Chờ bổn vương trở về, nhất định sẽ trọng tạ.”
-Dứt lời, hắn tung mình lên ngựa, lập tức rời đi.
-“Rút!”
-“Phụ vương?”
-“Ân Vương!”
-Hai người gọi thế nào cũng không giữ được. Nam nhân đã thúc ngựa phóng đi, thân ảnh rất nhanh biến mất trong rừng cây phía xa.
-Chỉ còn Tần Mục Vũ và Thác Bạt Mặc đứng tại chỗ, ngươi nhìn ta, ta nhìn ngươi, trong mắt đều đầy dấu hỏi.
-Lại ném nhi tử cho hắn!
-Thiên hạ nào có kiểu làm cha như vậy?
-“Ngươi không phải con ruột của hắn?”
-“Đúng vậy.”
-“Cái gì?!”
-“Con nói đúng vậy. Người quả thật không phải phụ thân ruột của con. Cha con đã tử trận từ lâu, phụ vương nhận nuôi con.”
-“……”
-—
-Lan thành.
-Dưới thế vây thành, bầu không khí nhiều ngày nay vẫn vô cùng nghiêm túc. Bách tính đóng chặt cửa, không dám ra ngoài. Trên bức thành cao lớn là binh sĩ Nam Man canh giữ, còn dưới chân thành là đại quân Sở đã đóng quân nhiều ngày.
-“Quân Sở vẫn còn theo dõi sao?”
-Một thân ảnh mảnh mai bước từng bậc thang, chậm rãi lên thành.
-“Công chúa.”
-“Tham kiến Công chúa!”
-Hai bên binh sĩ cúi đầu hành lễ.
-“Công chúa, quân Sở vẫn luôn áp sát dưới thành. Chúng thần ngày đêm canh giữ, không dám lơ là.”
-“Thác Bạt Minh Nguyệt” đứng sau tường thành, từ trên cao nhìn xuống, cất cao giọng:
-“Vậy thì cứ canh cho cẩn thận!”
-“Hễ quân Sở có bất cứ động tĩnh gì, nếu dám công thành, chúng ta sẽ dám đồ thành, kéo theo mấy vạn bách tính chôn cùng!”
-“Tuân lệnh!”
-“Thác Bạt Minh Nguyệt” chỉnh lại áo choàng trên người, xoay người xuống thành. Đến chỗ không có ai, nàng mới dám lau đi lớp ngụy trang trên mặt…
-Là Hướng Nguyệt!
-Quân doanh Đại Sở.
-Nhiều ngày nay, hai bên giằng co. Quân Sở không dám tùy tiện công thành, Nam Man cố thủ trong Lan thành cũng không khinh suất xuất binh.
-Tình trạng ấy…
-Đã kéo dài hơn mười ngày.
-Hôm nay cũng vẫn như vậy.
-Tiêu Dạ Hành ngồi trên lưng ngựa, nhìn Thác Bạt Minh Nguyệt chỉ lộ diện một lát rồi rời đi, đôi mày khẽ nhíu lại.
-Mấy ngày qua, Nam Man Công chúa đều chỉ xuất hiện chốc lát, không nói gì, cũng không làm gì, không đàm phán, không bố trí quân sự. Đối mặt với tình cảnh bị vây thành, nàng lại chẳng hề có lấy một biện pháp ứng phó nào, cứ như đang ngồi yên chờ chết.
-Với mưu lược và khí phách của nàng…
-Lại cam tâm tọa dĩ đãi tễ?
-“Tham kiến Nhiếp Chính Vương.”
-Phía sau vang lên tiếng hành lễ.
-Tiêu Dạ Hành quay đầu:
-“Sao ngươi lại tới?”
-Sở Đệ Trì bước tới:
-“Chiến sự thế nào?”
-Tiêu Dạ Hành nhảy xuống ngựa, đem những nghi ngờ của mình nói ra.
-Nam Man Công chúa…
-Dường như có điều khác thường.
-Không biết đang âm mưu chuyện gì, hay còn có mục đích khác.
-Sở Đệ Trì trầm ngâm một lát rồi nói:
-“Phái vài thám tử, lẻn vào Lan thành dò xét.”
-“Nhưng hiện giờ Lan thành phòng thủ kín như thùng sắt, người của chúng ta rất khó chen vào.”
-“Lan thành lớn như vậy, bổn vương không tin không có kẽ hở. Nghĩ cách để thám tử lẻn vào!” Ẩn bớt</p>
+            <p>Chương 309: Lần gặp cuối cùng của đời này</p>
+<p>Một bữa cơm kết thúc trong bầu không khí quỷ dị.</p>
+<p>Toàn bộ tướng sĩ đều căng thẳng dõi theo, âm thầm suy đoán, vậy mà hai cha con kia lại nhàn nhã vô cùng, cứ như đang ở chính nhà mình. Tần Thiếu tướng quân chưa hạ lệnh động thủ, bọn họ cũng không dám vọng động.</p>
+<p>Sau bữa cơm, Tần Mục Vũ tiễn hai cha con rời đi.</p>
+<p>Tần Mục Tuyết gãi đầu:</p>
+<p>“Cứ thế để bọn họ đi sao?”</p>
+<p>Nàng thật sự không hiểu dụng ý của đại ca.</p>
+<p>Mời chủ soái địch đến, rượu ngon thịt ngon khoản đãi một phen, còn tự mình tiễn đi.</p>
+<p>Xưa nay đánh trận…</p>
+<p>Chưa từng thấy ai đánh như vậy.</p>
+<p>Lục Vân Sơ trầm giọng:</p>
+<p>“Theo ta thấy, đại ca và Ân Vương dường như có chút giao tình.”</p>
+<p>“Họ có giao tình?”</p>
+<p>Sao nàng không biết?</p>
+<p>“Đại ca và Ân Vương vốn chưa từng quen biết, dù có gặp cũng chỉ là trong cảnh giương cung bạt kiếm trên chiến trường, sao lại nảy sinh giao tình được?”</p>
+<p>Lục Vân Sơ chần chừ:</p>
+<p>“Chuyện này…”</p>
+<p>Ai mà hiểu nổi?</p>
+<p>Đồng bằng Nam Cương mênh mông bát ngát, cành lá trong rừng bị gió thu thổi xào xạc, chim chóc vỗ cánh về tổ, phong quang nơi tái ngoại rộng lớn khoáng đạt.</p>
+<p>Thác Bạt Mặc đang đuổi theo một con thỏ rừng, vừa chạy vừa nhảy ở phía không xa:</p>
+<p>“Đừng chạy!”</p>
+<p>“Đứng lại… Ta thấy ngươi rồi!”</p>
+<p>Thân hình bé nhỏ lao qua chạy lại trong rừng, còn hoạt bát hơn cả con thỏ.</p>
+<p>Hai thân ảnh cao lớn sóng vai mà đi, bóng người in xuống bãi cỏ, mơ hồ chồng lên nhau. Tần Mục Vũ đeo kiếm bên hông, Ân Vương chắp tay sau lưng, trường bào đỏ sẫm lướt qua thảm cỏ, phát ra tiếng sột soạt khe khẽ. Giờ khắc này, không khí đặc biệt yên bình.</p>
+<p>Đến bên vách núi.</p>
+<p>Hai người dừng chân.</p>
+<p>“Đi thêm năm dặm nữa là đến quân doanh Nam Man. Đưa nhi tử ngươi đi đi, ta không tiễn nữa.”</p>
+<p>Giọng Tần Mục Vũ lạnh nhạt.</p>
+<p>Ân Vương nghiêng đầu, cười trầm một tiếng:</p>
+<p>“Đừng mất kiên nhẫn như vậy, Tần Thiếu tướng quân. Có những cuộc chia ly sẽ là lần gặp cuối cùng của đời này, nhưng chúng ta quay đầu rồi vẫn sẽ gặp lại.”</p>
+<p>Tần Mục Vũ chẳng có chút kiên nhẫn:</p>
+<p>“Vĩnh viễn không gặp.”</p>
+<p>Dù có gặp…</p>
+<p>Cũng chỉ là trên chiến trường.</p>
+<p>Quốc gia và lợi ích của bọn họ, đã định sẵn đứng ở hai phía đối lập.</p>
+<p>Ý cười nơi khóe môi Ân Vương vẫn không giảm:</p>
+<p>“Rốt cuộc vẫn còn trẻ, lời nói quá tuyệt đối.”</p>
+<p>“Giao tình giữa ta và Ân Vương, dường như còn chưa đến mức ấy. Hôm nay từ biệt, ngày sau gặp lại chỉ có thể là cừu địch.”</p>
+<p>“Dù thế nào, vẫn đa tạ ngươi đã giúp ta trông hài tử mấy ngày. Chờ thêm một thời gian nữa, ta sẽ đem Nam Cương tặng cho ngươi, thế nào?”</p>
+<p>Tần Mục Vũ khựng lại, quay đầu nhìn hắn, trong đôi mắt lạnh lùng hiện rõ một tia kinh ngạc.</p>
+<p>Tặng hắn?</p>
+<p>Hắn lại định giở trò gì?</p>
+<p>“Ta muốn Nam Cương, sẽ tự mình dùng thực lực đoạt lại!”</p>
+<p>Ân Vương chỉ cười cười, vẫy tay gọi Thác Bạt Mặc ở phía xa:</p>
+<p>“A Mặc, chúng ta nên về rồi. Từ biệt thúc thúc đi.”</p>
+<p>Thác Bạt Mặc chạy lon ton tới, trên trán lấm tấm mồ hôi:</p>
+<p>“Ca… thúc thúc, con phải theo phụ vương về rồi. Chờ lần sau rảnh rỗi, con với phụ vương lại đến tìm thúc thúc chơi, được không?”</p>
+<p>Đương nhiên là không!</p>
+<p>Nhất định không được!</p>
+<p>Lăn càng xa càng tốt!</p>
+<p>Tần Mục Vũ siết chặt chuôi kiếm, nhìn gương mặt non nớt như ngọc của cậu bé. Bị đôi mắt nóng bỏng ấy nhìn chằm chằm khiến hắn có chút không được tự nhiên, chỉ đành qua loa đáp hai tiếng:</p>
+<p>“Ừ… ừ.”</p>
+<p>“Tốt quá! Cảm ơn thúc thúc!”</p>
+<p>Lời vừa dứt, phía xa bỗng vang lên tiếng vó ngựa phi như bay.</p>
+<p>“Chủ tử! Có chuyện rồi!”</p>
+<p>Tiêu Giác thần sắc gấp gáp lao tới. Ngựa còn chưa dừng hẳn, hắn đã phi thân xuống, lảo đảo chạy nhanh đến trước mặt Ân Vương, ghé tai thì thầm:</p>
+<p>“Vương đô… xảy ra binh biến, Công chúa đã đoạt đại quyền.”</p>
+<p>Ân Vương đột nhiên quát lớn:</p>
+<p>“Ngươi nói cái gì?!”</p>
+<p>Thác Bạt Minh Nguyệt đoạt đại quyền?</p>
+<p>Chẳng phải nàng vẫn luôn bị vây ở Lan thành, tiến thoái lưỡng nan sao? Vì sao lại đột nhiên xuất hiện ở Đế đô?</p>
+<p>“Vương tử đâu?”</p>
+<p>“Bị… bị nàng đích thân giết chết. Vương thượng bị giam lỏng. Tất cả quyền thần chống lại nàng… đều bị giết.”</p>
+<p>Chỉ trong một đêm…</p>
+<p>Máu nhuộm đỏ hoàng cung.</p>
+<p>Cửa đại điện vừa đóng lại, mọi thứ đều bị ngăn cách.</p>
+<p>Nhạc công vẫn tấu nhạc, ca múa thái bình, cứ như đang cử hành một đại lễ long trọng náo nhiệt…</p>
+<p>Hầu như toàn bộ bách tính đều cho rằng đó là yến tiệc chúc mừng Vương tử hồi triều.</p>
+<p>Mãi đến ba ngày sau…</p>
+<p>Quyền lực đổi chủ, đại cục đã định.</p>
+<p>Tiêu Giác hạ thấp giọng, thần sắc vô cùng gấp gáp:</p>
+<p>“Ân Vương phủ đã bị khống chế. Người của chúng ta đang bị thanh trừ rất nhanh. Chủ tử, lúc này chúng ta tuyệt đối không thể tiếp tục ở Nam Cương nữa. Một khi Công chúa hoàn toàn ổn định đại cục thì sẽ không kịp nữa!”</p>
+<p>Thần sắc Ân Vương trước nay chưa từng nghiêm trọng như vậy. Khóe môi mỏng mím chặt, khí tức quanh thân lạnh đến cực điểm.</p>
+<p>Hay cho Thác Bạt Minh Nguyệt!</p>
+<p>Cứ ngỡ nàng vẫn ở Lan thành, nào ngờ lại chơi một chiêu ve sầu thoát xác, đánh cho tất cả trở tay không kịp!</p>
+<p>Căn bản không ai ngờ được…</p>
+<p>Một vị Công chúa đã bị dồn vào tuyệt lộ, mất hết dân tâm cùng sự ủng hộ, không có viện quân, chỉ còn con đường chết…</p>
+<p>Lại có thể đột nhiên lật tung bàn cờ, giết sạch tất cả mọi người.</p>
+<p>Quả nhiên là kẻ đủ tàn nhẫn!</p>
+<p>“Lập tức tập kết binh lực, suốt đêm trở về Vương đô.”</p>
+<p>“Tuân lệnh!”</p>
+<p>Ân Vương xoay người, sải bước đến trước mặt Tần Mục Vũ:</p>
+<p>“Tần Thiếu tướng quân, A Mặc e rằng còn phải làm phiền ngươi thêm mấy ngày. Chờ bổn vương trở về, nhất định sẽ trọng tạ.”</p>
+<p>Dứt lời, hắn tung mình lên ngựa, lập tức rời đi.</p>
+<p>“Rút!”</p>
+<p>“Phụ vương?”</p>
+<p>“Ân Vương!”</p>
+<p>Hai người gọi thế nào cũng không giữ được. Nam nhân đã thúc ngựa phóng đi, thân ảnh rất nhanh biến mất trong rừng cây phía xa.</p>
+<p>Chỉ còn Tần Mục Vũ và Thác Bạt Mặc đứng tại chỗ, ngươi nhìn ta, ta nhìn ngươi, trong mắt đều đầy dấu hỏi.</p>
+<p>Lại ném nhi tử cho hắn!</p>
+<p>Thiên hạ nào có kiểu làm cha như vậy?</p>
+<p>“Ngươi không phải con ruột của hắn?”</p>
+<p>“Đúng vậy.”</p>
+<p>“Cái gì?!”</p>
+<p>“Con nói đúng vậy. Người quả thật không phải phụ thân ruột của con. Cha con đã tử trận từ lâu, phụ vương nhận nuôi con.”</p>
+<p>“……”</p>
+<p>—</p>
+<p>Lan thành.</p>
+<p>Dưới thế vây thành, bầu không khí nhiều ngày nay vẫn vô cùng nghiêm túc. Bách tính đóng chặt cửa, không dám ra ngoài. Trên bức thành cao lớn là binh sĩ Nam Man canh giữ, còn dưới chân thành là đại quân Sở đã đóng quân nhiều ngày.</p>
+<p>“Quân Sở vẫn còn theo dõi sao?”</p>
+<p>Một thân ảnh mảnh mai bước từng bậc thang, chậm rãi lên thành.</p>
+<p>“Công chúa.”</p>
+<p>“Tham kiến Công chúa!”</p>
+<p>Hai bên binh sĩ cúi đầu hành lễ.</p>
+<p>“Công chúa, quân Sở vẫn luôn áp sát dưới thành. Chúng thần ngày đêm canh giữ, không dám lơ là.”</p>
+<p>“Thác Bạt Minh Nguyệt” đứng sau tường thành, từ trên cao nhìn xuống, cất cao giọng:</p>
+<p>“Vậy thì cứ canh cho cẩn thận!”</p>
+<p>“Hễ quân Sở có bất cứ động tĩnh gì, nếu dám công thành, chúng ta sẽ dám đồ thành, kéo theo mấy vạn bách tính chôn cùng!”</p>
+<p>“Tuân lệnh!”</p>
+<p>“Thác Bạt Minh Nguyệt” chỉnh lại áo choàng trên người, xoay người xuống thành. Đến chỗ không có ai, nàng mới dám lau đi lớp ngụy trang trên mặt…</p>
+<p>Là Hướng Nguyệt!</p>
+<p>Quân doanh Đại Sở.</p>
+<p>Nhiều ngày nay, hai bên giằng co. Quân Sở không dám tùy tiện công thành, Nam Man cố thủ trong Lan thành cũng không khinh suất xuất binh.</p>
+<p>Tình trạng ấy…</p>
+<p>Đã kéo dài hơn mười ngày.</p>
+<p>Hôm nay cũng vẫn như vậy.</p>
+<p>Tiêu Dạ Hành ngồi trên lưng ngựa, nhìn Thác Bạt Minh Nguyệt chỉ lộ diện một lát rồi rời đi, đôi mày khẽ nhíu lại.</p>
+<p>Mấy ngày qua, Nam Man Công chúa đều chỉ xuất hiện chốc lát, không nói gì, cũng không làm gì, không đàm phán, không bố trí quân sự. Đối mặt với tình cảnh bị vây thành, nàng lại chẳng hề có lấy một biện pháp ứng phó nào, cứ như đang ngồi yên chờ chết.</p>
+<p>Với mưu lược và khí phách của nàng…</p>
+<p>Lại cam tâm tọa dĩ đãi tễ?</p>
+<p>“Tham kiến Nhiếp Chính Vương.”</p>
+<p>Phía sau vang lên tiếng hành lễ.</p>
+<p>Tiêu Dạ Hành quay đầu:</p>
+<p>“Sao ngươi lại tới?”</p>
+<p>Sở Đệ Trì bước tới:</p>
+<p>“Chiến sự thế nào?”</p>
+<p>Tiêu Dạ Hành nhảy xuống ngựa, đem những nghi ngờ của mình nói ra.</p>
+<p>Nam Man Công chúa…</p>
+<p>Dường như có điều khác thường.</p>
+<p>Không biết đang âm mưu chuyện gì, hay còn có mục đích khác.</p>
+<p>Sở Đệ Trì trầm ngâm một lát rồi nói:</p>
+<p>“Phái vài thám tử, lẻn vào Lan thành dò xét.”</p>
+<p>“Nhưng hiện giờ Lan thành phòng thủ kín như thùng sắt, người của chúng ta rất khó chen vào.”</p>
+<p>“Lan thành lớn như vậy, bổn vương không tin không có kẽ hở. Nghĩ cách để thám tử lẻn vào!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_307.html" class="btn">‹ Trước</a>
             <a href="chuong_310.html" class="btn">Sau ›</a>
         </div>
@@ -262,15 +270,11 @@ Sở Đệ Trì trầm ngâm một lát rồi nói:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -282,11 +286,11 @@ Sở Đệ Trì trầm ngâm một lát rồi nói:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

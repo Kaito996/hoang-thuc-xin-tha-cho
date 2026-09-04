@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 218</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,158 +62,167 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 218</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_217.html" class="btn">‹ Trước</a>
             <a href="chuong_219.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 218: Đời này, ta không thể không có nàng
-Hắn trịnh trọng vỗ nhẹ lên vai nàng.
-“Đừng lo.”
-“A Ly, hắn sẽ không sao đâu. Bạch công tử là người của Thần Y Cốc…” Mà sự lo lắng của nàng lúc này, vừa hay lại bộc lộ tâm ý của nàng đối với Nhiếp Chính Vương.
-Tần Mục Vũ mím môi, không nói thêm điều gì.
-“Mục Tuyết, chúng ta ra ngoài đi, để A Ly ở một mình một lát.”
-Đợi nàng bình tĩnh lại, nàng sẽ nhận ra vết thương trên cánh tay ấy vốn không hề trí mạng.
-Quan tâm thì tất loạn.
-Hiện giờ nàng quá sốt ruột, đầu óc nóng lên, nói gì cũng không nghe lọt. Chi bằng để nàng yên tĩnh một mình.
-Cứ tĩnh lặng như vậy…
-Rồi lòng cũng sẽ lắng xuống.
-Sở Ly co người ngồi trước cửa, lặng lẽ chờ đợi.
-Thời gian chờ đợi dài đến lạ thường.
-Nàng không khỏi nhớ lại rất nhiều chuyện trong quá khứ.
-Con người Sở Đệ Trì ấy…
-Đối xử với nàng không thể nói là tốt, nhưng cũng chẳng hề tệ.
-Tính tình hắn vô cùng nóng nảy, không có kiên nhẫn, luôn độc lai độc vãng, chỉ cần một lời không hợp là nổi giận.
-Thế nhưng…
-Từ khi nào hắn đã thay đổi?
-Nàng không còn nhớ rõ nữa.
-Có lẽ là tác dụng phụ của Sinh Tử Cổ, trí nhớ của nàng vốn đã không tốt. Bình thường lại lười biếng, chẳng thích nghĩ ngợi, bây giờ càng thêm như vậy.
-Nàng chống cằm.
-Xoa xoa mặt.
-Lại đổi sang một tư thế khác.
-Không biết đã đợi bao lâu, cuối cùng trong phòng cũng truyền ra tiếng nói rất khẽ.
-Rất nhỏ…
-Nhưng vẫn nghe thấy rõ.
-“Ngươi không cần mạng nữa sao… Chính thân thể mình thế nào, trong lòng ngươi không rõ à…”
-“Ta không thể để nàng bị thương.”
-“Thế còn ngươi? Không cần bản thân mình nữa sao?”
-Giọng Bạch Cẩm Y cao thêm vài phần, nghe đầy vẻ tức giận.
-“Ngươi có biết thân thể mình đã không chịu nổi thêm bất cứ sự giày vò nào nữa không! Từ sau khi Cửu Hoàng tử qua đời, ngày nào ngươi cũng say khướt, uống đến mức hộc máu, thân thể đã bị rượu hủy hoại nghiêm trọng!”
-Sở Ly chấn động trong lòng.
-“Ngươi thức trắng tròn mười ngày mười đêm, không ngủ không nghỉ, khó khăn lắm mới gượng dậy được, lại phải ngày đêm xử lý triều chính, suýt nữa đã bị đám hổ báo sài lang mưu đồ đoạt quyền kia xé xác.”
-“Có mấy lần ngươi hộc máu lên cả tấu chương. Nếu không phải trước lúc lâm chung Cửu Hoàng tử giao Đại Sở cho ngươi, có phải ngươi đã theo nàng cùng đi rồi không?”
-Giọng Bạch Cẩm Y càng lúc càng giận dữ.
-“Lần này, chúng ta lại ngày đêm rong ruổi suốt hai ngày hai đêm mới tới được Giang Nam, đến một giấc ngủ ngon cũng chưa có, đã phải xử lý chính vụ Giang Nam. Bây giờ ngươi còn bị thương nữa.”
-“Cho dù là thân thể bằng sắt, cũng không chịu nổi kiểu giày vò này.”
-“Ngươi thương Cửu Hoàng tử đến thế sao!”
-“Đúng.”
-“Đời này, ta không thể không có nàng.”
-“Ngươi… Ngươi nhìn xem bản thân ngươi đã thành ra cái dạng gì rồi!”
-Tiếng trách mắng của Bạch Cẩm Y lúc cao lúc thấp, xen lẫn giọng nói thỉnh thoảng trở nên yếu ớt của nam nhân.
-Từng câu từng chữ đan xen vào nhau, rõ ràng truyền hết vào tai Sở Ly.
-Tựa như từng gợn sóng lặng lẽ lan ra, chìm sâu vào đáy mắt nàng, dần dần hóa thành những cảm xúc mịt mờ, phức tạp…
-Nàng chưa từng biết những chuyện ấy.
-Cũng chưa từng có ai nói với nàng.
-“Nhỏ tiếng một chút. Nếu để Tiểu Cửu nghe thấy, ta sẽ không tha cho ngươi.”
-“Đến chết còn không sợ, vậy mà cũng có thứ để kiêng dè sao? Hừ!”
-“Im miệng!”
-Sở Đệ Trì chộp lấy chén trà trên chiếc bàn thấp bên cạnh, ném thẳng về phía hắn.
-Bạch Cẩm Y bất lực thở dài.
-Thôi vậy.
-Hai đại nam nhân ở mãi trong phòng nhìn nhau trừng trừng cũng thật nhàm chán.
-Hắn vẫn nên đi gọi Cửu Hoàng tử vào.
-Cạch.
-Cửa vừa mở.
-Một cái đầu bất ngờ lăn vào trong.
-“Cửu Hoàng tử!”
-Đây là dán sát khe cửa nghe lén đấy à!
-Bạch Cẩm Y chợt nhận ra mình lỡ lời, vội vàng bịt miệng, cuống quýt rời đi.
-Trong phòng chỉ còn lại Sở Đệ Trì, thần sắc hoảng hốt nhìn Sở Ly.
-“Tiểu Cửu… nàng nghe được những gì rồi?”
-“Đừng nghe Bạch Cẩm Y nói linh tinh. Người này xưa nay vẫn hấp ta hấp tấp, thích khoa trương mọi chuyện. Lời hắn không thể tin.”
-Khóe mắt Sở Ly đỏ hoe, thần sắc phức tạp, đôi môi mím chặt thành một đường thẳng.
-Đến lúc này nàng mới phát hiện…
-Hắn đã gầy đi rất nhiều.
-So với vẻ mạnh mẽ và lạnh lùng ngày trước, hai má hắn đã hóp đi đôi chút, ngay cả giữa hàng mày cũng thấp thoáng nét tiều tụy.
-Chỉ là từ đầu đến cuối vẫn có khí thế cường đại chống đỡ, nên người ngoài rất khó nhận ra.
-Dường như…
-Hắn vẫn luôn như vậy.
-Trong những lời đồn ở Đế Đô, người ta chỉ biết hắn bách chiến bách thắng, lập vô số chiến công, quyền thế ngập trời, cao cao tại thượng.
-Chưa từng có ai nhắc đến một mặt bị thương, yếu đuối, cô độc của hắn.
-Nhưng…
-Con người ai cũng sẽ bị thương.
-Ai cũng sẽ khóc.
-Chỉ là hắn không còn cha mẹ nữa.
-Không còn ai thương yêu hắn.
-Cho nên dù muốn khóc…
-Cũng không thể để người khác nhìn thấy.
-Sở Ly giấu nặng nề nơi đáy lòng, chậm rãi bước đến.
-“Vết thương của người thế nào rồi?”
-Giọng nàng hơi khàn.
-Hàng mày nam nhân khẽ nhíu lại. Hắn nắm lấy cổ tay nàng, kéo nàng ngồi xuống nhuyễn tháp.
-“Nhìn nàng xem, mắt cũng đỏ cả rồi.”
-“Ta không có.”
-“Vết thương của ta không đáng ngại. Trước đây, còn từng chịu những vết thương nặng hơn nhiều. Chỉ có điều khác với trước kia là… bây giờ đã có thêm một Tiểu Cửu biết đau lòng vì ta.”
-Hắn chậm rãi nắm lấy bàn tay mềm mại của nàng.
-Những ngón tay thon dài len vào kẽ tay nàng, từ từ đan chặt lấy nhau.
-“Chỉ cần nàng bình an, ta liền yên lòng. Từ khoảnh khắc máu của nàng nhuộm đầy hai tay ta, ta đã thề rằng, đời này tuyệt đối sẽ không để nàng phải rơi thêm một giọt máu, cũng không để nàng rơi thêm một giọt lệ.”
-Giọng nói chậm rãi ấy luôn là thứ dễ lay động lòng người nhất.
-Hơi thở của nam nhân quanh quẩn nơi chóp mũi nàng, như len lỏi vào từng ngóc ngách, lại như mang theo một loại ma lực vô hình.
-“Tiểu Cửu…”
-“Nàng có thể đáp ứng một thỉnh cầu của ta được không?” Ẩn bớt</p>
+            <p>Chương 218: Đời này, ta không thể không có nàng</p>
+<p>Hắn trịnh trọng vỗ nhẹ lên vai nàng.</p>
+<p>“Đừng lo.”</p>
+<p>“A Ly, hắn sẽ không sao đâu. Bạch công tử là người của Thần Y Cốc…” Mà sự lo lắng của nàng lúc này, vừa hay lại bộc lộ tâm ý của nàng đối với Nhiếp Chính Vương.</p>
+<p>Tần Mục Vũ mím môi, không nói thêm điều gì.</p>
+<p>“Mục Tuyết, chúng ta ra ngoài đi, để A Ly ở một mình một lát.”</p>
+<p>Đợi nàng bình tĩnh lại, nàng sẽ nhận ra vết thương trên cánh tay ấy vốn không hề trí mạng.</p>
+<p>Quan tâm thì tất loạn.</p>
+<p>Hiện giờ nàng quá sốt ruột, đầu óc nóng lên, nói gì cũng không nghe lọt. Chi bằng để nàng yên tĩnh một mình.</p>
+<p>Cứ tĩnh lặng như vậy…</p>
+<p>Rồi lòng cũng sẽ lắng xuống.</p>
+<p>Sở Ly co người ngồi trước cửa, lặng lẽ chờ đợi.</p>
+<p>Thời gian chờ đợi dài đến lạ thường.</p>
+<p>Nàng không khỏi nhớ lại rất nhiều chuyện trong quá khứ.</p>
+<p>Con người Sở Đệ Trì ấy…</p>
+<p>Đối xử với nàng không thể nói là tốt, nhưng cũng chẳng hề tệ.</p>
+<p>Tính tình hắn vô cùng nóng nảy, không có kiên nhẫn, luôn độc lai độc vãng, chỉ cần một lời không hợp là nổi giận.</p>
+<p>Thế nhưng…</p>
+<p>Từ khi nào hắn đã thay đổi?</p>
+<p>Nàng không còn nhớ rõ nữa.</p>
+<p>Có lẽ là tác dụng phụ của Sinh Tử Cổ, trí nhớ của nàng vốn đã không tốt. Bình thường lại lười biếng, chẳng thích nghĩ ngợi, bây giờ càng thêm như vậy.</p>
+<p>Nàng chống cằm.</p>
+<p>Xoa xoa mặt.</p>
+<p>Lại đổi sang một tư thế khác.</p>
+<p>Không biết đã đợi bao lâu, cuối cùng trong phòng cũng truyền ra tiếng nói rất khẽ.</p>
+<p>Rất nhỏ…</p>
+<p>Nhưng vẫn nghe thấy rõ.</p>
+<p>“Ngươi không cần mạng nữa sao… Chính thân thể mình thế nào, trong lòng ngươi không rõ à…”</p>
+<p>“Ta không thể để nàng bị thương.”</p>
+<p>“Thế còn ngươi? Không cần bản thân mình nữa sao?”</p>
+<p>Giọng Bạch Cẩm Y cao thêm vài phần, nghe đầy vẻ tức giận.</p>
+<p>“Ngươi có biết thân thể mình đã không chịu nổi thêm bất cứ sự giày vò nào nữa không! Từ sau khi Cửu Hoàng tử qua đời, ngày nào ngươi cũng say khướt, uống đến mức hộc máu, thân thể đã bị rượu hủy hoại nghiêm trọng!”</p>
+<p>Sở Ly chấn động trong lòng.</p>
+<p>“Ngươi thức trắng tròn mười ngày mười đêm, không ngủ không nghỉ, khó khăn lắm mới gượng dậy được, lại phải ngày đêm xử lý triều chính, suýt nữa đã bị đám hổ báo sài lang mưu đồ đoạt quyền kia xé xác.”</p>
+<p>“Có mấy lần ngươi hộc máu lên cả tấu chương. Nếu không phải trước lúc lâm chung Cửu Hoàng tử giao Đại Sở cho ngươi, có phải ngươi đã theo nàng cùng đi rồi không?”</p>
+<p>Giọng Bạch Cẩm Y càng lúc càng giận dữ.</p>
+<p>“Lần này, chúng ta lại ngày đêm rong ruổi suốt hai ngày hai đêm mới tới được Giang Nam, đến một giấc ngủ ngon cũng chưa có, đã phải xử lý chính vụ Giang Nam. Bây giờ ngươi còn bị thương nữa.”</p>
+<p>“Cho dù là thân thể bằng sắt, cũng không chịu nổi kiểu giày vò này.”</p>
+<p>“Ngươi thương Cửu Hoàng tử đến thế sao!”</p>
+<p>“Đúng.”</p>
+<p>“Đời này, ta không thể không có nàng.”</p>
+<p>“Ngươi… Ngươi nhìn xem bản thân ngươi đã thành ra cái dạng gì rồi!”</p>
+<p>Tiếng trách mắng của Bạch Cẩm Y lúc cao lúc thấp, xen lẫn giọng nói thỉnh thoảng trở nên yếu ớt của nam nhân.</p>
+<p>Từng câu từng chữ đan xen vào nhau, rõ ràng truyền hết vào tai Sở Ly.</p>
+<p>Tựa như từng gợn sóng lặng lẽ lan ra, chìm sâu vào đáy mắt nàng, dần dần hóa thành những cảm xúc mịt mờ, phức tạp…</p>
+<p>Nàng chưa từng biết những chuyện ấy.</p>
+<p>Cũng chưa từng có ai nói với nàng.</p>
+<p>“Nhỏ tiếng một chút. Nếu để Tiểu Cửu nghe thấy, ta sẽ không tha cho ngươi.”</p>
+<p>“Đến chết còn không sợ, vậy mà cũng có thứ để kiêng dè sao? Hừ!”</p>
+<p>“Im miệng!”</p>
+<p>Sở Đệ Trì chộp lấy chén trà trên chiếc bàn thấp bên cạnh, ném thẳng về phía hắn.</p>
+<p>Bạch Cẩm Y bất lực thở dài.</p>
+<p>Thôi vậy.</p>
+<p>Hai đại nam nhân ở mãi trong phòng nhìn nhau trừng trừng cũng thật nhàm chán.</p>
+<p>Hắn vẫn nên đi gọi Cửu Hoàng tử vào.</p>
+<p>Cạch.</p>
+<p>Cửa vừa mở.</p>
+<p>Một cái đầu bất ngờ lăn vào trong.</p>
+<p>“Cửu Hoàng tử!”</p>
+<p>Đây là dán sát khe cửa nghe lén đấy à!</p>
+<p>Bạch Cẩm Y chợt nhận ra mình lỡ lời, vội vàng bịt miệng, cuống quýt rời đi.</p>
+<p>Trong phòng chỉ còn lại Sở Đệ Trì, thần sắc hoảng hốt nhìn Sở Ly.</p>
+<p>“Tiểu Cửu… nàng nghe được những gì rồi?”</p>
+<p>“Đừng nghe Bạch Cẩm Y nói linh tinh. Người này xưa nay vẫn hấp ta hấp tấp, thích khoa trương mọi chuyện. Lời hắn không thể tin.”</p>
+<p>Khóe mắt Sở Ly đỏ hoe, thần sắc phức tạp, đôi môi mím chặt thành một đường thẳng.</p>
+<p>Đến lúc này nàng mới phát hiện…</p>
+<p>Hắn đã gầy đi rất nhiều.</p>
+<p>So với vẻ mạnh mẽ và lạnh lùng ngày trước, hai má hắn đã hóp đi đôi chút, ngay cả giữa hàng mày cũng thấp thoáng nét tiều tụy.</p>
+<p>Chỉ là từ đầu đến cuối vẫn có khí thế cường đại chống đỡ, nên người ngoài rất khó nhận ra.</p>
+<p>Dường như…</p>
+<p>Hắn vẫn luôn như vậy.</p>
+<p>Trong những lời đồn ở Đế Đô, người ta chỉ biết hắn bách chiến bách thắng, lập vô số chiến công, quyền thế ngập trời, cao cao tại thượng.</p>
+<p>Chưa từng có ai nhắc đến một mặt bị thương, yếu đuối, cô độc của hắn.</p>
+<p>Nhưng…</p>
+<p>Con người ai cũng sẽ bị thương.</p>
+<p>Ai cũng sẽ khóc.</p>
+<p>Chỉ là hắn không còn cha mẹ nữa.</p>
+<p>Không còn ai thương yêu hắn.</p>
+<p>Cho nên dù muốn khóc…</p>
+<p>Cũng không thể để người khác nhìn thấy.</p>
+<p>Sở Ly giấu nặng nề nơi đáy lòng, chậm rãi bước đến.</p>
+<p>“Vết thương của người thế nào rồi?”</p>
+<p>Giọng nàng hơi khàn.</p>
+<p>Hàng mày nam nhân khẽ nhíu lại. Hắn nắm lấy cổ tay nàng, kéo nàng ngồi xuống nhuyễn tháp.</p>
+<p>“Nhìn nàng xem, mắt cũng đỏ cả rồi.”</p>
+<p>“Ta không có.”</p>
+<p>“Vết thương của ta không đáng ngại. Trước đây, còn từng chịu những vết thương nặng hơn nhiều. Chỉ có điều khác với trước kia là… bây giờ đã có thêm một Tiểu Cửu biết đau lòng vì ta.”</p>
+<p>Hắn chậm rãi nắm lấy bàn tay mềm mại của nàng.</p>
+<p>Những ngón tay thon dài len vào kẽ tay nàng, từ từ đan chặt lấy nhau.</p>
+<p>“Chỉ cần nàng bình an, ta liền yên lòng. Từ khoảnh khắc máu của nàng nhuộm đầy hai tay ta, ta đã thề rằng, đời này tuyệt đối sẽ không để nàng phải rơi thêm một giọt máu, cũng không để nàng rơi thêm một giọt lệ.”</p>
+<p>Giọng nói chậm rãi ấy luôn là thứ dễ lay động lòng người nhất.</p>
+<p>Hơi thở của nam nhân quanh quẩn nơi chóp mũi nàng, như len lỏi vào từng ngóc ngách, lại như mang theo một loại ma lực vô hình.</p>
+<p>“Tiểu Cửu…”</p>
+<p>“Nàng có thể đáp ứng một thỉnh cầu của ta được không?” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_217.html" class="btn">‹ Trước</a>
             <a href="chuong_219.html" class="btn">Sau ›</a>
         </div>
@@ -222,15 +230,11 @@ Hơi thở của nam nhân quanh quẩn nơi chóp mũi nàng, như len lỏi v�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -242,11 +246,11 @@ Hơi thở của nam nhân quanh quẩn nơi chóp mũi nàng, như len lỏi v�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

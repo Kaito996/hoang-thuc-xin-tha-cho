@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 233</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,174 +62,183 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 233</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_232.html" class="btn">‹ Trước</a>
             <a href="chuong_234.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 233: Hoàng thúc, đừng nữa
-Sở Đệ Trì nhận được tin tức trở về, đã là chuyện của hai ngày sau.
-“Chuẩn bị đi, sáng sớm mai chúng ta khởi hành hồi Đế đô.”
-“Ồ.”
-Sở Ly chạy vào Tiểu Trúc ven hồ, vừa nhìn thấy sân viện trống vắng, liền biết chiến sự không hề đơn giản, lập tức quay về phòng mình.
-Lần này trở về Đế đô, nàng phải đưa theo đám thị nữ và cả Quy sư thúc.
-“Tiểu thư, người về rồi.”
-“Sơ Nhất, Sơ Nhị, hai ngươi giúp ta thu dọn hành lý. Sơ Tam, Sơ Tứ, các ngươi...”
-Ngoài sân.
-Tiêu Dạ Hành cùng Sở Đệ Trì chạm mặt.
-Điều hắn lo lắng là chiến sự, cùng chuyện Thái tử tiền triều. Hai ngày nay ưu tư đến mức ngủ chẳng yên, vậy mà lại thấy Sở Đệ Trì chắp một tay sau lưng, tay kia xách lồng chim, ung dung nhàn nhã bước tới.
-Tựa như một vị đại gia.
-Ánh mắt hắn quét một vòng quanh tiểu trúc, cất lời hỏi:
-“Ngoại sanh của ngươi đâu?”
-“?”
-Hiện thời thế cục khẩn trương như vậy, câu đầu tiên sau khi hắn trở về lại là hỏi tung tích Tần
-Mục Vũ?
-Quan hệ giữa hắn và Tần Mục Vũ từ khi nào lại tốt đến thế?
-Tiêu Dạ Hành cau mày, đang nghi hoặc, liền nghe con vẹt lông trắng trong chiếc lồng hắn cầm trên tay kêu lên:
-“Hoàng thúc, đừng nữa!”
-“Cạc cạc! Hoàng thúc, đừng nữa!”
-“...”
-Giữa thanh thiên bạch nhật, dưới càn khôn sáng tỏ, ngay giữa chốn đông người, Tiêu Dạ Hành suýt nữa bị nước bọt làm sặc chết. Mấy tên hộ vệ vội vàng cúi thấp đầu, mắt nhìn mũi, mũi nhìn miệng, coi như chẳng nghe thấy gì.
-Người này...
-Thật là tâm địa quá độc!
-“Hai ngày trước hắn đã đi rồi!”
-Không chỉ Tần Mục Vũ, mà Tần Mục Tuyết cũng đi, Lục Vân Sơ cũng rời khỏi, người gần như đã đi hết.
-May mà đi rồi.
-Bằng không, hắn thật không dám tưởng tượng cảnh tượng vừa rồi sẽ gây nên phản ứng gì...
-“Đi gấp vậy sao?”
-Sở Đệ Trì khẽ nhíu mày, dường như có chút tiếc nuối.
-“Đáng tiếc thật.”
-Hắn đưa lồng chim cho Trọng Phong.
-“Con chim này rất tốt, là Tiểu Cửu nuôi. Mang về Nhiếp Chính Vương phủ, hầu hạ cho cẩn thận.”
-“Vâng, chủ tử.”
-Tiêu Dạ Hành hiểu rất rõ tính tình thù dai của Sở Đệ Trì.
-Người này nhìn bề ngoài có vẻ rộng lượng, kỳ thực lòng dạ nhỏ hẹp vô cùng, tính toán chi li, từng ly từng tí đều ghi nhớ.
-Thà đắc tội Hoàng đế, cũng đừng đắc tội hắn.
-“Ta nói với ngươi về tình hình ở Mạc Hoài Châu.”
-Sở Đệ Trì tiếc nuối thở dài, dáng vẻ chẳng mấy hứng thú.
-“Được thôi.”
-Hai người vừa định tới chính sảnh nghị sự, liền nhìn thấy Sở Ly từ trong phòng chạy ra, bước
-chân lộp cộp, váy áo tung bay, lao thẳng ra ngoài.
-“Đi đâu?”
-“Báo thù.”
-Tiêu Dạ Hành: “?”
-—
-Phủ Tri phủ Giang Nam.
-Nói đến khoảng thời gian này, Tri phủ Lý sống như đi trên băng mỏng, tháng ngày chẳng hề
-dễ chịu. Thuộc hạ Thôi Tiền Tiến của hắn cũng mặt mày ủ rũ.
-Có điều may mà...
-“Nhiếp Chính Vương đã nói, chỉ cần ta nghiêm túc xét xử các vụ án oan, lấy công chuộc tội,
-ngài ấy sẽ tha cho ta một lần.”
-Tri phủ Lý đỡ vững mũ ô sa trên đầu, lau mồ hôi trên trán.
-“Bên ngoài còn bao nhiêu vụ án chưa xử?”
-Thôi Tiền Tiến chắp tay.
-“Đại nhân, ít nhất cũng còn hơn bảy mươi vụ.”
-“Đi mời nhân chứng tới.”
-“Vâng.”
-Thôi Tiền Tiến mệt đến mức lưng chẳng thể thẳng nổi, nhưng không dám chậm trễ chút nào,
-vội vàng rời khỏi phủ.
-Không ngờ vừa đi tới chỗ rẽ, một chiếc bao tải đã chụp thẳng xuống đầu hắn.
-“A! Ai... Ưm!”
-Một cú đấm nện thẳng vào bụng.
-“A! Khụ khụ... Cứu... cứu mạng... A!”
-Bốp! Bốp! Bốp!
-Quyền đấm cước đá tới tấp.
-Thôi Tiền Tiến đau đến lăn lộn trên mặt đất, co quắp thành một đoàn. Những cú đấm như
-mưa trút xuống người, đánh đến mức hắn ngay cả cơ hội chống trả cũng không có.
-Là ai!
-Rốt cuộc là kẻ nào!
-Dám hành hung nha sai của Tri phủ!
-“Dừng tay... A! To gan... Các ngươi to gan lắm... A!”
-Sau một trận quyền cước như mưa.
-Đợi đến khi Thôi Tiền Tiến bị đánh đến hấp hối, không còn sức giãy giụa, đối phương mới
-dừng tay, “soạt” một tiếng kéo chiếc bao tải ra.
-Gương mặt hắn đã sớm bầm tím sưng vù, khóe miệng nứt toác, máu chảy không ngừng.
-“Các... các ngươi...”
-“Mới có mấy ngày mà đã không nhận ra bọn ta rồi sao?”
-Độc Nhãn Long vừa xoa nắm đấm, vừa phát ra tiếng răng rắc.
-“Lâu rồi không gặp, Thôi đại nhân!”
-“Là ngươi...”
-Độc Nhãn Long, Đao Ba Kiểm, Tế Nhãn Cẩu, cùng năm người khác.
-“Hôm đó ở khách điếm, ngươi ỷ mình là nha sai, ức hiếp bọn ta, đánh bọn ta, còn muốn
-cưỡng ép bắt bọn ta vào ngục. Nếu không nhờ Tạ tiểu thư nộp một khoản ngân lượng lớn bảo
-lãnh, bọn ta đã chẳng thoát được.”
-Độc Nhãn Long ngồi xổm xuống, vỗ bồm bộp lên mặt hắn.
-“Thế nào? Ngân lượng dễ kiếm lắm sao?”
-Chát!
-Chát!
-Mặt Thôi Tiền Tiến bị vỗ đến vang lên những tiếng bốp bốp, máu nơi khóe miệng càng chảy
-dữ hơn.
-“Hôm nay bọn ta cứ đánh ngươi đấy, ngươi làm gì được nào?”
-“Thôi đại nhân, bọn ta đánh nha sai triều đình rồi, mau phái người tới bắt bọn ta đi.”
-“Ha ha ha!”
-Mấy người ngửa mặt cười lớn.
-Thôi Tiền Tiến cố nhịn đau vùng vẫy.
-“Phi!”
-“Lũ lưu manh thổ phỉ các ngươi, dám hành hung giữa Giang Nam! Sau lưng ta là Tri phủ Lý,
-Lý đại nhân! Bây giờ ta sẽ trở về điều người, các ngươi cứ chờ chết đi!”
-Đúng lúc ấy, một giọng nữ ôn nhu xen vào:
-“Ấy, Thôi đại nhân, lời này không thể nói như vậy được.”
-Sở Ly tới.
-Trên mặt mang theo ý cười.
-“Thôi đại nhân, bọn họ đánh nha sai đúng là không đúng, nhưng ngài cũng nên tự tìm nguyên
-nhân từ chính mình.”
-“Tục ngữ nói rất hay, ruồi không đậu trứng không nứt. Vì sao bọn họ chỉ đánh ngài mà không
-đánh người khác? Chắc chắn ngài cũng có sai.”
-Thôi Tiền Tiến nghe vậy, suýt nữa phun ra một ngụm máu.
-Chẳng phải... đây chính là lời hắn từng nói sao! Ẩn bớt</p>
+            <p>Chương 233: Hoàng thúc, đừng nữa</p>
+<p>Sở Đệ Trì nhận được tin tức trở về, đã là chuyện của hai ngày sau.</p>
+<p>“Chuẩn bị đi, sáng sớm mai chúng ta khởi hành hồi Đế đô.”</p>
+<p>“Ồ.”</p>
+<p>Sở Ly chạy vào Tiểu Trúc ven hồ, vừa nhìn thấy sân viện trống vắng, liền biết chiến sự không hề đơn giản, lập tức quay về phòng mình.</p>
+<p>Lần này trở về Đế đô, nàng phải đưa theo đám thị nữ và cả Quy sư thúc.</p>
+<p>“Tiểu thư, người về rồi.”</p>
+<p>“Sơ Nhất, Sơ Nhị, hai ngươi giúp ta thu dọn hành lý. Sơ Tam, Sơ Tứ, các ngươi...”</p>
+<p>Ngoài sân.</p>
+<p>Tiêu Dạ Hành cùng Sở Đệ Trì chạm mặt.</p>
+<p>Điều hắn lo lắng là chiến sự, cùng chuyện Thái tử tiền triều. Hai ngày nay ưu tư đến mức ngủ chẳng yên, vậy mà lại thấy Sở Đệ Trì chắp một tay sau lưng, tay kia xách lồng chim, ung dung nhàn nhã bước tới.</p>
+<p>Tựa như một vị đại gia.</p>
+<p>Ánh mắt hắn quét một vòng quanh tiểu trúc, cất lời hỏi:</p>
+<p>“Ngoại sanh của ngươi đâu?”</p>
+<p>“?”</p>
+<p>Hiện thời thế cục khẩn trương như vậy, câu đầu tiên sau khi hắn trở về lại là hỏi tung tích Tần</p>
+<p>Mục Vũ?</p>
+<p>Quan hệ giữa hắn và Tần Mục Vũ từ khi nào lại tốt đến thế?</p>
+<p>Tiêu Dạ Hành cau mày, đang nghi hoặc, liền nghe con vẹt lông trắng trong chiếc lồng hắn cầm trên tay kêu lên:</p>
+<p>“Hoàng thúc, đừng nữa!”</p>
+<p>“Cạc cạc! Hoàng thúc, đừng nữa!”</p>
+<p>“...”</p>
+<p>Giữa thanh thiên bạch nhật, dưới càn khôn sáng tỏ, ngay giữa chốn đông người, Tiêu Dạ Hành suýt nữa bị nước bọt làm sặc chết. Mấy tên hộ vệ vội vàng cúi thấp đầu, mắt nhìn mũi, mũi nhìn miệng, coi như chẳng nghe thấy gì.</p>
+<p>Người này...</p>
+<p>Thật là tâm địa quá độc!</p>
+<p>“Hai ngày trước hắn đã đi rồi!”</p>
+<p>Không chỉ Tần Mục Vũ, mà Tần Mục Tuyết cũng đi, Lục Vân Sơ cũng rời khỏi, người gần như đã đi hết.</p>
+<p>May mà đi rồi.</p>
+<p>Bằng không, hắn thật không dám tưởng tượng cảnh tượng vừa rồi sẽ gây nên phản ứng gì...</p>
+<p>“Đi gấp vậy sao?”</p>
+<p>Sở Đệ Trì khẽ nhíu mày, dường như có chút tiếc nuối.</p>
+<p>“Đáng tiếc thật.”</p>
+<p>Hắn đưa lồng chim cho Trọng Phong.</p>
+<p>“Con chim này rất tốt, là Tiểu Cửu nuôi. Mang về Nhiếp Chính Vương phủ, hầu hạ cho cẩn thận.”</p>
+<p>“Vâng, chủ tử.”</p>
+<p>Tiêu Dạ Hành hiểu rất rõ tính tình thù dai của Sở Đệ Trì.</p>
+<p>Người này nhìn bề ngoài có vẻ rộng lượng, kỳ thực lòng dạ nhỏ hẹp vô cùng, tính toán chi li, từng ly từng tí đều ghi nhớ.</p>
+<p>Thà đắc tội Hoàng đế, cũng đừng đắc tội hắn.</p>
+<p>“Ta nói với ngươi về tình hình ở Mạc Hoài Châu.”</p>
+<p>Sở Đệ Trì tiếc nuối thở dài, dáng vẻ chẳng mấy hứng thú.</p>
+<p>“Được thôi.”</p>
+<p>Hai người vừa định tới chính sảnh nghị sự, liền nhìn thấy Sở Ly từ trong phòng chạy ra, bước</p>
+<p>chân lộp cộp, váy áo tung bay, lao thẳng ra ngoài.</p>
+<p>“Đi đâu?”</p>
+<p>“Báo thù.”</p>
+<p>Tiêu Dạ Hành: “?”</p>
+<p>—</p>
+<p>Phủ Tri phủ Giang Nam.</p>
+<p>Nói đến khoảng thời gian này, Tri phủ Lý sống như đi trên băng mỏng, tháng ngày chẳng hề</p>
+<p>dễ chịu. Thuộc hạ Thôi Tiền Tiến của hắn cũng mặt mày ủ rũ.</p>
+<p>Có điều may mà...</p>
+<p>“Nhiếp Chính Vương đã nói, chỉ cần ta nghiêm túc xét xử các vụ án oan, lấy công chuộc tội,</p>
+<p>ngài ấy sẽ tha cho ta một lần.”</p>
+<p>Tri phủ Lý đỡ vững mũ ô sa trên đầu, lau mồ hôi trên trán.</p>
+<p>“Bên ngoài còn bao nhiêu vụ án chưa xử?”</p>
+<p>Thôi Tiền Tiến chắp tay.</p>
+<p>“Đại nhân, ít nhất cũng còn hơn bảy mươi vụ.”</p>
+<p>“Đi mời nhân chứng tới.”</p>
+<p>“Vâng.”</p>
+<p>Thôi Tiền Tiến mệt đến mức lưng chẳng thể thẳng nổi, nhưng không dám chậm trễ chút nào,</p>
+<p>vội vàng rời khỏi phủ.</p>
+<p>Không ngờ vừa đi tới chỗ rẽ, một chiếc bao tải đã chụp thẳng xuống đầu hắn.</p>
+<p>“A! Ai... Ưm!”</p>
+<p>Một cú đấm nện thẳng vào bụng.</p>
+<p>“A! Khụ khụ... Cứu... cứu mạng... A!”</p>
+<p>Bốp! Bốp! Bốp!</p>
+<p>Quyền đấm cước đá tới tấp.</p>
+<p>Thôi Tiền Tiến đau đến lăn lộn trên mặt đất, co quắp thành một đoàn. Những cú đấm như</p>
+<p>mưa trút xuống người, đánh đến mức hắn ngay cả cơ hội chống trả cũng không có.</p>
+<p>Là ai!</p>
+<p>Rốt cuộc là kẻ nào!</p>
+<p>Dám hành hung nha sai của Tri phủ!</p>
+<p>“Dừng tay... A! To gan... Các ngươi to gan lắm... A!”</p>
+<p>Sau một trận quyền cước như mưa.</p>
+<p>Đợi đến khi Thôi Tiền Tiến bị đánh đến hấp hối, không còn sức giãy giụa, đối phương mới</p>
+<p>dừng tay, “soạt” một tiếng kéo chiếc bao tải ra.</p>
+<p>Gương mặt hắn đã sớm bầm tím sưng vù, khóe miệng nứt toác, máu chảy không ngừng.</p>
+<p>“Các... các ngươi...”</p>
+<p>“Mới có mấy ngày mà đã không nhận ra bọn ta rồi sao?”</p>
+<p>Độc Nhãn Long vừa xoa nắm đấm, vừa phát ra tiếng răng rắc.</p>
+<p>“Lâu rồi không gặp, Thôi đại nhân!”</p>
+<p>“Là ngươi...”</p>
+<p>Độc Nhãn Long, Đao Ba Kiểm, Tế Nhãn Cẩu, cùng năm người khác.</p>
+<p>“Hôm đó ở khách điếm, ngươi ỷ mình là nha sai, ức hiếp bọn ta, đánh bọn ta, còn muốn</p>
+<p>cưỡng ép bắt bọn ta vào ngục. Nếu không nhờ Tạ tiểu thư nộp một khoản ngân lượng lớn bảo</p>
+<p>lãnh, bọn ta đã chẳng thoát được.”</p>
+<p>Độc Nhãn Long ngồi xổm xuống, vỗ bồm bộp lên mặt hắn.</p>
+<p>“Thế nào? Ngân lượng dễ kiếm lắm sao?”</p>
+<p>Chát!</p>
+<p>Chát!</p>
+<p>Mặt Thôi Tiền Tiến bị vỗ đến vang lên những tiếng bốp bốp, máu nơi khóe miệng càng chảy</p>
+<p>dữ hơn.</p>
+<p>“Hôm nay bọn ta cứ đánh ngươi đấy, ngươi làm gì được nào?”</p>
+<p>“Thôi đại nhân, bọn ta đánh nha sai triều đình rồi, mau phái người tới bắt bọn ta đi.”</p>
+<p>“Ha ha ha!”</p>
+<p>Mấy người ngửa mặt cười lớn.</p>
+<p>Thôi Tiền Tiến cố nhịn đau vùng vẫy.</p>
+<p>“Phi!”</p>
+<p>“Lũ lưu manh thổ phỉ các ngươi, dám hành hung giữa Giang Nam! Sau lưng ta là Tri phủ Lý,</p>
+<p>Lý đại nhân! Bây giờ ta sẽ trở về điều người, các ngươi cứ chờ chết đi!”</p>
+<p>Đúng lúc ấy, một giọng nữ ôn nhu xen vào:</p>
+<p>“Ấy, Thôi đại nhân, lời này không thể nói như vậy được.”</p>
+<p>Sở Ly tới.</p>
+<p>Trên mặt mang theo ý cười.</p>
+<p>“Thôi đại nhân, bọn họ đánh nha sai đúng là không đúng, nhưng ngài cũng nên tự tìm nguyên</p>
+<p>nhân từ chính mình.”</p>
+<p>“Tục ngữ nói rất hay, ruồi không đậu trứng không nứt. Vì sao bọn họ chỉ đánh ngài mà không</p>
+<p>đánh người khác? Chắc chắn ngài cũng có sai.”</p>
+<p>Thôi Tiền Tiến nghe vậy, suýt nữa phun ra một ngụm máu.</p>
+<p>Chẳng phải... đây chính là lời hắn từng nói sao! Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_232.html" class="btn">‹ Trước</a>
             <a href="chuong_234.html" class="btn">Sau ›</a>
         </div>
@@ -238,15 +246,11 @@ Chẳng phải... đây chính là lời hắn từng nói sao! Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -258,11 +262,11 @@ Chẳng phải... đây chính là lời hắn từng nói sao! Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

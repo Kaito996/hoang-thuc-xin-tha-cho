@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 337</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,209 +62,218 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 337</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_336.html" class="btn">‹ Trước</a>
             <a href="chuong_338.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 337: Nàng không mang thai chứ?
-Sở Dạ Ly vịn càng xe, nhìn nàng nói:
-“Giày vò thân thể mình, chỉ khiến người yêu nàng đau lòng… Nàng làm rất tốt, quả thực ta rất xót ngươi.”
-Hắn nghiêng đầu, liếc sang A Ngọc.
-A Ngọc giơ tay vỗ hai tiếng.
-Tiếng vỗ tay vừa dứt, hai ám vệ áp giải Tiêu Dạ Hành đi tới.
-“Tiêu Đô đốc!”
-Người đàn ông trông có phần chật vật.
-Sở Dạ Ly nói:
-“Đêm qua, Tiêu Đô đốc định dẫn người xuống đáy vực tìm tung tích của Nhiếp Chính Vương, nhưng đã bị ta chặn lại.”
-“Ta nghĩ, dưới đáy vực rừng sâu um tùm, dã thú đầy rẫy, thi thể của Nhiếp Chính Vương e rằng đã sớm bị ăn sạch. Không cần lãng phí nhiều nhân lực chỉ để tìm một cỗ thi thể vô dụng.”
-Hai mắt Sở Ly lập tức đỏ hoe.
-Trong miệng hắn, “cỗ thi thể vô dụng” ấy, lại chính là người mà ngay cả trong mộng nàng cũng ngày đêm hồn khiên mộng nhiễu.
-Dù bị bắt, Tiêu Dạ Hành vẫn không hề khuất phục, chỉ dặn dò:
-“Sở Ly, bất kể thế nào cũng phải bảo toàn bản thân.”
-Chỉ cần còn sống…
-Thì vẫn còn hy vọng.
-Chỉ cần còn sống, mọi chuyện đều có khả năng.
-Sở Ly siết chặt đầu ngón tay, nhìn Sở Dạ Ly:
-“Ngươi còn muốn giết bao nhiêu người nữa?”
-Sở Dạ Ly cau mày:
-“Tiểu Cửu hiểu lầm ta rồi. Người như Tiêu Đô đốc, là lương đống quốc gia. Chỉ cần hắn nguyện trung thành với ta, thần phục ta, ta tự nhiên sẽ không bạc đãi hắn.”
-Tiêu Dạ Hành và Sở Đệ Trì là cùng một kiểu người.
-Sao có thể trung thành với hắn?
-Huống hồ…
-Nàng còn hy vọng Tiêu Dạ Hành trở lại Cam Châu, tiếp tục tìm kiếm Sở Đệ Trì.
-Nàng không tin hắn đã chết.
-Sống phải thấy người…
-Chết phải thấy xác.
-“Nói nhiều như vậy, cũng thấy hơi đói rồi. Tiểu Cửu, nàng đói chưa?”
-Hắn mỉm cười hỏi, từ đầu đến cuối vẫn là dáng vẻ ôn hòa ấy.
-Khóe môi Sở Ly cong lên đầy chua xót:
-“Ngươi thả Tiêu Dạ Hành đi… Sở Đệ Trì không còn nữa, hắn sẽ không tạo thành uy hiếp đối với ngươi…”
-“Điều ta hỏi là, nàng đói chưa?”
-Hô hấp Sở Ly khựng lại.
-Nhìn đôi mắt ôn hòa của người đàn ông, ánh nhu hòa trong đó như sao trời bị nghiền nát, khiến nàng như được trở về nhiều năm trước, trở về Thanh Phong Cư, trở về bên thiếu niên ngồi trên xe lăn năm ấy.
-“Đói… Ta đói rồi…”
-Sở Dạ Ly cười, đưa hai tay ra.
-“Xuống đi, ta đã bảo A Ngọc gọi cả một bàn thức ăn ngon, đều là những món ngươi thích.”
-Sở Ly vịn cửa xe, tránh bàn tay hắn, bước xuống từ phía bên kia.
-Thế nhưng vừa chạm chân xuống đất, cả người đã mềm nhũn, ngã sấp xuống nền tuyết.
-“Tiểu Cửu!”
-Sở Dạ Ly biến sắc, lập tức vòng sang, bế ngang nàng lên, phủi sạch tuyết bẩn dính trên lòng bàn tay nàng.
-“Tay sao lại lạnh như vậy!”
-Đã mặc nhiều như thế rồi.
-A Ngọc bước nhanh tới:
-“Chủ tử, thuộc hạ đã dặn chưởng quỹ chuẩn bị đủ than trong phòng riêng, nước nóng cũng đã đun xong.”
-“Ừ.”
-Sở Dạ Ly bế ngang Sở Ly.
-Nàng giãy giụa:
-“Thả Tiêu Đô đốc…”
-“Ăn cơm trước.”
-“Nàng phải đáp ứng ta trước.”
-Sở Dạ Ly nhìn dáng vẻ cố chấp của nàng.
-“Đừng mặc cả với ta. Ăn xong, ta sẽ trả tự do cho hắn. Nhưng tiền đề là hắn phải quỳ xuống thần phục ta.”
-“Thay vì cầu xin ta, chi bằng trước tiên hãy hỏi hắn xem, hắn có nguyện trung thành với ta hay không.”
-Liếc Tiêu Dạ Hành một cái, hắn sải bước đi vào tửu lâu.
-Phòng riêng tầng ba.
-Than hồng cháy rực, ấm áp như ngày xuân.
-Sơn hào hải vị bày đầy bàn, vô cùng phong phú.
-Sở Dạ Ly múc một bát canh cá.
-“Nàng đã lâu chưa ăn gì. Uống chút canh lót dạ trước, rồi hãy dùng cơm, tránh làm tổn thương dạ dày.”
-Sở Ly thật sự không có chút khẩu vị nào.
-Nàng không muốn ăn.
-Nhưng vừa nghĩ đến Tiêu Dạ Hành ở bên ngoài…
-Toàn bộ hy vọng của nàng đều đặt trên người hắn.
-Tiêu Dạ Hành nhất định phải tìm được Sở Đệ Trì!
-Nàng nhận lấy bát, ngửa đầu uống.
-Nhưng vừa chạm môi, mùi tanh của cá đã kích thích nàng cúi gập người nôn khan.
-“Khụ!”
-Sở Dạ Ly lập tức lấy khăn tay lau khóe miệng cho nàng, vỗ nhẹ sau lưng.
-“Nhà bếp làm việc kiểu gì vậy? Một bát canh cá cũng nấu không xong! Tay nghề kém như thế, chi bằng chặt luôn đôi tay đi.”
-“Ta uống!”
-“Không ngon thì không uống nữa. Đổi sang bát canh gà ác bồi bổ thân thể này.”
-Sở Dạ Ly lại múc một bát khác.
-Nhưng Sở Ly vừa ngửi thấy mùi thịt, lại nôn.
-Thần sắc Sở Dạ Ly đột nhiên thay đổi.
-Hắn nhìn sang A Ngọc.
-A Ngọc lập tức hiểu ý, cúi đầu lui ra.
-Không bao lâu sau, dẫn vào một người đàn ông trung niên có râu.
-A Ngọc hạ giọng:
-“Bắt mạch.”
-Người đàn ông trung niên cung kính tiến lên, bắt mạch xong liền nói:
-“Công tử, mạch tượng của vị cô nương này hư nhược vô lực, tâm mạch uất kết. Xem ra là do chịu đả kích quá lớn, khiến tinh thần suy sụp. Tiểu nhân sẽ kê một phương thuốc thanh nhiệt an thần…”
-“Nàng không mang thai chứ?”
-Sở Dạ Ly đột nhiên cắt ngang lời đại phu.
-Sở Ly lập tức ngẩng đầu.
-Thì ra…
-Hắn cho rằng nàng vừa ngửi mùi tanh đã nôn là vì mang thai…
-Đại phu lắc đầu.
-“Không có hỉ mạch.”
-Đầu ngón tay đang siết chặt của Sở Dạ Ly lặng lẽ buông lỏng.
-Hắn tựa lưng vào ghế.
-“Nàng không thích uống thuốc, quá đắng.”
-Đại phu nói:
-“Vậy có thể ăn một ít đồ chua để kích thích khẩu vị. Cơm là thứ bổ dưỡng nhất. Chỉ cần ăn ngon miệng hơn, dùng nhiều cơm một chút thì tinh thần tự nhiên sẽ dần khá lên.”
-“Làm phiền rồi.”
-A Ngọc tiến lên đưa ngân phiếu, tiễn đại phu ra ngoài, rồi xuống bếp dặn dò.
-Sở Ly khẽ ôm lấy bụng dưới phẳng lặng của mình.
-Nhìn gương mặt ôn hòa như cũ của người đàn ông, nàng có thể tưởng tượng được…
-Nếu nàng thật sự mang thai…
-Hắn nhất định sẽ ép nàng bỏ đứa bé.
-May mà…
-Trong cơ thể Sở Đệ Trì có độc, cả đời không thể sinh con.
-Đây là lần đầu tiên…
-Nàng cảm thấy may mắn vì điều đó.
-Không bao lâu sau.
-Tiểu nhị mang lên hai đĩa dưa chuột trộn chua và một đĩa mơ chua.
-“Tiểu Cửu, ăn chút đồ chua đi, kích thích khẩu vị.”
-Sở Ly cụp mắt, khẽ cười nhạt.
-Nàng cầm nửa khúc dưa chuột chua, vừa cắn một miếng đã muốn nôn.
-Từ nhỏ nàng đã không thích vị chua, đắng hay mặn.
-Nhưng vì Tiêu Dạ Hành…
-Nàng cố nhịn, cắn liền mấy miếng, nhét hết vào miệng, hai má phồng căng, vậy mà vẫn khó nuốt nổi.
-Nước chua tràn xuống cổ họng.
-Cuối cùng vẫn không thể khống chế cảm giác buồn nôn.
-“Ọe… Khụ, khụ khụ!”
-Sở Dạ Ly trầm mặt, bưng cả đĩa dưa chuột chua ném xuống đất.
-“Làm lại!”
-“Ta không đói, Sở Dạ Ly, ta thật sự không muốn ăn!”
-“Nàng đã một ngày một đêm chưa ăn gì rồi. Nói không đói chỉ là lừa mình dối người. Nàng không ăn, Tiêu Dạ Hành vẫn còn đang đợi ở bên ngoài.”
-Sở Ly siết chặt tay.
-Nàng cầm đũa, gắp một đũa cơm thật đầy nhét vào miệng.
-Nàng ăn là được chứ gì!
-Cá, thịt, thịt bò, đùi gà, khoai tây thái sợi, rau xanh…
-Nàng liên tục gắp hết vào miệng.
-Sơn hào hải vị…
-Vào miệng lại như nhai sáp.
-“Ăn chậm thôi.”
-“Ta đói rồi, ta ăn cơm… Khụ khụ…”
-“Ta bảo ngươi ăn chậm lại!”
-Khi một người đau buồn đến cực hạn…
-Sẽ không còn cảm nhận được đói khát.
-Lúc này nàng chính là như vậy.
-Ép bản thân nuốt xuống, khiến dạ dày co thắt dữ dội, cuối cùng lại nôn hết ra.
-Nàng thật sự…
-Ăn không nổi.
-Sở Dạ Ly lập tức vỗ lưng cho nàng.
-Nàng chộp lấy tay hắn.
-Hai mắt đã đỏ hoe, nước mắt rơi đầy mặt.
-“Sở Dạ Ly… ngươi thả Tiêu Dạ Hành đi… Một mình hắn cũng không làm nên sóng gió gì.”
-Nhưng…
-Hắn là bằng hữu tốt nhất của Sở Đệ Trì.
-Hắn nhất định sẽ tìm được Sở Đệ Trì.
-“Ta cầu xin ngươi… thả hắn đi.” Ẩn bớt</p>
+            <p>Chương 337: Nàng không mang thai chứ?</p>
+<p>Sở Dạ Ly vịn càng xe, nhìn nàng nói:</p>
+<p>“Giày vò thân thể mình, chỉ khiến người yêu nàng đau lòng… Nàng làm rất tốt, quả thực ta rất xót ngươi.”</p>
+<p>Hắn nghiêng đầu, liếc sang A Ngọc.</p>
+<p>A Ngọc giơ tay vỗ hai tiếng.</p>
+<p>Tiếng vỗ tay vừa dứt, hai ám vệ áp giải Tiêu Dạ Hành đi tới.</p>
+<p>“Tiêu Đô đốc!”</p>
+<p>Người đàn ông trông có phần chật vật.</p>
+<p>Sở Dạ Ly nói:</p>
+<p>“Đêm qua, Tiêu Đô đốc định dẫn người xuống đáy vực tìm tung tích của Nhiếp Chính Vương, nhưng đã bị ta chặn lại.”</p>
+<p>“Ta nghĩ, dưới đáy vực rừng sâu um tùm, dã thú đầy rẫy, thi thể của Nhiếp Chính Vương e rằng đã sớm bị ăn sạch. Không cần lãng phí nhiều nhân lực chỉ để tìm một cỗ thi thể vô dụng.”</p>
+<p>Hai mắt Sở Ly lập tức đỏ hoe.</p>
+<p>Trong miệng hắn, “cỗ thi thể vô dụng” ấy, lại chính là người mà ngay cả trong mộng nàng cũng ngày đêm hồn khiên mộng nhiễu.</p>
+<p>Dù bị bắt, Tiêu Dạ Hành vẫn không hề khuất phục, chỉ dặn dò:</p>
+<p>“Sở Ly, bất kể thế nào cũng phải bảo toàn bản thân.”</p>
+<p>Chỉ cần còn sống…</p>
+<p>Thì vẫn còn hy vọng.</p>
+<p>Chỉ cần còn sống, mọi chuyện đều có khả năng.</p>
+<p>Sở Ly siết chặt đầu ngón tay, nhìn Sở Dạ Ly:</p>
+<p>“Ngươi còn muốn giết bao nhiêu người nữa?”</p>
+<p>Sở Dạ Ly cau mày:</p>
+<p>“Tiểu Cửu hiểu lầm ta rồi. Người như Tiêu Đô đốc, là lương đống quốc gia. Chỉ cần hắn nguyện trung thành với ta, thần phục ta, ta tự nhiên sẽ không bạc đãi hắn.”</p>
+<p>Tiêu Dạ Hành và Sở Đệ Trì là cùng một kiểu người.</p>
+<p>Sao có thể trung thành với hắn?</p>
+<p>Huống hồ…</p>
+<p>Nàng còn hy vọng Tiêu Dạ Hành trở lại Cam Châu, tiếp tục tìm kiếm Sở Đệ Trì.</p>
+<p>Nàng không tin hắn đã chết.</p>
+<p>Sống phải thấy người…</p>
+<p>Chết phải thấy xác.</p>
+<p>“Nói nhiều như vậy, cũng thấy hơi đói rồi. Tiểu Cửu, nàng đói chưa?”</p>
+<p>Hắn mỉm cười hỏi, từ đầu đến cuối vẫn là dáng vẻ ôn hòa ấy.</p>
+<p>Khóe môi Sở Ly cong lên đầy chua xót:</p>
+<p>“Ngươi thả Tiêu Dạ Hành đi… Sở Đệ Trì không còn nữa, hắn sẽ không tạo thành uy hiếp đối với ngươi…”</p>
+<p>“Điều ta hỏi là, nàng đói chưa?”</p>
+<p>Hô hấp Sở Ly khựng lại.</p>
+<p>Nhìn đôi mắt ôn hòa của người đàn ông, ánh nhu hòa trong đó như sao trời bị nghiền nát, khiến nàng như được trở về nhiều năm trước, trở về Thanh Phong Cư, trở về bên thiếu niên ngồi trên xe lăn năm ấy.</p>
+<p>“Đói… Ta đói rồi…”</p>
+<p>Sở Dạ Ly cười, đưa hai tay ra.</p>
+<p>“Xuống đi, ta đã bảo A Ngọc gọi cả một bàn thức ăn ngon, đều là những món ngươi thích.”</p>
+<p>Sở Ly vịn cửa xe, tránh bàn tay hắn, bước xuống từ phía bên kia.</p>
+<p>Thế nhưng vừa chạm chân xuống đất, cả người đã mềm nhũn, ngã sấp xuống nền tuyết.</p>
+<p>“Tiểu Cửu!”</p>
+<p>Sở Dạ Ly biến sắc, lập tức vòng sang, bế ngang nàng lên, phủi sạch tuyết bẩn dính trên lòng bàn tay nàng.</p>
+<p>“Tay sao lại lạnh như vậy!”</p>
+<p>Đã mặc nhiều như thế rồi.</p>
+<p>A Ngọc bước nhanh tới:</p>
+<p>“Chủ tử, thuộc hạ đã dặn chưởng quỹ chuẩn bị đủ than trong phòng riêng, nước nóng cũng đã đun xong.”</p>
+<p>“Ừ.”</p>
+<p>Sở Dạ Ly bế ngang Sở Ly.</p>
+<p>Nàng giãy giụa:</p>
+<p>“Thả Tiêu Đô đốc…”</p>
+<p>“Ăn cơm trước.”</p>
+<p>“Nàng phải đáp ứng ta trước.”</p>
+<p>Sở Dạ Ly nhìn dáng vẻ cố chấp của nàng.</p>
+<p>“Đừng mặc cả với ta. Ăn xong, ta sẽ trả tự do cho hắn. Nhưng tiền đề là hắn phải quỳ xuống thần phục ta.”</p>
+<p>“Thay vì cầu xin ta, chi bằng trước tiên hãy hỏi hắn xem, hắn có nguyện trung thành với ta hay không.”</p>
+<p>Liếc Tiêu Dạ Hành một cái, hắn sải bước đi vào tửu lâu.</p>
+<p>Phòng riêng tầng ba.</p>
+<p>Than hồng cháy rực, ấm áp như ngày xuân.</p>
+<p>Sơn hào hải vị bày đầy bàn, vô cùng phong phú.</p>
+<p>Sở Dạ Ly múc một bát canh cá.</p>
+<p>“Nàng đã lâu chưa ăn gì. Uống chút canh lót dạ trước, rồi hãy dùng cơm, tránh làm tổn thương dạ dày.”</p>
+<p>Sở Ly thật sự không có chút khẩu vị nào.</p>
+<p>Nàng không muốn ăn.</p>
+<p>Nhưng vừa nghĩ đến Tiêu Dạ Hành ở bên ngoài…</p>
+<p>Toàn bộ hy vọng của nàng đều đặt trên người hắn.</p>
+<p>Tiêu Dạ Hành nhất định phải tìm được Sở Đệ Trì!</p>
+<p>Nàng nhận lấy bát, ngửa đầu uống.</p>
+<p>Nhưng vừa chạm môi, mùi tanh của cá đã kích thích nàng cúi gập người nôn khan.</p>
+<p>“Khụ!”</p>
+<p>Sở Dạ Ly lập tức lấy khăn tay lau khóe miệng cho nàng, vỗ nhẹ sau lưng.</p>
+<p>“Nhà bếp làm việc kiểu gì vậy? Một bát canh cá cũng nấu không xong! Tay nghề kém như thế, chi bằng chặt luôn đôi tay đi.”</p>
+<p>“Ta uống!”</p>
+<p>“Không ngon thì không uống nữa. Đổi sang bát canh gà ác bồi bổ thân thể này.”</p>
+<p>Sở Dạ Ly lại múc một bát khác.</p>
+<p>Nhưng Sở Ly vừa ngửi thấy mùi thịt, lại nôn.</p>
+<p>Thần sắc Sở Dạ Ly đột nhiên thay đổi.</p>
+<p>Hắn nhìn sang A Ngọc.</p>
+<p>A Ngọc lập tức hiểu ý, cúi đầu lui ra.</p>
+<p>Không bao lâu sau, dẫn vào một người đàn ông trung niên có râu.</p>
+<p>A Ngọc hạ giọng:</p>
+<p>“Bắt mạch.”</p>
+<p>Người đàn ông trung niên cung kính tiến lên, bắt mạch xong liền nói:</p>
+<p>“Công tử, mạch tượng của vị cô nương này hư nhược vô lực, tâm mạch uất kết. Xem ra là do chịu đả kích quá lớn, khiến tinh thần suy sụp. Tiểu nhân sẽ kê một phương thuốc thanh nhiệt an thần…”</p>
+<p>“Nàng không mang thai chứ?”</p>
+<p>Sở Dạ Ly đột nhiên cắt ngang lời đại phu.</p>
+<p>Sở Ly lập tức ngẩng đầu.</p>
+<p>Thì ra…</p>
+<p>Hắn cho rằng nàng vừa ngửi mùi tanh đã nôn là vì mang thai…</p>
+<p>Đại phu lắc đầu.</p>
+<p>“Không có hỉ mạch.”</p>
+<p>Đầu ngón tay đang siết chặt của Sở Dạ Ly lặng lẽ buông lỏng.</p>
+<p>Hắn tựa lưng vào ghế.</p>
+<p>“Nàng không thích uống thuốc, quá đắng.”</p>
+<p>Đại phu nói:</p>
+<p>“Vậy có thể ăn một ít đồ chua để kích thích khẩu vị. Cơm là thứ bổ dưỡng nhất. Chỉ cần ăn ngon miệng hơn, dùng nhiều cơm một chút thì tinh thần tự nhiên sẽ dần khá lên.”</p>
+<p>“Làm phiền rồi.”</p>
+<p>A Ngọc tiến lên đưa ngân phiếu, tiễn đại phu ra ngoài, rồi xuống bếp dặn dò.</p>
+<p>Sở Ly khẽ ôm lấy bụng dưới phẳng lặng của mình.</p>
+<p>Nhìn gương mặt ôn hòa như cũ của người đàn ông, nàng có thể tưởng tượng được…</p>
+<p>Nếu nàng thật sự mang thai…</p>
+<p>Hắn nhất định sẽ ép nàng bỏ đứa bé.</p>
+<p>May mà…</p>
+<p>Trong cơ thể Sở Đệ Trì có độc, cả đời không thể sinh con.</p>
+<p>Đây là lần đầu tiên…</p>
+<p>Nàng cảm thấy may mắn vì điều đó.</p>
+<p>Không bao lâu sau.</p>
+<p>Tiểu nhị mang lên hai đĩa dưa chuột trộn chua và một đĩa mơ chua.</p>
+<p>“Tiểu Cửu, ăn chút đồ chua đi, kích thích khẩu vị.”</p>
+<p>Sở Ly cụp mắt, khẽ cười nhạt.</p>
+<p>Nàng cầm nửa khúc dưa chuột chua, vừa cắn một miếng đã muốn nôn.</p>
+<p>Từ nhỏ nàng đã không thích vị chua, đắng hay mặn.</p>
+<p>Nhưng vì Tiêu Dạ Hành…</p>
+<p>Nàng cố nhịn, cắn liền mấy miếng, nhét hết vào miệng, hai má phồng căng, vậy mà vẫn khó nuốt nổi.</p>
+<p>Nước chua tràn xuống cổ họng.</p>
+<p>Cuối cùng vẫn không thể khống chế cảm giác buồn nôn.</p>
+<p>“Ọe… Khụ, khụ khụ!”</p>
+<p>Sở Dạ Ly trầm mặt, bưng cả đĩa dưa chuột chua ném xuống đất.</p>
+<p>“Làm lại!”</p>
+<p>“Ta không đói, Sở Dạ Ly, ta thật sự không muốn ăn!”</p>
+<p>“Nàng đã một ngày một đêm chưa ăn gì rồi. Nói không đói chỉ là lừa mình dối người. Nàng không ăn, Tiêu Dạ Hành vẫn còn đang đợi ở bên ngoài.”</p>
+<p>Sở Ly siết chặt tay.</p>
+<p>Nàng cầm đũa, gắp một đũa cơm thật đầy nhét vào miệng.</p>
+<p>Nàng ăn là được chứ gì!</p>
+<p>Cá, thịt, thịt bò, đùi gà, khoai tây thái sợi, rau xanh…</p>
+<p>Nàng liên tục gắp hết vào miệng.</p>
+<p>Sơn hào hải vị…</p>
+<p>Vào miệng lại như nhai sáp.</p>
+<p>“Ăn chậm thôi.”</p>
+<p>“Ta đói rồi, ta ăn cơm… Khụ khụ…”</p>
+<p>“Ta bảo ngươi ăn chậm lại!”</p>
+<p>Khi một người đau buồn đến cực hạn…</p>
+<p>Sẽ không còn cảm nhận được đói khát.</p>
+<p>Lúc này nàng chính là như vậy.</p>
+<p>Ép bản thân nuốt xuống, khiến dạ dày co thắt dữ dội, cuối cùng lại nôn hết ra.</p>
+<p>Nàng thật sự…</p>
+<p>Ăn không nổi.</p>
+<p>Sở Dạ Ly lập tức vỗ lưng cho nàng.</p>
+<p>Nàng chộp lấy tay hắn.</p>
+<p>Hai mắt đã đỏ hoe, nước mắt rơi đầy mặt.</p>
+<p>“Sở Dạ Ly… ngươi thả Tiêu Dạ Hành đi… Một mình hắn cũng không làm nên sóng gió gì.”</p>
+<p>Nhưng…</p>
+<p>Hắn là bằng hữu tốt nhất của Sở Đệ Trì.</p>
+<p>Hắn nhất định sẽ tìm được Sở Đệ Trì.</p>
+<p>“Ta cầu xin ngươi… thả hắn đi.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_336.html" class="btn">‹ Trước</a>
             <a href="chuong_338.html" class="btn">Sau ›</a>
         </div>
@@ -273,15 +281,11 @@ Hắn nhất định sẽ tìm được Sở Đệ Trì.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -293,11 +297,11 @@ Hắn nhất định sẽ tìm được Sở Đệ Trì.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

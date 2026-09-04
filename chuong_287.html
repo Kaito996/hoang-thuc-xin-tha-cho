@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 287</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,184 +62,193 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 287</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_285.html" class="btn">‹ Trước</a>
             <a href="chuong_288.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 287: Thật là một trận quyết đấu thống khoái đầm đìa
-“Ta có ngân lượng!!”
-Sở Ngạo Thiên móc ra một túi bạc nặng trĩu, ném thẳng ra ngoài, lúc này mới kết thúc trận bị đánh thê thảm đến mức không nỡ nhìn ấy.
-Chàng đưa tay quệt máu mũi:
-“Thật là một trận quyết đấu thống khoái đầm đìa!”
-Tiểu thiếu gia tóc bị giật đến dựng ngược cả lên, chật vật bò dậy, nhìn tiểu thiếu niên dưới thân mình:
-“Ngươi không sao chứ?”
-Tiểu thiếu niên dùng ánh mắt phức tạp nhìn nàng, không nói gì, cũng không động đậy, nhưng đôi mắt ấy lại thâm trầm như màn đêm.
-“Bát hoàng huynh, mau giúp đệ đỡ huynh ấy dậy.”
-“Nặng chết đi được!”
-“Cửu đệ, đệ nói xem, ngày ngày làm gì không làm, thân nhỏ tay bé thế này, còn liên lụy ta cùng bị đánh. Chả trách mẫu phi không cho ta chơi với đệ.”
-“Nói thêm câu nào nữa, ta sẽ bẩm phụ hoàng chuyện huynh trốn học.”
-“Đệ chẳng phải cũng trốn sao?”
-“Ta nhỏ hơn huynh, huynh làm ca ca thì phải bị mắng, còn ta thì không.”
-“?”
-Cũng chỉ nhỏ hơn hắn có mười lăm ngày mà thôi!
-Thế này thì tính là ca ca kiểu gì?
-Rõ ràng hai người bằng tuổi nhau.
-Chỉ vì hắn sinh sớm hơn mười lăm ngày, vậy mà phải gánh cái danh ca ca lớn như thế?
-Thật bất công!
-Hai người hợp sức, khó khăn lắm mới đỡ được tiểu thiếu niên ngồi lại lên xe lăn. Nhìn lại mặt mũi của nhau, ai nấy đều chỗ tím chỗ bầm, vừa chật vật vừa buồn cười.
-Đưa mắt nhìn nhau, cả hai đều không nhịn được phá lên cười ha hả.
-Cười rồi lại khóc.
-Thảm quá.
-Thật sự quá thảm!
-Sở Ngạo Thiên dùng tay áo lau nước mắt. Thân là hoàng tử, lần đầu tiên bị đám khất cái đánh, chuyện này có nói ra cũng chẳng dám.
-“Mau sai người đi mua thuốc. Nếu để phụ hoàng nhìn thấy bộ dạng của chúng ta, sau này chắc chắn sẽ không cho ra cung chơi nữa.”
-“Ừ.”
-Sở Ly vừa xoa mặt vừa đau đến nhe răng trợn mắt. Lại nhìn sang tiểu thiếu niên, chỉ thấy hắn vẫn dùng đôi mắt đen thẳm ấy nhìn nàng.
-Như đang dò xét.
-Lại như đang tìm hiểu.
-Đôi đồng tử đen như hắc diệu thạch, tựa được ngâm trong nước suối, sáng rực lấp lánh. Dưới thân thể chật vật ấy, thần thái của đôi mắt vẫn không hề bị che lấp.
-Nhất thời, nàng buột miệng:
-“Ngươi đẹp thật đấy... đôi mắt của ngươi.”
-Hắn khẽ ngẩn người.
-“Ngươi bị thương sao? Có đau không?”
-Nàng nắm lấy tay hắn, lật qua lật lại xem xét.
-Hắn ngơ ngẩn cúi mắt, nhìn những ngón tay mềm mại của nàng mang theo hơi ấm, nhẹ nhàng lướt trên cánh tay mình, mềm đến mức khó tin.
-“Chân ngươi bị sao vậy?”
-Bao nhiêu người bắt nạt hắn như thế, sao hắn không phản kháng?
-“Ngươi bị bệnh sao?”
-“Đừng sợ, có ta ở đây, sau này bọn họ sẽ không dám bắt nạt ngươi nữa. Nếu bọn họ còn dám quay lại, ta sẽ đánh chạy hết vì ngươi!”
-Hắn ngơ ngác nhìn nàng.
-Thân hình nho nhỏ, gầy gò, bị đánh đến mặt mày bầm dập, vậy mà vẫn siết chặt nắm tay, nói ra lời hào hùng rằng sẽ bảo vệ hắn.
-“Sao ngươi không nói gì?”
-Lẽ nào là người câm?
-“Ta...”
-Lần đầu tiên có người chịu đến gần hắn. Có lẽ vì cô độc quá lâu, hắn đã đánh mất cả bản năng ngôn ngữ. Môi mấp máy hồi lâu:
-“Ta...”
-“Hóa ra là người cà lăm!”
-“...”
-Mặt hắn lập tức đỏ bừng.
-Không bao lâu sau, Sở Ngạo Thiên mang về một túi lớn thuốc, chai chai lọ lọ đủ loại lộn xộn, còn mua thêm ít đồ ăn.
-Hắn ngồi trên xe lăn, còn Sở Ly với Sở Ngạo Thiên thì ngồi xếp bằng dưới đất, lục lọi từng chai từng lọ, bôi thuốc loạn xạ lên mặt.
-“Ngươi cũng bôi đi... bôi nhiều một chút... xì...”
-Sở Ly vỗ mặt Sở Ngạo Thiên.
-Sở Ngạo Thiên cũng vỗ mặt Sở Ly.
-Hai người vỗ qua vỗ lại.
-Bốp bốp bốp.
-Tiểu thiếu niên nhìn hai người, rất lâu sau mới chậm rãi mở miệng:
-“Các ngươi ở cùng một tên tàn phế như ta... không sợ mất mặt sao...”
-Sở Ly gãi đầu.
-Mất mặt là gì?
-“Bát hoàng huynh, mất mặt là gì?”
-Sở Ngạo Thiên nghiêm túc đáp:
-“Chính là lúc chọi dế, con dế của ta bị thua.”
-“Huynh nói đúng. Tuy ngươi là người cà lăm, nhưng ta sẽ không cười nhạo... Ủa? Hình như ngươi không còn cà lăm nữa? Bát hoàng huynh, huynh nhìn xem, hắn đẹp thật đấy!”
-“Ừm... cũng bình thường thôi, miễn cưỡng bằng một phần mười vẻ tuấn tú của ta.”
-“Hắn đẹp hơn huynh nhiều, huynh béo.”
-“Đệ nói cái gì?”
-“Ta nói huynh béo!”
-“Sở Ly!”
-“Huynh mua cái gì ăn thế, cho ta một ít.”
-“Ăn ăn ăn, ăn chết huynh đi.”
-Thế là, hai người ngồi xổm dưới đất, một người ngồi trên xe lăn. Ai nấy quần áo xộc xệch, tóc tai như tổ quạ, mặt mũi bầm tím chằng chịt, vừa gặm khoai tây vừa nhìn người qua kẻ lại bên ngoài.
-Sở Ly gãi gãi mông:
-“Ta tặng ngươi một món quà.”
-“Xem này!”
-Bàn tay nhỏ thò vào trong tay áo, rồi lấy ra hai con... dế chẳng biết đã bị đè chết từ lúc nào.
-Sở Ngạo Thiên cười nghiêng ngả:
-“Ha ha ha ha ha!”
-Sở Ly trừng mắt, rồi đỏ mặt.
-Chắc là lúc nãy đánh nhau, lỡ đè chết mất rồi.
-“Huynh cười cái gì?”
-“Đệ ngốc thật!”
-“Huynh nói cái gì?”
-Sở Ly ném củ khoai xuống, lập tức lao vào đánh nhau với Sở Ngạo Thiên. Hai người ôm đầu túm vai, nhảy nhót tưng bừng như hai con khỉ, toàn thân dường như có dùng mãi cũng không hết sức lực.
-Thiếu niên, thanh xuân, triều khí, sức sống, ngay cả ánh dương dường như cũng được ban cho sinh mệnh.
-Tiểu thiếu niên lặng lẽ ngồi trên xe lăn, nhìn Sở Ly tung tăng nhảy nhót, vẻ thâm trầm và đề phòng trong mắt dần dần tan đi. Trên gương mặt vốn mang đầy tâm sự của tuổi thiếu niên, lần đầu tiên nở một nụ cười.
-Ý cười rất nhẹ, cũng rất nhanh, tựa chuồn chuồn lướt mặt nước, khẽ gợn lên một vòng sóng nhỏ.
-Thanh Phong Cư lần đầu tiên náo nhiệt vui vẻ đến thế.
-Cũng là lần đầu tiên hắn cảm thấy nhẹ nhõm như vậy.
-“Bát hoàng tử! Cửu hoàng tử! Hóa ra hai vị ở đây!”
-Đúng lúc ấy, từ cuối con phố, hai tên thái giám mặc thường phục hớt hải chạy tới.
-Hù chết người!
-Còn tưởng hai vị hoàng tử bị lạc.
-Vội vàng chạy tới, nhưng khi nhìn thấy Thanh Phong Cư cùng tiểu thiếu niên ngồi trên xe lăn kia, sắc mặt bỗng biến đổi.
-Sở Ly nói:
-“Đã đến giờ phải hồi cung nhanh vậy sao?”
-Hai tên thái giám hành lễ, rồi vội kéo hai vị hoàng tử sang một bên, hạ thấp giọng:
-“Hai vị tiểu tổ tông ơi, sau này xin đừng đến nơi này nữa.”
-“Vì sao?”
-“Nơi này...”
-Hắn nghiêng đầu, vừa kiêng dè vừa cẩn thận liếc sang bên kia:
-“Đây là nơi ở của Ngũ hoàng tử. Từ sau khi Ngũ hoàng tử ngã gãy chân trong kỳ thu săn, liền được nuôi dưỡng ngoài cung, không được hoàng thượng sủng ái. Mọi người đều nói ngài ấy là người mang điềm xấu...”
-Sở Ly khựng lại.
-Ngày thường, nàng từng vô tình nghe các cung nữ nhắc đến Ngũ hoàng tử, nhưng không ngờ lại chính là hắn.
-Nhưng...
-Vì sao không thể đến?
-Bọn họ là huynh đệ ruột thịt!
-Ánh mắt tiểu thiếu niên hơi tối đi. Thấy hai tên thái giám cố ý tránh xa mình, hắn tự nhiên đoán được điều gì. Thế nhưng ngay giây sau, lại thấy Sở Ly vẫy tay với mình:
-“Ngũ hoàng huynh, không còn sớm nữa, ta phải hồi cung rồi. Ngày mai ta lại đến thăm huynh!”
-“Ta đi đây!”
-Đồng tử hắn chấn động, sóng gợn mãnh liệt âm thầm lan ra. Bề ngoài vẫn bình tĩnh, nhưng bàn tay siết chặt lấy tay vịn xe lăn đã bán đứng sự dậy sóng trong nội tâm lúc này.
-Nàng còn sẽ đến... nàng vậy mà vẫn nguyện ý đến...
-Đêm ấy, hắn trằn trọc mãi không ngủ. Trong lòng, ngoài cừu hận ra, lần đầu tiên chứa thêm một vài tâm tư xa lạ, khiến hắn thao thức suốt đêm.
-Là nhung nhớ?
-Là vui mừng?
-Hay là điều gì khác?
-Hắn cũng không phân biệt nổi, đến cả trong mộng cũng mơ thấy nàng... Ẩn bớt</p>
+            <p>Chương 287: Thật là một trận quyết đấu thống khoái đầm đìa</p>
+<p>“Ta có ngân lượng!!”</p>
+<p>Sở Ngạo Thiên móc ra một túi bạc nặng trĩu, ném thẳng ra ngoài, lúc này mới kết thúc trận bị đánh thê thảm đến mức không nỡ nhìn ấy.</p>
+<p>Chàng đưa tay quệt máu mũi:</p>
+<p>“Thật là một trận quyết đấu thống khoái đầm đìa!”</p>
+<p>Tiểu thiếu gia tóc bị giật đến dựng ngược cả lên, chật vật bò dậy, nhìn tiểu thiếu niên dưới thân mình:</p>
+<p>“Ngươi không sao chứ?”</p>
+<p>Tiểu thiếu niên dùng ánh mắt phức tạp nhìn nàng, không nói gì, cũng không động đậy, nhưng đôi mắt ấy lại thâm trầm như màn đêm.</p>
+<p>“Bát hoàng huynh, mau giúp đệ đỡ huynh ấy dậy.”</p>
+<p>“Nặng chết đi được!”</p>
+<p>“Cửu đệ, đệ nói xem, ngày ngày làm gì không làm, thân nhỏ tay bé thế này, còn liên lụy ta cùng bị đánh. Chả trách mẫu phi không cho ta chơi với đệ.”</p>
+<p>“Nói thêm câu nào nữa, ta sẽ bẩm phụ hoàng chuyện huynh trốn học.”</p>
+<p>“Đệ chẳng phải cũng trốn sao?”</p>
+<p>“Ta nhỏ hơn huynh, huynh làm ca ca thì phải bị mắng, còn ta thì không.”</p>
+<p>“?”</p>
+<p>Cũng chỉ nhỏ hơn hắn có mười lăm ngày mà thôi!</p>
+<p>Thế này thì tính là ca ca kiểu gì?</p>
+<p>Rõ ràng hai người bằng tuổi nhau.</p>
+<p>Chỉ vì hắn sinh sớm hơn mười lăm ngày, vậy mà phải gánh cái danh ca ca lớn như thế?</p>
+<p>Thật bất công!</p>
+<p>Hai người hợp sức, khó khăn lắm mới đỡ được tiểu thiếu niên ngồi lại lên xe lăn. Nhìn lại mặt mũi của nhau, ai nấy đều chỗ tím chỗ bầm, vừa chật vật vừa buồn cười.</p>
+<p>Đưa mắt nhìn nhau, cả hai đều không nhịn được phá lên cười ha hả.</p>
+<p>Cười rồi lại khóc.</p>
+<p>Thảm quá.</p>
+<p>Thật sự quá thảm!</p>
+<p>Sở Ngạo Thiên dùng tay áo lau nước mắt. Thân là hoàng tử, lần đầu tiên bị đám khất cái đánh, chuyện này có nói ra cũng chẳng dám.</p>
+<p>“Mau sai người đi mua thuốc. Nếu để phụ hoàng nhìn thấy bộ dạng của chúng ta, sau này chắc chắn sẽ không cho ra cung chơi nữa.”</p>
+<p>“Ừ.”</p>
+<p>Sở Ly vừa xoa mặt vừa đau đến nhe răng trợn mắt. Lại nhìn sang tiểu thiếu niên, chỉ thấy hắn vẫn dùng đôi mắt đen thẳm ấy nhìn nàng.</p>
+<p>Như đang dò xét.</p>
+<p>Lại như đang tìm hiểu.</p>
+<p>Đôi đồng tử đen như hắc diệu thạch, tựa được ngâm trong nước suối, sáng rực lấp lánh. Dưới thân thể chật vật ấy, thần thái của đôi mắt vẫn không hề bị che lấp.</p>
+<p>Nhất thời, nàng buột miệng:</p>
+<p>“Ngươi đẹp thật đấy... đôi mắt của ngươi.”</p>
+<p>Hắn khẽ ngẩn người.</p>
+<p>“Ngươi bị thương sao? Có đau không?”</p>
+<p>Nàng nắm lấy tay hắn, lật qua lật lại xem xét.</p>
+<p>Hắn ngơ ngẩn cúi mắt, nhìn những ngón tay mềm mại của nàng mang theo hơi ấm, nhẹ nhàng lướt trên cánh tay mình, mềm đến mức khó tin.</p>
+<p>“Chân ngươi bị sao vậy?”</p>
+<p>Bao nhiêu người bắt nạt hắn như thế, sao hắn không phản kháng?</p>
+<p>“Ngươi bị bệnh sao?”</p>
+<p>“Đừng sợ, có ta ở đây, sau này bọn họ sẽ không dám bắt nạt ngươi nữa. Nếu bọn họ còn dám quay lại, ta sẽ đánh chạy hết vì ngươi!”</p>
+<p>Hắn ngơ ngác nhìn nàng.</p>
+<p>Thân hình nho nhỏ, gầy gò, bị đánh đến mặt mày bầm dập, vậy mà vẫn siết chặt nắm tay, nói ra lời hào hùng rằng sẽ bảo vệ hắn.</p>
+<p>“Sao ngươi không nói gì?”</p>
+<p>Lẽ nào là người câm?</p>
+<p>“Ta...”</p>
+<p>Lần đầu tiên có người chịu đến gần hắn. Có lẽ vì cô độc quá lâu, hắn đã đánh mất cả bản năng ngôn ngữ. Môi mấp máy hồi lâu:</p>
+<p>“Ta...”</p>
+<p>“Hóa ra là người cà lăm!”</p>
+<p>“...”</p>
+<p>Mặt hắn lập tức đỏ bừng.</p>
+<p>Không bao lâu sau, Sở Ngạo Thiên mang về một túi lớn thuốc, chai chai lọ lọ đủ loại lộn xộn, còn mua thêm ít đồ ăn.</p>
+<p>Hắn ngồi trên xe lăn, còn Sở Ly với Sở Ngạo Thiên thì ngồi xếp bằng dưới đất, lục lọi từng chai từng lọ, bôi thuốc loạn xạ lên mặt.</p>
+<p>“Ngươi cũng bôi đi... bôi nhiều một chút... xì...”</p>
+<p>Sở Ly vỗ mặt Sở Ngạo Thiên.</p>
+<p>Sở Ngạo Thiên cũng vỗ mặt Sở Ly.</p>
+<p>Hai người vỗ qua vỗ lại.</p>
+<p>Bốp bốp bốp.</p>
+<p>Tiểu thiếu niên nhìn hai người, rất lâu sau mới chậm rãi mở miệng:</p>
+<p>“Các ngươi ở cùng một tên tàn phế như ta... không sợ mất mặt sao...”</p>
+<p>Sở Ly gãi đầu.</p>
+<p>Mất mặt là gì?</p>
+<p>“Bát hoàng huynh, mất mặt là gì?”</p>
+<p>Sở Ngạo Thiên nghiêm túc đáp:</p>
+<p>“Chính là lúc chọi dế, con dế của ta bị thua.”</p>
+<p>“Huynh nói đúng. Tuy ngươi là người cà lăm, nhưng ta sẽ không cười nhạo... Ủa? Hình như ngươi không còn cà lăm nữa? Bát hoàng huynh, huynh nhìn xem, hắn đẹp thật đấy!”</p>
+<p>“Ừm... cũng bình thường thôi, miễn cưỡng bằng một phần mười vẻ tuấn tú của ta.”</p>
+<p>“Hắn đẹp hơn huynh nhiều, huynh béo.”</p>
+<p>“Đệ nói cái gì?”</p>
+<p>“Ta nói huynh béo!”</p>
+<p>“Sở Ly!”</p>
+<p>“Huynh mua cái gì ăn thế, cho ta một ít.”</p>
+<p>“Ăn ăn ăn, ăn chết huynh đi.”</p>
+<p>Thế là, hai người ngồi xổm dưới đất, một người ngồi trên xe lăn. Ai nấy quần áo xộc xệch, tóc tai như tổ quạ, mặt mũi bầm tím chằng chịt, vừa gặm khoai tây vừa nhìn người qua kẻ lại bên ngoài.</p>
+<p>Sở Ly gãi gãi mông:</p>
+<p>“Ta tặng ngươi một món quà.”</p>
+<p>“Xem này!”</p>
+<p>Bàn tay nhỏ thò vào trong tay áo, rồi lấy ra hai con... dế chẳng biết đã bị đè chết từ lúc nào.</p>
+<p>Sở Ngạo Thiên cười nghiêng ngả:</p>
+<p>“Ha ha ha ha ha!”</p>
+<p>Sở Ly trừng mắt, rồi đỏ mặt.</p>
+<p>Chắc là lúc nãy đánh nhau, lỡ đè chết mất rồi.</p>
+<p>“Huynh cười cái gì?”</p>
+<p>“Đệ ngốc thật!”</p>
+<p>“Huynh nói cái gì?”</p>
+<p>Sở Ly ném củ khoai xuống, lập tức lao vào đánh nhau với Sở Ngạo Thiên. Hai người ôm đầu túm vai, nhảy nhót tưng bừng như hai con khỉ, toàn thân dường như có dùng mãi cũng không hết sức lực.</p>
+<p>Thiếu niên, thanh xuân, triều khí, sức sống, ngay cả ánh dương dường như cũng được ban cho sinh mệnh.</p>
+<p>Tiểu thiếu niên lặng lẽ ngồi trên xe lăn, nhìn Sở Ly tung tăng nhảy nhót, vẻ thâm trầm và đề phòng trong mắt dần dần tan đi. Trên gương mặt vốn mang đầy tâm sự của tuổi thiếu niên, lần đầu tiên nở một nụ cười.</p>
+<p>Ý cười rất nhẹ, cũng rất nhanh, tựa chuồn chuồn lướt mặt nước, khẽ gợn lên một vòng sóng nhỏ.</p>
+<p>Thanh Phong Cư lần đầu tiên náo nhiệt vui vẻ đến thế.</p>
+<p>Cũng là lần đầu tiên hắn cảm thấy nhẹ nhõm như vậy.</p>
+<p>“Bát hoàng tử! Cửu hoàng tử! Hóa ra hai vị ở đây!”</p>
+<p>Đúng lúc ấy, từ cuối con phố, hai tên thái giám mặc thường phục hớt hải chạy tới.</p>
+<p>Hù chết người!</p>
+<p>Còn tưởng hai vị hoàng tử bị lạc.</p>
+<p>Vội vàng chạy tới, nhưng khi nhìn thấy Thanh Phong Cư cùng tiểu thiếu niên ngồi trên xe lăn kia, sắc mặt bỗng biến đổi.</p>
+<p>Sở Ly nói:</p>
+<p>“Đã đến giờ phải hồi cung nhanh vậy sao?”</p>
+<p>Hai tên thái giám hành lễ, rồi vội kéo hai vị hoàng tử sang một bên, hạ thấp giọng:</p>
+<p>“Hai vị tiểu tổ tông ơi, sau này xin đừng đến nơi này nữa.”</p>
+<p>“Vì sao?”</p>
+<p>“Nơi này...”</p>
+<p>Hắn nghiêng đầu, vừa kiêng dè vừa cẩn thận liếc sang bên kia:</p>
+<p>“Đây là nơi ở của Ngũ hoàng tử. Từ sau khi Ngũ hoàng tử ngã gãy chân trong kỳ thu săn, liền được nuôi dưỡng ngoài cung, không được hoàng thượng sủng ái. Mọi người đều nói ngài ấy là người mang điềm xấu...”</p>
+<p>Sở Ly khựng lại.</p>
+<p>Ngày thường, nàng từng vô tình nghe các cung nữ nhắc đến Ngũ hoàng tử, nhưng không ngờ lại chính là hắn.</p>
+<p>Nhưng...</p>
+<p>Vì sao không thể đến?</p>
+<p>Bọn họ là huynh đệ ruột thịt!</p>
+<p>Ánh mắt tiểu thiếu niên hơi tối đi. Thấy hai tên thái giám cố ý tránh xa mình, hắn tự nhiên đoán được điều gì. Thế nhưng ngay giây sau, lại thấy Sở Ly vẫy tay với mình:</p>
+<p>“Ngũ hoàng huynh, không còn sớm nữa, ta phải hồi cung rồi. Ngày mai ta lại đến thăm huynh!”</p>
+<p>“Ta đi đây!”</p>
+<p>Đồng tử hắn chấn động, sóng gợn mãnh liệt âm thầm lan ra. Bề ngoài vẫn bình tĩnh, nhưng bàn tay siết chặt lấy tay vịn xe lăn đã bán đứng sự dậy sóng trong nội tâm lúc này.</p>
+<p>Nàng còn sẽ đến... nàng vậy mà vẫn nguyện ý đến...</p>
+<p>Đêm ấy, hắn trằn trọc mãi không ngủ. Trong lòng, ngoài cừu hận ra, lần đầu tiên chứa thêm một vài tâm tư xa lạ, khiến hắn thao thức suốt đêm.</p>
+<p>Là nhung nhớ?</p>
+<p>Là vui mừng?</p>
+<p>Hay là điều gì khác?</p>
+<p>Hắn cũng không phân biệt nổi, đến cả trong mộng cũng mơ thấy nàng... Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_285.html" class="btn">‹ Trước</a>
             <a href="chuong_288.html" class="btn">Sau ›</a>
         </div>
@@ -248,15 +256,11 @@ Hắn cũng không phân biệt nổi, đến cả trong mộng cũng mơ thấy
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -268,11 +272,11 @@ Hắn cũng không phân biệt nổi, đến cả trong mộng cũng mơ thấy
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

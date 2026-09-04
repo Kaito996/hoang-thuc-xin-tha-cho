@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 51</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,189 +62,198 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 51</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_50.html" class="btn">‹ Trước</a>
             <a href="chuong_52.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 51: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 51: Hắn bôi thuốc cho ngươi rồi? Có dịu dàng không?
-Chưa đầy hai khắc, người của Đại Lý Tự đã tới.
-Đại Lý Tự Khanh nói, Lương di nương hại chết Phương Hải Dương, Tần Thiếu tướng quân đâm hắn một kiếm, cùng lắm chỉ phải gánh trách nhiệm thứ yếu, có thể chịu chút hình phạt nhỏ, nhưng không cần đền mạng.
-Lương di nương lập tức bật khóc.
-Bà ta quỳ sụp xuống đất, liên tục kêu oan:
-“Ta không hại Thế tử, ta bị oan uổng! Ta không hại hắn! Ta thật sự không hại hắn!”
-Đại Lý Tự Khanh thần sắc nghiêm nghị:
-“Lương thị, bản quan đã điều tra được chứng cứ về hành tung ngươi sai gia phó đi mua ‘Câu Vẫn’. Chuyện này không thể chối cãi.”
-Lương di nương vừa khóc vừa nói:
-“Ông trời ơi! Tiện phụ chỉ là một phụ nhân sống trong nội trạch, mỗi lần ra khỏi cửa còn phải bẩm báo với phu nhân, nào dám giở những thủ đoạn như vậy? Chắc chắn là Tần Thiếu tướng quân giết Thế tử, rồi mua chuộc gia phó, vu oan giá họa cho một phụ nhân tay không trói nổi gà như ta!”
-“Tiện phụ không quyền không thế, ngay cả chỗ kêu oan cũng không có! Trời xanh ơi!”
-Bà ta khóc cha gọi mẹ, sống chết không chịu nhận.
-Tên gia phó đi mua “Câu Vẫn” đã đâm đầu chết vào cột, chết không đối chứng.
-Đại Lý Tự nhất thời cảm thấy vô cùng khó giải quyết.
-Đúng lúc ấy, Cửu hoàng tử tới.
-Phương Quốc Công chắp tay hành lễ:
-“Không biết Cửu hoàng tử đại giá quang lâm, không kịp nghênh đón từ xa, xin thứ tội.”
-Sở Ly nói:
-“Ta chỉ tới dự thính mà thôi. Quốc Công đại nhân, Trương đại nhân, các vị cứ tiếp tục.”
-Một vị hoàng tử ăn chơi lêu lổng như nàng, ngồi xuống đó, hạ nhân cùng lắm dâng một chén trà, sau đó cũng chẳng buồn để tâm.
-Có người hành lễ với nàng đã là khách khí lắm rồi.
-Nếu không có thân phận “hoàng tử”, đổi lại là người bình thường, ai sẽ coi trọng một kẻ vô dụng không biết phấn đấu như nàng?
-Lương di nương một mực khẳng định là Tần Mục Vũ giết Phương Hải Dương.
-Đại Lý Tự Khanh đành phải cùng người Quốc Công phủ lần nữa sắp xếp lại mọi việc, cố gắng giảng đạo lý với họ.
-Sở Ly đột nhiên nhấc chân, đi tới trước mặt Lương di nương đang quỳ dưới đất lau nước mắt.
-“Lúc ta vừa bước vào, bên ngoài có rất nhiều hạ nhân, di nương cùng thiếu gia tiểu thư đứng vây quanh. Có một nam tử mặc y phục màu lam, trên áo thêu lá trúc. Đó là nhi tử của ngươi phải không?”
-Thân thể Lương di nương khẽ run lên:
-“Phải… là Lâm nhi của ta.”
-Con cái trong Quốc Công phủ không ít, nhưng nam đinh đã trưởng thành chỉ có hai người.
-Đại công tử Phương Hải Dương, đích xuất.
-Nhị công tử Phương Hiểu Lâm, do Lương di nương sinh ra, thứ xuất.
-“Hiện giờ Phương Hải Dương đã chết, những hài tử khác còn nhỏ tuổi. Chỉ có nhi tử của ngươi có cơ hội được nâng đỡ, kế thừa quyền thế. Nhưng Quốc Công phu nhân sẽ không để ngươi sống đến ngày đó đâu.”
-Ánh mắt Lương di nương tối sầm:
-“Lúc làm chuyện này, ta vốn đã không nghĩ tới việc sống tới ngày ấy.”
-Bà ta dùng tính mạng mình để mưu tiền đồ cho nhi tử.
-“Phu nhân chỉ cần nhìn thấy ta, sẽ nhớ tới chuyện ta hại chết Đại công tử. Chờ mọi việc kết thúc, ta sẽ tự mình kết liễu.”
-“Ngươi sai rồi.”
-“Hả… hả?”
-Sở Ly nhìn bà ta:
-“Quốc Công phu nhân nhìn thấy nhi tử ngươi, nhìn thấy gương mặt giống ngươi như đúc, chỉ càng thêm căm hận hắn. Chỉ e bà ấy thà nhận một đứa trẻ từ chi thứ làm con thừa tự, cũng tuyệt đối không nâng đỡ nhi tử ngươi.”
-Nàng chậm rãi ngồi xổm xuống.
-“Ngươi có biết thế nào gọi là nuôi hổ thành họa không?”
-“Sau này, nếu nhi tử ngươi nắm được đại quyền, việc đầu tiên hắn làm chính là trừ khử Quốc Công phu nhân để báo thù cho ngươi. Ngươi nghĩ bà ấy sẽ ngu xuẩn đến vậy sao?”
-Sắc mặt Lương di nương lập tức trắng bệch.
-“Ta… ta…”
-Bà ta chưa từng nghĩ tới điểm này.
-Sở Ly đổi giọng:
-“Nhưng nếu Hoàng thượng có ý nâng đỡ nhi tử ngươi, có Hoàng gia che chở, Quốc Công phu nhân nhất định không dám hạ sát thủ. Mà ngươi sớm muộn gì cũng phải chết. Chỉ là chết thế nào mới có giá trị nhất, ngươi hiểu chứ?”
-Lương di nương dần siết chặt lòng bàn tay, trong mắt hiện lên vẻ phức tạp cùng đau đớn.
-Cửu hoàng tử nói đúng…
-Chỉ có Hoàng gia mới có thể bảo toàn cho nhi tử nàng.
-Trong khi Đại Lý Tự Khanh vẫn còn đang cố gắng thuyết phục Phương Quốc Công, nhưng Phương Quốc Công không chịu tiếp nhận, thì Lương di nương đột nhiên bước ra, lớn tiếng nói:
-“Là ta hại chết Phương Hải Dương!”
-“Là ta đầu độc chết hắn!”
-Phương Quốc Công biến sắc:
-“Ngươi nói gì?”
-“Kết quả điều tra của Đại Lý Tự hoàn toàn chính xác. Là ta làm. Chuyện này do một mình ta gây nên, không liên quan đến bất cứ ai khác. Một người làm một người chịu!”
-Lương di nương nhận hết mọi tội danh, rút cây trâm trên đầu, đâm thẳng vào cổ tự vẫn.
-“A!”
-Đám tỳ nữ hoảng sợ hét lên.
-Máu tươi phun tung tóe, bắn lên vạt áo của Sở Ly, nhuộm thành một đóa huyết hoa đỏ thẫm.
-Đỏ đến yêu dị.
-Tất cả mọi người đều kinh hãi.
-Không ai ngờ Lương di nương lại đột nhiên tự sát.
-Sở Ly nhìn đồng tử của bà ta dần tan rã, thân thể lảo đảo mấy bước rồi ngã xuống trước mặt nàng, toàn thân co giật, chậm rãi tắt thở.
-Phương Quốc Công kinh ngạc nhìn về phía Sở Ly.
-Về phần những chuyện sau đó, đều do Đại Lý Tự Khanh thu dọn tàn cuộc.
-Sở Ly không muốn nghe nữa.
-Khi đi ra ngoài, nhìn thấy Phương gia Nhị công tử Phương Hiểu Lâm đang mặc trường bào màu lam thêu lá trúc, nàng nói:
-“Lương di nương đã chết.”
-“Cha mẹ ngươi ép chết bà ấy.”
-Phương Hiểu Lâm loạng choạng, đau đớn gào lên:
-“Di nương!”
-Sở Ly bước ra khỏi Quốc Công phủ.
-Nàng mơ hồ cảm thấy ánh mặt trời sau cơn mưa quá mức chói mắt.
-Nàng đưa tay che đi, thứ nàng không dám nhìn thẳng không chỉ là mặt trời, mà còn là chính trái tim mình.
-Mọi người bắt đầu bàn tán sôi nổi:
-“Không ngờ thủ đoạn của Cửu hoàng tử lại quyết đoán như vậy. Vụ án ngay cả Đại Lý Tự cũng đau đầu, ‘ngài ấy’ vừa ra tay đã giải quyết xong.”
-“Bao năm nay Cửu hoàng tử tiêu dao ăn chơi, chẳng lẽ chỉ là ngụy trang? Thực chất là giả heo ăn thịt hổ, có lòng tranh đoạt quyền vị?”
-“Từ xưa đến nay, hoàng tử nào mà không muốn làm Hoàng đế?”
-“Thì ra Cửu hoàng tử mới là người giấu sâu nhất…”
-“Mẫu phi của ‘ngài ấy’ là sủng phi, lại có Ôn gia nắm binh quyền. Chắc chắn sẽ dốc toàn lực giúp Cửu hoàng tử tranh đoạt ngôi vị…”
-Bên ngoài bàn luận thế nào, Sở Ly đều gạt hết ra sau đầu.
-Nàng cuộn mình trong góc chiếc nhuyễn tháp ở Chiêu Lan Điện, nhìn những thỏi vàng nhỏ mà bao năm qua mình cực khổ dành dụm được, đôi mắt mờ lệ.
-Nàng muốn xuất cung lập phủ.
-Muốn đứng ngoài mọi chuyện.
-Muốn tránh xa những tranh đấu quyền mưu.
-Chỉ cầu một nơi an thân.
-Nàng còn chưa đợi được tới năm mười tám tuổi.
-E rằng cũng sẽ vĩnh viễn không bao giờ đợi được tuổi mười tám.
-“Chủ tử, đến giờ dùng ngọ thiện rồi.”
-“Ta không đói, ngươi lui xuống đi.”
-“Chủ tử, vậy tối nay…”
-“Lúc nào đói, ta sẽ truyền gọi.”
-Đêm xuống.
-Không biết là cung nữ của cung nào cầm đèn lồng đi ngang qua, vừa đi vừa trò chuyện:
-“Nhiếp Chính Vương tối nay lưu lại trong cung.”
-“Ngài ấy quanh năm chinh chiến bên ngoài, lúc trở về cũng thường tới Nhiếp Chính Vương phủ, rất ít khi nghỉ lại ở Lâm Hoa Điện…”
-Sở Ly co mình trên nhuyễn tháp.
-Nghe thấy những lời ấy, nàng vô thức rụt vai lại, vội vàng đóng cửa sổ.
-Nhưng khi quay người lại…
-Nàng nhìn thấy một thân ảnh tôn quý hoa lệ đang ngồi trên chiếc nhuyễn tháp nơi mình vừa cuộn tròn.
-Hai chân hắn mở rộng, ngồi ngay ngắn.
-Tay phải khẽ đặt trên tay vịn, những ngón tay thon dài hữu lực, khớp xương rõ ràng.
-Tay trái tùy ý đặt trên đầu gối, lòng bàn tay úp xuống.
-Trong tay hắn đang hờ hững cầm chiếc hộp đựng những thỏi vàng nhỏ mà nàng khổ cực tích cóp bấy lâu.
-Đối diện với đôi mắt sâu thẳm sắc bén ấy, nàng chẳng khác nào con chim sợ cành cong.
-Cửa chính đang mở.
-Hắn đường hoàng từ chính môn tiến vào.
-Không hề kiêng kỵ.
-Tựa như chốn không người.
-Sở Ly nhìn ra bên ngoài.
-“Cung nhân đều đã bị lui hết. Đêm nay không có ai trực đêm.”
-“Hoàng… Hoàng thúc…”
-“Dầm mưa phát sốt, vậy mà còn có thể xuất cung một chuyến. Xem ra ngươi rất quan tâm Tần Thiếu tướng quân.”
-Giọng nói hắn ôn hòa tùy ý.
-Nhưng nàng lại giống như con mồi bị mãnh thú khóa chặt.
-Hai chân nặng nề đứng yên tại chỗ, không sao nhúc nhích nổi.
-“Đương nhiên, hắn cũng rất quan tâm ngươi.”
-Hắn bình thản nhìn nàng.
-“Hắn bôi thuốc cho ngươi rồi?”
-“Có dịu dàng không?”
- Nhiếp chính vương lại ghen rồi bà con ơi 
- Ẩn bớt</p>
+            <p>Chương 51: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 51: Hắn bôi thuốc cho ngươi rồi? Có dịu dàng không?</p>
+<p>Chưa đầy hai khắc, người của Đại Lý Tự đã tới.</p>
+<p>Đại Lý Tự Khanh nói, Lương di nương hại chết Phương Hải Dương, Tần Thiếu tướng quân đâm hắn một kiếm, cùng lắm chỉ phải gánh trách nhiệm thứ yếu, có thể chịu chút hình phạt nhỏ, nhưng không cần đền mạng.</p>
+<p>Lương di nương lập tức bật khóc.</p>
+<p>Bà ta quỳ sụp xuống đất, liên tục kêu oan:</p>
+<p>“Ta không hại Thế tử, ta bị oan uổng! Ta không hại hắn! Ta thật sự không hại hắn!”</p>
+<p>Đại Lý Tự Khanh thần sắc nghiêm nghị:</p>
+<p>“Lương thị, bản quan đã điều tra được chứng cứ về hành tung ngươi sai gia phó đi mua ‘Câu Vẫn’. Chuyện này không thể chối cãi.”</p>
+<p>Lương di nương vừa khóc vừa nói:</p>
+<p>“Ông trời ơi! Tiện phụ chỉ là một phụ nhân sống trong nội trạch, mỗi lần ra khỏi cửa còn phải bẩm báo với phu nhân, nào dám giở những thủ đoạn như vậy? Chắc chắn là Tần Thiếu tướng quân giết Thế tử, rồi mua chuộc gia phó, vu oan giá họa cho một phụ nhân tay không trói nổi gà như ta!”</p>
+<p>“Tiện phụ không quyền không thế, ngay cả chỗ kêu oan cũng không có! Trời xanh ơi!”</p>
+<p>Bà ta khóc cha gọi mẹ, sống chết không chịu nhận.</p>
+<p>Tên gia phó đi mua “Câu Vẫn” đã đâm đầu chết vào cột, chết không đối chứng.</p>
+<p>Đại Lý Tự nhất thời cảm thấy vô cùng khó giải quyết.</p>
+<p>Đúng lúc ấy, Cửu hoàng tử tới.</p>
+<p>Phương Quốc Công chắp tay hành lễ:</p>
+<p>“Không biết Cửu hoàng tử đại giá quang lâm, không kịp nghênh đón từ xa, xin thứ tội.”</p>
+<p>Sở Ly nói:</p>
+<p>“Ta chỉ tới dự thính mà thôi. Quốc Công đại nhân, Trương đại nhân, các vị cứ tiếp tục.”</p>
+<p>Một vị hoàng tử ăn chơi lêu lổng như nàng, ngồi xuống đó, hạ nhân cùng lắm dâng một chén trà, sau đó cũng chẳng buồn để tâm.</p>
+<p>Có người hành lễ với nàng đã là khách khí lắm rồi.</p>
+<p>Nếu không có thân phận “hoàng tử”, đổi lại là người bình thường, ai sẽ coi trọng một kẻ vô dụng không biết phấn đấu như nàng?</p>
+<p>Lương di nương một mực khẳng định là Tần Mục Vũ giết Phương Hải Dương.</p>
+<p>Đại Lý Tự Khanh đành phải cùng người Quốc Công phủ lần nữa sắp xếp lại mọi việc, cố gắng giảng đạo lý với họ.</p>
+<p>Sở Ly đột nhiên nhấc chân, đi tới trước mặt Lương di nương đang quỳ dưới đất lau nước mắt.</p>
+<p>“Lúc ta vừa bước vào, bên ngoài có rất nhiều hạ nhân, di nương cùng thiếu gia tiểu thư đứng vây quanh. Có một nam tử mặc y phục màu lam, trên áo thêu lá trúc. Đó là nhi tử của ngươi phải không?”</p>
+<p>Thân thể Lương di nương khẽ run lên:</p>
+<p>“Phải… là Lâm nhi của ta.”</p>
+<p>Con cái trong Quốc Công phủ không ít, nhưng nam đinh đã trưởng thành chỉ có hai người.</p>
+<p>Đại công tử Phương Hải Dương, đích xuất.</p>
+<p>Nhị công tử Phương Hiểu Lâm, do Lương di nương sinh ra, thứ xuất.</p>
+<p>“Hiện giờ Phương Hải Dương đã chết, những hài tử khác còn nhỏ tuổi. Chỉ có nhi tử của ngươi có cơ hội được nâng đỡ, kế thừa quyền thế. Nhưng Quốc Công phu nhân sẽ không để ngươi sống đến ngày đó đâu.”</p>
+<p>Ánh mắt Lương di nương tối sầm:</p>
+<p>“Lúc làm chuyện này, ta vốn đã không nghĩ tới việc sống tới ngày ấy.”</p>
+<p>Bà ta dùng tính mạng mình để mưu tiền đồ cho nhi tử.</p>
+<p>“Phu nhân chỉ cần nhìn thấy ta, sẽ nhớ tới chuyện ta hại chết Đại công tử. Chờ mọi việc kết thúc, ta sẽ tự mình kết liễu.”</p>
+<p>“Ngươi sai rồi.”</p>
+<p>“Hả… hả?”</p>
+<p>Sở Ly nhìn bà ta:</p>
+<p>“Quốc Công phu nhân nhìn thấy nhi tử ngươi, nhìn thấy gương mặt giống ngươi như đúc, chỉ càng thêm căm hận hắn. Chỉ e bà ấy thà nhận một đứa trẻ từ chi thứ làm con thừa tự, cũng tuyệt đối không nâng đỡ nhi tử ngươi.”</p>
+<p>Nàng chậm rãi ngồi xổm xuống.</p>
+<p>“Ngươi có biết thế nào gọi là nuôi hổ thành họa không?”</p>
+<p>“Sau này, nếu nhi tử ngươi nắm được đại quyền, việc đầu tiên hắn làm chính là trừ khử Quốc Công phu nhân để báo thù cho ngươi. Ngươi nghĩ bà ấy sẽ ngu xuẩn đến vậy sao?”</p>
+<p>Sắc mặt Lương di nương lập tức trắng bệch.</p>
+<p>“Ta… ta…”</p>
+<p>Bà ta chưa từng nghĩ tới điểm này.</p>
+<p>Sở Ly đổi giọng:</p>
+<p>“Nhưng nếu Hoàng thượng có ý nâng đỡ nhi tử ngươi, có Hoàng gia che chở, Quốc Công phu nhân nhất định không dám hạ sát thủ. Mà ngươi sớm muộn gì cũng phải chết. Chỉ là chết thế nào mới có giá trị nhất, ngươi hiểu chứ?”</p>
+<p>Lương di nương dần siết chặt lòng bàn tay, trong mắt hiện lên vẻ phức tạp cùng đau đớn.</p>
+<p>Cửu hoàng tử nói đúng…</p>
+<p>Chỉ có Hoàng gia mới có thể bảo toàn cho nhi tử nàng.</p>
+<p>Trong khi Đại Lý Tự Khanh vẫn còn đang cố gắng thuyết phục Phương Quốc Công, nhưng Phương Quốc Công không chịu tiếp nhận, thì Lương di nương đột nhiên bước ra, lớn tiếng nói:</p>
+<p>“Là ta hại chết Phương Hải Dương!”</p>
+<p>“Là ta đầu độc chết hắn!”</p>
+<p>Phương Quốc Công biến sắc:</p>
+<p>“Ngươi nói gì?”</p>
+<p>“Kết quả điều tra của Đại Lý Tự hoàn toàn chính xác. Là ta làm. Chuyện này do một mình ta gây nên, không liên quan đến bất cứ ai khác. Một người làm một người chịu!”</p>
+<p>Lương di nương nhận hết mọi tội danh, rút cây trâm trên đầu, đâm thẳng vào cổ tự vẫn.</p>
+<p>“A!”</p>
+<p>Đám tỳ nữ hoảng sợ hét lên.</p>
+<p>Máu tươi phun tung tóe, bắn lên vạt áo của Sở Ly, nhuộm thành một đóa huyết hoa đỏ thẫm.</p>
+<p>Đỏ đến yêu dị.</p>
+<p>Tất cả mọi người đều kinh hãi.</p>
+<p>Không ai ngờ Lương di nương lại đột nhiên tự sát.</p>
+<p>Sở Ly nhìn đồng tử của bà ta dần tan rã, thân thể lảo đảo mấy bước rồi ngã xuống trước mặt nàng, toàn thân co giật, chậm rãi tắt thở.</p>
+<p>Phương Quốc Công kinh ngạc nhìn về phía Sở Ly.</p>
+<p>Về phần những chuyện sau đó, đều do Đại Lý Tự Khanh thu dọn tàn cuộc.</p>
+<p>Sở Ly không muốn nghe nữa.</p>
+<p>Khi đi ra ngoài, nhìn thấy Phương gia Nhị công tử Phương Hiểu Lâm đang mặc trường bào màu lam thêu lá trúc, nàng nói:</p>
+<p>“Lương di nương đã chết.”</p>
+<p>“Cha mẹ ngươi ép chết bà ấy.”</p>
+<p>Phương Hiểu Lâm loạng choạng, đau đớn gào lên:</p>
+<p>“Di nương!”</p>
+<p>Sở Ly bước ra khỏi Quốc Công phủ.</p>
+<p>Nàng mơ hồ cảm thấy ánh mặt trời sau cơn mưa quá mức chói mắt.</p>
+<p>Nàng đưa tay che đi, thứ nàng không dám nhìn thẳng không chỉ là mặt trời, mà còn là chính trái tim mình.</p>
+<p>Mọi người bắt đầu bàn tán sôi nổi:</p>
+<p>“Không ngờ thủ đoạn của Cửu hoàng tử lại quyết đoán như vậy. Vụ án ngay cả Đại Lý Tự cũng đau đầu, ‘ngài ấy’ vừa ra tay đã giải quyết xong.”</p>
+<p>“Bao năm nay Cửu hoàng tử tiêu dao ăn chơi, chẳng lẽ chỉ là ngụy trang? Thực chất là giả heo ăn thịt hổ, có lòng tranh đoạt quyền vị?”</p>
+<p>“Từ xưa đến nay, hoàng tử nào mà không muốn làm Hoàng đế?”</p>
+<p>“Thì ra Cửu hoàng tử mới là người giấu sâu nhất…”</p>
+<p>“Mẫu phi của ‘ngài ấy’ là sủng phi, lại có Ôn gia nắm binh quyền. Chắc chắn sẽ dốc toàn lực giúp Cửu hoàng tử tranh đoạt ngôi vị…”</p>
+<p>Bên ngoài bàn luận thế nào, Sở Ly đều gạt hết ra sau đầu.</p>
+<p>Nàng cuộn mình trong góc chiếc nhuyễn tháp ở Chiêu Lan Điện, nhìn những thỏi vàng nhỏ mà bao năm qua mình cực khổ dành dụm được, đôi mắt mờ lệ.</p>
+<p>Nàng muốn xuất cung lập phủ.</p>
+<p>Muốn đứng ngoài mọi chuyện.</p>
+<p>Muốn tránh xa những tranh đấu quyền mưu.</p>
+<p>Chỉ cầu một nơi an thân.</p>
+<p>Nàng còn chưa đợi được tới năm mười tám tuổi.</p>
+<p>E rằng cũng sẽ vĩnh viễn không bao giờ đợi được tuổi mười tám.</p>
+<p>“Chủ tử, đến giờ dùng ngọ thiện rồi.”</p>
+<p>“Ta không đói, ngươi lui xuống đi.”</p>
+<p>“Chủ tử, vậy tối nay…”</p>
+<p>“Lúc nào đói, ta sẽ truyền gọi.”</p>
+<p>Đêm xuống.</p>
+<p>Không biết là cung nữ của cung nào cầm đèn lồng đi ngang qua, vừa đi vừa trò chuyện:</p>
+<p>“Nhiếp Chính Vương tối nay lưu lại trong cung.”</p>
+<p>“Ngài ấy quanh năm chinh chiến bên ngoài, lúc trở về cũng thường tới Nhiếp Chính Vương phủ, rất ít khi nghỉ lại ở Lâm Hoa Điện…”</p>
+<p>Sở Ly co mình trên nhuyễn tháp.</p>
+<p>Nghe thấy những lời ấy, nàng vô thức rụt vai lại, vội vàng đóng cửa sổ.</p>
+<p>Nhưng khi quay người lại…</p>
+<p>Nàng nhìn thấy một thân ảnh tôn quý hoa lệ đang ngồi trên chiếc nhuyễn tháp nơi mình vừa cuộn tròn.</p>
+<p>Hai chân hắn mở rộng, ngồi ngay ngắn.</p>
+<p>Tay phải khẽ đặt trên tay vịn, những ngón tay thon dài hữu lực, khớp xương rõ ràng.</p>
+<p>Tay trái tùy ý đặt trên đầu gối, lòng bàn tay úp xuống.</p>
+<p>Trong tay hắn đang hờ hững cầm chiếc hộp đựng những thỏi vàng nhỏ mà nàng khổ cực tích cóp bấy lâu.</p>
+<p>Đối diện với đôi mắt sâu thẳm sắc bén ấy, nàng chẳng khác nào con chim sợ cành cong.</p>
+<p>Cửa chính đang mở.</p>
+<p>Hắn đường hoàng từ chính môn tiến vào.</p>
+<p>Không hề kiêng kỵ.</p>
+<p>Tựa như chốn không người.</p>
+<p>Sở Ly nhìn ra bên ngoài.</p>
+<p>“Cung nhân đều đã bị lui hết. Đêm nay không có ai trực đêm.”</p>
+<p>“Hoàng… Hoàng thúc…”</p>
+<p>“Dầm mưa phát sốt, vậy mà còn có thể xuất cung một chuyến. Xem ra ngươi rất quan tâm Tần Thiếu tướng quân.”</p>
+<p>Giọng nói hắn ôn hòa tùy ý.</p>
+<p>Nhưng nàng lại giống như con mồi bị mãnh thú khóa chặt.</p>
+<p>Hai chân nặng nề đứng yên tại chỗ, không sao nhúc nhích nổi.</p>
+<p>“Đương nhiên, hắn cũng rất quan tâm ngươi.”</p>
+<p>Hắn bình thản nhìn nàng.</p>
+<p>“Hắn bôi thuốc cho ngươi rồi?”</p>
+<p>“Có dịu dàng không?”</p>
+<p>Nhiếp chính vương lại ghen rồi bà con ơi</p>
+<p>Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_50.html" class="btn">‹ Trước</a>
             <a href="chuong_52.html" class="btn">Sau ›</a>
         </div>
@@ -253,15 +261,11 @@ Hắn bình thản nhìn nàng.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -273,11 +277,11 @@ Hắn bình thản nhìn nàng.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

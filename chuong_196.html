@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 196</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,189 +62,198 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 196</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_195.html" class="btn">‹ Trước</a>
             <a href="chuong_197.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 196: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 196: A Ly ca ca, muốn thành thân với ca ca ta?
-Nếu Sở Đệ Trì biết nàng còn sống, lại còn biết nàng cố tình không báo cho hắn…
-Mi mắt phải của nàng bỗng giật dữ dội.
-Mắt trái giật là tài, mắt phải giật là mê tín.
-Đạo tâm kiên định, ách vận tiêu tan.
-“A Ly, ta nghĩ ra một cách hay.”
-Tần Mục Vũ nhận ra, giữa nàng và Nhiếp Chính Vương dường như không phải là lưỡng tình tương duyệt. Nếu không, nàng cũng chẳng cần phải trốn ở thành Giang Nam.
-“Cách gì?”
-“Có người muốn hại muội, nào là phóng hỏa, nào là hạ dược, liên tiếp ra tay, e rằng sẽ không dễ dàng bỏ cuộc. Chi bằng chúng ta tương kế tựu kế, diễn một màn ‘thỉnh quân nhập úng’, rồi nhân cơ hội bắt lấy hắn.”
-Muốn bắt trộm thì phải bắt tận tay có tang vật.
-Đợi chứng cứ xác thực, hắn sẽ lấy danh nghĩa phủ Đại tướng quân, trực tiếp vượt qua Giang Nam Tri phủ, giao vụ án này cho Đại Lý Tự ở Đế Đô.
-Cho dù không lấy được mạng Sở Uyên Trì, hắn cũng phải khiến chuyện này truyền khắp thiên hạ, để Sở Uyên Trì không còn ngẩng đầu nổi trên đất Sở!
-Sở Ly tò mò nhướng mày:
-“Mời kiểu gì?”
-“Chúng ta…”
-Ánh mắt hắn khẽ động.
-“Giả thành thân.”
-Sở Ly thoáng ngẩn người.
-“Thành thân là chuyện trọng đại và đắc ý nhất trong đời. Đại hoàng tử căm ghét muội, nhất định sẽ không để muội được như ý. Hắn rất có thể sẽ ra tay ngay trong đêm động phòng hoa chúc.”
-Đến lúc đó, chính là thời cơ tốt nhất để bọn họ bắt được nhược điểm.
-Nói xong, sợ nàng từ chối, hắn vội vàng bổ sung:
-“A Ly, chúng ta chỉ giả thôi, giống như trò ‘đóng vai người lớn’ hồi nhỏ ấy.”
-“Ta biết.”
-Sở Ly vỗ vai hắn.
-“Cách này không tệ. Mục Vũ, huynh đúng là hảo huynh đệ của ta.”
-Tần Mục Vũ hé miệng:
-“…”
-Coi như hoàn thành một tâm nguyện vẫn luôn chôn sâu trong lòng hắn.
-Cho dù là giả.
-Cho dù chỉ là một giấc mộng, chỉ tồn tại trong khoảnh khắc ngắn ngủi, cũng đủ để khép lại quãng thiếu niên của hắn bằng một dấu chấm tròn vẹn.
-“Vậy chúng ta đi chọn hỉ phục.”
-“Có phải nhanh quá không? Mục Tuyết vẫn còn ở cùng Nhị sư huynh của ta, huynh không quản muội muội mình à?”
-Tần Mục Vũ gãi đầu.
-“Quên mất.”
-“… Hai người đúng là huynh muội ruột nhỉ?”
-“Lời này nói hay đấy, hàng thật giá thật.”
-Hai người lập tức trở về khách điếm Hà Tây.
-Sơ Nhất và mọi người đều đang chờ ở đại sảnh, đứng cách rất xa, để nguyên cả tầng hai, không ai dám tự tiện lên quấy rầy.
-Cũng nhờ Sở Ly tài đại khí thô, bao trọn cả khách điếm.
-Trên lầu dường như vẫn chưa xong.
-Sở Ly chọn một chiếc bàn rồi ngồi xuống.
-“Mục Vũ, đệ đi đường suốt một ngày một đêm, mau ngồi nghỉ một lát, chúng ta ăn cơm trước.”
-“Được.”
-Hai người ngồi đối diện nhau.
-Một bữa cơm đại khái hơn nửa canh giờ, vậy mà người trên lầu vẫn chưa xuống. Bọn họ lại không tiện lên quấy rầy, Sở Ly chống cằm, suy nghĩ rồi nói:
-“Mục Vũ, huynh đừng vội. Người đầy bụi đường thế này, hay là đi tắm trước đi.”
-Tần Mục Vũ vốn chẳng hề sốt ruột.
-Chỉ cần được ở cạnh A Ly, ngắm nàng ở khoảng cách gần, cho dù cứ ngồi như vậy ba ngày ba đêm, hắn cũng cam tâm tình nguyện.
-Hắn đi tắm, thay một bộ y phục sạch sẽ.
-Lại thêm hơn một canh giờ nữa trôi qua.
-Sao vẫn chưa xuống?
-Sở Ly vỗ lòng bàn tay, đi qua đi lại mấy vòng rồi nói:
-“Mục Vũ, ngựa của huynh cho ăn chưa? Chúng ta đi cho ngựa ăn đi.”
-“Hay đi dạo một lát, tiện tiêu cơm.”
-“Chúng ta…”
-Hình như chẳng còn việc gì để làm nữa.
-Chết tiệt!
-Rốt cuộc Nhị sư huynh đã ăn bao nhiêu bánh hoa hồng?
-Bánh bị bỏ thuốc, vừa ăn đã phải nhận ra hương vị có vấn đề mới đúng, vậy mà huynh ấy lại ăn hết hơn nửa hộp.
-Một người trước nay trầm ổn, đoan chính, luôn biết tự kiềm chế, sao lại phạm phải sai lầm cấp thấp ngu xuẩn như vậy?
-Đầu óc Sở Ly chợt lóe lên một ý nghĩ.
-Khoan đã!
-Huynh ấy… chẳng lẽ là cố ý?
-Két…
-Cửa phòng cuối cùng cũng mở ra.
-Sở Ly lập tức bước tới.
-“Nhị sư huynh, huynh không sao chứ?”
-Lục Vân Sơ vịn lan can. Sắc mặt tái nhợt mang theo vài phần mệt mỏi, lại xen lẫn vài phần áy náy. Ánh mắt phức tạp lướt qua Sở Ly, nhìn về phía thiếu niên sau lưng nàng.
-“Tần… đại ca, xin lỗi. Là ta nhất thời bất cẩn, gây nên đại họa.”
-Sở Ly chỉ lo tình hình của hai người, nhất thời không để ý tiếng gọi “đại ca” ấy có gì không đúng.
-Đến mấy ngày sau nàng mới chợt nhớ ra, Nhị sư huynh còn lớn hơn Tần Mục Vũ ba tuổi.
-Tần Mục Vũ săm soi đánh giá hắn một lượt.
-Từ đầu đến chân, từ dung mạo, khí độ, lời nói, tu dưỡng, cử chỉ… ánh mắt sắc bén như chim ưng quét qua, dường như khá hài lòng, địch ý trong mắt cũng giảm đi đôi chút.
-Hắn quay đầu nói:
-“Mục Tuyết không còn là trẻ con nữa. Muội ấy biết mình đang làm gì.”
-Hắn không cần phải bận tâm.
-“Là lỗi của ta, đại ca. Ta sẽ bù đắp.”
-“Đó là chuyện giữa hai người.”
-Sở Ly chẳng buồn để ý hai tên nam nhân thô kệch kia, vội vàng chạy lên tầng hai, xông vào phòng.
-Chỉ thấy Tần Mục Tuyết quấn chặt chăn, co người trên giường. Gương mặt nhỏ đỏ bừng, dáng vẻ vẫn còn dư vị chưa tan.
-Nha đầu chết tiệt.
-Đúng là hưởng phúc quá rồi.
-“Muội đấy! Làm ta lo chết được. Muội với Nhị sư huynh của ta mới quen có hai ngày. Ta thật sự sợ muội nhất thời đi nhầm đường, làm lỡ cả đời mình.”
-Tần Mục Tuyết dám làm như vậy, đương nhiên đã có chừng mực.
-Huống hồ, nàng chưa từng cho rằng chỉ vì cùng Lục sư huynh xảy ra quan hệ, thì cả đời này nhất định phải gả cho huynh ấy.
-Lục sư huynh không thích nàng, nàng cũng tuyệt đối sẽ không lấy chuyện đó ra ép buộc.
-Hôm nay, bước ra khỏi căn phòng này, cứ coi như chuyện ấy chưa từng xảy ra.
-Quên sạch.
-Tối hôm đó, Sơ Tam làm một bàn thức ăn thịnh soạn, còn hầm thêm canh bổ. Bốn người ngồi quanh bàn, vừa ăn vừa bàn chính sự.
-Nhưng điều họ bàn lại là chuyện bắt hung thủ?
-Chẳng lẽ sự trong sạch của Tần cô nương còn không quan trọng bằng việc bắt hung thủ?
-Lục Vân Sơ cầm đũa, trong lòng đầy nghi hoặc.
-Thế nhưng hắn phát hiện, Tần Mục Tuyết không hề nhắc đến chuyện ban ngày, cứ như người cùng nàng hô hấp giao hòa, mây mưa triền miên không phải là hắn.
-Ngay cả Tần Thiếu tướng quân cũng không nhắc đến nửa lời.
-Chuyện lớn như vậy, sao ai cũng không nhắc?
-Lẽ nào Tần cô nương thật sự chỉ vì báo đáp ân cứu mạng, ngoài ra không có lấy một chút tình cảm nào khác?
-Rõ ràng nàng từng nói…
-Đôi đũa trong tay hắn bất giác siết chặt, phát ra tiếng “rắc” giòn tan.
-Nhưng âm thanh ấy nhanh chóng bị tiếng kinh hô đầy kinh ngạc của Tần Mục Tuyết lấn át.
-“Thật sao!”
-“A Ly ca ca, muốn thành thân với ca ca ta?”
-“Là giả, giả thành thân thôi. Chỉ có cách này mới có khả năng bắt được kẻ đã hạ dược ban ngày.”
-Trong đầu Tần Mục Tuyết tự động lọc bỏ mọi lời khác, chỉ còn sót lại hai chữ:
-Thành thân!
-A Ly ca ca thành thân với ca ca nàng!
-Tuyệt quá!
-“Ta sẽ tự tay chọn hỉ phục cho hai người! Mau, mau ăn cơm đi. Ăn xong chúng ta lập tức đến tú phường!”
-Lục Vân Sơ mím môi.
-Chỉ là diễn kịch thôi, đâu phải nàng thành thân, vậy mà kích động đến mức ấy.
-Người không biết còn tưởng nàng mới là người sắp gả cho Sở Ly.
-Tần Mục Tuyết lại uống cạn bát canh trong chớp mắt, lau miệng một cái, hưng phấn tay trái nắm lấy Sở Ly, tay phải khoác Tần Mục Vũ, nôn nóng kéo hai người đến tú phường.
-“Lục sư huynh, huynh có đi cùng không?”
-“Ta không đi.”
-“Được, vậy bọn ta đi đây.”
-“…”
-Nàng không thể hỏi thêm một câu nữa sao?
-Ba người bọn họ cùng đi chơi, ném mình hắn ở lại khách điếm, như vậy có hợp lý không?
-Lục Vân Sơ siết chặt đôi đũa đến mức gần như muốn bóp nát.
-Chẳng phải nàng luôn miệng nói mình thân kiều thể nhuyễn, yếu đuối đến mức không tự chăm sóc được sao?
-Ban ngày vừa làm chuyện như vậy, bây giờ còn có thể chạy nhảy tung tăng.
-Sư phụ nói quả không sai.
-Miệng nữ nhân, đúng là quỷ gạt người.
-Nàng nói thích hắn…
-Đều là giả. Ẩn bớt</p>
+            <p>Chương 196: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 196: A Ly ca ca, muốn thành thân với ca ca ta?</p>
+<p>Nếu Sở Đệ Trì biết nàng còn sống, lại còn biết nàng cố tình không báo cho hắn…</p>
+<p>Mi mắt phải của nàng bỗng giật dữ dội.</p>
+<p>Mắt trái giật là tài, mắt phải giật là mê tín.</p>
+<p>Đạo tâm kiên định, ách vận tiêu tan.</p>
+<p>“A Ly, ta nghĩ ra một cách hay.”</p>
+<p>Tần Mục Vũ nhận ra, giữa nàng và Nhiếp Chính Vương dường như không phải là lưỡng tình tương duyệt. Nếu không, nàng cũng chẳng cần phải trốn ở thành Giang Nam.</p>
+<p>“Cách gì?”</p>
+<p>“Có người muốn hại muội, nào là phóng hỏa, nào là hạ dược, liên tiếp ra tay, e rằng sẽ không dễ dàng bỏ cuộc. Chi bằng chúng ta tương kế tựu kế, diễn một màn ‘thỉnh quân nhập úng’, rồi nhân cơ hội bắt lấy hắn.”</p>
+<p>Muốn bắt trộm thì phải bắt tận tay có tang vật.</p>
+<p>Đợi chứng cứ xác thực, hắn sẽ lấy danh nghĩa phủ Đại tướng quân, trực tiếp vượt qua Giang Nam Tri phủ, giao vụ án này cho Đại Lý Tự ở Đế Đô.</p>
+<p>Cho dù không lấy được mạng Sở Uyên Trì, hắn cũng phải khiến chuyện này truyền khắp thiên hạ, để Sở Uyên Trì không còn ngẩng đầu nổi trên đất Sở!</p>
+<p>Sở Ly tò mò nhướng mày:</p>
+<p>“Mời kiểu gì?”</p>
+<p>“Chúng ta…”</p>
+<p>Ánh mắt hắn khẽ động.</p>
+<p>“Giả thành thân.”</p>
+<p>Sở Ly thoáng ngẩn người.</p>
+<p>“Thành thân là chuyện trọng đại và đắc ý nhất trong đời. Đại hoàng tử căm ghét muội, nhất định sẽ không để muội được như ý. Hắn rất có thể sẽ ra tay ngay trong đêm động phòng hoa chúc.”</p>
+<p>Đến lúc đó, chính là thời cơ tốt nhất để bọn họ bắt được nhược điểm.</p>
+<p>Nói xong, sợ nàng từ chối, hắn vội vàng bổ sung:</p>
+<p>“A Ly, chúng ta chỉ giả thôi, giống như trò ‘đóng vai người lớn’ hồi nhỏ ấy.”</p>
+<p>“Ta biết.”</p>
+<p>Sở Ly vỗ vai hắn.</p>
+<p>“Cách này không tệ. Mục Vũ, huynh đúng là hảo huynh đệ của ta.”</p>
+<p>Tần Mục Vũ hé miệng:</p>
+<p>“…”</p>
+<p>Coi như hoàn thành một tâm nguyện vẫn luôn chôn sâu trong lòng hắn.</p>
+<p>Cho dù là giả.</p>
+<p>Cho dù chỉ là một giấc mộng, chỉ tồn tại trong khoảnh khắc ngắn ngủi, cũng đủ để khép lại quãng thiếu niên của hắn bằng một dấu chấm tròn vẹn.</p>
+<p>“Vậy chúng ta đi chọn hỉ phục.”</p>
+<p>“Có phải nhanh quá không? Mục Tuyết vẫn còn ở cùng Nhị sư huynh của ta, huynh không quản muội muội mình à?”</p>
+<p>Tần Mục Vũ gãi đầu.</p>
+<p>“Quên mất.”</p>
+<p>“… Hai người đúng là huynh muội ruột nhỉ?”</p>
+<p>“Lời này nói hay đấy, hàng thật giá thật.”</p>
+<p>Hai người lập tức trở về khách điếm Hà Tây.</p>
+<p>Sơ Nhất và mọi người đều đang chờ ở đại sảnh, đứng cách rất xa, để nguyên cả tầng hai, không ai dám tự tiện lên quấy rầy.</p>
+<p>Cũng nhờ Sở Ly tài đại khí thô, bao trọn cả khách điếm.</p>
+<p>Trên lầu dường như vẫn chưa xong.</p>
+<p>Sở Ly chọn một chiếc bàn rồi ngồi xuống.</p>
+<p>“Mục Vũ, đệ đi đường suốt một ngày một đêm, mau ngồi nghỉ một lát, chúng ta ăn cơm trước.”</p>
+<p>“Được.”</p>
+<p>Hai người ngồi đối diện nhau.</p>
+<p>Một bữa cơm đại khái hơn nửa canh giờ, vậy mà người trên lầu vẫn chưa xuống. Bọn họ lại không tiện lên quấy rầy, Sở Ly chống cằm, suy nghĩ rồi nói:</p>
+<p>“Mục Vũ, huynh đừng vội. Người đầy bụi đường thế này, hay là đi tắm trước đi.”</p>
+<p>Tần Mục Vũ vốn chẳng hề sốt ruột.</p>
+<p>Chỉ cần được ở cạnh A Ly, ngắm nàng ở khoảng cách gần, cho dù cứ ngồi như vậy ba ngày ba đêm, hắn cũng cam tâm tình nguyện.</p>
+<p>Hắn đi tắm, thay một bộ y phục sạch sẽ.</p>
+<p>Lại thêm hơn một canh giờ nữa trôi qua.</p>
+<p>Sao vẫn chưa xuống?</p>
+<p>Sở Ly vỗ lòng bàn tay, đi qua đi lại mấy vòng rồi nói:</p>
+<p>“Mục Vũ, ngựa của huynh cho ăn chưa? Chúng ta đi cho ngựa ăn đi.”</p>
+<p>“Hay đi dạo một lát, tiện tiêu cơm.”</p>
+<p>“Chúng ta…”</p>
+<p>Hình như chẳng còn việc gì để làm nữa.</p>
+<p>Chết tiệt!</p>
+<p>Rốt cuộc Nhị sư huynh đã ăn bao nhiêu bánh hoa hồng?</p>
+<p>Bánh bị bỏ thuốc, vừa ăn đã phải nhận ra hương vị có vấn đề mới đúng, vậy mà huynh ấy lại ăn hết hơn nửa hộp.</p>
+<p>Một người trước nay trầm ổn, đoan chính, luôn biết tự kiềm chế, sao lại phạm phải sai lầm cấp thấp ngu xuẩn như vậy?</p>
+<p>Đầu óc Sở Ly chợt lóe lên một ý nghĩ.</p>
+<p>Khoan đã!</p>
+<p>Huynh ấy… chẳng lẽ là cố ý?</p>
+<p>Két…</p>
+<p>Cửa phòng cuối cùng cũng mở ra.</p>
+<p>Sở Ly lập tức bước tới.</p>
+<p>“Nhị sư huynh, huynh không sao chứ?”</p>
+<p>Lục Vân Sơ vịn lan can. Sắc mặt tái nhợt mang theo vài phần mệt mỏi, lại xen lẫn vài phần áy náy. Ánh mắt phức tạp lướt qua Sở Ly, nhìn về phía thiếu niên sau lưng nàng.</p>
+<p>“Tần… đại ca, xin lỗi. Là ta nhất thời bất cẩn, gây nên đại họa.”</p>
+<p>Sở Ly chỉ lo tình hình của hai người, nhất thời không để ý tiếng gọi “đại ca” ấy có gì không đúng.</p>
+<p>Đến mấy ngày sau nàng mới chợt nhớ ra, Nhị sư huynh còn lớn hơn Tần Mục Vũ ba tuổi.</p>
+<p>Tần Mục Vũ săm soi đánh giá hắn một lượt.</p>
+<p>Từ đầu đến chân, từ dung mạo, khí độ, lời nói, tu dưỡng, cử chỉ… ánh mắt sắc bén như chim ưng quét qua, dường như khá hài lòng, địch ý trong mắt cũng giảm đi đôi chút.</p>
+<p>Hắn quay đầu nói:</p>
+<p>“Mục Tuyết không còn là trẻ con nữa. Muội ấy biết mình đang làm gì.”</p>
+<p>Hắn không cần phải bận tâm.</p>
+<p>“Là lỗi của ta, đại ca. Ta sẽ bù đắp.”</p>
+<p>“Đó là chuyện giữa hai người.”</p>
+<p>Sở Ly chẳng buồn để ý hai tên nam nhân thô kệch kia, vội vàng chạy lên tầng hai, xông vào phòng.</p>
+<p>Chỉ thấy Tần Mục Tuyết quấn chặt chăn, co người trên giường. Gương mặt nhỏ đỏ bừng, dáng vẻ vẫn còn dư vị chưa tan.</p>
+<p>Nha đầu chết tiệt.</p>
+<p>Đúng là hưởng phúc quá rồi.</p>
+<p>“Muội đấy! Làm ta lo chết được. Muội với Nhị sư huynh của ta mới quen có hai ngày. Ta thật sự sợ muội nhất thời đi nhầm đường, làm lỡ cả đời mình.”</p>
+<p>Tần Mục Tuyết dám làm như vậy, đương nhiên đã có chừng mực.</p>
+<p>Huống hồ, nàng chưa từng cho rằng chỉ vì cùng Lục sư huynh xảy ra quan hệ, thì cả đời này nhất định phải gả cho huynh ấy.</p>
+<p>Lục sư huynh không thích nàng, nàng cũng tuyệt đối sẽ không lấy chuyện đó ra ép buộc.</p>
+<p>Hôm nay, bước ra khỏi căn phòng này, cứ coi như chuyện ấy chưa từng xảy ra.</p>
+<p>Quên sạch.</p>
+<p>Tối hôm đó, Sơ Tam làm một bàn thức ăn thịnh soạn, còn hầm thêm canh bổ. Bốn người ngồi quanh bàn, vừa ăn vừa bàn chính sự.</p>
+<p>Nhưng điều họ bàn lại là chuyện bắt hung thủ?</p>
+<p>Chẳng lẽ sự trong sạch của Tần cô nương còn không quan trọng bằng việc bắt hung thủ?</p>
+<p>Lục Vân Sơ cầm đũa, trong lòng đầy nghi hoặc.</p>
+<p>Thế nhưng hắn phát hiện, Tần Mục Tuyết không hề nhắc đến chuyện ban ngày, cứ như người cùng nàng hô hấp giao hòa, mây mưa triền miên không phải là hắn.</p>
+<p>Ngay cả Tần Thiếu tướng quân cũng không nhắc đến nửa lời.</p>
+<p>Chuyện lớn như vậy, sao ai cũng không nhắc?</p>
+<p>Lẽ nào Tần cô nương thật sự chỉ vì báo đáp ân cứu mạng, ngoài ra không có lấy một chút tình cảm nào khác?</p>
+<p>Rõ ràng nàng từng nói…</p>
+<p>Đôi đũa trong tay hắn bất giác siết chặt, phát ra tiếng “rắc” giòn tan.</p>
+<p>Nhưng âm thanh ấy nhanh chóng bị tiếng kinh hô đầy kinh ngạc của Tần Mục Tuyết lấn át.</p>
+<p>“Thật sao!”</p>
+<p>“A Ly ca ca, muốn thành thân với ca ca ta?”</p>
+<p>“Là giả, giả thành thân thôi. Chỉ có cách này mới có khả năng bắt được kẻ đã hạ dược ban ngày.”</p>
+<p>Trong đầu Tần Mục Tuyết tự động lọc bỏ mọi lời khác, chỉ còn sót lại hai chữ:</p>
+<p>Thành thân!</p>
+<p>A Ly ca ca thành thân với ca ca nàng!</p>
+<p>Tuyệt quá!</p>
+<p>“Ta sẽ tự tay chọn hỉ phục cho hai người! Mau, mau ăn cơm đi. Ăn xong chúng ta lập tức đến tú phường!”</p>
+<p>Lục Vân Sơ mím môi.</p>
+<p>Chỉ là diễn kịch thôi, đâu phải nàng thành thân, vậy mà kích động đến mức ấy.</p>
+<p>Người không biết còn tưởng nàng mới là người sắp gả cho Sở Ly.</p>
+<p>Tần Mục Tuyết lại uống cạn bát canh trong chớp mắt, lau miệng một cái, hưng phấn tay trái nắm lấy Sở Ly, tay phải khoác Tần Mục Vũ, nôn nóng kéo hai người đến tú phường.</p>
+<p>“Lục sư huynh, huynh có đi cùng không?”</p>
+<p>“Ta không đi.”</p>
+<p>“Được, vậy bọn ta đi đây.”</p>
+<p>“…”</p>
+<p>Nàng không thể hỏi thêm một câu nữa sao?</p>
+<p>Ba người bọn họ cùng đi chơi, ném mình hắn ở lại khách điếm, như vậy có hợp lý không?</p>
+<p>Lục Vân Sơ siết chặt đôi đũa đến mức gần như muốn bóp nát.</p>
+<p>Chẳng phải nàng luôn miệng nói mình thân kiều thể nhuyễn, yếu đuối đến mức không tự chăm sóc được sao?</p>
+<p>Ban ngày vừa làm chuyện như vậy, bây giờ còn có thể chạy nhảy tung tăng.</p>
+<p>Sư phụ nói quả không sai.</p>
+<p>Miệng nữ nhân, đúng là quỷ gạt người.</p>
+<p>Nàng nói thích hắn…</p>
+<p>Đều là giả. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_195.html" class="btn">‹ Trước</a>
             <a href="chuong_197.html" class="btn">Sau ›</a>
         </div>
@@ -253,15 +261,11 @@ Nàng nói thích hắn…
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -273,11 +277,11 @@ Nàng nói thích hắn…
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

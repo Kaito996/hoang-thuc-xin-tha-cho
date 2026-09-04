@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 285</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,200 +62,209 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 285</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_284.html" class="btn">‹ Trước</a>
             <a href="chuong_287.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 285: Hắn chỉ khách sáo một câu, Tiểu Cửu lại thật sự không khách sáo
-Sở Ly lập tức quay đầu lại:
-“Mục Vũ!”
-Thế nhưng lại thấy hắn quỳ một gối xuống đất, chắp tay hành đại lễ với Sở Đệ Trì, khóe môi nàng đang mỉm cười chợt khựng lại.
-Hắn từ khi nào đã trở nên câu nệ như vậy?
-Hắn…
-Hình như đã thay đổi rồi.
-Sở Đệ Trì chắp tay sau lưng nhìn hắn:
-“Có chuyện gì?”
-Tần Mục Vũ chắp tay cúi đầu, nói:
-“Mạt tướng nguyện lĩnh binh tiến về Nam Cương, đoạt lại Nam Cương, phối hợp với đại quân Đại Sở, trong ngoài giáp công, vây khốn Lan thành, thu hồi lãnh thổ, bức Nam Man công chúa lui binh!”
-Đó chính là chuyện lúc trước Sở Ly cùng Kinh Ảnh bàn bạc, không ngờ hắn lại ghi nhớ trong lòng.
-Nam Cương rất nguy hiểm.
-Nơi đó toàn là quân trú đóng của Nam Man.
-Nếu cứ thế tiến đến, rất có khả năng không những không đoạt lại được Nam Cương, mà còn bị phản công.
-Đại Sở không hề chiếm chút ưu thế nào.
-Sở Đệ Trì nhìn sang Sở Ly, cân nhắc nói:
-“Tiểu Cửu chắc chắn không nỡ để ngươi đi, bổn vương cũng không nỡ để ngươi mạo hiểm.”
-“Mạt tướng tâm ý đã quyết, thề phải đoạt lại Nam Cương, không thành công quyết không trở về, mong Nhiếp Chính Vương thành toàn!”
-Lòng Sở Ly trĩu xuống:
-“Mục Vũ…”
-“A Ly, ta đã quyết định rồi.”
-Không cần khuyên nữa.
-Chuyến này, hắn nhất định phải đoạt lại Nam Cương!
-Sở Đệ Trì do dự:
-“Tiểu Cửu chắc chắn sẽ lo lắng đến chết mất. Ngươi lại là ngoại sinh của Tiêu Dạ Hành, cũng là người được bổn vương trọng dụng, bổn vương sao nỡ…”
-Tần Mục Vũ đặt nốt đầu gối còn lại xuống.
-Từ quỳ một gối, biến thành quỳ cả hai gối, lưng thẳng tắp.
-Khoảnh khắc này, quyết tâm đã thể hiện rõ qua hành động.
-Sở Đệ Trì nhướng mày, trong lòng mừng thầm, nhưng ngoài mặt vẫn cố ý nghiêm nghị, bất đắc dĩ nhìn sang Sở Ly:
-“Tiểu Cửu, con xem chuyện này… mau khuyên hắn đi. Đại Sở có nhiều võ tướng như vậy, đâu nhất định phải là hắn.”
-Nói rồi, hắn vỗ lòng bàn tay lên mu bàn tay, ra vẻ hết sức bất lực.
-Sở Ly mím môi, nhìn người đang quỳ dưới đất.
-Rõ ràng rất quen thuộc, nhưng lại như có chút xa lạ.
-Một trận chiến này đã khiến hắn trưởng thành.
-Nàng hiểu tính hắn, tuy ôn hòa điềm đạm, nhưng trong xương cốt lại có một cỗ bướng bỉnh.
-Chuyện đã nhận định thì nhất định phải làm.
-Cho dù là sai.
-Không đâm đầu vào tường Nam thì quyết không quay đầu.
-“Hoàng thúc, ta muốn nói chuyện riêng với hắn.”
-Sở Đệ Trì:
-“Hả?”
-Thật sự muốn khuyên sao?
-Khi Sở Ly nhìn sang, hắn bất động thanh sắc nở nụ cười, vỗ vai nàng đầy bao dung:
-“Ừ, con khuyên hắn cho tốt. Đại Sở có nhiều võ tướng như vậy, chưa chắc nhất định phải là hắn.”
-Nói xong liền rời đi trước.
-Đi qua hành lang, vừa khuất sau khúc ngoặt liền dừng bước, vịn tường, nghiêng tai nghe động tĩnh bên hồ.
-Thật sự muốn khuyên sao?
-Hắn chỉ khách sáo một câu, Tiểu Cửu lại thật sự không khách sáo.
-Tần Mục Vũ là võ tướng, vốn nên ra chiến trường.
-Cứ đánh mãi.
-Tốt nhất là lập nghiệp luôn ở ngoài, đến lúc ấy dẫn theo thê tử, nhi nữ cùng trở về Đế Đô.
-“Chủ tử?”
-Bỗng có tiếng gọi.
-Sở Đệ Trì giật mình, chân trượt một cái, chống vào chậu hoa phát ra tiếng “choang”, lập tức quay đầu lườm người vừa đến:
-“Rảnh lắm sao?”
-Kinh Ảnh trong lòng căng thẳng.
-Hắn nói sai gì rồi?
-Không phải.
-Hắn vừa cho ngựa ăn xong, đi ngang qua đây, thấy chủ tử đang bám tường, lén lén lút lút như đạo tặc, còn tưởng có chuyện gì xảy ra, nhất thời lo lắng nên mới gọi một tiếng, nào ngờ lại bị mắng.
-“Không… không rảnh mà?”
-“Không rảnh thì còn không mau cút?”
-Chuồn!
-Chủ tử càng ngày càng khó hầu hạ!
-Bên hồ nước.
-Hai người sóng vai đứng, nhưng giữa họ vẫn cách chừng hai trượng.
-Ánh tà dương cuối chiều ấm áp, gió nhẹ lướt qua, cuốn theo vài chiếc lá rơi múa giữa không trung.
-Mái tóc hai người khẽ lay động, mang đến cảm giác năm tháng bình yên, lại như đã cách một đời.
-Hai đứa trẻ năm nào còn chưa cao bằng chiếc ghế, nay đều đã trưởng thành.
-“Hắn đối với nàng rất tốt.”
-Tần Mục Vũ là người lên tiếng trước.
-Sở Ly không phủ nhận:
-“Huynh thật sự muốn đi Nam Cương?”
-“Ừ.”
-“Nơi đó rất nguy hiểm, mong huynh suy nghĩ kỹ.”
-“A Ly, nàng không cần lo cho ta, ta tự biết chừng mực.”
-Hắn có chuyện mình muốn làm.
-Cũng là chuyện nhất định phải làm.
-Qua lần này, hắn phát hiện bản thân vẫn còn quá trẻ, quá yếu.
-Hắn sẽ nhanh chóng trưởng thành.
-Rồi sẽ có một ngày, hắn không còn là tên tiểu tử ngốc nghếch năm xưa nữa.
-Còn về A Ly…
-Thấy Nhiếp Chính Vương đối xử tốt với nàng, hắn cũng yên tâm rồi.
-Gió nhẹ thoảng qua.
-Sở Ly giơ tay, bắt lấy một chiếc lá đang bay theo gió, đôi mắt lập tức cong lên:
-“Lá dương!”
-Lại đến mùa lá dương rơi rồi.
-Tần Mục Vũ nhìn về phía chân trời.
-Dưới ánh hoàng hôn vàng óng, một đàn nhạn trời xếp thành hình chữ “nhân”, dang cánh bay về phương Nam ấm áp để tránh rét.
-Hắn nhặt một chiếc lá, định đưa lên môi thổi.
-“Đừng thổi.”
-Một bàn tay trắng ngần đưa tới, giữ lấy.
-“Sẽ làm rối đội hình của đàn nhạn.”
-Âm thanh phát ra khi thổi lá dương rất giống tiếng gọi của đàn nhạn lúc thiên di.
-Có những con nhạn sẽ lầm tưởng là tiếng đồng bạn trong đàn, vì thế dừng lại, làm chậm hành trình bay về phương Nam.
-Ánh mắt Tần Mục Vũ tối đi.
-Bất giác nhớ đến nhiều năm trước, hai đứa trẻ cùng vui đùa, lấy lá cây làm còi thổi, vui vẻ hơn cả sơn hào hải vị, thiên kim bảo vật.
-A Ly vẫn là A Ly của ngày xưa.
-Nhưng hắn đã không còn là hắn của trước kia nữa.
-Hôm sau.
-Tần Mục Vũ lĩnh binh, dứt khoát tiến về Nam Cương.
-—
-Lan thành.
-Tin dữ liên tiếp truyền tới:
-“Công chúa, quân Sở lại đoạt thêm một thành!”
-“Công chúa, quân Sở…”
-“Công chúa, không xong rồi…”
-Quân Sở khí thế như hồng, càng đánh càng mạnh.
-Quân Nam Man thì vì Sở Dạ Ly trọng thương, Thác Bạt Minh Nguyệt phân tâm, cả đại quân như rồng mất đầu, hoàn toàn không còn sức chống đỡ.
-Chỉ trong mười lăm ngày ngắn ngủi, hai mươi tám tòa thành đã chiếm được, nay đã bị đoạt lại hai mươi mốt.
-Trong tay họ chỉ còn lại bảy thành.
-Trong sương phòng.
-Ánh nến lay động nhè nhẹ.
-Cửa sổ, cửa phòng đều đóng kín, ánh sáng mờ tối, yên tĩnh.
-Nam nhân trên giường khép chặt hai mắt, lặng lẽ nằm đó, sắc mặt trắng như băng tuyết, chỉ có đôi môi còn vương một vệt huyết sắc.
-“Ưm…”
-Tiếng rên đau bị đè nén của nữ tử khẽ vang lên.
-Chủy thủ được rút ra, huyết nơi tâm khẩu đỏ thẫm như chu sa.
-“Công chúa…”
-Hướng Nguyệt vội vàng bước tới, thần sắc đầy ưu sầu.
-Thác Bạt Minh Nguyệt đang dùng tâm đầu huyết của mình để nuôi một con cổ trùng trong chiếc giỏ trúc nhỏ.
-Con cổ trùng ấy trắng trẻo mập mạp, thân mình tròn vo rất đẹp, hoàn toàn khác với những loại trùng hôi hám, âm u, đầy giác hút và răng nhọn.
-Hướng Nguyệt đỏ hoe mắt:
-“Công chúa, người hà tất phải vậy… Con cộng sinh cổ này chính là sinh mệnh thứ hai của người!”
-Người tinh thông cổ thuật, từ trước đến nay đều sẽ để lại cho mình một con đường lui.
-Con cộng sinh cổ này được Thác Bạt Minh Nguyệt từ thuở nhỏ dùng tâm đầu huyết của chính mình nuôi dưỡng nhiều năm, lại lấy vô số linh dược quý giá làm thức ăn, đã có hiệu quả cải tử hoàn sinh, sinh cơ tái tạo, hoạt cốt sinh nhục.
-Sau này nếu xảy ra biến cố, nàng có thể dùng con cổ này để chuyển đổi sinh cơ.
-Cộng sinh cổ, cả đời chỉ nuôi một con.
-Cả đời chỉ yêu một người.
-Giờ đây, nàng chính là đem tính mạng của mình, giao vào tay hắn.
-Sắc mặt Thác Bạt Minh Nguyệt tái nhợt, nhìn nam nhân vẫn còn hôn mê bất tỉnh, nhàn nhạt nói:
-“Ta không bị thương, không cần dùng đến con cổ này, chi bằng cho hắn… Tuyệt đối không được để lộ nửa điểm phong thanh. Nếu để hắn biết được, ta quyết không tha.”
-“Công chúa!”
-Hướng Nguyệt đỏ hoe mắt, vừa đau lòng, vừa không cam tâm.
-Nhưng nhìn dáng vẻ quyết tuyệt của công chúa, mọi lời muốn nói cuối cùng chỉ có thể nuốt ngược vào lòng.
-“Dạ Ly ca ca…” Ẩn bớt</p>
+            <p>Chương 285: Hắn chỉ khách sáo một câu, Tiểu Cửu lại thật sự không khách sáo</p>
+<p>Sở Ly lập tức quay đầu lại:</p>
+<p>“Mục Vũ!”</p>
+<p>Thế nhưng lại thấy hắn quỳ một gối xuống đất, chắp tay hành đại lễ với Sở Đệ Trì, khóe môi nàng đang mỉm cười chợt khựng lại.</p>
+<p>Hắn từ khi nào đã trở nên câu nệ như vậy?</p>
+<p>Hắn…</p>
+<p>Hình như đã thay đổi rồi.</p>
+<p>Sở Đệ Trì chắp tay sau lưng nhìn hắn:</p>
+<p>“Có chuyện gì?”</p>
+<p>Tần Mục Vũ chắp tay cúi đầu, nói:</p>
+<p>“Mạt tướng nguyện lĩnh binh tiến về Nam Cương, đoạt lại Nam Cương, phối hợp với đại quân Đại Sở, trong ngoài giáp công, vây khốn Lan thành, thu hồi lãnh thổ, bức Nam Man công chúa lui binh!”</p>
+<p>Đó chính là chuyện lúc trước Sở Ly cùng Kinh Ảnh bàn bạc, không ngờ hắn lại ghi nhớ trong lòng.</p>
+<p>Nam Cương rất nguy hiểm.</p>
+<p>Nơi đó toàn là quân trú đóng của Nam Man.</p>
+<p>Nếu cứ thế tiến đến, rất có khả năng không những không đoạt lại được Nam Cương, mà còn bị phản công.</p>
+<p>Đại Sở không hề chiếm chút ưu thế nào.</p>
+<p>Sở Đệ Trì nhìn sang Sở Ly, cân nhắc nói:</p>
+<p>“Tiểu Cửu chắc chắn không nỡ để ngươi đi, bổn vương cũng không nỡ để ngươi mạo hiểm.”</p>
+<p>“Mạt tướng tâm ý đã quyết, thề phải đoạt lại Nam Cương, không thành công quyết không trở về, mong Nhiếp Chính Vương thành toàn!”</p>
+<p>Lòng Sở Ly trĩu xuống:</p>
+<p>“Mục Vũ…”</p>
+<p>“A Ly, ta đã quyết định rồi.”</p>
+<p>Không cần khuyên nữa.</p>
+<p>Chuyến này, hắn nhất định phải đoạt lại Nam Cương!</p>
+<p>Sở Đệ Trì do dự:</p>
+<p>“Tiểu Cửu chắc chắn sẽ lo lắng đến chết mất. Ngươi lại là ngoại sinh của Tiêu Dạ Hành, cũng là người được bổn vương trọng dụng, bổn vương sao nỡ…”</p>
+<p>Tần Mục Vũ đặt nốt đầu gối còn lại xuống.</p>
+<p>Từ quỳ một gối, biến thành quỳ cả hai gối, lưng thẳng tắp.</p>
+<p>Khoảnh khắc này, quyết tâm đã thể hiện rõ qua hành động.</p>
+<p>Sở Đệ Trì nhướng mày, trong lòng mừng thầm, nhưng ngoài mặt vẫn cố ý nghiêm nghị, bất đắc dĩ nhìn sang Sở Ly:</p>
+<p>“Tiểu Cửu, con xem chuyện này… mau khuyên hắn đi. Đại Sở có nhiều võ tướng như vậy, đâu nhất định phải là hắn.”</p>
+<p>Nói rồi, hắn vỗ lòng bàn tay lên mu bàn tay, ra vẻ hết sức bất lực.</p>
+<p>Sở Ly mím môi, nhìn người đang quỳ dưới đất.</p>
+<p>Rõ ràng rất quen thuộc, nhưng lại như có chút xa lạ.</p>
+<p>Một trận chiến này đã khiến hắn trưởng thành.</p>
+<p>Nàng hiểu tính hắn, tuy ôn hòa điềm đạm, nhưng trong xương cốt lại có một cỗ bướng bỉnh.</p>
+<p>Chuyện đã nhận định thì nhất định phải làm.</p>
+<p>Cho dù là sai.</p>
+<p>Không đâm đầu vào tường Nam thì quyết không quay đầu.</p>
+<p>“Hoàng thúc, ta muốn nói chuyện riêng với hắn.”</p>
+<p>Sở Đệ Trì:</p>
+<p>“Hả?”</p>
+<p>Thật sự muốn khuyên sao?</p>
+<p>Khi Sở Ly nhìn sang, hắn bất động thanh sắc nở nụ cười, vỗ vai nàng đầy bao dung:</p>
+<p>“Ừ, con khuyên hắn cho tốt. Đại Sở có nhiều võ tướng như vậy, chưa chắc nhất định phải là hắn.”</p>
+<p>Nói xong liền rời đi trước.</p>
+<p>Đi qua hành lang, vừa khuất sau khúc ngoặt liền dừng bước, vịn tường, nghiêng tai nghe động tĩnh bên hồ.</p>
+<p>Thật sự muốn khuyên sao?</p>
+<p>Hắn chỉ khách sáo một câu, Tiểu Cửu lại thật sự không khách sáo.</p>
+<p>Tần Mục Vũ là võ tướng, vốn nên ra chiến trường.</p>
+<p>Cứ đánh mãi.</p>
+<p>Tốt nhất là lập nghiệp luôn ở ngoài, đến lúc ấy dẫn theo thê tử, nhi nữ cùng trở về Đế Đô.</p>
+<p>“Chủ tử?”</p>
+<p>Bỗng có tiếng gọi.</p>
+<p>Sở Đệ Trì giật mình, chân trượt một cái, chống vào chậu hoa phát ra tiếng “choang”, lập tức quay đầu lườm người vừa đến:</p>
+<p>“Rảnh lắm sao?”</p>
+<p>Kinh Ảnh trong lòng căng thẳng.</p>
+<p>Hắn nói sai gì rồi?</p>
+<p>Không phải.</p>
+<p>Hắn vừa cho ngựa ăn xong, đi ngang qua đây, thấy chủ tử đang bám tường, lén lén lút lút như đạo tặc, còn tưởng có chuyện gì xảy ra, nhất thời lo lắng nên mới gọi một tiếng, nào ngờ lại bị mắng.</p>
+<p>“Không… không rảnh mà?”</p>
+<p>“Không rảnh thì còn không mau cút?”</p>
+<p>Chuồn!</p>
+<p>Chủ tử càng ngày càng khó hầu hạ!</p>
+<p>Bên hồ nước.</p>
+<p>Hai người sóng vai đứng, nhưng giữa họ vẫn cách chừng hai trượng.</p>
+<p>Ánh tà dương cuối chiều ấm áp, gió nhẹ lướt qua, cuốn theo vài chiếc lá rơi múa giữa không trung.</p>
+<p>Mái tóc hai người khẽ lay động, mang đến cảm giác năm tháng bình yên, lại như đã cách một đời.</p>
+<p>Hai đứa trẻ năm nào còn chưa cao bằng chiếc ghế, nay đều đã trưởng thành.</p>
+<p>“Hắn đối với nàng rất tốt.”</p>
+<p>Tần Mục Vũ là người lên tiếng trước.</p>
+<p>Sở Ly không phủ nhận:</p>
+<p>“Huynh thật sự muốn đi Nam Cương?”</p>
+<p>“Ừ.”</p>
+<p>“Nơi đó rất nguy hiểm, mong huynh suy nghĩ kỹ.”</p>
+<p>“A Ly, nàng không cần lo cho ta, ta tự biết chừng mực.”</p>
+<p>Hắn có chuyện mình muốn làm.</p>
+<p>Cũng là chuyện nhất định phải làm.</p>
+<p>Qua lần này, hắn phát hiện bản thân vẫn còn quá trẻ, quá yếu.</p>
+<p>Hắn sẽ nhanh chóng trưởng thành.</p>
+<p>Rồi sẽ có một ngày, hắn không còn là tên tiểu tử ngốc nghếch năm xưa nữa.</p>
+<p>Còn về A Ly…</p>
+<p>Thấy Nhiếp Chính Vương đối xử tốt với nàng, hắn cũng yên tâm rồi.</p>
+<p>Gió nhẹ thoảng qua.</p>
+<p>Sở Ly giơ tay, bắt lấy một chiếc lá đang bay theo gió, đôi mắt lập tức cong lên:</p>
+<p>“Lá dương!”</p>
+<p>Lại đến mùa lá dương rơi rồi.</p>
+<p>Tần Mục Vũ nhìn về phía chân trời.</p>
+<p>Dưới ánh hoàng hôn vàng óng, một đàn nhạn trời xếp thành hình chữ “nhân”, dang cánh bay về phương Nam ấm áp để tránh rét.</p>
+<p>Hắn nhặt một chiếc lá, định đưa lên môi thổi.</p>
+<p>“Đừng thổi.”</p>
+<p>Một bàn tay trắng ngần đưa tới, giữ lấy.</p>
+<p>“Sẽ làm rối đội hình của đàn nhạn.”</p>
+<p>Âm thanh phát ra khi thổi lá dương rất giống tiếng gọi của đàn nhạn lúc thiên di.</p>
+<p>Có những con nhạn sẽ lầm tưởng là tiếng đồng bạn trong đàn, vì thế dừng lại, làm chậm hành trình bay về phương Nam.</p>
+<p>Ánh mắt Tần Mục Vũ tối đi.</p>
+<p>Bất giác nhớ đến nhiều năm trước, hai đứa trẻ cùng vui đùa, lấy lá cây làm còi thổi, vui vẻ hơn cả sơn hào hải vị, thiên kim bảo vật.</p>
+<p>A Ly vẫn là A Ly của ngày xưa.</p>
+<p>Nhưng hắn đã không còn là hắn của trước kia nữa.</p>
+<p>Hôm sau.</p>
+<p>Tần Mục Vũ lĩnh binh, dứt khoát tiến về Nam Cương.</p>
+<p>—</p>
+<p>Lan thành.</p>
+<p>Tin dữ liên tiếp truyền tới:</p>
+<p>“Công chúa, quân Sở lại đoạt thêm một thành!”</p>
+<p>“Công chúa, quân Sở…”</p>
+<p>“Công chúa, không xong rồi…”</p>
+<p>Quân Sở khí thế như hồng, càng đánh càng mạnh.</p>
+<p>Quân Nam Man thì vì Sở Dạ Ly trọng thương, Thác Bạt Minh Nguyệt phân tâm, cả đại quân như rồng mất đầu, hoàn toàn không còn sức chống đỡ.</p>
+<p>Chỉ trong mười lăm ngày ngắn ngủi, hai mươi tám tòa thành đã chiếm được, nay đã bị đoạt lại hai mươi mốt.</p>
+<p>Trong tay họ chỉ còn lại bảy thành.</p>
+<p>Trong sương phòng.</p>
+<p>Ánh nến lay động nhè nhẹ.</p>
+<p>Cửa sổ, cửa phòng đều đóng kín, ánh sáng mờ tối, yên tĩnh.</p>
+<p>Nam nhân trên giường khép chặt hai mắt, lặng lẽ nằm đó, sắc mặt trắng như băng tuyết, chỉ có đôi môi còn vương một vệt huyết sắc.</p>
+<p>“Ưm…”</p>
+<p>Tiếng rên đau bị đè nén của nữ tử khẽ vang lên.</p>
+<p>Chủy thủ được rút ra, huyết nơi tâm khẩu đỏ thẫm như chu sa.</p>
+<p>“Công chúa…”</p>
+<p>Hướng Nguyệt vội vàng bước tới, thần sắc đầy ưu sầu.</p>
+<p>Thác Bạt Minh Nguyệt đang dùng tâm đầu huyết của mình để nuôi một con cổ trùng trong chiếc giỏ trúc nhỏ.</p>
+<p>Con cổ trùng ấy trắng trẻo mập mạp, thân mình tròn vo rất đẹp, hoàn toàn khác với những loại trùng hôi hám, âm u, đầy giác hút và răng nhọn.</p>
+<p>Hướng Nguyệt đỏ hoe mắt:</p>
+<p>“Công chúa, người hà tất phải vậy… Con cộng sinh cổ này chính là sinh mệnh thứ hai của người!”</p>
+<p>Người tinh thông cổ thuật, từ trước đến nay đều sẽ để lại cho mình một con đường lui.</p>
+<p>Con cộng sinh cổ này được Thác Bạt Minh Nguyệt từ thuở nhỏ dùng tâm đầu huyết của chính mình nuôi dưỡng nhiều năm, lại lấy vô số linh dược quý giá làm thức ăn, đã có hiệu quả cải tử hoàn sinh, sinh cơ tái tạo, hoạt cốt sinh nhục.</p>
+<p>Sau này nếu xảy ra biến cố, nàng có thể dùng con cổ này để chuyển đổi sinh cơ.</p>
+<p>Cộng sinh cổ, cả đời chỉ nuôi một con.</p>
+<p>Cả đời chỉ yêu một người.</p>
+<p>Giờ đây, nàng chính là đem tính mạng của mình, giao vào tay hắn.</p>
+<p>Sắc mặt Thác Bạt Minh Nguyệt tái nhợt, nhìn nam nhân vẫn còn hôn mê bất tỉnh, nhàn nhạt nói:</p>
+<p>“Ta không bị thương, không cần dùng đến con cổ này, chi bằng cho hắn… Tuyệt đối không được để lộ nửa điểm phong thanh. Nếu để hắn biết được, ta quyết không tha.”</p>
+<p>“Công chúa!”</p>
+<p>Hướng Nguyệt đỏ hoe mắt, vừa đau lòng, vừa không cam tâm.</p>
+<p>Nhưng nhìn dáng vẻ quyết tuyệt của công chúa, mọi lời muốn nói cuối cùng chỉ có thể nuốt ngược vào lòng.</p>
+<p>“Dạ Ly ca ca…” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_284.html" class="btn">‹ Trước</a>
             <a href="chuong_287.html" class="btn">Sau ›</a>
         </div>
@@ -264,15 +272,11 @@ Nhưng nhìn dáng vẻ quyết tuyệt của công chúa, mọi lời muốn n�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -284,11 +288,11 @@ Nhưng nhìn dáng vẻ quyết tuyệt của công chúa, mọi lời muốn n�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 219</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,192 +62,162 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 219</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_218.html" class="btn">‹ Trước</a>
             <a href="chuong_220.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 219: Sở Ly, Tiểu Ly Miêu
-
-Đáp ứng thỉnh cầu của hắn...
-
-Nói thật, chuyện này hoàn toàn nằm ngoài dự liệu của Sở Ly. Cả đời này nàng đã chuẩn bị sẵn sàng sẽ cô độc một mình, không thành thân, không sinh con.
-
-Hắn dường như cũng không thể có con.
-
-Sở Ly lặng im giây lát, khẽ rũ mắt.
-
-Nhưng nếu ở bên hắn, thân phận của nàng nhất định sẽ mang đến vô số phiền phức cho hắn. Những kẻ tranh đoạt ngôi vị, những đối thủ của Nhiếp Chính Vương, tất sẽ lấy thân phận "Cửu hoàng tử" cùng việc nàng nữ cải nam trang để uy hiếp hắn..
-
-Sự tồn tại của nàng, vốn dĩ chính là một rắc rối.
-"Nhiếp Chính Vương, ta..."
-
-Nàng do dự không quyết:
-
-"Ta..."
-
-"Không vội."
-
-Chân mày Sở Đệ Trì hơi giãn ra:
-
-"Là ta quá nóng vội. Tiểu Cửu, ta chỉ sợ nàng sẽ lại rời khỏi ta một lần nữa. Ta không muốn phải chịu đựng cảm giác ấy thêm lần nào nữa."
-
-"Rất khó chịu."
-
-"Mỗi khi nhìn thấy Ôn phi ngày ngày lấy nước mắt rửa mặt, ăn không biết vị, lòng ta cũng đau đớn chẳng khác gì bà ấy."
-
-Trong lòng Sở Ly chợt siết chặt:
-"Mẫu phi ta... không khỏe sao?"
-"Bà ấy..."
-Môi mỏng của Sở Đệ Trì khẽ hé mở, thần sắc phức tạp.
-"Bà ấy gầy gò đi rất nhiều. Từ sau khi nàng rời đi, ngày nào cũng hồn vía lên mây, đêm nào cũng khó lòng chợp mắt. Thường ngồi một mình thất thần, chẳng muốn ra ngoài, cũng chẳng thiết ăn uống, càng không thích chuyện trò với ai. Chỉ ôm những món đồ nàng từng dùng thuở nhỏ, nhìn một lần là suốt cả ngày."
-Hốc mắt Sở Ly lập tức đỏ hoe.
-Trong đầu bất giác hiện lên cảnh tượng ấy...
-Mẫu phi!
-"Là ta lỡ lời."
-Sở Đệ Trì khẽ trầm mặt.
-"Nàng đã quyết định ở lại Giang Nam, ta không nên nhắc tới chuyện Đế Đô với nàng. Tiểu Cửu, nàng yên tâm, ta sẽ coi bà ấy như mẫu thân ruột thịt mà phụng dưỡng, chăm sóc."
-
-Trong lòng Sở Ly như bị kim châm, đau nhói tê dại, trăm mối ngổn ngang.
-
-Mẫu phi nuôi nàng khôn lớn, vậy mà nàng lại không thể phụng dưỡng người lúc tuổi già.
-Nàng vẫn còn sống, nhưng mẫu phi lại phải nhờ người khác thay nàng tận hiếu.
-
-Vậy nàng là gì?
-
-Một kẻ vong ân phụ nghĩa?
-
-Chỉ cần nghĩ đến dáng vẻ của mẫu phi, nàng ở Giang Nam làm sao có thể thật sự an tâm vui sống?
-
-Nhưng nếu muốn trở về Đế Đô, nàng chỉ có thể đáp ứng yêu cầu của Nhiếp Chính Vương, ở bên hắn. Song nàng lại lo sợ sự tồn tại của mình sẽ mang đến phiền phức cho hắn.
-
-Sở Đệ Trì nhìn gương mặt nhỏ ủ rũ của nàng, đau lòng xoa nhẹ đầu nàng.
-
-"Được rồi, đừng nghĩ nhiều nữa. Mọi chuyện đều có ta."
-
-Chính vì có hắn, nàng mới nghĩ nhiều như vậy.
-Vốn dĩ  hắn đâu cần vì nàng mà hao tâm tổn trí đến thế.
-
-"Không còn sớm nữa, mau đi nghỉ đi."
-"Tay nàng bị thương, có nhiều điều bất tiện. Ta ở lại chăm sóc nàng."
-
-"Không cần, có Bạch Cẩm Y ở đây."
-
-Sở Ly nhìn hắn bằng ánh mắt phức tạp.
-
-Hắn thật sự đã thay đổi.
-
-Đến cả việc ở chung một phòng với nàng, hắn cũng không còn muốn nữa.
-
-Nếu là trước kia, bất luận ở Hoàng gia Học Uyển, Chiêu Lan Điện hay Thủy Tạ San Hô, thậm chí trên lưng ngựa nơi ngoại ô, hắn cũng...
-
-Còn bây giờ, hắn tiến lui đúng mực, cực kỳ biết giữ chừng mực, không hề có lấy một tia vượt lễ.
-Sở Ly cố đè nén những suy nghĩ rối ren trong lòng, bước ra khỏi sương phòng. Nàng nhìn thấy con vẹt lông trắng đậu trên cành cây đang tỉa lông, chiếc mỏ nhọn không ngừng mổ mổ, thỉnh thoảng lại bật ra vài tiếng:
-"Mục Vũ ca ca!"
-"Ga ga..."
-Đến như vậy mà hắn cũng không tức giận.
-Tính tình của hắn quả thật đã tốt hơn rồi.
-Nếu đúng là như vậy, hai người có thể bình yên ở bên nhau, cùng sống, cùng bầu bạn, cùng đối mặt với gian nan hiểm trở, lại còn có thể đoàn tụ với người thân, bằng hữu, chẳng phải cũng là một chuyện tốt đẹp hay sao?
-
-Trong lòng Sở Ly dần dần dao động...
-
-Đêm ấy, nàng trằn trọc mãi không ngủ, tâm tư rối như tơ vò, lăn qua trở lại.
-Sương phòng bên cạnh.
-Nam nhân dựa nghiêng trên nhuyễn tháp, gối đầu lên một cánh tay, lười biếng co một chân. Đầu ngón tay thon dài kẹp một chiếc khuyên tai ngọc trai tròn trịa tinh xảo, đôi mắt đen sâu thẳm tràn ngập vẻ thâm trầm.
-
-"Sở Ly."
-
-"Tiểu Ly Miêu..."
-
-Sáng hôm sau.
-
-Tiêu Dạ Hành từ sáng sớm đã đến tìm Sở Đệ Trì, muốn cùng hắn tới nha môn Tri phủ Giang Nam xử lý công vụ.
-Đẩy cửa bước vào, lại thấy Sở Ly đã ở đó.
-Sở Ly nói:
-"Ngài ấy bị thương, thân thể bất tiện. Mọi thứ vụn vặt ở Giang Nam vẫn phải nhờ Tiêu Đô đốc vất vả xử lý."
-Sở Đệ Trì vén tấm chăn mỏng, làm bộ muốn đứng dậy.
-"Công vụ Giang Nam rườm rà, chỉ một mình Tiêu Dạ Hành e rằng không xuể. Ta đi cùng hắn."
-"Không được đi!"
-Sở Ly giữ lấy vai hắn.
-"Đợi vết thương lành rồi hãy nói. Nếu một mình Tiêu Đô đốc không xoay xở nổi thì còn có Mục Vũ bọn họ giúp đỡ."
-
-Tiêu Dạ Hành đứng nơi cửa, liếc nhìn Sở Đệ Trì đang "yếu đến mức không thể tự lo liệu" hai cái. Đôi mắt hắn từ lâu đã nhìn thấu tất cả.
-Chậc.
-Thật vô vị.
-Hắn phất tay áo bước ra ngoài.
-"Trọng Phong."
-Ngoài cổng viện, Trọng Phong sải bước đi tới.
-Tiêu Dạ Hành rút từ trong tay áo ra một tờ giấy gấp đôi.
-"Đây là nơi chủ tử nhà ngươi muốn, còn có chìa khóa."
-"Đa tạ Tiêu Đô đốc!"
-Trong phòng.
-Sở Ly tự mình chăm sóc Sở Đệ Trì. Nàng dặn Sơ Tam nấu cháo phải thanh đạm, dặn Sơ Tứ sắc thuốc, rồi lại dặn...
-Việc gì cũng tự tay làm.
-Sợ hắn bị thương nằm mãi sinh buồn chán, nàng còn tìm cho hắn một quyển sách để đọc.
-Thế là, Sở Đệ Trì tựa trên nhuyễn tháp, nhìn bóng dáng nhỏ nhắn kia cứ lượn qua lượn lại trước mắt mình. Lúc thì chạy tới, lúc lại chạy đi, trông có vẻ bận rộn lắm, nhưng cũng chẳng biết rốt cuộc đang bận điều gì.
-Chỉ cần được ở bên nàng, cùng hưởng chút bình yên và an hòa ngắn ngủi này, trong lòng hắn đã thấy vô cùng tĩnh lặng.
-Chỉ là...
-Sao vẫn chưa chinh phục được nàng?
-Hắn đã đến đây hai ba ngày, vẫn luôn ôn hòa đúng mực, từng bước tiến dần. Chẳng lẽ nàng vẫn chưa dao động?
-
-Nàng chưa gật đầu đồng ý, hắn cũng không tiện tùy tiện động chạm, chỉ sợ dọa nàng hoảng sợ, mọi công sức trước đó đều đổ sông đổ biển.
-
-Ngày nào cũng nhìn nàng mặc váy nhỏ, chiếc eo thon chỉ vừa một vòng tay khẽ đong đưa trước mắt, ngày nào cũng mềm giọng gọi "Nhiếp Chính Vương, Nhiếp Chính Vương", vậy mà hắn lại chẳng thể chạm vào nàng dù chỉ một chút...
-Cảm giác ấy...
-Thật sự quá khó nhẫn nhịn!</p>
+            <p>Chương 219: Sở Ly, Tiểu Ly Miêu</p>
+<p>Đáp ứng thỉnh cầu của hắn...</p>
+<p>Nói thật, chuyện này hoàn toàn nằm ngoài dự liệu của Sở Ly. Cả đời này nàng đã chuẩn bị sẵn sàng sẽ cô độc một mình, không thành thân, không sinh con.</p>
+<p>Hắn dường như cũng không thể có con.</p>
+<p>Sở Ly lặng im giây lát, khẽ rũ mắt.</p>
+<p>Nhưng nếu ở bên hắn, thân phận của nàng nhất định sẽ mang đến vô số phiền phức cho hắn. Những kẻ tranh đoạt ngôi vị, những đối thủ của Nhiếp Chính Vương, tất sẽ lấy thân phận "Cửu hoàng tử" cùng việc nàng nữ cải nam trang để uy hiếp hắn..</p>
+<p>Sự tồn tại của nàng, vốn dĩ chính là một rắc rối.</p>
+<p>"Nhiếp Chính Vương, ta..."</p>
+<p>Nàng do dự không quyết:</p>
+<p>"Ta..."</p>
+<p>"Không vội."</p>
+<p>Chân mày Sở Đệ Trì hơi giãn ra:</p>
+<p>"Là ta quá nóng vội. Tiểu Cửu, ta chỉ sợ nàng sẽ lại rời khỏi ta một lần nữa. Ta không muốn phải chịu đựng cảm giác ấy thêm lần nào nữa."</p>
+<p>"Rất khó chịu."</p>
+<p>"Mỗi khi nhìn thấy Ôn phi ngày ngày lấy nước mắt rửa mặt, ăn không biết vị, lòng ta cũng đau đớn chẳng khác gì bà ấy."</p>
+<p>Trong lòng Sở Ly chợt siết chặt:</p>
+<p>"Mẫu phi ta... không khỏe sao?"</p>
+<p>"Bà ấy..."</p>
+<p>Môi mỏng của Sở Đệ Trì khẽ hé mở, thần sắc phức tạp.</p>
+<p>"Bà ấy gầy gò đi rất nhiều. Từ sau khi nàng rời đi, ngày nào cũng hồn vía lên mây, đêm nào cũng khó lòng chợp mắt. Thường ngồi một mình thất thần, chẳng muốn ra ngoài, cũng chẳng thiết ăn uống, càng không thích chuyện trò với ai. Chỉ ôm những món đồ nàng từng dùng thuở nhỏ, nhìn một lần là suốt cả ngày."</p>
+<p>Hốc mắt Sở Ly lập tức đỏ hoe.</p>
+<p>Trong đầu bất giác hiện lên cảnh tượng ấy...</p>
+<p>Mẫu phi!</p>
+<p>"Là ta lỡ lời."</p>
+<p>Sở Đệ Trì khẽ trầm mặt.</p>
+<p>"Nàng đã quyết định ở lại Giang Nam, ta không nên nhắc tới chuyện Đế Đô với nàng. Tiểu Cửu, nàng yên tâm, ta sẽ coi bà ấy như mẫu thân ruột thịt mà phụng dưỡng, chăm sóc."</p>
+<p>Trong lòng Sở Ly như bị kim châm, đau nhói tê dại, trăm mối ngổn ngang.</p>
+<p>Mẫu phi nuôi nàng khôn lớn, vậy mà nàng lại không thể phụng dưỡng người lúc tuổi già.</p>
+<p>Nàng vẫn còn sống, nhưng mẫu phi lại phải nhờ người khác thay nàng tận hiếu.</p>
+<p>Vậy nàng là gì?</p>
+<p>Một kẻ vong ân phụ nghĩa?</p>
+<p>Chỉ cần nghĩ đến dáng vẻ của mẫu phi, nàng ở Giang Nam làm sao có thể thật sự an tâm vui sống?</p>
+<p>Nhưng nếu muốn trở về Đế Đô, nàng chỉ có thể đáp ứng yêu cầu của Nhiếp Chính Vương, ở bên hắn. Song nàng lại lo sợ sự tồn tại của mình sẽ mang đến phiền phức cho hắn.</p>
+<p>Sở Đệ Trì nhìn gương mặt nhỏ ủ rũ của nàng, đau lòng xoa nhẹ đầu nàng.</p>
+<p>"Được rồi, đừng nghĩ nhiều nữa. Mọi chuyện đều có ta."</p>
+<p>Chính vì có hắn, nàng mới nghĩ nhiều như vậy.</p>
+<p>Vốn dĩ  hắn đâu cần vì nàng mà hao tâm tổn trí đến thế.</p>
+<p>"Không còn sớm nữa, mau đi nghỉ đi."</p>
+<p>"Tay nàng bị thương, có nhiều điều bất tiện. Ta ở lại chăm sóc nàng."</p>
+<p>"Không cần, có Bạch Cẩm Y ở đây."</p>
+<p>Sở Ly nhìn hắn bằng ánh mắt phức tạp.</p>
+<p>Hắn thật sự đã thay đổi.</p>
+<p>Đến cả việc ở chung một phòng với nàng, hắn cũng không còn muốn nữa.</p>
+<p>Nếu là trước kia, bất luận ở Hoàng gia Học Uyển, Chiêu Lan Điện hay Thủy Tạ San Hô, thậm chí trên lưng ngựa nơi ngoại ô, hắn cũng...</p>
+<p>Còn bây giờ, hắn tiến lui đúng mực, cực kỳ biết giữ chừng mực, không hề có lấy một tia vượt lễ.</p>
+<p>Sở Ly cố đè nén những suy nghĩ rối ren trong lòng, bước ra khỏi sương phòng. Nàng nhìn thấy con vẹt lông trắng đậu trên cành cây đang tỉa lông, chiếc mỏ nhọn không ngừng mổ mổ, thỉnh thoảng lại bật ra vài tiếng:</p>
+<p>"Mục Vũ ca ca!"</p>
+<p>"Ga ga..."</p>
+<p>Đến như vậy mà hắn cũng không tức giận.</p>
+<p>Tính tình của hắn quả thật đã tốt hơn rồi.</p>
+<p>Nếu đúng là như vậy, hai người có thể bình yên ở bên nhau, cùng sống, cùng bầu bạn, cùng đối mặt với gian nan hiểm trở, lại còn có thể đoàn tụ với người thân, bằng hữu, chẳng phải cũng là một chuyện tốt đẹp hay sao?</p>
+<p>Trong lòng Sở Ly dần dần dao động...</p>
+<p>Đêm ấy, nàng trằn trọc mãi không ngủ, tâm tư rối như tơ vò, lăn qua trở lại.</p>
+<p>Sương phòng bên cạnh.</p>
+<p>Nam nhân dựa nghiêng trên nhuyễn tháp, gối đầu lên một cánh tay, lười biếng co một chân. Đầu ngón tay thon dài kẹp một chiếc khuyên tai ngọc trai tròn trịa tinh xảo, đôi mắt đen sâu thẳm tràn ngập vẻ thâm trầm.</p>
+<p>"Sở Ly."</p>
+<p>"Tiểu Ly Miêu..."</p>
+<p>Sáng hôm sau.</p>
+<p>Tiêu Dạ Hành từ sáng sớm đã đến tìm Sở Đệ Trì, muốn cùng hắn tới nha môn Tri phủ Giang Nam xử lý công vụ.</p>
+<p>Đẩy cửa bước vào, lại thấy Sở Ly đã ở đó.</p>
+<p>Sở Ly nói:</p>
+<p>"Ngài ấy bị thương, thân thể bất tiện. Mọi thứ vụn vặt ở Giang Nam vẫn phải nhờ Tiêu Đô đốc vất vả xử lý."</p>
+<p>Sở Đệ Trì vén tấm chăn mỏng, làm bộ muốn đứng dậy.</p>
+<p>"Công vụ Giang Nam rườm rà, chỉ một mình Tiêu Dạ Hành e rằng không xuể. Ta đi cùng hắn."</p>
+<p>"Không được đi!"</p>
+<p>Sở Ly giữ lấy vai hắn.</p>
+<p>"Đợi vết thương lành rồi hãy nói. Nếu một mình Tiêu Đô đốc không xoay xở nổi thì còn có Mục Vũ bọn họ giúp đỡ."</p>
+<p>Tiêu Dạ Hành đứng nơi cửa, liếc nhìn Sở Đệ Trì đang "yếu đến mức không thể tự lo liệu" hai cái. Đôi mắt hắn từ lâu đã nhìn thấu tất cả.</p>
+<p>Chậc.</p>
+<p>Thật vô vị.</p>
+<p>Hắn phất tay áo bước ra ngoài.</p>
+<p>"Trọng Phong."</p>
+<p>Ngoài cổng viện, Trọng Phong sải bước đi tới.</p>
+<p>Tiêu Dạ Hành rút từ trong tay áo ra một tờ giấy gấp đôi.</p>
+<p>"Đây là nơi chủ tử nhà ngươi muốn, còn có chìa khóa."</p>
+<p>"Đa tạ Tiêu Đô đốc!"</p>
+<p>Trong phòng.</p>
+<p>Sở Ly tự mình chăm sóc Sở Đệ Trì. Nàng dặn Sơ Tam nấu cháo phải thanh đạm, dặn Sơ Tứ sắc thuốc, rồi lại dặn...</p>
+<p>Việc gì cũng tự tay làm.</p>
+<p>Sợ hắn bị thương nằm mãi sinh buồn chán, nàng còn tìm cho hắn một quyển sách để đọc.</p>
+<p>Thế là, Sở Đệ Trì tựa trên nhuyễn tháp, nhìn bóng dáng nhỏ nhắn kia cứ lượn qua lượn lại trước mắt mình. Lúc thì chạy tới, lúc lại chạy đi, trông có vẻ bận rộn lắm, nhưng cũng chẳng biết rốt cuộc đang bận điều gì.</p>
+<p>Chỉ cần được ở bên nàng, cùng hưởng chút bình yên và an hòa ngắn ngủi này, trong lòng hắn đã thấy vô cùng tĩnh lặng.</p>
+<p>Chỉ là...</p>
+<p>Sao vẫn chưa chinh phục được nàng?</p>
+<p>Hắn đã đến đây hai ba ngày, vẫn luôn ôn hòa đúng mực, từng bước tiến dần. Chẳng lẽ nàng vẫn chưa dao động?</p>
+<p>Nàng chưa gật đầu đồng ý, hắn cũng không tiện tùy tiện động chạm, chỉ sợ dọa nàng hoảng sợ, mọi công sức trước đó đều đổ sông đổ biển.</p>
+<p>Ngày nào cũng nhìn nàng mặc váy nhỏ, chiếc eo thon chỉ vừa một vòng tay khẽ đong đưa trước mắt, ngày nào cũng mềm giọng gọi "Nhiếp Chính Vương, Nhiếp Chính Vương", vậy mà hắn lại chẳng thể chạm vào nàng dù chỉ một chút...</p>
+<p>Cảm giác ấy...</p>
+<p>Thật sự quá khó nhẫn nhịn!</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_218.html" class="btn">‹ Trước</a>
             <a href="chuong_220.html" class="btn">Sau ›</a>
         </div>
@@ -256,15 +225,11 @@ Thật sự quá khó nhẫn nhịn!</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -276,11 +241,11 @@ Thật sự quá khó nhẫn nhịn!</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

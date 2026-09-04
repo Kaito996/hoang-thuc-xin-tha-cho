@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 263</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,137 +62,146 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 263</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_262.html" class="btn">‹ Trước</a>
             <a href="chuong_264.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 263: Nhàn Vương sắp chết rồi
-Không phải giống, quả thực là giống y như đúc.
-Nhưng ai dám nói?
-Lại nhìn hai người mặc y phục cùng tông màu. Sắc tím sẫm trầm lạnh, tuy vị trí ngồi cách nhau, nhưng rõ ràng chính là càng che càng lộ.
-Giữa hai người e rằng… còn có quan hệ khác.
-Mấy vị đại thần lau mồ hôi:
-“Không giống.”
-“Cửu Hoàng tử ôn hòa tuấn dật, Tạ tiểu thư trầm ổn đại khí, vừa nhìn đã biết kế thừa huyết tính của Tạ lão tướng quân, là người trọng tình trọng nghĩa. Ngài và Cửu Hoàng tử hoàn toàn là hai người khác nhau!”
-“Đúng đúng, chính là như vậy…”
-Sở Ly ôm quyền: “Đa tạ chư vị đại nhân đã quá lời khen ngợi gia phụ!”
-Sở Đệ Trì phất tay: “Đều ngồi đi.”
-“Đa tạ Nhiếp Chính Vương.”
-Mọi người tuy đã nhập tọa, nhưng vẫn có không ít ánh mắt cẩn thận nhìn về phía Sở Ly, đặc biệt là Thất Hoàng tử.
-Mắt Sở Cảnh Lân sắp trừng ra lửa.
-Sở Ly!
-Nàng chính là Sở Ly!
-Dù có hóa thành tro, hắn cũng tuyệt đối không thể nhận lầm!
-“Hiện nay thế cục nước ta rung chuyển, chuyện Thái tử tiền triều đang được truyền đi xôn xao ở một dải phía Nam. Về chuyện này, chư vị đại nhân không biết có cao kiến gì?” Sở Đệ Trì cất giọng.
-Quần thần một lòng vì xã tắc, lập tức trở về chính sự, toàn thần toàn ý nghị luận quốc sự:
-“Hạ quan hoài nghi Thái tử tiền triều chỉ là một cái cớ. Ngũ Hoàng tử sớm đã có lòng mưu nghịch, lại không muốn gánh tội mưu nghịch, bèn lấy Thái tử tiền triều làm cái cớ.”
-“Trên lãnh thổ Đại Sở ta, dân tâm không thể nào hướng về một kẻ ngoại nhân!”
-“Nếu muốn đánh, vậy thì chiến!”
-Trước đại sự quốc gia xã tắc, thanh âm của quần thần hết đợt này đến đợt khác dâng cao.
-Trong cốt tủy mỗi nam nhân đều có một bầu nhiệt huyết, hoặc vì công danh, hoặc vì người nhà, hoặc vì tình ái, hoặc vì những điều khác.
-Muốn đánh trận, bọn họ đều không sợ!
-Sở Ly ngồi ở đó, yên lặng nhấp rượu. Lúc lắng nghe bọn họ nghị sự, nàng chợt nhận ra một ánh mắt sắc bén vẫn luôn nhìn chằm chằm mình.
-Đón lấy ánh mắt ấy nhìn qua… Thất Hoàng huynh?
-Nàng nhướng mày, nâng chén cười.
-Kính hắn.
-Sở Cảnh Lân siết chặt bàn tay. Nếu không phải trong trường hợp này, hắn đã xông lên chất vấn rồi.
-Khi tiếng nghị luận đang dâng đến cao trào, Nhị Hoàng tử đột nhiên nói:
-“Quốc gia không thể một ngày vô chủ, huống chi hiện nay còn đang trong tình thế nội ưu ngoại hoạn rung chuyển như vậy, càng nên có quân vương ổn định dân tâm!”
-Nhưng Đại Sở hiện giờ vẫn luôn do Nhiếp Chính Vương thay mặt chấp chính, sau đó lại trao quyền cho Nhàn Vương.
-Các quan viên nhìn nhau, thấp giọng bàn tán điều gì đó:
-“Nhị Hoàng tử nói phải…”
-“Quốc không thể một ngày vô quân, cũng giống như quân không thể một ngày vô soái, gia không thể một ngày vô chủ, trời không thể một ngày vô nhật…”
-Sở Đệ Trì chậm rãi tựa vào lưng ghế, mở hai tay ra: “Ý của lão Nhị là, muốn có người kế vị.”
-Nhị Hoàng tử chắp tay:
-“Hoàng thúc, lời chất nhi nói đều là vì quốc gia vì bách tính. Quần long một ngày vô thủ, gia quốc một ngày khó được an bình.”
-Sở Đệ Trì đảo mắt nhìn khắp đại điện: “Vậy còn các ngươi?”
-Văn võ bá quan đồng loạt quỳ xuống: “Vì quốc vì dân, kính xin Quân vương đăng cơ!”
-“Từ khi bản vương chấp chính đến nay, chẳng lẽ có chỗ nào làm chưa tốt sao?”
-“Nhiếp Chính Vương đức tài kiêm bị, không có chỗ nào để bắt bẻ, chỉ là… chỉ là…”
-Nhìn dáng vẻ ấp úng của các quan viên, Sở Đệ Trì bật cười:
-“Chỉ là, trước khi Sở Hoàng bại liệt, đã truyền Hoàng vị cho Cửu Hoàng tử, bản vương không có tư cách kế thừa; nay Cửu Hoàng tử đã qua đời, nên tôn sùng một người khác thích hợp hơn.”
-Mọi người im bặt.
-Im lặng chính là ngầm thừa nhận.
-Sở Ly đột nhiên nói: “Nếu đã muốn đề cử người kế vị, Nhiếp Chính Vương cũng là thành viên Hoàng thất, đương nhiên cũng có tư cách.”
-Nhị Hoàng tử lập tức nói:
-“Phụ hoàng vẫn còn rất nhiều con nối dõi trên đời, mà Hoàng thúc lại thuộc hàng thúc bá.”
-Sở Ly nói: “Kế vị không phân thúc bá hay thúc điệt. Chỉ cần mang họ Sở, chỉ cần là thành viên Hoàng thất, đáng lẽ đều có tư cách.”
-Nhị Hoàng tử trầm giọng: “Nếu đã như vậy, Tiêu Dao Hoàng thúc cũng có quyền kế vị. Hơn nữa Tiêu Dao Hoàng thúc còn lớn tuổi hơn Nhiếp Chính Hoàng thúc, nếu có phân lượt, cũng nên đến lượt người.”
-Một chữ ‘lượt’ khiến Sở Ly đột nhiên siết chặt chén rượu.
-Lượt!
-Dùng chữ này hay lắm.
-Nếu Nhàn Vương chết, trong một đám Hoàng tử, Nhị Hoàng tử là người lớn tuổi nhất. Nếu phân lượt, vậy thì phải đến lượt hắn…
-Chậc.
-Hóa ra dã tâm nằm ở đây.
-Nàng nhấp một ngụm rượu, che đi độ cong nơi khóe môi. U ám tích tụ suốt ba ngày đến giờ phút này đã quét sạch, tâm tư bỗng nhiên sáng tỏ.
-Sở Đệ Trì nhìn đám người đang tranh luận kịch liệt. Một hồi cung yến vốn để nghị luận chiến sự, hiện tại đã biến thành cuộc tranh chấp Hoàng vị.
-Hắn cũng chẳng thấy bất ngờ, nhàn nhạt hỏi:
-“Theo ý chư vị, ai mới là người có tư cách kế thừa Hoàng vị nhất?”
-Mọi người cẩn thận liếc nhìn nhau. Trong đó có mấy vị đại thần lén lút quét mắt về phía Nhị Hoàng tử, sau đó cúi đầu, thở ra hai hơi rồi lớn tiếng nói:
-“Nhàn Vương là người có tư cách nhất!”
-“Mấy ngày nay, Nhàn Vương thay mặt triều chính, tận tụy cần mẫn, chưa từng xảy ra sai sót. Ngài ấy mang lòng nhân hậu, đức dày, nếu ngài ấy kế vị, thần đẳng tâm phục khẩu phục!”
-Mấy người quỳ xuống.
-Lục tục lại có thêm vài người quỳ xuống.
-Ánh mắt Nhị Hoàng tử âm thầm chuyển động, cũng nói: “Lý đại nhân, Vương đại nhân, Dương đại nhân nói cực phải. Nhàn Vương là người ôn hòa lương thiện, nếu làm Quân vương, nhất định sẽ thi hành nhân chính, ban ân che chở vạn dân, ấy là phúc của bách tính, là phúc của xã tắc!”
-Trong số rất nhiều Hoàng tử, chỉ có Bát Hoàng tử được phong Vương.
-Thân phận của hắn cao, là người có tư cách kế vị nhất.
-Nhưng bọn họ không biết, Nhàn Vương trúng kịch độc, đã hôn mê suốt ba ngày, sắp chết rồi…
-Một khi Nhàn Vương chết, theo chế độ trưởng tử kế thừa, vậy thì thuận lý thành chương sẽ đến lượt Nhị Hoàng tử…
-Sở Ly nhấp một ngụm rượu, khẽ cười. Ẩn bớt</p>
+            <p>Chương 263: Nhàn Vương sắp chết rồi</p>
+<p>Không phải giống, quả thực là giống y như đúc.</p>
+<p>Nhưng ai dám nói?</p>
+<p>Lại nhìn hai người mặc y phục cùng tông màu. Sắc tím sẫm trầm lạnh, tuy vị trí ngồi cách nhau, nhưng rõ ràng chính là càng che càng lộ.</p>
+<p>Giữa hai người e rằng… còn có quan hệ khác.</p>
+<p>Mấy vị đại thần lau mồ hôi:</p>
+<p>“Không giống.”</p>
+<p>“Cửu Hoàng tử ôn hòa tuấn dật, Tạ tiểu thư trầm ổn đại khí, vừa nhìn đã biết kế thừa huyết tính của Tạ lão tướng quân, là người trọng tình trọng nghĩa. Ngài và Cửu Hoàng tử hoàn toàn là hai người khác nhau!”</p>
+<p>“Đúng đúng, chính là như vậy…”</p>
+<p>Sở Ly ôm quyền: “Đa tạ chư vị đại nhân đã quá lời khen ngợi gia phụ!”</p>
+<p>Sở Đệ Trì phất tay: “Đều ngồi đi.”</p>
+<p>“Đa tạ Nhiếp Chính Vương.”</p>
+<p>Mọi người tuy đã nhập tọa, nhưng vẫn có không ít ánh mắt cẩn thận nhìn về phía Sở Ly, đặc biệt là Thất Hoàng tử.</p>
+<p>Mắt Sở Cảnh Lân sắp trừng ra lửa.</p>
+<p>Sở Ly!</p>
+<p>Nàng chính là Sở Ly!</p>
+<p>Dù có hóa thành tro, hắn cũng tuyệt đối không thể nhận lầm!</p>
+<p>“Hiện nay thế cục nước ta rung chuyển, chuyện Thái tử tiền triều đang được truyền đi xôn xao ở một dải phía Nam. Về chuyện này, chư vị đại nhân không biết có cao kiến gì?” Sở Đệ Trì cất giọng.</p>
+<p>Quần thần một lòng vì xã tắc, lập tức trở về chính sự, toàn thần toàn ý nghị luận quốc sự:</p>
+<p>“Hạ quan hoài nghi Thái tử tiền triều chỉ là một cái cớ. Ngũ Hoàng tử sớm đã có lòng mưu nghịch, lại không muốn gánh tội mưu nghịch, bèn lấy Thái tử tiền triều làm cái cớ.”</p>
+<p>“Trên lãnh thổ Đại Sở ta, dân tâm không thể nào hướng về một kẻ ngoại nhân!”</p>
+<p>“Nếu muốn đánh, vậy thì chiến!”</p>
+<p>Trước đại sự quốc gia xã tắc, thanh âm của quần thần hết đợt này đến đợt khác dâng cao.</p>
+<p>Trong cốt tủy mỗi nam nhân đều có một bầu nhiệt huyết, hoặc vì công danh, hoặc vì người nhà, hoặc vì tình ái, hoặc vì những điều khác.</p>
+<p>Muốn đánh trận, bọn họ đều không sợ!</p>
+<p>Sở Ly ngồi ở đó, yên lặng nhấp rượu. Lúc lắng nghe bọn họ nghị sự, nàng chợt nhận ra một ánh mắt sắc bén vẫn luôn nhìn chằm chằm mình.</p>
+<p>Đón lấy ánh mắt ấy nhìn qua… Thất Hoàng huynh?</p>
+<p>Nàng nhướng mày, nâng chén cười.</p>
+<p>Kính hắn.</p>
+<p>Sở Cảnh Lân siết chặt bàn tay. Nếu không phải trong trường hợp này, hắn đã xông lên chất vấn rồi.</p>
+<p>Khi tiếng nghị luận đang dâng đến cao trào, Nhị Hoàng tử đột nhiên nói:</p>
+<p>“Quốc gia không thể một ngày vô chủ, huống chi hiện nay còn đang trong tình thế nội ưu ngoại hoạn rung chuyển như vậy, càng nên có quân vương ổn định dân tâm!”</p>
+<p>Nhưng Đại Sở hiện giờ vẫn luôn do Nhiếp Chính Vương thay mặt chấp chính, sau đó lại trao quyền cho Nhàn Vương.</p>
+<p>Các quan viên nhìn nhau, thấp giọng bàn tán điều gì đó:</p>
+<p>“Nhị Hoàng tử nói phải…”</p>
+<p>“Quốc không thể một ngày vô quân, cũng giống như quân không thể một ngày vô soái, gia không thể một ngày vô chủ, trời không thể một ngày vô nhật…”</p>
+<p>Sở Đệ Trì chậm rãi tựa vào lưng ghế, mở hai tay ra: “Ý của lão Nhị là, muốn có người kế vị.”</p>
+<p>Nhị Hoàng tử chắp tay:</p>
+<p>“Hoàng thúc, lời chất nhi nói đều là vì quốc gia vì bách tính. Quần long một ngày vô thủ, gia quốc một ngày khó được an bình.”</p>
+<p>Sở Đệ Trì đảo mắt nhìn khắp đại điện: “Vậy còn các ngươi?”</p>
+<p>Văn võ bá quan đồng loạt quỳ xuống: “Vì quốc vì dân, kính xin Quân vương đăng cơ!”</p>
+<p>“Từ khi bản vương chấp chính đến nay, chẳng lẽ có chỗ nào làm chưa tốt sao?”</p>
+<p>“Nhiếp Chính Vương đức tài kiêm bị, không có chỗ nào để bắt bẻ, chỉ là… chỉ là…”</p>
+<p>Nhìn dáng vẻ ấp úng của các quan viên, Sở Đệ Trì bật cười:</p>
+<p>“Chỉ là, trước khi Sở Hoàng bại liệt, đã truyền Hoàng vị cho Cửu Hoàng tử, bản vương không có tư cách kế thừa; nay Cửu Hoàng tử đã qua đời, nên tôn sùng một người khác thích hợp hơn.”</p>
+<p>Mọi người im bặt.</p>
+<p>Im lặng chính là ngầm thừa nhận.</p>
+<p>Sở Ly đột nhiên nói: “Nếu đã muốn đề cử người kế vị, Nhiếp Chính Vương cũng là thành viên Hoàng thất, đương nhiên cũng có tư cách.”</p>
+<p>Nhị Hoàng tử lập tức nói:</p>
+<p>“Phụ hoàng vẫn còn rất nhiều con nối dõi trên đời, mà Hoàng thúc lại thuộc hàng thúc bá.”</p>
+<p>Sở Ly nói: “Kế vị không phân thúc bá hay thúc điệt. Chỉ cần mang họ Sở, chỉ cần là thành viên Hoàng thất, đáng lẽ đều có tư cách.”</p>
+<p>Nhị Hoàng tử trầm giọng: “Nếu đã như vậy, Tiêu Dao Hoàng thúc cũng có quyền kế vị. Hơn nữa Tiêu Dao Hoàng thúc còn lớn tuổi hơn Nhiếp Chính Hoàng thúc, nếu có phân lượt, cũng nên đến lượt người.”</p>
+<p>Một chữ ‘lượt’ khiến Sở Ly đột nhiên siết chặt chén rượu.</p>
+<p>Lượt!</p>
+<p>Dùng chữ này hay lắm.</p>
+<p>Nếu Nhàn Vương chết, trong một đám Hoàng tử, Nhị Hoàng tử là người lớn tuổi nhất. Nếu phân lượt, vậy thì phải đến lượt hắn…</p>
+<p>Chậc.</p>
+<p>Hóa ra dã tâm nằm ở đây.</p>
+<p>Nàng nhấp một ngụm rượu, che đi độ cong nơi khóe môi. U ám tích tụ suốt ba ngày đến giờ phút này đã quét sạch, tâm tư bỗng nhiên sáng tỏ.</p>
+<p>Sở Đệ Trì nhìn đám người đang tranh luận kịch liệt. Một hồi cung yến vốn để nghị luận chiến sự, hiện tại đã biến thành cuộc tranh chấp Hoàng vị.</p>
+<p>Hắn cũng chẳng thấy bất ngờ, nhàn nhạt hỏi:</p>
+<p>“Theo ý chư vị, ai mới là người có tư cách kế thừa Hoàng vị nhất?”</p>
+<p>Mọi người cẩn thận liếc nhìn nhau. Trong đó có mấy vị đại thần lén lút quét mắt về phía Nhị Hoàng tử, sau đó cúi đầu, thở ra hai hơi rồi lớn tiếng nói:</p>
+<p>“Nhàn Vương là người có tư cách nhất!”</p>
+<p>“Mấy ngày nay, Nhàn Vương thay mặt triều chính, tận tụy cần mẫn, chưa từng xảy ra sai sót. Ngài ấy mang lòng nhân hậu, đức dày, nếu ngài ấy kế vị, thần đẳng tâm phục khẩu phục!”</p>
+<p>Mấy người quỳ xuống.</p>
+<p>Lục tục lại có thêm vài người quỳ xuống.</p>
+<p>Ánh mắt Nhị Hoàng tử âm thầm chuyển động, cũng nói: “Lý đại nhân, Vương đại nhân, Dương đại nhân nói cực phải. Nhàn Vương là người ôn hòa lương thiện, nếu làm Quân vương, nhất định sẽ thi hành nhân chính, ban ân che chở vạn dân, ấy là phúc của bách tính, là phúc của xã tắc!”</p>
+<p>Trong số rất nhiều Hoàng tử, chỉ có Bát Hoàng tử được phong Vương.</p>
+<p>Thân phận của hắn cao, là người có tư cách kế vị nhất.</p>
+<p>Nhưng bọn họ không biết, Nhàn Vương trúng kịch độc, đã hôn mê suốt ba ngày, sắp chết rồi…</p>
+<p>Một khi Nhàn Vương chết, theo chế độ trưởng tử kế thừa, vậy thì thuận lý thành chương sẽ đến lượt Nhị Hoàng tử…</p>
+<p>Sở Ly nhấp một ngụm rượu, khẽ cười. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_262.html" class="btn">‹ Trước</a>
             <a href="chuong_264.html" class="btn">Sau ›</a>
         </div>
@@ -201,15 +209,11 @@ Sở Ly nhấp một ngụm rượu, khẽ cười. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -221,11 +225,11 @@ Sở Ly nhấp một ngụm rượu, khẽ cười. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

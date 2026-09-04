@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 281</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,192 +62,200 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 281</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_280.html" class="btn">‹ Trước</a>
             <a href="chuong_282.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 281: A... đầu ta choáng quá...
-
-“Hiện giờ ngươi đã là tù nhân của ta, quân đội của ngươi tan tác, sao không phối hợp với ta? Ta nhất định sẽ không làm khó ngươi.”
-Tiêu Dạ Hành đầy hứng thú nhìn nàng,
-“Đại Sở chúng ta không giống Nam Man các ngươi, dùng những thủ đoạn hèn hạ.”
-Thác Bạt Minh Nguyệt chấn động vai, lập tức muốn xông lên, nếu không bị hai binh sĩ giữ chặt, e rằng đã động thủ ngay tại chỗ.
-Nam Man hèn hạ?
-Đại Sở mới thật sự là kẻ hèn hạ!
-Nam Cương vốn là lãnh thổ của bọn họ, bị Đại Sở cướp đoạt, chiếm làm của mình, còn coi Nam Man là kẻ xâm lược.
-“Ngươi muốn cứu Tần Thiếu tướng quân thì tự mình đi tìm đi, ta sẽ không nói cho ngươi.”
-“Ta thả ngươi.”
-Thác Bạt Minh Nguyệt khựng lại.
-“Chúng ta một người đổi một người, thế nào?”
-Nàng nheo mắt.
-Người này coi trọng Tần Thiếu tướng quân đến vậy, lẽ nào Tần Thiếu tướng quân là thân nhân chí cốt của hắn?
-“Ngươi là ai?”
-“Giang Nam Đề đốc, Tiêu Dạ Hành.”
-“Lời ngươi nói có thể quyết định được đến mức nào?”
-Tiêu Dạ Hành hiếm khi thấy hứng thú. Nàng nói câu nào trúng câu nấy, thẳng vào trọng điểm, bình tĩnh vô cùng, hoàn toàn không có vẻ chật vật của kẻ bại trận.
-Đáng tiếc, hắn phải mau chóng cứu đại ngoại sanh trở về, nếu không về nhà sẽ không biết ăn nói thế nào.
-Hai tay chắp sau lưng, hắn thong thả đi vài bước trên tường thành, nói:
-“Vùng Giang Nam có hai mươi vạn lục quân, tám vạn thủy quân, một châu bảy thành, tất cả đều do ta quyết định.”
-Thác Bạt Minh Nguyệt gật đầu:
-“Được, vậy ngươi cho ta ba tòa thành.”
-“Cái gì?!”
-Tâm phúc Thương Linh suýt cắn phải lưỡi.
-Rốt cuộc ngươi đang nói cái gì vậy?
-Xưa nay chỉ có bên chiến thắng mới có tư cách đưa ra điều kiện, thông thường là bên bại trận phải bồi thường tiền bạc, đất đai.
-Sao nàng thua trận rồi, còn muốn ba tòa thành?
-Tiêu Dạ Hành hiếm khi im lặng nửa nhịp.
-Hắn vừa đánh thắng trận mà?
-Hắn là bên bị động sao?
-Người bị bắt chẳng lẽ là hắn?
-Thác Bạt Minh Nguyệt nói:
-“Ta biết Tần Thiếu tướng quân rất quan trọng đối với ngươi. Nếu ngươi có quyền lớn như vậy, dùng ba tòa thành đổi lấy hắn, chẳng phải rất có lời sao?”
-Một nữ nhân đang bị hai binh sĩ giữ chặt, trên người còn mang thương tích, rốt cuộc lấy đâu ra khí thế hùng hồn như vậy?
-“Tần Thiếu tướng quân còn sống thì ngươi mới có đường sống; nếu hắn chết, Nam Man các ngươi sẽ không chỉ đơn giản là chiến bại.”
-Tiêu Dạ Hành lạnh giọng:
-“Áp giải xuống!”
-Thác Bạt Minh Nguyệt dám ra chiến trường, cũng là người lăn lộn giữa gió tuyết, từng bước chém giết mà đi lên. Cho dù bị bắt làm tù binh, nàng cũng không hề sợ bất kỳ cực hình nào.
-Đàm phán không được, vậy thì cứ đối đầu.
-Cho dù bị tra tấn đến mình đầy thương tích, nàng cũng tuyệt đối không hé nửa lời.
-Hử?
-Sao lại áp giải nàng vào trong doanh trướng?
-—
-“Chủ tử, vị công chúa Nam Man này thật quá càn rỡ!”
-Thương Linh nắm chuôi bội kiếm, sải bước theo bên cạnh Tiêu Dạ Hành.
-“Rõ ràng chỉ là tù nhân, vậy mà còn dám ăn nói ngông cuồng.”
-Tiêu Dạ Hành không liếc mắt, trực tiếp bước vào doanh trướng.
-“Ra ngoài hành tẩu, thân phận là do chính mình tạo nên.”
-“Tiêu Đề đốc làm vậy là có ý gì?”
-Trong doanh trướng, Thác Bạt Minh Nguyệt bị trói chặt trên ghế, tay chân đều bị buộc, không thể đứng dậy, tự nhiên cũng không thể cử động.
-Tiêu Dạ Hành bước thẳng lên ghế chủ tọa, phất tay áo ngồi xuống.
-“Đối phó với nữ nhân, tự nhiên có cách khác.”
-Hai binh sĩ bưng khay tiến vào, đặt xuống mấy món ăn còn bốc khói nghi ngút.
-Thương Linh rót rượu.
-Tiêu Dạ Hành cầm chủy thủ xiên một miếng thịt nướng, chậm rãi cắn một miếng, lại nhấp một ngụm rượu, ung dung ăn uống.
-Thác Bạt Minh Nguyệt thấy buồn cười.
-Dùng đồ ăn dụ dỗ?
-Chỉ có trẻ con mới dùng trò này.
-Hừ!
-Thương Linh lạnh lùng liếc nàng, lại rót rượu cho chủ tử. Đúng lúc ấy, một binh sĩ vào báo:
-“Bẩm Tiêu Đô đốc, phía trước truyền đến tin thắng trận...”
-Vừa nhìn thấy tù binh bị trói trên ghế, lời đến miệng lại dừng.
-Tiêu Dạ Hành vừa cắt thịt vừa nói:
-“Báo, cứ lớn tiếng mà báo.”
-“Rõ!”
-Binh sĩ quỳ một gối, lúc này mới bẩm:
-“Quân ta đã công phá thành Ngọc Tuyền, đánh lui quân trú phòng Nam Man, đoạt lại thành Ngọc Tuyền!”
-“Tiếp tục dò xét, tiếp tục báo.”
-“Rõ!”
-Chỉ trong thời gian ăn một bữa thịt nướng, sứ giả tiền tuyến cưỡi khoái mã ra vào đến sáu bảy lượt, mang về toàn là tin thắng trận:
-“Báo!”
-“Quân ta đã đoạt lại thành Dao Quang!”
-“Quân ta đã đoạt lại thành Vân Quy!”
-“Báo! Quân Nam Man đại bại tháo chạy, lui binh mấy trăm dặm, Đông Lăng Thái tử trọng thương, sống chết chưa rõ!”
-Thác Bạt Minh Nguyệt bỗng ngẩng đầu, phản ứng quá mạnh khiến chiếc ghế dưới thân cọ xuống đất phát ra một tiếng két, chói tai vô cùng.
-Tiêu Dạ Hành khẽ nâng mắt, nhàn nhạt liếc nàng một cái rồi nói:
-“Truy sát.”
-“Sống phải thấy người, chết phải thấy xác.”
-“Rõ!”
-Thác Bạt Minh Nguyệt siết chặt hai tay.
-Sao hắn lại trọng thương?
-Sao có thể...
-“Chỉ cần Sở Dạ Ly chết, nội loạn Đại Sở sẽ được dẹp yên. Không quá nửa tháng sẽ đoạt lại toàn bộ thành trì đã mất, biết đâu còn có thể vượt qua Nam Cương, tiến thẳng vào Nam Man.”
-Tiêu Dạ Hành nhàn nhã nói.
-Thác Bạt Minh Nguyệt trầm giọng:
-“Hắn sẽ không chết!”
-“Là người thì ai cũng sẽ chết.”
-“Hắn sẽ không chết!”
-Giọng nói bất giác cao lên, mang theo vài phần chói tai.
-Tiêu Dạ Hành khẽ cười:
-“Ngươi thích hắn. Để ta đoán xem hắn có thích ngươi hay không... Ừm, chắc chắn là không thích.”
-“Ngươi muốn nói gì!”
-Thác Bạt Minh Nguyệt siết tay giãy giụa, lệ khí trong mắt dâng lên. Sau khi biết tin Sở Dạ Ly trọng thương, cảm xúc của nàng đã dần sụp đổ.
-Dạ Ly ca ca sẽ không chết!
-Từ lần đầu tiên gặp hắn khi còn nhỏ, nàng đã đau lòng cho thiếu niên nhẫn nhục chịu đựng, trải qua vô vàn khổ nạn ấy. Bao năm bỏ ra tâm huyết và tình cảm, tuyệt đối không thể đổi lấy kết cục như vậy!
-Hắn nhất định đang lừa nàng!
-Tiêu Dạ Hành vẫn ung dung, nhàn nhã:
-“Ngươi quá dữ dằn, hắn không thích nữ nhân hung hãn.”
-Dừng một nhịp, hắn lại nói:
-“Đại khái là thích người tuổi Tỵ.”
-“Giống kiểu Sở Ly ấy, ôn nhu, hiền thục, săn sóc, thấu hiểu lòng người, lên được đại sảnh, xuống được nhà bếp, chim nhỏ nép người, trói gà không chặt.”
-—
-“A!!”
-Bàn tay bị bẻ gãy sống sượng, tiếng kêu thảm của tên binh sĩ xé toạc bầu trời.
-Sở Ly một tay nắm chặt cổ tay hắn, mặt không đổi sắc mà bẻ mạnh. Tiếng xương rắc rắc lệch khớp khiến da đầu người ta tê dại.
-“Nói! Các ngươi giam tù binh ở đâu?”
-Tên binh sĩ Nam Man gào thét như lợn bị chọc tiết:
-“Ta không biết... A! Ta thật sự không biết... tha mạng... tha cho ta đi! A!”
-Đau đến mức ngất lịm.
-Sở Ly đá văng hắn ra.
-Vô dụng!
-Dọc đường đoạt lại ba tòa thành, bắt được không ít binh sĩ Nam Man, nhưng vẫn không dò hỏi được tung tích của Tần Mục Vũ.
-Rốt cuộc hắn bị giam ở đâu?
-Nếu xảy ra chuyện...
-“Tiếp tục tìm!”
-Binh sĩ vừa thu phục thành trì, vừa giải cứu tù binh, nhưng riêng Tần Mục Vũ thì vẫn bặt vô âm tín.
-Sở Đệ Trì đứng cách đó không xa, nhìn dáng vẻ Sở Ly vì chuyện này mà chạy ngược chạy xuôi, nổi giận không thôi. Đôi môi mỏng mím thành một đường thẳng, bàn tay nhiều lần siết chặt rồi lại buông ra.
-Thành trì đã thu hồi, thuộc hạ tự khắc sẽ cứu Tần Mục Vũ.
-Kể từ lúc đến chiến trường, nàng còn chưa nhìn hắn lấy một lần.
-Hay là... Tần Mục Vũ bị hắn điều đi vẫn chưa đủ xa?
-Hay sau này điều thẳng sang nước khác làm sứ thần thường trú, ba năm năm năm mới được trở về một lần?
-Mãi đến nhiều năm sau, hắn mới hiểu, vấn đề không nằm ở chuyện Tần Mục Vũ ở gần hay xa, mà là vì dục chiếm hữu của chính hắn.
-Hắn quá để tâm đến nàng.
-Chỉ cần sự chú ý của Sở Ly không đặt trên người hắn, hắn liền không khống chế được mà thấy ngứa răng, ngứa tay, toàn thân đều ngứa.
-“A... đầu ta choáng quá...”
-“Hoàng thúc!”</p>
+            <p>Chương 281: A... đầu ta choáng quá...</p>
+<p>“Hiện giờ ngươi đã là tù nhân của ta, quân đội của ngươi tan tác, sao không phối hợp với ta? Ta nhất định sẽ không làm khó ngươi.”</p>
+<p>Tiêu Dạ Hành đầy hứng thú nhìn nàng,</p>
+<p>“Đại Sở chúng ta không giống Nam Man các ngươi, dùng những thủ đoạn hèn hạ.”</p>
+<p>Thác Bạt Minh Nguyệt chấn động vai, lập tức muốn xông lên, nếu không bị hai binh sĩ giữ chặt, e rằng đã động thủ ngay tại chỗ.</p>
+<p>Nam Man hèn hạ?</p>
+<p>Đại Sở mới thật sự là kẻ hèn hạ!</p>
+<p>Nam Cương vốn là lãnh thổ của bọn họ, bị Đại Sở cướp đoạt, chiếm làm của mình, còn coi Nam Man là kẻ xâm lược.</p>
+<p>“Ngươi muốn cứu Tần Thiếu tướng quân thì tự mình đi tìm đi, ta sẽ không nói cho ngươi.”</p>
+<p>“Ta thả ngươi.”</p>
+<p>Thác Bạt Minh Nguyệt khựng lại.</p>
+<p>“Chúng ta một người đổi một người, thế nào?”</p>
+<p>Nàng nheo mắt.</p>
+<p>Người này coi trọng Tần Thiếu tướng quân đến vậy, lẽ nào Tần Thiếu tướng quân là thân nhân chí cốt của hắn?</p>
+<p>“Ngươi là ai?”</p>
+<p>“Giang Nam Đề đốc, Tiêu Dạ Hành.”</p>
+<p>“Lời ngươi nói có thể quyết định được đến mức nào?”</p>
+<p>Tiêu Dạ Hành hiếm khi thấy hứng thú. Nàng nói câu nào trúng câu nấy, thẳng vào trọng điểm, bình tĩnh vô cùng, hoàn toàn không có vẻ chật vật của kẻ bại trận.</p>
+<p>Đáng tiếc, hắn phải mau chóng cứu đại ngoại sanh trở về, nếu không về nhà sẽ không biết ăn nói thế nào.</p>
+<p>Hai tay chắp sau lưng, hắn thong thả đi vài bước trên tường thành, nói:</p>
+<p>“Vùng Giang Nam có hai mươi vạn lục quân, tám vạn thủy quân, một châu bảy thành, tất cả đều do ta quyết định.”</p>
+<p>Thác Bạt Minh Nguyệt gật đầu:</p>
+<p>“Được, vậy ngươi cho ta ba tòa thành.”</p>
+<p>“Cái gì?!”</p>
+<p>Tâm phúc Thương Linh suýt cắn phải lưỡi.</p>
+<p>Rốt cuộc ngươi đang nói cái gì vậy?</p>
+<p>Xưa nay chỉ có bên chiến thắng mới có tư cách đưa ra điều kiện, thông thường là bên bại trận phải bồi thường tiền bạc, đất đai.</p>
+<p>Sao nàng thua trận rồi, còn muốn ba tòa thành?</p>
+<p>Tiêu Dạ Hành hiếm khi im lặng nửa nhịp.</p>
+<p>Hắn vừa đánh thắng trận mà?</p>
+<p>Hắn là bên bị động sao?</p>
+<p>Người bị bắt chẳng lẽ là hắn?</p>
+<p>Thác Bạt Minh Nguyệt nói:</p>
+<p>“Ta biết Tần Thiếu tướng quân rất quan trọng đối với ngươi. Nếu ngươi có quyền lớn như vậy, dùng ba tòa thành đổi lấy hắn, chẳng phải rất có lời sao?”</p>
+<p>Một nữ nhân đang bị hai binh sĩ giữ chặt, trên người còn mang thương tích, rốt cuộc lấy đâu ra khí thế hùng hồn như vậy?</p>
+<p>“Tần Thiếu tướng quân còn sống thì ngươi mới có đường sống; nếu hắn chết, Nam Man các ngươi sẽ không chỉ đơn giản là chiến bại.”</p>
+<p>Tiêu Dạ Hành lạnh giọng:</p>
+<p>“Áp giải xuống!”</p>
+<p>Thác Bạt Minh Nguyệt dám ra chiến trường, cũng là người lăn lộn giữa gió tuyết, từng bước chém giết mà đi lên. Cho dù bị bắt làm tù binh, nàng cũng không hề sợ bất kỳ cực hình nào.</p>
+<p>Đàm phán không được, vậy thì cứ đối đầu.</p>
+<p>Cho dù bị tra tấn đến mình đầy thương tích, nàng cũng tuyệt đối không hé nửa lời.</p>
+<p>Hử?</p>
+<p>Sao lại áp giải nàng vào trong doanh trướng?</p>
+<p>—</p>
+<p>“Chủ tử, vị công chúa Nam Man này thật quá càn rỡ!”</p>
+<p>Thương Linh nắm chuôi bội kiếm, sải bước theo bên cạnh Tiêu Dạ Hành.</p>
+<p>“Rõ ràng chỉ là tù nhân, vậy mà còn dám ăn nói ngông cuồng.”</p>
+<p>Tiêu Dạ Hành không liếc mắt, trực tiếp bước vào doanh trướng.</p>
+<p>“Ra ngoài hành tẩu, thân phận là do chính mình tạo nên.”</p>
+<p>“Tiêu Đề đốc làm vậy là có ý gì?”</p>
+<p>Trong doanh trướng, Thác Bạt Minh Nguyệt bị trói chặt trên ghế, tay chân đều bị buộc, không thể đứng dậy, tự nhiên cũng không thể cử động.</p>
+<p>Tiêu Dạ Hành bước thẳng lên ghế chủ tọa, phất tay áo ngồi xuống.</p>
+<p>“Đối phó với nữ nhân, tự nhiên có cách khác.”</p>
+<p>Hai binh sĩ bưng khay tiến vào, đặt xuống mấy món ăn còn bốc khói nghi ngút.</p>
+<p>Thương Linh rót rượu.</p>
+<p>Tiêu Dạ Hành cầm chủy thủ xiên một miếng thịt nướng, chậm rãi cắn một miếng, lại nhấp một ngụm rượu, ung dung ăn uống.</p>
+<p>Thác Bạt Minh Nguyệt thấy buồn cười.</p>
+<p>Dùng đồ ăn dụ dỗ?</p>
+<p>Chỉ có trẻ con mới dùng trò này.</p>
+<p>Hừ!</p>
+<p>Thương Linh lạnh lùng liếc nàng, lại rót rượu cho chủ tử. Đúng lúc ấy, một binh sĩ vào báo:</p>
+<p>“Bẩm Tiêu Đô đốc, phía trước truyền đến tin thắng trận...”</p>
+<p>Vừa nhìn thấy tù binh bị trói trên ghế, lời đến miệng lại dừng.</p>
+<p>Tiêu Dạ Hành vừa cắt thịt vừa nói:</p>
+<p>“Báo, cứ lớn tiếng mà báo.”</p>
+<p>“Rõ!”</p>
+<p>Binh sĩ quỳ một gối, lúc này mới bẩm:</p>
+<p>“Quân ta đã công phá thành Ngọc Tuyền, đánh lui quân trú phòng Nam Man, đoạt lại thành Ngọc Tuyền!”</p>
+<p>“Tiếp tục dò xét, tiếp tục báo.”</p>
+<p>“Rõ!”</p>
+<p>Chỉ trong thời gian ăn một bữa thịt nướng, sứ giả tiền tuyến cưỡi khoái mã ra vào đến sáu bảy lượt, mang về toàn là tin thắng trận:</p>
+<p>“Báo!”</p>
+<p>“Quân ta đã đoạt lại thành Dao Quang!”</p>
+<p>“Quân ta đã đoạt lại thành Vân Quy!”</p>
+<p>“Báo! Quân Nam Man đại bại tháo chạy, lui binh mấy trăm dặm, Đông Lăng Thái tử trọng thương, sống chết chưa rõ!”</p>
+<p>Thác Bạt Minh Nguyệt bỗng ngẩng đầu, phản ứng quá mạnh khiến chiếc ghế dưới thân cọ xuống đất phát ra một tiếng két, chói tai vô cùng.</p>
+<p>Tiêu Dạ Hành khẽ nâng mắt, nhàn nhạt liếc nàng một cái rồi nói:</p>
+<p>“Truy sát.”</p>
+<p>“Sống phải thấy người, chết phải thấy xác.”</p>
+<p>“Rõ!”</p>
+<p>Thác Bạt Minh Nguyệt siết chặt hai tay.</p>
+<p>Sao hắn lại trọng thương?</p>
+<p>Sao có thể...</p>
+<p>“Chỉ cần Sở Dạ Ly chết, nội loạn Đại Sở sẽ được dẹp yên. Không quá nửa tháng sẽ đoạt lại toàn bộ thành trì đã mất, biết đâu còn có thể vượt qua Nam Cương, tiến thẳng vào Nam Man.”</p>
+<p>Tiêu Dạ Hành nhàn nhã nói.</p>
+<p>Thác Bạt Minh Nguyệt trầm giọng:</p>
+<p>“Hắn sẽ không chết!”</p>
+<p>“Là người thì ai cũng sẽ chết.”</p>
+<p>“Hắn sẽ không chết!”</p>
+<p>Giọng nói bất giác cao lên, mang theo vài phần chói tai.</p>
+<p>Tiêu Dạ Hành khẽ cười:</p>
+<p>“Ngươi thích hắn. Để ta đoán xem hắn có thích ngươi hay không... Ừm, chắc chắn là không thích.”</p>
+<p>“Ngươi muốn nói gì!”</p>
+<p>Thác Bạt Minh Nguyệt siết tay giãy giụa, lệ khí trong mắt dâng lên. Sau khi biết tin Sở Dạ Ly trọng thương, cảm xúc của nàng đã dần sụp đổ.</p>
+<p>Dạ Ly ca ca sẽ không chết!</p>
+<p>Từ lần đầu tiên gặp hắn khi còn nhỏ, nàng đã đau lòng cho thiếu niên nhẫn nhục chịu đựng, trải qua vô vàn khổ nạn ấy. Bao năm bỏ ra tâm huyết và tình cảm, tuyệt đối không thể đổi lấy kết cục như vậy!</p>
+<p>Hắn nhất định đang lừa nàng!</p>
+<p>Tiêu Dạ Hành vẫn ung dung, nhàn nhã:</p>
+<p>“Ngươi quá dữ dằn, hắn không thích nữ nhân hung hãn.”</p>
+<p>Dừng một nhịp, hắn lại nói:</p>
+<p>“Đại khái là thích người tuổi Tỵ.”</p>
+<p>“Giống kiểu Sở Ly ấy, ôn nhu, hiền thục, săn sóc, thấu hiểu lòng người, lên được đại sảnh, xuống được nhà bếp, chim nhỏ nép người, trói gà không chặt.”</p>
+<p>—</p>
+<p>“A!!”</p>
+<p>Bàn tay bị bẻ gãy sống sượng, tiếng kêu thảm của tên binh sĩ xé toạc bầu trời.</p>
+<p>Sở Ly một tay nắm chặt cổ tay hắn, mặt không đổi sắc mà bẻ mạnh. Tiếng xương rắc rắc lệch khớp khiến da đầu người ta tê dại.</p>
+<p>“Nói! Các ngươi giam tù binh ở đâu?”</p>
+<p>Tên binh sĩ Nam Man gào thét như lợn bị chọc tiết:</p>
+<p>“Ta không biết... A! Ta thật sự không biết... tha mạng... tha cho ta đi! A!”</p>
+<p>Đau đến mức ngất lịm.</p>
+<p>Sở Ly đá văng hắn ra.</p>
+<p>Vô dụng!</p>
+<p>Dọc đường đoạt lại ba tòa thành, bắt được không ít binh sĩ Nam Man, nhưng vẫn không dò hỏi được tung tích của Tần Mục Vũ.</p>
+<p>Rốt cuộc hắn bị giam ở đâu?</p>
+<p>Nếu xảy ra chuyện...</p>
+<p>“Tiếp tục tìm!”</p>
+<p>Binh sĩ vừa thu phục thành trì, vừa giải cứu tù binh, nhưng riêng Tần Mục Vũ thì vẫn bặt vô âm tín.</p>
+<p>Sở Đệ Trì đứng cách đó không xa, nhìn dáng vẻ Sở Ly vì chuyện này mà chạy ngược chạy xuôi, nổi giận không thôi. Đôi môi mỏng mím thành một đường thẳng, bàn tay nhiều lần siết chặt rồi lại buông ra.</p>
+<p>Thành trì đã thu hồi, thuộc hạ tự khắc sẽ cứu Tần Mục Vũ.</p>
+<p>Kể từ lúc đến chiến trường, nàng còn chưa nhìn hắn lấy một lần.</p>
+<p>Hay là... Tần Mục Vũ bị hắn điều đi vẫn chưa đủ xa?</p>
+<p>Hay sau này điều thẳng sang nước khác làm sứ thần thường trú, ba năm năm năm mới được trở về một lần?</p>
+<p>Mãi đến nhiều năm sau, hắn mới hiểu, vấn đề không nằm ở chuyện Tần Mục Vũ ở gần hay xa, mà là vì dục chiếm hữu của chính hắn.</p>
+<p>Hắn quá để tâm đến nàng.</p>
+<p>Chỉ cần sự chú ý của Sở Ly không đặt trên người hắn, hắn liền không khống chế được mà thấy ngứa răng, ngứa tay, toàn thân đều ngứa.</p>
+<p>“A... đầu ta choáng quá...”</p>
+<p>“Hoàng thúc!”</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_280.html" class="btn">‹ Trước</a>
             <a href="chuong_282.html" class="btn">Sau ›</a>
         </div>
@@ -256,15 +263,11 @@ Chỉ cần sự chú ý của Sở Ly không đặt trên người hắn, hắn
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -276,11 +279,11 @@ Chỉ cần sự chú ý của Sở Ly không đặt trên người hắn, hắn
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

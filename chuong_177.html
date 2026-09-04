@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 177</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,201 +62,210 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 177</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_176.html" class="btn">‹ Trước</a>
             <a href="chuong_178.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 177: Sở Ly đơn thuần
-“Sư phụ đã lấy Sinh Tử Cổ ra khỏi cơ thể muội. Nhưng người nói, Sinh Tử Cổ này không giống cổ trùng thông thường của Nam Man, e rằng sẽ để lại một vài tác dụng phụ.”
-Đây là cổ trùng do Vu sư của Ty Cổ Cục luyện chế.
-Ty Cổ Cục chính là nơi quy tụ những cao thủ luyện cổ lợi hại nhất Nam Man quốc.
-Sở Ly đưa tay sờ cổ, thử cử động thân thể:
-“Tác dụng phụ gì?”
-“Muội từng là người đã ngừng tim, huyết dịch ngưng trệ. Một khi não người ngừng được cung cấp huyết dịch, tức là đã chết. Dù Sinh Tử Cổ đã lưu thông huyết mạch trong cơ thể muội, giúp muội hồi sinh, nhưng trong não vẫn thiếu mất một phần.”
-“Sau này, ký ức của muội có thể sẽ xuất hiện một số rối loạn. Đó là tác dụng phụ, nhưng sẽ không nguy hiểm đến tính mạng.”
-Sở Ly nghe vậy mới thở phào nhẹ nhõm.
-Không phải vấn đề gì quá lớn.
-“Đưa muội đi bái kiến sư phụ.”
-“Đi theo ta.”
-Đỉnh Phiêu Miểu Sơn có một tảng đá lớn.
-Cố Nguyên Minh thích nhất là ngồi xếp bằng trên đó, ban ngày phơi nắng, ban đêm ngắm trăng, hấp thụ âm dương chi khí của trời đất.
-Lúc này, lão nhân tiên phong đạo cốt khép hờ hai mắt, ngồi xếp bằng, nhưng dung mạo lại chỉ như người ngoài bốn mươi tuổi, trầm ổn mà cương nghị.
-“Sư phụ.”
-Sở Ly bước tới, quỳ xuống hành lễ.
-“Đồ nhi bái kiến sư phụ.”
-Cố Nguyên Minh chậm rãi mở mắt, hiền từ nhìn tiểu đồ đệ ngoan ngoãn đáng yêu, đưa tay vẫy nàng.
-“Thân thể còn chưa khỏe, mau đứng dậy đi.”
-Sở Ly đứng lên, lại hành lễ với Đại sư huynh và Tam sư huynh đứng bên cạnh.
-Đệ tử thân truyền của Cố Nguyên Minh chỉ có bốn người bọn họ.
-Ông cũng có đệ tử ngoại môn, nhưng chỉ thu học phí rồi chỉ điểm đôi điều, không thân thiết như đệ tử thân truyền.
-Đại sư huynh vốn là người lạnh lùng, hiếm khi lộ vẻ ôn hòa với nàng.
-“Tiểu sư đệ đã lâu không về sư môn.”
-Tam sư huynh thì mang vẻ tà mị, cười với nàng còn duyên dáng hơn cả nữ nhân.
-“Tiểu sư đệ, bọn ta cứu đệ một mạng, còn cả số thuốc đệ đã uống nữa, nhớ đừng quên trả bạc.”
-“???”
-Bầu không khí vốn đang tràn đầy tình nghĩa đồng môn…
-Chỉ một câu nói đã khiến Sở Ly tỉnh mộng.
-Tình nghĩa?
-Chắc nàng chết một lần nên đầu óc có vấn đề, mới cho rằng sư môn có tình người.
-Phiêu Miểu Môn này rõ ràng là cái ổ chui vào mắt tiền!
-Ba vị sư huynh đều là cô nhi được sư phụ nhặt về.
-Đại sư huynh tu luyện công pháp cần bồi bổ rất nhiều.
-Ai trả tiền?
-Nàng trả.
-Nhị sư huynh từ nhỏ thân thể yếu ớt, quanh năm uống thuốc.
-Ai bốc thuốc?
-Nàng bốc.
-Tam sư huynh thì càng mê tiền hơn, tay nghề nấu nướng cực cao, thích xuống bếp.
-Ai mua thức ăn?
-Nàng mua.
-Sở Ly lập tức giậm chân.
-“Mọi người chỉ nhắm vào tiền của ta thôi!”
-Tam sư huynh lập tức nghiêm mặt, xua tay.
-“Tiểu sư đệ nói vậy là không đúng. Đệ là người giàu nhất sư môn, chia bớt tài sản cho các sư huynh một chút, chẳng phải cũng tương đương với việc các sư huynh đều giàu sao?”
-“Chia kiểu gì?”
-Sở Ly tức đến nghẹn lời.
-“Huynh bỏ ra một đồng tiền, ta bỏ ra mười thỏi vàng nhỏ, chia đều một chút, vậy là mỗi người đều có năm thỏi vàng nhỏ à?”
-Quá đáng!
-Đại sư huynh sờ sống mũi.
-“Cũng… không phải là không được.”
-“?”
-Sở Ly tức đến suýt khóc.
-“Sư phụ! Người thiên vị!”
-Nàng nhớ ra rồi.
-Hoàn toàn nhớ ra rồi.
-Năm đó, đại cữu cữu dẫn nàng tới bái sư. Ban đầu sư phụ vốn không định nhận nàng.
-Là vì đại cữu cữu lén nói với sư phụ:
-“Không nhận sao?”
-“Đứa cháu ngoại này của ta là Cửu hoàng tử đương triều, rất có tiền.”
-Thế là…
-Nàng trở thành tiểu đệ tử thân truyền của Cố Nguyên Minh, phía trên còn có ba vị sư huynh.
-Cố Nguyên Minh trợn râu.
-“Đồ nhi, chớ ăn nói hồ đồ. Vi sư thiên vị chỗ nào?”
-“Người dạy các sư huynh tuyệt học và công pháp, lại chẳng dạy ta cái gì, còn hùa nhau lừa tiền ta. Bọn họ võ công cao cường, còn ta đến một tên thị vệ cũng đánh không lại!”
-Là nàng quá đơn thuần.
-Mỗi lần luyện tập, ba vị sư huynh đều cố ý nhường nàng.
-Nàng vẫn luôn tin rằng mình võ công cái thế, thiên hạ vô song.
-Nếu lần này không đi Nam Man, trải qua biết bao hiểm nguy, e rằng đến giờ nàng vẫn còn bị che mắt.
-Cố Nguyên Minh đứng dậy, bước tới.
-“Ta hỏi con, lúc ta bảo con đứng tấn, lần nào con chẳng mới đứng được nửa buổi đã chạy xuống suối bắt cá?”
-Sở Ly nghẹn lời.
-“Cái đó… Người bắt con đứng liền bốn canh giờ, không được nhúc nhích, con…”
-“Ta bảo con ngồi tĩnh tọa tu luyện tâm pháp, lần nào chẳng mới ngồi chưa nóng mông đã chạy đi moi tổ chim?”
-“Con… vừa ngồi là năm sáu canh giờ, chân con tê mất.”
-“Ta bảo con luyện kiếm pháp, con lại chạy vào rừng đuổi thỏ.”
-Cố Nguyên Minh chỉ tiếc rèn sắt không thành thép.
-“Từ nhỏ con đã là đứa không chịu ngồi yên. Chưa đến hai khắc đã mất kiên nhẫn. Ta thấy con không thể tĩnh tâm luyện võ, chỉ thích bắt gà đuổi vịt, nên mới truyền cho con tiễn pháp Bách Bộ Xuyên Dương.”
-Nói đi cũng phải nói lại.
-Tiễn pháp của Sở Ly quả thực đạt tới cảnh giới Bách Bộ Xuyên Dương.
-Mùa thu năm ngoái trong kỳ Thu Liệp, chính nàng đã bắn chết con gấu nâu phát cuồng làm hại người.
-“Tiểu Cửu, võ học trong thiên hạ nhiều vô kể, chẳng khác nào cá vượt sông, không ai có thể tinh thông mọi thứ.”
-“Con xem Đại sư huynh của con, nội lực hùng hậu nhưng rất dễ sinh tâm ma.”
-“Nhị sư huynh kiếm pháp tuyệt luân, nhưng từ nhỏ thân thể suy nhược, không thích hợp giao chiến lâu dài.”
-“Tam sư huynh khinh công đạp tuyết vô ngân, nhưng võ công chính diện lại kém hơn đôi chút.”
-“Con ham chơi, có thể luyện thành Bách Bộ Xuyên Dương, đã là tuyệt kỹ đủ để phòng thân rồi.”
-Sở Ly gãi đầu.
-Ngẫm lại…
-Hình như đúng là như vậy.
-Nói vậy…
-Là nàng đã hiểu lầm sư phụ sao?
-“Nhưng sư phụ, tiễn pháp của con tuy chuẩn xác, chỉ thích hợp đánh xa. Nếu cận chiến, con căn bản đánh không lại người khác.”
-“Người dạy thêm cho con vài tuyệt học để phòng thân nữa đi!”
-“Lần này con nhất định sẽ kiên trì, nhẫn nại học hành.”
-Cố Nguyên Minh nhìn đôi mắt sáng ngời hiếu học của nàng.
-“Bất cứ tuyệt học nào cũng cần thời gian mài giũa.”
-“Con có thể tĩnh tâm ở lại Phiêu Miểu Sơn mười năm tám năm không?”
-“Cái này…”
-“Mười năm… tám năm?”
-Sở Ly khẽ cắn môi.
-Lâu quá…
-Cố Nguyên Minh biết nàng vốn chẳng phải người ngồi yên được.
-Những bí tịch và võ học ấy, nàng khó mà học nổi.
-Có điều…
-“Vi sư truyền cho con Quy Tức Công, thế nào?”
-“Sư phụ, Quy Tức Công là gì?”
-“Quy Tức Công có thể giúp người luyện bế khí suốt mấy canh giờ. Nếu luyện đến cảnh giới cao thâm, thậm chí có thể bế khí bảy ngày, tạo thành giả tượng tử vong.”
-Sở Ly tròn mắt.
-“Con học cái này để làm gì?”
-“Lúc đánh nhau tiện nằm xuống giả chết sao?”
-Cố Nguyên Minh nghiêm nghị nói:
-“Vạn sự vạn vật tồn tại tất có đạo lý của nó. Nếu vô dụng, sao lại có nhiều người học đến vậy?”
-“Điều tối kỵ nhất của người làm đồ đệ, chính là nghi ngờ sư phụ!”
-“Đồ nhi không dám!”
-Ngoài miệng thì cãi cọ, đùa giỡn là vậy.
-Nhưng trong lòng, Sở Ly luôn vô cùng kính trọng sư phụ và sư môn.
-“Đồ nhi đa tạ sư phụ truyền dạy.”
-Cố Nguyên Minh khoát tay.
-“Quy Tức Công không phải do ta truyền. Đây không phải sở trường của ta, phải mời sư thúc của con đến dạy.”
-“Sư thúc?”
-Nàng vào sư môn đã tám chín năm.
-Sao lại chưa từng biết mình còn có một vị sư thúc?
-“Vân Sơ, mời sư thúc đến.”
-“Vâng, sư phụ.”
-Sở Ly vẫn quỳ dưới đất, tò mò ngoái đầu nhìn.
-Kết quả…
-Nàng nhìn thấy Lục Vân Sơ nâng một con rùa già mai đen pha xanh chậm rãi bước tới.
-Hai mắt nàng mở to.
-Chẳng lẽ…
-Vì là Quy Tức Công…
-Nên để rùa dạy nàng?
-“Sư phụ, người cố ý trêu chọc con sao?”
-Cố Nguyên Minh lập tức sa sầm mặt.
-“Không được ăn nói bậy bạ!”
-“Còn không mau bái kiến Quy sư thúc của con. Nó còn lớn tuổi hơn cả phụ thân con đấy!” Ẩn bớt</p>
+            <p>Chương 177: Sở Ly đơn thuần</p>
+<p>“Sư phụ đã lấy Sinh Tử Cổ ra khỏi cơ thể muội. Nhưng người nói, Sinh Tử Cổ này không giống cổ trùng thông thường của Nam Man, e rằng sẽ để lại một vài tác dụng phụ.”</p>
+<p>Đây là cổ trùng do Vu sư của Ty Cổ Cục luyện chế.</p>
+<p>Ty Cổ Cục chính là nơi quy tụ những cao thủ luyện cổ lợi hại nhất Nam Man quốc.</p>
+<p>Sở Ly đưa tay sờ cổ, thử cử động thân thể:</p>
+<p>“Tác dụng phụ gì?”</p>
+<p>“Muội từng là người đã ngừng tim, huyết dịch ngưng trệ. Một khi não người ngừng được cung cấp huyết dịch, tức là đã chết. Dù Sinh Tử Cổ đã lưu thông huyết mạch trong cơ thể muội, giúp muội hồi sinh, nhưng trong não vẫn thiếu mất một phần.”</p>
+<p>“Sau này, ký ức của muội có thể sẽ xuất hiện một số rối loạn. Đó là tác dụng phụ, nhưng sẽ không nguy hiểm đến tính mạng.”</p>
+<p>Sở Ly nghe vậy mới thở phào nhẹ nhõm.</p>
+<p>Không phải vấn đề gì quá lớn.</p>
+<p>“Đưa muội đi bái kiến sư phụ.”</p>
+<p>“Đi theo ta.”</p>
+<p>Đỉnh Phiêu Miểu Sơn có một tảng đá lớn.</p>
+<p>Cố Nguyên Minh thích nhất là ngồi xếp bằng trên đó, ban ngày phơi nắng, ban đêm ngắm trăng, hấp thụ âm dương chi khí của trời đất.</p>
+<p>Lúc này, lão nhân tiên phong đạo cốt khép hờ hai mắt, ngồi xếp bằng, nhưng dung mạo lại chỉ như người ngoài bốn mươi tuổi, trầm ổn mà cương nghị.</p>
+<p>“Sư phụ.”</p>
+<p>Sở Ly bước tới, quỳ xuống hành lễ.</p>
+<p>“Đồ nhi bái kiến sư phụ.”</p>
+<p>Cố Nguyên Minh chậm rãi mở mắt, hiền từ nhìn tiểu đồ đệ ngoan ngoãn đáng yêu, đưa tay vẫy nàng.</p>
+<p>“Thân thể còn chưa khỏe, mau đứng dậy đi.”</p>
+<p>Sở Ly đứng lên, lại hành lễ với Đại sư huynh và Tam sư huynh đứng bên cạnh.</p>
+<p>Đệ tử thân truyền của Cố Nguyên Minh chỉ có bốn người bọn họ.</p>
+<p>Ông cũng có đệ tử ngoại môn, nhưng chỉ thu học phí rồi chỉ điểm đôi điều, không thân thiết như đệ tử thân truyền.</p>
+<p>Đại sư huynh vốn là người lạnh lùng, hiếm khi lộ vẻ ôn hòa với nàng.</p>
+<p>“Tiểu sư đệ đã lâu không về sư môn.”</p>
+<p>Tam sư huynh thì mang vẻ tà mị, cười với nàng còn duyên dáng hơn cả nữ nhân.</p>
+<p>“Tiểu sư đệ, bọn ta cứu đệ một mạng, còn cả số thuốc đệ đã uống nữa, nhớ đừng quên trả bạc.”</p>
+<p>“???”</p>
+<p>Bầu không khí vốn đang tràn đầy tình nghĩa đồng môn…</p>
+<p>Chỉ một câu nói đã khiến Sở Ly tỉnh mộng.</p>
+<p>Tình nghĩa?</p>
+<p>Chắc nàng chết một lần nên đầu óc có vấn đề, mới cho rằng sư môn có tình người.</p>
+<p>Phiêu Miểu Môn này rõ ràng là cái ổ chui vào mắt tiền!</p>
+<p>Ba vị sư huynh đều là cô nhi được sư phụ nhặt về.</p>
+<p>Đại sư huynh tu luyện công pháp cần bồi bổ rất nhiều.</p>
+<p>Ai trả tiền?</p>
+<p>Nàng trả.</p>
+<p>Nhị sư huynh từ nhỏ thân thể yếu ớt, quanh năm uống thuốc.</p>
+<p>Ai bốc thuốc?</p>
+<p>Nàng bốc.</p>
+<p>Tam sư huynh thì càng mê tiền hơn, tay nghề nấu nướng cực cao, thích xuống bếp.</p>
+<p>Ai mua thức ăn?</p>
+<p>Nàng mua.</p>
+<p>Sở Ly lập tức giậm chân.</p>
+<p>“Mọi người chỉ nhắm vào tiền của ta thôi!”</p>
+<p>Tam sư huynh lập tức nghiêm mặt, xua tay.</p>
+<p>“Tiểu sư đệ nói vậy là không đúng. Đệ là người giàu nhất sư môn, chia bớt tài sản cho các sư huynh một chút, chẳng phải cũng tương đương với việc các sư huynh đều giàu sao?”</p>
+<p>“Chia kiểu gì?”</p>
+<p>Sở Ly tức đến nghẹn lời.</p>
+<p>“Huynh bỏ ra một đồng tiền, ta bỏ ra mười thỏi vàng nhỏ, chia đều một chút, vậy là mỗi người đều có năm thỏi vàng nhỏ à?”</p>
+<p>Quá đáng!</p>
+<p>Đại sư huynh sờ sống mũi.</p>
+<p>“Cũng… không phải là không được.”</p>
+<p>“?”</p>
+<p>Sở Ly tức đến suýt khóc.</p>
+<p>“Sư phụ! Người thiên vị!”</p>
+<p>Nàng nhớ ra rồi.</p>
+<p>Hoàn toàn nhớ ra rồi.</p>
+<p>Năm đó, đại cữu cữu dẫn nàng tới bái sư. Ban đầu sư phụ vốn không định nhận nàng.</p>
+<p>Là vì đại cữu cữu lén nói với sư phụ:</p>
+<p>“Không nhận sao?”</p>
+<p>“Đứa cháu ngoại này của ta là Cửu hoàng tử đương triều, rất có tiền.”</p>
+<p>Thế là…</p>
+<p>Nàng trở thành tiểu đệ tử thân truyền của Cố Nguyên Minh, phía trên còn có ba vị sư huynh.</p>
+<p>Cố Nguyên Minh trợn râu.</p>
+<p>“Đồ nhi, chớ ăn nói hồ đồ. Vi sư thiên vị chỗ nào?”</p>
+<p>“Người dạy các sư huynh tuyệt học và công pháp, lại chẳng dạy ta cái gì, còn hùa nhau lừa tiền ta. Bọn họ võ công cao cường, còn ta đến một tên thị vệ cũng đánh không lại!”</p>
+<p>Là nàng quá đơn thuần.</p>
+<p>Mỗi lần luyện tập, ba vị sư huynh đều cố ý nhường nàng.</p>
+<p>Nàng vẫn luôn tin rằng mình võ công cái thế, thiên hạ vô song.</p>
+<p>Nếu lần này không đi Nam Man, trải qua biết bao hiểm nguy, e rằng đến giờ nàng vẫn còn bị che mắt.</p>
+<p>Cố Nguyên Minh đứng dậy, bước tới.</p>
+<p>“Ta hỏi con, lúc ta bảo con đứng tấn, lần nào con chẳng mới đứng được nửa buổi đã chạy xuống suối bắt cá?”</p>
+<p>Sở Ly nghẹn lời.</p>
+<p>“Cái đó… Người bắt con đứng liền bốn canh giờ, không được nhúc nhích, con…”</p>
+<p>“Ta bảo con ngồi tĩnh tọa tu luyện tâm pháp, lần nào chẳng mới ngồi chưa nóng mông đã chạy đi moi tổ chim?”</p>
+<p>“Con… vừa ngồi là năm sáu canh giờ, chân con tê mất.”</p>
+<p>“Ta bảo con luyện kiếm pháp, con lại chạy vào rừng đuổi thỏ.”</p>
+<p>Cố Nguyên Minh chỉ tiếc rèn sắt không thành thép.</p>
+<p>“Từ nhỏ con đã là đứa không chịu ngồi yên. Chưa đến hai khắc đã mất kiên nhẫn. Ta thấy con không thể tĩnh tâm luyện võ, chỉ thích bắt gà đuổi vịt, nên mới truyền cho con tiễn pháp Bách Bộ Xuyên Dương.”</p>
+<p>Nói đi cũng phải nói lại.</p>
+<p>Tiễn pháp của Sở Ly quả thực đạt tới cảnh giới Bách Bộ Xuyên Dương.</p>
+<p>Mùa thu năm ngoái trong kỳ Thu Liệp, chính nàng đã bắn chết con gấu nâu phát cuồng làm hại người.</p>
+<p>“Tiểu Cửu, võ học trong thiên hạ nhiều vô kể, chẳng khác nào cá vượt sông, không ai có thể tinh thông mọi thứ.”</p>
+<p>“Con xem Đại sư huynh của con, nội lực hùng hậu nhưng rất dễ sinh tâm ma.”</p>
+<p>“Nhị sư huynh kiếm pháp tuyệt luân, nhưng từ nhỏ thân thể suy nhược, không thích hợp giao chiến lâu dài.”</p>
+<p>“Tam sư huynh khinh công đạp tuyết vô ngân, nhưng võ công chính diện lại kém hơn đôi chút.”</p>
+<p>“Con ham chơi, có thể luyện thành Bách Bộ Xuyên Dương, đã là tuyệt kỹ đủ để phòng thân rồi.”</p>
+<p>Sở Ly gãi đầu.</p>
+<p>Ngẫm lại…</p>
+<p>Hình như đúng là như vậy.</p>
+<p>Nói vậy…</p>
+<p>Là nàng đã hiểu lầm sư phụ sao?</p>
+<p>“Nhưng sư phụ, tiễn pháp của con tuy chuẩn xác, chỉ thích hợp đánh xa. Nếu cận chiến, con căn bản đánh không lại người khác.”</p>
+<p>“Người dạy thêm cho con vài tuyệt học để phòng thân nữa đi!”</p>
+<p>“Lần này con nhất định sẽ kiên trì, nhẫn nại học hành.”</p>
+<p>Cố Nguyên Minh nhìn đôi mắt sáng ngời hiếu học của nàng.</p>
+<p>“Bất cứ tuyệt học nào cũng cần thời gian mài giũa.”</p>
+<p>“Con có thể tĩnh tâm ở lại Phiêu Miểu Sơn mười năm tám năm không?”</p>
+<p>“Cái này…”</p>
+<p>“Mười năm… tám năm?”</p>
+<p>Sở Ly khẽ cắn môi.</p>
+<p>Lâu quá…</p>
+<p>Cố Nguyên Minh biết nàng vốn chẳng phải người ngồi yên được.</p>
+<p>Những bí tịch và võ học ấy, nàng khó mà học nổi.</p>
+<p>Có điều…</p>
+<p>“Vi sư truyền cho con Quy Tức Công, thế nào?”</p>
+<p>“Sư phụ, Quy Tức Công là gì?”</p>
+<p>“Quy Tức Công có thể giúp người luyện bế khí suốt mấy canh giờ. Nếu luyện đến cảnh giới cao thâm, thậm chí có thể bế khí bảy ngày, tạo thành giả tượng tử vong.”</p>
+<p>Sở Ly tròn mắt.</p>
+<p>“Con học cái này để làm gì?”</p>
+<p>“Lúc đánh nhau tiện nằm xuống giả chết sao?”</p>
+<p>Cố Nguyên Minh nghiêm nghị nói:</p>
+<p>“Vạn sự vạn vật tồn tại tất có đạo lý của nó. Nếu vô dụng, sao lại có nhiều người học đến vậy?”</p>
+<p>“Điều tối kỵ nhất của người làm đồ đệ, chính là nghi ngờ sư phụ!”</p>
+<p>“Đồ nhi không dám!”</p>
+<p>Ngoài miệng thì cãi cọ, đùa giỡn là vậy.</p>
+<p>Nhưng trong lòng, Sở Ly luôn vô cùng kính trọng sư phụ và sư môn.</p>
+<p>“Đồ nhi đa tạ sư phụ truyền dạy.”</p>
+<p>Cố Nguyên Minh khoát tay.</p>
+<p>“Quy Tức Công không phải do ta truyền. Đây không phải sở trường của ta, phải mời sư thúc của con đến dạy.”</p>
+<p>“Sư thúc?”</p>
+<p>Nàng vào sư môn đã tám chín năm.</p>
+<p>Sao lại chưa từng biết mình còn có một vị sư thúc?</p>
+<p>“Vân Sơ, mời sư thúc đến.”</p>
+<p>“Vâng, sư phụ.”</p>
+<p>Sở Ly vẫn quỳ dưới đất, tò mò ngoái đầu nhìn.</p>
+<p>Kết quả…</p>
+<p>Nàng nhìn thấy Lục Vân Sơ nâng một con rùa già mai đen pha xanh chậm rãi bước tới.</p>
+<p>Hai mắt nàng mở to.</p>
+<p>Chẳng lẽ…</p>
+<p>Vì là Quy Tức Công…</p>
+<p>Nên để rùa dạy nàng?</p>
+<p>“Sư phụ, người cố ý trêu chọc con sao?”</p>
+<p>Cố Nguyên Minh lập tức sa sầm mặt.</p>
+<p>“Không được ăn nói bậy bạ!”</p>
+<p>“Còn không mau bái kiến Quy sư thúc của con. Nó còn lớn tuổi hơn cả phụ thân con đấy!” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_176.html" class="btn">‹ Trước</a>
             <a href="chuong_178.html" class="btn">Sau ›</a>
         </div>
@@ -265,15 +273,11 @@ Cố Nguyên Minh lập tức sa sầm mặt.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -285,11 +289,11 @@ Cố Nguyên Minh lập tức sa sầm mặt.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 117</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,185 +62,194 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 117</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_116.html" class="btn">‹ Trước</a>
             <a href="chuong_118.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 117: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 117: Lập Cửu hoàng tử làm Trữ quân
-Bên cạnh, một vị đại thần khác lên tiếng:
-“Chỉ cần nhìn vào chuyện tế lễ Trùng Dương là đủ thấy Hoàng thượng đã sớm bất mãn với Tam hoàng tử. Hơn nữa, hai tháng nay triệu Ngũ hoàng tử hồi cung, lại đặc biệt trọng dụng, không khó để nhận ra Ngũ hoàng tử mới là người được Hoàng thượng vừa ý nhất!”
-Lập tức, một đám đại thần tranh cãi kịch liệt.
-Bọn họ đều ủng hộ chủ tử của mình, thậm chí chẳng còn để tâm đến Sở Hoàng vẫn đang nằm liệt trong tẩm điện.
-Quyền thế tranh đoạt, ai nấy đều đỏ mắt.
-Chư vị hoàng tử nhìn nhau, âm thầm giao phong, đều đã rục rịch muốn hành động.
-Sở Ly bình tĩnh đứng tại chỗ, nhìn khung cảnh hỗn loạn trước mắt, đột nhiên cảm thấy vô cùng buồn cười.
-Trong hoàng thất, quả nhiên thứ đáng cười nhất chính là thân tình.
-Hoàng thượng chỉ mới bị liệt, còn chưa băng hà, những người này đã vội vàng lộ ra bộ mặt chân thật nhất của mình, tranh luận không ngừng.
-Không biết nếu Hoàng thượng nghe thấy, trong lòng sẽ có cảm tưởng gì?
-Năm vị Các lão đồng thời quát lớn, ngăn cản cảnh tượng hỗn loạn.
-Cãi cái gì?
-Còn ra thể thống gì nữa?
-Trương Các lão chống gậy, tấm lưng còng xuống như lưng lạc đà, nhưng từng lời nói ra đều mạnh mẽ vang dội:
-“Hoàng thượng vẫn còn tại thế, chư vị hoàng tử cùng các vị đại thần đã tranh chấp như vậy, chẳng lẽ không sợ làm lạnh lòng Hoàng thượng sao? Có điều, lão thần cũng hiểu nỗi sốt ruột của chư vị, nên không thể không nói một câu. Hoàng thượng là trong lúc đang soạn thảo thánh chỉ thì đột nhiên hôn mê, dẫn đến bị liệt.”
-“Trên đạo thánh chỉ ấy đã ghi rõ… lập… Cửu hoàng tử làm Trữ quân!”
-“Cái gì?”
-“Cửu hoàng tử?”
-Trong khoảnh khắc, vô số ánh mắt đồng loạt hướng về phía Sở Ly.
-Giữa biển người đông đúc, nàng vốn là người ít gây chú ý nhất, lúc này lại như hạc giữa bầy gà, lập tức trở thành tâm điểm.
-Đối với việc này, nàng hơi bất ngờ, nhưng trong lòng lại vô cùng phức tạp.
-Phụ hoàng quả nhiên nói được làm được.
-Nhưng nàng…
-Lại tự tay hạ thứ thuốc khiến ông bị liệt vào chén trà của ông.
-“Cửu hoàng tử, xin tiến lên tiếp chỉ.”
-Trương Các lão lấy ra đạo thánh chỉ còn chưa hoàn chỉnh.
-Trước ánh mắt của mọi người, Sở Ly quỳ một gối xuống đất.
-Nội dung thánh chỉ vang vọng bên tai, nhưng tai nàng chỉ còn tiếng ù ù.
-Giống như linh hồn đã tách khỏi thân xác, khiến nàng nhìn rõ từng người có mặt.
-Sắc mặt của họ.
-Ánh mắt của họ.
-Kinh ngạc.
-Sửng sốt.
-Phẫn nộ.
-Không cam lòng…
-Mỗi người đều mang theo tâm tư riêng, nhưng thánh chỉ đã ban, bọn họ chỉ có thể giấu kín mọi cảm xúc trong lòng, miễn cưỡng tiếp nhận hiện thực.
-Sở Ly dùng hai tay nhận lấy thánh chỉ.
-Đối với nàng, đây chẳng khác nào một củ khoai nóng bỏng tay.
-“Chúc mừng Cửu hoàng tử!”
-Năm vị Các lão đều từng phụng sự Tiên hoàng và cả tiền triều, cả đời trung quân ái quốc.
-Bất kể quân chủ là ai, trong lòng họ chỉ có một tín niệm:
-Quốc gia xã tắc và lê dân bách tính là trên hết.
-Chỉ cần bách tính được an cư lạc nghiệp, giang sơn vững bền, bất kể ai làm quân chủ, bọn họ đều sẽ dốc hết lòng phụ tá.
-Ôn phi vẫn chưa hoàn hồn.
-Trong chín vị hoàng tử, Ly nhi rõ ràng là người ít có khả năng kế vị nhất, sao Hoàng thượng lại hạ loại thánh chỉ này?
-Hân phi che chặt miệng, cố gắng không để mình bật khóc.
-“Nhũ mẫu!”
-Thôi cô cô đỡ lấy bà, vẻ mặt cũng đầy đau khổ:
-“Nương nương, người đừng khóc nữa… Lão nô cũng muốn khóc đây.”
-Hân phi và Ôn phi đấu đá hơn mười năm, hai người như nước với lửa.
-Giờ Cửu hoàng tử nắm giữ đại quyền…
-Bà bây giờ bỏ chạy còn kịp không?
-“Cửu đệ!”
-Sở Ngạo Thiên là người đầu tiên lao tới, ôm chầm lấy Sở Ly, kích động đến mức nước mắt nước mũi tèm lem.
-“Cửu đệ! Đệ tiền đồ rồi!”
-“Đệ là tân đế, cầu xin đệ phong cho ta một tước Tiêu Dao Vương, ban cho ta một tòa đại trạch năm tiến năm xuất, mỗi năm thêm một vạn lượng bổng lộc, rồi tiện thể ban luôn cả Tây phố cho ta!”
-“Ta cầu xin đệ!”
-Ước mơ của hắn cuối cùng cũng sắp thành hiện thực.
-Sở Ly: “…”
-Khoan hãy cầu.
-Long ỷ này đâu phải dễ ngồi.
-Nàng là nữ nhi.
-Sở Uyên Trì thần sắc phức tạp, bàn tay siết chặt, mấy chữ gần như nghiến qua kẽ răng:
-“Chúc mừng Cửu đệ.”
-Mọi người lúc này mới hoàn hồn.
-Dù trong lòng nghĩ gì, tất cả vẫn đồng loạt chắp tay:
-“Chúc mừng Cửu hoàng tử!”
-“Chúc mừng!”
-Sở Ly nhìn mọi người, nói:
-“Chỉ là phụ hoàng ưu ái mà thôi.”
-“Có điều, long thể của phụ hoàng trước nay vẫn khỏe mạnh, sao đột nhiên lại bị liệt? Có phải còn có ẩn tình gì khác chăng?”
-Sở Uyên Trì giả vờ thuận miệng nhắc một câu.
-Sở Ly đáp:
-“Chắc phải kể từ hai tháng trước.”
-“Khi ấy phụ hoàng thổ huyết hôn mê, long thể liền ngày càng suy yếu…”
-“Ồ…”
-“Hai tháng trước vừa đúng lúc Ngũ hoàng huynh hồi cung, sau đó phụ hoàng bắt đầu lâm bệnh.”
-“Hóa ra Đại hoàng huynh đang nghi ngờ Ngũ hoàng huynh.”
-Sở Dạ Ly ngẩng đầu nhìn nàng.
-Hiện giờ trong tay hắn đã lôi kéo được không ít quyền thần, còn Đại hoàng tử vì những lời đồn trước đó mà thế lực suy giảm, thực lực hai người có thể nói là ngang tài ngang sức.
-Sở Uyên Trì không muốn lúc này tiêu hao lực lượng để đối đầu với Sở Dạ Ly.
-Bọn họ đấu nhau, chỉ càng khiến Sở Ly ngồi thu ngư ông đắc lợi.
-Hắn miễn cưỡng cười:
-“Ta chỉ lo lắng cho long thể của phụ hoàng nên thuận miệng đoán vậy thôi, tuyệt đối không có ý nghi ngờ ai cả. Cửu đệ nghĩ nhiều rồi.”
-Sở Ly gật đầu như hiểu như không.
-“Ồ, ra là vậy.”
-“Long thể của phụ hoàng cần tĩnh dưỡng, e rằng còn phải rất lâu. Ta muốn ở bên phụ hoàng tận hiếu, không có tâm trí nghĩ chuyện khác. Việc đăng cơ xin giao cho Lễ bộ Thượng thư lo liệu, còn triều chính làm phiền năm vị Các lão hao tâm xử lý. Từ nay mọi tấu chương đều đưa đến Dưỡng Tâm điện.”
-Chỉ vài câu ngắn ngủi, nàng đã sắp xếp xong mọi việc.
-Quần thần đồng thanh đáp:
-“Thần tuân chỉ!”
-“Tất cả lui xuống đi. Hôm nay và ngày mai do ta đích thân hầu hạ phụ hoàng. Từ ngày kia trở đi, chư vị hoàng tử, Hoàng hậu cùng các phi tần từ phi vị trở lên sẽ thay phiên nhau thị tật.”
-“Tuân chỉ!”
-Mọi người lần lượt lui ra.
-Sở Uyên Trì trước khi đi còn nhìn Sở Ly thật sâu, dù trong lòng không cam, cũng chỉ đành tạm thời rời đi.
-Thần sắc Sở Dạ Ly vô cùng phức tạp.
-Sở Ly nhìn về phía hắn.
-Khoảnh khắc ánh mắt hai người giao nhau, câu hỏi tối qua lại hiện lên trong đầu nàng:
-Nếu phụ hoàng lập ta làm Trữ quân, huynh sẽ giết ta sao?
-Sở Ly không muốn nghe câu trả lời của hắn.
-“Người đâu, đưa Ngũ hoàng huynh trở về.”
-Mọi người lần lượt rời khỏi, Dưỡng Tâm điện cuối cùng cũng yên tĩnh trở lại, không khí như dễ thở hơn rất nhiều.
-Chỉ còn lại Thái y viện và cung nhân ở lại hầu hạ.
-Ôn phi bước nhanh tới:
-“Ly nhi, rốt cuộc đã xảy ra chuyện gì?”
-Chuyện này quá phức tạp, không thể nói rõ trong vài câu.
-Sở Ly cũng không định nói cho bà biết.
-“Con cũng không biết đã xảy ra chuyện gì. Phụ hoàng hạ đạo thánh chỉ ấy, có lẽ thật sự rất thương con.”
-“Mẫu phi, tiếp theo e rằng sẽ rất hỗn loạn. Xin truyền lời của con, gọi ba vị cữu cữu trở về.”
-Giờ đây, cuối cùng nàng cũng có đủ năng lực để bảo vệ người nhà.
-Nhưng…
-Thời gian của nàng không còn nhiều.
-Ôn phi lo lắng:
-“Ly nhi, lập con làm Trữ quân cũng đồng nghĩa đẩy con lên đầu sóng ngọn gió. Những hoàng tử khác đều hận không thể xé xác con. Một khi bọn họ nổi loạn, con căn bản không thể khống chế được.”
-Cho nên, thời gian của nàng thật sự rất gấp.
-Chỉ dựa vào một đạo thánh chỉ, nàng chẳng khác nào một vị chủ soái không binh không tướng, hoàn toàn không đủ sức ngồi vững vị trí ấy.
-Nàng phải nhanh chóng hoàn thành những việc mình muốn làm.
-“Xin mẫu phi hãy tin con, con tự có chừng mực.”
-Ôn phi vẫn không yên lòng, nhưng rốt cuộc bà chỉ là một phi tần hậu cung. Điều duy nhất có thể làm chính là điều động sức mạnh của mẫu tộc, dốc toàn lực phò tá.
-“Được, vậy mẫu phi sẽ lập tức viết thư, gọi ba vị cữu cữu của con trở về giúp con.” Ẩn bớt</p>
+            <p>Chương 117: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 117: Lập Cửu hoàng tử làm Trữ quân</p>
+<p>Bên cạnh, một vị đại thần khác lên tiếng:</p>
+<p>“Chỉ cần nhìn vào chuyện tế lễ Trùng Dương là đủ thấy Hoàng thượng đã sớm bất mãn với Tam hoàng tử. Hơn nữa, hai tháng nay triệu Ngũ hoàng tử hồi cung, lại đặc biệt trọng dụng, không khó để nhận ra Ngũ hoàng tử mới là người được Hoàng thượng vừa ý nhất!”</p>
+<p>Lập tức, một đám đại thần tranh cãi kịch liệt.</p>
+<p>Bọn họ đều ủng hộ chủ tử của mình, thậm chí chẳng còn để tâm đến Sở Hoàng vẫn đang nằm liệt trong tẩm điện.</p>
+<p>Quyền thế tranh đoạt, ai nấy đều đỏ mắt.</p>
+<p>Chư vị hoàng tử nhìn nhau, âm thầm giao phong, đều đã rục rịch muốn hành động.</p>
+<p>Sở Ly bình tĩnh đứng tại chỗ, nhìn khung cảnh hỗn loạn trước mắt, đột nhiên cảm thấy vô cùng buồn cười.</p>
+<p>Trong hoàng thất, quả nhiên thứ đáng cười nhất chính là thân tình.</p>
+<p>Hoàng thượng chỉ mới bị liệt, còn chưa băng hà, những người này đã vội vàng lộ ra bộ mặt chân thật nhất của mình, tranh luận không ngừng.</p>
+<p>Không biết nếu Hoàng thượng nghe thấy, trong lòng sẽ có cảm tưởng gì?</p>
+<p>Năm vị Các lão đồng thời quát lớn, ngăn cản cảnh tượng hỗn loạn.</p>
+<p>Cãi cái gì?</p>
+<p>Còn ra thể thống gì nữa?</p>
+<p>Trương Các lão chống gậy, tấm lưng còng xuống như lưng lạc đà, nhưng từng lời nói ra đều mạnh mẽ vang dội:</p>
+<p>“Hoàng thượng vẫn còn tại thế, chư vị hoàng tử cùng các vị đại thần đã tranh chấp như vậy, chẳng lẽ không sợ làm lạnh lòng Hoàng thượng sao? Có điều, lão thần cũng hiểu nỗi sốt ruột của chư vị, nên không thể không nói một câu. Hoàng thượng là trong lúc đang soạn thảo thánh chỉ thì đột nhiên hôn mê, dẫn đến bị liệt.”</p>
+<p>“Trên đạo thánh chỉ ấy đã ghi rõ… lập… Cửu hoàng tử làm Trữ quân!”</p>
+<p>“Cái gì?”</p>
+<p>“Cửu hoàng tử?”</p>
+<p>Trong khoảnh khắc, vô số ánh mắt đồng loạt hướng về phía Sở Ly.</p>
+<p>Giữa biển người đông đúc, nàng vốn là người ít gây chú ý nhất, lúc này lại như hạc giữa bầy gà, lập tức trở thành tâm điểm.</p>
+<p>Đối với việc này, nàng hơi bất ngờ, nhưng trong lòng lại vô cùng phức tạp.</p>
+<p>Phụ hoàng quả nhiên nói được làm được.</p>
+<p>Nhưng nàng…</p>
+<p>Lại tự tay hạ thứ thuốc khiến ông bị liệt vào chén trà của ông.</p>
+<p>“Cửu hoàng tử, xin tiến lên tiếp chỉ.”</p>
+<p>Trương Các lão lấy ra đạo thánh chỉ còn chưa hoàn chỉnh.</p>
+<p>Trước ánh mắt của mọi người, Sở Ly quỳ một gối xuống đất.</p>
+<p>Nội dung thánh chỉ vang vọng bên tai, nhưng tai nàng chỉ còn tiếng ù ù.</p>
+<p>Giống như linh hồn đã tách khỏi thân xác, khiến nàng nhìn rõ từng người có mặt.</p>
+<p>Sắc mặt của họ.</p>
+<p>Ánh mắt của họ.</p>
+<p>Kinh ngạc.</p>
+<p>Sửng sốt.</p>
+<p>Phẫn nộ.</p>
+<p>Không cam lòng…</p>
+<p>Mỗi người đều mang theo tâm tư riêng, nhưng thánh chỉ đã ban, bọn họ chỉ có thể giấu kín mọi cảm xúc trong lòng, miễn cưỡng tiếp nhận hiện thực.</p>
+<p>Sở Ly dùng hai tay nhận lấy thánh chỉ.</p>
+<p>Đối với nàng, đây chẳng khác nào một củ khoai nóng bỏng tay.</p>
+<p>“Chúc mừng Cửu hoàng tử!”</p>
+<p>Năm vị Các lão đều từng phụng sự Tiên hoàng và cả tiền triều, cả đời trung quân ái quốc.</p>
+<p>Bất kể quân chủ là ai, trong lòng họ chỉ có một tín niệm:</p>
+<p>Quốc gia xã tắc và lê dân bách tính là trên hết.</p>
+<p>Chỉ cần bách tính được an cư lạc nghiệp, giang sơn vững bền, bất kể ai làm quân chủ, bọn họ đều sẽ dốc hết lòng phụ tá.</p>
+<p>Ôn phi vẫn chưa hoàn hồn.</p>
+<p>Trong chín vị hoàng tử, Ly nhi rõ ràng là người ít có khả năng kế vị nhất, sao Hoàng thượng lại hạ loại thánh chỉ này?</p>
+<p>Hân phi che chặt miệng, cố gắng không để mình bật khóc.</p>
+<p>“Nhũ mẫu!”</p>
+<p>Thôi cô cô đỡ lấy bà, vẻ mặt cũng đầy đau khổ:</p>
+<p>“Nương nương, người đừng khóc nữa… Lão nô cũng muốn khóc đây.”</p>
+<p>Hân phi và Ôn phi đấu đá hơn mười năm, hai người như nước với lửa.</p>
+<p>Giờ Cửu hoàng tử nắm giữ đại quyền…</p>
+<p>Bà bây giờ bỏ chạy còn kịp không?</p>
+<p>“Cửu đệ!”</p>
+<p>Sở Ngạo Thiên là người đầu tiên lao tới, ôm chầm lấy Sở Ly, kích động đến mức nước mắt nước mũi tèm lem.</p>
+<p>“Cửu đệ! Đệ tiền đồ rồi!”</p>
+<p>“Đệ là tân đế, cầu xin đệ phong cho ta một tước Tiêu Dao Vương, ban cho ta một tòa đại trạch năm tiến năm xuất, mỗi năm thêm một vạn lượng bổng lộc, rồi tiện thể ban luôn cả Tây phố cho ta!”</p>
+<p>“Ta cầu xin đệ!”</p>
+<p>Ước mơ của hắn cuối cùng cũng sắp thành hiện thực.</p>
+<p>Sở Ly: “…”</p>
+<p>Khoan hãy cầu.</p>
+<p>Long ỷ này đâu phải dễ ngồi.</p>
+<p>Nàng là nữ nhi.</p>
+<p>Sở Uyên Trì thần sắc phức tạp, bàn tay siết chặt, mấy chữ gần như nghiến qua kẽ răng:</p>
+<p>“Chúc mừng Cửu đệ.”</p>
+<p>Mọi người lúc này mới hoàn hồn.</p>
+<p>Dù trong lòng nghĩ gì, tất cả vẫn đồng loạt chắp tay:</p>
+<p>“Chúc mừng Cửu hoàng tử!”</p>
+<p>“Chúc mừng!”</p>
+<p>Sở Ly nhìn mọi người, nói:</p>
+<p>“Chỉ là phụ hoàng ưu ái mà thôi.”</p>
+<p>“Có điều, long thể của phụ hoàng trước nay vẫn khỏe mạnh, sao đột nhiên lại bị liệt? Có phải còn có ẩn tình gì khác chăng?”</p>
+<p>Sở Uyên Trì giả vờ thuận miệng nhắc một câu.</p>
+<p>Sở Ly đáp:</p>
+<p>“Chắc phải kể từ hai tháng trước.”</p>
+<p>“Khi ấy phụ hoàng thổ huyết hôn mê, long thể liền ngày càng suy yếu…”</p>
+<p>“Ồ…”</p>
+<p>“Hai tháng trước vừa đúng lúc Ngũ hoàng huynh hồi cung, sau đó phụ hoàng bắt đầu lâm bệnh.”</p>
+<p>“Hóa ra Đại hoàng huynh đang nghi ngờ Ngũ hoàng huynh.”</p>
+<p>Sở Dạ Ly ngẩng đầu nhìn nàng.</p>
+<p>Hiện giờ trong tay hắn đã lôi kéo được không ít quyền thần, còn Đại hoàng tử vì những lời đồn trước đó mà thế lực suy giảm, thực lực hai người có thể nói là ngang tài ngang sức.</p>
+<p>Sở Uyên Trì không muốn lúc này tiêu hao lực lượng để đối đầu với Sở Dạ Ly.</p>
+<p>Bọn họ đấu nhau, chỉ càng khiến Sở Ly ngồi thu ngư ông đắc lợi.</p>
+<p>Hắn miễn cưỡng cười:</p>
+<p>“Ta chỉ lo lắng cho long thể của phụ hoàng nên thuận miệng đoán vậy thôi, tuyệt đối không có ý nghi ngờ ai cả. Cửu đệ nghĩ nhiều rồi.”</p>
+<p>Sở Ly gật đầu như hiểu như không.</p>
+<p>“Ồ, ra là vậy.”</p>
+<p>“Long thể của phụ hoàng cần tĩnh dưỡng, e rằng còn phải rất lâu. Ta muốn ở bên phụ hoàng tận hiếu, không có tâm trí nghĩ chuyện khác. Việc đăng cơ xin giao cho Lễ bộ Thượng thư lo liệu, còn triều chính làm phiền năm vị Các lão hao tâm xử lý. Từ nay mọi tấu chương đều đưa đến Dưỡng Tâm điện.”</p>
+<p>Chỉ vài câu ngắn ngủi, nàng đã sắp xếp xong mọi việc.</p>
+<p>Quần thần đồng thanh đáp:</p>
+<p>“Thần tuân chỉ!”</p>
+<p>“Tất cả lui xuống đi. Hôm nay và ngày mai do ta đích thân hầu hạ phụ hoàng. Từ ngày kia trở đi, chư vị hoàng tử, Hoàng hậu cùng các phi tần từ phi vị trở lên sẽ thay phiên nhau thị tật.”</p>
+<p>“Tuân chỉ!”</p>
+<p>Mọi người lần lượt lui ra.</p>
+<p>Sở Uyên Trì trước khi đi còn nhìn Sở Ly thật sâu, dù trong lòng không cam, cũng chỉ đành tạm thời rời đi.</p>
+<p>Thần sắc Sở Dạ Ly vô cùng phức tạp.</p>
+<p>Sở Ly nhìn về phía hắn.</p>
+<p>Khoảnh khắc ánh mắt hai người giao nhau, câu hỏi tối qua lại hiện lên trong đầu nàng:</p>
+<p>Nếu phụ hoàng lập ta làm Trữ quân, huynh sẽ giết ta sao?</p>
+<p>Sở Ly không muốn nghe câu trả lời của hắn.</p>
+<p>“Người đâu, đưa Ngũ hoàng huynh trở về.”</p>
+<p>Mọi người lần lượt rời khỏi, Dưỡng Tâm điện cuối cùng cũng yên tĩnh trở lại, không khí như dễ thở hơn rất nhiều.</p>
+<p>Chỉ còn lại Thái y viện và cung nhân ở lại hầu hạ.</p>
+<p>Ôn phi bước nhanh tới:</p>
+<p>“Ly nhi, rốt cuộc đã xảy ra chuyện gì?”</p>
+<p>Chuyện này quá phức tạp, không thể nói rõ trong vài câu.</p>
+<p>Sở Ly cũng không định nói cho bà biết.</p>
+<p>“Con cũng không biết đã xảy ra chuyện gì. Phụ hoàng hạ đạo thánh chỉ ấy, có lẽ thật sự rất thương con.”</p>
+<p>“Mẫu phi, tiếp theo e rằng sẽ rất hỗn loạn. Xin truyền lời của con, gọi ba vị cữu cữu trở về.”</p>
+<p>Giờ đây, cuối cùng nàng cũng có đủ năng lực để bảo vệ người nhà.</p>
+<p>Nhưng…</p>
+<p>Thời gian của nàng không còn nhiều.</p>
+<p>Ôn phi lo lắng:</p>
+<p>“Ly nhi, lập con làm Trữ quân cũng đồng nghĩa đẩy con lên đầu sóng ngọn gió. Những hoàng tử khác đều hận không thể xé xác con. Một khi bọn họ nổi loạn, con căn bản không thể khống chế được.”</p>
+<p>Cho nên, thời gian của nàng thật sự rất gấp.</p>
+<p>Chỉ dựa vào một đạo thánh chỉ, nàng chẳng khác nào một vị chủ soái không binh không tướng, hoàn toàn không đủ sức ngồi vững vị trí ấy.</p>
+<p>Nàng phải nhanh chóng hoàn thành những việc mình muốn làm.</p>
+<p>“Xin mẫu phi hãy tin con, con tự có chừng mực.”</p>
+<p>Ôn phi vẫn không yên lòng, nhưng rốt cuộc bà chỉ là một phi tần hậu cung. Điều duy nhất có thể làm chính là điều động sức mạnh của mẫu tộc, dốc toàn lực phò tá.</p>
+<p>“Được, vậy mẫu phi sẽ lập tức viết thư, gọi ba vị cữu cữu của con trở về giúp con.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_116.html" class="btn">‹ Trước</a>
             <a href="chuong_118.html" class="btn">Sau ›</a>
         </div>
@@ -249,15 +257,11 @@ Nàng phải nhanh chóng hoàn thành những việc mình muốn làm.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -269,11 +273,11 @@ Nàng phải nhanh chóng hoàn thành những việc mình muốn làm.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

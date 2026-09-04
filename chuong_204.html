@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 204</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,172 +62,181 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 204</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_203.html" class="btn">‹ Trước</a>
             <a href="chuong_205.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 204: Khuê phòng tình thú
-Chỉ là đến thăm nàng thật sao?
-Không còn mục đích nào khác?
-Sở Ly khép nép nắm lấy khung cửa, dáng vẻ rụt rè ấy vẫn chất chứa sự đề phòng cực mạnh, thậm chí còn chẳng dám đến gần hắn.
-Như thể hắn sẽ ăn tươi nuốt sống nàng vậy.
-Sở Đệ Trì ôn hòa đến cực điểm:
-“Khoảng thời gian nàng không có mặt, ta đã chăm sóc Ôn phi rất chu đáo, Nhàn Vương cũng rất nhớ nàng, còn đích thân đi đốt tiền giấy cho nàng nữa.”
-Hắn chậm rãi kể chuyện nhà:
-“Có điều, Ôn phi lúc nào cũng nhắc đến nàng. Ban ngày thì còn đỡ, nhưng cung nữ hầu hạ đến bẩm báo rằng, đêm nào bà ấy cũng lén lau nước mắt, cả đêm đều chẳng ngủ yên.”
-Hốc mắt Sở Ly nóng lên.
-“Mẫu phi…”
-“Ta biết bà ấy có tật đau chân, nên đã bảo Bạch Cẩm Y châm cứu cho bà ấy rồi. Còn vị Bát hoàng huynh của nàng, đúng là một kẻ chuyên gây họa. À phải… Khương Thái phó gần đây ho nhiều, tuổi cũng đã cao, thân thể không còn được như trước, nhưng ông ấy rất nhớ nàng.”
-“Ông ấy còn khen nàng.”
-“Ông ấy nói, phẩm hạnh quý hơn công danh lợi lộc, bảo nàng là một hài tử tốt.”
-Đôi mắt Sở Ly đỏ hoe.
-Khương Thái phó cũng nhớ nàng.
-Thế nhưng nàng lại chẳng phải một học trò ngoan, suốt ngày trốn học, chọc cho Khương Thái phó tức đến mức râu ria dựng cả lên.
-Sở Đệ Trì chậm rãi kể về Đế Đô thành, về nơi nàng lớn lên, về tất cả những gì nàng quen thuộc, rồi nắm tay nàng cùng ngồi xuống.
-Sở Ly đưa tay lau khóe mắt:
-“Hoàng thúc… chẳng lẽ người không có chuyện gì khác muốn hỏi ta sao?”
-“Hỏi chuyện gì?”
-“Chính là…”
-Vì sao nàng chết rồi lại sống lại?
-Vì sao nàng trốn ở Giang Nam mà không nói cho hắn biết?
-Sao hắn không hỏi?
-Hắn không hỏi, ngược lại khiến nàng chẳng biết phải mở lời thế nào.
-“Chính là… nàng …”
-Đúng lúc ấy, Sơ Nhất bước tới:
-“Tiểu thư, bữa sáng đã chuẩn bị xong.”
-Sở Đệ Trì khẽ cười, hàng mày nhu hòa:
-“Ăn cơm trước đã. Mấy ngày tới e rằng còn nhiều việc phải bận. Đợi mọi chuyện xong xuôi, nàng dẫn ta dạo khắp Giang Nam thành một vòng, được chứ?”
-Sở Ly khẽ cắn môi dưới:
-“Hoàng thúc trước đây chưa từng đến sao?”
-“Đều chỉ ghé qua vội vàng để xử lý công vụ, nào có thong thả như nàng mà đi chơi từng nơi.”
-Hắn bước vào đại sảnh, ngồi ở vị trí chủ tọa. Sơ Nhất cùng mọi người lần lượt bưng thức ăn lên, Tiêu Dạ Hành và những người khác cũng nối nhau đi vào.
-“A Ly!”
-Tần Mục Vũ sải bước chạy tới. Vừa định ngồi cạnh nàng thì Tiêu Dạ Hành đã ngồi xuống trước.
-Định ngồi sang phía bên kia, Bạch Cẩm Y lại khẽ đá chiếc ghế, bất động thanh sắc ngăn Tần Mục Vũ lại.
-Sở Đệ Trì cầm đũa, mỉm cười nhã nhặn, thong thả gỡ xương cá.
-A Ly?
-Ha…
-Thật là một cách gọi dễ nghe.
-“A Ly, muội không sao chứ?”
-Dẫu ngồi ở vị trí xa nhất, Tần Mục Vũ vẫn không quên hỏi han Sở Ly.
-Nụ cười trên môi Sở Đệ Trì càng thêm ôn hòa.
-Ngay trước mắt hắn mà còn hạ giọng thì thầm.
-Là coi hắn điếc?
-Hay coi hắn ngốc?
-Sở Ly khẽ cắn đầu đũa.
-Không những không sao, mà còn bình yên đến mức ngoài dự liệu.
-Hoàng thúc căn bản chưa hề động đến nàng một đầu ngón tay, thậm chí còn chẳng nói một lời nặng nhẹ.
-“Nàng rất ổn.”
-Nàng hỏi:
-“Tối qua tình hình thế nào? Hung thủ bắt được chưa?”
-“Bắt được rồi!”
-Tần Mục Tuyết giơ tay.
-“Muội với Lục sư huynh bắt được. Hiện giờ hắn đã bị giam lại.”
-“Hắn có khai gì không?”
-Đứng bên cạnh, Trọng Phong tiến lên nửa bước:
-“Cửu hoàng tử, tối qua chúng thuộc hạ đã thẩm vấn. Phát hiện kẻ đó là ám vệ được huấn luyện chuyên nghiệp, cho dù dùng hình cũng không thể cạy miệng hắn.”
-Liễu mi của Sở Ly khẽ chau lại, liếc hắn một cái rồi lạnh nhạt dời mắt đi.
-Trọng Phong khựng người.
-Rõ ràng cảm nhận được ánh mắt dò xét cùng sự bất mãn của Cửu hoàng tử.
-Hắn đã đắc tội Cửu hoàng tử lúc nào sao?
-“Chỉ cần hắn thật sự làm chuyện xấu thì không sợ không tìm được sơ hở, cứ từ từ điều tra.”
-Tần Mục Vũ gắp một miếng thịt bụng cá, định bỏ vào bát Sở Ly, nhưng một đôi đũa bạc khác đã nhanh hơn hắn một bước.
-Chát!
-Tiếng đũa chạm nhau tuy không lớn, nhưng khiến tất cả mọi người quanh bàn đều thót tim.
-Sở Đệ Trì chậm rãi ngẩng mắt nhìn thiếu niên, trong đôi mắt sắc bén như ưng:
-“Để ta gắp cho nàng.”
-Ngón trỏ khẽ động, gạt đôi đũa của hắn sang một bên.
-“Bổn vương giỏi gỡ xương.”
-Đôi đũa bạc mảnh dài ấy giống như lưỡi kiếm, chỉ vài lần lên xuống đã gỡ sạch toàn bộ xương trong miếng thịt bụng cá.
-Tần Mục Vũ mím môi:
-“Nàng không thích ăn hành.”
-Sở Đệ Trì gắp miếng cá trở lại, dùng miệng nhặt bỏ hai hạt hành lá bên trên, rồi mới đặt lại vào bát Sở Ly.
-“Đa tạ Tần Thiếu tướng quân đã nhắc nhở, bổn vương nhớ rồi.”
-“Tần Thiếu tướng quân còn điều gì muốn căn dặn bổn vương nữa không?”
-Tần Mục Vũ trợn tròn mắt:
-“Ngươi!”
-“Tiểu Cửu, nàng xem hắn kìa, tính tình trước nay đều lớn như vậy sao?”
-Sở Đệ Trì vẫn ôn hòa, bình tĩnh, ngược lại càng khiến Tần Mục Vũ trở thành người nóng nảy ầm ĩ.
-Tần Mục Vũ: “???”
-Nói ai?
-Ngươi đang nói ai tính tình lớn?
-Sở Ly hé môi.
-Đừng nói nữa.
-Cũng đừng cãi nữa.
-Lúc này đầu óc nàng vẫn còn mơ hồ.
-Nàng cảm thấy Sở Đệ Trì như biến thành một con người khác. Một ngày chưa hiểu rõ mục đích của hắn, nàng một khắc cũng không thể yên lòng.
-“Hoàng thúc…”
-“Được rồi.”
-Sở Đệ Trì xoa đầu nàng.
-“Tiểu điệt ngoan, ta không nói hắn nữa là được.”
-“Ăn cơm.”
-Tần Mục Vũ cảm thấy hắn nhất định là cố ý!
-Nhất định là cố ý!
-Tiêu Dạ Hành đá hắn một cái dưới gầm bàn, mạnh mẽ kéo hắn ngồi lại, hạ giọng nói:
-“Đây gọi là khuê phòng tình thú, không phải chuyện một người ngoài như con có thể hiểu.”
-“Không phải khuê phòng tình thú!”
-“Tướng nhiếp chính có địch ý rất lớn với con!”
-“Đừng nói bậy. Ta với Nhiếp Chính Vương là bằng hữu nhiều năm, con lại là ngoại sinh của ta, còn là thanh mai trúc mã của Cửu hoàng tử, sao ngài ấy có thể không thích con được?”
-“Ngài ấy ái ốc cập ô, thích Cửu hoàng tử bao nhiêu thì cũng sẽ thích con bấy nhiêu.”
- ----------------------
-Chết moẹ, giờ vừa dịch truyện vừa giải nghĩa thành ngữ nữa 
-Khuê phòng tình thú: Những niềm vui, lãng mạn và những tương tác thân mật giữa vợ chồng hoặc người yêu trong không gian riêng tư.
-Ái ốc cập ô: Yêu cả ngôi nhà thì yêu luôn cả con quạ đậu trên mái nhà.
-Vì yêu một người mà yêu quý, trân trọng hoặc đối xử tốt với cả những người, sự vật có liên quan đến người đó. Ẩn bớt</p>
+            <p>Chương 204: Khuê phòng tình thú</p>
+<p>Chỉ là đến thăm nàng thật sao?</p>
+<p>Không còn mục đích nào khác?</p>
+<p>Sở Ly khép nép nắm lấy khung cửa, dáng vẻ rụt rè ấy vẫn chất chứa sự đề phòng cực mạnh, thậm chí còn chẳng dám đến gần hắn.</p>
+<p>Như thể hắn sẽ ăn tươi nuốt sống nàng vậy.</p>
+<p>Sở Đệ Trì ôn hòa đến cực điểm:</p>
+<p>“Khoảng thời gian nàng không có mặt, ta đã chăm sóc Ôn phi rất chu đáo, Nhàn Vương cũng rất nhớ nàng, còn đích thân đi đốt tiền giấy cho nàng nữa.”</p>
+<p>Hắn chậm rãi kể chuyện nhà:</p>
+<p>“Có điều, Ôn phi lúc nào cũng nhắc đến nàng. Ban ngày thì còn đỡ, nhưng cung nữ hầu hạ đến bẩm báo rằng, đêm nào bà ấy cũng lén lau nước mắt, cả đêm đều chẳng ngủ yên.”</p>
+<p>Hốc mắt Sở Ly nóng lên.</p>
+<p>“Mẫu phi…”</p>
+<p>“Ta biết bà ấy có tật đau chân, nên đã bảo Bạch Cẩm Y châm cứu cho bà ấy rồi. Còn vị Bát hoàng huynh của nàng, đúng là một kẻ chuyên gây họa. À phải… Khương Thái phó gần đây ho nhiều, tuổi cũng đã cao, thân thể không còn được như trước, nhưng ông ấy rất nhớ nàng.”</p>
+<p>“Ông ấy còn khen nàng.”</p>
+<p>“Ông ấy nói, phẩm hạnh quý hơn công danh lợi lộc, bảo nàng là một hài tử tốt.”</p>
+<p>Đôi mắt Sở Ly đỏ hoe.</p>
+<p>Khương Thái phó cũng nhớ nàng.</p>
+<p>Thế nhưng nàng lại chẳng phải một học trò ngoan, suốt ngày trốn học, chọc cho Khương Thái phó tức đến mức râu ria dựng cả lên.</p>
+<p>Sở Đệ Trì chậm rãi kể về Đế Đô thành, về nơi nàng lớn lên, về tất cả những gì nàng quen thuộc, rồi nắm tay nàng cùng ngồi xuống.</p>
+<p>Sở Ly đưa tay lau khóe mắt:</p>
+<p>“Hoàng thúc… chẳng lẽ người không có chuyện gì khác muốn hỏi ta sao?”</p>
+<p>“Hỏi chuyện gì?”</p>
+<p>“Chính là…”</p>
+<p>Vì sao nàng chết rồi lại sống lại?</p>
+<p>Vì sao nàng trốn ở Giang Nam mà không nói cho hắn biết?</p>
+<p>Sao hắn không hỏi?</p>
+<p>Hắn không hỏi, ngược lại khiến nàng chẳng biết phải mở lời thế nào.</p>
+<p>“Chính là… nàng …”</p>
+<p>Đúng lúc ấy, Sơ Nhất bước tới:</p>
+<p>“Tiểu thư, bữa sáng đã chuẩn bị xong.”</p>
+<p>Sở Đệ Trì khẽ cười, hàng mày nhu hòa:</p>
+<p>“Ăn cơm trước đã. Mấy ngày tới e rằng còn nhiều việc phải bận. Đợi mọi chuyện xong xuôi, nàng dẫn ta dạo khắp Giang Nam thành một vòng, được chứ?”</p>
+<p>Sở Ly khẽ cắn môi dưới:</p>
+<p>“Hoàng thúc trước đây chưa từng đến sao?”</p>
+<p>“Đều chỉ ghé qua vội vàng để xử lý công vụ, nào có thong thả như nàng mà đi chơi từng nơi.”</p>
+<p>Hắn bước vào đại sảnh, ngồi ở vị trí chủ tọa. Sơ Nhất cùng mọi người lần lượt bưng thức ăn lên, Tiêu Dạ Hành và những người khác cũng nối nhau đi vào.</p>
+<p>“A Ly!”</p>
+<p>Tần Mục Vũ sải bước chạy tới. Vừa định ngồi cạnh nàng thì Tiêu Dạ Hành đã ngồi xuống trước.</p>
+<p>Định ngồi sang phía bên kia, Bạch Cẩm Y lại khẽ đá chiếc ghế, bất động thanh sắc ngăn Tần Mục Vũ lại.</p>
+<p>Sở Đệ Trì cầm đũa, mỉm cười nhã nhặn, thong thả gỡ xương cá.</p>
+<p>A Ly?</p>
+<p>Ha…</p>
+<p>Thật là một cách gọi dễ nghe.</p>
+<p>“A Ly, muội không sao chứ?”</p>
+<p>Dẫu ngồi ở vị trí xa nhất, Tần Mục Vũ vẫn không quên hỏi han Sở Ly.</p>
+<p>Nụ cười trên môi Sở Đệ Trì càng thêm ôn hòa.</p>
+<p>Ngay trước mắt hắn mà còn hạ giọng thì thầm.</p>
+<p>Là coi hắn điếc?</p>
+<p>Hay coi hắn ngốc?</p>
+<p>Sở Ly khẽ cắn đầu đũa.</p>
+<p>Không những không sao, mà còn bình yên đến mức ngoài dự liệu.</p>
+<p>Hoàng thúc căn bản chưa hề động đến nàng một đầu ngón tay, thậm chí còn chẳng nói một lời nặng nhẹ.</p>
+<p>“Nàng rất ổn.”</p>
+<p>Nàng hỏi:</p>
+<p>“Tối qua tình hình thế nào? Hung thủ bắt được chưa?”</p>
+<p>“Bắt được rồi!”</p>
+<p>Tần Mục Tuyết giơ tay.</p>
+<p>“Muội với Lục sư huynh bắt được. Hiện giờ hắn đã bị giam lại.”</p>
+<p>“Hắn có khai gì không?”</p>
+<p>Đứng bên cạnh, Trọng Phong tiến lên nửa bước:</p>
+<p>“Cửu hoàng tử, tối qua chúng thuộc hạ đã thẩm vấn. Phát hiện kẻ đó là ám vệ được huấn luyện chuyên nghiệp, cho dù dùng hình cũng không thể cạy miệng hắn.”</p>
+<p>Liễu mi của Sở Ly khẽ chau lại, liếc hắn một cái rồi lạnh nhạt dời mắt đi.</p>
+<p>Trọng Phong khựng người.</p>
+<p>Rõ ràng cảm nhận được ánh mắt dò xét cùng sự bất mãn của Cửu hoàng tử.</p>
+<p>Hắn đã đắc tội Cửu hoàng tử lúc nào sao?</p>
+<p>“Chỉ cần hắn thật sự làm chuyện xấu thì không sợ không tìm được sơ hở, cứ từ từ điều tra.”</p>
+<p>Tần Mục Vũ gắp một miếng thịt bụng cá, định bỏ vào bát Sở Ly, nhưng một đôi đũa bạc khác đã nhanh hơn hắn một bước.</p>
+<p>Chát!</p>
+<p>Tiếng đũa chạm nhau tuy không lớn, nhưng khiến tất cả mọi người quanh bàn đều thót tim.</p>
+<p>Sở Đệ Trì chậm rãi ngẩng mắt nhìn thiếu niên, trong đôi mắt sắc bén như ưng:</p>
+<p>“Để ta gắp cho nàng.”</p>
+<p>Ngón trỏ khẽ động, gạt đôi đũa của hắn sang một bên.</p>
+<p>“Bổn vương giỏi gỡ xương.”</p>
+<p>Đôi đũa bạc mảnh dài ấy giống như lưỡi kiếm, chỉ vài lần lên xuống đã gỡ sạch toàn bộ xương trong miếng thịt bụng cá.</p>
+<p>Tần Mục Vũ mím môi:</p>
+<p>“Nàng không thích ăn hành.”</p>
+<p>Sở Đệ Trì gắp miếng cá trở lại, dùng miệng nhặt bỏ hai hạt hành lá bên trên, rồi mới đặt lại vào bát Sở Ly.</p>
+<p>“Đa tạ Tần Thiếu tướng quân đã nhắc nhở, bổn vương nhớ rồi.”</p>
+<p>“Tần Thiếu tướng quân còn điều gì muốn căn dặn bổn vương nữa không?”</p>
+<p>Tần Mục Vũ trợn tròn mắt:</p>
+<p>“Ngươi!”</p>
+<p>“Tiểu Cửu, nàng xem hắn kìa, tính tình trước nay đều lớn như vậy sao?”</p>
+<p>Sở Đệ Trì vẫn ôn hòa, bình tĩnh, ngược lại càng khiến Tần Mục Vũ trở thành người nóng nảy ầm ĩ.</p>
+<p>Tần Mục Vũ: “???”</p>
+<p>Nói ai?</p>
+<p>Ngươi đang nói ai tính tình lớn?</p>
+<p>Sở Ly hé môi.</p>
+<p>Đừng nói nữa.</p>
+<p>Cũng đừng cãi nữa.</p>
+<p>Lúc này đầu óc nàng vẫn còn mơ hồ.</p>
+<p>Nàng cảm thấy Sở Đệ Trì như biến thành một con người khác. Một ngày chưa hiểu rõ mục đích của hắn, nàng một khắc cũng không thể yên lòng.</p>
+<p>“Hoàng thúc…”</p>
+<p>“Được rồi.”</p>
+<p>Sở Đệ Trì xoa đầu nàng.</p>
+<p>“Tiểu điệt ngoan, ta không nói hắn nữa là được.”</p>
+<p>“Ăn cơm.”</p>
+<p>Tần Mục Vũ cảm thấy hắn nhất định là cố ý!</p>
+<p>Nhất định là cố ý!</p>
+<p>Tiêu Dạ Hành đá hắn một cái dưới gầm bàn, mạnh mẽ kéo hắn ngồi lại, hạ giọng nói:</p>
+<p>“Đây gọi là khuê phòng tình thú, không phải chuyện một người ngoài như con có thể hiểu.”</p>
+<p>“Không phải khuê phòng tình thú!”</p>
+<p>“Tướng nhiếp chính có địch ý rất lớn với con!”</p>
+<p>“Đừng nói bậy. Ta với Nhiếp Chính Vương là bằng hữu nhiều năm, con lại là ngoại sinh của ta, còn là thanh mai trúc mã của Cửu hoàng tử, sao ngài ấy có thể không thích con được?”</p>
+<p>“Ngài ấy ái ốc cập ô, thích Cửu hoàng tử bao nhiêu thì cũng sẽ thích con bấy nhiêu.”</p>
+<p>----------------------</p>
+<p>Chết moẹ, giờ vừa dịch truyện vừa giải nghĩa thành ngữ nữa</p>
+<p>Khuê phòng tình thú: Những niềm vui, lãng mạn và những tương tác thân mật giữa vợ chồng hoặc người yêu trong không gian riêng tư.</p>
+<p>Ái ốc cập ô: Yêu cả ngôi nhà thì yêu luôn cả con quạ đậu trên mái nhà.</p>
+<p>Vì yêu một người mà yêu quý, trân trọng hoặc đối xử tốt với cả những người, sự vật có liên quan đến người đó. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_203.html" class="btn">‹ Trước</a>
             <a href="chuong_205.html" class="btn">Sau ›</a>
         </div>
@@ -236,15 +244,11 @@ Vì yêu một người mà yêu quý, trân trọng hoặc đối xử tốt v�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -256,11 +260,11 @@ Vì yêu một người mà yêu quý, trân trọng hoặc đối xử tốt v�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

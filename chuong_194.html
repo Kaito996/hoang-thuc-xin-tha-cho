@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 194</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,162 +62,171 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 194</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_193.html" class="btn">‹ Trước</a>
             <a href="chuong_195.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 194: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 194: Để ta ôm muội cho thật chặt
-Sở Ly bước nhanh tới cửa, chỉ thấy một nam nhân áo đen bịt mặt lướt nhanh qua góc tường.
-Đồng tử nàng co lại, trở tay chộp lấy chén trà trên bàn.
-Bốp!
-Tiễn thuật của nàng xuất thần nhập hóa, có thể bách bộ xuyên dương, mà ném chén trà cũng chuẩn xác vô cùng. Chiếc chén không sai một ly, đập thẳng vào vai người kia.
-“Ưm!”
-“Đứng lại!”
-Nàng lập tức đuổi theo.
-Nam nhân áo đen cúi đầu, nhanh chóng bỏ chạy, Sở Ly bám sát phía sau.
-Rốt cuộc kẻ này là ai?
-Nàng với Trương viên ngoại không oán không thù, Trương viên ngoại chẳng có lý do gì phải hạ dược trong bánh hoa hồng để hại nàng. Trái lại, kẻ này lén lút ẩn trong bóng tối, hành tung khả nghi, chẳng lẽ lại là người do Sở Uyên Trì phái tới?
-Nam nhân chạy rất nhanh, chuyên chọn những nơi đông người trên phố mà luồn lách.
-Người càng đông, chạy càng bị cản trở, truy đuổi cũng khó khăn hơn.
-Đúng lúc ấy, hai người bán hàng chậm rãi đẩy xe gỗ đi ngang qua, chặn kín đường của Sở Ly.
-Chỉ có thể trơ mắt nhìn người kia chạy xa, thần sắc nàng lạnh đi, lập tức vén váy, nhảy phắt lên mặt bàn, liên tiếp lướt qua bốn năm chiếc bàn, nhanh như chớp áp sát đối phương.
-“Xem ngươi còn chạy đi đâu!”
-Nam nhân ngoái đầu nhìn lại, đột nhiên tung một cước ngang, đá gãy chân bàn.
-Rầm!
-Chiếc bàn đổ sập theo tiếng động, Sở Ly lập tức mất thăng bằng, bổ nhào về phía trước.
-“A Ly!”
-Trước mắt tối sầm.
-Một tiếng rên đau khẽ vang lên trên đỉnh đầu. Sở Ly kinh ngạc ngẩng đầu, chỉ thấy mình đang đè lên người Tần Mục Vũ, còn hắn ở phía dưới, làm tấm đệm bằng thân người.
-“A Ly… quả thật là muội!”
-Đôi mắt Tần Mục Vũ lập tức đỏ hoe, nước mắt kích động như chuỗi hạt đứt dây, không sao ngăn nổi, thi nhau rơi xuống.
-Chiều hôm qua, sau khi nhận được mật báo biết nàng vẫn còn sống, hắn lập tức bỏ hết mọi việc trong tay, không quản ngày đêm phi ngựa đến Giang Nam.
-Suốt dọc đường, hắn đã tưởng tượng vô số khả năng.
-Nàng còn sống.
-Nàng có khỏe không?
-Rốt cuộc năm đó đã xảy ra chuyện gì?
-Nàng có gầy đi không?
-Có ai bắt nạt nàng không?
-Mãi đến tận lúc nhìn thấy nàng, trái tim treo lơ lửng mới thật sự hạ xuống.
-Sở Ly chống người đứng dậy, chỉ thấy nam nhân áo đen kia đã biến mất sau góc phố, hoàn toàn không thể đuổi kịp nữa.
-“Các ngươi là ai! Đang yên đang lành lại đập nát sạp hàng của ta làm gì! Bồi thường! Mau bồi thường!”
-Người bán hàng trung niên tức giận nhìn chiếc bàn bị đập hỏng, quầy hàng bị lật tung, chửi om sòm, còn định xông tới kéo Sở Ly.
-Chát!
-Tần Mục Vũ đỡ Sở Ly đứng dậy, gạt phăng tay hắn.
-“Ta đến gấp, không mang theo ngân lượng. Con ngựa này đền cho ngươi.”
-Chiến mã của hắn đã phi liên tục suốt mười canh giờ, giữa đường chưa từng nghỉ một khắc. Bộ lông bị gió thổi xù lên, mồ hôi trong suốt đọng trên bờm đỏ nâu, trông như từng giọt máu rịn ra.
-Đây chính là Hãn Huyết Bảo Mã chân chính, một ngày có thể đi ngàn dặm, giá trị liên thành.
-Người bán hàng là kẻ biết hàng, lập tức trợn tròn mắt.
-Ngựa tốt!
-Quả là một con tuấn mã hiếm có!
-E rằng bán được hơn nghìn lượng bạc!
-Còn cái sạp của hắn đáng bao nhiêu? Cùng lắm bảy tám lượng.
-Hắn cố ý nghiêm mặt:
-“Hừ! Có tiền thì giỏi lắm sao? Cũng chẳng biết là thiếu gia, tiểu thư nhà nào, dám hoành hành ngang ngược giữa phố, giẫm đạp tài vật của người khác. Thật tưởng ai cũng thấy tiền là sáng mắt như các ngươi chắc!”
-Sở Ly khẽ phất tay, lấy từ trong tay áo ra mười lượng bạc, ném cho hắn.
-“Không cần thối.”
-Dắt ngựa, đi.
-Người bán hàng lập tức trừng lớn mắt.
-“Khoan đã! Chẳng phải nói đền con ngựa này cho ta sao?”
-Sở Ly đáp:
-“Đùa ngươi thôi, ngươi cũng dám nhận thật.”
-Hai người một ngựa lập tức rời đi, chỉ còn người bán hàng đứng chết trân tại chỗ, cầm cô độc mười lượng bạc trong tay, tức đến trừng mắt, ruột gan hối hận muốn xanh cả lên.
-Chiến mã theo chủ nhân xông pha sa trường, vào sinh ra tử, được huấn luyện tinh nhuệ, là đồng bạn trung thành nhất của chủ nhân, có bỏ bao nhiêu bạc cũng không mua nổi.
-Sở Ly cùng Tần Mục Vũ đi đến một nơi vắng người.
-Lúc này, Tần Mục Vũ mới ôm chặt lấy nàng.
-Ôm thật chặt!
-Giọng nói khàn đặc nghẹn ngào:
-“A Ly…”
-Nàng vẫn còn sống.
-Thật tốt!
-Hắn cứ ngỡ nàng đã chết…
-Sở Ly khẽ vỗ lưng hắn.
-“Huynh còn nhớ lúc chúng ta ở Nam Man không? Ta đã trộm được một con Sinh Tử Cổ, gieo nó vào trong cơ thể, nhờ vậy mới giữ được một mạng. Chuyện sau đó nói ra thì dài lắm. Nhưng trước mắt, ta có một việc khác muốn nói với huynh.”
-“Không có gì quan trọng hơn muội.”
-Để hắn ôm nàng một lát!
-Hắn thật muốn ôm chặt lấy nàng, vĩnh viễn không buông tay.
-“Là chuyện của Tần Mục Tuyết. Muội ấy hiện giờ đang… ngủ với một nam nhân khác.”
-“Cái gì!”
-Tần Mục Vũ lập tức ngẩng phắt đầu.
-Tính tình Mục Tuyết tuy thẳng thắn, nhưng xưa nay vẫn giữ mình trong sạch, chưa từng thân cận với nam nhân bên ngoài.
-Ấy vậy mà lại có kẻ dám bắt nạt muội ấy!
-Hắn lập tức nắm lấy trường kiếm bên hông, định lao đi.
-“Nhưng nam nhân đó là Nhị sư huynh của ta.”
-Động tác của hắn khựng lại.
-Sư huynh của A Ly, hẳn cũng là người đáng tin như A Ly.
-Mục Tuyết ở cùng hắn, lại có A Ly bảo đảm, chắc sẽ không chịu thiệt.
-“Nhưng Nhị sư huynh của ta trúng xuân dược rất mạnh.”
-“Cái gì!”
-Bàn tay vừa buông khỏi chuôi kiếm lại siết chặt.
-Trúng xuân dược, liền coi muội muội hắn như thuốc giải?
-Rốt cuộc xem muội muội hắn là hạng người gì?
-Đợi hắn rút kiếm…
-“Nhưng Mục Tuyết là tự nguyện. Muội ấy thích Nhị sư huynh của ta. Nhị sư huynh không muốn làm tổn thương muội ấy, nhưng cũng không chống nổi dược lực.”
-“…”
-Tần Mục Vũ dừng chân, đôi mắt cứ chăm chăm nhìn nàng.
-Sở Ly biết mình nói chuyện này quả thực không thích hợp.
-Tần Mục Vũ chỉ có một người muội muội, từ nhỏ đến lớn cả nhà đều nâng như nâng trứng, hứng như hứng hoa. Vậy mà viên minh châu trong lòng bàn tay ấy lại rơi vào tay Nhị sư huynh của nàng.
-Nàng cảm thấy bản thân cũng có trách nhiệm.
-Nói cho cùng, trong lòng nàng vẫn có vài phần áy náy.
-Sở Ly nuốt xuống cảm giác phức tạp nơi cổ họng, chợt nhận ra Tần Mục Vũ vẫn không nói gì, chỉ nhìn chằm chằm vào nàng.
-“Huynh nhìn ta làm gì?”
-“Nói xong chưa?”
-“À… xong rồi.”
-“Vậy để ta ôm muội cho thật chặt.” Ẩn bớt</p>
+            <p>Chương 194: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 194: Để ta ôm muội cho thật chặt</p>
+<p>Sở Ly bước nhanh tới cửa, chỉ thấy một nam nhân áo đen bịt mặt lướt nhanh qua góc tường.</p>
+<p>Đồng tử nàng co lại, trở tay chộp lấy chén trà trên bàn.</p>
+<p>Bốp!</p>
+<p>Tiễn thuật của nàng xuất thần nhập hóa, có thể bách bộ xuyên dương, mà ném chén trà cũng chuẩn xác vô cùng. Chiếc chén không sai một ly, đập thẳng vào vai người kia.</p>
+<p>“Ưm!”</p>
+<p>“Đứng lại!”</p>
+<p>Nàng lập tức đuổi theo.</p>
+<p>Nam nhân áo đen cúi đầu, nhanh chóng bỏ chạy, Sở Ly bám sát phía sau.</p>
+<p>Rốt cuộc kẻ này là ai?</p>
+<p>Nàng với Trương viên ngoại không oán không thù, Trương viên ngoại chẳng có lý do gì phải hạ dược trong bánh hoa hồng để hại nàng. Trái lại, kẻ này lén lút ẩn trong bóng tối, hành tung khả nghi, chẳng lẽ lại là người do Sở Uyên Trì phái tới?</p>
+<p>Nam nhân chạy rất nhanh, chuyên chọn những nơi đông người trên phố mà luồn lách.</p>
+<p>Người càng đông, chạy càng bị cản trở, truy đuổi cũng khó khăn hơn.</p>
+<p>Đúng lúc ấy, hai người bán hàng chậm rãi đẩy xe gỗ đi ngang qua, chặn kín đường của Sở Ly.</p>
+<p>Chỉ có thể trơ mắt nhìn người kia chạy xa, thần sắc nàng lạnh đi, lập tức vén váy, nhảy phắt lên mặt bàn, liên tiếp lướt qua bốn năm chiếc bàn, nhanh như chớp áp sát đối phương.</p>
+<p>“Xem ngươi còn chạy đi đâu!”</p>
+<p>Nam nhân ngoái đầu nhìn lại, đột nhiên tung một cước ngang, đá gãy chân bàn.</p>
+<p>Rầm!</p>
+<p>Chiếc bàn đổ sập theo tiếng động, Sở Ly lập tức mất thăng bằng, bổ nhào về phía trước.</p>
+<p>“A Ly!”</p>
+<p>Trước mắt tối sầm.</p>
+<p>Một tiếng rên đau khẽ vang lên trên đỉnh đầu. Sở Ly kinh ngạc ngẩng đầu, chỉ thấy mình đang đè lên người Tần Mục Vũ, còn hắn ở phía dưới, làm tấm đệm bằng thân người.</p>
+<p>“A Ly… quả thật là muội!”</p>
+<p>Đôi mắt Tần Mục Vũ lập tức đỏ hoe, nước mắt kích động như chuỗi hạt đứt dây, không sao ngăn nổi, thi nhau rơi xuống.</p>
+<p>Chiều hôm qua, sau khi nhận được mật báo biết nàng vẫn còn sống, hắn lập tức bỏ hết mọi việc trong tay, không quản ngày đêm phi ngựa đến Giang Nam.</p>
+<p>Suốt dọc đường, hắn đã tưởng tượng vô số khả năng.</p>
+<p>Nàng còn sống.</p>
+<p>Nàng có khỏe không?</p>
+<p>Rốt cuộc năm đó đã xảy ra chuyện gì?</p>
+<p>Nàng có gầy đi không?</p>
+<p>Có ai bắt nạt nàng không?</p>
+<p>Mãi đến tận lúc nhìn thấy nàng, trái tim treo lơ lửng mới thật sự hạ xuống.</p>
+<p>Sở Ly chống người đứng dậy, chỉ thấy nam nhân áo đen kia đã biến mất sau góc phố, hoàn toàn không thể đuổi kịp nữa.</p>
+<p>“Các ngươi là ai! Đang yên đang lành lại đập nát sạp hàng của ta làm gì! Bồi thường! Mau bồi thường!”</p>
+<p>Người bán hàng trung niên tức giận nhìn chiếc bàn bị đập hỏng, quầy hàng bị lật tung, chửi om sòm, còn định xông tới kéo Sở Ly.</p>
+<p>Chát!</p>
+<p>Tần Mục Vũ đỡ Sở Ly đứng dậy, gạt phăng tay hắn.</p>
+<p>“Ta đến gấp, không mang theo ngân lượng. Con ngựa này đền cho ngươi.”</p>
+<p>Chiến mã của hắn đã phi liên tục suốt mười canh giờ, giữa đường chưa từng nghỉ một khắc. Bộ lông bị gió thổi xù lên, mồ hôi trong suốt đọng trên bờm đỏ nâu, trông như từng giọt máu rịn ra.</p>
+<p>Đây chính là Hãn Huyết Bảo Mã chân chính, một ngày có thể đi ngàn dặm, giá trị liên thành.</p>
+<p>Người bán hàng là kẻ biết hàng, lập tức trợn tròn mắt.</p>
+<p>Ngựa tốt!</p>
+<p>Quả là một con tuấn mã hiếm có!</p>
+<p>E rằng bán được hơn nghìn lượng bạc!</p>
+<p>Còn cái sạp của hắn đáng bao nhiêu? Cùng lắm bảy tám lượng.</p>
+<p>Hắn cố ý nghiêm mặt:</p>
+<p>“Hừ! Có tiền thì giỏi lắm sao? Cũng chẳng biết là thiếu gia, tiểu thư nhà nào, dám hoành hành ngang ngược giữa phố, giẫm đạp tài vật của người khác. Thật tưởng ai cũng thấy tiền là sáng mắt như các ngươi chắc!”</p>
+<p>Sở Ly khẽ phất tay, lấy từ trong tay áo ra mười lượng bạc, ném cho hắn.</p>
+<p>“Không cần thối.”</p>
+<p>Dắt ngựa, đi.</p>
+<p>Người bán hàng lập tức trừng lớn mắt.</p>
+<p>“Khoan đã! Chẳng phải nói đền con ngựa này cho ta sao?”</p>
+<p>Sở Ly đáp:</p>
+<p>“Đùa ngươi thôi, ngươi cũng dám nhận thật.”</p>
+<p>Hai người một ngựa lập tức rời đi, chỉ còn người bán hàng đứng chết trân tại chỗ, cầm cô độc mười lượng bạc trong tay, tức đến trừng mắt, ruột gan hối hận muốn xanh cả lên.</p>
+<p>Chiến mã theo chủ nhân xông pha sa trường, vào sinh ra tử, được huấn luyện tinh nhuệ, là đồng bạn trung thành nhất của chủ nhân, có bỏ bao nhiêu bạc cũng không mua nổi.</p>
+<p>Sở Ly cùng Tần Mục Vũ đi đến một nơi vắng người.</p>
+<p>Lúc này, Tần Mục Vũ mới ôm chặt lấy nàng.</p>
+<p>Ôm thật chặt!</p>
+<p>Giọng nói khàn đặc nghẹn ngào:</p>
+<p>“A Ly…”</p>
+<p>Nàng vẫn còn sống.</p>
+<p>Thật tốt!</p>
+<p>Hắn cứ ngỡ nàng đã chết…</p>
+<p>Sở Ly khẽ vỗ lưng hắn.</p>
+<p>“Huynh còn nhớ lúc chúng ta ở Nam Man không? Ta đã trộm được một con Sinh Tử Cổ, gieo nó vào trong cơ thể, nhờ vậy mới giữ được một mạng. Chuyện sau đó nói ra thì dài lắm. Nhưng trước mắt, ta có một việc khác muốn nói với huynh.”</p>
+<p>“Không có gì quan trọng hơn muội.”</p>
+<p>Để hắn ôm nàng một lát!</p>
+<p>Hắn thật muốn ôm chặt lấy nàng, vĩnh viễn không buông tay.</p>
+<p>“Là chuyện của Tần Mục Tuyết. Muội ấy hiện giờ đang… ngủ với một nam nhân khác.”</p>
+<p>“Cái gì!”</p>
+<p>Tần Mục Vũ lập tức ngẩng phắt đầu.</p>
+<p>Tính tình Mục Tuyết tuy thẳng thắn, nhưng xưa nay vẫn giữ mình trong sạch, chưa từng thân cận với nam nhân bên ngoài.</p>
+<p>Ấy vậy mà lại có kẻ dám bắt nạt muội ấy!</p>
+<p>Hắn lập tức nắm lấy trường kiếm bên hông, định lao đi.</p>
+<p>“Nhưng nam nhân đó là Nhị sư huynh của ta.”</p>
+<p>Động tác của hắn khựng lại.</p>
+<p>Sư huynh của A Ly, hẳn cũng là người đáng tin như A Ly.</p>
+<p>Mục Tuyết ở cùng hắn, lại có A Ly bảo đảm, chắc sẽ không chịu thiệt.</p>
+<p>“Nhưng Nhị sư huynh của ta trúng xuân dược rất mạnh.”</p>
+<p>“Cái gì!”</p>
+<p>Bàn tay vừa buông khỏi chuôi kiếm lại siết chặt.</p>
+<p>Trúng xuân dược, liền coi muội muội hắn như thuốc giải?</p>
+<p>Rốt cuộc xem muội muội hắn là hạng người gì?</p>
+<p>Đợi hắn rút kiếm…</p>
+<p>“Nhưng Mục Tuyết là tự nguyện. Muội ấy thích Nhị sư huynh của ta. Nhị sư huynh không muốn làm tổn thương muội ấy, nhưng cũng không chống nổi dược lực.”</p>
+<p>“…”</p>
+<p>Tần Mục Vũ dừng chân, đôi mắt cứ chăm chăm nhìn nàng.</p>
+<p>Sở Ly biết mình nói chuyện này quả thực không thích hợp.</p>
+<p>Tần Mục Vũ chỉ có một người muội muội, từ nhỏ đến lớn cả nhà đều nâng như nâng trứng, hứng như hứng hoa. Vậy mà viên minh châu trong lòng bàn tay ấy lại rơi vào tay Nhị sư huynh của nàng.</p>
+<p>Nàng cảm thấy bản thân cũng có trách nhiệm.</p>
+<p>Nói cho cùng, trong lòng nàng vẫn có vài phần áy náy.</p>
+<p>Sở Ly nuốt xuống cảm giác phức tạp nơi cổ họng, chợt nhận ra Tần Mục Vũ vẫn không nói gì, chỉ nhìn chằm chằm vào nàng.</p>
+<p>“Huynh nhìn ta làm gì?”</p>
+<p>“Nói xong chưa?”</p>
+<p>“À… xong rồi.”</p>
+<p>“Vậy để ta ôm muội cho thật chặt.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_193.html" class="btn">‹ Trước</a>
             <a href="chuong_195.html" class="btn">Sau ›</a>
         </div>
@@ -226,15 +234,11 @@ Sở Ly nuốt xuống cảm giác phức tạp nơi cổ họng, chợt nhận 
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -246,11 +250,11 @@ Sở Ly nuốt xuống cảm giác phức tạp nơi cổ họng, chợt nhận 
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

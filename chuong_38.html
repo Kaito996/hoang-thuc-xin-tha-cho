@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 38</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,173 +62,182 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 38</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_37.html" class="btn">‹ Trước</a>
             <a href="chuong_39.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 38: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 38: Giấc mộng kia… thật sự chỉ là mộng sao?
-Mộc Tề Sơn chợt co rút đồng tử.
-“Ngươi…”
-Hóa ra ngay từ đầu, hắn đã lọt vào tính toán của Cửu hoàng tử.
-Nhưng cho dù trong lòng hiểu rõ mọi chuyện đều do Cửu hoàng tử bày bố, thì hắn nào dám thừa nhận việc mình từng ở Thủy Kính Đài hạ dược Cửu hoàng tử?
-Nhận tội, đắc tội Cửu hoàng tử — là tử lộ.
-Không nhận, nay đã đắc tội Phương thế tử — cũng là tử lộ.
-Hắn đã không còn đường lui.
-“Cửu hoàng tử… lòng dạ ngươi thật độc ác. Dẫu gì chúng ta cũng từng xưng huynh gọi đệ, cùng nhau ăn chơi bốn, năm năm trời. Không nhìn mặt tăng cũng nên nhìn mặt Phật, ngươi nhất định phải ép ta vào chỗ chết hay sao?”
-Sở Ly ghé sát tai hắn, thì thầm:
-“Mộc Tề Sơn, là do ngươi ngu xuẩn.”
-“Ngu xuẩn đến mức cho rằng một vị hoàng tử thất thế có thể tùy tiện tính kế; tưởng rằng giết được ta thì sẽ lấy lòng Quốc Công phủ, lấy lòng Thất hoàng tử. Ngươi không hiểu rằng, lạc đà dù gầy vẫn lớn hơn ngựa — dù ta không được sủng ái, vẫn là hoàng tử, há để kẻ như ngươi muốn sỉ nhục thế nào cũng được?”
-Nàng đã cho hắn cơ hội.
-Vừa rồi, nếu hắn không tự sinh tâm hư sợ, sao lại trúng kế?
-Nếu nàng rơi vào cạm bẫy của Mộc Tề Sơn, lộ thân phận nữ tử, thì chỉ có một con đường chết.
-Hắn chưa từng định tha cho nàng — vậy nàng hà tất phải lưu tình?
-Mộc Tề Sơn bật cười thảm bại.
-Hắn làm vậy là vì gia tộc, vì muốn Mộc gia quy phục Quốc Công phủ, vì tiền đồ của phụ thân. Có gì sai?
-Chỉ là… hắn thua rồi.
-Hắn coi thường Cửu hoàng tử, sự tự phụ đã hại chính hắn.
-Trường Bội cô cô lên tiếng:
-“Người đâu, bắt giữ Mộc Tề Sơn. Đợi Phương thế tử tỉnh lại, rồi cùng nhau bẩm báo Hoàng hậu nương nương xử trí.”
-“Chứng cứ rành rành như vậy, còn cần bẩm báo sao?”
-Từ xa, một giọng nói lạnh lẽo như tên bắn truyền tới.
-Tiểu thái giám không kịp thông truyền, vừa chạy vừa hô lớn:
-Nhiếp chính vương giá lâm——!”
-Cầu gỗ bắc ngang hồ, một thân ảnh cao gầy, khí chất lạnh lẽo từ từ bước tới. Mỗi bước chân trầm ổn nặng nề, khiến sắc mặt mọi người biến đổi, đồng loạt quỳ xuống hành lễ:
-“Tham kiến Nhiếp chính vương điện hạ!”
-Nhiếp chính vương sao lại xuất hiện ở yến tiệc mùa thu — nơi ngâm thơ, đàm tiếu thế này?
-Hắn xưa nay đến cả cung yến cũng chẳng buồn dự!
-Trường Bội cô cô cúi người:
-“Hôm nay sự việc quá lớn, lão nô không dám tự quyết, xin Nhiếp chính vương chỉ thị.”
-Sở Đệ Trì liếc mắt nhìn qua đám đông đen nghịt, gần như ngay lập tức thấy được kẻ đang trốn nơi góc cuối, hận không thể vùi đầu xuống đất — Sở Ly.
-“Chư vị thiên kim tại đây đều là khuê nữ danh môn, thanh danh trinh bạch, như bích ngọc vô hà. Vậy mà bị thế tử Quốc Công phủ làm nhục, tổn hại danh tiết.”
-“Loại người này, tự nhiên không xứng kế thừa Quốc Công phủ, càng không thể để Đại Sở trở thành trò cười của thiên hạ.”
-“Lập tức phế bỏ thân phận thế tử của Phương Hải Dương. Từ nay về sau, vĩnh viễn không được kế thừa tước Quốc Công.”
-Ánh mắt hắn chuyển sang bên khác:
-“Mộc Tề Sơn — trượng sát.”
-Mộc Tề Sơn mặt xám như tro.
-Phụ thân hắn chỉ là một viên quan bát phẩm tiểu lại. Nhiếp chính vương đã hạ lệnh, hắn tuyệt không còn đường sống.
-Bị áp giải đi hành hình, hắn ngoái đầu nhìn Sở Ly, ánh mắt tràn ngập oán độc:
-“Ngươi hại chết ta! Là ngươi hại chết ta! Cửu hoàng tử!”
-“Sở Ly!”
-Sở Đệ Trì lạnh giọng bổ sung:
-“Dám gọi thẳng tên hoàng tử, cắt lưỡi trước, rồi trượng sát.”
-“Tuân lệnh!”
-Thị vệ vung đao, máu tươi văng tung tóe. Không ít quý nữ sợ đến mức suýt thét lên, vội vàng bịt chặt miệng, sống lưng lạnh toát.
-Về phần xử phạt Phương Hải Dương, không một ai dám phản bác. Trường Bội cô cô cũng chỉ có thể cúi đầu lĩnh mệnh.
-Sau bê bối lõa thể giữa thanh thiên bạch nhật, việc Phương thế tử bị phế bỏ thân phận và quyền kế thừa, đã là chuyện ván đã đóng thuyền.
-“Nhiếp chính vương anh minh. Lão nô lập tức sai người hồi cung bẩm báo.”
-Sở Đệ Trì khẽ giơ tay, mọi người lúc này mới dám đứng dậy.
-Giữa tiếng nói cười, một người tiền đồ hủy diệt, một người bị trượng sát. Mọi người trong lòng run sợ, chỉ cảm thấy Nhiếp chính vương đứng đó thôi cũng mang theo sát khí chiến trường quanh năm chinh chiến, khiến không ai dám mở miệng.
-Nhất thời, tất cả đều cúi đầu, lòng đầy bất an.
-Sở Ly cũng vậy.
-Nhìn thấy hắn, nàng không khỏi nhớ tới giấc mộng trong mật thất ba ngày trước…
-Giấc mộng ấy… thật sự chỉ là mộng sao?
-Trong lòng nàng dâng lên bất an khó tả.
-Vì sao hắn lại đến yến tiệc mùa thu?
-Sở Ly xoắn chặt tay áo, lén nâng khóe mắt nhìn lên, chỉ thấy Sở Đệ Trì cất bước, đi thẳng về phía nàng.
-Tim nàng thắt lại, theo bản năng lùi nửa bước, trốn sau lưng Tần Mục Vũ.
-Tư thái rụt rè ấy khiến ánh mắt Sở Đệ Trì trầm xuống. Con ngươi đen như mực, bình lặng như nước chết — không gợn sóng.
-Rất tốt.
-Tốt đến cực điểm.
-Hắn cười lạnh một tiếng, phất tay áo, xoay người rời đi.
-Trong lòng mọi người càng thêm bất an.
-Nhiếp chính vương… cứ thế rời đi?
-Đến bất ngờ, đi cũng bất ngờ. Chỉ vì xử trí Phương thế tử và Mộc Tề Sơn mà cần hắn đích thân giáng lâm?
-Không ai dám đoán, cũng không ai dám nghĩ.
-Ra khỏi Lan Đình Hiên.
-Sở Đệ Trì xoay người lên ngựa:
-“Trọng Phong, đi chuyển cho Tần thiếu tướng quân một câu.”
-—
-Chưa đến nửa canh giờ, chuyện xảy ra tại yến tiệc mùa thu đã truyền khắp kinh thành, gây nên sóng to gió lớn. Khi truyền tới Quốc Công phủ, càng như sấm sét giữa trời quang.
-“Ngươi nói cái gì?!”
-Tách trà rơi xuống đất, vỡ tan chói tai.
-Quốc Công phu nhân gần như không thể ngồi vững.
-Tiểu tư quỳ dưới đất, run rẩy:
-“Phu nhân, bên ngoài đã truyền khắp rồi! Nhiếp chính vương hạ lệnh phế bỏ thế tử, vĩnh viễn không được kế thừa Quốc Công phủ! Trường Bội cô cô đã vào cung bẩm báo!”
-Chỉ đợi thánh chỉ ban xuống, liền không còn đường xoay chuyển.
-Quốc Công phu nhân hoa mắt, ngã quỵ xuống đất.
-“Phu nhân!”
-“Mau mời đại phu!”
-“Vì sao lại thành ra thế này…”
-Quốc Công phu nhân mặt không còn giọt máu, toàn thân run rẩy.
-“Đang yên đang lành, sao Dương nhi lại gây ra đại họa như vậy?”
-Nhờ ân điển của hoàng thượng, Quốc Công phủ được phép kế thừa ba đời.
-Phương Hải Dương là đích trưởng tử, cũng là hài tử duy nhất của bà. Nếu bị tước quyền kế thừa, chẳng phải sẽ để lợi cho thứ tử do di nương sinh ra?
-Tâm huyết nửa đời người, cùng vinh quang nửa đời sau — chẳng phải đều tan thành mây khói?
-Tiểu tư khóc lóc:
-“Nô tài cũng không rõ tường tận, chỉ nghe nói tại yến tiệc mùa thu, thế tử xung đột với Cửu hoàng tử và Mộc công tử nhà họ Mộc. Mộc Tề Sơn bị trượng sát tại chỗ!”
-“Còn Cửu hoàng tử?”
-“Nghe nói Cửu hoàng tử bình an vô sự, đã hồi cung.”
-Quốc Công phu nhân đau nhói giữa trán:
-“Hóa ra là do Cửu hoàng tử!”
-Nếu chỉ là xung đột, cớ sao không xử phạt cả ba?
-Một kẻ bị phế, một kẻ bị giết, duy chỉ Cửu hoàng tử an然 vô恙 — chẳng phải quá rõ ràng sao?
-“Dương nhi là tâm can của ta! Từ nhỏ ta đã xem nó là người kế thừa Quốc Công phủ mà bồi dưỡng. Cửu hoàng tử phế vật kia muốn hủy hoại Dương nhi, dù ta có liều cả mạng này, cũng tuyệt đối không để ‘hắn’ toại nguyện!”
-Quốc Công phu nhân tức giận tột độ:
-“Mau đi bẩm báo lão gia! Cách duy nhất hiện giờ là cầu viện Tĩnh Hoàng Quý Phi. Chỉ cần bà ấy chặn được Trường Bội cô cô, ngăn lệnh của Nhiếp chính vương, rồi vào cung cầu xin hoàng thượng, mới giữ được vị trí thế tử cho Dương nhi!”
-“Mau đi!”
-Hoàng cung.
-Sở Ly đi trên trường nhai, dọc đường đã nghe đủ loại nghị luận của dân chúng, tất cả đều xoay quanh chuyện yến tiệc mùa thu.
-Điều khiến nàng bất ngờ nhất, là Nhiếp chính vương lại đích thân xuất hiện, trượng sát Mộc Tề Sơn, còn nghiêm trị Phương Hải Dương.
-Bản ý của nàng, chỉ là vạch trần kẻ hại mình, rồi dùng thủ đoạn y hệt, trả lại không thiếu một phân.
-Chỉ là, chẳng hiểu vì sao, trong lòng nàng dâng lên dự cảm bất an.
-Tựa hồ… sẽ có đại sự xảy ra.
-“Sở Ly!”
-Một tiếng quát phẫn nộ vang lên. Nàng vừa ngẩng đầu, đã thấy một quyền phong trực diện đánh tới. Ẩn bớt</p>
+            <p>Chương 38: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 38: Giấc mộng kia… thật sự chỉ là mộng sao?</p>
+<p>Mộc Tề Sơn chợt co rút đồng tử.</p>
+<p>“Ngươi…”</p>
+<p>Hóa ra ngay từ đầu, hắn đã lọt vào tính toán của Cửu hoàng tử.</p>
+<p>Nhưng cho dù trong lòng hiểu rõ mọi chuyện đều do Cửu hoàng tử bày bố, thì hắn nào dám thừa nhận việc mình từng ở Thủy Kính Đài hạ dược Cửu hoàng tử?</p>
+<p>Nhận tội, đắc tội Cửu hoàng tử — là tử lộ.</p>
+<p>Không nhận, nay đã đắc tội Phương thế tử — cũng là tử lộ.</p>
+<p>Hắn đã không còn đường lui.</p>
+<p>“Cửu hoàng tử… lòng dạ ngươi thật độc ác. Dẫu gì chúng ta cũng từng xưng huynh gọi đệ, cùng nhau ăn chơi bốn, năm năm trời. Không nhìn mặt tăng cũng nên nhìn mặt Phật, ngươi nhất định phải ép ta vào chỗ chết hay sao?”</p>
+<p>Sở Ly ghé sát tai hắn, thì thầm:</p>
+<p>“Mộc Tề Sơn, là do ngươi ngu xuẩn.”</p>
+<p>“Ngu xuẩn đến mức cho rằng một vị hoàng tử thất thế có thể tùy tiện tính kế; tưởng rằng giết được ta thì sẽ lấy lòng Quốc Công phủ, lấy lòng Thất hoàng tử. Ngươi không hiểu rằng, lạc đà dù gầy vẫn lớn hơn ngựa — dù ta không được sủng ái, vẫn là hoàng tử, há để kẻ như ngươi muốn sỉ nhục thế nào cũng được?”</p>
+<p>Nàng đã cho hắn cơ hội.</p>
+<p>Vừa rồi, nếu hắn không tự sinh tâm hư sợ, sao lại trúng kế?</p>
+<p>Nếu nàng rơi vào cạm bẫy của Mộc Tề Sơn, lộ thân phận nữ tử, thì chỉ có một con đường chết.</p>
+<p>Hắn chưa từng định tha cho nàng — vậy nàng hà tất phải lưu tình?</p>
+<p>Mộc Tề Sơn bật cười thảm bại.</p>
+<p>Hắn làm vậy là vì gia tộc, vì muốn Mộc gia quy phục Quốc Công phủ, vì tiền đồ của phụ thân. Có gì sai?</p>
+<p>Chỉ là… hắn thua rồi.</p>
+<p>Hắn coi thường Cửu hoàng tử, sự tự phụ đã hại chính hắn.</p>
+<p>Trường Bội cô cô lên tiếng:</p>
+<p>“Người đâu, bắt giữ Mộc Tề Sơn. Đợi Phương thế tử tỉnh lại, rồi cùng nhau bẩm báo Hoàng hậu nương nương xử trí.”</p>
+<p>“Chứng cứ rành rành như vậy, còn cần bẩm báo sao?”</p>
+<p>Từ xa, một giọng nói lạnh lẽo như tên bắn truyền tới.</p>
+<p>Tiểu thái giám không kịp thông truyền, vừa chạy vừa hô lớn:</p>
+<p>Nhiếp chính vương giá lâm——!”</p>
+<p>Cầu gỗ bắc ngang hồ, một thân ảnh cao gầy, khí chất lạnh lẽo từ từ bước tới. Mỗi bước chân trầm ổn nặng nề, khiến sắc mặt mọi người biến đổi, đồng loạt quỳ xuống hành lễ:</p>
+<p>“Tham kiến Nhiếp chính vương điện hạ!”</p>
+<p>Nhiếp chính vương sao lại xuất hiện ở yến tiệc mùa thu — nơi ngâm thơ, đàm tiếu thế này?</p>
+<p>Hắn xưa nay đến cả cung yến cũng chẳng buồn dự!</p>
+<p>Trường Bội cô cô cúi người:</p>
+<p>“Hôm nay sự việc quá lớn, lão nô không dám tự quyết, xin Nhiếp chính vương chỉ thị.”</p>
+<p>Sở Đệ Trì liếc mắt nhìn qua đám đông đen nghịt, gần như ngay lập tức thấy được kẻ đang trốn nơi góc cuối, hận không thể vùi đầu xuống đất — Sở Ly.</p>
+<p>“Chư vị thiên kim tại đây đều là khuê nữ danh môn, thanh danh trinh bạch, như bích ngọc vô hà. Vậy mà bị thế tử Quốc Công phủ làm nhục, tổn hại danh tiết.”</p>
+<p>“Loại người này, tự nhiên không xứng kế thừa Quốc Công phủ, càng không thể để Đại Sở trở thành trò cười của thiên hạ.”</p>
+<p>“Lập tức phế bỏ thân phận thế tử của Phương Hải Dương. Từ nay về sau, vĩnh viễn không được kế thừa tước Quốc Công.”</p>
+<p>Ánh mắt hắn chuyển sang bên khác:</p>
+<p>“Mộc Tề Sơn — trượng sát.”</p>
+<p>Mộc Tề Sơn mặt xám như tro.</p>
+<p>Phụ thân hắn chỉ là một viên quan bát phẩm tiểu lại. Nhiếp chính vương đã hạ lệnh, hắn tuyệt không còn đường sống.</p>
+<p>Bị áp giải đi hành hình, hắn ngoái đầu nhìn Sở Ly, ánh mắt tràn ngập oán độc:</p>
+<p>“Ngươi hại chết ta! Là ngươi hại chết ta! Cửu hoàng tử!”</p>
+<p>“Sở Ly!”</p>
+<p>Sở Đệ Trì lạnh giọng bổ sung:</p>
+<p>“Dám gọi thẳng tên hoàng tử, cắt lưỡi trước, rồi trượng sát.”</p>
+<p>“Tuân lệnh!”</p>
+<p>Thị vệ vung đao, máu tươi văng tung tóe. Không ít quý nữ sợ đến mức suýt thét lên, vội vàng bịt chặt miệng, sống lưng lạnh toát.</p>
+<p>Về phần xử phạt Phương Hải Dương, không một ai dám phản bác. Trường Bội cô cô cũng chỉ có thể cúi đầu lĩnh mệnh.</p>
+<p>Sau bê bối lõa thể giữa thanh thiên bạch nhật, việc Phương thế tử bị phế bỏ thân phận và quyền kế thừa, đã là chuyện ván đã đóng thuyền.</p>
+<p>“Nhiếp chính vương anh minh. Lão nô lập tức sai người hồi cung bẩm báo.”</p>
+<p>Sở Đệ Trì khẽ giơ tay, mọi người lúc này mới dám đứng dậy.</p>
+<p>Giữa tiếng nói cười, một người tiền đồ hủy diệt, một người bị trượng sát. Mọi người trong lòng run sợ, chỉ cảm thấy Nhiếp chính vương đứng đó thôi cũng mang theo sát khí chiến trường quanh năm chinh chiến, khiến không ai dám mở miệng.</p>
+<p>Nhất thời, tất cả đều cúi đầu, lòng đầy bất an.</p>
+<p>Sở Ly cũng vậy.</p>
+<p>Nhìn thấy hắn, nàng không khỏi nhớ tới giấc mộng trong mật thất ba ngày trước…</p>
+<p>Giấc mộng ấy… thật sự chỉ là mộng sao?</p>
+<p>Trong lòng nàng dâng lên bất an khó tả.</p>
+<p>Vì sao hắn lại đến yến tiệc mùa thu?</p>
+<p>Sở Ly xoắn chặt tay áo, lén nâng khóe mắt nhìn lên, chỉ thấy Sở Đệ Trì cất bước, đi thẳng về phía nàng.</p>
+<p>Tim nàng thắt lại, theo bản năng lùi nửa bước, trốn sau lưng Tần Mục Vũ.</p>
+<p>Tư thái rụt rè ấy khiến ánh mắt Sở Đệ Trì trầm xuống. Con ngươi đen như mực, bình lặng như nước chết — không gợn sóng.</p>
+<p>Rất tốt.</p>
+<p>Tốt đến cực điểm.</p>
+<p>Hắn cười lạnh một tiếng, phất tay áo, xoay người rời đi.</p>
+<p>Trong lòng mọi người càng thêm bất an.</p>
+<p>Nhiếp chính vương… cứ thế rời đi?</p>
+<p>Đến bất ngờ, đi cũng bất ngờ. Chỉ vì xử trí Phương thế tử và Mộc Tề Sơn mà cần hắn đích thân giáng lâm?</p>
+<p>Không ai dám đoán, cũng không ai dám nghĩ.</p>
+<p>Ra khỏi Lan Đình Hiên.</p>
+<p>Sở Đệ Trì xoay người lên ngựa:</p>
+<p>“Trọng Phong, đi chuyển cho Tần thiếu tướng quân một câu.”</p>
+<p>—</p>
+<p>Chưa đến nửa canh giờ, chuyện xảy ra tại yến tiệc mùa thu đã truyền khắp kinh thành, gây nên sóng to gió lớn. Khi truyền tới Quốc Công phủ, càng như sấm sét giữa trời quang.</p>
+<p>“Ngươi nói cái gì?!”</p>
+<p>Tách trà rơi xuống đất, vỡ tan chói tai.</p>
+<p>Quốc Công phu nhân gần như không thể ngồi vững.</p>
+<p>Tiểu tư quỳ dưới đất, run rẩy:</p>
+<p>“Phu nhân, bên ngoài đã truyền khắp rồi! Nhiếp chính vương hạ lệnh phế bỏ thế tử, vĩnh viễn không được kế thừa Quốc Công phủ! Trường Bội cô cô đã vào cung bẩm báo!”</p>
+<p>Chỉ đợi thánh chỉ ban xuống, liền không còn đường xoay chuyển.</p>
+<p>Quốc Công phu nhân hoa mắt, ngã quỵ xuống đất.</p>
+<p>“Phu nhân!”</p>
+<p>“Mau mời đại phu!”</p>
+<p>“Vì sao lại thành ra thế này…”</p>
+<p>Quốc Công phu nhân mặt không còn giọt máu, toàn thân run rẩy.</p>
+<p>“Đang yên đang lành, sao Dương nhi lại gây ra đại họa như vậy?”</p>
+<p>Nhờ ân điển của hoàng thượng, Quốc Công phủ được phép kế thừa ba đời.</p>
+<p>Phương Hải Dương là đích trưởng tử, cũng là hài tử duy nhất của bà. Nếu bị tước quyền kế thừa, chẳng phải sẽ để lợi cho thứ tử do di nương sinh ra?</p>
+<p>Tâm huyết nửa đời người, cùng vinh quang nửa đời sau — chẳng phải đều tan thành mây khói?</p>
+<p>Tiểu tư khóc lóc:</p>
+<p>“Nô tài cũng không rõ tường tận, chỉ nghe nói tại yến tiệc mùa thu, thế tử xung đột với Cửu hoàng tử và Mộc công tử nhà họ Mộc. Mộc Tề Sơn bị trượng sát tại chỗ!”</p>
+<p>“Còn Cửu hoàng tử?”</p>
+<p>“Nghe nói Cửu hoàng tử bình an vô sự, đã hồi cung.”</p>
+<p>Quốc Công phu nhân đau nhói giữa trán:</p>
+<p>“Hóa ra là do Cửu hoàng tử!”</p>
+<p>Nếu chỉ là xung đột, cớ sao không xử phạt cả ba?</p>
+<p>Một kẻ bị phế, một kẻ bị giết, duy chỉ Cửu hoàng tử an然 vô恙 — chẳng phải quá rõ ràng sao?</p>
+<p>“Dương nhi là tâm can của ta! Từ nhỏ ta đã xem nó là người kế thừa Quốc Công phủ mà bồi dưỡng. Cửu hoàng tử phế vật kia muốn hủy hoại Dương nhi, dù ta có liều cả mạng này, cũng tuyệt đối không để ‘hắn’ toại nguyện!”</p>
+<p>Quốc Công phu nhân tức giận tột độ:</p>
+<p>“Mau đi bẩm báo lão gia! Cách duy nhất hiện giờ là cầu viện Tĩnh Hoàng Quý Phi. Chỉ cần bà ấy chặn được Trường Bội cô cô, ngăn lệnh của Nhiếp chính vương, rồi vào cung cầu xin hoàng thượng, mới giữ được vị trí thế tử cho Dương nhi!”</p>
+<p>“Mau đi!”</p>
+<p>Hoàng cung.</p>
+<p>Sở Ly đi trên trường nhai, dọc đường đã nghe đủ loại nghị luận của dân chúng, tất cả đều xoay quanh chuyện yến tiệc mùa thu.</p>
+<p>Điều khiến nàng bất ngờ nhất, là Nhiếp chính vương lại đích thân xuất hiện, trượng sát Mộc Tề Sơn, còn nghiêm trị Phương Hải Dương.</p>
+<p>Bản ý của nàng, chỉ là vạch trần kẻ hại mình, rồi dùng thủ đoạn y hệt, trả lại không thiếu một phân.</p>
+<p>Chỉ là, chẳng hiểu vì sao, trong lòng nàng dâng lên dự cảm bất an.</p>
+<p>Tựa hồ… sẽ có đại sự xảy ra.</p>
+<p>“Sở Ly!”</p>
+<p>Một tiếng quát phẫn nộ vang lên. Nàng vừa ngẩng đầu, đã thấy một quyền phong trực diện đánh tới. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_37.html" class="btn">‹ Trước</a>
             <a href="chuong_39.html" class="btn">Sau ›</a>
         </div>
@@ -237,15 +245,11 @@ Một tiếng quát phẫn nộ vang lên. Nàng vừa ngẩng đầu, đã th�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -257,11 +261,11 @@ Một tiếng quát phẫn nộ vang lên. Nàng vừa ngẩng đầu, đã th�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

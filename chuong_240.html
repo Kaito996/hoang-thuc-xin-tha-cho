@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 240</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,166 +62,175 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 240</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_239.html" class="btn">‹ Trước</a>
             <a href="chuong_241.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 240: Đêm không về nhà
-Đến tận lúc hoàng hôn buông xuống, mọi người mới thu xếp xong toàn bộ đồ đạc. Ai nấy đều đã mệt rã rời suốt một ngày, không kịp nấu bữa tối nữa, Sở Ly bèn dẫn theo sáu thị nữ ra ngoài dùng bữa.
-Lần đầu đặt chân đến Đế đô, sáu người đều mở to mắt ngắm nhìn cảnh phồn hoa trên phố, đầy vẻ hâm mộ.
-Nào
-“Đây chính là Đế đô!”
-“Lớn quá!”
-“Nằm mơ nô tỳ cũng không dám nghĩ, đời này lại có cơ hội đến Đế đô…”
-Xa cách nhiều ngày, nay trở về Đế đô, tâm trạng Sở Ly vô cùng vui vẻ. Nàng bước vào một tửu lâu, gọi một bàn toàn món ngon hảo hạng, vừa ăn vừa kể cho các nàng nghe những chuyện cũ ở kinh thành.
-Mấy người hết kinh ngạc lại tò mò, không ngừng hỏi han, tiếng cười nói rộn rã.
-Chỉ có Sơ Nhất vẫn ngồi ngay ngắn, vẻ mặt nghiêm túc khác thường.
-“Sơ Nhất.”
-“Tiểu thư?”
-“Đừng nghiêm mặt như thế nữa, cười nhiều lên một chút. Sao chẳng có chút hoạt bát nào vậy?”
-Sơ Nhất mím môi.
-“Không biết có phải do nô tỳ đa nghi hay không, nhưng lúc chúng ta bước vào tửu lâu, hình như có người vẫn luôn nhìn chằm chằm chúng ta. Nô tỳ lo có kẻ mưu đồ bất chính, không dám lơ là.”
-Sở Ly khẽ nhướng mày.
-Nàng đúng là người rất cẩn thận, lại vô cùng thận trọng.
-“Yên tâm, là người quen của ta.”
-Có thể mua được một thị nữ được việc như Sơ Nhất từ tay bọn buôn người, quả thật là nàng lời lớn.
-Sở Ly cầm đũa lên.
-“Nào, ăn no rồi nghỉ ngơi một đêm cho khỏe. Từ nay trở đi, e rằng sẽ chẳng còn mấy ngày bình yên nữa.”
-“Chỉ cần có thể hầu hạ tốt tiểu thư, những chuyện khác nô tỳ đều không sợ.”
-Một bữa cơm diễn ra vô cùng vui vẻ.
-Sau bữa ăn, Sở Ly đến vài cửa hàng mua thêm ít đồ. Dạo quanh một vòng lớn, nàng cũng nghe được không ít lời bàn tán về Mạc Hoài châu.
-Thái tử tiền triều.
-Phục quốc.
-Tự lập làm vương.
-Nhớ đến Sở Dạ Ly, nhớ đến những chuyện đã qua, chiến trường khói lửa ngút trời, máu chảy thành sông, thi thể chất thành núi, cùng mũi tên xé tan màn đêm năm ấy…
-Sở Dạ Ly và Sở Đệ Trì đã đứng ở hai chiến tuyến đối lập. Sớm muộn gì cũng sẽ có một trận chiến không chết không thôi.
-Mà tâm tình của nàng lại phức tạp đến mức khó lòng diễn tả.
-—
-Đèn đuốc lập lòe, đêm khuya tĩnh mịch.
-Một góc trường bào màu mực lướt qua ánh nến lay động, người nọ quen đường quen lối tiến vào San Hô Thủy Tạ.
-Đi thẳng đến Lan Đình Hiên.
-Ánh nến ấm áp trong sương phòng phản chiếu vào đáy mắt hắn, khiến vẻ lạnh lẽo nơi đó dịu đi vài phần.
-Hắn đưa tay gõ cửa.
-Cốc cốc...
-Vốn định hạ thấp giọng, nói mình là tiểu tư mang bữa khuya đến, nhưng trong phòng lại chẳng có ai đáp lời.
-Cốc cốc!
-Ngủ rồi sao?
-Đợi thêm một lúc, chân mày nam nhân khẽ nhíu lại, trực tiếp đẩy cửa bước vào.
-Thế nhưng bên trong sương phòng trống không.
-Hoàn toàn không có bóng dáng Sở Ly.
-Người đâu?
-Đã khuya thế này mà nàng vẫn chưa trở về?
-Sắc mặt Sở Đệ Trì lập tức thay đổi rõ rệt.
-Hắn định gọi thị nữ đến tra hỏi, nhưng nếu gọi người tới, chẳng phải sẽ để lộ hành tung của mình sao?
-Như vậy chẳng khác nào tự vả vào câu ban ngày hắn đã nói:
-"Nàng cứ yên tâm, ta sẽ không bước vào San Hô Thủy Tạ nửa bước."
-Mặt của hắn có thể để Sở Ly đánh.
-Nhưng tuyệt đối không thể để thị nữ đánh.
-Có lẽ vừa mới trở lại Đế đô, nhất thời cao hứng, chơi quên cả thời gian.
-Hắn chờ.
-Sở Đệ Trì bước đến cạnh bàn, cầm một quyển sách lên, lặng lẽ đọc.
-Ánh nến yên bình.
-Thời gian lặng lẽ trôi qua.
-Nửa canh giờ.
-Một canh giờ.
-Canh ba...
-Hắn thật sự không ngồi yên nổi nữa.
-Quyển sách trong tay suýt bị hắn vò thành giấy vụn, sắc mặt âm trầm đến cực điểm.
-Một tiểu cô nương, nửa đêm không về nhà.
-Lại còn là một tiểu cô nương xinh đẹp.
-Lẽ nào không biết thế đạo hiện nay cùng lòng người hiểm ác đến mức nào sao?
-Đế đô nhìn thì phồn hoa, nhưng thực chất sóng ngầm cuồn cuộn.
-San Hô Thủy Tạ chính là nơi an toàn nhất Đế đô!
-Canh năm...
-Trời dần sáng...
-Được lắm!
-Đêm không về nhà!
-—
-Mãi đến gần giờ Ngọ, Sở Ly mới trở về San Hô Thủy Tạ.
-Nàng vừa đặt chân tới thì Sở Đệ Trì cũng lập tức hối hả chạy đến.
-Chỉ là...
-Khi sắp bước vào Lan Đình Hiên, hắn bỗng thả chậm bước chân, hai tay chắp sau lưng, phong thái ôn nhã, thong thả đi vào.
-Trong Lan Đình Hiên.
-Người cả đêm không về lúc này đang ngồi dưới gốc cây trêu con vẹt.
-“Đồ ngốc.”
-“Học đi, đồ ngốc!”
-Sở Ly dùng chiếc nhíp nhỏ gắp một con sâu cải béo tròn, vừa thưởng vừa dạy Bạch Vũ Anh Vũ nói từ mới.
-Bịch!
-Một tiếng bước chân cố ý giẫm mạnh vang lên.
-Sở Ly theo phản xạ quay đầu.
-“Hoàng thúc, sao ngươi lại có thời gian đến đây?”
-“Ta vừa hạ triều, xử lý xong công việc trong cung nên sang xem nàng ở đây có quen không.”
-Sở Đệ Trì thần sắc tự nhiên bước tới.
-“San Hô Thủy Tạ là nơi của Hoàng thúc. Nếu nói đây là phủ đệ xa hoa nhất Đế đô cũng không ngoa, thậm chí còn đẹp hơn cả cung điện trong hoàng cung. Ta đúng là được thơm lây nhờ Hoàng thúc.”
-Sở Đệ Trì nhìn nàng bằng đôi mắt sâu thẳm.
-“Tối qua ngủ có ngon không?”
-“Ngon lắm, rất thoải mái.”
-Nàng cười, để lộ hàm răng trắng tinh, đôi mắt sáng rỡ đầy thần thái, nhìn là biết đêm qua ngủ rất ngon.
-“Đặc biệt là vì chính miệng Hoàng thúc đã hứa sẽ không tự ý bước vào San Hô Thủy Tạ nửa bước, nên ta mới ngủ yên tâm như vậy. Bởi vì ta biết Hoàng thúc là người giữ lời hứa, nhất ngôn cửu đỉnh.”
-“…”
-Hắn còn chưa kịp mở miệng, nàng đã chặn hết đường nói.
-Nếu hắn truy hỏi tung tích tối qua của nàng, chẳng phải sẽ tự để lộ chuyện mình nửa đêm lén tới đây sao?
-Nhưng nếu không hỏi...
-Ngọn lửa bị nén trong lòng suốt một đêm biết phát tiết vào đâu?
-Hít...
-Con nha đầu chết tiệt này...
-Chẳng lẽ là cố ý?
-Hiếm lắm Sở Đệ Trì mới chịu một phen câm nín.
-Lần trước hắn chịu thiệt như vậy, vẫn là chuyện năm ngoái khi đứng ra gánh tội thay cho nàng. Ẩn bớt</p>
+            <p>Chương 240: Đêm không về nhà</p>
+<p>Đến tận lúc hoàng hôn buông xuống, mọi người mới thu xếp xong toàn bộ đồ đạc. Ai nấy đều đã mệt rã rời suốt một ngày, không kịp nấu bữa tối nữa, Sở Ly bèn dẫn theo sáu thị nữ ra ngoài dùng bữa.</p>
+<p>Lần đầu đặt chân đến Đế đô, sáu người đều mở to mắt ngắm nhìn cảnh phồn hoa trên phố, đầy vẻ hâm mộ.</p>
+<p>Nào</p>
+<p>“Đây chính là Đế đô!”</p>
+<p>“Lớn quá!”</p>
+<p>“Nằm mơ nô tỳ cũng không dám nghĩ, đời này lại có cơ hội đến Đế đô…”</p>
+<p>Xa cách nhiều ngày, nay trở về Đế đô, tâm trạng Sở Ly vô cùng vui vẻ. Nàng bước vào một tửu lâu, gọi một bàn toàn món ngon hảo hạng, vừa ăn vừa kể cho các nàng nghe những chuyện cũ ở kinh thành.</p>
+<p>Mấy người hết kinh ngạc lại tò mò, không ngừng hỏi han, tiếng cười nói rộn rã.</p>
+<p>Chỉ có Sơ Nhất vẫn ngồi ngay ngắn, vẻ mặt nghiêm túc khác thường.</p>
+<p>“Sơ Nhất.”</p>
+<p>“Tiểu thư?”</p>
+<p>“Đừng nghiêm mặt như thế nữa, cười nhiều lên một chút. Sao chẳng có chút hoạt bát nào vậy?”</p>
+<p>Sơ Nhất mím môi.</p>
+<p>“Không biết có phải do nô tỳ đa nghi hay không, nhưng lúc chúng ta bước vào tửu lâu, hình như có người vẫn luôn nhìn chằm chằm chúng ta. Nô tỳ lo có kẻ mưu đồ bất chính, không dám lơ là.”</p>
+<p>Sở Ly khẽ nhướng mày.</p>
+<p>Nàng đúng là người rất cẩn thận, lại vô cùng thận trọng.</p>
+<p>“Yên tâm, là người quen của ta.”</p>
+<p>Có thể mua được một thị nữ được việc như Sơ Nhất từ tay bọn buôn người, quả thật là nàng lời lớn.</p>
+<p>Sở Ly cầm đũa lên.</p>
+<p>“Nào, ăn no rồi nghỉ ngơi một đêm cho khỏe. Từ nay trở đi, e rằng sẽ chẳng còn mấy ngày bình yên nữa.”</p>
+<p>“Chỉ cần có thể hầu hạ tốt tiểu thư, những chuyện khác nô tỳ đều không sợ.”</p>
+<p>Một bữa cơm diễn ra vô cùng vui vẻ.</p>
+<p>Sau bữa ăn, Sở Ly đến vài cửa hàng mua thêm ít đồ. Dạo quanh một vòng lớn, nàng cũng nghe được không ít lời bàn tán về Mạc Hoài châu.</p>
+<p>Thái tử tiền triều.</p>
+<p>Phục quốc.</p>
+<p>Tự lập làm vương.</p>
+<p>Nhớ đến Sở Dạ Ly, nhớ đến những chuyện đã qua, chiến trường khói lửa ngút trời, máu chảy thành sông, thi thể chất thành núi, cùng mũi tên xé tan màn đêm năm ấy…</p>
+<p>Sở Dạ Ly và Sở Đệ Trì đã đứng ở hai chiến tuyến đối lập. Sớm muộn gì cũng sẽ có một trận chiến không chết không thôi.</p>
+<p>Mà tâm tình của nàng lại phức tạp đến mức khó lòng diễn tả.</p>
+<p>—</p>
+<p>Đèn đuốc lập lòe, đêm khuya tĩnh mịch.</p>
+<p>Một góc trường bào màu mực lướt qua ánh nến lay động, người nọ quen đường quen lối tiến vào San Hô Thủy Tạ.</p>
+<p>Đi thẳng đến Lan Đình Hiên.</p>
+<p>Ánh nến ấm áp trong sương phòng phản chiếu vào đáy mắt hắn, khiến vẻ lạnh lẽo nơi đó dịu đi vài phần.</p>
+<p>Hắn đưa tay gõ cửa.</p>
+<p>Cốc cốc...</p>
+<p>Vốn định hạ thấp giọng, nói mình là tiểu tư mang bữa khuya đến, nhưng trong phòng lại chẳng có ai đáp lời.</p>
+<p>Cốc cốc!</p>
+<p>Ngủ rồi sao?</p>
+<p>Đợi thêm một lúc, chân mày nam nhân khẽ nhíu lại, trực tiếp đẩy cửa bước vào.</p>
+<p>Thế nhưng bên trong sương phòng trống không.</p>
+<p>Hoàn toàn không có bóng dáng Sở Ly.</p>
+<p>Người đâu?</p>
+<p>Đã khuya thế này mà nàng vẫn chưa trở về?</p>
+<p>Sắc mặt Sở Đệ Trì lập tức thay đổi rõ rệt.</p>
+<p>Hắn định gọi thị nữ đến tra hỏi, nhưng nếu gọi người tới, chẳng phải sẽ để lộ hành tung của mình sao?</p>
+<p>Như vậy chẳng khác nào tự vả vào câu ban ngày hắn đã nói:</p>
+<p>"Nàng cứ yên tâm, ta sẽ không bước vào San Hô Thủy Tạ nửa bước."</p>
+<p>Mặt của hắn có thể để Sở Ly đánh.</p>
+<p>Nhưng tuyệt đối không thể để thị nữ đánh.</p>
+<p>Có lẽ vừa mới trở lại Đế đô, nhất thời cao hứng, chơi quên cả thời gian.</p>
+<p>Hắn chờ.</p>
+<p>Sở Đệ Trì bước đến cạnh bàn, cầm một quyển sách lên, lặng lẽ đọc.</p>
+<p>Ánh nến yên bình.</p>
+<p>Thời gian lặng lẽ trôi qua.</p>
+<p>Nửa canh giờ.</p>
+<p>Một canh giờ.</p>
+<p>Canh ba...</p>
+<p>Hắn thật sự không ngồi yên nổi nữa.</p>
+<p>Quyển sách trong tay suýt bị hắn vò thành giấy vụn, sắc mặt âm trầm đến cực điểm.</p>
+<p>Một tiểu cô nương, nửa đêm không về nhà.</p>
+<p>Lại còn là một tiểu cô nương xinh đẹp.</p>
+<p>Lẽ nào không biết thế đạo hiện nay cùng lòng người hiểm ác đến mức nào sao?</p>
+<p>Đế đô nhìn thì phồn hoa, nhưng thực chất sóng ngầm cuồn cuộn.</p>
+<p>San Hô Thủy Tạ chính là nơi an toàn nhất Đế đô!</p>
+<p>Canh năm...</p>
+<p>Trời dần sáng...</p>
+<p>Được lắm!</p>
+<p>Đêm không về nhà!</p>
+<p>—</p>
+<p>Mãi đến gần giờ Ngọ, Sở Ly mới trở về San Hô Thủy Tạ.</p>
+<p>Nàng vừa đặt chân tới thì Sở Đệ Trì cũng lập tức hối hả chạy đến.</p>
+<p>Chỉ là...</p>
+<p>Khi sắp bước vào Lan Đình Hiên, hắn bỗng thả chậm bước chân, hai tay chắp sau lưng, phong thái ôn nhã, thong thả đi vào.</p>
+<p>Trong Lan Đình Hiên.</p>
+<p>Người cả đêm không về lúc này đang ngồi dưới gốc cây trêu con vẹt.</p>
+<p>“Đồ ngốc.”</p>
+<p>“Học đi, đồ ngốc!”</p>
+<p>Sở Ly dùng chiếc nhíp nhỏ gắp một con sâu cải béo tròn, vừa thưởng vừa dạy Bạch Vũ Anh Vũ nói từ mới.</p>
+<p>Bịch!</p>
+<p>Một tiếng bước chân cố ý giẫm mạnh vang lên.</p>
+<p>Sở Ly theo phản xạ quay đầu.</p>
+<p>“Hoàng thúc, sao ngươi lại có thời gian đến đây?”</p>
+<p>“Ta vừa hạ triều, xử lý xong công việc trong cung nên sang xem nàng ở đây có quen không.”</p>
+<p>Sở Đệ Trì thần sắc tự nhiên bước tới.</p>
+<p>“San Hô Thủy Tạ là nơi của Hoàng thúc. Nếu nói đây là phủ đệ xa hoa nhất Đế đô cũng không ngoa, thậm chí còn đẹp hơn cả cung điện trong hoàng cung. Ta đúng là được thơm lây nhờ Hoàng thúc.”</p>
+<p>Sở Đệ Trì nhìn nàng bằng đôi mắt sâu thẳm.</p>
+<p>“Tối qua ngủ có ngon không?”</p>
+<p>“Ngon lắm, rất thoải mái.”</p>
+<p>Nàng cười, để lộ hàm răng trắng tinh, đôi mắt sáng rỡ đầy thần thái, nhìn là biết đêm qua ngủ rất ngon.</p>
+<p>“Đặc biệt là vì chính miệng Hoàng thúc đã hứa sẽ không tự ý bước vào San Hô Thủy Tạ nửa bước, nên ta mới ngủ yên tâm như vậy. Bởi vì ta biết Hoàng thúc là người giữ lời hứa, nhất ngôn cửu đỉnh.”</p>
+<p>“…”</p>
+<p>Hắn còn chưa kịp mở miệng, nàng đã chặn hết đường nói.</p>
+<p>Nếu hắn truy hỏi tung tích tối qua của nàng, chẳng phải sẽ tự để lộ chuyện mình nửa đêm lén tới đây sao?</p>
+<p>Nhưng nếu không hỏi...</p>
+<p>Ngọn lửa bị nén trong lòng suốt một đêm biết phát tiết vào đâu?</p>
+<p>Hít...</p>
+<p>Con nha đầu chết tiệt này...</p>
+<p>Chẳng lẽ là cố ý?</p>
+<p>Hiếm lắm Sở Đệ Trì mới chịu một phen câm nín.</p>
+<p>Lần trước hắn chịu thiệt như vậy, vẫn là chuyện năm ngoái khi đứng ra gánh tội thay cho nàng. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_239.html" class="btn">‹ Trước</a>
             <a href="chuong_241.html" class="btn">Sau ›</a>
         </div>
@@ -230,15 +238,11 @@ Lần trước hắn chịu thiệt như vậy, vẫn là chuyện năm ngoái k
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -250,11 +254,11 @@ Lần trước hắn chịu thiệt như vậy, vẫn là chuyện năm ngoái k
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

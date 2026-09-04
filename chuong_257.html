@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 257</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,139 +62,147 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 257</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_256.html" class="btn">‹ Trước</a>
             <a href="chuong_258.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 257: Bát Hoàng huynh!
-
-“Ngươi nói gì!”
-Khi nhận được tin này, Sở Ly đang cùng Sở Đệ Trì dạo phố. Chiếc trang sức trong tay nàng “keng” một tiếng rơi xuống đất.
-“Bát Hoàng huynh…”
-Đang yên đang lành, sao lại xảy ra chuyện lớn như vậy!
-Không màng thân phận có điều bất tiện, Sở Ly lập tức vào cung. May mà trước khi hôn mê, Sở Ngạo Thiên đã hạ lệnh đè chuyện này xuống, không được truyền ra ngoài. Trong cung điện của hắn, ngoài thái giám tâm phúc và sáu vị Ngự y ra, không còn người nào khác.
-Khi nàng chạy tới, bầu không khí trong chính điện đã ngưng trọng đến cực điểm.
-Khương Thái phó khóc đến đỏ hoe mắt, đi ra nghênh đón:
-“Tham kiến Nhiếp chính vương, Cửu…”
-Đột nhiên nhìn thấy Sở Ly, một tiếng “Cửu Hoàng tử” suýt nữa đã buột miệng thốt ra.
-Sở Đệ Trì cắt ngang: “Vị này là Tạ tiểu thư.”
-Chỉ ném lại một câu, hắn liền cùng Sở Ly sải bước đi vào.
-Sáu vị Ngự y vây quanh trước giường, ai nấy đều thần sắc ngưng trọng, bộ dạng bó tay hết cách. Chỉ thấy Sở Ngạo Thiên trên giường sắc mặt xanh tím, chìm trong hôn mê.
-“Chuyện gì xảy ra?” Sở Đệ Trì lạnh giọng hỏi.
-Sáu người hoảng sợ quỳ rạp xuống đất, đầu cũng không dám ngẩng lên:
-“Bẩm Nhiếp chính vương, độc mà Nhàn vương trúng, chúng thần chưa từng nghe qua, cũng chưa từng thấy qua. E… e rằng… e rằng…”
-“Một đám phế vật!”
-Đến độc cũng không giải được, bọn họ ở trong Thái Y viện ăn không ngồi rồi cả ngày sao!
-Sở Đệ Trì đi tới trước giường, nhìn gương mặt vô tình của Sở Ngạo Thiên. Môi hắn mang theo sắc màu bất thường: “Trúng độc bao lâu rồi?”
-“Chuyện này…”
-Sáu vị Ngự y hoảng sợ nhìn nhau:
-“Nhìn tình hình, e rằng đã trúng độc… độc… mấy ngày rồi…”
-“Mấy ngày là mấy ngày!” Sở Đệ Trì đá một cước lật ngã người đứng đầu, “Đồ ăn hại!”
-“Nhiếp chính vương tha mạng, tha mạng a! Chúng thần vô năng, xin người tha mạng!”
-“Cút ra ngoài quỳ chờ!”
-“Vâng, vâng vâng.”
-Sáu người như được đại xá, tay chân luống cuống bò lết ra ngoài, không dám chậm trễ thêm dù chỉ một khắc.
-Sở Ly lao tới trước giường. Nhìn người bạn cùng nhau lớn lên đang nằm yên tĩnh trên giường, lần đầu tiên yên lặng đến vậy, sự yếu ớt và trân quý của sinh mệnh, sự giằng co giữa sống và chết, vào khoảnh khắc này bị phóng đại đến cực hạn.
-Nếu hắn chết…
-“Bát Hoàng huynh.” Nàng nắm lấy tay hắn, “Bát Hoàng huynh, huynh có nghe thấy ta nói không?”
-Đáp lại nàng chỉ là một mảnh tĩnh lặng.
-“Bát Hoàng huynh!”
-“Sở Ngạo Thiên!”
-Sở Ly lay người hắn không chút động tĩnh, đôi mắt không khống chế được đỏ lên: “Nếu huynh có mệnh hệ gì, ta lập tức bảo mẫu phi của huynh xuống dưới bồi huynh!”
-“Đừng nóng vội.” Sở Đệ Trì nhẹ nhàng vỗ lưng nàng, “Ta đã phái người đi mời Bạch Cẩm Y, bên Thần Y cốc cũng sẽ nhận được tin.”
-Sở Ly nuốt xuống tiếng nghẹn trong cổ họng, đôi môi không thể khống chế mà run rẩy.
-Rõ ràng ban ngày vẫn còn đang yên lành.
-Mới qua bao lâu chứ.
-Một người hoạt bát hiếu động như hắn, không nên chết khí trầm trầm nằm ở đây, đứng bên bờ sinh tử như vậy.
-“Cầu xin Nhiếp chính vương làm chủ cho Vương gia nhà nô tài!”
-Đúng lúc này, Biết Cửu bên cạnh bổ nhào quỳ xuống đất, khóc lóc nói:
-“Là Lục Hoàng tử làm.”
-“Khoảng hơn mười ngày trước, Lục Hoàng tử đã lừa Vương gia nhà nô tài uống rượu có độc. Chính hắn làm!”
-Lục Hoàng tử đã bày cục này từ hơn mười ngày trước.
-Sở Dực!
-Vốn định nhốt hắn vào Tông Nhân phủ, để hắn sống hết quãng đời còn lại, cũng xem như được chết yên lành. Nào ngờ hắn lại dám đánh chủ ý lên người mà Sở Ly coi trọng nhất!
-Sở Ly tức giận quay người: “Ta đi Tông Nhân phủ một chuyến!”
-Đúng lúc đó, bên ngoài có một thái giám đi tới bẩm báo:
-“Bẩm Nhiếp chính vương, Ninh Quý nhân cầu kiến Nhàn vương.”
-Ninh Quý nhân chính là sinh mẫu của Đại Hoàng tử và Lục Hoàng tử.
-Sở Ly lạnh giọng: “Đến đúng lúc lắm, dẫn tới thiên điện, ta đi gặp nàng ta.”
-Thiên điện.
-Rầm!
-Sở Ly đẩy mạnh cửa. Ninh Quý nhân đang chờ bên trong lập tức đứng dậy nghênh đón, nhưng khi nhìn thấy gương mặt nàng, thân thể bà ta chấn động dữ dội:
-“Cửu… ngươi, ngươi là…”
-Nàng là ai quan trọng sao?
-“Ninh Quý nhân, ngươi có chuyện gì?” Sở Ly phất tay áo ngồi xuống.
-Ninh Quý nhân chấn kinh không thôi.
-Giọng nói quen thuộc, gương mặt giống hệt… là Cửu Hoàng tử chết đi sống lại!
-Tốt quá rồi!
-Cửu Hoàng tử nổi tiếng mềm lòng, hiền hòa!
-“Xin Cửu Hoàng tử khai ân, có thể tra xét lại chuyện Lục Hoàng tử tạo phản hay không. Lục Hoàng tử bản tính thành thật, an phận, tuy đôi khi có chút nghịch ngợm, nhưng tuyệt đối không dám tạo phản!”
-Ninh Quý nhân khuỵu gối quỳ xuống, khóe mắt đẫm lệ:
-“Nhiều năm qua, ta vẫn luôn dạy dỗ hai đứa trẻ, làm người làm việc phải nhân thiện có đức, trên không thẹn với trời, dưới không thẹn với đất. Lục Hoàng tử là bị oan!”
-“Sau khi Đại Hoàng tử xảy ra chuyện, ta chỉ còn Lục Hoàng tử là đứa con duy nhất… Xin Cửu Hoàng tử thương xót cho một người làm mẫu thân như ta. Nếu Lục Hoàng tử thật sự có dã tâm tạo phản, vậy hơn hai mươi năm qua, sao ta có thể vẫn luôn chỉ ở vị phận Quý nhân?”
-Bà ta khóc đến mức không thành hình dạng.
-Trong hậu cung, Ninh Quý nhân nổi danh không tranh không đoạt, tính tình đạm bạc.
-Cho dù sinh hạ Đại Hoàng tử và Lục Hoàng tử, bà ta vẫn có thể minh triết bảo thân giữa vô số quyền thế.
-Từ trước đến nay, Sở Ly vẫn luôn cảm thấy bà ta là một người hiền hòa.
-Nhưng hiện giờ đứng ngoài cuộc, nhìn lại nước mắt của Ninh Quý nhân, nàng lại cảm thấy có vài phần châm chọc.
-“Lần trước, ngươi cũng tới cầu xin ta.”
-Sở Ly nói:
-“Đó là khi Đại Hoàng tử mưu hại ta, ngươi cũng khóc đến mức không thành tiếng như vậy, khiến ta tin rằng ngươi thật sự không tranh với đời.”
-“Lần này, ngươi lại tới cầu xin ta. Ninh Quý nhân, có phải ngươi cảm thấy trong cả hoàng cung này, ta là người dễ nói chuyện nhất không?”</p>
+            <p>Chương 257: Bát Hoàng huynh!</p>
+<p>“Ngươi nói gì!”</p>
+<p>Khi nhận được tin này, Sở Ly đang cùng Sở Đệ Trì dạo phố. Chiếc trang sức trong tay nàng “keng” một tiếng rơi xuống đất.</p>
+<p>“Bát Hoàng huynh…”</p>
+<p>Đang yên đang lành, sao lại xảy ra chuyện lớn như vậy!</p>
+<p>Không màng thân phận có điều bất tiện, Sở Ly lập tức vào cung. May mà trước khi hôn mê, Sở Ngạo Thiên đã hạ lệnh đè chuyện này xuống, không được truyền ra ngoài. Trong cung điện của hắn, ngoài thái giám tâm phúc và sáu vị Ngự y ra, không còn người nào khác.</p>
+<p>Khi nàng chạy tới, bầu không khí trong chính điện đã ngưng trọng đến cực điểm.</p>
+<p>Khương Thái phó khóc đến đỏ hoe mắt, đi ra nghênh đón:</p>
+<p>“Tham kiến Nhiếp chính vương, Cửu…”</p>
+<p>Đột nhiên nhìn thấy Sở Ly, một tiếng “Cửu Hoàng tử” suýt nữa đã buột miệng thốt ra.</p>
+<p>Sở Đệ Trì cắt ngang: “Vị này là Tạ tiểu thư.”</p>
+<p>Chỉ ném lại một câu, hắn liền cùng Sở Ly sải bước đi vào.</p>
+<p>Sáu vị Ngự y vây quanh trước giường, ai nấy đều thần sắc ngưng trọng, bộ dạng bó tay hết cách. Chỉ thấy Sở Ngạo Thiên trên giường sắc mặt xanh tím, chìm trong hôn mê.</p>
+<p>“Chuyện gì xảy ra?” Sở Đệ Trì lạnh giọng hỏi.</p>
+<p>Sáu người hoảng sợ quỳ rạp xuống đất, đầu cũng không dám ngẩng lên:</p>
+<p>“Bẩm Nhiếp chính vương, độc mà Nhàn vương trúng, chúng thần chưa từng nghe qua, cũng chưa từng thấy qua. E… e rằng… e rằng…”</p>
+<p>“Một đám phế vật!”</p>
+<p>Đến độc cũng không giải được, bọn họ ở trong Thái Y viện ăn không ngồi rồi cả ngày sao!</p>
+<p>Sở Đệ Trì đi tới trước giường, nhìn gương mặt vô tình của Sở Ngạo Thiên. Môi hắn mang theo sắc màu bất thường: “Trúng độc bao lâu rồi?”</p>
+<p>“Chuyện này…”</p>
+<p>Sáu vị Ngự y hoảng sợ nhìn nhau:</p>
+<p>“Nhìn tình hình, e rằng đã trúng độc… độc… mấy ngày rồi…”</p>
+<p>“Mấy ngày là mấy ngày!” Sở Đệ Trì đá một cước lật ngã người đứng đầu, “Đồ ăn hại!”</p>
+<p>“Nhiếp chính vương tha mạng, tha mạng a! Chúng thần vô năng, xin người tha mạng!”</p>
+<p>“Cút ra ngoài quỳ chờ!”</p>
+<p>“Vâng, vâng vâng.”</p>
+<p>Sáu người như được đại xá, tay chân luống cuống bò lết ra ngoài, không dám chậm trễ thêm dù chỉ một khắc.</p>
+<p>Sở Ly lao tới trước giường. Nhìn người bạn cùng nhau lớn lên đang nằm yên tĩnh trên giường, lần đầu tiên yên lặng đến vậy, sự yếu ớt và trân quý của sinh mệnh, sự giằng co giữa sống và chết, vào khoảnh khắc này bị phóng đại đến cực hạn.</p>
+<p>Nếu hắn chết…</p>
+<p>“Bát Hoàng huynh.” Nàng nắm lấy tay hắn, “Bát Hoàng huynh, huynh có nghe thấy ta nói không?”</p>
+<p>Đáp lại nàng chỉ là một mảnh tĩnh lặng.</p>
+<p>“Bát Hoàng huynh!”</p>
+<p>“Sở Ngạo Thiên!”</p>
+<p>Sở Ly lay người hắn không chút động tĩnh, đôi mắt không khống chế được đỏ lên: “Nếu huynh có mệnh hệ gì, ta lập tức bảo mẫu phi của huynh xuống dưới bồi huynh!”</p>
+<p>“Đừng nóng vội.” Sở Đệ Trì nhẹ nhàng vỗ lưng nàng, “Ta đã phái người đi mời Bạch Cẩm Y, bên Thần Y cốc cũng sẽ nhận được tin.”</p>
+<p>Sở Ly nuốt xuống tiếng nghẹn trong cổ họng, đôi môi không thể khống chế mà run rẩy.</p>
+<p>Rõ ràng ban ngày vẫn còn đang yên lành.</p>
+<p>Mới qua bao lâu chứ.</p>
+<p>Một người hoạt bát hiếu động như hắn, không nên chết khí trầm trầm nằm ở đây, đứng bên bờ sinh tử như vậy.</p>
+<p>“Cầu xin Nhiếp chính vương làm chủ cho Vương gia nhà nô tài!”</p>
+<p>Đúng lúc này, Biết Cửu bên cạnh bổ nhào quỳ xuống đất, khóc lóc nói:</p>
+<p>“Là Lục Hoàng tử làm.”</p>
+<p>“Khoảng hơn mười ngày trước, Lục Hoàng tử đã lừa Vương gia nhà nô tài uống rượu có độc. Chính hắn làm!”</p>
+<p>Lục Hoàng tử đã bày cục này từ hơn mười ngày trước.</p>
+<p>Sở Dực!</p>
+<p>Vốn định nhốt hắn vào Tông Nhân phủ, để hắn sống hết quãng đời còn lại, cũng xem như được chết yên lành. Nào ngờ hắn lại dám đánh chủ ý lên người mà Sở Ly coi trọng nhất!</p>
+<p>Sở Ly tức giận quay người: “Ta đi Tông Nhân phủ một chuyến!”</p>
+<p>Đúng lúc đó, bên ngoài có một thái giám đi tới bẩm báo:</p>
+<p>“Bẩm Nhiếp chính vương, Ninh Quý nhân cầu kiến Nhàn vương.”</p>
+<p>Ninh Quý nhân chính là sinh mẫu của Đại Hoàng tử và Lục Hoàng tử.</p>
+<p>Sở Ly lạnh giọng: “Đến đúng lúc lắm, dẫn tới thiên điện, ta đi gặp nàng ta.”</p>
+<p>Thiên điện.</p>
+<p>Rầm!</p>
+<p>Sở Ly đẩy mạnh cửa. Ninh Quý nhân đang chờ bên trong lập tức đứng dậy nghênh đón, nhưng khi nhìn thấy gương mặt nàng, thân thể bà ta chấn động dữ dội:</p>
+<p>“Cửu… ngươi, ngươi là…”</p>
+<p>Nàng là ai quan trọng sao?</p>
+<p>“Ninh Quý nhân, ngươi có chuyện gì?” Sở Ly phất tay áo ngồi xuống.</p>
+<p>Ninh Quý nhân chấn kinh không thôi.</p>
+<p>Giọng nói quen thuộc, gương mặt giống hệt… là Cửu Hoàng tử chết đi sống lại!</p>
+<p>Tốt quá rồi!</p>
+<p>Cửu Hoàng tử nổi tiếng mềm lòng, hiền hòa!</p>
+<p>“Xin Cửu Hoàng tử khai ân, có thể tra xét lại chuyện Lục Hoàng tử tạo phản hay không. Lục Hoàng tử bản tính thành thật, an phận, tuy đôi khi có chút nghịch ngợm, nhưng tuyệt đối không dám tạo phản!”</p>
+<p>Ninh Quý nhân khuỵu gối quỳ xuống, khóe mắt đẫm lệ:</p>
+<p>“Nhiều năm qua, ta vẫn luôn dạy dỗ hai đứa trẻ, làm người làm việc phải nhân thiện có đức, trên không thẹn với trời, dưới không thẹn với đất. Lục Hoàng tử là bị oan!”</p>
+<p>“Sau khi Đại Hoàng tử xảy ra chuyện, ta chỉ còn Lục Hoàng tử là đứa con duy nhất… Xin Cửu Hoàng tử thương xót cho một người làm mẫu thân như ta. Nếu Lục Hoàng tử thật sự có dã tâm tạo phản, vậy hơn hai mươi năm qua, sao ta có thể vẫn luôn chỉ ở vị phận Quý nhân?”</p>
+<p>Bà ta khóc đến mức không thành hình dạng.</p>
+<p>Trong hậu cung, Ninh Quý nhân nổi danh không tranh không đoạt, tính tình đạm bạc.</p>
+<p>Cho dù sinh hạ Đại Hoàng tử và Lục Hoàng tử, bà ta vẫn có thể minh triết bảo thân giữa vô số quyền thế.</p>
+<p>Từ trước đến nay, Sở Ly vẫn luôn cảm thấy bà ta là một người hiền hòa.</p>
+<p>Nhưng hiện giờ đứng ngoài cuộc, nhìn lại nước mắt của Ninh Quý nhân, nàng lại cảm thấy có vài phần châm chọc.</p>
+<p>“Lần trước, ngươi cũng tới cầu xin ta.”</p>
+<p>Sở Ly nói:</p>
+<p>“Đó là khi Đại Hoàng tử mưu hại ta, ngươi cũng khóc đến mức không thành tiếng như vậy, khiến ta tin rằng ngươi thật sự không tranh với đời.”</p>
+<p>“Lần này, ngươi lại tới cầu xin ta. Ninh Quý nhân, có phải ngươi cảm thấy trong cả hoàng cung này, ta là người dễ nói chuyện nhất không?”</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_256.html" class="btn">‹ Trước</a>
             <a href="chuong_258.html" class="btn">Sau ›</a>
         </div>
@@ -203,15 +210,11 @@ Sở Ly nói:
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -223,11 +226,11 @@ Sở Ly nói:
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 209</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,189 +62,198 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 209</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_208.html" class="btn">‹ Trước</a>
             <a href="chuong_210.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 209: Đây mới là dáng vẻ mà một bậc trưởng bối nên có
-“Ta quen biết một vị lão tướng, tên là Tạ Ân Hồng.”
-“Ta biết ông ấy!”
-Sở Ly kinh ngạc nói: “Trước kia từng nghe phụ hoàng nhắc đến, Tạ lão tướng quân là một vị lương đống chi thần đáng kính. Năm xưa, khi gần sáu mươi tuổi, ông vẫn thống binh chinh phạt Tây Vực, trấn thủ một phương. Mãi đến khi chân trúng tên, thương thế nặng đến mức không thể đi lại bình thường, phụ hoàng mới hạ chỉ ép ông cởi giáp quy điền, an hưởng tuổi già.”
-“Đúng, chính là ông ấy.”
-Sở Đệ Trì nắm lấy bàn tay nhỏ của nàng, vừa dắt nàng vào phòng vừa nói:
-“Tạ lão tướng quân cả đời trung nghĩa, dưới gối không con không gái, tuổi già quạnh quẽ. Nếu nàng nhận dưới gối ông ấy, thay ông dưỡng lão tống chung, cũng coi như viên mãn lòng trung thành mà ông ấy dành cho Đại Sở cả một đời.”
-“Hơn nữa, Tạ lão tướng quân là nguyên lão công thần. Dù đã giải giáp, nhưng huân quý quyền thần trong kinh vẫn phải nể ông ấy ba phần. Nàng nhận làm độc nữ của lão tướng quân, sẽ không ai dám dị nghị thân phận của nàng.”
-Hắn đã sắp xếp chu toàn mọi việc.
-Sở Ly tuy tán đồng, nhưng trong lòng vẫn còn dè dặt:
-“Tạ lão tướng quân là người của hoàng thúc?”
-Người đời vẫn nói, ăn của người thì mềm miệng, cầm của người thì ngắn tay.
-Nếu nàng nhận dưới danh nghĩa Tạ lão tướng quân, liệu có để lại nhược điểm gì chăng?
-“Sao ông ấy có thể là người của ta?”
-Sở Đệ Trì thần sắc nghiêm chính:
-“Tạ lão tướng quân cả đời báo quốc, không nhận hối lộ, không kết đảng, không mưu tư lợi. Ông ấy là người của Đại Sở. Mà nàng là hoàng tử được Sở Hoàng sủng ái nhất, vậy Tạ lão tướng quân đương nhiên là người của nàng.”
-“A?”
-“Chuyện này…”
-“Có hợp lý sao?”
-“Nhưng ta với Tạ lão tướng quân đâu có quen…”
-“Tạ lão tướng quân trung thành với hoàng thất, tự nhiên cũng trung thành với nàng. nàng không quen ông ấy, nhưng lòng trung của ông ấy với nàng tuyệt không hai lòng. Còn ta chỉ là người đứng giữa giúp hai bên kết nối.”
-“Tiểu Cửu, ta làm vậy cũng hoàn toàn vì nàng. nàng nghĩ xem, nếu trở về Đế Đô mà vẫn mang danh nghĩa của Ôn gia, chẳng phải là nói với tất cả mọi người rằng nàng chính là Cửu hoàng tử chết rồi sống lại hay sao?”
-Sở Ly khẽ nhíu mày, nghiêm túc suy nghĩ.
-Hình như đúng là có lý.
-“Vậy cứ theo ý hoàng thúc đi.”
-Khóe môi người đàn ông khẽ cong lên, ý cười sâu xa thoáng qua rồi biến mất.
-“Ta sẽ lập tức bảo Trọng Phong đi sắp xếp.”
-Sở Ly gãi đầu:
-“Vậy làm phiền hoàng thúc rồi.”
-Đường sá xa xôi đến tận Giang Nam, còn chưa kịp nghỉ ngơi cho tử tế, đã phải vì chuyện của nàng mà bận lòng.
-“Không sao, không sao.”
-Sở Đệ Trì mỉm cười thật sâu, xoay người ngồi xuống bên cạnh nàng.
-“Tiểu Cửu.”
-“Dạ?”
-“Nàng có thể ở bên ta không?”
-“?!”
-Sở Ly trợn to hai mắt, đầu lập tức ngẩng phắt lên, đụng phải ánh mắt ôn hòa mang theo ý cười của hắn. Những lời như vậy thốt ra từ miệng hắn, khiến nàng có cảm giác còn đáng sợ hơn cả ban ngày gặp quỷ.
-Chỉ vài nhịp thở sau, người đàn ông xoa đầu nàng, cười nói:
-“Tiểu Cửu, ta muốn ở bên nàng thật tốt, nên mới hỏi ý nàng như vậy. Nhưng nàng cũng không cần vội, cứ từ từ nghĩ. Dù nàng từ chối ta cũng không sao. Ta biết nàng và Tần thiếu tướng quân lớn lên cùng nhau từ nhỏ, tình nghĩa rất sâu.”
-Sở Ly kinh ngạc há miệng, vội vàng xua hai tay:
-“Không, không, không! ta với Tần Mục Vũ chỉ là bằng hữu!”
-Tình bằng hữu và tình yêu cách nhau quá xa, tuyệt đối không thể lẫn lộn.
-Lần giả thành thân này, dù nàng và Tần Mục Vũ đều mặc hỉ phục, nhưng chỉ nhìn nhau mà cười, chưa từng nảy sinh dù chỉ một tia ý niệm khác.
-“Ồ? Thật sao?”
-“Thật.”
-“Vậy chúng ta là bằng hữu chứ?”
-Sở Ly nhíu mày, lắc đầu.
-Bọn họ sao có thể là bằng hữu được?
-Vậy… giữa bọn họ là gì?
-Sở Đệ Trì cười nhạt đứng dậy:
-“Được rồi, nàng cứ từ từ nghĩ. Ta ra ngoài xử lý chút việc vặt.”
-“Yên tâm đi, Tiểu Cửu. Cho dù sau này nàng thật sự muốn thành thân với Tần thiếu tướng quân, ta cũng sẽ đích thân chủ hôn cho hai đứa. Chỉ là đừng lén lút thành thân như lần này nữa, biết chưa?”
-“Chuyện hôn nhân đại sự, nên nhận được lời chúc phúc của tất cả thân bằng hảo hữu. Ta cũng sẽ chúc phúc cho nàng và Tần thiếu tướng quân.”
-Nói xong, hắn bước ra ngoài.
-Nụ cười trên gương mặt ôn hòa đến lạ. Ở Giang Nam bốn mùa như xuân, hắn tựa cơn gió xuân phất mặt, dịu dàng ấm áp.
-Sở Ly gần như không còn nhận ra hắn nữa.
-Hoàng thúc vậy mà rộng lượng đến thế!
-Oa!
-Đây mới là dáng vẻ mà một bậc trưởng bối nên có.
-Hoàng thúc thật tốt!
-Sở Đệ Trì vừa bước qua ngưỡng cửa, ý cười trên mặt lập tức tan biến sạch sẽ. Hắn ngoắc tay gọi Tiêu Dạ Hành:
-“Ngoại sinh của ngươi năm nay bao nhiêu tuổi rồi?”
-“Mười chín.”
-“Tuổi này còn chưa thành thân, nó định làm gì? 
-Muốn để phủ Tướng quân tuyệt tự sao?”
-Kiếm mi của Tiêu Dạ Hành khẽ nhíu.
-Hiểu rồi.
-“Ta sẽ lập tức viết thư cho tỷ tỷ và tỷ phu, bảo họ mau chóng tìm một danh môn khuê tú tuổi tác tương xứng ở kinh thành. Cố gắng đến lúc chúng ta trở về Đế Đô thì hôn sự cũng kịp định xong.”
-Sở Đệ Trì nheo mắt.
-Thoải mái rồi.
-Được.
-Bây giờ có thể đi xử lý Lý Tri phủ.
-“Chủ tử.”
-Trọng Phong bê một chiếc ghế lê chạm hoa đặt lên bậc thềm trước cổng Lâm Hồ Tiểu Trúc.
-Người đàn ông áo gấm mực đen ung dung ngồi xuống, một tay hờ hững đặt trên tay vịn, tựa như thần châm định hải, khiến tất cả mọi người đều nín thở, không dám càn quấy.
-Lý Tri phủ đã quỳ suốt một đêm, cộng thêm cả buổi sáng, hai chân đã tê dại đến mất hẳn cảm giác.
-Thôi Tiền Tiến, đám quan binh ai nấy môi tím tái, gần như sắp ngất.
-Đám bách tính đứng xa xa, nhỏ giọng chỉ trỏ bàn tán.
-Tiêu Dạ Hành cất giọng quát:
-“Lý Cử Nghiệp, ngươi thật to gan! Dám mưu hại độc nữ của Tạ Ân Hồng, Tạ lão tướng quân!”
-Lý Tri phủ trợn tròn mắt.
-Cái gì?!
-Cô nương họ Sơ là…
-“Ngươi có biết người đang ở trong Lâm Hồ Tiểu Trúc chính là ái nữ tuổi già mới có của Tạ lão tướng quân, Tạ Ly hay không?”
-Trời ơi!
-Hắn không biết!
-Ông trời ơi!
-“Tiêu Đô đốc tha mạng! Nhiếp Chính Vương tha mạng! Hạ quan không biết Tạ tiểu thư, nhất thời hồ đồ mới phạm sai. Xin tha mạng!”
-Bách tính càng thêm kinh hãi.
-“Cô nương họ Sơ là con gái Tạ lão tướng quân sao?”
-“Khắp Đại Sở ai mà không biết Tạ lão tướng quân cốt cách trung liệt! Tóc đã bạc trắng vẫn xả thân vì nghĩa, một lòng báo quốc. Thế mà độc nữ của ông ấy lại bị ức hiếp ở Giang Nam!”
-“Nếu Tạ lão tướng quân biết được, chẳng biết sẽ đau lòng đến mức nào!”
-“Lý đại nhân đối xử hà khắc với Tạ tiểu thư như vậy, bảo sao lại kinh động đến Nhiếp Chính Vương…”
-Lần này, Lý Tri phủ chắc chắn xong đời rồi.
-Lý Tri phủ quỳ rạp xuống đất, dập đầu liên hồi:
-“Tha mạng!”
-“Hạ quan có mắt không tròng, tất cả đều là lỗi của hạ quan! Sau này hạ quan không dám nữa! Xin tha mạng!”
-Tiêu Dạ Hành lạnh giọng:
-“Chỉ vì nàng là Tạ tiểu thư nên ngươi mới biết mình sai?”
-“Chẳng lẽ nếu nàng chỉ là dân thường thì đáng bị ngươi ức hiếp?”
-“Không, không! Hạ quan không có ý đó! Hạ quan… hạ quan…”
-“Xem ra những ngày ta không ở Giang Nam, Lý đại nhân oai phong lắm nhỉ? Một tay che trời cơ mà.”
-Lý Tri phủ sợ đến bật cả tiếng khóc:
-“Hạ quan không dám! Tiêu Đô đốc, hạ quan chỉ là một tiểu tốt dưới trướng ngài, nào dám có uy phong gì. Dù có chút tư tâm, cũng đều là vì ngài!”
-“Vậy sao?”
-Tiêu Dạ Hành cười lạnh.
-“Ngươi dám nói dưới tay mình không có một vụ oan án nào? Không nhận hối lộ? Không ức hiếp bách tính? Không cậy quyền cậy thế?”
-“Hạ quan không có! Hạ quan không dám!”
-Sở Đệ Trì lười biếng ngồi đó, nhàn nhạt lên tiếng:
-“Đối với loại người chưa thấy quan tài chưa đổ lệ thế này, phải mang quan tài của hắn ra mới được.”
-Tiêu Dạ Hành khẽ nhướng mi, trông thấy Sở Ly đi ra, liền lui sang một bên.
-“Nàng đến đi.”
-“Đây là địa giới Giang Nam, là công vụ của ngươi, bản vương sao tiện nhúng tay?”
-Sở Đệ Trì khẽ cười, khiêm tốn xoa cổ tay, rồi trở tay tát một cái thật mạnh khiến Lý Tri phủ bay văng ra ngoài.
-“A!”
-“Hôm nay, bản vương đặt lời ở đây. Từ Tri phủ Giang Nam cho đến toàn bộ bách tính thành Giang Nam, ai có án thì báo án, ai có oan thì kêu oan. Bản vương sẽ đích thân xử lý!”
-Lý Tri phủ ôm mặt, nhổ ra hai chiếc răng dính máu, ngay cả khóc cũng không dám.
-Bách tính lập tức lớn gan hơn, đồng loạt quỳ xuống:
-“Điện hạ, thảo dân có oan!”
-“Xin Điện hạ làm chủ!”
-“Nhiếp Chính Vương điện hạ, ngài chính là Thanh Thiên đại lão gia!”
-Sở Đệ Trì phất vạt áo mực, sải bước ngồi xuống, đón nhận sự kính ngưỡng và tín nhiệm của bách tính. Tất cả đều phủ phục dưới chân hắn, cung kính mà thành kính.
-Sở Ly bước ra, nhìn thấy cảnh ấy mới hiểu rằng, lời của bất kỳ ai cũng không có trọng lượng bằng lời của Nhiếp Chính Vương.
-Lời của hắn chính là thánh chỉ.
-Hắn nói gì, không một ai dám phản bác nửa lời. Ẩn bớt</p>
+            <p>Chương 209: Đây mới là dáng vẻ mà một bậc trưởng bối nên có</p>
+<p>“Ta quen biết một vị lão tướng, tên là Tạ Ân Hồng.”</p>
+<p>“Ta biết ông ấy!”</p>
+<p>Sở Ly kinh ngạc nói: “Trước kia từng nghe phụ hoàng nhắc đến, Tạ lão tướng quân là một vị lương đống chi thần đáng kính. Năm xưa, khi gần sáu mươi tuổi, ông vẫn thống binh chinh phạt Tây Vực, trấn thủ một phương. Mãi đến khi chân trúng tên, thương thế nặng đến mức không thể đi lại bình thường, phụ hoàng mới hạ chỉ ép ông cởi giáp quy điền, an hưởng tuổi già.”</p>
+<p>“Đúng, chính là ông ấy.”</p>
+<p>Sở Đệ Trì nắm lấy bàn tay nhỏ của nàng, vừa dắt nàng vào phòng vừa nói:</p>
+<p>“Tạ lão tướng quân cả đời trung nghĩa, dưới gối không con không gái, tuổi già quạnh quẽ. Nếu nàng nhận dưới gối ông ấy, thay ông dưỡng lão tống chung, cũng coi như viên mãn lòng trung thành mà ông ấy dành cho Đại Sở cả một đời.”</p>
+<p>“Hơn nữa, Tạ lão tướng quân là nguyên lão công thần. Dù đã giải giáp, nhưng huân quý quyền thần trong kinh vẫn phải nể ông ấy ba phần. Nàng nhận làm độc nữ của lão tướng quân, sẽ không ai dám dị nghị thân phận của nàng.”</p>
+<p>Hắn đã sắp xếp chu toàn mọi việc.</p>
+<p>Sở Ly tuy tán đồng, nhưng trong lòng vẫn còn dè dặt:</p>
+<p>“Tạ lão tướng quân là người của hoàng thúc?”</p>
+<p>Người đời vẫn nói, ăn của người thì mềm miệng, cầm của người thì ngắn tay.</p>
+<p>Nếu nàng nhận dưới danh nghĩa Tạ lão tướng quân, liệu có để lại nhược điểm gì chăng?</p>
+<p>“Sao ông ấy có thể là người của ta?”</p>
+<p>Sở Đệ Trì thần sắc nghiêm chính:</p>
+<p>“Tạ lão tướng quân cả đời báo quốc, không nhận hối lộ, không kết đảng, không mưu tư lợi. Ông ấy là người của Đại Sở. Mà nàng là hoàng tử được Sở Hoàng sủng ái nhất, vậy Tạ lão tướng quân đương nhiên là người của nàng.”</p>
+<p>“A?”</p>
+<p>“Chuyện này…”</p>
+<p>“Có hợp lý sao?”</p>
+<p>“Nhưng ta với Tạ lão tướng quân đâu có quen…”</p>
+<p>“Tạ lão tướng quân trung thành với hoàng thất, tự nhiên cũng trung thành với nàng. nàng không quen ông ấy, nhưng lòng trung của ông ấy với nàng tuyệt không hai lòng. Còn ta chỉ là người đứng giữa giúp hai bên kết nối.”</p>
+<p>“Tiểu Cửu, ta làm vậy cũng hoàn toàn vì nàng. nàng nghĩ xem, nếu trở về Đế Đô mà vẫn mang danh nghĩa của Ôn gia, chẳng phải là nói với tất cả mọi người rằng nàng chính là Cửu hoàng tử chết rồi sống lại hay sao?”</p>
+<p>Sở Ly khẽ nhíu mày, nghiêm túc suy nghĩ.</p>
+<p>Hình như đúng là có lý.</p>
+<p>“Vậy cứ theo ý hoàng thúc đi.”</p>
+<p>Khóe môi người đàn ông khẽ cong lên, ý cười sâu xa thoáng qua rồi biến mất.</p>
+<p>“Ta sẽ lập tức bảo Trọng Phong đi sắp xếp.”</p>
+<p>Sở Ly gãi đầu:</p>
+<p>“Vậy làm phiền hoàng thúc rồi.”</p>
+<p>Đường sá xa xôi đến tận Giang Nam, còn chưa kịp nghỉ ngơi cho tử tế, đã phải vì chuyện của nàng mà bận lòng.</p>
+<p>“Không sao, không sao.”</p>
+<p>Sở Đệ Trì mỉm cười thật sâu, xoay người ngồi xuống bên cạnh nàng.</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Dạ?”</p>
+<p>“Nàng có thể ở bên ta không?”</p>
+<p>“?!”</p>
+<p>Sở Ly trợn to hai mắt, đầu lập tức ngẩng phắt lên, đụng phải ánh mắt ôn hòa mang theo ý cười của hắn. Những lời như vậy thốt ra từ miệng hắn, khiến nàng có cảm giác còn đáng sợ hơn cả ban ngày gặp quỷ.</p>
+<p>Chỉ vài nhịp thở sau, người đàn ông xoa đầu nàng, cười nói:</p>
+<p>“Tiểu Cửu, ta muốn ở bên nàng thật tốt, nên mới hỏi ý nàng như vậy. Nhưng nàng cũng không cần vội, cứ từ từ nghĩ. Dù nàng từ chối ta cũng không sao. Ta biết nàng và Tần thiếu tướng quân lớn lên cùng nhau từ nhỏ, tình nghĩa rất sâu.”</p>
+<p>Sở Ly kinh ngạc há miệng, vội vàng xua hai tay:</p>
+<p>“Không, không, không! ta với Tần Mục Vũ chỉ là bằng hữu!”</p>
+<p>Tình bằng hữu và tình yêu cách nhau quá xa, tuyệt đối không thể lẫn lộn.</p>
+<p>Lần giả thành thân này, dù nàng và Tần Mục Vũ đều mặc hỉ phục, nhưng chỉ nhìn nhau mà cười, chưa từng nảy sinh dù chỉ một tia ý niệm khác.</p>
+<p>“Ồ? Thật sao?”</p>
+<p>“Thật.”</p>
+<p>“Vậy chúng ta là bằng hữu chứ?”</p>
+<p>Sở Ly nhíu mày, lắc đầu.</p>
+<p>Bọn họ sao có thể là bằng hữu được?</p>
+<p>Vậy… giữa bọn họ là gì?</p>
+<p>Sở Đệ Trì cười nhạt đứng dậy:</p>
+<p>“Được rồi, nàng cứ từ từ nghĩ. Ta ra ngoài xử lý chút việc vặt.”</p>
+<p>“Yên tâm đi, Tiểu Cửu. Cho dù sau này nàng thật sự muốn thành thân với Tần thiếu tướng quân, ta cũng sẽ đích thân chủ hôn cho hai đứa. Chỉ là đừng lén lút thành thân như lần này nữa, biết chưa?”</p>
+<p>“Chuyện hôn nhân đại sự, nên nhận được lời chúc phúc của tất cả thân bằng hảo hữu. Ta cũng sẽ chúc phúc cho nàng và Tần thiếu tướng quân.”</p>
+<p>Nói xong, hắn bước ra ngoài.</p>
+<p>Nụ cười trên gương mặt ôn hòa đến lạ. Ở Giang Nam bốn mùa như xuân, hắn tựa cơn gió xuân phất mặt, dịu dàng ấm áp.</p>
+<p>Sở Ly gần như không còn nhận ra hắn nữa.</p>
+<p>Hoàng thúc vậy mà rộng lượng đến thế!</p>
+<p>Oa!</p>
+<p>Đây mới là dáng vẻ mà một bậc trưởng bối nên có.</p>
+<p>Hoàng thúc thật tốt!</p>
+<p>Sở Đệ Trì vừa bước qua ngưỡng cửa, ý cười trên mặt lập tức tan biến sạch sẽ. Hắn ngoắc tay gọi Tiêu Dạ Hành:</p>
+<p>“Ngoại sinh của ngươi năm nay bao nhiêu tuổi rồi?”</p>
+<p>“Mười chín.”</p>
+<p>“Tuổi này còn chưa thành thân, nó định làm gì?</p>
+<p>Muốn để phủ Tướng quân tuyệt tự sao?”</p>
+<p>Kiếm mi của Tiêu Dạ Hành khẽ nhíu.</p>
+<p>Hiểu rồi.</p>
+<p>“Ta sẽ lập tức viết thư cho tỷ tỷ và tỷ phu, bảo họ mau chóng tìm một danh môn khuê tú tuổi tác tương xứng ở kinh thành. Cố gắng đến lúc chúng ta trở về Đế Đô thì hôn sự cũng kịp định xong.”</p>
+<p>Sở Đệ Trì nheo mắt.</p>
+<p>Thoải mái rồi.</p>
+<p>Được.</p>
+<p>Bây giờ có thể đi xử lý Lý Tri phủ.</p>
+<p>“Chủ tử.”</p>
+<p>Trọng Phong bê một chiếc ghế lê chạm hoa đặt lên bậc thềm trước cổng Lâm Hồ Tiểu Trúc.</p>
+<p>Người đàn ông áo gấm mực đen ung dung ngồi xuống, một tay hờ hững đặt trên tay vịn, tựa như thần châm định hải, khiến tất cả mọi người đều nín thở, không dám càn quấy.</p>
+<p>Lý Tri phủ đã quỳ suốt một đêm, cộng thêm cả buổi sáng, hai chân đã tê dại đến mất hẳn cảm giác.</p>
+<p>Thôi Tiền Tiến, đám quan binh ai nấy môi tím tái, gần như sắp ngất.</p>
+<p>Đám bách tính đứng xa xa, nhỏ giọng chỉ trỏ bàn tán.</p>
+<p>Tiêu Dạ Hành cất giọng quát:</p>
+<p>“Lý Cử Nghiệp, ngươi thật to gan! Dám mưu hại độc nữ của Tạ Ân Hồng, Tạ lão tướng quân!”</p>
+<p>Lý Tri phủ trợn tròn mắt.</p>
+<p>Cái gì?!</p>
+<p>Cô nương họ Sơ là…</p>
+<p>“Ngươi có biết người đang ở trong Lâm Hồ Tiểu Trúc chính là ái nữ tuổi già mới có của Tạ lão tướng quân, Tạ Ly hay không?”</p>
+<p>Trời ơi!</p>
+<p>Hắn không biết!</p>
+<p>Ông trời ơi!</p>
+<p>“Tiêu Đô đốc tha mạng! Nhiếp Chính Vương tha mạng! Hạ quan không biết Tạ tiểu thư, nhất thời hồ đồ mới phạm sai. Xin tha mạng!”</p>
+<p>Bách tính càng thêm kinh hãi.</p>
+<p>“Cô nương họ Sơ là con gái Tạ lão tướng quân sao?”</p>
+<p>“Khắp Đại Sở ai mà không biết Tạ lão tướng quân cốt cách trung liệt! Tóc đã bạc trắng vẫn xả thân vì nghĩa, một lòng báo quốc. Thế mà độc nữ của ông ấy lại bị ức hiếp ở Giang Nam!”</p>
+<p>“Nếu Tạ lão tướng quân biết được, chẳng biết sẽ đau lòng đến mức nào!”</p>
+<p>“Lý đại nhân đối xử hà khắc với Tạ tiểu thư như vậy, bảo sao lại kinh động đến Nhiếp Chính Vương…”</p>
+<p>Lần này, Lý Tri phủ chắc chắn xong đời rồi.</p>
+<p>Lý Tri phủ quỳ rạp xuống đất, dập đầu liên hồi:</p>
+<p>“Tha mạng!”</p>
+<p>“Hạ quan có mắt không tròng, tất cả đều là lỗi của hạ quan! Sau này hạ quan không dám nữa! Xin tha mạng!”</p>
+<p>Tiêu Dạ Hành lạnh giọng:</p>
+<p>“Chỉ vì nàng là Tạ tiểu thư nên ngươi mới biết mình sai?”</p>
+<p>“Chẳng lẽ nếu nàng chỉ là dân thường thì đáng bị ngươi ức hiếp?”</p>
+<p>“Không, không! Hạ quan không có ý đó! Hạ quan… hạ quan…”</p>
+<p>“Xem ra những ngày ta không ở Giang Nam, Lý đại nhân oai phong lắm nhỉ? Một tay che trời cơ mà.”</p>
+<p>Lý Tri phủ sợ đến bật cả tiếng khóc:</p>
+<p>“Hạ quan không dám! Tiêu Đô đốc, hạ quan chỉ là một tiểu tốt dưới trướng ngài, nào dám có uy phong gì. Dù có chút tư tâm, cũng đều là vì ngài!”</p>
+<p>“Vậy sao?”</p>
+<p>Tiêu Dạ Hành cười lạnh.</p>
+<p>“Ngươi dám nói dưới tay mình không có một vụ oan án nào? Không nhận hối lộ? Không ức hiếp bách tính? Không cậy quyền cậy thế?”</p>
+<p>“Hạ quan không có! Hạ quan không dám!”</p>
+<p>Sở Đệ Trì lười biếng ngồi đó, nhàn nhạt lên tiếng:</p>
+<p>“Đối với loại người chưa thấy quan tài chưa đổ lệ thế này, phải mang quan tài của hắn ra mới được.”</p>
+<p>Tiêu Dạ Hành khẽ nhướng mi, trông thấy Sở Ly đi ra, liền lui sang một bên.</p>
+<p>“Nàng đến đi.”</p>
+<p>“Đây là địa giới Giang Nam, là công vụ của ngươi, bản vương sao tiện nhúng tay?”</p>
+<p>Sở Đệ Trì khẽ cười, khiêm tốn xoa cổ tay, rồi trở tay tát một cái thật mạnh khiến Lý Tri phủ bay văng ra ngoài.</p>
+<p>“A!”</p>
+<p>“Hôm nay, bản vương đặt lời ở đây. Từ Tri phủ Giang Nam cho đến toàn bộ bách tính thành Giang Nam, ai có án thì báo án, ai có oan thì kêu oan. Bản vương sẽ đích thân xử lý!”</p>
+<p>Lý Tri phủ ôm mặt, nhổ ra hai chiếc răng dính máu, ngay cả khóc cũng không dám.</p>
+<p>Bách tính lập tức lớn gan hơn, đồng loạt quỳ xuống:</p>
+<p>“Điện hạ, thảo dân có oan!”</p>
+<p>“Xin Điện hạ làm chủ!”</p>
+<p>“Nhiếp Chính Vương điện hạ, ngài chính là Thanh Thiên đại lão gia!”</p>
+<p>Sở Đệ Trì phất vạt áo mực, sải bước ngồi xuống, đón nhận sự kính ngưỡng và tín nhiệm của bách tính. Tất cả đều phủ phục dưới chân hắn, cung kính mà thành kính.</p>
+<p>Sở Ly bước ra, nhìn thấy cảnh ấy mới hiểu rằng, lời của bất kỳ ai cũng không có trọng lượng bằng lời của Nhiếp Chính Vương.</p>
+<p>Lời của hắn chính là thánh chỉ.</p>
+<p>Hắn nói gì, không một ai dám phản bác nửa lời. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_208.html" class="btn">‹ Trước</a>
             <a href="chuong_210.html" class="btn">Sau ›</a>
         </div>
@@ -253,15 +261,11 @@ Hắn nói gì, không một ai dám phản bác nửa lời. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -273,11 +277,11 @@ Hắn nói gì, không một ai dám phản bác nửa lời. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

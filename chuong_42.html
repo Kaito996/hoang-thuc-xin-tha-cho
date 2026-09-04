@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 42</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,168 +62,177 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 42</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_41.html" class="btn">‹ Trước</a>
             <a href="chuong_43.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 42: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 42: Để bổn vương xem thử, tình ý của ngươi đối với hắn rốt cuộc đáng giá mấy phần
-Sở Ly thần sắc điềm tĩnh, chậm rãi nói:
-“Đại Lý Tự còn đang điều tra, bụi trần chưa lắng, Quốc công phu nhân nói lời này, e rằng quá sớm chăng?”
-“Thi thể của Dương nhi đã nằm kia rồi, còn tra cái gì nữa? Còn tra được gì nữa? Ngươi cùng Tần thiếu tướng quân vốn là cùng một giuộc, cái chết của Dương nhi, ngươi khó mà thoát khỏi can hệ!”
-Quốc công phu nhân tuổi trung niên mất con, bi phẫn đến tột cùng, kích động lao ra ngoài:
-“Ngươi – tên hung thủ này – trả mạng cho Dương nhi của ta!”
-“Phu nhân, phu nhân!”
-Lương di nương vội vàng đỡ lấy bà.
-Không thể đánh.
-Không thể làm loạn.
-Vị này chính là Cửu hoàng tử được Thánh thượng sủng ái!
-Dẫu bi thương đến đâu, cũng không thể thần tử phạm thượng.
-“Nếu Tần Mục Vũ muốn giết người, cũng chẳng ngu xuẩn đến mức tự chôn vùi chính mình. Người khác hành hung còn biết che mặt bằng khăn, giấu đi dung nhan.”
-Tần Mục Vũ không đến mức ngu dại như vậy.
-Huống chi, hắn cũng không có lý do gì để sát hại Phương Hải Dương.
-Sở Ly nghi ngờ trong chuyện này tất có uẩn khúc, liền nói:
-“Lục thiếu khanh, ta muốn xem thi thể người chết.”
-“Ta không cho phép!”
-Quốc công phu nhân chắn ngay trước cửa. Không thể đắc tội Cửu hoàng tử, nhưng cũng quyết liều mạng giữ lại chút tôn nghiêm cuối cùng cho con trai.
-“Ai dám động vào thi thể của Dương nhi, thì phải bước qua xác ta trước!”
-Sở Ly nhìn bà, giọng trầm xuống:
-“Chẳng lẽ phu nhân không muốn tìm ra hung thủ thật sự, để Phương công tử được nhắm mắt nơi suối vàng sao?”
-Quốc công phu nhân như nghe thấy chuyện cười lớn nhất đời mình.
-“Chỉ cần Tần Mục Vũ chết, con ta tự khắc được yên nghỉ.”
-Những chuyện khác, không cần tên Cửu hoàng tử phế vật này xen vào làm rối thêm!
-“Đóng cửa!”
-“Một con chó cũng không được cho vào!”
-Quốc công phu nhân đích thân trông giữ thi thể Phương Hải Dương, không cho bất kỳ ai đến gần. Đại Lý Tự không thể cưỡng ép trấn áp, Lục thiếu khanh cũng đành bó tay.
-Bất kỳ người mẹ nào mất con, cũng đều có thể vì đau thương mà mất trí.
-Lục thiếu khanh nói:
-“Cửu hoàng tử, thực ra người không cần vào xem. Ngỗ tác đã nghiệm thi, Phương công tử bị thương ở bụng, mất máu quá nhiều mà chết. Ngoài ra không còn vết thương nào khác, cũng không có dấu hiệu trúng độc.”
-Ánh mắt Sở Ly kiên định.
-Dù tất cả mọi người đều nghi ngờ Tần Mục Vũ, nàng vẫn tin hắn vô tội.
-Rời khỏi Đại Lý Tự, nàng vào cung, vội đến thiên lao, muốn gặp Tần Mục Vũ, hỏi rõ tận mặt, nhưng bị Ngự lâm quân canh giữ chặn lại:
-“Chưa có thánh lệnh của Hoàng thượng, bất kỳ ai cũng không được tự tiện bước vào thiên lao trọng địa, xin Cửu hoàng tử lượng thứ.”
-Nàng giống như con ruồi không đầu, chạy khắp mấy nơi, lòng nóng như lửa đốt, nhưng chẳng thu được tiến triển gì, thậm chí đến mặt Tần Mục Vũ cũng không gặp được.
-Khi nàng quỳ trước Ngự thư phòng, đã là giờ Ngọ – lúc nắng gắt nhất trong ngày.
-Nàng còn chưa dùng bữa sáng, mới quỳ được hai khắc, môi đã tái nhợt, mồ hôi rịn đầy trán.
-“Phụ hoàng…”
-“Tần Mục Vũ là oan uổng, xin phụ hoàng minh xét… phụ hoàng!”
-Cửa Ngự thư phòng đóng chặt. Quan viên ra vào liên tục, ai nấy mặt mày nghiêm nghị, bước chân vội vã. Xảy ra đại sự như vậy, chẳng ai rảnh hơi để ý tới Cửu hoàng tử đang quỳ bên ngoài.
-Phúc công công nhìn ánh nắng chói chang, bất đắc dĩ bước nhanh tới:
-“Cửu hoàng tử, người hà tất phải khổ thế này?”
-“Phương Quốc công và Tần tướng quân còn đang ở bên trong, tranh cãi kịch liệt. Hoàng thượng hiện giờ thực sự không có thời gian gặp người. Huống chi tay người còn bị thương, lỡ để lại bệnh căn, chịu khổ vẫn là chính người.”
-Bàn tay hôm qua vừa chịu hai mươi trượng giới xích, lúc này đã thấm đầy máu, băng vải nhuộm đỏ.
-Sở Ly dường như không hề hay biết đau đớn, trong đầu chỉ có một ý niệm duy nhất:
-Tần Mục Vũ không thể chết.
-Phương Quốc công và Tần tướng quân còn đang tranh cãi, nghĩa là vẫn chưa có kết cục cuối cùng. Một khi kết cục đã định, mọi chuyện đều đã muộn.
-“Phụ hoàng!”
-“Cái chết của Phương Hải Dương có điều khả nghi, Tần Mục Vũ nhất định bị gian nhân hãm hại, xin phụ hoàng minh xét!”
-Nàng nhìn Ngự thư phòng bằng ánh mắt trắng bệch, mồ hôi to như hạt đậu chảy dọc theo thái dương.
-Hắn không thể chết.
-Hắn là người bằng hữu thân cận nhất của nàng.
-Từ thuở nhỏ, bọn họ cùng nhau lớn lên. Giữa chốn hoàng thất phức tạp này, tình nghĩa của họ vượt lên trên quyền mưu toan tính, đấu đá ngầm ngụy. Không cân nhắc lợi hại, không kết đảng mưu tư, thậm chí còn sâu đậm hơn cả tình huynh đệ với tám vị hoàng huynh kia.
-“Phụ hoàng…”
-Nàng kiên định tin rằng Tần Mục Vũ bị oan.
-“Phụ hoàng…”
-Liệt nhật trên cao, hôm nay nàng đến một ngụm nước cũng chưa uống. Tâm tư quá mức nôn nóng, trước mắt từng trận hoa lên.
-Nàng siết chặt đầu ngón tay, cố gắng nhẫn chịu sự khó chịu, kiên trì nhìn về phía Ngự thư phòng, chỉ mong phụ hoàng triệu kiến, lật lại án này.
-Phúc công công khuyên mấy câu, nhưng thực sự không khuyên nổi.
-Chỉ đành nói:
-“Tiểu An Tử, mau chống ô cho Cửu hoàng tử. Nắng lớn thế này, đừng để người bị phơi hỏng.”
-“Dạ.”
-Sở Ly quỳ trên nền gạch cứng lạnh, hai đầu gối gần như tê dại. Lần đầu tiên nàng cảm thấy thời gian dài đằng đẵng đến vậy – mỗi một khắc, mỗi một giây, đều liên quan đến sinh tử.
-Bên trong Ngự thư phòng, tiếng tranh luận ngày càng gay gắt.
-Quốc công phủ một mực yêu cầu Hoàng thượng hạ chỉ, xử tử Tần Mục Vũ.
-Tần tướng quân lấy toàn bộ quân công cả đời ra làm bảo đảm, nguyện trả giá mọi thứ, dù là bãi chức, tịch biên, lưu đày, cũng phải giữ mạng cho con trai.
-Quốc công phủ sao có thể cam lòng?
-Cái chết của đích trưởng tử:
-Thứ nhất, tổn hại thể diện;
-Thứ hai, trưởng bối đau lòng;
-Thứ ba, nuôi dưỡng một đích trưởng tử hao phí bao năm tâm huyết, tiêu tốn vô số vật lực, cuối cùng hóa thành công dã tràng. Nếu không xử tử Tần Mục Vũ, tuyệt đối không thể nuốt trôi cơn uất này.
-Sở Hoàng bị kẹt ở giữa, tiến thoái lưỡng nan.
-Càng hơn là: hung khí đâm chết Phương Hải Dương, chính là bội kiếm của Tần Mục Vũ.
-Một canh giờ trôi qua.
-Hai canh giờ…
-Sở Ly không biết mình đã quỳ bao lâu. Mồ hôi thấm ướt cả lưng áo, tóc dính bết vào gương mặt, sắc mặt càng thêm tái nhợt.
-“Phụ hoàng…”
-Thân thể mảnh mai lảo đảo muốn ngã.
-“Cửu hoàng tử, người hãy về trước đi.” Phúc công công thực sự không đành lòng. “Hoàng thượng công minh, ắt sẽ có thánh đoán.”
-“Cửu hoàng tử…”
-“Công công không cần khuyên nữa, ta tự có chừng mực.” Giọng Sở Ly hư nhược, bàn tay khó nhọc chống xuống đất, môi trắng bệch.
-“Phụ hoàng… Tần Mục Vũ là oan uổng…”
-“Ngươi là giun trong bụng hắn hay sao, mà dám khẳng định hắn bị oan?”
-Phía sau, giọng nam nhân lạnh lẽo như hàn phong quét tới, nơi đi qua, khí lạnh bức người.
-Phúc công công nâng phất trần, lập tức hành lễ:
-“Bái kiến Nhiếp chính vương điện hạ.”
-Sở Ly không quay đầu lại, các ngón tay đau đến tê dại khẽ co rút, đáy mắt lóe lên một tia căm ghét.
-Sở Đệ Trì chậm rãi bước đến bên nàng, liếc nhìn dáng vẻ chật vật ấy, khẽ cười nhạt:
-“Cửu hoàng tử và Tần thiếu tướng quân, quả nhiên tình nghĩa thâm hậu.”
-“Không cần ngươi xen vào.” Sở Ly quay mặt sang một bên, nửa câu cũng chẳng muốn nói với hắn.
-“Bổn vương lại thật sự có thể xen vào.”
-“Ngươi muốn làm gì?”
-Sở Ly vừa cảnh giác vừa phẫn nộ nhìn hắn:
-“Tần Mục Vũ là vô tội, tất là bị gian nhân hãm hại. Hoàng thúc nếu bất mãn với ta, cứ nhắm vào ta, đừng liên lụy người vô tội!”
-Bộ dạng bênh vực ấy, khuỷu tay đã lệch sang tận chín tầng mây.
-Sở Đệ Trì hơi cúi người, nhìn nàng, nụ cười mỏng dần dần đông cứng:
-“Cửu hoàng tử thật là đánh giá cao bản thân mình.”
-Đầu ngón tay mát lạnh đặt lên gò má nàng. Dáng vẻ tái nhợt suy yếu này, lại hoàn toàn vì nam nhân tên Tần Mục Vũ kia.
-“Đại Sở lập quốc chưa đầy hai mươi năm, quân tâm chưa vững, xã tắc chao đảo, trong ngoài đều loạn. Chuyện này, bất luận Hoàng thượng xử trí thế nào, cũng sẽ làm lạnh lòng một bộ phận quyền thần.”
-“Người không muốn đắc tội ai, cho nên triệu bổn vương vào cung, để bổn vương đứng ra làm kẻ ác này.”
-Ngón tay hắn siết chặt, nắm lấy gáy nàng, từng chữ từng chữ lạnh lẽo:
-“Cho nên, Tần thiếu tướng quân sống hay chết, bổn vương đương nhiên quản được. Còn ngươi, cứ ngoan ngoãn quỳ ở đây, để bổn vương xem thử — tình ý của ngươi đối với hắn, rốt cuộc đáng giá mấy phần.” Ẩn bớt</p>
+            <p>Chương 42: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 42: Để bổn vương xem thử, tình ý của ngươi đối với hắn rốt cuộc đáng giá mấy phần</p>
+<p>Sở Ly thần sắc điềm tĩnh, chậm rãi nói:</p>
+<p>“Đại Lý Tự còn đang điều tra, bụi trần chưa lắng, Quốc công phu nhân nói lời này, e rằng quá sớm chăng?”</p>
+<p>“Thi thể của Dương nhi đã nằm kia rồi, còn tra cái gì nữa? Còn tra được gì nữa? Ngươi cùng Tần thiếu tướng quân vốn là cùng một giuộc, cái chết của Dương nhi, ngươi khó mà thoát khỏi can hệ!”</p>
+<p>Quốc công phu nhân tuổi trung niên mất con, bi phẫn đến tột cùng, kích động lao ra ngoài:</p>
+<p>“Ngươi – tên hung thủ này – trả mạng cho Dương nhi của ta!”</p>
+<p>“Phu nhân, phu nhân!”</p>
+<p>Lương di nương vội vàng đỡ lấy bà.</p>
+<p>Không thể đánh.</p>
+<p>Không thể làm loạn.</p>
+<p>Vị này chính là Cửu hoàng tử được Thánh thượng sủng ái!</p>
+<p>Dẫu bi thương đến đâu, cũng không thể thần tử phạm thượng.</p>
+<p>“Nếu Tần Mục Vũ muốn giết người, cũng chẳng ngu xuẩn đến mức tự chôn vùi chính mình. Người khác hành hung còn biết che mặt bằng khăn, giấu đi dung nhan.”</p>
+<p>Tần Mục Vũ không đến mức ngu dại như vậy.</p>
+<p>Huống chi, hắn cũng không có lý do gì để sát hại Phương Hải Dương.</p>
+<p>Sở Ly nghi ngờ trong chuyện này tất có uẩn khúc, liền nói:</p>
+<p>“Lục thiếu khanh, ta muốn xem thi thể người chết.”</p>
+<p>“Ta không cho phép!”</p>
+<p>Quốc công phu nhân chắn ngay trước cửa. Không thể đắc tội Cửu hoàng tử, nhưng cũng quyết liều mạng giữ lại chút tôn nghiêm cuối cùng cho con trai.</p>
+<p>“Ai dám động vào thi thể của Dương nhi, thì phải bước qua xác ta trước!”</p>
+<p>Sở Ly nhìn bà, giọng trầm xuống:</p>
+<p>“Chẳng lẽ phu nhân không muốn tìm ra hung thủ thật sự, để Phương công tử được nhắm mắt nơi suối vàng sao?”</p>
+<p>Quốc công phu nhân như nghe thấy chuyện cười lớn nhất đời mình.</p>
+<p>“Chỉ cần Tần Mục Vũ chết, con ta tự khắc được yên nghỉ.”</p>
+<p>Những chuyện khác, không cần tên Cửu hoàng tử phế vật này xen vào làm rối thêm!</p>
+<p>“Đóng cửa!”</p>
+<p>“Một con chó cũng không được cho vào!”</p>
+<p>Quốc công phu nhân đích thân trông giữ thi thể Phương Hải Dương, không cho bất kỳ ai đến gần. Đại Lý Tự không thể cưỡng ép trấn áp, Lục thiếu khanh cũng đành bó tay.</p>
+<p>Bất kỳ người mẹ nào mất con, cũng đều có thể vì đau thương mà mất trí.</p>
+<p>Lục thiếu khanh nói:</p>
+<p>“Cửu hoàng tử, thực ra người không cần vào xem. Ngỗ tác đã nghiệm thi, Phương công tử bị thương ở bụng, mất máu quá nhiều mà chết. Ngoài ra không còn vết thương nào khác, cũng không có dấu hiệu trúng độc.”</p>
+<p>Ánh mắt Sở Ly kiên định.</p>
+<p>Dù tất cả mọi người đều nghi ngờ Tần Mục Vũ, nàng vẫn tin hắn vô tội.</p>
+<p>Rời khỏi Đại Lý Tự, nàng vào cung, vội đến thiên lao, muốn gặp Tần Mục Vũ, hỏi rõ tận mặt, nhưng bị Ngự lâm quân canh giữ chặn lại:</p>
+<p>“Chưa có thánh lệnh của Hoàng thượng, bất kỳ ai cũng không được tự tiện bước vào thiên lao trọng địa, xin Cửu hoàng tử lượng thứ.”</p>
+<p>Nàng giống như con ruồi không đầu, chạy khắp mấy nơi, lòng nóng như lửa đốt, nhưng chẳng thu được tiến triển gì, thậm chí đến mặt Tần Mục Vũ cũng không gặp được.</p>
+<p>Khi nàng quỳ trước Ngự thư phòng, đã là giờ Ngọ – lúc nắng gắt nhất trong ngày.</p>
+<p>Nàng còn chưa dùng bữa sáng, mới quỳ được hai khắc, môi đã tái nhợt, mồ hôi rịn đầy trán.</p>
+<p>“Phụ hoàng…”</p>
+<p>“Tần Mục Vũ là oan uổng, xin phụ hoàng minh xét… phụ hoàng!”</p>
+<p>Cửa Ngự thư phòng đóng chặt. Quan viên ra vào liên tục, ai nấy mặt mày nghiêm nghị, bước chân vội vã. Xảy ra đại sự như vậy, chẳng ai rảnh hơi để ý tới Cửu hoàng tử đang quỳ bên ngoài.</p>
+<p>Phúc công công nhìn ánh nắng chói chang, bất đắc dĩ bước nhanh tới:</p>
+<p>“Cửu hoàng tử, người hà tất phải khổ thế này?”</p>
+<p>“Phương Quốc công và Tần tướng quân còn đang ở bên trong, tranh cãi kịch liệt. Hoàng thượng hiện giờ thực sự không có thời gian gặp người. Huống chi tay người còn bị thương, lỡ để lại bệnh căn, chịu khổ vẫn là chính người.”</p>
+<p>Bàn tay hôm qua vừa chịu hai mươi trượng giới xích, lúc này đã thấm đầy máu, băng vải nhuộm đỏ.</p>
+<p>Sở Ly dường như không hề hay biết đau đớn, trong đầu chỉ có một ý niệm duy nhất:</p>
+<p>Tần Mục Vũ không thể chết.</p>
+<p>Phương Quốc công và Tần tướng quân còn đang tranh cãi, nghĩa là vẫn chưa có kết cục cuối cùng. Một khi kết cục đã định, mọi chuyện đều đã muộn.</p>
+<p>“Phụ hoàng!”</p>
+<p>“Cái chết của Phương Hải Dương có điều khả nghi, Tần Mục Vũ nhất định bị gian nhân hãm hại, xin phụ hoàng minh xét!”</p>
+<p>Nàng nhìn Ngự thư phòng bằng ánh mắt trắng bệch, mồ hôi to như hạt đậu chảy dọc theo thái dương.</p>
+<p>Hắn không thể chết.</p>
+<p>Hắn là người bằng hữu thân cận nhất của nàng.</p>
+<p>Từ thuở nhỏ, bọn họ cùng nhau lớn lên. Giữa chốn hoàng thất phức tạp này, tình nghĩa của họ vượt lên trên quyền mưu toan tính, đấu đá ngầm ngụy. Không cân nhắc lợi hại, không kết đảng mưu tư, thậm chí còn sâu đậm hơn cả tình huynh đệ với tám vị hoàng huynh kia.</p>
+<p>“Phụ hoàng…”</p>
+<p>Nàng kiên định tin rằng Tần Mục Vũ bị oan.</p>
+<p>“Phụ hoàng…”</p>
+<p>Liệt nhật trên cao, hôm nay nàng đến một ngụm nước cũng chưa uống. Tâm tư quá mức nôn nóng, trước mắt từng trận hoa lên.</p>
+<p>Nàng siết chặt đầu ngón tay, cố gắng nhẫn chịu sự khó chịu, kiên trì nhìn về phía Ngự thư phòng, chỉ mong phụ hoàng triệu kiến, lật lại án này.</p>
+<p>Phúc công công khuyên mấy câu, nhưng thực sự không khuyên nổi.</p>
+<p>Chỉ đành nói:</p>
+<p>“Tiểu An Tử, mau chống ô cho Cửu hoàng tử. Nắng lớn thế này, đừng để người bị phơi hỏng.”</p>
+<p>“Dạ.”</p>
+<p>Sở Ly quỳ trên nền gạch cứng lạnh, hai đầu gối gần như tê dại. Lần đầu tiên nàng cảm thấy thời gian dài đằng đẵng đến vậy – mỗi một khắc, mỗi một giây, đều liên quan đến sinh tử.</p>
+<p>Bên trong Ngự thư phòng, tiếng tranh luận ngày càng gay gắt.</p>
+<p>Quốc công phủ một mực yêu cầu Hoàng thượng hạ chỉ, xử tử Tần Mục Vũ.</p>
+<p>Tần tướng quân lấy toàn bộ quân công cả đời ra làm bảo đảm, nguyện trả giá mọi thứ, dù là bãi chức, tịch biên, lưu đày, cũng phải giữ mạng cho con trai.</p>
+<p>Quốc công phủ sao có thể cam lòng?</p>
+<p>Cái chết của đích trưởng tử:</p>
+<p>Thứ nhất, tổn hại thể diện;</p>
+<p>Thứ hai, trưởng bối đau lòng;</p>
+<p>Thứ ba, nuôi dưỡng một đích trưởng tử hao phí bao năm tâm huyết, tiêu tốn vô số vật lực, cuối cùng hóa thành công dã tràng. Nếu không xử tử Tần Mục Vũ, tuyệt đối không thể nuốt trôi cơn uất này.</p>
+<p>Sở Hoàng bị kẹt ở giữa, tiến thoái lưỡng nan.</p>
+<p>Càng hơn là: hung khí đâm chết Phương Hải Dương, chính là bội kiếm của Tần Mục Vũ.</p>
+<p>Một canh giờ trôi qua.</p>
+<p>Hai canh giờ…</p>
+<p>Sở Ly không biết mình đã quỳ bao lâu. Mồ hôi thấm ướt cả lưng áo, tóc dính bết vào gương mặt, sắc mặt càng thêm tái nhợt.</p>
+<p>“Phụ hoàng…”</p>
+<p>Thân thể mảnh mai lảo đảo muốn ngã.</p>
+<p>“Cửu hoàng tử, người hãy về trước đi.” Phúc công công thực sự không đành lòng. “Hoàng thượng công minh, ắt sẽ có thánh đoán.”</p>
+<p>“Cửu hoàng tử…”</p>
+<p>“Công công không cần khuyên nữa, ta tự có chừng mực.” Giọng Sở Ly hư nhược, bàn tay khó nhọc chống xuống đất, môi trắng bệch.</p>
+<p>“Phụ hoàng… Tần Mục Vũ là oan uổng…”</p>
+<p>“Ngươi là giun trong bụng hắn hay sao, mà dám khẳng định hắn bị oan?”</p>
+<p>Phía sau, giọng nam nhân lạnh lẽo như hàn phong quét tới, nơi đi qua, khí lạnh bức người.</p>
+<p>Phúc công công nâng phất trần, lập tức hành lễ:</p>
+<p>“Bái kiến Nhiếp chính vương điện hạ.”</p>
+<p>Sở Ly không quay đầu lại, các ngón tay đau đến tê dại khẽ co rút, đáy mắt lóe lên một tia căm ghét.</p>
+<p>Sở Đệ Trì chậm rãi bước đến bên nàng, liếc nhìn dáng vẻ chật vật ấy, khẽ cười nhạt:</p>
+<p>“Cửu hoàng tử và Tần thiếu tướng quân, quả nhiên tình nghĩa thâm hậu.”</p>
+<p>“Không cần ngươi xen vào.” Sở Ly quay mặt sang một bên, nửa câu cũng chẳng muốn nói với hắn.</p>
+<p>“Bổn vương lại thật sự có thể xen vào.”</p>
+<p>“Ngươi muốn làm gì?”</p>
+<p>Sở Ly vừa cảnh giác vừa phẫn nộ nhìn hắn:</p>
+<p>“Tần Mục Vũ là vô tội, tất là bị gian nhân hãm hại. Hoàng thúc nếu bất mãn với ta, cứ nhắm vào ta, đừng liên lụy người vô tội!”</p>
+<p>Bộ dạng bênh vực ấy, khuỷu tay đã lệch sang tận chín tầng mây.</p>
+<p>Sở Đệ Trì hơi cúi người, nhìn nàng, nụ cười mỏng dần dần đông cứng:</p>
+<p>“Cửu hoàng tử thật là đánh giá cao bản thân mình.”</p>
+<p>Đầu ngón tay mát lạnh đặt lên gò má nàng. Dáng vẻ tái nhợt suy yếu này, lại hoàn toàn vì nam nhân tên Tần Mục Vũ kia.</p>
+<p>“Đại Sở lập quốc chưa đầy hai mươi năm, quân tâm chưa vững, xã tắc chao đảo, trong ngoài đều loạn. Chuyện này, bất luận Hoàng thượng xử trí thế nào, cũng sẽ làm lạnh lòng một bộ phận quyền thần.”</p>
+<p>“Người không muốn đắc tội ai, cho nên triệu bổn vương vào cung, để bổn vương đứng ra làm kẻ ác này.”</p>
+<p>Ngón tay hắn siết chặt, nắm lấy gáy nàng, từng chữ từng chữ lạnh lẽo:</p>
+<p>“Cho nên, Tần thiếu tướng quân sống hay chết, bổn vương đương nhiên quản được. Còn ngươi, cứ ngoan ngoãn quỳ ở đây, để bổn vương xem thử — tình ý của ngươi đối với hắn, rốt cuộc đáng giá mấy phần.” Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_41.html" class="btn">‹ Trước</a>
             <a href="chuong_43.html" class="btn">Sau ›</a>
         </div>
@@ -232,15 +240,11 @@ Ngón tay hắn siết chặt, nắm lấy gáy nàng, từng chữ từng chữ
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -252,11 +256,11 @@ Ngón tay hắn siết chặt, nắm lấy gáy nàng, từng chữ từng chữ
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

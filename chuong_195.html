@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 195</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,148 +62,157 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 195</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_194.html" class="btn">‹ Trước</a>
             <a href="chuong_196.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 195: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 195: Để cữu cữu ta đến trị hắn
-“Hả?”
-Chẳng phải đang bàn chính sự sao?
-Tần Mục Vũ ôm chặt lấy nàng, ôm thật lâu, thật lâu, mãi đến cuối cùng mới hít sâu một hơi, rồi buông mạnh ra. Mây mù u ám đè nặng trong lòng suốt nhiều ngày qua lúc này mới hoàn toàn tan biến, trăng sáng lại hiện.
-“A Ly, sau này ta nhất định sẽ bảo vệ muội thật tốt!”
-Hắn sẽ giành lại những tấc đất Đại Sở đã mất.
-Hắn sẽ đánh đuổi đám Nam Man ra khỏi Đại Sở!
-Sở Ly vui mừng vỗ vỗ đầu hắn:
-“Mục Vũ, đệ lớn rồi.”
-Không hiểu sao, nàng lại có cảm giác tự hào như “nhà ta có con vừa khôn lớn”.
-Cảm giác ấy giống như một tên tiểu tử hoang dã từ nhỏ cùng mình xuống sông bắt cá, leo cây chọc tổ ong, nay bỗng nhiên chống đỡ được nửa bầu trời.
-Loại cảm giác này chính là…
-Dưỡng thành.
-Đúng.
-Chính là cảm giác thành tựu khi nhìn người mình bồi dưỡng trưởng thành.
-“Đừng xoa đầu ta.” Tần Mục Vũ nghiêm mặt nói. “Chúng ta đều đã trưởng thành rồi, không thể như hồi nhỏ cứ xoa đầu nữa.”
-Đầu của hắn chỉ để cho thê tử tương lai xoa.
-“Ta hiểu, xoa đầu sẽ không cao thêm được.”
-“…”
-Hắn đâu có ý đó.
-Niềm vui qua đi, Tần Mục Vũ dần bình tĩnh lại, tâm tình cũng càng thêm phức tạp.
-Lúc Sở Ly “chết”, chính mắt hắn nhìn thấy Nhiếp Chính Vương ôm thi thể nàng, đau đớn như rơi xuống vực sâu, nghe hắn dùng giọng khàn đặc gọi tên nàng hết lần này đến lần khác, thậm chí còn không tiếc dùng một phần ba giang sơn để đổi lấy thi thể nàng.
-Nhiếp Chính Vương thích nàng.
-Tình nghĩa thanh mai trúc mã, cho dù không tranh nổi quyền thế ngập trời, hắn cũng muốn dốc hết sức thử một lần!
-Sở Ly quay về chính sự:
-“Vừa rồi, ta đang đuổi theo một kẻ khả nghi. Hắn bỏ thuốc vào bánh ngọt, định hãm hại ta, nhưng lại bị Nhị sư huynh ăn nhầm.”
-Tần Mục Vũ trầm ngâm:
-“Trước đây muội chưa từng tới Giang Nam, có thể loại trừ khả năng kết oán. Có lẽ là kẻ đó tham luyến dung mạo của muội, nên mới dùng thủ đoạn hạ lưu như vậy để làm nhục muội.”
-Sở Ly nhíu mày.
-Thủ đoạn này thật khiến người ta buồn nôn!
-Hủy hoại sự trong sạch của nữ tử chẳng khác nào lấy mạng người.
-“Ta nghi là Sở Uyên Trì.”
-“Đại hoàng tử?”
-Sở Ly kể sơ qua vụ phóng hỏa xảy ra mấy ngày trước. Tần Mục Vũ nghe mà chân mày giật liên hồi, trong lòng chỉ thấy một trận sợ hãi.
-Không ngờ Đại hoàng tử lại ngoan độc đến vậy!
-Đã bị giáng làm thứ dân rồi mà vẫn muốn lấy mạng A Ly!
-“A Ly, chuyến này ta đến quá gấp, không mang theo nhân thủ. Chúng ta hãy đến nha môn tri phủ cầu viện trước. Tên hắc y nhân kia chắc chắn vẫn còn ẩn trong thành Giang Nam, hơn nữa vai hắn đã bị muội đánh trúng. Chỉ cần tìm được hắn, sẽ moi ra kẻ đứng sau.”
-“Không được.”
-Sở Ly xua tay.
-“Tri phủ Giang Nam cấu kết với Đại hoàng tử, hắn sẽ không giúp chúng ta.”
-“Có ta ở đây, hắn không dám càn rỡ!”
-Tần Mục Vũ lập tức cùng Sở Ly đến nha môn tri phủ.
-Không ngờ vừa tới đã bị chặn ngoài cửa, ngay cả mặt Lý Tri phủ cũng không được gặp. Người ngăn bọn họ chính là Thôi Tiền Tiến.
-“Ôi chà!”
-Hắn kéo dài giọng, âm dương quái khí:
-“Cô nương họ Sơ, mấy ngày không gặp, bên cạnh lại đổi người rồi. Chậc chậc, đúng là có phúc hưởng diễm phúc.”
-Ánh mắt Tần Mục Vũ lập tức lạnh hẳn:
-“Ngươi nói cái gì!”
-Giữa đôi mày sắc như kiếm bắn ra hàn ý. Thiếu niên tung hoành sa trường, quanh người mang theo sát khí trầm ngưng, khiến Thôi Tiền Tiến giật mình, rõ ràng nhận ra thiếu niên này không giống người thường.
-Là người luyện võ?
-“Gọi Tri phủ các ngươi ra đây. Ta là nhi tử của Tần đại tướng quân, có việc quan trọng cần thương nghị với Tri phủ.”
-Thôi Tiền Tiến cười nhạt:
-“Tần đại tướng quân?”
-Là vị Tần đại tướng quân nào?
-Đại Sở rộng lớn, quan viên đông đúc, võ tướng càng nhiều vô kể. Tướng quân này, tướng quân nọ, ai mà biết hắn là vị tướng quân nào?
-Tiểu quan cũng được gọi là đại nhân, Thượng thư chính nhất phẩm cũng được gọi là đại nhân, ai biết là vị đại nhân nào?
-Muốn hù dọa hắn sao.
-Hừ!
-“Ta mặc kệ ngươi là Tần tướng quân hay Mã tướng quân gì đó. Đây là Giang Nam, đến Giang Nam thì phải theo quy củ của Giang Nam. Muốn gặp Tri phủ đại nhân thì trước hết phải đưa thiếp bái kiến. Nếu không còn việc gì thì đừng đứng ngoài này la lối.”
-“Đóng cửa!”
-Thôi Tiền Tiến vung mạnh tay.
-Hai tên quan binh lập tức “rầm” một tiếng, đóng sập đại môn.
-“Đứng lại!”
-Tần Mục Vũ quát lớn:
-“Làm càn!”
-Phụ thân hắn là Đại tướng quân, cữu cữu là Giang Nam Đề đốc, bản thân hắn cũng giữ chức Chính ngũ phẩm Thiếu tướng quân, vậy mà những kẻ này lại hoàn toàn không coi ra gì.
-“Bảo Tri phủ các ngươi ra gặp ta. Ta cho hắn một cơ hội, bằng không đừng trách ta trở mặt!”
-Thôi Tiền Tiến cùng đám người cười ầm lên, như vừa nghe được chuyện cười lớn nhất thiên hạ.
-Trở mặt?
-Chỉ bằng hắn?
-Thật thú vị.
-Tần Mục Vũ tức đến không nhẹ.
-Ngược lại, Sở Ly đã sớm quen với chuyện này, đưa tay kéo nhẹ tay áo hắn:
-“Lý Tri phủ này qua lại riêng với Đại hoàng tử, nhất định sẽ không để ý đến đệ. Hơn nữa, phủ Đại tướng quân ở Đế Đô, không quản được chuyện ở Giang Nam.”
-Tần Mục Vũ siết chặt nắm tay:
-“Cữu cữu ta là Giang Nam Đề đốc. Ta sẽ lập tức viết thư, để cữu cữu đến trị hắn!”
-“Đừng.”
-Mi tâm Sở Ly khẽ giật.
-Nếu báo cho Tiêu Dạ Hành biết, vậy chẳng phải Sở Đệ Trì cũng sẽ biết sao?
-Người nam nhân đó…
-Liệu hắn có chịu buông tha nàng?
-Nhớ tới mỗi lần tiếp xúc với hắn, hơi thở bức bách ấy dường như không chỗ nào không len vào được, tựa như muốn nuốt chửng nàng, ép nàng đến đường cùng, dồn nàng vào góc không còn lối thoát…
-Mỗi một đêm, khi cảm thấy gần như không thở nổi, trong lòng nàng đều dâng lên một nỗi kiêng kỵ khó tả… Ẩn bớt</p>
+            <p>Chương 195: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 195: Để cữu cữu ta đến trị hắn</p>
+<p>“Hả?”</p>
+<p>Chẳng phải đang bàn chính sự sao?</p>
+<p>Tần Mục Vũ ôm chặt lấy nàng, ôm thật lâu, thật lâu, mãi đến cuối cùng mới hít sâu một hơi, rồi buông mạnh ra. Mây mù u ám đè nặng trong lòng suốt nhiều ngày qua lúc này mới hoàn toàn tan biến, trăng sáng lại hiện.</p>
+<p>“A Ly, sau này ta nhất định sẽ bảo vệ muội thật tốt!”</p>
+<p>Hắn sẽ giành lại những tấc đất Đại Sở đã mất.</p>
+<p>Hắn sẽ đánh đuổi đám Nam Man ra khỏi Đại Sở!</p>
+<p>Sở Ly vui mừng vỗ vỗ đầu hắn:</p>
+<p>“Mục Vũ, đệ lớn rồi.”</p>
+<p>Không hiểu sao, nàng lại có cảm giác tự hào như “nhà ta có con vừa khôn lớn”.</p>
+<p>Cảm giác ấy giống như một tên tiểu tử hoang dã từ nhỏ cùng mình xuống sông bắt cá, leo cây chọc tổ ong, nay bỗng nhiên chống đỡ được nửa bầu trời.</p>
+<p>Loại cảm giác này chính là…</p>
+<p>Dưỡng thành.</p>
+<p>Đúng.</p>
+<p>Chính là cảm giác thành tựu khi nhìn người mình bồi dưỡng trưởng thành.</p>
+<p>“Đừng xoa đầu ta.” Tần Mục Vũ nghiêm mặt nói. “Chúng ta đều đã trưởng thành rồi, không thể như hồi nhỏ cứ xoa đầu nữa.”</p>
+<p>Đầu của hắn chỉ để cho thê tử tương lai xoa.</p>
+<p>“Ta hiểu, xoa đầu sẽ không cao thêm được.”</p>
+<p>“…”</p>
+<p>Hắn đâu có ý đó.</p>
+<p>Niềm vui qua đi, Tần Mục Vũ dần bình tĩnh lại, tâm tình cũng càng thêm phức tạp.</p>
+<p>Lúc Sở Ly “chết”, chính mắt hắn nhìn thấy Nhiếp Chính Vương ôm thi thể nàng, đau đớn như rơi xuống vực sâu, nghe hắn dùng giọng khàn đặc gọi tên nàng hết lần này đến lần khác, thậm chí còn không tiếc dùng một phần ba giang sơn để đổi lấy thi thể nàng.</p>
+<p>Nhiếp Chính Vương thích nàng.</p>
+<p>Tình nghĩa thanh mai trúc mã, cho dù không tranh nổi quyền thế ngập trời, hắn cũng muốn dốc hết sức thử một lần!</p>
+<p>Sở Ly quay về chính sự:</p>
+<p>“Vừa rồi, ta đang đuổi theo một kẻ khả nghi. Hắn bỏ thuốc vào bánh ngọt, định hãm hại ta, nhưng lại bị Nhị sư huynh ăn nhầm.”</p>
+<p>Tần Mục Vũ trầm ngâm:</p>
+<p>“Trước đây muội chưa từng tới Giang Nam, có thể loại trừ khả năng kết oán. Có lẽ là kẻ đó tham luyến dung mạo của muội, nên mới dùng thủ đoạn hạ lưu như vậy để làm nhục muội.”</p>
+<p>Sở Ly nhíu mày.</p>
+<p>Thủ đoạn này thật khiến người ta buồn nôn!</p>
+<p>Hủy hoại sự trong sạch của nữ tử chẳng khác nào lấy mạng người.</p>
+<p>“Ta nghi là Sở Uyên Trì.”</p>
+<p>“Đại hoàng tử?”</p>
+<p>Sở Ly kể sơ qua vụ phóng hỏa xảy ra mấy ngày trước. Tần Mục Vũ nghe mà chân mày giật liên hồi, trong lòng chỉ thấy một trận sợ hãi.</p>
+<p>Không ngờ Đại hoàng tử lại ngoan độc đến vậy!</p>
+<p>Đã bị giáng làm thứ dân rồi mà vẫn muốn lấy mạng A Ly!</p>
+<p>“A Ly, chuyến này ta đến quá gấp, không mang theo nhân thủ. Chúng ta hãy đến nha môn tri phủ cầu viện trước. Tên hắc y nhân kia chắc chắn vẫn còn ẩn trong thành Giang Nam, hơn nữa vai hắn đã bị muội đánh trúng. Chỉ cần tìm được hắn, sẽ moi ra kẻ đứng sau.”</p>
+<p>“Không được.”</p>
+<p>Sở Ly xua tay.</p>
+<p>“Tri phủ Giang Nam cấu kết với Đại hoàng tử, hắn sẽ không giúp chúng ta.”</p>
+<p>“Có ta ở đây, hắn không dám càn rỡ!”</p>
+<p>Tần Mục Vũ lập tức cùng Sở Ly đến nha môn tri phủ.</p>
+<p>Không ngờ vừa tới đã bị chặn ngoài cửa, ngay cả mặt Lý Tri phủ cũng không được gặp. Người ngăn bọn họ chính là Thôi Tiền Tiến.</p>
+<p>“Ôi chà!”</p>
+<p>Hắn kéo dài giọng, âm dương quái khí:</p>
+<p>“Cô nương họ Sơ, mấy ngày không gặp, bên cạnh lại đổi người rồi. Chậc chậc, đúng là có phúc hưởng diễm phúc.”</p>
+<p>Ánh mắt Tần Mục Vũ lập tức lạnh hẳn:</p>
+<p>“Ngươi nói cái gì!”</p>
+<p>Giữa đôi mày sắc như kiếm bắn ra hàn ý. Thiếu niên tung hoành sa trường, quanh người mang theo sát khí trầm ngưng, khiến Thôi Tiền Tiến giật mình, rõ ràng nhận ra thiếu niên này không giống người thường.</p>
+<p>Là người luyện võ?</p>
+<p>“Gọi Tri phủ các ngươi ra đây. Ta là nhi tử của Tần đại tướng quân, có việc quan trọng cần thương nghị với Tri phủ.”</p>
+<p>Thôi Tiền Tiến cười nhạt:</p>
+<p>“Tần đại tướng quân?”</p>
+<p>Là vị Tần đại tướng quân nào?</p>
+<p>Đại Sở rộng lớn, quan viên đông đúc, võ tướng càng nhiều vô kể. Tướng quân này, tướng quân nọ, ai mà biết hắn là vị tướng quân nào?</p>
+<p>Tiểu quan cũng được gọi là đại nhân, Thượng thư chính nhất phẩm cũng được gọi là đại nhân, ai biết là vị đại nhân nào?</p>
+<p>Muốn hù dọa hắn sao.</p>
+<p>Hừ!</p>
+<p>“Ta mặc kệ ngươi là Tần tướng quân hay Mã tướng quân gì đó. Đây là Giang Nam, đến Giang Nam thì phải theo quy củ của Giang Nam. Muốn gặp Tri phủ đại nhân thì trước hết phải đưa thiếp bái kiến. Nếu không còn việc gì thì đừng đứng ngoài này la lối.”</p>
+<p>“Đóng cửa!”</p>
+<p>Thôi Tiền Tiến vung mạnh tay.</p>
+<p>Hai tên quan binh lập tức “rầm” một tiếng, đóng sập đại môn.</p>
+<p>“Đứng lại!”</p>
+<p>Tần Mục Vũ quát lớn:</p>
+<p>“Làm càn!”</p>
+<p>Phụ thân hắn là Đại tướng quân, cữu cữu là Giang Nam Đề đốc, bản thân hắn cũng giữ chức Chính ngũ phẩm Thiếu tướng quân, vậy mà những kẻ này lại hoàn toàn không coi ra gì.</p>
+<p>“Bảo Tri phủ các ngươi ra gặp ta. Ta cho hắn một cơ hội, bằng không đừng trách ta trở mặt!”</p>
+<p>Thôi Tiền Tiến cùng đám người cười ầm lên, như vừa nghe được chuyện cười lớn nhất thiên hạ.</p>
+<p>Trở mặt?</p>
+<p>Chỉ bằng hắn?</p>
+<p>Thật thú vị.</p>
+<p>Tần Mục Vũ tức đến không nhẹ.</p>
+<p>Ngược lại, Sở Ly đã sớm quen với chuyện này, đưa tay kéo nhẹ tay áo hắn:</p>
+<p>“Lý Tri phủ này qua lại riêng với Đại hoàng tử, nhất định sẽ không để ý đến đệ. Hơn nữa, phủ Đại tướng quân ở Đế Đô, không quản được chuyện ở Giang Nam.”</p>
+<p>Tần Mục Vũ siết chặt nắm tay:</p>
+<p>“Cữu cữu ta là Giang Nam Đề đốc. Ta sẽ lập tức viết thư, để cữu cữu đến trị hắn!”</p>
+<p>“Đừng.”</p>
+<p>Mi tâm Sở Ly khẽ giật.</p>
+<p>Nếu báo cho Tiêu Dạ Hành biết, vậy chẳng phải Sở Đệ Trì cũng sẽ biết sao?</p>
+<p>Người nam nhân đó…</p>
+<p>Liệu hắn có chịu buông tha nàng?</p>
+<p>Nhớ tới mỗi lần tiếp xúc với hắn, hơi thở bức bách ấy dường như không chỗ nào không len vào được, tựa như muốn nuốt chửng nàng, ép nàng đến đường cùng, dồn nàng vào góc không còn lối thoát…</p>
+<p>Mỗi một đêm, khi cảm thấy gần như không thở nổi, trong lòng nàng đều dâng lên một nỗi kiêng kỵ khó tả… Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_194.html" class="btn">‹ Trước</a>
             <a href="chuong_196.html" class="btn">Sau ›</a>
         </div>
@@ -212,15 +220,11 @@ Mỗi một đêm, khi cảm thấy gần như không thở nổi, trong lòng n
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -232,11 +236,11 @@ Mỗi một đêm, khi cảm thấy gần như không thở nổi, trong lòng n
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

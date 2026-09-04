@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 283</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,171 +62,180 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 283</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_282.html" class="btn">‹ Trước</a>
             <a href="chuong_284.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 283: Hắn muốn đích thân giết Sở Dạ Ly
-Sở Ly ngẩn người nhìn hắn:
-“Huynh đang nói mê sảng gì vậy? Nam Man đã lui binh, chúng ta thắng rồi, mau rời khỏi nơi này thôi.”
-Tần Mục Vũ cụp mắt:
-“Được.”
-Hắn cất bước lướt qua bên cạnh nàng, đến cả một góc y sam của nàng cũng không hề chạm vào.
-Sở Ly nghĩ, có lẽ là vì hắn bị nhốt dưới mật thất quá lâu, y phục bẩn thỉu, dáng vẻ nhếch nhác, nên mới cố ý tránh né.
-Trở về châu phủ trong thành, nàng lập tức sai người chuẩn bị thùng tắm, y phục sạch và nước nóng.
-Cả người Tần Mục Vũ chìm hẳn trong làn nước.
-Một tỳ nữ ôm bộ y phục sạch bước vào, vừa thấy thân ảnh hoàn toàn chìm dưới nước, không nhúc nhích, sợ đến mức thất thanh kêu lớn:
-“Tần Thiếu tướng quân!”
-Nàng vội vàng lao tới.
-Tưởng rằng đã xảy ra đại sự, lập tức muốn kéo người lên. Tay vừa thò vào thùng tắm, nam nhân đã phá nước ngoi lên:
-“Đừng chạm vào ta.”
-Ba chữ lạnh lùng ấy tựa như lớp băng mỏng phủ trên phiến lá, không chút gợn sóng, không chút cảm xúc, khiến tỳ nữ vội vàng rụt tay về, kinh hoảng cúi đầu:
-“Nô tỳ mang y phục đến cho ngài, thấy ngài chìm dưới nước mãi không động đậy, còn tưởng rằng…”
-“Đặt xuống, lui ra.”
-“Vâng, vâng!”
-Tỳ nữ không dám chậm trễ nửa phần, đặt y phục xuống rồi lập tức lui khỏi sương phòng, khép cửa lại.
-Ngoài cổng viện.
-Sở Ly ngồi trên bậc đá dưới cổng vòm, đang nói chuyện với Kinh Ảnh. Nghe thấy tiếng bước chân, nàng quay đầu nhìn sang.
-“Xong nhanh vậy sao?”
-Tỳ nữ thi lễ:
-“Tần Thiếu tướng quân không cần nô tỳ hầu hạ.”
-“Ừ, lui xuống đi.”
-Sở Ly quay đầu lại, duỗi chân, tiếp tục câu chuyện với Kinh Ảnh:
-“Đã đoạt lại được mười một tòa thành rồi sao?”
-Kinh Ảnh gật đầu:
-“Sau khi đại quân Vu Cổ bị tiêu diệt, sĩ khí Nam Man suy sụp, liên tiếp bại trận. Tiêu Đô đốc hiện đang dốc toàn lực thu phục lãnh thổ đã mất.”
-“Nhiếp Chính Vương đâu?”
-“Chủ tử đang nghị sự với chư vị phó tướng, nhưng đến bữa tối sẽ trở về dùng cơm cùng ngài. Hiện nay, Nam Man đã tập trung binh lực ở Lan Thành, xem ra là muốn đánh một trận quyết tử.”
-Sở Ly nhíu mày:
-“Lan Thành?”
-Nam Man đã chiến bại, vậy mà vẫn không nỡ buông những vùng đất này.
-Cũng phải.
-Nàng từng tiếp xúc với Thác Bạt Minh Nguyệt một thời gian. Đó là một nữ tử sinh ra đã kiêu ngạo, rực rỡ như ánh dương, niềm kiêu hãnh của nàng ta không cho phép mình lùi bước hay bỏ chạy.
-Nàng ta khác hẳn những nữ nhân mà Sở Ly từng gặp.
-“Lan Thành có bao nhiêu bách tính?”
-“Ít nhất chín vạn. Hơn nữa Lan Thành là sơn thành, địa thế phức tạp, dễ thủ khó công. Phía nam còn có sáu tòa thành nữa. Nếu không đánh hạ được Lan Thành, thì sáu tòa thành kia cũng không thể thu hồi.”
-Thác Bạt Minh Nguyệt đã chọn một vị trí cực kỳ thuận lợi — Lan Thành.
-Huống hồ trong thành còn có nhiều bách tính như vậy. Một khi Thác Bạt Minh Nguyệt trở mặt, bắt toàn thành chôn theo, e rằng sẽ trở thành thảm kịch lớn nhất trong mấy trăm năm qua.
-Kinh Ảnh trầm ngâm:
-“Trừ phi…”
-Sở Ly nhìn hắn:
-“Có biện pháp gì?”
-“Sáng nay, lúc nghe chủ tử nghị sự, có một kế có lẽ khả thi. Chính là để quân Đại Sở vòng sang Nam Cương. Chỉ cần đoạt lại Nam Cương, là có thể vây Lan Thành vào giữa, cắt đứt nguồn tiếp tế. Khi ấy chỉ cần bao vây, kéo dài thời gian, cũng đủ khiến bọn chúng tự tiêu vong.”
-Nhưng, kế này cũng có nguy cơ cực lớn.
-Hiện nay Nam Cương đã là nơi đóng quân của Nam Man. Quân Đại Sở lặng lẽ vòng sang, một khi thất bại, tất sẽ thương vong vô cùng thảm trọng.
-Nhưng nếu không làm vậy, quân Đại Sở sẽ không thể công phá Lan Thành, cũng chẳng thể thu hồi lãnh thổ.
-Tiến thoái lưỡng nan.
-“Quá mạo hiểm!”
-Sở Ly trầm giọng:
-“Hiện giờ Nam Cương là địa bàn của Nam Man. Đại Sở hoàn toàn không chiếm ưu thế, thậm chí còn có thể bị chúng phản công bao vây…”
-“Để ta đi.”
-Két—
-Phía sau vang lên tiếng mở cửa.
-Sở Ly và Kinh Ảnh đồng loạt quay đầu, chỉ thấy nam nhân sải bước đi ra.
-Một thân trường bào màu nâu sẫm mặc trên người, đai lưng bó lấy thân hình gầy rắn rỏi mà không hề tiêu điều. Mái tóc đen được buộc cao, ngay cả những sợi tóc lòa xòa cũng được vuốt gọn lên, để lộ đường nét trán rõ ràng, quanh người đều toát ra vẻ trầm ổn.
-Mấy ngày không gặp, hắn dường như đã thay đổi.
-Không biết có phải Sở Ly nhìn lầm hay không, rõ ràng chỉ mới hai mươi tuổi, vậy mà trong chớp mắt đã trưởng thành hơn hẳn.
-Hắn gằn từng chữ:
-“Ta sẽ dẫn binh vòng sang Nam Cương, đoạt lại Nam Cương, vây khốn Lan Thành.”
-Sở Ly lập tức đứng dậy:
-“Vừa rồi ta và Kinh Ảnh chỉ bàn luận, không phải quân cơ, huynh không cần để trong lòng. Huống hồ Nam Man đã bại, bọn chúng chỉ đang giãy chết. Muốn giữ mạng thì chỉ còn con đường trả lại thành trì, xám mặt rút về Nam Man.”
-Tần Mục Vũ nhìn nàng:
-“Nam Man công chúa sẽ không chạy.”
-“Để ta đi Nam Cương, ta biết chừng mực.”
-Hắn nhất định phải đoạt lại Nam Cương.
-Hắn muốn tự tay giết Sở Dạ Ly!
-Sở Ly luôn cảm thấy hắn dường như đã thay đổi. Ngay cả giọng nói cũng trầm ổn hơn, như thể sau khi trải qua sóng gió, tâm tính đã lắng xuống, hỷ nộ đều không còn lộ ra ngoài.
-Nhưng nhìn kỹ, hắn vẫn là hắn.
-Là người đã lớn lên cùng nàng từ thuở nhỏ.
-“Tiểu thư Tạ.”
-Bên kia, tỳ nữ bước tới.
-“Bữa tối đã chuẩn bị xong, mời ngài dời bước đến chính sảnh.”
-—
-Thiên Thủy Thành vốn bị quân Nam Man chiếm đóng. Tri phủ Tôn Kiệt chịu đủ áp bức, nhẫn nhục nhiều ngày, cuối cùng cũng đợi được Nhiếp Chính Vương tới, lúc này mới thật sự thở phào nhẹ nhõm.
-Thiên Thủy Thành cuối cùng cũng trở về trong vòng tay của Đại Sở!
-Tôn Tri phủ nhường phủ đệ của mình để Nhiếp Chính Vương tạm trú, hết lòng khoản đãi đoàn người. Ngay cả một bữa cơm tối bình thường cũng sai người nấu đủ mười lăm món.
-Sở Ly vừa đến, Tôn Tri phủ đã chắp tay nghênh đón:
-“Tạ tiểu thư, mời ngồi, mời ngồi.”
-“Tôn đại nhân không cần khách sáo.”
-Bọn họ đóng quân ở đây, nhiều nhất ba ngày sẽ rời đi.
-Theo biến hóa của chiến cuộc, vị trí của Sở Đệ Trì cũng luôn thay đổi. Tuy hắn không trực tiếp ra trận, nhưng vẫn phải liên tục hạ đạt quân lệnh.
-Tôn Tri phủ nói:
-“Hạ quan không biết khẩu vị của Nhiếp Chính Vương, nên dặn phòng bếp làm đủ mọi món. Nếu không có Nhiếp Chính Vương thân chinh, sao có thể nhanh như vậy đã đánh bại Nam Man? Thiên Thủy Thành sao có thể nhanh chóng được giải phóng? Hạ quan trong lòng thật vô cùng cảm kích và an ủi.”
-Nhiếp Chính Vương quả là anh minh!
-Sở Ly khẽ gật đầu, ra hiệu cho Kinh Ảnh và Tần Mục Vũ cũng ngồi xuống dùng bữa.
-Ở đây không phải Đế Đô hay tư dinh của mình. Xuất môn bên ngoài, không cần câu nệ quá nhiều quy củ, thuận tiện là được.
-Tôn Tri phủ lập tức sai người mang rượu ngon lên.
-Chén vừa rót đầy.
-Sở Đệ Trì dẫn theo bảy vị tướng lĩnh, vừa kết thúc việc quân, cùng nhau đến dùng bữa.
-“Hoàng thúc.”
-Sở Ly vừa định đứng dậy, Sở Đệ Trì đã đặt tay lên vai nàng, nhẹ nhàng ấn xuống, rồi kéo chiếc ghế bên cạnh nàng ra.
-Hắn ngồi xuống.
-Lúc ấy, những người khác mới dám ngồi.
-Tôn Tri phủ nhanh chóng liếc nhìn Sở Ly một cái.
-Hoàng thúc?
-Thiên Thủy Thành cách Đế Đô rất xa, mỗi năm ông chỉ vào kinh thuật chức một lần. Nhưng trong hoàng thất, hình như không có vị hậu bối nào họ “Tạ” cả?
-Hay là hậu duệ của một chi họ xa, chỉ dính chút quan hệ với hoàng thất, nên mới gọi như vậy để tỏ vẻ có thân thích, thân phận bất phàm?
-Ông bất động thanh sắc thu hồi ánh mắt, mỉm cười mở lời trước:
-“Thô trà đạm phạn, mong Nhiếp Chính Vương chớ chê.”
-Rồi hướng ra ngoài gọi:
-“Nữu Nữu, còn không mau vào rót rượu cho Nhiếp Chính Vương?”
-“Vâng, phụ thân.”
-Ngoài sảnh, một thiếu nữ dáng người yểu điệu, mặc váy lụa màu ngẫu phấn, tươi cười bước tới.
-Đôi mắt hạnh sáng ngời, chiếc đai bạc bên hông đính chuông nhỏ, theo từng bước chân phát ra tiếng leng keng trong trẻo, tựa như một cánh bướm rực rỡ, nhẹ nhàng sà đến bên cạnh Sở Đệ Trì. Ẩn bớt</p>
+            <p>Chương 283: Hắn muốn đích thân giết Sở Dạ Ly</p>
+<p>Sở Ly ngẩn người nhìn hắn:</p>
+<p>“Huynh đang nói mê sảng gì vậy? Nam Man đã lui binh, chúng ta thắng rồi, mau rời khỏi nơi này thôi.”</p>
+<p>Tần Mục Vũ cụp mắt:</p>
+<p>“Được.”</p>
+<p>Hắn cất bước lướt qua bên cạnh nàng, đến cả một góc y sam của nàng cũng không hề chạm vào.</p>
+<p>Sở Ly nghĩ, có lẽ là vì hắn bị nhốt dưới mật thất quá lâu, y phục bẩn thỉu, dáng vẻ nhếch nhác, nên mới cố ý tránh né.</p>
+<p>Trở về châu phủ trong thành, nàng lập tức sai người chuẩn bị thùng tắm, y phục sạch và nước nóng.</p>
+<p>Cả người Tần Mục Vũ chìm hẳn trong làn nước.</p>
+<p>Một tỳ nữ ôm bộ y phục sạch bước vào, vừa thấy thân ảnh hoàn toàn chìm dưới nước, không nhúc nhích, sợ đến mức thất thanh kêu lớn:</p>
+<p>“Tần Thiếu tướng quân!”</p>
+<p>Nàng vội vàng lao tới.</p>
+<p>Tưởng rằng đã xảy ra đại sự, lập tức muốn kéo người lên. Tay vừa thò vào thùng tắm, nam nhân đã phá nước ngoi lên:</p>
+<p>“Đừng chạm vào ta.”</p>
+<p>Ba chữ lạnh lùng ấy tựa như lớp băng mỏng phủ trên phiến lá, không chút gợn sóng, không chút cảm xúc, khiến tỳ nữ vội vàng rụt tay về, kinh hoảng cúi đầu:</p>
+<p>“Nô tỳ mang y phục đến cho ngài, thấy ngài chìm dưới nước mãi không động đậy, còn tưởng rằng…”</p>
+<p>“Đặt xuống, lui ra.”</p>
+<p>“Vâng, vâng!”</p>
+<p>Tỳ nữ không dám chậm trễ nửa phần, đặt y phục xuống rồi lập tức lui khỏi sương phòng, khép cửa lại.</p>
+<p>Ngoài cổng viện.</p>
+<p>Sở Ly ngồi trên bậc đá dưới cổng vòm, đang nói chuyện với Kinh Ảnh. Nghe thấy tiếng bước chân, nàng quay đầu nhìn sang.</p>
+<p>“Xong nhanh vậy sao?”</p>
+<p>Tỳ nữ thi lễ:</p>
+<p>“Tần Thiếu tướng quân không cần nô tỳ hầu hạ.”</p>
+<p>“Ừ, lui xuống đi.”</p>
+<p>Sở Ly quay đầu lại, duỗi chân, tiếp tục câu chuyện với Kinh Ảnh:</p>
+<p>“Đã đoạt lại được mười một tòa thành rồi sao?”</p>
+<p>Kinh Ảnh gật đầu:</p>
+<p>“Sau khi đại quân Vu Cổ bị tiêu diệt, sĩ khí Nam Man suy sụp, liên tiếp bại trận. Tiêu Đô đốc hiện đang dốc toàn lực thu phục lãnh thổ đã mất.”</p>
+<p>“Nhiếp Chính Vương đâu?”</p>
+<p>“Chủ tử đang nghị sự với chư vị phó tướng, nhưng đến bữa tối sẽ trở về dùng cơm cùng ngài. Hiện nay, Nam Man đã tập trung binh lực ở Lan Thành, xem ra là muốn đánh một trận quyết tử.”</p>
+<p>Sở Ly nhíu mày:</p>
+<p>“Lan Thành?”</p>
+<p>Nam Man đã chiến bại, vậy mà vẫn không nỡ buông những vùng đất này.</p>
+<p>Cũng phải.</p>
+<p>Nàng từng tiếp xúc với Thác Bạt Minh Nguyệt một thời gian. Đó là một nữ tử sinh ra đã kiêu ngạo, rực rỡ như ánh dương, niềm kiêu hãnh của nàng ta không cho phép mình lùi bước hay bỏ chạy.</p>
+<p>Nàng ta khác hẳn những nữ nhân mà Sở Ly từng gặp.</p>
+<p>“Lan Thành có bao nhiêu bách tính?”</p>
+<p>“Ít nhất chín vạn. Hơn nữa Lan Thành là sơn thành, địa thế phức tạp, dễ thủ khó công. Phía nam còn có sáu tòa thành nữa. Nếu không đánh hạ được Lan Thành, thì sáu tòa thành kia cũng không thể thu hồi.”</p>
+<p>Thác Bạt Minh Nguyệt đã chọn một vị trí cực kỳ thuận lợi — Lan Thành.</p>
+<p>Huống hồ trong thành còn có nhiều bách tính như vậy. Một khi Thác Bạt Minh Nguyệt trở mặt, bắt toàn thành chôn theo, e rằng sẽ trở thành thảm kịch lớn nhất trong mấy trăm năm qua.</p>
+<p>Kinh Ảnh trầm ngâm:</p>
+<p>“Trừ phi…”</p>
+<p>Sở Ly nhìn hắn:</p>
+<p>“Có biện pháp gì?”</p>
+<p>“Sáng nay, lúc nghe chủ tử nghị sự, có một kế có lẽ khả thi. Chính là để quân Đại Sở vòng sang Nam Cương. Chỉ cần đoạt lại Nam Cương, là có thể vây Lan Thành vào giữa, cắt đứt nguồn tiếp tế. Khi ấy chỉ cần bao vây, kéo dài thời gian, cũng đủ khiến bọn chúng tự tiêu vong.”</p>
+<p>Nhưng, kế này cũng có nguy cơ cực lớn.</p>
+<p>Hiện nay Nam Cương đã là nơi đóng quân của Nam Man. Quân Đại Sở lặng lẽ vòng sang, một khi thất bại, tất sẽ thương vong vô cùng thảm trọng.</p>
+<p>Nhưng nếu không làm vậy, quân Đại Sở sẽ không thể công phá Lan Thành, cũng chẳng thể thu hồi lãnh thổ.</p>
+<p>Tiến thoái lưỡng nan.</p>
+<p>“Quá mạo hiểm!”</p>
+<p>Sở Ly trầm giọng:</p>
+<p>“Hiện giờ Nam Cương là địa bàn của Nam Man. Đại Sở hoàn toàn không chiếm ưu thế, thậm chí còn có thể bị chúng phản công bao vây…”</p>
+<p>“Để ta đi.”</p>
+<p>Két—</p>
+<p>Phía sau vang lên tiếng mở cửa.</p>
+<p>Sở Ly và Kinh Ảnh đồng loạt quay đầu, chỉ thấy nam nhân sải bước đi ra.</p>
+<p>Một thân trường bào màu nâu sẫm mặc trên người, đai lưng bó lấy thân hình gầy rắn rỏi mà không hề tiêu điều. Mái tóc đen được buộc cao, ngay cả những sợi tóc lòa xòa cũng được vuốt gọn lên, để lộ đường nét trán rõ ràng, quanh người đều toát ra vẻ trầm ổn.</p>
+<p>Mấy ngày không gặp, hắn dường như đã thay đổi.</p>
+<p>Không biết có phải Sở Ly nhìn lầm hay không, rõ ràng chỉ mới hai mươi tuổi, vậy mà trong chớp mắt đã trưởng thành hơn hẳn.</p>
+<p>Hắn gằn từng chữ:</p>
+<p>“Ta sẽ dẫn binh vòng sang Nam Cương, đoạt lại Nam Cương, vây khốn Lan Thành.”</p>
+<p>Sở Ly lập tức đứng dậy:</p>
+<p>“Vừa rồi ta và Kinh Ảnh chỉ bàn luận, không phải quân cơ, huynh không cần để trong lòng. Huống hồ Nam Man đã bại, bọn chúng chỉ đang giãy chết. Muốn giữ mạng thì chỉ còn con đường trả lại thành trì, xám mặt rút về Nam Man.”</p>
+<p>Tần Mục Vũ nhìn nàng:</p>
+<p>“Nam Man công chúa sẽ không chạy.”</p>
+<p>“Để ta đi Nam Cương, ta biết chừng mực.”</p>
+<p>Hắn nhất định phải đoạt lại Nam Cương.</p>
+<p>Hắn muốn tự tay giết Sở Dạ Ly!</p>
+<p>Sở Ly luôn cảm thấy hắn dường như đã thay đổi. Ngay cả giọng nói cũng trầm ổn hơn, như thể sau khi trải qua sóng gió, tâm tính đã lắng xuống, hỷ nộ đều không còn lộ ra ngoài.</p>
+<p>Nhưng nhìn kỹ, hắn vẫn là hắn.</p>
+<p>Là người đã lớn lên cùng nàng từ thuở nhỏ.</p>
+<p>“Tiểu thư Tạ.”</p>
+<p>Bên kia, tỳ nữ bước tới.</p>
+<p>“Bữa tối đã chuẩn bị xong, mời ngài dời bước đến chính sảnh.”</p>
+<p>—</p>
+<p>Thiên Thủy Thành vốn bị quân Nam Man chiếm đóng. Tri phủ Tôn Kiệt chịu đủ áp bức, nhẫn nhục nhiều ngày, cuối cùng cũng đợi được Nhiếp Chính Vương tới, lúc này mới thật sự thở phào nhẹ nhõm.</p>
+<p>Thiên Thủy Thành cuối cùng cũng trở về trong vòng tay của Đại Sở!</p>
+<p>Tôn Tri phủ nhường phủ đệ của mình để Nhiếp Chính Vương tạm trú, hết lòng khoản đãi đoàn người. Ngay cả một bữa cơm tối bình thường cũng sai người nấu đủ mười lăm món.</p>
+<p>Sở Ly vừa đến, Tôn Tri phủ đã chắp tay nghênh đón:</p>
+<p>“Tạ tiểu thư, mời ngồi, mời ngồi.”</p>
+<p>“Tôn đại nhân không cần khách sáo.”</p>
+<p>Bọn họ đóng quân ở đây, nhiều nhất ba ngày sẽ rời đi.</p>
+<p>Theo biến hóa của chiến cuộc, vị trí của Sở Đệ Trì cũng luôn thay đổi. Tuy hắn không trực tiếp ra trận, nhưng vẫn phải liên tục hạ đạt quân lệnh.</p>
+<p>Tôn Tri phủ nói:</p>
+<p>“Hạ quan không biết khẩu vị của Nhiếp Chính Vương, nên dặn phòng bếp làm đủ mọi món. Nếu không có Nhiếp Chính Vương thân chinh, sao có thể nhanh như vậy đã đánh bại Nam Man? Thiên Thủy Thành sao có thể nhanh chóng được giải phóng? Hạ quan trong lòng thật vô cùng cảm kích và an ủi.”</p>
+<p>Nhiếp Chính Vương quả là anh minh!</p>
+<p>Sở Ly khẽ gật đầu, ra hiệu cho Kinh Ảnh và Tần Mục Vũ cũng ngồi xuống dùng bữa.</p>
+<p>Ở đây không phải Đế Đô hay tư dinh của mình. Xuất môn bên ngoài, không cần câu nệ quá nhiều quy củ, thuận tiện là được.</p>
+<p>Tôn Tri phủ lập tức sai người mang rượu ngon lên.</p>
+<p>Chén vừa rót đầy.</p>
+<p>Sở Đệ Trì dẫn theo bảy vị tướng lĩnh, vừa kết thúc việc quân, cùng nhau đến dùng bữa.</p>
+<p>“Hoàng thúc.”</p>
+<p>Sở Ly vừa định đứng dậy, Sở Đệ Trì đã đặt tay lên vai nàng, nhẹ nhàng ấn xuống, rồi kéo chiếc ghế bên cạnh nàng ra.</p>
+<p>Hắn ngồi xuống.</p>
+<p>Lúc ấy, những người khác mới dám ngồi.</p>
+<p>Tôn Tri phủ nhanh chóng liếc nhìn Sở Ly một cái.</p>
+<p>Hoàng thúc?</p>
+<p>Thiên Thủy Thành cách Đế Đô rất xa, mỗi năm ông chỉ vào kinh thuật chức một lần. Nhưng trong hoàng thất, hình như không có vị hậu bối nào họ “Tạ” cả?</p>
+<p>Hay là hậu duệ của một chi họ xa, chỉ dính chút quan hệ với hoàng thất, nên mới gọi như vậy để tỏ vẻ có thân thích, thân phận bất phàm?</p>
+<p>Ông bất động thanh sắc thu hồi ánh mắt, mỉm cười mở lời trước:</p>
+<p>“Thô trà đạm phạn, mong Nhiếp Chính Vương chớ chê.”</p>
+<p>Rồi hướng ra ngoài gọi:</p>
+<p>“Nữu Nữu, còn không mau vào rót rượu cho Nhiếp Chính Vương?”</p>
+<p>“Vâng, phụ thân.”</p>
+<p>Ngoài sảnh, một thiếu nữ dáng người yểu điệu, mặc váy lụa màu ngẫu phấn, tươi cười bước tới.</p>
+<p>Đôi mắt hạnh sáng ngời, chiếc đai bạc bên hông đính chuông nhỏ, theo từng bước chân phát ra tiếng leng keng trong trẻo, tựa như một cánh bướm rực rỡ, nhẹ nhàng sà đến bên cạnh Sở Đệ Trì. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_282.html" class="btn">‹ Trước</a>
             <a href="chuong_284.html" class="btn">Sau ›</a>
         </div>
@@ -235,15 +243,11 @@ Ngoài sảnh, một thiếu nữ dáng người yểu điệu, mặc váy lụa
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -255,11 +259,11 @@ Ngoài sảnh, một thiếu nữ dáng người yểu điệu, mặc váy lụa
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 130</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,267 +62,276 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 130</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_129.html" class="btn">‹ Trước</a>
             <a href="chuong_131.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 130: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 130: Giận Quá Hóa Cười
-Không có thỏi vàng nhỏ!
-Sự thật đã chứng minh, khi một người tức giận đến cực điểm, thật sự sẽ bật cười thành tiếng.
-“Ha! Ha ha ha!”
-Sở Đệ Trì ngửa mặt cười lớn, dáng vẻ điên cuồng ấy khiến người nhìn cũng phải kinh hãi.
-Tiêu Dạ Hành lo lắng:
-“Ngươi điên rồi sao?”
-Đúng là điên thật rồi!
-Người nam nhân đứng giữa đống phế tích, trường bào nhăn nhúm phủ đầy tro than và bụi bẩn. Hai bàn tay đẫm máu nhuộm kín màu đen của tro bụi, ngay cả trong kẽ móng tay cũng toàn là bùn đất, gạch vụn bới ra từ đống đổ nát, vậy mà hắn vẫn ngửa mặt lên trời cười vang.
-“A Trì?”
-Tiêu Dạ Hành nắm lấy cổ tay hắn.
-Sở Đệ Trì phất tay áo:
-“Người đâu!”
-Hắn không điên.
-Mà là…
-Đã nhận ra một sự thật.
-Ha ha ha!
-Sở Ly tham tiền.
-Thích nhất những thỏi vàng nhỏ.
-Thế nhưng trong Chiêu Lan điện lại chẳng tìm thấy lấy một thỏi.
-Điều đó chứng tỏ…
-Nàng đã sớm chuyển hết tài sản đi.
-Con nhóc kia…
-Đã sớm muốn chạy trốn rồi!
-Tra!
-Cho dù phải đào đất ba thước…
-Cũng phải tìm nàng cho bằng được!
-Vừa tra…
-Liền tra ra mấy ngày trước, Sở Ly từng lén xuất cung một lần.
-Hôm đó, Noãn Ngọc đã nhìn thấy, còn từng bẩm báo với hắn.
-Chỉ là khi ấy…
-Hắn không điều tra kỹ.
-Giờ nghĩ lại…
-Quả thực vô cùng khả nghi.
-Lập tức cho người trọng điểm điều tra hành tung của nàng hôm ấy.
-Kết quả nhận được là…
-Năm ngày trước, nàng đã đem toàn bộ hai mươi tám thỏi vàng nhỏ gửi vào Tiền trang Vệ gia.
-⸻
-Xe ngựa lững thững tiến về phía trước.
-Đường xa dằng dặc.
-Liên tiếp mấy ngày nay, Sở Ly đều ở cùng Sở Dạ Ly.
-Không phải vì nàng ngoan ngoãn hơn.
-Mà thật sự chưa tìm được cơ hội thích hợp để thoát thân.
-Huống hồ…
-Quanh đây còn có hơn chục người trông chừng.
-Khi chưa nắm chắc mười phần, nàng không dám tùy tiện bỏ trốn nữa.
-Không khỏi nhớ tới đêm hôm ấy…
-Nàng cưỡi ngựa bỏ đi, bị Sở Dạ Ly phát hiện.
-Hắn nhất quyết đòi ngủ cùng nàng.
-Nàng phải mềm mỏng năn nỉ rất lâu, lại còn sờ vào lương tâm lép kẹp của mình mà thề thốt đủ điều, lúc ấy mới miễn cưỡng tránh được một kiếp.
-Haiz…
-Tiếng thở dài thứ ba mươi tám.
-“Sao vậy?”
-Sở Dạ Ly khẽ chỉnh lại tấm đệm mềm dưới người nàng, để nàng ngồi thoải mái hơn.
-Sở Ly cụp mắt.
-“Chúng ta định đi đâu?”
-“Đến nơi nên đến.”
-“Là nơi nào?”
-“Đến rồi muội sẽ biết.”
-Hắn đáp ngắn gọn.
-Tuy không nói rõ.
-Nhưng nhìn dọc đường có nhiều người hộ tống như vậy, hành trình cũng được sắp xếp vô cùng chu đáo, đủ để thấy hắn đã sớm có mưu tính.
-Sở Dạ Ly kéo ngăn kéo chiếc bàn thấp ra, lấy một quyển sách.
-“Ngày ngày ngồi xe ngựa, chắc hẳn hơi buồn chán. Ta kể tiếp cho muội nghe câu chuyện lịch sử về Dạ Vương quét sạch lục quốc nhé?”
-Đó là một quyển sử thư.
-Ghi chép về cuộc tranh bá lục quốc một nghìn sáu trăm năm trước, cùng sự nghiệp thống nhất thiên hạ của Dạ Vương.
-Đáng tiếc…
-Sau khi thống nhất lục quốc, Dạ Vương gần như tiêu hao hết khí vận của mấy đời người.
-Đến mức hậu duệ của hắn tư chất bình thường.
-Sau khi hắn qua đời, triều đại ấy cũng chỉ tồn tại hơn ba mươi năm rồi tan rã, chia năm xẻ bảy.
-Hắn lật đến trang đã gấp dấu lần trước.
-Còn chưa kịp mở miệng.
-Sở Ly đã ngắt lời.
-“Muội không thích nghe.”
-Hắn khẽ sững người.
-Không khỏi nhớ lại nhiều năm trước.
-Dưới gốc hải đường vào một buổi chiều.
-Hắn vừa phơi nắng, vừa đọc sách.
-Một cái đầu nhỏ đen nhánh bỗng nhô lên khỏi đầu tường.
-Bốn mắt nhìn nhau.
-Đôi mắt ấy sáng lấp lánh như những vì sao.
-“Huynh đang đọc gì vậy?”
-“Sử ký.”
-“Sử ký là sách thú vị lắm sao?”
-Thiếu niên không đáp thẳng.
-“Chân ta bị phế rồi. Ngoài đọc sách ra, ta chẳng làm được gì khác.”
-Nàng khựng lại.
-Có chút áy náy, suýt nữa cắn phải đầu lưỡi.
-“Muội cũng thích Sử ký. Nhưng muội vừa mới khai mông, còn chưa biết chữ.”
-“Vậy ta kể cho muội nghe.”
-Dưới gốc hải đường.
-Giọng nói của thiếu niên ôn hòa, lúc trầm lúc bổng.
-Những trang sử vốn khô khan, qua lời hắn kể lại trở nên sinh động như thật.
-Nàng chống cằm trên đầu tường.
-Nghe đến say mê thích thú.
-Mà giờ đây…
-Một câu “Muội không thích” khiến thần sắc Sở Dạ Ly có chút hoảng hốt.
-“Tiểu Cửu…”
-“Trước đây, chẳng phải muội thích nhất là nghe ta kể chuyện sao?”
-Sở Ly từng nói như vậy sao?
-Sao nàng chẳng hề nhớ?
-“Muội còn nói giọng ta rất hay.”
-“Muội chưa từng nói.”
-Sở Dạ Ly siết chặt trang sách.
-“Muội có nói.”
-Cái tính bướng bỉnh của Sở Ly lập tức nổi lên.
-“Muội không nói!”
-“Muội không hề!”
-“Tiểu Cửu!”
-Giọng hắn đột ngột cao lên.
-“Ta không cho muội tự ý rời đi, là vì lo muội gặp nguy hiểm. Càng là vì ta thích muội, muốn ở bên muội. Muội đừng dùng những lời như vậy làm tổn thương ta nữa.”
-“Trước năm sáu tuổi, muội thường xuyên đến Thanh Phong cư tìm ta chơi.”
-Sau sáu tuổi.
-Đến tuổi khai mông.
-Nàng phải vào Hoàng gia học uyển, số lần xuất cung mới dần ít đi.
-Nhưng những ký ức năm xưa.
-Từng chuyện một.
-Từng việc một.
-Hắn chưa từng quên.
-Thế nhưng…
-Những điều hắn nói.
-Sở Ly hoàn toàn không có chút ấn tượng nào.
-Năm nàng sáu tuổi.
-Vừa khéo bị ngã từ mái nhà xuống, đập đầu.
-(Người dịch: Sau vụ này Sở Ly bị mất ký ức)
-Sở Dạ Ly nói xong, mới nhận ra giọng mình quả thực hơi lớn.
-Hắn thu lại cảm xúc.
-Khép quyển sử thư.
-“Xin lỗi.”
-“Nếu muội không thích đọc sách thì không đọc nữa.”
-“Ta đã bảo người chuẩn bị ít điểm tâm.”
-Sở Ly quay mặt sang chỗ khác.
-“Muội không đói.”
-“Tiểu Cửu…”
-“Muội muốn cưỡi ngựa.”
-“Đợi đến nơi, muội muốn làm gì cũng được. Đường còn rất dài, không thể chậm trễ.”
-Cái này cũng không được.
-Cái kia cũng không được.
-Bó tay bó chân như vậy…
-Sở Ly làm sao còn sắc mặt tốt nổi?
-Nàng kéo rèm xe lên.
-Bên ngoài là con đường xuyên qua rừng núi nơi ngoại ô.
-Đập vào mắt chỉ toàn non xanh núi thẳm.
-Nàng căn bản không biết đã đến nơi nào.
-Trên bầu trời, thỉnh thoảng có vài đàn chim sải cánh bay qua.
-Ngay cả chúng…
-Cũng còn tự do hơn nàng.
-Đột nhiên nàng nhớ ra điều gì.
-“Muội muốn chim ưng.”
-“Hử?”
-“Chim ưng.”
-Sở Ly chỉ ra ngoài.
-“Muội thích chim ưng. Muội muốn nuôi vài con.”
-“Ngay bây giờ.”
-Sở Dạ Ly cảm thấy chuyện này hơi khó.
-Cách nhanh nhất là dùng tên bắn hạ.
-Nhưng nếu muốn bắt sống…
-Loài chim ưng vốn khỏe hơn, cảnh giác hơn các loài chim bình thường.
-Ổ của chúng lại thường làm trên những đỉnh núi cao.
-Biết bắt ở đâu bây giờ?
-“Đợi vài hôm nữa, ta sẽ sai người bắt vài con cho muội.”
-“Muội muốn ngay bây giờ!”
-Sở Ly nổi giận.
-“Cái này cũng không có!”
-“Cái kia cũng không có!”
-“Vậy muội ở đây để làm gì?”
-“Muội biết lần này huynh rời cung nhất định có mục đích. Huynh giữ muội lại, ngoài miệng nói là vì tốt cho muội…”
-“Nhưng trên thực tế…”
-“Chỉ sợ là muốn lợi dụng muội thôi?”
-Ánh mắt Sở Dạ Ly lập tức trầm xuống.
-Sở Ly cũng cảm thấy lời mình nói quá thẳng.
-Có những chuyện…
-Không nên nói trắng ra.
-Một khi đã nói…
-Thì cả hai bên đều mất mặt.
-Nàng xoay người đi.
-Không nói thêm gì nữa.
-Trong xe ngựa.
-Không khí yên tĩnh đến mức quỷ dị.
-Rất lâu sau.
-Sở Dạ Ly bước ra ngoài.
-Trước sau chưa đầy hai canh giờ.
-Khi đoàn xe đi ngang qua một tòa thành, hắn dừng lại chừng hai khắc.
-Lúc quay về…
-Trong tay hắn xách theo một chiếc lồng lớn.
-Bên trong nhốt ba con chim ưng màu đen.
-Đó đều là chim ưng đã được con người thuần dưỡng, có thể mua bán ngoài chợ.
-Nhưng dù sao…
-Vẫn là loài chim dữ hung mãnh.
-“Đừng để bản thân bị thương.”
-Hắn đặt chiếc lồng vào trong xe ngựa.
-Rồi ra ngoài cưỡi ngựa.
-Sở Ly nhìn theo.
-Bóng lưng hắn…
-Lại thấp thoáng vài phần cô tịch.
-Trong đầu nàng bỗng nhói lên.
-Trước đây…
-Nàng thật sự đã từng nói những lời ấy sao?
-Vì sao…
-Nàng không nhớ nổi dù chỉ một chút?
-Đầu nàng…
-Lại bắt đầu đau. Ẩn bớt</p>
+            <p>Chương 130: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 130: Giận Quá Hóa Cười</p>
+<p>Không có thỏi vàng nhỏ!</p>
+<p>Sự thật đã chứng minh, khi một người tức giận đến cực điểm, thật sự sẽ bật cười thành tiếng.</p>
+<p>“Ha! Ha ha ha!”</p>
+<p>Sở Đệ Trì ngửa mặt cười lớn, dáng vẻ điên cuồng ấy khiến người nhìn cũng phải kinh hãi.</p>
+<p>Tiêu Dạ Hành lo lắng:</p>
+<p>“Ngươi điên rồi sao?”</p>
+<p>Đúng là điên thật rồi!</p>
+<p>Người nam nhân đứng giữa đống phế tích, trường bào nhăn nhúm phủ đầy tro than và bụi bẩn. Hai bàn tay đẫm máu nhuộm kín màu đen của tro bụi, ngay cả trong kẽ móng tay cũng toàn là bùn đất, gạch vụn bới ra từ đống đổ nát, vậy mà hắn vẫn ngửa mặt lên trời cười vang.</p>
+<p>“A Trì?”</p>
+<p>Tiêu Dạ Hành nắm lấy cổ tay hắn.</p>
+<p>Sở Đệ Trì phất tay áo:</p>
+<p>“Người đâu!”</p>
+<p>Hắn không điên.</p>
+<p>Mà là…</p>
+<p>Đã nhận ra một sự thật.</p>
+<p>Ha ha ha!</p>
+<p>Sở Ly tham tiền.</p>
+<p>Thích nhất những thỏi vàng nhỏ.</p>
+<p>Thế nhưng trong Chiêu Lan điện lại chẳng tìm thấy lấy một thỏi.</p>
+<p>Điều đó chứng tỏ…</p>
+<p>Nàng đã sớm chuyển hết tài sản đi.</p>
+<p>Con nhóc kia…</p>
+<p>Đã sớm muốn chạy trốn rồi!</p>
+<p>Tra!</p>
+<p>Cho dù phải đào đất ba thước…</p>
+<p>Cũng phải tìm nàng cho bằng được!</p>
+<p>Vừa tra…</p>
+<p>Liền tra ra mấy ngày trước, Sở Ly từng lén xuất cung một lần.</p>
+<p>Hôm đó, Noãn Ngọc đã nhìn thấy, còn từng bẩm báo với hắn.</p>
+<p>Chỉ là khi ấy…</p>
+<p>Hắn không điều tra kỹ.</p>
+<p>Giờ nghĩ lại…</p>
+<p>Quả thực vô cùng khả nghi.</p>
+<p>Lập tức cho người trọng điểm điều tra hành tung của nàng hôm ấy.</p>
+<p>Kết quả nhận được là…</p>
+<p>Năm ngày trước, nàng đã đem toàn bộ hai mươi tám thỏi vàng nhỏ gửi vào Tiền trang Vệ gia.</p>
+<p>⸻</p>
+<p>Xe ngựa lững thững tiến về phía trước.</p>
+<p>Đường xa dằng dặc.</p>
+<p>Liên tiếp mấy ngày nay, Sở Ly đều ở cùng Sở Dạ Ly.</p>
+<p>Không phải vì nàng ngoan ngoãn hơn.</p>
+<p>Mà thật sự chưa tìm được cơ hội thích hợp để thoát thân.</p>
+<p>Huống hồ…</p>
+<p>Quanh đây còn có hơn chục người trông chừng.</p>
+<p>Khi chưa nắm chắc mười phần, nàng không dám tùy tiện bỏ trốn nữa.</p>
+<p>Không khỏi nhớ tới đêm hôm ấy…</p>
+<p>Nàng cưỡi ngựa bỏ đi, bị Sở Dạ Ly phát hiện.</p>
+<p>Hắn nhất quyết đòi ngủ cùng nàng.</p>
+<p>Nàng phải mềm mỏng năn nỉ rất lâu, lại còn sờ vào lương tâm lép kẹp của mình mà thề thốt đủ điều, lúc ấy mới miễn cưỡng tránh được một kiếp.</p>
+<p>Haiz…</p>
+<p>Tiếng thở dài thứ ba mươi tám.</p>
+<p>“Sao vậy?”</p>
+<p>Sở Dạ Ly khẽ chỉnh lại tấm đệm mềm dưới người nàng, để nàng ngồi thoải mái hơn.</p>
+<p>Sở Ly cụp mắt.</p>
+<p>“Chúng ta định đi đâu?”</p>
+<p>“Đến nơi nên đến.”</p>
+<p>“Là nơi nào?”</p>
+<p>“Đến rồi muội sẽ biết.”</p>
+<p>Hắn đáp ngắn gọn.</p>
+<p>Tuy không nói rõ.</p>
+<p>Nhưng nhìn dọc đường có nhiều người hộ tống như vậy, hành trình cũng được sắp xếp vô cùng chu đáo, đủ để thấy hắn đã sớm có mưu tính.</p>
+<p>Sở Dạ Ly kéo ngăn kéo chiếc bàn thấp ra, lấy một quyển sách.</p>
+<p>“Ngày ngày ngồi xe ngựa, chắc hẳn hơi buồn chán. Ta kể tiếp cho muội nghe câu chuyện lịch sử về Dạ Vương quét sạch lục quốc nhé?”</p>
+<p>Đó là một quyển sử thư.</p>
+<p>Ghi chép về cuộc tranh bá lục quốc một nghìn sáu trăm năm trước, cùng sự nghiệp thống nhất thiên hạ của Dạ Vương.</p>
+<p>Đáng tiếc…</p>
+<p>Sau khi thống nhất lục quốc, Dạ Vương gần như tiêu hao hết khí vận của mấy đời người.</p>
+<p>Đến mức hậu duệ của hắn tư chất bình thường.</p>
+<p>Sau khi hắn qua đời, triều đại ấy cũng chỉ tồn tại hơn ba mươi năm rồi tan rã, chia năm xẻ bảy.</p>
+<p>Hắn lật đến trang đã gấp dấu lần trước.</p>
+<p>Còn chưa kịp mở miệng.</p>
+<p>Sở Ly đã ngắt lời.</p>
+<p>“Muội không thích nghe.”</p>
+<p>Hắn khẽ sững người.</p>
+<p>Không khỏi nhớ lại nhiều năm trước.</p>
+<p>Dưới gốc hải đường vào một buổi chiều.</p>
+<p>Hắn vừa phơi nắng, vừa đọc sách.</p>
+<p>Một cái đầu nhỏ đen nhánh bỗng nhô lên khỏi đầu tường.</p>
+<p>Bốn mắt nhìn nhau.</p>
+<p>Đôi mắt ấy sáng lấp lánh như những vì sao.</p>
+<p>“Huynh đang đọc gì vậy?”</p>
+<p>“Sử ký.”</p>
+<p>“Sử ký là sách thú vị lắm sao?”</p>
+<p>Thiếu niên không đáp thẳng.</p>
+<p>“Chân ta bị phế rồi. Ngoài đọc sách ra, ta chẳng làm được gì khác.”</p>
+<p>Nàng khựng lại.</p>
+<p>Có chút áy náy, suýt nữa cắn phải đầu lưỡi.</p>
+<p>“Muội cũng thích Sử ký. Nhưng muội vừa mới khai mông, còn chưa biết chữ.”</p>
+<p>“Vậy ta kể cho muội nghe.”</p>
+<p>Dưới gốc hải đường.</p>
+<p>Giọng nói của thiếu niên ôn hòa, lúc trầm lúc bổng.</p>
+<p>Những trang sử vốn khô khan, qua lời hắn kể lại trở nên sinh động như thật.</p>
+<p>Nàng chống cằm trên đầu tường.</p>
+<p>Nghe đến say mê thích thú.</p>
+<p>Mà giờ đây…</p>
+<p>Một câu “Muội không thích” khiến thần sắc Sở Dạ Ly có chút hoảng hốt.</p>
+<p>“Tiểu Cửu…”</p>
+<p>“Trước đây, chẳng phải muội thích nhất là nghe ta kể chuyện sao?”</p>
+<p>Sở Ly từng nói như vậy sao?</p>
+<p>Sao nàng chẳng hề nhớ?</p>
+<p>“Muội còn nói giọng ta rất hay.”</p>
+<p>“Muội chưa từng nói.”</p>
+<p>Sở Dạ Ly siết chặt trang sách.</p>
+<p>“Muội có nói.”</p>
+<p>Cái tính bướng bỉnh của Sở Ly lập tức nổi lên.</p>
+<p>“Muội không nói!”</p>
+<p>“Muội không hề!”</p>
+<p>“Tiểu Cửu!”</p>
+<p>Giọng hắn đột ngột cao lên.</p>
+<p>“Ta không cho muội tự ý rời đi, là vì lo muội gặp nguy hiểm. Càng là vì ta thích muội, muốn ở bên muội. Muội đừng dùng những lời như vậy làm tổn thương ta nữa.”</p>
+<p>“Trước năm sáu tuổi, muội thường xuyên đến Thanh Phong cư tìm ta chơi.”</p>
+<p>Sau sáu tuổi.</p>
+<p>Đến tuổi khai mông.</p>
+<p>Nàng phải vào Hoàng gia học uyển, số lần xuất cung mới dần ít đi.</p>
+<p>Nhưng những ký ức năm xưa.</p>
+<p>Từng chuyện một.</p>
+<p>Từng việc một.</p>
+<p>Hắn chưa từng quên.</p>
+<p>Thế nhưng…</p>
+<p>Những điều hắn nói.</p>
+<p>Sở Ly hoàn toàn không có chút ấn tượng nào.</p>
+<p>Năm nàng sáu tuổi.</p>
+<p>Vừa khéo bị ngã từ mái nhà xuống, đập đầu.</p>
+<p>(Người dịch: Sau vụ này Sở Ly bị mất ký ức)</p>
+<p>Sở Dạ Ly nói xong, mới nhận ra giọng mình quả thực hơi lớn.</p>
+<p>Hắn thu lại cảm xúc.</p>
+<p>Khép quyển sử thư.</p>
+<p>“Xin lỗi.”</p>
+<p>“Nếu muội không thích đọc sách thì không đọc nữa.”</p>
+<p>“Ta đã bảo người chuẩn bị ít điểm tâm.”</p>
+<p>Sở Ly quay mặt sang chỗ khác.</p>
+<p>“Muội không đói.”</p>
+<p>“Tiểu Cửu…”</p>
+<p>“Muội muốn cưỡi ngựa.”</p>
+<p>“Đợi đến nơi, muội muốn làm gì cũng được. Đường còn rất dài, không thể chậm trễ.”</p>
+<p>Cái này cũng không được.</p>
+<p>Cái kia cũng không được.</p>
+<p>Bó tay bó chân như vậy…</p>
+<p>Sở Ly làm sao còn sắc mặt tốt nổi?</p>
+<p>Nàng kéo rèm xe lên.</p>
+<p>Bên ngoài là con đường xuyên qua rừng núi nơi ngoại ô.</p>
+<p>Đập vào mắt chỉ toàn non xanh núi thẳm.</p>
+<p>Nàng căn bản không biết đã đến nơi nào.</p>
+<p>Trên bầu trời, thỉnh thoảng có vài đàn chim sải cánh bay qua.</p>
+<p>Ngay cả chúng…</p>
+<p>Cũng còn tự do hơn nàng.</p>
+<p>Đột nhiên nàng nhớ ra điều gì.</p>
+<p>“Muội muốn chim ưng.”</p>
+<p>“Hử?”</p>
+<p>“Chim ưng.”</p>
+<p>Sở Ly chỉ ra ngoài.</p>
+<p>“Muội thích chim ưng. Muội muốn nuôi vài con.”</p>
+<p>“Ngay bây giờ.”</p>
+<p>Sở Dạ Ly cảm thấy chuyện này hơi khó.</p>
+<p>Cách nhanh nhất là dùng tên bắn hạ.</p>
+<p>Nhưng nếu muốn bắt sống…</p>
+<p>Loài chim ưng vốn khỏe hơn, cảnh giác hơn các loài chim bình thường.</p>
+<p>Ổ của chúng lại thường làm trên những đỉnh núi cao.</p>
+<p>Biết bắt ở đâu bây giờ?</p>
+<p>“Đợi vài hôm nữa, ta sẽ sai người bắt vài con cho muội.”</p>
+<p>“Muội muốn ngay bây giờ!”</p>
+<p>Sở Ly nổi giận.</p>
+<p>“Cái này cũng không có!”</p>
+<p>“Cái kia cũng không có!”</p>
+<p>“Vậy muội ở đây để làm gì?”</p>
+<p>“Muội biết lần này huynh rời cung nhất định có mục đích. Huynh giữ muội lại, ngoài miệng nói là vì tốt cho muội…”</p>
+<p>“Nhưng trên thực tế…”</p>
+<p>“Chỉ sợ là muốn lợi dụng muội thôi?”</p>
+<p>Ánh mắt Sở Dạ Ly lập tức trầm xuống.</p>
+<p>Sở Ly cũng cảm thấy lời mình nói quá thẳng.</p>
+<p>Có những chuyện…</p>
+<p>Không nên nói trắng ra.</p>
+<p>Một khi đã nói…</p>
+<p>Thì cả hai bên đều mất mặt.</p>
+<p>Nàng xoay người đi.</p>
+<p>Không nói thêm gì nữa.</p>
+<p>Trong xe ngựa.</p>
+<p>Không khí yên tĩnh đến mức quỷ dị.</p>
+<p>Rất lâu sau.</p>
+<p>Sở Dạ Ly bước ra ngoài.</p>
+<p>Trước sau chưa đầy hai canh giờ.</p>
+<p>Khi đoàn xe đi ngang qua một tòa thành, hắn dừng lại chừng hai khắc.</p>
+<p>Lúc quay về…</p>
+<p>Trong tay hắn xách theo một chiếc lồng lớn.</p>
+<p>Bên trong nhốt ba con chim ưng màu đen.</p>
+<p>Đó đều là chim ưng đã được con người thuần dưỡng, có thể mua bán ngoài chợ.</p>
+<p>Nhưng dù sao…</p>
+<p>Vẫn là loài chim dữ hung mãnh.</p>
+<p>“Đừng để bản thân bị thương.”</p>
+<p>Hắn đặt chiếc lồng vào trong xe ngựa.</p>
+<p>Rồi ra ngoài cưỡi ngựa.</p>
+<p>Sở Ly nhìn theo.</p>
+<p>Bóng lưng hắn…</p>
+<p>Lại thấp thoáng vài phần cô tịch.</p>
+<p>Trong đầu nàng bỗng nhói lên.</p>
+<p>Trước đây…</p>
+<p>Nàng thật sự đã từng nói những lời ấy sao?</p>
+<p>Vì sao…</p>
+<p>Nàng không nhớ nổi dù chỉ một chút?</p>
+<p>Đầu nàng…</p>
+<p>Lại bắt đầu đau. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_129.html" class="btn">‹ Trước</a>
             <a href="chuong_131.html" class="btn">Sau ›</a>
         </div>
@@ -331,15 +339,11 @@ Lại bắt đầu đau. Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -351,11 +355,11 @@ Lại bắt đầu đau. Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

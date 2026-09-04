@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 205</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,260 +62,173 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 205</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_204.html" class="btn">‹ Trước</a>
             <a href="chuong_206.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 205: Nam tử hán, mông bự
-
-Bữa cơm này khiến Sở Ly ăn mà trong lòng thấp thỏm bất an.
-
-Nàng vẫn luôn lo Sở Đệ Trì thu liễm phong mang, trong lòng còn có mưu tính khác. Thế nhưng từ tối qua đến giờ, hắn vẫn ôn hòa, gần gũi, tựa như chỉ là một buổi tụ họp giữa những người bạn cũ, ở chung vô cùng thư thái và ung dung.
-
-Nhưng trong lòng nàng vẫn còn nghi hoặc và đề phòng.
-
-Ăn xong.
-
-Kinh Ảnh tiến lên:
-
-“Chủ tử, Lý Tri phủ và những người kia vẫn đang quỳ bên ngoài.”
-
-“Không vội.”
-
-Sở Đệ Trì lau sạch khóe miệng
-.
-“Đem tên hắc y nhân bắt được tối qua đến hậu viện. Tiểu Cửu, nàng theo ta.”
-
-Tần Mục Vũ vừa định đứng dậy thì đã bị Tiêu Dạ Hành kéo ngồi xuống.
-
-“Ngồi!”
-
-“Nhiếp Chính Vương đưa A Ly đi làm gì? Nếu chỉ là thẩm vấn nghi phạm, vì sao con không thể đi? Chẳng lẽ chuyện này cũng là khuê phòng tình thú?”
-
-“Nam tử hán, mông bự, cứ suốt ngày dính lấy Cửu hoàng tử làm gì?
-
-Chẳng lẽ sau này bọn họ thành thân rồi, con còn định treo mình trên xà nhà mà xem?”
-
-“Con…”
-
-Mặt Tần Mục Vũ lập tức đỏ bừng.
-
-A Ly còn chưa thừa nhận thích Nhiếp Chính Vương.
-
-Sau này, nàng chưa chắc đã chịu gả cho Nhiếp Chính Vương.
-
-Trong lúc hai người nói chuyện, Sở Ly cũng chần chừ đứng dậy, từng bước theo sau Sở Đệ Trì đến hậu viện. Vừa bước vào, nàng đã thấy một thân ảnh toàn thân đẫm máu, bị đánh đến mức chỉ còn thoi thóp.
-
-“Khụ… khụ…”
-
-Hắn đau đớn thở dốc.
-
-“Đây là kẻ hại nàng?” Sở Đệ Trì quay đầu nhìn nàng.
-
-Sở Ly vẫn chưa dám khẳng định.
-
-Nàng bước nhanh đến trước mặt hắn, túm lấy y phục trên vai kéo mạnh xuống. Khi nhìn thấy mảng bầm tím kia, nàng mới nói:
-
-“Chính là hắn.”
-
-Đó là vết bầm nàng dùng chén trà ném trúng.
-
-“Nói! Là ai sai ngươi hại ta?”
-
-“Khụ…”
-
-Tô Dương đã chịu hình, đau đến mức toàn thân tê dại. Được huấn luyện chuyên nghiệp, hắn đương nhiên sẽ không phản bội chủ nhân.
-
-Hắn sẽ không nói nửa lời.
-
-“Nói!”
-
-Sở Ly túm tóc hắn.
-
-Hắn bị ép ngẩng đầu lên, phun mạnh ra một ngụm máu.
-
-Đừng hòng!
-
-“Đừng để bẩn tay mình.”
-
-Sở Đệ Trì nắm lấy cổ tay mảnh khảnh của nàng.
-
-“Kinh Ảnh!”
-
-Kinh Ảnh nhanh chóng bước lên, hai tay dâng một chiếc túi giấy trông rất bình thường.
-
-“Đây là gì?”
-
-“Cửu hoàng tử, đây là thứ tìm được trên người kẻ này, tên là Nhiễu Chỉ Nhu, là một loại xuân dược không màu không mùi. Chỉ cần dính một chút, lại lấy hương hoa làm chất dẫn, sẽ dục hỏa phần thân.”
-
-Chỉ có hoan ái mới giải được.
-
-Sở Ly theo bản năng lùi lại một bước, nhìn về phía vườn hoa bên kia.
-
-Trong vườn hoa đang nở rộ, hương hoa kết hợp với thứ này, quả thật là vật cực kỳ nguy hiểm.
-
-Đầu ngón tay thon dài của Sở Đệ Trì kẹp lấy gói thuốc.
-
-“Đây đúng là thứ tốt.”
-
-Sở Ly quay đầu lại, phát hiện Kinh Ảnh chẳng biết đã lui xuống từ lúc nào.
-
-Ngoài Tô Dương đang hấp hối kia ra, trong hậu viện trống trải chỉ còn lại hai người bọn họ.
-
-Mọi người đâu rồi?
-
-“Tiểu Cửu.”
-
-Hắn bước về phía nàng.
-
-“Hoàng… Hoàng thúc…”
-
-Sắc mặt nàng khẽ biến.
-
-Ở riêng với hắn, nàng bỗng cảm thấy vô cùng hoảng loạn.
-
-“Trốn gì?”
-
-Hắn kẹp gói Nhiễu Chỉ Nhu giữa đầu ngón tay, đáy mắt mang ý cười nhưng sâu không thấy đáy, từng bước từng bước tiến sát lại. Bóng dáng cao lớn từng chút từng chút phủ xuống, bao trùm lấy nàng.
-
-Sắc mặt nàng dần tái đi.
-
-Hắn muốn làm gì?
-
-Nàng liên tục lùi về sau.
-
-“Ta…ta không giỏi thẩm vấn phạm nhân. Hay là để ta đi gọi…”
-
-“A!”
-
-Vừa mới nhấc chân đã bị một bàn tay to giữ chặt cổ tay.
-
-“Không giỏi thì ta có thể dạy nàng. Cứ mãi trốn tránh thì chẳng giải quyết được vấn đề gì. Chỉ khi tự mình đứng vững, mới là gốc rễ để an thân lập mệnh!”
-
-Dứt lời, người đàn ông quay người đi đến trước mặt Tô Dương, bóp mở miệng hắn, đổ toàn bộ gói Nhiễu Chỉ Nhu vào.
-
-Rồi một cước đá văng hắn vào bụi hoa.
-
-“Khụ!”
-
-Tô Dương ho ra một ngụm máu, nhưng thuốc đã trôi xuống cổ họng. Lại thêm hương hoa trong bụi hoa kích phát dược tính, da thịt hắn lập tức đỏ bừng.
-
-Đỏ như con tôm vừa luộc chín.
-
-“A…”
-
-Hắn túm chặt cổ áo, đau đớn giãy giụa.
-
-Nóng quá!
-
-Đau quá!
-
-Mỗi một mạch máu như sắp nổ tung, tựa hồ có hàng vạn con kiến đang gặm cắn khắp cơ thể, đau đến sống không bằng chết, gần như sắp nổ tung thân xác.
-
-“Giết ta… a… giết ta!”
-
-Hắn đau đớn lăn lộn giãy giụa, da thịt đỏ đến mức như sắp nứt toác.
-
-“Giết ta…”
-
-Trong mắt phủ đầy tia máu, cả người trông vô cùng đáng sợ.
-So với cái chết, sống không bằng chết mới là sự giày vò tàn khốc nhất.
-
-Sở Đệ Trì từ trên cao nhìn xuống hắn:
-
-“Nói, là ai sai ngươi đến?”
-
-“A! A!”
-
-Tô Dương đau đớn đến cực điểm.
-
-Muốn chết nhưng không thể tự sát.
-
-Toàn thân nóng như lửa đốt, cộng thêm vết thương đau đớn, tạo thành sự tra tấn cả thể xác lẫn linh hồn.
-
-Trong đầu hắn chỉ còn lại một ý niệm.
-
-Cầu chết.
-
-Đến bờ vực sụp đổ, tự nhiên chuyện gì cũng khai hết.
-
-“Lục hoàng tử! Là Lục hoàng tử!”
-
-Đáy mắt Sở Ly trầm xuống.
-
-Lục hoàng tử và Đại hoàng tử chính là huynh đệ ruột cùng một mẫu thân.
-
-“Hắn đã dặn ngươi thế nào?”
-
-“Lục hoàng tử bảo ta hạ thuốc ngươi, phát sinh quan hệ với ngươi, khiến ngươi mang thai. Sau khi hủy hoại sự trong sạch của ngươi, sẽ lợi dụng ngươi và đứa trẻ trong bụng để khống chế Ôn phi cùng Ôn gia! A! Ta đã nói hết rồi! Giết ta đi! Mau giết ta đi!”
-
-Lòng Sở Ly lạnh như băng.
-
-Mười mấy năm gọi một tiếng “Lục hoàng huynh”, không ngờ lại độc ác đến vậy!
-
-“Tiểu Cửu.”
-
-Sở Đệ Trì một cước đá ngất hắn, quay đầu nhìn Sở Ly.
-
-“Vừa rồi, vì sao nàng lại trốn ta?”
-
-Trong lòng Sở Ly thắt lại.
-
-“Ta… ta không có…”</p>
+            <p>Chương 205: Nam tử hán, mông bự</p>
+<p>Bữa cơm này khiến Sở Ly ăn mà trong lòng thấp thỏm bất an.</p>
+<p>Nàng vẫn luôn lo Sở Đệ Trì thu liễm phong mang, trong lòng còn có mưu tính khác. Thế nhưng từ tối qua đến giờ, hắn vẫn ôn hòa, gần gũi, tựa như chỉ là một buổi tụ họp giữa những người bạn cũ, ở chung vô cùng thư thái và ung dung.</p>
+<p>Nhưng trong lòng nàng vẫn còn nghi hoặc và đề phòng.</p>
+<p>Ăn xong.</p>
+<p>Kinh Ảnh tiến lên:</p>
+<p>“Chủ tử, Lý Tri phủ và những người kia vẫn đang quỳ bên ngoài.”</p>
+<p>“Không vội.”</p>
+<p>Sở Đệ Trì lau sạch khóe miệng</p>
+<p>.</p>
+<p>“Đem tên hắc y nhân bắt được tối qua đến hậu viện. Tiểu Cửu, nàng theo ta.”</p>
+<p>Tần Mục Vũ vừa định đứng dậy thì đã bị Tiêu Dạ Hành kéo ngồi xuống.</p>
+<p>“Ngồi!”</p>
+<p>“Nhiếp Chính Vương đưa A Ly đi làm gì? Nếu chỉ là thẩm vấn nghi phạm, vì sao con không thể đi? Chẳng lẽ chuyện này cũng là khuê phòng tình thú?”</p>
+<p>“Nam tử hán, mông bự, cứ suốt ngày dính lấy Cửu hoàng tử làm gì?</p>
+<p>Chẳng lẽ sau này bọn họ thành thân rồi, con còn định treo mình trên xà nhà mà xem?”</p>
+<p>“Con…”</p>
+<p>Mặt Tần Mục Vũ lập tức đỏ bừng.</p>
+<p>A Ly còn chưa thừa nhận thích Nhiếp Chính Vương.</p>
+<p>Sau này, nàng chưa chắc đã chịu gả cho Nhiếp Chính Vương.</p>
+<p>Trong lúc hai người nói chuyện, Sở Ly cũng chần chừ đứng dậy, từng bước theo sau Sở Đệ Trì đến hậu viện. Vừa bước vào, nàng đã thấy một thân ảnh toàn thân đẫm máu, bị đánh đến mức chỉ còn thoi thóp.</p>
+<p>“Khụ… khụ…”</p>
+<p>Hắn đau đớn thở dốc.</p>
+<p>“Đây là kẻ hại nàng?” Sở Đệ Trì quay đầu nhìn nàng.</p>
+<p>Sở Ly vẫn chưa dám khẳng định.</p>
+<p>Nàng bước nhanh đến trước mặt hắn, túm lấy y phục trên vai kéo mạnh xuống. Khi nhìn thấy mảng bầm tím kia, nàng mới nói:</p>
+<p>“Chính là hắn.”</p>
+<p>Đó là vết bầm nàng dùng chén trà ném trúng.</p>
+<p>“Nói! Là ai sai ngươi hại ta?”</p>
+<p>“Khụ…”</p>
+<p>Tô Dương đã chịu hình, đau đến mức toàn thân tê dại. Được huấn luyện chuyên nghiệp, hắn đương nhiên sẽ không phản bội chủ nhân.</p>
+<p>Hắn sẽ không nói nửa lời.</p>
+<p>“Nói!”</p>
+<p>Sở Ly túm tóc hắn.</p>
+<p>Hắn bị ép ngẩng đầu lên, phun mạnh ra một ngụm máu.</p>
+<p>Đừng hòng!</p>
+<p>“Đừng để bẩn tay mình.”</p>
+<p>Sở Đệ Trì nắm lấy cổ tay mảnh khảnh của nàng.</p>
+<p>“Kinh Ảnh!”</p>
+<p>Kinh Ảnh nhanh chóng bước lên, hai tay dâng một chiếc túi giấy trông rất bình thường.</p>
+<p>“Đây là gì?”</p>
+<p>“Cửu hoàng tử, đây là thứ tìm được trên người kẻ này, tên là Nhiễu Chỉ Nhu, là một loại xuân dược không màu không mùi. Chỉ cần dính một chút, lại lấy hương hoa làm chất dẫn, sẽ dục hỏa phần thân.”</p>
+<p>Chỉ có hoan ái mới giải được.</p>
+<p>Sở Ly theo bản năng lùi lại một bước, nhìn về phía vườn hoa bên kia.</p>
+<p>Trong vườn hoa đang nở rộ, hương hoa kết hợp với thứ này, quả thật là vật cực kỳ nguy hiểm.</p>
+<p>Đầu ngón tay thon dài của Sở Đệ Trì kẹp lấy gói thuốc.</p>
+<p>“Đây đúng là thứ tốt.”</p>
+<p>Sở Ly quay đầu lại, phát hiện Kinh Ảnh chẳng biết đã lui xuống từ lúc nào.</p>
+<p>Ngoài Tô Dương đang hấp hối kia ra, trong hậu viện trống trải chỉ còn lại hai người bọn họ.</p>
+<p>Mọi người đâu rồi?</p>
+<p>“Tiểu Cửu.”</p>
+<p>Hắn bước về phía nàng.</p>
+<p>“Hoàng… Hoàng thúc…”</p>
+<p>Sắc mặt nàng khẽ biến.</p>
+<p>Ở riêng với hắn, nàng bỗng cảm thấy vô cùng hoảng loạn.</p>
+<p>“Trốn gì?”</p>
+<p>Hắn kẹp gói Nhiễu Chỉ Nhu giữa đầu ngón tay, đáy mắt mang ý cười nhưng sâu không thấy đáy, từng bước từng bước tiến sát lại. Bóng dáng cao lớn từng chút từng chút phủ xuống, bao trùm lấy nàng.</p>
+<p>Sắc mặt nàng dần tái đi.</p>
+<p>Hắn muốn làm gì?</p>
+<p>Nàng liên tục lùi về sau.</p>
+<p>“Ta…ta không giỏi thẩm vấn phạm nhân. Hay là để ta đi gọi…”</p>
+<p>“A!”</p>
+<p>Vừa mới nhấc chân đã bị một bàn tay to giữ chặt cổ tay.</p>
+<p>“Không giỏi thì ta có thể dạy nàng. Cứ mãi trốn tránh thì chẳng giải quyết được vấn đề gì. Chỉ khi tự mình đứng vững, mới là gốc rễ để an thân lập mệnh!”</p>
+<p>Dứt lời, người đàn ông quay người đi đến trước mặt Tô Dương, bóp mở miệng hắn, đổ toàn bộ gói Nhiễu Chỉ Nhu vào.</p>
+<p>Rồi một cước đá văng hắn vào bụi hoa.</p>
+<p>“Khụ!”</p>
+<p>Tô Dương ho ra một ngụm máu, nhưng thuốc đã trôi xuống cổ họng. Lại thêm hương hoa trong bụi hoa kích phát dược tính, da thịt hắn lập tức đỏ bừng.</p>
+<p>Đỏ như con tôm vừa luộc chín.</p>
+<p>“A…”</p>
+<p>Hắn túm chặt cổ áo, đau đớn giãy giụa.</p>
+<p>Nóng quá!</p>
+<p>Đau quá!</p>
+<p>Mỗi một mạch máu như sắp nổ tung, tựa hồ có hàng vạn con kiến đang gặm cắn khắp cơ thể, đau đến sống không bằng chết, gần như sắp nổ tung thân xác.</p>
+<p>“Giết ta… a… giết ta!”</p>
+<p>Hắn đau đớn lăn lộn giãy giụa, da thịt đỏ đến mức như sắp nứt toác.</p>
+<p>“Giết ta…”</p>
+<p>Trong mắt phủ đầy tia máu, cả người trông vô cùng đáng sợ.</p>
+<p>So với cái chết, sống không bằng chết mới là sự giày vò tàn khốc nhất.</p>
+<p>Sở Đệ Trì từ trên cao nhìn xuống hắn:</p>
+<p>“Nói, là ai sai ngươi đến?”</p>
+<p>“A! A!”</p>
+<p>Tô Dương đau đớn đến cực điểm.</p>
+<p>Muốn chết nhưng không thể tự sát.</p>
+<p>Toàn thân nóng như lửa đốt, cộng thêm vết thương đau đớn, tạo thành sự tra tấn cả thể xác lẫn linh hồn.</p>
+<p>Trong đầu hắn chỉ còn lại một ý niệm.</p>
+<p>Cầu chết.</p>
+<p>Đến bờ vực sụp đổ, tự nhiên chuyện gì cũng khai hết.</p>
+<p>“Lục hoàng tử! Là Lục hoàng tử!”</p>
+<p>Đáy mắt Sở Ly trầm xuống.</p>
+<p>Lục hoàng tử và Đại hoàng tử chính là huynh đệ ruột cùng một mẫu thân.</p>
+<p>“Hắn đã dặn ngươi thế nào?”</p>
+<p>“Lục hoàng tử bảo ta hạ thuốc ngươi, phát sinh quan hệ với ngươi, khiến ngươi mang thai. Sau khi hủy hoại sự trong sạch của ngươi, sẽ lợi dụng ngươi và đứa trẻ trong bụng để khống chế Ôn phi cùng Ôn gia! A! Ta đã nói hết rồi! Giết ta đi! Mau giết ta đi!”</p>
+<p>Lòng Sở Ly lạnh như băng.</p>
+<p>Mười mấy năm gọi một tiếng “Lục hoàng huynh”, không ngờ lại độc ác đến vậy!</p>
+<p>“Tiểu Cửu.”</p>
+<p>Sở Đệ Trì một cước đá ngất hắn, quay đầu nhìn Sở Ly.</p>
+<p>“Vừa rồi, vì sao nàng lại trốn ta?”</p>
+<p>Trong lòng Sở Ly thắt lại.</p>
+<p>“Ta… ta không có…”</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_204.html" class="btn">‹ Trước</a>
             <a href="chuong_206.html" class="btn">Sau ›</a>
         </div>
@@ -324,15 +236,11 @@ Trong lòng Sở Ly thắt lại.
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -344,11 +252,11 @@ Trong lòng Sở Ly thắt lại.
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

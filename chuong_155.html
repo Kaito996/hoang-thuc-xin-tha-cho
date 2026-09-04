@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 155</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,220 +62,229 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 155</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_154.html" class="btn">‹ Trước</a>
             <a href="chuong_156.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 155: Tin tưởng Hoàng thúc sao
-Khinh công của Sở Đệ Trì cực kỳ cao minh. Mượn dây thừng làm điểm tựa, hắn đạp lên vách núi, liên tiếp mấy lần tung người, liền lật mình lên trên.
-Đáp xuống đất vững vàng.
-“Chủ tử, thuộc hạ đến chậm, xin chủ tử giáng tội!” Kinh Ảnh và Trọng Phong đồng loạt quỳ xuống, cúi đầu thỉnh tội.
-Sở Đệ Trì đi lướt qua hai người, sải bước đến chỗ Sở Ly.
-“Bên ngoài tình hình thế nào?”
-Kinh Ảnh đáp:
-“Nam Man vẫn luôn truy bắt Tần Thiếu tướng quân và Cửu hoàng tử. Xem ra Tần Thiếu tướng quân vẫn chưa bị bắt, chỉ là… thuộc hạ cũng không rõ hiện giờ hắn đang ẩn thân ở đâu.”
-Sở Đệ Trì khom người, bế Sở Ly lên.
-“Hắn không phải kẻ ngu.”
-Không cần lo cho hắn.
-Một người lớn như vậy, tự biết giữ mạng, tự biết tìm đường thoát thân.
-“Chúng ta rời khỏi núi trước.”
-“Vâng.”
-Hai người đứng dậy.
-“Chủ tử, đi lối này.”
-Kinh Ảnh đi trước mở đường, Trọng Phong đoạn hậu phía sau.
-Hắn thỉnh thoảng lại lén liếc chủ tử một cái.
-Chủ tử cả người lấm đầy bùn đất, chỉ mặc trung y trung khố, trông thật sự vô cùng thê thảm.
-Vì muốn bồi dưỡng tình cảm với Cửu hoàng tử, chủ tử đúng là liều thật.
-Có hai người dẫn đường, đoàn người rất nhanh đã rời khỏi khu rừng núi sâu, đến vùng rừng thưa.
-Hai con tuấn mã được buộc vào thân cây, đang nhàn nhã gặm cỏ.
-Sở Đệ Trì ôm Sở Ly, vừa lên lưng ngựa, Sở Ly đã bị xóc đến khẽ rên:
-“Ưm…”
-“Tỉnh rồi?”
-Sở Ly day nhẹ thái dương, mơ màng mở mắt:
-“Đây là đâu?”
-“Chúng ta được cứu rồi, Tiểu Cửu. Trọng Phong và Kinh Ảnh đã tìm tới, giờ đã an toàn.”
-Trong đáy mắt Sở Ly thoáng hiện một tia sắc lạnh.
-Thật sao?
-Thật sự là như vậy sao?
-“Ồ, may mà có Hoàng thúc, nếu không lần này chúng ta chắc chắn khó thoát khỏi cái chết.”
-Nàng ngoan ngoãn tựa vào lòng hắn, hàng mi cong che khuất toàn bộ tâm tư nơi đáy mắt.
-Sở Đệ Trì một tay vòng ôm eo nàng, tay còn lại kéo cương ngựa.
-“Giá!”
-Hai người cưỡi một ngựa, còn lại một con.
-Kinh Ảnh và Trọng Phong nhìn nhau.
-Trọng Phong lên tiếng trước:
-“Ngươi ngồi phía trước.”
-Kinh Ảnh bất mãn:
-“Dựa vào đâu ta phải ngồi trước? Con ngựa này là của ta, ngươi ngồi trước đi.”
-“Ngươi ngồi.”
-Hai người cãi qua cãi lại mấy câu, cuối cùng quyết định dùng phương thức của giang hồ để giải quyết.
-Oẳn tù tì.
-Kinh Ảnh thắng.
-“Hê hê, Trọng Phong, ngươi ngồi trước.”
-Hai đại nam nhân cưỡi chung một con ngựa vốn đã chật chội, huống chi cả hai đều là người luyện võ, thân hình cao lớn cường tráng. Chồng lên nhau ngồi trên lưng ngựa, theo từng nhịp phi nước đại, thân thể cũng dán sát lấy nhau.
-Trọng Phong nổi hết da gà.
-Hai đại nam nhân…
-“Kinh Ảnh, kiếm của ngươi chọc vào ta rồi.”
-Kinh Ảnh nắm cương ngựa, đáp:
-“Lưng ngựa có từng ấy chỗ, ngươi có thể bớt lắm miệng được không? Đợi ra đến quan đạo, tìm được chỗ dừng chân, sẽ không phải để ngươi chịu ủy khuất nữa.”
-“Nếu không thích thì cứ xuống mà đi bộ, ta đâu có cản.”
-Kinh Ảnh chẳng để tâm.
-Dù sao ngựa này cũng là của hắn.
-Con ngựa của Trọng Phong đã bị chủ tử cưỡi mất rồi.
-Trọng Phong thật sự không chịu nổi, đạp bàn đạp, xoay người một cái, đổi hẳn tư thế, ngồi đối diện với Kinh Ảnh.
-Như vậy khoảng cách giữa hai người lập tức được kéo giãn, rộng rãi hơn hẳn.
-Chỉ là…
-Kinh Ảnh trợn tròn mắt:
-“Không phải chứ, sao ngươi lại ngồi như vậy? Mau quay lại! Làm gì có ai cưỡi ngựa mà ngồi đối diện thế này?”
-Trọng Phong khoanh tay trước ngực, lạnh nhạt ngồi yên.
-“Im miệng. Đến quan đạo, ta tự xuống đi bộ.”
-“Không phải, ngươi biến thái à? Ngươi ngồi thế nhìn ta chằm chằm, ta còn nhìn đường kiểu gì?”
-Hai người vừa cưỡi ngựa vừa cãi om sòm.
-Quay sang nhìn Sở Đệ Trì và Sở Ly thì trái lại hài hòa hơn nhiều.
-Sở Ly vóc người mảnh mai, thân hình thon gầy, được nam nhân ôm gọn trong lòng, hai người cưỡi một ngựa cũng vô cùng nhẹ nhàng.
-“Tiểu Cửu.”
-“Ừm?”
-“Nàng nói xem, chúng ta có phải đã cùng nhau trải qua sinh tử? Giữa chúng ta đã có giao tình vào sinh ra tử rồi.”
-Sở Ly hơi cúi đầu, ngoan ngoãn tựa trong lòng hắn, im lặng không đáp.
-Kể từ lúc rời khỏi vách núi, nàng ít nói hẳn đi.
-“Đang nghĩ gì thế?”
-Sở Ly khẽ “ừ” một tiếng.
-“Coi như vậy đi.”
-“Đang nghĩ chuyện gì? Lo cho Tần Thiếu tướng quân sao?” Sở Đệ Trì nói. “Đợi đến nơi an toàn rồi, chúng ta sẽ nghĩ cách cứu hắn.”
-Thật sao?
-Mỗi lời hắn nói, mỗi việc hắn làm đều tự nhiên đến mức trước đây nàng chưa từng nghi ngờ.
-Nhưng bây giờ nàng mới phát hiện…
-Diễn xuất của hắn xuất thần nhập hóa đến mức nào.
-Quả thực đã đạt đến cảnh giới lô hỏa thuần thanh.
-Hắn thật sự sẽ cứu Tần Mục Vũ sao?
-E rằng chỉ là đang dỗ dành nàng mà thôi.
-Cũng chỉ có nàng ngây ngô, dễ bị lừa.
-“Được.”
-Nàng khẽ đáp.
-“Tin Hoàng thúc sao?”
-“Tin.”
-Nàng nói:
-“Hoàng thúc đã mở miệng, ắt hẳn sẽ cứu hắn. Có câu nói này của Hoàng thúc, ta cũng yên tâm rồi.”
-Nam nhân khẽ cười.
-“Ta thích dáng vẻ nàng tin tưởng ta.”
-Có lẽ vậy.
-Hai ngày gian nan cùng những lần cận kề sinh tử ấy…
-Suýt nữa nàng đã cảm động.
-Suýt nữa đã thật sự tin hắn…
-“Sắp xuống núi rồi, đường sẽ rất xóc, ôm chặt vào.”
-Sở Ly vòng tay ôm lấy eo hắn.
-Hắn hơi nhướng mày, ánh mắt thoáng vẻ ngạc nhiên.
-“Thật ngoan.”
-Thật muốn hôn con khỉ bùn lấm lem này.
-Chỉ là lúc này hoàn cảnh không thích hợp, thời cơ cũng không đúng.
-Đợi đến khách điếm, tắm rửa thay y phục sạch sẽ rồi, sẽ hôn nàng thật tử tế.
-Sở Ly khép mắt, ngoan ngoãn tựa vào lòng hắn, không nói thêm lời nào.
-Xuống núi!
-Có ngựa thay chân, sau một canh giờ rưỡi, bốn người cuối cùng cũng vòng ra khỏi dãy núi sâu, đến một con quan đạo hẻo lánh.
-Quan đạo vắng lặng, không một bóng người.
-Sở Đệ Trì chọn một hướng, lại thúc ngựa chừng nửa canh giờ, cuối cùng đến một tòa tiểu trấn.
-Bốn người vừa xuất hiện đã lập tức thu hút vô số ánh nhìn.
-Đặc biệt là hai “người bùn” Sở Ly và Sở Đệ Trì.
-Trọng Phong cũng chẳng còn tâm trí đấu khẩu với Kinh Ảnh nữa, lập tức tìm một khách điếm, đưa bạc thuê hai gian thượng phòng.
-Bạc đưa đủ nhiều, chưởng quầy lập tức cung cấp trọn gói: nước nóng, thùng tắm, cơm nước, y phục, mọi thứ đều chuẩn bị chu toàn.
-“Chủ tử, người và Cửu hoàng tử lên tắm rửa trước đi. Thuộc hạ sẽ đi tuần tra xung quanh một lượt, đề phòng truy binh.”
-Sở Đệ Trì gật đầu.
-“Tiểu Cửu, chúng ta lên lầu trước.”
-“Hoàng thúc, tối nay ta muốn ăn gà quay, còn có giò heo hầm đậu nành.”
-“Tối ăn đồ nhiều mỡ không tốt.”
-“Nhưng ta đã đói suốt hai ngày rồi.”
-Sở Đệ Trì hơi chần chừ, cuối cùng vẫn gật đầu.
-“Ta xuống hậu trù dặn tiểu nhị một tiếng, nàng lên phòng trước.”
-“Được.”
-Sở Ly nhìn bóng lưng hắn khuất dần nơi hậu viện.
-Trọng Phong và Kinh Ảnh cũng đều không có mặt.
-Ánh mắt nàng dần trở nên sâu thẳm.
-Chỉ chưa đầy một phút sau, Sở Đệ Trì từ hậu trù trở ra, lên lầu hai.
-Tiểu nhị khiêng thùng tắm vào, đổ đầy nước nóng.
-“Công tử, ngài cứ tắm trước. Có gì cần, cứ gọi tiểu nhân.”
-“Phòng bên cạnh cũng chuẩn bị nước nóng rồi chứ?”
-“Phòng bên cạnh?”
-Tiểu nhị gãi đầu.
-“Chưởng quầy bảo bọn tiểu nhân chuẩn bị hai thùng nước nóng, nhưng phòng bên cạnh không có ai cả.”
-Sở Đệ Trì cau mày.
-“Ngươi nói gì?”
-Tiểu nhị đáp:
-“Phòng bên cạnh không có người.”
-Sao có thể?
-Sở Đệ Trì lập tức bước ra, đẩy cửa phòng bên cạnh.
-Trong phòng trống không.
-Bàn ghế, giường chiếu đều ngay ngắn sạch sẽ, hoàn toàn không có dấu vết từng có người bước vào.
-“Tiểu Cửu!”
-Hắn lao xuống lầu.
-“Tiểu Cửu?”
-“Tiểu Cửu!”
-Người đâu rồi!
-Nếu truy binh tới, nhất định sẽ gây ra động tĩnh rất lớn.
-Hơn nữa vừa rồi hắn xuống hậu trù, cũng chỉ rời mắt khỏi Sở Ly trong chốc lát.
-Nàng tuyệt đối không thể bị bắt đi.
-Hắn chạy thẳng ra hậu viện.
-Trong chuồng ngựa, hai con ngựa giờ chỉ còn lại một.
-Nàng cưỡi ngựa bỏ đi rồi!
-Sở Ly!
-Lúc này, nàng tuyệt đối không thể bỏ mặc Tần Mục Vũ.
-Nàng cưỡi ngựa quay lại vương đô Nam Man…
-Là muốn đi cứu Tần Mục Vũ?
-Trong lòng nàng…
-Vẫn không thể buông hắn xuống được sao? Ẩn bớt</p>
+            <p>Chương 155: Tin tưởng Hoàng thúc sao</p>
+<p>Khinh công của Sở Đệ Trì cực kỳ cao minh. Mượn dây thừng làm điểm tựa, hắn đạp lên vách núi, liên tiếp mấy lần tung người, liền lật mình lên trên.</p>
+<p>Đáp xuống đất vững vàng.</p>
+<p>“Chủ tử, thuộc hạ đến chậm, xin chủ tử giáng tội!” Kinh Ảnh và Trọng Phong đồng loạt quỳ xuống, cúi đầu thỉnh tội.</p>
+<p>Sở Đệ Trì đi lướt qua hai người, sải bước đến chỗ Sở Ly.</p>
+<p>“Bên ngoài tình hình thế nào?”</p>
+<p>Kinh Ảnh đáp:</p>
+<p>“Nam Man vẫn luôn truy bắt Tần Thiếu tướng quân và Cửu hoàng tử. Xem ra Tần Thiếu tướng quân vẫn chưa bị bắt, chỉ là… thuộc hạ cũng không rõ hiện giờ hắn đang ẩn thân ở đâu.”</p>
+<p>Sở Đệ Trì khom người, bế Sở Ly lên.</p>
+<p>“Hắn không phải kẻ ngu.”</p>
+<p>Không cần lo cho hắn.</p>
+<p>Một người lớn như vậy, tự biết giữ mạng, tự biết tìm đường thoát thân.</p>
+<p>“Chúng ta rời khỏi núi trước.”</p>
+<p>“Vâng.”</p>
+<p>Hai người đứng dậy.</p>
+<p>“Chủ tử, đi lối này.”</p>
+<p>Kinh Ảnh đi trước mở đường, Trọng Phong đoạn hậu phía sau.</p>
+<p>Hắn thỉnh thoảng lại lén liếc chủ tử một cái.</p>
+<p>Chủ tử cả người lấm đầy bùn đất, chỉ mặc trung y trung khố, trông thật sự vô cùng thê thảm.</p>
+<p>Vì muốn bồi dưỡng tình cảm với Cửu hoàng tử, chủ tử đúng là liều thật.</p>
+<p>Có hai người dẫn đường, đoàn người rất nhanh đã rời khỏi khu rừng núi sâu, đến vùng rừng thưa.</p>
+<p>Hai con tuấn mã được buộc vào thân cây, đang nhàn nhã gặm cỏ.</p>
+<p>Sở Đệ Trì ôm Sở Ly, vừa lên lưng ngựa, Sở Ly đã bị xóc đến khẽ rên:</p>
+<p>“Ưm…”</p>
+<p>“Tỉnh rồi?”</p>
+<p>Sở Ly day nhẹ thái dương, mơ màng mở mắt:</p>
+<p>“Đây là đâu?”</p>
+<p>“Chúng ta được cứu rồi, Tiểu Cửu. Trọng Phong và Kinh Ảnh đã tìm tới, giờ đã an toàn.”</p>
+<p>Trong đáy mắt Sở Ly thoáng hiện một tia sắc lạnh.</p>
+<p>Thật sao?</p>
+<p>Thật sự là như vậy sao?</p>
+<p>“Ồ, may mà có Hoàng thúc, nếu không lần này chúng ta chắc chắn khó thoát khỏi cái chết.”</p>
+<p>Nàng ngoan ngoãn tựa vào lòng hắn, hàng mi cong che khuất toàn bộ tâm tư nơi đáy mắt.</p>
+<p>Sở Đệ Trì một tay vòng ôm eo nàng, tay còn lại kéo cương ngựa.</p>
+<p>“Giá!”</p>
+<p>Hai người cưỡi một ngựa, còn lại một con.</p>
+<p>Kinh Ảnh và Trọng Phong nhìn nhau.</p>
+<p>Trọng Phong lên tiếng trước:</p>
+<p>“Ngươi ngồi phía trước.”</p>
+<p>Kinh Ảnh bất mãn:</p>
+<p>“Dựa vào đâu ta phải ngồi trước? Con ngựa này là của ta, ngươi ngồi trước đi.”</p>
+<p>“Ngươi ngồi.”</p>
+<p>Hai người cãi qua cãi lại mấy câu, cuối cùng quyết định dùng phương thức của giang hồ để giải quyết.</p>
+<p>Oẳn tù tì.</p>
+<p>Kinh Ảnh thắng.</p>
+<p>“Hê hê, Trọng Phong, ngươi ngồi trước.”</p>
+<p>Hai đại nam nhân cưỡi chung một con ngựa vốn đã chật chội, huống chi cả hai đều là người luyện võ, thân hình cao lớn cường tráng. Chồng lên nhau ngồi trên lưng ngựa, theo từng nhịp phi nước đại, thân thể cũng dán sát lấy nhau.</p>
+<p>Trọng Phong nổi hết da gà.</p>
+<p>Hai đại nam nhân…</p>
+<p>“Kinh Ảnh, kiếm của ngươi chọc vào ta rồi.”</p>
+<p>Kinh Ảnh nắm cương ngựa, đáp:</p>
+<p>“Lưng ngựa có từng ấy chỗ, ngươi có thể bớt lắm miệng được không? Đợi ra đến quan đạo, tìm được chỗ dừng chân, sẽ không phải để ngươi chịu ủy khuất nữa.”</p>
+<p>“Nếu không thích thì cứ xuống mà đi bộ, ta đâu có cản.”</p>
+<p>Kinh Ảnh chẳng để tâm.</p>
+<p>Dù sao ngựa này cũng là của hắn.</p>
+<p>Con ngựa của Trọng Phong đã bị chủ tử cưỡi mất rồi.</p>
+<p>Trọng Phong thật sự không chịu nổi, đạp bàn đạp, xoay người một cái, đổi hẳn tư thế, ngồi đối diện với Kinh Ảnh.</p>
+<p>Như vậy khoảng cách giữa hai người lập tức được kéo giãn, rộng rãi hơn hẳn.</p>
+<p>Chỉ là…</p>
+<p>Kinh Ảnh trợn tròn mắt:</p>
+<p>“Không phải chứ, sao ngươi lại ngồi như vậy? Mau quay lại! Làm gì có ai cưỡi ngựa mà ngồi đối diện thế này?”</p>
+<p>Trọng Phong khoanh tay trước ngực, lạnh nhạt ngồi yên.</p>
+<p>“Im miệng. Đến quan đạo, ta tự xuống đi bộ.”</p>
+<p>“Không phải, ngươi biến thái à? Ngươi ngồi thế nhìn ta chằm chằm, ta còn nhìn đường kiểu gì?”</p>
+<p>Hai người vừa cưỡi ngựa vừa cãi om sòm.</p>
+<p>Quay sang nhìn Sở Đệ Trì và Sở Ly thì trái lại hài hòa hơn nhiều.</p>
+<p>Sở Ly vóc người mảnh mai, thân hình thon gầy, được nam nhân ôm gọn trong lòng, hai người cưỡi một ngựa cũng vô cùng nhẹ nhàng.</p>
+<p>“Tiểu Cửu.”</p>
+<p>“Ừm?”</p>
+<p>“Nàng nói xem, chúng ta có phải đã cùng nhau trải qua sinh tử? Giữa chúng ta đã có giao tình vào sinh ra tử rồi.”</p>
+<p>Sở Ly hơi cúi đầu, ngoan ngoãn tựa trong lòng hắn, im lặng không đáp.</p>
+<p>Kể từ lúc rời khỏi vách núi, nàng ít nói hẳn đi.</p>
+<p>“Đang nghĩ gì thế?”</p>
+<p>Sở Ly khẽ “ừ” một tiếng.</p>
+<p>“Coi như vậy đi.”</p>
+<p>“Đang nghĩ chuyện gì? Lo cho Tần Thiếu tướng quân sao?” Sở Đệ Trì nói. “Đợi đến nơi an toàn rồi, chúng ta sẽ nghĩ cách cứu hắn.”</p>
+<p>Thật sao?</p>
+<p>Mỗi lời hắn nói, mỗi việc hắn làm đều tự nhiên đến mức trước đây nàng chưa từng nghi ngờ.</p>
+<p>Nhưng bây giờ nàng mới phát hiện…</p>
+<p>Diễn xuất của hắn xuất thần nhập hóa đến mức nào.</p>
+<p>Quả thực đã đạt đến cảnh giới lô hỏa thuần thanh.</p>
+<p>Hắn thật sự sẽ cứu Tần Mục Vũ sao?</p>
+<p>E rằng chỉ là đang dỗ dành nàng mà thôi.</p>
+<p>Cũng chỉ có nàng ngây ngô, dễ bị lừa.</p>
+<p>“Được.”</p>
+<p>Nàng khẽ đáp.</p>
+<p>“Tin Hoàng thúc sao?”</p>
+<p>“Tin.”</p>
+<p>Nàng nói:</p>
+<p>“Hoàng thúc đã mở miệng, ắt hẳn sẽ cứu hắn. Có câu nói này của Hoàng thúc, ta cũng yên tâm rồi.”</p>
+<p>Nam nhân khẽ cười.</p>
+<p>“Ta thích dáng vẻ nàng tin tưởng ta.”</p>
+<p>Có lẽ vậy.</p>
+<p>Hai ngày gian nan cùng những lần cận kề sinh tử ấy…</p>
+<p>Suýt nữa nàng đã cảm động.</p>
+<p>Suýt nữa đã thật sự tin hắn…</p>
+<p>“Sắp xuống núi rồi, đường sẽ rất xóc, ôm chặt vào.”</p>
+<p>Sở Ly vòng tay ôm lấy eo hắn.</p>
+<p>Hắn hơi nhướng mày, ánh mắt thoáng vẻ ngạc nhiên.</p>
+<p>“Thật ngoan.”</p>
+<p>Thật muốn hôn con khỉ bùn lấm lem này.</p>
+<p>Chỉ là lúc này hoàn cảnh không thích hợp, thời cơ cũng không đúng.</p>
+<p>Đợi đến khách điếm, tắm rửa thay y phục sạch sẽ rồi, sẽ hôn nàng thật tử tế.</p>
+<p>Sở Ly khép mắt, ngoan ngoãn tựa vào lòng hắn, không nói thêm lời nào.</p>
+<p>Xuống núi!</p>
+<p>Có ngựa thay chân, sau một canh giờ rưỡi, bốn người cuối cùng cũng vòng ra khỏi dãy núi sâu, đến một con quan đạo hẻo lánh.</p>
+<p>Quan đạo vắng lặng, không một bóng người.</p>
+<p>Sở Đệ Trì chọn một hướng, lại thúc ngựa chừng nửa canh giờ, cuối cùng đến một tòa tiểu trấn.</p>
+<p>Bốn người vừa xuất hiện đã lập tức thu hút vô số ánh nhìn.</p>
+<p>Đặc biệt là hai “người bùn” Sở Ly và Sở Đệ Trì.</p>
+<p>Trọng Phong cũng chẳng còn tâm trí đấu khẩu với Kinh Ảnh nữa, lập tức tìm một khách điếm, đưa bạc thuê hai gian thượng phòng.</p>
+<p>Bạc đưa đủ nhiều, chưởng quầy lập tức cung cấp trọn gói: nước nóng, thùng tắm, cơm nước, y phục, mọi thứ đều chuẩn bị chu toàn.</p>
+<p>“Chủ tử, người và Cửu hoàng tử lên tắm rửa trước đi. Thuộc hạ sẽ đi tuần tra xung quanh một lượt, đề phòng truy binh.”</p>
+<p>Sở Đệ Trì gật đầu.</p>
+<p>“Tiểu Cửu, chúng ta lên lầu trước.”</p>
+<p>“Hoàng thúc, tối nay ta muốn ăn gà quay, còn có giò heo hầm đậu nành.”</p>
+<p>“Tối ăn đồ nhiều mỡ không tốt.”</p>
+<p>“Nhưng ta đã đói suốt hai ngày rồi.”</p>
+<p>Sở Đệ Trì hơi chần chừ, cuối cùng vẫn gật đầu.</p>
+<p>“Ta xuống hậu trù dặn tiểu nhị một tiếng, nàng lên phòng trước.”</p>
+<p>“Được.”</p>
+<p>Sở Ly nhìn bóng lưng hắn khuất dần nơi hậu viện.</p>
+<p>Trọng Phong và Kinh Ảnh cũng đều không có mặt.</p>
+<p>Ánh mắt nàng dần trở nên sâu thẳm.</p>
+<p>Chỉ chưa đầy một phút sau, Sở Đệ Trì từ hậu trù trở ra, lên lầu hai.</p>
+<p>Tiểu nhị khiêng thùng tắm vào, đổ đầy nước nóng.</p>
+<p>“Công tử, ngài cứ tắm trước. Có gì cần, cứ gọi tiểu nhân.”</p>
+<p>“Phòng bên cạnh cũng chuẩn bị nước nóng rồi chứ?”</p>
+<p>“Phòng bên cạnh?”</p>
+<p>Tiểu nhị gãi đầu.</p>
+<p>“Chưởng quầy bảo bọn tiểu nhân chuẩn bị hai thùng nước nóng, nhưng phòng bên cạnh không có ai cả.”</p>
+<p>Sở Đệ Trì cau mày.</p>
+<p>“Ngươi nói gì?”</p>
+<p>Tiểu nhị đáp:</p>
+<p>“Phòng bên cạnh không có người.”</p>
+<p>Sao có thể?</p>
+<p>Sở Đệ Trì lập tức bước ra, đẩy cửa phòng bên cạnh.</p>
+<p>Trong phòng trống không.</p>
+<p>Bàn ghế, giường chiếu đều ngay ngắn sạch sẽ, hoàn toàn không có dấu vết từng có người bước vào.</p>
+<p>“Tiểu Cửu!”</p>
+<p>Hắn lao xuống lầu.</p>
+<p>“Tiểu Cửu?”</p>
+<p>“Tiểu Cửu!”</p>
+<p>Người đâu rồi!</p>
+<p>Nếu truy binh tới, nhất định sẽ gây ra động tĩnh rất lớn.</p>
+<p>Hơn nữa vừa rồi hắn xuống hậu trù, cũng chỉ rời mắt khỏi Sở Ly trong chốc lát.</p>
+<p>Nàng tuyệt đối không thể bị bắt đi.</p>
+<p>Hắn chạy thẳng ra hậu viện.</p>
+<p>Trong chuồng ngựa, hai con ngựa giờ chỉ còn lại một.</p>
+<p>Nàng cưỡi ngựa bỏ đi rồi!</p>
+<p>Sở Ly!</p>
+<p>Lúc này, nàng tuyệt đối không thể bỏ mặc Tần Mục Vũ.</p>
+<p>Nàng cưỡi ngựa quay lại vương đô Nam Man…</p>
+<p>Là muốn đi cứu Tần Mục Vũ?</p>
+<p>Trong lòng nàng…</p>
+<p>Vẫn không thể buông hắn xuống được sao? Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_154.html" class="btn">‹ Trước</a>
             <a href="chuong_156.html" class="btn">Sau ›</a>
         </div>
@@ -284,15 +292,11 @@ Vẫn không thể buông hắn xuống được sao? Ẩn bớt</p>
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -304,11 +308,11 @@ Vẫn không thể buông hắn xuống được sao? Ẩn bớt</p>
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

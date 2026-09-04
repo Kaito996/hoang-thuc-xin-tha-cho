@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 224</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,146 +62,155 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 224</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_223.html" class="btn">‹ Trước</a>
             <a href="chuong_225.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 224: Cuối cùng cũng lừa được người vào tay
-Đã lớn đến từng này rồi mà làm việc vẫn bất ổn trọng như vậy, ngay cả địa chỉ cũng không hỏi cho rõ ràng rồi mới nói cho bọn họ.
-Sở Ly đang buồn bực, ông trời tựa như cũng nhận ra. Ban nãy trời còn quang đãng, hiện giờ vậy mà đã nổi gió lạnh, mây đen mù mịt.
-“Xem ra e là sắp mưa rồi. Tiểu Cửu, chúng ta vào trong tránh mưa trước, đợi đến tối Tần thiếu tướng quân thấy chúng ta chưa trở về, nhất định sẽ phái người tới tìm.”
-Sở Đệ Trì ôn thanh nói:
-“Tiểu Cửu, chúng ta phải tin tưởng Tần thiếu tướng quân. Hắn nhất định có thể tìm được chúng ta trong thời gian ngắn nhất.”
-Sở Ly gật đầu.
-Lời này nghe còn thuận tai.
-Mục Vũ nhất định sẽ không khiến nàng thất vọng.
-“Tiêu Đô đốc đã đưa địa chỉ này cho chúng ta, hẳn là có đạo lý riêng. Có lẽ Tạ lão tướng quân thật sự sống ở đây, chỉ là chúng ta chưa tìm thấy ông ấy.”
-Nàng nghĩ như vậy:
-“Hoàng thúc, chúng ta quay lại tìm thêm lần nữa đi.”
-Nàng xách váy, chạy về phía biệt uyển.
-Nam nhân mang đôi mắt sâu không thấy đáy, từng bước từng bước đi theo phía sau.
-Trở lại biệt uyển.
-Sở Ly lại gõ cửa mấy cái, thế nhưng lại nhìn thấy cánh cửa kêu “kẽo kẹt kẽo kẹt”, lung lay. Nàng dùng sức đẩy một cái, cửa liền mở ra.
-Cửa chưa đóng sao?
-Vậy tại sao lại có một chiếc khóa treo trên đó?
-Khóa đang mở.
-Chuyện gì thế này?
-“Tạ lão tướng quân?”
-Biệt uyển rộng lớn vô cùng, chỉ có một đại viện rộng mênh mông. Bên trong dựng giả sơn, đình tạ, trồng đầy cây xanh. Từng khóm tường vi leo bò trên tường và mái ngói, nở rộ tràn đầy sinh cơ, cảnh sắc đẹp đến mê người.
-Một biệt uyển thật phong nhã, tao nhã. Nhìn thế nào cũng không giống nơi ở của một lão nhân gia.
-Lúc này Sở Ly vẫn chưa sinh nghi, chạy về phía phòng ốc:
-“Tạ lão tướng quân!”
-Sao ngay cả một hạ nhân hầu hạ cũng không có?
-Đại sảnh, không người.
-Kho, không người.
-Nhà bếp, không người.
-Toàn bộ biệt uyển, thậm chí cả đảo giữa hồ, đều yên tĩnh đến dị thường, tựa như chỉ có hai người bọn họ.
-Mưa rơi.
-Sương khởi.
-Sở Ly đẩy cửa chính sương phòng. Cửa sổ mở rộng, mưa đánh lên cành liễu, gió lạnh thổi tung màn sa màu phấn hồng bay phấp phới. Bài trí trong sương phòng mang sắc điệu mềm mại, triền miên, tựa như đột ngột bước vào ôn nhu hương.
-Thần sắc nàng khẽ biến.
-Tạ lão tướng quân sao có thể sống ở nơi như thế này!
-Nàng đang định rời khỏi sương phòng, vừa lùi lại nửa bước, đã đụng phải một lồng ngực lạnh lẽo cứng rắn.
-Nàng lập tức xoay người, chỉ thấy nam nhân trở tay đóng cửa.
-Ánh sáng trong phòng lập tức tối xuống. Một mảng bóng tối mông lung tựa như từ đầu đến chân bao phủ lấy Sở Ly, khiến hô hấp nàng chợt nghẹn lại. Một hồi chuông cảnh báo khó hiểu lặng lẽ vang lên trong đáy lòng.
-“Bên ngoài đang mưa, Tiểu Cửu, nàng muốn đi đâu?”
-“Ta… ta muốn ra ngoài xem mưa…”
-Nam nhân chậm rãi xắn tay áo, từng bước từng bước đi về phía nàng: “Mưa rào lất phất, cẩn thận phong hàn.”
-Sở Ly theo bản năng lùi về sau:
-“Ta không lạnh.”
-Hắn từng bước tiến tới: “Phong hàn phân thành lãnh hàn và nhiệt hàn. Mùa đông gọi là lãnh hàn, mùa hạ gọi là nhiệt hàn. Nàng không cảm thấy lạnh, nhưng đợi đến khi thân thể khó chịu, phản ứng lại thì đã nhiễm phong hàn rồi.”
-“Hoàng thúc, ta thật sự không lạnh. Hơn nữa ta cũng đâu có định ra ngoài dầm mưa… Ta…”
-Nàng từng bước lùi lại.
-Thế nhưng bóng dáng cao lớn của nam nhân đã phủ xuống. Vẫn là gương mặt ôn hòa mang theo ý cười nhàn nhạt ấy, nhưng trong hoàn cảnh này, nàng chỉ cảm thấy như đang bước trên băng mỏng.
-Lùi thêm một bước, nàng đụng phải mép bàn.
-Thân thể khẽ cúi xuống, nàng định lách qua bên cạnh hắn chạy đi, nhưng nam nhân vung cánh tay dài, lập tức ôm ngang eo nàng, nhấc bổng nàng đặt lên bàn.
-Hai cánh tay chống ở hai bên thân thể nàng.
-“Hoàng… Hoàng thúc…”
-Sở Ly câu nệ ngồi trên bàn, hai tay hai chân đều không biết nên đặt ở đâu. Toàn bộ hô hấp, thậm chí cả tâm trí, đều tràn ngập mùi trầm hương ô mộc trên người hắn.
-Khí tức của hắn mang theo tính xâm lược cực mạnh, xâm nhập vào lãnh địa của nàng.
-Hắn muốn làm gì!
-“Chúng ta là tới bái phỏng Tạ lão tướng quân…”
-Đôi mắt u ám của nam nhân nhìn chằm chằm nàng: “Đã tới rồi.”
-Huống hồ, hắn vốn cũng không định để nàng trở về.
-Thần sắc Sở Ly đột nhiên biến đổi: “Đây là nhà của người khác, chúng ta không thể tự tiện xông vào. Đợi mưa tạnh chúng ta lập tức trở về. Hơn nữa đây là sương phòng của người khác, làm như vậy rất thất lễ. Hay là chúng ta… Ưm!”
-Một đôi môi mỏng lạnh lẽo đột nhiên phủ xuống.
-Mềm mại đến mức không tìm được từ ngữ nào để hình dung, lại mang theo nhiệt độ cơ thể, tựa như bị một thứ tốt đẹp bao bọc lấy.
-Hai mắt Sở Ly trợn lớn.
-Hắn…
-Hắn!
-Nàng đẩy lồng ngực hắn, lại bị nam nhân nắm lấy hai tay, đè lên mặt bàn.
-“Hoàng thúc…”
-Sở Đệ Trì đã nhẫn nại đến cực hạn. Cuối cùng cũng lừa được người vào tay, hắn không còn bất cứ sự ngụy trang nào nữa, cường thế khiến nàng không thể trốn tránh, hơi thở nặng nề tựa như muốn nuốt chửng nàng.
-Sở Ly đá hắn một cái, hắn lập tức khuỵu gối khống chế nàng.
-Nàng vặn người, hắn liền dùng một tay giữ chặt.
-Nàng dốc sức giãy giụa, đột nhiên thoát khỏi sự khống chế của hắn. Vì dùng sức quá mạnh, nàng đá đổ hộp lễ vật bên cạnh. Nắp hộp bị bật tung, từ bên trong rơi ra một đoạn dải lụa màu phấn hồng.
-Đây là gì?
-Nàng kéo dải lụa lên.
-Dài thật!
-Trong hộp lễ vật căn bản chẳng hề chứa lễ vật gì, mà là dải lụa này!
-“Hóa ra Tiểu Cửu thích kiểu này.”
-Nam nhân trầm thấp cười một tiếng. Đầu ngón tay thon dài nhặt dải lụa lên, quấn quanh hai cổ tay nàng, đầu còn lại nắm trong lòng bàn tay.
-Lúc này, nếu Sở Ly còn chưa hiểu ra thì đúng là đồ ngốc. Thế nhưng đợi nàng phản ứng lại, hết thảy đã muộn.
-“Sở Đệ Trì!”
-“Gọi ta là gì?”
-“Sở Đệ Trì! Người cố ý! Tạ lão tướng quân căn bản không sống ở đây, người lừa ta! Người lừa ta!”
-—————————
-Ôi trí nhớ tôi thật tồi, đến đây mới là món khai vị 
- Ẩn bớt</p>
+            <p>Chương 224: Cuối cùng cũng lừa được người vào tay</p>
+<p>Đã lớn đến từng này rồi mà làm việc vẫn bất ổn trọng như vậy, ngay cả địa chỉ cũng không hỏi cho rõ ràng rồi mới nói cho bọn họ.</p>
+<p>Sở Ly đang buồn bực, ông trời tựa như cũng nhận ra. Ban nãy trời còn quang đãng, hiện giờ vậy mà đã nổi gió lạnh, mây đen mù mịt.</p>
+<p>“Xem ra e là sắp mưa rồi. Tiểu Cửu, chúng ta vào trong tránh mưa trước, đợi đến tối Tần thiếu tướng quân thấy chúng ta chưa trở về, nhất định sẽ phái người tới tìm.”</p>
+<p>Sở Đệ Trì ôn thanh nói:</p>
+<p>“Tiểu Cửu, chúng ta phải tin tưởng Tần thiếu tướng quân. Hắn nhất định có thể tìm được chúng ta trong thời gian ngắn nhất.”</p>
+<p>Sở Ly gật đầu.</p>
+<p>Lời này nghe còn thuận tai.</p>
+<p>Mục Vũ nhất định sẽ không khiến nàng thất vọng.</p>
+<p>“Tiêu Đô đốc đã đưa địa chỉ này cho chúng ta, hẳn là có đạo lý riêng. Có lẽ Tạ lão tướng quân thật sự sống ở đây, chỉ là chúng ta chưa tìm thấy ông ấy.”</p>
+<p>Nàng nghĩ như vậy:</p>
+<p>“Hoàng thúc, chúng ta quay lại tìm thêm lần nữa đi.”</p>
+<p>Nàng xách váy, chạy về phía biệt uyển.</p>
+<p>Nam nhân mang đôi mắt sâu không thấy đáy, từng bước từng bước đi theo phía sau.</p>
+<p>Trở lại biệt uyển.</p>
+<p>Sở Ly lại gõ cửa mấy cái, thế nhưng lại nhìn thấy cánh cửa kêu “kẽo kẹt kẽo kẹt”, lung lay. Nàng dùng sức đẩy một cái, cửa liền mở ra.</p>
+<p>Cửa chưa đóng sao?</p>
+<p>Vậy tại sao lại có một chiếc khóa treo trên đó?</p>
+<p>Khóa đang mở.</p>
+<p>Chuyện gì thế này?</p>
+<p>“Tạ lão tướng quân?”</p>
+<p>Biệt uyển rộng lớn vô cùng, chỉ có một đại viện rộng mênh mông. Bên trong dựng giả sơn, đình tạ, trồng đầy cây xanh. Từng khóm tường vi leo bò trên tường và mái ngói, nở rộ tràn đầy sinh cơ, cảnh sắc đẹp đến mê người.</p>
+<p>Một biệt uyển thật phong nhã, tao nhã. Nhìn thế nào cũng không giống nơi ở của một lão nhân gia.</p>
+<p>Lúc này Sở Ly vẫn chưa sinh nghi, chạy về phía phòng ốc:</p>
+<p>“Tạ lão tướng quân!”</p>
+<p>Sao ngay cả một hạ nhân hầu hạ cũng không có?</p>
+<p>Đại sảnh, không người.</p>
+<p>Kho, không người.</p>
+<p>Nhà bếp, không người.</p>
+<p>Toàn bộ biệt uyển, thậm chí cả đảo giữa hồ, đều yên tĩnh đến dị thường, tựa như chỉ có hai người bọn họ.</p>
+<p>Mưa rơi.</p>
+<p>Sương khởi.</p>
+<p>Sở Ly đẩy cửa chính sương phòng. Cửa sổ mở rộng, mưa đánh lên cành liễu, gió lạnh thổi tung màn sa màu phấn hồng bay phấp phới. Bài trí trong sương phòng mang sắc điệu mềm mại, triền miên, tựa như đột ngột bước vào ôn nhu hương.</p>
+<p>Thần sắc nàng khẽ biến.</p>
+<p>Tạ lão tướng quân sao có thể sống ở nơi như thế này!</p>
+<p>Nàng đang định rời khỏi sương phòng, vừa lùi lại nửa bước, đã đụng phải một lồng ngực lạnh lẽo cứng rắn.</p>
+<p>Nàng lập tức xoay người, chỉ thấy nam nhân trở tay đóng cửa.</p>
+<p>Ánh sáng trong phòng lập tức tối xuống. Một mảng bóng tối mông lung tựa như từ đầu đến chân bao phủ lấy Sở Ly, khiến hô hấp nàng chợt nghẹn lại. Một hồi chuông cảnh báo khó hiểu lặng lẽ vang lên trong đáy lòng.</p>
+<p>“Bên ngoài đang mưa, Tiểu Cửu, nàng muốn đi đâu?”</p>
+<p>“Ta… ta muốn ra ngoài xem mưa…”</p>
+<p>Nam nhân chậm rãi xắn tay áo, từng bước từng bước đi về phía nàng: “Mưa rào lất phất, cẩn thận phong hàn.”</p>
+<p>Sở Ly theo bản năng lùi về sau:</p>
+<p>“Ta không lạnh.”</p>
+<p>Hắn từng bước tiến tới: “Phong hàn phân thành lãnh hàn và nhiệt hàn. Mùa đông gọi là lãnh hàn, mùa hạ gọi là nhiệt hàn. Nàng không cảm thấy lạnh, nhưng đợi đến khi thân thể khó chịu, phản ứng lại thì đã nhiễm phong hàn rồi.”</p>
+<p>“Hoàng thúc, ta thật sự không lạnh. Hơn nữa ta cũng đâu có định ra ngoài dầm mưa… Ta…”</p>
+<p>Nàng từng bước lùi lại.</p>
+<p>Thế nhưng bóng dáng cao lớn của nam nhân đã phủ xuống. Vẫn là gương mặt ôn hòa mang theo ý cười nhàn nhạt ấy, nhưng trong hoàn cảnh này, nàng chỉ cảm thấy như đang bước trên băng mỏng.</p>
+<p>Lùi thêm một bước, nàng đụng phải mép bàn.</p>
+<p>Thân thể khẽ cúi xuống, nàng định lách qua bên cạnh hắn chạy đi, nhưng nam nhân vung cánh tay dài, lập tức ôm ngang eo nàng, nhấc bổng nàng đặt lên bàn.</p>
+<p>Hai cánh tay chống ở hai bên thân thể nàng.</p>
+<p>“Hoàng… Hoàng thúc…”</p>
+<p>Sở Ly câu nệ ngồi trên bàn, hai tay hai chân đều không biết nên đặt ở đâu. Toàn bộ hô hấp, thậm chí cả tâm trí, đều tràn ngập mùi trầm hương ô mộc trên người hắn.</p>
+<p>Khí tức của hắn mang theo tính xâm lược cực mạnh, xâm nhập vào lãnh địa của nàng.</p>
+<p>Hắn muốn làm gì!</p>
+<p>“Chúng ta là tới bái phỏng Tạ lão tướng quân…”</p>
+<p>Đôi mắt u ám của nam nhân nhìn chằm chằm nàng: “Đã tới rồi.”</p>
+<p>Huống hồ, hắn vốn cũng không định để nàng trở về.</p>
+<p>Thần sắc Sở Ly đột nhiên biến đổi: “Đây là nhà của người khác, chúng ta không thể tự tiện xông vào. Đợi mưa tạnh chúng ta lập tức trở về. Hơn nữa đây là sương phòng của người khác, làm như vậy rất thất lễ. Hay là chúng ta… Ưm!”</p>
+<p>Một đôi môi mỏng lạnh lẽo đột nhiên phủ xuống.</p>
+<p>Mềm mại đến mức không tìm được từ ngữ nào để hình dung, lại mang theo nhiệt độ cơ thể, tựa như bị một thứ tốt đẹp bao bọc lấy.</p>
+<p>Hai mắt Sở Ly trợn lớn.</p>
+<p>Hắn…</p>
+<p>Hắn!</p>
+<p>Nàng đẩy lồng ngực hắn, lại bị nam nhân nắm lấy hai tay, đè lên mặt bàn.</p>
+<p>“Hoàng thúc…”</p>
+<p>Sở Đệ Trì đã nhẫn nại đến cực hạn. Cuối cùng cũng lừa được người vào tay, hắn không còn bất cứ sự ngụy trang nào nữa, cường thế khiến nàng không thể trốn tránh, hơi thở nặng nề tựa như muốn nuốt chửng nàng.</p>
+<p>Sở Ly đá hắn một cái, hắn lập tức khuỵu gối khống chế nàng.</p>
+<p>Nàng vặn người, hắn liền dùng một tay giữ chặt.</p>
+<p>Nàng dốc sức giãy giụa, đột nhiên thoát khỏi sự khống chế của hắn. Vì dùng sức quá mạnh, nàng đá đổ hộp lễ vật bên cạnh. Nắp hộp bị bật tung, từ bên trong rơi ra một đoạn dải lụa màu phấn hồng.</p>
+<p>Đây là gì?</p>
+<p>Nàng kéo dải lụa lên.</p>
+<p>Dài thật!</p>
+<p>Trong hộp lễ vật căn bản chẳng hề chứa lễ vật gì, mà là dải lụa này!</p>
+<p>“Hóa ra Tiểu Cửu thích kiểu này.”</p>
+<p>Nam nhân trầm thấp cười một tiếng. Đầu ngón tay thon dài nhặt dải lụa lên, quấn quanh hai cổ tay nàng, đầu còn lại nắm trong lòng bàn tay.</p>
+<p>Lúc này, nếu Sở Ly còn chưa hiểu ra thì đúng là đồ ngốc. Thế nhưng đợi nàng phản ứng lại, hết thảy đã muộn.</p>
+<p>“Sở Đệ Trì!”</p>
+<p>“Gọi ta là gì?”</p>
+<p>“Sở Đệ Trì! Người cố ý! Tạ lão tướng quân căn bản không sống ở đây, người lừa ta! Người lừa ta!”</p>
+<p>—————————</p>
+<p>Ôi trí nhớ tôi thật tồi, đến đây mới là món khai vị</p>
+<p>Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_223.html" class="btn">‹ Trước</a>
             <a href="chuong_225.html" class="btn">Sau ›</a>
         </div>
@@ -210,15 +218,11 @@ Lúc này, nếu Sở Ly còn chưa hiểu ra thì đúng là đồ ngốc. Th�
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -230,11 +234,11 @@ Lúc này, nếu Sở Ly còn chưa hiểu ra thì đúng là đồ ngốc. Th�
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>

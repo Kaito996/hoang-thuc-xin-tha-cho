@@ -4,58 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#fdfbf7">
+    <meta name="theme-color" content="#f4f1ea">
     <title>Chương 35</title>
     
 <style>
     :root {
-        --bg-color: #fdfbf7;
-        --text-color: #1a1a1a;
-        --btn-bg: #007aff;
+        /* Chế độ Sáng (Màu nền giấy cổ điển, chữ xám đậm giúp chống chói) */
+        --bg-color: #f4f1ea; 
+        --text-color: #2b2b2b;
+        --btn-bg: #8c7b66;
         --btn-text: #ffffff;
-        --border-color: #e5e5ea;
+        --border-color: #e2dcd0;
         --missing-bg: #ffebee;
         --missing-text: #d32f2f;
-        --header-bg: #fdfbf7;
+        --header-bg: #f4f1ea;
     }
 
-    /* Chế độ Dark Mode khi được kích hoạt bằng nút */
     [data-theme="dark"] {
+        /* Chế độ Tối (Đen hoàn toàn cho OLED, chữ xám nhạt chống mỏi) */
         --bg-color: #000000;
-        --text-color: #e5e5ea;
-        --btn-bg: #1c1c1e;
-        --btn-text: #0a84ff;
-        --border-color: #38383a;
+        --text-color: #d1d1d1;
+        --btn-bg: #333333;
+        --btn-text: #cccccc;
+        --border-color: #222222;
         --missing-bg: #3a1c1c;
         --missing-text: #ff453a;
-        --header-bg: #000000;
+        --header-bg: #111111;
     }
 
     body { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-        line-height: 1.6; 
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Phông chữ có chân chuyên để đọc truyện dài */
+        line-height: 1.8; /* Tăng khoảng cách giữa các dòng */
         color: var(--text-color); 
         background-color: var(--bg-color);
         margin: 0;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         -webkit-font-smoothing: antialiased;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.4s ease, color 0.4s ease;
     }
 
     .container {
-        padding: 20px;
-        padding-top: 60px; /* Nhường chỗ cho nút đổi màu */
-        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        padding-top: 70px;
+        max-width: 700px; /* Thu hẹp chiều ngang để mắt không phải đảo quá nhiều */
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
-    /* Thanh Header nổi chứa nút đổi màu nền */
     .top-bar {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        top: 0; left: 0; right: 0;
+        height: 55px;
         background-color: var(--header-bg);
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -63,179 +62,188 @@
         align-items: center;
         padding: 0 20px;
         z-index: 1000;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     #theme-toggle {
-        background: none;
-        border: none;
+        background: transparent;
+        border: 1px solid var(--border-color);
         color: var(--text-color);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 14px;
+        font-family: sans-serif;
         cursor: pointer;
-        padding: 5px 10px;
-        border-radius: 8px;
-        background-color: var(--border-color);
+        padding: 8px 12px;
+        border-radius: 20px;
     }
 
-    h1 { font-size: 26px; text-align: center; margin-top: 10px; font-weight: 700; letter-spacing: -0.5px; }
-    h2 { font-size: 22px; text-align: center; margin-top: 5px; font-weight: 600; }
+    h1 { font-family: sans-serif; font-size: 24px; text-align: center; margin-top: 10px; font-weight: 700; color: var(--text-color); }
+    h2 { font-family: sans-serif; font-size: 22px; text-align: center; margin-top: 0px; margin-bottom: 30px; font-weight: 600; color: var(--text-color); border-bottom: 1px dashed var(--border-color); padding-bottom: 15px;}
 
-    .content { font-size: 20px; text-align: left; margin-top: 25px; color: var(--text-color); }
-    .content p { margin-bottom: 22px; }
+    /* Cấu hình văn bản truyện */
+    .content { 
+        font-size: 21px; /* Cỡ chữ to, rõ */
+        text-align: left; 
+        color: var(--text-color);
+    }
+    
+    .content p { 
+        margin-bottom: 1.5em; /* Khoảng cách giữa các đoạn (paragraph) cực rộng rãi */
+        text-indent: 20px; /* Thụt lề đầu dòng giống sách in */
+    }
 
-    .nav-buttons { display: flex; justify-content: space-between; margin: 30px 0; padding-top: 15px; border-top: 1px solid var(--border-color); }
+    .nav-buttons { display: flex; justify-content: space-between; margin: 40px 0; padding-top: 20px; border-top: 1px solid var(--border-color); }
     
     .btn { 
-        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 5px; padding: 14px 0; 
-        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 12px; 
-        font-size: 17px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
+        display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 8px; padding: 12px 0; 
+        background-color: var(--btn-bg); color: var(--btn-text); text-decoration: none; border-radius: 25px; 
+        font-family: sans-serif; font-size: 16px; font-weight: 600; -webkit-tap-highlight-color: transparent; 
     }
     .btn:active { opacity: 0.7; }
-    .btn.disabled { background-color: var(--border-color); color: #8e8e93; pointer-events: none; }
+    .btn.disabled { background-color: var(--border-color); color: rgba(150,150,150,0.5); pointer-events: none; }
 
-    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 25px; padding-bottom: 30px; }
-    .toc a { display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: var(--btn-bg); text-decoration: none; color: var(--btn-text); border-radius: 8px; font-size: 16px; font-weight: 500; }
-    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); }
+    .toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+    .toc a { font-family: sans-serif; display: flex; align-items: center; justify-content: center; padding: 12px 5px; background-color: transparent; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color); border-radius: 8px; font-size: 16px; font-weight: 500; }
+    .toc a:hover, .toc a:active { background-color: var(--btn-bg); color: var(--btn-text); }
+    .toc a.missing { background-color: var(--missing-bg); color: var(--missing-text); border: none; }
     
-    .back-btn { display: block; text-align: center; color: #0a84ff; text-decoration: none; font-size: 17px; margin-bottom: 15px; }
+    .back-btn { display: block; text-align: center; color: var(--text-color); opacity: 0.7; text-decoration: none; font-size: 15px; font-family: sans-serif; margin-bottom: 20px; }
 </style>
 
 </head>
 <body>
     <div class="top-bar">
-        <button id="theme-toggle">🌙 Chế độ Tối</button>
+        <button id="theme-toggle">🌙 Nền Tối</button>
     </div>
     <div class="container">
-        <a href="index.html" class="back-btn">‹ Quay lại Mục lục</a>
+        <a href="index.html" class="back-btn">‹ Mục lục</a>
         
         <h2>Chương 35</h2>
         
-        <div class="nav-buttons">
+        <div class="nav-buttons" style="margin-top: 10px;">
             <a href="chuong_34.html" class="btn">‹ Trước</a>
             <a href="chuong_36.html" class="btn">Sau ›</a>
         </div>
 
         <div class="content">
-            <p>Chương 35: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi
-Chương 35: Ai chẳng biết Cửu hoàng tử là phế vật
-Hôm sau.
-Thu nhật yến được thiết tại Lan Đình Hiên, một tòa biệt uyển ngoại thành, ao hồ rộng lớn, phong cảnh u nhã tuyệt mỹ.
-Trời thu cao vời vợi, khí mát trong lành, trăm hoa đã tàn, duy chỉ có cúc hoa nở đúng độ, một mình rực rỡ.
-“Ôi, các ngươi mau nhìn kìa, đó lại là cúc song đế!”
-“Bên kia còn có cả cúc đỏ nữa.”
-“Nhìn xem, đẹp thật!”
-Không ít khuê nữ danh môn tụ hội tại Lan Đình Hiên, trang dung tỉ mỉ, đứng bên hồ nước liễu rủ, kiều diễm hơn hoa ba phần.
-Hoàng hậu đích thân chủ trì Thu nhật yến, phàm là công tử, tiểu thư quan gia có danh có phận, đều tranh nhau đến dự.
-Lan Đình Hiên phân làm nam nữ hai khu, ở giữa cách một hồ nước nhỏ, vừa giữ trọn khuê dự của các quý nữ, lại chẳng hề che lấp phong thái của các công tử. Đám nam tử đàm tiếu phong sinh, thân hình tuấn tú, khí độ phong lưu.
-Khung cảnh náo nhiệt vô cùng.
-Khi Sở Ly cùng Tần Mục Tuyết xuất hiện, không ít ánh mắt dị dạng lập tức dõi tới:
-“Cửu hoàng tử đến làm gì?”
-“Ngươi không biết à? ‘Hắn’ suốt ngày du thủ hảo nhàn, vô sở sự sự, những dịp thế này lại càng hợp khẩu vị.”
-“Chúng ta nên đứng xa chút, lỡ mà va phải ‘hắn’, bị ‘hắn’ làm hỏng khuê danh thì sao? Nếu thật sự phải gả cho ‘hắn’, nửa đời sau coi như tiêu rồi.”
-“Đúng vậy! Ta thà gả cho một học sĩ chỉ có hư danh, cũng quyết không để Cửu hoàng tử làm lỡ dở cả đời.”
-Các quý nữ đồng loạt lùi xa, dáng vẻ chẳng khác nào gặp phải ôn dịch.
-Sự cô lập lộ liễu như thế khiến Tần Mục Tuyết xoay mắt một vòng, cố ý lớn tiếng nói:
-“Cửu hoàng tử, nghe nói Hoàng thượng và Hoàng hậu nương nương đang để tâm đến hôn sự của ngài. Nhân dịp Thu nhật yến này, hay là chọn lấy vài vị vừa mắt đi? Nghĩ đến cũng chẳng ai dám kháng chỉ đâu.”
-Trong khoảnh khắc, sắc mặt các quý nữ đều biến đổi.
-Khi Sở Ly liếc nhìn qua, bọn họ lập tức căng cứng toàn thân, sắc diện tái nhợt, mức độ hoảng sợ chẳng kém gì bị Diêm Vương gọi tên.
-Gọi trúng ai, kẻ đó xui xẻo.
-Sở Ly nheo mắt, như thể nhìn chưa rõ, chỉ về phía một thiên kim áo tím bên hồ, hỏi:
-“Vị này là ai?”
-Thiên kim áo tím lập tức phúc thân:
-“Thần nữ tham kiến Cửu hoàng tử điện hạ. Điện hạ, thần nữ chợt nhớ trong nhà còn có việc gấp, e không thể lưu lại lâu, mong điện hạ thứ tội.”
-Nói xong liền dẫn tỳ nữ vội vã rời đi.
-Sở Ly lại đổi sang người khác:
-“Vậy vị này là—”
-“Điện hạ, cữu cữu của di nương thần nữ hôm nay sinh tam thai, thần nữ phải về nhà gấp!”
-“Thần nữ sáng nay xuất môn chưa rửa mặt, thực sự thất lễ, xin cáo lui!”
-“……”
-Chỉ mặt mấy người, liền dọa chạy mấy người, số còn lại đến thở mạnh cũng không dám.
-“Cửu hoàng tử thanh danh bại hoại, dọa cho các quý nữ đều bỏ đi, chẳng lẽ là muốn độc chiếm Thu nhật yến này sao?”
-Trên cây cầu gỗ cong cong bắc qua hồ, hơn mười vị công tử cùng nhau bước tới.
-Người đi đầu dáng đi hiên ngang, bên hông treo hai túi hương, y phục gấm vóc hoa lệ, khí chất quý công tử lộ rõ; nhất là chiếc cằm ngẩng cao kia, kiêu ngạo vô cùng.
-Sở Ly nhìn sang:
-“Phương thế tử.”
-Đích trưởng tử Quốc công phủ — Phương Hải Dương, thân phận tôn quý. Tĩnh Hoàng quý phi đương triều là cô ruột của hắn, còn hắn và Thất hoàng tử là biểu huynh đệ.
-“Tham kiến Phương thế tử.”
-Những thiên kim có thân phận kém Quốc công phủ đều phúc thân hành lễ. Trong đó có một người bước ra, cười duyên nói:
-“May mà thế tử đến kịp thời, bằng không, tỷ muội chúng ta đều bị Cửu hoàng tử dọa chạy mất, uổng phí một phen tâm huyết mà Hoàng hậu nương nương bỏ ra để lo liệu Thu nhật yến này.”
-Phụt—
-Không ít người bật cười khe khẽ.
-Cả Đại Sở, ai chẳng biết Cửu hoàng tử là phế vật?
-“Có ta ở đây, Dương tiểu thư chớ lo.”
-Phương Hải Dương tư thế ngạo nghễ.
-Dương Kiều Kiều lấy tay che miệng cười nhẹ, trong đôi mày mắt xếch tràn đầy vẻ châm biếm dành cho Cửu hoàng tử.
-“Dương tiểu thư, vừa rồi cô nói gì?”
-Sở Ly đột nhiên nhìn thẳng vào nàng.
-Ánh mắt không hề né tránh.
-“Nói lại một lần nữa.”
-Dương Kiều Kiều bất ngờ bị gọi đích danh, khẽ nhíu mày.
-“Cửu hoàng tử ức hiếp nữ tử thì có bản lĩnh gì? Có điều gì, cứ nói với bản thế tử.”
-Phương Hải Dương tiến lên hai bước, tư thế công khai che chở cho Dương Kiều Kiều khiến không ít thiên kim thầm sinh ngưỡng mộ.
-Quốc công phủ và Dương gia vốn có hôn ước.
-Quốc công phủ quyền cao chức trọng, xuất ra Tĩnh Hoàng quý phi cùng Thất hoàng tử; Dương gia lại là thế gia thanh quý, cả nhà liêm khiết, được người đời kính phục. Phương thế tử và Dương tiểu thư, quả thực là đôi lứa xứng đôi vừa lứa, tương trợ lẫn nhau.
-Sở Ly kinh ngạc nói:
-“Vừa rồi Dương tiểu thư nói ta dọa chạy không ít quý nữ. Dung mạo của ta là do Hoàng thượng ban cho, vậy chẳng phải Dương tiểu thư đang ám chỉ dung mạo Hoàng thượng xấu xí, mà Phương thế tử cũng tán đồng lời nàng hay sao?”
-Sắc mặt Dương Kiều Kiều khẽ biến.
-Thu nhật yến đông người như vậy, loại lời đại nghịch bất đạo này nếu truyền ra ngoài, chỉ có thể chiêu tai họa cho Dương gia.
-“Ta tuyệt không có ý đó, Cửu hoàng tử đã quá mức diễn giải! Ta chưa từng chỉ trích dung mạo của ngài.”
-“Vậy tức là cô đang mắng ta phẩm hạnh bại hoại.”
-Sở Ly nói:
-“Tục ngữ có câu, thượng lương bất chính, hạ lương tất oai. Chẳng phải là đang ám chỉ Hoàng thượng vô đức, vô tài, vô năng, nên mới dạy ra một hoàng tử như ta sao?”
-Dương Kiều Kiều hoảng hốt đến mức tim suýt nhảy khỏi lồng ngực.
-Cho nàng mười cái gan, nàng cũng không dám khinh nhờn thiên uy!
-Nàng trấn định tâm thần, cắn ngược lại một câu:
-“Vừa rồi bất quá chỉ là lời nói đùa, hơn nữa, đường đường là bậc nam nhi, chẳng lẽ đến một câu đùa cũng không chịu nổi?”
-Sở Ly tiến lên một bước:
-“Thiên gia uy nghiêm, há dung ngươi đem ra làm trò cười?”
-“Xin hỏi chư vị có mặt tại đây, có ai thấy buồn cười chăng?”
-Sắc mặt các quý nữ, công tử đều trầm xuống. Nếu tiếp lời này, chính là đắc tội với hoàng gia; bọn họ cùng Dương Kiều Kiều không thân không thích, tự nhiên chẳng ai muốn vì nàng mà mạo hiểm.
-“Không buồn cười.”
-“Không buồn cười.”
-Tần Mục Tuyết lạnh giọng nói:
-“Chúng ta trung quân ái quốc, tận trung với hoàng gia, tự nhiên không dám giống như Dương tiểu thư, mang tâm mưu nghịch.”
-Dương Kiều Kiều chân mềm nhũn.
-Mưu nghịch!
-“Tần tiểu thư, xin cẩn ngôn! Hai chữ ấy không thể nói bừa!”
-“Đến cả hoàng tử cũng không kính trọng, còn mong gì cô trung thành với hoàng gia?”
-“Nhưng vừa rồi các nàng đều nói xấu Cửu hoàng tử, đâu chỉ một mình ta!”
-Dương Kiều Kiều lập tức kéo mấy người xuống nước, còn chỉ đích danh từng người.
-Mấy vị thiên kim bị gọi tên tức đến mặt mày tối sầm.
-Lại dám kéo họ ra làm kẻ thế mạng!
-“Cửu hoàng tử, chúng thần nữ không dám nói xấu ngài, đều là Dương tiểu thư nói.”
-“Nàng ta còn nói ngài sau này nhiều lắm cũng chỉ làm nhàn vương, lĩnh chút bổng lộc, sống qua ngày, ngay cả quản gia trong phủ nàng cũng không bằng.”
-“Nàng ta còn nói, chờ sau này hoàng tử nào đăng cơ, ngài — cái thứ sâu gạo này — nhất định sẽ bị xử tử.”
-“Đều là nàng ta nói!”
-Dương Kiều Kiều trừng mắt:
-“Các ngươi… các ngươi… rõ ràng là chúng ta cùng nói!”
-Năm vị thiên kim đồng thanh:
-“Là nàng ta nói một mình.”
-“Chúng ta cùng nói?”
-“Cửu hoàng tử, chỉ có nàng ta nói!”
-Sở Ly gật đầu:
-“Ừm, các ngươi đông người, ta tin các ngươi. Vậy phạt chưởng miệng ba mươi cái. Năm người các ngươi, mỗi người đánh nàng sáu cái.”
-Năm vị thiên kim đồng loạt sững sờ.
-Bảo bọn họ đánh…
-Việc này chẳng phải là đắc tội người ta sao?
-Phương Hải Dương vừa định nổi giận, Tần Mục Tuyết đã lớn tiếng nói:
-“A Ly ca ca, trong Thu thu săn bắn ngài lập công cứu giá, Hoàng thượng đang rất sủng ái ngài. Không ngờ vào lúc mấu chốt này, vẫn có kẻ dám tự tìm đường chết.”
-Bước chân Phương Hải Dương chợt khựng lại.
-Đúng vậy!
-Hắn suýt quên mất chuyện Thu thu săn bắn!
-Cửu hoàng tử từng cứu giá, hiện nay đang ở đỉnh phong danh thế. Dương Kiều Kiều vốn đã lý thua, nếu hắn còn ra mặt che chở, chẳng phải là đối nghịch với Hoàng thượng hay sao?
-Năm vị thiên kim nghe vậy, nào dám đứng chung chiến tuyến với Dương Kiều Kiều? Huống chi vừa rồi nàng ta còn cố ý kéo họ xuống nước.
-Hừ!
-Cửu hoàng tử đã lên tiếng, vậy thì đánh. Dẫu có xảy ra chuyện, cũng không truy cứu đến đầu bọn họ.
-Đánh!
-Một cái tát giáng xuống, đánh cho Dương Kiều Kiều kêu thảm.
-“A!”
-Miệng lưỡi vô đức, vậy thì nhân cơ hội mà tích đức.
-Cửu hoàng tử dẫu không được thế, cũng vẫn là hoàng tử; còn chưa đến lượt một thần nữ dám leo lên đầu lên cổ. Ẩn bớt</p>
+            <p>Chương 35: Hoàng thúc xin tha cho, Cửu hoàng tử là nữ nhi</p>
+<p>Chương 35: Ai chẳng biết Cửu hoàng tử là phế vật</p>
+<p>Hôm sau.</p>
+<p>Thu nhật yến được thiết tại Lan Đình Hiên, một tòa biệt uyển ngoại thành, ao hồ rộng lớn, phong cảnh u nhã tuyệt mỹ.</p>
+<p>Trời thu cao vời vợi, khí mát trong lành, trăm hoa đã tàn, duy chỉ có cúc hoa nở đúng độ, một mình rực rỡ.</p>
+<p>“Ôi, các ngươi mau nhìn kìa, đó lại là cúc song đế!”</p>
+<p>“Bên kia còn có cả cúc đỏ nữa.”</p>
+<p>“Nhìn xem, đẹp thật!”</p>
+<p>Không ít khuê nữ danh môn tụ hội tại Lan Đình Hiên, trang dung tỉ mỉ, đứng bên hồ nước liễu rủ, kiều diễm hơn hoa ba phần.</p>
+<p>Hoàng hậu đích thân chủ trì Thu nhật yến, phàm là công tử, tiểu thư quan gia có danh có phận, đều tranh nhau đến dự.</p>
+<p>Lan Đình Hiên phân làm nam nữ hai khu, ở giữa cách một hồ nước nhỏ, vừa giữ trọn khuê dự của các quý nữ, lại chẳng hề che lấp phong thái của các công tử. Đám nam tử đàm tiếu phong sinh, thân hình tuấn tú, khí độ phong lưu.</p>
+<p>Khung cảnh náo nhiệt vô cùng.</p>
+<p>Khi Sở Ly cùng Tần Mục Tuyết xuất hiện, không ít ánh mắt dị dạng lập tức dõi tới:</p>
+<p>“Cửu hoàng tử đến làm gì?”</p>
+<p>“Ngươi không biết à? ‘Hắn’ suốt ngày du thủ hảo nhàn, vô sở sự sự, những dịp thế này lại càng hợp khẩu vị.”</p>
+<p>“Chúng ta nên đứng xa chút, lỡ mà va phải ‘hắn’, bị ‘hắn’ làm hỏng khuê danh thì sao? Nếu thật sự phải gả cho ‘hắn’, nửa đời sau coi như tiêu rồi.”</p>
+<p>“Đúng vậy! Ta thà gả cho một học sĩ chỉ có hư danh, cũng quyết không để Cửu hoàng tử làm lỡ dở cả đời.”</p>
+<p>Các quý nữ đồng loạt lùi xa, dáng vẻ chẳng khác nào gặp phải ôn dịch.</p>
+<p>Sự cô lập lộ liễu như thế khiến Tần Mục Tuyết xoay mắt một vòng, cố ý lớn tiếng nói:</p>
+<p>“Cửu hoàng tử, nghe nói Hoàng thượng và Hoàng hậu nương nương đang để tâm đến hôn sự của ngài. Nhân dịp Thu nhật yến này, hay là chọn lấy vài vị vừa mắt đi? Nghĩ đến cũng chẳng ai dám kháng chỉ đâu.”</p>
+<p>Trong khoảnh khắc, sắc mặt các quý nữ đều biến đổi.</p>
+<p>Khi Sở Ly liếc nhìn qua, bọn họ lập tức căng cứng toàn thân, sắc diện tái nhợt, mức độ hoảng sợ chẳng kém gì bị Diêm Vương gọi tên.</p>
+<p>Gọi trúng ai, kẻ đó xui xẻo.</p>
+<p>Sở Ly nheo mắt, như thể nhìn chưa rõ, chỉ về phía một thiên kim áo tím bên hồ, hỏi:</p>
+<p>“Vị này là ai?”</p>
+<p>Thiên kim áo tím lập tức phúc thân:</p>
+<p>“Thần nữ tham kiến Cửu hoàng tử điện hạ. Điện hạ, thần nữ chợt nhớ trong nhà còn có việc gấp, e không thể lưu lại lâu, mong điện hạ thứ tội.”</p>
+<p>Nói xong liền dẫn tỳ nữ vội vã rời đi.</p>
+<p>Sở Ly lại đổi sang người khác:</p>
+<p>“Vậy vị này là—”</p>
+<p>“Điện hạ, cữu cữu của di nương thần nữ hôm nay sinh tam thai, thần nữ phải về nhà gấp!”</p>
+<p>“Thần nữ sáng nay xuất môn chưa rửa mặt, thực sự thất lễ, xin cáo lui!”</p>
+<p>“……”</p>
+<p>Chỉ mặt mấy người, liền dọa chạy mấy người, số còn lại đến thở mạnh cũng không dám.</p>
+<p>“Cửu hoàng tử thanh danh bại hoại, dọa cho các quý nữ đều bỏ đi, chẳng lẽ là muốn độc chiếm Thu nhật yến này sao?”</p>
+<p>Trên cây cầu gỗ cong cong bắc qua hồ, hơn mười vị công tử cùng nhau bước tới.</p>
+<p>Người đi đầu dáng đi hiên ngang, bên hông treo hai túi hương, y phục gấm vóc hoa lệ, khí chất quý công tử lộ rõ; nhất là chiếc cằm ngẩng cao kia, kiêu ngạo vô cùng.</p>
+<p>Sở Ly nhìn sang:</p>
+<p>“Phương thế tử.”</p>
+<p>Đích trưởng tử Quốc công phủ — Phương Hải Dương, thân phận tôn quý. Tĩnh Hoàng quý phi đương triều là cô ruột của hắn, còn hắn và Thất hoàng tử là biểu huynh đệ.</p>
+<p>“Tham kiến Phương thế tử.”</p>
+<p>Những thiên kim có thân phận kém Quốc công phủ đều phúc thân hành lễ. Trong đó có một người bước ra, cười duyên nói:</p>
+<p>“May mà thế tử đến kịp thời, bằng không, tỷ muội chúng ta đều bị Cửu hoàng tử dọa chạy mất, uổng phí một phen tâm huyết mà Hoàng hậu nương nương bỏ ra để lo liệu Thu nhật yến này.”</p>
+<p>Phụt—</p>
+<p>Không ít người bật cười khe khẽ.</p>
+<p>Cả Đại Sở, ai chẳng biết Cửu hoàng tử là phế vật?</p>
+<p>“Có ta ở đây, Dương tiểu thư chớ lo.”</p>
+<p>Phương Hải Dương tư thế ngạo nghễ.</p>
+<p>Dương Kiều Kiều lấy tay che miệng cười nhẹ, trong đôi mày mắt xếch tràn đầy vẻ châm biếm dành cho Cửu hoàng tử.</p>
+<p>“Dương tiểu thư, vừa rồi cô nói gì?”</p>
+<p>Sở Ly đột nhiên nhìn thẳng vào nàng.</p>
+<p>Ánh mắt không hề né tránh.</p>
+<p>“Nói lại một lần nữa.”</p>
+<p>Dương Kiều Kiều bất ngờ bị gọi đích danh, khẽ nhíu mày.</p>
+<p>“Cửu hoàng tử ức hiếp nữ tử thì có bản lĩnh gì? Có điều gì, cứ nói với bản thế tử.”</p>
+<p>Phương Hải Dương tiến lên hai bước, tư thế công khai che chở cho Dương Kiều Kiều khiến không ít thiên kim thầm sinh ngưỡng mộ.</p>
+<p>Quốc công phủ và Dương gia vốn có hôn ước.</p>
+<p>Quốc công phủ quyền cao chức trọng, xuất ra Tĩnh Hoàng quý phi cùng Thất hoàng tử; Dương gia lại là thế gia thanh quý, cả nhà liêm khiết, được người đời kính phục. Phương thế tử và Dương tiểu thư, quả thực là đôi lứa xứng đôi vừa lứa, tương trợ lẫn nhau.</p>
+<p>Sở Ly kinh ngạc nói:</p>
+<p>“Vừa rồi Dương tiểu thư nói ta dọa chạy không ít quý nữ. Dung mạo của ta là do Hoàng thượng ban cho, vậy chẳng phải Dương tiểu thư đang ám chỉ dung mạo Hoàng thượng xấu xí, mà Phương thế tử cũng tán đồng lời nàng hay sao?”</p>
+<p>Sắc mặt Dương Kiều Kiều khẽ biến.</p>
+<p>Thu nhật yến đông người như vậy, loại lời đại nghịch bất đạo này nếu truyền ra ngoài, chỉ có thể chiêu tai họa cho Dương gia.</p>
+<p>“Ta tuyệt không có ý đó, Cửu hoàng tử đã quá mức diễn giải! Ta chưa từng chỉ trích dung mạo của ngài.”</p>
+<p>“Vậy tức là cô đang mắng ta phẩm hạnh bại hoại.”</p>
+<p>Sở Ly nói:</p>
+<p>“Tục ngữ có câu, thượng lương bất chính, hạ lương tất oai. Chẳng phải là đang ám chỉ Hoàng thượng vô đức, vô tài, vô năng, nên mới dạy ra một hoàng tử như ta sao?”</p>
+<p>Dương Kiều Kiều hoảng hốt đến mức tim suýt nhảy khỏi lồng ngực.</p>
+<p>Cho nàng mười cái gan, nàng cũng không dám khinh nhờn thiên uy!</p>
+<p>Nàng trấn định tâm thần, cắn ngược lại một câu:</p>
+<p>“Vừa rồi bất quá chỉ là lời nói đùa, hơn nữa, đường đường là bậc nam nhi, chẳng lẽ đến một câu đùa cũng không chịu nổi?”</p>
+<p>Sở Ly tiến lên một bước:</p>
+<p>“Thiên gia uy nghiêm, há dung ngươi đem ra làm trò cười?”</p>
+<p>“Xin hỏi chư vị có mặt tại đây, có ai thấy buồn cười chăng?”</p>
+<p>Sắc mặt các quý nữ, công tử đều trầm xuống. Nếu tiếp lời này, chính là đắc tội với hoàng gia; bọn họ cùng Dương Kiều Kiều không thân không thích, tự nhiên chẳng ai muốn vì nàng mà mạo hiểm.</p>
+<p>“Không buồn cười.”</p>
+<p>“Không buồn cười.”</p>
+<p>Tần Mục Tuyết lạnh giọng nói:</p>
+<p>“Chúng ta trung quân ái quốc, tận trung với hoàng gia, tự nhiên không dám giống như Dương tiểu thư, mang tâm mưu nghịch.”</p>
+<p>Dương Kiều Kiều chân mềm nhũn.</p>
+<p>Mưu nghịch!</p>
+<p>“Tần tiểu thư, xin cẩn ngôn! Hai chữ ấy không thể nói bừa!”</p>
+<p>“Đến cả hoàng tử cũng không kính trọng, còn mong gì cô trung thành với hoàng gia?”</p>
+<p>“Nhưng vừa rồi các nàng đều nói xấu Cửu hoàng tử, đâu chỉ một mình ta!”</p>
+<p>Dương Kiều Kiều lập tức kéo mấy người xuống nước, còn chỉ đích danh từng người.</p>
+<p>Mấy vị thiên kim bị gọi tên tức đến mặt mày tối sầm.</p>
+<p>Lại dám kéo họ ra làm kẻ thế mạng!</p>
+<p>“Cửu hoàng tử, chúng thần nữ không dám nói xấu ngài, đều là Dương tiểu thư nói.”</p>
+<p>“Nàng ta còn nói ngài sau này nhiều lắm cũng chỉ làm nhàn vương, lĩnh chút bổng lộc, sống qua ngày, ngay cả quản gia trong phủ nàng cũng không bằng.”</p>
+<p>“Nàng ta còn nói, chờ sau này hoàng tử nào đăng cơ, ngài — cái thứ sâu gạo này — nhất định sẽ bị xử tử.”</p>
+<p>“Đều là nàng ta nói!”</p>
+<p>Dương Kiều Kiều trừng mắt:</p>
+<p>“Các ngươi… các ngươi… rõ ràng là chúng ta cùng nói!”</p>
+<p>Năm vị thiên kim đồng thanh:</p>
+<p>“Là nàng ta nói một mình.”</p>
+<p>“Chúng ta cùng nói?”</p>
+<p>“Cửu hoàng tử, chỉ có nàng ta nói!”</p>
+<p>Sở Ly gật đầu:</p>
+<p>“Ừm, các ngươi đông người, ta tin các ngươi. Vậy phạt chưởng miệng ba mươi cái. Năm người các ngươi, mỗi người đánh nàng sáu cái.”</p>
+<p>Năm vị thiên kim đồng loạt sững sờ.</p>
+<p>Bảo bọn họ đánh…</p>
+<p>Việc này chẳng phải là đắc tội người ta sao?</p>
+<p>Phương Hải Dương vừa định nổi giận, Tần Mục Tuyết đã lớn tiếng nói:</p>
+<p>“A Ly ca ca, trong Thu thu săn bắn ngài lập công cứu giá, Hoàng thượng đang rất sủng ái ngài. Không ngờ vào lúc mấu chốt này, vẫn có kẻ dám tự tìm đường chết.”</p>
+<p>Bước chân Phương Hải Dương chợt khựng lại.</p>
+<p>Đúng vậy!</p>
+<p>Hắn suýt quên mất chuyện Thu thu săn bắn!</p>
+<p>Cửu hoàng tử từng cứu giá, hiện nay đang ở đỉnh phong danh thế. Dương Kiều Kiều vốn đã lý thua, nếu hắn còn ra mặt che chở, chẳng phải là đối nghịch với Hoàng thượng hay sao?</p>
+<p>Năm vị thiên kim nghe vậy, nào dám đứng chung chiến tuyến với Dương Kiều Kiều? Huống chi vừa rồi nàng ta còn cố ý kéo họ xuống nước.</p>
+<p>Hừ!</p>
+<p>Cửu hoàng tử đã lên tiếng, vậy thì đánh. Dẫu có xảy ra chuyện, cũng không truy cứu đến đầu bọn họ.</p>
+<p>Đánh!</p>
+<p>Một cái tát giáng xuống, đánh cho Dương Kiều Kiều kêu thảm.</p>
+<p>“A!”</p>
+<p>Miệng lưỡi vô đức, vậy thì nhân cơ hội mà tích đức.</p>
+<p>Cửu hoàng tử dẫu không được thế, cũng vẫn là hoàng tử; còn chưa đến lượt một thần nữ dám leo lên đầu lên cổ. Ẩn bớt</p>
 
         </div>
 
-        <div class="nav-buttons" style="margin-bottom: 50px;">
+        <div class="nav-buttons" style="margin-bottom: 20px;">
             <a href="chuong_34.html" class="btn">‹ Trước</a>
             <a href="chuong_36.html" class="btn">Sau ›</a>
         </div>
@@ -243,15 +251,11 @@ Cửu hoàng tử dẫu không được thế, cũng vẫn là hoàng tử; còn
     
 <script>
     const toggleBtn = document.getElementById('theme-toggle');
-    
-    // Kiểm tra xem người dùng đã chọn theme gì chưa, nếu chưa thì lấy theo hệ thống
     const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     
-    // Áp dụng theme ngay khi load trang
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateBtnUI(currentTheme);
 
-    // Khi bấm nút
     toggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
         let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -263,11 +267,11 @@ Cửu hoàng tử dẫu không được thế, cũng vẫn là hoàng tử; còn
 
     function updateBtnUI(theme) {
         if(theme === 'dark') {
-            toggleBtn.innerHTML = '☀️ Chế độ Sáng';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+            toggleBtn.innerHTML = '☀️ Nền Sáng';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#111111');
         } else {
-            toggleBtn.innerHTML = '🌙 Chế độ Tối';
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fdfbf7');
+            toggleBtn.innerHTML = '🌙 Nền Tối';
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f4f1ea');
         }
     }
 </script>
